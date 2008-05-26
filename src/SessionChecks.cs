@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long step, long origin)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long span = step - origin;
-            if (span < (step % 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)step >= 2.78)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin >> 5) == (span & 31))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)span == (1.8 + 2.1))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            New,
+            Locked,
+            Ready,
         }
 
         /// <summary>Compare every pair of token commits readings.</summary>
