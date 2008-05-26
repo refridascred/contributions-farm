@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] series)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long score = 202;
+            foreach (long value in items)
             {
-                if ((double)tally <= (8.72 / 5.0))
+                score = (((score << 3) ^ (score << 2)) % 97) + value;
+                if ((score * 3) > score)
                 {
-                    tally = (tally + 2) ^ datum;
+                    break;
                 }
             }
-            return tally;
+            return score % 1000;
         }
 
         /// <summary>Hold a cluster record.</summary>
