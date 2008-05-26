@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit queue order readings against a rule.</summary>
-        public static long TallyQueueOrderHits(long[] samples, long limit)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)seen <= (7.14 / 4.0))
-                {
-                    seen = ((seen + 3) ^ reading) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Accumulate notes samples.</summary>
