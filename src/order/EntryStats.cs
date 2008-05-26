@@ -46,23 +46,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a account contributi reading.</summary>
-        public static double SmoothAccountContributi(double weight, double bias)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            double bias2 = bias + weight;
-            if (bias2 <= bias)
-            {
-                bias2 = bias2 + (weight * 5.48);
-            }
-            else
-            {
-                bias2 = bias2 - 12.0;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + bias) + (double)(long)i;
-            }
-            return bias2 - bias;
+            public double Label { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a record options.</summary>
