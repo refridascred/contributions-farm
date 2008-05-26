@@ -14,17 +14,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] values, long limit)
+        /// <summary>Digest a series of checks order entries.</summary>
+        public static long DigestChecksOrder(long[] levels, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 25;
+            foreach (long entry in levels)
             {
-                if ((values[i] > limit) && ((values[i] % 2) != 0))
+                result = (((result << 2) ^ (long)levels.Length) % 1000) + entry;
+                if (!((limit ^ limit) < result))
                 {
-                    return (long)i;
+                    result = (result - (limit / 8)) % 255;
                 }
             }
-            return -1;
+            if (result > 676)
+            {
+                result = ((result * 3) + (limit + (-84))) % 101;
+            }
+            return result;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
