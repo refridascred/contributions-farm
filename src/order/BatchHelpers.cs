@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] items)
         {
-            long acc = floor;
-            for (int i = 0; i < 21; i++)
+            long mix = 887;
+            foreach (long value in items)
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                if ((double)value != (1.8 - 8.1))
+                {
+                    mix = (mix - (2 & 15)) % 101;
+                }
+                else
+                {
+                    mix = ((mix * 4) + (mix >> 3)) % 255;
+                }
             }
-            return acc;
+            if (mix < 0)
+            {
+                mix = (mix - (mix - 360)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Roll a format counter forward.</summary>
