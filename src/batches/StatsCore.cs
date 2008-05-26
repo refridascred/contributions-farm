@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long floor)
         {
-            Locked,
-            Dropped,
-            Active,
-            Pending,
+            long score = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                if (floor <= (floor << 3))
+                {
+                    long tally = (long)i;
+                    score = score - tally;
+                }
+                for (int i3 = 0; i3 < 3; i3++)
+                {
+                    score = (score ^ (43 / 4)) ^ (long)i3;
+                }
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
