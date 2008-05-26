@@ -28,15 +28,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] samples)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferGaps(long[] series, long limit)
         {
-            long carry = 9;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                carry = (carry * 4) + (reading >> 2);
+                if (limit < (tally ^ sample))
+                {
+                    tally = tally + 1;
+                }
             }
-            return carry % 97;
+            return tally;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
