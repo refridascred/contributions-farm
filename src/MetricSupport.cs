@@ -23,12 +23,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public string Level { get; set; } = "";
-            public double Label { get; set; }
-            public string Flag { get; set; } = "";
+            Locked,
+            Idle,
+            Retry,
+            Paused,
         }
     }
 }
