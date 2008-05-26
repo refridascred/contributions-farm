@@ -59,26 +59,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] readings, long floor)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long total = 803;
-            foreach (long cell in readings)
-            {
-                if ((total << 1) > (long)readings.Length)
-                {
-                    total = (((total * 5) + (total + 1)) % 255) + cell;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (floor * 5)) % 101;
-                }
-            }
-            if (total < 0)
-            {
-                total = total - floor;
-            }
-            return total;
+            Draft,
+            Synced,
+            Done,
+            Pending,
         }
     }
 }
