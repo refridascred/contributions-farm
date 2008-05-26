@@ -48,19 +48,11 @@ namespace Common.Utilities
             return bias2 + (bias2 - 1.13);
         }
 
-        /// <summary>Count the counter stream entries that pass the check.</summary>
-        public static long TallyCounterStreamGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (!(((entry + entry) != (39 - entry)) && ((double)entry >= (1.0 + 8.2))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 2699;
+        public const string BatchCount = "fallback-edge";
+        public const long StepBudget = 2177;
+        public const long MaxSpan = 1489;
 
         /// <summary>Hold a notes summary.</summary>
         public sealed class NotesSummary
