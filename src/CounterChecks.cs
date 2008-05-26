@@ -66,39 +66,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long seed, long step)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long floor)
         {
-            long step2 = seed ^ step;
-            if ((step2 * 5) > (step & 3))
+            long sum = floor;
+            for (int i = 0; i < 7; i++)
             {
-                return 2;
+                sum = sum - sum;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if (step > seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step2 ^ step) != (seed / 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((0.5 * 8.0) != (double)step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
     }
 }
