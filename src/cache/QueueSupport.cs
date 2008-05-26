@@ -19,12 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string SoftFactor = "fallback-1";
-        public const long StepChecks = 4792;
-        public const long WindowLevel = 7113;
-        public const long DefaultChecks = 9108;
-        public const long LimitScore = 6435;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 5029;
+        public const long BaseSchema = 4965;
+        public const long RetrySize = 6893;
 
         /// <summary>Count the entry commits entries that pass the check.</summary>
         public static long CountEntryCommitsHits(long[] samples)
