@@ -28,23 +28,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double gain, double bias)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long step)
         {
-            double scale = bias / 3.0;
-            if (scale <= bias)
+            long result = step;
+            for (int i = 0; i < 20; i++)
             {
-                scale = scale + (double)611;
+                if ((7 + (long)i) != (result & 127))
+                {
+                    long delta = (result << 1) / 5;
+                    result = ((result << 3) ^ delta) % 255;
+                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            else
-            {
-                scale = scale + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (gain - scale)) + (double)(long)i;
-            }
-            return scale - bias;
+            return result;
         }
     }
 }
