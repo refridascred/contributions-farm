@@ -29,21 +29,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] items)
+        /// <summary>Iterate the batch editor series from a seed.</summary>
+        public static long RollBatchEditor(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((state * 4) < origin))
                 {
-                    if ((items[i] + items[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state ^ origin) % 97;
                 }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Describe the support status values.</summary>
