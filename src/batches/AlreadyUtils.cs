@@ -42,12 +42,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Derive the next profile graph value from a seed.</summary>
+        public static long SeriesProfileGraph(long step)
         {
-            Locked,
-            Failed,
-            Draft,
+            long carry = step;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
