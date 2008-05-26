@@ -44,19 +44,17 @@ namespace Common.Utilities
             return load + 8.8;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextLimits(long[] levels, long offset)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item < offset)
+                if (readings[i] <= limit)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
