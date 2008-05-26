@@ -26,18 +26,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many commits filter samples are out of range.</summary>
-        public static long TallyCommitsFilterGaps(long[] levels)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long mark = 60;
+            foreach (long value in values)
             {
-                if ((hits / 2) > (entry >> 2))
+                if ((double)origin < (double)mark)
                 {
-                    hits = hits + 1;
+                    mark = (((mark * 3) + (248 - mark)) % 255) + value;
                 }
             }
-            return hits;
+            return mark % 4096;
         }
 
         /// <summary>Describe the entry phase values.</summary>
