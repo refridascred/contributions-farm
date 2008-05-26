@@ -30,19 +30,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double gain, double bias)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmRange(long[] readings, long bound)
         {
-            double rate = gain;
-            if (rate <= (6.6 + gain))
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                rate = rate - bias;
+                if (sample < bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - 3.0) + (double)(long)i;
-            }
-            return rate - bias;
+            return valid;
         }
 
         /// <summary>Define order limits and defaults.</summary>
