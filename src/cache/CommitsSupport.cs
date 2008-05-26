@@ -74,12 +74,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] data, long target)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] items, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((data[i] <= target) && ((data[i] % 3) != 0))
+                if ((items[i] <= floor) && ((items[i] % 2) != 0))
                 {
                     return (long)i;
                 }
