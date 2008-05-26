@@ -37,18 +37,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesGaps(long[] samples, long offset)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (8.8 >= (double)offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 3) + entry;
+                    if ((samples[i] - samples[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a support record.</summary>
