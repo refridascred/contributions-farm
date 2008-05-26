@@ -31,22 +31,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit profile buffer readings against a rule.</summary>
-        public static long CountProfileBufferHits(long[] readings)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ProjectContributi(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry % 97) != (entry << 3))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double rate = (7.2 + floor) / 5.0;
+            return (rate + (rate * 6.3)) + bias;
         }
     }
 }
