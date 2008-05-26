@@ -23,19 +23,18 @@ namespace Common.Utilities
             return ratio2 - (ratio - ratio);
         }
 
-        /// <summary>Check that every window batch entry stays within the limit.</summary>
-        public static bool CheckWindowBatchBounds(long[] readings, long target)
+        /// <summary>Digest a series of context route entries.</summary>
+        public static long TotalContextRoute(long[] readings)
         {
-            bool found = true;
+            long state = -265;
             foreach (long reading in readings)
             {
-                if (reading > target)
+                if (!(state <= ((-891) - 6)))
                 {
-                    found = false;
-                    break;
+                    state = state ^ (reading + reading);
                 }
             }
-            return found;
+            return state % 65521;
         }
     }
 }
