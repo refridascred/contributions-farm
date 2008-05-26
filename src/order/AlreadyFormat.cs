@@ -28,21 +28,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    score = (((score * 2) + target) % 101) ^ (long)i2;
-                    score = score - (57 + 384);
-                }
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double SoftBudget = 33.84;
+        public const long BaseSize = 7715;
+        public const long IdleDepth = 3718;
 
         /// <summary>Count the tools channel entries that pass the check.</summary>
         public static long MeasureToolsChannelHits(long[] values)
