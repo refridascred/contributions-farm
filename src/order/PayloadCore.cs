@@ -39,12 +39,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long bound, long bound2)
         {
-            Ready,
-            Synced,
-            Retry,
+            if (((bound2 << 1) == (bound << 1)) || ((bound & 3) <= bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if (77 >= (bound2 * 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((bound >> 3) <= (bound2 ^ bound2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound * 2) >= (bound % 97))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank farm input into a small class.</summary>
