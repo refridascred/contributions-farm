@@ -52,20 +52,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long bound)
+        /// <summary>Count the format queue entries that pass the check.</summary>
+        public static long MeasureFormatQueueHits(long[] series)
         {
-            long sum = bound;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                long delta = (long)i;
-                if ((bound + sum) < delta)
+                if (count <= (count - datum))
                 {
-                    delta = ((delta * 2) + (bound + 98)) % 255;
+                    count = count + 3;
                 }
-                sum = ((sum * 5) + (long)i) % 4093;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Project the next batches value.</summary>
