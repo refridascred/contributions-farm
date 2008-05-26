@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of channel commits entries.</summary>
-        public static long DigestChannelCommits(long[] readings, long seed)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] levels)
         {
-            long state = 39;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (((state - (state + (-11))) % 255) - item) + seed;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Check that every queue filter entry stays within the limit.</summary>
