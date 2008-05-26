@@ -66,13 +66,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] items, long bound)
         {
-            Stale,
-            Synced,
-            New,
-            Done,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate stream buffer samples.</summary>
