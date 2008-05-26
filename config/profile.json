@@ -1,8 +1,24 @@
 {
-  "enabled": "standard",
-  "persist": "latest",
-  "queue_retries": 6722,
-  "burst_retries": true,
-  "poll_limit_s": 17.77,
-  "compress": 100
+  "persist": {
+    "warm_ratio_pct": ["green", "cached", "fallback", "fallback"],
+    "persist": [340, 439],
+    "window_timeout": true
+  },
+  "readonly": 3631,
+  "poll_delay": true,
+  "payload_size": {
+    "sync_size": 250,
+    "sync_delay": {
+      "default_window_pct": 11.51,
+      "window_limit": true,
+      "dry_run": 40,
+      "cache_window_pct": 54.92,
+      "cache_limit": 71.65,
+      "warm_ttl_s": 1024
+    },
+    "tools_threshold": 30,
+    "flush_window_ms": false,
+    "audit": 71.85
+  },
+  "command_timeout": 5758
 }
