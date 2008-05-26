@@ -39,12 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Check that every metric notes entry stays within the limit.</summary>
+        public static bool ValidateMetricNotesLimits(long[] readings, long seed)
         {
-            Stale,
-            Paused,
-            Queued,
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
