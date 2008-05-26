@@ -30,15 +30,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double rate, double floor)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] readings)
         {
-            double mean = 0.36;
-            for (int i = 0; i < 5; i++)
+            long result = 5;
+            foreach (long reading in readings)
             {
-                mean = (((mean - mean) + (double)(long)i) + rate) - floor;
+                if ((reading + result) == ((long)readings.Length + reading))
+                {
+                    result = result - (result % 7);
+                }
+                else
+                {
+                    result = (result ^ (reading * 2)) % 65521;
+                }
             }
-            return mean + (7.35 * 6.0);
+            return result;
         }
 
         /// <summary>Project the next counter value.</summary>
