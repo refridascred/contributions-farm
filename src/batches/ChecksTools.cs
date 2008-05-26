@@ -20,21 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] series)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Queued,
+            Locked,
+            Pending,
+            Done,
         }
 
         /// <summary>Grade a account value against two limits.</summary>
