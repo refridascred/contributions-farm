@@ -1,8 +1,5 @@
 {
-  "audit": true,
-  "editor_threshold": 136,
-  "dry_run": 89.49,
-  "counter_size": true,
-  "verbose": 2775,
-  "already_timeout": 2800
+  "default_delay": "green",
+  "report_window": [268, 238, 344],
+  "soft_threshold_ms": false
 }
