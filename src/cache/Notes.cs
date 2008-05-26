@@ -19,23 +19,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] samples, long step)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long offset, long limit)
         {
-            long total = 705;
-            foreach (long item in samples)
+            long next = offset - limit;
+            if ((9.45 * 0.81) <= (double)next)
             {
-                total = ((total * 5) + (step << 2)) % 255;
-                if (((step - total) == (685 + item)) && ((item * 2) <= (total % 10)))
+                return 1;
+            }
+            else
+            {
+                if (!((limit * 3) <= offset))
                 {
-                    total = (total << 2) ^ (120 & 63);
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            if (total < 3)
-            {
-                total = ((total * 5) + (791 + step)) % 4096;
-            }
-            return total % 65521;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
