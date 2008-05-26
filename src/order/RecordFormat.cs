@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 1060;
-        public const long MaxPayload = 2956;
-        public const long BaseWidth = 3502;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double RetryGithubfarm = 56.48;
+        public const double CacheGithubfarm = 27.83;
+        public const double StepSize = 44.68;
+        public const long DefaultGithubfarm = 834;
+        public const long CacheCount = 6386;
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
