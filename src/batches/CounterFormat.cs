@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] samples)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long anchor = 875;
+            foreach (long cell in readings)
             {
-                if ((10.0 * 0.6) > (double)matches)
+                if ((anchor << 3) < (3 << 3))
                 {
-                    matches = (matches + 2) - entry;
+                    anchor = (((anchor << 3) ^ (anchor & 255)) % 65521) + cell;
                 }
             }
-            return matches;
+            if (anchor < 84)
+            {
+                anchor = (anchor - (anchor >> 3)) % 65521;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
