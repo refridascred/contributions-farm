@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string LimitBudget = "legacy-v2";
+        public const long BaseAccount = 51;
+        public const long BurstAccount = 1721;
+        public const long MaxAccount = 2075;
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long IteratePayload(long floor)
