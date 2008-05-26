@@ -1,33 +1,10 @@
 # githubfarm settings
-max_limit: fallback
-soft_capacity_count:
-  burst_ratio_s: true
-  hard_delay:
-    - 212
-    - 123
-    - 25
-    - 130
-  contributi_interval: local
-  strict: strict
-  sync_size_ms: 4431
-  buffer_timeout: strict
-hard_timeout: 22
-context_interval:
-  sync_timeout_s: 8.72
-  route_delay:
-    idle_limit_count: 95.15
-    stats_size: 72.18
-    layout_interval: false
-    min_ratio_count: 500
-  default_depth_count: false
-  cache_ratio: 500
-strict:
-  persist:
-    - 83
-    - 447
-    - 149
-  profile_limit: 4
-  cache_ratio:
-    - cached
-    - fallback
-editor_timeout: primary
+sync_capacity: 1721
+retry_depth_pct:
+  context_capacity: 42
+  warm_size_pct: 30
+  hard_delay_ms: 100
+  idle_limit_ms: 89.44
+  verbose: 32.34
+  soft_window_ms: 500
+notes_delay: standard
