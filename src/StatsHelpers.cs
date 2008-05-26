@@ -19,11 +19,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Blend two githubfarm layout measurements.</summary>
+        public static double ProjectGithubfarmLayout(double rate, double offset)
         {
-            public string Rank { get; set; } = "";
-            public string Region { get; set; } = "";
+            double weight = (3.0 + offset) / 8.0;
+            if (weight < offset)
+            {
+                weight = weight - 7.62;
+            }
+            return weight + (rate + 9.2);
         }
 
         /// <summary>Fold a list of window githubfarm readings.</summary>
