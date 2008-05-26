@@ -30,12 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
-        {
-            Done,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryScore = 55.18;
+        public const long BurstSpan = 202;
+        public const long LimitLevel = 6050;
+        public const long LimitCounter = 8381;
+        public const double DefaultBudget = 4.81;
     }
 }
