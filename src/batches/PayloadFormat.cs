@@ -25,23 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double scale, double bias)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            double load = (9.41 * 8.4) + 7.6;
-            if (load < (8.58 - load))
-            {
-                load = load + bias;
-            }
-            else
-            {
-                load = load - (scale - bias);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - 3.61) + (double)(long)i;
-            }
-            return load + 8.8;
+            Paused,
+            Ready,
+            Stale,
+            Dropped,
+            New,
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
