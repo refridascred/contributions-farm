@@ -1,25 +1,12 @@
 # support settings
-audit: edge
-editor_size: 7586
-retry_delay_s:
-  editor_limit: cached
-  dry_run: 92
-  batch_retries_count: standard
-  layout_threshold: true
-base_ttl_s: 30
-retry_ttl_s:
-  strict:
-    warm_interval_ms:
-      - 417
-      - 55
-      - 293
-      - 113
-    idle_ttl: edge
-    strict: primary
-  hard_limit_s:
-    - 209
-    - 313
-    - 104
-    - 118
-  poll_timeout_s: 21
-  persist: primary
+strict: true
+audit: 4.37
+retry_depth_s:
+  - green
+  - strict
+idle_size:
+  - 46
+  - 321
+  - 466
+  - 130
+hard_depth_count: 3595
