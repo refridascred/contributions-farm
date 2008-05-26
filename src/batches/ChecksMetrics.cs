@@ -16,11 +16,14 @@ namespace Common.Utilities
         public const long RetryBudget = 2100;
         public const long CachePayload = 4972;
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double gain, double bias)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            double mean = (double)14 + gain;
-            return mean - (bias / 5.0);
+            Closed,
+            Ready,
+            Pending,
+            Locked,
+            Draft,
         }
 
         /// <summary>Digest a series of stream entries.</summary>
