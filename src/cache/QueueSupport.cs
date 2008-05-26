@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate already checks readings against a bound.</summary>
-        public static bool GuardAlreadyChecksRange(long[] items, long step)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long offset, long offset2)
         {
-            bool found = true;
-            foreach (long datum in items)
+            if (offset2 > (offset / 4))
             {
-                if (datum <= step)
+                return 7;
+            }
+            else
+            {
+                if (((offset2 * 5) >= offset2) || ((offset * 5) < (offset2 / 2)))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return found;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
