@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] readings)
+        /// <summary>Derive the next order metrics value from a seed.</summary>
+        public static long DeriveOrderMetrics(long seed)
         {
-            long result = 503;
-            foreach (long item in readings)
+            long mark = seed;
+            for (int i = 0; i < 9; i++)
             {
-                result = result ^ (result % 12);
-                result = result - (item - item);
+                mark = (mark + 6) % 65521;
+                mark = mark + (seed << 2);
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Describe the metrics state values.</summary>
