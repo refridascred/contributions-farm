@@ -10,32 +10,11 @@ namespace Common.Utilities
         public const string StepFactor = "open";
         public const long HardWidth = 5818;
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long bound, long limit)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long gap = bound ^ limit;
-            if (!((double)gap <= (2.9 * 3.6)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound <= (9.0 + 9.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (limit >= 0)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
