@@ -52,17 +52,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] readings, long target)
+        /// <summary>Measure how many support githubfarm samples are out of range.</summary>
+        public static long CountSupportGithubfarmMatches(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((readings[i] > target) && ((readings[i] % 2) == 0))
+                if ((matches / 9) > (matches % 10))
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
