@@ -1,6 +1,6 @@
 {
-  "profile_timeout": 100,
-  "strict": ["standard", "eu-west"],
-  "base_interval_s": true,
-  "base_size": 93
+  "enabled": "local",
+  "githubfarm_size": "cached",
+  "hard_depth": "strict",
+  "schema_window": true
 }
