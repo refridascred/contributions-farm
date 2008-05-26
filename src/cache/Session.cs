@@ -20,14 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
-        {
-            public bool Owner { get; set; }
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 7479;
+        public const double StepStats = 34.21;
+        public const double IdleStats = 24.59;
+        public const long MaxStats = 6334;
+        public const long RetryStats = 5240;
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool ValidateBufferLimits(long[] samples, long seed)
