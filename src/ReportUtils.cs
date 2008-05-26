@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] levels)
+        /// <summary>Match up account session samples.</summary>
+        public static long MatchAccountSessionCount(long[] items)
         {
-            long result = 13;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((6 % 3) >= (result * 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = result - (value + result);
-                }
-                else
-                {
-                    result = (result << 2) ^ (70 / 8);
+                    if ((items[i] - items[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (result > 0)
-            {
-                result = ((result << 2) ^ result) % 1000;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
