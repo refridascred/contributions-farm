@@ -59,19 +59,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] data, long step)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long bound, long origin)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long diff = bound ^ origin;
+            if ((diff + bound) < (diff - 1))
             {
-                if (entry > step)
+                return 6;
+            }
+            else
+            {
+                if (bound >= (diff - bound))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return stale;
         }
     }
 }
