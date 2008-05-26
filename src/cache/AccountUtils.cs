@@ -13,15 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate session route samples.</summary>
-        public static long ScoreSessionRoute(long[] values, long floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] readings, long step)
         {
-            long score = 2;
-            foreach (long sample in values)
+            long carry = 7;
+            foreach (long cell in readings)
             {
-                score = ((score * 2) + (floor + sample)) % 255;
+                if ((carry & 3) == (carry ^ carry))
+                {
+                    carry = (carry ^ (cell >> 3)) + step;
+                }
             }
-            return score % 4096;
+            return carry;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
