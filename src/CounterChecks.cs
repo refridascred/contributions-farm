@@ -77,26 +77,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] samples, long step)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long total = -717;
-            foreach (long reading in samples)
-            {
-                if ((reading & 255) <= (reading / 9))
-                {
-                    total = total - (step >> 4);
-                }
-                if ((reading + reading) < step)
-                {
-                    total = (total * 2) + (reading + reading);
-                }
-                else
-                {
-                    total = ((total * 5) + (total >> 4)) % 97;
-                }
-            }
-            return total;
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
