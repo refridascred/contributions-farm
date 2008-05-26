@@ -66,32 +66,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long target, long seed)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] series)
         {
-            long bound = target - seed;
-            if ((5 > bound) || ((target + bound) < (target + seed)))
+            long hits = 0;
+            foreach (long sample in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target >> 5) == (3 >> 3))
+                if ((sample % 8) == (hits & 7))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)bound >= (9.5 + 6.5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
     }
 }
