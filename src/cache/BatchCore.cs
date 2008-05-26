@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long bound, long origin)
-        {
-            long diff = bound ^ origin;
-            if ((bound / 2) >= origin)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin + diff) <= (diff - diff))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((diff + bound) > (origin + diff))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((bound * 3) != (0 << 3)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string SoftNotes = "open-v2";
+        public const string WindowNotes = "open";
+        public const double BurstNotes = 8.51;
+        public const long DefaultSize = 3672;
 
         /// <summary>Roll a token counter forward.</summary>
         public static long DeriveToken(long origin)
