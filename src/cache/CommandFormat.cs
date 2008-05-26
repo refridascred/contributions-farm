@@ -32,17 +32,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the githubfarm window series from a seed.</summary>
-        public static long IterateGithubfarmWindow(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = (acc - (acc + acc)) % 65521;
-                acc = acc - acc;
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinSize = 3611;
+        public const long WindowLevel = 5675;
+        public const long HardWidth = 8160;
+        public const long CacheBudget = 3897;
+        public const long RetryBatches = 5586;
     }
 }
