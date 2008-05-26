@@ -21,17 +21,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] data, long seed)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > seed) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            New,
+            Queued,
+            Idle,
+            Pending,
         }
 
         /// <summary>Count notes token pairs that satisfy a relation.</summary>
