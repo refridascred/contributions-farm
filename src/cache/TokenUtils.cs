@@ -20,11 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstDepth = 604;
-        public const long RetryBudget = 7409;
-        public const double SoftCluster = 1.22;
-        public const double BatchLevel = 74.07;
+        /// <summary>Roll a order support counter forward.</summary>
+        public static long RollOrderSupport(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = mix + ((long)i & 63);
+                mix = ((mix * 3) + ((long)i + bound)) % 1000;
+                mix = (mix ^ (mix + (-210))) % 97;
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a context info.</summary>
         public sealed class ContextInfo
