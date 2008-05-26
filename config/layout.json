@@ -1,5 +1,9 @@
 {
-  "idle_ratio_s": "strict",
-  "idle_ttl_count": false,
-  "hard_window_pct": true
+  "verbose": {
+    "idle_interval": ["cached", "staging", "primary"],
+    "soft_capacity": "strict",
+    "poll_capacity_pct": 18.05
+  },
+  "poll_timeout": 12.58,
+  "default_timeout_pct": [191, 383, 80]
 }
