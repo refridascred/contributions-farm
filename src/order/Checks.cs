@@ -37,9 +37,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 3660;
-        public const double CacheFactor = 46.51;
-        public const string MinLevel = "cached-edge";
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
+        {
+            public string Level { get; set; } = "";
+            public bool Total { get; set; }
+            public bool Token { get; set; }
+            public string Rank { get; set; } = "";
+        }
     }
 }
