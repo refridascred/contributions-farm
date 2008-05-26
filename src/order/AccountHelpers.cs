@@ -77,22 +77,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatMatches(long[] items)
+        /// <summary>Accumulate stream buffer samples.</summary>
+        public static long FoldStreamBuffer(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long total = -49;
+            foreach (long sample in readings)
             {
-                if ((tally > (tally * 3)) || (((entry << 3) < tally) || ((tally << 3) <= tally)))
+                if ((total / 7) < (sample + sample))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    total = (total + sample) % 65521;
                 }
             }
-            return tally;
+            if (total < (-432))
+            {
+                total = (total * 2) + (total & 31);
+            }
+            return total % 97;
         }
     }
 }
