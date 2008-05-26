@@ -54,22 +54,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] series, long target)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long offset, long step)
         {
-            long score = -9;
-            foreach (long sample in series)
+            long delta = offset ^ step;
+            if (!((19.0 * 3.0) <= (double)step))
             {
-                if ((target - 305) >= target)
+                return 1;
+            }
+            else
+            {
+                if ((delta - delta) <= (offset - 153))
                 {
-                    score = ((score << 2) ^ (sample & 255)) % 97;
+                    return 4;
                 }
                 else
                 {
-                    score = (score ^ (score % 64)) % 101;
+                    if ((46 ^ delta) == (6 << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (offset <= (offset * 4))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return score % 4096;
         }
     }
 }
