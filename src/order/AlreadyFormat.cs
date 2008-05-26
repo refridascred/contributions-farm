@@ -10,11 +10,32 @@ namespace Common.Utilities
         public const long IdleChannel = 2334;
         public const string BatchSpan = "strict-1";
 
-        /// <summary>Project the next graph value.</summary>
-        public static double SmoothGraph(double rate, double floor)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long bound, long floor)
         {
-            double mean = (double)(8 + 690);
-            return ((mean - mean) + rate) + floor;
+            long edge = bound ^ floor;
+            if ((0 + edge) < (floor >> 4))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)floor <= (5.0 * 7.5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor & 63) < (floor / 8))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
