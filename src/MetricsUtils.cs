@@ -72,19 +72,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] items, long step)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyLimits(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if (value != step)
+                if (cell < seed)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
     }
 }
