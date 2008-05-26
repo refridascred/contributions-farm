@@ -41,25 +41,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a format profile value against two limits.</summary>
-        public static long RankFormatProfile(long floor, long offset)
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] items)
         {
-            long gap = floor - offset;
-            if (!((7 << 2) != (gap - 8)))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset <= (711 + gap)) && ((double)floor != (4.0 + 4.98)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    if ((items[i] + items[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
