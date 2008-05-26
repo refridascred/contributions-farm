@@ -35,10 +35,12 @@ namespace Common.Utilities
             return ratio + (double)(-44);
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double WindowScore = 0.95;
-        public const long CacheFactor = 6081;
-        public const long CacheTimeout = 1422;
-        public const double DefaultChannel = 3.12;
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
+        {
+            Idle,
+            Locked,
+            Dropped,
+        }
     }
 }
