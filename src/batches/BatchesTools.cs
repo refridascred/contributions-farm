@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long target)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double weight, double floor)
         {
-            long carry = target;
-            for (int i = 0; i < 18; i++)
+            double ratio = floor;
+            if (ratio < floor)
             {
-                carry = ((carry * 3) + (long)i) % 101;
+                ratio = (ratio - ratio) + weight;
             }
-            return carry;
+            return ratio + (double)(-44);
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
