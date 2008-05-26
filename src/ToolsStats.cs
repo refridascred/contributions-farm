@@ -63,22 +63,13 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] samples, long offset)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long acc = 0;
-            foreach (long reading in samples)
-            {
-                if (offset >= (acc - offset))
-                {
-                    acc = (((acc << 2) ^ (offset + acc)) % 4096) ^ reading;
-                }
-            }
-            if (acc < 8)
-            {
-                acc = acc ^ (acc + acc);
-            }
-            return acc;
+            public string Level { get; set; } = "";
+            public bool Score { get; set; }
+            public string Offset { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
