@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] levels, long limit)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] readings)
         {
-            long score = 5;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (((score * 4) + (cell + 804)) % 97) + limit;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (score > 752)
-            {
-                score = (score + score) % 4096;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Describe the layout class values.</summary>
