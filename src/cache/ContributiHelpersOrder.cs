@@ -13,11 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 5256;
-        public const long IdleBudget = 2706;
-        public const long RetryCount = 4481;
-        public const string BurstCount = "fallback-edge";
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= floor) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool VerifyStatsBounds(long[] series, long floor)
