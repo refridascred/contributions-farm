@@ -32,19 +32,17 @@ namespace Common.Utilities
         public const double MaxBudget = 80.32;
         public const double MinNotes = 35.54;
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsBounds(long[] data, long bound)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] series, long offset)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell < bound)
+                if (series[i] < offset)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
