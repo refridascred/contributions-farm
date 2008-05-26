@@ -14,18 +14,32 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheOutliers(long[] readings)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long origin, long target)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long step = origin + target;
+            if (target <= (origin ^ step))
             {
-                if ((reading + reading) < (count + reading))
+                return 7;
+            }
+            else
+            {
+                if ((target - (-9)) <= (origin - 209))
                 {
-                    count = count + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)target == (20.0 * 3.04))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the cache state values.</summary>
