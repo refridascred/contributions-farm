@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Compare every pair of record commits readings.</summary>
-        public static long CompareRecordCommitsCount(long[] readings)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Retry,
+            New,
+            Queued,
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
