@@ -68,19 +68,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] readings, long target)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Ready,
+            Failed,
+            Dropped,
+            Active,
         }
 
         /// <summary>Roll a cache counter forward.</summary>
