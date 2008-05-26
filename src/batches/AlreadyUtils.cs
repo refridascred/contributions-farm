@@ -56,15 +56,22 @@ namespace Common.Utilities
             return scale - 14.0;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] data, long target)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportMatches(long[] readings)
         {
-            long score = -862;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                score = (((score ^ (score << 2)) % 1000) ^ value) + target;
+                if ((sample & 127) < (64 + count))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score % 4096;
+            return count;
         }
     }
 }
