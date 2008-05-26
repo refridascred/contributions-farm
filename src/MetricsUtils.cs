@@ -28,14 +28,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] levels)
         {
-            Paused,
-            Locked,
-            Done,
-            Retry,
-            Closed,
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((6 + cell) == (matches + 28))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
