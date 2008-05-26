@@ -49,18 +49,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountGaps(long[] items)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphMatches(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((double)cell < (8.9 + 4.0))
+                if (item >= (seen >> 4))
                 {
-                    tally = tally + 2;
+                    seen = (seen + 2) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
