@@ -1,15 +1,11 @@
 # Command notes
 
-Use report settings to tune how often window data is refreshed.
-Keep metrics and route names short and lowercase.
-Use command settings to tune how often counter data is refreshed.
-
-The already helpers are pure functions, so they are safe to call from any thread.
-A session that stays idle for too long is moved to the report list.
+Run the record check before changing any token limits.
+The command helpers are pure functions, so they are safe to call from any thread.
+Use already settings to tune how often batch data is refreshed.
 
 ## Guidelines
 
-- Document new checks fields
-- Log every route change
-- Review route limits each release
-- Prefer contributi defaults
+- Review record limits each release
+- Validate metrics input early
+- Log every account change
