@@ -87,15 +87,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long target)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsRange(long[] samples, long floor)
         {
-            long result = target;
-            for (int i = 0; i < 6; i++)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                if (cell < floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
     }
 }
