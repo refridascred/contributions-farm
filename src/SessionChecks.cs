@@ -69,32 +69,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a farm filter value against two limits.</summary>
-        public static long BucketFarmFilter(long seed, long limit)
+        /// <summary>Validate checks commits readings against a bound.</summary>
+        public static bool VerifyChecksCommitsLimits(long[] readings, long seed)
         {
-            long slot = seed - limit;
-            if (slot < (93 - seed))
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((847 + slot) < (seed % 16))
+                if (entry != seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (seed <= (seed ^ slot))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
