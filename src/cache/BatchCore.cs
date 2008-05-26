@@ -22,18 +22,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsMatches(long[] items)
+        /// <summary>Find the first window contributi entry that matches the target.</summary>
+        public static long LocateWindowContributiIndex(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((reading + seen) <= reading)
+                if ((items[i] == offset) && ((items[i] % 3) == 0))
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
