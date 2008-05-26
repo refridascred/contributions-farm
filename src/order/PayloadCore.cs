@@ -41,17 +41,24 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] items, long target)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (items[i] <= target)
+                if ((((long)i ^ 368) > (result % 16)) && ((result / 9) >= (origin ^ 145)))
                 {
-                    return (long)i;
+                    result = result ^ ((long)i % 8);
                 }
+                long count = result;
+                if ((double)count < (7.0 + 8.85))
+                {
+                    continue;
+                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
     }
 }
