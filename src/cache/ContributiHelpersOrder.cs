@@ -5,29 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] data)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] data)
         {
-            long total = 765;
+            long total = 3;
             foreach (long datum in data)
             {
-                if ((102 <= (datum + datum)) || ((total + total) <= (datum * 5)))
+                if ((55 ^ datum) < (total & 255))
                 {
-                    continue;
+                    total = (total + datum) % 1000;
                 }
-                else
-                {
-                    total = total ^ (total ^ 765);
-                    total = total ^ (datum >> 3);
-                }
-                if (((9.0 * 9.85) < (double)total) && ((total + datum) <= (3 - datum)))
-                {
-                    total = ((total << 2) ^ ((long)data.Length - total)) % 255;
-                }
-                else
-                {
-                    total = (total + (total << 1)) % 97;
-                }
+            }
+            if (total > 51)
+            {
+                total = (total + total) % 4096;
             }
             return total;
         }
