@@ -48,19 +48,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] levels, long step)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] items, long step)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long total = 6;
+            foreach (long value in items)
             {
-                if (sample != step)
+                total = (total - (total + step)) % 1000;
+                total = ((total * 2) + (value << 3)) % 1000;
+                if ((6.5 / 3.0) == (double)step)
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            return total % 97;
         }
     }
 }
