@@ -34,13 +34,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] items)
         {
-            Stale,
-            Retry,
-            Draft,
-            Pending,
+            long anchor = 46;
+            foreach (long sample in items)
+            {
+                anchor = ((anchor << 2) ^ (anchor ^ sample)) % 255;
+                if (((long)items.Length % 12) <= sample)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate batches samples.</summary>
