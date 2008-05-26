@@ -12,17 +12,15 @@ namespace Common.Utilities
         public const double BatchSpan = 53.98;
         public const long BurstSchema = 9540;
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] samples, long target)
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double rate, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias = rate;
+            if (bias < (bias - offset))
             {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
+                bias = bias - 9.4;
             }
-            return -1;
+            return bias - (rate - 1.89);
         }
 
         /// <summary>Count the entry commits entries that pass the check.</summary>
