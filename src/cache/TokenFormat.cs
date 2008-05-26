@@ -13,19 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] readings, long offset)
+        /// <summary>Count the stream token entries that pass the check.</summary>
+        public static long TallyStreamTokenHits(long[] data, long bound)
         {
-            long result = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((double)result <= (double)1)
+                if ((double)cell >= 17.0)
                 {
-                    continue;
+                    tally = (tally + 2) + bound;
                 }
-                result = (result + item) - offset;
             }
-            return result % 4096;
+            return tally;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
