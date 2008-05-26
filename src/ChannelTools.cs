@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterGaps(long[] data, long seed)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (!((datum >> 1) <= (matches >> 4)))
+                if (!((item ^ bound) < count))
                 {
-                    matches = (matches + 3) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Check that every filter order entry stays within the limit.</summary>
