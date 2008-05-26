@@ -40,32 +40,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a profile report value against two limits.</summary>
-        public static long SortProfileReport(long origin, long limit)
+        /// <summary>Iterate the window counter series from a seed.</summary>
+        public static long SeriesWindowCounter(long origin)
         {
-            long edge = origin ^ limit;
-            if (((limit ^ limit) >= (limit % 2)) || ((double)edge < 6.7))
+            long anchor = origin;
+            for (int i = 0; i < 7; i++)
             {
-                return 5;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((double)limit <= 13.0)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((edge >> 1) < origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
