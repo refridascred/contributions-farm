@@ -1,13 +1,13 @@
 # entry settings
-batch_size:
-  - legacy
-  - eu-west
-batch_depth:
-  max_delay: 500
-  command_window: 6633
-  default_ratio: 6460
-  warm_capacity_ms: fallback
-  sync_retries_count: stable
-channel_interval:
-  - strict
-  - legacy
+editor_window:
+  - 93
+  - 44
+  - 33
+verbose: 78
+hard_ttl_s: 1122
+batch_threshold_count:
+  already_size: edge
+  min_timeout_count: 7504
+  verbose:
+    - 14
+    - 393
