@@ -62,12 +62,18 @@ namespace Common.Utilities
         public const long RetryAlready = 3769;
         public const string HardAlready = "standard-v2";
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextOutliers(long[] items)
         {
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
-            public double Flag { get; set; }
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((item + 8) != (seen + seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
