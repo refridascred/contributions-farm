@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] readings, long origin)
+        /// <summary>Check that every support graph entry stays within the limit.</summary>
+        public static bool GuardSupportGraphLimits(long[] readings, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if ((readings[i] == origin) && ((readings[i] % 5) != 0))
+                if (cell > limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
