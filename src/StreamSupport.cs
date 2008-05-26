@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double gain, double offset)
-        {
-            double gain2 = (double)(9 % 7);
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (((gain2 - (gain2 / 3.0)) + (double)(long)i) + gain) + offset;
-            }
-            return gain2 + (double)0;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 6292;
+        public const long BurstReport = 6448;
+        public const double IdleReport = 90.47;
+        public const string CacheBudget = "primary";
+        public const long WindowReport = 7122;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long CountProfileHits(long[] readings, long target)
