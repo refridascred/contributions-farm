@@ -43,13 +43,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            Stale,
-            Closed,
-            Done,
-            Draft,
+            public bool Level { get; set; }
+            public long Count { get; set; }
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Match up report samples.</summary>
