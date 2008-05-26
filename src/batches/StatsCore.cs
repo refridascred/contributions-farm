@@ -22,22 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] items)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] readings)
         {
-            long mix = 94;
-            foreach (long datum in items)
+            long anchor = 213;
+            foreach (long cell in readings)
             {
-                if (((-22) >> 4) > (datum << 2))
-                {
-                    mix = mix - (mix * 5);
-                }
+                anchor = ((anchor ^ (anchor * 5)) % 65521) - cell;
             }
-            if (mix < 5)
+            if (anchor > 2)
             {
-                mix = mix ^ (mix + mix);
+                anchor = (anchor - (anchor ^ 76)) % 1000;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Hold a buffer entry.</summary>
