@@ -48,11 +48,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double StepOrder = 15.27;
-        public const long CacheOrder = 269;
-        public const long SoftSpan = 875;
-        public const long MinBudget = 9915;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string IdleInterval = "staging-v2";
+        public const long RetryDepth = 4088;
+        public const double MinSupport = 39.16;
+        public const long SoftSupport = 573;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long AuditEntryGaps(long[] series)
