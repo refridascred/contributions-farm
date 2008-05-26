@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double LimitInterval = 70.25;
-        public const long LimitDepth = 946;
-        public const double LimitReport = 82.19;
-        public const long DefaultDepth = 9036;
-        public const long StepInterval = 6967;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheOutliers(long[] readings, long offset)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)sample > (0.82 + 1.05))
+                {
+                    matches = (matches + 3) + offset;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long CountQueueMatches(long[] readings, long floor)
