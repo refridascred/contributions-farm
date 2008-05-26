@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Locate a queue order reading by value.</summary>
-        public static long SeekQueueOrderIndex(long[] samples, long origin)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenRange(long[] samples, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if ((samples[i] >= origin) && ((samples[i] % 2) == 0))
+                if (entry > floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
