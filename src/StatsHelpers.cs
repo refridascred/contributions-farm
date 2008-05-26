@@ -42,12 +42,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmOutliers(long[] values, long seed)
         {
-            Synced,
-            Idle,
-            Ready,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((seed ^ matches) >= 0)
+                {
+                    matches = (matches + 1) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first layout schema entry that matches the target.</summary>
