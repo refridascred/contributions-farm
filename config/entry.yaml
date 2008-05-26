@@ -1,6 +1,11 @@
 # entry settings
-poll_size_count: 30
-buffer_timeout: 1024
-warm_retries: stable
-burst_interval_s: 2.95
-stream_threshold: false
+max_size_count:
+  context_threshold: 60
+  base_retries_pct:
+    - blue
+    - open
+    - strict
+    - cached
+  base_depth_pct: staging
+persist: 33
+warm_window_ms: 51.92
