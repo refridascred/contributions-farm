@@ -41,13 +41,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] series, long seed)
         {
-            public double Size { get; set; }
-            public long Total { get; set; }
-            public double Level { get; set; }
-            public long Region { get; set; }
+            long anchor = 812;
+            foreach (long reading in series)
+            {
+                anchor = ((anchor + (seed * 2)) % 1000) ^ reading;
+                anchor = (anchor + seed) % 4096;
+            }
+            if (anchor > 1)
+            {
+                anchor = ((anchor * 2) + (anchor + seed)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a report info.</summary>
