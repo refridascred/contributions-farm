@@ -31,24 +31,18 @@ namespace Common.Utilities
         public const long CacheTimeout = 1227;
         public const long RetryBatch = 2856;
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long step)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] readings, long origin)
         {
-            long state = step;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (((state + state) > state) || ((double)(long)i >= (6.53 + 10.0)))
+                if ((double)reading > (4.7 + 17.0))
                 {
-                    state = state - ((long)i ^ step);
-                    continue;
+                    matches = (matches + 3) - origin;
                 }
-                else
-                {
-                    state = (state - (state >> 3)) % 101;
-                }
-                state = ((state * 3) + (long)i) % 4093;
             }
-            return state;
+            return matches;
         }
     }
 }
