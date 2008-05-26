@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every format cache entry stays within the limit.</summary>
-        public static bool CheckFormatCacheRange(long[] levels, long seed)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyHits(long[] data)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (reading < seed)
+                if (reading <= (seen / 9))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
