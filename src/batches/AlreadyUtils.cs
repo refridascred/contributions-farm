@@ -16,18 +16,15 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] series, long bound)
+        /// <summary>Scale a buffer metric figure with a bias.</summary>
+        public static double AdjustBufferMetric(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long datum in series)
+            double weight = (double)0 * 7.3;
+            if (weight < bias)
             {
-                if ((7.0 / 9.0) > (double)count)
-                {
-                    count = ((count + 1) + datum) + bound;
-                }
+                weight = (weight + (double)(-619)) - bias2;
             }
-            return count;
+            return weight - weight;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
