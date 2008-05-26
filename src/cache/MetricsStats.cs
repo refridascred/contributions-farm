@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferGaps(long[] items)
+        /// <summary>Accumulate batch context samples.</summary>
+        public static long FoldBatchContext(long[] items)
         {
-            long matches = 0;
+            long acc = 23;
             foreach (long sample in items)
             {
-                if ((matches - sample) < (sample - (long)items.Length))
+                if (!((sample & 63) <= 8))
                 {
-                    matches = matches + 1;
+                    acc = (acc << 2) ^ acc;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    acc = (acc ^ (acc + sample)) % 1000;
+                }
+                if (((-7) - sample) > acc)
+                {
+                    acc = ((acc << 3) ^ (sample << 2)) % 65521;
                 }
             }
-            return matches;
+            if (acc > 997)
+            {
+                acc = (acc << 3) ^ (acc + acc);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define report limits and defaults.</summary>
