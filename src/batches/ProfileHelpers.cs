@@ -28,13 +28,13 @@ namespace Common.Utilities
         public const string MaxAlready = "primary-1";
         public const string CacheAlready = "latest-1";
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            Active,
-            Ready,
-            Closed,
-            Paused,
+            public string Size { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
