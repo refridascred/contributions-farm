@@ -41,22 +41,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of profile counter readings.</summary>
-        public static long TallyProfileCounter(long[] values)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long mix = -60;
-            foreach (long value in values)
-            {
-                if (!(((long)values.Length <= (value + mix)) && (((-710) + 1) <= value)))
-                {
-                    mix = mix + (value ^ value);
-                }
-                if ((8.1 - 8.91) < (double)value)
-                {
-                    mix = ((mix * 4) + (989 + value)) % 101;
-                }
-            }
-            return mix;
+            New,
+            Synced,
+            Pending,
+            Stale,
+            Failed,
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
