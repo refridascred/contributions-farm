@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Count the context metric entries that pass the check.</summary>
+        public static long AuditContextMetricHits(long[] data, long bound)
         {
-            Queued,
-            Pending,
-            Retry,
-            Paused,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((5.6 * 17.0) >= (double)cell)
+                {
+                    count = (count + 3) - bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
