@@ -23,32 +23,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long limit, long bound)
+        /// <summary>Digest a series of batches layout entries.</summary>
+        public static long FoldBatchesLayout(long[] items)
         {
-            long bound2 = limit - bound;
-            if ((double)bound >= (double)limit)
+            long state = 507;
+            foreach (long reading in items)
             {
-                return 6;
+                state = (state - reading) % 255;
             }
-            else
-            {
-                if ((bound + limit) >= (limit % 60))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound2 < (bound2 + limit)) || ((bound + 53) < limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
