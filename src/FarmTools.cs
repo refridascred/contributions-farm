@@ -39,18 +39,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the entry stats series from a seed.</summary>
-        public static long IterateEntryStats(long step)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] values)
         {
-            long result = step;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result - 7) % 101;
-                result = result + 71;
-                result = (result ^ step) % 65521;
-                result = ((result * 5) + (long)i) % 4093;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Iterate the channel schema series from a seed.</summary>
