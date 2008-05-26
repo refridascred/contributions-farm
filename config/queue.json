@@ -1,15 +1,9 @@
 {
-  "buffer_timeout": "cached",
-  "enabled": "latest",
-  "warm_ttl_pct": true,
-  "idle_depth": 6.5,
-  "support_limit": {
-    "batch_window": "eu-west",
-    "notes_timeout": "primary",
-    "retry_ttl": {
-      "flush_delay_pct": 4355,
-      "contributi_capacity": 5589,
-      "max_ratio_pct": 250
-    }
-  }
+  "entry_capacity": 2.08,
+  "dry_run": {
+    "flush_limit": [459, 230, 158],
+    "idle_capacity": "stable",
+    "buffer_limit": 3204
+  },
+  "default_retries": 85
 }
