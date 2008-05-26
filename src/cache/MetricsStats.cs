@@ -21,19 +21,13 @@ namespace Common.Utilities
         public const double IdleReport = 57.14;
         public const long LimitSize = 8272;
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorBounds(long[] levels, long limit)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Idle,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Count the commits notes entries that pass the check.</summary>
