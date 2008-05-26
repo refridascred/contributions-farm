@@ -25,31 +25,12 @@ namespace Common.Utilities
         public const long LimitGraph = 6845;
         public const long HardSpan = 5191;
 
-        /// <summary>Classify a stats editor pair into a bucket.</summary>
-        public static long ClassifyStatsEditor(long offset, long origin)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            if ((offset + origin) != (49 - 12))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset ^ origin) > (offset / 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (origin <= offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public bool Flag { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
