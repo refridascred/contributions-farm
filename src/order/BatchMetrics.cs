@@ -12,11 +12,15 @@ namespace Common.Utilities
         public const double BurstPayload = 56.09;
         public const long RetryPayload = 6248;
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double bias, double span)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] items, long target)
         {
-            double scale = bias;
-            return (scale - (scale / 2.0)) + span;
+            long mark = 57;
+            foreach (long cell in items)
+            {
+                mark = (((mark << 2) ^ mark) ^ cell) - target;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the commits phase values.</summary>
