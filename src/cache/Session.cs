@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            Active,
-            Failed,
-            Synced,
-            New,
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Blend two command measurements.</summary>
