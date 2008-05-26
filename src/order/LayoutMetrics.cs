@@ -34,15 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double weight, double floor)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadRange(long[] data, long bound)
         {
-            double bias = weight;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                bias = (bias - 5.0) + (double)(long)i;
+                if (sample != bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return bias + floor;
+            return flag;
         }
     }
 }
