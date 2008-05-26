@@ -1,6 +1,8 @@
 {
-  "readonly": ["legacy", "cached", "strict", "local"],
-  "idle_ratio": 7.79,
-  "compress": "cached",
-  "batch_threshold": 8177
+  "audit": true,
+  "editor_threshold": 136,
+  "dry_run": 89.49,
+  "counter_size": true,
+  "verbose": 2775,
+  "already_timeout": 2800
 }
