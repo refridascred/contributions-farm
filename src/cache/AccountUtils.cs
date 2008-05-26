@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of cache profile entries.</summary>
-        public static long TotalCacheProfile(long[] series, long step)
+        /// <summary>Derive the next stats token value from a seed.</summary>
+        public static long DeriveStatsToken(long offset)
         {
-            long sum = 42;
-            foreach (long cell in series)
+            long result = offset;
+            for (int i = 0; i < 15; i++)
             {
-                sum = (((sum << 3) ^ (93 + cell)) % 65521) - step;
+                result = result - offset;
+                result = ((result << 3) ^ (result + (-3))) % 4096;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            if (sum > 80)
-            {
-                sum = ((sum * 5) + (sum * 3)) % 1000;
-            }
-            return sum;
+            return result;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
