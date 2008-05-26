@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] values, long step)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (seen > (7 & 1))
-                {
-                    seen = ((seen + 1) + value) + step;
-                }
-            }
-            return seen;
+            Ready,
+            Stale,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
