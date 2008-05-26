@@ -40,17 +40,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] readings, long seed)
+        /// <summary>Audit buffer checks readings against a rule.</summary>
+        public static long CountBufferChecksOutliers(long[] levels, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((readings[i] > seed) && ((readings[i] % 5) != 0))
+                if ((8.3 - 9.7) <= (double)matches)
                 {
-                    return (long)i;
+                    matches = ((matches + 2) ^ cell) - seed;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
