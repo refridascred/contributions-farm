@@ -53,11 +53,23 @@ namespace Common.Utilities
         public const double CacheRatio = 2.41;
         public const long BatchRatio = 1195;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleCount = 1682;
-        public const long RetryEditor = 6575;
-        public const long StepLevel = 7316;
-        public const long BatchEditor = 6998;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionMatches(long[] data)
+        {
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((sample + sample) >= matches)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a graph record.</summary>
         public sealed class GraphRecord
