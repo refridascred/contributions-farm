@@ -10,12 +10,20 @@ namespace Common.Utilities
         public const double BatchFactor = 3.26;
         public const long BatchCache = 4834;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxLevel = 9314;
-        public const double CacheSupport = 71.49;
-        public const long BaseSupport = 7845;
-        public const string BurstSupport = "fallback-edge";
-        public const double RetryBudget = 13.93;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterLimits(long[] items, long floor)
+        {
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
