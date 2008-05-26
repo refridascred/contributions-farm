@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] data, long step)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryMatches(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((data[i] <= step) && ((data[i] % 3) != 0))
+                if ((count - sample) != (count >> 5))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
