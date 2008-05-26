@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] readings)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] levels, long seed)
         {
-            long sum = 1;
-            foreach (long cell in readings)
+            long acc = -4;
+            foreach (long item in levels)
             {
-                sum = (sum << 2) ^ (sum ^ 621);
-                if ((cell * 3) >= (cell >> 1))
+                if ((item / 5) >= acc)
                 {
-                    break;
+                    acc = ((acc << 3) ^ 5) + seed;
                 }
             }
-            return sum;
+            if (acc > 431)
+            {
+                acc = (acc - (acc * 4)) % 65521;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
