@@ -60,13 +60,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
-        {
-            Draft,
-            Done,
-            Active,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinWindow = "latest";
+        public const string SoftWindow = "latest-v2";
+        public const long CacheCount = 59;
+        public const string HardWindow = "alpha-edge";
 
         /// <summary>Define order limits and defaults.</summary>
         public const long BaseTimeout = 1362;
