@@ -29,12 +29,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferGaps(long[] values, long bound)
         {
-            Locked,
-            Synced,
-            Paused,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((306 & 3) != (value - tally))
+                {
+                    tally = (tally + 2) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
