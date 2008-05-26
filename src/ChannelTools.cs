@@ -40,20 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every filter order entry stays within the limit.</summary>
-        public static bool CheckFilterOrderBounds(long[] series, long floor)
-        {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 3610;
+        public const double DefaultScore = 25.41;
+        public const string RetryCache = "alpha-1";
 
         /// <summary>Fold a list of token readings.</summary>
         public static long TotalToken(long[] series, long target)
