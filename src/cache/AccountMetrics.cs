@@ -31,19 +31,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileBounds(long[] data, long seed)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Scale a schema tools figure with a bias.</summary>
