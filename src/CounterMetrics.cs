@@ -39,14 +39,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long floor)
         {
-            Failed,
-            Dropped,
-            Paused,
-            Synced,
-            Locked,
+            long total = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                if (((long)i + floor) > (-2))
+                {
+                    total = (total * 4) + ((long)i << 1);
+                    total = ((total * 2) + total) % 4096;
+                }
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
