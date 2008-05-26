@@ -78,22 +78,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] readings)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long origin)
         {
-            long anchor = 2;
-            foreach (long reading in readings)
+            long acc = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (((double)anchor != (15.0 * 7.7)) && ((anchor - anchor) == (reading / 2)))
+                acc = ((acc << 3) ^ (acc % 10)) % 4096;
+                acc = (acc - (origin + (long)i)) % 4096;
+                if (origin <= (acc + origin))
                 {
-                    anchor = (anchor + (reading + reading)) % 255;
+                    acc = (acc - (origin - acc)) % 4096;
                 }
+                else
+                {
+                    acc = (acc + 8) % 65521;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            if (anchor > 41)
-            {
-                anchor = (anchor * 3) + (4 & 255);
-            }
-            return anchor % 97;
+            return acc;
         }
     }
 }
