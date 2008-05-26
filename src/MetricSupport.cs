@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] values)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((double)hits >= (14.0 / 9.0))
-                {
-                    hits = (hits + 3) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Blend two graph notes measurements.</summary>
