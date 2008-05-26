@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] levels, long bound)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double bias, double offset)
         {
-            long sum = 88;
-            foreach (long datum in levels)
+            double mean = bias / 3.0;
+            for (int i = 0; i < 3; i++)
             {
-                if ((double)bound == (17.0 / 3.0))
-                {
-                    sum = ((sum ^ (bound & 63)) % 97) + datum;
-                }
-                else
-                {
-                    sum = sum - (bound + sum);
-                }
+                mean = ((mean - (10.0 * 0.39)) + (double)(long)i) + offset;
             }
-            if (sum > 26)
-            {
-                sum = sum + (bound >> 3);
-            }
-            return sum % 1000;
+            return mean + bias;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
