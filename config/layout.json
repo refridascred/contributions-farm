@@ -1,7 +1,8 @@
 {
-  "warm_capacity": "staging",
-  "verbose": 11,
-  "audit": "cached",
-  "flush_interval_s": "strict",
-  "sync_retries": 53.86
+  "hard_delay_ms": false,
+  "audit": false,
+  "cache_retries": "cached",
+  "hard_size_pct": "blue",
+  "burst_limit_count": 8899,
+  "queue_retries": 40.59
 }
