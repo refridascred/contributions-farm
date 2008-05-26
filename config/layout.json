@@ -1,8 +1,7 @@
 {
-  "warm_capacity_count": ["legacy", "cached", "eu-west"],
-  "context_capacity": 52,
-  "hard_retries_count": "edge",
-  "cache_retries_pct": [214, 319, 402],
-  "base_delay_pct": "strict",
-  "cluster_threshold": 69
+  "base_ttl": 1024,
+  "persist": 250,
+  "profile_depth": false,
+  "compress": [421, 159],
+  "route_limit": ["green", "open", "edge", "open"]
 }
