@@ -31,15 +31,19 @@ namespace Common.Utilities
         public const long BaseSize = 7715;
         public const long IdleDepth = 3718;
 
-        /// <summary>Count the tools channel entries that pass the check.</summary>
-        public static long MeasureToolsChannelHits(long[] values)
+        /// <summary>Measure how many record layout samples are out of range.</summary>
+        public static long TallyRecordLayoutGaps(long[] samples)
         {
             long count = 0;
-            foreach (long cell in values)
+            foreach (long item in samples)
             {
-                if (((-42) + count) > (count - cell))
+                if ((item / 8) < (5 * 4))
                 {
-                    count = count + 2;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
