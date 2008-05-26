@@ -25,13 +25,18 @@ namespace Common.Utilities
         public const long MinEditor = 9592;
         public const long CacheEditor = 1324;
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderMatches(long[] readings)
         {
-            Locked,
-            Idle,
-            Retry,
-            Paused,
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((((double)sample < (double)(long)readings.Length) && ((seen + sample) > seen)) || ((sample + (long)readings.Length) < (sample / 8)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
