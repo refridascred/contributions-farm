@@ -24,18 +24,10 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] levels, long seed)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((seed / 4) != (cell % 97))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BaseGithubfarm = "local-v2";
+        public const long CacheGithubfarm = 2489;
+        public const long CacheSize = 3702;
+        public const string MaxDepth = "cached";
     }
 }
