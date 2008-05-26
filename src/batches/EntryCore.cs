@@ -12,12 +12,14 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            public bool Flag { get; set; }
-            public bool Label { get; set; }
-            public long Total { get; set; }
+            Locked,
+            Ready,
+            Done,
+            Paused,
+            Idle,
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
