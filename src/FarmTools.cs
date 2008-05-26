@@ -31,19 +31,12 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchLimits(long[] series, long target)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Owner { get; set; }
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
