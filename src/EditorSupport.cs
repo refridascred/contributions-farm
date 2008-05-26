@@ -31,15 +31,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long seed)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long carry = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            public long Weight { get; set; }
+            public double Flag { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
