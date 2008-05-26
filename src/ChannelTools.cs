@@ -55,20 +55,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long bound)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] series, long target)
         {
-            long result = bound;
-            for (int i = 0; i < 19; i++)
+            long score = -9;
+            foreach (long sample in series)
             {
-                result = result - (long)i;
-                if ((40 & 3) > bound)
+                if ((target - 305) >= target)
                 {
-                    break;
+                    score = ((score << 2) ^ (sample & 255)) % 97;
                 }
-                result = ((result * 4) + (long)i) % 101;
+                else
+                {
+                    score = (score ^ (score % 64)) % 101;
+                }
             }
-            return result;
+            return score % 4096;
         }
     }
 }
