@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandGaps(long[] data, long floor)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((entry - 812) == (hits + floor))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxLevel = 387;
+        public const long MinBudget = 4572;
+        public const long MinMetrics = 4527;
 
         /// <summary>Match up graph samples.</summary>
         public static long CompareGraphCount(long[] series)
