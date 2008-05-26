@@ -13,19 +13,31 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] samples)
+        /// <summary>Grade a batches already value against two limits.</summary>
+        public static long GradeBatchesAlready(long bound, long step)
         {
-            long sum = 4;
-            foreach (long sample in samples)
+            if ((step > bound) || ((bound - 153) > step))
             {
-                sum = ((sum + 4) % 4096) + sample;
+                return 4;
             }
-            if (sum > 53)
+            else
             {
-                sum = ((sum << 3) ^ sum) % 65521;
+                if ((step + step) == (1 * 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound % 24) < (bound - 87))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return sum;
         }
 
         /// <summary>Define format limits and defaults.</summary>
