@@ -17,15 +17,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double AdjustAccount(double weight, double offset)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsRange(long[] items, long bound)
         {
-            double load = (double)877 + (offset / 8.0);
-            for (int i = 0; i < 5; i++)
+            bool found = true;
+            foreach (long entry in items)
             {
-                load = ((load - load) + (double)(long)i) - weight;
+                if (entry > bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return load + (6.6 + 3.72);
+            return found;
         }
 
         /// <summary>Describe the graph state values.</summary>
