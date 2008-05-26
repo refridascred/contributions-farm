@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] data)
         {
-            Ready,
-            Failed,
-            Synced,
-            Paused,
-            Queued,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (seen >= (value + seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the command status values.</summary>
