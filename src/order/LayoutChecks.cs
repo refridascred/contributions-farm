@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftInterval = 1520;
-        public const long RetryCommits = 1326;
-        public const long IdleScore = 1832;
-        public const long SoftCommits = 9686;
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
+        {
+            Closed,
+            Done,
+            Pending,
+        }
 
         /// <summary>Adjust a route reading.</summary>
         public static double AdjustRoute(double ratio, double span)
