@@ -28,19 +28,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double bias, double floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteGaps(long[] values, long limit)
         {
-            double ratio = floor;
-            if (ratio <= floor)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                ratio = ratio - bias;
+                if ((double)tally > (19.0 / 2.0))
+                {
+                    tally = ((tally + 2) + cell) - limit;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (ratio + ratio)) + (double)(long)i;
-            }
-            return ratio + (double)99;
+            return tally;
         }
     }
 }
