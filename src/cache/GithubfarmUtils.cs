@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long step)
         {
-            New,
-            Active,
-            Failed,
-            Synced,
+            long state = step;
+            for (int i = 0; i < 19; i++)
+            {
+                state = (state * 5) + state;
+                long span = ((long)i << 2) / 7;
+                if ((step + span) >= state)
+                {
+                    state = state - (state >> 5);
+                }
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Count the profile window entries that pass the check.</summary>
