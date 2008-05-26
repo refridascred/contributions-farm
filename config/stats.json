@@ -1,5 +1,5 @@
 {
-  "idle_limit": true,
-  "dry_run": false,
-  "flush_ratio_ms": 5.9
+  "max_ttl_s": 50.4,
+  "cluster_threshold": 9126,
+  "poll_size_pct": 94
 }
