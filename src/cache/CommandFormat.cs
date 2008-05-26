@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const long BatchWindow = 3222;
         public const long MinWindow = 2126;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionHits(long[] series, long seed)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double AdjustAccount(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            double load = (double)877 + (offset / 8.0);
+            for (int i = 0; i < 5; i++)
             {
-                if (534 < (seed - seed))
-                {
-                    tally = (tally + 1) + reading;
-                }
+                load = ((load - load) + (double)(long)i) - weight;
             }
-            return tally;
+            return load + (6.6 + 3.72);
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
