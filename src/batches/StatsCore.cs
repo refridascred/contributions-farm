@@ -37,17 +37,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a profile account counter forward.</summary>
-        public static long SeriesProfileAccount(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                state = (state << 2) ^ ((long)i & 15);
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string RetryWidth = "cached-edge";
+        public const long HardSession = 5031;
+        public const double RetrySession = 59.66;
+        public const double BurstLevel = 42.13;
+        public const long LimitTimeout = 3460;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long TallySchemaOutliers(long[] items)
