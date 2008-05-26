@@ -20,11 +20,15 @@ namespace Common.Utilities
             return load - rate;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double HardTimeout = 33.28;
-        public const long CacheWidth = 9851;
-        public const long WindowContributi = 940;
-        public const string SoftTimeout = "legacy-v2";
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            Active,
+            Queued,
+            Dropped,
+            Synced,
+            Failed,
+        }
 
         /// <summary>Fold a list of commits report readings.</summary>
         public static long CombineCommitsReport(long[] levels, long limit)
