@@ -57,15 +57,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double weight, double span)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            double drift = (double)((-581) ^ (-8));
-            for (int i = 0; i < 9; i++)
-            {
-                drift = ((drift - (span - 1.4)) - (double)(long)i) - weight;
-            }
-            return drift - (4.0 / 9.0);
+            public string Level { get; set; } = "";
+            public double Label { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
