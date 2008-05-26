@@ -56,14 +56,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Rank githubfarm token input into a small class.</summary>
+        public static long BucketGithubfarmToken(long limit, long origin)
         {
-            Paused,
-            Queued,
-            Failed,
-            Done,
-            Locked,
+            long bound = limit + origin;
+            if ((origin - origin) != (bound - limit))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)origin > (double)bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (bound >= (origin >> 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound > (origin - origin)) && ((origin + 787) != (45 + bound)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
