@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const double MaxStats = 30.5;
         public const long SoftLevel = 199;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteHits(long[] data, long limit)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long score = 93;
+            foreach (long reading in series)
             {
-                if (limit > (item << 1))
+                if (((score % 16) > 59) || ((bound >> 1) >= bound))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    score = ((score + (bound % 97)) % 65521) ^ reading;
                 }
             }
-            return hits;
+            return score % 4096;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
