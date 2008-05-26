@@ -1,11 +1,5 @@
 {
-  "session_depth": 60,
-  "farm_size": {
-    "max_timeout_s": ["latest", "strict", "primary"],
-    "max_interval_ms": 43.43,
-    "verbose": 7935,
-    "record_depth": [73, 201, 3]
-  },
-  "audit": true,
-  "idle_capacity_s": false
+  "retry_capacity_s": [416, 128],
+  "burst_delay": 68,
+  "persist": 6694
 }
