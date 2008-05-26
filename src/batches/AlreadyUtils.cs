@@ -14,32 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long seed, long bound)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutMatches(long[] series)
         {
-            long diff = seed ^ bound;
-            if ((double)seed > (double)diff)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (bound < (968 / 6))
+                if ((double)cell <= (8.5 / 8.0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((diff + seed) > (seed + diff)) || ((double)(-7) != (double)seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next profile graph value from a seed.</summary>
