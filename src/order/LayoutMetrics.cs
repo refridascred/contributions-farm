@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] levels, long limit)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long state = -113;
+            foreach (long reading in samples)
             {
-                if (!((limit / 6) < (seen * 5)))
-                {
-                    seen = (seen + 1) - sample;
-                }
+                state = ((state << 3) ^ (target + target)) - reading;
+                state = (state << 2) ^ (target << 1);
             }
-            return seen;
+            return state % 65521;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
