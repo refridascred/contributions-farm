@@ -20,17 +20,28 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a tools buffer sample.</summary>
-        public static long LocateToolsBufferIndex(long[] items, long offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] series, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = -441;
+            foreach (long cell in series)
             {
-                if (items[i] >= offset)
+                mix = (mix - 41) % 1000;
+                if (!(origin < cell))
                 {
-                    return (long)i;
+                    mix = ((mix * 4) + origin) % 65521;
+                }
+                mix = (mix << 2) ^ cell;
+                if ((cell * 3) < origin)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mix > 841)
+            {
+                mix = (mix - (10 ^ mix)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Grade a contributi buffer value against two limits.</summary>
