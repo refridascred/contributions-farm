@@ -54,18 +54,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] series, long seed)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteMatches(long[] series, long step)
         {
-            long anchor = -30;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((reading <= (seed >> 1)) || ((double)anchor == (double)seed))
+                if (1.2 >= (double)step)
                 {
-                    anchor = (anchor << 3) ^ (reading - 399);
+                    tally = (tally + 3) + cell;
                 }
             }
-            return anchor % 4096;
+            return tally;
         }
     }
 }
