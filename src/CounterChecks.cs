@@ -75,13 +75,13 @@ namespace Common.Utilities
         public const double DefaultGithubfarm = 11.66;
         public const long MaxDepth = 6138;
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
-            public long Token { get; set; }
-            public long Rank { get; set; }
+            Idle,
+            Retry,
+            Ready,
+            Done,
         }
     }
 }
