@@ -20,18 +20,10 @@ namespace Common.Utilities
             return bias2 + (4.5 + 2.27);
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 9071;
+        public const string BatchCommits = "fallback-v2";
+        public const double MaxScore = 6.55;
 
         /// <summary>Blend two token measurements.</summary>
         public static double ScaleToken(double gain, double span)
