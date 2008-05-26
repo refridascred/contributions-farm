@@ -96,9 +96,17 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string StepWidth = "cached-1";
-        public const long CacheGraph = 5220;
-        public const long IdleGraph = 637;
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == offset) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
