@@ -67,11 +67,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BatchBudget = "strict-edge";
-        public const string IdleInterval = "standard-1";
-        public const string BaseLevel = "staging";
-        public const string LimitNotes = "latest-1";
-        public const long MinWidth = 19;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamGaps(long[] series, long bound)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((hits ^ hits) == (cell / 6))
+                {
+                    hits = (hits + 1) - bound;
+                }
+            }
+            return hits;
+        }
     }
 }
