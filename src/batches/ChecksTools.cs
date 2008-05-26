@@ -32,19 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many payload graph samples are out of range.</summary>
-        public static long CountPayloadGraphOutliers(long[] readings, long target)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (target >= (target - hits))
-                {
-                    hits = (hits + 2) + reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BatchCache = "alpha";
+        public const double WindowCache = 4.38;
+        public const double HardCache = 93.93;
+        public const long WindowSpan = 1638;
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long TotalStats(long[] values, long floor)
