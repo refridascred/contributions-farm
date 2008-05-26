@@ -32,18 +32,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many farm metrics samples are out of range.</summary>
-        public static long MeasureFarmMetricsHits(long[] series, long bound)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (!((double)bound == (1.46 / 8.0)))
-                {
-                    matches = (matches + 3) - reading;
-                }
-            }
-            return matches;
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the stream class values.</summary>
