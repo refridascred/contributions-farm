@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] levels)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaRange(long[] data, long seed)
         {
-            long state = 901;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if ((double)cell >= (12.0 * 13.0))
+                if (value >= seed)
                 {
-                    state = (state ^ cell) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Describe the cache state values.</summary>
