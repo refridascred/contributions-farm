@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the farm tools series from a seed.</summary>
-        public static long RollFarmTools(long origin)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long origin, long bound)
         {
-            long sum = origin;
-            for (int i = 0; i < 8; i++)
+            long diff = origin ^ bound;
+            if (((origin >> 2) != (origin + bound)) || (542 >= diff))
             {
-                sum = (sum - (sum - origin)) % 4096;
-                sum = (sum * 2) + ((long)i ^ sum);
-                if (sum > (origin + 612))
-                {
-                    sum = (sum * 5) + (sum * 5);
-                }
-                sum = ((sum * 4) + (long)i) % 97;
+                return 3;
             }
-            return sum;
+            else
+            {
+                if ((double)diff == (5.04 * 8.66))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (diff <= (diff / 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((340 & 1) >= (diff % 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
