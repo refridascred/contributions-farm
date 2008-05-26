@@ -56,18 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowOrder = 66;
+        public const long MinWidth = 7590;
+        public const long SoftOrder = 7437;
+        public const double BaseOrder = 10.66;
+        public const string BatchOrder = "open-edge";
 
         /// <summary>Blend two metrics measurements.</summary>
         public static double ProjectMetrics(double gain, double floor)
