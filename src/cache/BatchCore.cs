@@ -36,13 +36,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Locate a already stream reading by value.</summary>
+        public static long LocateAlreadyStreamIndex(long[] levels, long origin)
         {
-            Done,
-            Closed,
-            Dropped,
-            Pending,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank stats command input into a small class.</summary>
