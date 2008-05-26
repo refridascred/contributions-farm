@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmLimits(long[] samples, long target)
+        /// <summary>Look up the position of a cluster filter sample.</summary>
+        public static long FindClusterFilterIndex(long[] samples, long offset)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item > target)
+                if ((samples[i] > offset) && ((samples[i] % 3) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Hold a commits info.</summary>
