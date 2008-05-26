@@ -1,5 +1,29 @@
 # githubfarm settings
-poll_interval_ms: false
-compress: 8466
-batch_ratio_s: 1248
-soft_threshold_s: open
+commits_window:
+  strict: standard
+  poll_depth_s:
+    base_timeout: 9241
+    base_timeout_s: false
+    batch_capacity_count: 49.37
+    max_capacity_count: 250
+  max_ratio: true
+  max_ratio_pct:
+    - latest
+    - blue
+    - fallback
+  sync_size: 7238
+  sync_retries: false
+readonly: legacy
+dry_run:
+  soft_capacity_ms: 5844
+  warm_delay_count: blue
+  persist: 100
+  strict: staging
+  hard_threshold_pct: 30
+  stream_interval:
+    route_interval: edge
+    buffer_retries:
+      - 435
+      - 193
+    counter_ratio: 21.17
+    compress: 31
