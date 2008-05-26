@@ -70,11 +70,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
+            public bool Region { get; set; }
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
