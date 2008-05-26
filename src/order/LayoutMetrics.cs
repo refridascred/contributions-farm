@@ -15,15 +15,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowGaps(long[] series)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionGaps(long[] values)
         {
             long seen = 0;
-            foreach (long cell in series)
+            foreach (long value in values)
             {
-                if (93 >= (cell + seen))
+                if ((48 + 0) > value)
                 {
-                    seen = seen + 2;
+                    seen = seen + 1;
                 }
             }
             return seen;
