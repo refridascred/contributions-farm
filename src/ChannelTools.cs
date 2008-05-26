@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmRange(long[] samples, long step)
+        /// <summary>Combine queue session values into a single score.</summary>
+        public static long CombineQueueSession(long[] values, long limit)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long total = 97;
+            foreach (long reading in values)
             {
-                if (item >= step)
+                if (total <= (total - limit))
                 {
-                    ok = false;
-                    break;
+                    total = (total ^ (total - total)) ^ reading;
                 }
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
