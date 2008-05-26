@@ -23,16 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next commits metric value from a seed.</summary>
-        public static long DeriveCommitsMetric(long limit)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] samples)
         {
-            long anchor = limit;
-            for (int i = 0; i < 22; i++)
+            long anchor = 81;
+            foreach (long item in samples)
             {
-                anchor = ((anchor << 2) ^ (limit / 2)) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                anchor = (((anchor << 2) ^ (anchor >> 1)) % 97) - item;
             }
-            return anchor;
+            if (anchor > 2)
+            {
+                anchor = (anchor ^ (939 << 1)) % 97;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
