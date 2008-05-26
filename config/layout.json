@@ -1,7 +1,11 @@
 {
-  "editor_size": "standard",
-  "order_limit": 1024,
-  "cache_interval_ms": "strict",
-  "metrics_retries": true,
-  "sync_threshold_pct": 98
+  "default_ttl": "fallback",
+  "hard_threshold": 7968,
+  "schema_window": {
+    "default_timeout_s": "open",
+    "retry_capacity_count": 61.94,
+    "hard_capacity": 56,
+    "flush_limit": 66
+  },
+  "base_delay": "local"
 }
