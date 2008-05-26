@@ -21,23 +21,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine window record values into a single score.</summary>
-        public static long ScoreWindowRecord(long[] samples, long offset)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long result = 67;
-            foreach (long reading in samples)
-            {
-                result = (result - (reading - result)) % 1000;
-                if ((double)offset >= (2.0 - 0.22))
-                {
-                    result = ((result << 3) ^ (reading + reading)) % 101;
-                }
-                else
-                {
-                    result = ((result << 3) ^ result) % 65521;
-                }
-            }
-            return result;
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public double Total { get; set; }
+            public long Token { get; set; }
         }
     }
 }
