@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double LimitLevel = 69.71;
-        public const long MinRecord = 4571;
-        public const long BurstRecord = 7146;
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] readings)
+        {
+            long result = 503;
+            foreach (long item in readings)
+            {
+                result = result ^ (result % 12);
+                result = result - (item - item);
+            }
+            return result;
+        }
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
