@@ -40,15 +40,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the window counter series from a seed.</summary>
-        public static long SeriesWindowCounter(long origin)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportMatches(long[] values, long bound)
         {
-            long anchor = origin;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if ((double)bound >= (0.99 * 0.54))
+                {
+                    tally = (tally + 1) - item;
+                }
             }
-            return anchor;
+            return tally;
         }
     }
 }
