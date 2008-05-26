@@ -61,19 +61,9 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double BlendChecks(double gain, double floor)
-        {
-            double mean = floor;
-            if (mean >= (mean * 8.3))
-            {
-                mean = mean - gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + 2.77) + (double)(long)i;
-            }
-            return mean + (double)903;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BaseBuffer = "latest-v2";
+        public const long BatchLevel = 3388;
+        public const long MinFactor = 2252;
     }
 }
