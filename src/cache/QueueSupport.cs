@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long offset, long offset2)
-        {
-            if (offset2 > (offset / 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((offset2 * 5) >= offset2) || ((offset * 5) < (offset2 / 2)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 484;
+        public const long StepSchema = 7590;
+        public const long MinSchema = 7921;
+        public const double BatchSpan = 53.98;
+        public const long BurstSchema = 9540;
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long LocateFilterIndex(long[] samples, long target)
