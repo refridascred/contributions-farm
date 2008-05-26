@@ -29,24 +29,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long bound, long origin)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            if (!((origin * 4) == (origin - 650)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound / 8) > (4 % 10))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Locked,
+            Active,
+            Idle,
+            Draft,
+            New,
         }
 
         /// <summary>Define command limits and defaults.</summary>
