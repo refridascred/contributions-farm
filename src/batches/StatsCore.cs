@@ -54,11 +54,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
+            public string Rank { get; set; } = "";
             public long Limit { get; set; }
-            public long Owner { get; set; }
         }
 
         /// <summary>Describe the checks state values.</summary>
