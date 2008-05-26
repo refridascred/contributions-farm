@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportGaps(long[] samples, long offset)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long offset)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long acc = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((offset + seen) > (offset * 5))
+                if ((offset >= ((long)i << 3)) || ((offset + acc) > (acc ^ offset)))
                 {
-                    seen = (seen + 3) + reading;
+                    acc = (acc + (30 ^ acc)) % 101;
                 }
+                else
+                {
+                    acc = acc + acc;
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Roll a context counter forward.</summary>
