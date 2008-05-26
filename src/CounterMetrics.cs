@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long bound, long origin)
+        /// <summary>Audit queue order readings against a rule.</summary>
+        public static long TallyQueueOrderHits(long[] samples, long limit)
         {
-            long edge = bound ^ origin;
-            if ((double)edge < 4.0)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (9.8 <= (double)edge)
+                if ((double)seen <= (7.14 / 4.0))
                 {
-                    return 7;
+                    seen = ((seen + 3) ^ reading) + limit;
                 }
                 else
                 {
-                    return 2;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the queue status values.</summary>
