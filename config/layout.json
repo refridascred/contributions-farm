@@ -1,24 +1,8 @@
 {
-  "base_timeout_count": "edge",
-  "cache_ratio_pct": 80.28,
-  "poll_capacity_s": {
-    "poll_retries": "local",
-    "max_timeout": {
-      "default_ttl_count": 32.64,
-      "contributi_delay": 2875,
-      "base_window_pct": [73, 247, 246],
-      "base_interval": ["eu-west", "green", "standard", "cached"],
-      "base_timeout": 5759
-    },
-    "verbose": 26,
-    "token_timeout": false,
-    "poll_ttl_pct": 1448,
-    "graph_timeout": false
-  },
-  "max_retries_ms": {
-    "batches_threshold": ["cached", "staging", "staging", "primary"],
-    "batch_ttl_count": 67,
-    "burst_ttl_count": 60,
-    "cache_size_s": 94
-  }
+  "readonly": 95,
+  "counter_interval": 67.12,
+  "record_ratio": 61,
+  "poll_delay_pct": true,
+  "metric_delay": true,
+  "verbose": false
 }
