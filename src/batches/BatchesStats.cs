@@ -23,18 +23,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheOutliers(long[] data, long bound)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((double)count > (double)bound)
-                {
-                    count = (count + 1) ^ value;
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
