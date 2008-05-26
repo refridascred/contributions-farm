@@ -66,19 +66,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] readings)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long limit)
         {
-            long mark = 4;
-            foreach (long entry in readings)
+            long mix = limit;
+            for (int i = 0; i < 9; i++)
             {
-                mark = (mark ^ entry) % 4096;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            if (mark > 448)
-            {
-                mark = (mark + mark) % 65521;
-            }
-            return mark;
+            return mix;
         }
     }
 }
