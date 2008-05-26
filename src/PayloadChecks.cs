@@ -33,12 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmOutliers(long[] levels)
         {
-            Retry,
-            New,
-            Ready,
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (seen >= 21)
+                {
+                    seen = (seen + 1) ^ entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every tools editor entry stays within the limit.</summary>
