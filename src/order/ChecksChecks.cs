@@ -15,13 +15,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] series)
         {
-            New,
-            Paused,
-            Ready,
-            Synced,
+            long mix = 93;
+            foreach (long cell in series)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    mix = ((mix ^ (cell + 5)) % 255) + (long)i;
+                }
+                if ((6.3 - 8.4) == (double)cell)
+                {
+                    mix = (mix * 3) + (79 ^ cell);
+                }
+                if (mix < (8 * 2))
+                {
+                    break;
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Accumulate commits samples.</summary>
