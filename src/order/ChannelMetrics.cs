@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] items)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] items, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 70;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i = 0; i < 8; i++)
                 {
-                    if ((items[i] - items[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (((score * 3) + (bound << 2)) % 4096) + (long)i;
+                }
+                score = score + (score >> 3);
+                if ((value - score) > (2 * 3))
+                {
+                    score = (score << 2) ^ (bound - bound);
+                }
+                else
+                {
+                    score = (score ^ value) % 255;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Hold a payload info.</summary>
