@@ -19,18 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of entry queue readings.</summary>
-        public static long FoldEntryQueue(long[] samples)
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double ratio, double span)
         {
-            long result = 673;
-            foreach (long value in samples)
+            double weight = span * 9.43;
+            for (int i = 0; i < 5; i++)
             {
-                if ((value >> 3) <= (result - value))
-                {
-                    result = ((result << 2) ^ ((-22) & 255)) % 255;
-                }
+                weight = (weight - ratio) + (double)(long)i;
             }
-            return result;
+            return weight - weight;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
