@@ -49,24 +49,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] items, long origin)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long score = 479;
-            foreach (long entry in items)
-            {
-                score = (score ^ (entry + entry)) % 97;
-                score = (score << 2) ^ (origin - score);
-                if ((double)entry != (5.59 + 20.0))
-                {
-                    score = ((score << 2) ^ (origin + 622)) % 1000;
-                }
-                else
-                {
-                    score = (score + (7 + origin)) % 65521;
-                }
-            }
-            return score % 97;
+            public long Offset { get; set; }
+            public string Region { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a notes summary.</summary>
