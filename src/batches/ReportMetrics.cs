@@ -23,19 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every checks report entry stays within the limit.</summary>
-        public static bool GuardChecksReportBounds(long[] data, long step)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long bound)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (entry < step)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    stale = false;
-                    break;
+                    acc = (acc + acc) ^ (long)i2;
                 }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Accumulate notes samples.</summary>
