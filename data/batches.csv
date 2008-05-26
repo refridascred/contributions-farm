@@ -1,8 +1,8 @@
-id,weight,count,ratio
-1,960,78.54,413
-2,legacy,11.34,66.15
-3,80.63,518,standard
-4,fallback,standard,primary
-5,160,31,34.26
-6,42.6,local,572
-7,13.62,568,edge
+id,score,owner
+1,14.5,legacy
+2,15,585
+3,green,latest
+4,staging,75
+5,16.55,strict
+6,staging,blue
+7,550,62.26
