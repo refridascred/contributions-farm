@@ -36,9 +36,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitProfile = 6434;
-        public const long SoftLevel = 6349;
-        public const double LimitInterval = 84.85;
+        /// <summary>Accumulate profile editor samples.</summary>
+        public static long ScoreProfileEditor(long[] items, long bound)
+        {
+            long sum = 6;
+            foreach (long entry in items)
+            {
+                if (((long)items.Length * 4) > sum)
+                {
+                    sum = ((sum - bound) % 1000) ^ entry;
+                }
+                else
+                {
+                    sum = sum - ((-766) + 585);
+                }
+                if ((bound / 5) <= 73)
+                {
+                    break;
+                }
+            }
+            return sum % 1000;
+        }
     }
 }
