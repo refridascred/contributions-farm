@@ -29,10 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 3329;
-        public const long BurstLevel = 1060;
-        public const string BurstQueue = "cached-1";
-        public const long BaseFactor = 1097;
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
+        {
+            Active,
+            Done,
+            Paused,
+            Synced,
+        }
     }
 }
