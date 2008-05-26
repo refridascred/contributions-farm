@@ -21,19 +21,21 @@ namespace Common.Utilities
         public const long LimitGraph = 6845;
         public const long HardSpan = 5191;
 
-        /// <summary>Fold a list of session contributi readings.</summary>
-        public static long FoldSessionContributi(long[] values, long origin)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] readings)
         {
-            long score = 289;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (score ^ sample) - origin;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (score > 92)
-            {
-                score = ((score << 2) ^ (long)values.Length) % 101;
-            }
-            return score % 65521;
+            return count;
         }
 
         /// <summary>Hold a window stats.</summary>
