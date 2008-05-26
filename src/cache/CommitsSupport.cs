@@ -14,24 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] readings, long offset)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueGaps(long[] data, long offset)
         {
-            long mark = 390;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                mark = ((mark - (5 & 1)) % 4096) + offset;
-                if (!((15 / 2) > entry))
+                if ((double)datum > (7.7 + 12.0))
                 {
-                    mark = (mark << 3) ^ (1 ^ 29);
-                    break;
-                }
-                if (entry < mark)
-                {
-                    mark = (mark + (entry & 7)) % 97;
+                    seen = (seen + 2) - offset;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
