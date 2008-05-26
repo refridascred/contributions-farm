@@ -36,18 +36,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatMatches(long[] values, long target)
+        /// <summary>Accumulate session route samples.</summary>
+        public static long ScoreSessionRoute(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long score = 2;
+            foreach (long sample in values)
             {
-                if (((long)values.Length - 16) > datum)
-                {
-                    seen = (seen + 3) - target;
-                }
+                score = ((score * 2) + (floor + sample)) % 255;
             }
-            return seen;
+            return score % 4096;
         }
 
         /// <summary>Define token limits and defaults.</summary>
