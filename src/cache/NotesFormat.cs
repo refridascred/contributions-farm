@@ -5,35 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long step)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionOutliers(long[] levels)
         {
-            long carry = step;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                long hits = (704 / 3) % 24;
-                if (hits <= (684 / 8))
+                if (!(((long)levels.Length + seen) > entry))
                 {
-                    hits = hits ^ carry;
-                    carry = (carry + step) % 97;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    carry = carry - (999 * 3);
-                    carry = ((carry * 5) + (long)i) % 255;
+                    seen = seen - 1;
                 }
-                if ((hits * 2) != (step >> 5))
-                {
-                    carry = ((carry << 2) ^ (carry & 15)) % 65521;
-                }
-                else
-                {
-                    hits = ((hits << 3) ^ ((long)i + step)) % 65521;
-                    carry = carry - ((long)i + (long)i);
-                }
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
