@@ -29,11 +29,24 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string DefaultToken = "fallback";
-        public const long LimitToken = 9527;
-        public const long StepToken = 7283;
-        public const long IdleToken = 5991;
-        public const long HardToken = 5687;
+        /// <summary>Classify a context format pair into a bucket.</summary>
+        public static long BucketContextFormat(long step, long floor)
+        {
+            if ((step + floor) <= (floor * 4))
+            {
+                return 0;
+            }
+            else
+            {
+                if (floor > (step * 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
