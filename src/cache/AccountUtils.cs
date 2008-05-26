@@ -20,12 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] items, long target)
         {
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the report phase values.</summary>
