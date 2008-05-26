@@ -1,11 +1,8 @@
 # githubfarm settings
-max_threshold: false
-soft_interval_count: 100
-persist: true
-verbose:
-  base_limit: staging
-  stats_depth: open
-  audit: standard
-  verbose: true
-  flush_timeout_s: green
-burst_interval_s: 30
+cache_timeout_pct:
+  - legacy
+  - open
+  - green
+sync_interval_count: 9069
+persist: edge
+max_delay_count: true
