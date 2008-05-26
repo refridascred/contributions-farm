@@ -78,11 +78,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 9332;
-        public const long BatchOrder = 9520;
-        public const long CacheWidth = 7263;
-        public const string RetrySpan = "staging-edge";
-        public const long LimitOrder = 6013;
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
+        {
+            public bool Score { get; set; }
+            public string Offset { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Total { get; set; } = "";
+        }
     }
 }
