@@ -31,11 +31,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 305;
-        public const long MaxStats = 7780;
-        public const double RetryStats = 85.39;
-        public const double DefaultScore = 59.41;
-        public const long LimitStats = 8796;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] readings, long offset)
+        {
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
