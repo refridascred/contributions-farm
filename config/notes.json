@@ -1,11 +1,5 @@
 {
-  "soft_threshold_pct": 100,
-  "poll_size": {
-    "metric_capacity": [292, 304],
-    "base_interval": 100,
-    "poll_limit_count": 80.62,
-    "githubfarm_ttl": "blue"
-  },
-  "default_delay_pct": "blue",
-  "burst_window_ms": 26.83
+  "hard_ttl": ["eu-west", "local", "open", "local"],
+  "retry_window_count": 36.63,
+  "idle_capacity_pct": [312, 64, 86, 166]
 }
