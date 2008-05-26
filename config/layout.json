@@ -1,7 +1,5 @@
 {
-  "layout_interval": 20.08,
-  "contributi_limit": "legacy",
-  "flush_depth": [212, 391],
-  "already_size": 30.4,
-  "flush_interval": "staging"
+  "idle_ratio_s": "strict",
+  "idle_ttl_count": false,
+  "hard_window_pct": true
 }
