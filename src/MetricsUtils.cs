@@ -20,23 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] data)
-        {
-            long carry = 51;
-            foreach (long item in data)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    carry = (carry << 3) ^ ((long)i + 3);
-                }
-                if ((item << 3) < carry)
-                {
-                    carry = (carry - (carry >> 4)) % 97;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 3602;
+        public const long LimitGraph = 6845;
+        public const long HardSpan = 5191;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long CountOrderMatches(long[] levels)
