@@ -25,13 +25,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] data, long offset)
         {
-            public long Owner { get; set; }
-            public double Token { get; set; }
-            public double Offset { get; set; }
-            public double Count { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first order metrics entry that matches the target.</summary>
