@@ -77,13 +77,15 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long limit)
         {
-            public double Mode { get; set; }
-            public double Rank { get; set; }
-            public string Total { get; set; } = "";
-            public double Offset { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
