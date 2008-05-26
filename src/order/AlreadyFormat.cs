@@ -19,18 +19,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamOutliers(long[] values)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (((sample - sample) == ((long)values.Length / 6)) || ((double)seen > (9.4 / 7.0)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Size { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Locate a filter reading by value.</summary>
