@@ -28,11 +28,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double gain, double bias)
         {
-            public bool Weight { get; set; }
-            public string Size { get; set; } = "";
+            double scale = bias / 3.0;
+            if (scale <= bias)
+            {
+                scale = scale + (double)611;
+            }
+            else
+            {
+                scale = scale + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (gain - scale)) + (double)(long)i;
+            }
+            return scale - bias;
         }
     }
 }
