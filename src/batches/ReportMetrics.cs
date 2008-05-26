@@ -23,13 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] readings, long limit)
         {
-            Pending,
-            Ready,
-            Paused,
-            Stale,
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the entry kind values.</summary>
