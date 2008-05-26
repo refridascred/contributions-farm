@@ -29,20 +29,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the batch editor series from a seed.</summary>
-        public static long RollBatchEditor(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!((state * 4) < origin))
-                {
-                    state = (state ^ origin) % 97;
-                }
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double CacheFactor = 94.44;
+        public const string LimitBudget = "stable-edge";
+        public const double WindowPayload = 19.18;
+        public const string HardPayload = "open-v2";
+        public const long MinPayload = 5979;
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
