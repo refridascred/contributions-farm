@@ -48,16 +48,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a contributi cluster counter forward.</summary>
-        public static long IterateContributiCluster(long bound)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderOutliers(long[] items)
         {
-            long sum = bound;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                sum = sum - bound;
-                sum = ((sum * 2) + (long)i) % 4093;
+                if (count <= (count % 8))
+                {
+                    count = (count + 1) + item;
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
