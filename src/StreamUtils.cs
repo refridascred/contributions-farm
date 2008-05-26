@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            public double Size { get; set; }
-            public double Weight { get; set; }
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            public long Region { get; set; }
+            public bool Count { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
