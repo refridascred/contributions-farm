@@ -38,21 +38,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up layout farm samples.</summary>
-        public static long OverlapLayoutFarmCount(long[] data)
+        /// <summary>Digest a series of commits stream entries.</summary>
+        public static long FoldCommitsStream(long[] readings, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 18;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (offset < (datum - offset))
                 {
-                    if ((data[i] - data[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = mix - (datum + datum);
                 }
             }
-            return matches;
+            if (mix < 6)
+            {
+                mix = (mix + (offset - 422)) % 1000;
+            }
+            return mix;
         }
     }
 }
