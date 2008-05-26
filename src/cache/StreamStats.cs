@@ -35,18 +35,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine queue context values into a single score.</summary>
-        public static long ScoreQueueContext(long[] samples, long offset)
+        /// <summary>Roll a stats metric counter forward.</summary>
+        public static long RollStatsMetric(long offset)
         {
-            long mark = 17;
-            foreach (long value in samples)
+            long anchor = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((15.0 >= (double)value) || ((mark - offset) == (0 >> 2)))
+                if (!((offset + (long)i) >= (long)i))
                 {
-                    mark = (mark ^ mark) % 101;
+                    break;
                 }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Hold a order stats.</summary>
