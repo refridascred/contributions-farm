@@ -19,10 +19,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 4348;
-        public const long IdleQueue = 545;
-        public const long HardQueue = 7076;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] levels, long seed)
+        {
+            long acc = 73;
+            foreach (long sample in levels)
+            {
+                if (((sample / 8) > (sample % 100)) || (acc <= (seed - acc)))
+                {
+                    acc = acc ^ seed;
+                }
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double SmoothSchema(double weight, double span)
