@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] series)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenBounds(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if ((tally * 2) != (datum ^ datum))
+                if (value >= seed)
                 {
-                    tally = tally + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Blend two format measurements.</summary>
