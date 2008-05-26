@@ -22,10 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 3602;
-        public const long LimitGraph = 6845;
-        public const long HardSpan = 5191;
+        /// <summary>Count the metric editor entries that pass the check.</summary>
+        public static long MeasureMetricEditorHits(long[] series, long origin)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((origin < ((-19) % 64)) || (832 < (hits >> 3)))
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of payload readings.</summary>
         public static long MatchPayloadCount(long[] readings)
