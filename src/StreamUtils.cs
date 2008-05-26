@@ -20,21 +20,23 @@ namespace Common.Utilities
         public const long HardPayload = 4440;
         public const long SoftPayload = 6456;
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] data)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double weight, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale = 9.5;
+            if (scale >= 16.0)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = scale - scale;
             }
-            return hits;
+            else
+            {
+                scale = scale + floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (weight - scale)) + (double)(long)i;
+            }
+            return scale + (1.0 + floor);
         }
 
         /// <summary>Look up the position of a format sample.</summary>
