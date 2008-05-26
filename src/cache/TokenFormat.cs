@@ -35,14 +35,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long bound, long target)
         {
-            Draft,
-            Pending,
-            Failed,
-            Synced,
-            Stale,
+            if ((bound << 3) < bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target / 7) < target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
