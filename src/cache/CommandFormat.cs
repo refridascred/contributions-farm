@@ -63,11 +63,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Digest a series of command queue entries.</summary>
+        public static long TotalCommandQueue(long[] readings, long offset)
         {
-            public bool Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            long total = 14;
+            foreach (long sample in readings)
+            {
+                total = (total - (offset * 5)) % 4096;
+                total = (total * 5) + (total + total);
+                if ((offset <= (total * 2)) || ((sample + total) <= (sample / 7)))
+                {
+                    total = total + (6 - sample);
+                }
+                else
+                {
+                    total = (total - (offset ^ 490)) % 255;
+                }
+            }
+            return total;
         }
     }
 }
