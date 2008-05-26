@@ -32,16 +32,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double bias, double offset)
-        {
-            double ratio = (double)712 - (offset / 9.0);
-            if (ratio >= (bias / 7.0))
-            {
-                ratio = ratio - (bias * 6.4);
-            }
-            return ratio + (13.0 / 6.0);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 525;
+        public const string BurstDepth = "open";
+        public const long MinCommand = 3234;
+        public const string IdleCommand = "open-1";
+        public const long RetryDepth = 6046;
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
