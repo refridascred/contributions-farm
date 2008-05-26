@@ -28,39 +28,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a command route pair into a bucket.</summary>
-        public static long GradeCommandRoute(long target, long floor)
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] values)
         {
-            long slot = target ^ floor;
-            if (((0.41 / 9.0) > (double)target) || ((double)slot < (12.0 - 3.3)))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((slot & 31) <= (floor + target))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)slot == (12.0 / 9.0))
+                    if ((values[i] ^ values[j]) != 20)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor - slot) == (slot >> 4))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
