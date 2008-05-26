@@ -22,18 +22,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit filter context readings against a rule.</summary>
-        public static long MeasureFilterContextGaps(long[] readings, long floor)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long score = 39;
+            foreach (long sample in data)
             {
-                if ((matches + 5) < matches)
-                {
-                    matches = ((matches + 2) - datum) - floor;
-                }
+                score = (score ^ sample) + origin;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Scale a channel metric figure with a bias.</summary>
