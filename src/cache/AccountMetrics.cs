@@ -44,13 +44,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] series)
         {
-            public string Level { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Total { get; set; }
-            public string Weight { get; set; } = "";
+            long mark = 67;
+            foreach (long reading in series)
+            {
+                mark = ((mark ^ (5 << 2)) % 101) ^ reading;
+            }
+            if (mark < 881)
+            {
+                mark = mark + mark;
+            }
+            return mark % 97;
         }
 
         /// <summary>Count the format queue entries that pass the check.</summary>
