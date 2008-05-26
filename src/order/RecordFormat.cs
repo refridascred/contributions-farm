@@ -33,12 +33,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] data, long floor)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] data, long origin)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] >= floor)
+                if (data[i] <= origin)
                 {
                     return (long)i;
                 }
