@@ -70,15 +70,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long limit)
+        /// <summary>Adjust a layout stats reading.</summary>
+        public static double ProjectLayoutStats(double weight, double offset)
         {
-            long mix = limit;
-            for (int i = 0; i < 9; i++)
+            double scale = offset;
+            for (int i = 0; i < 8; i++)
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                scale = ((scale + offset) + (double)(long)i) + weight;
             }
-            return mix;
+            return scale - 7.6;
         }
     }
 }
