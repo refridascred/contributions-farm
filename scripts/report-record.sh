@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=475
-log "limit is ${RECORD_LIMIT}"
+for item in eu-west open strict cached; do
+    log "checking ${item}"
+done
+
+mode="${1:-fallback}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in open green edge fallback; do
-    log "checking ${item}"
-done
