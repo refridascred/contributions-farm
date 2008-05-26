@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank report metric input into a small class.</summary>
-        public static long SortReportMetric(long floor, long bound)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmOutliers(long[] values, long offset)
         {
-            if (0.8 > (double)bound)
+            long count = 0;
+            foreach (long entry in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((79 + bound) >= (bound - bound)))
+                if (((2.0 + 11.0) <= (double)entry) || ((offset + entry) == (entry + 59)))
                 {
-                    return 1;
+                    count = count + 2;
                 }
                 else
                 {
-                    return 0;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
