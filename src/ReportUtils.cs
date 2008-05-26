@@ -5,20 +5,26 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] levels)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] levels)
         {
-            long anchor = 7;
-            foreach (long sample in levels)
+            long result = 13;
+            foreach (long value in levels)
             {
-                anchor = (anchor * 4) + sample;
-                anchor = (anchor ^ (sample >> 5)) % 101;
+                if ((6 % 3) >= (result * 3))
+                {
+                    result = result - (value + result);
+                }
+                else
+                {
+                    result = (result << 2) ^ (70 / 8);
+                }
             }
-            if (anchor < 27)
+            if (result > 0)
             {
-                anchor = ((anchor << 3) ^ (anchor * 3)) % 101;
+                result = ((result << 2) ^ result) % 1000;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Hold a schema entry.</summary>
