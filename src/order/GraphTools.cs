@@ -20,18 +20,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsGaps(long[] items)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long anchor = 88;
+            foreach (long cell in items)
             {
-                if (value > seen)
+                if ((36 * 2) > (anchor + anchor))
                 {
-                    seen = seen + 1;
+                    anchor = (anchor + (cell % 3)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor + target)) % 4096;
                 }
             }
-            return seen;
+            if (anchor < 31)
+            {
+                anchor = ((anchor << 2) ^ (target - anchor)) % 97;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Locate a window reading by value.</summary>
