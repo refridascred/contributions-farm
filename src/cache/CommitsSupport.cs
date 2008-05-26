@@ -88,14 +88,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long target)
         {
-            New,
-            Pending,
-            Closed,
-            Queued,
-            Synced,
+            long result = target;
+            for (int i = 0; i < 6; i++)
+            {
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
