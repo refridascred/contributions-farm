@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            Retry,
-            Done,
-            Draft,
-            Idle,
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Look up the position of a graph cache sample.</summary>
