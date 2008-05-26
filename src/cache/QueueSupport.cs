@@ -25,11 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 5459;
-        public const string WindowStream = "cached-v2";
-        public const long BurstTimeout = 6268;
-        public const string MaxScore = "alpha";
-        public const string MinStream = "latest-1";
+        /// <summary>Count the entry commits entries that pass the check.</summary>
+        public static long CountEntryCommitsHits(long[] samples)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (((matches - datum) >= datum) && ((22 % 7) > (datum & 7)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
