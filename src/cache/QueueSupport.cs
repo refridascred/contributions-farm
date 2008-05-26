@@ -25,20 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsBounds(long[] readings, long limit)
-        {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitRatio = 3122;
+        public const long IdleFactor = 4221;
+        public const string CacheBudget = "primary-v2";
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long BucketCache(long bound, long step)
