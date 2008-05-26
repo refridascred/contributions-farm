@@ -77,12 +77,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long origin)
         {
-            Idle,
-            Done,
-            Stale,
+            long total = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                total = ((total << 2) ^ (total + origin)) % 1000;
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Validate profile account readings against a bound.</summary>
