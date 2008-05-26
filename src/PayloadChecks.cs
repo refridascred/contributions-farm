@@ -58,24 +58,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long origin)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] readings, long offset)
         {
-            long total = origin;
-            for (int i = 0; i < 23; i++)
+            long sum = 640;
+            foreach (long entry in readings)
             {
-                long step = ((long)i - origin) - (long)i;
-                if ((long)i < (894 + origin))
+                if (((offset << 1) == (sum - offset)) && ((6.42 + 12.0) < (double)offset))
                 {
-                    total = ((total << 3) ^ (origin + step)) % 4096;
+                    sum = (sum - (entry * 5)) % 97;
                 }
-                else
-                {
-                    total = (total + 5) % 97;
-                }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            if (sum > 85)
+            {
+                sum = (sum * 3) + offset;
+            }
+            return sum;
         }
     }
 }
