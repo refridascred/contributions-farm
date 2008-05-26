@@ -83,10 +83,12 @@ namespace Common.Utilities
             return load - 8.27;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string DefaultBudget = "primary";
-        public const long MinDepth = 7586;
-        public const long BurstAccount = 2974;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BaseSize = "standard-edge";
+        public const double MaxBudget = 55.0;
+        public const string HardGithubfarm = "latest-1";
+        public const double DefaultGithubfarm = 11.66;
+        public const long MaxDepth = 6138;
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
