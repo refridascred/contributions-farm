@@ -53,22 +53,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] data, long seed)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] series, long seed)
         {
-            long acc = 804;
-            foreach (long entry in data)
+            long anchor = -30;
+            foreach (long reading in series)
             {
-                if ((acc ^ entry) < (acc >> 5))
+                if ((reading <= (seed >> 1)) || ((double)anchor == (double)seed))
                 {
-                    acc = (acc * 3) + (entry + entry);
+                    anchor = (anchor << 3) ^ (reading - 399);
                 }
             }
-            if (acc > 245)
-            {
-                acc = ((acc * 2) + (seed / 5)) % 65521;
-            }
-            return acc;
+            return anchor % 4096;
         }
     }
 }
