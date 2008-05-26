@@ -1,8 +1,6 @@
 {
-  "burst_capacity": "latest",
-  "burst_capacity_s": "cached",
-  "batch_timeout_ms": "stable",
-  "sync_threshold_pct": false,
-  "persist": 1024,
-  "audit": 25
+  "burst_size_ms": 35.93,
+  "entry_size": 250,
+  "soft_capacity_ms": 81,
+  "retry_ttl": 60
 }
