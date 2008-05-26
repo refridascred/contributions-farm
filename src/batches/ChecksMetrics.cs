@@ -46,13 +46,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public bool Level { get; set; }
-            public long Count { get; set; }
-            public double Weight { get; set; }
-            public long Ratio { get; set; }
+            Dropped,
+            Ready,
+            Idle,
         }
 
         /// <summary>Match up report samples.</summary>
