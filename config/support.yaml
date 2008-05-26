@@ -1,16 +1,10 @@
 # support settings
-default_limit_count:
-  burst_delay_count: standard
-  token_size:
-    - green
-    - open
-    - eu-west
-  max_timeout: 34.65
-  poll_depth_ms: false
-stream_limit:
-  base_delay_count: local
-  hard_ttl_s: 4889
-  cache_timeout_pct: standard
-  hard_ttl: stable
-hard_size_pct: 1024
-layout_interval: 1024
+idle_depth_count: local
+flush_ttl_s: standard
+poll_retries_s:
+  max_retries: 34.14
+  batch_timeout:
+    - stable
+    - latest
+    - staging
+  warm_limit: 7
