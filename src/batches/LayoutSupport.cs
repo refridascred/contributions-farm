@@ -40,15 +40,19 @@ namespace Common.Utilities
         public const long HardMetrics = 1889;
         public const long RetryDepth = 5040;
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double ratio, double bias)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileBounds(long[] items, long seed)
         {
-            double bias2 = bias;
-            if (bias2 <= (double)90)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                bias2 = (bias2 + 0.9) - ratio;
+                if (datum < seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return bias2 - bias;
+            return valid;
         }
     }
 }
