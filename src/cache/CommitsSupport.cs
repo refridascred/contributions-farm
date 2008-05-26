@@ -23,23 +23,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double scale, double floor)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long floor, long target)
         {
-            double drift = floor;
-            if (drift > floor)
+            long prev = floor + target;
+            if (4 < (3 + target))
             {
-                drift = drift - floor;
+                return 4;
             }
             else
             {
-                drift = drift + (9.0 + 4.0);
+                if ((3.6 / 3.0) >= (double)floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (prev > target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - scale) - (double)(long)i;
-            }
-            return drift + (double)105;
         }
 
         /// <summary>Count the buffer graph entries that pass the check.</summary>
