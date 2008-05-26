@@ -26,18 +26,17 @@ namespace Common.Utilities
         public const double WindowContext = 64.67;
         public const double MaxContext = 97.2;
 
-        /// <summary>Measure how many notes report samples are out of range.</summary>
-        public static long AuditNotesReportGaps(long[] samples)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((tally * 3) > tally)
+                if (readings[i] <= seed)
                 {
-                    tally = (tally + 1) - entry;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the farm mode values.</summary>
