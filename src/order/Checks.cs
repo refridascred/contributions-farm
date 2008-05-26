@@ -20,13 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Look up the position of a counter report sample.</summary>
+        public static long LocateCounterReportIndex(long[] items, long offset)
         {
-            public string Stamp { get; set; } = "";
-            public double Owner { get; set; }
-            public double Level { get; set; }
-            public bool Offset { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the account status values.</summary>
