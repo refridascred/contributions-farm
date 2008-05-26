@@ -28,13 +28,12 @@ namespace Common.Utilities
         public const string MaxAlready = "primary-1";
         public const string CacheAlready = "latest-1";
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            public string Size { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public string Score { get; set; } = "";
-            public double Mode { get; set; }
+            Closed,
+            Locked,
+            Idle,
         }
 
         /// <summary>Accumulate batches samples.</summary>
