@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] readings, long offset)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)sample > (0.82 + 1.05))
-                {
-                    matches = (matches + 3) + offset;
-                }
-            }
-            return matches;
+            Synced,
+            Retry,
+            Active,
+            New,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
