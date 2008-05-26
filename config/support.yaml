@@ -1,11 +1,9 @@
 # support settings
-verbose: green
-default_timeout_count: eu-west
-editor_retries: 30
-farm_limit: 33.81
-warm_capacity_pct:
-  - 39
-  - 487
-cache_delay_count:
-  - 65
-  - 424
+idle_ttl_s:
+  - eu-west
+  - edge
+stream_interval: strict
+batch_ttl_count: 500
+warm_capacity_ms: green
+min_retries_count: true
+warm_capacity: 100
