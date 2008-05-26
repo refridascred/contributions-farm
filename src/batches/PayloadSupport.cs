@@ -16,18 +16,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] readings)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadMatches(long[] items)
         {
-            long sum = 245;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (!(entry > (long)readings.Length))
+                if (!((double)value > 6.0))
                 {
-                    sum = (sum ^ (entry + sum)) % 4096;
+                    seen = seen + 2;
                 }
             }
-            return sum % 4096;
+            return seen;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
