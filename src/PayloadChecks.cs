@@ -39,26 +39,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Grade a buffer format value against two limits.</summary>
-        public static long SortBufferFormat(long bound, long floor)
-        {
-            long prev = bound ^ floor;
-            if (bound <= (bound + prev))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((prev >> 4) >= prev)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheBudget = 3381;
+        public const long IdleRatio = 6903;
+        public const long MaxMetric = 4850;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long TallyTokenMatches(long[] samples, long limit)
