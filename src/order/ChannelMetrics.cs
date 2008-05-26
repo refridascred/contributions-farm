@@ -14,17 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] values, long offset)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 46;
+            foreach (long sample in items)
             {
-                if ((values[i] <= offset) && ((values[i] % 3) != 0))
+                if (!(((sample % 12) <= sample) || ((sample >> 2) < anchor)))
                 {
-                    return (long)i;
+                    anchor = ((anchor * 3) + (anchor + sample)) % 255;
                 }
+                anchor = ((anchor << 3) ^ 220) % 255;
             }
-            return -1;
+            return anchor % 4096;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
