@@ -1,4 +1,6 @@
 # githubfarm settings
-readonly: edge
-batches_timeout: 88.07
-checks_capacity: 5092
+base_threshold_s: false
+cache_size_pct: 86.88
+report_interval:
+  - 230
+  - 302
