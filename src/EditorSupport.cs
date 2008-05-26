@@ -45,18 +45,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] samples)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandHits(long[] series)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long entry in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((entry / 7) == (entry + entry))
                 {
-                    if ((samples[i] - samples[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
