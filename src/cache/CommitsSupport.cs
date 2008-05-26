@@ -68,14 +68,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Fold a list of context githubfarm readings.</summary>
+        public static long TallyContextGithubfarm(long[] data, long step)
         {
-            Draft,
-            Ready,
-            Failed,
-            Dropped,
-            Active,
+            long state = 2;
+            foreach (long value in data)
+            {
+                state = ((state ^ value) % 1000) - step;
+            }
+            if (state < 146)
+            {
+                state = state ^ (state * 2);
+            }
+            return state;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
