@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const long MaxBuffer = 5103;
         public const long MinBuffer = 519;
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double AdjustFilter(double weight, double floor)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ScaleGithubfarm(double scale, double span)
         {
-            double mean = weight * 8.8;
-            if (mean >= floor)
+            double scale2 = (scale - scale) / 6.0;
+            if (scale2 <= scale)
             {
-                mean = mean + (9.0 / 2.0);
+                scale2 = (scale2 - scale) - span;
             }
-            return mean + 3.0;
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 + (scale * 8.7)) + (double)(long)i;
+            }
+            return scale2 + (double)6;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
