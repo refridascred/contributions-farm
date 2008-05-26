@@ -43,11 +43,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BurstCount = "local-v2";
-        public const long SoftTimeout = 2262;
-        public const double RetryEntry = 54.17;
-        public const long BaseTimeout = 2477;
-        public const long HardEntry = 7163;
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
+        {
+            Ready,
+            Active,
+            Done,
+        }
     }
 }
