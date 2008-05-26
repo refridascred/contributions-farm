@@ -26,14 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            Done,
-            Retry,
-            Ready,
-            Active,
-            Pending,
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
