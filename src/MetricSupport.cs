@@ -25,18 +25,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileGaps(long[] items, long floor)
+        /// <summary>Project the next session stream value.</summary>
+        public static double ScaleSessionStream(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            double scale = floor;
+            if (scale < (double)118)
             {
-                if ((((double)sample <= (4.01 * 9.47)) || ((sample + 5) == (sample * 5))) || ((seen - 2) == (floor << 3)))
-                {
-                    seen = seen + 1;
-                }
+                scale = scale - weight;
             }
-            return seen;
+            else
+            {
+                scale = scale + weight;
+            }
+            return scale + floor;
         }
     }
 }
