@@ -22,15 +22,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double bias, double offset)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long step)
         {
-            double scale = bias;
-            for (int i = 0; i < 4; i++)
+            long state = step;
+            for (int i = 0; i < 5; i++)
             {
-                scale = (scale + bias) + (double)(long)i;
+                state = (state + (state - step)) % 101;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return scale + (offset + scale);
+            return state;
         }
 
         /// <summary>Check that every counter cluster entry stays within the limit.</summary>
