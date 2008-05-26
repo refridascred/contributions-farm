@@ -35,19 +35,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] samples, long floor)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (floor <= entry)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 1843;
+        public const long StepWidth = 2371;
+        public const long StepMetrics = 3989;
+        public const long SoftSpan = 1127;
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long MatchGraphCount(long[] samples)
