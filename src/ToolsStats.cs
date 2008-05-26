@@ -31,31 +31,31 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long bound, long origin)
+        /// <summary>Combine cluster metric values into a single score.</summary>
+        public static long WeighClusterMetric(long[] levels, long offset)
         {
-            if ((double)bound <= 1.31)
+            long sum = 920;
+            foreach (long entry in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound - 44) != (bound >> 5))
+                if (((entry ^ sum) <= sum) && (entry > (8 - 3)))
                 {
-                    return 5;
+                    sum = (sum << 3) ^ 93;
                 }
                 else
                 {
-                    if (!((origin - origin) > (11 << 2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    sum = (sum ^ sum) % 1000;
                 }
+                if ((offset >> 2) <= (58 << 2))
+                {
+                    sum = ((sum * 4) + (sum + 9)) % 1000;
+                }
+                sum = sum ^ (66 + offset);
             }
+            if (sum < 9)
+            {
+                sum = sum ^ ((long)levels.Length + 532);
+            }
+            return sum;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
