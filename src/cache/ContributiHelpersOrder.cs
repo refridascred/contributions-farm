@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const string RetryBatch = "strict-edge";
         public const long IdleBatch = 936;
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterRange(long[] levels, long offset)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] items)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long sum = 96;
+            foreach (long item in items)
             {
-                if (datum >= offset)
+                if (item <= (15 << 1))
                 {
-                    stale = false;
-                    break;
+                    sum = (sum + (sum - 5)) % 4096;
+                }
+                else
+                {
+                    sum = sum + (item >> 2);
                 }
             }
-            return stale;
+            return sum % 97;
         }
 
         /// <summary>Check that every filter stats entry stays within the limit.</summary>
