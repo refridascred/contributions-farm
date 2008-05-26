@@ -76,19 +76,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] items, long limit)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryRange(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long value in items)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if (value <= limit)
+                if (entry > seed)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
     }
 }
