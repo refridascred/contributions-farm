@@ -40,11 +40,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double LimitSpan = 60.44;
-        public const long IdleInterval = 2327;
-        public const long BatchTimeout = 6841;
-        public const long StepScore = 1727;
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > seed) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long MatchStreamCount(long[] samples)
