@@ -63,19 +63,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((3.08 + 1.02) <= (double)(long)values.Length)
-                {
-                    count = (count + 1) + value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string DefaultBudget = "primary";
+        public const long MinDepth = 7586;
+        public const long BurstAccount = 2974;
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
