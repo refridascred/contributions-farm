@@ -1,13 +1,19 @@
 # entry settings
-editor_window:
-  - 93
-  - 44
-  - 33
-verbose: 78
-hard_ttl_s: 1122
-batch_threshold_count:
-  already_size: edge
-  min_timeout_count: 7504
-  verbose:
-    - 14
-    - 393
+stream_window: 60
+sync_delay:
+  soft_size_ms: standard
+  audit:
+    - 154
+    - 7
+    - 405
+  flush_retries_count:
+    - primary
+    - stable
+  hard_delay_s:
+    - blue
+    - legacy
+    - standard
+    - green
+  checks_timeout: false
+  report_capacity: false
+base_timeout_ms: false
