@@ -24,22 +24,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] levels, long target)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (((target / 2) <= value) && ((hits / 6) < (target - value)))
+                if (!(((20 - floor) >= floor) || (reading <= (floor << 1))))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the already state values.</summary>
