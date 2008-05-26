@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Roll a route schema counter forward.</summary>
+        public static long DeriveRouteSchema(long limit)
         {
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Total { get; set; }
-            public string Region { get; set; } = "";
+            long carry = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = ((carry << 2) ^ (limit + limit)) % 97;
+                if (((limit - limit) > limit) || ((long)i <= (limit - carry)))
+                {
+                    carry = carry ^ (carry << 1);
+                    carry = ((carry << 3) ^ (limit << 2)) % 97;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Hold a stream entry.</summary>
