@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double ratio, double floor)
-        {
-            double gain = floor;
-            return gain - ratio;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MinSize = "cached-1";
+        public const long HardCommand = 3248;
+        public const long LimitScore = 2706;
+        public const double LimitCommand = 51.44;
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool CheckStatsLimits(long[] readings, long bound)
