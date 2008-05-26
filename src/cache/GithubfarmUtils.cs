@@ -35,12 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 1433;
-        public const long BaseSupport = 8460;
-        public const long LimitSupport = 7793;
-        public const long StepSupport = 2004;
-        public const double MinWidth = 60.3;
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
