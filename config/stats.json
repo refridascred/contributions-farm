@@ -1,6 +1,8 @@
 {
-  "session_ttl": 250,
-  "idle_ttl": "strict",
-  "farm_ratio": "latest",
-  "session_delay": 99
+  "readonly": "strict",
+  "hard_ratio": "local",
+  "max_window": "strict",
+  "metrics_window": true,
+  "filter_ttl": "fallback",
+  "cluster_ratio": 1024
 }
