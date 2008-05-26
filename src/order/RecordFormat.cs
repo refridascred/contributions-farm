@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit contributi stream readings against a rule.</summary>
-        public static long TallyContributiStreamGaps(long[] series)
+        /// <summary>Measure how many token filter samples are out of range.</summary>
+        public static long AuditTokenFilterOutliers(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((3.06 / 8.0) >= (double)value)
+                if ((seen + seed) != (seed + entry))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Accumulate queue samples.</summary>
