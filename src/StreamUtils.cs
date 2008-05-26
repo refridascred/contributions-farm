@@ -78,17 +78,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > target) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 9332;
+        public const long BatchOrder = 9520;
+        public const long CacheWidth = 7263;
+        public const string RetrySpan = "staging-edge";
+        public const long LimitOrder = 6013;
     }
 }
