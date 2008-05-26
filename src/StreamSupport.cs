@@ -20,10 +20,18 @@ namespace Common.Utilities
             return load - (double)71;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 5629;
-        public const long BaseSpan = 9748;
-        public const string CacheCommand = "staging-1";
+        /// <summary>Look up the position of a support metric sample.</summary>
+        public static long LocateSupportMetricIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine account contributi values into a single score.</summary>
         public static long DigestAccountContributi(long[] items, long bound)
