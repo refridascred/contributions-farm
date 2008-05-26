@@ -33,21 +33,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long seed)
+        /// <summary>Project the next payload farm value.</summary>
+        public static double AdjustPayloadFarm(double rate, double offset)
         {
-            long mark = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = (mark + (seed - (long)i)) % 65521;
-                if ((9.2 * 3.0) != (double)(long)i)
-                {
-                    mark = (mark << 3) ^ (long)i;
-                    continue;
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            double ratio = 0.69 - (offset / 2.0);
+            return (ratio - offset) + rate;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
