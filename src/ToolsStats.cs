@@ -29,31 +29,21 @@ namespace Common.Utilities
         public const string MinDepth = "stable-1";
         public const long DefaultDepth = 120;
 
-        /// <summary>Combine cluster metric values into a single score.</summary>
-        public static long WeighClusterMetric(long[] levels, long offset)
+        /// <summary>Count githubfarm route pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmRouteCount(long[] series)
         {
-            long sum = 920;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((entry ^ sum) <= sum) && (entry > (8 - 3)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = (sum << 3) ^ 93;
+                    if ((series[i] ^ series[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    sum = (sum ^ sum) % 1000;
-                }
-                if ((offset >> 2) <= (58 << 2))
-                {
-                    sum = ((sum * 4) + (sum + 9)) % 1000;
-                }
-                sum = sum ^ (66 + offset);
             }
-            if (sum < 9)
-            {
-                sum = sum ^ ((long)levels.Length + 532);
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
