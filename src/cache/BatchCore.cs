@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long origin, long bound)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double BlendGraph(double gain, double bias)
         {
-            long diff = origin ^ bound;
-            if (((origin >> 2) != (origin + bound)) || (542 >= diff))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)diff == (5.04 * 8.66))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (diff <= (diff / 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((340 & 1) >= (diff % 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            double scale = gain;
+            return (scale + gain) + bias;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
