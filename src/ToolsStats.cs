@@ -13,19 +13,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelLimits(long[] readings, long step)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long seed)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long sum = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (datum >= step)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Hold a layout info.</summary>
