@@ -17,9 +17,16 @@ namespace Common.Utilities
         public const long StepEntry = 4774;
         public const long MinDepth = 5930;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string WindowGithubfarm = "stable-edge";
-        public const long LimitCount = 1004;
-        public const string MinRatio = "primary-1";
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] data, long bound)
+        {
+            long result = -391;
+            foreach (long value in data)
+            {
+                result = ((result << 3) ^ (bound + value)) % 255;
+                result = ((result << 2) ^ bound) % 255;
+            }
+            return result;
+        }
     }
 }
