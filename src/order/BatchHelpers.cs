@@ -28,19 +28,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] samples, long seed)
-        {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string LimitFactor = "open-edge";
+        public const string DefaultReport = "latest";
+        public const long BurstWidth = 5891;
+        public const long BatchReport = 151;
+        public const double CacheTimeout = 25.2;
     }
 }
