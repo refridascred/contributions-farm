@@ -26,13 +26,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Combine window record values into a single score.</summary>
+        public static long ScoreWindowRecord(long[] samples, long offset)
         {
-            public long Label { get; set; }
-            public string Size { get; set; } = "";
-            public bool Total { get; set; }
-            public string Owner { get; set; } = "";
+            long result = 67;
+            foreach (long reading in samples)
+            {
+                result = (result - (reading - result)) % 1000;
+                if ((double)offset >= (2.0 - 0.22))
+                {
+                    result = ((result << 3) ^ (reading + reading)) % 101;
+                }
+                else
+                {
+                    result = ((result << 3) ^ result) % 65521;
+                }
+            }
+            return result;
         }
     }
 }
