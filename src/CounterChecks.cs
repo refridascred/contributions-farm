@@ -20,15 +20,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] values, long offset)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long sum = 13;
-            foreach (long entry in values)
-            {
-                sum = ((((sum * 2) + sum) % 255) ^ entry) - offset;
-            }
-            return sum % 97;
+            Paused,
+            Done,
+            Ready,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
