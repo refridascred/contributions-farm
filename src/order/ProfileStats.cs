@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of contributi support readings.</summary>
-        public static long ScoreContributiSupport(long[] values, long seed)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long state = 775;
-            foreach (long cell in values)
-            {
-                if ((9.7 + 2.0) > (double)state)
-                {
-                    state = (state + (seed << 2)) - cell;
-                }
-            }
-            return state;
+            Queued,
+            Synced,
+            Failed,
+            Pending,
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
