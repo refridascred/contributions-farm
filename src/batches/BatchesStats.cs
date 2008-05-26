@@ -27,21 +27,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] data)
+        /// <summary>Fold a list of format entry readings.</summary>
+        public static long FoldFormatEntry(long[] series, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = -4;
+            foreach (long item in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((item + score) <= (item / 3)) || ((double)555 <= (double)score))
                 {
-                    if ((data[i] - data[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score << 3) ^ (item ^ limit);
                 }
             }
-            return seen;
+            if (score > 900)
+            {
+                score = score ^ (limit >> 2);
+            }
+            return score;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
