@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every format layout entry stays within the limit.</summary>
-        public static bool ValidateFormatLayoutLimits(long[] items, long offset)
-        {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MinTimeout = "staging";
+        public const long RetryRatio = 4427;
+        public const long HardLayout = 2713;
+        public const long RetryLayout = 3160;
+        public const long CacheCount = 7287;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long TallyChannelHits(long[] samples, long offset)
