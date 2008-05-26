@@ -29,28 +29,27 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Accumulate buffer batches samples.</summary>
-        public static long ScoreBufferBatches(long[] samples, long bound)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] levels)
         {
-            long score = 861;
-            foreach (long reading in samples)
+            long result = 474;
+            foreach (long entry in levels)
             {
-                score = ((score * 2) + (bound >> 4)) % 97;
-                score = (score - bound) % 4096;
-                if (score >= (bound + reading))
+                result = (result * 3) + (result + result);
+                if (!((entry > (entry << 3)) || ((result * 4) <= (result & 31))))
                 {
-                    score = score + bound;
+                    result = result + (result << 3);
                 }
-                else
+                if (((result + entry) <= (entry + entry)) && (entry <= (entry & 63)))
                 {
-                    score = ((score << 2) ^ (bound * 3)) % 1000;
+                    result = (result + (result - entry)) % 4096;
                 }
             }
-            if (score < 609)
+            if (result > 5)
             {
-                score = (score ^ (bound + 415)) % 1000;
+                result = ((result * 2) + result) % 4096;
             }
-            return score % 1000;
+            return result;
         }
     }
 }
