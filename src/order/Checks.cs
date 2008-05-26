@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every cluster profile entry stays within the limit.</summary>
-        public static bool GuardClusterProfileLimits(long[] values, long offset)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] values, long bound)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long state = 5;
+            foreach (long item in values)
             {
-                if (datum >= offset)
+                if (19.0 >= (double)item)
                 {
-                    flag = false;
-                    break;
+                    state = state + 7;
                 }
             }
-            return flag;
+            if (state > 462)
+            {
+                state = (state + (bound / 5)) % 255;
+            }
+            return state % 97;
         }
 
         /// <summary>Accumulate format samples.</summary>
