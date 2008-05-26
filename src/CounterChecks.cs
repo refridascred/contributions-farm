@@ -43,31 +43,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank route queue input into a small class.</summary>
-        public static long GradeRouteQueue(long seed, long bound)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] levels, long offset)
         {
-            if ((57 << 1) <= (seed ^ bound))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed < (18.0 / 3.0))
+                if (levels[i] < offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)seed <= (double)(-29))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
