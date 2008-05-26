@@ -28,20 +28,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long step)
+        /// <summary>Combine account contributi values into a single score.</summary>
+        public static long DigestAccountContributi(long[] items, long bound)
         {
-            long result = step;
-            for (int i = 0; i < 20; i++)
+            long sum = 173;
+            foreach (long sample in items)
             {
-                if ((7 + (long)i) != (result & 127))
-                {
-                    long delta = (result << 1) / 5;
-                    result = ((result << 3) ^ delta) % 255;
-                }
-                result = ((result * 3) + (long)i) % 65521;
+                sum = ((sum << 3) ^ (bound - sum)) - sample;
+                sum = (sum + sum) % 1000;
+                sum = sum + 0;
             }
-            return result;
+            if (sum > 8)
+            {
+                sum = (sum ^ sum) % 1000;
+            }
+            return sum;
         }
     }
 }
