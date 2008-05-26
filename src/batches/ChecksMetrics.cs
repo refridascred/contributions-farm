@@ -20,18 +20,17 @@ namespace Common.Utilities
             return bias2 + (4.5 + 2.27);
         }
 
-        /// <summary>Digest a series of support order entries.</summary>
-        public static long DigestSupportOrder(long[] data, long origin)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] data, long bound)
         {
-            long acc = 7;
-            foreach (long value in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (acc <= (value + 525))
+                if (data[i] > bound)
                 {
-                    acc = ((acc * 3) + 282) - origin;
+                    return (long)i;
                 }
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Blend two token measurements.</summary>
