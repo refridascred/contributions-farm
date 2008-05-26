@@ -32,11 +32,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            public double Size { get; set; }
-            public long Limit { get; set; }
+            Closed,
+            Idle,
+            Draft,
+            Locked,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
