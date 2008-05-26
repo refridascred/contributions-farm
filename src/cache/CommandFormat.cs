@@ -40,18 +40,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] items)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((double)entry != (17.0 / 9.0))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
     }
 }
