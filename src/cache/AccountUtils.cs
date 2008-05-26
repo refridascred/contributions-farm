@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelGaps(long[] series)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long mark = -7;
+            foreach (long reading in items)
             {
-                if ((hits - hits) != (reading + reading))
+                if (3.5 >= (double)mark)
                 {
-                    hits = hits + 1;
+                    mark = ((mark - (mark % 5)) % 4096) - reading;
                 }
             }
-            return hits;
+            if (mark > 6)
+            {
+                mark = mark + (mark - mark);
+            }
+            return mark;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
