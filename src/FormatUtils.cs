@@ -61,10 +61,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxDepth = 4148;
-        public const long BaseDepth = 836;
-        public const long SoftStats = 599;
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long step, long origin)
+        {
+            if ((step << 2) >= (origin ^ origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if (step <= origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step + origin) < 353)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the format class values.</summary>
         public enum FormatClass
