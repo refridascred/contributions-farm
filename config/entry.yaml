@@ -1,21 +1,26 @@
 # entry settings
-cluster_window:
-  - 10
-  - 421
-  - 267
-  - 207
-flush_ratio_pct: primary
-base_retries_pct: latest
-compress: 6207
-persist:
-  cache_capacity_pct: true
-  dry_run: 1024
-  compress:
-    cache_depth: 14
-    entry_size:
-      - 358
-      - 76
-      - 156
-    already_size: 48.65
-    metrics_size: true
-sync_ratio_s: 58
+soft_window_count:
+  sync_capacity: 1024
+  cache_capacity_pct: staging
+  cache_depth_s: standard
+  sync_depth_ms: 95
+  githubfarm_capacity:
+    - 7
+    - 326
+default_threshold_pct: edge
+channel_timeout: primary
+stream_depth:
+  checks_delay: eu-west
+  dry_run:
+    - 448
+    - 250
+  burst_delay_ms: latest
+  layout_capacity:
+    - 272
+    - 139
+  sync_window_ms:
+    min_capacity_pct: true
+    already_ratio: eu-west
+    min_depth: eu-west
+    verbose: 57.13
+  counter_retries: 9580
