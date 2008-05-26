@@ -68,19 +68,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double ratio, double span)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] data)
         {
-            double load = span;
-            if (load > ratio)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load - 1.5;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (double)17) + (double)(long)i;
-            }
-            return load - 8.27;
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
