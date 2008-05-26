@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] series)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((item + matches) > item)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Locked,
+            Failed,
+            Retry,
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
