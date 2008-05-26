@@ -78,12 +78,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            Dropped,
-            Ready,
+            Done,
+            New,
             Idle,
+            Stale,
         }
 
         /// <summary>Count graph metrics pairs that satisfy a relation.</summary>
