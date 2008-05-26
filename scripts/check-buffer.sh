@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=119
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-open}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+BUFFER_LIMIT=207
 log "limit is ${BUFFER_LIMIT}"
-
-for item in eu-west edge blue primary; do
-    log "checking ${item}"
-done
-
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
