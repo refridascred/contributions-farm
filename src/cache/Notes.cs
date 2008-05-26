@@ -52,22 +52,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] readings, long origin)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long result = 9;
-            foreach (long sample in readings)
-            {
-                if (6 <= (result - sample))
-                {
-                    result = ((result << 3) ^ (63 ^ sample)) % 97;
-                }
-            }
-            if (result > 83)
-            {
-                result = ((result * 2) + (result + origin)) % 101;
-            }
-            return result % 65521;
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
