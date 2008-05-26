@@ -12,19 +12,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Blend two report notes measurements.</summary>
-        public static double ProjectReportNotes(double bias, double floor)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryHits(long[] data, long bound)
         {
-            double gain = (double)(578 << 3);
-            if (gain < 9.3)
+            long matches = 0;
+            foreach (long value in data)
             {
-                gain = (gain + (floor / 9.0)) - bias;
+                if (!((898 * 3) == (value * 5)))
+                {
+                    matches = (matches + 2) + bound;
+                }
             }
-            else
-            {
-                gain = gain - 7.0;
-            }
-            return gain + (double)359;
+            return matches;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
