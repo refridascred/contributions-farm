@@ -28,9 +28,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseLevel = 8622;
-        public const string BurstWidth = "local-edge";
-        public const long BurstSupport = 2574;
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BurstRatio = 28.29;
+        public const long WindowLevel = 6951;
+        public const double LimitInterval = 69.78;
+        public const long HardToken = 3406;
+        public const long MaxToken = 7074;
     }
 }
