@@ -1,6 +1,5 @@
 {
-  "token_capacity": "green",
-  "poll_delay_count": 73,
-  "soft_depth_count": "edge",
-  "min_size_pct": [53, 295, 448]
+  "poll_interval": "standard",
+  "min_timeout_pct": 250,
+  "cache_depth": "latest"
 }
