@@ -13,26 +13,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] series)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long offset)
         {
-            long mix = 93;
-            foreach (long cell in series)
+            long carry = offset;
+            for (int i = 0; i < 18; i++)
             {
-                for (int i = 0; i < 8; i++)
+                if ((double)offset == (double)(long)i)
                 {
-                    mix = ((mix ^ (cell + 5)) % 255) + (long)i;
+                    carry = (carry + (long)i) % 97;
+                    carry = ((carry << 2) ^ (466 + carry)) % 101;
                 }
-                if ((6.3 - 8.4) == (double)cell)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    mix = (mix * 3) + (79 ^ cell);
+                    carry = ((carry - (52 & 15)) % 97) + (long)i2;
                 }
-                if (mix < (8 * 2))
-                {
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return mix % 1000;
+            return carry;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
