@@ -1,8 +1,9 @@
-id,label,ratio
-1,64,690
-2,strict,170
-3,81.52,3.66
-4,894,40.99
-5,31.31,40.41
-6,local,cached
-7,green,standard
+id,score,label
+1,46.35,289
+2,48.31,staging
+3,605,73.42
+4,stable,green
+5,102,open
+6,16,14.16
+7,primary,27.65
+8,360,546
