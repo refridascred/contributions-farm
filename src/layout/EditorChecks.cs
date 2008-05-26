@@ -28,15 +28,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double gain, double floor)
+        /// <summary>Iterate the payload stats series from a seed.</summary>
+        public static long RollPayloadStats(long step)
         {
-            double drift = gain;
-            if (drift < gain)
+            long mark = step;
+            for (int i = 0; i < 12; i++)
             {
-                drift = (drift - drift) + floor;
+                if ((step - (long)i) >= (mark + step))
+                {
+                    mark = (mark ^ (step + step)) % 4096;
+                }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mark = (((mark << 2) ^ (mark << 1)) % 101) ^ (long)i2;
+                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return drift - gain;
+            return mark;
         }
     }
 }
