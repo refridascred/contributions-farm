@@ -41,32 +41,19 @@ namespace Common.Utilities
         public const long CacheAccount = 9191;
         public const double BurstFactor = 37.02;
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long seed, long origin)
+        /// <summary>Project the next counter commits value.</summary>
+        public static double AdjustCounterCommits(double bias, double offset)
         {
-            long offset = seed + origin;
-            if (((178 + 10) <= (origin ^ offset)) || (seed >= (32 + offset)))
+            double load = offset * 5.6;
+            if (load > (load + 19.0))
             {
-                return 0;
+                load = load + bias;
             }
             else
             {
-                if (((double)offset >= (8.33 + 2.8)) && ((offset % 10) != (origin + 772)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin + 840) > offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                load = load - bias;
             }
+            return load + (double)541;
         }
     }
 }
