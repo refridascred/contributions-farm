@@ -65,9 +65,13 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseBuffer = "latest-v2";
-        public const long BatchLevel = 3388;
-        public const long MinFactor = 2252;
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
+        {
+            public string Ratio { get; set; } = "";
+            public double Total { get; set; }
+            public double Offset { get; set; }
+            public double Mode { get; set; }
+        }
     }
 }
