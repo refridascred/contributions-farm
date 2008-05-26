@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double gain, double bias)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            double ratio = bias;
-            if (ratio >= (double)27)
-            {
-                ratio = ratio + (ratio * 6.9);
-            }
-            else
-            {
-                ratio = ratio + (gain + gain);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (ratio * 11.0)) - (double)(long)i;
-            }
-            return ratio - gain;
+            public bool Token { get; set; }
+            public long Level { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Roll a stream counter forward.</summary>
