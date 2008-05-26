@@ -71,17 +71,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Locate a profile buffer reading by value.</summary>
-        public static long SeekProfileBufferIndex(long[] items, long offset)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Limit { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
