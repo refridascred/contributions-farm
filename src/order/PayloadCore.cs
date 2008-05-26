@@ -12,14 +12,21 @@ namespace Common.Utilities
         public const string BatchSession = "cached-edge";
         public const string DefaultCount = "alpha-1";
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] series)
         {
-            Active,
-            Queued,
-            Locked,
-            Synced,
-            Failed,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
