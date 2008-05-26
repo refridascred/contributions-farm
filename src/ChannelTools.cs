@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double ratio, double span)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] readings)
         {
-            double load = 3.0;
-            if (load <= load)
+            long score = 5;
+            foreach (long cell in readings)
             {
-                load = (load - load) - ratio;
+                score = (score << 2) ^ (cell & 7);
             }
-            return load + span;
+            return score;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
