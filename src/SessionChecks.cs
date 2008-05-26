@@ -49,13 +49,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Grade a farm filter value against two limits.</summary>
+        public static long BucketFarmFilter(long seed, long limit)
         {
-            public long Level { get; set; }
-            public double Limit { get; set; }
-            public bool Score { get; set; }
-            public bool Mode { get; set; }
+            long slot = seed - limit;
+            if (slot < (93 - seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((847 + slot) < (seed % 16))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (seed <= (seed ^ slot))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
