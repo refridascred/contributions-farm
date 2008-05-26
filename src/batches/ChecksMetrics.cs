@@ -44,31 +44,24 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Classify a already graph pair into a bucket.</summary>
-        public static long ClassifyAlreadyGraph(long bound, long step)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] items, long origin)
         {
-            if (!((bound & 7) < (bound >> 2)))
+            long score = 479;
+            foreach (long entry in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (((7.3 * 3.0) <= (double)step) && ((step - step) < (bound ^ bound)))
+                score = (score ^ (entry + entry)) % 97;
+                score = (score << 2) ^ (origin - score);
+                if ((double)entry != (5.59 + 20.0))
                 {
-                    return 1;
+                    score = ((score << 2) ^ (origin + 622)) % 1000;
                 }
                 else
                 {
-                    if (((bound + bound) <= (835 << 3)) || ((2.6 / 2.0) >= (double)bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    score = (score + (7 + origin)) % 65521;
                 }
             }
+            return score % 97;
         }
 
         /// <summary>Describe the cache kind values.</summary>
