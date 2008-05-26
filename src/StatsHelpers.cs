@@ -73,18 +73,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor record readings against a rule.</summary>
-        public static long TallyEditorRecordHits(long[] data, long step)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long sum = 46;
+            foreach (long reading in samples)
             {
-                if (!(519 > ((long)data.Length - step)))
+                sum = ((sum + sum) % 4096) ^ reading;
+                if ((floor > (floor - sum)) && (sum < (-611)))
                 {
-                    seen = (seen + 1) ^ item;
+                    break;
                 }
             }
-            return seen;
+            return sum % 1000;
         }
     }
 }
