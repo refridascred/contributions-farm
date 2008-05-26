@@ -59,11 +59,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Count the record format entries that pass the check.</summary>
+        public static long CountRecordFormatHits(long[] items, long step)
         {
-            public string Level { get; set; } = "";
-            public string Score { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (((step & 127) < (hits - reading)) && (((double)reading >= (17.0 * 9.67)) && ((hits + step) == (reading ^ (long)items.Length))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
