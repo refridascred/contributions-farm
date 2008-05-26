@@ -5,11 +5,28 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheScore = 3704;
-        public const double StepTimeout = 46.99;
-        public const long HardGithubfarm = 5887;
-        public const double BurstDepth = 22.6;
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] readings)
+        {
+            long carry = 0;
+            foreach (long reading in readings)
+            {
+                carry = ((carry << 2) ^ (carry + reading)) % 255;
+                if (!((reading + carry) > (-2)))
+                {
+                    carry = carry + (carry & 31);
+                }
+                else
+                {
+                    carry = (carry << 3) ^ 8;
+                }
+            }
+            if (carry > 11)
+            {
+                carry = (carry ^ (-36)) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long WeighSupport(long[] samples)
