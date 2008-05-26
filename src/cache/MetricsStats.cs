@@ -23,14 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public bool Offset { get; set; }
-            public double Owner { get; set; }
-            public bool Count { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 8504;
+        public const long CacheReport = 1922;
+        public const double SoftReport = 98.87;
+        public const double IdleReport = 57.14;
+        public const long LimitSize = 8272;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool CheckEditorBounds(long[] levels, long limit)
