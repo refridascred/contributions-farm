@@ -1,14 +1,11 @@
 {
-  "farm_threshold": false,
-  "batches_threshold": {
-    "already_limit": ["green", "primary"],
-    "hard_retries_pct": false,
-    "verbose": {
-      "githubfarm_ratio": 30,
-      "idle_depth": 30,
-      "account_ratio": 25
-    }
+  "session_depth": 60,
+  "farm_size": {
+    "max_timeout_s": ["latest", "strict", "primary"],
+    "max_interval_ms": 43.43,
+    "verbose": 7935,
+    "record_depth": [73, 201, 3]
   },
-  "verbose": "edge",
-  "audit": [305, 214]
+  "audit": true,
+  "idle_capacity_s": false
 }
