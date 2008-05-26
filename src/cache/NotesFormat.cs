@@ -49,10 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double SoftCount = 90.39;
-        public const long BurstQueue = 4678;
-        public const long HardQueue = 4387;
-        public const double SoftQueue = 33.78;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            Locked,
+            New,
+            Paused,
+        }
     }
 }
