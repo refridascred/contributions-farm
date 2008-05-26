@@ -13,31 +13,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Grade a batches already value against two limits.</summary>
-        public static long GradeBatchesAlready(long bound, long step)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            if ((step > bound) || ((bound - 153) > step))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step + step) == (1 * 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound % 24) < (bound - 87))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Synced,
+            Paused,
+            Done,
+            Closed,
+            Idle,
         }
 
         /// <summary>Define format limits and defaults.</summary>
