@@ -24,22 +24,36 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a order report pair into a bucket.</summary>
-        public static long ClassifyOrderReport(long seed, long offset)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long offset, long bound)
         {
-            if (offset > (offset ^ seed))
+            if (((double)bound < (double)offset) || ((bound - bound) < (585 * 4)))
             {
                 return 4;
             }
             else
             {
-                if ((double)offset < (1.42 + 1.2))
+                if ((double)9 >= (double)offset)
                 {
-                    return 0;
+                    return 3;
                 }
                 else
                 {
-                    return 8;
+                    if ((offset ^ 71) > (bound >> 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (offset >= (57 >> 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
