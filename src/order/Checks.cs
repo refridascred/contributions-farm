@@ -67,22 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionMatches(long[] data)
+        /// <summary>Measure how many contributi support samples are out of range.</summary>
+        public static long CountContributiSupportHits(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((sample + sample) >= matches)
+                if (origin > reading)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a graph record.</summary>
