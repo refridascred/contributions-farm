@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandHits(long[] levels)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)matches == (double)datum)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Blend two command measurements.</summary>
