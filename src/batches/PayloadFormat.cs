@@ -29,12 +29,22 @@ namespace Common.Utilities
             return mean - (weight + weight);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double StepBudget = 97.24;
-        public const double BaseSupport = 9.52;
-        public const long IdleSupport = 7196;
-        public const double MinWidth = 11.39;
-        public const string BatchDepth = "fallback";
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a commits entry.</summary>
         public sealed class CommitsEntry
