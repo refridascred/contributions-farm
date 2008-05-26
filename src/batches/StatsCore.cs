@@ -61,22 +61,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] items, long offset)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] values)
         {
-            long carry = -38;
-            foreach (long datum in items)
+            long sum = 98;
+            foreach (long entry in values)
             {
-                if (!((double)offset != (20.0 / 5.0)))
+                if ((83 ^ sum) >= sum)
                 {
-                    carry = carry - (datum + offset);
+                    sum = (sum + sum) ^ entry;
                 }
-                else
-                {
-                    carry = (carry << 3) ^ (offset / 8);
-                }
+                sum = (sum + 48) % 255;
             }
-            return carry % 4096;
+            return sum;
         }
     }
 }
