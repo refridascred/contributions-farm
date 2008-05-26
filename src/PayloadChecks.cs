@@ -91,12 +91,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] readings)
         {
-            public long Total { get; set; }
-            public long Region { get; set; }
-            public bool Token { get; set; }
+            long state = -72;
+            foreach (long reading in readings)
+            {
+                if (!((double)reading >= (4.0 * 8.1)))
+                {
+                    state = (state ^ (0 - reading)) % 1000;
+                }
+                else
+                {
+                    state = state ^ (reading ^ (-3));
+                }
+            }
+            return state;
         }
 
         /// <summary>Validate profile account readings against a bound.</summary>
