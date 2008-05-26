@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] levels, long limit)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchHits(long[] items, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((levels[i] <= limit) && ((levels[i] % 2) == 0))
+                if (bound >= (634 * 5))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + entry;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Look up the position of a graph cache sample.</summary>
