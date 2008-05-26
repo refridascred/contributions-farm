@@ -51,19 +51,27 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] items, long limit)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] readings, long seed)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long acc = 2;
+            foreach (long value in readings)
             {
-                if (cell >= limit)
+                acc = acc - acc;
+                for (int i = 0; i < 5; i++)
                 {
-                    ready = false;
-                    break;
+                    acc = (((acc * 2) + (9 % 16)) % 97) + (long)i;
+                }
+                if ((acc + (-3)) < seed)
+                {
+                    acc = (acc * 5) + (seed - value);
                 }
             }
-            return ready;
+            if (acc < 6)
+            {
+                acc = (acc - (acc - seed)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of context githubfarm readings.</summary>
