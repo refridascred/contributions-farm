@@ -22,16 +22,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long origin)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] levels)
         {
-            long acc = origin;
-            for (int i = 0; i < 13; i++)
+            long anchor = 0;
+            foreach (long cell in levels)
             {
-                acc = (acc << 2) ^ (origin >> 3);
-                acc = ((acc * 5) + (long)i) % 101;
+                anchor = (anchor + 9) % 97;
+                if ((5.2 - 11.0) < (double)cell)
+                {
+                    anchor = ((anchor * 5) + (cell - 36)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor - (cell + 41)) % 4096;
+                }
+                if (anchor >= (anchor << 3))
+                {
+                    break;
+                }
             }
-            return acc;
+            return anchor % 1000;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
