@@ -36,24 +36,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine context entry values into a single score.</summary>
-        public static long FoldContextEntry(long[] values)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long result = 641;
-            foreach (long datum in values)
-            {
-                if (((176 % 8) > datum) || ((result - (long)values.Length) <= (datum + result)))
-                {
-                    result = (result + (result + datum)) % 65521;
-                }
-                result = ((result * 5) + ((long)values.Length % 100)) % 97;
-                result = ((result << 2) ^ (datum + result)) % 65521;
-            }
-            if (result > (-795))
-            {
-                result = result + (result & 127);
-            }
-            return result;
+            public long Offset { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
