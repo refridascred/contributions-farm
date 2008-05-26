@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryInterval = 8360;
-        public const long DefaultScore = 8830;
-        public const long WindowRoute = 3492;
-        public const long LimitRoute = 9436;
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
+        {
+            Locked,
+            Synced,
+            New,
+            Done,
+        }
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long ClassifyAccount(long bound, long origin)
