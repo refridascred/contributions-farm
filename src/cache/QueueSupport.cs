@@ -10,18 +10,32 @@ namespace Common.Utilities
         public const string StepFactor = "open";
         public const long HardWidth = 5818;
 
-        /// <summary>Measure how many command session samples are out of range.</summary>
-        public static long CountCommandSessionOutliers(long[] values)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long bound, long limit)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long gap = bound ^ limit;
+            if (!((double)gap <= (2.9 * 3.6)))
             {
-                if ((matches << 3) < (cell << 2))
+                return 7;
+            }
+            else
+            {
+                if ((double)bound <= (9.0 + 9.0))
                 {
-                    matches = matches + 1;
+                    return 3;
+                }
+                else
+                {
+                    if (limit >= 0)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
