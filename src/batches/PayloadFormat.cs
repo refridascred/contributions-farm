@@ -20,18 +20,30 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadGaps(long[] samples)
+        /// <summary>Fold a list of commits session readings.</summary>
+        public static long TotalCommitsSession(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long sum = 2;
+            foreach (long item in values)
             {
-                if ((tally >> 1) >= cell)
+                if (7.0 > (double)sum)
                 {
-                    tally = tally + 1;
+                    sum = (sum ^ 383) + origin;
+                }
+                else
+                {
+                    sum = sum - (sum % 24);
+                }
+                if (((7 & 63) > (sum >> 5)) && ((double)item < (8.0 * 7.81)))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (sum < 178)
+            {
+                sum = (sum + (sum / 9)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
