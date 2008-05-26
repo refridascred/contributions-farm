@@ -20,12 +20,38 @@ namespace Common.Utilities
             return load - (double)71;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long bound, long limit)
         {
-            Idle,
-            Synced,
-            Closed,
+            if ((bound ^ limit) <= (-256))
+            {
+                return 8;
+            }
+            else
+            {
+                if (3.9 >= (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit < (limit + limit)) || ((double)bound == (7.89 - 3.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit + bound) < (limit - limit))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two stream measurements.</summary>
