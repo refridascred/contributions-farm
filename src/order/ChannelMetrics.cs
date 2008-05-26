@@ -28,38 +28,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long limit, long origin)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] values, long offset)
         {
-            if ((limit & 7) > origin)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)limit <= (double)origin))
+                if ((values[i] <= offset) && ((values[i] % 3) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (limit > (76 / 9))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!(limit <= (limit + limit)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a cache options.</summary>
