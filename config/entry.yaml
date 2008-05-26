@@ -1,25 +1,9 @@
 # entry settings
-cache_interval_count:
-  dry_run:
-    audit:
-      - 47
-      - 12
-      - 97
-      - 437
-    warm_limit_ms: 3605
-    retry_depth_pct: 21.51
-    notes_ratio:
-      - stable
-      - fallback
-  sync_timeout_count: eu-west
-  record_delay: stable
-  cache_size:
-    batch_threshold_s: false
-    warm_depth_pct: 60.59
-    filter_delay: true
-    support_limit: 61.51
-    command_interval: true
-    cache_capacity_pct: 81.18
-  window_delay: 1024
-batches_window: 250
-max_size_count: latest
+burst_delay: 250
+batch_threshold: 92
+persist:
+  - staging
+  - open
+retry_window: fallback
+cache_interval_pct: 2555
+dry_run: 100
