@@ -1,5 +1,7 @@
 # githubfarm settings
-commits_ratio: 38.47
-audit: legacy
-strict: strict
-default_ratio_s: fallback
+sync_capacity_ms: 500
+max_delay_pct: 69.29
+idle_delay_ms:
+  - legacy
+  - fallback
+  - strict
