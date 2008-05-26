@@ -40,18 +40,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportMatches(long[] values, long bound)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((double)bound >= (0.99 * 0.54))
-                {
-                    tally = (tally + 1) - item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 9453;
+        public const string LimitReport = "primary-v2";
+        public const long MaxScore = 6381;
     }
 }
