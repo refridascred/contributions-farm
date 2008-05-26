@@ -37,18 +37,13 @@ namespace Common.Utilities
             return ratio + (13.0 / 6.0);
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordMatches(long[] data)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (!(((double)item >= (5.7 / 8.0)) || ((item << 2) < (989 % 12))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Idle,
+            Active,
+            Closed,
+            Paused,
         }
     }
 }
