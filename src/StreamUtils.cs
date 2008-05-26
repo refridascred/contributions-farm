@@ -70,18 +70,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamGaps(long[] series, long bound)
+        /// <summary>Measure how many stream editor samples are out of range.</summary>
+        public static long TallyStreamEditorGaps(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((hits ^ hits) == (cell / 6))
+                if ((matches - offset) <= (sample % 2))
                 {
-                    hits = (hits + 1) - bound;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
