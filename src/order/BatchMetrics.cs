@@ -42,17 +42,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] levels, long limit)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (levels[i] >= limit)
+                mix = (mix * 2) + mix;
+                long prev = (mix + mix) + (step & 31);
+                if (!((prev & 7) <= (prev / 4)))
                 {
-                    return (long)i;
+                    mix = (mix - (prev & 15)) % 1000;
                 }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a tools options.</summary>
