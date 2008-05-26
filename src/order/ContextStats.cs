@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BurstDepth = 87.2;
-        public const string LimitTimeout = "fallback-v2";
-        public const long IdleCount = 2585;
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
+        {
+            Synced,
+            Ready,
+            New,
+            Paused,
+        }
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
