@@ -36,11 +36,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Project the next payload farm value.</summary>
-        public static double AdjustPayloadFarm(double rate, double offset)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            double ratio = 0.69 - (offset / 2.0);
-            return (ratio - offset) + rate;
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
+            public double Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
