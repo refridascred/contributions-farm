@@ -28,13 +28,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] items, long limit)
         {
-            public double Label { get; set; }
-            public bool Weight { get; set; }
-            public bool Mode { get; set; }
-            public bool Limit { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (((limit * 3) > cell) || ((double)cell <= 0.3))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
