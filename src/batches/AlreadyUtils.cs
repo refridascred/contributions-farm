@@ -20,14 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] samples, long step)
         {
-            Pending,
-            Active,
-            Failed,
-            Retry,
-            Locked,
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
