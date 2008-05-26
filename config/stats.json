@@ -1,19 +1,7 @@
 {
-  "graph_ttl": "eu-west",
-  "burst_interval_s": {
-    "sync_interval_ms": {
-      "strict": false,
-      "flush_threshold_count": 3754,
-      "metric_timeout": "legacy",
-      "hard_delay": 20,
-      "enabled": false
-    },
-    "warm_delay_ms": 85,
-    "flush_ttl_s": 89.09,
-    "soft_depth_count": 6153,
-    "stream_window": 64.39
-  },
-  "poll_limit_s": 30,
-  "burst_limit": false,
-  "flush_retries_s": [137, 466]
+  "soft_size": 11.27,
+  "idle_timeout_s": [382, 441, 13],
+  "persist": "standard",
+  "hard_depth_s": 39,
+  "hard_depth_pct": 51.13
 }
