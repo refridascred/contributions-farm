@@ -23,15 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stream token entries that pass the check.</summary>
-        public static long TallyStreamTokenHits(long[] data, long bound)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] series)
         {
             long tally = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)cell >= 17.0)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 2) + bound;
+                    if ((series[i] + series[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
