@@ -40,22 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmHits(long[] data)
+        /// <summary>Compare every pair of token commits readings.</summary>
+        public static long MatchTokenCommitsCount(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((13.0 - 9.0) < (0.4 / 3.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 3) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] + items[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
