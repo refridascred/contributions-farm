@@ -12,22 +12,11 @@ namespace Common.Utilities
         public const double MaxCounter = 66.23;
         public const string BurstCounter = "staging-edge";
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] values)
+        /// <summary>Project the next graph value.</summary>
+        public static double SmoothGraph(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (7.92 <= (double)matches)
-                {
-                    matches = (matches + 2) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double mean = (double)(8 + 690);
+            return ((mean - mean) + rate) + floor;
         }
 
         /// <summary>Digest a series of stats record entries.</summary>
