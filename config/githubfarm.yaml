@@ -1,14 +1,7 @@
 # githubfarm settings
-max_depth:
-  - 431
-  - 278
-  - 105
-  - 177
-strict: false
-farm_ratio: 7763
-commits_depth: 3475
-audit:
-  - 233
-  - 307
-  - 207
-min_retries: 56.43
+readonly: stable
+sync_interval_pct: 20
+commits_size: 1024
+checks_interval: 3515
+min_interval_ms: true
+stream_depth: 15
