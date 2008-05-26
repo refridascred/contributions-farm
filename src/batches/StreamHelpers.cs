@@ -61,19 +61,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] items, long seed)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorGaps(long[] levels, long origin)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (entry != seed)
+                if (!((origin * 3) < item))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
