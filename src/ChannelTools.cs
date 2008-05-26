@@ -38,18 +38,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferOutliers(long[] readings, long bound)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterGaps(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((entry + entry) <= seen)
+                if ((double)matches > (double)matches)
                 {
-                    seen = (seen + 1) - bound;
+                    matches = (matches + 1) ^ cell;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
