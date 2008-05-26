@@ -23,32 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long floor, long target)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long floor)
         {
-            long prev = floor + target;
-            if (4 < (3 + target))
+            long anchor = floor;
+            for (int i = 0; i < 10; i++)
             {
-                return 4;
+                long lane = (floor & 127) + anchor;
+                anchor = anchor + lane;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((3.6 / 3.0) >= (double)floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (prev > target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Count the buffer graph entries that pass the check.</summary>
