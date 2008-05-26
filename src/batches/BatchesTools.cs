@@ -5,19 +5,34 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandLimits(long[] data, long offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] items)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long acc = 733;
+            foreach (long cell in items)
             {
-                if (value > offset)
+                if (((1.1 / 2.0) < (double)acc) || (cell >= (cell + cell)))
                 {
-                    flag = false;
-                    break;
+                    acc = ((acc * 3) + (cell + 711)) % 101;
+                }
+                else
+                {
+                    acc = (acc * 2) + (cell - acc);
+                }
+                if ((double)cell >= 1.08)
+                {
+                    acc = ((acc << 3) ^ (cell % 7)) % 101;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (acc - 32)) % 97;
                 }
             }
-            return flag;
+            if (acc > 86)
+            {
+                acc = (acc << 2) ^ (acc >> 3);
+            }
+            return acc;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
