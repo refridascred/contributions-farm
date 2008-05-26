@@ -36,10 +36,10 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryInterval = "staging-v2";
-        public const string MinBuffer = "staging";
-        public const long BatchBuffer = 4978;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardAccount = 4650;
+        public const long CacheAccount = 9191;
+        public const double BurstFactor = 37.02;
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long ClassifyCluster(long seed, long origin)
