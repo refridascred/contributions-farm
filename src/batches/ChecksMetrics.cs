@@ -10,10 +10,11 @@ namespace Common.Utilities
         public const double MaxStats = 30.5;
         public const long SoftLevel = 199;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowSize = 7286;
-        public const string StepLevel = "legacy-edge";
-        public const long BurstBudget = 1763;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BatchPayload = 73.87;
+        public const long MinSpan = 823;
+        public const long RetryBudget = 2100;
+        public const long CachePayload = 4972;
 
         /// <summary>Scale a command figure with a bias.</summary>
         public static double ProjectCommand(double gain, double bias)
