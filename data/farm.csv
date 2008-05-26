@@ -1,6 +1,10 @@
-id,active,token,region,label
-1,standard,18.33,latest,latest
-2,legacy,905,local,831
-3,open,primary,fallback,stable
-4,legacy,11.98,27.1,930
-5,97.74,62.33,573,strict
+id,region,ratio
+1,412,73.03
+2,58.83,324
+3,strict,cached
+4,0,89.88
+5,65.89,edge
+6,98.82,98.88
+7,cached,939
+8,26.17,stable
+9,60.59,cached
