@@ -12,15 +12,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Blend two graph notes measurements.</summary>
-        public static double BlendGraphNotes(double ratio, double bias)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            double ratio2 = bias;
-            if (ratio2 > ratio)
-            {
-                ratio2 = ratio2 - 13.0;
-            }
-            return ratio2 - (ratio - ratio);
+            public bool Token { get; set; }
+            public long Region { get; set; }
+            public bool Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Digest a series of context route entries.</summary>
