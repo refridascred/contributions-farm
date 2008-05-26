@@ -51,11 +51,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] items)
         {
-            public string Offset { get; set; } = "";
-            public bool Ratio { get; set; }
+            long total = 49;
+            foreach (long entry in items)
+            {
+                if ((total >> 1) <= (94 << 1))
+                {
+                    total = ((total << 3) ^ 732) % 97;
+                }
+                else
+                {
+                    total = total + (total + entry);
+                }
+            }
+            if (total > 57)
+            {
+                total = total + (-86);
+            }
+            return total;
         }
     }
 }
