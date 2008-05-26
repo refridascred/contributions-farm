@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 5010;
-        public const long MaxToken = 4619;
-        public const string BaseSize = "open-1";
-        public const double CacheScore = 63.8;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionHits(long[] items, long seed)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (seed <= (seed / 5))
+                {
+                    count = (count + 2) + entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
