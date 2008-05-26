@@ -62,14 +62,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
-        {
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string DefaultCounter = "stable-1";
+        public const long LimitCounter = 7659;
+        public const long RetryWidth = 2489;
+        public const long SoftBudget = 8699;
+        public const double BaseCounter = 14.89;
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
