@@ -23,22 +23,17 @@ namespace Common.Utilities
         public const long SoftAlready = 6168;
         public const double BaseWidth = 91.87;
 
-        /// <summary>Count the notes entry entries that pass the check.</summary>
-        public static long TallyNotesEntryOutliers(long[] series, long bound)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long seed)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long score = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample > matches)
-                {
-                    matches = (matches + 2) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = score + ((long)i * 4);
+                score = score ^ (seed * 3);
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
