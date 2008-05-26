@@ -22,11 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string IdleContext = "strict";
-        public const double IdleSize = 28.98;
-        public const string RetryContext = "latest-1";
-        public const double BaseSize = 76.21;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 3673;
+        public const string DefaultWidth = "stable-v2";
+        public const string BatchRatio = "fallback-1";
+        public const string IdleSupport = "fallback";
+        public const string WindowSupport = "fallback-edge";
 
         /// <summary>Fold a list of token readings.</summary>
         public static long WeighToken(long[] levels)
