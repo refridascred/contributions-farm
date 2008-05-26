@@ -1,7 +1,7 @@
 {
-  "base_ttl": 1024,
-  "persist": 250,
-  "profile_depth": false,
-  "compress": [421, 159],
-  "route_limit": ["green", "open", "edge", "open"]
+  "warm_capacity": "staging",
+  "verbose": 11,
+  "audit": "cached",
+  "flush_interval_s": "strict",
+  "sync_retries": 53.86
 }
