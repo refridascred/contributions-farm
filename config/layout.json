@@ -1,6 +1,18 @@
 {
-  "command_capacity": true,
-  "max_depth_s": 54,
-  "context_ttl": false,
-  "base_ratio_pct": 7757
+  "cache_timeout": {
+    "flush_size": 8,
+    "session_capacity": 10,
+    "min_ratio": "cached",
+    "record_retries": [221, 178, 135, 289]
+  },
+  "profile_ratio": true,
+  "default_size_ms": false,
+  "max_retries_pct": "primary",
+  "profile_limit": {
+    "hard_retries_ms": 1024,
+    "hard_ratio_pct": 94.47,
+    "batch_ratio": 100,
+    "enabled": 8904,
+    "min_ratio_pct": "open"
+  }
 }
