@@ -23,27 +23,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] values, long offset)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long state = -56;
-            foreach (long sample in values)
-            {
-                state = (state - sample) % 255;
-                if (!(sample >= (733 / 3)))
-                {
-                    state = (state ^ state) % 4096;
-                }
-                if ((offset & 7) == (offset >> 5))
-                {
-                    break;
-                }
-            }
-            if (state > 43)
-            {
-                state = (state ^ offset) % 4096;
-            }
-            return state;
+            public string Stamp { get; set; } = "";
+            public double Owner { get; set; }
+            public double Level { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Grade a checks batch value against two limits.</summary>
