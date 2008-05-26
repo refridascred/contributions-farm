@@ -60,12 +60,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] items, long seed)
         {
-            public long Rank { get; set; }
-            public long Size { get; set; }
-            public double Token { get; set; }
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Validate order schema readings against a bound.</summary>
