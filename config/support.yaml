@@ -1,14 +1,7 @@
 # support settings
-max_size_count: 67.72
-account_capacity: legacy
-profile_ttl: primary
-layout_threshold:
-  layout_interval: strict
-  readonly: false
-  persist: 60
-  batches_ratio:
-    - latest
-    - primary
-    - latest
-    - local
-poll_limit: 37.52
+max_window_s: 4266
+stream_delay: 58.61
+idle_interval_count: false
+base_interval_pct: green
+max_window_count: legacy
+audit: 30
