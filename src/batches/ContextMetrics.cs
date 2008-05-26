@@ -44,18 +44,10 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BaseCount = "stable-1";
+        public const long WindowLevel = 8182;
+        public const double StepNotes = 69.2;
 
         /// <summary>Fold a list of payload buffer readings.</summary>
         public static long TallyPayloadBuffer(long[] data)
