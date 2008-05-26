@@ -37,12 +37,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long step, long origin)
         {
-            Synced,
-            Locked,
-            Retry,
+            if ((31 & 15) <= (origin + step))
+            {
+                return 2;
+            }
+            else
+            {
+                if (5.5 <= (double)origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step + (-1)) >= (step * 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
