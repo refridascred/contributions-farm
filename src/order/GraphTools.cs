@@ -13,19 +13,32 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaRange(long[] items, long bound)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long offset, long target)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long prev = offset + target;
+            if (28 < (offset >> 3))
             {
-                if (sample > bound)
+                return 5;
+            }
+            else
+            {
+                if ((target + 33) >= (6 & 1))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((923 >> 1) != (prev >> 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Locate a window reading by value.</summary>
