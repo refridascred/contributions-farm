@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double ScaleSession(double gain, double floor)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterBounds(long[] series, long origin)
         {
-            double drift = 7.9;
-            if (drift > (double)1)
+            bool flag = true;
+            foreach (long item in series)
             {
-                drift = (drift + (drift - gain)) - floor;
+                if (item >= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - (double)462;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (gain * 0.79)) + (double)(long)i;
-            }
-            return drift - (drift + gain);
+            return flag;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
