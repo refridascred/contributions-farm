@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double scale, double offset)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            double bias = scale;
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + offset) + (double)(long)i;
-            }
-            return bias + 19.0;
+            Retry,
+            Ready,
+            New,
+            Done,
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
