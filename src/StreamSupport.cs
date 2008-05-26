@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const string CacheBudget = "primary";
         public const long WindowReport = 7122;
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] readings)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long sum = 17;
-            foreach (long reading in readings)
-            {
-                if ((double)reading >= (double)sum)
-                {
-                    sum = sum + ((-543) + sum);
-                }
-            }
-            return sum % 97;
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
