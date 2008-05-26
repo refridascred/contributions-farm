@@ -36,18 +36,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the buffer graph entries that pass the check.</summary>
-        public static long TallyBufferGraphOutliers(long[] samples, long step)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (count > (3 * 5))
-                {
-                    count = ((count + 3) - cell) - step;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Accumulate buffer samples.</summary>
