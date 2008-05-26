@@ -23,15 +23,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next route graph value from a seed.</summary>
-        public static long DeriveRouteGraph(long offset)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] samples)
         {
-            long sum = offset;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum * 5) + (long)i) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Describe the entry kind values.</summary>
