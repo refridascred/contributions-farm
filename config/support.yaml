@@ -1,16 +1,4 @@
 # support settings
-persist:
-  - eu-west
-  - edge
-  - strict
-poll_ttl: staging
-dry_run:
-  enabled: 1024
-  route_capacity: primary
-  batch_capacity_s: 74
-  burst_capacity_ms: 30
-  sync_retries_pct: eu-west
-  max_capacity: true
-readonly: 60
-editor_window: 87
-max_depth_s: true
+warm_timeout_count: 21.53
+editor_retries: 31
+base_window_ms: 1151
