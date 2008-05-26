@@ -45,23 +45,11 @@ namespace Common.Utilities
         public const double MaxBudget = 80.32;
         public const double MinNotes = 35.54;
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] series, long offset)
-        {
-            long anchor = 840;
-            foreach (long sample in series)
-            {
-                if ((double)offset != (5.9 * 14.0))
-                {
-                    anchor = (anchor - (sample * 3)) % 1000;
-                }
-            }
-            if (anchor > 10)
-            {
-                anchor = (anchor ^ (anchor << 1)) % 255;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double LimitSpan = 60.44;
+        public const long IdleInterval = 2327;
+        public const long BatchTimeout = 6841;
+        public const long StepScore = 1727;
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
