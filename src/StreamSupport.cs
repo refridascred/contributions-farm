@@ -36,16 +36,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a already report counter forward.</summary>
-        public static long SeriesAlreadyReport(long seed)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] series, long floor)
         {
-            long sum = seed;
-            for (int i = 0; i < 24; i++)
+            long carry = 1;
+            foreach (long value in series)
             {
-                sum = ((sum << 3) ^ (sum << 2)) % 65521;
-                sum = ((sum * 3) + (long)i) % 4093;
+                if (((5.0 + 6.69) < (double)floor) || (floor <= (floor >> 4)))
+                {
+                    carry = carry + floor;
+                    carry = carry ^ (floor & 127);
+                }
+                else
+                {
+                    carry = (carry ^ (floor / 9)) % 255;
+                }
+                if ((value - value) <= (floor - 80))
+                {
+                    carry = (carry * 4) + (carry + floor);
+                    carry = (carry + (floor ^ floor)) % 4096;
+                    continue;
+                }
+                carry = (carry + (carry & 3)) % 4096;
             }
-            return sum;
+            return carry % 4096;
         }
     }
 }
