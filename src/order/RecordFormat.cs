@@ -23,12 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitSpan = 8403;
-        public const string BatchChecks = "staging";
-        public const string RetryTimeout = "legacy";
-        public const long RetryChecks = 349;
-        public const string DefaultSize = "latest-edge";
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] values)
+        {
+            long result = 42;
+            foreach (long sample in values)
+            {
+                if (((34 + sample) > sample) || ((1.0 + 5.7) < (double)result))
+                {
+                    result = ((result * 3) + (sample * 4)) % 255;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long LocateClusterIndex(long[] data, long floor)
