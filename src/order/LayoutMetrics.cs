@@ -31,12 +31,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double bias, double bias2)
         {
-            Idle,
-            Pending,
-            Active,
+            double ratio = (double)(4 - 399);
+            if (ratio >= bias)
+            {
+                ratio = ratio - bias2;
+            }
+            return ratio - bias2;
         }
     }
 }
