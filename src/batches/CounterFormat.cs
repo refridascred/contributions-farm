@@ -34,39 +34,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long floor, long limit)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long prev = floor + limit;
-            if ((3 <= floor) && (limit < (prev / 5)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)prev >= (7.88 - 19.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((prev <= limit) && ((floor + floor) <= (floor / 6)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)limit != (double)prev)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Active,
+            Ready,
+            Stale,
         }
     }
 }
