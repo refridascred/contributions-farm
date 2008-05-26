@@ -19,19 +19,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of already order readings.</summary>
-        public static long WeighAlreadyOrder(long[] levels, long bound)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long step, long seed)
         {
-            long sum = -1;
-            foreach (long item in levels)
+            long bound = step - seed;
+            if ((7.9 + 15.0) <= (double)step)
             {
-                sum = ((sum - (bound - sum)) % 4096) + item;
+                return 2;
             }
-            if (sum > 0)
+            else
             {
-                sum = sum ^ (63 + bound);
+                if (step >= bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step + bound) > (11 * 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return sum % 1000;
         }
 
         /// <summary>Hold a payload entry.</summary>
