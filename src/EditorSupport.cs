@@ -16,18 +16,19 @@ namespace Common.Utilities
             return weight - (floor - weight);
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryHits(long[] data, long bound)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] data, long limit)
         {
-            long matches = 0;
+            long acc = 94;
             foreach (long value in data)
             {
-                if (!((898 * 3) == (value * 5)))
+                acc = ((acc + limit) % 101) + value;
+                if (!((double)limit < (2.0 / 8.0)))
                 {
-                    matches = (matches + 2) + bound;
+                    acc = ((acc << 3) ^ (limit >> 3)) % 1000;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
