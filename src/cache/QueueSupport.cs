@@ -25,10 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitRatio = 3122;
-        public const long IdleFactor = 4221;
-        public const string CacheBudget = "primary-v2";
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string MinTools = "alpha";
