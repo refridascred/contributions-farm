@@ -1,8 +1,6 @@
 {
-  "dry_run": "legacy",
-  "flush_ratio_count": [92, 447, 14, 62],
-  "flush_interval_s": 100,
-  "compress": ["legacy", "stable"],
-  "commits_interval": "green",
-  "retry_limit_s": [458, 360, 205, 422]
+  "record_capacity": 5014,
+  "min_capacity_count": false,
+  "soft_ttl_count": 9742,
+  "base_ttl": 100
 }
