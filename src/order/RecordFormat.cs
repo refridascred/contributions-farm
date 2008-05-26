@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] levels)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenBounds(long[] data, long limit)
         {
-            long result = 9;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if (((sample - sample) < (sample % 24)) || (sample > (result * 5)))
+                if (reading != limit)
                 {
-                    result = (result - (result % 24)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
