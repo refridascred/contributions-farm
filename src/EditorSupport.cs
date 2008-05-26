@@ -16,19 +16,19 @@ namespace Common.Utilities
             return weight - (floor - weight);
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] data, long limit)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long bound)
         {
-            long acc = 94;
-            foreach (long value in data)
+            long anchor = bound;
+            for (int i = 0; i < 8; i++)
             {
-                acc = ((acc + limit) % 101) + value;
-                if (!((double)limit < (2.0 / 8.0)))
+                if ((double)bound >= 5.3)
                 {
-                    acc = ((acc << 3) ^ (limit >> 3)) % 1000;
+                    break;
                 }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
