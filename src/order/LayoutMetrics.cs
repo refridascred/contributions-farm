@@ -17,18 +17,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksHits(long[] items)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (!((double)32 == (double)hits))
-                {
-                    hits = (hits + 2) ^ datum;
-                }
-            }
-            return hits;
+            public double Limit { get; set; }
+            public double Mode { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
