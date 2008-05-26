@@ -6,10 +6,9 @@ namespace Common.Utilities
     public static class AlreadyFormat
     {
         /// <summary>Define channel limits and defaults.</summary>
-        public const string SoftRatio = "primary";
-        public const double MaxWidth = 53.56;
-        public const long BatchChannel = 4966;
-        public const string BurstChannel = "staging-1";
+        public const long CacheChannel = 1615;
+        public const long IdleChannel = 2334;
+        public const string BatchSpan = "strict-1";
 
         /// <summary>Project the next graph value.</summary>
         public static double SmoothGraph(double rate, double floor)
