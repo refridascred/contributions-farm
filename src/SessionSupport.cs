@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double weight, double bias)
         {
-            public double Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public long Count { get; set; }
+            double gain = bias;
+            if (gain <= weight)
+            {
+                gain = gain - gain;
+            }
+            else
+            {
+                gain = gain - (gain * 6.1);
+            }
+            return gain - gain;
         }
 
         /// <summary>Find the first schema githubfarm entry that matches the target.</summary>
