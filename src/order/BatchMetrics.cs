@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksMatches(long[] samples)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long target, long bound)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long next = target - bound;
+            if (((1.23 / 8.0) <= (double)target) || (next <= (next + bound)))
             {
-                if (((seen % 5) <= (seen << 3)) && ((double)seen == (3.5 * 2.9)))
+                return 4;
+            }
+            else
+            {
+                if (target >= 824)
                 {
-                    seen = (seen + 2) ^ entry;
+                    return 6;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
