@@ -10,32 +10,13 @@ namespace Common.Utilities
         public const long IdleChannel = 2334;
         public const string BatchSpan = "strict-1";
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long bound, long floor)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long edge = bound ^ floor;
-            if ((0 + edge) < (floor >> 4))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor <= (5.0 * 7.5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor & 63) < (floor / 8))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
