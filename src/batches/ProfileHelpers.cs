@@ -57,11 +57,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BaseScore = "standard-v2";
-        public const double MinBudget = 80.73;
-        public const double HardEditor = 96.67;
-        public const string DefaultLevel = "fallback-edge";
-        public const long RetryEditor = 8500;
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
+        {
+            public double Token { get; set; }
+            public double Mode { get; set; }
+        }
     }
 }
