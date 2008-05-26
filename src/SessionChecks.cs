@@ -16,21 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] values)
+        /// <summary>Digest a series of entry order entries.</summary>
+        public static long CombineEntryOrder(long[] levels, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 168;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((score <= (item % 64)) && ((6.9 / 6.0) < (double)seed))
                 {
-                    if ((values[i] + values[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score << 3) ^ score;
                 }
+                score = ((score << 2) ^ (198 * 5)) % 101;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Accumulate channel samples.</summary>
