@@ -1,7 +1,8 @@
 {
-  "flush_limit": 1719,
-  "sync_capacity": 2.71,
-  "poll_delay_s": 74.22,
-  "idle_delay_ms": ["stable", "latest"],
-  "profile_interval": 47.78
+  "dry_run": true,
+  "default_limit_ms": 60,
+  "payload_interval": "green",
+  "soft_ttl": 37.28,
+  "sync_interval_ms": false,
+  "verbose": 31
 }
