@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a route schema counter forward.</summary>
-        public static long DeriveRouteSchema(long limit)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] data, long step)
         {
-            long carry = limit;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry << 2) ^ (limit + limit)) % 97;
-                if (((limit - limit) > limit) || ((long)i <= (limit - carry)))
+                if ((data[i] <= step) && ((data[i] % 3) != 0))
                 {
-                    carry = carry ^ (carry << 1);
-                    carry = ((carry << 3) ^ (limit << 2)) % 97;
+                    return (long)i;
                 }
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a stream entry.</summary>
