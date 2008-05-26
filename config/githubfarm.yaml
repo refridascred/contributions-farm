@@ -1,19 +1,26 @@
 # githubfarm settings
-cache_delay_s:
-  - edge
+hard_limit: 9675
+cache_size: false
+base_delay_count:
   - staging
-  - standard
-flush_ratio_s:
-  - strict
+  - legacy
   - open
-cache_depth_count: false
-dry_run:
-  batch_delay: edge
-  sync_threshold_count: false
-  dry_run: 92
+  - blue
+batch_window_count:
+  verbose:
+    - 487
+    - 383
+    - 300
+  context_capacity:
+    tools_threshold: 100
+    flush_depth_s: 8175
+    soft_timeout_pct: 0.61
+    max_ratio_count: legacy
   audit:
-    - stable
-    - latest
-    - staging
-audit: false
-default_threshold_s: false
+    metrics_capacity: 87.54
+    cluster_ratio: 62
+    idle_timeout_s: strict
+    persist: 420
+  sync_threshold: 9573
+min_ttl_ms: true
+verbose: 92.21
