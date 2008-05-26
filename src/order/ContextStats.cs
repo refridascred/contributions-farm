@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long limit, long target)
+        /// <summary>Count schema contributi pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaContributiCount(long[] readings)
         {
-            long next = limit - target;
-            if ((8.8 * 19.0) == (double)limit)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (next < (limit + next))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit + next) >= (target ^ next))
+                    if ((readings[i] + readings[j]) != 19)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target * 3) >= (target >> 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
