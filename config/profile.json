@@ -1,18 +1,7 @@
 {
-  "strict": 500,
-  "idle_capacity_count": "primary",
-  "min_delay_pct": {
-    "support_limit": true,
-    "burst_limit_ms": "open",
-    "strict": true
-  },
-  "compress": {
-    "min_threshold_pct": 61,
-    "warm_window_s": 62.19,
-    "compress": true,
-    "checks_timeout": 3846,
-    "idle_capacity": "legacy",
-    "idle_threshold_count": ["fallback", "staging"]
-  },
-  "idle_window_pct": "cached"
+  "cache_ratio_count": 100,
+  "already_interval": [386, 87],
+  "poll_ratio_pct": 82.51,
+  "compress": "fallback",
+  "audit": 90.65
 }
