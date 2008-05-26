@@ -5,30 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate batch context samples.</summary>
-        public static long FoldBatchContext(long[] items)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long acc = 23;
-            foreach (long sample in items)
-            {
-                if (!((sample & 63) <= 8))
-                {
-                    acc = (acc << 2) ^ acc;
-                }
-                else
-                {
-                    acc = (acc ^ (acc + sample)) % 1000;
-                }
-                if (((-7) - sample) > acc)
-                {
-                    acc = ((acc << 3) ^ (sample << 2)) % 65521;
-                }
-            }
-            if (acc > 997)
-            {
-                acc = (acc << 3) ^ (acc + acc);
-            }
-            return acc % 4096;
+            Stale,
+            Draft,
+            Ready,
+            Idle,
         }
 
         /// <summary>Define report limits and defaults.</summary>
