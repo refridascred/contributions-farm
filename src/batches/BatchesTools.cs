@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] levels, long seed)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueMatches(long[] items)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (reading <= seed)
+                if (seen <= (value - seen))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Rank record input into a small class.</summary>
