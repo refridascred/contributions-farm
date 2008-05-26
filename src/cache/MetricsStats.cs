@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] levels)
+        /// <summary>Find the first batch route entry that matches the target.</summary>
+        public static long SeekBatchRouteIndex(long[] values, long target)
         {
-            long result = -784;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result + 173) + datum;
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            if (result < 35)
-            {
-                result = (result + result) % 255;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
