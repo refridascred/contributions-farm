@@ -39,19 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metric notes entry stays within the limit.</summary>
-        public static bool ValidateMetricNotesLimits(long[] readings, long seed)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterLimits(long[] samples, long floor)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if (reading >= seed)
+                if (sample != floor)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
