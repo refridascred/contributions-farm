@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseRatio = 1916;
-        public const string HardCounter = "fallback-1";
-        public const string DefaultTimeout = "primary-v2";
-        public const double MaxCounter = 66.23;
-        public const string BurstCounter = "staging-edge";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string SoftRatio = "primary";
+        public const double MaxWidth = 53.56;
+        public const long BatchChannel = 4966;
+        public const string BurstChannel = "staging-1";
 
         /// <summary>Project the next graph value.</summary>
         public static double SmoothGraph(double rate, double floor)
