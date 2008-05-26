@@ -23,10 +23,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 5032;
-        public const double StepTools = 61.03;
-        public const long BatchTimeout = 2128;
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long limit, long floor)
+        {
+            if ((700 / 7) > limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)limit > 0.2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor < (limit * 4)) && ((737 & 7) <= (limit >> 1)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit ^ floor) == (limit * 4))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double RetryScore = 55.18;
