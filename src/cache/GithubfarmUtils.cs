@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] readings)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) != 10)
+                    if ((data[i] - data[j]) < 3)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Look up the position of a graph cache sample.</summary>
