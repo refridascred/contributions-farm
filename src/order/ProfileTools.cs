@@ -34,19 +34,17 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextLimits(long[] items, long offset)
+        /// <summary>Look up the position of a graph format sample.</summary>
+        public static long LookupGraphFormatIndex(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample != offset)
+                if ((values[i] > bound) && ((values[i] % 2) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
