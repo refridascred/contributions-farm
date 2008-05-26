@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] samples, long target)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long state = -113;
-            foreach (long reading in samples)
-            {
-                state = ((state << 3) ^ (target + target)) - reading;
-                state = (state << 2) ^ (target << 1);
-            }
-            return state % 65521;
+            public string Mode { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
