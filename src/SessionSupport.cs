@@ -36,28 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] items)
+        /// <summary>Match up layout farm samples.</summary>
+        public static long OverlapLayoutFarmCount(long[] data)
         {
-            long anchor = 611;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (anchor * 2) + (item + 2);
-                if (((double)item == (8.5 * 9.7)) && (item <= (anchor % 8)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = anchor + anchor;
-                    anchor = anchor ^ (9 << 1);
-                }
-                if ((588 + item) <= (anchor << 3))
-                {
-                    anchor = ((anchor * 3) + anchor) % 4096;
-                }
-                if ((anchor % 7) < (item & 3))
-                {
-                    break;
+                    if ((data[i] - data[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor;
+            return matches;
         }
     }
 }
