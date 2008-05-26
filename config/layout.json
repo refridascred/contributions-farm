@@ -1,13 +1,13 @@
 {
-  "cache_ratio": "latest",
-  "compress": false,
-  "retry_depth_ms": 250,
-  "flush_ttl": "open",
-  "base_interval": true,
-  "strict": {
-    "max_interval_pct": 6.65,
-    "graph_size": "cached",
-    "batches_limit": "cached",
-    "flush_delay": false
-  }
+  "burst_depth_pct": 3624,
+  "command_depth": 11,
+  "retry_size_ms": {
+    "stream_delay": "primary",
+    "cache_ratio": false,
+    "token_capacity": false,
+    "profile_limit": "eu-west"
+  },
+  "session_threshold": 60,
+  "default_size_s": "cached",
+  "schema_delay": "edge"
 }
