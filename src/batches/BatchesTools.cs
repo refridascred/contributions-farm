@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] readings, long floor)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Pending,
+            Closed,
+            Failed,
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
