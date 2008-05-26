@@ -57,26 +57,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] values, long floor)
-        {
-            long state = 3;
-            foreach (long reading in values)
-            {
-                if ((floor + floor) <= (state + reading))
-                {
-                    state = (state ^ 743) % 101;
-                }
-                else
-                {
-                    state = (state << 3) ^ (868 - state);
-                }
-            }
-            if (state > 0)
-            {
-                state = (state + ((long)values.Length * 3)) % 4096;
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string WindowCommand = "open-edge";
+        public const long BaseScore = 7035;
+        public const string LimitCommand = "staging-v2";
+        public const string BaseSize = "open-1";
+        public const long IdleCount = 7946;
     }
 }
