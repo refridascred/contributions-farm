@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a layout queue counter forward.</summary>
-        public static long SeriesLayoutQueue(long step)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long result = step;
-            for (int i = 0; i < 6; i++)
-            {
-                result = (result ^ ((long)i % 8)) % 1000;
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            public long Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define already limits and defaults.</summary>
