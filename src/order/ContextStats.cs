@@ -57,11 +57,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double bias, double floor)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] samples, long offset)
         {
-            double load = (bias / 6.0) / 8.0;
-            return (load - bias) + floor;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == offset) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
