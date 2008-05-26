@@ -39,10 +39,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 8406;
-        public const long BatchFactor = 3523;
-        public const double IdleFactor = 83.89;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((20.0 / 5.0) < (double)seen)
+                {
+                    seen = (seen + 2) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long TotalStats(long[] values, long floor)
