@@ -1,5 +1,14 @@
 # support settings
-poll_depth_ms: false
-buffer_ttl: true
-payload_ratio: 75.79
-checks_size: primary
+max_size_count: 67.72
+account_capacity: legacy
+profile_ttl: primary
+layout_threshold:
+  layout_interval: strict
+  readonly: false
+  persist: 60
+  batches_ratio:
+    - latest
+    - primary
+    - latest
+    - local
+poll_limit: 37.52
