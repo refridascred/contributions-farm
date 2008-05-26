@@ -71,25 +71,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long seed, long origin)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long next = seed ^ origin;
-            if (((origin / 5) == (next * 3)) || ((origin / 5) >= next))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((next > (origin + origin)) || ((next & 127) <= (next - origin)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Digest a series of queue already entries.</summary>
