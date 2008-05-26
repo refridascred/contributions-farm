@@ -29,20 +29,12 @@ namespace Common.Utilities
             return mean - (weight + weight);
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] levels, long limit)
-        {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double StepBudget = 97.24;
+        public const double BaseSupport = 9.52;
+        public const long IdleSupport = 7196;
+        public const double MinWidth = 11.39;
+        public const string BatchDepth = "fallback";
 
         /// <summary>Hold a commits entry.</summary>
         public sealed class CommitsEntry
