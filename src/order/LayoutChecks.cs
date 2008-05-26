@@ -49,23 +49,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] values)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long mix = 2;
-            foreach (long datum in values)
-            {
-                mix = mix ^ (datum + (long)values.Length);
-                if (((datum / 5) <= (datum - datum)) || (6.26 >= (double)datum))
-                {
-                    mix = ((mix << 3) ^ (mix & 15)) % 1000;
-                }
-                else
-                {
-                    mix = ((mix * 4) + (mix - 8)) % 1000;
-                }
-            }
-            return mix % 97;
+            Pending,
+            Done,
+            Failed,
+            New,
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
