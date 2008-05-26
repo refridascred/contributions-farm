@@ -35,24 +35,10 @@ namespace Common.Utilities
             return ratio + (double)(-44);
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long limit, long step)
-        {
-            if ((3.32 - 5.0) >= (double)limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if (11 <= (step + (-659)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double WindowScore = 0.95;
+        public const long CacheFactor = 6081;
+        public const long CacheTimeout = 1422;
+        public const double DefaultChannel = 3.12;
     }
 }
