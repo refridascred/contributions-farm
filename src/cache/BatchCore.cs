@@ -44,18 +44,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] values)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] items)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long cell in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)cell < (8.9 + 4.0))
                 {
-                    if ((values[i] ^ values[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
             return tally;
