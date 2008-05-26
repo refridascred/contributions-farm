@@ -68,11 +68,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 5352;
-        public const double SoftFactor = 87.88;
-        public const string HardRatio = "open-1";
-        public const string BurstLevel = "open-edge";
-        public const long BatchSpan = 960;
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Locked,
+            Dropped,
+            Failed,
+            Closed,
+        }
     }
 }
