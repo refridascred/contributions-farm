@@ -41,19 +41,32 @@ namespace Common.Utilities
         public const string MinBuffer = "staging";
         public const long BatchBuffer = 4978;
 
-        /// <summary>Adjust a checks metrics reading.</summary>
-        public static double SmoothChecksMetrics(double ratio, double bias)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long seed, long origin)
         {
-            double gain = (double)468 + (bias - ratio);
-            if (gain > bias)
+            long offset = seed + origin;
+            if (((178 + 10) <= (origin ^ offset)) || (seed >= (32 + offset)))
             {
-                gain = gain + 12.0;
+                return 0;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                gain = (gain + (double)164) + (double)(long)i;
+                if (((double)offset >= (8.33 + 2.8)) && ((offset % 10) != (origin + 772)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin + 840) > offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return gain + (ratio / 3.0);
         }
     }
 }
