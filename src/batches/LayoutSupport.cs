@@ -19,19 +19,14 @@ namespace Common.Utilities
         public const long CacheLevel = 4173;
         public const double BaseFactor = 51.52;
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] readings, long seed)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Retry,
+            New,
+            Failed,
+            Done,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
