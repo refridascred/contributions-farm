@@ -77,17 +77,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] items, long seed)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatMatches(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((items[i] > seed) && ((items[i] % 5) == 0))
+                if ((tally > (tally * 3)) || (((entry << 3) < tally) || ((tally << 3) <= tally)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
