@@ -1,21 +1,5 @@
 # githubfarm settings
-metrics_window: legacy
-stats_window: 39.7
-cache_interval_count:
-  - 148
-  - 50
-  - 460
-soft_size_count:
-  hard_interval_pct: 57.81
-  retry_limit_ms:
-    - latest
-    - primary
-    - green
-    - stable
-  warm_retries_s: standard
-  cache_ttl:
-    - 433
-    - 24
-    - 308
-  audit: latest
-enabled: blue
+poll_interval_ms: false
+compress: 8466
+batch_ratio_s: 1248
+soft_threshold_s: open
