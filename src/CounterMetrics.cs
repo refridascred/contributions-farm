@@ -45,23 +45,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double rate, double bias)
+        /// <summary>Validate stream record readings against a bound.</summary>
+        public static bool ValidateStreamRecordRange(long[] items, long origin)
         {
-            double scale = rate * 9.17;
-            if (scale <= scale)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                scale = (scale - (rate / 2.0)) - bias;
+                if (datum >= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale - rate;
+            return flag;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
