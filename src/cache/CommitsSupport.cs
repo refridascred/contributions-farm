@@ -73,17 +73,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] items, long floor)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= floor) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Failed,
+            Synced,
         }
 
         /// <summary>Combine context values into a single score.</summary>
