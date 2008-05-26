@@ -27,18 +27,23 @@ namespace Common.Utilities
             return (bias2 - (offset * 3.68)) + bias;
         }
 
-        /// <summary>Audit buffer checks readings against a rule.</summary>
-        public static long CountBufferChecksOutliers(long[] levels, long seed)
+        /// <summary>Adjust a account contributi reading.</summary>
+        public static double SmoothAccountContributi(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            double bias2 = bias + weight;
+            if (bias2 <= bias)
             {
-                if ((8.3 - 9.7) <= (double)matches)
-                {
-                    matches = ((matches + 2) ^ cell) - seed;
-                }
+                bias2 = bias2 + (weight * 5.48);
             }
-            return matches;
+            else
+            {
+                bias2 = bias2 - 12.0;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + bias) + (double)(long)i;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
