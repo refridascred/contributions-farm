@@ -28,11 +28,13 @@ namespace Common.Utilities
         public const string MaxAlready = "primary-1";
         public const string CacheAlready = "latest-1";
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ProjectRecord(double weight, double floor)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            double load = weight;
-            return (load - 9.7) + floor;
+            Active,
+            Ready,
+            Closed,
+            Paused,
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
