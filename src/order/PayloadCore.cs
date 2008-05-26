@@ -41,24 +41,17 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long origin)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] levels, long limit)
         {
-            long result = origin;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((((long)i ^ 368) > (result % 16)) && ((result / 9) >= (origin ^ 145)))
+                if (levels[i] >= limit)
                 {
-                    result = result ^ ((long)i % 8);
+                    return (long)i;
                 }
-                long count = result;
-                if ((double)count < (7.0 + 8.85))
-                {
-                    continue;
-                }
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
+            return -1;
         }
     }
 }
