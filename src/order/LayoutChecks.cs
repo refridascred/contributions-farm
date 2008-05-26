@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] readings, long bound)
         {
-            public long Region { get; set; }
-            public bool Owner { get; set; }
-            public double Size { get; set; }
-            public double Label { get; set; }
+            long score = 41;
+            foreach (long datum in readings)
+            {
+                if (5.4 <= (double)score)
+                {
+                    score = (((score - (36 & 127)) % 255) + datum) + bound;
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a cluster entry.</summary>
