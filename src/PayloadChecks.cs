@@ -77,12 +77,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
-        {
-            Dropped,
-            New,
-            Pending,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 8622;
+        public const long RetryTools = 584;
+        public const string SoftTools = "fallback-edge";
+        public const long MinRatio = 5372;
+        public const long IdleTools = 1233;
     }
 }
