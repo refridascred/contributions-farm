@@ -14,19 +14,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileGaps(long[] samples, long bound)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((double)bound < 4.6)
-                {
-                    matches = (matches + 2) + item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BurstReport = "cached";
+        public const double SoftReport = 90.14;
+        public const long RetryReport = 4036;
+        public const double BatchReport = 79.95;
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long ClassifyCommand(long offset, long step)
