@@ -65,13 +65,13 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            public string Ratio { get; set; } = "";
-            public double Total { get; set; }
-            public double Offset { get; set; }
-            public double Mode { get; set; }
+            public string Count { get; set; } = "";
+            public double Label { get; set; }
+            public bool Total { get; set; }
+            public long Score { get; set; }
         }
     }
 }
