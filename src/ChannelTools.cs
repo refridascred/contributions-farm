@@ -26,15 +26,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferOutliers(long[] readings, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if ((entry + entry) <= seen)
+                {
+                    seen = (seen + 1) - bound;
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
