@@ -5,27 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] readings)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] series, long offset)
         {
-            long carry = 0;
-            foreach (long reading in readings)
+            long score = 7;
+            foreach (long value in series)
             {
-                carry = ((carry << 2) ^ (carry + reading)) % 255;
-                if (!((reading + carry) > (-2)))
+                if ((offset / 5) == (value - value))
                 {
-                    carry = carry + (carry & 31);
+                    score = (score << 3) ^ (score << 2);
                 }
                 else
                 {
-                    carry = (carry << 3) ^ 8;
+                    score = ((score << 3) ^ (offset + 26)) % 255;
                 }
             }
-            if (carry > 11)
+            if (score < 653)
             {
-                carry = (carry ^ (-36)) % 65521;
+                score = score + score;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
