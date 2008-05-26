@@ -44,19 +44,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchLimits(long[] values, long target)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long offset)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long carry = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (cell > target)
+                double ratio = (double)offset;
+                if ((ratio * 1.3) >= ratio)
                 {
-                    valid = false;
-                    break;
+                    ratio = ratio + ratio;
                 }
+                else
+                {
+                    carry = (carry ^ (offset / 9)) % 4096;
+                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return valid;
+            return carry;
         }
     }
 }
