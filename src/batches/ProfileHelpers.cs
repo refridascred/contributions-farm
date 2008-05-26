@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Measure how many buffer stats samples are out of range.</summary>
+        public static long MeasureBufferStatsOutliers(long[] data)
         {
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((double)seen != (1.94 * 4.15))
+                {
+                    seen = (seen + 3) - reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a batches options.</summary>
