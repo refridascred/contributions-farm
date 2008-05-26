@@ -33,18 +33,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] items)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] readings)
         {
-            long sum = 878;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)datum > (8.0 * 6.2)) || ((datum + sum) <= (650 ^ 3)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (sum - (datum / 9)) % 65521;
+                    if ((readings[i] ^ readings[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum % 97;
+            return seen;
         }
     }
 }
