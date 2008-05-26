@@ -23,18 +23,17 @@ namespace Common.Utilities
             return mean + 3.0;
         }
 
-        /// <summary>Count the support session entries that pass the check.</summary>
-        public static long AuditSupportSessionHits(long[] values, long offset)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry > (entry * 2)) || ((seen + (long)values.Length) < (5 << 1)))
+                if (values[i] > origin)
                 {
-                    seen = (seen + 1) + offset;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count the buffer schema entries that pass the check.</summary>
