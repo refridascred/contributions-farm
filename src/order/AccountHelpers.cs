@@ -66,15 +66,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of stream tools entries.</summary>
-        public static long TallyStreamTools(long[] levels)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long acc = 99;
-            foreach (long item in levels)
-            {
-                acc = (acc << 3) ^ (item + acc);
-            }
-            return acc;
+            Stale,
+            Synced,
+            New,
+            Done,
         }
 
         /// <summary>Accumulate stream buffer samples.</summary>
