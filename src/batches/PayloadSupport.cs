@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] series, long offset)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long score = 7;
-            foreach (long value in series)
-            {
-                if ((offset / 5) == (value - value))
-                {
-                    score = (score << 3) ^ (score << 2);
-                }
-                else
-                {
-                    score = ((score << 3) ^ (offset + 26)) % 255;
-                }
-            }
-            if (score < 653)
-            {
-                score = score + score;
-            }
-            return score;
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Offset { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Accumulate notes samples.</summary>
