@@ -51,13 +51,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long step, long floor)
         {
-            New,
-            Paused,
-            Queued,
-            Active,
+            long next = step - floor;
+            if (((floor + floor) <= (next / 8)) && ((next * 3) < floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step / 5) == (step + floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
