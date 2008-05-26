@@ -1,13 +1,11 @@
 # support settings
-retry_depth_ms: 50
-burst_ratio_count: 60
-retry_capacity_s: legacy
-dry_run:
-  enabled: eu-west
-  compress:
-    readonly: eu-west
-    enabled: true
-    hard_capacity_s: eu-west
-    dry_run: 100
-  base_timeout_s: stable
-graph_ttl: primary
+token_delay: 31.97
+compress:
+  batch_interval_pct: 500
+  sync_retries_s: primary
+  enabled: 30
+  audit: 12.26
+burst_size_count:
+  - 420
+  - 138
+base_timeout_pct: legacy
