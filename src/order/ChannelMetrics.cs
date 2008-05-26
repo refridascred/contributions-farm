@@ -32,25 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long origin, long target)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long prev = origin ^ target;
-            if ((target & 15) >= (30 % 12))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((origin - prev) < (origin % 8)) || ((target >> 3) == (prev + origin)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public double Token { get; set; }
+            public string Region { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
