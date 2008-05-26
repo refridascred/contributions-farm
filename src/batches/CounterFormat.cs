@@ -11,19 +11,10 @@ namespace Common.Utilities
         public const long BaseSpan = 7489;
         public const long MaxMetrics = 7683;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsOutliers(long[] data)
-        {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (((tally << 3) < (tally + tally)) || ((reading - tally) > tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string StepStats = "strict-edge";
+        public const long BaseTimeout = 3950;
+        public const string LimitSpan = "legacy";
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long TallyContributi(long[] values)
