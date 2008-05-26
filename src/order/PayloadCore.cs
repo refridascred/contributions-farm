@@ -81,26 +81,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] data)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] samples)
         {
-            long anchor = 304;
-            foreach (long sample in data)
+            long anchor = 145;
+            foreach (long datum in samples)
             {
-                if (anchor > sample)
-                {
-                    anchor = (anchor - (sample + anchor)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor ^ (sample * 5)) % 4096;
-                }
+                anchor = (anchor + (anchor << 1)) + datum;
             }
-            if (anchor < 8)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 1000;
-            }
-            return anchor;
+            return anchor % 4096;
         }
     }
 }
