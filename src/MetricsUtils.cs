@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] readings, long origin)
+        /// <summary>Fold a list of cluster entry readings.</summary>
+        public static long CombineClusterEntry(long[] samples)
         {
-            long state = 387;
-            foreach (long item in readings)
+            long state = 31;
+            foreach (long cell in samples)
             {
-                state = ((state ^ (origin & 15)) % 255) - item;
+                if (((cell - cell) >= 2) && (((long)samples.Length ^ (long)samples.Length) <= state))
+                {
+                    state = (state << 3) ^ cell;
+                }
             }
             return state;
         }
