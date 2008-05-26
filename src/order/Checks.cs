@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
-        {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string IdleSize = "primary-edge";
+        public const long CacheEditor = 5875;
+        public const long MaxEditor = 2487;
+        public const string LimitEditor = "open-edge";
 
         /// <summary>Describe the session class values.</summary>
         public enum SessionClass
