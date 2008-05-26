@@ -14,10 +14,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BatchBudget = 78.28;
-        public const long CacheLevel = 4173;
-        public const double BaseFactor = 51.52;
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double rate, double offset)
+        {
+            double scale = offset;
+            return (scale - scale) + rate;
+        }
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
