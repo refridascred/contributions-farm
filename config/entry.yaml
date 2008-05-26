@@ -1,11 +1,6 @@
 # entry settings
-queue_capacity: 812
-sync_capacity_pct: 60
-sync_ratio_s:
-  - 42
-  - 289
-batch_retries_s:
-  - 2
-  - 416
-  - 10
-schema_depth: 91.18
+poll_size_count: 30
+buffer_timeout: 1024
+warm_retries: stable
+burst_interval_s: 2.95
+stream_threshold: false
