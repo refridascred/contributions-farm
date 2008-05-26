@@ -71,19 +71,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a metric command reading.</summary>
-        public static double ScaleMetricCommand(double rate, double offset)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long seed, long origin)
         {
-            double scale = (rate * 0.5) + (5.47 + offset);
-            if (scale > (double)(-59))
+            long next = seed ^ origin;
+            if (((origin / 5) == (next * 3)) || ((origin / 5) >= next))
             {
-                scale = scale - (offset / 5.0);
+                return 5;
             }
             else
             {
-                scale = scale + (3.34 / 2.0);
+                if ((next > (origin + origin)) || ((next & 127) <= (next - origin)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return scale - scale;
         }
 
         /// <summary>Describe the payload kind values.</summary>
