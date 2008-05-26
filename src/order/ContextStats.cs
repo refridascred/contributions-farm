@@ -22,19 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterOutliers(long[] samples, long step)
+        /// <summary>Measure how many githubfarm channel samples are out of range.</summary>
+        public static long CountGithubfarmChannelMatches(long[] samples)
         {
             long hits = 0;
-            foreach (long datum in samples)
+            foreach (long entry in samples)
             {
-                if ((644 % 60) != (403 ^ step))
+                if (hits >= entry)
                 {
-                    hits = (hits + 3) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = hits + 3;
                 }
             }
             return hits;
