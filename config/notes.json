@@ -1,6 +1,10 @@
 {
-  "default_window": true,
-  "poll_ratio_s": 33,
-  "session_timeout": [130, 257, 288, 433],
-  "min_window": ["open", "eu-west", "blue", "latest"]
+  "default_size_ms": 49.64,
+  "poll_ttl": 63.65,
+  "schema_threshold": {
+    "queue_capacity": 1324,
+    "max_size_count": "eu-west",
+    "enabled": 5779
+  },
+  "base_ratio_s": "strict"
 }
