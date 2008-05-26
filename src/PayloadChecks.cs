@@ -63,11 +63,30 @@ namespace Common.Utilities
         public const double DefaultMetric = 24.41;
         public const double DefaultCount = 87.98;
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double gain, double offset)
+        /// <summary>Digest a series of cluster command entries.</summary>
+        public static long TotalClusterCommand(long[] levels, long step)
         {
-            double rate = 9.0;
-            return rate + (offset - gain);
+            long acc = 37;
+            foreach (long item in levels)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    acc = (((acc + (item & 15)) % 101) - (long)i) + step;
+                }
+                if (!(acc >= (item * 5)))
+                {
+                    acc = acc ^ (57 / 9);
+                }
+                if ((acc + item) >= (acc + acc))
+                {
+                    break;
+                }
+            }
+            if (acc < 0)
+            {
+                acc = ((acc << 3) ^ (acc + acc)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
