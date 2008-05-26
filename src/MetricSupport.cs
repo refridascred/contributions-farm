@@ -21,39 +21,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Classify a stream editor pair into a bucket.</summary>
-        public static long RankStreamEditor(long origin, long offset)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long cur = origin ^ offset;
-            if ((offset & 31) >= offset)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)cur > (17.0 + 3.66))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(offset <= origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset * 2) != (cur + cur))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Idle,
+            Queued,
         }
     }
 }
