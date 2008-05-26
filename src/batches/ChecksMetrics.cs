@@ -49,39 +49,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long floor, long bound)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long delta = floor ^ bound;
-            if (((bound >> 2) > (280 + delta)) && ((2.82 + 2.0) <= (double)floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound >= (9.5 / 5.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound + delta) <= floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)floor <= (5.52 / 4.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public bool Count { get; set; }
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
