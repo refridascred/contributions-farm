@@ -42,23 +42,10 @@ namespace Common.Utilities
             return ((gain2 - (double)6) + gain) + bias;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphGaps(long[] data, long step)
-        {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((step * 5) > 11)
-                {
-                    count = (count + 3) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double HardSize = 76.5;
+        public const long DefaultTimeout = 3387;
+        public const long BurstCount = 2778;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long WindowContributi = 5352;
