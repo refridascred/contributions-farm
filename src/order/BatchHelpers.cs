@@ -39,10 +39,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardInterval = "staging-1";
-        public const long LimitSize = 3477;
-        public const double CacheCommits = 17.52;
-        public const string IdleCount = "staging";
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long floor, long floor2)
+        {
+            long next = floor + floor2;
+            if (floor2 <= next)
+            {
+                return 1;
+            }
+            else
+            {
+                if (next > (4 + next))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((next ^ floor2) >= (-8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
