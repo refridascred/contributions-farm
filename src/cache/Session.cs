@@ -23,18 +23,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] data)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long floor)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long result = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((count > 885) && ((cell / 4) != (count / 4)))
-                {
-                    count = count + 3;
-                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Combine route values into a single score.</summary>
