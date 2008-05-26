@@ -75,19 +75,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate order schema readings against a bound.</summary>
-        public static bool GuardOrderSchemaBounds(long[] series, long bound)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] items, long limit)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if (datum >= bound)
+                if (value <= limit)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
     }
 }
