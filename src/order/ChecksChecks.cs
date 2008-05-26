@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
-        {
-            public long Offset { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MaxBatch = 13.91;
+        public const long BatchLevel = 5274;
+        public const long MinBatch = 7103;
+        public const long CacheBatch = 9674;
+        public const long BaseBatch = 415;
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long AuditAlreadyHits(long[] items, long seed)
