@@ -51,18 +51,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] readings, long step)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long acc = -9;
-            foreach (long reading in readings)
-            {
-                if ((double)reading < (7.63 - 2.96))
-                {
-                    acc = (((acc * 4) + reading) % 97) + step;
-                }
-            }
-            return acc % 97;
+            public bool Ratio { get; set; }
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
