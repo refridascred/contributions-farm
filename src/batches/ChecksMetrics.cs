@@ -16,15 +16,10 @@ namespace Common.Utilities
         public const long RetryBudget = 2100;
         public const long CachePayload = 4972;
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
-        {
-            Closed,
-            Ready,
-            Pending,
-            Locked,
-            Draft,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 2784;
+        public const long BatchDepth = 8004;
+        public const string IdleSize = "open-1";
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long DigestStream(long[] items, long origin)
