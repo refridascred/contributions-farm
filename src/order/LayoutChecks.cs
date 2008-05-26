@@ -61,13 +61,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            Pending,
-            Done,
-            Failed,
-            New,
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
