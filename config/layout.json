@@ -1,6 +1,5 @@
 {
-  "base_threshold": "legacy",
-  "batch_delay_count": false,
-  "base_window": false,
-  "min_retries": 14.13
+  "burst_limit_ms": "edge",
+  "soft_delay_count": true,
+  "dry_run": 500
 }
