@@ -1,6 +1,6 @@
 {
-  "audit": "blue",
-  "enabled": [52, 229],
-  "burst_timeout_count": "fallback",
-  "poll_capacity_count": 500
+  "graph_depth": true,
+  "verbose": 30,
+  "retry_window_count": 53.77,
+  "warm_threshold_s": "blue"
 }
