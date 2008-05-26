@@ -18,38 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long floor, long limit)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsBounds(long[] readings, long limit)
         {
-            if ((76 << 2) == (limit + limit))
+            bool flag = true;
+            foreach (long item in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (floor <= (floor + limit))
+                if (item >= limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)limit >= (18.0 + 6.2)) || ((limit ^ 18) != (limit & 127)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((187 ^ limit) > (limit + (-6))) || (limit >= (limit / 6)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Accumulate support profile samples.</summary>
