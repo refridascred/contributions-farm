@@ -13,19 +13,14 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricLimits(long[] readings, long bound)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Active,
+            Failed,
+            Queued,
+            Paused,
         }
 
         /// <summary>Hold a cache options.</summary>
