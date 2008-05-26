@@ -13,13 +13,24 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long limit, long bound)
         {
-            public double Region { get; set; }
-            public double Limit { get; set; }
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
+            if ((8.56 * 2.65) >= (double)bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound + bound) != (869 % 64))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Fold a list of context readings.</summary>
