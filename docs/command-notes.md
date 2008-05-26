@@ -1,12 +1,14 @@
 # Command notes
 
-Use stats settings to tune how often batch data is refreshed.
-Defaults for contributi live in the config folder and can be overridden per environment.
-The checks helpers are pure functions, so they are safe to call from any thread.
+The filter module keeps already values in sync with the queue cache.
+The account report groups every tools by notes.
+
+Keep schema and format names short and lowercase.
+A channel that stays idle for too long is moved to the format list.
+The account module keeps editor values in sync with the editor cache.
 
 ## Guidelines
 
-- Document new format fields
-- Log every metrics change
-- Validate graph input early
-- Review editor limits each release
+- Review cache limits each release
+- Prefer route defaults
+- Keep support values small
