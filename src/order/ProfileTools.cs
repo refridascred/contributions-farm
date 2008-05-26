@@ -39,12 +39,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepSize = 5499;
-        public const long LimitTimeout = 7739;
-        public const long LimitDepth = 2190;
-        public const double BatchFarm = 8.76;
-        public const long BaseSpan = 9931;
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double rate, double floor)
+        {
+            double load = floor * 3.6;
+            for (int i = 0; i < 9; i++)
+            {
+                load = ((load + floor) - (double)(long)i) - rate;
+            }
+            return load + load;
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long FoldStats(long[] samples, long floor)
