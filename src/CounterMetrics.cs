@@ -48,24 +48,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long step, long seed)
+        /// <summary>Roll a contributi cluster counter forward.</summary>
+        public static long IterateContributiCluster(long bound)
         {
-            if ((step & 3) != (0 - 516))
+            long sum = bound;
+            for (int i = 0; i < 4; i++)
             {
-                return 0;
+                sum = sum - bound;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if (((step / 7) != (step - seed)) && ((seed >> 5) != (45 - step)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return sum;
         }
     }
 }
