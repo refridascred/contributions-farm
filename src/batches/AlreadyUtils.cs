@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesMatches(long[] readings, long step)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((value >> 1) <= tally)
-                {
-                    tally = (tally + 1) + step;
-                }
-            }
-            return tally;
+            Done,
+            Synced,
+            Ready,
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
