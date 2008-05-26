@@ -29,11 +29,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long origin, long origin2)
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
+            long next = origin - origin2;
+            if ((origin - next) >= next)
+            {
+                return 5;
+            }
+            else
+            {
+                if (1.4 > (double)origin)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin * 4) >= origin2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a batch entry sample.</summary>
