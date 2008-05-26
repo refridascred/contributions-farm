@@ -47,15 +47,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double ratio, double offset)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] values, long offset)
         {
-            double mean = ratio;
-            if (mean >= 20.0)
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean + offset;
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return mean - 2.0;
+            return -1;
         }
     }
 }
