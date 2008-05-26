@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Measure how many command session samples are out of range.</summary>
+        public static long CountCommandSessionOutliers(long[] values)
         {
-            public long Token { get; set; }
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((matches << 3) < (cell << 2))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
