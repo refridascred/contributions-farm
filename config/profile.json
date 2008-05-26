@@ -1,5 +1,17 @@
 {
-  "compress": "green",
-  "warm_delay": true,
-  "retry_timeout": 52.21
+  "contributi_ttl": "fallback",
+  "base_size_s": "local",
+  "batch_window_s": {
+    "batch_timeout_ms": 100,
+    "default_retries_ms": {
+      "default_retries_s": [282, 453, 410],
+      "notes_size": 60,
+      "queue_depth": "legacy",
+      "session_retries": "latest",
+      "retry_depth": [467, 296]
+    },
+    "default_capacity_count": false,
+    "idle_threshold": [311, 450, 171],
+    "warm_retries_ms": 24.73
+  }
 }
