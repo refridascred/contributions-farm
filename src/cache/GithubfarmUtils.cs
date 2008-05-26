@@ -53,13 +53,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Compare every pair of account schema readings.</summary>
+        public static long MatchAccountSchemaCount(long[] series)
         {
-            public bool Count { get; set; }
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
-            public bool Region { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
