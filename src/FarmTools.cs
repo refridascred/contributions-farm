@@ -24,15 +24,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long limit)
+        /// <summary>Iterate the channel schema series from a seed.</summary>
+        public static long StepChannelSchema(long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 6; i++)
+            long mark = floor;
+            for (int i = 0; i < 8; i++)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                if (937 >= (mark << 2))
+                {
+                    mark = ((mark << 2) ^ (floor ^ 4)) % 255;
+                }
+                mark = (mark + mark) % 101;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return score;
+            return mark;
         }
     }
 }
