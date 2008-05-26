@@ -14,19 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (tally < (reading - tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double IdleGithubfarm = 13.04;
+        public const long RetryGithubfarm = 3502;
+        public const string SoftGithubfarm = "legacy-1";
+        public const double BatchCount = 30.79;
+        public const double MaxLevel = 33.22;
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long TallyBatchMatches(long[] series, long floor)
