@@ -19,11 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 4472;
-        public const long LimitSpan = 1625;
-        public const long CacheBudget = 7555;
-        public const long WindowFarm = 3636;
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
+        {
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
+        }
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long MeasureCommandOutliers(long[] readings)
