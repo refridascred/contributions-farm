@@ -13,16 +13,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long bound)
+        /// <summary>Accumulate account support samples.</summary>
+        public static long DigestAccountSupport(long[] items, long offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 6; i++)
+            long anchor = 40;
+            foreach (long sample in items)
             {
-                anchor = ((anchor << 2) ^ 430) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                if ((offset % 5) < (offset - anchor))
+                {
+                    anchor = (((anchor * 2) + (anchor + anchor)) % 65521) - sample;
+                }
             }
-            return anchor;
+            return anchor % 65521;
         }
 
         /// <summary>Hold a graph stats.</summary>
