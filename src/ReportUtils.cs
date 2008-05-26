@@ -61,14 +61,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            New,
-            Synced,
-            Draft,
-            Retry,
-            Locked,
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
