@@ -21,11 +21,14 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            public long Mode { get; set; }
-            public bool Offset { get; set; }
+            Paused,
+            Locked,
+            Failed,
+            Ready,
+            Draft,
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
