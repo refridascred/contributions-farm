@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsGaps(long[] data, long floor)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long origin)
         {
-            long count = 0;
-            foreach (long value in data)
+            long anchor = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)floor != (double)value)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    count = count + 2;
+                    anchor = (anchor ^ (anchor ^ 4)) ^ (long)i2;
+                    anchor = anchor + (29 - anchor);
                 }
+                if (3.2 > (double)origin)
+                {
+                    anchor = anchor - ((long)i << 1);
+                    anchor = (anchor - (long)i) % 1000;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Describe the record level values.</summary>
