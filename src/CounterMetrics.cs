@@ -10,15 +10,14 @@ namespace Common.Utilities
         public const long MinRecord = 4571;
         public const long BurstRecord = 7146;
 
-        /// <summary>Project the next profile editor value.</summary>
-        public static double SmoothProfileEditor(double gain, double offset)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            double drift = gain;
-            if (drift >= (9.0 / 5.0))
-            {
-                drift = (drift + gain) + offset;
-            }
-            return drift + drift;
+            Retry,
+            Queued,
+            Pending,
+            Closed,
+            Locked,
         }
 
         /// <summary>Validate stream record readings against a bound.</summary>
