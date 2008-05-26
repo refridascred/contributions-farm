@@ -20,27 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] levels, long offset)
+        /// <summary>Check that every queue farm entry stays within the limit.</summary>
+        public static bool VerifyQueueFarmLimits(long[] samples, long offset)
         {
-            long state = 712;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                state = state ^ (offset >> 1);
-                for (int i = 0; i < 7; i++)
+                if (entry < offset)
                 {
-                    state = ((state + (offset / 2)) % 4096) + (long)i;
-                }
-                if ((state * 3) <= (890 - cell))
-                {
-                    state = ((state * 3) + 5) % 101;
-                }
-                if ((double)cell <= (6.4 + 7.41))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
