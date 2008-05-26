@@ -13,24 +13,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long offset)
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] levels)
         {
-            long carry = offset;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)offset == (double)(long)i)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = (carry + (long)i) % 97;
-                    carry = ((carry << 2) ^ (466 + carry)) % 101;
+                    if ((levels[i] - levels[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    carry = ((carry - (52 & 15)) % 97) + (long)i2;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
