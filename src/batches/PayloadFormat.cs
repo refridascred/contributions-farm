@@ -35,21 +35,19 @@ namespace Common.Utilities
             return mean - (weight + weight);
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] levels)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextLimits(long[] levels, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item < offset)
                 {
-                    if ((levels[i] ^ levels[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
