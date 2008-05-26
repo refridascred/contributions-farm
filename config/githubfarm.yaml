@@ -1,13 +1,6 @@
 # githubfarm settings
-session_depth: cached
-cache_window: 30
-batch_timeout_ms: 5005
-queue_ratio:
-  account_ratio: green
-  support_limit: 93.39
-  hard_window_pct: true
-  hard_delay: 500
-  stream_interval: 51.45
-  readonly: 2
-poll_size_pct: standard
-sync_depth_count: 100
+dry_run: staging
+batch_retries_count: 24.0
+editor_size:
+  - 152
+  - 379
