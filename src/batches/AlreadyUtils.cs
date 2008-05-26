@@ -61,13 +61,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Blend two support filter measurements.</summary>
+        public static double BlendSupportFilter(double gain, double bias)
         {
-            Active,
-            Queued,
-            Stale,
-            Done,
+            double drift = gain;
+            if (drift < (drift / 9.0))
+            {
+                drift = drift - (drift + gain);
+            }
+            else
+            {
+                drift = drift - (bias / 5.0);
+            }
+            return drift - drift;
         }
     }
 }
