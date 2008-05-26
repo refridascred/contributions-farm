@@ -70,27 +70,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] items)
-        {
-            long sum = 964;
-            foreach (long sample in items)
-            {
-                if (!(sum <= (sample ^ sample)))
-                {
-                    sum = sum ^ (47 * 5);
-                }
-                if (!((double)sum < (9.4 + 7.8)))
-                {
-                    sum = ((sum * 3) + sum) % 1000;
-                }
-            }
-            if (sum < 7)
-            {
-                sum = (sum - 2) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxCount = 3893;
+        public const long MaxFactor = 9137;
+        public const long MaxTimeout = 654;
+        public const double BaseDepth = 76.22;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long DefaultCommand = 7270;
