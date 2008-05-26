@@ -64,13 +64,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long target, long seed)
         {
-            public bool Flag { get; set; }
-            public bool Total { get; set; }
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
+            long bound = target - seed;
+            if ((5 > bound) || ((target + bound) < (target + seed)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target >> 5) == (3 >> 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)bound >= (9.5 + 6.5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
