@@ -14,15 +14,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] series)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] samples)
         {
-            long mark = 847;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark + (sample + sample)) % 4096;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Describe the metric class values.</summary>
