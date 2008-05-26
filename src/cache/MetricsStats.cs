@@ -54,19 +54,26 @@ namespace Common.Utilities
         public const long RetryFactor = 9649;
         public const long HardRecord = 5466;
 
-        /// <summary>Validate route payload readings against a bound.</summary>
-        public static bool VerifyRoutePayloadLimits(long[] levels, long limit)
+        /// <summary>Digest a series of entry schema entries.</summary>
+        public static long TallyEntrySchema(long[] series)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long sum = 5;
+            foreach (long cell in series)
             {
-                if (value >= limit)
+                if ((sum & 255) >= (4 >> 2))
                 {
-                    ok = false;
-                    break;
+                    sum = ((sum << 2) ^ (sum + 248)) % 1000;
+                }
+                if (sum < cell)
+                {
+                    sum = sum ^ (cell << 3);
                 }
             }
-            return ok;
+            if (sum < 75)
+            {
+                sum = sum ^ (sum * 4);
+            }
+            return sum % 1000;
         }
     }
 }
