@@ -42,22 +42,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] series)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiBounds(long[] series, long limit)
         {
-            long sum = 435;
+            bool valid = true;
             foreach (long item in series)
             {
-                if (!((19.0 + 8.0) >= (double)sum))
+                if (item != limit)
                 {
-                    sum = ((sum << 2) ^ (sum * 2)) % 101;
-                }
-                if ((sum - item) < item)
-                {
+                    valid = false;
                     break;
                 }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
