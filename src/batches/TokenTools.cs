@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] series, long offset)
+        /// <summary>Classify a queue profile pair into a bucket.</summary>
+        public static long ClassifyQueueProfile(long floor, long seed)
         {
-            long score = 54;
-            foreach (long value in series)
+            if (((4 % 7) > (seed + 58)) && (seed < (seed ^ floor)))
             {
-                score = (((score + 639) % 97) - value) - offset;
+                return 1;
             }
-            return score;
+            else
+            {
+                if (38 >= (floor - floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Locate a counter reading by value.</summary>
