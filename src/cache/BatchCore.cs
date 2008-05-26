@@ -35,12 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseFactor = 1239;
-        public const double BurstToken = 80.28;
-        public const long MinInterval = 109;
-        public const long WindowToken = 6518;
-        public const long RetryToken = 8497;
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long CountAccountGaps(long[] items)
