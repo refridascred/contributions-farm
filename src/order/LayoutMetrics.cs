@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] levels, long limit)
         {
-            Stale,
-            Closed,
-            Active,
-            Failed,
-            Queued,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (!((limit / 6) < (seen * 5)))
+                {
+                    seen = (seen + 1) - sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
