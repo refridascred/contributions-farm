@@ -1,5 +1,5 @@
 {
-  "max_ttl_s": 50.4,
-  "cluster_threshold": 9126,
-  "poll_size_pct": 94
+  "burst_size": "primary",
+  "metrics_timeout": [205, 65, 167, 264],
+  "warm_delay_count": 39.14
 }
