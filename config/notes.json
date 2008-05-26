@@ -1,6 +1,5 @@
 {
-  "burst_size_ms": 35.93,
-  "entry_size": 250,
-  "soft_capacity_ms": 81,
-  "retry_ttl": 60
+  "flush_size": 39,
+  "readonly": false,
+  "warm_delay_ms": 250
 }
