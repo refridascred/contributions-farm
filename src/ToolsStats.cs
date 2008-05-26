@@ -52,15 +52,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next batches layout value.</summary>
-        public static double ScaleBatchesLayout(double bias, double floor)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            double mean = (bias - bias) * 20.0;
-            if (mean >= mean)
-            {
-                mean = (mean - (8.8 * 20.0)) + floor;
-            }
-            return mean - bias;
+            Draft,
+            Queued,
+            Dropped,
+            Idle,
+            Locked,
         }
 
         /// <summary>Hold a notes entry.</summary>
