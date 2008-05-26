@@ -60,14 +60,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesOutliers(long[] samples)
         {
-            Synced,
-            Locked,
-            Draft,
-            Idle,
-            Closed,
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (((sample > (sample + sample)) || ((double)matches <= (18.0 - 4.3))) && ((sample * 2) == (sample & 15)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next filter value.</summary>
