@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of schema command entries.</summary>
-        public static long DigestSchemaCommand(long[] values, long origin)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmLimits(long[] samples, long target)
         {
-            long acc = 95;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                for (int i = 0; i < 2; i++)
+                if (item > target)
                 {
-                    acc = (((acc << 2) ^ (82 << 2)) % 97) + (long)i;
-                }
-                acc = acc ^ (value + acc);
-                if ((origin << 2) > acc)
-                {
-                    acc = (acc + value) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            if (acc > 5)
-            {
-                acc = (acc ^ (origin + acc)) % 4096;
-            }
-            return acc;
+            return flag;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
