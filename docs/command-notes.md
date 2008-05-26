@@ -1,11 +1,13 @@
 # Command notes
 
-Run the counter check before changing any editor limits.
-Run the layout check before changing any stream limits.
+Keep cluster and layout names short and lowercase.
+The filter helpers are pure functions, so they are safe to call from any thread.
+
+Defaults for schema live in the config folder and can be overridden per environment.
+When a report fails, the stream handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate order input early
-- Keep format values small
-- Review batch limits each release
-- Document new graph fields
+- Review order limits each release
+- Prefer buffer defaults
+- Keep queue values small
