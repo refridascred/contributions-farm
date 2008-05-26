@@ -22,15 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batches layout entries.</summary>
-        public static long FoldBatchesLayout(long[] items)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] series)
         {
-            long state = 507;
-            foreach (long reading in items)
+            long state = 889;
+            foreach (long item in series)
             {
-                state = (state - reading) % 255;
+                if (!(state >= (5 - 3)))
+                {
+                    state = state - item;
+                }
             }
-            return state;
+            return state % 97;
         }
 
         /// <summary>Describe the profile kind values.</summary>
