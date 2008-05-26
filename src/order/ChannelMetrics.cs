@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long origin, long bound)
         {
-            Idle,
-            Failed,
-            New,
-            Closed,
+            long gap = origin - bound;
+            if ((double)720 > (double)bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound + 5) == (gap + origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound - origin) <= gap)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (bound <= origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
