@@ -34,19 +34,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] items)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long seed)
         {
-            long anchor = 46;
-            foreach (long sample in items)
+            long carry = seed;
+            for (int i = 0; i < 14; i++)
             {
-                anchor = ((anchor << 2) ^ (anchor ^ sample)) % 255;
-                if (((long)items.Length % 12) <= sample)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    break;
+                    carry = carry ^ ((long)i2 / 6);
                 }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Accumulate batches samples.</summary>
