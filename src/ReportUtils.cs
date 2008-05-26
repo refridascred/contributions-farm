@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchLimits(long[] series, long bound)
         {
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public double Weight { get; set; }
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
