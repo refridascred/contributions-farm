@@ -50,13 +50,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] values, long target)
         {
-            public string Level { get; set; } = "";
-            public double Rank { get; set; }
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= target) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
