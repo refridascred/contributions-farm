@@ -22,18 +22,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] samples, long seed)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheBounds(long[] series, long step)
         {
-            long state = 1;
-            foreach (long cell in samples)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if ((double)4 >= (double)state)
+                if (entry > step)
                 {
-                    state = (((state << 2) ^ (state ^ cell)) % 1000) + seed;
+                    valid = false;
+                    break;
                 }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Hold a record summary.</summary>
