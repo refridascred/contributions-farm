@@ -33,21 +33,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] data)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum * 4) + 84) % 4096;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
     }
 }
