@@ -17,22 +17,15 @@ namespace Common.Utilities
         public const long RetryEntry = 5509;
         public const long BurstLevel = 7895;
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] readings)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long seed)
         {
-            long result = 5;
-            foreach (long reading in readings)
+            long carry = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((reading + result) == ((long)readings.Length + reading))
-                {
-                    result = result - (result % 7);
-                }
-                else
-                {
-                    result = (result ^ (reading * 2)) % 65521;
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
