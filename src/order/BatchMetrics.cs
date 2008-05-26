@@ -23,13 +23,10 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
-        {
-            Dropped,
-            Retry,
-            Synced,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double LimitContext = 49.58;
+        public const string CacheContext = "staging-1";
+        public const long MaxTimeout = 2147;
 
         /// <summary>Roll a command counter forward.</summary>
         public static long RollCommand(long step)
