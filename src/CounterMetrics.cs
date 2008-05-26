@@ -16,11 +16,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxDepth = 25.19;
-        public const double StepFarm = 93.28;
-        public const long SoftFarm = 2850;
-        public const long WindowTimeout = 6632;
+        /// <summary>Check that every editor graph entry stays within the limit.</summary>
+        public static bool GuardEditorGraphBounds(long[] series, long offset)
+        {
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long MatchLayoutCount(long[] data)
