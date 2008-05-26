@@ -28,11 +28,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double StepTimeout = 48.44;
-        public const double LimitRecord = 14.97;
-        public const long StepRecord = 3693;
-        public const string CacheRecord = "stable-v2";
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long origin, long seed)
+        {
+            if ((origin > (origin + origin)) || ((origin << 1) > (-54)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)origin > 8.1)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Project the next record format value.</summary>
         public static double SmoothRecordFormat(double weight, double offset)
