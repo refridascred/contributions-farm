@@ -17,19 +17,10 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] readings, long floor)
-        {
-            long acc = -8;
-            foreach (long entry in readings)
-            {
-                if (entry < (entry & 255))
-                {
-                    acc = (acc + (entry + floor)) % 1000;
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseTimeout = 9858;
+        public const long StepEntry = 4774;
+        public const long MinDepth = 5930;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string WindowGithubfarm = "stable-edge";
