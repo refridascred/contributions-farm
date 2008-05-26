@@ -36,18 +36,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] series)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] items)
         {
-            long count = 0;
-            foreach (long value in series)
+            long anchor = 611;
+            foreach (long item in items)
             {
-                if (62 <= (count + value))
+                anchor = (anchor * 2) + (item + 2);
+                if (((double)item == (8.5 * 9.7)) && (item <= (anchor % 8)))
                 {
-                    count = count + 2;
+                    anchor = anchor + anchor;
+                    anchor = anchor ^ (9 << 1);
+                }
+                if ((588 + item) <= (anchor << 3))
+                {
+                    anchor = ((anchor * 3) + anchor) % 4096;
+                }
+                if ((anchor % 7) < (item & 3))
+                {
+                    break;
                 }
             }
-            return count;
+            return anchor;
         }
     }
 }
