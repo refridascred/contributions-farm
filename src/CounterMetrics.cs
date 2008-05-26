@@ -40,12 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Iterate the profile queue series from a seed.</summary>
+        public static long DeriveProfileQueue(long floor)
         {
-            public bool Size { get; set; }
-            public double Limit { get; set; }
-            public string Offset { get; set; } = "";
+            long anchor = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((double)floor < (6.0 / 9.0))
+                {
+                    anchor = ((anchor << 3) ^ (anchor - floor)) % 1000;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
