@@ -1,16 +1,17 @@
 {
-  "report_retries": "strict",
-  "command_timeout": "fallback",
-  "compress": 68,
-  "persist": {
-    "enabled": false,
-    "hard_size_pct": {
-      "batch_ttl_count": true,
-      "max_depth_count": true,
-      "retry_ratio_ms": true
+  "compress": "legacy",
+  "min_retries_ms": {
+    "base_ratio_ms": "cached",
+    "audit": {
+      "channel_capacity": "primary",
+      "flush_timeout": 1024,
+      "compress": "open",
+      "farm_window": 87,
+      "audit": false
     },
-    "readonly": "primary",
-    "compress": 4614
+    "min_capacity_pct": true
   },
-  "warm_capacity": 8547
+  "retry_window_count": "eu-west",
+  "poll_interval": 250,
+  "max_retries_s": 5564
 }
