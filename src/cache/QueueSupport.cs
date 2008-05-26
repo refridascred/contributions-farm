@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
-        {
-            public long Score { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleTimeout = 9440;
+        public const string StepFactor = "open";
+        public const long HardWidth = 5818;
 
         /// <summary>Measure how many command session samples are out of range.</summary>
         public static long CountCommandSessionOutliers(long[] values)
