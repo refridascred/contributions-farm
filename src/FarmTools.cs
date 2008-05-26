@@ -32,17 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] items, long offset)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowBounds(long[] readings, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if (items[i] >= offset)
+                if (datum > floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
