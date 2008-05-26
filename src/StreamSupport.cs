@@ -22,15 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the entry session series from a seed.</summary>
-        public static long RollEntrySession(long target)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] series)
         {
-            long mix = target;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                if ((double)entry >= (3.14 * 0.91))
+                {
+                    hits = hits + 2;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Hold a cache header.</summary>
