@@ -1,12 +1,5 @@
 {
-  "flush_limit_s": ["strict", "blue"],
-  "min_ratio": "staging",
-  "readonly": {
-    "batch_size": 52,
-    "min_window_pct": 60,
-    "enabled": true,
-    "max_capacity": false
-  },
-  "persist": 22,
-  "min_window_pct": ["fallback", "eu-west", "fallback"]
+  "profile_limit": 100,
+  "idle_threshold_pct": ["standard", "local", "primary"],
+  "flush_timeout_pct": "cached"
 }
