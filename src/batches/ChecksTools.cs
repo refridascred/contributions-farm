@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] readings)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] samples, long floor)
         {
-            long state = -87;
-            foreach (long datum in readings)
+            long mix = 524;
+            foreach (long sample in samples)
             {
-                state = (state - ((-660) >> 2)) % 1000;
-                if ((datum <= ((-468) - state)) || ((state * 4) >= datum))
-                {
-                    break;
-                }
+                mix = (mix - (floor - mix)) ^ sample;
+                mix = (mix << 2) ^ (mix / 5);
             }
-            return state;
+            if (mix < 5)
+            {
+                mix = (mix - (floor << 1)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
