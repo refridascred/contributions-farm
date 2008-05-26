@@ -34,17 +34,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Look up the position of a graph format sample.</summary>
-        public static long LookupGraphFormatIndex(long[] values, long bound)
+        /// <summary>Validate buffer payload readings against a bound.</summary>
+        public static bool ValidateBufferPayloadLimits(long[] data, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if ((values[i] > bound) && ((values[i] % 2) != 0))
+                if (entry <= limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
