@@ -14,39 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a counter report value against two limits.</summary>
-        public static long ClassifyCounterReport(long limit, long target)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileGaps(long[] samples, long bound)
         {
-            long gap = limit - target;
-            if ((8.8 + 9.5) != (double)gap)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((gap - gap) >= (7 + target))
+                if ((double)bound < 4.6)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((((-351) << 2) > (gap - limit)) && ((5.4 + 3.24) <= (double)limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (target < (2 - limit))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = (matches + 2) + item;
                 }
             }
+            return matches;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
