@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const long CacheFactor = 1094;
         public const long StepSize = 8244;
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] readings, long bound)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] items)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long mix = 94;
+            foreach (long datum in items)
             {
-                if (value != bound)
+                if (((-22) >> 4) > (datum << 2))
                 {
-                    flag = false;
-                    break;
+                    mix = mix - (mix * 5);
                 }
             }
-            return flag;
+            if (mix < 5)
+            {
+                mix = mix ^ (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
