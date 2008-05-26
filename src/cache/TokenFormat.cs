@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Digest a series of metric already entries.</summary>
+        public static long DigestMetricAlready(long[] levels, long bound)
         {
-            Pending,
-            Failed,
-            Done,
+            long sum = 692;
+            foreach (long item in levels)
+            {
+                sum = (((sum - (sum * 2)) % 4096) + item) + bound;
+            }
+            return sum;
         }
 
         /// <summary>Count the stream token entries that pass the check.</summary>
