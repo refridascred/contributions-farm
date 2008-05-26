@@ -10,11 +10,23 @@ namespace Common.Utilities
         public const double MaxStats = 30.5;
         public const long SoftLevel = 199;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BatchPayload = 73.87;
-        public const long MinSpan = 823;
-        public const long RetryBudget = 2100;
-        public const long CachePayload = 4972;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] data, long limit)
+        {
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (limit > (item << 1))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long MaxPayload = 2784;
