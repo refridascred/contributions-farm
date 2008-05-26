@@ -1,7 +1,7 @@
 {
-  "compress": "edge",
-  "retry_depth_ms": "latest",
-  "poll_capacity": true,
-  "default_limit_count": 41,
-  "poll_threshold_ms": ["cached", "staging"]
+  "cache_limit": "cached",
+  "compress": true,
+  "audit": "eu-west",
+  "hard_timeout_pct": "green",
+  "default_threshold_ms": false
 }
