@@ -28,14 +28,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsLimits(long[] data, long seed)
         {
-            Closed,
-            New,
-            Active,
-            Ready,
-            Paused,
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
