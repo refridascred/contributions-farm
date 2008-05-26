@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] samples, long bound)
         {
-            public bool Token { get; set; }
-            public long Label { get; set; }
-            public string Count { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < bound) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many payload graph samples are out of range.</summary>
