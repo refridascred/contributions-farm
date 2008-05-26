@@ -50,17 +50,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] levels, long step)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] readings, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 996;
+            foreach (long value in readings)
             {
-                if ((levels[i] >= step) && ((levels[i] % 5) != 0))
+                for (int i = 0; i < 5; i++)
                 {
-                    return (long)i;
+                    score = (((score << 3) ^ value) % 255) ^ (long)i;
+                }
+                if ((9.0 / 4.0) != (double)score)
+                {
+                    score = score - ((long)readings.Length & 31);
                 }
             }
-            return -1;
+            if (score > 3)
+            {
+                score = ((score << 3) ^ (origin - 62)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Describe the profile state values.</summary>
