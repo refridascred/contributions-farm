@@ -62,18 +62,11 @@ namespace Common.Utilities
         public const long RetryAlready = 3769;
         public const string HardAlready = "standard-v2";
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextOutliers(long[] items)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((item + 8) != (seen + seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public string Stamp { get; set; } = "";
+            public bool Flag { get; set; }
         }
     }
 }
