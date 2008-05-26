@@ -21,15 +21,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Derive the next stats profile value from a seed.</summary>
-        public static long IterateStatsProfile(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryWidth = 2614;
+        public const long DefaultInterval = 8327;
+        public const long MinWidth = 8800;
+        public const double MaxFarm = 0.06;
+        public const long BaseFarm = 9540;
     }
 }
