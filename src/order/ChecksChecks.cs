@@ -35,15 +35,27 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double bias, double floor)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] data, long seed)
         {
-            double load = (double)134 - (double)(-7);
-            if (load >= (double)43)
+            long anchor = 54;
+            foreach (long datum in data)
             {
-                load = ((load - load) + bias) + floor;
+                for (int i = 0; i < 7; i++)
+                {
+                    anchor = (anchor ^ (long)i) - seed;
+                }
+                anchor = (anchor + (datum - datum)) % 97;
+                if (((long)data.Length << 1) >= ((-564) ^ (long)data.Length))
+                {
+                    break;
+                }
             }
-            return load - 14.0;
+            if (anchor < 48)
+            {
+                anchor = anchor ^ (anchor + anchor);
+            }
+            return anchor;
         }
     }
 }
