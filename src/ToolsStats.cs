@@ -24,16 +24,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 7581;
+        public const long StepToken = 5201;
+        public const long IdleToken = 2502;
+        public const string MinDepth = "stable-1";
+        public const long DefaultDepth = 120;
 
         /// <summary>Combine cluster metric values into a single score.</summary>
         public static long WeighClusterMetric(long[] levels, long offset)
