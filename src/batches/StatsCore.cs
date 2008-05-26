@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MinWidth = "legacy-v2";
-        public const long CacheFactor = 1094;
-        public const long StepSize = 8244;
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long ScoreStats(long[] items)
