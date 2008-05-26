@@ -31,18 +31,22 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Measure how many session commits samples are out of range.</summary>
-        public static long TallySessionCommitsGaps(long[] values)
+        /// <summary>Digest a series of support record entries.</summary>
+        public static long DigestSupportRecord(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long score = 413;
+            foreach (long value in readings)
             {
-                if ((2.0 - 4.0) == (double)item)
+                for (int i = 0; i < 8; i++)
                 {
-                    seen = seen + 1;
+                    score = (score ^ (score & 1)) + (long)i;
+                }
+                if (!(7.65 > (double)value))
+                {
+                    score = (score ^ (value + value)) % 65521;
                 }
             }
-            return seen;
+            return score % 4096;
         }
     }
 }
