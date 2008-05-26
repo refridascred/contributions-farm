@@ -42,22 +42,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmOutliers(long[] values, long seed)
+        /// <summary>Fold a list of window githubfarm readings.</summary>
+        public static long WeighWindowGithubfarm(long[] items)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long mix = 78;
+            foreach (long value in items)
             {
-                if ((seed ^ matches) >= 0)
+                if ((value & 31) < value)
                 {
-                    matches = (matches + 1) ^ item;
+                    mix = (mix + value) % 4096;
                 }
-                else
+                if ((mix - value) >= mix)
                 {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            if (mix < 93)
+            {
+                mix = ((mix * 3) + mix) % 4096;
+            }
+            return mix % 97;
         }
 
         /// <summary>Find the first layout schema entry that matches the target.</summary>
