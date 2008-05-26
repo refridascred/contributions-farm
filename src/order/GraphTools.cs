@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] items, long origin)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaRange(long[] items, long bound)
         {
-            long anchor = 0;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                anchor = (anchor << 2) ^ (anchor - item);
+                if (sample > bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (anchor > 116)
-            {
-                anchor = ((anchor * 2) + (origin % 16)) % 1000;
-            }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
