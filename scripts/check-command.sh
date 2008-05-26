@@ -6,13 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue standard staging legacy; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=8
+log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-edge}"
+mode="${1:-latest}"
 case "${mode}" in
-    edge)
+    cached)
         log "fast path"
         ;;
     *)
