@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a cluster filter sample.</summary>
-        public static long FindClusterFilterIndex(long[] samples, long offset)
+        /// <summary>Find the first githubfarm session entry that matches the target.</summary>
+        public static long LookupGithubfarmSessionIndex(long[] data, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((samples[i] > offset) && ((samples[i] % 3) != 0))
+                if ((data[i] == target) && ((data[i] % 3) != 0))
                 {
                     return (long)i;
                 }
