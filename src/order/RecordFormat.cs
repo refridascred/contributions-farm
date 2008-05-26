@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many token filter samples are out of range.</summary>
-        public static long AuditTokenFilterOutliers(long[] readings, long seed)
+        /// <summary>Fold a list of entry route readings.</summary>
+        public static long ScoreEntryRoute(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long total = 26;
+            foreach (long sample in values)
             {
-                if ((seen + seed) != (seed + entry))
+                if (sample > (total + total))
                 {
-                    seen = seen + 2;
+                    total = total + (total + total);
                 }
             }
-            return seen;
+            if (total > 1)
+            {
+                total = (total ^ (total & 127)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
