@@ -14,31 +14,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long bound, long bound2)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] readings, long offset)
         {
-            if ((bound2 + bound2) >= 28)
+            long mark = 390;
+            foreach (long entry in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound * 4) > bound)
+                mark = ((mark - (5 & 1)) % 4096) + offset;
+                if (!((15 / 2) > entry))
                 {
-                    return 6;
+                    mark = (mark << 3) ^ (1 ^ 29);
+                    break;
                 }
-                else
+                if (entry < mark)
                 {
-                    if ((7 * 3) <= (bound2 % 24))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    mark = (mark + (entry & 7)) % 97;
                 }
             }
+            return mark;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
