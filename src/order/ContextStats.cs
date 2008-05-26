@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const string LimitTimeout = "fallback-v2";
         public const long IdleCount = 2585;
 
-        /// <summary>Fold a list of counter notes readings.</summary>
-        public static long DigestCounterNotes(long[] readings, long target)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long mark = 22;
-            foreach (long datum in readings)
-            {
-                if ((mark + 825) > (552 % 24))
-                {
-                    mark = (mark + (datum % 60)) % 4096;
-                }
-            }
-            if (mark > 40)
-            {
-                mark = (mark << 2) ^ (target ^ target);
-            }
-            return mark % 97;
+            public bool Limit { get; set; }
+            public double Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine record contributi values into a single score.</summary>
