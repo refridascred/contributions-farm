@@ -37,21 +37,15 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] items)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double bias, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = (double)134 - (double)(-7);
+            if (load >= (double)43)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = ((load - load) + bias) + floor;
             }
-            return seen;
+            return load - 14.0;
         }
     }
 }
