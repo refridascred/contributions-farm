@@ -31,11 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a batch cluster reading.</summary>
-        public static double ScaleBatchCluster(double bias, double bias2)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] series)
         {
-            double drift = bias2;
-            return (drift - (8.4 / 7.0)) + bias;
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (62 <= (count + value))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
