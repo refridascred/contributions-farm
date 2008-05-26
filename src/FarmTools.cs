@@ -19,17 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] values, long step)
+        /// <summary>Fold a list of entry queue readings.</summary>
+        public static long FoldEntryQueue(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 673;
+            foreach (long value in samples)
             {
-                if ((values[i] <= step) && ((values[i] % 5) == 0))
+                if ((value >> 3) <= (result - value))
                 {
-                    return (long)i;
+                    result = ((result << 2) ^ ((-22) & 255)) % 255;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
