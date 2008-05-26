@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 9802;
-        public const double DefaultMetric = 1.29;
-        public const double HardMetric = 68.09;
-        public const double BatchRatio = 59.15;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] items)
+        {
+            long anchor = -8;
+            foreach (long cell in items)
+            {
+                if (anchor <= (534 & 3))
+                {
+                    anchor = anchor + (anchor - 0);
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (anchor + cell)) % 97;
+                }
+            }
+            if (anchor > 2)
+            {
+                anchor = (anchor - (7 + anchor)) % 255;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long AuditFarmHits(long[] data)
