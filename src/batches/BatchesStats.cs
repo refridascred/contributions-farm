@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] items, long offset)
-        {
-            long mix = 8;
-            foreach (long cell in items)
-            {
-                mix = (((mix << 2) ^ (offset + (long)items.Length)) % 97) - cell;
-            }
-            return mix;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowInterval = 1942;
+        public const long BatchScore = 447;
+        public const long CacheBudget = 3124;
+        public const double DefaultMetrics = 96.4;
+        public const long CacheInterval = 2789;
 
         /// <summary>Derive the next checks command value from a seed.</summary>
         public static long DeriveChecksCommand(long bound)
