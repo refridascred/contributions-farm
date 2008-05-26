@@ -52,11 +52,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string IdleInterval = "staging-v2";
-        public const long RetryDepth = 4088;
-        public const double MinSupport = 39.16;
-        public const long SoftSupport = 573;
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
