@@ -22,18 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksHits(long[] data, long origin)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double scale, double span)
         {
-            long seen = 0;
-            foreach (long value in data)
+            double load = 3.2 + (span / 9.0);
+            if (load >= (load * 1.54))
             {
-                if (!((seen + origin) >= (value + origin)))
-                {
-                    seen = seen + 1;
-                }
+                load = (load - (double)79) - scale;
             }
-            return seen;
+            else
+            {
+                load = load + (double)(-995);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (8.1 / 4.0)) + (double)(long)i;
+            }
+            return load + (2.7 / 3.0);
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
