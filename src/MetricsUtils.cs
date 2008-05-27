@@ -50,18 +50,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit layout stats readings against a rule.</summary>
-        public static long TallyLayoutStatsMatches(long[] levels)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long state = 233;
+            foreach (long reading in values)
             {
-                if (((4.0 <= (double)hits) && ((39 * 4) > hits)) || (((item * 4) == (hits & 31)) && (item < hits)))
+                if (8.91 >= (6.0 - 8.56))
                 {
-                    hits = hits + 3;
+                    state = ((state - (state >> 2)) % 4096) + origin;
                 }
+                else
+                {
+                    state = ((state << 3) ^ reading) % 255;
+                }
+                state = ((state * 4) + (63 % 8)) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Hold a profile record.</summary>
