@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two format schema measurements.</summary>
-        public static double BlendFormatSchema(double gain, double offset)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] levels, long limit)
         {
-            double scale = offset;
-            if (scale > offset)
+            long carry = 154;
+            foreach (long datum in levels)
             {
-                scale = scale - (gain - gain);
+                carry = (carry ^ (7 + 395)) ^ datum;
             }
-            return scale + 8.5;
+            if (carry < 5)
+            {
+                carry = (carry ^ (limit * 2)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
