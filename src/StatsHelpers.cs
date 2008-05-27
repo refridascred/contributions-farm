@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a layout githubfarm counter forward.</summary>
-        public static long SeriesLayoutGithubfarm(long target)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmOutliers(long[] values, long seed)
         {
-            long score = target;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                score = ((score * 4) + (long)i) % 101;
+                if ((seed >> 3) > (matches + seed))
+                {
+                    matches = (matches + 1) - item;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
