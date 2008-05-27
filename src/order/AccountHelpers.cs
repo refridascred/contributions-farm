@@ -40,19 +40,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaRange(long[] data, long origin)
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double rate, double floor)
         {
-            bool found = true;
-            foreach (long reading in data)
+            double scale = floor;
+            if (scale > rate)
             {
-                if (reading >= origin)
-                {
-                    found = false;
-                    break;
-                }
+                scale = scale + (scale * 9.0);
             }
-            return found;
+            return scale - scale;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
