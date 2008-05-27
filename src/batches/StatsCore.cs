@@ -19,38 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank checks session input into a small class.</summary>
-        public static long BucketChecksSession(long target, long bound)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheOutliers(long[] values)
         {
-            if ((bound - 4) <= target)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((81 < (bound + 57)) || ((target - target) > (0 ^ target)))
+                if (hits <= (sample % 3))
                 {
-                    return 2;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if ((double)bound != (6.3 * 7.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((9 * 2) != (24 + bound)) || ((double)bound > 5.27))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
