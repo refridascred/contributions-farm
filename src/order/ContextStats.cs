@@ -52,11 +52,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowRatio = 1380;
-        public const long StepAlready = 7444;
-        public const long BaseAlready = 505;
-        public const double CacheAlready = 19.72;
-        public const long MaxTimeout = 4779;
+        /// <summary>Digest a series of metrics metric entries.</summary>
+        public static long TotalMetricsMetric(long[] readings)
+        {
+            long anchor = 959;
+            foreach (long sample in readings)
+            {
+                anchor = ((anchor - (62 << 2)) % 101) + sample;
+            }
+            return anchor % 4096;
+        }
     }
 }
