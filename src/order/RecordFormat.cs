@@ -41,15 +41,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long bound)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long anchor = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            public bool Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a payload header.</summary>
