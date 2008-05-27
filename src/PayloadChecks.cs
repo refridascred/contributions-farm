@@ -77,11 +77,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double LimitCount = 88.97;
-        public const string IdleMetric = "standard-1";
-        public const string SoftMetric = "latest-v2";
-        public const long SoftSpan = 5321;
-        public const double BatchMetric = 68.27;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] readings, long seed)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)seed <= (16.0 - 6.84))
+                {
+                    hits = (hits + 3) + sample;
+                }
+            }
+            return hits;
+        }
     }
 }
