@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-edge}"
 case "${mode}" in
-    stable)
+    open)
         log "fast path"
         ;;
     *)
@@ -16,6 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in stable cached; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=482
+log "limit is ${CHANNEL_LIMIT}"
