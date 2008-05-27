@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] levels, long bound)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long mix = 37;
-            foreach (long sample in levels)
-            {
-                mix = mix ^ bound;
-                if (sample < mix)
-                {
-                    break;
-                }
-            }
-            return mix % 65521;
+            Paused,
+            Stale,
+            Retry,
         }
 
         /// <summary>Describe the already level values.</summary>
