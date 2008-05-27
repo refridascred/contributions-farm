@@ -1,6 +1,8 @@
 # githubfarm settings
-verbose: 40
-flush_size_pct: 50.75
-route_delay: false
-audit: 67
-burst_timeout: true
+farm_timeout: 23.11
+account_depth: local
+max_depth_count:
+  - legacy
+  - local
+  - standard
+  - latest
