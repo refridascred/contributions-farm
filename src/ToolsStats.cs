@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportGaps(long[] data, long bound)
         {
-            Active,
-            Failed,
-            Closed,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((bound & 63) <= bound)
+                {
+                    seen = (seen + 1) - item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a tools record.</summary>
