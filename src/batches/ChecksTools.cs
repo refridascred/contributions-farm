@@ -25,18 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] data)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((hits - sample) > (hits * 2)))
+                if (values[i] < target)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Combine payload stream values into a single score.</summary>
