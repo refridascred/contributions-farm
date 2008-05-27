@@ -38,12 +38,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Count already layout pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyLayoutCount(long[] items)
         {
-            Locked,
-            New,
-            Paused,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
