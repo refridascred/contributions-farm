@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long floor, long floor2)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesBounds(long[] series, long bound)
         {
-            long offset = floor ^ floor2;
-            if ((double)floor < (14.0 / 3.0))
+            bool ok = true;
+            foreach (long item in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((3 << 2) > (floor & 127))
+                if (item > bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((4.8 / 6.0) != (double)floor2)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((offset & 31) <= (offset & 255)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
