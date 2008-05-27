@@ -55,12 +55,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Combine tools buffer values into a single score.</summary>
+        public static long ScoreToolsBuffer(long[] levels)
         {
-            public double Ratio { get; set; }
-            public double Offset { get; set; }
-            public double Total { get; set; }
+            long result = 654;
+            foreach (long value in levels)
+            {
+                result = (result + (result & 127)) % 65521;
+                result = (result + value) % 97;
+            }
+            return result % 4096;
         }
 
         /// <summary>Combine already batches values into a single score.</summary>
