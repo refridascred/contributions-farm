@@ -19,14 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            Ready,
-            Pending,
-            Idle,
             Retry,
-            Queued,
+            Done,
+            Idle,
+            Pending,
+            Locked,
         }
 
         /// <summary>Hold a filter info.</summary>
