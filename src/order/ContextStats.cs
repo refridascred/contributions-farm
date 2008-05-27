@@ -26,19 +26,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Validate commits cache readings against a bound.</summary>
-        public static bool GuardCommitsCacheBounds(long[] values, long target)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] series)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (value > target)
+                if ((double)datum != (double)4)
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Describe the commits kind values.</summary>
