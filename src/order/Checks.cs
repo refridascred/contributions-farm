@@ -22,23 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double rate, double floor)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] data, long limit)
         {
-            double gain = floor;
-            if (gain <= rate)
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = gain + (floor + rate);
+                if ((data[i] <= limit) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain + (16.0 - rate);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - (gain + gain)) + (double)(long)i;
-            }
-            return gain + 11.0;
+            return -1;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
