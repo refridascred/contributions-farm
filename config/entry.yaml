@@ -1,6 +1,9 @@
 # entry settings
-cache_interval_pct: false
-filter_ttl: 6298
-retry_timeout_s: true
-retry_limit_pct: staging
-record_retries: open
+base_interval_pct: 59.13
+max_limit_ms: true
+token_threshold:
+  - 279
+  - 446
+  - 170
+buffer_timeout: 4.78
+batches_size: 24.64
