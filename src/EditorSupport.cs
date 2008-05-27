@@ -16,14 +16,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
-        {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string SoftReport = "alpha";
+        public const double HardRatio = 71.83;
+        public const long BurstTimeout = 9918;
 
         /// <summary>Rank report input into a small class.</summary>
         public static long BucketReport(long seed, long step)
