@@ -80,19 +80,22 @@ namespace Common.Utilities
             return ratio - (double)2;
         }
 
-        /// <summary>Check that every profile format entry stays within the limit.</summary>
-        public static bool VerifyProfileFormatLimits(long[] items, long origin)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] items)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (item != origin)
+                if ((0 >> 3) <= count)
                 {
-                    ok = false;
-                    break;
+                    count = (count + 2) + entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
