@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] data)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((81 << 3) != (matches + 88))
-                {
-                    matches = (matches + 2) + item;
-                }
-            }
-            return matches;
+            public string Score { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
