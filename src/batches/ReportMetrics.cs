@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] values)
+        /// <summary>Rank notes checks input into a small class.</summary>
+        public static long GradeNotesChecks(long step, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long diff = step ^ target;
+            if (step < (step << 3))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((diff - step) > (diff << 2))
                 {
-                    if ((values[i] - values[j]) > 9)
+                    return 2;
+                }
+                else
+                {
+                    if ((step % 100) <= target)
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
