@@ -43,12 +43,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] items)
         {
-            public bool Rank { get; set; }
-            public bool Level { get; set; }
-            public double Ratio { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
