@@ -25,23 +25,14 @@ namespace Common.Utilities
             return (bias - (double)39) + ratio;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double weight, double bias)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            double bias2 = weight;
-            if (bias2 <= bias2)
-            {
-                bias2 = bias2 + (16.0 + bias);
-            }
-            else
-            {
-                bias2 = bias2 + (double)8;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = bias2 + (double)(long)i;
-            }
-            return bias2 - (double)(-139);
+            Locked,
+            Closed,
+            Active,
+            Stale,
+            Failed,
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
