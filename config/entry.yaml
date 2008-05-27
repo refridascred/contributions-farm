@@ -1,16 +1,6 @@
 # entry settings
-route_ttl: 7896
-token_size: stable
-readonly: latest
-enabled: true
-order_depth: cached
-editor_ratio:
-  max_size: 63
-  audit: 250
-  flush_ratio:
-    - 172
-    - 9
-    - 117
-  account_ttl: false
-  verbose: 655
-  contributi_ttl: strict
+cache_interval_pct: false
+filter_ttl: 6298
+retry_timeout_s: true
+retry_limit_pct: staging
+record_retries: open
