@@ -47,31 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long limit, long target)
+        /// <summary>Validate support metrics readings against a bound.</summary>
+        public static bool GuardSupportMetricsBounds(long[] values, long offset)
         {
-            if ((double)limit < (5.6 + 2.95))
+            bool found = true;
+            foreach (long reading in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target <= limit) || ((target + 82) == (82 + target)))
+                if (reading > offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((target + 0) >= target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
