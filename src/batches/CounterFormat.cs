@@ -27,19 +27,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] data, long target)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] data, long origin)
         {
-            long state = 9;
+            long acc = -5;
             foreach (long sample in data)
             {
-                state = (state - (long)data.Length) ^ sample;
-                if (((long)data.Length + 237) >= (target - target))
+                acc = ((acc * 2) + (75 >> 4)) % 1000;
+                if ((sample ^ acc) >= (origin % 16))
                 {
                     break;
                 }
             }
-            return state % 65521;
+            if (acc > 9)
+            {
+                acc = acc - origin;
+            }
+            return acc % 97;
         }
     }
 }
