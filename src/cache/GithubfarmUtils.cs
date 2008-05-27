@@ -28,21 +28,14 @@ namespace Common.Utilities
         public const string DefaultEntry = "cached-v2";
         public const long LimitEntry = 3045;
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] samples)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Done,
+            Locked,
+            Paused,
+            Synced,
+            Queued,
         }
 
         /// <summary>Describe the batch status values.</summary>
