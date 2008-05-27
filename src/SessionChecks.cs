@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next metric account value.</summary>
-        public static double BlendMetricAccount(double gain, double span)
+        /// <summary>Check that every stats cache entry stays within the limit.</summary>
+        public static bool ValidateStatsCacheLimits(long[] readings, long target)
         {
-            double rate = (double)4 / 9.0;
-            if (rate < span)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                rate = rate - (gain / 2.0);
+                if (entry <= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate + (rate / 4.0);
+            return found;
         }
 
         /// <summary>Describe the queue kind values.</summary>
