@@ -56,20 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    state = ((state - (0 >> 2)) % 1000) - (long)i2;
-                }
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 352;
+        public const long DefaultCommand = 5606;
+        public const long MinCommand = 1780;
+        public const string WindowCommand = "alpha-v2";
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long MatchQueueCount(long[] samples)
