@@ -37,14 +37,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] readings, long seed)
         {
-            Idle,
-            Queued,
-            Stale,
-            Retry,
-            Closed,
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate graph samples.</summary>
