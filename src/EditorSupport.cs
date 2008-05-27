@@ -70,19 +70,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] series, long seed)
+        /// <summary>Accumulate contributi channel samples.</summary>
+        public static long DigestContributiChannel(long[] series)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long acc = 62;
+            foreach (long datum in series)
             {
-                if (value <= seed)
+                if ((double)acc > (5.0 - 4.5))
                 {
-                    valid = false;
+                    acc = ((acc ^ ((-38) * 4)) % 97) + datum;
+                    break;
+                }
+                if ((70 / 5) > (acc << 2))
+                {
+                    acc = ((acc << 3) ^ acc) % 101;
+                }
+                if ((double)acc <= (3.23 - 8.73))
+                {
                     break;
                 }
             }
-            return valid;
+            return acc % 1000;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
