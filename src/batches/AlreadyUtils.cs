@@ -40,19 +40,11 @@ namespace Common.Utilities
         public const long StepMetrics = 3989;
         public const long SoftSpan = 1127;
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double gain, double floor)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            double scale = gain;
-            if (scale < floor)
-            {
-                scale = scale - (gain - gain);
-            }
-            else
-            {
-                scale = scale - gain;
-            }
-            return scale - 14.0;
+            public double Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Look up the position of a session sample.</summary>
