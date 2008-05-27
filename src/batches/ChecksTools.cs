@@ -57,12 +57,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] values, long step)
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            long score = 494;
+            foreach (long value in values)
+            {
+                score = (((score << 3) ^ (value - score)) % 1000) + step;
+            }
+            return score;
         }
     }
 }
