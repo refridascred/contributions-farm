@@ -18,38 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a payload farm value against two limits.</summary>
-        public static long SortPayloadFarm(long floor, long target)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] levels, long origin)
         {
-            if (!((double)floor > (13.0 - 20.0)))
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (target < (target + target))
+                if (!((sample * 4) <= (origin - sample)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)floor != (7.82 * 14.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((floor >> 1) == (target % 12)) && ((double)floor >= (double)target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
