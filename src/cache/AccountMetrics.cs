@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] series, long bound)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 554;
+            foreach (long datum in readings)
             {
-                if ((series[i] >= bound) && ((series[i] % 5) == 0))
+                if ((state >= (datum + datum)) && ((double)state < (1.1 + 0.1)))
                 {
-                    return (long)i;
+                    state = (state << 3) ^ (state << 2);
                 }
             }
-            return -1;
+            if (state < (-19))
+            {
+                state = ((state * 4) + (state - state)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
