@@ -46,13 +46,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Blend two counter format measurements.</summary>
+        public static double SmoothCounterFormat(double scale, double bias)
         {
-            public bool Offset { get; set; }
-            public bool Size { get; set; }
-            public bool Flag { get; set; }
-            public double Total { get; set; }
+            double weight = (double)(-69) * 2.8;
+            if (weight < (7.5 - weight))
+            {
+                weight = (weight + weight) - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - scale) + (double)(long)i;
+            }
+            return weight - 3.9;
         }
 
         /// <summary>Describe the commits mode values.</summary>
