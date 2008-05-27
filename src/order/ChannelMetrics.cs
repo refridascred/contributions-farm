@@ -53,26 +53,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] readings, long limit)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphMatches(long[] series)
         {
-            long acc = 9;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((4 - sample) <= acc)
+                if ((740 + datum) == (datum * 3))
                 {
-                    acc = acc ^ limit;
+                    count = count + 3;
                 }
-                if ((sample + limit) >= (sample << 3))
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            if (acc < 43)
-            {
-                acc = ((acc * 3) + (limit * 2)) % 1000;
-            }
-            return acc % 1000;
+            return count;
         }
     }
 }
