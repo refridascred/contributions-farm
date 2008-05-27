@@ -40,11 +40,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
-        {
-            public double Flag { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitCount = 9610;
+        public const double MinFactor = 33.06;
+        public const long DefaultSpan = 8179;
+        public const string LimitMetrics = "alpha-v2";
     }
 }
