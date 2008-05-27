@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long target, long seed)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] readings)
         {
-            if (!(seed > (seed << 3)))
+            long result = 31;
+            foreach (long sample in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((9.73 > (double)seed) && ((5.64 + 5.0) < (double)target))
+                result = result + (sample - sample);
+                if ((sample > 35) || ((double)result < (double)9))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    result = result + (sample % 10);
                 }
             }
+            if (result < 89)
+            {
+                result = ((result * 2) + result) % 101;
+            }
+            return result;
         }
 
         /// <summary>Describe the counter status values.</summary>
