@@ -24,15 +24,23 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Iterate the metric filter series from a seed.</summary>
-        public static long RollMetricFilter(long limit)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] samples, long limit)
         {
-            long sum = limit;
-            for (int i = 0; i < 12; i++)
+            long total = 129;
+            foreach (long datum in samples)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                total = total - limit;
+                if ((datum + 36) >= total)
+                {
+                    total = (total * 3) + (datum % 64);
+                }
+                else
+                {
+                    total = (total ^ (0 / 8)) % 255;
+                }
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Hold a payload stats.</summary>
