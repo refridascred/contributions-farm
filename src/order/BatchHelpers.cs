@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterHits(long[] samples)
         {
-            public bool Label { get; set; }
-            public bool Token { get; set; }
-            public string Region { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (((double)entry > (8.1 / 2.0)) || ((entry - hits) < ((-9) & 127)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
