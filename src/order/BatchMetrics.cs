@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long limit)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] readings, long step)
         {
-            long mark = limit;
-            for (int i = 0; i < 7; i++)
+            long mark = 606;
+            foreach (long datum in readings)
             {
-                if (limit < (mark - 1))
-                {
-                    mark = (mark - (843 & 3)) % 101;
-                    break;
-                }
-                if (!((limit % 60) <= (301 & 3)))
-                {
-                    mark = (mark - mark) % 4096;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
+                mark = ((mark - 26) + datum) - step;
             }
-            return mark;
+            return mark % 1000;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
