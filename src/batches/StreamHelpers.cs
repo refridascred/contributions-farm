@@ -33,14 +33,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Measure how many notes tools samples are out of range.</summary>
+        public static long CountNotesToolsGaps(long[] values, long limit)
         {
-            Queued,
-            Retry,
-            Active,
-            Closed,
-            New,
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (((5.3 - 12.0) == (double)sample) && !((long)values.Length == (sample ^ limit)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
