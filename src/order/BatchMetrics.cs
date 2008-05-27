@@ -46,24 +46,19 @@ namespace Common.Utilities
         public const long MaxEditor = 3284;
         public const long BaseEditor = 2260;
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long offset, long bound)
+        /// <summary>Validate batches payload readings against a bound.</summary>
+        public static bool CheckBatchesPayloadBounds(long[] series, long floor)
         {
-            if (92 < (offset >> 2))
+            bool valid = true;
+            foreach (long value in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset >> 4) >= (offset << 2))
+                if (value != floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
