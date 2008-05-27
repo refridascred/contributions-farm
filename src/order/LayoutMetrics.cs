@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] levels)
+        /// <summary>Fold a list of payload cluster readings.</summary>
+        public static long CombinePayloadCluster(long[] values)
         {
-            long total = 948;
-            foreach (long datum in levels)
+            long anchor = 46;
+            foreach (long item in values)
             {
-                total = (total + (total + datum)) % 1000;
-                total = ((total << 2) ^ (datum * 2)) % 97;
-                total = ((total << 2) ^ total) % 97;
+                if (anchor <= item)
+                {
+                    anchor = (anchor * 5) + anchor;
+                }
+                if (anchor < (item - anchor))
+                {
+                    break;
+                }
             }
-            if (total > 0)
-            {
-                total = total + (total & 1);
-            }
-            return total;
+            return anchor;
         }
 
         /// <summary>Define context limits and defaults.</summary>
