@@ -77,11 +77,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] levels)
         {
-            public bool Offset { get; set; }
-            public double Size { get; set; }
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
