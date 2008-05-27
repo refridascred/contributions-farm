@@ -36,22 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryOutliers(long[] levels)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaRange(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if ((count << 3) == (item % 2))
+                if (entry > seed)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
