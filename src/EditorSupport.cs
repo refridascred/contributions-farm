@@ -73,10 +73,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string SoftMetrics = "strict-1";
-        public const long CacheSize = 5482;
-        public const long BaseMetrics = 950;
+        /// <summary>Count the batch record entries that pass the check.</summary>
+        public static long MeasureBatchRecordGaps(long[] readings, long floor)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (((double)floor <= 3.0) || ((entry << 1) <= 2))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
