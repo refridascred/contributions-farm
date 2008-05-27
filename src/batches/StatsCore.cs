@@ -55,17 +55,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first order metrics entry that matches the target.</summary>
-        public static long FindOrderMetricsIndex(long[] items, long target)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Paused,
+            Pending,
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
