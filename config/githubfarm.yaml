@@ -1,25 +1,9 @@
 # githubfarm settings
-profile_ttl:
-  - stable
-  - staging
-  - stable
-  - blue
-compress: 25
-flush_delay_pct:
-  entry_ttl: 54
-  flush_window_ms: true
-  format_depth: false
-  audit:
-    idle_limit_count: true
-    cache_limit: 250
-    idle_timeout_s: false
-    dry_run: cached
-    base_interval_count: green
-    verbose: 52
-persist: 86
-cache_threshold: primary
-max_size:
-  verbose: 26.15
-  idle_window: 81
-  idle_ratio: 30
-  burst_delay_ms: latest
+githubfarm_limit: legacy
+poll_limit_s:
+  - 464
+  - 73
+min_size_count: false
+base_retries_s: true
+audit: eu-west
+batches_depth: 46.93
