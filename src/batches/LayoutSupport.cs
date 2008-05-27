@@ -32,11 +32,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            Failed,
-            New,
+            Dropped,
+            Paused,
+            Stale,
+            Retry,
             Active,
         }
 
