@@ -43,13 +43,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Find the first schema report entry that matches the target.</summary>
+        public static long LookupSchemaReportIndex(long[] readings, long step)
         {
-            Retry,
-            Draft,
-            Done,
-            New,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
