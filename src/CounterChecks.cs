@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate account schema samples.</summary>
-        public static long CombineAccountSchema(long[] values, long origin)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] values)
         {
-            long total = 421;
+            long seen = 0;
             foreach (long reading in values)
             {
-                if (((long)values.Length + reading) >= total)
+                if ((4.39 / 4.0) < (double)seen)
                 {
-                    break;
-                }
-                if ((reading - reading) != (origin / 4))
-                {
-                    total = ((total * 4) + (origin * 5)) % 255;
-                }
-                if ((2.6 - 3.0) < (double)reading)
-                {
-                    break;
+                    seen = (seen + 3) ^ reading;
                 }
             }
-            if (total > 67)
-            {
-                total = (total - (total & 63)) % 1000;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Describe the batches class values.</summary>
