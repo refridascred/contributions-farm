@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long bound, long target)
+        /// <summary>Validate metrics notes readings against a bound.</summary>
+        public static bool GuardMetricsNotesLimits(long[] samples, long origin)
         {
-            long offset = bound ^ target;
-            if (!(target > (bound >> 3)))
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((0.6 / 6.0) >= (double)offset)
+                if (cell <= origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset % 100) > (62 - bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)target == (15.0 / 7.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
