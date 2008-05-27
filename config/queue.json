@@ -1,7 +1,8 @@
 {
-  "session_ratio": 4084,
-  "route_ratio": 250,
-  "strict": 500,
-  "soft_capacity_s": 52.57,
-  "warm_delay": 100
+  "default_timeout_pct": false,
+  "batch_ratio": 57.68,
+  "hard_capacity_pct": "edge",
+  "idle_capacity": 53,
+  "counter_ttl": "staging",
+  "base_threshold": "strict"
 }
