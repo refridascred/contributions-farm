@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a stats checks value against two limits.</summary>
-        public static long BucketStatsChecks(long limit, long step)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long delta = limit ^ step;
-            if ((2 >> 3) >= (limit << 1))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((delta % 7) <= ((-3) >> 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((3.39 * 5.1) != (double)limit) || ((double)delta > 9.68))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (2.33 <= (double)limit)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Adjust a stats reading.</summary>
