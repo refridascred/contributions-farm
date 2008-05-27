@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] series, long limit)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterOutliers(long[] data, long floor)
         {
-            long score = 9;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                score = ((score - (score + 8)) ^ datum) - limit;
+                if ((9.43 - 9.6) >= (double)(long)data.Length)
+                {
+                    tally = ((tally + 2) ^ reading) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (score > 53)
-            {
-                score = ((score << 3) ^ (score >> 2)) % 101;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
