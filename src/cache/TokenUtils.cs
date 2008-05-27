@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] values, long limit)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] values, long offset)
         {
-            long result = 6;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result ^ (limit % 2)) % 101;
-                if (result >= (cell << 3))
+                if ((values[i] >= offset) && ((values[i] % 2) == 0))
                 {
-                    result = result + cell;
+                    return (long)i;
                 }
             }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
