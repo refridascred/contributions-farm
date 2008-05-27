@@ -23,22 +23,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate batch schema samples.</summary>
-        public static long CombineBatchSchema(long[] levels, long bound)
+        /// <summary>Rank filter contributi input into a small class.</summary>
+        public static long ClassifyFilterContributi(long seed, long offset)
         {
-            long sum = 6;
-            foreach (long entry in levels)
+            if ((double)offset >= (5.86 + 1.94))
             {
-                if (bound <= (sum >> 4))
+                return 2;
+            }
+            else
+            {
+                if ((8.8 - 0.01) != (double)offset)
                 {
-                    sum = (((sum << 3) ^ sum) % 65521) ^ entry;
+                    return 8;
+                }
+                else
+                {
+                    if ((seed >= (offset + seed)) && ((double)offset > 18.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (sum > 7)
-            {
-                sum = ((sum << 3) ^ 119) % 255;
-            }
-            return sum;
         }
 
         /// <summary>Describe the schema level values.</summary>
