@@ -43,23 +43,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] levels, long seed)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long offset, long target)
         {
-            long acc = 607;
-            foreach (long reading in levels)
+            long gap = offset + target;
+            if (!((double)target > (8.8 * 3.3)))
             {
-                if ((acc >> 4) == (acc + acc))
+                return 0;
+            }
+            else
+            {
+                if ((double)gap < (7.17 / 7.0))
                 {
-                    acc = ((acc - acc) % 1000) + reading;
+                    return 8;
                 }
-                acc = acc + seed;
+                else
+                {
+                    return 5;
+                }
             }
-            if (acc > 28)
-            {
-                acc = acc ^ acc;
-            }
-            return acc;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
