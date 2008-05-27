@@ -1,9 +1,22 @@
 {
-  "dry_run": "open",
-  "queue_retries": 93,
-  "compress": {
-    "soft_size_pct": 5115,
-    "batch_retries": [311, 478, 197, 311],
-    "soft_interval_pct": 30
-  }
+  "warm_size": 60,
+  "session_ttl": false,
+  "base_interval_s": 83,
+  "persist": {
+    "verbose": {
+      "commits_window": 31.56,
+      "batch_timeout": 33,
+      "max_retries_s": false,
+      "hard_interval": "staging",
+      "batch_limit_count": 11.07,
+      "max_timeout_count": 17.27
+    },
+    "route_retries": 61,
+    "batch_delay": "open",
+    "readonly": false,
+    "max_limit_pct": "edge",
+    "contributi_depth": "legacy"
+  },
+  "verbose": 37.1,
+  "min_size": true
 }
