@@ -62,10 +62,19 @@ namespace Common.Utilities
         public const long SoftLevel = 2998;
         public const long LimitWidth = 5852;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleDepth = 2341;
-        public const string RetryTimeout = "stable-v2";
-        public const double IdleTimeout = 94.87;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] items, long seed)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((8 >> 4) == (tally * 4))
+                {
+                    tally = ((tally + 2) + entry) - seed;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long CountCommitsHits(long[] readings, long seed)
