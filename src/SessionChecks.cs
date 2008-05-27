@@ -33,11 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            public string Owner { get; set; } = "";
-            public double Stamp { get; set; }
+            public bool Flag { get; set; }
+            public bool Weight { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
