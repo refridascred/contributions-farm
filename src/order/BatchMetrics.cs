@@ -40,20 +40,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                if (acc < ((long)i >> 5))
-                {
-                    acc = (acc - (acc + acc)) % 1000;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleBudget = 8658;
+        public const string MinCache = "legacy-1";
+        public const long RetryCache = 6380;
+        public const long SoftLevel = 3943;
+        public const long DefaultCache = 4846;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long DefaultReport = 3474;
