@@ -49,11 +49,31 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchMetrics = "local-1";
-        public const long HardTimeout = 8412;
-        public const long BaseMetrics = 5234;
-        public const string LimitMetrics = "open-v2";
-        public const double CacheRatio = 78.87;
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long bound, long seed)
+        {
+            if ((bound > (seed >> 5)) && (seed > (bound - seed)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (48 <= bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound / 2) >= (bound % 64))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
