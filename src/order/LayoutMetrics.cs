@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] values)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long state = 48;
-            foreach (long entry in values)
-            {
-                if (entry >= (entry & 15))
-                {
-                    state = (state - (state % 100)) % 65521;
-                }
-            }
-            return state % 1000;
+            public bool Region { get; set; }
+            public long Label { get; set; }
+            public bool Rank { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Combine window buffer values into a single score.</summary>
