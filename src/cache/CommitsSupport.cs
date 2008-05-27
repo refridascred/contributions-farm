@@ -12,21 +12,17 @@ namespace Common.Utilities
         public const long IdleScore = 7841;
         public const long IdleTimeout = 4053;
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] values)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] readings, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((readings[i] == target) && ((readings[i] % 5) != 0))
                 {
-                    if ((values[i] + values[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Match up command samples.</summary>
