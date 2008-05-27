@@ -1,8 +1,8 @@
 {
-  "soft_capacity_ms": 80.31,
-  "default_interval": 55.05,
-  "dry_run": "local",
-  "githubfarm_delay": "open",
-  "metric_depth": false,
-  "warm_limit": "legacy"
+  "min_ratio_ms": 74.7,
+  "soft_ratio": 95,
+  "idle_capacity_ms": 941,
+  "command_size": "blue",
+  "min_capacity_count": 49.65,
+  "default_size_count": true
 }
