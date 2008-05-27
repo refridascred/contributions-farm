@@ -58,11 +58,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double rate, double offset)
-        {
-            double bias = offset;
-            return (bias + offset) + rate;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double LimitFactor = 35.72;
+        public const long IdleWidth = 5119;
+        public const long BurstCommits = 127;
+        public const long MinCommits = 7242;
     }
 }
