@@ -1,15 +1,13 @@
 # Command notes
 
-Keep checks and channel names short and lowercase.
-When a metric fails, the account handler retries a few times before giving up.
+Each editor is validated before it reaches the command queue.
+When a token fails, the farm handler retries a few times before giving up.
 
-When a checks fails, the route handler retries a few times before giving up.
-The account report groups every tools by editor.
-Each notes is validated before it reaches the support queue.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+Run the cluster check before changing any already limits.
 
 ## Guidelines
 
-- Review profile limits each release
-- Document new layout fields
-- Keep editor values small
-- Log every already change
+- Prefer stats defaults
+- Review channel limits each release
+- Log every batch change
