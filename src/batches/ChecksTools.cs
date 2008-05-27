@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] values)
         {
-            public double Count { get; set; }
-            public bool Flag { get; set; }
-            public long Owner { get; set; }
-            public string Level { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
