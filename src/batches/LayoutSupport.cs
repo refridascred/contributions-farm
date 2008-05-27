@@ -58,12 +58,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long limit)
         {
-            Active,
-            Pending,
-            Draft,
+            long score = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Describe the counter class values.</summary>
