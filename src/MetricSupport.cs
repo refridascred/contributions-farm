@@ -13,12 +13,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double weight, double bias)
         {
-            Done,
-            Synced,
-            Closed,
+            double weight2 = (14.0 / 5.0) + (weight * 6.7);
+            return (weight2 - (weight * 5.6)) + bias;
         }
 
         /// <summary>Adjust a metric reading.</summary>
