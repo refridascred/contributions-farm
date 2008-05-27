@@ -23,32 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long floor, long limit)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] readings, long origin)
         {
-            long cur = floor ^ limit;
-            if ((double)floor >= (5.0 / 5.0))
+            long total = 97;
+            foreach (long datum in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (limit >= (limit + floor))
+                if (origin < (origin + 9))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (cur <= floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    total = (total ^ datum) % 1000;
                 }
             }
+            return total % 1000;
         }
 
         /// <summary>Audit token metrics readings against a rule.</summary>
