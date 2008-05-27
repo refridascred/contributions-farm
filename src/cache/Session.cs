@@ -12,10 +12,20 @@ namespace Common.Utilities
         public const double RetryCommand = 67.25;
         public const double BaseWidth = 33.55;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 5268;
-        public const long StepScore = 7250;
-        public const double BaseQueue = 28.06;
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyLimits(long[] items, long bound)
+        {
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long DeriveTools(long seed)
