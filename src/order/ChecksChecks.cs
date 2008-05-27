@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            public string Size { get; set; } = "";
-            public bool Label { get; set; }
+            public double Score { get; set; }
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
