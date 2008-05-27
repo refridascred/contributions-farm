@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] levels)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long anchor = -802;
-            foreach (long reading in levels)
-            {
-                anchor = (anchor * 5) + (reading ^ reading);
-                if ((108 % 97) >= (reading - anchor))
-                {
-                    anchor = (anchor + (anchor + anchor)) % 4096;
-                }
-            }
-            if (anchor < 58)
-            {
-                anchor = (anchor << 2) ^ (anchor - anchor);
-            }
-            return anchor;
+            Paused,
+            Failed,
+            New,
+            Pending,
         }
 
         /// <summary>Describe the metrics kind values.</summary>
