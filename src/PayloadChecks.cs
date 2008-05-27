@@ -29,13 +29,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            Ready,
-            Synced,
-            Dropped,
-            Idle,
+            public long Level { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
