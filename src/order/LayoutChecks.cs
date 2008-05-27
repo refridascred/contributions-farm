@@ -76,12 +76,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            New,
-            Queued,
+            Idle,
+            Stale,
             Draft,
+            New,
         }
     }
 }
