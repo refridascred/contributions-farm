@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] samples, long floor)
+        /// <summary>Rank metrics editor input into a small class.</summary>
+        public static long SortMetricsEditor(long bound, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (!((bound + bound) > (84 << 3)))
             {
-                if (samples[i] >= floor)
+                return 3;
+            }
+            else
+            {
+                if ((target / 3) <= (target + bound))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
