@@ -36,11 +36,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ProjectCluster(double scale, double offset)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            double load = (offset + offset) - offset;
-            return (load + (offset / 7.0)) + scale;
+            public bool Count { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
