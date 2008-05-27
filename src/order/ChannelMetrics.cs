@@ -12,10 +12,29 @@ namespace Common.Utilities
         public const long StepDepth = 7694;
         public const long BaseWidth = 8496;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultRatio = 6230;
-        public const long RetryScore = 4255;
-        public const long IdlePayload = 864;
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] readings)
+        {
+            long score = 925;
+            foreach (long value in readings)
+            {
+                long cur = value;
+                if ((cur + cur) > (score % 16))
+                {
+                    cur = cur - score;
+                    break;
+                }
+                if (value > (value - score))
+                {
+                    score = score + (score >> 5);
+                }
+                else
+                {
+                    score = score + value;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Adjust a cluster reading.</summary>
         public static double ProjectCluster(double scale, double offset)
