@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] readings)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Idle,
+            Paused,
+            Retry,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
