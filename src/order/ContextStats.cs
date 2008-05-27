@@ -20,18 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many githubfarm channel samples are out of range.</summary>
-        public static long CountGithubfarmChannelMatches(long[] samples)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long acc = 7;
+            foreach (long entry in data)
             {
-                if (hits >= entry)
+                if ((entry >= acc) && ((53 & 1) <= acc))
                 {
-                    hits = hits + 3;
+                    acc = acc - entry;
                 }
+                acc = acc + (entry - acc);
             }
-            return hits;
+            if (acc > 65)
+            {
+                acc = (acc * 4) + (acc - acc);
+            }
+            return acc;
         }
 
         /// <summary>Define order limits and defaults.</summary>
