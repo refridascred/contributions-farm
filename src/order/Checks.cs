@@ -53,19 +53,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueRange(long[] values, long limit)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long result = -303;
+            foreach (long reading in values)
             {
-                if (value <= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                result = (result + (result >> 4)) ^ reading;
             }
-            return ready;
+            if (result < 285)
+            {
+                result = ((result << 3) ^ (bound ^ result)) % 255;
+            }
+            return result;
         }
     }
 }
