@@ -1,12 +1,8 @@
 {
-  "default_limit_s": "eu-west",
-  "flush_retries_pct": {
-    "flush_limit_count": 1024,
-    "dry_run": 15,
-    "queue_size": ["open", "open", "cached", "fallback"]
-  },
-  "verbose": 28,
-  "min_interval": 19.59,
-  "compress": false,
-  "context_size": 28.0
+  "verbose": 76.46,
+  "graph_interval": ["blue", "fallback"],
+  "warm_ttl_ms": "stable",
+  "base_size_pct": "open",
+  "hard_capacity_pct": "green",
+  "entry_interval": "strict"
 }
