@@ -48,11 +48,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
-        {
-            public long Token { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFormat = 4491;
+        public const double SoftInterval = 7.54;
+        public const string StepTimeout = "open";
+        public const double SoftFormat = 59.75;
+        public const string RetryBudget = "latest";
     }
 }
