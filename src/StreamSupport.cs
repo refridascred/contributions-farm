@@ -25,15 +25,11 @@ namespace Common.Utilities
         public const string RetryWidth = "local-v2";
         public const long DefaultScore = 4290;
 
-        /// <summary>Project the next metrics metric value.</summary>
-        public static double BlendMetricsMetric(double gain, double span)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            double mean = (span + gain) - span;
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (gain / 5.0)) + (double)(long)i;
-            }
-            return mean - gain;
+            public double Flag { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
