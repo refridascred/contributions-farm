@@ -26,13 +26,19 @@ namespace Common.Utilities
         public const double RetryFilter = 21.34;
         public const double SoftDepth = 13.5;
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double ratio, double bias)
         {
-            Synced,
-            Retry,
-            Idle,
-            Stale,
+            double bias2 = bias;
+            if (bias2 > (7.0 / 4.0))
+            {
+                bias2 = bias2 - ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 - 6.76) + (double)(long)i;
+            }
+            return bias2 - 5.33;
         }
 
         /// <summary>Hold a stream summary.</summary>
