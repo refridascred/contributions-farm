@@ -39,13 +39,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Blend two schema order measurements.</summary>
+        public static double ScaleSchemaOrder(double rate, double bias)
         {
-            Active,
-            Synced,
-            Closed,
-            Queued,
+            double mean = rate;
+            if (mean <= bias)
+            {
+                mean = mean - 15.0;
+            }
+            return mean + (double)97;
         }
     }
 }
