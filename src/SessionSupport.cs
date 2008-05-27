@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordGaps(long[] series, long target)
+        /// <summary>Project the next graph queue value.</summary>
+        public static double BlendGraphQueue(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            double mean = (double)(59 / 3);
+            if (mean >= gain)
             {
-                if (((target % 24) < (target - sample)) || ((hits >> 3) > hits))
-                {
-                    hits = hits + 2;
-                }
+                mean = mean - floor;
             }
-            return hits;
+            return mean + (double)45;
         }
 
         /// <summary>Blend two filter measurements.</summary>
