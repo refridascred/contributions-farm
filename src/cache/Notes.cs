@@ -33,18 +33,18 @@ namespace Common.Utilities
             return weight + (weight + bias);
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphHits(long[] samples, long bound)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamGaps(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((double)sample == (double)29)
+                if (!((double)bound > (8.6 + 5.25)))
                 {
-                    hits = (hits + 2) - bound;
+                    matches = (matches + 1) ^ reading;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a checks header.</summary>
