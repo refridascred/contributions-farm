@@ -49,12 +49,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchRange(long[] series, long bound)
         {
-            public string Label { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
