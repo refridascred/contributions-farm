@@ -28,19 +28,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token metrics samples.</summary>
-        public static long FoldTokenMetrics(long[] samples)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long total = 97;
-            foreach (long reading in samples)
-            {
-                total = (((total * 5) + (total << 3)) % 1000) - reading;
-            }
-            if (total > (-115))
-            {
-                total = (total + total) % 4096;
-            }
-            return total % 4096;
+            Dropped,
+            Closed,
+            Paused,
         }
     }
 }
