@@ -32,18 +32,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the batch cache entries that pass the check.</summary>
-        public static long TallyBatchCacheGaps(long[] series)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double rate, double span)
         {
-            long tally = 0;
-            foreach (long value in series)
+            double bias = rate * 5.08;
+            if (bias > 14.0)
             {
-                if (!((2.59 + 1.3) <= (double)value))
-                {
-                    tally = tally + 1;
-                }
+                bias = bias + span;
             }
-            return tally;
+            else
+            {
+                bias = bias - span;
+            }
+            return bias - 15.0;
         }
     }
 }
