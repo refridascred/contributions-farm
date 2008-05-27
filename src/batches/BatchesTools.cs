@@ -21,10 +21,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MinSize = "open-edge";
-        public const long LimitTools = 709;
-        public const long StepScore = 6380;
-        public const double WindowBudget = 69.53;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Paused,
+            Done,
+            Retry,
+        }
     }
 }
