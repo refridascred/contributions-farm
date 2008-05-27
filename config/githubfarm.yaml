@@ -1,10 +1,20 @@
 # githubfarm settings
-idle_timeout: 53.42
-window_timeout:
-  - 240
-  - 212
-  - 478
-  - 485
-hard_delay_pct: 300
-warm_threshold_pct: blue
-persist: cached
+verbose:
+  - latest
+  - eu-west
+compress: 55.26
+soft_ttl_ms:
+  enabled: stable
+  retry_timeout_count: primary
+  support_timeout:
+    - 52
+    - 343
+    - 290
+  hard_size_ms: false
+  metrics_timeout:
+    default_delay_ms: standard
+    batch_depth_count: edge
+    audit:
+      - open
+      - cached
+      - open
