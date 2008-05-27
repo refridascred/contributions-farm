@@ -26,24 +26,23 @@ namespace Common.Utilities
         public const string MaxRatio = "alpha-v2";
         public const string BaseCount = "standard-v2";
 
-        /// <summary>Grade a counter account value against two limits.</summary>
-        public static long SortCounterAccount(long offset, long limit)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] samples)
         {
-            if ((limit / 5) != (limit * 4))
+            long result = 6;
+            foreach (long reading in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)limit == (14.0 / 8.0)) && ((offset & 63) >= 221))
+                result = result - (reading << 1);
+                if ((54 + result) <= result)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    break;
                 }
             }
+            if (result > 7)
+            {
+                result = result + (48 & 255);
+            }
+            return result;
         }
     }
 }
