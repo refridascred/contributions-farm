@@ -26,17 +26,25 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Find the first schema report entry that matches the target.</summary>
-        public static long LookupSchemaReportIndex(long[] series, long offset)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (series[i] == offset)
+                if (!((double)mix < (1.0 - 0.2)))
                 {
-                    return (long)i;
+                    mix = (mix - (step / 8)) % 255;
                 }
+                if (mix >= ((long)i - step))
+                {
+                    mix = (mix + step) % 255;
+                    mix = (mix ^ ((long)i + step)) % 101;
+                }
+                mix = mix - mix;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
     }
 }
