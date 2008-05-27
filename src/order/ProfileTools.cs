@@ -23,17 +23,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] samples, long target)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] levels, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = -4;
+            foreach (long cell in levels)
             {
-                if (samples[i] < target)
+                if ((carry << 1) != (carry % 3))
                 {
-                    return (long)i;
+                    carry = ((carry - (target - carry)) % 1000) ^ cell;
                 }
             }
-            return -1;
+            return carry % 65521;
         }
 
         /// <summary>Define context limits and defaults.</summary>
