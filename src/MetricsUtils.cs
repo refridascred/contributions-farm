@@ -69,19 +69,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] levels)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long anchor = 5;
-            foreach (long value in levels)
-            {
-                anchor = (anchor * 4) + value;
-                if ((anchor << 3) > (anchor ^ value))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
