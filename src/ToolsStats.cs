@@ -19,13 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordOutliers(long[] values)
         {
-            Retry,
-            Closed,
-            Draft,
-            Paused,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((double)tally < 7.59)
+                {
+                    tally = (tally + 3) - item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
