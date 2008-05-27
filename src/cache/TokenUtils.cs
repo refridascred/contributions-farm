@@ -33,19 +33,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesBounds(long[] levels, long bound)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long bound)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (item <= bound)
+                if ((acc ^ 5) > ((long)i - (long)i))
                 {
-                    flag = false;
+                    acc = (acc + acc) % 101;
+                    acc = (acc ^ acc) % 101;
                     break;
                 }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return flag;
+            return acc;
         }
     }
 }
