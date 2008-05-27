@@ -27,18 +27,17 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryOutliers(long[] readings, long offset)
+        /// <summary>Locate a queue account reading by value.</summary>
+        public static long LocateQueueAccountIndex(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (4 < value)
+                if (samples[i] < bound)
                 {
-                    hits = (hits + 1) + offset;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
