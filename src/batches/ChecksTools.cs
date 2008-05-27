@@ -34,11 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double scale, double bias)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            double load = (double)(795 / 8);
-            return ((load + (double)99) + scale) + bias;
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
