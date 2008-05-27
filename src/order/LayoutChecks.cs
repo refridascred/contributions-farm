@@ -48,21 +48,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] data)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
