@@ -1,7 +1,27 @@
 {
-  "readonly": 41.55,
-  "graph_retries": true,
-  "flush_interval_pct": 1.99,
-  "warm_delay": "local",
-  "stats_threshold": 20.95
+  "flush_timeout_ms": false,
+  "base_delay_count": 80.42,
+  "channel_threshold": {
+    "hard_retries_pct": {
+      "entry_limit": ["green", "standard", "fallback", "open"],
+      "readonly": "stable",
+      "githubfarm_delay": 22,
+      "audit": ["blue", "eu-west", "stable"],
+      "dry_run": 1.38
+    },
+    "default_interval": 4862,
+    "cache_ratio": 25,
+    "metric_size": {
+      "counter_depth": "green",
+      "idle_depth": "standard",
+      "burst_delay": false,
+      "batch_window": 75.89,
+      "batch_timeout_s": "latest"
+    },
+    "readonly": "blue",
+    "schema_depth": "stable"
+  },
+  "default_ttl_s": 7919,
+  "verbose": 4.55,
+  "compress": "blue"
 }
