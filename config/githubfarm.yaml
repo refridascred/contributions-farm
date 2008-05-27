@@ -1,5 +1,10 @@
 # githubfarm settings
-dry_run: 67.07
-record_ttl: green
-githubfarm_retries: staging
-metric_size: staging
+cache_retries:
+  - primary
+  - local
+  - open
+  - blue
+burst_limit_pct: eu-west
+strict: false
+base_ttl: standard
+sync_ttl_pct: local
