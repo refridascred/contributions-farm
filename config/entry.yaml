@@ -1,9 +1,22 @@
 # entry settings
-profile_capacity: true
-buffer_size: eu-west
-enabled: 9534
-poll_limit_pct:
-  - 191
-  - 136
-soft_interval_ms: edge
-hard_delay_ms: 69
+flush_interval_ms:
+  flush_ratio_count: 72
+  enabled:
+    - 42
+    - 450
+    - 452
+  cache_limit: open
+  strict: 11.07
+strict:
+  entry_timeout: 250
+  retry_timeout_pct:
+    stats_timeout: 98
+    dry_run: 9209
+    cache_delay_ms: false
+    batch_delay: eu-west
+  burst_size_s: 7361
+  tools_ttl: 6696
+  cache_timeout_count: open
+  audit: false
+readonly: 66
+filter_interval: 896
