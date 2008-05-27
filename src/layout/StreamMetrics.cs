@@ -58,18 +58,18 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] readings)
+        /// <summary>Count the account commits entries that pass the check.</summary>
+        public static long MeasureAccountCommitsMatches(long[] items, long origin)
         {
-            long anchor = 67;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (!((datum + datum) >= (414 - datum)))
+                if (sample <= (4 & 127))
                 {
-                    anchor = ((anchor * 3) + (datum + datum)) % 4096;
+                    matches = (matches + 3) + origin;
                 }
             }
-            return anchor % 1000;
+            return matches;
         }
     }
 }
