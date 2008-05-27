@@ -30,21 +30,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((acc ^ 5) > ((long)i - (long)i))
-                {
-                    acc = (acc + acc) % 101;
-                    acc = (acc ^ acc) % 101;
-                    break;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleStream = 210;
+        public const long RetryInterval = 7338;
+        public const long MaxStream = 4519;
     }
 }
