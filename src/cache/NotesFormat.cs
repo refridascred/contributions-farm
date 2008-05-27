@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MinRatio = 31.98;
-        public const long WindowTimeout = 6364;
-        public const long IdleCount = 9037;
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
+        {
+            Retry,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
