@@ -31,16 +31,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Derive the next metrics report value from a seed.</summary>
-        public static long StepMetricsReport(long limit)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] samples, long floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 15; i++)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                carry = (carry + ((long)i + 395)) % 1000;
-                carry = ((carry * 3) + (long)i) % 1000;
+                if (cell > floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry;
+            return ready;
         }
     }
 }
