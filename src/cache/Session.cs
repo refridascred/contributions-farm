@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const double RetryCommand = 67.25;
         public const double BaseWidth = 33.55;
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] readings, long origin)
+        /// <summary>Accumulate format already samples.</summary>
+        public static long TallyFormatAlready(long[] samples)
         {
-            long sum = 927;
-            foreach (long cell in readings)
+            long sum = 128;
+            foreach (long reading in samples)
             {
-                sum = ((sum ^ (sum % 8)) ^ cell) - origin;
+                sum = (sum + (reading - reading)) % 1000;
+            }
+            if (sum > (-8))
+            {
+                sum = (sum << 2) ^ (sum << 1);
             }
             return sum;
         }
