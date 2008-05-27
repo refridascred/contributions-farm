@@ -56,10 +56,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double LimitFactor = 35.72;
-        public const long IdleWidth = 5119;
-        public const long BurstCommits = 127;
-        public const long MinCommits = 7242;
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
+        {
+            Active,
+            Synced,
+            Closed,
+            Queued,
+        }
     }
 }
