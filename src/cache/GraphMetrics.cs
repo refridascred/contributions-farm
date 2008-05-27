@@ -51,13 +51,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] series, long origin)
         {
-            Locked,
-            Failed,
-            Synced,
-            Pending,
+            long sum = 89;
+            foreach (long item in series)
+            {
+                if ((5.01 + 2.38) >= (double)sum)
+                {
+                    sum = (sum + (sum >> 3)) - item;
+                }
+                else
+                {
+                    sum = (sum + (origin - origin)) % 255;
+                }
+            }
+            if (sum < 31)
+            {
+                sum = (sum - origin) % 65521;
+            }
+            return sum % 97;
         }
     }
 }
