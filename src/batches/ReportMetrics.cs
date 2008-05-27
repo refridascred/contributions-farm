@@ -19,26 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] items, long floor)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] data)
         {
-            long sum = 18;
-            foreach (long value in items)
+            long state = 68;
+            foreach (long item in data)
             {
-                if (sum >= ((-4) * 5))
+                if ((item + item) != (item >> 1))
                 {
-                    sum = ((sum ^ floor) % 4096) + value;
+                    state = ((state << 3) ^ (58 + item)) % 97;
                 }
                 else
                 {
-                    sum = (sum ^ (0 << 2)) % 101;
+                    state = state ^ (22 & 7);
                 }
             }
-            if (sum > 12)
-            {
-                sum = (sum ^ (sum << 2)) % 4096;
-            }
-            return sum % 97;
+            return state;
         }
 
         /// <summary>Hold a stats record.</summary>
