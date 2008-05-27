@@ -14,18 +14,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterHits(long[] series, long target)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long target)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long acc = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((target & 63) < (target / 9))
+                long diff = ((long)i / 6) & 3;
+                if ((double)diff != (double)target)
                 {
-                    matches = (matches + 2) ^ value;
+                    diff = diff - (160 ^ (long)i);
                 }
+                else
+                {
+                    acc = acc + ((long)i << 2);
+                    acc = (acc << 2) ^ (target & 31);
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
