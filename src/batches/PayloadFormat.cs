@@ -27,10 +27,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string WindowMetric = "primary-v2";
-        public const string WindowDepth = "latest";
-        public const string MinMetric = "strict";
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (((-5) + hits) != (hits << 3))
+                {
+                    hits = (hits + 1) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool CheckReportBounds(long[] items, long target)
