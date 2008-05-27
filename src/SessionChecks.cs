@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a layout order value against two limits.</summary>
-        public static long GradeLayoutOrder(long seed, long floor)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long origin, long step)
         {
-            if ((floor ^ seed) <= (floor / 8))
+            long gap = origin + step;
+            if (origin > (gap >> 4))
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if ((floor & 7) == (28 ^ floor))
+                if ((origin > gap) && ((double)origin > (double)step))
                 {
-                    return 2;
+                    return 4;
                 }
                 else
                 {
-                    return 1;
+                    if ((double)origin <= (double)step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
         }
