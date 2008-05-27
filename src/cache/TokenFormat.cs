@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const string CacheRoute = "fallback";
         public const long MinRoute = 8479;
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double bias, double bias2)
         {
-            public long Level { get; set; }
-            public string Token { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
+            double mean = (double)37 + bias2;
+            if (mean < (1.0 + bias))
+            {
+                mean = mean - 6.58;
+            }
+            else
+            {
+                mean = mean + (double)(-1);
+            }
+            return mean - (6.5 * 5.78);
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
