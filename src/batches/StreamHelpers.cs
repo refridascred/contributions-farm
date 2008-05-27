@@ -60,17 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] data, long seed)
+        /// <summary>Validate entry counter readings against a bound.</summary>
+        public static bool CheckEntryCounterLimits(long[] readings, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if (data[i] <= seed)
+                if (datum <= bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
