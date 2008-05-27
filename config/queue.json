@@ -1,5 +1,12 @@
 {
-  "soft_retries": 68.14,
-  "max_limit_count": 5838,
-  "stats_retries": ["stable", "local", "local", "green"]
+  "command_ttl": true,
+  "verbose": 82.67,
+  "dry_run": 55.1,
+  "base_ratio_pct": true,
+  "strict": {
+    "compress": ["strict", "legacy", "legacy"],
+    "base_ttl_ms": 30,
+    "retry_capacity_s": "stable"
+  },
+  "idle_ttl_ms": 71
 }
