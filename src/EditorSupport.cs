@@ -25,18 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] series)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long mark = 6;
-            foreach (long reading in series)
-            {
-                if ((double)mark != (double)4)
-                {
-                    mark = ((mark << 2) ^ (mark << 2)) + reading;
-                }
-            }
-            return mark % 97;
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Rank report input into a small class.</summary>
