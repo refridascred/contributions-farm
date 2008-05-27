@@ -40,12 +40,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Iterate the notes contributi series from a seed.</summary>
+        public static long DeriveNotesContributi(long limit)
         {
-            Done,
-            Synced,
-            Paused,
+            long mix = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = ((mix * 3) + (mix ^ mix)) % 97;
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Define report limits and defaults.</summary>
