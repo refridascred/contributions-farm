@@ -23,22 +23,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] data, long floor)
+        /// <summary>Derive the next profile contributi value from a seed.</summary>
+        public static long RollProfileContributi(long origin)
         {
-            long anchor = 81;
-            foreach (long cell in data)
+            long sum = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((387 + 37) != (cell * 3))
-                {
-                    anchor = anchor ^ (floor ^ anchor);
-                }
-                else
-                {
-                    anchor = (anchor - anchor) % 4096;
-                }
+                sum = (sum - (sum % 12)) % 255;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Hold a already stats.</summary>
