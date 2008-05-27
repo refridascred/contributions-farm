@@ -1,5 +1,6 @@
 {
-  "cache_interval_ms": 559,
-  "poll_delay_count": 1210,
-  "soft_timeout_count": 45.86
+  "compress": true,
+  "cache_ttl_pct": [399, 235, 419, 398],
+  "verbose": 19,
+  "cache_interval": "eu-west"
 }
