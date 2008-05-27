@@ -37,11 +37,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Fold a list of cluster contributi readings.</summary>
+        public static long FoldClusterContributi(long[] levels, long bound)
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
+            long mark = 30;
+            foreach (long reading in levels)
+            {
+                if (!((bound << 1) <= reading))
+                {
+                    mark = ((mark * 2) + bound) % 97;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
