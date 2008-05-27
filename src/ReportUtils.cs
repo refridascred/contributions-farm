@@ -36,23 +36,37 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long floor, long origin)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long offset, long bound)
         {
-            long gap = floor ^ origin;
-            if (((double)gap != (4.7 + 6.02)) || ((floor & 1) <= (origin + origin)))
+            long bound2 = offset - bound;
+            if ((bound & 7) == (offset + (-4)))
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if ((origin + origin) >= (origin - 3))
+                if ((bound2 % 5) == (offset - bound2))
                 {
                     return 8;
                 }
                 else
                 {
-                    return 4;
+                    if (!(bound2 >= (offset << 2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (offset >= (bound + bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
         }
