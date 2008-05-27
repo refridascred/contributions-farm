@@ -44,21 +44,24 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] values)
+        /// <summary>Grade a counter account value against two limits.</summary>
+        public static long SortCounterAccount(long offset, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((limit / 5) != (limit * 4))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((double)limit == (14.0 / 8.0)) && ((offset & 63) >= 221))
                 {
-                    if ((values[i] + values[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
     }
 }
