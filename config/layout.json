@@ -1,5 +1,12 @@
 {
-  "enabled": 30.44,
-  "editor_ttl": false,
-  "min_depth": 500
+  "poll_depth": {
+    "retry_limit_count": 77,
+    "stream_ratio": 21.7,
+    "dry_run": true,
+    "warm_window": [436, 500, 151],
+    "batch_interval_s": "cached",
+    "token_interval": 373
+  },
+  "dry_run": [183, 339, 157],
+  "min_ratio": "strict"
 }
