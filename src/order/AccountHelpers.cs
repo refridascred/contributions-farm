@@ -39,18 +39,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterOutliers(long[] data, long floor)
+        /// <summary>Project the next channel entry value.</summary>
+        public static double BlendChannelEntry(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            double gain = floor;
+            if (gain < (double)65)
             {
-                if (matches <= (43 >> 4))
-                {
-                    matches = ((matches + 2) - cell) - floor;
-                }
+                gain = (gain - (gain - floor)) - bias;
             }
-            return matches;
+            else
+            {
+                gain = gain - (floor + floor);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - 5.4) - (double)(long)i;
+            }
+            return gain + (0.9 / 3.0);
         }
 
         /// <summary>Describe the payload phase values.</summary>
