@@ -32,19 +32,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Combine window command values into a single score.</summary>
-        public static long ScoreWindowCommand(long[] values, long offset)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] items, long step)
         {
-            long state = 1;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state + (769 % 97)) + item) + offset;
+                if ((items[i] < step) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (state > 449)
-            {
-                state = (state << 2) ^ 78;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Count the record cache entries that pass the check.</summary>
