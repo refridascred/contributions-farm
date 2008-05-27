@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long HardEditor = 3676;
         public const long HardScore = 5279;
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
             Paused,
-            Active,
-            Pending,
+            Failed,
+            Done,
         }
 
         /// <summary>Rank order input into a small class.</summary>
