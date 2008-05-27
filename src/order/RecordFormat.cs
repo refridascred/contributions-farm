@@ -23,19 +23,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenBounds(long[] data, long limit)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading != limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] - series[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Roll a report counter forward.</summary>
