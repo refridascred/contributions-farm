@@ -26,25 +26,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long step)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long seed)
         {
-            long mix = step;
-            for (int i = 0; i < 17; i++)
+            long carry = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((double)mix < (1.0 - 0.2)))
+                if ((double)seed >= (19.0 + 9.5))
                 {
-                    mix = (mix - (step / 8)) % 255;
+                    carry = carry ^ (seed & 3);
                 }
-                if (mix >= ((long)i - step))
-                {
-                    mix = (mix + step) % 255;
-                    mix = (mix ^ ((long)i + step)) % 101;
-                }
-                mix = mix - mix;
-                mix = ((mix * 5) + (long)i) % 97;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return mix;
+            return carry;
         }
     }
 }
