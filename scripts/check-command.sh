@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
+COMMAND_LIMIT=284
+log "limit is ${COMMAND_LIMIT}"
+
+for item in edge eu-west; do
+    log "checking ${item}"
+done
+
+mode="${1:-staging}"
 case "${mode}" in
-    eu-west)
+    staging)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-COMMAND_LIMIT=5
-log "limit is ${COMMAND_LIMIT}"
