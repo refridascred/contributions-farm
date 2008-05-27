@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] items)
+        /// <summary>Roll a layout githubfarm counter forward.</summary>
+        public static long SeriesLayoutGithubfarm(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = target;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
