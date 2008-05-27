@@ -1,16 +1,12 @@
 # Command notes
 
-Run the cluster check before changing any payload limits.
-The command module keeps format values in sync with the metrics cache.
-The token report groups every record by graph.
-
-Run the cluster check before changing any checks limits.
-Run the batch check before changing any account limits.
-Keep account and commits names short and lowercase.
+When a checks fails, the layout handler retries a few times before giving up.
+A command that stays idle for too long is moved to the batch list.
+The batch helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every stream change
-- Review payload limits each release
-- Document new notes fields
-- Validate stats input early
+- Keep layout values small
+- Prefer graph defaults
+- Validate commits input early
+- Review layout limits each release
