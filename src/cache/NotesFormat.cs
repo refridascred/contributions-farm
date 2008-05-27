@@ -54,11 +54,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a stats stream reading.</summary>
-        public static double SmoothStatsStream(double scale, double span)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            double load = (scale / 7.0) - scale;
-            return (load + (double)498) + span;
+            public string Mode { get; set; } = "";
+            public long Region { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
