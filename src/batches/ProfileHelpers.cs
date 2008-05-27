@@ -20,19 +20,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long seed)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long carry = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    carry = carry ^ ((long)i2 / 6);
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            public double Size { get; set; }
+            public bool Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
