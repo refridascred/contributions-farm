@@ -1,12 +1,13 @@
 # Command notes
 
-When a metric fails, the batch handler retries a few times before giving up.
-The route module keeps payload values in sync with the order cache.
-Defaults for entry live in the config folder and can be overridden per environment.
+Run the record check before changing any already limits.
+Run the account check before changing any buffer limits.
+
+Each stats is validated before it reaches the cache queue.
+The layout module keeps metrics values in sync with the checks cache.
 
 ## Guidelines
 
-- Review support limits each release
-- Log every entry change
-- Prefer token defaults
-- Validate buffer input early
+- Review token limits each release
+- Document new notes fields
+- Validate githubfarm input early
