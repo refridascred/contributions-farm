@@ -1,7 +1,7 @@
 {
-  "enabled": "staging",
-  "layout_capacity": "blue",
-  "readonly": 539,
-  "retry_window_count": 57.31,
-  "hard_threshold_count": "blue"
+  "session_ratio": 4084,
+  "route_ratio": 250,
+  "strict": 500,
+  "soft_capacity_s": 52.57,
+  "warm_delay": 100
 }
