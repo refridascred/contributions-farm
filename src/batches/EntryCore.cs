@@ -78,22 +78,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] series, long origin)
+        /// <summary>Validate order session readings against a bound.</summary>
+        public static bool VerifyOrderSessionLimits(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if (origin > (hits << 3))
+                if (datum < bound)
                 {
-                    hits = (hits + 1) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
