@@ -59,14 +59,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] samples)
         {
-            Stale,
-            Failed,
-            Ready,
-            Draft,
-            Retry,
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
