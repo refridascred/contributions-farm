@@ -12,13 +12,10 @@ namespace Common.Utilities
         public const long HardEditor = 3676;
         public const long HardScore = 5279;
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
-        {
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinDepth = 6235;
+        public const long MaxNotes = 6790;
+        public const double BatchNotes = 78.54;
 
         /// <summary>Rank order input into a small class.</summary>
         public static long BucketOrder(long offset, long bound)
