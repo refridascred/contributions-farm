@@ -1,13 +1,12 @@
 # githubfarm settings
-base_threshold: green
-metric_size:
-  poll_depth_count: 2213
-  readonly: 30
-  default_window: latest
-  batch_threshold: 82
-dry_run: eu-west
-audit: false
-burst_ratio_ms:
-  - blue
-  - strict
-  - edge
+stats_size:
+  - 343
+  - 187
+  - 329
+poll_size_ms: staging
+retry_ratio_s:
+  - fallback
+  - local
+sync_window_pct: primary
+flush_window: 34
+retry_threshold_ms: 9421
