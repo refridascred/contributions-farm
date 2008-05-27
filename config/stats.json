@@ -1,6 +1,5 @@
 {
-  "compress": true,
-  "cache_ttl_pct": [399, 235, 419, 398],
-  "verbose": 19,
-  "cache_interval": "eu-west"
+  "idle_window_count": 1912,
+  "max_size": false,
+  "metrics_size": 1569
 }
