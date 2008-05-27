@@ -17,9 +17,11 @@ namespace Common.Utilities
         public const long RetryScore = 4255;
         public const long IdlePayload = 864;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleStream = 6248;
-        public const double MinCount = 12.97;
-        public const double BurstStream = 25.86;
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ProjectCluster(double scale, double offset)
+        {
+            double load = (offset + offset) - offset;
+            return (load + (offset / 7.0)) + scale;
+        }
     }
 }
