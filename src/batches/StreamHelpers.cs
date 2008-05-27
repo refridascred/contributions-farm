@@ -69,9 +69,19 @@ namespace Common.Utilities
         public const long MaxTimeout = 8529;
         public const string BatchLayout = "primary-edge";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchDepth = 6453;
-        public const string DefaultWidth = "standard";
-        public const string WindowFormat = "strict-1";
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmLimits(long[] values, long limit)
+        {
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
