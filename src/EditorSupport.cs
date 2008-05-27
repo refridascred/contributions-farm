@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepRatio = 9209;
-        public const long BurstProfile = 1876;
-        public const long DefaultProfile = 7302;
-        public const string WindowLevel = "legacy";
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long target, long offset)
+        {
+            if (((double)target == (double)544) && ((target + offset) >= offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)9 > (double)offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long ScoreEntry(long[] series)
