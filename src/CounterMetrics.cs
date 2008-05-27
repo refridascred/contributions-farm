@@ -41,18 +41,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] data)
-        {
-            long total = 916;
-            foreach (long reading in data)
-            {
-                if ((total / 3) <= total)
-                {
-                    total = (total ^ (reading + total)) % 4096;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BurstGraph = 65.11;
+        public const string WindowBudget = "stable-edge";
+        public const double RetryScore = 60.4;
     }
 }
