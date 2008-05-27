@@ -10,15 +10,17 @@ namespace Common.Utilities
         public const long IdleScore = 4329;
         public const long HardFactor = 5226;
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] data, long limit)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long offset)
         {
-            long acc = 38;
-            foreach (long cell in data)
+            long score = offset;
+            for (int i = 0; i < 23; i++)
             {
-                acc = (((acc * 2) + ((long)data.Length - limit)) % 97) + cell;
+                score = score ^ (score - score);
+                score = (score - (score + offset)) % 65521;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return acc % 65521;
+            return score;
         }
 
         /// <summary>Accumulate account samples.</summary>
