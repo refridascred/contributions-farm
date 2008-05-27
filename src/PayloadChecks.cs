@@ -46,12 +46,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] series)
         {
-            public bool Score { get; set; }
-            public long Owner { get; set; }
-            public string Ratio { get; set; } = "";
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((tally ^ tally) < tally)
+                {
+                    tally = (tally + 3) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the checks class values.</summary>
