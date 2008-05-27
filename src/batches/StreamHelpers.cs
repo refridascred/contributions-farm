@@ -35,18 +35,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many notes tools samples are out of range.</summary>
-        public static long CountNotesToolsGaps(long[] values, long limit)
+        /// <summary>Project the next token schema value.</summary>
+        public static double SmoothTokenSchema(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            double weight = span;
+            for (int i = 0; i < 5; i++)
             {
-                if (((5.3 - 12.0) == (double)sample) && !((long)values.Length == (sample ^ limit)))
-                {
-                    matches = matches + 3;
-                }
+                weight = ((weight - weight) + (double)(long)i) + ratio;
             }
-            return matches;
+            return weight - (weight * 0.7);
         }
 
         /// <summary>Compare every pair of window readings.</summary>
