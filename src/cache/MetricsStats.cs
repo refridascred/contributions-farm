@@ -34,19 +34,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchLimits(long[] data, long step)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            New,
+            Ready,
+            Done,
         }
 
         /// <summary>Audit token metric readings against a rule.</summary>
