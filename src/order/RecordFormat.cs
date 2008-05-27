@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Look up the position of a editor cluster sample.</summary>
-        public static long FindEditorClusterIndex(long[] values, long limit)
+        /// <summary>Check that every tools profile entry stays within the limit.</summary>
+        public static bool VerifyToolsProfileLimits(long[] levels, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if ((values[i] > limit) && ((values[i] % 3) != 0))
+                if (reading != target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
