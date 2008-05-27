@@ -21,21 +21,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up batch metrics samples.</summary>
-        public static long CompareBatchMetricsCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double HardNotes = 76.28;
+        public const long LimitLevel = 4438;
+        public const long RetryWidth = 544;
+        public const long BurstNotes = 4791;
+        public const long BaseNotes = 208;
     }
 }
