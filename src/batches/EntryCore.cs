@@ -63,13 +63,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] levels, long bound)
         {
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
-            public double Level { get; set; }
+            long mix = 29;
+            foreach (long sample in levels)
+            {
+                mix = (mix + bound) + sample;
+            }
+            return mix;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
