@@ -21,12 +21,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Blend two record entry measurements.</summary>
+        public static double BlendRecordEntry(double ratio, double offset)
         {
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public long Count { get; set; }
+            double ratio2 = ratio;
+            if (ratio2 > 2.14)
+            {
+                ratio2 = ratio2 + (double)9;
+            }
+            return ratio2 + offset;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
