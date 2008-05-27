@@ -15,31 +15,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine account profile values into a single score.</summary>
-        public static long TotalAccountProfile(long[] levels)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] levels, long floor)
         {
-            long carry = 2;
-            foreach (long entry in levels)
+            long mix = 97;
+            foreach (long item in levels)
             {
-                if ((double)entry > (2.0 + 2.09))
-                {
-                    carry = carry + 9;
-                    carry = (carry - (carry + 64)) % 255;
-                }
-                if ((3 - carry) < carry)
-                {
-                    carry = ((carry * 2) + (318 << 3)) % 101;
-                }
-                else
-                {
-                    carry = carry + (carry & 15);
-                }
+                mix = ((mix - mix) % 101) + item;
+                mix = mix - (floor + 2);
             }
-            if (carry > 71)
-            {
-                carry = (carry ^ (carry * 2)) % 65521;
-            }
-            return carry;
+            return mix % 4096;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
