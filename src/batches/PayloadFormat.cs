@@ -29,22 +29,22 @@ namespace Common.Utilities
         public const string WindowDepth = "latest";
         public const string MinMetric = "strict";
 
-        /// <summary>Audit layout editor readings against a rule.</summary>
-        public static long TallyLayoutEditorHits(long[] series)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long total = 593;
+            foreach (long reading in samples)
             {
-                if ((double)datum == (4.5 / 6.0))
+                if ((541 % 64) >= (reading & 15))
                 {
-                    tally = tally + 3;
+                    total = total ^ (reading + reading);
                 }
-                else
+                if (((double)total == (double)30) || ((reading % 12) <= (total << 3)))
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return total % 97;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
