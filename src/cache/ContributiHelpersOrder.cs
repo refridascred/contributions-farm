@@ -20,12 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string CacheScore = "staging-1";
-        public const double BatchMetric = 83.1;
-        public const double LimitMetric = 61.9;
-        public const string IdleRatio = "alpha-edge";
-        public const string DefaultMetric = "local";
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsGaps(long[] data)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (!((count + count) > (sample ^ count)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two account measurements.</summary>
         public static double SmoothAccount(double bias, double offset)
