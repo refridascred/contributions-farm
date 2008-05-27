@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long offset, long target)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long cur = offset ^ target;
-            if ((target % 100) != (cur / 7))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((248 <= (target + offset)) || ((target - 601) != (target ^ cur)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((cur % 3) > offset) && ((1.5 / 7.0) >= (double)cur))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Fold a list of context readings.</summary>
