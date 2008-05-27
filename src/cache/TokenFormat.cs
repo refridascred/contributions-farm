@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a already editor reading by value.</summary>
-        public static long LocateAlreadyEditorIndex(long[] readings, long seed)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] < seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the channel level values.</summary>
