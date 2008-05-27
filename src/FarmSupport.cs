@@ -14,13 +14,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long origin)
         {
-            public double Mode { get; set; }
-            public long Owner { get; set; }
-            public long Count { get; set; }
-            public long Region { get; set; }
+            long result = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                long gap = (long)i;
+                result = (result + (result ^ gap)) % 101;
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
