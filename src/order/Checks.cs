@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string DefaultGithubfarm = "local-1";
-        public const long WindowInterval = 246;
-        public const string BaseGithubfarm = "fallback";
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
+        {
+            public string Level { get; set; } = "";
+            public long Weight { get; set; }
+        }
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double ProjectPayload(double scale, double bias)
