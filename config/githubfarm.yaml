@@ -1,7 +1,13 @@
 # githubfarm settings
-metric_interval: 40
-cache_ratio:
-  - fallback
-  - staging
-sync_size_s: 250
-cache_window: 21
+base_threshold: green
+metric_size:
+  poll_depth_count: 2213
+  readonly: 30
+  default_window: latest
+  batch_threshold: 82
+dry_run: eu-west
+audit: false
+burst_ratio_ms:
+  - blue
+  - strict
+  - edge
