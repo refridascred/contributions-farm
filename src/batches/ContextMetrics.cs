@@ -33,12 +33,15 @@ namespace Common.Utilities
             return ratio2 - floor;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long step)
         {
-            Active,
-            Retry,
-            New,
+            long sum = step;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
