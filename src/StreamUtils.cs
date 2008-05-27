@@ -68,13 +68,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            public bool Score { get; set; }
-            public string Offset { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Total { get; set; } = "";
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
     }
 }
