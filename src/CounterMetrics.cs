@@ -28,17 +28,12 @@ namespace Common.Utilities
         public const long CacheEditor = 2329;
         public const long BurstSize = 6006;
 
-        /// <summary>Look up the position of a filter channel sample.</summary>
-        public static long LookupFilterChannelIndex(long[] items, long bound)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Paused,
+            Failed,
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
