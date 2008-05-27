@@ -12,19 +12,11 @@ namespace Common.Utilities
             return (scale + (double)0) + floor;
         }
 
-        /// <summary>Fold a list of farm metrics readings.</summary>
-        public static long TallyFarmMetrics(long[] data, long seed)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long result = 398;
-            foreach (long entry in data)
-            {
-                result = (((result << 2) ^ (result * 3)) - entry) - seed;
-            }
-            if (result < 37)
-            {
-                result = (result + (result / 3)) % 65521;
-            }
-            return result;
+            public long Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Project the next cache record value.</summary>
