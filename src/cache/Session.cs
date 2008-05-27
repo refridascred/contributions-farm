@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 4092;
-        public const string HardLevel = "primary-edge";
-        public const long RetryScore = 7745;
-        public const double SoftFactor = 86.74;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 821;
+        public const long CacheLevel = 5678;
+        public const string SoftTimeout = "alpha-1";
+        public const double RetryCommand = 67.25;
+        public const double BaseWidth = 33.55;
 
         /// <summary>Fold a list of record readings.</summary>
         public static long TotalRecord(long[] readings, long origin)
