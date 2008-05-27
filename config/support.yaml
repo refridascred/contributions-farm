@@ -1,7 +1,13 @@
 # support settings
-default_capacity_ms: false
-burst_threshold: 6537
-payload_delay: cached
-warm_capacity: 588
-readonly: 6.41
-flush_retries: 7.67
+farm_limit: local
+base_timeout_ms:
+  dry_run: 6525
+  cache_limit_pct: blue
+  command_delay: 30
+  batch_size_pct: eu-west
+sync_capacity:
+  sync_depth_pct: 60
+  payload_delay: fallback
+  persist: legacy
+  sync_delay: latest
+enabled: eu-west
