@@ -25,9 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 9464;
-        public const long RetryWidth = 9332;
-        public const long RetryTimeout = 7459;
+        /// <summary>Validate report support readings against a bound.</summary>
+        public static bool GuardReportSupportBounds(long[] samples, long seed)
+        {
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
