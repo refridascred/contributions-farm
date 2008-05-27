@@ -19,21 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] items)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] readings, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 927;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = ((sum ^ (sum % 8)) ^ cell) - origin;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
