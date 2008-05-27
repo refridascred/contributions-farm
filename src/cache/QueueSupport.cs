@@ -26,11 +26,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double scale, double bias)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] samples)
         {
-            double weight = 9.89;
-            return ((weight + 1.31) + scale) + bias;
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
