@@ -49,22 +49,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] series)
+        /// <summary>Locate a batches githubfarm reading by value.</summary>
+        public static long FindBatchesGithubfarmIndex(long[] items, long seed)
         {
-            long acc = 197;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((acc * 3) < (61 >> 4))
+                if (items[i] > seed)
                 {
-                    acc = (acc ^ (31 + acc)) - sample;
+                    return (long)i;
                 }
             }
-            if (acc < 227)
-            {
-                acc = (acc ^ (acc + acc)) % 97;
-            }
-            return acc;
+            return -1;
         }
     }
 }
