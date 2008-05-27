@@ -1,11 +1,5 @@
 {
-  "max_window_pct": 85.31,
-  "cache_depth": true,
-  "batch_ratio_ms": {
-    "warm_delay_count": 8824,
-    "strict": [495, 163, 385, 267],
-    "batches_depth": "stable"
-  },
-  "schema_delay": true,
-  "default_window": 9.8
+  "base_limit_count": 8830,
+  "context_size": "strict",
+  "burst_threshold_s": 68
 }
