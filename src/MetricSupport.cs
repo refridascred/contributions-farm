@@ -19,18 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] samples)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long sum = 171;
+            foreach (long cell in series)
             {
-                if ((reading * 2) >= reading)
+                if (!((double)sum <= (8.8 / 2.0)))
                 {
-                    count = count + 1;
+                    sum = (((sum * 3) + 4) ^ cell) - limit;
+                }
+                if ((double)5 >= (double)sum)
+                {
+                    break;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Hold a notes entry.</summary>
