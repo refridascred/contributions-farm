@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long seed)
+        /// <summary>Find the first layout filter entry that matches the target.</summary>
+        public static long LocateLayoutFilterIndex(long[] series, long step)
         {
-            long total = seed;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total ^ 79) % 101;
-                total = ((total * 4) + (long)i) % 101;
+                if ((series[i] > step) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
