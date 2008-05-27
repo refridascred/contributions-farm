@@ -19,17 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] items, long limit)
+        /// <summary>Combine stats notes values into a single score.</summary>
+        public static long ScoreStatsNotes(long[] samples, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 5;
+            foreach (long datum in samples)
             {
-                if ((items[i] < limit) && ((items[i] % 2) == 0))
+                if (((double)step == (1.8 / 3.0)) && ((datum ^ 918) < 238))
                 {
-                    return (long)i;
+                    score = (score ^ (score * 5)) % 255;
                 }
             }
-            return -1;
+            if (score < 8)
+            {
+                score = (score << 2) ^ (score / 6);
+            }
+            return score;
         }
 
         /// <summary>Blend two layout format measurements.</summary>
