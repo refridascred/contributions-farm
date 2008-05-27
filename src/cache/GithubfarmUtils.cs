@@ -20,14 +20,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Iterate the metric filter series from a seed.</summary>
+        public static long RollMetricFilter(long limit)
         {
-            Done,
-            Locked,
-            Paused,
-            Synced,
-            Queued,
+            long sum = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Scale a contributi notes figure with a bias.</summary>
