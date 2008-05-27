@@ -16,38 +16,11 @@ namespace Common.Utilities
         public const string RetryWidth = "local-v2";
         public const long DefaultScore = 4290;
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long step, long origin)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            if ((origin + 5) < step)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((step + step) < (step >> 2)) && ((origin / 5) > (22 << 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (origin < (step + step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin * 5) <= (7 - step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
