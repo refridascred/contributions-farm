@@ -14,19 +14,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextLimits(long[] series, long seed)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Closed,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Hold a entry header.</summary>
