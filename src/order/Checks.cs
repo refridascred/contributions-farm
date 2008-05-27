@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double rate, double offset)
         {
-            public double Flag { get; set; }
-            public long Score { get; set; }
+            double drift = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (drift - drift)) - (double)(long)i;
+            }
+            return drift + rate;
         }
 
         /// <summary>Fold a list of schema filter readings.</summary>
