@@ -39,15 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double rate, double floor)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterOutliers(long[] data, long floor)
         {
-            double scale = floor;
-            if (scale > rate)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                scale = scale + (scale * 9.0);
+                if (matches <= (43 >> 4))
+                {
+                    matches = ((matches + 2) - cell) - floor;
+                }
             }
-            return scale - scale;
+            return matches;
         }
 
         /// <summary>Describe the payload phase values.</summary>
