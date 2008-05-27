@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] values)
-        {
-            long mix = 26;
-            foreach (long entry in values)
-            {
-                if ((entry & 255) > (mix + mix))
-                {
-                    mix = (mix ^ entry) % 1000;
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 8598;
+        public const string MinRoute = "latest-1";
+        public const long BurstRoute = 9416;
+        public const string CacheScore = "local-edge";
 
         /// <summary>Validate batch session readings against a bound.</summary>
         public static bool CheckBatchSessionLimits(long[] values, long origin)
