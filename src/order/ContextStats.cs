@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a format tools value against two limits.</summary>
-        public static long ClassifyFormatTools(long limit, long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyOutliers(long[] series)
         {
-            if ((double)limit != (double)offset)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (limit <= (418 >> 1))
+                if (matches >= sample)
                 {
-                    return 8;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    if ((offset < (limit % 2)) && ((double)offset >= (double)limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many githubfarm channel samples are out of range.</summary>
