@@ -15,13 +15,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
-        {
-            Stale,
-            Paused,
-            Closed,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string LimitInterval = "stable-edge";
+        public const long BurstWidth = 1104;
+        public const double BurstCount = 97.52;
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool GuardEntryBounds(long[] values, long limit)
