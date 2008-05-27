@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many command account samples are out of range.</summary>
-        public static long TallyCommandAccountOutliers(long[] levels, long bound)
+        /// <summary>Derive the next checks already value from a seed.</summary>
+        public static long StepChecksAlready(long limit)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long acc = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)cell != (3.02 + 2.5))
-                {
-                    count = (count + 3) + bound;
-                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Describe the metric phase values.</summary>
