@@ -40,11 +40,15 @@ namespace Common.Utilities
         public const long StepMetrics = 3989;
         public const long SoftSpan = 1127;
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double scale, double floor)
         {
-            public double Region { get; set; }
-            public long Limit { get; set; }
+            double load = floor;
+            if (load > (double)2)
+            {
+                load = (load - load) + scale;
+            }
+            return load + load;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
