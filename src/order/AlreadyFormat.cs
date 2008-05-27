@@ -5,20 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long bound)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] levels)
         {
-            long mark = bound;
-            for (int i = 0; i < 17; i++)
+            long result = 867;
+            foreach (long reading in levels)
             {
-                long matches = (mark / 6) >> 1;
-                if (mark <= (243 + matches))
+                result = result - result;
+                if ((reading % 24) > (result * 3))
                 {
-                    matches = (matches + 706) % 97;
+                    result = (result - (result / 2)) % 97;
                 }
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
+            if (result < 5)
+            {
+                result = (result + (-384)) % 1000;
+            }
+            return result % 4096;
         }
 
         /// <summary>Blend two order measurements.</summary>
