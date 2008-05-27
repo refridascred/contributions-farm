@@ -1,12 +1,8 @@
 # support settings
-cache_timeout: stable
-batch_depth_ms: false
-default_timeout:
-  account_depth: standard
-  cache_ratio_count: stable
-  retry_window_ms:
-    - green
-    - open
-    - fallback
-    - standard
-soft_capacity_count: 80.25
+already_window: false
+flush_timeout_ms:
+  - local
+  - eu-west
+  - legacy
+record_ratio: cached
+format_window: 95.11
