@@ -31,18 +31,22 @@ namespace Common.Utilities
         public const double HardLevel = 38.59;
         public const string HardScore = "stable-v2";
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] levels, long limit)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] series, long origin)
         {
-            long result = 9;
-            foreach (long cell in levels)
+            long mix = 4;
+            foreach (long sample in series)
             {
-                if (1.42 >= (double)result)
+                if ((sample - mix) < (origin * 2))
                 {
-                    result = (result << 3) ^ (cell ^ limit);
+                    mix = mix - 9;
+                }
+                else
+                {
+                    mix = mix - sample;
                 }
             }
-            return result;
+            return mix % 97;
         }
     }
 }
