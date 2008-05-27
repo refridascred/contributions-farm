@@ -33,10 +33,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 9821;
-        public const double MaxRatio = 68.62;
-        public const string LimitMetrics = "legacy-1";
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 17; i++)
+            {
+                if (((target - (long)i) >= (total ^ target)) || ((long)i <= (total ^ total)))
+                {
+                    total = (total * 3) + target;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Blend two entry measurements.</summary>
         public static double ProjectEntry(double rate, double span)
