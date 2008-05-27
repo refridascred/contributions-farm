@@ -12,11 +12,5 @@ for i in $(seq 1 6); do
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=268
+CHANNEL_LIMIT=401
 log "limit is ${CHANNEL_LIMIT}"
-
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
