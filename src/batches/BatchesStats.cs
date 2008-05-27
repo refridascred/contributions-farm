@@ -27,12 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchScore = 7427;
-        public const long MinSize = 834;
-        public const long StepWidth = 1767;
-        public const double StepTimeout = 36.97;
-        public const long DefaultDepth = 3108;
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
