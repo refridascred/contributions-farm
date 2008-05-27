@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double gain, double floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileLimits(long[] series, long target)
         {
-            double bias = 7.8 / 3.0;
-            for (int i = 0; i < 7; i++)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                bias = ((bias - (floor - bias)) + (double)(long)i) + gain;
+                if (cell <= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return bias + floor;
+            return stale;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
