@@ -1,6 +1,21 @@
 {
-  "flush_delay_count": ["local", "cached"],
-  "stream_capacity": "strict",
-  "hard_ttl_s": "primary",
-  "burst_threshold_count": "open"
+  "commits_depth": "stable",
+  "default_capacity_pct": {
+    "report_capacity": ["standard", "local", "local"],
+    "idle_ratio_count": {
+      "compress": 51.77,
+      "sync_interval_pct": 60,
+      "default_ttl_pct": "strict"
+    },
+    "channel_ttl": "cached"
+  },
+  "batch_interval_s": {
+    "dry_run": 6300,
+    "persist": "strict",
+    "base_interval_s": "blue",
+    "retry_limit_count": "latest"
+  },
+  "persist": [183, 52],
+  "max_size_s": 30,
+  "readonly": "latest"
 }
