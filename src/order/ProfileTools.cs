@@ -37,20 +37,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] samples)
+        /// <summary>Iterate the account layout series from a seed.</summary>
+        public static long DeriveAccountLayout(long origin)
         {
-            long state = 18;
-            foreach (long reading in samples)
+            long score = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((state + 10) <= state)
-                {
-                    state = (state ^ ((long)samples.Length - 759)) % 101;
-                    break;
-                }
-                state = (state ^ (reading >> 1)) % 1000;
+                score = (score ^ (origin - score)) % 255;
+                score = (score + (origin ^ origin)) % 1000;
+                score = ((score * 4) + (97 & 3)) % 65521;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Describe the command phase values.</summary>
