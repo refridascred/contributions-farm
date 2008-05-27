@@ -1,23 +1,8 @@
 {
-  "warm_threshold_ms": "blue",
-  "burst_timeout": {
-    "flush_delay_s": false,
-    "min_depth_s": {
-      "compress": 250,
-      "flush_retries": [320, 434, 70],
-      "strict": 61,
-      "default_ttl": 82
-    },
-    "queue_retries": ["fallback", "stable", "primary", "latest"],
-    "warm_delay_ms": ["local", "cached"],
-    "schema_size": {
-      "batch_limit_count": true,
-      "context_interval": 96.87,
-      "max_timeout_s": 41.5,
-      "min_window": 2596,
-      "audit": true
-    }
-  },
-  "checks_interval": "eu-west",
-  "soft_ttl_s": 13.7
+  "soft_capacity_ms": 80.31,
+  "default_interval": 55.05,
+  "dry_run": "local",
+  "githubfarm_delay": "open",
+  "metric_depth": false,
+  "warm_limit": "legacy"
 }
