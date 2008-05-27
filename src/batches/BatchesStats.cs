@@ -55,18 +55,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] samples)
+        /// <summary>Accumulate queue session samples.</summary>
+        public static long TallyQueueSession(long[] series)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long mark = 62;
+            foreach (long datum in series)
             {
-                if ((count ^ count) <= (count & 1))
-                {
-                    count = (count + 1) + reading;
-                }
+                mark = ((mark * 5) + datum) % 4096;
             }
-            return count;
+            return mark;
         }
     }
 }
