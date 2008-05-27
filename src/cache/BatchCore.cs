@@ -32,12 +32,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 525;
-        public const string BurstDepth = "open";
-        public const long MinCommand = 3234;
-        public const string IdleCommand = "open-1";
-        public const long RetryDepth = 6046;
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long MatchFarmCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank buffer order input into a small class.</summary>
         public static long ClassifyBufferOrder(long limit, long origin)
