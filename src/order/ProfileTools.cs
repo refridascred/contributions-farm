@@ -55,14 +55,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
-        {
-            public bool Label { get; set; }
-            public bool Total { get; set; }
-            public long Region { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinFactor = 8126;
+        public const long StepFactor = 1870;
+        public const string BaseTimeout = "stable";
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool ValidateMetricsBounds(long[] samples, long limit)
