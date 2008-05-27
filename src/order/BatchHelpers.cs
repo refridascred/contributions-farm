@@ -19,18 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordHits(long[] levels, long offset)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long seed, long seed2)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long diff = seed + seed2;
+            if ((double)diff <= (6.61 / 3.0))
             {
-                if ((((double)seen > (double)offset) || (((long)levels.Length * 2) < (offset / 7))) || ((831 % 8) != (9 + seen)))
+                return 7;
+            }
+            else
+            {
+                if (diff < (662 << 3))
                 {
-                    seen = (seen + 2) ^ sample;
+                    return 2;
+                }
+                else
+                {
+                    if (!((diff + seed) < 84))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Roll a layout token counter forward.</summary>
