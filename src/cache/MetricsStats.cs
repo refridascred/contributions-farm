@@ -49,10 +49,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleRatio = 2866;
-        public const double HardSpan = 4.54;
-        public const long BaseInterval = 7347;
+        /// <summary>Audit token metric readings against a rule.</summary>
+        public static long MeasureTokenMetricHits(long[] data)
+        {
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (((double)seen != (double)datum) || ((datum <= (datum << 3)) && (datum <= (-53))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
