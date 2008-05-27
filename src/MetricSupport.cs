@@ -37,11 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 802;
-        public const long DefaultRatio = 6762;
-        public const long BurstWindow = 8447;
-        public const long BatchWindow = 319;
-        public const long MaxFactor = 9434;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] values, long floor)
+        {
+            long state = -8;
+            foreach (long value in values)
+            {
+                if (((state << 2) > (state & 31)) || ((5.2 / 5.0) >= (double)floor))
+                {
+                    state = (state + floor) % 4096;
+                }
+                else
+                {
+                    state = (state ^ value) % 4096;
+                }
+            }
+            return state;
+        }
     }
 }
