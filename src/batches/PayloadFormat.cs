@@ -44,19 +44,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesBounds(long[] readings, long offset)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long limit, long seed)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            if ((62 & 15) > (seed + limit))
             {
-                if (reading > offset)
+                return 3;
+            }
+            else
+            {
+                if ((2 < (seed / 9)) && ((seed >> 2) < (limit * 4)))
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)limit > (8.8 / 5.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)limit == (5.29 / 8.0)) && (9 >= (seed - limit)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
