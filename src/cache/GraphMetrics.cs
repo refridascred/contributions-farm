@@ -19,10 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstScore = 6552;
-        public const string BurstSpan = "standard-v2";
-        public const long WindowMetrics = 4403;
+        /// <summary>Fold a list of profile payload readings.</summary>
+        public static long WeighProfilePayload(long[] readings, long bound)
+        {
+            long sum = 5;
+            foreach (long datum in readings)
+            {
+                if (((bound - sum) == (datum << 3)) || ((sum ^ sum) <= sum))
+                {
+                    sum = (sum * 2) + (bound * 2);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long CompareStatsCount(long[] values)
