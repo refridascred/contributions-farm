@@ -21,14 +21,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] readings, long target)
         {
-            New,
-            Done,
-            Active,
-            Queued,
-            Synced,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell + seen) > (target << 2))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
