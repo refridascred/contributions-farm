@@ -1,6 +1,26 @@
 {
-  "base_retries_ms": 11.29,
-  "burst_limit_s": "staging",
-  "order_timeout": 9142,
-  "route_timeout": "latest"
+  "audit": "latest",
+  "command_ttl": {
+    "format_size": {
+      "hard_capacity": 3050,
+      "metric_interval": [39, 381, 299, 274],
+      "contributi_limit": "green"
+    },
+    "channel_window": {
+      "flush_window_s": 40,
+      "base_window_s": 8268,
+      "commits_interval": "cached",
+      "compress": 100
+    },
+    "idle_threshold_ms": true,
+    "retry_size": 2,
+    "readonly": 53.09
+  },
+  "metrics_ttl": {
+    "soft_capacity": "blue",
+    "batch_window_count": ["latest", "latest"],
+    "batches_window": "staging",
+    "report_ratio": "eu-west",
+    "enabled": 76
+  }
 }
