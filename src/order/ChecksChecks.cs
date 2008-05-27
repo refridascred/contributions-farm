@@ -20,22 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] readings, long target)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long score = 661;
-            foreach (long item in readings)
-            {
-                if ((score > (target + score)) || ((double)target != (0.88 * 3.92)))
-                {
-                    score = (score << 2) ^ target;
-                }
-                else
-                {
-                    score = (score ^ item) % 97;
-                }
-            }
-            return score;
+            Dropped,
+            Draft,
+            Pending,
+            Failed,
+            Ready,
         }
 
         /// <summary>Hold a order header.</summary>
