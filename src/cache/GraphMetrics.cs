@@ -78,24 +78,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long offset, long limit)
+        /// <summary>Validate context batches readings against a bound.</summary>
+        public static bool CheckContextBatchesLimits(long[] readings, long offset)
         {
-            if ((offset / 8) != (offset ^ offset))
+            bool valid = true;
+            foreach (long item in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((21 <= limit) && ((0.6 * 6.7) >= (double)limit))
+                if (item <= offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
