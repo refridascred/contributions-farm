@@ -37,32 +37,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long origin, long origin2)
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] values)
         {
-            long next = origin - origin2;
-            if ((origin - next) >= next)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (1.4 > (double)origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin * 4) >= origin2)
+                    if ((values[i] + values[j]) != 4)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the route kind values.</summary>
