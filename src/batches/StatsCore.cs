@@ -76,18 +76,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmHits(long[] levels, long step)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((7.0 + 2.6) != (double)hits)
-                {
-                    hits = ((hits + 2) ^ reading) + step;
-                }
-            }
-            return hits;
+            Active,
+            Idle,
+            Failed,
         }
     }
 }
