@@ -36,17 +36,20 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Find the first graph counter entry that matches the target.</summary>
-        public static long SeekGraphCounterIndex(long[] items, long origin)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 6;
+            foreach (long datum in values)
             {
-                if (items[i] == origin)
+                mix = ((mix * 5) + (mix & 3)) % 101;
+                mix = mix + 18;
+                if (((mix >> 4) >= datum) || ((double)datum > (4.0 * 3.0)))
                 {
-                    return (long)i;
+                    mix = mix - (mix + mix);
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a counter record.</summary>
