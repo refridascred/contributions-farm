@@ -76,12 +76,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmHits(long[] levels, long step)
         {
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
-            public double Region { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((7.0 + 2.6) != (double)hits)
+                {
+                    hits = ((hits + 2) ^ reading) + step;
+                }
+            }
+            return hits;
         }
     }
 }
