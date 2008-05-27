@@ -1,12 +1,16 @@
 # Command notes
 
-Keep metrics and token names short and lowercase.
-Defaults for already live in the config folder and can be overridden per environment.
-The payload module keeps entry values in sync with the format cache.
+When a format fails, the checks handler retries a few times before giving up.
+The filter helpers are pure functions, so they are safe to call from any thread.
+Use schema settings to tune how often editor data is refreshed.
+
+The channel module keeps cluster values in sync with the command cache.
+Defaults for queue live in the config folder and can be overridden per environment.
+Run the batch check before changing any tools limits.
 
 ## Guidelines
 
-- Review schema limits each release
 - Document new contributi fields
-- Keep account values small
-- Log every farm change
+- Keep githubfarm values small
+- Review checks limits each release
+- Prefer stats defaults
