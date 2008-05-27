@@ -17,19 +17,10 @@ namespace Common.Utilities
         public const long BurstWidth = 1104;
         public const double BurstCount = 97.52;
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryBounds(long[] values, long limit)
-        {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftLevel = 2711;
+        public const long MaxFactor = 5478;
+        public const long HardFormat = 328;
+        public const string BurstFormat = "standard-edge";
     }
 }
