@@ -40,17 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a queue account reading by value.</summary>
-        public static long LocateQueueAccountIndex(long[] samples, long bound)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Ready,
+            Idle,
+            Closed,
+            New,
         }
     }
 }
