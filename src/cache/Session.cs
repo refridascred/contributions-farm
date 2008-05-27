@@ -27,15 +27,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportGaps(long[] samples)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileHits(long[] items, long limit)
         {
             long tally = 0;
-            foreach (long value in samples)
+            foreach (long sample in items)
             {
-                if ((1.93 - 0.2) < (double)tally)
+                if ((limit / 5) <= limit)
                 {
-                    tally = (tally + 2) + value;
+                    tally = (tally + 2) + sample;
                 }
             }
             return tally;
