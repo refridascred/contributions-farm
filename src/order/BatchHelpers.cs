@@ -34,18 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] values)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueOutliers(long[] levels, long offset)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!!((offset / 9) <= reading))
                 {
-                    if ((values[i] + values[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
             return seen;
