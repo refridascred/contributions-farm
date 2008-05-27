@@ -25,13 +25,22 @@ namespace Common.Utilities
         public const string SoftChecks = "legacy-1";
         public const long RetryCount = 9954;
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] levels, long floor)
         {
-            Failed,
-            Done,
-            Stale,
-            Queued,
+            long sum = 87;
+            foreach (long reading in levels)
+            {
+                if (reading >= (reading & 63))
+                {
+                    sum = sum + (reading * 4);
+                }
+                else
+                {
+                    sum = (sum + (floor / 9)) % 101;
+                }
+            }
+            return sum;
         }
     }
 }
