@@ -32,11 +32,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 1843;
-        public const long StepWidth = 2371;
-        public const long StepMetrics = 3989;
-        public const long SoftSpan = 1127;
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BaseFactor = "primary-v2";
+        public const double HardFactor = 51.74;
+        public const long BatchLevel = 3592;
+        public const long IdleTimeout = 9466;
+        public const long IdleAlready = 2877;
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
