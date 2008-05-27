@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamOutliers(long[] readings)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((seen - seen) < (seen & 7))
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-            }
-            return seen;
+            Queued,
+            Locked,
+            Active,
+            Pending,
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
