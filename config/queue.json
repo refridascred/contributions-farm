@@ -1,8 +1,5 @@
 {
-  "compress": "local",
-  "sync_size": 69,
-  "poll_window_count": true,
-  "contributi_delay": 6,
-  "poll_ratio_count": [164, 412, 151, 35],
-  "profile_limit": 1024
+  "strict": "open",
+  "batch_retries": 17,
+  "flush_ttl_pct": 60.4
 }
