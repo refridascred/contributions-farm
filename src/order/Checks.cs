@@ -27,21 +27,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] readings)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long offset, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long lane = offset - limit;
+            if (!((offset & 255) > (offset ^ offset)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((lane + lane) < (lane + 79))
                 {
-                    if ((readings[i] ^ readings[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
