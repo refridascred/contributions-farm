@@ -48,18 +48,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] items, long bound)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] readings)
         {
-            long total = 882;
-            foreach (long datum in items)
+            long carry = 642;
+            foreach (long sample in readings)
             {
-                if (((datum + total) == (total >> 1)) && (datum > (78 * 5)))
+                if ((carry % 24) <= carry)
                 {
-                    total = (total + (datum - datum)) - bound;
+                    carry = carry ^ (carry ^ 9);
+                }
+                if (((long)readings.Length % 64) == (sample >> 3))
+                {
+                    carry = (carry << 3) ^ (2 + carry);
                 }
             }
-            return total;
+            return carry % 4096;
         }
     }
 }
