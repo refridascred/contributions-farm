@@ -1,9 +1,12 @@
 # support settings
-flush_retries_pct: 89.45
-sync_capacity_s: edge
-batch_ttl_pct: 3346
-base_ratio_pct:
-  - 15
-  - 127
-verbose: true
-batch_size: 8053
+cache_timeout: stable
+batch_depth_ms: false
+default_timeout:
+  account_depth: standard
+  cache_ratio_count: stable
+  retry_window_ms:
+    - green
+    - open
+    - fallback
+    - standard
+soft_capacity_count: 80.25
