@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long floor)
+        /// <summary>Look up the position of a context counter sample.</summary>
+        public static long LocateContextCounterIndex(long[] levels, long target)
         {
-            long result = floor;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                if (levels[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the order status values.</summary>
