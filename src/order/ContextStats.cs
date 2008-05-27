@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate cluster checks readings against a bound.</summary>
-        public static bool GuardClusterChecksBounds(long[] readings, long bound)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Paused,
+            Dropped,
+            Done,
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
