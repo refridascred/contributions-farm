@@ -23,12 +23,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryBounds(long[] values, long limit)
         {
-            Paused,
-            Done,
-            Retry,
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
