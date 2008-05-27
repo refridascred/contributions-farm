@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long target, long offset)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            if (((double)target == (double)544) && ((target + offset) >= offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)9 > (double)offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Synced,
+            Failed,
+            Active,
+            Closed,
         }
 
         /// <summary>Hold a schema snapshot.</summary>
