@@ -37,15 +37,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double rate, double bias)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordBounds(long[] series, long origin)
         {
-            double drift = 6.2;
-            for (int i = 0; i < 7; i++)
+            bool ok = true;
+            foreach (long item in series)
             {
-                drift = (drift - (double)(long)i) + bias;
+                if (item <= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return drift - (rate * 14.0);
+            return ok;
         }
     }
 }
