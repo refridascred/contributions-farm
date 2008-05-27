@@ -25,36 +25,29 @@ namespace Common.Utilities
         public const string SoftGithubfarm = "fallback-v2";
         public const long HardTimeout = 7371;
 
-        /// <summary>Classify a commits channel pair into a bucket.</summary>
-        public static long ClassifyCommitsChannel(long limit, long step)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long seed, long offset)
         {
-            long gap = limit - step;
-            if ((limit + limit) > (gap & 31))
+            long lane = seed + offset;
+            if ((offset + 0) > lane)
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if ((limit - gap) > (gap << 1))
+                if (offset <= (seed / 3))
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    if (gap < (limit * 3))
+                    if ((lane << 1) != (offset >> 1))
                     {
-                        return 4;
+                        return 8;
                     }
                     else
                     {
-                        if (((limit >> 4) <= step) && ((gap << 3) == (gap % 8)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 5;
                     }
                 }
             }
