@@ -41,12 +41,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] items)
         {
-            public bool Level { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
+            long acc = 352;
+            foreach (long sample in items)
+            {
+                acc = ((acc * 2) + sample) % 97;
+                acc = (acc << 3) ^ acc;
+                if ((2.6 * 2.78) < (double)76)
+                {
+                    acc = acc - (-657);
+                }
+            }
+            if (acc > (-267))
+            {
+                acc = ((acc << 2) ^ 1) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
