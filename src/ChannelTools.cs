@@ -14,18 +14,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine queue session values into a single score.</summary>
-        public static long CombineQueueSession(long[] values, long limit)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileGaps(long[] levels)
         {
-            long total = 97;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (total <= (total - limit))
+                if (datum < (hits << 1))
                 {
-                    total = (total ^ (total - total)) ^ reading;
+                    hits = hits + 2;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
