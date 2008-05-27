@@ -1,7 +1,9 @@
 # support settings
-persist: false
-batch_capacity_s:
-  warm_ttl_count: eu-west
-  idle_depth_pct: 35.17
-  verbose: false
-editor_limit: 84
+default_window_pct:
+  - 123
+  - 425
+  - 170
+tools_delay: false
+default_ttl: blue
+verbose: 50.08
+warm_limit_s: false
