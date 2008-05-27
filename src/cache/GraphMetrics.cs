@@ -19,13 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] readings)
         {
-            Retry,
-            Failed,
-            Ready,
-            Done,
+            long mix = 680;
+            foreach (long cell in readings)
+            {
+                mix = (mix - (mix + mix)) + cell;
+            }
+            if (mix < 0)
+            {
+                mix = (mix ^ (mix * 4)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a batch options.</summary>
