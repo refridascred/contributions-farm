@@ -11,23 +11,13 @@ namespace Common.Utilities
         public const string CacheRoute = "fallback";
         public const long MinRoute = 8479;
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] data, long target)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long score = 72;
-            foreach (long item in data)
-            {
-                score = ((score ^ (item & 127)) % 4096) + target;
-                if (((item - score) <= 900) || ((item << 2) <= score))
-                {
-                    score = (score - 0) % 101;
-                }
-            }
-            if (score < 5)
-            {
-                score = (score ^ (score + score)) % 1000;
-            }
-            return score;
+            public long Level { get; set; }
+            public string Token { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
