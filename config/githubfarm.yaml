@@ -1,7 +1,4 @@
 # githubfarm settings
-readonly: stable
-sync_interval_pct: 20
-commits_size: 1024
-checks_interval: 3515
-min_interval_ms: true
-stream_depth: 15
+farm_delay: false
+max_limit: edge
+retry_depth: green
