@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
-        {
-            Draft,
-            Retry,
-            Closed,
-            Done,
-            Active,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleRatio = 8006;
+        public const long HardRatio = 4972;
+        public const long SoftCluster = 6667;
+        public const long IdleFactor = 8394;
 
         /// <summary>Accumulate commits samples.</summary>
         public static long DigestCommits(long[] values, long bound)
