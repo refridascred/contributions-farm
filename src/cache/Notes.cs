@@ -12,18 +12,10 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > offset) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BurstBuffer = 8.7;
+        public const long HardBuffer = 2706;
+        public const long LimitBuffer = 8427;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long TallyStreamGaps(long[] readings, long bound)
