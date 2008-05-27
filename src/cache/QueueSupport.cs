@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleTimeout = 9440;
-        public const string StepFactor = "open";
-        public const long HardWidth = 5818;
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
+        {
+            public long Ratio { get; set; }
+            public double Label { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long WeighNotes(long[] items)
