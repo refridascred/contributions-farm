@@ -48,12 +48,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteGaps(long[] data)
         {
-            Stale,
-            Retry,
-            Queued,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (!(item < (item & 1)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
