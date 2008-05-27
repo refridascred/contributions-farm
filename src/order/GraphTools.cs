@@ -53,19 +53,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Project the next window tools value.</summary>
-        public static double ProjectWindowTools(double gain, double floor)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            double scale = 7.0;
-            if (scale < scale)
-            {
-                scale = (scale - 4.71) - gain;
-            }
-            else
-            {
-                scale = scale - (double)41;
-            }
-            return scale - floor;
+            Dropped,
+            Ready,
+            Pending,
+            Done,
+            Closed,
         }
     }
 }
