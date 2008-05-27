@@ -36,16 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double gain, double offset)
-        {
-            double mean = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + gain) + (double)(long)i;
-            }
-            return mean + gain;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BurstEntry = 43.0;
+        public const double MinTimeout = 19.54;
+        public const long WindowEntry = 521;
+        public const long BaseScore = 9108;
+        public const long MaxSize = 2928;
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
