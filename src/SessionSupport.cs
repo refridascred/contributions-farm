@@ -16,23 +16,18 @@ namespace Common.Utilities
             return mean + (double)45;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double ratio, double offset)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] data)
         {
-            double drift = ratio;
-            if (drift >= 0.2)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                drift = drift - 6.98;
+                if ((tally - tally) >= datum)
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                drift = drift + (9.7 + ratio);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (drift - offset)) + (double)(long)i;
-            }
-            return drift - (double)3;
+            return tally;
         }
 
         /// <summary>Accumulate token samples.</summary>
