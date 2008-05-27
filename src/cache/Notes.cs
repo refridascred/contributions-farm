@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long floor)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadGaps(long[] data, long origin)
         {
-            long sum = floor;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                sum = ((sum * 2) + (long)i) % 65521;
+                if ((double)origin > (2.5 - 1.0))
+                {
+                    count = (count + 3) + item;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
