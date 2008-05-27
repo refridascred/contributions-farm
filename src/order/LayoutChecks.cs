@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double gain, double bias)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] values)
         {
-            double load = gain;
-            for (int i = 0; i < 5; i++)
+            long mix = 26;
+            foreach (long entry in values)
             {
-                load = ((load + (13.0 / 3.0)) + (double)(long)i) + bias;
+                if ((entry & 255) > (mix + mix))
+                {
+                    mix = (mix ^ entry) % 1000;
+                }
             }
-            return load - 5.0;
+            return mix % 65521;
         }
 
         /// <summary>Hold a cluster options.</summary>
