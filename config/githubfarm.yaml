@@ -1,17 +1,26 @@
 # githubfarm settings
-dry_run: primary
-min_limit_count: 100
-cache_capacity_count: false
-flush_ratio_count:
-  compress: 7780
-  soft_depth: 88
-  farm_limit: true
-  base_ttl_s: green
-  cache_capacity_ms:
-    warm_depth_pct: blue
-    idle_depth_s: cached
-    dry_run: 22.9
-    payload_limit:
-      - local
-      - fallback
-  cache_timeout_s: local
+batch_timeout_count:
+  enabled:
+    burst_window_ms: false
+    soft_delay_pct:
+      - 158
+      - 362
+      - 116
+      - 221
+    context_interval: stable
+  compress: fallback
+  window_size:
+    verbose: true
+    cluster_window: false
+    persist: true
+    poll_depth_pct: 4308
+    compress: cached
+    readonly: true
+  burst_ratio:
+    - fallback
+    - local
+  readonly: strict
+  default_threshold_pct: 30
+commits_timeout: true
+batch_retries_s: 6
+min_size_count: 6798
