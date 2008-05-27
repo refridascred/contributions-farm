@@ -20,12 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Look up the position of a stream account sample.</summary>
+        public static long SeekStreamAccountIndex(long[] samples, long offset)
         {
-            Paused,
-            New,
-            Stale,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
