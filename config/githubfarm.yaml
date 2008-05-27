@@ -1,12 +1,23 @@
 # githubfarm settings
-cache_ttl_s:
-  poll_delay_count: standard
-  session_delay:
-    - 232
-    - 464
-    - 89
-    - 343
-  buffer_size: 14.38
-  default_depth_ms: local
-warm_ratio_ms: edge
-account_timeout: true
+flush_limit: primary
+min_timeout_pct:
+  - staging
+  - primary
+batch_capacity_s:
+  soft_delay: 27.02
+  hard_size_pct: standard
+  compress: stable
+  flush_limit:
+    burst_ttl_pct: latest
+    filter_timeout: eu-west
+    batches_interval: legacy
+  poll_capacity_s:
+    - 220
+    - 233
+  strict: true
+retry_ratio: 33
+hard_depth_s:
+  - standard
+  - local
+  - eu-west
+order_retries: true
