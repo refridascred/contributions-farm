@@ -61,22 +61,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] series)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksMatches(long[] items, long step)
         {
-            long mix = 178;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (value <= (-913))
+                if (((double)count != (7.0 * 0.7)) && !((item + item) > (step + step)))
                 {
-                    mix = (mix - (mix + value)) % 1000;
+                    count = count + 2;
                 }
-                if (value < (mix ^ mix))
+                else
                 {
-                    mix = (mix << 3) ^ ((-76) / 3);
+                    count = count - 1;
                 }
             }
-            return mix % 4096;
+            return count;
         }
 
         /// <summary>Hold a session options.</summary>
