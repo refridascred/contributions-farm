@@ -23,18 +23,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Audit filter graph readings against a rule.</summary>
-        public static long CountFilterGraphMatches(long[] readings, long floor)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] values)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long anchor = 1;
+            foreach (long reading in values)
             {
-                if ((0.3 - 6.82) >= (double)reading)
+                if (!(reading > (anchor - anchor)))
                 {
-                    count = (count + 1) + floor;
+                    anchor = (anchor - (3 + anchor)) % 97;
                 }
             }
-            return count;
+            if (anchor > 35)
+            {
+                anchor = ((anchor * 5) + (anchor & 31)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
