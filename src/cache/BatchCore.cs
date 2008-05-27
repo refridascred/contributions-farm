@@ -22,21 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] items)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public long Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Combine queue support values into a single score.</summary>
