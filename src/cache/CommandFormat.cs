@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            public bool Limit { get; set; }
-            public string Label { get; set; } = "";
-            public double Level { get; set; }
-            public long Mode { get; set; }
+            Queued,
+            Active,
+            Retry,
         }
 
         /// <summary>Hold a notes entry.</summary>
