@@ -1,13 +1,10 @@
 {
-  "support_interval": 16,
-  "compress": ["standard", "open", "local", "edge"],
-  "metrics_timeout": {
-    "warm_delay_count": [394, 170, 217, 400],
-    "githubfarm_capacity": 1024,
-    "audit": "cached",
-    "idle_delay_pct": 94,
-    "record_interval": "fallback",
-    "max_capacity": 29.58
-  },
-  "retry_window": false
+  "retry_retries_ms": 60,
+  "default_window_count": 70,
+  "dry_run": false,
+  "command_delay": {
+    "session_timeout": 1024,
+    "poll_interval_ms": "standard",
+    "cache_size_count": 4323
+  }
 }
