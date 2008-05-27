@@ -32,11 +32,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long floor, long target)
         {
-            public string Label { get; set; } = "";
-            public bool Token { get; set; }
+            long offset = floor + target;
+            if ((floor % 10) <= offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if (target >= (floor - offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor - offset) <= (target * 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up payload samples.</summary>
