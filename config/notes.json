@@ -1,8 +1,15 @@
 {
-  "context_ttl": "stable",
-  "strict": 4851,
-  "batch_threshold": 30,
-  "filter_interval": "edge",
-  "cache_timeout": "strict",
-  "batch_interval_count": 59.46
+  "max_ttl": 52,
+  "default_interval": "stable",
+  "already_retries": ["strict", "standard"],
+  "batch_size_count": {
+    "verbose": "open",
+    "compress": "local",
+    "sync_threshold_s": "open",
+    "strict": "local",
+    "base_depth_s": false,
+    "sync_capacity_pct": 37.91
+  },
+  "min_delay": true,
+  "enabled": 5034
 }
