@@ -80,14 +80,20 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long seed)
         {
-            Retry,
-            Ready,
-            Dropped,
-            Paused,
-            New,
+            long result = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result << 3) ^ (2 ^ seed)) % 101;
+                if ((11 - 874) != (seed / 7))
+                {
+                    result = ((result << 3) ^ (54 + seed)) % 4096;
+                }
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
