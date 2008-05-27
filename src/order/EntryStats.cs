@@ -20,21 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count stream already pairs that satisfy a relation.</summary>
-        public static long CompareStreamAlreadyCount(long[] values)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public double Region { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
