@@ -25,13 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long limit)
         {
-            Idle,
-            Dropped,
-            Synced,
-            Stale,
+            long sum = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = (sum << 2) ^ (sum % 2);
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Combine format values into a single score.</summary>
