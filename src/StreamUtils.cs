@@ -51,17 +51,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] series, long limit)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long origin, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long prev = origin + target;
+            if ((origin + prev) <= (target & 63))
             {
-                if ((series[i] >= limit) && ((series[i] % 2) == 0))
+                return 1;
+            }
+            else
+            {
+                if (origin >= 572)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of token entries.</summary>
