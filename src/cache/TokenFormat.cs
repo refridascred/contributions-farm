@@ -20,11 +20,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheBudget = 6455;
-        public const double BurstSize = 78.64;
-        public const double IdleLevel = 73.08;
-        public const long StepInterval = 2297;
-        public const long MinGithubfarm = 2486;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferOutliers(long[] levels)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((item >> 5) <= matches)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
