@@ -94,21 +94,15 @@ namespace Common.Utilities
             return ratio - (double)2;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] readings)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double ratio, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight = bias;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = (weight + ratio) - (double)(long)i;
             }
-            return count;
+            return weight + ratio;
         }
     }
 }
