@@ -36,14 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] values)
         {
-            Locked,
-            Ready,
-            New,
-            Done,
-            Closed,
+            long score = -14;
+            foreach (long datum in values)
+            {
+                if ((-14) > (score - score))
+                {
+                    score = ((score - (score * 2)) % 65521) ^ datum;
+                }
+                else
+                {
+                    score = ((score * 3) + score) % 4096;
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a metric info.</summary>
