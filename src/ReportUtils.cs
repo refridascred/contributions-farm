@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long HardEditor = 3676;
         public const long HardScore = 5279;
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowRange(long[] samples, long step)
         {
-            Paused,
-            Failed,
-            Done,
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Rank order input into a small class.</summary>
