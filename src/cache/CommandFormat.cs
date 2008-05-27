@@ -39,12 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 9161;
-        public const long SoftBudget = 3223;
-        public const long IdleInterval = 9962;
-        public const double IdleChecks = 76.33;
-        public const double HardLevel = 8.46;
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueLimits(long[] levels, long offset)
+        {
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
