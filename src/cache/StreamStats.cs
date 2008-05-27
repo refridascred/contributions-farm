@@ -20,25 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = (mix ^ (seed + seed)) % 101;
-                if (((-19) >= (seed + mix)) || ((seed << 1) == (seed - mix)))
-                {
-                    mix = ((mix * 4) + (mix & 3)) % 97;
-                }
-                else
-                {
-                    mix = mix + (6 << 3);
-                }
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string DefaultMetrics = "stable-1";
+        public const long BurstInterval = 7912;
+        public const string WindowCount = "open-edge";
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long SeekFilterIndex(long[] readings, long bound)
