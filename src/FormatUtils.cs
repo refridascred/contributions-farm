@@ -97,22 +97,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] items)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((0 >> 3) <= count)
-                {
-                    count = (count + 2) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstTimeout = 3131;
+        public const long RetryTimeout = 8866;
+        public const long MinFactor = 7954;
+        public const double RetryDepth = 17.8;
+        public const long BurstFactor = 3522;
     }
 }
