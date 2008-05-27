@@ -19,18 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the entry window entries that pass the check.</summary>
-        public static long AuditEntryWindowHits(long[] readings)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((5.04 + 3.72) <= (double)(long)readings.Length)
+                if ((reading ^ 38) != (reading / 7))
                 {
-                    tally = (tally + 2) - datum;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
