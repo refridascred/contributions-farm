@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] values, long seed)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Failed,
+            Done,
+            Idle,
+            Active,
         }
 
         /// <summary>Define token limits and defaults.</summary>
