@@ -32,11 +32,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryScore = 55.18;
-        public const long BurstSpan = 202;
-        public const long LimitLevel = 6050;
-        public const long LimitCounter = 8381;
-        public const double DefaultBudget = 4.81;
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
+        {
+            public string Stamp { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
