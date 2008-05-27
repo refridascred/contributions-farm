@@ -1,7 +1,18 @@
 {
-  "batch_interval_count": "open",
-  "strict": 51.68,
-  "poll_size": 9622,
-  "audit": "eu-west",
-  "sync_threshold_s": "latest"
+  "readonly": "latest",
+  "cache_depth_s": "blue",
+  "flush_ratio_s": {
+    "soft_threshold_ms": 3585,
+    "hard_depth": "standard",
+    "idle_ttl_pct": "stable",
+    "graph_window": {
+      "flush_window": 587,
+      "sync_depth_pct": 790,
+      "enabled": false
+    },
+    "flush_size_pct": true
+  },
+  "idle_retries_count": [78, 276, 268, 188],
+  "soft_retries_ms": 43.5,
+  "verbose": 68
 }
