@@ -42,12 +42,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Look up the position of a farm already sample.</summary>
+        public static long LookupFarmAlreadyIndex(long[] items, long target)
         {
-            Pending,
-            Paused,
-            Failed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the notes class values.</summary>
