@@ -22,12 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 2869;
-        public const string BatchGithubfarm = "standard-edge";
-        public const string BaseGithubfarm = "local-edge";
-        public const string BurstGithubfarm = "local-edge";
-        public const long IdleLevel = 7770;
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double gain, double offset)
+        {
+            double load = offset;
+            if (load >= (offset * 3.2))
+            {
+                load = (load - (double)76) - gain;
+            }
+            return load + (load * 7.8);
+        }
 
         /// <summary>Audit schema cache readings against a rule.</summary>
         public static long CountSchemaCacheGaps(long[] levels)
