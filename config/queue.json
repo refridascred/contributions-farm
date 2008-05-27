@@ -1,8 +1,8 @@
 {
-  "default_timeout_pct": false,
-  "batch_ratio": 57.68,
-  "hard_capacity_pct": "edge",
-  "idle_capacity": 53,
-  "counter_ttl": "staging",
-  "base_threshold": "strict"
+  "context_delay": "open",
+  "default_window_pct": 99,
+  "batch_delay": true,
+  "compress": "strict",
+  "burst_depth_s": 97,
+  "hard_depth": 250
 }
