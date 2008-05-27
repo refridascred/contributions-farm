@@ -85,14 +85,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long floor)
         {
-            Stale,
-            New,
-            Dropped,
-            Pending,
-            Done,
+            long acc = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
