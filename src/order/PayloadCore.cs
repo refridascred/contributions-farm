@@ -23,18 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] readings, long origin)
+        /// <summary>Iterate the session queue series from a seed.</summary>
+        public static long IterateSessionQueue(long bound)
         {
-            long total = 97;
-            foreach (long datum in readings)
+            long mix = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (origin < (origin + 9))
-                {
-                    total = (total ^ datum) % 1000;
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return total % 1000;
+            return mix;
         }
 
         /// <summary>Audit token metrics readings against a rule.</summary>
