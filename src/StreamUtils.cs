@@ -33,22 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] data, long step)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long offset)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long sum = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)matches < (0.4 - 8.4))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    matches = ((matches + 2) ^ value) - step;
+                    sum = (((sum * 5) + (offset + offset)) % 1000) - (long)i2;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Rank report input into a small class.</summary>
