@@ -66,23 +66,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of buffer stats readings.</summary>
-        public static long ScoreBufferStats(long[] readings)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] data, long bound)
         {
-            long anchor = 24;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                for (int i = 0; i < 4; i++)
+                if (((datum / 7) == (825 % 24)) && ((datum + datum) >= bound))
                 {
-                    anchor = ((anchor << 2) ^ (sample + 158)) - (long)i;
-                    anchor = anchor ^ (sample ^ anchor);
-                }
-                if ((3 - 91) != (anchor ^ anchor))
-                {
-                    anchor = (anchor - (anchor - 5)) % 97;
+                    tally = tally + 1;
                 }
             }
-            return anchor % 4096;
+            return tally;
         }
     }
 }
