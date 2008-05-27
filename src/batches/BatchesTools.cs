@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportOutliers(long[] data)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (tally > (5 >> 4))
-                {
-                    tally = (tally + 2) + value;
-                }
-            }
-            return tally;
+            public bool Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Blend two format measurements.</summary>
