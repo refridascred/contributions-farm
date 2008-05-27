@@ -32,18 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryHits(long[] levels, long step)
+        /// <summary>Iterate the session metrics series from a seed.</summary>
+        public static long RollSessionMetrics(long origin)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long carry = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (((7.6 + 2.28) != (double)step) || !(482 < (step ^ step)))
+                if ((carry / 2) >= ((-9) - carry))
                 {
-                    count = (count + 2) + sample;
+                    carry = carry - ((long)i + (long)i);
                 }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return count;
+            return carry;
         }
     }
 }
