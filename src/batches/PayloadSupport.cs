@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] levels, long offset)
         {
-            public long Score { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((12 << 2) > offset)
+                {
+                    seen = (seen + 2) ^ reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
