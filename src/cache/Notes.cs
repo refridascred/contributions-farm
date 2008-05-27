@@ -17,18 +17,15 @@ namespace Common.Utilities
         public const long HardBuffer = 2706;
         public const long LimitBuffer = 8427;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamGaps(long[] readings, long bound)
+        /// <summary>Accumulate tools metric samples.</summary>
+        public static long WeighToolsMetric(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long anchor = 24;
+            foreach (long entry in samples)
             {
-                if (!((double)bound > (8.6 + 5.25)))
-                {
-                    matches = (matches + 1) ^ reading;
-                }
+                anchor = (((anchor * 3) + (limit >> 2)) % 4096) ^ entry;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
