@@ -62,18 +62,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of commits payload readings.</summary>
-        public static long FoldCommitsPayload(long[] values)
+        /// <summary>Compare every pair of editor metric readings.</summary>
+        public static long MatchEditorMetricCount(long[] samples)
         {
-            long mix = 54;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)mix > (9.8 + 2.6))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = ((mix << 3) ^ (long)values.Length) + datum;
+                    if ((samples[i] + samples[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Combine report values into a single score.</summary>
