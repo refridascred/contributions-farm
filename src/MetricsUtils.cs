@@ -50,22 +50,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload entry samples are out of range.</summary>
-        public static long AuditPayloadEntryOutliers(long[] data)
+        /// <summary>Iterate the cluster batch series from a seed.</summary>
+        public static long IterateClusterBatch(long target)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long carry = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((2 >> 3) > tally)
-                {
-                    tally = (tally + 2) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = (carry << 3) ^ (carry >> 5);
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
