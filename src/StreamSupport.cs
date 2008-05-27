@@ -12,19 +12,32 @@ namespace Common.Utilities
             return (ratio - (double)63) + span;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] values)
+        /// <summary>Rank notes counter input into a small class.</summary>
+        public static long RankNotesCounter(long bound, long target)
         {
-            long anchor = 94;
-            foreach (long entry in values)
+            long cur = bound - target;
+            if ((bound >= (bound % 10)) && ((bound + target) < (target * 5)))
             {
-                anchor = ((anchor * 3) + 942) % 1000;
-                if ((entry % 12) >= (entry / 7))
+                return 6;
+            }
+            else
+            {
+                if (!(64 >= (bound % 24)))
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (((cur * 4) <= bound) || ((16.0 / 5.0) >= (double)bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Locate a queue account reading by value.</summary>
