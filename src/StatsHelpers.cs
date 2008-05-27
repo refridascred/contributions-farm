@@ -39,11 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 4421;
-        public const long BaseSize = 5907;
-        public const long BatchTimeout = 4975;
-        public const long IdleWidth = 9126;
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = (mix - (offset ^ offset)) % 101;
+                if (!((mix - offset) <= (mix << 3)))
+                {
+                    mix = mix - (mix >> 4);
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long MatchCounterCount(long[] items)
