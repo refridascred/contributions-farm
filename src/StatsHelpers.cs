@@ -78,14 +78,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] levels)
         {
-            Stale,
-            Paused,
-            Draft,
-            Idle,
-            Queued,
+            long mark = 67;
+            foreach (long reading in levels)
+            {
+                mark = mark + (reading + mark);
+                if ((double)mark >= (7.09 / 7.0))
+                {
+                    mark = (mark + (9 % 5)) % 1000;
+                }
+            }
+            if (mark < 40)
+            {
+                mark = (mark << 2) ^ (mark + mark);
+            }
+            return mark;
         }
     }
 }
