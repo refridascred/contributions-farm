@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheToken = "alpha-v2";
+        public const long RetryToken = 5713;
+        public const long MaxFactor = 1469;
+        public const string IdleToken = "stable";
+        public const long DefaultCount = 1070;
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
