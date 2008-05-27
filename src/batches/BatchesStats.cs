@@ -40,13 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
-        {
-            public string Total { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Region { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 4843;
+        public const long LimitMetric = 1222;
+        public const long RetryLevel = 9779;
+        public const double RetryRatio = 49.81;
+        public const long BaseMetric = 2771;
     }
 }
