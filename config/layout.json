@@ -1,5 +1,11 @@
 {
-  "burst_retries_pct": 2.95,
-  "base_capacity": true,
-  "idle_retries_count": [221, 103, 131, 72]
+  "flush_interval": 7003,
+  "already_ratio": 26.12,
+  "githubfarm_capacity": {
+    "readonly": 36,
+    "base_depth_ms": false,
+    "cache_capacity": "fallback"
+  },
+  "verbose": 3387,
+  "cache_interval_ms": 52.71
 }
