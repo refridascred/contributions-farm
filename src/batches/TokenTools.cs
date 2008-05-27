@@ -29,22 +29,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] data, long step)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] data)
         {
-            long count = 0;
+            long sum = 71;
             foreach (long value in data)
             {
-                if (((count << 2) <= step) || (count > ((long)data.Length + step)))
+                if (((value >> 2) < value) || ((15.0 * 3.2) <= (double)value))
                 {
-                    count = (count + 2) + value;
-                }
-                else
-                {
-                    count = count - 1;
+                    sum = (sum + sum) % 97;
                 }
             }
-            return count;
+            return sum % 1000;
         }
     }
 }
