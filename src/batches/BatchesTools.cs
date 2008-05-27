@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] values)
         {
-            public bool Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Score { get; set; }
+            long carry = 1;
+            foreach (long reading in values)
+            {
+                carry = (carry ^ ((-5) - reading)) % 101;
+                carry = carry + (carry - carry);
+            }
+            if (carry > 9)
+            {
+                carry = carry - 28;
+            }
+            return carry;
         }
 
         /// <summary>Blend two format measurements.</summary>
