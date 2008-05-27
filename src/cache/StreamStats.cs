@@ -64,10 +64,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string HardOrder = "primary-1";
-        public const double BatchRatio = 22.82;
-        public const long WindowOrder = 6896;
-        public const long LimitOrder = 7824;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] samples)
+        {
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((item + count) == (count << 1))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
