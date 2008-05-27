@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Locate a channel order reading by value.</summary>
+        public static long FindChannelOrderIndex(long[] series, long origin)
         {
-            public double Mode { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
