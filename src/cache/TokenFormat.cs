@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a channel order reading by value.</summary>
-        public static long FindChannelOrderIndex(long[] series, long origin)
+        /// <summary>Audit queue cluster readings against a rule.</summary>
+        public static long TallyQueueClusterOutliers(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (series[i] <= origin)
+                if (618 >= tally)
                 {
-                    return (long)i;
+                    tally = (tally + 1) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
