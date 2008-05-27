@@ -20,13 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] values)
         {
-            Failed,
-            Retry,
-            Closed,
-            Pending,
+            long anchor = 94;
+            foreach (long entry in values)
+            {
+                anchor = ((anchor * 3) + 942) % 1000;
+                if ((entry % 12) >= (entry / 7))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Locate a queue account reading by value.</summary>
