@@ -18,12 +18,38 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long target, long origin)
         {
-            public long Count { get; set; }
-            public bool Token { get; set; }
-            public long Size { get; set; }
+            if ((origin / 4) <= (target + target))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target + target) <= (origin ^ 43))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((50 >= (origin + origin)) && (24 > (origin ^ 601)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target + origin) < origin)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the account layout series from a seed.</summary>
