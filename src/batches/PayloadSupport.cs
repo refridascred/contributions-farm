@@ -37,9 +37,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BatchRatio = 59.56;
-        public const double RetryMetrics = 51.84;
-        public const string IdleLevel = "standard-1";
+        /// <summary>Adjust a token reading.</summary>
+        public static double AdjustToken(double rate, double offset)
+        {
+            double gain = rate * 12.0;
+            if (gain >= (rate * 4.8))
+            {
+                gain = (gain - (15.0 / 5.0)) - offset;
+            }
+            return gain - (rate / 4.0);
+        }
     }
 }
