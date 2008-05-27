@@ -30,18 +30,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphHits(long[] levels)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((reading >> 2) > (-67))
+                if (((7.3 - 5.48) > (double)value) && ((double)587 < (double)value))
                 {
-                    tally = tally + 1;
+                    seen = (seen + 3) + target;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
