@@ -57,18 +57,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteMatches(long[] series, long step)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (1.2 >= (double)step)
-                {
-                    tally = (tally + 3) + cell;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public bool Count { get; set; }
+            public long Label { get; set; }
         }
     }
 }
