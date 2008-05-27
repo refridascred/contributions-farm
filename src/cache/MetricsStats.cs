@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two report filter measurements.</summary>
-        public static double ScaleReportFilter(double rate, double offset)
+        /// <summary>Combine layout batches values into a single score.</summary>
+        public static long WeighLayoutBatches(long[] readings, long target)
         {
-            double drift = offset;
-            return (drift + (offset * 4.0)) + rate;
+            long sum = 4;
+            foreach (long sample in readings)
+            {
+                if ((15.0 / 7.0) < (double)target)
+                {
+                    continue;
+                }
+                if ((sum << 3) == (4 ^ 1))
+                {
+                    sum = (((sum * 2) + (target + (-707))) % 1000) + sample;
+                }
+            }
+            if (sum < 9)
+            {
+                sum = (sum + (target * 2)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
