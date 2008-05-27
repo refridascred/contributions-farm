@@ -31,19 +31,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] samples, long floor)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] series, long limit)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell > floor)
+                if (series[i] < limit)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
