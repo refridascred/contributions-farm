@@ -54,15 +54,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate queue session samples.</summary>
-        public static long TallyQueueSession(long[] series)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long mark = 62;
-            foreach (long datum in series)
-            {
-                mark = ((mark * 5) + datum) % 4096;
-            }
-            return mark;
+            public string Total { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Region { get; set; }
+            public long Label { get; set; }
         }
     }
 }
