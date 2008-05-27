@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const long HardCounter = 9463;
         public const long RetrySpan = 4601;
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long floor)
+        /// <summary>Locate a counter already reading by value.</summary>
+        public static long LookupCounterAlreadyIndex(long[] levels, long step)
         {
-            long result = floor;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result + (floor + (long)i)) % 65521;
-                result = ((result * 3) + 17) % 1000;
-                result = (result ^ result) % 1000;
-                result = ((result * 3) + (long)i) % 4093;
+                if (levels[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
