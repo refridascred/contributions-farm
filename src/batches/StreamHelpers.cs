@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const long BurstTimeout = 4606;
         public const long MinGraph = 6703;
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] readings)
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] values)
         {
-            long score = 37;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score << 3) ^ (score & 127)) % 4096;
-                if (((reading - score) < (28 >> 3)) && ((18.0 + 3.74) <= (double)reading))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (score << 3) ^ (score + reading);
+                    if ((values[i] - values[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Describe the checks phase values.</summary>
