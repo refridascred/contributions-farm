@@ -57,22 +57,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] readings, long origin)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (origin <= (origin >> 2))
-                {
-                    hits = (hits + 1) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
