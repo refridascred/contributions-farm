@@ -1,7 +1,10 @@
 {
-  "readonly": "primary",
-  "hard_size_pct": "fallback",
-  "soft_ttl_pct": [20, 307],
-  "metric_capacity": [452, 259],
-  "cache_capacity_pct": true
+  "idle_delay_count": "fallback",
+  "warm_window_s": 15.06,
+  "soft_ratio_pct": {
+    "idle_delay_ms": "latest",
+    "record_ttl": "local",
+    "route_size": ["eu-west", "cached", "fallback", "local"],
+    "soft_depth_ms": 68
+  }
 }
