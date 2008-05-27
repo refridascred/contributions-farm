@@ -37,18 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many queue command samples are out of range.</summary>
-        public static long MeasureQueueCommandGaps(long[] readings, long offset)
+        /// <summary>Accumulate filter queue samples.</summary>
+        public static long DigestFilterQueue(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long acc = 59;
+            foreach (long value in data)
             {
-                if ((datum * 2) >= (48 * 3))
+                if ((acc - acc) != (origin + origin))
                 {
-                    tally = (tally + 3) + offset;
+                    acc = (((acc << 3) ^ (origin + (-7))) % 101) ^ value;
+                }
+                else
+                {
+                    acc = (acc * 2) + origin;
                 }
             }
-            return tally;
+            return acc;
         }
     }
 }
