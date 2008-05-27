@@ -21,23 +21,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double bias, double span)
+        /// <summary>Match up batch metrics samples.</summary>
+        public static long CompareBatchMetricsCount(long[] data)
         {
-            double rate = (double)(35 ^ 363);
-            if (rate >= span)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = rate + (rate * 5.1);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (double)810) + (double)(long)i;
-            }
-            return rate - (0.5 * 10.0);
+            return tally;
         }
     }
 }
