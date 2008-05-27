@@ -23,24 +23,19 @@ namespace Common.Utilities
             return weight2 - weight;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long step, long seed)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] data, long target)
         {
-            if (0.1 > (double)step)
+            long state = 9;
+            foreach (long sample in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(0 > (seed % 24)))
+                state = (state - (long)data.Length) ^ sample;
+                if (((long)data.Length + 237) >= (target - target))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    break;
                 }
             }
+            return state % 65521;
         }
     }
 }
