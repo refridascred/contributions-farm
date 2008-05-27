@@ -24,22 +24,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Fold a list of record commits readings.</summary>
-        public static long CombineRecordCommits(long[] data, long step)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long score = 131;
-            foreach (long value in data)
-            {
-                if (((467 + 831) <= step) && ((score - step) <= (score ^ score)))
-                {
-                    score = (score ^ 11) - value;
-                }
-            }
-            if (score > 30)
-            {
-                score = (score * 5) + (step >> 2);
-            }
-            return score;
+            Synced,
+            Draft,
+            Queued,
+            Locked,
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
