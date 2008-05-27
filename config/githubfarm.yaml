@@ -1,8 +1,7 @@
 # githubfarm settings
-farm_timeout: 23.11
-account_depth: local
-max_depth_count:
-  - legacy
-  - local
-  - standard
-  - latest
+record_delay:
+  - 30
+  - 487
+checks_interval: 250
+idle_size: 500
+min_limit_count: 6844
