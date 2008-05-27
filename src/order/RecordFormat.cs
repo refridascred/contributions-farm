@@ -22,22 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] items, long limit)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandBounds(long[] values, long floor)
         {
-            long score = -75;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if ((cell + cell) > (limit - limit))
+                if (value >= floor)
                 {
-                    score = (score - (cell << 1)) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            if (score > (-6))
-            {
-                score = score ^ ((long)items.Length & 3);
-            }
-            return score % 1000;
+            return ready;
         }
 
         /// <summary>Classify a context batches pair into a bucket.</summary>
