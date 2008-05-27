@@ -54,16 +54,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long step)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] series)
         {
-            long sum = step;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum << 2) ^ (step << 3);
-                sum = ((sum * 5) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Hold a session options.</summary>
