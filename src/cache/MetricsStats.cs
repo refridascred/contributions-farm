@@ -25,14 +25,19 @@ namespace Common.Utilities
             return (bias - (double)39) + ratio;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchLimits(long[] data, long step)
         {
-            Locked,
-            Closed,
-            Active,
-            Stale,
-            Failed,
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
