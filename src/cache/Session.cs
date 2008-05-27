@@ -12,20 +12,10 @@ namespace Common.Utilities
         public const double RetryCommand = 67.25;
         public const double BaseWidth = 33.55;
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLimits(long[] items, long bound)
-        {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string CacheContext = "alpha-v2";
+        public const long BurstLevel = 809;
+        public const long StepSpan = 6081;
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long DeriveTools(long seed)
