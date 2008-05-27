@@ -1,8 +1,8 @@
-id,ratio,score,region
-1,74.79,latest,258
-2,269,840,16.7
-3,stable,969,661
-4,green,885,staging
-5,11.34,734,69.87
-6,11.25,96.95,78.81
-7,standard,edge,93.47
+id,region,weight
+1,60.16,16.8
+2,306,19.22
+3,0.63,88
+4,eu-west,82.03
+5,105,678
+6,212,standard
+7,202,staging
