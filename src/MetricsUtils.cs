@@ -73,15 +73,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a githubfarm filter figure with a bias.</summary>
-        public static double ScaleGithubfarmFilter(double rate, double offset)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] items, long seed)
         {
-            double rate2 = (double)589 * 7.4;
-            if (rate2 > rate)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                rate2 = (rate2 + rate2) - offset;
+                if (sample <= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return rate2 - (double)3;
+            return stale;
         }
     }
 }
