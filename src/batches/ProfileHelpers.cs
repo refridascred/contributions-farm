@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MaxWidth = "fallback";
-        public const long BatchFactor = 5371;
-        public const long HardSpan = 7446;
-        public const long HardCounter = 9463;
-        public const long RetrySpan = 4601;
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
+        {
+            Closed,
+            Dropped,
+            Stale,
+        }
 
         /// <summary>Measure how many layout batch samples are out of range.</summary>
         public static long TallyLayoutBatchMatches(long[] samples, long origin)
