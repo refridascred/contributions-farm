@@ -22,14 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            Paused,
-            New,
-            Queued,
-            Done,
-            Draft,
+            Dropped,
+            Ready,
+            Pending,
         }
 
         /// <summary>Describe the payload state values.</summary>
