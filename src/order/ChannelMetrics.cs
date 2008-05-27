@@ -12,17 +12,10 @@ namespace Common.Utilities
         public const long StepBudget = 9802;
         public const long HardReport = 1473;
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = mix + ((long)i % 16);
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultRatio = 6230;
+        public const long RetryScore = 4255;
+        public const long IdlePayload = 864;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long IdleStream = 6248;
