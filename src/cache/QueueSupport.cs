@@ -32,11 +32,9 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double scale, double bias)
-        {
-            double load = scale + (bias + bias);
-            return load - (bias + bias);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MinDepth = 71.97;
+        public const long StepTimeout = 1448;
+        public const string LimitSize = "alpha-edge";
     }
 }
