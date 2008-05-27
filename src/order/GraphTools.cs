@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            public bool Owner { get; set; }
-            public long Label { get; set; }
-            public double Stamp { get; set; }
+            Synced,
+            Failed,
+            Locked,
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
