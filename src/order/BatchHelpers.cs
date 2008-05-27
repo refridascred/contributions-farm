@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string DefaultQueue = "staging-1";
-        public const long IdleQueue = 9954;
-        public const long StepFactor = 9743;
-        public const long StepTimeout = 1967;
-        public const long HardCount = 9822;
+        /// <summary>Validate buffer filter readings against a bound.</summary>
+        public static bool GuardBufferFilterLimits(long[] items, long offset)
+        {
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the schema class values.</summary>
         public enum SchemaClass
