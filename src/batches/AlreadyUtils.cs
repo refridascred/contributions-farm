@@ -44,17 +44,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] data, long limit)
+        /// <summary>Project the next counter stream value.</summary>
+        public static double SmoothCounterStream(double gain, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = (double)34 * 12.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (data[i] == limit)
-                {
-                    return (long)i;
-                }
+                scale = ((scale + (double)(long)i) + gain) - bias;
             }
-            return -1;
+            return scale - scale;
         }
     }
 }
