@@ -63,15 +63,23 @@ namespace Common.Utilities
         public const double WindowFactor = 23.19;
         public const string BaseContext = "primary";
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] series)
+        /// <summary>Digest a series of support tools entries.</summary>
+        public static long WeighSupportTools(long[] samples, long offset)
         {
-            long carry = 49;
-            foreach (long value in series)
+            long sum = 12;
+            foreach (long datum in samples)
             {
-                carry = ((carry * 3) + (value ^ value)) % 65521;
+                if ((5.2 * 3.8) == (double)datum)
+                {
+                    sum = ((sum + (datum - datum)) % 97) - offset;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (long)samples.Length;
+                }
+                sum = (sum * 2) + (849 % 24);
             }
-            return carry % 1000;
+            return sum;
         }
 
         /// <summary>Describe the route mode values.</summary>
