@@ -28,19 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long limit)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatGaps(long[] values, long limit)
         {
-            long sum = limit;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (!((sum % 5) > (sum - limit)))
+                if (((3 << 1) > (entry / 7)) || ((limit / 2) == (limit ^ 713)))
                 {
-                    sum = (sum - sum) % 65521;
+                    seen = seen + 1;
                 }
-                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return sum;
+            return seen;
         }
     }
 }
