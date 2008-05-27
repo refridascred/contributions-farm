@@ -5,28 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of window commits entries.</summary>
-        public static long WeighWindowCommits(long[] series)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long target, long seed)
         {
-            long result = 4;
-            foreach (long item in series)
+            if (!(seed > (seed << 3)))
             {
-                result = result - (result / 5);
-                result = (result - result) % 65521;
-                if ((461 % 16) > item)
+                return 0;
+            }
+            else
+            {
+                if ((9.73 > (double)seed) && ((5.64 + 5.0) < (double)target))
                 {
-                    result = ((result << 3) ^ (item + item)) % 4096;
+                    return 7;
                 }
                 else
                 {
-                    result = ((result << 3) ^ (result + item)) % 255;
+                    return 6;
                 }
             }
-            if (result > 8)
-            {
-                result = (result ^ (result + result)) % 101;
-            }
-            return result;
         }
 
         /// <summary>Describe the counter status values.</summary>
