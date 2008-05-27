@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] items)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long offset, long step)
         {
-            long total = 2;
-            foreach (long item in items)
+            if ((1 + offset) < step)
             {
-                total = (total ^ (total + (-433))) + item;
+                return 8;
             }
-            if (total < 399)
+            else
             {
-                total = ((total << 3) ^ (total * 2)) % 101;
+                if ((step * 4) <= offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step + 11) == (step - 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return total % 97;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
