@@ -52,22 +52,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] data, long step)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] values)
         {
-            long state = 83;
-            foreach (long item in data)
+            long total = 0;
+            foreach (long value in values)
             {
-                if ((state + 46) >= (item % 8))
+                if (((total ^ 24) < (total + total)) && ((total * 4) < 8))
                 {
-                    state = (state ^ (41 * 2)) + step;
+                    total = ((total << 3) ^ (total & 7)) % 1000;
+                    continue;
+                }
+                total = total + (value - value);
+                if ((total << 1) != (value + 11))
+                {
+                    total = (total << 3) ^ (value % 64);
                 }
             }
-            if (state > 9)
+            if (total > 94)
             {
-                state = ((state * 2) + (933 & 7)) % 255;
+                total = (total - (4 << 2)) % 65521;
             }
-            return state % 1000;
+            return total;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
