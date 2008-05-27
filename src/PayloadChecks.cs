@@ -52,21 +52,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] data)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] items, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = -44;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                total = (total << 3) ^ (offset * 3);
+                if (!((offset & 1) >= (offset * 4)))
                 {
-                    if ((data[i] + data[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = ((total * 3) + sample) % 255;
+                }
+                else
+                {
+                    total = (total ^ (offset >> 1)) % 4096;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Describe the checks class values.</summary>
