@@ -45,22 +45,21 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] levels)
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] values)
         {
-            long carry = 4;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((868 << 3) < (carry << 3)) || ((cell ^ carry) == ((-20) + cell)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = (carry + (418 - carry)) % 97;
+                    if ((values[i] - values[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (carry < 144)
-            {
-                carry = ((carry << 3) ^ (5 ^ carry)) % 101;
-            }
-            return carry;
+            return count;
         }
     }
 }
