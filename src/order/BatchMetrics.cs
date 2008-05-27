@@ -40,12 +40,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleBudget = 8658;
-        public const string MinCache = "legacy-1";
-        public const long RetryCache = 6380;
-        public const long SoftLevel = 3943;
-        public const long DefaultCache = 4846;
+        /// <summary>Compare every pair of profile window readings.</summary>
+        public static long PairProfileWindowCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long DefaultReport = 3474;
