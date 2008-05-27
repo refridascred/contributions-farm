@@ -60,21 +60,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] samples)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long seed, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((seed + bound) <= seed)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((seed + 51) != (6 % 10))
                 {
-                    if ((samples[i] + samples[j]) > 5)
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)bound != (5.7 / 5.0)))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
