@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandMatches(long[] levels, long step)
+        /// <summary>Grade a format tools value against two limits.</summary>
+        public static long ClassifyFormatTools(long limit, long offset)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            if ((double)limit != (double)offset)
             {
-                if (step <= (2 - 0))
+                return 7;
+            }
+            else
+            {
+                if (limit <= (418 >> 1))
                 {
-                    hits = (hits + 3) + sample;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset < (limit % 2)) && ((double)offset >= (double)limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many githubfarm channel samples are out of range.</summary>
