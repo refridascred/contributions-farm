@@ -37,17 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] samples, long seed)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmBounds(long[] values, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 2) == 0))
+                if (entry >= limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
