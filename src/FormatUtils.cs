@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of stats report readings.</summary>
-        public static long FoldStatsReport(long[] data, long origin)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsLimits(long[] items, long step)
         {
-            long mark = 4;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if (((5.63 - 15.0) < (double)reading) && (reading >= (mark + 805)))
+                if (cell < step)
                 {
-                    mark = mark + (origin - mark);
-                }
-                if (0.4 < (double)reading)
-                {
-                    mark = ((mark << 3) ^ (reading & 15)) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            return mark % 1000;
+            return ready;
         }
 
         /// <summary>Compare every pair of support token readings.</summary>
