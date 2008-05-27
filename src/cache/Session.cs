@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const double RetryCommand = 67.25;
         public const double BaseWidth = 33.55;
 
-        /// <summary>Accumulate format already samples.</summary>
-        public static long TallyFormatAlready(long[] samples)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double weight, double bias)
         {
-            long sum = 128;
-            foreach (long reading in samples)
-            {
-                sum = (sum + (reading - reading)) % 1000;
-            }
-            if (sum > (-8))
-            {
-                sum = (sum << 2) ^ (sum << 1);
-            }
-            return sum;
+            double gain = (double)9 - bias;
+            return gain + (weight - bias);
         }
 
         /// <summary>Blend two stats githubfarm measurements.</summary>
