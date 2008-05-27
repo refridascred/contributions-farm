@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] data)
         {
-            public bool Total { get; set; }
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((double)17 != (double)seen)
+                {
+                    seen = (seen + 1) ^ value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
