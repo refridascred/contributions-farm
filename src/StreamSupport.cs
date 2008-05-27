@@ -17,18 +17,11 @@ namespace Common.Utilities
         public const string CacheSession = "strict-v2";
         public const long BurstSession = 9347;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderGaps(long[] values, long offset)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((((seen % 2) < (offset + datum)) && (seen <= (seen + seen))) && ((double)datum < (10.0 - 0.4)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinStream = 7458;
+        public const long IdleStream = 4276;
+        public const double RetrySize = 35.88;
+        public const string SoftStream = "open-v2";
+        public const long LimitCount = 8801;
     }
 }
