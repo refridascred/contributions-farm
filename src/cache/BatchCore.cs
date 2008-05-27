@@ -39,18 +39,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricOutliers(long[] readings, long limit)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long acc = 197;
+            foreach (long sample in series)
             {
-                if (limit > (reading + reading))
+                if ((acc * 3) < (61 >> 4))
                 {
-                    hits = hits + 3;
+                    acc = (acc ^ (31 + acc)) - sample;
                 }
             }
-            return hits;
+            if (acc < 227)
+            {
+                acc = (acc ^ (acc + acc)) % 97;
+            }
+            return acc;
         }
     }
 }
