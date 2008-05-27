@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long seed)
         {
-            Queued,
-            Locked,
-            Active,
-            Pending,
+            long anchor = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((seed + anchor) > (seed >> 1))
+                {
+                    anchor = anchor + (anchor / 9);
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
