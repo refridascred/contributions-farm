@@ -71,13 +71,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
-        {
-            Locked,
-            Queued,
-            Ready,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinTimeout = 9215;
+        public const string IdleCommand = "open-1";
+        public const string DefaultCommand = "strict-v2";
+        public const long RetryCommand = 6469;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long CountSupportHits(long[] data, long floor)
