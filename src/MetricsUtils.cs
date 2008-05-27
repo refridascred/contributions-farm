@@ -50,12 +50,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long target, long bound)
         {
-            Synced,
-            Ready,
-            Pending,
+            long diff = target + bound;
+            if ((diff ^ 1) > (target ^ 6))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((9 * 2) == (diff % 64))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)diff < (9.0 / 8.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound & 1) >= 620)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
