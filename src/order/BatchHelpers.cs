@@ -14,19 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterBounds(long[] data, long step)
+        /// <summary>Count the already graph entries that pass the check.</summary>
+        public static long TallyAlreadyGraphOutliers(long[] series, long bound)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (sample <= step)
+                if ((double)sample > (9.42 * 2.83))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 1) - bound;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
