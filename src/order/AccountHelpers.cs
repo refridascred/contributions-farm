@@ -70,25 +70,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long origin)
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] readings)
         {
-            long acc = origin;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc << 3) ^ (acc % 10)) % 4096;
-                acc = (acc - (origin + (long)i)) % 4096;
-                if (origin <= (acc + origin))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = (acc - (origin - acc)) % 4096;
+                    if ((readings[i] - readings[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    acc = (acc + 8) % 65521;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return count;
         }
     }
 }
