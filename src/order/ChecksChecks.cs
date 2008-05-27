@@ -30,18 +30,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportGaps(long[] series, long limit)
+        /// <summary>Measure how many schema layout samples are out of range.</summary>
+        public static long AuditSchemaLayoutMatches(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((double)tally < (9.85 + 6.1))
+                if (cell < (cell ^ cell))
                 {
-                    tally = ((tally + 2) + item) - limit;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
