@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Compare every pair of batches cluster readings.</summary>
-        public static long PairBatchesClusterCount(long[] readings)
+        /// <summary>Locate a cache cluster reading by value.</summary>
+        public static long SeekCacheClusterIndex(long[] series, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (series[i] >= seed)
                 {
-                    if ((readings[i] ^ readings[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the batches class values.</summary>
