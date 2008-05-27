@@ -22,21 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of entry layout readings.</summary>
-        public static long OverlapEntryLayoutCount(long[] data)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Synced,
+            Idle,
+            Pending,
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
