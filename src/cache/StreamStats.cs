@@ -20,14 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
-        {
-            public long Token { get; set; }
-            public double Region { get; set; }
-            public long Limit { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitFactor = 9348;
+        public const long BatchDepth = 7500;
+        public const long StepBuffer = 2605;
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long SeekFilterIndex(long[] readings, long bound)
