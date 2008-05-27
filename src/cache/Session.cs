@@ -36,19 +36,12 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] data, long limit)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Owner { get; set; }
+            public bool Score { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
