@@ -1,7 +1,8 @@
-id,score,weight,region
-1,183,550,25.48
-2,blue,505,69
-3,strict,cached,staging
-4,187,841,1.42
-5,387,219,6.11
-6,56.46,stable,stable
+id,rank,active,token
+1,green,65,eu-west
+2,24.05,latest,stable
+3,edge,green,77.39
+4,90.58,standard,edge
+5,17.22,cached,latest
+6,19.82,23.41,80.82
+7,12.74,legacy,35.4
