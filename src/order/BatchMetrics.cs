@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long offset, long step)
+        /// <summary>Scale a batch support figure with a bias.</summary>
+        public static double ScaleBatchSupport(double rate, double offset)
         {
-            if ((1 + offset) < step)
+            double scale = (double)(-863) * 7.5;
+            if (scale <= (scale / 7.0))
             {
-                return 8;
+                scale = (scale + (double)849) - offset;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((step * 4) <= offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step + 11) == (step - 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                scale = (scale + (scale - rate)) - (double)(long)i;
             }
+            return scale - scale;
         }
 
         /// <summary>Fold a list of payload account readings.</summary>
