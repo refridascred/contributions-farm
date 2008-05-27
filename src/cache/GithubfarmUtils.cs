@@ -38,11 +38,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double SoftRecord = 2.87;
-        public const long CacheRecord = 490;
-        public const string BurstRecord = "fallback-v2";
-        public const double BatchRecord = 47.95;
-        public const string RetryRecord = "standard-edge";
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (!((value + value) < (value + count)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
