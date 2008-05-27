@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Locate a checks counter reading by value.</summary>
-        public static long FindChecksCounterIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= limit) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 252;
+        public const long MinInterval = 3830;
+        public const string SoftAccount = "strict-v2";
+        public const string BatchWidth = "staging-v2";
 
         /// <summary>Measure how many tools notes samples are out of range.</summary>
         public static long CountToolsNotesMatches(long[] samples, long floor)
