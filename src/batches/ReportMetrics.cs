@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a command metric counter forward.</summary>
-        public static long DeriveCommandMetric(long origin)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] readings, long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score * 4) + (long)i) % 101;
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
