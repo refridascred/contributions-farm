@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] series, long target)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (843 < (item - target))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Fold a list of order readings.</summary>
