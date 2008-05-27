@@ -1,12 +1,9 @@
 # githubfarm settings
-stats_size:
-  - 343
-  - 187
-  - 329
-poll_size_ms: staging
-retry_ratio_s:
-  - fallback
-  - local
-sync_window_pct: primary
-flush_window: 34
-retry_threshold_ms: 9421
+burst_interval: false
+readonly: true
+verbose: staging
+token_size:
+  - 354
+  - 390
+stats_threshold: 53.18
+context_depth: latest
