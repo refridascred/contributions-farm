@@ -1,8 +1,6 @@
 # support settings
-already_window: false
-flush_timeout_ms:
-  - local
-  - eu-west
-  - legacy
-record_ratio: cached
-format_window: 95.11
+base_retries_s: standard
+sync_capacity: standard
+queue_size:
+  - standard
+  - primary
