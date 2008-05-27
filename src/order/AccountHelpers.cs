@@ -61,13 +61,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            public string Size { get; set; } = "";
-            public double Total { get; set; }
-            public long Stamp { get; set; }
-            public string Token { get; set; } = "";
+            public double Count { get; set; }
+            public bool Score { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the filter class values.</summary>
