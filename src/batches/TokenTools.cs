@@ -20,21 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count filter metrics pairs that satisfy a relation.</summary>
-        public static long CompareFilterMetricsCount(long[] samples)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) < 20)
+                    if ((data[i] - data[j]) < 8)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Accumulate account samples.</summary>
