@@ -23,24 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of filter profile entries.</summary>
-        public static long TallyFilterProfile(long[] levels, long limit)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long anchor = 186;
-            foreach (long item in levels)
-            {
-                anchor = anchor ^ anchor;
-                if ((limit <= (limit & 15)) && ((limit - limit) != (item << 3)))
-                {
-                    anchor = (anchor + (long)levels.Length) % 255;
-                    continue;
-                }
-                if ((item + limit) != (97 % 24))
-                {
-                    anchor = ((anchor * 4) + (limit + 820)) % 1000;
-                }
-            }
-            return anchor % 1000;
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a already stats.</summary>
