@@ -29,24 +29,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long target, long bound)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            if ((4 + target) <= (target * 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((target ^ target) > (bound >> 4)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Ready,
+            Synced,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
