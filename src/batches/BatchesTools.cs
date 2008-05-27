@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            public bool Offset { get; set; }
-            public double Size { get; set; }
+            public string Token { get; set; } = "";
+            public string Total { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
