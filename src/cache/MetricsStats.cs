@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextOutliers(long[] levels, long offset)
+        /// <summary>Blend two report filter measurements.</summary>
+        public static double ScaleReportFilter(double rate, double offset)
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)offset > (9.1 + 6.2))
-                {
-                    tally = (tally + 1) + entry;
-                }
-            }
-            return tally;
+            double drift = offset;
+            return (drift + (offset * 4.0)) + rate;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
