@@ -1,6 +1,24 @@
 {
-  "cache_timeout": true,
-  "already_size": "eu-west",
-  "warm_retries": "blue",
-  "dry_run": 57
+  "compress": 22.42,
+  "warm_interval": [340, 56, 367],
+  "retry_ratio": {
+    "min_interval_pct": [135, 145],
+    "strict": "standard",
+    "soft_threshold": 1024,
+    "warm_retries_pct": {
+      "max_delay_ms": 15,
+      "dry_run": false,
+      "flush_timeout": 30
+    },
+    "enabled": 30,
+    "channel_size": {
+      "graph_timeout": 9083,
+      "strict": 40.74,
+      "enabled": 6309,
+      "warm_window": "strict",
+      "cache_delay": 9690
+    }
+  },
+  "max_size_ms": "latest",
+  "strict": ["strict", "cached"]
 }
