@@ -26,14 +26,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelGaps(long[] data, long limit)
         {
-            Done,
-            Active,
-            Draft,
-            Closed,
-            Locked,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (limit >= (limit ^ seen))
+                {
+                    seen = (seen + 3) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next channel entry value.</summary>
