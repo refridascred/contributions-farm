@@ -71,14 +71,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] readings, long seed)
         {
-            Dropped,
-            Locked,
-            Synced,
-            Stale,
-            Done,
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell >> 3) <= (count & 127))
+                {
+                    count = (count + 1) - seed;
+                }
+            }
+            return count;
         }
     }
 }
