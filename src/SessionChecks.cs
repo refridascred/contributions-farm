@@ -48,11 +48,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] samples, long seed)
         {
-            public string Label { get; set; } = "";
-            public double Weight { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= seed) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate githubfarm entry samples.</summary>
