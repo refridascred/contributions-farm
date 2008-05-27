@@ -28,22 +28,12 @@ namespace Common.Utilities
         public const long WindowCommits = 7060;
         public const long MinSize = 6730;
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] values)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long mark = -6;
-            foreach (long datum in values)
-            {
-                if ((datum * 5) <= (datum % 97))
-                {
-                    mark = (mark + (951 + mark)) % 255;
-                }
-                else
-                {
-                    mark = (mark - (mark + mark)) % 255;
-                }
-            }
-            return mark;
+            Queued,
+            Synced,
+            Pending,
         }
 
         /// <summary>Hold a editor header.</summary>
