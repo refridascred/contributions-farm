@@ -49,17 +49,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a batches githubfarm reading by value.</summary>
-        public static long FindBatchesGithubfarmIndex(long[] items, long seed)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderOutliers(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (items[i] > seed)
+                if (((5.7 - 5.11) < (double)reading) || ((18.0 + 6.0) < (double)reading))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
