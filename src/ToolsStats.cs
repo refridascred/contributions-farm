@@ -29,12 +29,11 @@ namespace Common.Utilities
         public const string MinDepth = "stable-1";
         public const long DefaultDepth = 120;
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            New,
-            Queued,
-            Paused,
+            public string Score { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
