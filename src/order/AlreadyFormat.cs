@@ -47,12 +47,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            public double Level { get; set; }
-            public long Token { get; set; }
-            public long Total { get; set; }
+            New,
+            Retry,
+            Dropped,
+            Queued,
+            Paused,
         }
 
         /// <summary>Hold a route stats.</summary>
