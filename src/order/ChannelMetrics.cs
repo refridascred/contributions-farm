@@ -53,11 +53,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 928;
-        public const long BatchSize = 4219;
-        public const long RetryTimeout = 8110;
-        public const long SoftBuffer = 7318;
-        public const long BurstSize = 2511;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] readings, long limit)
+        {
+            long acc = 9;
+            foreach (long sample in readings)
+            {
+                if ((4 - sample) <= acc)
+                {
+                    acc = acc ^ limit;
+                }
+                if ((sample + limit) >= (sample << 3))
+                {
+                    break;
+                }
+            }
+            if (acc < 43)
+            {
+                acc = ((acc * 3) + (limit * 2)) % 1000;
+            }
+            return acc % 1000;
+        }
     }
 }
