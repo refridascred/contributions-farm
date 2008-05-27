@@ -25,14 +25,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyOutliers(long[] levels)
         {
-            Stale,
-            Failed,
-            New,
-            Dropped,
-            Done,
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((seen + entry) >= (entry >> 3))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
