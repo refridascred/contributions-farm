@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsGaps(long[] series)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterBounds(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if (!(((-6) + 4) > (hits + 8)))
+                if (reading != limit)
                 {
-                    hits = (hits + 2) + cell;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
