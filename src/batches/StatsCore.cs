@@ -44,19 +44,19 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] samples, long floor)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelRange(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if (sample != floor)
+                if (reading <= limit)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
