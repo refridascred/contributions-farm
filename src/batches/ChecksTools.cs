@@ -25,20 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long target)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] data)
         {
-            long sum = target;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((double)sum < (9.86 / 7.0))
+                if (!((hits - sample) > (hits * 2)))
                 {
-                    sum = (sum + (sum >> 5)) % 1000;
-                    continue;
+                    hits = hits + 1;
                 }
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Accumulate counter context samples.</summary>
