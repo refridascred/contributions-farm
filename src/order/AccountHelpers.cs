@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderBounds(long[] samples, long limit)
+        /// <summary>Count the already token entries that pass the check.</summary>
+        public static long TallyAlreadyTokenHits(long[] data, long target)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (value != limit)
+                if ((sample >= (tally + tally)) && (((tally & 127) >= target) && ((double)tally < (1.32 * 6.4))))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Blend two record entry measurements.</summary>
