@@ -33,13 +33,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Count the queue contributi entries that pass the check.</summary>
+        public static long AuditQueueContributiMatches(long[] samples)
         {
-            Draft,
-            Dropped,
-            Retry,
-            Failed,
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((count + value) >= (count - value))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a schema options.</summary>
