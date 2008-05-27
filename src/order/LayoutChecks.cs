@@ -15,18 +15,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] samples, long offset)
+        /// <summary>Locate a payload checks reading by value.</summary>
+        public static long SeekPayloadChecksIndex(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((count + offset) < (count - offset))
+                if (data[i] >= limit)
                 {
-                    count = (count + 1) - item;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
