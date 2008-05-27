@@ -43,15 +43,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next session payload value from a seed.</summary>
-        public static long RollSessionPayload(long step)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long carry = step;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            public bool Rank { get; set; }
+            public bool Level { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
