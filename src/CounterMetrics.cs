@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
+            Stale,
             Failed,
+            Dropped,
             Queued,
-            Closed,
-            Draft,
+            Synced,
         }
 
         /// <summary>Validate support cache readings against a bound.</summary>
