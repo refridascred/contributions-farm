@@ -36,18 +36,10 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MaxWindow = 67.67;
+        public const double RetryWindow = 41.22;
+        public const string MaxCount = "latest";
 
         /// <summary>Combine report values into a single score.</summary>
         public static long DigestReport(long[] items, long step)
