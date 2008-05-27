@@ -40,12 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleScore = 9035;
-        public const long StepCommits = 2722;
-        public const double BaseCommits = 30.92;
-        public const string MaxDepth = "open-1";
-        public const string BatchCommits = "cached-edge";
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((count * 2) < count)
+                {
+                    count = (count + 2) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long PairEditorCount(long[] items)
