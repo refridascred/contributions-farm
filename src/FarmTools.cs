@@ -39,18 +39,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] series)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (857 <= (item + count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 3520;
+        public const string MaxBuffer = "cached-edge";
+        public const long CacheInterval = 22;
     }
 }
