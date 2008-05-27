@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] samples, long bound)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long mark = -2;
-            foreach (long reading in samples)
-            {
-                mark = (((mark << 3) ^ (reading / 4)) % 97) - bound;
-            }
-            return mark;
+            Locked,
+            Draft,
+            New,
+            Ready,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
