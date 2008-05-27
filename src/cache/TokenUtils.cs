@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] data)
         {
-            Paused,
-            Ready,
-            Locked,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((matches + 943) == (matches + 4))
+                {
+                    matches = (matches + 1) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
