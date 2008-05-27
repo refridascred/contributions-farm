@@ -1,6 +1,16 @@
 # githubfarm settings
-flush_capacity_count: 100
-soft_timeout_pct: 21.41
-enabled: fallback
-readonly: true
-layout_ttl: 80.43
+already_timeout:
+  - 496
+  - 318
+  - 30
+githubfarm_depth: 95.87
+metrics_timeout: true
+flush_depth_pct:
+  support_interval: 45
+  entry_ratio: 9.3
+  warm_ttl: 35.12
+  compress:
+    - stable
+    - staging
+retry_timeout_s: 94.81
+poll_retries_ms: false
