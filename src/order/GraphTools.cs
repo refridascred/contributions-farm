@@ -20,26 +20,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] items, long target)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] series, long step)
         {
-            long anchor = 88;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((36 * 2) > (anchor + anchor))
+                if ((series[i] < step) && ((series[i] % 3) != 0))
                 {
-                    anchor = (anchor + (cell % 3)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor + target)) % 4096;
+                    return (long)i;
                 }
             }
-            if (anchor < 31)
-            {
-                anchor = ((anchor << 2) ^ (target - anchor)) % 97;
-            }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Rank window input into a small class.</summary>
