@@ -28,19 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate report support readings against a bound.</summary>
-        public static bool GuardReportSupportBounds(long[] samples, long seed)
+        /// <summary>Accumulate token metrics samples.</summary>
+        public static long FoldTokenMetrics(long[] samples)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long total = 97;
+            foreach (long reading in samples)
             {
-                if (item < seed)
-                {
-                    flag = false;
-                    break;
-                }
+                total = (((total * 5) + (total << 3)) % 1000) - reading;
             }
-            return flag;
+            if (total > (-115))
+            {
+                total = (total + total) % 4096;
+            }
+            return total % 4096;
         }
     }
 }
