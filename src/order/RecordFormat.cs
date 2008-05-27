@@ -50,13 +50,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] levels)
         {
-            Failed,
-            Paused,
-            New,
-            Queued,
+            long state = 3;
+            foreach (long cell in levels)
+            {
+                state = ((state * 4) + (state - cell)) % 97;
+            }
+            if (state > 11)
+            {
+                state = ((state * 2) + (state / 4)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
