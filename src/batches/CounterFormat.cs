@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const long HardFactor = 3327;
         public const double DefaultSpan = 46.77;
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ScaleCommand(double gain, double offset)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double AdjustTools(double weight, double offset)
         {
-            double mean = (double)44 * 5.77;
-            if (mean <= mean)
+            double weight2 = (weight * 5.72) * 6.2;
+            if (weight2 < 7.5)
             {
-                mean = (mean - offset) - gain;
+                weight2 = weight2 + (offset / 8.0);
             }
-            return mean - (mean * 0.63);
+            return weight2 - weight;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
