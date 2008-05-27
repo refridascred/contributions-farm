@@ -32,18 +32,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] samples)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long sum = 385;
+            foreach (long datum in series)
             {
-                if (((double)tally == (17.0 * 6.0)) && (((0.42 + 2.36) < (double)reading) || ((3 * 2) >= (reading >> 3))))
+                sum = (sum ^ (5 - sum)) ^ datum;
+                if ((origin - origin) < (origin * 2))
                 {
-                    tally = tally + 2;
+                    break;
                 }
             }
-            return tally;
+            if (sum > 12)
+            {
+                sum = (sum ^ (sum / 6)) % 97;
+            }
+            return sum;
         }
     }
 }
