@@ -1,6 +1,7 @@
 # entry settings
-buffer_depth: legacy
-readonly: 53.9
-buffer_ratio: 30
-flush_ttl_pct: 1024
-burst_ttl_pct: 39.5
+idle_size_pct: 5425
+flush_threshold_ms: false
+flush_size_s: local
+min_ratio_s:
+  - strict
+  - legacy
