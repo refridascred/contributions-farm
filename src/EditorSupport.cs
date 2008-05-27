@@ -57,22 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryMatches(long[] items, long limit)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutLimits(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if (((98 - limit) >= entry) || ((hits + limit) <= (entry - hits)))
+                if (cell < target)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
