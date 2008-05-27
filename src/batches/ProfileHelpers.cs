@@ -68,22 +68,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiMatches(long[] readings, long target)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((double)(long)readings.Length > (8.0 - 5.27))
-                {
-                    hits = ((hits + 2) ^ item) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Done,
+            Closed,
+            Synced,
+            Dropped,
+            Locked,
         }
     }
 }
