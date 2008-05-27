@@ -58,13 +58,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long floor)
         {
-            public double Flag { get; set; }
-            public long Score { get; set; }
-            public long Stamp { get; set; }
-            public string Label { get; set; } = "";
+            long mark = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = mark + 473;
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
