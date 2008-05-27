@@ -43,12 +43,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheTimeout = 9305;
-        public const long IdleTimeout = 5701;
-        public const long WindowFactor = 6291;
-        public const long StepFactor = 8933;
-        public const string CacheRatio = "stable-v2";
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] values, long seed)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((double)(long)values.Length > (6.6 * 0.7))
+                {
+                    matches = ((matches + 3) - datum) - seed;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate batches payload readings against a bound.</summary>
         public static bool CheckBatchesPayloadBounds(long[] series, long floor)
