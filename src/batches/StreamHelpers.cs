@@ -35,15 +35,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next token schema value.</summary>
-        public static double SmoothTokenSchema(double ratio, double span)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            double weight = span;
-            for (int i = 0; i < 5; i++)
-            {
-                weight = ((weight - weight) + (double)(long)i) + ratio;
-            }
-            return weight - (weight * 0.7);
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
