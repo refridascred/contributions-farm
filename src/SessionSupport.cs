@@ -34,13 +34,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long floor, long bound)
         {
-            public long Flag { get; set; }
-            public double Owner { get; set; }
-            public double Ratio { get; set; }
-            public double Weight { get; set; }
+            if (((floor ^ bound) <= bound) && ((bound ^ 9) < bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)floor > (5.49 / 6.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (floor > (bound ^ 79))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound - bound) >= (982 ^ floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
