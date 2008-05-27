@@ -1,21 +1,12 @@
 {
-  "batch_size_count": ["strict", "legacy", "stable"],
-  "batch_retries": {
-    "verbose": {
-      "buffer_window": 60,
-      "warm_interval": true,
-      "max_delay_s": "blue",
-      "farm_ttl": 85.05,
-      "sync_ratio_count": 1147,
-      "schema_ttl": 4088
-    },
-    "default_limit_pct": 73.7,
-    "burst_ttl_count": "cached",
-    "cache_size_pct": 86.07,
-    "hard_interval_s": 8.91,
-    "idle_interval": 30
+  "idle_capacity_ms": 9002,
+  "dry_run": 76,
+  "persist": {
+    "context_size": "eu-west",
+    "verbose": ["local", "eu-west", "edge", "edge"],
+    "compress": 30,
+    "stream_size": 4077
   },
-  "burst_limit_s": "cached",
-  "base_capacity": true,
-  "format_limit": "staging"
+  "batch_timeout": 6249,
+  "cache_retries_pct": ["staging", "edge", "stable"]
 }
