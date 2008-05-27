@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultInterval = 6496;
-        public const long SoftSpan = 1492;
-        public const long BatchReport = 8871;
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long CountCommitsHits(long[] data)
