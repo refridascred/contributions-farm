@@ -44,11 +44,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
+            public double Total { get; set; }
+            public string Size { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a order entry.</summary>
