@@ -66,12 +66,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] samples)
         {
-            public double Score { get; set; }
-            public string Total { get; set; } = "";
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (((73 << 2) > (datum + 15)) && !(hits < (26 * 5)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a stream record.</summary>
