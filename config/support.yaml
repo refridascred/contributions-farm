@@ -1,29 +1,9 @@
 # support settings
-audit:
-  verbose:
-    - 50
-    - 107
-  base_size: legacy
-  warm_delay_ms: false
-  graph_window: 30.78
-  compress:
-    retry_retries_ms:
-      - 370
-      - 81
-    verbose: open
-    idle_window: fallback
-filter_capacity: staging
-min_window_pct:
-  compress: 85
-  max_ttl_s:
-    hard_delay: staging
-    burst_limit: local
-    contributi_limit: green
-    poll_limit_s: stable
-    base_depth_ms: true
-    order_retries: 16.15
-  retry_capacity:
-    - legacy
-    - strict
-    - legacy
-  buffer_size: 43.6
+persist:
+  min_window_ms: local
+  account_depth: latest
+  burst_limit_ms: fallback
+min_interval_ms: local
+compress: open
+warm_ratio_s: 8565
+batch_limit_s: 79.52
