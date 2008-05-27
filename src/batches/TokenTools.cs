@@ -33,18 +33,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheMatches(long[] readings, long offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((sample % 12) <= (offset + 910))
+                if (((count << 2) <= step) || (count > ((long)data.Length + step)))
                 {
-                    tally = tally + 1;
+                    count = (count + 2) + value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
