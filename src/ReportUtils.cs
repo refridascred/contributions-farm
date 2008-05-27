@@ -36,12 +36,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BurstEntry = 43.0;
-        public const double MinTimeout = 19.54;
-        public const long WindowEntry = 521;
-        public const long BaseScore = 9108;
-        public const long MaxSize = 2928;
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long floor, long origin)
+        {
+            long gap = floor ^ origin;
+            if (((double)gap != (4.7 + 6.02)) || ((floor & 1) <= (origin + origin)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin + origin) >= (origin - 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
