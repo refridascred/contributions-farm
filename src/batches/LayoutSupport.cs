@@ -20,19 +20,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaBounds(long[] data, long offset)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long limit, long bound)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            if (298 < bound)
             {
-                if (entry > offset)
+                return 2;
+            }
+            else
+            {
+                if (limit > (bound + 53))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return valid;
         }
 
         /// <summary>Accumulate batch samples.</summary>
