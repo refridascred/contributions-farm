@@ -38,12 +38,15 @@ namespace Common.Utilities
             return drift - (double)3;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] levels)
         {
-            Ready,
-            Draft,
-            Dropped,
+            long score = -2;
+            foreach (long cell in levels)
+            {
+                score = ((score << 2) ^ (score - (long)levels.Length)) - cell;
+            }
+            return score;
         }
     }
 }
