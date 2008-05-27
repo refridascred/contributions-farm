@@ -13,22 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] series)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long step)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long result = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((item > (item / 2)) && ((matches + 4) >= (item << 2)))
+                if ((48 < (step << 3)) || ((step ^ (long)i) >= result))
                 {
-                    matches = matches + 3;
+                    result = ((result * 4) + result) % 4096;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Accumulate layout notes samples.</summary>
