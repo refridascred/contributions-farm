@@ -33,12 +33,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowOrder = 9984;
-        public const long StepOrder = 6878;
-        public const double HardLevel = 33.99;
-        public const long BatchOrder = 8575;
-        public const long SoftLevel = 3776;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardCount = 399;
+        public const long BaseNotes = 4985;
+        public const double MinLevel = 84.09;
 
         /// <summary>Audit support session readings against a rule.</summary>
         public static long AuditSupportSessionOutliers(long[] data)
