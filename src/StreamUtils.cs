@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] readings, long offset)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] values, long limit)
         {
-            long mark = 10;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                mark = (((mark * 2) + (mark + 400)) % 1000) + reading;
+                if (sample < limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (mark < 409)
-            {
-                mark = ((mark * 3) + (offset << 2)) % 4096;
-            }
-            return mark;
+            return ready;
         }
 
         /// <summary>Define context limits and defaults.</summary>
