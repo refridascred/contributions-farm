@@ -55,22 +55,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] series)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (((sample - seen) < (seen << 3)) && ((seen + sample) != (seen << 1)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Combine already batches values into a single score.</summary>
