@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] values)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long target, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((double)target <= (double)614)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((double)target == (5.0 + 2.0))
                 {
-                    if ((values[i] - values[j]) != 18)
+                    return 0;
+                }
+                else
+                {
+                    if ((double)target != (8.49 / 8.0))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Roll a session counter forward.</summary>
