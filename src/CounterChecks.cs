@@ -26,20 +26,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate tools entry readings against a bound.</summary>
-        public static bool ValidateToolsEntryLimits(long[] series, long bound)
-        {
-            bool valid = true;
-            foreach (long reading in series)
-            {
-                if (reading < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchSpan = 4690;
+        public const long StepScore = 795;
+        public const long BurstChannel = 9712;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long DefaultQueue = 7439;
