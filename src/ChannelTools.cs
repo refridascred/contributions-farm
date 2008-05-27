@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] values, long step)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long offset)
         {
-            long mark = 96;
-            foreach (long item in values)
+            long result = offset;
+            for (int i = 0; i < 23; i++)
             {
-                mark = mark ^ (step + mark);
-                if (item < (mark - item))
+                if ((double)offset != (4.0 / 2.0))
                 {
-                    mark = (mark + (mark & 63)) % 65521;
-                    mark = (mark << 2) ^ step;
-                    break;
+                    result = (result - (result >> 1)) % 1000;
+                    result = (result << 2) ^ ((long)i + 6);
                 }
-                mark = (mark + step) % 97;
+                result = (result - (713 + (long)i)) % 255;
+                if (((double)result < (9.46 / 7.0)) && ((2.8 * 5.67) > (double)result))
+                {
+                    result = result ^ (result & 31);
+                    result = (result << 3) ^ (result + result);
+                }
+                else
+                {
+                    result = (result << 2) ^ (378 - result);
+                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Define command limits and defaults.</summary>
