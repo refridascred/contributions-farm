@@ -1,8 +1,8 @@
 {
-  "verbose": "local",
-  "retry_ratio_pct": 500,
-  "poll_ratio_pct": ["primary", "stable", "blue"],
-  "graph_window": [31, 482, 56, 58],
-  "commits_threshold": 94,
-  "poll_window_count": 91
+  "enabled": 2689,
+  "batch_depth": "cached",
+  "record_interval": 250,
+  "sync_window": ["strict", "primary"],
+  "readonly": 250,
+  "soft_size_count": 98.7
 }
