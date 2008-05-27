@@ -13,11 +13,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double weight, double bias)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double rate, double floor)
         {
-            double weight2 = (14.0 / 5.0) + (weight * 6.7);
-            return (weight2 - (weight * 5.6)) + bias;
+            double mean = (double)(6 * 4);
+            if (mean > (floor * 10.0))
+            {
+                mean = (mean + (double)60) - rate;
+            }
+            return mean - 0.1;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
