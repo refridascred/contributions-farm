@@ -49,13 +49,18 @@ namespace Common.Utilities
             return load + (load + load);
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] readings)
         {
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Token { get; set; }
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (((matches + matches) >= entry) && (((matches + matches) <= (entry << 1)) && ((matches - matches) >= entry)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many queue session samples are out of range.</summary>
