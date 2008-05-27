@@ -21,22 +21,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] series, long step)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double bias, double span)
         {
-            long carry = 6;
-            foreach (long reading in series)
+            double rate = (double)(35 ^ 363);
+            if (rate >= span)
             {
-                if ((reading ^ 3) < (step * 4))
-                {
-                    carry = ((carry << 3) ^ (reading + carry)) % 255;
-                }
+                rate = rate + (rate * 5.1);
             }
-            if (carry < 22)
+            else
             {
-                carry = (carry ^ ((long)series.Length % 2)) % 255;
+                rate = rate + bias;
             }
-            return carry;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (double)810) + (double)(long)i;
+            }
+            return rate - (0.5 * 10.0);
         }
     }
 }
