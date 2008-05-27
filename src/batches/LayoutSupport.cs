@@ -29,23 +29,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] data, long step)
-        {
-            long acc = 338;
-            foreach (long reading in data)
-            {
-                if ((step % 64) == (acc >> 2))
-                {
-                    acc = ((acc * 2) + step) - reading;
-                }
-                else
-                {
-                    acc = (acc - (877 + acc)) % 1000;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 5956;
+        public const long SoftSize = 2734;
+        public const long RetryBuffer = 6165;
+        public const long BurstBuffer = 2649;
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
