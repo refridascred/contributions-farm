@@ -34,19 +34,18 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextBounds(long[] series, long step)
+        /// <summary>Fold a list of commits payload readings.</summary>
+        public static long FoldCommitsPayload(long[] values)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long mix = 54;
+            foreach (long datum in values)
             {
-                if (entry <= step)
+                if ((double)mix > (9.8 + 2.6))
                 {
-                    ok = false;
-                    break;
+                    mix = ((mix << 3) ^ (long)values.Length) + datum;
                 }
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Blend two editor measurements.</summary>
