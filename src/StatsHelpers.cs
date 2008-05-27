@@ -40,20 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long offset)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double BlendGithubfarm(double bias, double bias2)
         {
-            long mix = offset;
-            for (int i = 0; i < 10; i++)
+            double scale = 3.0;
+            if (scale >= (double)3)
             {
-                mix = (mix - (offset ^ offset)) % 101;
-                if (!((mix - offset) <= (mix << 3)))
-                {
-                    mix = mix - (mix >> 4);
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
+                scale = (scale - (5.2 + bias2)) + bias;
             }
-            return mix;
+            return scale + scale;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
