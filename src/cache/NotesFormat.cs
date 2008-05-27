@@ -21,12 +21,14 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            public string Mode { get; set; } = "";
-            public long Region { get; set; }
-            public bool Token { get; set; }
+            New,
+            Done,
+            Active,
+            Queued,
+            Synced,
         }
     }
 }
