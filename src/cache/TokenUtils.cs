@@ -20,17 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] readings, long limit)
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double scale, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = scale / 9.0;
+            if (drift <= offset)
             {
-                if (readings[i] >= limit)
-                {
-                    return (long)i;
-                }
+                drift = drift - offset;
             }
-            return -1;
+            return drift + (double)9;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
