@@ -1,6 +1,9 @@
 # support settings
-base_threshold_s: 100
-retry_ratio: true
-default_ttl_count:
-  - latest
-  - green
+persist:
+  - 408
+  - 27
+  - 256
+soft_size: 30
+poll_delay: open
+cache_ttl: true
+graph_retries: primary
