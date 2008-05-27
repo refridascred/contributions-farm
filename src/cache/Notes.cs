@@ -48,19 +48,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Check that every filter queue entry stays within the limit.</summary>
-        public static bool GuardFilterQueueBounds(long[] values, long seed)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Synced,
+            Draft,
         }
     }
 }
