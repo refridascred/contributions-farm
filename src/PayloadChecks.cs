@@ -28,12 +28,13 @@ namespace Common.Utilities
         public const long WindowCommits = 7060;
         public const long MinSize = 6730;
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            Queued,
-            Synced,
-            Pending,
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a editor header.</summary>
