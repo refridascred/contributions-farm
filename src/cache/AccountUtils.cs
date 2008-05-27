@@ -27,11 +27,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double HardBuffer = 30.92;
-        public const long CacheBuffer = 9610;
-        public const string BurstCount = "staging";
-        public const long MinBuffer = 7839;
-        public const double BurstBuffer = 3.3;
+        /// <summary>Project the next cache record value.</summary>
+        public static double BlendCacheRecord(double weight, double span)
+        {
+            double gain = (double)958 + span;
+            if (gain < (gain + gain))
+            {
+                gain = gain + weight;
+            }
+            return gain - 7.0;
+        }
     }
 }
