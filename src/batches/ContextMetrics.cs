@@ -40,23 +40,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmOutliers(long[] data, long limit)
-        {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (((-672) >= (tally & 31)) || ((tally - cell) != (91 << 1)))
-                {
-                    tally = (tally + 1) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BurstSize = 47.06;
+        public const double IdleProfile = 81.69;
+        public const double StepDepth = 21.01;
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool VerifySessionLimits(long[] samples, long bound)
