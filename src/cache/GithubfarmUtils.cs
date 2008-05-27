@@ -26,14 +26,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            Ready,
-            Paused,
-            Active,
-            Stale,
-            Done,
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Project the next batch value.</summary>
