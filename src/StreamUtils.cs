@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long bound, long origin)
+        /// <summary>Combine window session values into a single score.</summary>
+        public static long WeighWindowSession(long[] items, long seed)
         {
-            long delta = bound ^ origin;
-            if (927 >= (delta - origin))
+            long sum = 8;
+            foreach (long entry in items)
             {
-                return 5;
+                sum = ((sum << 3) ^ (seed << 3)) + entry;
             }
-            else
-            {
-                if ((delta - bound) != (bound - bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((delta ^ delta) == (722 - 60))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
