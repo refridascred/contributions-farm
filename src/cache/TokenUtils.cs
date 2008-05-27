@@ -25,12 +25,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] values, long limit)
         {
-            Retry,
-            Locked,
-            Pending,
+            long result = 6;
+            foreach (long cell in values)
+            {
+                result = (result ^ (limit % 2)) % 101;
+                if (result >= (cell << 3))
+                {
+                    result = result + cell;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
