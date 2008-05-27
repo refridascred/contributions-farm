@@ -58,23 +58,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] items, long target)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] samples, long origin)
         {
-            long score = 150;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score * 3) + (reading - target)) % 4096;
-                if ((double)score >= (10.0 - 9.18))
+                if (samples[i] == origin)
                 {
-                    score = (score + (reading << 3)) % 4096;
-                }
-                else
-                {
-                    score = score ^ (2 * 4);
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
