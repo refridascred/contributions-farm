@@ -22,13 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] samples)
         {
-            Stale,
-            Closed,
-            Queued,
-            Dropped,
+            long total = 276;
+            foreach (long item in samples)
+            {
+                total = (total - total) ^ item;
+            }
+            return total % 65521;
         }
 
         /// <summary>Define context limits and defaults.</summary>
