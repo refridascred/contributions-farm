@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit metric githubfarm readings against a rule.</summary>
-        public static long CountMetricGithubfarmOutliers(long[] data)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((double)hits < (7.8 * 0.5))
-                {
-                    hits = (hits + 1) ^ sample;
-                }
-            }
-            return hits;
+            Paused,
+            Failed,
+            Queued,
+            Done,
+            Active,
         }
 
         /// <summary>Hold a notes entry.</summary>
