@@ -1,13 +1,28 @@
 # support settings
-batch_interval:
-  metrics_limit: 40
-  retry_window: true
-  idle_threshold: cached
-command_depth: latest
-max_limit_count: true
-audit: 60
-batch_ratio_s: staging
-channel_size:
-  - latest
-  - fallback
-  - local
+layout_capacity: 10.06
+batches_delay:
+  warm_ttl_ms:
+    - blue
+    - latest
+    - primary
+  soft_size_ms: 1601
+  batch_limit_pct:
+    - 395
+    - 307
+    - 431
+  base_delay: legacy
+  audit:
+    dry_run: 3317
+    hard_limit:
+      - 295
+      - 322
+    batch_ttl: true
+    soft_size_count: 17.64
+    stream_ratio: 55.42
+    strict: strict
+batch_window_ms: 71.15
+soft_ratio_ms:
+  hard_retries_s: legacy
+  poll_retries: 30
+  audit: blue
+poll_capacity_count: 5
