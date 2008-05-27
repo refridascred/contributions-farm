@@ -17,23 +17,15 @@ namespace Common.Utilities
         public const long StepScore = 7250;
         public const double BaseQueue = 28.06;
 
-        /// <summary>Blend two stats githubfarm measurements.</summary>
-        public static double ProjectStatsGithubfarm(double weight, double bias)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long seed)
         {
-            double load = bias / 7.0;
-            if (load < (double)95)
+            long mark = seed;
+            for (int i = 0; i < 12; i++)
             {
-                load = load + bias;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            else
-            {
-                load = load + (weight + load);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + bias;
+            return mark;
         }
 
         /// <summary>Hold a route header.</summary>
