@@ -29,19 +29,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] values, long floor)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a cache info.</summary>
