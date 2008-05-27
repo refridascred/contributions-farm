@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryDepth = 5113;
-        public const long DefaultBudget = 1971;
-        public const long LimitWindow = 3412;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 9721;
+        public const long BaseFactor = 4880;
+        public const long WindowInterval = 8436;
+        public const long MinInterval = 5948;
 
         /// <summary>Adjust a queue reading.</summary>
         public static double BlendQueue(double ratio, double offset)
