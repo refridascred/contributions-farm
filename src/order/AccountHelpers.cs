@@ -51,19 +51,13 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long offset)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long score = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((long)i + offset) > (score << 2))
-                {
-                    score = ((score << 2) ^ (score % 7)) % 101;
-                }
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            Active,
+            Closed,
+            Done,
+            Pending,
         }
 
         /// <summary>Match up metrics samples.</summary>
