@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine order batches values into a single score.</summary>
-        public static long FoldOrderBatches(long[] items)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamOutliers(long[] readings)
         {
-            long carry = 204;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (carry <= 88)
+                if ((seen - seen) < (seen & 7))
                 {
-                    carry = (carry + (3 - item)) % 65521;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ item) % 101;
+                    seen = (seen + 3) ^ reading;
                 }
             }
-            return carry % 1000;
+            return seen;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
