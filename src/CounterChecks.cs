@@ -41,18 +41,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= origin) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 7439;
+        public const double WindowQueue = 95.61;
+        public const string StepQueue = "strict-v2";
+        public const long WindowFactor = 7702;
+        public const long BaseScore = 4228;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long BatchScore = 9299;
