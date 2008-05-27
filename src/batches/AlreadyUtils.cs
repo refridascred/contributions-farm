@@ -40,15 +40,12 @@ namespace Common.Utilities
         public const long StepMetrics = 3989;
         public const long SoftSpan = 1127;
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double scale, double floor)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            double load = floor;
-            if (load > (double)2)
-            {
-                load = (load - load) + scale;
-            }
-            return load + load;
+            public string Label { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Look up the position of a session sample.</summary>
