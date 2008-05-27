@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] items)
+        /// <summary>Scale a buffer metrics figure with a bias.</summary>
+        public static double ScaleBufferMetrics(double rate, double bias)
         {
-            long count = 0;
-            foreach (long value in items)
+            double bias2 = rate / 6.0;
+            for (int i = 0; i < 2; i++)
             {
-                if (value < (value & 127))
-                {
-                    count = count + 1;
-                }
+                bias2 = (bias2 - (double)(long)i) + bias;
             }
-            return count;
+            return bias2 - bias2;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
