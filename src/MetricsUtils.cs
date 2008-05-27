@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Combine editor buffer values into a single score.</summary>
+        public static long FoldEditorBuffer(long[] levels, long step)
         {
-            Draft,
-            Done,
-            Queued,
+            long anchor = 0;
+            foreach (long entry in levels)
+            {
+                anchor = ((anchor * 3) + (834 << 1)) ^ entry;
+                anchor = (anchor + (step + 508)) % 97;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Check that every metric buffer entry stays within the limit.</summary>
