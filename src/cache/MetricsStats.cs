@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] readings)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] readings)
         {
-            long mark = -3;
-            foreach (long entry in readings)
+            long result = 99;
+            foreach (long sample in readings)
             {
-                mark = (mark - (entry << 1)) % 101;
-                if (!((double)mark > (8.4 / 3.0)))
+                result = ((result * 5) + 791) % 97;
+                if (!((sample ^ 97) > (result - result)))
                 {
-                    mark = (mark - (mark + entry)) % 4096;
+                    result = (result * 5) + (-98);
                 }
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Describe the token status values.</summary>
