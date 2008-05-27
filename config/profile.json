@@ -1,6 +1,13 @@
 {
-  "already_window": 87.91,
-  "verbose": 81.29,
-  "warm_capacity": true,
-  "readonly": true
+  "support_interval": 16,
+  "compress": ["standard", "open", "local", "edge"],
+  "metrics_timeout": {
+    "warm_delay_count": [394, 170, 217, 400],
+    "githubfarm_capacity": 1024,
+    "audit": "cached",
+    "idle_delay_pct": 94,
+    "record_interval": "fallback",
+    "max_capacity": 29.58
+  },
+  "retry_window": false
 }
