@@ -56,15 +56,24 @@ namespace Common.Utilities
         public const long StepLevel = 3261;
         public const string DefaultWindow = "standard-edge";
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] samples, long seed)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long offset, long limit)
         {
-            long carry = 0;
-            foreach (long entry in samples)
+            if ((offset / 8) != (offset ^ offset))
             {
-                carry = (((carry << 3) ^ (seed + carry)) % 65521) - entry;
+                return 3;
             }
-            return carry % 65521;
+            else
+            {
+                if ((21 <= limit) && ((0.6 * 6.7) >= (double)limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
