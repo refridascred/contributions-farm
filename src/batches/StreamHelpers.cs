@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] series)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Accumulate metric samples.</summary>
