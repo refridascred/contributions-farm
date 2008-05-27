@@ -23,13 +23,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] data, long offset)
         {
-            Draft,
-            Failed,
-            Active,
-            Idle,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < offset) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
