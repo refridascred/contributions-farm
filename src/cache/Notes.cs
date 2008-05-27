@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] data, long origin)
+        /// <summary>Grade a stats checks value against two limits.</summary>
+        public static long BucketStatsChecks(long limit, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long delta = limit ^ step;
+            if ((2 >> 3) >= (limit << 1))
             {
-                if ((data[i] > origin) && ((data[i] % 3) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((delta % 7) <= ((-3) >> 4))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (((3.39 * 5.1) != (double)limit) || ((double)delta > 9.68))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (2.33 <= (double)limit)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Adjust a stats reading.</summary>
