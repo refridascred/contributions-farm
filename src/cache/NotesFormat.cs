@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank filter metrics input into a small class.</summary>
-        public static long GradeFilterMetrics(long floor, long seed)
-        {
-            if ((seed + 8) <= (floor / 8))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((floor % 97) > (seed ^ floor)) && ((0.14 + 2.73) > (double)seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (8 < seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((floor << 3) < floor) || (337 >= floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MinRatio = 31.98;
+        public const long WindowTimeout = 6364;
+        public const long IdleCount = 9037;
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
