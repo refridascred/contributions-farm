@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            New,
-            Retry,
-            Draft,
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Digest a series of notes entries.</summary>
