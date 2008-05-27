@@ -23,15 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long bound)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] data, long target)
         {
-            long acc = bound;
-            for (int i = 0; i < 8; i++)
+            long score = 72;
+            foreach (long item in data)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                score = ((score ^ (item & 127)) % 4096) + target;
+                if (((item - score) <= 900) || ((item << 2) <= score))
+                {
+                    score = (score - 0) % 101;
+                }
             }
-            return acc;
+            if (score < 5)
+            {
+                score = (score ^ (score + score)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
