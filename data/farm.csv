@@ -1,6 +1,8 @@
-id,rank,ratio,weight,region
-1,latest,992,31.58,blue
-2,735,62.7,85.79,495
-3,legacy,strict,55.96,688
-4,58.89,147,latest,standard
-5,735,primary,cached,33.15
+id,rank,ratio
+1,primary,latest
+2,49.71,969
+3,981,81.76
+4,467,648
+5,19.75,12.21
+6,59.77,696
+7,standard,68.84
