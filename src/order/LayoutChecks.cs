@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double gain, double bias)
         {
-            public double Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
+            double load = gain;
+            for (int i = 0; i < 5; i++)
+            {
+                load = ((load + (13.0 / 3.0)) + (double)(long)i) + bias;
+            }
+            return load - 5.0;
         }
 
         /// <summary>Hold a cluster options.</summary>
