@@ -69,17 +69,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long step)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long acc = step;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = ((acc << 2) ^ (step / 6)) % 255;
-                acc = (acc * 4) + ((long)i ^ acc);
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            public string Limit { get; set; } = "";
+            public bool Total { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Validate route readings against a bound.</summary>
