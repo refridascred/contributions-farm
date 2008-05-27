@@ -72,15 +72,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] series, long offset)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] series, long floor)
         {
-            long acc = 23;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (acc + (offset % 3)) ^ datum;
+                if ((series[i] > floor) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
