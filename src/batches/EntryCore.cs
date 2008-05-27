@@ -16,17 +16,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] values, long origin)
+        /// <summary>Iterate the cluster buffer series from a seed.</summary>
+        public static long IterateClusterBuffer(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((values[i] >= origin) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Describe the tools phase values.</summary>
