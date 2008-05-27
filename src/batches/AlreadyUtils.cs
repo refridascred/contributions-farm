@@ -20,16 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long limit)
+        /// <summary>Check that every metrics cluster entry stays within the limit.</summary>
+        public static bool VerifyMetricsClusterLimits(long[] data, long limit)
         {
-            long acc = limit;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                acc = acc - (acc << 1);
-                acc = ((acc * 5) + (long)i) % 1000;
+                if (sample >= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Define already limits and defaults.</summary>
