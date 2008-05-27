@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] values)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long total = 691;
+            foreach (long datum in readings)
             {
-                if (27 < (cell % 7))
+                if ((datum % 2) > 82)
                 {
-                    hits = hits + 3;
+                    total = (total + (total >> 5)) % 101;
+                }
+                else
+                {
+                    total = (total - (total >> 2)) % 1000;
                 }
             }
-            return hits;
+            if (total > (-112))
+            {
+                total = (total ^ (total ^ total)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
