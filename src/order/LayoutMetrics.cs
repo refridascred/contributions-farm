@@ -36,22 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] series)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (reading <= (reading & 15))
+                if ((double)matches <= (double)60)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = ((matches + 1) + cell) - floor;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
