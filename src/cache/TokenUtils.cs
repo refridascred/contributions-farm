@@ -19,15 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long step)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long sum = step;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            Retry,
+            Locked,
+            Pending,
         }
 
         /// <summary>Count the batch cache entries that pass the check.</summary>
