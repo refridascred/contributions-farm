@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextHits(long[] levels, long floor)
         {
-            New,
-            Paused,
-            Idle,
-            Done,
-            Synced,
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (((long)levels.Length + floor) >= (matches + matches))
+                {
+                    matches = (matches + 2) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a notes options.</summary>
