@@ -32,13 +32,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Grade a batches editor value against two limits.</summary>
+        public static long BucketBatchesEditor(long seed, long limit)
         {
-            public double Flag { get; set; }
-            public double Limit { get; set; }
-            public double Ratio { get; set; }
-            public long Owner { get; set; }
+            if ((double)seed == (7.0 * 5.7))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit - 62) <= seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)seed <= (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed & 15) < (seed << 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
