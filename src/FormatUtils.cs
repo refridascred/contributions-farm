@@ -48,24 +48,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long bound)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] series)
         {
-            long state = bound;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((bound + state) < (state / 3))
+                if ((double)matches <= 0.49)
                 {
-                    continue;
+                    matches = (matches + 1) + datum;
                 }
-                else
-                {
-                    state = (state - (81 + state)) % 101;
-                    state = (state ^ bound) % 97;
-                }
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Accumulate format samples.</summary>
