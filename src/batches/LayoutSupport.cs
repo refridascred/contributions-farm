@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            Locked,
-            Done,
-            Queued,
-            Ready,
+            public bool Mode { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
