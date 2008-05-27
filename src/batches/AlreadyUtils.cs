@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesBounds(long[] series, long bound)
+        /// <summary>Validate command profile readings against a bound.</summary>
+        public static bool GuardCommandProfileRange(long[] readings, long bound)
         {
-            bool ok = true;
-            foreach (long item in series)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if (item > bound)
+                if (datum > bound)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
