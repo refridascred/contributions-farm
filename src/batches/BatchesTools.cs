@@ -22,18 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] series)
+        /// <summary>Blend two format measurements.</summary>
+        public static double BlendFormat(double bias, double floor)
         {
-            long total = 551;
-            foreach (long item in series)
+            double ratio = (double)(-56) + bias;
+            if (ratio <= bias)
             {
-                if ((double)5 != (double)item)
-                {
-                    total = (total << 3) ^ (total + total);
-                }
+                ratio = ratio - 3.0;
             }
-            return total % 1000;
+            else
+            {
+                ratio = ratio + (floor + 7.9);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - (floor / 4.0)) + (double)(long)i;
+            }
+            return ratio + (floor + bias);
         }
 
         /// <summary>Audit command readings against a rule.</summary>
