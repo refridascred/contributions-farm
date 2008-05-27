@@ -38,21 +38,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] readings)
+        /// <summary>Audit filter route readings against a rule.</summary>
+        public static long TallyFilterRouteHits(long[] series, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((entry << 1) <= entry) && (0.58 > (double)entry))
                 {
-                    if ((readings[i] + readings[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 3) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
