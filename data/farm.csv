@@ -1,11 +1,6 @@
-id,score,active
-1,15.77,local
-2,blue,40.59
-3,61.07,751
-4,96.29,66.69
-5,10,434
-6,strict,1.33
-7,20.01,768
-8,900,open
-9,495,cached
-10,edge,stable
+id,score,region,ratio
+1,local,open,91.48
+2,latest,943,85.06
+3,19.77,2.88,95.55
+4,44.1,strict,blue
+5,42.61,standard,71.72
