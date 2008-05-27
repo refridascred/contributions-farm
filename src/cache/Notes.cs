@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            Failed,
-            Done,
-            Stale,
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
