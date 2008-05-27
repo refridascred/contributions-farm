@@ -42,11 +42,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 5956;
-        public const long SoftSize = 2734;
-        public const long RetryBuffer = 6165;
-        public const long BurstBuffer = 2649;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] items)
+        {
+            long state = 784;
+            foreach (long reading in items)
+            {
+                state = ((state * 5) + (state + state)) + reading;
+                state = state ^ 47;
+            }
+            if (state < 69)
+            {
+                state = ((state << 2) ^ (state + 44)) % 255;
+            }
+            return state;
+        }
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
