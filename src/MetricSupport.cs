@@ -37,19 +37,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double gain, double offset)
-        {
-            double bias = (double)11 + gain;
-            if (bias > 9.61)
-            {
-                bias = bias - (9.0 * 9.6);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - offset) + (double)(long)i;
-            }
-            return bias + bias;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 802;
+        public const long DefaultRatio = 6762;
+        public const long BurstWindow = 8447;
+        public const long BatchWindow = 319;
+        public const long MaxFactor = 9434;
     }
 }
