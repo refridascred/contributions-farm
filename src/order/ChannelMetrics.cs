@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheReport = 7276;
-        public const double StepScore = 9.29;
-        public const double LimitReport = 17.28;
-        public const long StepBudget = 9802;
-        public const long HardReport = 1473;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryChecks = 6916;
+        public const long LimitSize = 2664;
+        public const double BaseChecks = 31.54;
+        public const long StepDepth = 7694;
+        public const long BaseWidth = 8496;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long DefaultRatio = 6230;
