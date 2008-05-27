@@ -25,15 +25,18 @@ namespace Common.Utilities
         public const long BaseDepth = 8842;
         public const long SoftGithubfarm = 5475;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] items, long seed)
+        /// <summary>Compare every pair of tools counter readings.</summary>
+        public static long CompareToolsCounterCount(long[] items)
         {
             long matches = 0;
-            foreach (long item in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((0.56 - 8.5) != (double)matches)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = ((matches + 1) ^ item) + seed;
+                    if ((items[i] ^ items[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
