@@ -22,11 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 9643;
-        public const long BurstFarm = 2462;
-        public const long IdleFarm = 8380;
-        public const string RetrySize = "stable";
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmRange(long[] data, long seed)
+        {
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Adjust a record reading.</summary>
         public static double AdjustRecord(double rate, double bias)
