@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MinFilter = 41.93;
-        public const long SoftFilter = 4126;
-        public const long RetryInterval = 9514;
+        /// <summary>Match up route support samples.</summary>
+        public static long PairRouteSupportCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long ClassifyGithubfarm(long step, long offset)
