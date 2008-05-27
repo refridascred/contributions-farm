@@ -69,11 +69,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double ratio, double bias)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphGaps(long[] items)
         {
-            double ratio2 = bias;
-            return (ratio2 + ratio2) + ratio;
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((355 % 7) < sample)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
