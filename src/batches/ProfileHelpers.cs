@@ -61,18 +61,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordOutliers(long[] readings)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (0.32 >= (double)seen)
-                {
-                    seen = (seen + 3) - item;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Owner { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
