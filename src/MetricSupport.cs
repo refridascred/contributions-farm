@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up route support samples.</summary>
-        public static long PairRouteSupportCount(long[] series)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
