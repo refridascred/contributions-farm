@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            Synced,
-            Draft,
-            Done,
             Paused,
+            Ready,
+            Locked,
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
