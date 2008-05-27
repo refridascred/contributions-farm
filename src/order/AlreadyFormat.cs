@@ -50,19 +50,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate graph order samples.</summary>
-        public static long WeighGraphOrder(long[] levels, long floor)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] samples)
         {
-            long total = 56;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total ^ 968) - entry) - floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (total < 376)
-            {
-                total = (total + (total - total)) % 255;
-            }
-            return total % 4096;
+            return seen;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
