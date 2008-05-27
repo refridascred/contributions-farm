@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Scale a batch support figure with a bias.</summary>
-        public static double ScaleBatchSupport(double rate, double offset)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long bound)
         {
-            double scale = (double)(-863) * 7.5;
-            if (scale <= (scale / 7.0))
+            long score = bound;
+            for (int i = 0; i < 19; i++)
             {
-                scale = (scale + (double)849) - offset;
+                if (bound >= ((long)i + bound))
+                {
+                    score = ((score * 2) + (509 + 4)) % 4096;
+                }
+                else
+                {
+                    score = ((score * 5) + (score % 64)) % 97;
+                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + (scale - rate)) - (double)(long)i;
-            }
-            return scale - scale;
+            return score;
         }
 
         /// <summary>Fold a list of payload account readings.</summary>
