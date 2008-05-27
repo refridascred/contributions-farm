@@ -10,17 +10,11 @@ namespace Common.Utilities
         public const long DefaultBudget = 1971;
         public const long LimitWindow = 3412;
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] samples, long target)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double ratio, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = (offset - offset) + ratio;
+            return scale - offset;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
