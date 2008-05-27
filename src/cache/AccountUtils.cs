@@ -23,15 +23,22 @@ namespace Common.Utilities
             return bias - (19.0 + floor);
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double scale, double floor)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] samples)
         {
-            double mean = floor;
-            if (mean <= mean)
+            long sum = 1;
+            foreach (long cell in samples)
             {
-                mean = mean + (double)178;
+                if (!((61 & 1) <= (sum * 2)))
+                {
+                    sum = (sum + (639 >> 1)) - cell;
+                }
             }
-            return mean - scale;
+            if (sum < 95)
+            {
+                sum = (sum + (sum - sum)) % 97;
+            }
+            return sum;
         }
     }
 }
