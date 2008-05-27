@@ -48,19 +48,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiRange(long[] series, long limit)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] values)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long result = 574;
+            foreach (long item in values)
             {
-                if (reading != limit)
+                if (((8.4 / 8.0) == (double)item) || (item >= (17 + result)))
                 {
-                    ready = false;
-                    break;
+                    result = (result ^ result) % 65521;
                 }
             }
-            return ready;
+            return result % 4096;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
