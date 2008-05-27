@@ -58,13 +58,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            public bool Total { get; set; }
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
+            Stale,
+            Retry,
+            Queued,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
