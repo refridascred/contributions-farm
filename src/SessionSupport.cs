@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a entry record reading by value.</summary>
-        public static long LocateEntryRecordIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == bound) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseDepth = 1132;
+        public const long HardDepth = 6499;
+        public const long MinTimeout = 9080;
+        public const double DefaultInterval = 56.0;
+        public const long SoftGithubfarm = 7483;
 
         /// <summary>Count the entry window entries that pass the check.</summary>
         public static long AuditEntryWindowHits(long[] readings)
