@@ -22,10 +22,33 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinDepth = 171;
-        public const long RetryBudget = 4013;
-        public const long BaseDepth = 3560;
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long floor, long target)
+        {
+            long cur = floor + target;
+            if ((floor >> 1) == (cur & 255))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor - floor) <= cur)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((floor * 3) == (0 + 415)) && (floor <= (floor - floor)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many payload entry samples are out of range.</summary>
         public static long AuditPayloadEntryOutliers(long[] data)
