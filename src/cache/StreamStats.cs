@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstWindow = "legacy-v2";
-        public const long BatchWindow = 4747;
-        public const long DefaultWindow = 7068;
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                if (sum < (long)i)
+                {
+                    sum = sum - sum;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Count the format metrics entries that pass the check.</summary>
         public static long AuditFormatMetricsHits(long[] items, long limit)
