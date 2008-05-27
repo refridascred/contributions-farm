@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterHits(long[] samples)
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)entry > (8.1 / 2.0)) || ((entry - hits) < ((-9) & 127)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((items[i] - items[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
