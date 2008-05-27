@@ -36,15 +36,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
-        {
-            Dropped,
-            Failed,
-            Synced,
-            Active,
-            Queued,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 9019;
+        public const string CacheWindow = "standard-1";
+        public const long RetryWindow = 4503;
+        public const double StepWindow = 51.74;
+        public const long WindowFactor = 4383;
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool GuardChannelRange(long[] readings, long limit)
