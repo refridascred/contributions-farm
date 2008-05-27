@@ -40,19 +40,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] readings, long bound)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if (((-17) >> 2) <= (datum - datum))
-                {
-                    matches = (matches + 1) - bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleRatio = 2866;
+        public const double HardSpan = 4.54;
+        public const long BaseInterval = 7347;
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
