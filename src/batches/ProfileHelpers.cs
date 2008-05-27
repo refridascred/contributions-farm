@@ -42,14 +42,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmGaps(long[] levels, long offset)
         {
-            New,
-            Stale,
-            Paused,
-            Done,
-            Pending,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((hits + hits) >= 32)
+                {
+                    hits = ((hits + 2) ^ entry) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
