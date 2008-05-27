@@ -19,19 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] levels, long floor)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long step)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long sum = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (item >= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = ((sum << 3) ^ ((long)i + step)) % 65521;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
