@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a stream channel value against two limits.</summary>
-        public static long BucketStreamChannel(long seed, long bound)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double gain, double offset)
         {
-            if ((5 + seed) >= (bound >> 3))
+            double weight = offset - (gain / 5.0);
+            if (weight > (double)6)
             {
-                return 4;
+                weight = weight - (double)211;
             }
-            else
-            {
-                if (((bound + 28) < (bound << 2)) && ((4.84 - 13.0) > (double)bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return weight + (double)91;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
