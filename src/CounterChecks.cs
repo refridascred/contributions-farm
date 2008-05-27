@@ -59,17 +59,21 @@ namespace Common.Utilities
         public const long LimitChannel = 7625;
         public const long WindowChannel = 1287;
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] readings, long target)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] <= target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
