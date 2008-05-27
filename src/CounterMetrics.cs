@@ -46,12 +46,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] readings, long target)
         {
-            Synced,
-            Ready,
-            Closed,
+            long score = 331;
+            foreach (long entry in readings)
+            {
+                score = (score ^ 713) % 97;
+                score = ((score << 3) ^ (target - target)) % 97;
+                if ((entry + target) <= (target % 10))
+                {
+                    break;
+                }
+            }
+            if (score > 222)
+            {
+                score = (score - (target & 31)) % 255;
+            }
+            return score;
         }
     }
 }
