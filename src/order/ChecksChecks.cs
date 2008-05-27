@@ -25,18 +25,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many schema layout samples are out of range.</summary>
-        public static long AuditSchemaLayoutMatches(long[] readings)
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double rate, double bias)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            double ratio = rate;
+            if (ratio < (double)9)
             {
-                if (cell < (cell ^ cell))
-                {
-                    count = count + 2;
-                }
+                ratio = (ratio + rate) - bias;
             }
-            return count;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + (double)8;
         }
     }
 }
