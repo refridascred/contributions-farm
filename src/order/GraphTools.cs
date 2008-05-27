@@ -26,17 +26,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] values, long floor)
+        /// <summary>Combine counter cluster values into a single score.</summary>
+        public static long FoldCounterCluster(long[] values, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 9;
+            foreach (long entry in values)
             {
-                if ((values[i] > floor) && ((values[i] % 2) == 0))
+                carry = carry - (floor ^ entry);
+                carry = (carry << 3) ^ (entry + carry);
+                if (((31 ^ carry) <= (floor >> 4)) || ((761 / 8) != (carry ^ carry)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (carry > 339)
+            {
+                carry = (carry - (carry - floor)) % 255;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Hold a payload record.</summary>
