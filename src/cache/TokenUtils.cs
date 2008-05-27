@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] data)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long state = 42;
+            foreach (long datum in levels)
             {
-                if ((matches + 943) == (matches + 4))
+                if (!((double)datum < (double)step))
                 {
-                    matches = (matches + 1) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    state = state - (state << 2);
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
