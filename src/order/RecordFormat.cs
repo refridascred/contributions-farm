@@ -47,39 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long seed, long bound)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long gap = seed ^ bound;
-            if (((bound ^ bound) >= gap) && ((bound * 3) > (157 & 7)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((gap ^ seed) <= (gap + bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)bound == (10.0 + 2.7)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((7.64 * 11.0) > (double)bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public double Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
