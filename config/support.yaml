@@ -1,24 +1,7 @@
 # support settings
-buffer_ratio:
-  command_interval: 93
-  contributi_limit: 19.41
-  soft_ratio: 69.85
-  warm_capacity_count: blue
-  batch_interval:
-    - 348
-    - 487
-    - 253
-    - 235
-  sync_limit_ms: latest
-cluster_retries:
-  dry_run: false
-  verbose:
-    - green
-    - legacy
-  readonly:
-    - primary
-    - stable
-    - strict
-    - open
-  max_retries_s: true
-poll_limit: false
+persist: false
+batch_capacity_s:
+  warm_ttl_count: eu-west
+  idle_depth_pct: 35.17
+  verbose: false
+editor_limit: 84
