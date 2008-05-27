@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Find the first route command entry that matches the target.</summary>
-        public static long SeekRouteCommandIndex(long[] samples, long step)
+        /// <summary>Look up the position of a editor cluster sample.</summary>
+        public static long FindEditorClusterIndex(long[] values, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] < step)
+                if ((values[i] > limit) && ((values[i] % 3) != 0))
                 {
                     return (long)i;
                 }
