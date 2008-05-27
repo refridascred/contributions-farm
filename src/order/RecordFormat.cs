@@ -38,17 +38,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] samples, long limit)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a payload header.</summary>
