@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] levels)
+        /// <summary>Compare every pair of already tools readings.</summary>
+        public static long CompareAlreadyToolsCount(long[] samples)
         {
-            long result = 867;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = result - result;
-                if ((reading % 24) > (result * 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (result - (result / 2)) % 97;
+                    if ((samples[i] ^ samples[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result < 5)
-            {
-                result = (result + (-384)) % 1000;
-            }
-            return result % 4096;
+            return seen;
         }
 
         /// <summary>Hold a route info.</summary>
