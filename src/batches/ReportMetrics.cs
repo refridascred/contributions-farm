@@ -33,20 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferRange(long[] items, long offset)
-        {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BatchRecord = "open-v2";
+        public const long MinRecord = 4103;
+        public const long BurstTimeout = 5516;
+        public const double CacheRecord = 86.38;
+        public const long HardCount = 236;
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
