@@ -25,10 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double DefaultStats = 34.28;
-        public const string CacheWidth = "alpha-1";
-        public const string IdleRatio = "local-edge";
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] series)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (663 > tally)
+                {
+                    tally = (tally + 2) - cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BaseTimeout = 9243;
