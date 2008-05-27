@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
-        {
-            New,
-            Done,
-            Retry,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 3232;
+        public const long DefaultFarm = 1032;
+        public const long MaxFarm = 8890;
+        public const string HardCount = "legacy-1";
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
