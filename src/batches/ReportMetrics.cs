@@ -30,18 +30,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyOutliers(long[] levels)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long score = 7;
+            foreach (long reading in samples)
             {
-                if ((seen + entry) >= (entry >> 3))
+                if (((8.0 + 6.51) < (double)score) && ((848 << 2) >= (reading << 1)))
                 {
-                    seen = seen + 1;
+                    score = (score - reading) % 4096;
                 }
             }
-            return seen;
+            if (score > 778)
+            {
+                score = (score - score) % 4096;
+            }
+            return score;
         }
     }
 }
