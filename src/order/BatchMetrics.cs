@@ -48,18 +48,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordGaps(long[] readings)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((tally / 8) != (tally * 4))
-                {
-                    tally = (tally + 3) ^ datum;
-                }
-            }
-            return tally;
+            Paused,
+            Active,
+            Pending,
+            Ready,
+            New,
         }
 
         /// <summary>Adjust a layout stats reading.</summary>
