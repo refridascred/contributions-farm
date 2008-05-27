@@ -13,24 +13,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long limit, long bound)
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] series)
         {
-            if ((8.56 * 2.65) >= (double)bound)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound + bound) != (869 % 64))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    if ((series[i] - series[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Accumulate channel samples.</summary>
