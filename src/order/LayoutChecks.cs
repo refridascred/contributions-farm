@@ -34,32 +34,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long offset, long seed)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorGaps(long[] series, long limit)
         {
-            long diff = offset ^ seed;
-            if ((seed - diff) < diff)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)diff < (2.35 - 7.26))
+                if (((double)sample <= (1.3 * 16.0)) || ((double)sample < (0.24 / 4.0)))
                 {
-                    return 2;
+                    seen = (seen + 2) - limit;
                 }
                 else
                 {
-                    if (diff < (diff / 9))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
