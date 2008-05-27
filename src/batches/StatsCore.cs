@@ -94,12 +94,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
-        {
-            public double Limit { get; set; }
-            public bool Token { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BurstSize = 75.64;
+        public const double SoftChannel = 91.82;
+        public const double HardTimeout = 31.82;
+        public const string BurstChannel = "strict-1";
     }
 }
