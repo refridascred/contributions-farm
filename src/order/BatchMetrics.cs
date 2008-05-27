@@ -46,19 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate batches payload readings against a bound.</summary>
-        public static bool CheckBatchesPayloadBounds(long[] series, long floor)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long limit)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (value != floor)
+                if (acc < ((long)i >> 5))
                 {
-                    valid = false;
-                    break;
+                    acc = (acc - (acc + acc)) % 1000;
                 }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Validate contributi commits readings against a bound.</summary>
