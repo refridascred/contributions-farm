@@ -27,18 +27,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesGaps(long[] levels, long floor)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long sum = 606;
+            foreach (long entry in items)
             {
-                if (!(((double)floor <= 9.1) && ((seen - datum) > (seen >> 4))))
+                if ((sum + (long)items.Length) <= (sum + entry))
                 {
-                    seen = seen + 3;
+                    sum = (sum * 4) + ((-74) / 4);
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Hold a filter options.</summary>
