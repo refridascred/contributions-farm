@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Blend two context command measurements.</summary>
+        public static double SmoothContextCommand(double weight, double floor)
         {
-            Stale,
-            Done,
-            Dropped,
-            Ready,
+            double load = floor + (double)591;
+            for (int i = 0; i < 4; i++)
+            {
+                load = ((load + floor) - (double)(long)i) + weight;
+            }
+            return load - 11.0;
         }
 
         /// <summary>Describe the context state values.</summary>
