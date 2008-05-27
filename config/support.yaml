@@ -1,12 +1,15 @@
 # support settings
-default_retries:
-  - open
-  - cached
-  - strict
-support_window: false
-sync_delay_pct:
-  - 303
-  - 133
-  - 332
-  - 458
-idle_interval_ms: edge
+schema_interval: 82
+channel_retries: false
+enabled:
+  default_window_ms: 0.42
+  retry_size: 13.4
+  poll_interval_count: 13.11
+  flush_ttl_pct: 77.22
+compress: false
+githubfarm_interval: 97.13
+min_delay:
+  - 369
+  - 151
+  - 46
+  - 471
