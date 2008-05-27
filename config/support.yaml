@@ -1,9 +1,12 @@
 # support settings
-report_delay: eu-west
-batch_ttl_s:
-  - blue
+default_retries:
+  - open
   - cached
-  - green
-readonly: 95
-max_delay_s: false
-contributi_capacity: 2140
+  - strict
+support_window: false
+sync_delay_pct:
+  - 303
+  - 133
+  - 332
+  - 458
+idle_interval_ms: edge
