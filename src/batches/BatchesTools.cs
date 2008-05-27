@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            Paused,
-            Stale,
-            Retry,
+            Closed,
+            Draft,
+            Ready,
         }
 
         /// <summary>Describe the already level values.</summary>
