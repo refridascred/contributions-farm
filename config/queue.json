@@ -1,8 +1,5 @@
 {
-  "context_delay": "open",
-  "default_window_pct": 99,
-  "batch_delay": true,
-  "compress": "strict",
-  "burst_depth_s": 97,
-  "hard_depth": 250
+  "base_timeout": 50,
+  "soft_ratio": "fallback",
+  "report_ratio": 31.42
 }
