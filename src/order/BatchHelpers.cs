@@ -24,13 +24,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
-        {
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstFactor = 6947;
+        public const long DefaultLevel = 1241;
+        public const long StepToken = 7687;
+        public const string DefaultToken = "strict-1";
     }
 }
