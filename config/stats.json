@@ -1,15 +1,5 @@
 {
-  "cache_limit": 8.95,
-  "batch_ttl": {
-    "audit": 86.18,
-    "cache_window_count": "latest",
-    "enabled": {
-      "soft_interval": 44.1,
-      "base_ratio": true,
-      "enabled": ["green", "stable"],
-      "audit": "open"
-    },
-    "retry_interval": 4750
-  },
-  "retry_depth_pct": 5908
+  "default_window": "legacy",
+  "default_capacity": false,
+  "window_size": 49.76
 }
