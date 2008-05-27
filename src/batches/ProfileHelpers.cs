@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many layout batch samples are out of range.</summary>
-        public static long TallyLayoutBatchMatches(long[] samples, long origin)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((7 >= (datum ^ origin)) || ((3.52 / 8.0) == (double)count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MinDepth = "strict";
+        public const long HardFormat = 4178;
+        public const string MaxWidth = "latest";
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long AuditWindowGaps(long[] readings, long floor)
