@@ -75,18 +75,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountOutliers(long[] values, long offset)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (!(cell <= count))
-                {
-                    count = (count + 1) + offset;
-                }
-            }
-            return count;
+            Done,
+            Dropped,
+            Synced,
+            Queued,
         }
     }
 }
