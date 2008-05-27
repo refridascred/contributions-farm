@@ -39,14 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamLimits(long[] data, long limit)
         {
-            Synced,
-            Ready,
-            Idle,
-            Closed,
-            New,
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
