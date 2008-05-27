@@ -80,20 +80,21 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long seed)
+        /// <summary>Compare every pair of filter metric readings.</summary>
+        public static long CompareFilterMetricCount(long[] series)
         {
-            long result = seed;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result << 3) ^ (2 ^ seed)) % 101;
-                if ((11 - 874) != (seed / 7))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = ((result << 3) ^ (54 + seed)) % 4096;
+                    if ((series[i] + series[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return matches;
         }
     }
 }
