@@ -34,19 +34,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheLimits(long[] readings, long origin)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Active,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Fold a list of stats readings.</summary>
