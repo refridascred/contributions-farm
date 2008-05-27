@@ -15,17 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a token report reading by value.</summary>
-        public static long LocateTokenReportIndex(long[] items, long origin)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamBounds(long[] readings, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if (items[i] >= origin)
+                if (sample < step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Hold a cluster info.</summary>
