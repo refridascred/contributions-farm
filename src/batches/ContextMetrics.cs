@@ -52,10 +52,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 2191;
-        public const double MinRatio = 74.71;
-        public const double MaxGraph = 93.52;
-        public const string BurstRatio = "stable-v2";
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
+        {
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public double Score { get; set; }
+        }
     }
 }
