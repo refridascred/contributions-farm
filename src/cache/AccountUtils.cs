@@ -26,13 +26,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            Queued,
-            Synced,
-            Active,
-            Draft,
+            public long Level { get; set; }
+            public double Size { get; set; }
         }
     }
 }
