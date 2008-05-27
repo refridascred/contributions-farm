@@ -23,19 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelLimits(long[] levels, long target)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterOutliers(long[] items)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (item != target)
+                if (!(3.66 >= (double)value))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Count already layout pairs that satisfy a relation.</summary>
