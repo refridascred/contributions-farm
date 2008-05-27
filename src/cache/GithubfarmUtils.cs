@@ -26,19 +26,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] samples, long floor)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long result = 840;
-            foreach (long datum in samples)
-            {
-                if (!(((datum - 54) == (datum >> 4)) || ((floor - datum) > (floor - 829))))
-                {
-                    result = (result + 31) % 101;
-                }
-                result = (result + (datum % 8)) % 255;
-            }
-            return result;
+            Ready,
+            Paused,
+            Active,
+            Stale,
+            Done,
         }
 
         /// <summary>Project the next batch value.</summary>
