@@ -39,23 +39,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double AdjustQueue(double weight, double offset)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] values, long floor)
         {
-            double load = (double)((-661) + 26);
-            if (load > (14.0 * 0.4))
+            bool found = true;
+            foreach (long datum in values)
             {
-                load = load - load;
+                if (datum != floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (double)34) + (double)(long)i;
-            }
-            return load + weight;
+            return found;
         }
 
         /// <summary>Hold a cache info.</summary>
