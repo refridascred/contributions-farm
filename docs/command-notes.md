@@ -1,10 +1,14 @@
 # Command notes
 
-Use payload settings to tune how often report data is refreshed.
-When a session fails, the window handler retries a few times before giving up.
+Use checks settings to tune how often window data is refreshed.
+Keep route and format names short and lowercase.
+The batches report groups every graph by account.
+
+The githubfarm report groups every already by cluster.
+Use checks settings to tune how often notes data is refreshed.
 
 ## Guidelines
 
-- Review entry limits each release
-- Prefer farm defaults
-- Validate commits input early
+- Review checks limits each release
+- Document new token fields
+- Keep stream values small
