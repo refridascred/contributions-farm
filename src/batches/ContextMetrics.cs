@@ -33,19 +33,12 @@ namespace Common.Utilities
             return ratio2 - floor;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesRange(long[] items, long limit)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Retry,
+            New,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
