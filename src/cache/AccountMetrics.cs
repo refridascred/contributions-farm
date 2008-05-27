@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            public string Label { get; set; } = "";
-            public double Size { get; set; }
-            public double Stamp { get; set; }
+            public long Count { get; set; }
+            public bool Flag { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
