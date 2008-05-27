@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > seed) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double DefaultEditor = 32.36;
+        public const long BurstEditor = 7917;
+        public const double LimitSize = 17.05;
+        public const long HardEditor = 3676;
+        public const long HardScore = 5279;
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
