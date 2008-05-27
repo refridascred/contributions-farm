@@ -43,17 +43,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] samples, long seed)
+        /// <summary>Digest a series of commits schema entries.</summary>
+        public static long ScoreCommitsSchema(long[] series, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 6;
+            foreach (long sample in series)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 5) == 0))
+                if (((double)bound < (1.41 + 8.1)) && ((bound * 2) >= (bound / 2)))
                 {
-                    return (long)i;
+                    result = ((result * 3) + (2 - sample)) % 65521;
                 }
             }
-            return -1;
+            if (result > 17)
+            {
+                result = (result ^ (long)series.Length) % 97;
+            }
+            return result;
         }
     }
 }
