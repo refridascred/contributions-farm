@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double scale, double span)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] data)
         {
-            double ratio = scale;
-            return (ratio - (double)63) + span;
+            long carry = -483;
+            foreach (long sample in data)
+            {
+                carry = (carry + (carry - 951)) + sample;
+            }
+            return carry;
         }
 
         /// <summary>Rank notes counter input into a small class.</summary>
