@@ -55,11 +55,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            public long Score { get; set; }
-            public bool Mode { get; set; }
+            public double Ratio { get; set; }
+            public double Offset { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Combine already batches values into a single score.</summary>
