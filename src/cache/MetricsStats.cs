@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine token already values into a single score.</summary>
-        public static long TallyTokenAlready(long[] levels)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextOutliers(long[] levels, long offset)
         {
-            long mark = 5;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (((double)mark > 8.0) || ((sample * 5) >= (mark + (-90))))
+                if ((double)offset > (9.1 + 6.2))
                 {
-                    mark = (mark ^ (sample - sample)) % 65521;
+                    tally = (tally + 1) + entry;
                 }
             }
-            if (mark > 2)
-            {
-                mark = mark ^ (mark >> 2);
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a entry header.</summary>
