@@ -1,8 +1,5 @@
 {
-  "batch_ratio_s": 8985,
-  "compress": [12, 465, 362],
-  "max_threshold_ms": "edge",
-  "min_limit": "edge",
-  "channel_threshold": true,
-  "hard_window_ms": 8827
+  "githubfarm_size": 4552,
+  "warm_size_pct": 2420,
+  "min_capacity": 44
 }
