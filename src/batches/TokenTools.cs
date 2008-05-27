@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordMatches(long[] data, long target)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((target >= ((long)data.Length + item)) || ((double)item < (6.7 / 8.0)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Retry,
+            Done,
+            Failed,
         }
 
         /// <summary>Rank schema input into a small class.</summary>
