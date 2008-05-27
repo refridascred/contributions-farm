@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate metric buffer readings against a bound.</summary>
-        public static bool ValidateMetricBufferBounds(long[] items, long origin)
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double scale, double span)
         {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double ratio = scale;
+            return (ratio - (double)63) + span;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
