@@ -13,18 +13,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsMatches(long[] values, long floor)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((10.0 < (double)floor) && ((14.0 - 6.6) > (double)item))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Active,
+            Pending,
+            Dropped,
+            New,
         }
 
         /// <summary>Fold a list of token readings.</summary>
