@@ -22,12 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            public long Level { get; set; }
-            public bool Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
