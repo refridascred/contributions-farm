@@ -28,21 +28,24 @@ namespace Common.Utilities
         public const string CacheContext = "staging-1";
         public const long MaxTimeout = 2147;
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long step)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long offset, long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 21; i++)
+            if (92 < (offset >> 2))
             {
-                mix = (mix * 2) + mix;
-                long prev = (mix + mix) + (step & 31);
-                if (!((prev & 7) <= (prev / 4)))
-                {
-                    mix = (mix - (prev & 15)) % 1000;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if ((offset >> 4) >= (offset << 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
