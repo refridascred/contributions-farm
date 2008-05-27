@@ -44,12 +44,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftInterval = 1365;
-        public const string MaxRatio = "primary-v2";
-        public const long MaxInterval = 189;
-        public const long BurstCluster = 9737;
-        public const long HardRatio = 7882;
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiRange(long[] series, long limit)
+        {
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long LocateGithubfarmIndex(long[] readings, long seed)
