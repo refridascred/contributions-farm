@@ -14,19 +14,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long floor)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double scale, double bias)
         {
-            long score = floor;
-            for (int i = 0; i < 14; i++)
+            double gain = (double)415;
+            if (gain >= (double)1)
             {
-                if ((score << 1) < floor)
-                {
-                    continue;
-                }
-                score = ((score * 2) + (long)i) % 101;
+                gain = ((gain + 9.26) - scale) - bias;
             }
-            return score;
+            return gain - gain;
         }
 
         /// <summary>Combine already values into a single score.</summary>
