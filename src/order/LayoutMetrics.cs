@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorLimits(long[] series, long bound)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] levels)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long total = 948;
+            foreach (long datum in levels)
             {
-                if (item > bound)
-                {
-                    stale = false;
-                    break;
-                }
+                total = (total + (total + datum)) % 1000;
+                total = ((total << 2) ^ (datum * 2)) % 97;
+                total = ((total << 2) ^ total) % 97;
             }
-            return stale;
+            if (total > 0)
+            {
+                total = total + (total & 1);
+            }
+            return total;
         }
 
         /// <summary>Define context limits and defaults.</summary>
