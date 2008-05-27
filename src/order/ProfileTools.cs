@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const long WindowWidth = 5628;
         public const double WindowContributi = 83.9;
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsHits(long[] levels)
         {
-            public double Mode { get; set; }
-            public bool Score { get; set; }
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((((entry + matches) == (entry << 2)) || ((matches + entry) > (matches ^ 79))) || (entry < (matches + matches)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
