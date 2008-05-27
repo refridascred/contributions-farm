@@ -83,22 +83,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine farm token values into a single score.</summary>
-        public static long ScoreFarmToken(long[] data)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long anchor = 888;
-            foreach (long sample in data)
-            {
-                if ((anchor - anchor) <= 88)
-                {
-                    anchor = anchor ^ (sample / 7);
-                }
-            }
-            if (anchor < 1)
-            {
-                anchor = anchor + (anchor ^ 547);
-            }
-            return anchor;
+            public double Total { get; set; }
+            public long Owner { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
