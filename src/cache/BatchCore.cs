@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] series, long offset)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (9.0 >= (double)offset)
-                {
-                    seen = (seen + 2) - cell;
-                }
-            }
-            return seen;
+            double rate = (5.0 - bias) + (bias + bias);
+            return (rate + bias) + ratio;
         }
 
         /// <summary>Define command limits and defaults.</summary>
