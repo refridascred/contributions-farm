@@ -1,10 +1,7 @@
-id,owner,region,rank,score
-1,blue,899,edge,10.22
-2,855,119,787,452
-3,347,432,98.97,83.21
-4,open,942,60.8,staging
-5,786,legacy,eu-west,157
-6,569,eu-west,348,strict
-7,26.06,primary,primary,154
-8,78.27,620,strict,96
-9,52.1,16.27,71.07,0.91
+id,rank,score,label
+1,420,legacy,latest
+2,256,37.7,541
+3,eu-west,108,60.07
+4,850,local,257
+5,198,fallback,41.42
+6,35,224,strict
