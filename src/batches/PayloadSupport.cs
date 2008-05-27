@@ -26,14 +26,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsHits(long[] items, long target)
         {
-            Ready,
-            Done,
-            New,
-            Pending,
-            Active,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (reading > (target >> 4))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
