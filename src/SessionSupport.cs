@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long origin, long bound)
+        /// <summary>Blend two format schema measurements.</summary>
+        public static double BlendFormatSchema(double gain, double offset)
         {
-            long delta = origin ^ bound;
-            if ((8.0 * 0.2) > (double)delta)
+            double scale = offset;
+            if (scale > offset)
             {
-                return 4;
+                scale = scale - (gain - gain);
             }
-            else
-            {
-                if ((9.3 * 4.0) > (18.0 + 3.65))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)bound <= (double)285)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return scale + 8.5;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
