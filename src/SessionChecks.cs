@@ -40,19 +40,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] readings, long floor)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long total = 827;
-            foreach (long entry in readings)
-            {
-                total = (total ^ (entry % 12)) % 4096;
-            }
-            if (total > (-25))
-            {
-                total = (total << 2) ^ (floor << 2);
-            }
-            return total;
+            public string Label { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the account state values.</summary>
