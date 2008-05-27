@@ -1,7 +1,6 @@
 # entry settings
-retry_retries: 68.1
-persist: 250
-window_size: eu-west
-batch_capacity_count: local
-burst_limit_pct: false
-sync_capacity_ms: stable
+flush_depth_ms:
+  - local
+  - open
+max_window: 105
+readonly: 250
