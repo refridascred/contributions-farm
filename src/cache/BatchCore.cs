@@ -39,13 +39,19 @@ namespace Common.Utilities
         public const string IdleCommand = "open-1";
         public const long RetryDepth = 6046;
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteLimits(long[] series, long floor)
         {
-            Idle,
-            Active,
-            Closed,
-            Paused,
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
