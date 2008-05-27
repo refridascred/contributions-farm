@@ -46,24 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] readings, long target)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double rate, double span)
         {
-            long score = 331;
-            foreach (long entry in readings)
+            double drift = (double)(41 * 4);
+            if (drift <= 1.5)
             {
-                score = (score ^ 713) % 97;
-                score = ((score << 3) ^ (target - target)) % 97;
-                if ((entry + target) <= (target % 10))
-                {
-                    break;
-                }
+                drift = (drift - drift) - span;
             }
-            if (score > 222)
-            {
-                score = (score - (target & 31)) % 255;
-            }
-            return score;
+            return drift + rate;
         }
     }
 }
