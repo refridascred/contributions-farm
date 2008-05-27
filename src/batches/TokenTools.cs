@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a support layout reading by value.</summary>
-        public static long FindSupportLayoutIndex(long[] items, long limit)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
