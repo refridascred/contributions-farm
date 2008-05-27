@@ -10,13 +10,17 @@ namespace Common.Utilities
         public const long DefaultBudget = 1971;
         public const long LimitWindow = 3412;
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] samples, long target)
         {
-            public long Label { get; set; }
-            public bool Flag { get; set; }
-            public bool Level { get; set; }
-            public bool Count { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
