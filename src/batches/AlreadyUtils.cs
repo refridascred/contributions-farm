@@ -19,19 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileRange(long[] data, long offset)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] series)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (value >= offset)
+                if ((seen >> 4) < (seen & 3))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 3) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Describe the metrics state values.</summary>
