@@ -52,24 +52,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long offset, long offset2)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            if ((offset - offset2) >= (0 + offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset2 & 127) == (offset + offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Ready,
+            Closed,
+            Pending,
+            Draft,
         }
     }
 }
