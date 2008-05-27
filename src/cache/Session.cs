@@ -43,39 +43,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long floor, long step)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long span = floor + step;
-            if (((double)span < (double)step) && ((double)step == (7.0 * 2.04)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (span < (step + floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((span <= (span >> 4)) && ((double)floor > (double)480))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)step <= (double)9)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Failed,
+            Ready,
+            Queued,
         }
     }
 }
