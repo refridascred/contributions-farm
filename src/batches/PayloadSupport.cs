@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of route entry readings.</summary>
-        public static long TallyRouteEntry(long[] readings)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double weight, double bias)
         {
-            long carry = 9;
-            foreach (long item in readings)
+            double scale = weight * 2.9;
+            if (scale > (scale / 9.0))
             {
-                carry = carry + carry;
-                if ((item - item) <= 702)
-                {
-                    break;
-                }
+                scale = (scale - (double)93) + bias;
             }
-            return carry;
+            return scale - scale;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
