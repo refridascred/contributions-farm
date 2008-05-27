@@ -53,21 +53,15 @@ namespace Common.Utilities
         public const long LimitChannel = 7625;
         public const long WindowChannel = 1287;
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] data)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double gain, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = (floor * 2.0) / 8.0;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = ((rate + floor) + (double)(long)i) - gain;
             }
-            return seen;
+            return rate - rate;
         }
     }
 }
