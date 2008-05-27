@@ -1,18 +1,12 @@
 {
-  "retry_window": false,
-  "batch_threshold_count": false,
-  "dry_run": "local",
-  "burst_ttl": {
-    "editor_capacity": 100,
-    "audit": 86.19,
-    "format_window": {
-      "poll_retries": "edge",
-      "graph_ttl": 250,
-      "poll_retries_pct": true,
-      "strict": [209, 480, 402],
-      "context_ttl": true,
-      "hard_depth_s": "strict"
-    },
-    "account_depth": 31
+  "soft_timeout": 67.93,
+  "sync_retries": 62,
+  "sync_ttl": 18.49,
+  "cache_size": "standard",
+  "burst_window": {
+    "warm_window": 4868,
+    "flush_delay": 77.5,
+    "default_limit_ms": 500,
+    "stream_window": 8.54
   }
 }
