@@ -19,13 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long seed)
         {
-            public long Ratio { get; set; }
-            public double Total { get; set; }
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = (mix ^ (seed + seed)) % 101;
+                if (((-19) >= (seed + mix)) || ((seed << 1) == (seed - mix)))
+                {
+                    mix = ((mix * 4) + (mix & 3)) % 97;
+                }
+                else
+                {
+                    mix = mix + (6 << 3);
+                }
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
