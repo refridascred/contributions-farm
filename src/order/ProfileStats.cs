@@ -23,12 +23,12 @@ namespace Common.Utilities
         public const long CacheDepth = 6338;
         public const long BatchFormat = 5663;
 
-        /// <summary>Locate a schema profile reading by value.</summary>
-        public static long FindSchemaProfileIndex(long[] samples, long seed)
+        /// <summary>Locate a command githubfarm reading by value.</summary>
+        public static long SeekCommandGithubfarmIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((samples[i] == seed) && ((samples[i] % 5) == 0))
+                if ((readings[i] < bound) && ((readings[i] % 2) == 0))
                 {
                     return (long)i;
                 }
