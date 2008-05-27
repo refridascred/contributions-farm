@@ -1,10 +1,24 @@
 # support settings
-notes_limit:
-  flush_depth: false
-  cache_size_s: 60
-  min_interval:
-    - 315
-    - 317
-soft_retries_s: 95
-support_ratio: 6787
-idle_capacity_pct: staging
+flush_timeout_ms: 53.08
+flush_depth: 500
+poll_ratio:
+  payload_delay:
+    burst_interval_pct: 60
+    batch_depth:
+      - stable
+      - standard
+    graph_size: false
+    readonly: staging
+  retry_interval_s: eu-west
+  sync_ratio_count:
+    - 314
+    - 393
+    - 417
+  burst_interval:
+    - fallback
+    - local
+    - legacy
+    - local
+dry_run: 500
+compress: cached
+report_ratio: stable
