@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double AdjustStats(double rate, double span)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] samples, long origin)
         {
-            double ratio = span;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = (ratio + (double)(-5)) + (double)(long)i;
+                if (samples[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return ratio - (8.08 - rate);
+            return -1;
         }
 
         /// <summary>Rank filter contributi input into a small class.</summary>
