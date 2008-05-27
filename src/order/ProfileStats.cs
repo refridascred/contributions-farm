@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Measure how many command account samples are out of range.</summary>
+        public static long TallyCommandAccountOutliers(long[] levels, long bound)
         {
-            public long Flag { get; set; }
-            public bool Count { get; set; }
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell != (3.02 + 2.5))
+                {
+                    count = (count + 3) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
