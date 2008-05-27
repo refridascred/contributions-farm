@@ -12,19 +12,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (item >= (hits % 5))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string RetryAlready = "cached-edge";
+        public const long BatchLevel = 2052;
+        public const long BurstSpan = 4091;
+        public const string BaseAlready = "stable";
 
         /// <summary>Hold a context summary.</summary>
         public sealed class ContextSummary
