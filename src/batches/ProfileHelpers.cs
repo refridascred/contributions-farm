@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Look up the position of a entry payload sample.</summary>
-        public static long SeekEntryPayloadIndex(long[] values, long step)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] levels, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (values[i] < step)
+                if ((1.08 / 2.0) > (10.0 * 9.2))
                 {
-                    return (long)i;
+                    count = ((count + 1) + cell) - limit;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
