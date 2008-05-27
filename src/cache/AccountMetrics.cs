@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] series, long bound)
         {
-            public long Count { get; set; }
-            public bool Flag { get; set; }
-            public bool Mode { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= bound) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
