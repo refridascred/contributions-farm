@@ -19,14 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricMatches(long[] values, long offset)
         {
-            Retry,
-            Done,
-            Idle,
-            Pending,
-            Locked,
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((1 - (-4)) <= offset)
+                {
+                    tally = (tally + 3) - datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a filter info.</summary>
