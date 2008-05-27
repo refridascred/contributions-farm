@@ -14,23 +14,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long seed)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] readings, long target)
         {
-            long total = seed;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (readings[i] < target)
                 {
-                    total = (total - (seed ^ seed)) ^ (long)i2;
+                    return (long)i;
                 }
-                if (((seed & 3) <= ((long)i - total)) && ((seed % 24) > (total + total)))
-                {
-                    total = (total ^ total) % 65521;
-                }
-                total = ((total * 2) + (long)i) % 101;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
