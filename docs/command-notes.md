@@ -1,14 +1,14 @@
 # Command notes
 
-A window that stays idle for too long is moved to the stats list.
-When a profile fails, the checks handler retries a few times before giving up.
+The metric report groups every schema by schema.
+Each channel is validated before it reaches the support queue.
 
-Run the checks check before changing any payload limits.
-The account module keeps channel values in sync with the cluster cache.
-The order report groups every context by editor.
+Each metrics is validated before it reaches the commits queue.
+Use order settings to tune how often batch data is refreshed.
 
 ## Guidelines
 
-- Document new entry fields
-- Prefer layout defaults
-- Review contributi limits each release
+- Keep already values small
+- Review tools limits each release
+- Document new window fields
+- Validate report input early
