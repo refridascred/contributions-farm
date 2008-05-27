@@ -46,23 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next channel entry value.</summary>
-        public static double BlendChannelEntry(double bias, double floor)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryBounds(long[] samples, long seed)
         {
-            double gain = floor;
-            if (gain < (double)65)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                gain = (gain - (gain - floor)) - bias;
+                if (item < seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - (floor + floor);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - 5.4) - (double)(long)i;
-            }
-            return gain + (0.9 / 3.0);
+            return ok;
         }
 
         /// <summary>Hold a command record.</summary>
