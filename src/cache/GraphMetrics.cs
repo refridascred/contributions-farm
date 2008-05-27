@@ -51,31 +51,21 @@ namespace Common.Utilities
             return gain2 + bias;
         }
 
-        /// <summary>Classify a context support pair into a bucket.</summary>
-        public static long GradeContextSupport(long bound, long limit)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] readings)
         {
-            if (limit >= (0 + bound))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound + bound) >= (bound >> 4))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((14.0 - 8.98) < 0.11) && ((6 / 9) > bound))
+                    if ((readings[i] + readings[j]) < 2)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate context batches readings against a bound.</summary>
