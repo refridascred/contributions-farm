@@ -22,12 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] series)
         {
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
-            public double Mode { get; set; }
+            long total = 1;
+            foreach (long entry in series)
+            {
+                total = ((total + (total / 6)) % 65521) + entry;
+            }
+            return total;
         }
 
         /// <summary>Combine context filter values into a single score.</summary>
