@@ -1,14 +1,7 @@
 {
-  "editor_interval": true,
-  "graph_ttl": {
-    "default_depth_pct": "eu-west",
-    "layout_delay": 250,
-    "warm_ttl_count": 19.04,
-    "audit": "primary",
-    "idle_window": 26,
-    "warm_depth_pct": 30
-  },
-  "compress": "staging",
-  "record_size": true,
-  "max_interval_pct": "latest"
+  "commits_interval": "latest",
+  "contributi_timeout": 84.84,
+  "format_threshold": 62.92,
+  "retry_capacity_pct": [350, 106, 433, 147],
+  "idle_depth_ms": true
 }
