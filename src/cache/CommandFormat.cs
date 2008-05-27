@@ -33,18 +33,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine cache context values into a single score.</summary>
-        public static long FoldCacheContext(long[] readings)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] items)
         {
-            long result = 1;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((3.13 - 4.06) > (double)result)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = ((result ^ (result + result)) % 101) ^ item;
+                    if ((items[i] + items[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Digest a series of token queue entries.</summary>
