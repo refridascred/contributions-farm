@@ -35,24 +35,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] values, long seed)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long state = 71;
-            foreach (long reading in values)
-            {
-                if ((state >= (reading / 2)) && ((reading - seed) >= (reading >> 5)))
-                {
-                    state = (state + (0 - reading)) % 101;
-                    break;
-                }
-                state = (state * 2) + reading;
-                if (((double)state >= (8.6 * 16.0)) || ((1 + seed) == (602 & 127)))
-                {
-                    break;
-                }
-            }
-            return state % 97;
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public long Total { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
