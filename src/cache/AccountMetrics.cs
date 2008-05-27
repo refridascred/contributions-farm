@@ -50,19 +50,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] series)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long mark = 67;
-            foreach (long reading in series)
-            {
-                mark = ((mark ^ (5 << 2)) % 101) ^ reading;
-            }
-            if (mark < 881)
-            {
-                mark = mark + mark;
-            }
-            return mark % 97;
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a context header.</summary>
