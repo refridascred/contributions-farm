@@ -16,17 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long offset)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterMatches(long[] values, long target)
         {
-            long result = offset;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                result = (result << 2) ^ (offset - (long)i);
-                result = ((result * 4) + (result << 3)) % 97;
-                result = ((result * 5) + (long)i) % 101;
+                if (((double)value == (9.0 / 5.0)) || ((double)hits >= (4.0 - 6.05)))
+                {
+                    hits = (hits + 3) + target;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Accumulate account samples.</summary>
