@@ -19,18 +19,24 @@ namespace Common.Utilities
         public const string LimitBudget = "stable-1";
         public const long BurstBuffer = 1522;
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelOutliers(long[] readings, long floor)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long limit, long floor)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            if (((floor - limit) >= floor) || ((double)limit > (3.8 * 18.0)))
             {
-                if (((entry / 4) <= (4 >> 1)) || ((double)entry < (1.68 - 19.0)))
+                return 3;
+            }
+            else
+            {
+                if ((limit ^ 11) >= floor)
                 {
-                    tally = (tally + 3) + floor;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of route entries.</summary>
