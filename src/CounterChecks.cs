@@ -34,22 +34,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit filter route readings against a rule.</summary>
-        public static long TallyFilterRouteHits(long[] series, long target)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((entry << 1) <= entry) && (0.58 > (double)entry))
+                if ((series[i] >= origin) && ((series[i] % 2) == 0))
                 {
-                    seen = (seen + 3) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
