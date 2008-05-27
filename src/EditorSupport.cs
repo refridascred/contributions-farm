@@ -97,12 +97,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            public double Offset { get; set; }
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            Stale,
+            New,
+            Dropped,
+            Pending,
+            Done,
         }
     }
 }
