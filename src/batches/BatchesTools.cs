@@ -20,12 +20,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            Ready,
-            Synced,
-            Retry,
+            Stale,
+            Paused,
+            Closed,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
