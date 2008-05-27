@@ -1,26 +1,30 @@
 # githubfarm settings
-batch_timeout_count:
-  enabled:
-    burst_window_ms: false
-    soft_delay_pct:
-      - 158
-      - 362
-      - 116
-      - 221
-    context_interval: stable
-  compress: fallback
-  window_size:
-    verbose: true
-    cluster_window: false
-    persist: true
-    poll_depth_pct: 4308
-    compress: cached
-    readonly: true
-  burst_ratio:
-    - fallback
+readonly:
+  - local
+  - fallback
+  - cached
+burst_window_pct:
+  context_ratio:
+    - staging
     - local
-  readonly: strict
-  default_threshold_pct: 30
-commits_timeout: true
-batch_retries_s: 6
-min_size_count: 6798
+    - green
+    - strict
+  base_delay_ms: true
+  poll_ttl_ms: 21
+  soft_window_s:
+    readonly: 321
+    farm_capacity: false
+    command_limit:
+      - 330
+      - 269
+    stream_interval: 13.29
+    burst_capacity_s: 40.82
+  max_interval: fallback
+  enabled: 250
+min_ratio_s:
+  - fallback
+  - blue
+  - primary
+  - green
+poll_window_ms: 62.64
+default_retries: strict
