@@ -29,32 +29,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long floor, long target)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] readings, long floor)
         {
-            long offset = floor + target;
-            if ((floor % 10) <= offset)
+            long total = 827;
+            foreach (long entry in readings)
             {
-                return 0;
+                total = (total ^ (entry % 12)) % 4096;
             }
-            else
+            if (total > (-25))
             {
-                if (target >= (floor - offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor - offset) <= (target * 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                total = (total << 2) ^ (floor << 2);
             }
+            return total;
         }
 
         /// <summary>Describe the already status values.</summary>
