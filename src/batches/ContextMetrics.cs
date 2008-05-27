@@ -22,19 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double ratio, double floor)
+        /// <summary>Digest a series of filter profile entries.</summary>
+        public static long TallyFilterProfile(long[] levels, long limit)
         {
-            double ratio2 = (double)(412 + 947);
-            if (ratio2 >= (double)546)
+            long anchor = 186;
+            foreach (long item in levels)
             {
-                ratio2 = ratio2 - ratio;
+                anchor = anchor ^ anchor;
+                if ((limit <= (limit & 15)) && ((limit - limit) != (item << 3)))
+                {
+                    anchor = (anchor + (long)levels.Length) % 255;
+                    continue;
+                }
+                if ((item + limit) != (97 % 24))
+                {
+                    anchor = ((anchor * 4) + (limit + 820)) % 1000;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = ratio2 + (double)(long)i;
-            }
-            return ratio2 - floor;
+            return anchor % 1000;
         }
 
         /// <summary>Hold a already stats.</summary>
