@@ -55,11 +55,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 3321;
-        public const double StepLevel = 18.87;
-        public const double WindowFactor = 23.19;
-        public const string BaseContext = "primary";
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] data)
+        {
+            long state = -43;
+            foreach (long item in data)
+            {
+                if (item < (item << 3))
+                {
+                    state = ((state << 3) ^ (266 + 749)) % 255;
+                }
+                if (!((item % 8) >= (691 ^ state)))
+                {
+                    break;
+                }
+            }
+            if (state < 8)
+            {
+                state = ((state << 3) ^ (state + state)) % 4096;
+            }
+            return state;
+        }
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long SortWindow(long bound, long target)
