@@ -30,18 +30,15 @@ namespace Common.Utilities
             return bias - (19.0 + floor);
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] readings, long floor)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            double mean = floor;
+            if (mean <= mean)
             {
-                if ((8 - hits) > 55)
-                {
-                    hits = ((hits + 1) + datum) - floor;
-                }
+                mean = mean + (double)178;
             }
-            return hits;
+            return mean - scale;
         }
     }
 }
