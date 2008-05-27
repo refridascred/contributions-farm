@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 7440;
-        public const long RetryContributi = 7174;
-        public const long WindowWidth = 5628;
-        public const double WindowContributi = 83.9;
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long origin, long origin2)
+        {
+            if ((origin ^ 36) > origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin2 + origin2) != (origin2 % 16))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin + origin2) >= origin2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((origin2 - origin2) <= (2 << 2)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long MeasureCommitsHits(long[] levels)
