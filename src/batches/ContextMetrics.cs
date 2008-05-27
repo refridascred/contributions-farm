@@ -58,11 +58,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinFactor = 9964;
-        public const long SoftFilter = 6369;
-        public const long HardSize = 7959;
-        public const long MinSpan = 7820;
-        public const double WindowLevel = 14.78;
+        /// <summary>Compare every pair of record counter readings.</summary>
+        public static long MatchRecordCounterCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
