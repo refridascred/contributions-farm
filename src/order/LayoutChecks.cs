@@ -84,19 +84,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double AdjustMetrics(double weight, double offset)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            double gain = (double)438;
-            if (gain <= (double)9)
-            {
-                gain = (gain - weight) - offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - weight) - (double)(long)i;
-            }
-            return gain + (weight + weight);
+            New,
+            Queued,
+            Draft,
         }
     }
 }
