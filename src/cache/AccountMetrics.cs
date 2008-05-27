@@ -53,17 +53,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long offset)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long mark = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = ((mark * 3) + (offset * 5)) % 97;
-                mark = (mark - ((long)i >> 2)) % 65521;
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Project the next batches value.</summary>
