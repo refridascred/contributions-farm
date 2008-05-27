@@ -40,12 +40,9 @@ namespace Common.Utilities
         public const double CacheRecord = 86.38;
         public const long HardCount = 236;
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
-        {
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 5189;
+        public const long WindowBudget = 2652;
+        public const long BaseLevel = 2268;
     }
 }
