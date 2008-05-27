@@ -26,11 +26,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double HardNotes = 76.28;
-        public const long LimitLevel = 4438;
-        public const long RetryWidth = 544;
-        public const long BurstNotes = 4791;
-        public const long BaseNotes = 208;
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
+        {
+            Ready,
+            Done,
+            New,
+            Pending,
+            Active,
+        }
     }
 }
