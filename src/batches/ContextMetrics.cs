@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstCount = 231;
-        public const double LimitTools = 43.55;
-        public const long BurstTools = 5045;
-        public const double MinTools = 75.28;
-        public const double SoftTools = 34.57;
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
+        {
+            Done,
+            Stale,
+            Draft,
+            Idle,
+        }
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long FindStreamIndex(long[] levels, long step)
