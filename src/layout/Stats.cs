@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers.</summary>
     public static class Stats
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
+            New,
+            Failed,
             Dropped,
-            Locked,
-            Ready,
-            Done,
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
