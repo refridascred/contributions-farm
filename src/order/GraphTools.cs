@@ -13,17 +13,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] series, long step)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < step) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Combine counter cluster values into a single score.</summary>
