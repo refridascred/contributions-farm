@@ -19,10 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MinDepth = "strict";
-        public const long HardFormat = 4178;
-        public const string MaxWidth = "latest";
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long seed, long origin)
+        {
+            if ((seed ^ origin) < seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((double)origin != (3.89 + 3.6)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long StepDepth = 4642;
