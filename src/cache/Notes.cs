@@ -26,18 +26,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] readings)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphHits(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((((item + (-133)) == (matches / 9)) || ((15 % 12) > (matches * 3))) && ((item - item) == ((long)readings.Length - item)))
+                if ((double)sample == (double)29)
                 {
-                    matches = matches + 2;
+                    hits = (hits + 2) - bound;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a checks header.</summary>
