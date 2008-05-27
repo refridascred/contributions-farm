@@ -77,25 +77,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long bound, long target)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] data, long bound)
         {
-            long delta = bound ^ target;
-            if ((delta - bound) > 748)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((target - 95) >= target) && (9.0 > (double)bound))
+                if (data[i] > bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the route mode values.</summary>
