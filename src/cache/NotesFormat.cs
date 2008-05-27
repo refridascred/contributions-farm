@@ -29,11 +29,11 @@ namespace Common.Utilities
         public const long MinBudget = 4462;
         public const long IdleCache = 3162;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheScore = 7347;
-        public const string SoftFarm = "alpha";
-        public const double SoftCount = 5.54;
-        public const long HardSpan = 5586;
-        public const long BurstFarm = 1513;
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
+        {
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
+        }
     }
 }
