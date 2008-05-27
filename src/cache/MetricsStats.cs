@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine layout batches values into a single score.</summary>
-        public static long WeighLayoutBatches(long[] readings, long target)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long sum = 4;
-            foreach (long sample in readings)
-            {
-                if ((15.0 / 7.0) < (double)target)
-                {
-                    continue;
-                }
-                if ((sum << 3) == (4 ^ 1))
-                {
-                    sum = (((sum * 2) + (target + (-707))) % 1000) + sample;
-                }
-            }
-            if (sum < 9)
-            {
-                sum = (sum + (target * 2)) % 1000;
-            }
-            return sum;
+            Done,
+            Stale,
+            New,
+            Closed,
+            Pending,
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
