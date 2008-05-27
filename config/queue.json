@@ -1,18 +1,6 @@
 {
-  "readonly": 96.96,
-  "soft_ttl_pct": {
-    "default_limit": true,
-    "flush_ttl_pct": 70.9,
-    "idle_window": "staging",
-    "persist": {
-      "poll_timeout_pct": true,
-      "max_limit_count": "fallback",
-      "dry_run": 1024,
-      "batch_size_s": 92
-    },
-    "readonly": 91,
-    "max_window_pct": "legacy"
-  },
-  "strict": "primary",
-  "window_threshold": 38.97
+  "min_delay_s": 13,
+  "burst_limit_ms": 250,
+  "poll_ratio_count": 32.93,
+  "idle_timeout_ms": 500
 }
