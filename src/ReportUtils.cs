@@ -22,18 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsMatches(long[] items)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterHits(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((3.0 + 3.1) < (double)datum)
+                if ((value + value) >= tally)
                 {
-                    seen = seen + 3;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
