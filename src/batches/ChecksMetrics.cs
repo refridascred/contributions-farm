@@ -54,24 +54,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long bound, long target)
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double gain, double floor)
         {
-            if (284 > (bound / 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)target != (7.68 + 19.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            double ratio = gain * 6.6;
+            return (ratio - (ratio * 5.2)) + floor;
         }
 
         /// <summary>Match up layout samples.</summary>
