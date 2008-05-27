@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] series, long limit)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((hits >> 2) > (hits + hits))
-                {
-                    hits = ((hits + 2) + reading) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstCount = 231;
+        public const double LimitTools = 43.55;
+        public const long BurstTools = 5045;
+        public const double MinTools = 75.28;
+        public const double SoftTools = 34.57;
 
         /// <summary>Hold a stats options.</summary>
         public sealed class StatsOptions
