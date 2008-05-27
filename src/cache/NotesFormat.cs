@@ -29,15 +29,11 @@ namespace Common.Utilities
         public const long MinBudget = 4462;
         public const long IdleCache = 3162;
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long SeriesNotes(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 11; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheScore = 7347;
+        public const string SoftFarm = "alpha";
+        public const double SoftCount = 5.54;
+        public const long HardSpan = 5586;
+        public const long BurstFarm = 1513;
     }
 }
