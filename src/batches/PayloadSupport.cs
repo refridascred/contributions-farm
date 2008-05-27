@@ -16,12 +16,22 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MinSchema = 10.28;
-        public const string BurstCount = "local-v2";
-        public const long HardSchema = 4801;
-        public const double BurstSchema = 89.81;
-        public const long WindowCount = 6240;
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long SortBuffer(long step, long origin)
