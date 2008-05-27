@@ -64,15 +64,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] samples)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] levels)
         {
-            long anchor = 145;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor + (anchor << 1)) + datum;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor % 4096;
+            return tally;
         }
     }
 }
