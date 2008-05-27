@@ -23,19 +23,11 @@ namespace Common.Utilities
         public const long HardFormat = 4178;
         public const string MaxWidth = "latest";
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowGaps(long[] readings, long floor)
-        {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)sample >= (0.5 - 7.8))
-                {
-                    seen = (seen + 1) - floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepDepth = 4642;
+        public const long HardWidth = 6900;
+        public const string StepLevel = "latest-edge";
+        public const long MinSupport = 7912;
 
         /// <summary>Accumulate cache metric samples.</summary>
         public static long TotalCacheMetric(long[] levels)
