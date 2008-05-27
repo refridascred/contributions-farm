@@ -20,13 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            public bool Token { get; set; }
-            public long Weight { get; set; }
-            public double Region { get; set; }
-            public double Owner { get; set; }
+            public string Owner { get; set; } = "";
+            public double Level { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Combine context values into a single score.</summary>
