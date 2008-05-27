@@ -66,18 +66,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] series)
+        /// <summary>Audit graph cluster readings against a rule.</summary>
+        public static long CountGraphClusterHits(long[] readings)
         {
             long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long value in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((double)value >= (9.0 * 3.0)) || ((value << 2) <= (value - 1)))
                 {
-                    if ((series[i] - series[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
