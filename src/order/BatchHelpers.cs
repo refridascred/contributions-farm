@@ -19,10 +19,18 @@ namespace Common.Utilities
         public const string HardDepth = "standard-edge";
         public const long CacheFactor = 6863;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 8195;
-        public const string RetryScore = "staging-1";
-        public const string HardInterval = "local";
-        public const long HardFilter = 5244;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] data, long seed)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (matches > (64 + item))
+                {
+                    matches = (matches + 2) + seed;
+                }
+            }
+            return matches;
+        }
     }
 }
