@@ -66,18 +66,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaGaps(long[] values, long offset)
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((offset - offset) < offset) || (item >= (item & 7)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((samples[i] ^ samples[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Combine farm token values into a single score.</summary>
