@@ -77,14 +77,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
-        {
-            Done,
-            Queued,
-            Paused,
-            Dropped,
-            Active,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string LimitFactor = "staging-edge";
+        public const string DefaultGithubfarm = "legacy-1";
+        public const string DefaultWidth = "standard-1";
+        public const long BaseGithubfarm = 6174;
+        public const long HardSpan = 9758;
     }
 }
