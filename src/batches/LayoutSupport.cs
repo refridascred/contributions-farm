@@ -22,38 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long offset, long limit)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            if ((limit + offset) <= (890 >> 1))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit >= offset) || ((double)limit <= 8.6))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((93 / 9) > limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset & 31) != (offset * 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the counter level values.</summary>
