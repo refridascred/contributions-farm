@@ -1,14 +1,5 @@
 {
-  "retry_capacity_pct": 81.9,
-  "burst_retries_ms": {
-    "hard_delay": 2281,
-    "idle_ratio": true,
-    "retry_retries_ms": [457, 225],
-    "compress": [36, 103, 465],
-    "retry_capacity": [322, 312, 445],
-    "flush_size_s": 9323
-  },
-  "cluster_size": 36,
-  "readonly": ["cached", "green"],
-  "default_window_s": "edge"
+  "enabled": 5263,
+  "record_interval": 82.82,
+  "filter_limit": false
 }
