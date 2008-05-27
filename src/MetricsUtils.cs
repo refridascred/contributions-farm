@@ -36,21 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] readings)
+        /// <summary>Measure how many payload entry samples are out of range.</summary>
+        public static long AuditPayloadEntryOutliers(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((2 >> 3) > tally)
                 {
-                    if ((readings[i] - readings[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a window stats.</summary>
