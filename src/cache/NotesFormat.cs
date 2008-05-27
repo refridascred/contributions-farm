@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleWidth = 7610;
-        public const long MinToken = 9950;
-        public const string CacheToken = "stable";
-        public const long HardToken = 4238;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleScore = 2106;
+        public const string StepFactor = "standard-v2";
+        public const long BaseFactor = 7258;
+        public const double CacheScore = 52.97;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long CountProfileHits(long[] levels)
