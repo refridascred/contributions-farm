@@ -26,18 +26,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsOutliers(long[] levels, long offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyMatches(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((entry + 77) > (long)levels.Length)
+                if ((51 - value) > (937 - value))
                 {
-                    seen = (seen + 3) - offset;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
