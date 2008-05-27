@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next report value.</summary>
-        public static double ScaleReport(double weight, double span)
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double gain, double span)
         {
-            double scale = 1.0;
-            if (scale <= span)
+            double gain2 = span;
+            if (gain2 <= span)
             {
-                scale = (scale - scale) + weight;
+                gain2 = gain2 - 4.0;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                scale = (scale - (0.18 + scale)) + (double)(long)i;
+                gain2 = gain2 + gain;
             }
-            return scale - (double)182;
+            for (int i = 0; i < 4; i++)
+            {
+                gain2 = (gain2 - (span * 8.82)) + (double)(long)i;
+            }
+            return gain2 - (span / 2.0);
         }
 
         /// <summary>Digest a series of support entries.</summary>
