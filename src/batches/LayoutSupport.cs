@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Compare every pair of metric channel readings.</summary>
-        public static long CompareMetricChannelCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 4887;
+        public const string MaxChecks = "open-edge";
+        public const long MaxRatio = 7827;
 
         /// <summary>Hold a report options.</summary>
         public sealed class ReportOptions
