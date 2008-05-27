@@ -50,18 +50,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderOutliers(long[] readings)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (((5.7 - 5.11) < (double)reading) || ((18.0 + 6.0) < (double)reading))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Queued,
+            Done,
+            Dropped,
+            Locked,
         }
     }
 }
