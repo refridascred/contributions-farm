@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmGaps(long[] values, long step)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (!((double)seen == (double)entry) || !((double)step > (double)seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a record sample.</summary>
