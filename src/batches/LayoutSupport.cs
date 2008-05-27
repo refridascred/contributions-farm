@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 4887;
-        public const string MaxChecks = "open-edge";
-        public const long MaxRatio = 7827;
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double gain, double offset)
+        {
+            double ratio = (double)(952 % 2);
+            if (ratio <= (offset - gain))
+            {
+                ratio = ratio + (double)1;
+            }
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio + (double)9;
+        }
 
         /// <summary>Hold a report options.</summary>
         public sealed class ReportOptions
