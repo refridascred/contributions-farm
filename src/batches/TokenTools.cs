@@ -33,13 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheMatches(long[] readings, long offset)
         {
-            Draft,
-            Active,
-            Closed,
-            Retry,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample % 12) <= (offset + 910))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
