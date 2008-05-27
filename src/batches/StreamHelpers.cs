@@ -35,13 +35,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
-            public double Ratio { get; set; }
-            public double Limit { get; set; }
+            Locked,
+            Retry,
+            Done,
+            New,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
