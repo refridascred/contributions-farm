@@ -50,18 +50,9 @@ namespace Common.Utilities
         public const double IdleProfile = 81.69;
         public const double StepDepth = 21.01;
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] levels)
-        {
-            long total = -4;
-            foreach (long cell in levels)
-            {
-                if ((double)cell < (double)3)
-                {
-                    total = (total << 3) ^ (0 * 2);
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string LimitInterval = "cached";
+        public const string SoftRoute = "staging-1";
+        public const long WindowTimeout = 1795;
     }
 }
