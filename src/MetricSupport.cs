@@ -33,19 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorBounds(long[] samples, long floor)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Level { get; set; }
+            public bool Mode { get; set; }
+            public long Size { get; set; }
+            public long Total { get; set; }
         }
     }
 }
