@@ -63,18 +63,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorGaps(long[] levels, long origin)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (!((origin * 3) < item))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
