@@ -57,12 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            Ready,
-            Closed,
-            Pending,
+            New,
+            Paused,
+            Retry,
         }
     }
 }
