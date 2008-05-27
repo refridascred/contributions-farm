@@ -23,17 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a profile batch reading by value.</summary>
-        public static long FindProfileBatchIndex(long[] levels, long step)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Roll a channel counter forward.</summary>
