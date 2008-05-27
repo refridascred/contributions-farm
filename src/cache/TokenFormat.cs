@@ -22,18 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long offset)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long total = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                total = (total << 2) ^ (total ^ offset);
-                total = (total - (total * 4)) % 97;
-                total = ((total * 4) + ((long)i + (long)i)) % 1000;
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            Failed,
+            Queued,
+            Done,
+            Draft,
+            Idle,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
