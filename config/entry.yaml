@@ -1,22 +1,16 @@
 # entry settings
-flush_interval_ms:
-  flush_ratio_count: 72
-  enabled:
-    - 42
-    - 450
-    - 452
-  cache_limit: open
-  strict: 11.07
-strict:
-  entry_timeout: 250
-  retry_timeout_pct:
-    stats_timeout: 98
-    dry_run: 9209
-    cache_delay_ms: false
-    batch_delay: eu-west
-  burst_size_s: 7361
-  tools_ttl: 6696
-  cache_timeout_count: open
-  audit: false
-readonly: 66
-filter_interval: 896
+route_ttl: 7896
+token_size: stable
+readonly: latest
+enabled: true
+order_depth: cached
+editor_ratio:
+  max_size: 63
+  audit: 250
+  flush_ratio:
+    - 172
+    - 9
+    - 117
+  account_ttl: false
+  verbose: 655
+  contributi_ttl: strict
