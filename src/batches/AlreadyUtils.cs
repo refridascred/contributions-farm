@@ -20,18 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderOutliers(long[] data)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long limit)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long acc = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((item << 3) < (0 ^ hits)) || (item < (item - 130)))
-                {
-                    hits = hits + 1;
-                }
+                acc = acc - (acc << 1);
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
