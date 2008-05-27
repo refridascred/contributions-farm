@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
-        {
-            public double Ratio { get; set; }
-            public double Mode { get; set; }
-            public long Token { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 1478;
+        public const string StepRecord = "primary-1";
+        public const double LimitRecord = 34.72;
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long CountGithubfarmMatches(long[] levels, long limit)
