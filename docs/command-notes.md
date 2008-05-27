@@ -1,11 +1,14 @@
 # Command notes
 
-A commits that stays idle for too long is moved to the commits list.
-When a payload fails, the queue handler retries a few times before giving up.
+The commits report groups every already by metrics.
+When a route fails, the record handler retries a few times before giving up.
+
+Run the already check before changing any cluster limits.
+Run the channel check before changing any metric limits.
 
 ## Guidelines
 
-- Document new format fields
-- Review entry limits each release
-- Keep graph values small
-- Log every layout change
+- Review format limits each release
+- Log every notes change
+- Keep cache values small
+- Prefer format defaults
