@@ -71,11 +71,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxAlready = 2087;
-        public const long MinAlready = 509;
-        public const string MaxDepth = "local-1";
-        public const long HardInterval = 4690;
-        public const long BatchAlready = 3403;
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
