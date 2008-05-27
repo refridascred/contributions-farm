@@ -16,19 +16,12 @@ namespace Common.Utilities
             return ratio - (double)31;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] values, long floor)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Label { get; set; }
+            public double Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Classify a context batches pair into a bucket.</summary>
