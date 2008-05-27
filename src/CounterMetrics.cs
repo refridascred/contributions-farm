@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate channel record readings against a bound.</summary>
-        public static bool CheckChannelRecordBounds(long[] values, long limit)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (entry != limit)
+                if ((limit + limit) >= (limit & 3))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 2) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
