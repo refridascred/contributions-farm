@@ -31,16 +31,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the token payload series from a seed.</summary>
-        public static long StepTokenPayload(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 6; i++)
-            {
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 2361;
+        public const long WindowSize = 7726;
+        public const string StepContext = "staging-edge";
+        public const long BaseContext = 8250;
 
         /// <summary>Hold a batches stats.</summary>
         public sealed class BatchesStats
