@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] data)
+        /// <summary>Measure how many already entry samples are out of range.</summary>
+        public static long TallyAlreadyEntryGaps(long[] values, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((seen + seen) > (cell ^ 733))
                 {
-                    if ((data[i] + data[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 3) + step;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
