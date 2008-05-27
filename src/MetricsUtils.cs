@@ -50,39 +50,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long target, long bound)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long limit)
         {
-            long diff = target + bound;
-            if ((diff ^ 1) > (target ^ 6))
+            long total = limit;
+            for (int i = 0; i < 24; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((9 * 2) == (diff % 64))
+                if ((limit + limit) < (2 / 8))
                 {
-                    return 7;
+                    total = (total + (97 << 2)) % 101;
                 }
                 else
                 {
-                    if ((double)diff < (9.0 / 8.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound & 1) >= 620)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    total = (total << 2) ^ 18;
                 }
+                total = ((total * 4) + (long)i) % 65521;
             }
+            return total;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
