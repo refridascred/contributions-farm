@@ -21,23 +21,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double BlendFormat(double bias, double floor)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            double ratio = (double)(-56) + bias;
-            if (ratio <= bias)
-            {
-                ratio = ratio - 3.0;
-            }
-            else
-            {
-                ratio = ratio + (floor + 7.9);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - (floor / 4.0)) + (double)(long)i;
-            }
-            return ratio + (floor + bias);
+            Ready,
+            Synced,
+            Retry,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
