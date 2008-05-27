@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] values)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] levels, long bound)
         {
-            long carry = 1;
-            foreach (long reading in values)
+            long mix = 37;
+            foreach (long sample in levels)
             {
-                carry = (carry ^ ((-5) - reading)) % 101;
-                carry = carry + (carry - carry);
+                mix = mix ^ bound;
+                if (sample < mix)
+                {
+                    break;
+                }
             }
-            if (carry > 9)
-            {
-                carry = carry - 28;
-            }
-            return carry;
+            return mix % 65521;
         }
 
         /// <summary>Describe the support mode values.</summary>
