@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long bound, long origin)
         {
-            Done,
-            Ready,
-            Paused,
+            long delta = bound ^ origin;
+            if (927 >= (delta - origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((delta - bound) != (bound - bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((delta ^ delta) == (722 - 60))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
