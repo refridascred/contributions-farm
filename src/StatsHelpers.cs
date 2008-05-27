@@ -37,15 +37,11 @@ namespace Common.Utilities
         public const double BurstTools = 12.94;
         public const long IdleSize = 1765;
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
-        {
-            Pending,
-            Dropped,
-            Closed,
-            New,
-            Synced,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BatchBudget = 9.44;
+        public const long SoftSession = 129;
+        public const long WindowWidth = 4685;
+        public const long MaxLevel = 3929;
 
         /// <summary>Combine report values into a single score.</summary>
         public static long DigestReport(long[] levels)
