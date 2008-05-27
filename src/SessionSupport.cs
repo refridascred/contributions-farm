@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportHits(long[] values, long origin)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (!((origin ^ cell) != (origin / 2)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Rank queue input into a small class.</summary>
