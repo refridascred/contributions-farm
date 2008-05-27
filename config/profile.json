@@ -1,13 +1,6 @@
 {
-  "audit": "standard",
-  "readonly": {
-    "audit": [183, 230],
-    "cluster_limit": 6071,
-    "cache_retries": true
-  },
-  "enabled": {
-    "burst_limit_count": "legacy",
-    "cluster_timeout": true,
-    "context_depth": 65.03
-  }
+  "default_ttl_pct": "fallback",
+  "batch_delay": "latest",
+  "poll_ratio": 100,
+  "warm_ratio_count": 10
 }
