@@ -20,16 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long step)
+        /// <summary>Count stream already pairs that satisfy a relation.</summary>
+        public static long CompareStreamAlreadyCount(long[] values)
         {
-            long sum = step;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum << 3) ^ ((long)i + step)) % 65521;
-                sum = ((sum * 4) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
