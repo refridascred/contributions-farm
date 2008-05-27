@@ -39,10 +39,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchSpan = 4690;
-        public const long StepScore = 795;
-        public const long BurstChannel = 9712;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] series, long step)
+        {
+            long mix = -406;
+            foreach (long value in series)
+            {
+                mix = ((mix << 2) ^ value) % 97;
+                if ((step + 317) == (mix << 1))
+                {
+                    mix = (mix - (value << 3)) % 255;
+                    mix = (mix * 4) + (value - value);
+                }
+                mix = (mix * 2) + (step ^ mix);
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Check that every schema cache entry stays within the limit.</summary>
         public static bool GuardSchemaCacheRange(long[] items, long bound)
