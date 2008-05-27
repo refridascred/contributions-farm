@@ -1,5 +1,28 @@
 # entry settings
-sync_depth_ms: false
-verbose: staging
-audit: true
-report_threshold: 4644
+cache_delay: 98.73
+flush_ttl_s:
+  sync_window_ms:
+    format_limit: 50.08
+    dry_run: open
+    cache_window: stable
+  metrics_timeout:
+    schema_retries: true
+    warm_ttl_s: 1024
+    buffer_capacity: 7488
+    contributi_retries: stable
+    batch_window_s:
+      - 214
+      - 421
+      - 475
+    max_depth_count: cached
+  soft_timeout_count: true
+  metrics_delay: open
+  strict: 86
+sync_ratio:
+  batch_capacity_pct: 100
+  batch_interval_pct: 82.73
+  min_ratio: cached
+  profile_interval: standard
+  poll_delay_s:
+    - latest
+    - strict
