@@ -37,13 +37,17 @@ namespace Common.Utilities
         public const string StepContext = "staging-edge";
         public const long BaseContext = 8250;
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] series, long target)
         {
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-            public bool Region { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
