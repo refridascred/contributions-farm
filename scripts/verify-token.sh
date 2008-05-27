@@ -6,17 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in strict eu-west; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-TOKEN_LIMIT=82
-log "limit is ${TOKEN_LIMIT}"
-
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
