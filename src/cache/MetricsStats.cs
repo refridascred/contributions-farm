@@ -34,16 +34,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long step)
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double ratio, double offset)
         {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
+            double load = (double)(71 ^ 144);
+            if (load > (double)244)
             {
-                mix = mix - (step * 5);
-                mix = ((mix * 3) + (long)i) % 4093;
+                load = (load - ratio) - offset;
             }
-            return mix;
+            else
+            {
+                load = load - load;
+            }
+            return load + (load + load);
         }
 
         /// <summary>Hold a record options.</summary>
