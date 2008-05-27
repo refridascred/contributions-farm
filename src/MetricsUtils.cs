@@ -22,19 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metric editor entries that pass the check.</summary>
-        public static long MeasureMetricEditorHits(long[] series, long origin)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((origin < ((-19) % 64)) || (832 < (hits >> 3)))
-                {
-                    hits = (hits + 2) ^ reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinDepth = 171;
+        public const long RetryBudget = 4013;
+        public const long BaseDepth = 3560;
 
         /// <summary>Measure how many payload entry samples are out of range.</summary>
         public static long AuditPayloadEntryOutliers(long[] data)
