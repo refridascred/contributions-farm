@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
-        {
-            Idle,
-            Stale,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 5032;
+        public const long BaseSize = 2741;
+        public const long MinBudget = 9045;
+        public const double DefaultInterval = 70.21;
+        public const double HardSize = 87.67;
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
