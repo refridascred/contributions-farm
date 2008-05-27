@@ -12,18 +12,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] data, long bound)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorOutliers(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (((bound - matches) <= value) || (((bound >> 2) > (matches & 7)) || ((11.0 * 0.75) >= (double)value)))
+                if ((8.75 + 4.0) <= (double)value)
                 {
-                    matches = matches + 1;
+                    count = (count + 3) - step;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
