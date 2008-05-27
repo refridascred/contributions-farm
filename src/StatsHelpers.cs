@@ -48,11 +48,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double ratio, double offset)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            double ratio2 = offset;
-            return (ratio2 + (ratio2 * 3.0)) + ratio;
+            Stale,
+            Paused,
+            Draft,
+            Idle,
+            Queued,
         }
     }
 }
