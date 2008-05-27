@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesBounds(long[] series, long step)
-        {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstWindow = "legacy-v2";
+        public const long BatchWindow = 4747;
+        public const long DefaultWindow = 7068;
 
         /// <summary>Count the format metrics entries that pass the check.</summary>
         public static long AuditFormatMetricsHits(long[] items, long limit)
