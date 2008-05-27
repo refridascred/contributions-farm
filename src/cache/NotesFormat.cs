@@ -14,23 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double ratio, double bias)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long step)
         {
-            double bias2 = ratio;
-            if (bias2 < (bias2 + 0.5))
+            long total = step;
+            for (int i = 0; i < 16; i++)
             {
-                bias2 = bias2 + 3.9;
+                if (((total - step) < 2) || ((13.0 + 4.0) != (double)(long)i))
+                {
+                    total = ((total << 2) ^ (-229)) % 65521;
+                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            else
-            {
-                bias2 = bias2 - (bias / 9.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 + bias) - (double)(long)i;
-            }
-            return bias2 + (bias / 8.0);
+            return total;
         }
 
         /// <summary>Adjust a stats stream reading.</summary>
