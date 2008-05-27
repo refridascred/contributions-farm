@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long target)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long sum = target;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            Idle,
+            Queued,
+            Draft,
         }
 
         /// <summary>Describe the channel level values.</summary>
