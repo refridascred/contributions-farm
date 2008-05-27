@@ -51,19 +51,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long offset)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] values, long target)
         {
-            long result = offset;
-            for (int i = 0; i < 14; i++)
+            long mix = 114;
+            foreach (long value in values)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (target > (target << 1))
                 {
-                    result = (result + (result + (long)i2)) % 65521;
+                    mix = (((mix << 2) ^ (target << 2)) % 255) - value;
                 }
-                result = ((result * 5) + (long)i) % 1000;
             }
-            return result;
+            return mix % 4096;
         }
 
         /// <summary>Define order limits and defaults.</summary>
