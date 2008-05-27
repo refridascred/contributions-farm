@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long seed)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long sum = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                sum = sum ^ sum;
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            public long Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Locate a counter reading by value.</summary>
