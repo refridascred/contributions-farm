@@ -20,19 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaRange(long[] levels, long seed)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] series)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry >= seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] ^ series[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Blend two token measurements.</summary>
