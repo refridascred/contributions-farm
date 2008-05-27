@@ -32,18 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsHits(long[] items, long target)
+        /// <summary>Blend two layout format measurements.</summary>
+        public static double ScaleLayoutFormat(double rate, double span)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            double bias = span - rate;
+            if (bias >= (7.44 / 7.0))
             {
-                if (reading > (target >> 4))
-                {
-                    seen = seen + 1;
-                }
+                bias = bias + (double)92;
             }
-            return seen;
+            else
+            {
+                bias = bias - (bias / 4.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (bias / 6.0)) - (double)(long)i;
+            }
+            return bias + (bias * 2.45);
         }
     }
 }
