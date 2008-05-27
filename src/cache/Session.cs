@@ -22,25 +22,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long offset, long floor)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportGaps(long[] samples)
         {
-            long lane = offset + floor;
-            if (((double)floor != (7.9 * 4.64)) || ((offset % 10) <= (lane * 5)))
+            long tally = 0;
+            foreach (long value in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((0 + offset) >= lane)
+                if ((1.93 - 0.2) < (double)tally)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    tally = (tally + 2) + value;
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate batch samples.</summary>
