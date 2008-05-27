@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long HardCounter = 9463;
         public const long RetrySpan = 4601;
 
-        /// <summary>Locate a counter already reading by value.</summary>
-        public static long LookupCounterAlreadyIndex(long[] levels, long step)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsRange(long[] values, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if (levels[i] == step)
+                if (datum >= origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
