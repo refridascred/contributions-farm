@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long origin, long origin2)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] values)
         {
-            if ((origin ^ 36) > origin)
+            long mix = -54;
+            foreach (long reading in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin2 + origin2) != (origin2 % 16))
+                if (57 > (27 - reading))
                 {
-                    return 6;
+                    mix = (mix << 2) ^ 8;
                 }
-                else
+                if (((reading * 4) >= mix) || (reading < (mix % 2)))
                 {
-                    if ((origin + origin2) >= origin2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((origin2 - origin2) <= (2 << 2)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    break;
                 }
             }
+            return mix % 1000;
         }
 
         /// <summary>Fold a list of route readings.</summary>
