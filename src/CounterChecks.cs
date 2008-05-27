@@ -49,19 +49,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits format entry stays within the limit.</summary>
-        public static bool ValidateCommitsFormatBounds(long[] levels, long bound)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Idle,
+            Done,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
