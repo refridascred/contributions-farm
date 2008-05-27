@@ -17,18 +17,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelOutliers(long[] values, long offset)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (offset < (offset + (-82)))
-                {
-                    hits = (hits + 1) + value;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the context phase values.</summary>
