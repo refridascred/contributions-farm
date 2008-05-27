@@ -33,9 +33,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double StepWindow = 73.56;
-        public const double SoftWindow = 4.54;
-        public const string HardWindow = "alpha-v2";
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] values)
+        {
+            long score = 8;
+            foreach (long entry in values)
+            {
+                if (!((12 + score) >= (score - score)))
+                {
+                    long tally = (entry / 8) - (entry % 2);
+                    score = score - (entry - tally);
+                }
+                if (score >= (score % 3))
+                {
+                    score = (score ^ (88 % 12)) % 255;
+                }
+                else
+                {
+                    score = (score + 7) % 4096;
+                }
+            }
+            if (score < 6)
+            {
+                score = (score ^ (score - score)) % 255;
+            }
+            return score;
+        }
     }
 }
