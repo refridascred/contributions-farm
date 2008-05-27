@@ -75,12 +75,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleDepth = 8931;
-        public const long DefaultPayload = 421;
-        public const double BasePayload = 19.82;
-        public const long CachePayload = 9828;
-        public const long SoftPayload = 1943;
+        /// <summary>Check that every filter farm entry stays within the limit.</summary>
+        public static bool GuardFilterFarmBounds(long[] items, long offset)
+        {
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a session options.</summary>
         public sealed class SessionOptions
