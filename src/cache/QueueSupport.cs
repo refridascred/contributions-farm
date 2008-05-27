@@ -15,18 +15,15 @@ namespace Common.Utilities
         public const string HardDepth = "latest";
         public const double HardCounter = 82.12;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatGaps(long[] values, long limit)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long origin)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long state = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (((3 << 1) > (entry / 7)) || ((limit / 2) == (limit ^ 713)))
-                {
-                    seen = seen + 1;
-                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return seen;
+            return state;
         }
     }
 }
