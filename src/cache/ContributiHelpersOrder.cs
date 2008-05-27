@@ -40,13 +40,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            Paused,
-            Dropped,
-            Active,
-            Pending,
+            public long Size { get; set; }
+            public long Count { get; set; }
         }
     }
 }
