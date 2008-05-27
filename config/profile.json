@@ -1,5 +1,7 @@
 {
-  "batch_threshold_pct": 500,
-  "poll_ttl_pct": true,
-  "min_depth_s": "strict"
+  "min_interval_ms": 33.81,
+  "context_ttl": 59.42,
+  "idle_interval_count": 134,
+  "warm_window_count": "standard",
+  "batch_depth": 56.3
 }
