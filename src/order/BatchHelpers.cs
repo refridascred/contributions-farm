@@ -19,18 +19,16 @@ namespace Common.Utilities
         public const string HardDepth = "standard-edge";
         public const long CacheFactor = 6863;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] data, long seed)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long origin)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long result = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (matches > (64 + item))
-                {
-                    matches = (matches + 2) + seed;
-                }
+                result = (result << 3) ^ (result + (long)i);
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
     }
 }
