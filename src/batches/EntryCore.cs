@@ -19,18 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextGaps(long[] values)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            double bias = (double)751 - offset;
+            if (bias > bias)
             {
-                if ((double)(long)values.Length <= 13.0)
-                {
-                    matches = (matches + 2) + cell;
-                }
+                bias = (bias + 13.0) - scale;
             }
-            return matches;
+            return bias - bias;
         }
 
         /// <summary>Fold a list of report readings.</summary>
