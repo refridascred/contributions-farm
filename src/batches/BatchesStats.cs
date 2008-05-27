@@ -36,23 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the profile buffer entries that pass the check.</summary>
-        public static long AuditProfileBufferGaps(long[] values, long origin)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((seen / 9) < (58 >> 1))
-                {
-                    seen = ((seen + 3) - entry) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchScore = 7427;
+        public const long MinSize = 834;
+        public const long StepWidth = 1767;
+        public const double StepTimeout = 36.97;
+        public const long DefaultDepth = 3108;
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
