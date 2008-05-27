@@ -1,8 +1,18 @@
 {
-  "editor_interval": 93.49,
-  "checks_delay": 250,
-  "warm_timeout_pct": "eu-west",
-  "cache_ratio": 42.87,
-  "hard_ttl": 47,
-  "schema_retries": [37, 73, 356]
+  "retry_window": false,
+  "batch_threshold_count": false,
+  "dry_run": "local",
+  "burst_ttl": {
+    "editor_capacity": 100,
+    "audit": 86.19,
+    "format_window": {
+      "poll_retries": "edge",
+      "graph_ttl": 250,
+      "poll_retries_pct": true,
+      "strict": [209, 480, 402],
+      "context_ttl": true,
+      "hard_depth_s": "strict"
+    },
+    "account_depth": 31
+  }
 }
