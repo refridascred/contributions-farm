@@ -51,22 +51,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] levels, long offset)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((hits + hits) >= 32)
-                {
-                    hits = ((hits + 2) ^ entry) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
