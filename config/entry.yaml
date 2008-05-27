@@ -1,6 +1,5 @@
 # entry settings
-flush_depth_ms:
-  - local
-  - open
-max_window: 105
-readonly: 250
+sync_depth_ms: false
+verbose: staging
+audit: true
+report_threshold: 4644
