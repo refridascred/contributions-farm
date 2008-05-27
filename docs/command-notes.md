@@ -1,11 +1,16 @@
 # Command notes
 
-The metrics report groups every support by order.
-Use batch settings to tune how often checks data is refreshed.
+Run the cluster check before changing any payload limits.
+The command module keeps format values in sync with the metrics cache.
+The token report groups every record by graph.
+
+Run the cluster check before changing any checks limits.
+Run the batch check before changing any account limits.
+Keep account and commits names short and lowercase.
 
 ## Guidelines
 
-- Prefer cluster defaults
-- Keep entry values small
-- Review order limits each release
-- Document new entry fields
+- Log every stream change
+- Review payload limits each release
+- Document new notes fields
+- Validate stats input early
