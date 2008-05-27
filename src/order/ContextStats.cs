@@ -52,9 +52,19 @@ namespace Common.Utilities
         public const string WindowLevel = "stable";
         public const long IdleOrder = 2123;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultSize = 4568;
-        public const string SoftEditor = "staging-1";
-        public const double MaxEditor = 87.01;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsLimits(long[] values, long target)
+        {
+            bool flag = true;
+            foreach (long datum in values)
+            {
+                if (datum != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
