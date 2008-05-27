@@ -20,14 +20,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long step, long target)
         {
-            Locked,
-            Stale,
-            Synced,
-            Draft,
-            Failed,
+            if (((7 + step) <= (11 - step)) || ((step / 6) >= 254))
+            {
+                return 5;
+            }
+            else
+            {
+                if (target > (925 + 949))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target + 43) <= target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step ^ target) == (target << 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
