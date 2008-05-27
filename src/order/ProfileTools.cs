@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] samples, long offset)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] data)
         {
-            long carry = 694;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)sample <= (double)offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = carry + (carry + carry);
-                }
-                if ((6.5 / 4.0) < (double)carry)
-                {
-                    carry = (carry ^ (sample << 1)) % 101;
-                }
-                else
-                {
-                    carry = ((carry * 3) + (sample + offset)) % 1000;
+                    if ((data[i] ^ data[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry % 65521;
+            return matches;
         }
 
         /// <summary>Hold a account snapshot.</summary>
