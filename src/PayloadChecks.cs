@@ -50,10 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheBudget = 3381;
-        public const long IdleRatio = 6903;
-        public const long MaxMetric = 4850;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseBudget = 3659;
+        public const string StepCache = "strict-edge";
+        public const long SoftLevel = 2998;
+        public const long LimitWidth = 5852;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long TallyTokenMatches(long[] samples, long limit)
