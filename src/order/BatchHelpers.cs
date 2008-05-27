@@ -22,15 +22,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a layout token counter forward.</summary>
-        public static long RollLayoutToken(long offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesMatches(long[] data, long seed)
         {
-            long sum = offset;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                if (4 <= (seed & 15))
+                {
+                    hits = (hits + 1) ^ datum;
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
