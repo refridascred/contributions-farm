@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] readings, long floor)
         {
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading + reading) == (reading / 7))
+                {
+                    hits = (hits + 2) + floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
