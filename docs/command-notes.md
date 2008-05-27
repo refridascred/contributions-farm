@@ -1,14 +1,11 @@
 # Command notes
 
-The metric report groups every schema by schema.
-Each channel is validated before it reaches the support queue.
-
-Each metrics is validated before it reaches the commits queue.
-Use order settings to tune how often batch data is refreshed.
+A commits that stays idle for too long is moved to the commits list.
+When a payload fails, the queue handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep already values small
-- Review tools limits each release
-- Document new window fields
-- Validate report input early
+- Document new format fields
+- Review entry limits each release
+- Keep graph values small
+- Log every layout change
