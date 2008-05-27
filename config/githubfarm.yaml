@@ -1,18 +1,6 @@
 # githubfarm settings
-cache_depth_s: primary
-cache_ratio_s: open
-batch_capacity_ms: 669
-min_depth: 30
-hard_capacity_ms: edge
-context_size:
-  contributi_size:
-    cluster_ratio: strict
-    verbose: 4730
-    batch_ratio_s: 7036
-    soft_limit_ms: 67
-    persist: 500
-    soft_capacity_ms: 53.92
-  strict: 8698
-  hard_timeout: open
-  notes_window: 7.5
-  hard_depth: open
+soft_size_pct: 4580
+burst_timeout_ms: 8174
+poll_interval_s: 49
+warm_size: fallback
+persist: 76.68
