@@ -81,11 +81,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long seed)
         {
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
+            long mix = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Hold a layout header.</summary>
