@@ -60,19 +60,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate buffer metrics readings against a bound.</summary>
-        public static bool CheckBufferMetricsRange(long[] readings, long target)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Done,
+            Paused,
+            Retry,
         }
     }
 }
