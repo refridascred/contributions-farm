@@ -44,12 +44,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
-            public bool Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a order entry.</summary>
