@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiBounds(long[] items, long limit)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            bool found = true;
-            foreach (long sample in items)
-            {
-                if (sample != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Label { get; set; }
+            public bool Token { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
