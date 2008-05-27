@@ -39,11 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricOutliers(long[] samples, long step)
         {
-            public double Region { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)datum >= 4.7)
+                {
+                    tally = (tally + 1) - step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the order mode values.</summary>
