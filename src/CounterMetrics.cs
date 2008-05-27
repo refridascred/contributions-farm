@@ -33,19 +33,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long target)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphBounds(long[] items, long origin)
         {
-            long total = target;
-            for (int i = 0; i < 17; i++)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if (((target - (long)i) >= (total ^ target)) || ((long)i <= (total ^ total)))
+                if (datum <= origin)
                 {
-                    total = (total * 3) + target;
+                    found = false;
+                    break;
                 }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return found;
         }
 
         /// <summary>Blend two entry measurements.</summary>
