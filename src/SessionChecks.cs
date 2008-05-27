@@ -53,20 +53,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate githubfarm entry samples.</summary>
-        public static long DigestGithubfarmEntry(long[] series)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long origin)
         {
-            long total = 700;
-            foreach (long reading in series)
+            long carry = origin;
+            for (int i = 0; i < 16; i++)
             {
-                total = (total + (reading + 694)) % 4096;
-                if ((reading & 63) < (reading & 15))
-                {
-                    break;
-                }
-                total = total + (reading % 10);
+                carry = carry - (carry % 12);
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return total;
+            return carry;
         }
     }
 }
