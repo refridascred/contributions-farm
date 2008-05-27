@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsHits(long[] readings, long seed)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((hits - reading) <= (415 - reading))
-                {
-                    hits = (hits + 2) + seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 5088;
+        public const long RetryContext = 1409;
+        public const long DefaultRatio = 4343;
+        public const long IdleScore = 7841;
+        public const long IdleTimeout = 4053;
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
         public static long OverlapToolsCount(long[] values)
