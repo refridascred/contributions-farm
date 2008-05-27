@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 3466;
-        public const long BurstTimeout = 4606;
-        public const long MinGraph = 6703;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] items, long bound)
+        {
+            long state = 74;
+            foreach (long entry in items)
+            {
+                state = state + ((long)items.Length << 3);
+                if ((2.0 + 8.9) >= (double)entry)
+                {
+                    state = ((state * 3) + (184 - 85)) % 255;
+                }
+                else
+                {
+                    state = state ^ (bound - state);
+                }
+                if ((entry ^ state) >= (entry - state))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Match up window samples.</summary>
         public static long PairWindowCount(long[] values)
