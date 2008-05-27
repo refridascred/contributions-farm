@@ -20,13 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
-        {
-            public long Label { get; set; }
-            public double Region { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 4034;
+        public const long DefaultFilter = 6819;
+        public const double RetryFilter = 21.34;
+        public const double SoftDepth = 13.5;
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long SeekOrderIndex(long[] data, long offset)
