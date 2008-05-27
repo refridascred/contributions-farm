@@ -63,18 +63,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] readings, long seed)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)seed <= (16.0 - 6.84))
-                {
-                    hits = (hits + 3) + sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardScore = "legacy-edge";
+        public const string MaxCommand = "strict-edge";
+        public const double DefaultCommand = 0.75;
+        public const string CacheCommand = "staging-v2";
+        public const long StepCommand = 3641;
     }
 }
