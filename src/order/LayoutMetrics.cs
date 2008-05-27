@@ -26,18 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch filter samples are out of range.</summary>
-        public static long CountBatchFilterGaps(long[] items)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((7.0 / 9.0) >= (1.06 - 16.0))
-                {
-                    hits = (hits + 2) - item;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Locate a window reading by value.</summary>
