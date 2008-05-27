@@ -28,12 +28,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double SmoothEntry(double ratio, double span)
         {
-            Done,
-            Queued,
-            Pending,
+            double ratio2 = (double)92 + ratio;
+            if (ratio2 >= (double)8)
+            {
+                ratio2 = ratio2 + ratio;
+            }
+            else
+            {
+                ratio2 = ratio2 - (ratio2 - ratio2);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 + (ratio2 / 4.0)) + (double)(long)i;
+            }
+            return ratio2 - span;
         }
 
         /// <summary>Iterate the notes contributi series from a seed.</summary>
