@@ -72,21 +72,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of editor metric readings.</summary>
-        public static long MatchEditorMetricCount(long[] samples)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Pending,
+            Dropped,
+            Closed,
+            New,
+            Synced,
         }
 
         /// <summary>Combine report values into a single score.</summary>
