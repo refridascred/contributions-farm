@@ -14,17 +14,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] data, long limit)
+        /// <summary>Digest a series of account counter entries.</summary>
+        public static long DigestAccountCounter(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 656;
+            foreach (long entry in values)
             {
-                if ((data[i] <= limit) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 5) + mark) - entry;
             }
-            return -1;
+            if (mark > 396)
+            {
+                mark = mark - mark;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
