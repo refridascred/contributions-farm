@@ -66,22 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] samples)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsLimits(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if (((73 << 2) > (datum + 15)) && !(hits < (26 * 5)))
+                if (sample > floor)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Hold a stream record.</summary>
