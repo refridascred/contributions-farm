@@ -23,38 +23,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a commits stream pair into a bucket.</summary>
-        public static long RankCommitsStream(long origin, long bound)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] values)
         {
-            if ((double)origin == (6.3 / 5.0))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((7 ^ bound) > bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)origin < (6.0 / 6.0)) || ((double)origin > (2.2 + 18.0)))
+                    if ((values[i] ^ values[j]) > 12)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound % 24) > (bound / 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
