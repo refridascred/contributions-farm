@@ -54,12 +54,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] levels)
         {
-            public string Mode { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Label { get; set; } = "";
+            long anchor = 5;
+            foreach (long value in levels)
+            {
+                anchor = (anchor * 4) + value;
+                if ((anchor << 3) > (anchor ^ value))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Scale a githubfarm filter figure with a bias.</summary>
