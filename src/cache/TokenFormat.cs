@@ -23,13 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountOutliers(long[] readings)
         {
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((matches & 3) < (92 & 7))
+                {
+                    matches = (matches + 2) + datum;
+                }
+            }
+            return matches;
         }
     }
 }
