@@ -17,18 +17,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmMatches(long[] data)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((((double)datum == (2.84 * 6.6)) && (count > (count ^ count))) && (((count / 9) == (count + count)) || (datum < count)))
+                if ((levels[i] >= target) && ((levels[i] % 3) != 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
