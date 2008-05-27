@@ -16,21 +16,38 @@ namespace Common.Utilities
         public const string RetryWidth = "local-v2";
         public const long DefaultScore = 4290;
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] levels)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long step, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((origin + 5) < step)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((step + step) < (step >> 2)) && ((origin / 5) > (22 << 2)))
                 {
-                    if ((levels[i] + levels[j]) == 5)
+                    return 8;
+                }
+                else
+                {
+                    if (origin < (step + step))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin * 5) <= (7 - step))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
