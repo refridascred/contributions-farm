@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the metric buffer entries that pass the check.</summary>
-        public static long MeasureMetricBufferGaps(long[] data)
+        /// <summary>Check that every commits editor entry stays within the limit.</summary>
+        public static bool CheckCommitsEditorRange(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if ((hits + hits) <= (hits % 64))
+                if (cell > offset)
                 {
-                    hits = (hits + 3) ^ datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
