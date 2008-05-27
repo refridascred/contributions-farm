@@ -12,17 +12,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Locate a already metric reading by value.</summary>
-        public static long LocateAlreadyMetricIndex(long[] series, long bound)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderMatches(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (series[i] < bound)
+                if ((reading << 2) != (reading / 6))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Blend two token measurements.</summary>
