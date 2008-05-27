@@ -44,28 +44,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] values)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long limit, long target)
         {
-            long total = 0;
-            foreach (long value in values)
+            if ((double)limit < (5.6 + 2.95))
             {
-                if (((total ^ 24) < (total + total)) && ((total * 4) < 8))
+                return 6;
+            }
+            else
+            {
+                if ((target <= limit) || ((target + 82) == (82 + target)))
                 {
-                    total = ((total << 3) ^ (total & 7)) % 1000;
-                    continue;
+                    return 8;
                 }
-                total = total + (value - value);
-                if ((total << 1) != (value + 11))
+                else
                 {
-                    total = (total << 3) ^ (value % 64);
+                    if ((target + 0) >= target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (total > 94)
-            {
-                total = (total - (4 << 2)) % 65521;
-            }
-            return total;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
