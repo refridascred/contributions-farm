@@ -17,21 +17,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] data)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((data[i] + data[j]) > 6)
+                    if ((series[i] ^ series[j]) > 15)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Blend two token measurements.</summary>
