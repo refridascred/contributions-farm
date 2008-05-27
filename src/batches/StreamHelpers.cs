@@ -36,19 +36,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsLimits(long[] data, long seed)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long origin, long bound)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            if ((1.55 / 3.0) >= (1.0 / 3.0))
             {
-                if (sample >= seed)
+                return 6;
+            }
+            else
+            {
+                if (((double)origin >= (0.61 - 9.4)) || ((bound % 3) != (bound << 3)))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (origin >= (13 & 31))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (bound > 4)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
