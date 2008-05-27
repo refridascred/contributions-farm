@@ -20,22 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowOutliers(long[] levels)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportHits(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (((0.7 + 2.43) >= (double)entry) || !(entry > seen))
+                if (!((origin ^ cell) != (origin / 2)))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a stats options.</summary>
