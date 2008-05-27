@@ -78,15 +78,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Adjust a layout stats reading.</summary>
-        public static double ProjectLayoutStats(double weight, double offset)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            double scale = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                scale = ((scale + offset) + (double)(long)i) + weight;
-            }
-            return scale - 7.6;
+            public double Label { get; set; }
+            public long Offset { get; set; }
+            public double Level { get; set; }
         }
     }
 }
