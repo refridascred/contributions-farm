@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank metrics editor input into a small class.</summary>
-        public static long SortMetricsEditor(long bound, long target)
+        /// <summary>Combine route farm values into a single score.</summary>
+        public static long DigestRouteFarm(long[] data, long floor)
         {
-            if (!((bound + bound) > (84 << 3)))
+            long total = 53;
+            foreach (long sample in data)
             {
-                return 3;
+                total = (((total << 3) ^ total) + sample) + floor;
             }
-            else
-            {
-                if ((target / 3) <= (target + bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return total;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
