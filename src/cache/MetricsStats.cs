@@ -50,13 +50,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Measure how many queue session samples are out of range.</summary>
+        public static long AuditQueueSessionOutliers(long[] values)
         {
-            Draft,
-            Synced,
-            Done,
-            Pending,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((11.0 - 6.4) > (double)hits)
+                {
+                    hits = (hits + 3) + reading;
+                }
+            }
+            return hits;
         }
     }
 }
