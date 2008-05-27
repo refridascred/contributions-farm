@@ -22,18 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] items)
+        /// <summary>Project the next commits checks value.</summary>
+        public static double AdjustCommitsChecks(double scale, double span)
         {
-            long carry = 75;
-            foreach (long reading in items)
+            double drift = (double)((-1) - 910);
+            if (drift >= (double)4)
             {
-                if (!(carry >= (carry + carry)))
-                {
-                    carry = (((carry * 2) + carry) % 101) + reading;
-                }
+                drift = drift + (span / 4.0);
             }
-            return carry;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (4.74 + scale)) + (double)(long)i;
+            }
+            return drift - scale;
         }
 
         /// <summary>Describe the profile class values.</summary>
