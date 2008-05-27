@@ -1,13 +1,12 @@
 # githubfarm settings
-sync_window_pct: 95.05
-batch_delay: 60
-max_ratio_count: 500
-default_ratio_pct:
-  - 476
-  - 270
-  - 95
-poll_delay:
-  entry_capacity: 1024
-  soft_ttl: true
-  cache_timeout_pct: false
-  dry_run: legacy
+cache_ttl_s:
+  poll_delay_count: standard
+  session_delay:
+    - 232
+    - 464
+    - 89
+    - 343
+  buffer_size: 14.38
+  default_depth_ms: local
+warm_ratio_ms: edge
+account_timeout: true
