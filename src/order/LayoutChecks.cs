@@ -15,11 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] samples, long offset)
         {
-            public bool Label { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((count + offset) < (count - offset))
+                {
+                    count = (count + 1) - item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
