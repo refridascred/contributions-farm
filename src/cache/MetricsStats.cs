@@ -63,18 +63,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many queue session samples are out of range.</summary>
-        public static long AuditQueueSessionOutliers(long[] values)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((11.0 - 6.4) > (double)hits)
-                {
-                    hits = (hits + 3) + reading;
-                }
-            }
-            return hits;
+            public double Limit { get; set; }
+            public double Region { get; set; }
         }
     }
 }
