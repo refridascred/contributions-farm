@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowOutliers(long[] data)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long seed, long origin)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long span = seed - origin;
+            if (((seed - origin) > (seed + span)) || ((double)3 <= (double)span))
             {
-                if ((720 % 8) < (tally - sample))
+                return 1;
+            }
+            else
+            {
+                if ((seed + origin) < (origin - seed))
                 {
-                    tally = tally + 2;
+                    return 8;
+                }
+                else
+                {
+                    if (((origin + seed) > span) && (span > (span + seed)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)seed == (double)span)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
