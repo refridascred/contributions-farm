@@ -32,19 +32,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the session metrics series from a seed.</summary>
-        public static long RollSessionMetrics(long origin)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double ratio, double bias)
         {
-            long carry = origin;
-            for (int i = 0; i < 7; i++)
+            double ratio2 = (double)9 + (4.2 + bias);
+            if (ratio2 <= ratio)
             {
-                if ((carry / 2) >= ((-9) - carry))
-                {
-                    carry = carry - ((long)i + (long)i);
-                }
-                carry = ((carry * 4) + (long)i) % 101;
+                ratio2 = ratio2 - ratio2;
             }
-            return carry;
+            return ratio2 + ratio2;
         }
     }
 }
