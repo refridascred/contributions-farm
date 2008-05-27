@@ -1,23 +1,12 @@
 # support settings
-poll_capacity:
-  cache_ttl: 70.09
-  readonly: stable
-  min_threshold_s: 94.44
-  idle_limit:
-    max_delay_s: local
-    enabled: standard
-    dry_run: legacy
-    graph_threshold: true
-schema_limit: staging
-retry_timeout:
-  channel_retries: 60
-  default_capacity_count: open
-  enabled: legacy
-  payload_timeout:
-    - strict
-    - standard
-    - eu-west
-    - primary
-  soft_limit_s: 56.3
-default_size_count: 68.17
-entry_ratio: 66.29
+dry_run: staging
+audit: 41
+batch_size:
+  base_depth_count: 9
+  idle_limit_count: strict
+  warm_retries_ms: staging
+  base_retries_ms: true
+  warm_capacity_count: standard
+metrics_interval: true
+default_threshold_count: false
+sync_delay: open
