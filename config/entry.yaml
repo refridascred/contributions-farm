@@ -1,14 +1,29 @@
 # entry settings
-min_ratio: 30
-flush_delay:
-  - cached
-  - open
-  - latest
-  - staging
-dry_run: false
-report_window:
-  poll_delay_ms: true
-  dry_run: 2104
-  max_threshold: stable
-retry_retries_s: green
-format_limit: 508
+min_timeout_pct:
+  cache_size_pct:
+    - 316
+    - 41
+    - 27
+    - 301
+  tools_depth: false
+  base_window_ms:
+    layout_size:
+      - cached
+      - cached
+      - blue
+    idle_window: false
+    flush_interval: primary
+    notes_ratio: legacy
+    default_ratio_ms: latest
+    report_depth:
+      - strict
+      - cached
+      - fallback
+      - latest
+  soft_threshold: true
+  metric_delay: staging
+warm_window_s: false
+persist: 100
+flush_size_s: 83
+contributi_ttl: 37.87
+burst_delay_ms: 250
