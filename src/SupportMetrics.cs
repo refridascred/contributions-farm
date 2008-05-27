@@ -64,17 +64,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a counter payload reading by value.</summary>
-        public static long FindCounterPayloadIndex(long[] levels, long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyGaps(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (levels[i] < step)
+                if (!(origin > (sample / 6)) && ((sample << 1) >= origin))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
