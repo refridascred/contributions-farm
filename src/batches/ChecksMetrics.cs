@@ -33,19 +33,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a channel metric figure with a bias.</summary>
-        public static double AdjustChannelMetric(double gain, double bias)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            double bias2 = bias;
-            if (bias2 < bias)
-            {
-                bias2 = bias2 - gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 - (double)39) + (double)(long)i;
-            }
-            return bias2 + (bias2 - 1.13);
+            Draft,
+            Pending,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
