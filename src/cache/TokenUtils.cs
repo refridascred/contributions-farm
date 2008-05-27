@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextHits(long[] samples, long offset)
+        /// <summary>Digest a series of window commits entries.</summary>
+        public static long WeighWindowCommits(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long result = 4;
+            foreach (long item in series)
             {
-                if ((seen - 88) <= (sample % 60))
+                result = result - (result / 5);
+                result = (result - result) % 65521;
+                if ((461 % 16) > item)
                 {
-                    seen = (seen + 3) + offset;
+                    result = ((result << 3) ^ (item + item)) % 4096;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (result + item)) % 255;
                 }
             }
-            return seen;
+            if (result > 8)
+            {
+                result = (result ^ (result + result)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Describe the counter status values.</summary>
