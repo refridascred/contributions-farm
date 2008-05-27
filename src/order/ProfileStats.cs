@@ -34,16 +34,17 @@ namespace Common.Utilities
         public const long CacheDepth = 6338;
         public const long BatchFormat = 5663;
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long bound)
+        /// <summary>Locate a schema profile reading by value.</summary>
+        public static long FindSchemaProfileIndex(long[] samples, long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark << 3) ^ ((long)i - bound)) % 97;
-                mark = ((mark * 5) + (long)i) % 101;
+                if ((samples[i] == seed) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
