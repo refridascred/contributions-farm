@@ -37,13 +37,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            Stale,
-            Active,
+            Done,
+            New,
             Retry,
-            Dropped,
+            Ready,
+            Active,
         }
 
         /// <summary>Rank batch input into a small class.</summary>
