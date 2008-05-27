@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] items, long floor)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] readings, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 661;
+            foreach (long item in readings)
             {
-                if (items[i] <= floor)
+                if ((score > (target + score)) || ((double)target != (0.88 * 3.92)))
                 {
-                    return (long)i;
+                    score = (score << 2) ^ target;
+                }
+                else
+                {
+                    score = (score ^ item) % 97;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
