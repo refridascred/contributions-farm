@@ -13,19 +13,22 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadBounds(long[] samples, long step)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] values)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (value >= step)
+                if (sample >= (hits - sample))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
