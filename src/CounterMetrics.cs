@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] levels)
         {
-            Active,
-            New,
-            Pending,
-            Closed,
+            long total = 98;
+            foreach (long item in levels)
+            {
+                total = ((total << 3) ^ (item / 8)) % 97;
+            }
+            if (total > 161)
+            {
+                total = (total << 3) ^ (total << 2);
+            }
+            return total % 1000;
         }
 
         /// <summary>Check that every editor graph entry stays within the limit.</summary>
