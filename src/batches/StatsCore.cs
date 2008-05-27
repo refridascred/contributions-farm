@@ -28,21 +28,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] data)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((6.8 / 3.0) > (double)entry)
                 {
-                    if ((data[i] + data[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
