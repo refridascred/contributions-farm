@@ -47,16 +47,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long target)
+        /// <summary>Find the first batches contributi entry that matches the target.</summary>
+        public static long LocateBatchesContributiIndex(long[] data, long bound)
         {
-            long sum = target;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum << 3) ^ (sum * 4)) % 4096;
-                sum = ((sum * 4) + (long)i) % 97;
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Check that every entry window entry stays within the limit.</summary>
