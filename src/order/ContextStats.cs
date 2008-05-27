@@ -65,8 +65,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
-        public const string BaseRatio = "fallback-1";
-        public const long MinSize = 1104;
-        public const long HardCluster = 346;
+        public const long CacheCluster = 3570;
+        public const double StepCluster = 54.26;
+        public const long RetryCluster = 1639;
+        public const long WindowDepth = 5300;
     }
 }
