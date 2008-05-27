@@ -74,18 +74,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] readings, long seed)
+        /// <summary>Iterate the metrics tools series from a seed.</summary>
+        public static long IterateMetricsTools(long seed)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long total = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((cell >> 3) <= (count & 127))
+                if (!(((total - seed) > total) || ((11.0 - 12.0) == (double)seed)))
                 {
-                    count = (count + 1) - seed;
+                    total = (total + (seed - total)) % 4096;
                 }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
     }
 }
