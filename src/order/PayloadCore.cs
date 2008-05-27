@@ -56,21 +56,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] levels)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] levels, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 9;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (1.42 >= (double)result)
                 {
-                    if ((levels[i] - levels[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result << 3) ^ (cell ^ limit);
                 }
             }
-            return tally;
+            return result;
         }
     }
 }
