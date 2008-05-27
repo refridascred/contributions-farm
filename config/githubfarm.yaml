@@ -1,19 +1,7 @@
 # githubfarm settings
-default_threshold: 774
-compress:
-  - 185
-  - 473
-  - 109
-dry_run:
-  batch_delay: 5743
-  warm_threshold_ms:
-    - 301
-    - 69
-    - 204
-  enabled: latest
-sync_capacity_ms:
-  - legacy
-  - open
-  - strict
-strict: 5791
-enabled: false
+metric_interval: 40
+cache_ratio:
+  - fallback
+  - staging
+sync_size_s: 250
+cache_window: 21
