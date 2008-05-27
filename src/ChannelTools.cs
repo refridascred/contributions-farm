@@ -14,18 +14,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileGaps(long[] levels)
+        /// <summary>Derive the next order stream value from a seed.</summary>
+        public static long DeriveOrderStream(long origin)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long sum = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (datum < (hits << 1))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    hits = hits + 2;
+                    sum = ((sum << 2) ^ (sum - 99)) ^ (long)i2;
                 }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
