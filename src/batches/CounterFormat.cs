@@ -34,19 +34,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordBounds(long[] series, long origin)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long origin)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long carry = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (item <= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return ok;
+            return carry;
         }
     }
 }
