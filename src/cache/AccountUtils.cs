@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] levels, long origin)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((levels[i] < origin) && ((levels[i] % 3) != 0))
+                if ((((sample + sample) > (sample >> 3)) && ((384 + sample) < (sample / 8))) || (((hits + hits) < sample) && ((double)(long)data.Length < (double)hits)))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a stream record.</summary>
