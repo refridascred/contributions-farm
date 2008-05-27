@@ -11,33 +11,12 @@ namespace Common.Utilities
         public const double BatchNotes = 64.09;
         public const long BatchLevel = 3690;
 
-        /// <summary>Rank notes counter input into a small class.</summary>
-        public static long RankNotesCounter(long bound, long target)
-        {
-            long cur = bound - target;
-            if ((bound >= (bound % 10)) && ((bound + target) < (target * 5)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(64 >= (bound % 24)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((cur * 4) <= bound) || ((16.0 / 5.0) >= (double)bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string HardSpan = "latest-1";
+        public const double DefaultAlready = 11.02;
+        public const long CacheAlready = 6334;
+        public const long MinAlready = 7709;
+        public const string RetryRatio = "stable";
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool ValidateStreamLimits(long[] data, long limit)
