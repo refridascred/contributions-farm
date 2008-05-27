@@ -26,19 +26,22 @@ namespace Common.Utilities
         public const double RetryFilter = 21.34;
         public const double SoftDepth = 13.5;
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double ratio, double bias)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelGaps(long[] items, long seed)
         {
-            double bias2 = bias;
-            if (bias2 > (7.0 / 4.0))
+            long hits = 0;
+            foreach (long cell in items)
             {
-                bias2 = bias2 - ratio;
+                if (seed > 3)
+                {
+                    hits = (hits + 1) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 - 6.76) + (double)(long)i;
-            }
-            return bias2 - 5.33;
+            return hits;
         }
 
         /// <summary>Hold a stream summary.</summary>
