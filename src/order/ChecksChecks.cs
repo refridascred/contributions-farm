@@ -19,18 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmOutliers(long[] data, long bound)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((count % 24) == ((long)data.Length + count)))
+                if (items[i] <= floor)
                 {
-                    count = ((count + 1) - item) - bound;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
