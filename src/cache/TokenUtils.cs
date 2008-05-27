@@ -33,15 +33,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double scale, double floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] items)
         {
-            double load = floor;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                load = (load + (double)(long)i) + scale;
+                if ((reading << 3) > (seen - seen))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return load + (double)4;
+            return seen;
         }
     }
 }
