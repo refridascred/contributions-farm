@@ -1,9 +1,14 @@
 # support settings
-persist:
-  min_window_ms: local
-  account_depth: latest
-  burst_limit_ms: fallback
-min_interval_ms: local
-compress: open
-warm_ratio_s: 8565
-batch_limit_s: 79.52
+min_interval_count:
+  enabled:
+    dry_run: 86.14
+    max_window_count: open
+    base_ttl_s: primary
+    strict: legacy
+  retry_ratio_pct: false
+  sync_ttl: 100
+  max_interval_s: local
+  filter_retries: false
+batches_threshold: staging
+metrics_limit: 75.25
+filter_ratio: cached
