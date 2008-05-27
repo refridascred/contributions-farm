@@ -68,12 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] readings, long limit)
         {
-            Stale,
-            Dropped,
-            Closed,
+            long acc = 837;
+            foreach (long item in readings)
+            {
+                acc = ((acc * 3) + (item * 3)) - limit;
+            }
+            if (acc > 4)
+            {
+                acc = ((acc * 2) + acc) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
