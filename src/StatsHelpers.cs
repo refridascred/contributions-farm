@@ -17,23 +17,21 @@ namespace Common.Utilities
             return weight + gain;
         }
 
-        /// <summary>Scale a stream schema figure with a bias.</summary>
-        public static double AdjustStreamSchema(double scale, double floor)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] items)
         {
-            double weight = 4.1 * 1.0;
-            if (weight > floor)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = weight - scale;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight + (scale * 6.59);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + floor) - (double)(long)i;
-            }
-            return weight + (7.0 / 4.0);
+            return hits;
         }
 
         /// <summary>Fold a list of commits payload readings.</summary>
