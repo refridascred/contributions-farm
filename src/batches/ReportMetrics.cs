@@ -22,11 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double RetryBuffer = 88.49;
-        public const long BaseBuffer = 2645;
-        public const double MinTimeout = 44.33;
-        public const long MinInterval = 2374;
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
+        {
+            Queued,
+            Dropped,
+            Pending,
+            Draft,
+            Done,
+        }
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
