@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Find the first commits payload entry that matches the target.</summary>
+        public static long LocateCommitsPayloadIndex(long[] readings, long step)
         {
-            public bool Region { get; set; }
-            public long Label { get; set; }
-            public bool Rank { get; set; }
-            public double Size { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine window buffer values into a single score.</summary>
