@@ -23,20 +23,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] values)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchLimits(long[] items, long bound)
         {
-            long carry = 7;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long datum in items)
             {
-                carry = ((carry * 3) + (carry ^ carry)) % 4096;
-                carry = carry ^ (carry + entry);
-                if ((2.99 >= (5.0 * 10.0)) && (entry < ((-14) + carry)))
+                if (datum < bound)
                 {
+                    found = false;
                     break;
                 }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Define context limits and defaults.</summary>
