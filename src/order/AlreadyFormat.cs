@@ -24,19 +24,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double bias, double bias2)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            double mean = 5.8;
-            if (mean <= 16.0)
-            {
-                mean = mean + (bias + bias);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (bias2 + mean)) + (double)(long)i;
-            }
-            return mean + (bias + mean);
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Match up batches samples.</summary>
