@@ -19,13 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Label { get; set; }
+            Synced,
+            Locked,
+            New,
+            Pending,
+            Paused,
         }
 
         /// <summary>Combine account values into a single score.</summary>
