@@ -31,11 +31,11 @@ namespace Common.Utilities
         public const long MinBudget = 4462;
         public const long IdleCache = 3162;
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Adjust a stats stream reading.</summary>
+        public static double SmoothStatsStream(double scale, double span)
         {
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
+            double load = (scale / 7.0) - scale;
+            return (load + (double)498) + span;
         }
     }
 }
