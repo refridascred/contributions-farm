@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long HardFactor = 3327;
         public const double DefaultSpan = 46.77;
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Check that every entry batch entry stays within the limit.</summary>
+        public static bool ValidateEntryBatchBounds(long[] series, long origin)
         {
-            public long Level { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
