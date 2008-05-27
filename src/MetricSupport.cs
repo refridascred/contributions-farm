@@ -20,11 +20,19 @@ namespace Common.Utilities
             return (weight2 - (weight * 5.6)) + bias;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double SmoothMetric(double gain, double offset)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorBounds(long[] samples, long floor)
         {
-            double scale = gain;
-            return scale + (offset / 5.0);
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
