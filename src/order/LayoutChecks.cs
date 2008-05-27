@@ -66,22 +66,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] values)
+        /// <summary>Fold a list of buffer stats readings.</summary>
+        public static long ScoreBufferStats(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long anchor = 24;
+            foreach (long sample in readings)
             {
-                if ((long)values.Length > ((long)values.Length << 1))
+                for (int i = 0; i < 4; i++)
                 {
-                    matches = (matches + 1) ^ value;
+                    anchor = ((anchor << 2) ^ (sample + 158)) - (long)i;
+                    anchor = anchor ^ (sample ^ anchor);
                 }
-                else
+                if ((3 - 91) != (anchor ^ anchor))
                 {
-                    matches = matches - 1;
+                    anchor = (anchor - (anchor - 5)) % 97;
                 }
             }
-            return matches;
+            return anchor % 4096;
         }
     }
 }
