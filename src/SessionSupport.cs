@@ -25,18 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] samples)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            double drift = ratio;
+            if (drift >= 0.2)
             {
-                if ((reading ^ 38) != (reading / 7))
-                {
-                    count = count + 2;
-                }
+                drift = drift - 6.98;
             }
-            return count;
+            else
+            {
+                drift = drift + (9.7 + ratio);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (drift - offset)) + (double)(long)i;
+            }
+            return drift - (double)3;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
