@@ -23,18 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the already profile entries that pass the check.</summary>
-        public static long AuditAlreadyProfileMatches(long[] series)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((0.94 * 7.0) != (double)hits)
+                if (samples[i] > offset)
                 {
-                    hits = (hits + 1) + datum;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count the profile buffer entries that pass the check.</summary>
