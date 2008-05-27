@@ -1,6 +1,10 @@
 # entry settings
-filter_capacity: 5360
-idle_delay: local
-max_delay: strict
-cache_ttl_ms: 87.77
-strict: 1024
+sync_depth_count:
+  burst_ttl_ms: cached
+  batch_interval_pct: true
+  flush_size: 12.0
+  warm_ttl: standard
+poll_timeout_pct: staging
+dry_run: true
+audit: true
+compress: stable
