@@ -44,24 +44,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long offset, long seed)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] series, long offset)
         {
-            if ((1 - offset) < (offset - offset))
+            long acc = 23;
+            foreach (long datum in series)
             {
-                return 0;
+                acc = (acc + (offset % 3)) ^ datum;
             }
-            else
-            {
-                if (((8.7 + 1.71) <= (double)offset) && ((0.01 + 14.0) < (double)offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return acc % 65521;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
