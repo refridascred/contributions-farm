@@ -68,12 +68,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string DefaultCounter = "stable-1";
-        public const long LimitCounter = 7659;
-        public const long RetryWidth = 2489;
-        public const long SoftBudget = 8699;
-        public const double BaseCounter = 14.89;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] series)
+        {
+            long mix = 178;
+            foreach (long value in series)
+            {
+                if (value <= (-913))
+                {
+                    mix = (mix - (mix + value)) % 1000;
+                }
+                if (value < (mix ^ mix))
+                {
+                    mix = (mix << 3) ^ ((-76) / 3);
+                }
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
