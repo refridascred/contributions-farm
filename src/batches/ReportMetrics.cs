@@ -33,12 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BatchRecord = "open-v2";
-        public const long MinRecord = 4103;
-        public const long BurstTimeout = 5516;
-        public const double CacheRecord = 86.38;
-        public const long HardCount = 236;
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public string Weight { get; set; } = "";
+            public double Region { get; set; }
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BaseFormat = 5189;
