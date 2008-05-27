@@ -61,27 +61,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] series, long offset)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long PairEntryCount(long[] readings)
         {
-            long mark = 4;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (mark * 3) + offset;
-                if ((offset + sample) <= offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = (mark + (long)series.Length) % 101;
-                }
-                if ((sample + offset) != (offset & 127))
-                {
-                    break;
+                    if ((readings[i] - readings[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mark < 711)
-            {
-                mark = (mark * 4) + 28;
-            }
-            return mark;
+            return count;
         }
     }
 }
