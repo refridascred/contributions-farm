@@ -29,19 +29,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next session commits value from a seed.</summary>
-        public static long StepSessionCommits(long origin)
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] data)
         {
-            long carry = origin;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (((carry * 3) + (origin & 15)) % 4096) + (long)i2;
+                    if ((data[i] + data[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
