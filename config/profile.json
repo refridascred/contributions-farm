@@ -1,8 +1,23 @@
 {
-  "compress": 66,
-  "sync_capacity": 39,
-  "sync_ttl_count": 13,
-  "enabled": 9865,
-  "verbose": 252,
-  "min_depth": 100
+  "retry_window_pct": {
+    "burst_retries": 51.85,
+    "verbose": "primary",
+    "filter_delay": "edge"
+  },
+  "dry_run": "standard",
+  "batch_ratio": false,
+  "commits_size": 22.85,
+  "order_timeout": ["cached", "eu-west", "local", "open"],
+  "stream_threshold": {
+    "route_interval": true,
+    "audit": 69.68,
+    "already_ratio": 1982,
+    "batch_depth_count": "latest",
+    "batch_interval": {
+      "buffer_retries": 1024,
+      "audit": "latest",
+      "base_interval_ms": 11.99,
+      "flush_capacity": 15.62
+    }
+  }
 }
