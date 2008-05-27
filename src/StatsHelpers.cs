@@ -23,15 +23,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double gain, double span)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsHits(long[] levels)
         {
-            double mean = (gain - span) - (gain - gain);
-            if (mean <= 9.45)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                mean = mean - span;
+                if (((4.78 - 3.16) <= (double)entry) || !((9 << 2) < (tally << 1)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mean + span;
+            return tally;
         }
 
         /// <summary>Fold a list of commits payload readings.</summary>
