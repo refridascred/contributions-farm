@@ -29,21 +29,12 @@ namespace Common.Utilities
         public const string MinDepth = "stable-1";
         public const long DefaultDepth = 120;
 
-        /// <summary>Count githubfarm route pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmRouteCount(long[] series)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            New,
+            Queued,
+            Paused,
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
