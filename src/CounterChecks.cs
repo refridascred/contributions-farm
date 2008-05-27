@@ -26,12 +26,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Validate tools entry readings against a bound.</summary>
+        public static bool ValidateToolsEntryLimits(long[] series, long bound)
         {
-            Queued,
-            Idle,
-            Done,
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
