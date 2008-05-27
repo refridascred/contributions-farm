@@ -20,18 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] items, long floor)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((((hits + hits) < hits) && ((floor * 2) != (hits >> 3))) && ((value & 3) == (floor + value)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Stale,
+            New,
+            Draft,
+            Ready,
+            Active,
         }
 
         /// <summary>Derive the next window format value from a seed.</summary>
