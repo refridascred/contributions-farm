@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesMatches(long[] levels, long offset)
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double rate, double span)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            double ratio = span;
+            for (int i = 0; i < 2; i++)
             {
-                if ((offset + hits) < hits)
-                {
-                    hits = (hits + 3) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                ratio = (ratio + (double)(-5)) + (double)(long)i;
             }
-            return hits;
+            return ratio - (8.08 - rate);
         }
 
         /// <summary>Rank filter contributi input into a small class.</summary>
