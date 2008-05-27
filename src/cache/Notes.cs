@@ -61,11 +61,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string LimitFactor = "staging-edge";
-        public const string DefaultGithubfarm = "legacy-1";
-        public const string DefaultWidth = "standard-1";
-        public const long BaseGithubfarm = 6174;
-        public const long HardSpan = 9758;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] series, long offset)
+        {
+            long mark = 4;
+            foreach (long sample in series)
+            {
+                mark = (mark * 3) + offset;
+                if ((offset + sample) <= offset)
+                {
+                    mark = (mark + (long)series.Length) % 101;
+                }
+                if ((sample + offset) != (offset & 127))
+                {
+                    break;
+                }
+            }
+            if (mark < 711)
+            {
+                mark = (mark * 4) + 28;
+            }
+            return mark;
+        }
     }
 }
