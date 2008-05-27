@@ -26,9 +26,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MinDepth = 71.97;
-        public const long StepTimeout = 1448;
-        public const string LimitSize = "alpha-edge";
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
+        {
+            public long Token { get; set; }
+            public bool Label { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
