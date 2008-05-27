@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] data)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long acc = 7;
-            foreach (long entry in data)
-            {
-                if ((entry >= acc) && ((53 & 1) <= acc))
-                {
-                    acc = acc - entry;
-                }
-                acc = acc + (entry - acc);
-            }
-            if (acc > 65)
-            {
-                acc = (acc * 4) + (acc - acc);
-            }
-            return acc;
+            public long Score { get; set; }
+            public bool Rank { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Validate commits cache readings against a bound.</summary>
