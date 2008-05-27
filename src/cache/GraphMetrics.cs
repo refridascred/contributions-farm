@@ -51,13 +51,17 @@ namespace Common.Utilities
             return gain2 + bias;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long origin)
         {
-            public long Limit { get; set; }
-            public double Size { get; set; }
-            public double Offset { get; set; }
-            public bool Total { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = mark ^ (mark % 24);
+                mark = (mark ^ mark) % 4096;
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
