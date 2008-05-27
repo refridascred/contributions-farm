@@ -23,21 +23,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] series)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] data, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 81;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((387 + 37) != (cell * 3))
                 {
-                    if ((series[i] - series[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = anchor ^ (floor ^ anchor);
+                }
+                else
+                {
+                    anchor = (anchor - anchor) % 4096;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Roll a report counter forward.</summary>
