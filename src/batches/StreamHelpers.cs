@@ -69,39 +69,9 @@ namespace Common.Utilities
         public const long MaxTimeout = 8529;
         public const string BatchLayout = "primary-edge";
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long seed, long target)
-        {
-            long delta = seed + target;
-            if (!(seed > (target / 6)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((4.86 / 5.0) > (double)delta)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (5.63 < (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((delta / 9) >= (delta + 59))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchDepth = 6453;
+        public const string DefaultWidth = "standard";
+        public const string WindowFormat = "strict-1";
     }
 }
