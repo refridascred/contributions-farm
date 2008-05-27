@@ -39,19 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] samples, long step)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum >= 4.7)
-                {
-                    tally = (tally + 1) - step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 9161;
+        public const long SoftBudget = 3223;
+        public const long IdleInterval = 9962;
+        public const double IdleChecks = 76.33;
+        public const double HardLevel = 8.46;
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
