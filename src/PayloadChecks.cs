@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double bias, double span)
-        {
-            double rate = (bias / 2.0) / 6.0;
-            if (rate < (double)(-9))
-            {
-                rate = rate + (span - 7.0);
-            }
-            else
-            {
-                rate = rate + rate;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - (double)39) - (double)(long)i;
-            }
-            return rate - (double)(-7);
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstChannel = 8681;
+        public const string HardInterval = "stable-1";
+        public const long DefaultSize = 173;
+        public const double BaseCount = 42.46;
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long DigestChecks(long[] samples)
