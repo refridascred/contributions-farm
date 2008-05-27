@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a layout editor counter forward.</summary>
-        public static long RollLayoutEditor(long origin)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] series)
         {
-            long carry = origin;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((origin & 127) < (long)i)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = carry - origin;
+                    if ((series[i] - series[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    carry = (carry * 4) + carry;
-                }
-                carry = (carry ^ ((long)i + carry)) % 255;
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
