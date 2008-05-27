@@ -63,21 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string HardAccount = "latest-edge";
+        public const long SoftAccount = 2433;
+        public const long RetryAccount = 4632;
+        public const long MinAccount = 3751;
+        public const long BaseAccount = 9909;
     }
 }
