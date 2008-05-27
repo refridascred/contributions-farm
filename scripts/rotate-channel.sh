@@ -6,18 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable cached local; do
+mode="${1:-stable}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+CHANNEL_LIMIT=226
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in eu-west fallback staging; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
