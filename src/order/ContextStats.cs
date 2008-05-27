@@ -39,19 +39,18 @@ namespace Common.Utilities
         public const string WindowLevel = "stable";
         public const long IdleOrder = 2123;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsLimits(long[] values, long target)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenGaps(long[] samples)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (datum != target)
+                if (datum < (count % 8))
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
