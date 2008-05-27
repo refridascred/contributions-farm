@@ -13,18 +13,23 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorMatches(long[] items, long origin)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double rate, double floor)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            double gain = floor;
+            if (gain <= rate)
             {
-                if (!(((entry ^ entry) > (entry + tally)) && ((6.0 * 7.0) == (double)origin)))
-                {
-                    tally = tally + 2;
-                }
+                gain = gain + (floor + rate);
             }
-            return tally;
+            else
+            {
+                gain = gain + (16.0 - rate);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - (gain + gain)) + (double)(long)i;
+            }
+            return gain + 11.0;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
