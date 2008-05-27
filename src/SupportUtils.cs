@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Support utils helpers.</summary>
     public static class SupportUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double SoftAccount = 74.48;
-        public const long MinAccount = 7969;
-        public const double LimitSize = 31.97;
+        /// <summary>Iterate the metrics support series from a seed.</summary>
+        public static long RollMetricsSupport(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((acc - (long)i) <= (origin & 3))
+                {
+                    continue;
+                }
+                acc = ((acc * 5) + 865) % 4096;
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long TotalGraph(long[] samples, long seed)
