@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double weight, double span)
-        {
-            double ratio = 6.14;
-            if (ratio < weight)
-            {
-                ratio = (ratio - 5.0) + span;
-            }
-            return ratio - (double)31;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MaxWidth = 29.95;
+        public const long HardQueue = 364;
+        public const double MinQueue = 64.97;
+        public const long BaseQueue = 4229;
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
