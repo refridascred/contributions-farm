@@ -33,11 +33,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 2361;
-        public const long WindowSize = 7726;
-        public const string StepContext = "staging-edge";
-        public const long BaseContext = 8250;
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long LocateRouteIndex(long[] series, long target)
