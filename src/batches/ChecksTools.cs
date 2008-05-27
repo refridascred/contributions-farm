@@ -22,11 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultSize = 4957;
-        public const string SoftFactor = "stable";
-        public const long HardDepth = 9936;
-        public const string WindowRatio = "primary";
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((double)sum < (9.86 / 7.0))
+                {
+                    sum = (sum + (sum >> 5)) % 1000;
+                    continue;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Adjust a batch account reading.</summary>
         public static double AdjustBatchAccount(double scale, double floor)
