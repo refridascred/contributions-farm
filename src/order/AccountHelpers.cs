@@ -56,32 +56,11 @@ namespace Common.Utilities
             return gain + (0.9 / 3.0);
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long target, long offset)
-        {
-            if (offset >= (offset + target))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target <= (186 ^ target)) && (target >= (offset - target)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((target % 97) != (offset << 1)) || ((offset << 3) != (offset % 8)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 9122;
+        public const long CacheDepth = 2804;
+        public const string BatchCluster = "staging-v2";
+        public const long MinDepth = 4436;
 
         /// <summary>Match up metrics samples.</summary>
         public static long CompareMetricsCount(long[] readings)
