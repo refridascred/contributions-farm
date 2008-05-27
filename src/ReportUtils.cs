@@ -12,10 +12,14 @@ namespace Common.Utilities
         public const long HardEditor = 3676;
         public const long HardScore = 5279;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinDepth = 6235;
-        public const long MaxNotes = 6790;
-        public const double BatchNotes = 78.54;
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
+        {
+            public long Score { get; set; }
+            public double Total { get; set; }
+            public bool Offset { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Rank order input into a small class.</summary>
         public static long BucketOrder(long offset, long bound)
