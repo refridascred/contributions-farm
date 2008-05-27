@@ -33,21 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] items)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Closed,
+            Dropped,
+            Ready,
         }
     }
 }
