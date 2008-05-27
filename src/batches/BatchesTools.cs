@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportOutliers(long[] data)
         {
-            Active,
-            Synced,
-            Idle,
-            Draft,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (tally > (5 >> 4))
+                {
+                    tally = (tally + 2) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two format measurements.</summary>
