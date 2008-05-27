@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Look up the position of a entry payload sample.</summary>
+        public static long SeekEntryPayloadIndex(long[] values, long step)
         {
-            Closed,
-            Dropped,
-            Stale,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many layout batch samples are out of range.</summary>
