@@ -54,10 +54,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double WindowRecord = 83.99;
-        public const long StepRecord = 2508;
-        public const long BurstRecord = 49;
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long bound, long target)
+        {
+            if (284 > (bound / 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)target != (7.68 + 19.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Match up layout samples.</summary>
         public static long PairLayoutCount(long[] series)
