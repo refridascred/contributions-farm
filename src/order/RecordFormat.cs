@@ -23,19 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate entry context readings against a bound.</summary>
-        public static bool VerifyEntryContextLimits(long[] data, long step)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double bias, double offset)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            double weight = bias;
+            if (weight <= (offset * 5.7))
             {
-                if (sample >= step)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = weight - (offset / 8.0);
             }
-            return valid;
+            else
+            {
+                weight = weight - weight;
+            }
+            return weight - weight;
         }
 
         /// <summary>Hold a already stats.</summary>
