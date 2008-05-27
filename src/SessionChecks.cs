@@ -33,23 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long origin)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long mark = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                if (mark <= (53 + origin))
-                {
-                    mark = mark + ((long)i + origin);
-                }
-                else
-                {
-                    mark = (mark * 2) + (mark + mark);
-                }
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            public string Owner { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
