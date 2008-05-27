@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
-        {
-            Dropped,
-            Locked,
-            Ready,
-            Queued,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BatchRatio = "strict";
+        public const long IdleStream = 501;
+        public const long StepStream = 2268;
+        public const long BurstStream = 948;
+        public const long HardStream = 7047;
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
