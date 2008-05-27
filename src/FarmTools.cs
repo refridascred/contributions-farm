@@ -47,18 +47,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the batches entry entries that pass the check.</summary>
-        public static long TallyBatchesEntryGaps(long[] levels)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry / 5) > entry)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 8051;
+        public const string BurstEditor = "latest";
+        public const long IdleEditor = 3042;
     }
 }
