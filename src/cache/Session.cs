@@ -46,27 +46,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine graph cache values into a single score.</summary>
-        public static long FoldGraphCache(long[] items, long floor)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long floor, long step)
         {
-            long carry = 9;
-            foreach (long item in items)
+            long span = floor + step;
+            if (((double)span < (double)step) && ((double)step == (7.0 * 2.04)))
             {
-                if ((item >> 1) < floor)
+                return 5;
+            }
+            else
+            {
+                if (span < (step + floor))
                 {
-                    carry = (carry - floor) % 255;
-                    carry = carry + (carry + floor);
+                    return 1;
                 }
-                if ((7.0 - 4.2) < (double)item)
+                else
                 {
-                    carry = carry - floor;
+                    if ((span <= (span >> 4)) && ((double)floor > (double)480))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)step <= (double)9)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (carry > 83)
-            {
-                carry = (carry * 5) + (8 % 100);
-            }
-            return carry;
         }
     }
 }
