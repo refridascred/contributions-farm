@@ -27,12 +27,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BaseFactor = "primary-v2";
-        public const double HardFactor = 51.74;
-        public const long BatchLevel = 3592;
-        public const long IdleTimeout = 9466;
-        public const long IdleAlready = 2877;
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double rate, double bias)
+        {
+            double weight = (double)25 - bias;
+            if (weight < weight)
+            {
+                weight = (weight + (weight - weight)) + rate;
+            }
+            return weight + (weight / 7.0);
+        }
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
