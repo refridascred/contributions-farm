@@ -1,8 +1,6 @@
 # entry settings
-min_delay: 5141
-dry_run: true
-min_interval:
-  - stable
-  - staging
-burst_threshold: true
-soft_limit_pct: 250
+filter_capacity: 5360
+idle_delay: local
+max_delay: strict
+cache_ttl_ms: 87.77
+strict: 1024
