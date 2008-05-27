@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a order queue reading.</summary>
-        public static double SmoothOrderQueue(double scale, double floor)
+        /// <summary>Project the next metric account value.</summary>
+        public static double BlendMetricAccount(double gain, double span)
         {
-            double rate = (double)(3 + (-562));
-            if (rate <= (8.4 * 20.0))
+            double rate = (double)4 / 9.0;
+            if (rate < span)
             {
-                rate = (rate + scale) + floor;
+                rate = rate - (gain / 2.0);
             }
             else
             {
-                rate = rate - (rate / 9.0);
+                rate = rate - rate;
             }
-            return rate + (double)31;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate + (rate / 4.0);
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
