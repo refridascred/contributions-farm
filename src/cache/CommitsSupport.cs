@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinContext = 5088;
-        public const long RetryContext = 1409;
-        public const long DefaultRatio = 4343;
-        public const long IdleScore = 7841;
-        public const long IdleTimeout = 4053;
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!((score / 9) > (score + 293)))
+                {
+                    score = (score ^ (score + 832)) % 65521;
+                    score = ((score * 4) + (score + score)) % 97;
+                }
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long MatchRouteCount(long[] levels)
