@@ -16,11 +16,15 @@ namespace Common.Utilities
         public const string RetryWidth = "local-v2";
         public const long DefaultScore = 4290;
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Project the next metrics metric value.</summary>
+        public static double BlendMetricsMetric(double gain, double span)
         {
-            public string Rank { get; set; } = "";
-            public string Token { get; set; } = "";
+            double mean = (span + gain) - span;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (gain / 5.0)) + (double)(long)i;
+            }
+            return mean - gain;
         }
     }
 }
