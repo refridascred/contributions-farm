@@ -23,19 +23,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchLimits(long[] items, long bound)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum < bound)
+                if (samples[i] < target)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
