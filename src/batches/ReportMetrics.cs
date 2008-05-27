@@ -23,11 +23,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long target)
         {
-            public string Count { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long result = target;
+            for (int i = 0; i < 24; i++)
+            {
+                result = (result + ((long)i + (long)i)) % 97;
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
