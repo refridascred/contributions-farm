@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long origin, long bound)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] readings)
         {
-            long gap = origin - bound;
-            if ((double)720 > (double)bound)
+            long score = 499;
+            foreach (long value in readings)
             {
-                return 5;
+                score = (score ^ (value - 5)) % 101;
             }
-            else
+            if (score < 155)
             {
-                if ((bound + 5) == (gap + origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound - origin) <= gap)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (bound <= origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                score = (score ^ (score & 63)) % 255;
             }
+            return score;
         }
 
         /// <summary>Roll a stats tools counter forward.</summary>
