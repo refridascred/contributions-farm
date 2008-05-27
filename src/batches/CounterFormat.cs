@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every contributi session entry stays within the limit.</summary>
-        public static bool VerifyContributiSessionRange(long[] readings, long limit)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] levels)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long anchor = -802;
+            foreach (long reading in levels)
             {
-                if (sample < limit)
+                anchor = (anchor * 5) + (reading ^ reading);
+                if ((108 % 97) >= (reading - anchor))
                 {
-                    ready = false;
-                    break;
+                    anchor = (anchor + (anchor + anchor)) % 4096;
                 }
             }
-            return ready;
+            if (anchor < 58)
+            {
+                anchor = (anchor << 2) ^ (anchor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
