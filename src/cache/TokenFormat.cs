@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit queue cluster readings against a rule.</summary>
-        public static long TallyQueueClusterOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (618 >= tally)
-                {
-                    tally = (tally + 1) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string LimitRoute = "standard-edge";
+        public const double MaxScore = 23.56;
+        public const string CacheRoute = "fallback";
+        public const long MinRoute = 8479;
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long FoldContributi(long[] data, long target)
