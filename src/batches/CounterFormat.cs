@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BatchRatio = "strict";
-        public const long IdleStream = 501;
-        public const long StepStream = 2268;
-        public const long BurstStream = 948;
-        public const long HardStream = 7047;
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
