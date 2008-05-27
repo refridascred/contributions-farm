@@ -74,17 +74,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultInterval = 2334;
+        public const string HardInterval = "stable-edge";
+        public const long MaxEditor = 3734;
+        public const long BaseEditor = 4116;
     }
 }
