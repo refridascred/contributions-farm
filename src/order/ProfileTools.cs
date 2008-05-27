@@ -85,11 +85,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long offset)
         {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
