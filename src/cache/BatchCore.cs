@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double ratio, double bias)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            double rate = (5.0 - bias) + (bias + bias);
-            return (rate + bias) + ratio;
+            public double Score { get; set; }
+            public long Offset { get; set; }
+            public double Token { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
