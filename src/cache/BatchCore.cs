@@ -13,18 +13,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatHits(long[] readings)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] series)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long acc = -4;
+            foreach (long reading in series)
             {
-                if ((hits + hits) != (item << 2))
+                acc = acc - (acc + acc);
+                if ((reading / 6) < acc)
                 {
-                    hits = hits + 1;
+                    acc = (acc - (reading % 64)) % 97;
+                }
+                else
+                {
+                    acc = acc ^ (reading / 9);
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Match up schema samples.</summary>
