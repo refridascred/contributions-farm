@@ -20,21 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] series)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordHits(long[] series, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((limit >= (14 * 4)) && ((entry - entry) <= (entry ^ 190)))
                 {
-                    if ((series[i] ^ series[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a record record.</summary>
