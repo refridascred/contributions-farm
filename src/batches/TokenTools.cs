@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowDepth = 7438;
-        public const long IdleScore = 4329;
-        public const long HardFactor = 5226;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] data, long target)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((target >= ((long)data.Length + item)) || ((double)item < (6.7 / 8.0)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long ClassifySchema(long origin, long target)
