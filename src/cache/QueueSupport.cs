@@ -23,22 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cache already readings.</summary>
-        public static long DigestCacheAlready(long[] items, long step)
+        /// <summary>Combine metric notes values into a single score.</summary>
+        public static long ScoreMetricNotes(long[] readings, long step)
         {
-            long acc = -655;
-            foreach (long entry in items)
+            long mix = 2;
+            foreach (long item in readings)
             {
-                if ((6.0 / 2.0) < (double)(long)items.Length)
-                {
-                    acc = (acc ^ (acc + step)) + entry;
-                }
-                else
-                {
-                    acc = acc + 4;
-                }
+                mix = (((mix << 3) ^ (mix - mix)) % 1000) + item;
             }
-            return acc;
+            if (mix > 9)
+            {
+                mix = (mix + (step % 3)) % 4096;
+            }
+            return mix;
         }
     }
 }
