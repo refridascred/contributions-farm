@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] series)
+        /// <summary>Validate cluster checks readings against a bound.</summary>
+        public static bool GuardClusterChecksBounds(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                if (matches >= sample)
+                if (entry >= bound)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Measure how many githubfarm channel samples are out of range.</summary>
