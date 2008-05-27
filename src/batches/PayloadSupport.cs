@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double weight, double bias)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long seed)
         {
-            double scale = weight * 2.9;
-            if (scale > (scale / 9.0))
+            long sum = seed;
+            for (int i = 0; i < 20; i++)
             {
-                scale = (scale - (double)93) + bias;
+                sum = sum ^ sum;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return scale - scale;
+            return sum;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
