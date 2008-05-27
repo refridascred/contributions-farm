@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long limit)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long origin)
         {
-            long sum = limit;
-            for (int i = 0; i < 15; i++)
+            long anchor = origin;
+            for (int i = 0; i < 5; i++)
             {
-                sum = (sum ^ (667 & 63)) % 101;
-                if ((sum & 31) >= limit)
+                long bound = origin;
+                if ((bound <= (origin / 9)) && ((anchor % 12) > ((-988) & 15)))
                 {
-                    sum = sum + (limit + (long)i);
-                    continue;
+                    anchor = ((anchor << 2) ^ (origin + (long)i)) % 97;
                 }
-                sum = ((sum * 3) + (long)i) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
