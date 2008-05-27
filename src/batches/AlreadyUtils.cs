@@ -49,18 +49,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesOutliers(long[] values)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((((seen * 2) != (seen - datum)) && ((datum + seen) <= 98)) && (((-7) >> 2) != (seen * 5)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchMetrics = "local-1";
+        public const long HardTimeout = 8412;
+        public const long BaseMetrics = 5234;
+        public const string LimitMetrics = "open-v2";
+        public const double CacheRatio = 78.87;
     }
 }
