@@ -1,6 +1,5 @@
 # support settings
-base_retries_s: standard
-sync_capacity: standard
-queue_size:
-  - standard
-  - primary
+sync_retries_pct: primary
+batches_threshold: green
+strict: 2.35
+poll_capacity_pct: 9044
