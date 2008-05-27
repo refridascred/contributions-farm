@@ -1,11 +1,9 @@
 # entry settings
-sync_retries:
-  - 33
-  - 408
-  - 494
-channel_limit:
-  - latest
-  - green
-filter_size: true
-channel_timeout: legacy
-hard_delay_ms: 8676
+burst_interval: 60
+min_ratio_s:
+  max_timeout_ms: 60
+  flush_delay_pct: 41
+  cluster_timeout: latest
+  sync_limit: false
+  sync_interval: 8957
+audit: false
