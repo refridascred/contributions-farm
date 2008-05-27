@@ -62,17 +62,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a batch entry sample.</summary>
-        public static long LookupBatchEntryIndex(long[] levels, long floor)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Failed,
+            Closed,
+            Done,
+            Queued,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
