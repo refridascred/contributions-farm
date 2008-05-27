@@ -30,18 +30,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] items, long offset)
+        /// <summary>Locate a metrics channel reading by value.</summary>
+        public static long FindMetricsChannelIndex(long[] data, long origin)
         {
-            long mark = 732;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)offset == (1.0 / 6.0)) && ((offset * 3) < (datum >> 2)))
+                if (data[i] <= origin)
                 {
-                    mark = (mark * 2) + (2 - 2);
+                    return (long)i;
                 }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
