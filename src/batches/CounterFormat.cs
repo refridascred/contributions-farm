@@ -23,15 +23,11 @@ namespace Common.Utilities
             return mean - (mean * 0.63);
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitRatio = 517;
+        public const double RetryProfile = 95.9;
+        public const long DefaultProfile = 8845;
+        public const long LimitWidth = 2470;
+        public const string MaxLevel = "open";
     }
 }
