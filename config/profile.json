@@ -1,6 +1,6 @@
 {
-  "sync_ttl_count": "blue",
-  "idle_delay": 42.71,
-  "poll_limit": 86.05,
-  "sync_timeout_count": [256, 397, 191, 40]
+  "enabled": "fallback",
+  "batch_interval_ms": 60,
+  "flush_delay_s": [475, 32, 244, 249],
+  "max_interval": 85.01
 }
