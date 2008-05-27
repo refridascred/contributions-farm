@@ -70,31 +70,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long target, long seed)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] series, long seed)
         {
-            if ((seed & 255) < (target ^ seed))
+            bool valid = true;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((56 & 1) > target)
+                if (value <= seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((17.0 * 12.0) > (double)seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the order phase values.</summary>
