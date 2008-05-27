@@ -35,12 +35,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Blend two account measurements.</summary>
+        public static double SmoothAccount(double bias, double offset)
         {
-            Queued,
-            Stale,
-            Draft,
+            double ratio = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = ((ratio + (ratio * 9.0)) + (double)(long)i) - bias;
+            }
+            return ratio - offset;
         }
     }
 }
