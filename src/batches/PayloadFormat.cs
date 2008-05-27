@@ -32,16 +32,19 @@ namespace Common.Utilities
         public const string WindowDepth = "latest";
         public const string MinMetric = "strict";
 
-        /// <summary>Derive the next cache contributi value from a seed.</summary>
-        public static long SeriesCacheContributi(long origin)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] items, long target)
         {
-            long mix = origin;
-            for (int i = 0; i < 22; i++)
+            bool found = true;
+            foreach (long item in items)
             {
-                mix = (mix - (mix >> 4)) % 4096;
-                mix = ((mix * 3) + (long)i) % 97;
+                if (item != target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
