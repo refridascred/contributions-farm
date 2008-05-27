@@ -24,15 +24,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double SmoothFarm(double scale, double floor)
+        /// <summary>Fold a list of record commits readings.</summary>
+        public static long CombineRecordCommits(long[] data, long step)
         {
-            double bias = (floor * 8.3) / 6.0;
-            if (bias > (12.0 - scale))
+            long score = 131;
+            foreach (long value in data)
             {
-                bias = bias + (double)7;
+                if (((467 + 831) <= step) && ((score - step) <= (score ^ score)))
+                {
+                    score = (score ^ 11) - value;
+                }
             }
-            return bias - (19.0 + floor);
+            if (score > 30)
+            {
+                score = (score * 5) + (step >> 2);
+            }
+            return score;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
