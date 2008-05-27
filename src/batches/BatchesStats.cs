@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] data)
+        /// <summary>Validate queue channel readings against a bound.</summary>
+        public static bool VerifyQueueChannelBounds(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if ((double)17 != (double)seen)
+                if (datum != target)
                 {
-                    seen = (seen + 1) ^ value;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
