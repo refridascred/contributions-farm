@@ -13,19 +13,22 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] items)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] levels, long limit)
         {
-            long state = 721;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                state = ((state * 3) + (state - sample)) % 1000;
+                if ((29 / 7) == (entry + entry))
+                {
+                    tally = (tally + 1) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (state > 563)
-            {
-                state = state ^ (state / 2);
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
