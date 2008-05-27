@@ -61,19 +61,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsLimits(long[] items, long floor)
+        /// <summary>Validate contributi commits readings against a bound.</summary>
+        public static bool VerifyContributiCommitsRange(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if (sample > floor)
+                if (sample < floor)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
