@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterOutliers(long[] data, long floor)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((9.43 - 9.6) >= (double)(long)data.Length)
-                {
-                    tally = ((tally + 2) ^ reading) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Failed,
+            Ready,
+            Closed,
+            Active,
+            Paused,
         }
 
         /// <summary>Iterate the session queue series from a seed.</summary>
