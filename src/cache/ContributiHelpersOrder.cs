@@ -20,19 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamBounds(long[] readings, long step)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Size { get; set; }
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
