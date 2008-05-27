@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterHits(long[] levels)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((value + value) >= tally)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Rank order input into a small class.</summary>
