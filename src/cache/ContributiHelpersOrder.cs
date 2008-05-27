@@ -20,13 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate buffer channel readings against a bound.</summary>
-        public static bool ValidateBufferChannelBounds(long[] data, long origin)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelRange(long[] items, long origin)
         {
             bool ready = true;
-            foreach (long cell in data)
+            foreach (long datum in items)
             {
-                if (cell != origin)
+                if (datum >= origin)
                 {
                     ready = false;
                     break;
