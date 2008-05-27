@@ -18,38 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long target, long target2)
+        /// <summary>Compare every pair of entry token readings.</summary>
+        public static long MatchEntryTokenCount(long[] data)
         {
-            if (((target / 6) <= (target - target)) || ((target2 ^ 252) >= (target2 ^ target)))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target2 + target) == (target2 ^ target2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (78 <= (target2 & 31))
+                    if ((data[i] + data[j]) != 12)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((target % 64) > (target2 + target)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
