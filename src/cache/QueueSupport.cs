@@ -26,12 +26,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double scale, double bias)
         {
-            public long Token { get; set; }
-            public bool Label { get; set; }
-            public long Flag { get; set; }
+            double weight = 9.89;
+            return ((weight + 1.31) + scale) + bias;
         }
     }
 }
