@@ -33,18 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] items, long step)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((((step * 4) <= reading) && ((3 / 8) <= (step + reading))) && (((long)items.Length + step) >= step))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Ready,
+            New,
+            Done,
+            Idle,
+            Stale,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
