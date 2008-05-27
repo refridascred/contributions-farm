@@ -37,18 +37,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] series)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long sum = 423;
+            foreach (long sample in data)
             {
-                if ((double)matches <= 0.49)
+                if (!((double)sample >= (4.95 / 3.0)))
                 {
-                    matches = (matches + 1) + datum;
+                    sum = (sum + (sum >> 5)) % 255;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (sum + sum)) % 255;
+                }
+                if ((((-710) + 7) != (sum + 8)) && ((7.0 * 6.2) >= (double)sum))
+                {
+                    break;
                 }
             }
-            return matches;
+            return sum % 97;
         }
 
         /// <summary>Accumulate format samples.</summary>
