@@ -18,11 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double ratio, double floor)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long floor, long origin)
         {
-            double bias = floor;
-            return (bias - (double)39) + ratio;
+            long offset = floor ^ origin;
+            if (!(floor <= (floor - floor)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin + origin) >= 35)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((95 & 1) < (floor + floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (origin <= (offset >> 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
