@@ -37,11 +37,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string LimitInterval = "stable-edge";
-        public const long CacheOrder = 5098;
-        public const string WindowLevel = "stable";
-        public const long IdleOrder = 2123;
+        /// <summary>Validate commits cache readings against a bound.</summary>
+        public static bool GuardCommitsCacheBounds(long[] values, long target)
+        {
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long WindowRatio = 1380;
