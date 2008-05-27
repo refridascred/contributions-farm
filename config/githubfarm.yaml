@@ -1,10 +1,19 @@
 # githubfarm settings
-cache_retries:
-  - primary
-  - local
+default_threshold: 774
+compress:
+  - 185
+  - 473
+  - 109
+dry_run:
+  batch_delay: 5743
+  warm_threshold_ms:
+    - 301
+    - 69
+    - 204
+  enabled: latest
+sync_capacity_ms:
+  - legacy
   - open
-  - blue
-burst_limit_pct: eu-west
-strict: false
-base_ttl: standard
-sync_ttl_pct: local
+  - strict
+strict: 5791
+enabled: false
