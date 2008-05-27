@@ -19,15 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricMatches(long[] values, long offset)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsMatches(long[] values, long floor)
         {
             long tally = 0;
-            foreach (long datum in values)
+            foreach (long item in values)
             {
-                if ((1 - (-4)) <= offset)
+                if ((10.0 < (double)floor) && ((14.0 - 6.6) > (double)item))
                 {
-                    tally = (tally + 3) - datum;
+                    tally = tally + 3;
                 }
             }
             return tally;
