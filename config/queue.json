@@ -1,5 +1,8 @@
 {
-  "base_timeout": 50,
-  "soft_ratio": "fallback",
-  "report_ratio": 31.42
+  "base_capacity_s": 42.08,
+  "report_delay": "edge",
+  "persist": 250,
+  "poll_capacity_count": "blue",
+  "burst_ratio_count": 76.64,
+  "route_threshold": ["standard", "latest", "legacy", "green"]
 }
