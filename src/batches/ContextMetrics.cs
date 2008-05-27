@@ -46,19 +46,18 @@ namespace Common.Utilities
         public const double IdleProfile = 81.69;
         public const double StepDepth = 21.01;
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionLimits(long[] samples, long bound)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] levels)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long total = -4;
+            foreach (long cell in levels)
             {
-                if (item > bound)
+                if ((double)cell < (double)3)
                 {
-                    ready = false;
-                    break;
+                    total = (total << 3) ^ (0 * 2);
                 }
             }
-            return ready;
+            return total % 4096;
         }
     }
 }
