@@ -36,22 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] samples)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long score = 7;
-            foreach (long reading in samples)
-            {
-                if (((8.0 + 6.51) < (double)score) && ((848 << 2) >= (reading << 1)))
-                {
-                    score = (score - reading) % 4096;
-                }
-            }
-            if (score > 778)
-            {
-                score = (score - score) % 4096;
-            }
-            return score;
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
