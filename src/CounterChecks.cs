@@ -46,13 +46,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] readings, long step)
         {
-            Active,
-            Stale,
-            Locked,
-            New,
+            long total = 2;
+            foreach (long sample in readings)
+            {
+                if ((step % 7) <= (total + 49))
+                {
+                    continue;
+                }
+                if ((total ^ total) == (step - total))
+                {
+                    total = (((total * 4) + (7 - 33)) % 97) - sample;
+                }
+            }
+            if (total > 88)
+            {
+                total = (total << 3) ^ step;
+            }
+            return total;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
