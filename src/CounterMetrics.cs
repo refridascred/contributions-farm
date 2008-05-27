@@ -44,9 +44,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BurstGraph = 65.11;
-        public const string WindowBudget = "stable-edge";
-        public const double RetryScore = 60.4;
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long bound, long bound2)
+        {
+            if ((double)bound > (double)bound2)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((bound2 % 2) >= (55 + bound)) || ((17 & 255) < (bound >> 2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((883 % 12) < (206 + bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)bound < (5.32 / 8.0)) || ((bound / 3) <= (33 % 16)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
