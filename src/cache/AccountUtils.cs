@@ -19,11 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Adjust a farm reading.</summary>
+        public static double SmoothFarm(double scale, double floor)
         {
-            public long Mode { get; set; }
-            public long Offset { get; set; }
+            double bias = (floor * 8.3) / 6.0;
+            if (bias > (12.0 - scale))
+            {
+                bias = bias + (double)7;
+            }
+            return bias - (19.0 + floor);
         }
 
         /// <summary>Hold a cache stats.</summary>
