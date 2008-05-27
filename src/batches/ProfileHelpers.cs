@@ -39,23 +39,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long seed)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double AdjustQueue(double weight, double offset)
         {
-            long result = seed;
-            for (int i = 0; i < 12; i++)
+            double load = (double)((-661) + 26);
+            if (load > (14.0 * 0.4))
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    result = (((result << 2) ^ (seed + result)) % 97) + (long)i2;
-                }
-                if (!!((seed % 60) <= result))
-                {
-                    result = result ^ (result * 2);
-                }
-                result = ((result * 5) + (long)i) % 4093;
+                load = load - load;
             }
-            return result;
+            else
+            {
+                load = load + offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (double)34) + (double)(long)i;
+            }
+            return load + weight;
         }
 
         /// <summary>Hold a cache info.</summary>
