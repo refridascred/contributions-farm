@@ -25,18 +25,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch context samples are out of range.</summary>
-        public static long AuditBatchContextHits(long[] samples, long seed)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading < (count >> 4)) && (((889 / 7) > (618 ^ count)) || ((count >> 1) == (822 + count))))
-                {
-                    count = (count + 1) + seed;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 9464;
+        public const long RetryWidth = 9332;
+        public const long RetryTimeout = 7459;
     }
 }
