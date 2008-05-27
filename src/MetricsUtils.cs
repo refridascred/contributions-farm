@@ -69,12 +69,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaGaps(long[] values, long offset)
         {
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (((offset - offset) < offset) || (item >= (item & 7)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
