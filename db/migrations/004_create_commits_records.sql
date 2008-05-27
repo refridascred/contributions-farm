@@ -2,8 +2,11 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     region TEXT,
-    created_at TIMESTAMP,
-    token TEXT
+    state TEXT NOT NULL DEFAULT 'new',
+    owner TEXT NOT NULL
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_created_at ON commits_records (created_at);
+CREATE INDEX IF NOT EXISTS idx_commits_records_region ON commits_records (region);
+
+INSERT INTO commits_records (region, state, owner) VALUES ('fallback', 'eu-west', 'latest');
+INSERT INTO commits_records (region, state, owner) VALUES ('legacy', 'blue', 'primary');
