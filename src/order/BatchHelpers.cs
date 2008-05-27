@@ -14,32 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long seed, long seed2)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long diff = seed + seed2;
-            if ((double)diff <= (6.61 / 3.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if (diff < (662 << 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((diff + seed) < 84))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Paused,
+            New,
+            Stale,
         }
 
         /// <summary>Roll a layout token counter forward.</summary>
