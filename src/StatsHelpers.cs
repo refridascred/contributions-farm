@@ -23,22 +23,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsHits(long[] levels)
+        /// <summary>Scale a stream schema figure with a bias.</summary>
+        public static double AdjustStreamSchema(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            double weight = 4.1 * 1.0;
+            if (weight > floor)
             {
-                if (((4.78 - 3.16) <= (double)entry) || !((9 << 2) < (tally << 1)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                weight = weight - scale;
             }
-            return tally;
+            else
+            {
+                weight = weight + (scale * 6.59);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + floor) - (double)(long)i;
+            }
+            return weight + (7.0 / 4.0);
         }
 
         /// <summary>Fold a list of commits payload readings.</summary>
