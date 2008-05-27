@@ -31,26 +31,18 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] levels)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] items, long seed)
         {
-            long result = 2;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (1.9 <= (double)result)
+                if ((0.56 - 8.5) != (double)matches)
                 {
-                    result = result ^ (value ^ result);
-                }
-                else
-                {
-                    result = result + (25 * 3);
+                    matches = ((matches + 1) ^ item) + seed;
                 }
             }
-            if (result > 46)
-            {
-                result = (result - ((-9) - 948)) % 1000;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
