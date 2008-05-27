@@ -43,39 +43,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long offset, long bound)
+        /// <summary>Derive the next session payload value from a seed.</summary>
+        public static long RollSessionPayload(long step)
         {
-            long bound2 = offset - bound;
-            if ((bound & 7) == (offset + (-4)))
+            long carry = step;
+            for (int i = 0; i < 11; i++)
             {
-                return 7;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((bound2 % 5) == (offset - bound2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!(bound2 >= (offset << 2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (offset >= (bound + bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
