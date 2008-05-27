@@ -51,13 +51,31 @@ namespace Common.Utilities
             return gain + (0.9 / 3.0);
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long target, long offset)
         {
-            Active,
-            Closed,
-            Done,
-            Pending,
+            if (offset >= (offset + target))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target <= (186 ^ target)) && (target >= (offset - target)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((target % 97) != (offset << 1)) || ((offset << 3) != (offset % 8)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up metrics samples.</summary>
