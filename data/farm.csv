@@ -1,7 +1,9 @@
-id,label,token,count,active
-1,47.03,blue,19.63,5.25
-2,55.89,40.08,726,local
-3,49.46,103,standard,760
-4,499,963,8.16,52.08
-5,strict,20.43,34.8,open
-6,standard,84.17,853,staging
+id,rank,token,ratio
+1,legacy,standard,312
+2,10.99,primary,59.89
+3,84,967,20.75
+4,223,78,544
+5,51.64,54.3,12.67
+6,761,661,879
+7,46.45,blue,822
+8,96.53,549,local
