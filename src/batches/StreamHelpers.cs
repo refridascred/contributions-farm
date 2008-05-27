@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Digest a series of token queue entries.</summary>
+        public static long CombineTokenQueue(long[] items)
         {
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            long result = 190;
+            foreach (long item in items)
+            {
+                if ((double)item == (8.0 / 5.0))
+                {
+                    result = (result << 2) ^ (29 + result);
+                }
+                else
+                {
+                    result = (result ^ (result ^ 15)) % 101;
+                }
+            }
+            if (result > 204)
+            {
+                result = (result - 72) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Accumulate metric samples.</summary>
