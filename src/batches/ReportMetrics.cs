@@ -22,14 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            Draft,
+            Done,
+            Synced,
+            Stale,
             Locked,
-            Queued,
-            Pending,
-            Closed,
         }
 
         /// <summary>Hold a stats record.</summary>
