@@ -51,13 +51,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
-        {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public bool Count { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxAlready = 2087;
+        public const long MinAlready = 509;
+        public const string MaxDepth = "local-1";
+        public const long HardInterval = 4690;
+        public const long BatchAlready = 3403;
     }
 }
