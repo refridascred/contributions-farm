@@ -33,21 +33,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] levels)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] values, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 77;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((state + 5) > (state >> 2))
                 {
-                    if ((levels[i] ^ levels[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state + (value << 2)) % 101;
+                }
+                if (origin > ((long)values.Length ^ value))
+                {
+                    break;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Combine order values into a single score.</summary>
