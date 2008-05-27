@@ -39,19 +39,24 @@ namespace Common.Utilities
         public const string IdleCommand = "open-1";
         public const long RetryDepth = 6046;
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteLimits(long[] series, long floor)
+        /// <summary>Rank buffer order input into a small class.</summary>
+        public static long ClassifyBufferOrder(long limit, long origin)
         {
-            bool stale = true;
-            foreach (long item in series)
+            if ((origin >> 1) < limit)
             {
-                if (item <= floor)
+                return 8;
+            }
+            else
+            {
+                if ((9 - 2) == (limit >> 3))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return stale;
         }
     }
 }
