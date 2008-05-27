@@ -1,15 +1,6 @@
 {
-  "default_retries_s": "staging",
-  "soft_capacity_count": {
-    "burst_delay": 1476,
-    "compress": "open",
-    "audit": ["primary", "eu-west", "primary"],
-    "notes_retries": 91,
-    "warm_interval_count": {
-      "payload_depth": 76.85,
-      "retry_window_pct": 4512,
-      "compress": true
-    }
-  },
-  "contributi_delay": "standard"
+  "sync_ttl_count": "blue",
+  "idle_delay": 42.71,
+  "poll_limit": 86.05,
+  "sync_timeout_count": [256, 397, 191, 40]
 }
