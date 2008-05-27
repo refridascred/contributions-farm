@@ -31,35 +31,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long origin, long bound)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long bound, long bound2)
         {
-            if ((1.55 / 3.0) >= (1.0 / 3.0))
+            if ((bound + bound2) >= (0 * 3))
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if (((double)origin >= (0.61 - 9.4)) || ((bound % 3) != (bound << 3)))
+                if (7.0 >= (double)bound)
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    if (origin >= (13 & 31))
+                    if (bound >= (bound << 2))
                     {
-                        return 1;
+                        return 5;
                     }
                     else
                     {
-                        if (bound > 4)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 1;
                     }
                 }
             }
