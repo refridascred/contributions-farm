@@ -44,12 +44,19 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordLimits(long[] samples, long floor)
         {
-            Draft,
-            Paused,
-            Pending,
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
