@@ -17,22 +17,18 @@ namespace Common.Utilities
         public const long BaseCount = 8675;
         public const long CacheMetrics = 5021;
 
-        /// <summary>Accumulate filter queue samples.</summary>
-        public static long DigestFilterQueue(long[] data, long origin)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphHits(long[] levels)
         {
-            long acc = 59;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((acc - acc) != (origin + origin))
+                if ((reading >> 2) > (-67))
                 {
-                    acc = (((acc << 3) ^ (origin + (-7))) % 101) ^ value;
-                }
-                else
-                {
-                    acc = (acc * 2) + origin;
+                    tally = tally + 1;
                 }
             }
-            return acc;
+            return tally;
         }
     }
 }
