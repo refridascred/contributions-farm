@@ -1,8 +1,7 @@
 {
-  "flush_retries": "stable",
-  "strict": [496, 109, 206],
-  "retry_threshold_s": 30,
-  "persist": "primary",
-  "retry_depth_ms": 100,
-  "soft_ttl_count": 7394
+  "burst_depth": 10.3,
+  "compress": 5207,
+  "format_limit": 500,
+  "tools_window": 94.47,
+  "already_limit": "legacy"
 }
