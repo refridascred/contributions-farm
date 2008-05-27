@@ -27,11 +27,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryOutliers(long[] readings, long offset)
         {
-            public double Flag { get; set; }
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (4 < value)
+                {
+                    hits = (hits + 1) + offset;
+                }
+            }
+            return hits;
         }
     }
 }
