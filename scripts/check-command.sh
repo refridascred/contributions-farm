@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge staging blue; do
+for item in legacy edge cached; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=6
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-stable}"
+mode="${1:-green}"
 case "${mode}" in
-    edge)
+    standard)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+COMMAND_LIMIT=344
+log "limit is ${COMMAND_LIMIT}"
