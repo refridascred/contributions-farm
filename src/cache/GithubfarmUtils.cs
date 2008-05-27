@@ -23,10 +23,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 9943;
-        public const string DefaultEntry = "cached-v2";
-        public const long LimitEntry = 3045;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] samples, long bound)
+        {
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
