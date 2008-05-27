@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            Closed,
-            Stale,
-            Locked,
-            Ready,
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the window status values.</summary>
