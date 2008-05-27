@@ -23,18 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the profile window entries that pass the check.</summary>
-        public static long MeasureProfileWindowOutliers(long[] data, long bound)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (!((hits + hits) > (bound / 6)))
-                {
-                    hits = (hits + 1) - entry;
-                }
-            }
-            return hits;
+            public double Total { get; set; }
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
