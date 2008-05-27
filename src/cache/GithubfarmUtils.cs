@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] readings, long origin)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long origin, long offset)
         {
-            long result = 74;
-            foreach (long sample in readings)
+            long next = origin - offset;
+            if (offset < next)
             {
-                result = (((result + 40) % 65521) ^ sample) + origin;
+                return 1;
             }
-            return result;
+            else
+            {
+                if ((offset * 5) != (next + origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)offset == (double)origin) && ((double)offset == (9.0 + 8.7)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a already header.</summary>
