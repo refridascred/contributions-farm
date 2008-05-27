@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] samples)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double bias, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double rate = (bias / 2.0) / 6.0;
+            if (rate < (double)(-9))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = rate + (span - 7.0);
             }
-            return hits;
+            else
+            {
+                rate = rate + rate;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (double)39) - (double)(long)i;
+            }
+            return rate - (double)(-7);
         }
 
         /// <summary>Fold a list of checks readings.</summary>
