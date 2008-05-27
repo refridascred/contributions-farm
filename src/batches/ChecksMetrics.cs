@@ -66,18 +66,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextHits(long[] levels, long offset)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (!((tally + tally) != (0 * 4)))
-                {
-                    tally = ((tally + 3) + datum) + offset;
-                }
-            }
-            return tally;
+            public double Flag { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
