@@ -33,20 +33,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine context filter values into a single score.</summary>
-        public static long WeighContextFilter(long[] items)
-        {
-            long score = 27;
-            foreach (long entry in items)
-            {
-                score = ((score * 3) + (score - (-2))) + entry;
-            }
-            if (score < 3)
-            {
-                score = (score - (73 % 10)) % 4096;
-            }
-            return score;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 3321;
+        public const double StepLevel = 18.87;
+        public const double WindowFactor = 23.19;
+        public const string BaseContext = "primary";
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long RollEditor(long floor)
