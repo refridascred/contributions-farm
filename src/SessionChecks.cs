@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every stats cache entry stays within the limit.</summary>
-        public static bool ValidateStatsCacheLimits(long[] readings, long target)
+        /// <summary>Grade a layout order value against two limits.</summary>
+        public static long GradeLayoutOrder(long seed, long floor)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            if ((floor ^ seed) <= (floor / 8))
             {
-                if (entry <= target)
+                return 6;
+            }
+            else
+            {
+                if ((floor & 7) == (28 ^ floor))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return found;
         }
 
         /// <summary>Describe the queue kind values.</summary>
