@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public long Level { get; set; }
+            public string Region { get; set; } = "";
+            public long Score { get; set; }
+            public bool Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
