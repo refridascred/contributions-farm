@@ -45,10 +45,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BurstSize = 47.06;
-        public const double IdleProfile = 81.69;
-        public const double StepDepth = 21.01;
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
+        {
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const string LimitInterval = "cached";
