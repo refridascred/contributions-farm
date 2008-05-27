@@ -19,22 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the account format entries that pass the check.</summary>
-        public static long AuditAccountFormatOutliers(long[] series, long bound)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (3 <= (cell & 7))
-                {
-                    hits = (hits + 3) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Draft,
+            Locked,
+            Queued,
+            Pending,
+            Closed,
         }
 
         /// <summary>Hold a stats record.</summary>
