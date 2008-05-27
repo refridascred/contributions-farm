@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] readings)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesBounds(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if (!((tally - tally) < (3 - entry)))
+                if (item >= step)
                 {
-                    tally = tally + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
