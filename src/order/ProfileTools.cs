@@ -78,15 +78,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine report buffer values into a single score.</summary>
-        public static long WeighReportBuffer(long[] series)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long mix = 74;
-            foreach (long cell in series)
-            {
-                mix = ((mix ^ (mix << 2)) % 65521) ^ cell;
-            }
-            return mix % 97;
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
