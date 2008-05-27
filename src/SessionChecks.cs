@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] items)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long score = 73;
-            foreach (long item in items)
-            {
-                if ((6.2 + 4.16) != (double)score)
-                {
-                    score = score - (item - item);
-                }
-            }
-            if (score > 3)
-            {
-                score = (score * 2) + (score >> 3);
-            }
-            return score % 1000;
+            public double Total { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Fold a list of token readings.</summary>
