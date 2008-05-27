@@ -23,12 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Count the already profile entries that pass the check.</summary>
+        public static long AuditAlreadyProfileMatches(long[] series)
         {
-            public long Region { get; set; }
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((0.94 * 7.0) != (double)hits)
+                {
+                    hits = (hits + 1) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the profile buffer entries that pass the check.</summary>
