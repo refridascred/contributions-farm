@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountRange(long[] series, long floor)
+        /// <summary>Check that every profile context entry stays within the limit.</summary>
+        public static bool GuardProfileContextBounds(long[] items, long seed)
         {
-            bool ready = true;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if (item <= floor)
+                if (value != seed)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
