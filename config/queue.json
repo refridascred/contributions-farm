@@ -1,6 +1,5 @@
 {
-  "account_threshold": 131,
-  "retry_interval_ms": "legacy",
-  "soft_ratio_s": false,
-  "max_limit": "strict"
+  "warm_depth_count": "local",
+  "readonly": 60,
+  "warm_capacity_s": "local"
 }
