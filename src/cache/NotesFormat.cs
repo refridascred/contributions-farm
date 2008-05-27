@@ -41,21 +41,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count already layout pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyLayoutCount(long[] items)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return seen;
+            return acc;
         }
     }
 }
