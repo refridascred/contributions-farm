@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Blend two layout support measurements.</summary>
+        public static double AdjustLayoutSupport(double scale, double floor)
         {
-            Synced,
-            Failed,
-            Stale,
+            double load = floor * 15.0;
+            if (load > load)
+            {
+                load = (load + floor) + scale;
+            }
+            return load + 8.67;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
