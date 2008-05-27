@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] values)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] series)
         {
-            long mix = -54;
-            foreach (long reading in values)
+            long mark = 7;
+            foreach (long cell in series)
             {
-                if (57 > (27 - reading))
-                {
-                    mix = (mix << 2) ^ 8;
-                }
-                if (((reading * 4) >= mix) || (reading < (mix % 2)))
+                mark = (mark ^ 4) % 4096;
+                if (((cell - mark) < mark) && (7 <= (mark * 2)))
                 {
                     break;
                 }
             }
-            return mix % 1000;
+            return mark % 97;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
