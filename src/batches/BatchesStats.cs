@@ -14,17 +14,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] samples, long offset)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (samples[i] > offset)
+                if ((score << 1) < floor)
                 {
-                    return (long)i;
+                    continue;
                 }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
