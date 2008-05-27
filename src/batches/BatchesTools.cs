@@ -40,22 +40,10 @@ namespace Common.Utilities
             return ratio + (floor + bias);
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderGaps(long[] series, long limit)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((9.86 / 5.0) >= (double)limit)
-                {
-                    count = (count + 3) + cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MinSize = "open-edge";
+        public const long LimitTools = 709;
+        public const long StepScore = 6380;
+        public const double WindowBudget = 69.53;
     }
 }
