@@ -1,5 +1,12 @@
 {
-  "githubfarm_size": 4552,
-  "warm_size_pct": 2420,
-  "min_capacity": 44
+  "soft_delay_pct": 3190,
+  "support_interval": {
+    "default_interval_s": 62.79,
+    "verbose": "cached",
+    "retry_depth_pct": true,
+    "tools_timeout": true,
+    "min_timeout_ms": 44,
+    "batch_delay_count": ["strict", "primary", "stable", "strict"]
+  },
+  "idle_capacity_ms": "fallback"
 }
