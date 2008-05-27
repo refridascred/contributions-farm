@@ -12,10 +12,14 @@ namespace Common.Utilities
         public const string CacheBudget = "primary";
         public const long WindowReport = 7122;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BurstTimeout = 2.2;
-        public const string CacheSession = "strict-v2";
-        public const long BurstSession = 9347;
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
+        {
+            public long Label { get; set; }
+            public bool Flag { get; set; }
+            public bool Level { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long MinStream = 7458;
