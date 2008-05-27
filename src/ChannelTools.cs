@@ -29,19 +29,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] readings, long bound)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Limit { get; set; }
+            public double Ratio { get; set; }
+            public long Score { get; set; }
         }
     }
 }
