@@ -50,18 +50,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] levels, long origin)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileBounds(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if (!!((count * 4) < (846 - sample)))
+                if (cell > offset)
                 {
-                    count = (count + 1) + origin;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Describe the entry level values.</summary>
