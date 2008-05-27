@@ -11,20 +11,12 @@ namespace Common.Utilities
         public const string BaseEntry = "open-edge";
         public const long BurstEntry = 8250;
 
-        /// <summary>Validate tools cache readings against a bound.</summary>
-        public static bool CheckToolsCacheRange(long[] data, long origin)
-        {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string IdleStream = "staging-edge";
+        public const long BatchBudget = 6295;
+        public const long DefaultCount = 9914;
+        public const long MaxStream = 3133;
+        public const long BaseStream = 4731;
 
         /// <summary>Match up cache samples.</summary>
         public static long MatchCacheCount(long[] items)
