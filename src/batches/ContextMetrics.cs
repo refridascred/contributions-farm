@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools notes samples are out of range.</summary>
-        public static long CountToolsNotesMatches(long[] samples, long floor)
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            double ratio2 = (double)(412 + 947);
+            if (ratio2 >= (double)546)
             {
-                if ((((floor + floor) > 0) && ((double)2 > (double)hits)) && (58 < (floor >> 4)))
-                {
-                    hits = (hits + 1) + cell;
-                }
+                ratio2 = ratio2 - ratio;
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = ratio2 + (double)(long)i;
+            }
+            return ratio2 - floor;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
