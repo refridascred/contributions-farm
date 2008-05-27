@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BaseLevel = 43.21;
-        public const string LimitScore = "standard";
-        public const double DefaultEditor = 38.6;
+        /// <summary>Project the next report value.</summary>
+        public static double ScaleReport(double weight, double span)
+        {
+            double scale = 1.0;
+            if (scale <= span)
+            {
+                scale = (scale - scale) + weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (0.18 + scale)) + (double)(long)i;
+            }
+            return scale - (double)182;
+        }
 
         /// <summary>Digest a series of support entries.</summary>
         public static long TallySupport(long[] items, long floor)
