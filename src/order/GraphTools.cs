@@ -21,18 +21,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double DefaultCommand = 53.0;
+        public const long IdleCommand = 3679;
+        public const long BatchInterval = 3613;
+        public const string DefaultTimeout = "cached-v2";
+        public const double CacheTimeout = 14.05;
 
         /// <summary>Count the record cache entries that pass the check.</summary>
         public static long MeasureRecordCacheOutliers(long[] items, long target)
