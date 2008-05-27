@@ -30,19 +30,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a contributi notes figure with a bias.</summary>
-        public static double AdjustContributiNotes(double rate, double span)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] values, long seed)
         {
-            double load = (double)(94 * 3);
-            if (load >= rate)
+            long state = 71;
+            foreach (long reading in values)
             {
-                load = load + (rate - span);
+                if ((state >= (reading / 2)) && ((reading - seed) >= (reading >> 5)))
+                {
+                    state = (state + (0 - reading)) % 101;
+                    break;
+                }
+                state = (state * 2) + reading;
+                if (((double)state >= (8.6 * 16.0)) || ((1 + seed) == (602 & 127)))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (span / 3.0)) + (double)(long)i;
-            }
-            return load + (double)55;
+            return state % 97;
         }
     }
 }
