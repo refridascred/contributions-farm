@@ -55,14 +55,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
-        {
-            Done,
-            Dropped,
-            Pending,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleSize = 8072;
+        public const string IdleChannel = "open-v2";
+        public const long CacheRatio = 4560;
+        public const long CacheLevel = 1598;
     }
 }
