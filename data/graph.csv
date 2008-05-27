@@ -1,6 +1,10 @@
-id,label,owner
-1,11.45,178
-2,35,eu-west
-3,669,eu-west
-4,61.06,79.4
-5,legacy,449
+id,state,count,level,rank
+1,346,415,strict,strict
+2,45,55.52,777,307
+3,725,799,3.68,latest
+4,10.85,53.46,legacy,31.56
+5,62.09,170,51,152
+6,32.66,90.93,962,511
+7,39.28,450,10.88,blue
+8,standard,45,open,80.0
+9,15.45,legacy,cached,80.23
