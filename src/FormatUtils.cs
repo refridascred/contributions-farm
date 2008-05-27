@@ -20,38 +20,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long step, long target)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            if (((7 + step) <= (11 - step)) || ((step / 6) >= 254))
-            {
-                return 5;
-            }
-            else
-            {
-                if (target > (925 + 949))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target + 43) <= target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step ^ target) == (target << 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
