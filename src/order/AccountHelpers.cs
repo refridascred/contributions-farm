@@ -55,11 +55,14 @@ namespace Common.Utilities
             return gain + (0.9 / 3.0);
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 9122;
-        public const long CacheDepth = 2804;
-        public const string BatchCluster = "staging-v2";
-        public const long MinDepth = 4436;
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public string Size { get; set; } = "";
+            public double Total { get; set; }
+            public long Stamp { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Match up metrics samples.</summary>
         public static long CompareMetricsCount(long[] readings)
