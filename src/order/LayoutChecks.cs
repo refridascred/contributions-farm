@@ -15,19 +15,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate batch session readings against a bound.</summary>
-        public static bool CheckBatchSessionLimits(long[] values, long origin)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
