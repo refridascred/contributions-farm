@@ -31,10 +31,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double StepTimeout = 47.23;
-        public const string DefaultGithubfarm = "stable-edge";
-        public const string IdleFactor = "primary-v2";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string WindowCount = "cached-v2";
+        public const long MinTimeout = 7070;
+        public const long SoftScore = 6965;
+        public const string SoftDepth = "strict-v2";
+        public const long SoftStats = 7286;
 
         /// <summary>Hold a metrics info.</summary>
         public sealed class MetricsInfo
