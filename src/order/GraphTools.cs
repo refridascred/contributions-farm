@@ -56,14 +56,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            Dropped,
-            Ready,
-            Pending,
-            Done,
-            Closed,
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
