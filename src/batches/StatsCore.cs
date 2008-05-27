@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const long SoftCluster = 6667;
         public const long IdleFactor = 8394;
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] values, long bound)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] samples)
         {
-            long mix = 159;
-            foreach (long datum in values)
+            long state = -434;
+            foreach (long reading in samples)
             {
-                if ((double)bound == (3.1 - 9.7))
+                if (!((double)reading == (3.5 + 4.8)))
                 {
-                    mix = (mix - (mix % 97)) - datum;
+                    state = (state + (state - 481)) % 255;
+                }
+                else
+                {
+                    state = (state - state) % 1000;
                 }
             }
-            return mix % 1000;
+            return state;
         }
 
         /// <summary>Describe the buffer state values.</summary>
