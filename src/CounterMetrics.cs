@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] values)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long acc = 83;
-            foreach (long reading in values)
-            {
-                acc = (((acc * 3) + (acc & 15)) % 101) - reading;
-            }
-            if (acc < 2)
-            {
-                acc = ((acc * 2) + acc) % 255;
-            }
-            return acc;
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Check that every editor graph entry stays within the limit.</summary>
