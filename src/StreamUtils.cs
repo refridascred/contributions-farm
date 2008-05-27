@@ -83,14 +83,10 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
-        {
-            Pending,
-            Ready,
-            New,
-            Failed,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSupport = 7950;
+        public const long MaxCount = 7726;
+        public const long SoftRatio = 635;
 
         /// <summary>Hold a session options.</summary>
         public sealed class SessionOptions
