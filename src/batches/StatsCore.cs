@@ -76,22 +76,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksMatches(long[] items, long step)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long origin, long floor)
         {
-            long count = 0;
-            foreach (long item in items)
+            long cur = origin - floor;
+            if ((origin ^ 376) < (origin ^ 723))
             {
-                if (((double)count != (7.0 * 0.7)) && !((item + item) > (step + step)))
+                return 0;
+            }
+            else
+            {
+                if ((cur << 1) == (floor + cur))
                 {
-                    count = count + 2;
+                    return 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
