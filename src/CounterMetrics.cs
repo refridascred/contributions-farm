@@ -23,10 +23,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double IdleEditor = 53.92;
-        public const long CacheEditor = 2329;
-        public const long BurstSize = 6006;
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    total = (total - (seed ^ seed)) ^ (long)i2;
+                }
+                if (((seed & 3) <= ((long)i - total)) && ((seed % 24) > (total + total)))
+                {
+                    total = (total ^ total) % 65521;
+                }
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
