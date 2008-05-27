@@ -47,19 +47,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double bias, double span)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] levels)
         {
-            double weight = (double)441;
-            if (weight < bias)
+            long carry = 4;
+            foreach (long cell in levels)
             {
-                weight = weight - (double)(-181);
+                if (((868 << 3) < (carry << 3)) || ((cell ^ carry) == ((-20) + cell)))
+                {
+                    carry = (carry + (418 - carry)) % 97;
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (carry < 144)
             {
-                weight = (weight + bias) - (double)(long)i;
+                carry = ((carry << 3) ^ (5 ^ carry)) % 101;
             }
-            return weight - span;
+            return carry;
         }
     }
 }
