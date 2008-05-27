@@ -14,10 +14,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 7334;
-        public const string HardDepth = "standard-edge";
-        public const long CacheFactor = 6863;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterBounds(long[] data, long step)
+        {
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long IterateStats(long origin)
