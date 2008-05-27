@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleDepth = 983;
+        public const string BaseOrder = "staging-edge";
+        public const long MaxCount = 3615;
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
