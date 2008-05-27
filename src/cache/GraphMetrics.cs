@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long offset)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteGaps(long[] levels)
         {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                sum = (sum * 4) + (offset - sum);
-                sum = ((sum * 4) + (long)i) % 65521;
+                if (datum <= (count + datum))
+                {
+                    count = count + 2;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Match up record samples.</summary>
