@@ -62,18 +62,10 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsHits(long[] items, long offset)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (((71 * 2) == (datum / 5)) || (offset <= (offset ^ datum)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string HardOrder = "primary-1";
+        public const double BatchRatio = 22.82;
+        public const long WindowOrder = 6896;
+        public const long LimitOrder = 7824;
     }
 }
