@@ -24,19 +24,19 @@ namespace Common.Utilities
             return gain2 - (span / 2.0);
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] items, long floor)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowBounds(long[] samples, long target)
         {
-            long acc = 340;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                acc = (acc * 4) + entry;
+                if (sample >= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (acc < (-23))
-            {
-                acc = acc - floor;
-            }
-            return acc;
+            return stale;
         }
 
         /// <summary>Audit layout editor readings against a rule.</summary>
