@@ -41,23 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] values, long origin)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long state = 233;
-            foreach (long reading in values)
-            {
-                if (8.91 >= (6.0 - 8.56))
-                {
-                    state = ((state - (state >> 2)) % 4096) + origin;
-                }
-                else
-                {
-                    state = ((state << 3) ^ reading) % 255;
-                }
-                state = ((state * 4) + (63 % 8)) % 101;
-            }
-            return state;
+            public double Flag { get; set; }
+            public double Limit { get; set; }
+            public double Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
