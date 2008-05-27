@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] samples, long bound)
-        {
-            long mark = 327;
-            foreach (long item in samples)
-            {
-                if ((89 + mark) != (item - mark))
-                {
-                    mark = mark + (bound / 2);
-                }
-                else
-                {
-                    mark = mark ^ 181;
-                }
-            }
-            if (mark < 38)
-            {
-                mark = mark + (bound * 4);
-            }
-            return mark;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MaxContext = "strict-edge";
+        public const double MinTimeout = 63.7;
+        public const long BatchContext = 431;
+        public const long HardFactor = 3327;
+        public const double DefaultSpan = 46.77;
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
