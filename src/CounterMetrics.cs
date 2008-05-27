@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Validate channel record readings against a bound.</summary>
+        public static bool CheckChannelRecordBounds(long[] values, long limit)
         {
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public long Stamp { get; set; }
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Check that every editor graph entry stays within the limit.</summary>
