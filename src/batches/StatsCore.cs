@@ -15,15 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double gain, double offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] values, long bound)
         {
-            double load = offset;
-            if (load >= (offset * 3.2))
+            long mix = 159;
+            foreach (long datum in values)
             {
-                load = (load - (double)76) - gain;
+                if ((double)bound == (3.1 - 9.7))
+                {
+                    mix = (mix - (mix % 97)) - datum;
+                }
             }
-            return load + (load * 7.8);
+            return mix % 1000;
         }
 
         /// <summary>Adjust a commits reading.</summary>
