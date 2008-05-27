@@ -13,21 +13,39 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] series)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long offset, long offset2)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long span = offset ^ offset2;
+            if ((828 + span) <= (offset >> 2))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((offset2 / 6) <= offset2) || ((span % 8) < (span / 5)))
                 {
-                    if ((series[i] - series[j]) < 6)
+                    return 0;
+                }
+                else
+                {
+                    if ((97 ^ 632) == (offset << 3))
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((10.0 * 4.9) != (double)span)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Locate a metrics channel reading by value.</summary>
