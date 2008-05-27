@@ -72,19 +72,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the metrics tools series from a seed.</summary>
-        public static long IterateMetricsTools(long seed)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsHits(long[] readings, long offset)
         {
-            long total = seed;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (!(((total - seed) > total) || ((11.0 - 12.0) == (double)seed)))
+                if ((offset + 46) <= (matches - datum))
                 {
-                    total = (total + (seed - total)) % 4096;
+                    matches = matches + 3;
                 }
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            return matches;
         }
     }
 }
