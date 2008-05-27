@@ -21,15 +21,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] data)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long score = 0;
-            foreach (long sample in data)
-            {
-                score = (score - (sample - sample)) % 65521;
-            }
-            return score % 97;
+            Failed,
+            Idle,
+            Active,
+            Paused,
         }
 
         /// <summary>Define record limits and defaults.</summary>
