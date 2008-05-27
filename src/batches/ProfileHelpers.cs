@@ -36,18 +36,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] data, long bound)
+        /// <summary>Accumulate cache metric samples.</summary>
+        public static long TotalCacheMetric(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long mix = 46;
+            foreach (long cell in levels)
             {
-                if (!(((seen << 3) > (sample % 2)) || ((double)sample < (8.23 + 6.27))))
+                if ((((-395) + 0) > (70 - cell)) || ((cell + 4) < cell))
                 {
-                    seen = (seen + 2) - bound;
+                    mix = (mix << 3) ^ mix;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
