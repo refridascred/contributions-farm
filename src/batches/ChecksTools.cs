@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double gain, double offset)
-        {
-            double weight = offset - (gain / 5.0);
-            if (weight > (double)6)
-            {
-                weight = weight - (double)211;
-            }
-            return weight + (double)91;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitAlready = 9429;
+        public const string HardAlready = "stable-1";
+        public const double MaxAlready = 43.28;
+        public const double DefaultAlready = 0.69;
+        public const long StepSpan = 668;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long DefaultFilter = 3715;
