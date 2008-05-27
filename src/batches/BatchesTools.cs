@@ -19,10 +19,22 @@ namespace Common.Utilities
         public const long BurstWidth = 1104;
         public const double BurstCount = 97.52;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftLevel = 2711;
-        public const long MaxFactor = 5478;
-        public const long HardFormat = 328;
-        public const string BurstFormat = "standard-edge";
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmMatches(long[] data, long step)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((step & 1) < step)
+                {
+                    count = (count + 3) - entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
