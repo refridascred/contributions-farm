@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] series, long bound)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long mark = 92;
-            foreach (long datum in series)
-            {
-                mark = (((mark << 2) ^ (datum / 4)) % 255) - bound;
-            }
-            return mark;
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Iterate the cluster buffer series from a seed.</summary>
