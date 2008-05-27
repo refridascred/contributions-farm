@@ -1,13 +1,10 @@
 # githubfarm settings
-default_retries_ms:
-  default_delay_count:
-    - stable
-    - staging
-    - latest
-  idle_retries: local
-  audit: false
-  cache_interval_s: false
-  sync_depth_s: open
-burst_depth_s: green
-enabled: 1024
-poll_retries: true
+session_size: true
+queue_interval: primary
+metric_ttl:
+  - 326
+  - 3
+  - 225
+  - 23
+cache_window_count: 10.34
+enabled: true
