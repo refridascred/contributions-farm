@@ -1,13 +1,8 @@
 {
-  "notes_retries": 51,
-  "warm_capacity_s": true,
-  "persist": {
-    "batch_threshold": 33.84,
-    "verbose": ["open", "eu-west"],
-    "min_limit": 6926,
-    "readonly": ["cached", "edge", "cached"]
-  },
-  "retry_threshold_count": "stable",
-  "max_ttl_count": "open",
-  "session_size": false
+  "batch_ratio_s": 8985,
+  "compress": [12, 465, 362],
+  "max_threshold_ms": "edge",
+  "min_limit": "edge",
+  "channel_threshold": true,
+  "hard_window_ms": 8827
 }
