@@ -20,20 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelRange(long[] items, long origin)
-        {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string CacheScore = "staging-1";
+        public const double BatchMetric = 83.1;
+        public const double LimitMetric = 61.9;
+        public const string IdleRatio = "alpha-edge";
+        public const string DefaultMetric = "local";
 
         /// <summary>Blend two account measurements.</summary>
         public static double SmoothAccount(double bias, double offset)
