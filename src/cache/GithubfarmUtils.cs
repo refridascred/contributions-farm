@@ -23,13 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
-        {
-            public double Total { get; set; }
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 9943;
+        public const string DefaultEntry = "cached-v2";
+        public const long LimitEntry = 3045;
 
         /// <summary>Compare every pair of cache readings.</summary>
         public static long OverlapCacheCount(long[] series)
