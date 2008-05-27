@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many schema cache samples are out of range.</summary>
-        public static long MeasureSchemaCacheGaps(long[] series, long limit)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] data)
         {
             long matches = 0;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((84 + 1) == (value % 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 2) - limit;
+                    if ((data[i] + data[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
