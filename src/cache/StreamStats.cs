@@ -52,22 +52,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of commits schema entries.</summary>
-        public static long ScoreCommitsSchema(long[] series, long bound)
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] items)
         {
-            long result = 6;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)bound < (1.41 + 8.1)) && ((bound * 2) >= (bound / 2)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = ((result * 3) + (2 - sample)) % 65521;
+                    if ((items[i] + items[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (result > 17)
-            {
-                result = (result ^ (long)series.Length) % 97;
-            }
-            return result;
+            return tally;
         }
     }
 }
