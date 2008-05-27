@@ -1,7 +1,6 @@
 {
-  "warm_interval_pct": "primary",
-  "batch_threshold": [184, 17],
-  "window_depth": "standard",
-  "base_size_ms": 60,
-  "min_threshold": "open"
+  "max_capacity_ms": 5050,
+  "min_depth_ms": 8729,
+  "persist": "edge",
+  "contributi_threshold": [115, 108]
 }
