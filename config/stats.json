@@ -1,5 +1,5 @@
 {
-  "default_interval_s": "open",
-  "sync_timeout": true,
-  "min_size_s": "legacy"
+  "cache_interval_ms": 559,
+  "poll_delay_count": 1210,
+  "soft_timeout_count": 45.86
 }
