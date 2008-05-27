@@ -75,21 +75,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] series)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Pending,
+            Ready,
+            New,
+            Failed,
         }
 
         /// <summary>Hold a session options.</summary>
