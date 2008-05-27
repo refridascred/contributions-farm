@@ -60,11 +60,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseDepth = 8486;
-        public const string DefaultFormat = "primary-edge";
-        public const double BurstTimeout = 5.63;
-        public const string BaseScore = "standard-v2";
-        public const string IdleCount = "cached-1";
+        /// <summary>Scale a channel record figure with a bias.</summary>
+        public static double SmoothChannelRecord(double gain, double floor)
+        {
+            double bias = 6.31;
+            if (bias > (floor + floor))
+            {
+                bias = (bias + (bias - floor)) + gain;
+            }
+            return bias - (bias * 1.0);
+        }
     }
 }
