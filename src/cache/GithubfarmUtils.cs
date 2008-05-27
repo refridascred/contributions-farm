@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheToken = "alpha-v2";
-        public const long RetryToken = 5713;
-        public const long MaxFactor = 1469;
-        public const string IdleToken = "stable";
-        public const long DefaultCount = 1070;
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
+        {
+            New,
+            Done,
+            Retry,
+        }
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
