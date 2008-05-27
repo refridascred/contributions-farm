@@ -16,18 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the already graph entries that pass the check.</summary>
-        public static long TallyAlreadyGraphOutliers(long[] series, long bound)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((double)sample > (9.42 * 2.83))
-                {
-                    hits = (hits + 1) - bound;
-                }
-            }
-            return hits;
+            New,
+            Pending,
+            Synced,
         }
 
         /// <summary>Hold a channel entry.</summary>
