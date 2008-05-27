@@ -77,14 +77,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            Ready,
-            Draft,
-            Paused,
-            New,
-            Synced,
+            public bool Offset { get; set; }
+            public double Size { get; set; }
         }
     }
 }
