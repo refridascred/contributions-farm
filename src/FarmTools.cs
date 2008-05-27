@@ -22,23 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long seed)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksHits(long[] data, long origin)
         {
-            long acc = seed;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (!((double)acc > (double)seed))
+                if (!((seen + origin) >= (value + origin)))
                 {
-                    break;
+                    seen = seen + 1;
                 }
-                if ((long)i < ((long)i + 59))
-                {
-                    acc = (acc - (81 >> 1)) % 255;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
