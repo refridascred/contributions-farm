@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 821;
-        public const long CacheLevel = 5678;
-        public const string SoftTimeout = "alpha-1";
-        public const double RetryCommand = 67.25;
-        public const double BaseWidth = 33.55;
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
+        {
+            Retry,
+            Idle,
+            Ready,
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const string CacheContext = "alpha-v2";
