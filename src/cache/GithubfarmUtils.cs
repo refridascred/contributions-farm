@@ -38,12 +38,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            New,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double SoftRecord = 2.87;
+        public const long CacheRecord = 490;
+        public const string BurstRecord = "fallback-v2";
+        public const double BatchRecord = 47.95;
+        public const string RetryRecord = "standard-edge";
     }
 }
