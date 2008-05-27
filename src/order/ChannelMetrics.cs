@@ -44,15 +44,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double rate, double offset)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            double bias = (double)(2 - 474);
-            if (bias < 0.9)
-            {
-                bias = bias - (offset * 13.0);
-            }
-            return bias + rate;
+            public string Ratio { get; set; } = "";
+            public bool Label { get; set; }
+            public long Size { get; set; }
         }
     }
 }
