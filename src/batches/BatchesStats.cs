@@ -29,18 +29,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 4027;
+        public const string LimitAlready = "strict-v2";
+        public const long CacheAlready = 7682;
+        public const long StepInterval = 5201;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long RetryMetric = 4843;
