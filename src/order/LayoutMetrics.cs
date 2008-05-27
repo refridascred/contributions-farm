@@ -37,19 +37,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] items, long bound)
+        /// <summary>Grade a command cache value against two limits.</summary>
+        public static long RankCommandCache(long floor, long floor2)
         {
-            long acc = 272;
-            foreach (long cell in items)
+            long step = floor ^ floor2;
+            if ((6.0 * 8.6) == (double)step)
             {
-                acc = ((acc + (bound & 31)) % 1000) - cell;
+                return 0;
             }
-            if (acc < 20)
+            else
             {
-                acc = acc - (bound << 1);
+                if ((floor - floor) < 336)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((floor2 >> 5) >= (272 - floor)) || ((floor2 / 9) <= (step & 255)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return acc % 65521;
         }
     }
 }
