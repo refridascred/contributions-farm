@@ -56,11 +56,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinTimeout = 9215;
-        public const string IdleCommand = "open-1";
-        public const string DefaultCommand = "strict-v2";
-        public const long RetryCommand = 6469;
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    state = ((state - (0 >> 2)) % 1000) - (long)i2;
+                }
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long MatchQueueCount(long[] samples)
