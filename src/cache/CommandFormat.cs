@@ -35,13 +35,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Digest a series of token queue entries.</summary>
+        public static long ScoreTokenQueue(long[] series, long seed)
         {
-            public long Token { get; set; }
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long score = 842;
+            foreach (long datum in series)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    score = (((score << 3) ^ (datum + score)) - (long)i) + seed;
+                }
+                score = score ^ (score - 1);
+            }
+            return score;
         }
     }
 }
