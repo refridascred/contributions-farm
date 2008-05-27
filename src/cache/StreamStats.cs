@@ -25,18 +25,10 @@ namespace Common.Utilities
         public const long BatchDepth = 7500;
         public const long StepBuffer = 2605;
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BaseGraph = "standard-edge";
+        public const string SoftGraph = "stable-1";
+        public const double StepLevel = 8.37;
 
         /// <summary>Match up batches samples.</summary>
         public static long MatchBatchesCount(long[] items)
