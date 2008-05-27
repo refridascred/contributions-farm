@@ -80,13 +80,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] levels)
         {
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
-            public long Token { get; set; }
-            public double Region { get; set; }
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((((long)levels.Length <= (24 - tally)) || ((reading + 20) <= ((long)levels.Length + reading))) && !((tally - tally) > (178 + 2)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
