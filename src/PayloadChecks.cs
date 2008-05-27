@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmLimits(long[] items, long origin)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long floor)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long mix = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (entry < origin)
+                if (!((mix & 127) < (floor & 255)))
                 {
-                    flag = false;
-                    break;
+                    mix = (mix + (long)i) % 1000;
+                    continue;
                 }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
