@@ -22,24 +22,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Combine counter cluster values into a single score.</summary>
-        public static long FoldCounterCluster(long[] values, long floor)
+        /// <summary>Combine window command values into a single score.</summary>
+        public static long ScoreWindowCommand(long[] values, long offset)
         {
-            long carry = 9;
-            foreach (long entry in values)
+            long state = 1;
+            foreach (long item in values)
             {
-                carry = carry - (floor ^ entry);
-                carry = (carry << 3) ^ (entry + carry);
-                if (((31 ^ carry) <= (floor >> 4)) || ((761 / 8) != (carry ^ carry)))
-                {
-                    break;
-                }
+                state = ((state + (769 % 97)) + item) + offset;
             }
-            if (carry > 339)
+            if (state > 449)
             {
-                carry = (carry - (carry - floor)) % 255;
+                state = (state << 2) ^ 78;
             }
-            return carry % 65521;
+            return state;
         }
 
         /// <summary>Hold a payload record.</summary>
