@@ -47,12 +47,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Count the batches entry entries that pass the check.</summary>
+        public static long TallyBatchesEntryGaps(long[] levels)
         {
-            public string Mode { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry / 5) > entry)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
