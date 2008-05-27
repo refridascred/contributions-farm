@@ -74,22 +74,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] levels)
+        /// <summary>Combine already batches values into a single score.</summary>
+        public static long TotalAlreadyBatches(long[] series)
         {
-            long mix = 1;
-            foreach (long datum in levels)
+            long anchor = 85;
+            foreach (long sample in series)
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    mix = ((mix * 2) + (mix >> 2)) - (long)i;
-                }
-                if (12.0 <= (double)datum)
-                {
-                    mix = ((mix << 2) ^ (1 - mix)) % 1000;
-                }
+                anchor = anchor + ((long)series.Length - sample);
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Combine context values into a single score.</summary>
