@@ -22,12 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long origin)
         {
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public double Label { get; set; }
+            long anchor = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                long matches = (origin - (long)i) + anchor;
+                if ((origin & 63) >= (matches % 24))
+                {
+                    anchor = (anchor << 3) ^ (origin * 2);
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
