@@ -1,12 +1,6 @@
 {
-  "githubfarm_capacity": "strict",
-  "max_ratio": 1024,
-  "flush_capacity": "staging",
-  "warm_depth": 500,
-  "burst_retries_ms": {
-    "base_limit_count": 30,
-    "cache_delay_pct": "fallback",
-    "min_capacity_s": 56,
-    "readonly": [81, 110, 10]
-  }
+  "account_threshold": 131,
+  "retry_interval_ms": "legacy",
+  "soft_ratio_s": false,
+  "max_limit": "strict"
 }
