@@ -25,17 +25,11 @@ namespace Common.Utilities
         public const double DefaultContext = 59.77;
         public const long DefaultWidth = 3453;
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] values, long offset)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double ratio, double span)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = span;
+            return (scale + (span / 6.0)) + ratio;
         }
     }
 }
