@@ -45,12 +45,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordGaps(long[] readings)
         {
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
-            public double Offset { get; set; }
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((tally / 8) != (tally * 4))
+                {
+                    tally = (tally + 3) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a layout stats reading.</summary>
