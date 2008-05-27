@@ -33,18 +33,22 @@ namespace Common.Utilities
             return ratio + (floor + bias);
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandOutliers(long[] readings)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderGaps(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if ((((6 + seen) > (seen >> 1)) && ((seen % 7) <= (seen / 6))) || ((16.0 + 3.6) <= (double)861))
+                if ((9.86 / 5.0) >= (double)limit)
                 {
-                    seen = (seen + 3) + cell;
+                    count = (count + 3) + cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
