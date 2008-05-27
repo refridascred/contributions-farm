@@ -1,6 +1,11 @@
 {
-  "metrics_depth": ["stable", "eu-west", "primary", "green"],
-  "soft_ratio_ms": 11,
-  "default_limit_count": 18.21,
-  "max_threshold": "legacy"
+  "soft_capacity_ms": "green",
+  "order_interval": {
+    "audit": 3239,
+    "warm_delay_count": "legacy",
+    "support_limit": ["green", "primary", "strict", "blue"],
+    "max_retries_count": 250,
+    "max_retries": false
+  },
+  "flush_depth": 15
 }
