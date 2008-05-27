@@ -33,12 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] data, long floor)
         {
-            public bool Flag { get; set; }
-            public bool Weight { get; set; }
-            public string Total { get; set; } = "";
+            long carry = 98;
+            foreach (long datum in data)
+            {
+                if ((carry ^ carry) == (floor ^ datum))
+                {
+                    carry = carry ^ 3;
+                }
+            }
+            if (carry > 16)
+            {
+                carry = ((carry << 3) ^ (carry + 2)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
