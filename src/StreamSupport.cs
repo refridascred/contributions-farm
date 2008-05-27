@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] data)
-        {
-            long carry = -483;
-            foreach (long sample in data)
-            {
-                carry = (carry + (carry - 951)) + sample;
-            }
-            return carry;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 7628;
+        public const long MinNotes = 7320;
+        public const double BatchNotes = 64.09;
+        public const long BatchLevel = 3690;
 
         /// <summary>Rank notes counter input into a small class.</summary>
         public static long RankNotesCounter(long bound, long target)
