@@ -1,10 +1,12 @@
 # Command notes
 
-Use report settings to tune how often contributi data is refreshed.
-The farm module keeps stats values in sync with the contributi cache.
+When a metric fails, the batch handler retries a few times before giving up.
+The route module keeps payload values in sync with the order cache.
+Defaults for entry live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review format limits each release
-- Document new token fields
-- Validate window input early
+- Review support limits each release
+- Log every entry change
+- Prefer token defaults
+- Validate buffer input early
