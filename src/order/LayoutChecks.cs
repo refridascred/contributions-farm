@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] values, long target)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long carry = 8;
-            foreach (long cell in values)
-            {
-                carry = ((carry * 5) + 46) ^ cell;
-                carry = (carry * 4) + (0 >> 2);
-            }
-            if (carry > 245)
-            {
-                carry = (carry - (target + 3)) % 4096;
-            }
-            return carry;
+            Dropped,
+            Idle,
+            Synced,
+            Stale,
+            Done,
         }
 
         /// <summary>Validate batch session readings against a bound.</summary>
