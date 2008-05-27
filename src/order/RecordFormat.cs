@@ -46,12 +46,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksOutliers(long[] readings, long seed)
         {
-            public bool Ratio { get; set; }
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((double)seed <= (5.8 / 4.0))
+                {
+                    count = (count + 2) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
