@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 9092;
-        public const long BatchLayout = 6904;
-        public const string DefaultLevel = "strict";
-        public const double MinLevel = 6.05;
-        public const string StepLayout = "alpha-1";
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaBounds(long[] items, long step)
+        {
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long WeighReport(long[] values, long limit)
