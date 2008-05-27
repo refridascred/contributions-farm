@@ -23,11 +23,24 @@ namespace Common.Utilities
             return weight2 - weight;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitRatio = 517;
-        public const double RetryProfile = 95.9;
-        public const long DefaultProfile = 8845;
-        public const long LimitWidth = 2470;
-        public const string MaxLevel = "open";
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long step, long seed)
+        {
+            if (0.1 > (double)step)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!(0 > (seed % 24)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
