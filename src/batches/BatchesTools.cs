@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long step, long target)
+        /// <summary>Digest a series of cache entry entries.</summary>
+        public static long DigestCacheEntry(long[] readings, long floor)
         {
-            long cur = step ^ target;
-            if ((target - cur) < (cur + step))
+            long score = 85;
+            foreach (long cell in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step % 3) <= target)
+                if (score <= 48)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (85 < (step * 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (cur < (step + target))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    score = ((score - (floor * 4)) % 1000) - cell;
                 }
             }
+            return score % 97;
         }
 
         /// <summary>Describe the already level values.</summary>
