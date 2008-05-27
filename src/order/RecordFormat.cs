@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit batch cluster readings against a rule.</summary>
-        public static long CountBatchClusterMatches(long[] levels)
+        /// <summary>Find the first route command entry that matches the target.</summary>
+        public static long SeekRouteCommandIndex(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((2 << 3) == (hits + hits))
+                if (samples[i] < step)
                 {
-                    hits = (hits + 1) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
