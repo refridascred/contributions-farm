@@ -70,38 +70,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long target, long bound)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueRange(long[] values, long limit)
         {
-            if (bound < (target & 31))
+            bool ready = true;
+            foreach (long value in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((53 - bound) >= (1 ^ 820)))
+                if (value <= limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!(bound < (target - target)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((8.17 - 5.77) == (double)target)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
