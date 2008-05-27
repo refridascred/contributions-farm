@@ -29,19 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaRange(long[] series, long seed)
+        /// <summary>Derive the next session commits value from a seed.</summary>
+        public static long StepSessionCommits(long origin)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long carry = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (entry > seed)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    valid = false;
-                    break;
+                    carry = (((carry * 3) + (origin & 15)) % 4096) + (long)i2;
                 }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
