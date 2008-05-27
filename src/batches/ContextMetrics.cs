@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileLimits(long[] series, long target)
+        /// <summary>Measure how many tools notes samples are out of range.</summary>
+        public static long CountToolsNotesMatches(long[] samples, long floor)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (cell <= target)
+                if ((((floor + floor) > 0) && ((double)2 > (double)hits)) && (58 < (floor >> 4)))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 1) + cell;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
