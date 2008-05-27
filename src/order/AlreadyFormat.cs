@@ -39,15 +39,15 @@ namespace Common.Utilities
         public const double WindowFactor = 23.19;
         public const string BaseContext = "primary";
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long floor)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] series)
         {
-            long total = floor;
-            for (int i = 0; i < 12; i++)
+            long carry = 49;
+            foreach (long value in series)
             {
-                total = ((total * 3) + (long)i) % 1000;
+                carry = ((carry * 3) + (value ^ value)) % 65521;
             }
-            return total;
+            return carry % 1000;
         }
 
         /// <summary>Describe the route mode values.</summary>
