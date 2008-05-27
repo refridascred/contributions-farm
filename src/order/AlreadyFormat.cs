@@ -10,22 +10,22 @@ namespace Common.Utilities
         public const long IdleChannel = 2334;
         public const string BatchSpan = "strict-1";
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] series, long bound)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((matches - cell) >= cell)
+                if ((datum + count) >= (count ^ count))
                 {
-                    matches = (matches + 2) - bound;
+                    count = (count + 1) - step;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Accumulate graph order samples.</summary>
