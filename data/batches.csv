@@ -1,8 +1,9 @@
-id,score,count,active
-1,73.43,730,47
-2,eu-west,6.46,309
-3,20.31,953,21.28
-4,43.91,703,blue
-5,587,546,0.68
-6,edge,918,cached
-7,85.28,65,primary
+id,score,ratio
+1,standard,staging
+2,649,75.34
+3,latest,standard
+4,cached,174
+5,71.32,stable
+6,local,360
+7,781,57.38
+8,44.01,23.42
