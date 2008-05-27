@@ -36,19 +36,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorBounds(long[] data, long origin)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesBounds(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if (entry <= origin)
+                if (reading > offset)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
     }
 }
