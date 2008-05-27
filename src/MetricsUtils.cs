@@ -50,23 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long limit)
+        /// <summary>Audit layout stats readings against a rule.</summary>
+        public static long TallyLayoutStatsMatches(long[] levels)
         {
-            long total = limit;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((limit + limit) < (2 / 8))
+                if (((4.0 <= (double)hits) && ((39 * 4) > hits)) || (((item * 4) == (hits & 31)) && (item < hits)))
                 {
-                    total = (total + (97 << 2)) % 101;
+                    hits = hits + 3;
                 }
-                else
-                {
-                    total = (total << 2) ^ 18;
-                }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Hold a profile record.</summary>
