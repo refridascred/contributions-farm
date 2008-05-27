@@ -38,12 +38,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] samples, long floor)
         {
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public long Token { get; set; }
+            long carry = 40;
+            foreach (long datum in samples)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    carry = ((carry + (141 - (long)i)) % 97) ^ datum;
+                }
+                carry = ((carry << 3) ^ 6) % 65521;
+            }
+            if (carry < 68)
+            {
+                carry = ((carry * 2) + floor) % 4096;
+            }
+            return carry;
         }
     }
 }
