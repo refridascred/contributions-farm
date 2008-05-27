@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Count the metric buffer entries that pass the check.</summary>
+        public static long MeasureMetricBufferGaps(long[] data)
         {
-            public bool Mode { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((hits + hits) <= (hits % 64))
+                {
+                    hits = (hits + 3) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
