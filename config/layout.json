@@ -1,10 +1,19 @@
 {
-  "idle_delay_count": "fallback",
-  "warm_window_s": 15.06,
-  "soft_ratio_pct": {
-    "idle_delay_ms": "latest",
-    "record_ttl": "local",
-    "route_size": ["eu-west", "cached", "fallback", "local"],
-    "soft_depth_ms": 68
-  }
+  "cache_limit_pct": "strict",
+  "record_timeout": {
+    "burst_size_pct": 1024,
+    "strict": 1024,
+    "sync_size": {
+      "compress": 250,
+      "readonly": "fallback",
+      "enabled": ["blue", "legacy", "edge"],
+      "base_delay": 100,
+      "cache_depth_ms": 60,
+      "sync_timeout_ms": 43.81
+    },
+    "flush_threshold_count": 65.01,
+    "soft_limit_ms": 8.27
+  },
+  "counter_capacity": false,
+  "compress": "latest"
 }
