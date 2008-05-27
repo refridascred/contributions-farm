@@ -48,10 +48,23 @@ namespace Common.Utilities
         public const long WindowFactor = 7702;
         public const long BaseScore = 4228;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchScore = 9299;
-        public const long LimitChannel = 7625;
-        public const long WindowChannel = 1287;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheGaps(long[] levels, long origin)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((origin - reading) > (50 + origin))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double ScaleAlready(double gain, double floor)
