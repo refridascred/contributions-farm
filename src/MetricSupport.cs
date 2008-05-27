@@ -13,15 +13,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double rate, double floor)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionGaps(long[] samples)
         {
-            double mean = (double)(6 * 4);
-            if (mean > (floor * 10.0))
+            long count = 0;
+            foreach (long reading in samples)
             {
-                mean = (mean + (double)60) - rate;
+                if ((reading * 2) >= reading)
+                {
+                    count = count + 1;
+                }
             }
-            return mean - 0.1;
+            return count;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
