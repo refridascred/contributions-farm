@@ -41,12 +41,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            public long Limit { get; set; }
-            public double Level { get; set; }
-            public long Rank { get; set; }
+            Failed,
+            Paused,
+            New,
+            Queued,
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
