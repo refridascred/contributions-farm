@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string LimitRoute = "standard-edge";
-        public const double MaxScore = 23.56;
-        public const string CacheRoute = "fallback";
-        public const long MinRoute = 8479;
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            New,
+            Draft,
+            Done,
+        }
 
         /// <summary>Blend two cluster measurements.</summary>
         public static double ProjectCluster(double bias, double bias2)
