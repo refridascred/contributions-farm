@@ -1,8 +1,7 @@
-id,score,ratio,count
-1,open,28.07,open
-2,135,38.44,748
-3,primary,895,60.26
-4,open,6.25,45.89
-5,standard,685,221
-6,233,902,599
-7,119,652,413
+id,rank,region,ratio,state
+1,85.35,91.33,362,521
+2,58.98,883,13.13,899
+3,edge,fallback,95.25,23.46
+4,553,cached,23.0,415
+5,primary,stable,89.03,649
+6,921,local,453,14.68
