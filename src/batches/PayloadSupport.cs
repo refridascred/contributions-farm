@@ -25,12 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] series, long step)
         {
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
-            public bool Offset { get; set; }
+            long carry = 6;
+            foreach (long reading in series)
+            {
+                if ((reading ^ 3) < (step * 4))
+                {
+                    carry = ((carry << 3) ^ (reading + carry)) % 255;
+                }
+            }
+            if (carry < 22)
+            {
+                carry = (carry ^ ((long)series.Length % 2)) % 255;
+            }
+            return carry;
         }
     }
 }
