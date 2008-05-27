@@ -1,12 +1,6 @@
 # support settings
-dry_run: staging
-audit: 41
-batch_size:
-  base_depth_count: 9
-  idle_limit_count: strict
-  warm_retries_ms: staging
-  base_retries_ms: true
-  warm_capacity_count: standard
-metrics_interval: true
-default_threshold_count: false
-sync_delay: open
+base_threshold_s: 100
+retry_ratio: true
+default_ttl_count:
+  - latest
+  - green
