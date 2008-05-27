@@ -13,32 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long floor, long target)
+        /// <summary>Check that every metric buffer entry stays within the limit.</summary>
+        public static bool ValidateMetricBufferRange(long[] samples, long step)
         {
-            long cur = floor + target;
-            if ((floor >> 1) == (cur & 255))
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor - floor) <= cur)
+                if (cell <= step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((floor * 3) == (0 + 415)) && (floor <= (floor - floor)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a counter record.</summary>
