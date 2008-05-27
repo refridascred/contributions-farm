@@ -72,17 +72,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] items, long limit)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long target, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((seed & 255) < (target ^ seed))
             {
-                if (items[i] <= limit)
+                return 5;
+            }
+            else
+            {
+                if ((56 & 1) > target)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((17.0 * 12.0) > (double)seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a counter entry.</summary>
