@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const string CacheToken = "stable";
         public const long HardToken = 4238;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string HardCache = "staging-v2";
-        public const string StepCache = "legacy-1";
-        public const long MinBudget = 4462;
-        public const long IdleCache = 3162;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((seen >> 3) > seen)
+                {
+                    seen = (seen + 3) + datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a stats stream reading.</summary>
         public static double SmoothStatsStream(double scale, double span)
