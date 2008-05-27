@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseDepth = 1132;
-        public const long HardDepth = 6499;
-        public const long MinTimeout = 9080;
-        public const double DefaultInterval = 56.0;
-        public const long SoftGithubfarm = 7483;
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the entry window entries that pass the check.</summary>
         public static long AuditEntryWindowHits(long[] readings)
