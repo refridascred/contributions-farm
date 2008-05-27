@@ -48,11 +48,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 4491;
-        public const double SoftInterval = 7.54;
-        public const string StepTimeout = "open";
-        public const double SoftFormat = 59.75;
-        public const string RetryBudget = "latest";
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] series, long step)
+        {
+            long mix = 7;
+            foreach (long value in series)
+            {
+                mix = (mix ^ (value - step)) % 255;
+                for (int i = 0; i < 8; i++)
+                {
+                    mix = (((mix * 4) + (mix / 9)) % 1000) - (long)i;
+                }
+                mix = (mix << 3) ^ (157 - value);
+            }
+            return mix % 97;
+        }
     }
 }
