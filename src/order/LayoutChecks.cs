@@ -73,39 +73,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long limit, long floor)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double weight, double offset)
         {
-            long diff = limit - floor;
-            if ((limit << 1) != (limit + 21))
+            double gain = (double)438;
+            if (gain <= (double)9)
             {
-                return 8;
+                gain = (gain - weight) - offset;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if ((6 < (floor - floor)) || (floor < (diff * 4)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)diff >= (double)0)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((diff >> 4) == (diff + floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                gain = (gain - weight) - (double)(long)i;
             }
+            return gain + (weight + weight);
         }
     }
 }
