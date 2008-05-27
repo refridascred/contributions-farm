@@ -19,35 +19,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long bound, long bound2)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long floor, long limit)
         {
-            if (((bound2 << 1) == (bound << 1)) || ((bound & 3) <= bound))
+            long cur = floor ^ limit;
+            if ((double)floor >= (5.0 / 5.0))
             {
-                return 1;
+                return 6;
             }
             else
             {
-                if (77 >= (bound2 * 2))
+                if (limit >= (limit + floor))
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    if (!((bound >> 3) <= (bound2 ^ bound2)))
+                    if (cur <= floor)
                     {
-                        return 5;
+                        return 8;
                     }
                     else
                     {
-                        if ((bound * 2) >= (bound % 97))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 2;
                     }
                 }
             }
