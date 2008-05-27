@@ -20,19 +20,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long offset)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long offset, long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 7; i++)
+            long next = offset - bound;
+            if ((double)bound >= (6.3 * 5.7))
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    sum = (((sum * 5) + (offset + offset)) % 1000) - (long)i2;
-                }
-                sum = ((sum * 3) + (long)i) % 97;
+                return 2;
             }
-            return sum;
+            else
+            {
+                if (((offset + offset) >= offset) || ((next * 4) <= (94 + bound)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Rank report input into a small class.</summary>
