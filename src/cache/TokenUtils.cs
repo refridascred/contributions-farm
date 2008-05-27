@@ -44,39 +44,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long seed, long target)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesBounds(long[] levels, long bound)
         {
-            long slot = seed - target;
-            if ((4.46 - 19.0) != (double)slot)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((seed - seed) != (slot & 63)) && ((seed + 22) == (376 ^ seed)))
+                if (item <= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (6 < (target * 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed + target) >= slot)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
