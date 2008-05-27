@@ -1,9 +1,7 @@
 # support settings
-persist:
-  - 408
-  - 27
-  - 256
-soft_size: 30
-poll_delay: open
-cache_ttl: true
-graph_retries: primary
+channel_ratio: 17
+default_ttl_s: green
+cache_capacity: edge
+payload_timeout: 30
+batch_depth: false
+burst_ratio_count: strict
