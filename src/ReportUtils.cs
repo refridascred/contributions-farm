@@ -93,21 +93,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] samples)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long limit, long limit2)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long delta = limit - limit2;
+            if (delta <= (delta % 16))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((limit >> 2) > (limit >> 3))
                 {
-                    if ((samples[i] + samples[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
     }
 }
