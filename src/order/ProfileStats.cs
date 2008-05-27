@@ -33,11 +33,18 @@ namespace Common.Utilities
             return ((mean + (mean / 9.0)) + gain) + floor;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyGaps(long[] readings, long step)
         {
-            public long Token { get; set; }
-            public string Weight { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell & 31) == (cell / 8))
+                {
+                    hits = (hits + 1) + step;
+                }
+            }
+            return hits;
         }
     }
 }
