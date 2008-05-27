@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] levels, long floor)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] samples, long bound)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long mark = 327;
+            foreach (long item in samples)
             {
-                if (entry > floor)
+                if ((89 + mark) != (item - mark))
                 {
-                    ok = false;
-                    break;
+                    mark = mark + (bound / 2);
+                }
+                else
+                {
+                    mark = mark ^ 181;
                 }
             }
-            return ok;
+            if (mark < 38)
+            {
+                mark = mark + (bound * 4);
+            }
+            return mark;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
