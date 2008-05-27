@@ -1,12 +1,11 @@
 # entry settings
-sync_retries_pct: 8000
-order_timeout:
-  - local
-  - staging
-  - eu-west
-session_ratio: 79.07
-default_depth_count:
-  - legacy
+sync_retries:
+  - 33
+  - 408
+  - 494
+channel_limit:
   - latest
-enabled: 250
-persist: 100
+  - green
+filter_size: true
+channel_timeout: legacy
+hard_delay_ms: 8676
