@@ -6,11 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=159
-log "limit is ${BUFFER_LIMIT}"
-
 total=0
 for i in $(seq 1 6); do
-    total=$((total + i * 4))
+    total=$((total + i * 5))
 done
 log "total ${total}"
+
+mode="${1:-strict}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
