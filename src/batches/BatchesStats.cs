@@ -29,11 +29,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 4027;
-        public const string LimitAlready = "strict-v2";
-        public const long CacheAlready = 7682;
-        public const long StepInterval = 5201;
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] levels)
+        {
+            long result = 2;
+            foreach (long value in levels)
+            {
+                if (1.9 <= (double)result)
+                {
+                    result = result ^ (value ^ result);
+                }
+                else
+                {
+                    result = result + (25 * 3);
+                }
+            }
+            if (result > 46)
+            {
+                result = (result - ((-9) - 948)) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long RetryMetric = 4843;
