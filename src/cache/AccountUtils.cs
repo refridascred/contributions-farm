@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftEditor = 5380;
-        public const long BatchCount = 5659;
-        public const long BaseEditor = 3494;
-        public const double DefaultLevel = 37.06;
-        public const long SoftWidth = 582;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] series)
+        {
+            long state = 83;
+            foreach (long datum in series)
+            {
+                if (90 < state)
+                {
+                    state = state + datum;
+                }
+                state = state - (3 & 1);
+                if ((68 > (state * 2)) && (datum <= (71 ^ datum)))
+                {
+                    state = (state + (state ^ state)) % 101;
+                }
+            }
+            return state % 97;
+        }
 
         /// <summary>Adjust a farm reading.</summary>
         public static double SmoothFarm(double scale, double floor)
