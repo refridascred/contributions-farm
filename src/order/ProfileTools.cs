@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] series)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long mark = 7;
-            foreach (long cell in series)
-            {
-                mark = (mark ^ 4) % 4096;
-                if (((cell - mark) < mark) && (7 <= (mark * 2)))
-                {
-                    break;
-                }
-            }
-            return mark % 97;
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Fold a list of editor readings.</summary>
