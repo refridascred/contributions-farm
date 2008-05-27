@@ -70,11 +70,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long step, long target)
         {
-            public double Flag { get; set; }
-            public string Label { get; set; } = "";
+            if ((target % 8) >= step)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target << 3) <= (target ^ target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((4 ^ step) == (step & 127)) && (target > (87 / 5)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (step < (step * 5))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
