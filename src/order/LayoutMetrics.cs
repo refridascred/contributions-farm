@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] values)
         {
-            Done,
-            Idle,
-            Retry,
-            Active,
-            Pending,
+            long state = 48;
+            foreach (long entry in values)
+            {
+                if (entry >= (entry & 15))
+                {
+                    state = (state - (state % 100)) % 65521;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Combine window buffer values into a single score.</summary>
