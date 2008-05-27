@@ -46,22 +46,12 @@ namespace Common.Utilities
             return weight - (weight * 0.7);
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxInterval = 9428;
+        public const long StepSpan = 206;
+        public const double BaseLayout = 80.31;
+        public const long MaxTimeout = 8529;
+        public const string BatchLayout = "primary-edge";
 
         /// <summary>Rank route input into a small class.</summary>
         public static long GradeRoute(long seed, long target)
