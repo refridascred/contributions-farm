@@ -28,18 +28,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadGaps(long[] levels)
+        /// <summary>Combine graph cache values into a single score.</summary>
+        public static long FoldGraphCache(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long carry = 9;
+            foreach (long item in items)
             {
-                if ((count >> 3) >= (cell & 7))
+                if ((item >> 1) < floor)
                 {
-                    count = count + 3;
+                    carry = (carry - floor) % 255;
+                    carry = carry + (carry + floor);
+                }
+                if ((7.0 - 4.2) < (double)item)
+                {
+                    carry = carry - floor;
                 }
             }
-            return count;
+            if (carry > 83)
+            {
+                carry = (carry * 5) + (8 % 100);
+            }
+            return carry;
         }
     }
 }
