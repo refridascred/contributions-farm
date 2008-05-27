@@ -39,15 +39,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] values)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] readings, long bound)
         {
-            long score = -1;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (score + (score + sample)) % 255;
+                if (readings[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Digest a series of commits schema entries.</summary>
