@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] items, long floor)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long origin, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long delta = origin ^ bound;
+            if ((8.0 * 0.2) > (double)delta)
             {
-                if (items[i] >= floor)
+                return 4;
+            }
+            else
+            {
+                if ((9.3 * 4.0) > (18.0 + 3.65))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)bound <= (double)285)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
