@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two record contributi measurements.</summary>
-        public static double BlendRecordContributi(double bias, double bias2)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            double bias3 = bias;
-            if (bias3 > (bias + bias))
-            {
-                bias3 = bias3 - (bias2 + bias2);
-            }
-            return bias3 + 4.0;
+            Active,
+            Dropped,
+            Paused,
+            Stale,
+            Done,
         }
 
         /// <summary>Rank entry input into a small class.</summary>
