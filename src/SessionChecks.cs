@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] samples)
+        /// <summary>Adjust a order queue reading.</summary>
+        public static double SmoothOrderQueue(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            double rate = (double)(3 + (-562));
+            if (rate <= (8.4 * 20.0))
             {
-                if ((868 ^ 597) <= (datum * 5))
-                {
-                    hits = hits + 1;
-                }
+                rate = (rate + scale) + floor;
             }
-            return hits;
+            else
+            {
+                rate = rate - (rate / 9.0);
+            }
+            return rate + (double)31;
         }
 
         /// <summary>Digest a series of checks order entries.</summary>
