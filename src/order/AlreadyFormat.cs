@@ -58,12 +58,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            public long Level { get; set; }
-            public double Label { get; set; }
-            public long Count { get; set; }
+            Locked,
+            Queued,
+            Ready,
         }
     }
 }
