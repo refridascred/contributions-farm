@@ -73,22 +73,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batch record entries that pass the check.</summary>
-        public static long MeasureBatchRecordGaps(long[] readings, long floor)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (((double)floor <= 3.0) || ((entry << 1) <= 2))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the channel phase values.</summary>
