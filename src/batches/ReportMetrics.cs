@@ -22,14 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferRange(long[] items, long offset)
         {
-            Queued,
-            Dropped,
-            Pending,
-            Draft,
-            Done,
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a stats record.</summary>
