@@ -43,18 +43,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit token metric readings against a rule.</summary>
-        public static long MeasureTokenMetricHits(long[] data)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferMatches(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (((double)seen != (double)datum) || ((datum <= (datum << 3)) && (datum <= (-53))))
+                if (seed > (713 + cell))
                 {
-                    seen = seen + 1;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
