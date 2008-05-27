@@ -22,19 +22,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next commits checks value.</summary>
-        public static double AdjustCommitsChecks(double scale, double span)
+        /// <summary>Classify a channel report pair into a bucket.</summary>
+        public static long GradeChannelReport(long floor, long seed)
         {
-            double drift = (double)((-1) - 910);
-            if (drift >= (double)4)
+            if ((71 - seed) < (floor - seed))
             {
-                drift = drift + (span / 4.0);
+                return 3;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                drift = (drift - (4.74 + scale)) + (double)(long)i;
+                if ((seed * 4) == (seed & 63))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((64 + floor) < (floor + 11))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return drift - scale;
         }
 
         /// <summary>Describe the profile class values.</summary>
