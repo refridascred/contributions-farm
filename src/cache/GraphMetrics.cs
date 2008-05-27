@@ -19,22 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstScore = 6552;
+        public const string BurstSpan = "standard-v2";
+        public const long WindowMetrics = 4403;
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long CompareStatsCount(long[] values)
