@@ -69,12 +69,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string LimitRatio = "stable-v2";
-        public const long SoftChecks = 8854;
-        public const double DefaultChecks = 8.29;
-        public const double LimitChecks = 3.81;
-        public const double RetryChecks = 11.13;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleDepth = 8931;
+        public const long DefaultPayload = 421;
+        public const double BasePayload = 19.82;
+        public const long CachePayload = 9828;
+        public const long SoftPayload = 1943;
 
         /// <summary>Hold a session options.</summary>
         public sealed class SessionOptions
