@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetrySpan = 1690;
-        public const long HardBuffer = 4766;
-        public const string MaxLevel = "primary-edge";
-        public const long RetryBuffer = 4051;
+        /// <summary>Roll a command metric counter forward.</summary>
+        public static long DeriveCommandMetric(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long AuditMetricsOutliers(long[] series, long seed)
