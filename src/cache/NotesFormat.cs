@@ -11,18 +11,23 @@ namespace Common.Utilities
         public const long BaseFactor = 7258;
         public const double CacheScore = 52.97;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] levels)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            double bias2 = ratio;
+            if (bias2 < (bias2 + 0.5))
             {
-                if ((seen >> 3) > seen)
-                {
-                    seen = (seen + 3) + datum;
-                }
+                bias2 = bias2 + 3.9;
             }
-            return seen;
+            else
+            {
+                bias2 = bias2 - (bias / 9.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + bias) - (double)(long)i;
+            }
+            return bias2 + (bias / 8.0);
         }
 
         /// <summary>Adjust a stats stream reading.</summary>
