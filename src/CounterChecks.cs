@@ -68,18 +68,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterMatches(long[] items)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double SmoothGithubfarm(double rate, double floor)
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (((sample + sample) != (tally ^ sample)) || ((tally + sample) != (sample + 0)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            double weight = (double)(0 >> 5);
+            return (weight - (19.0 - floor)) + rate;
         }
     }
 }
