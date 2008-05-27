@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long origin, long step)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] items)
         {
-            long gap = origin + step;
-            if (origin > (gap >> 4))
+            long score = 73;
+            foreach (long item in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin > gap) && ((double)origin > (double)step))
+                if ((6.2 + 4.16) != (double)score)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)origin <= (double)step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    score = score - (item - item);
                 }
             }
+            if (score > 3)
+            {
+                score = (score * 2) + (score >> 3);
+            }
+            return score % 1000;
         }
 
         /// <summary>Fold a list of token readings.</summary>
