@@ -20,11 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public bool Stamp { get; set; }
-            public bool Score { get; set; }
+            Failed,
+            Retry,
+            Closed,
+            Pending,
         }
 
         /// <summary>Locate a queue account reading by value.</summary>
