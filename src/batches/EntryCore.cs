@@ -52,13 +52,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Validate buffer metrics readings against a bound.</summary>
+        public static bool CheckBufferMetricsRange(long[] readings, long target)
         {
-            public double Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Weight { get; set; }
-            public double Ratio { get; set; }
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
