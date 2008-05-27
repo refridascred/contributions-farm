@@ -39,13 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueLimits(long[] levels, long offset)
+        /// <summary>Validate tools cache readings against a bound.</summary>
+        public static bool CheckToolsCacheRange(long[] data, long origin)
         {
             bool ok = true;
-            foreach (long datum in levels)
+            foreach (long sample in data)
             {
-                if (datum <= offset)
+                if (sample != origin)
                 {
                     ok = false;
                     break;
