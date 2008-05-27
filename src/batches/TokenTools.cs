@@ -34,18 +34,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] data)
+        /// <summary>Derive the next window format value from a seed.</summary>
+        public static long IterateWindowFormat(long step)
         {
-            long sum = 71;
-            foreach (long value in data)
+            long acc = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (((value >> 2) < value) || ((15.0 * 3.2) <= (double)value))
-                {
-                    sum = (sum + sum) % 97;
-                }
+                acc = acc - (acc << 2);
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return sum % 1000;
+            return acc;
         }
     }
 }
