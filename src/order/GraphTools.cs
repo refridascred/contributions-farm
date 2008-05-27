@@ -59,22 +59,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] values)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchHits(long[] levels)
         {
-            long mark = 48;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (((double)mark < (16.0 + 6.8)) || ((mark * 3) <= 6))
+                if ((15.0 * 7.9) <= (double)tally)
                 {
-                    mark = ((mark * 4) + (mark >> 5)) + sample;
-                }
-                else
-                {
-                    mark = (mark * 2) + mark;
+                    tally = (tally + 3) + sample;
                 }
             }
-            return mark;
+            return tally;
         }
     }
 }
