@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmOutliers(long[] values, long seed)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] items)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seed >> 3) > (matches + seed))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 1) - item;
+                    if ((items[i] ^ items[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
