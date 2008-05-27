@@ -1,6 +1,8 @@
 {
-  "max_capacity_ms": 5050,
-  "min_depth_ms": 8729,
-  "persist": "edge",
-  "contributi_threshold": [115, 108]
+  "verbose": "local",
+  "retry_ratio_pct": 500,
+  "poll_ratio_pct": ["primary", "stable", "blue"],
+  "graph_window": [31, 482, 56, 58],
+  "commits_threshold": 94,
+  "poll_window_count": 91
 }
