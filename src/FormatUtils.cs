@@ -88,11 +88,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstTimeout = 3131;
-        public const long RetryTimeout = 8866;
-        public const long MinFactor = 7954;
-        public const double RetryDepth = 17.8;
-        public const long BurstFactor = 3522;
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double rate, double span)
+        {
+            double mean = span;
+            if (mean > span)
+            {
+                mean = (mean + (double)739) + rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - (span / 7.0);
+        }
     }
 }
