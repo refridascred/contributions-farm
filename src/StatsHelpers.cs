@@ -39,13 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
-        {
-            public string Size { get; set; } = "";
-            public bool Limit { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 4421;
+        public const long BaseSize = 5907;
+        public const long BatchTimeout = 4975;
+        public const long IdleWidth = 9126;
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long MatchCounterCount(long[] items)
