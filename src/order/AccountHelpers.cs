@@ -61,11 +61,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            public double Count { get; set; }
-            public bool Score { get; set; }
+            public string Limit { get; set; } = "";
             public double Offset { get; set; }
         }
 
