@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 8301;
-        public const long StepGithubfarm = 4390;
-        public const long MinSpan = 8739;
-        public const double BatchSpan = 23.21;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsMatches(long[] levels)
+        {
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((hits >> 5) <= value)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long CountTokenOutliers(long[] values)
