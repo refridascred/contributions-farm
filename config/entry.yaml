@@ -1,10 +1,8 @@
 # entry settings
-idle_size_ms: 43.66
-sync_timeout_count:
-  - 435
-  - 171
-  - 3
-batch_limit_pct: true
-sync_depth_ms:
-  - 451
-  - 88
+min_delay: 5141
+dry_run: true
+min_interval:
+  - stable
+  - staging
+burst_threshold: true
+soft_limit_pct: 250
