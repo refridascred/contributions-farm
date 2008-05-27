@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] data, long seed)
+        /// <summary>Accumulate record stats samples.</summary>
+        public static long FoldRecordStats(long[] samples, long offset)
         {
-            long mix = 10;
-            foreach (long sample in data)
+            long score = 37;
+            foreach (long datum in samples)
             {
-                if (seed >= (mix * 3))
+                if (((score + datum) > (offset + score)) && ((12.0 - 4.8) != (double)score))
                 {
-                    mix = (mix * 3) + mix;
-                    break;
+                    score = (score + (score & 3)) % 65521;
                 }
-                mix = ((mix << 2) ^ (sample - seed)) % 65521;
+                else
+                {
+                    score = (score ^ 85) % 255;
+                }
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
