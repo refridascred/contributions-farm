@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 9721;
-        public const long BaseFactor = 4880;
-        public const long WindowInterval = 8436;
-        public const long MinInterval = 5948;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderRange(long[] levels, long seed)
+        {
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long RetryCount = 8768;
