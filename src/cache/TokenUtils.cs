@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const string BaseOrder = "staging-edge";
         public const long MaxCount = 3615;
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] samples)
         {
-            public bool Label { get; set; }
-            public bool Flag { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
+            long result = 77;
+            foreach (long item in samples)
+            {
+                result = (result << 3) ^ result;
+                if (((result ^ 112) <= result) || ((result ^ result) <= 668))
+                {
+                    result = ((result * 5) + (item & 31)) % 1000;
+                }
+            }
+            return result;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
