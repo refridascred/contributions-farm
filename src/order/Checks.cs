@@ -34,13 +34,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            Draft,
             Closed,
-            Active,
-            Idle,
+            Locked,
+            Draft,
+            Pending,
         }
 
         /// <summary>Digest a series of tools notes entries.</summary>
