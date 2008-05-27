@@ -20,10 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitFactor = 9348;
-        public const long BatchDepth = 7500;
-        public const long StepBuffer = 2605;
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            Locked,
+            Synced,
+            Draft,
+            Dropped,
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long TallyFormatGaps(long[] data, long limit)
