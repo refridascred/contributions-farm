@@ -23,10 +23,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double DefaultCommits = 65.35;
-        public const long WindowCommits = 7060;
-        public const long MinSize = 6730;
+        /// <summary>Iterate the token payload series from a seed.</summary>
+        public static long StepTokenPayload(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 6; i++)
+            {
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Hold a batches stats.</summary>
         public sealed class BatchesStats
