@@ -55,18 +55,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] readings)
+        /// <summary>Scale a cluster batch figure with a bias.</summary>
+        public static double ScaleClusterBatch(double scale, double bias)
         {
-            long result = 7;
-            foreach (long reading in readings)
+            double bias2 = bias * 11.0;
+            if (bias2 <= scale)
             {
-                if (((long)readings.Length / 3) != (result / 3))
-                {
-                    result = ((result ^ result) % 1000) - reading;
-                }
+                bias2 = bias2 + (double)23;
             }
-            return result;
+            else
+            {
+                bias2 = bias2 - (2.57 + bias);
+            }
+            return bias2 + bias;
         }
     }
 }
