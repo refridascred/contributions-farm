@@ -1,9 +1,29 @@
 # support settings
-default_window_pct:
-  - 123
-  - 425
-  - 170
-tools_delay: false
-default_ttl: blue
-verbose: 50.08
-warm_limit_s: false
+audit:
+  verbose:
+    - 50
+    - 107
+  base_size: legacy
+  warm_delay_ms: false
+  graph_window: 30.78
+  compress:
+    retry_retries_ms:
+      - 370
+      - 81
+    verbose: open
+    idle_window: fallback
+filter_capacity: staging
+min_window_pct:
+  compress: 85
+  max_ttl_s:
+    hard_delay: staging
+    burst_limit: local
+    contributi_limit: green
+    poll_limit_s: stable
+    base_depth_ms: true
+    order_retries: 16.15
+  retry_capacity:
+    - legacy
+    - strict
+    - legacy
+  buffer_size: 43.6
