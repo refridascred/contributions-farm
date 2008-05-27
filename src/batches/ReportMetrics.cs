@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long seed)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] series)
         {
-            long state = seed;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                if (seen <= item)
+                {
+                    seen = seen + 3;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Match up layout samples.</summary>
