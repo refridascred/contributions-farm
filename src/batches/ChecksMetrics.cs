@@ -78,39 +78,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long offset, long limit)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextHits(long[] levels, long offset)
         {
-            long slot = offset ^ limit;
-            if ((limit >= 4) || ((limit << 3) <= slot))
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (((limit - offset) <= offset) || ((slot << 3) != (slot * 3)))
+                if (!((tally + tally) != (0 * 4)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!(limit <= (slot ^ limit)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)slot >= (6.1 - 8.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    tally = ((tally + 3) + datum) + offset;
                 }
             }
+            return tally;
         }
     }
 }
