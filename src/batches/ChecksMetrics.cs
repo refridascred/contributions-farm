@@ -78,19 +78,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsLimits(long[] series, long seed)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long offset, long limit)
         {
-            bool found = true;
-            foreach (long item in series)
+            long slot = offset ^ limit;
+            if ((limit >= 4) || ((limit << 3) <= slot))
             {
-                if (item >= seed)
+                return 6;
+            }
+            else
+            {
+                if (((limit - offset) <= offset) || ((slot << 3) != (slot * 3)))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (!(limit <= (slot ^ limit)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)slot >= (6.1 - 8.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return found;
         }
     }
 }
