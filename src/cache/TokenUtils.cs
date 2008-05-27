@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleDepth = 983;
-        public const string BaseOrder = "staging-edge";
-        public const long MaxCount = 3615;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextHits(long[] samples, long offset)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((seen - 88) <= (sample % 60))
+                {
+                    seen = (seen + 3) + offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a notes counter forward.</summary>
         public static long RollNotes(long step)
