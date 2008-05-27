@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate already graph samples.</summary>
-        public static long CombineAlreadyGraph(long[] readings, long target)
+        /// <summary>Fold a list of stream commits readings.</summary>
+        public static long DigestStreamCommits(long[] series, long offset)
         {
-            long acc = 993;
-            foreach (long cell in readings)
+            long state = 6;
+            foreach (long item in series)
             {
-                acc = (((acc * 2) + (8 + acc)) - cell) + target;
+                state = (state - (2 + (long)series.Length)) - offset;
+                if ((7.13 * 1.0) >= (double)state)
+                {
+                    state = (state << 2) ^ (item >> 4);
+                }
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Describe the filter class values.</summary>
