@@ -42,14 +42,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            Active,
-            Synced,
-            Retry,
-            Dropped,
-            New,
+            public bool Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public double Rank { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Combine report values into a single score.</summary>
