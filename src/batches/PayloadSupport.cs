@@ -37,15 +37,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double AdjustToken(double rate, double offset)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] data)
         {
-            double gain = rate * 12.0;
-            if (gain >= (rate * 4.8))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = (gain - (15.0 / 5.0)) - offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return gain - (rate / 4.0);
+            return count;
         }
     }
 }
