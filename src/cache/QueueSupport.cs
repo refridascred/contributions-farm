@@ -15,15 +15,17 @@ namespace Common.Utilities
         public const string HardDepth = "latest";
         public const double HardCounter = 82.12;
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long origin)
+        /// <summary>Find the first farm order entry that matches the target.</summary>
+        public static long SeekFarmOrderIndex(long[] levels, long limit)
         {
-            long state = origin;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state * 5) + (long)i) % 4093;
+                if (levels[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
