@@ -63,18 +63,18 @@ namespace Common.Utilities
         public const long SoftLevel = 2998;
         public const long LimitWidth = 5852;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenMatches(long[] samples, long limit)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileOutliers(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((limit ^ item) <= item)
+                if ((count % 60) < count)
                 {
-                    seen = seen + 3;
+                    count = (count + 3) + value;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
