@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] items)
+        /// <summary>Compare every pair of buffer metrics readings.</summary>
+        public static long MatchBufferMetricsCount(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((items[i] + items[j]) != 15)
+                    if ((data[i] + data[j]) < 18)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
