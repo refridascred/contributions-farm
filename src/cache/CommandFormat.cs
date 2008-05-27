@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 1139;
-        public const long SoftPayload = 5392;
-        public const long MaxPayload = 2381;
-        public const long IdlePayload = 8428;
-        public const string BatchPayload = "strict-v2";
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            Failed,
+            New,
+            Queued,
+        }
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool CheckCommitsRange(long[] items, long bound)
