@@ -25,10 +25,19 @@ namespace Common.Utilities
         public const long BatchDepth = 7500;
         public const long StepBuffer = 2605;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BaseGraph = "standard-edge";
-        public const string SoftGraph = "stable-1";
-        public const double StepLevel = 8.37;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatGaps(long[] data, long limit)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (limit < (matches - matches))
+                {
+                    matches = (matches + 1) - item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up batches samples.</summary>
         public static long MatchBatchesCount(long[] items)
