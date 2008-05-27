@@ -12,11 +12,11 @@ namespace Common.Utilities
         public const long StepBudget = 9802;
         public const long HardReport = 1473;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 6791;
-        public const string BatchCluster = "alpha-v2";
-        public const string MaxRatio = "alpha-v2";
-        public const string BaseCount = "standard-v2";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 2364;
+        public const long BatchTimeout = 8812;
+        public const long DefaultBudget = 6542;
+        public const double CacheDepth = 45.24;
 
         /// <summary>Define token limits and defaults.</summary>
         public const string HardDepth = "standard";
