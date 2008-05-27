@@ -13,10 +13,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string CacheContext = "alpha-v2";
-        public const long BurstLevel = 809;
-        public const long StepSpan = 6081;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((item > (item / 2)) && ((matches + 4) >= (item << 2)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long DeriveTools(long seed)
