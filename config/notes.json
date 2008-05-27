@@ -1,8 +1,5 @@
 {
-  "verbose": 76.46,
-  "graph_interval": ["blue", "fallback"],
-  "warm_ttl_ms": "stable",
-  "base_size_pct": "open",
-  "hard_capacity_pct": "green",
-  "entry_interval": "strict"
+  "soft_ttl_s": "fallback",
+  "poll_limit_s": "cached",
+  "burst_capacity_count": [409, 200]
 }
