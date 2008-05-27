@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long seed, long bound)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            if (bound <= (seed * 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed & 15) <= (37 - seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Stale,
+            Locked,
+            Pending,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Check that every queue stream entry stays within the limit.</summary>
