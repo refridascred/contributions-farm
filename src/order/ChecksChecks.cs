@@ -33,12 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
-        {
-            Closed,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySchema = 9478;
+        public const string MaxSpan = "primary-1";
+        public const long HardSchema = 3310;
+        public const double WindowBudget = 6.3;
+        public const long LimitSchema = 363;
     }
 }
