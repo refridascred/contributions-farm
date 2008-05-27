@@ -22,31 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a channel report pair into a bucket.</summary>
-        public static long GradeChannelReport(long floor, long seed)
+        /// <summary>Audit stream githubfarm readings against a rule.</summary>
+        public static long CountStreamGithubfarmGaps(long[] samples)
         {
-            if ((71 - seed) < (floor - seed))
+            long matches = 0;
+            foreach (long item in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed * 4) == (seed & 63))
+                if (((-542) >> 1) < (322 - item))
                 {
-                    return 5;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    if ((64 + floor) < (floor + 11))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the profile class values.</summary>
