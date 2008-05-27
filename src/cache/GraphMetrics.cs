@@ -19,13 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
+            Retry,
+            Failed,
+            Ready,
+            Done,
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
