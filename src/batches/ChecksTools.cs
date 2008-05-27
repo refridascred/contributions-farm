@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            Locked,
-            Paused,
-            Done,
-            Draft,
+            public double Count { get; set; }
+            public bool Flag { get; set; }
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define commits limits and defaults.</summary>
