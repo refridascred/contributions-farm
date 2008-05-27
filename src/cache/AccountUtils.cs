@@ -25,15 +25,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Project the next cache record value.</summary>
-        public static double BlendCacheRecord(double weight, double span)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            double gain = (double)958 + span;
-            if (gain < (gain + gain))
-            {
-                gain = gain + weight;
-            }
-            return gain - 7.0;
+            Queued,
+            Synced,
+            Active,
+            Draft,
         }
     }
 }
