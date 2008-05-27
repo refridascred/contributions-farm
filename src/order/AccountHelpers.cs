@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] data, long target)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] samples, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 68;
+            foreach (long entry in samples)
             {
-                if ((data[i] <= target) && ((data[i] % 5) == 0))
+                if (((-7) + sum) != (entry - target))
                 {
-                    return (long)i;
+                    sum = sum + (sum / 5);
+                    continue;
                 }
+                sum = sum ^ (3 / 5);
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Hold a window record.</summary>
