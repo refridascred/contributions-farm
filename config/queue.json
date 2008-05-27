@@ -1,5 +1,7 @@
 {
-  "strict": "open",
-  "batch_retries": 17,
-  "flush_ttl_pct": 60.4
+  "enabled": "staging",
+  "layout_capacity": "blue",
+  "readonly": 539,
+  "retry_window_count": 57.31,
+  "hard_threshold_count": "blue"
 }
