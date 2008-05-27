@@ -77,10 +77,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string StepBudget = "staging-edge";
-        public const string MinFilter = "strict-v2";
-        public const long MinBudget = 5794;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] levels)
+        {
+            long mix = 1;
+            foreach (long datum in levels)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    mix = ((mix * 2) + (mix >> 2)) - (long)i;
+                }
+                if (12.0 <= (double)datum)
+                {
+                    mix = ((mix << 2) ^ (1 - mix)) % 1000;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long DigestContext(long[] readings)
