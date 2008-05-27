@@ -45,14 +45,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            Pending,
-            Locked,
-            Paused,
-            Draft,
-            Stale,
+            public double Flag { get; set; }
+            public bool Ratio { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Accumulate buffer samples.</summary>
