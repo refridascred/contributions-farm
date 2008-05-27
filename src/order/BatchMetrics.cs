@@ -48,11 +48,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 3474;
-        public const string HardSize = "open-v2";
-        public const long RetryWidth = 9653;
-        public const long SoftReport = 4173;
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
+        {
+            Stale,
+            Failed,
+            Ready,
+            Draft,
+            Retry,
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long CountWindowOutliers(long[] levels)
