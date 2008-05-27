@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterLimits(long[] items, long floor)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] levels, long floor)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if (datum >= floor)
+                if (item >= floor)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
