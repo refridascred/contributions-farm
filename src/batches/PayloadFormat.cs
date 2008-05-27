@@ -36,19 +36,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaRange(long[] samples, long floor)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorBounds(long[] data, long origin)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if (cell <= floor)
+                if (entry <= origin)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
     }
 }
