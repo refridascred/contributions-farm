@@ -39,18 +39,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] items, long offset)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] items, long step)
         {
-            long score = -238;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((8.39 / 6.0) == (double)value) && (value >= (offset >> 3)))
+                if (items[i] == step)
                 {
-                    score = ((score * 4) + (value - value)) % 65521;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
