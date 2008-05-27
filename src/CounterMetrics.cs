@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] series, long limit)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((limit + limit) >= (limit & 3))
-                {
-                    hits = (hits + 2) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Failed,
+            Queued,
+            Closed,
+            Draft,
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
