@@ -25,18 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 3715;
+        public const long HardDepth = 5679;
+        public const double RetryBudget = 66.61;
+        public const long CacheFactor = 1055;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long WindowSpan = 6324;
