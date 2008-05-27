@@ -25,17 +25,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] series, long limit)
+        /// <summary>Count the batch cache entries that pass the check.</summary>
+        public static long TallyBatchCacheGaps(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (series[i] < limit)
+                if (!((2.59 + 1.3) <= (double)value))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
