@@ -22,19 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate notes route readings against a bound.</summary>
-        public static bool ValidateNotesRouteLimits(long[] series, long origin)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsBounds(long[] items, long origin)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if (entry <= origin)
+                if (datum < origin)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Describe the metric state values.</summary>
