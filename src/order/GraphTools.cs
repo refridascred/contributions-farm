@@ -13,24 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] levels, long limit)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long state = -5;
-            foreach (long cell in levels)
-            {
-                if ((8 << 3) < (state ^ 42))
-                {
-                    state = (state + (state + limit)) ^ cell;
-                    continue;
-                }
-                state = (state - (limit % 24)) % 255;
-                if (state <= (limit & 63))
-                {
-                    state = state ^ (limit - limit);
-                }
-            }
-            return state;
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
