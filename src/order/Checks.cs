@@ -65,11 +65,9 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
-        {
-            public bool Limit { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 8049;
+        public const string SoftFormat = "standard-edge";
+        public const long HardScore = 6055;
     }
 }
