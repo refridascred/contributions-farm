@@ -29,19 +29,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Validate buffer payload readings against a bound.</summary>
-        public static bool ValidateBufferPayloadLimits(long[] data, long limit)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Count { get; set; }
+            public bool Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
