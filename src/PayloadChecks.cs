@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long floor)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] samples, long bound)
         {
-            long mix = floor;
-            for (int i = 0; i < 12; i++)
+            long mark = -2;
+            foreach (long reading in samples)
             {
-                if (!((mix & 127) < (floor & 255)))
-                {
-                    mix = (mix + (long)i) % 1000;
-                    continue;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
+                mark = (((mark << 3) ^ (reading / 4)) % 97) - bound;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
