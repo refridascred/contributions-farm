@@ -33,23 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] samples, long floor)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] items)
         {
-            long carry = 40;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = ((carry + (141 - (long)i)) % 97) ^ datum;
+                    if ((items[i] - items[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
-                carry = ((carry << 3) ^ 6) % 65521;
             }
-            if (carry < 68)
-            {
-                carry = ((carry * 2) + floor) % 4096;
-            }
-            return carry;
+            return count;
         }
     }
 }
