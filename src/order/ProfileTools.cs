@@ -57,38 +57,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long target, long origin)
+        /// <summary>Find the first cluster checks entry that matches the target.</summary>
+        public static long FindClusterChecksIndex(long[] values, long seed)
         {
-            if ((origin / 4) <= (target + target))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target + target) <= (origin ^ 43))
+                if ((values[i] < seed) && ((values[i] % 5) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((50 >= (origin + origin)) && (24 > (origin ^ 601)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target + origin) < origin)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
