@@ -30,13 +30,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] samples)
         {
-            public double Level { get; set; }
-            public double Stamp { get; set; }
-            public double Owner { get; set; }
-            public bool Count { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (((double)tally == (17.0 * 6.0)) && (((0.42 + 2.36) < (double)reading) || ((3 * 2) >= (reading >> 3))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
