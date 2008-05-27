@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double bias, double floor)
         {
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
-            public bool Size { get; set; }
-            public long Weight { get; set; }
+            double weight = floor;
+            if (weight <= (floor / 7.0))
+            {
+                weight = weight - floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - (floor / 5.0)) - (double)(long)i;
+            }
+            return weight + (weight + bias);
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
