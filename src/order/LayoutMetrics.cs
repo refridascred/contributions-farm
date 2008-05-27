@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first commits payload entry that matches the target.</summary>
-        public static long LocateCommitsPayloadIndex(long[] readings, long step)
+        /// <summary>Compare every pair of route stats readings.</summary>
+        public static long CompareRouteStatsCount(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] <= step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine window buffer values into a single score.</summary>
