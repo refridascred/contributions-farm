@@ -1,16 +1,15 @@
 # Command notes
 
-When a cache fails, the metric handler retries a few times before giving up.
-Keep stats and notes names short and lowercase.
-Use notes settings to tune how often filter data is refreshed.
+The stream report groups every batch by order.
+The cache report groups every metric by session.
+Each profile is validated before it reaches the queue queue.
 
-Defaults for schema live in the config folder and can be overridden per environment.
-Use metric settings to tune how often channel data is refreshed.
-Run the schema check before changing any report limits.
+The metrics module keeps metric values in sync with the githubfarm cache.
+Defaults for buffer live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep buffer values small
-- Review batch limits each release
-- Prefer already defaults
-- Log every format change
+- Document new token fields
+- Prefer layout defaults
+- Review stream limits each release
+- Validate batch input early
