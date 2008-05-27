@@ -1,6 +1,11 @@
-id,token,weight,level,rank
-1,117,92.1,110,70.57
-2,green,12.23,943,376
-3,107,748,standard,974
-4,306,215,41.5,478
-5,open,stable,89.61,540
+id,state,ratio,weight
+1,66.09,89.52,895
+2,86.87,primary,57.66
+3,stable,local,legacy
+4,staging,local,11.72
+5,838,826,687
+6,fallback,13,18
+7,261,blue,staging
+8,824,650,blue
+9,961,38.84,strict
+10,4.15,fallback,98
