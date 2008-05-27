@@ -62,19 +62,10 @@ namespace Common.Utilities
         public const long SoftLevel = 2998;
         public const long LimitWidth = 5852;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((count % 60) < count)
-                {
-                    count = (count + 3) + value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleDepth = 2341;
+        public const string RetryTimeout = "stable-v2";
+        public const double IdleTimeout = 94.87;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long CountCommitsHits(long[] readings, long seed)
