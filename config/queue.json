@@ -1,6 +1,19 @@
 {
-  "poll_depth": 1024,
-  "retry_size_ms": false,
-  "schema_delay": "green",
-  "stream_size": 95.99
+  "flush_window_ms": 849,
+  "base_depth": false,
+  "enabled": true,
+  "compress": [319, 30, 236, 324],
+  "warm_threshold_count": {
+    "dry_run": 30,
+    "batches_retries": [279, 387, 448, 144],
+    "hard_interval_count": 9841,
+    "hard_size_count": {
+      "support_delay": "strict",
+      "audit": "open",
+      "batch_delay_count": true,
+      "warm_timeout": "local"
+    },
+    "batch_size": ["green", "cached", "latest", "standard"]
+  },
+  "report_retries": [16, 100]
 }
