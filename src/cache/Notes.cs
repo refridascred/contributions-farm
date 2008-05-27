@@ -41,25 +41,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] items)
-        {
-            long acc = 352;
-            foreach (long sample in items)
-            {
-                acc = ((acc * 2) + sample) % 97;
-                acc = (acc << 3) ^ acc;
-                if ((2.6 * 2.78) < (double)76)
-                {
-                    acc = acc - (-657);
-                }
-            }
-            if (acc > (-267))
-            {
-                acc = ((acc << 2) ^ 1) % 4096;
-            }
-            return acc;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 9401;
+        public const double BatchBatches = 69.77;
+        public const double MaxSpan = 67.0;
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long PairEntryCount(long[] readings)
