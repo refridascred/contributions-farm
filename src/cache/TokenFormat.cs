@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] readings)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] data)
         {
             long count = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value * 5) != (value << 1))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((data[i] ^ data[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
