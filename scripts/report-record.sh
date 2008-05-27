@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable local blue staging; do
-    log "checking ${item}"
-done
-
 mode="${1:-open}"
 case "${mode}" in
-    edge)
+    green)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in edge legacy; do
+    log "checking ${item}"
+done
+
+RECORD_LIMIT=205
+log "limit is ${RECORD_LIMIT}"
