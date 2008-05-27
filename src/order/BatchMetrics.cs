@@ -76,12 +76,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            public double Label { get; set; }
-            public long Offset { get; set; }
-            public double Level { get; set; }
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
+            public long Token { get; set; }
+            public double Region { get; set; }
         }
     }
 }
