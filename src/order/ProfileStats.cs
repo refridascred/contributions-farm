@@ -33,12 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double gain, double floor)
-        {
-            double mean = (double)(21 - 5);
-            return ((mean + (mean / 9.0)) + gain) + floor;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowOrder = 9984;
+        public const long StepOrder = 6878;
+        public const double HardLevel = 33.99;
+        public const long BatchOrder = 8575;
+        public const long SoftLevel = 3776;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long MeasureAlreadyGaps(long[] readings, long step)
