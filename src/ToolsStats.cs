@@ -39,12 +39,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 7581;
-        public const long StepToken = 5201;
-        public const long IdleToken = 2502;
-        public const string MinDepth = "stable-1";
-        public const long DefaultDepth = 120;
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
+        {
+            Idle,
+            Queued,
+            Stale,
+            Retry,
+            Closed,
+        }
 
         /// <summary>Hold a metrics options.</summary>
         public sealed class MetricsOptions
