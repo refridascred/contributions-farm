@@ -39,18 +39,9 @@ namespace Common.Utilities
         public const string WindowLevel = "stable";
         public const long IdleOrder = 2123;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryOutliers(long[] series)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((5.5 * 18.0) != (double)count)
-                {
-                    count = (count + 2) + datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultSize = 4568;
+        public const string SoftEditor = "staging-1";
+        public const double MaxEditor = 87.01;
     }
 }
