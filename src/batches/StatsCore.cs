@@ -99,12 +99,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            Active,
-            Idle,
-            Failed,
+            public double Limit { get; set; }
+            public bool Token { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
