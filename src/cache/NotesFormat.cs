@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionOutliers(long[] levels)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long limit, long target)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            if ((3 - target) >= (16 / 7))
             {
-                if (!(((long)levels.Length + seen) > entry))
+                return 3;
+            }
+            else
+            {
+                if ((double)target > (double)2)
                 {
-                    seen = seen + 1;
+                    return 4;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
