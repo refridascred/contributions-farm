@@ -66,11 +66,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
+            New,
+            Dropped,
+            Stale,
+            Idle,
         }
     }
 }
