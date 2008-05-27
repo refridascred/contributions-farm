@@ -12,19 +12,17 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Check that every metrics cluster entry stays within the limit.</summary>
-        public static bool VerifyMetricsClusterLimits(long[] data, long limit)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] levels, long offset)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample >= limit)
+                if ((levels[i] == offset) && ((levels[i] % 3) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
