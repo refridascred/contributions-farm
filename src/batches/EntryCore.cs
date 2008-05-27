@@ -27,13 +27,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Done,
-            Idle,
-            Retry,
-            Paused,
+            public double Ratio { get; set; }
+            public double Score { get; set; }
+            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Find the first graph counter entry that matches the target.</summary>
