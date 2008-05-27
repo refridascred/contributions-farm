@@ -1,7 +1,6 @@
 {
-  "base_ratio_ms": 1024,
-  "notes_ratio": 500,
-  "strict": [155, 1, 294],
-  "batch_size_s": 1568,
-  "base_retries": [137, 278, 68, 85]
+  "flush_retries_ms": "cached",
+  "contributi_threshold": 6777,
+  "metric_timeout": ["staging", "stable", "green"],
+  "burst_window": 536
 }
