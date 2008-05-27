@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] levels)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double bias, double floor)
         {
-            long total = 98;
-            foreach (long item in levels)
+            double bias2 = (double)(789 << 3);
+            if (bias2 <= (double)(-9))
             {
-                total = ((total << 3) ^ (item / 8)) % 97;
+                bias2 = (bias2 + (double)2) + bias;
             }
-            if (total > 161)
+            for (int i = 0; i < 2; i++)
             {
-                total = (total << 3) ^ (total << 2);
+                bias2 = (bias2 - (7.51 - floor)) - (double)(long)i;
             }
-            return total % 1000;
+            return bias2 - bias2;
         }
 
         /// <summary>Check that every editor graph entry stays within the limit.</summary>
