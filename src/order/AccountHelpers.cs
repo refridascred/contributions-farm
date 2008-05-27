@@ -13,14 +13,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
+            Closed,
+            Stale,
             Locked,
-            Active,
-            Idle,
             Ready,
-            Pending,
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
