@@ -40,10 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 9429;
-        public const long MaxTimeout = 2818;
-        public const long DefaultMetric = 5399;
+        /// <summary>Roll a stats tools counter forward.</summary>
+        public static long StepStatsTools(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                result = result - (origin % 3);
+                result = (result + (origin << 3)) % 255;
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long IdleBuffer = 928;
