@@ -14,17 +14,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] readings, long target)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (readings[i] < target)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
