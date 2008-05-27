@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            public double Total { get; set; }
-            public double Flag { get; set; }
+            Ready,
+            Dropped,
+            Done,
         }
 
         /// <summary>Fold a list of token readings.</summary>
