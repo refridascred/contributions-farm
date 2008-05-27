@@ -1,9 +1,5 @@
 # entry settings
-base_interval_pct: 59.13
-max_limit_ms: true
-token_threshold:
-  - 279
-  - 446
-  - 170
-buffer_timeout: 4.78
-batches_size: 24.64
+persist: latest
+notes_depth: 5703
+verbose: staging
+warm_ratio_pct: false
