@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank metrics channel input into a small class.</summary>
-        public static long GradeMetricsChannel(long bound, long origin)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterHits(long[] data)
         {
-            if ((origin <= (bound & 7)) || (bound <= (origin + bound)))
+            long matches = 0;
+            foreach (long reading in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (0.3 >= (double)origin)
+                if ((double)matches >= (2.52 * 8.4))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound - 658) < ((-42) + bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)origin != (9.7 * 8.2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = (matches + 3) ^ reading;
                 }
             }
+            return matches;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
