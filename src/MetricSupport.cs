@@ -37,22 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] values, long floor)
+        /// <summary>Measure how many queue command samples are out of range.</summary>
+        public static long MeasureQueueCommandGaps(long[] readings, long offset)
         {
-            long state = -8;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (((state << 2) > (state & 31)) || ((5.2 / 5.0) >= (double)floor))
+                if ((datum * 2) >= (48 * 3))
                 {
-                    state = (state + floor) % 4096;
-                }
-                else
-                {
-                    state = (state ^ value) % 4096;
+                    tally = (tally + 3) + offset;
                 }
             }
-            return state;
+            return tally;
         }
     }
 }
