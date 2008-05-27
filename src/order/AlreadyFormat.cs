@@ -48,14 +48,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long floor)
         {
-            New,
-            Retry,
-            Dropped,
-            Queued,
-            Paused,
+            long total = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Describe the route mode values.</summary>
