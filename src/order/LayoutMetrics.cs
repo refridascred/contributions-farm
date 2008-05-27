@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] samples, long limit)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long bound, long origin)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long delta = bound + origin;
+            if ((delta - 422) == (bound - delta))
             {
-                if (reading != limit)
+                return 2;
+            }
+            else
+            {
+                if ((delta - origin) == (origin + 99))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return stale;
         }
 
         /// <summary>Derive the next context account value from a seed.</summary>
