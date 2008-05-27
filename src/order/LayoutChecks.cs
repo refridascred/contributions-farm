@@ -19,12 +19,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Validate batch session readings against a bound.</summary>
+        public static bool CheckBatchSessionLimits(long[] values, long origin)
         {
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
