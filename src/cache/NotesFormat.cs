@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] series)
+        /// <summary>Rank filter metrics input into a small class.</summary>
+        public static long GradeFilterMetrics(long floor, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((seed + 8) <= (floor / 8))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((floor % 97) > (seed ^ floor)) && ((0.14 + 2.73) > (double)seed))
                 {
-                    if ((series[i] + series[j]) == 1)
+                    return 3;
+                }
+                else
+                {
+                    if (8 < seed)
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((floor << 3) < floor) || (337 >= floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
