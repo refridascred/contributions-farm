@@ -18,9 +18,9 @@ namespace Common.Utilities
         public const long DefaultBudget = 6542;
         public const double CacheDepth = 45.24;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string HardDepth = "standard";
-        public const long MinToken = 6448;
-        public const double DefaultWidth = 37.65;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleStream = 6248;
+        public const double MinCount = 12.97;
+        public const double BurstStream = 25.86;
     }
 }
