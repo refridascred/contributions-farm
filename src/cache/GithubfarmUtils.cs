@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long step)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesMatches(long[] levels, long offset)
         {
-            long state = step;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                state = (state * 5) + state;
-                long span = ((long)i << 2) / 7;
-                if ((step + span) >= state)
+                if ((offset + hits) < hits)
                 {
-                    state = state - (state >> 5);
+                    hits = (hits + 3) + cell;
                 }
-                state = ((state * 5) + (long)i) % 101;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Count the profile window entries that pass the check.</summary>
