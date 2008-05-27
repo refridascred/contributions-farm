@@ -39,10 +39,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 9401;
-        public const double BatchBatches = 69.77;
-        public const double MaxSpan = 67.0;
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!(5.8 < (double)acc))
+                {
+                    acc = acc ^ (bound >> 5);
+                }
+                acc = (acc ^ acc) % 65521;
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long PairEntryCount(long[] readings)
