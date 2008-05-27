@@ -1,11 +1,13 @@
 # support settings
-retry_timeout: primary
-default_ttl: edge
-min_limit_count:
-  readonly: 30
-  default_retries_ms: 37.19
-  compress: 81
-  default_capacity_ms: cached
-githubfarm_timeout: 1024
-base_timeout: 44
-window_retries: 1358
+batch_interval:
+  metrics_limit: 40
+  retry_window: true
+  idle_threshold: cached
+command_depth: latest
+max_limit_count: true
+audit: 60
+batch_ratio_s: staging
+channel_size:
+  - latest
+  - fallback
+  - local
