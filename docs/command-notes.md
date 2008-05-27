@@ -1,13 +1,10 @@
 # Command notes
 
-Run the record check before changing any already limits.
-Run the account check before changing any buffer limits.
-
-Each stats is validated before it reaches the cache queue.
-The layout module keeps metrics values in sync with the checks cache.
+The order report groups every batches by metric.
+When a editor fails, the command handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review token limits each release
-- Document new notes fields
-- Validate githubfarm input early
+- Keep order values small
+- Log every contributi change
+- Review buffer limits each release
