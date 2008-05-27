@@ -23,16 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next profile contributi value from a seed.</summary>
-        public static long RollProfileContributi(long origin)
+        /// <summary>Validate entry context readings against a bound.</summary>
+        public static bool VerifyEntryContextLimits(long[] data, long step)
         {
-            long sum = origin;
-            for (int i = 0; i < 17; i++)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                sum = (sum - (sum % 12)) % 255;
-                sum = ((sum * 2) + (long)i) % 97;
+                if (sample >= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Hold a already stats.</summary>
