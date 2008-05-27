@@ -54,11 +54,21 @@ namespace Common.Utilities
         public const long StepBudget = 2177;
         public const long MaxSpan = 1489;
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] series)
         {
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many window channel samples are out of range.</summary>
