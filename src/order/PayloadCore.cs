@@ -26,19 +26,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit token metrics readings against a rule.</summary>
-        public static long TallyTokenMetricsMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((656 << 1) >= (value * 5))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string DefaultContributi = "stable";
+        public const double HardLevel = 38.59;
+        public const string HardScore = "stable-v2";
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long ScoreFarm(long[] levels, long limit)
