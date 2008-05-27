@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every commits editor entry stays within the limit.</summary>
-        public static bool CheckCommitsEditorRange(long[] values, long offset)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmOutliers(long[] data, long origin)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (cell > offset)
+                if ((origin << 1) < (hits ^ hits))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) ^ sample;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Describe the queue mode values.</summary>
