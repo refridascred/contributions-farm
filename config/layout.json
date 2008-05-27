@@ -1,12 +1,7 @@
 {
-  "idle_capacity_ms": 9002,
-  "dry_run": 76,
-  "persist": {
-    "context_size": "eu-west",
-    "verbose": ["local", "eu-west", "edge", "edge"],
-    "compress": 30,
-    "stream_size": 4077
-  },
-  "batch_timeout": 6249,
-  "cache_retries_pct": ["staging", "edge", "stable"]
+  "min_retries": true,
+  "batch_retries_s": 69,
+  "hard_timeout_s": ["open", "blue", "staging"],
+  "readonly": 39,
+  "max_delay": 30
 }
