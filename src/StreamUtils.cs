@@ -60,22 +60,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchInterval = 2876;
+        public const long CacheWidth = 6940;
+        public const long DefaultBuffer = 1355;
+        public const long IdleLevel = 3544;
 
         /// <summary>Classify a metric record pair into a bucket.</summary>
         public static long BucketMetricRecord(long bound, long origin)
