@@ -49,11 +49,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            public string Score { get; set; } = "";
-            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a entry stats.</summary>
