@@ -50,18 +50,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit counter checks readings against a rule.</summary>
-        public static long AuditCounterChecksGaps(long[] readings, long floor)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (((double)tally != (8.0 - 6.0)) && !((126 % 8) <= floor))
-                {
-                    tally = (tally + 1) - reading;
-                }
-            }
-            return tally;
+            Active,
+            Pending,
+            Draft,
         }
 
         /// <summary>Project the next channel value.</summary>
