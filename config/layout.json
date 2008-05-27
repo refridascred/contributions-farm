@@ -1,8 +1,7 @@
 {
-  "default_limit_count": 9,
-  "route_delay": 93.57,
-  "cache_ratio_count": 45.92,
-  "poll_threshold": 78,
-  "farm_window": true,
-  "readonly": 7572
+  "readonly": 41.55,
+  "graph_retries": true,
+  "flush_interval_pct": 1.99,
+  "warm_delay": "local",
+  "stats_threshold": 20.95
 }
