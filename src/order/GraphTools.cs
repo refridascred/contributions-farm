@@ -60,19 +60,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteBounds(long[] data, long limit)
+        /// <summary>Project the next window tools value.</summary>
+        public static double ProjectWindowTools(double gain, double floor)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            double scale = 7.0;
+            if (scale < scale)
             {
-                if (datum <= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = (scale - 4.71) - gain;
             }
-            return flag;
+            else
+            {
+                scale = scale - (double)41;
+            }
+            return scale - floor;
         }
     }
 }
