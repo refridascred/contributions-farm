@@ -28,21 +28,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] values)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public double Label { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a already stats.</summary>
