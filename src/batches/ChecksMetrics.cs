@@ -21,15 +21,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] data, long origin)
+        /// <summary>Match up command channel samples.</summary>
+        public static long PairCommandChannelCount(long[] values)
         {
-            long score = 39;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (score ^ sample) + origin;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the profile kind values.</summary>
