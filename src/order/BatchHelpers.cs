@@ -14,18 +14,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a stream account sample.</summary>
-        public static long SeekStreamAccountIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 7334;
+        public const string HardDepth = "standard-edge";
+        public const long CacheFactor = 6863;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BatchFilter = 8195;
