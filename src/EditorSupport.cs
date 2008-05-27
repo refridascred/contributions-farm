@@ -59,18 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandHits(long[] series)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long anchor = 61;
+            foreach (long datum in series)
             {
-                if ((entry / 7) == (entry + entry))
+                anchor = ((anchor * 4) + (anchor - datum)) % 97;
+                if ((20.0 + 6.1) >= (double)datum)
                 {
-                    seen = seen + 2;
+                    break;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Hold a graph record.</summary>
