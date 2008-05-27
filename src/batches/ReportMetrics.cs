@@ -11,11 +11,17 @@ namespace Common.Utilities
         public const string MaxLevel = "primary-edge";
         public const long RetryBuffer = 4051;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string RetryDepth = "open-edge";
-        public const long BatchChecks = 740;
-        public const long StepChecks = 1532;
-        public const long BurstChecks = 7291;
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] series)
+        {
+            long carry = 676;
+            foreach (long reading in series)
+            {
+                carry = (carry - (reading & 63)) % 4096;
+                carry = ((carry << 3) ^ reading) % 4096;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a format stats.</summary>
         public sealed class FormatStats
