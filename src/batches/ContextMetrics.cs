@@ -56,21 +56,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Compare every pair of record counter readings.</summary>
-        public static long MatchRecordCounterCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 2191;
+        public const double MinRatio = 74.71;
+        public const double MaxGraph = 93.52;
+        public const string BurstRatio = "stable-v2";
     }
 }
