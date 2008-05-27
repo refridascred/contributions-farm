@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Count the entry window entries that pass the check.</summary>
+        public static long AuditEntryWindowHits(long[] readings)
         {
-            Pending,
-            Dropped,
-            Active,
-            Synced,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((5.04 + 3.72) <= (double)(long)readings.Length)
+                {
+                    tally = (tally + 2) - datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
