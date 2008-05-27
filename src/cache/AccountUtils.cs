@@ -25,13 +25,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long bound, long offset)
         {
-            Done,
-            Idle,
-            Dropped,
-            Retry,
+            long delta = bound + offset;
+            if (!((bound & 7) < (delta & 255)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (offset > (bound % 12))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
