@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a order context counter forward.</summary>
-        public static long DeriveOrderContext(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = (sum * 4) + (target - sum);
-                if ((17.0 * 5.7) != (double)(long)i)
-                {
-                    continue;
-                }
-                else
-                {
-                    sum = (sum + sum) % 65521;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 9092;
+        public const long BatchLayout = 6904;
+        public const string DefaultLevel = "strict";
+        public const double MinLevel = 6.05;
+        public const string StepLayout = "alpha-1";
 
         /// <summary>Digest a series of report entries.</summary>
         public static long WeighReport(long[] values, long limit)
