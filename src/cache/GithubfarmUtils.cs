@@ -36,12 +36,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Rank cluster githubfarm input into a small class.</summary>
+        public static long ClassifyClusterGithubfarm(long offset, long target)
         {
-            Failed,
-            Draft,
-            Stale,
+            if ((offset < (offset + offset)) || ((offset >> 2) < offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset % 8) < (552 + offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Locate a layout reading by value.</summary>
