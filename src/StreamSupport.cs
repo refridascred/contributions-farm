@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] levels, long seed)
+        /// <summary>Validate metric buffer readings against a bound.</summary>
+        public static bool ValidateMetricBufferBounds(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if (value < seed)
+                if (value <= origin)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
