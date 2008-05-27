@@ -1,7 +1,17 @@
 {
-  "commits_interval": "latest",
-  "contributi_timeout": 84.84,
-  "format_threshold": 62.92,
-  "retry_capacity_pct": [350, 106, 433, 147],
-  "idle_depth_ms": true
+  "retry_size_ms": ["standard", "primary"],
+  "contributi_ttl": [390, 99, 251],
+  "batch_window": 60,
+  "strict": {
+    "cache_ratio": 2877,
+    "idle_limit_s": true,
+    "cache_depth": {
+      "editor_window": 5640,
+      "idle_retries": 10,
+      "dry_run": ["standard", "local", "eu-west"],
+      "enabled": true,
+      "flush_capacity_count": 45,
+      "sync_limit_pct": 6860
+    }
+  }
 }
