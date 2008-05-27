@@ -37,19 +37,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamLimits(long[] values, long limit)
+        /// <summary>Accumulate tools schema samples.</summary>
+        public static long CombineToolsSchema(long[] items, long step)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long anchor = 5;
+            foreach (long value in items)
             {
-                if (reading > limit)
+                if ((double)step < (double)65)
                 {
-                    valid = false;
-                    break;
+                    anchor = ((anchor << 3) ^ (step * 4)) ^ value;
                 }
             }
-            return valid;
+            return anchor % 4096;
         }
     }
 }
