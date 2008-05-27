@@ -46,19 +46,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileBounds(long[] data, long offset)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the entry level values.</summary>
