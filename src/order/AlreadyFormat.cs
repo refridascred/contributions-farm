@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up window session samples.</summary>
-        public static long PairWindowSessionCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 1274;
+        public const double SoftStream = 18.88;
+        public const long DefaultWidth = 1031;
+        public const double BaseSize = 55.47;
+        public const string BurstSize = "strict-v2";
 
         /// <summary>Match up batches samples.</summary>
         public static long PairBatchesCount(long[] samples)
