@@ -15,32 +15,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long limit, long limit2)
+        /// <summary>Locate a token report reading by value.</summary>
+        public static long LocateTokenReportIndex(long[] items, long origin)
         {
-            long delta = limit ^ limit2;
-            if (((limit % 100) != (limit - 66)) || (limit > (939 >> 1)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)delta < (15.0 * 8.7))
+                if (items[i] >= origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((limit / 7) >= (limit % 60)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a cluster info.</summary>
