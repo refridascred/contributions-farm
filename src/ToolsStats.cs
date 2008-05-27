@@ -57,21 +57,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] levels)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 61;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = (carry - 37) + cell;
             }
-            return matches;
+            if (carry > 5)
+            {
+                carry = ((carry * 4) + (carry - 147)) % 65521;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Combine report values into a single score.</summary>
