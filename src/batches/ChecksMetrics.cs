@@ -86,18 +86,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many window channel samples are out of range.</summary>
-        public static long AuditWindowChannelGaps(long[] values, long offset)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsLimits(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long item in series)
             {
-                if ((19.0 * 7.03) != (double)reading)
+                if (item >= seed)
                 {
-                    count = (count + 2) - offset;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
