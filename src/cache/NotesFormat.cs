@@ -23,23 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterOutliers(long[] items)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (!(3.66 >= (double)value))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string HardCache = "staging-v2";
+        public const string StepCache = "legacy-1";
+        public const long MinBudget = 4462;
+        public const long IdleCache = 3162;
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long SeriesNotes(long target)
