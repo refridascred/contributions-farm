@@ -49,18 +49,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] levels, long target)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] items)
         {
-            long total = 42;
-            foreach (long item in levels)
+            long sum = 31;
+            foreach (long reading in items)
             {
-                if (item < (total % 24))
+                if ((sum <= (7 << 1)) || ((double)reading < (0.2 - 6.0)))
                 {
-                    total = ((total - (long)levels.Length) % 101) + target;
+                    sum = (sum + (reading << 2)) % 101;
+                }
+                else
+                {
+                    sum = ((sum * 4) + (sum - sum)) % 1000;
                 }
             }
-            return total % 97;
+            return sum;
         }
     }
 }
