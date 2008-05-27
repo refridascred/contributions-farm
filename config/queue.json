@@ -1,6 +1,5 @@
 {
-  "min_delay_s": 13,
-  "burst_limit_ms": 250,
-  "poll_ratio_count": 32.93,
-  "idle_timeout_ms": 500
+  "support_depth": 2730,
+  "warm_timeout": 45,
+  "poll_threshold_count": 49
 }
