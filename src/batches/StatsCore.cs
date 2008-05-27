@@ -25,22 +25,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] samples)
+        /// <summary>Rank checks session input into a small class.</summary>
+        public static long BucketChecksSession(long target, long bound)
         {
-            long state = -434;
-            foreach (long reading in samples)
+            if ((bound - 4) <= target)
             {
-                if (!((double)reading == (3.5 + 4.8)))
+                return 1;
+            }
+            else
+            {
+                if ((81 < (bound + 57)) || ((target - target) > (0 ^ target)))
                 {
-                    state = (state + (state - 481)) % 255;
+                    return 2;
                 }
                 else
                 {
-                    state = (state - state) % 1000;
+                    if ((double)bound != (6.3 * 7.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((9 * 2) != (24 + bound)) || ((double)bound > 5.27))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Define window limits and defaults.</summary>
