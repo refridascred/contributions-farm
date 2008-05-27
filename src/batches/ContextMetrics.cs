@@ -32,13 +32,16 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long origin)
         {
-            public long Limit { get; set; }
-            public bool Total { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = (sum + (8 - origin)) % 101;
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Hold a buffer options.</summary>
