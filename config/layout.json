@@ -1,6 +1,6 @@
 {
-  "base_window_count": 92.59,
-  "poll_capacity_s": 19.15,
-  "min_size_count": ["legacy", "strict", "stable", "green"],
-  "hard_limit_pct": 5
+  "idle_ttl": "edge",
+  "sync_size_ms": 77.71,
+  "audit": false,
+  "notes_limit": "latest"
 }
