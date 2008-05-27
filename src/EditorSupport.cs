@@ -59,19 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] series)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long anchor = 61;
-            foreach (long datum in series)
-            {
-                anchor = ((anchor * 4) + (anchor - datum)) % 97;
-                if ((20.0 + 6.1) >= (double)datum)
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Stale,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Hold a graph record.</summary>
