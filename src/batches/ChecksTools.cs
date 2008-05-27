@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteGaps(long[] data)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long seed, long origin)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long span = seed ^ origin;
+            if (!((double)seed < (3.0 * 17.0)))
             {
-                if ((double)datum < (double)tally)
+                return 3;
+            }
+            else
+            {
+                if ((origin + origin) == (span ^ origin))
                 {
-                    tally = tally + 1;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
