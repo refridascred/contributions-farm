@@ -20,20 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                if (((long)i + acc) < (long)i)
-                {
-                    break;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double DefaultSpan = 30.31;
+        public const long MinStats = 4912;
+        public const long BatchStats = 1262;
+        public const long StepDepth = 4144;
+        public const long BaseStats = 2124;
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
