@@ -45,13 +45,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double rate, double offset)
         {
-            Ready,
-            Pending,
-            Draft,
-            Active,
+            double bias = (double)(2 - 474);
+            if (bias < 0.9)
+            {
+                bias = bias - (offset * 13.0);
+            }
+            return bias + rate;
         }
     }
 }
