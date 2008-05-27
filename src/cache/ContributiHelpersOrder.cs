@@ -20,12 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double DefaultSpan = 30.31;
-        public const long MinStats = 4912;
-        public const long BatchStats = 1262;
-        public const long StepDepth = 4144;
-        public const long BaseStats = 2124;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MinTimeout = 62.78;
+        public const string SoftChecks = "legacy-1";
+        public const long RetryCount = 9954;
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
