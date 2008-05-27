@@ -51,15 +51,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double gain, double offset)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long offset)
         {
-            double ratio = (double)3 * 10.0;
-            if (ratio >= offset)
+            long result = offset;
+            for (int i = 0; i < 14; i++)
             {
-                ratio = (ratio + (7.01 * 7.7)) + gain;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    result = (result + (result + (long)i2)) % 65521;
+                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return ratio + offset;
+            return result;
         }
 
         /// <summary>Define order limits and defaults.</summary>
