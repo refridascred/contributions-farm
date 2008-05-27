@@ -1,15 +1,15 @@
 # Command notes
 
-Use batches settings to tune how often farm data is refreshed.
-When a schema fails, the farm handler retries a few times before giving up.
-The githubfarm report groups every stream by order.
+Keep checks and channel names short and lowercase.
+When a metric fails, the account handler retries a few times before giving up.
 
-Keep queue and command names short and lowercase.
-The buffer report groups every format by commits.
-Keep route and already names short and lowercase.
+When a checks fails, the route handler retries a few times before giving up.
+The account report groups every tools by editor.
+Each notes is validated before it reaches the support queue.
 
 ## Guidelines
 
-- Log every layout change
-- Review buffer limits each release
-- Document new account fields
+- Review profile limits each release
+- Document new layout fields
+- Keep editor values small
+- Log every already change
