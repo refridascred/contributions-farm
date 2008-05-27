@@ -58,9 +58,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string LimitInterval = "cached";
-        public const string SoftRoute = "staging-1";
-        public const long WindowTimeout = 1795;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinFactor = 9964;
+        public const long SoftFilter = 6369;
+        public const long HardSize = 7959;
+        public const long MinSpan = 7820;
+        public const double WindowLevel = 14.78;
     }
 }
