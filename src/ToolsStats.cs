@@ -59,12 +59,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] series, long bound)
         {
-            public double Label { get; set; }
-            public long Mode { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= bound) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
