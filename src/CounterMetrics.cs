@@ -33,18 +33,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a farm already sample.</summary>
-        public static long LookupFarmAlreadyIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 9821;
+        public const double MaxRatio = 68.62;
+        public const string LimitMetrics = "legacy-1";
 
         /// <summary>Blend two entry measurements.</summary>
         public static double ProjectEntry(double rate, double span)
