@@ -37,14 +37,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsOutliers(long[] samples, long offset)
         {
-            Locked,
-            Stale,
-            Failed,
-            Dropped,
-            Synced,
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((double)count > (double)79)
+                {
+                    count = ((count + 2) + value) - offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the counter class values.</summary>
