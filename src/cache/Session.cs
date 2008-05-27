@@ -22,22 +22,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] values)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long offset, long floor)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long lane = offset + floor;
+            if (((double)floor != (7.9 * 4.64)) || ((offset % 10) <= (lane * 5)))
             {
-                if (((long)values.Length & 15) != (seen << 1))
+                return 4;
+            }
+            else
+            {
+                if ((0 + offset) >= lane)
                 {
-                    seen = (seen + 2) ^ entry;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate batch samples.</summary>
