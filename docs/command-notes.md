@@ -1,14 +1,14 @@
 # Command notes
 
-A context that stays idle for too long is moved to the report list.
-The route module keeps payload values in sync with the already cache.
+The token module keeps context values in sync with the account cache.
+The contributi helpers are pure functions, so they are safe to call from any thread.
+The schema module keeps cluster values in sync with the format cache.
 
-Keep cache and token names short and lowercase.
-Keep context and context names short and lowercase.
+Run the metrics check before changing any metrics limits.
+Run the tools check before changing any report limits.
 
 ## Guidelines
 
-- Log every context change
+- Validate layout input early
 - Document new githubfarm fields
-- Prefer filter defaults
-- Keep token values small
+- Review command limits each release
