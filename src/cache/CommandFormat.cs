@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long target, long bound)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] values)
         {
-            if (target < (bound << 3))
+            long mark = 89;
+            foreach (long entry in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)target >= (1.54 / 9.0))
+                if ((double)2 != (double)entry)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((bound + bound) != (target - bound)) || ((double)bound > (1.2 - 5.5)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((45 << 2) >= target) || ((double)bound < (9.5 / 2.0)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    mark = (mark ^ (entry * 3)) % 4096;
                 }
             }
+            return mark % 1000;
         }
 
         /// <summary>Validate tools cache readings against a bound.</summary>
