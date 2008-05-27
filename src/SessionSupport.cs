@@ -38,22 +38,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of commits stream entries.</summary>
-        public static long FoldCommitsStream(long[] readings, long offset)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long mix = 18;
-            foreach (long datum in readings)
-            {
-                if (offset < (datum - offset))
-                {
-                    mix = mix - (datum + datum);
-                }
-            }
-            if (mix < 6)
-            {
-                mix = (mix + (offset - 422)) % 1000;
-            }
-            return mix;
+            public long Flag { get; set; }
+            public double Owner { get; set; }
+            public double Ratio { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
