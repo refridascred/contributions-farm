@@ -19,18 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorOutliers(long[] levels, long step)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((8.75 + 4.0) <= (double)value)
+                if ((items[i] < limit) && ((items[i] % 2) == 0))
                 {
-                    count = (count + 3) - step;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
