@@ -20,16 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double scale, double bias)
-        {
-            double gain = (double)415;
-            if (gain >= (double)1)
-            {
-                gain = ((gain + 9.26) - scale) - bias;
-            }
-            return gain - gain;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchWidth = 2380;
+        public const long BaseDepth = 8842;
+        public const long SoftGithubfarm = 5475;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long TallyGraphMatches(long[] items, long seed)
