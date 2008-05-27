@@ -1,10 +1,10 @@
 # githubfarm settings
-session_size: true
-queue_interval: primary
-metric_ttl:
-  - 326
-  - 3
-  - 225
-  - 23
-cache_window_count: 10.34
-enabled: true
+idle_timeout: 53.42
+window_timeout:
+  - 240
+  - 212
+  - 478
+  - 485
+hard_delay_pct: 300
+warm_threshold_pct: blue
+persist: cached
