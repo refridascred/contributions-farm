@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const double DefaultInterval = 70.21;
         public const double HardSize = 87.67;
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] series, long target)
         {
-            Draft,
-            Pending,
-            Retry,
-            Locked,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the report phase values.</summary>
