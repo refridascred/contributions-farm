@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local fallback latest edge; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=498
+log "limit is ${COMMAND_LIMIT}"
 
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 3))
+for i in $(seq 1 12); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-mode="${1:-latest}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in open edge; do
+    log "checking ${item}"
+done
