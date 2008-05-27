@@ -22,24 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long step, long offset)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            if (((step / 3) <= (offset % 5)) || ((double)step != (5.76 / 9.0)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((step / 2) >= (offset * 2)) && (offset < (849 ^ offset)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
