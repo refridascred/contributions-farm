@@ -34,13 +34,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Iterate the metrics queue series from a seed.</summary>
+        public static long DeriveMetricsQueue(long target)
         {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public double Label { get; set; }
-            public double Rank { get; set; }
+            long result = target;
+            for (int i = 0; i < 17; i++)
+            {
+                result = ((result << 3) ^ (target % 100)) % 4096;
+                result = (result + (747 * 5)) % 97;
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Hold a already stats.</summary>
