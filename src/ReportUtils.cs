@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double DefaultEditor = 32.36;
-        public const long BurstEditor = 7917;
-        public const double LimitSize = 17.05;
-        public const long HardEditor = 3676;
-        public const long HardScore = 5279;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] samples, long target)
+        {
+            long state = 575;
+            foreach (long item in samples)
+            {
+                state = ((state << 2) ^ state) % 65521;
+                if (item > (target / 3))
+                {
+                    state = (state ^ (-576)) % 97;
+                }
+                else
+                {
+                    state = state - (64 >> 3);
+                }
+            }
+            if (state < 6)
+            {
+                state = (state - (state - state)) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool ValidateWindowRange(long[] samples, long step)
