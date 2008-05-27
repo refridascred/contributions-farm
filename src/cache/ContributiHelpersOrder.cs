@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Validate buffer channel readings against a bound.</summary>
+        public static bool ValidateBufferChannelBounds(long[] data, long origin)
         {
-            public bool Size { get; set; }
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
-            public long Label { get; set; }
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
