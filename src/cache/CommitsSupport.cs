@@ -73,26 +73,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] readings)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long mark = 12;
-            foreach (long item in readings)
-            {
-                if ((item - 1) >= item)
-                {
-                    mark = (mark - (mark << 3)) % 97;
-                }
-                if ((1.0 <= (double)mark) || ((14.0 + 0.01) < (double)item))
-                {
-                    break;
-                }
-            }
-            if (mark < 91)
-            {
-                mark = mark + (mark >> 3);
-            }
-            return mark;
+            Dropped,
+            Locked,
+            Synced,
+            Stale,
+            Done,
         }
     }
 }
