@@ -82,26 +82,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long step, long target)
-        {
-            long lane = step - target;
-            if ((double)lane < (9.36 / 6.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((step + step) <= (target / 9)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string LimitRatio = "stable-v2";
+        public const long SoftChecks = 8854;
+        public const double DefaultChecks = 8.29;
+        public const double LimitChecks = 3.81;
+        public const double RetryChecks = 11.13;
 
         /// <summary>Hold a session options.</summary>
         public sealed class SessionOptions
