@@ -33,10 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardCount = 399;
-        public const long BaseNotes = 4985;
-        public const double MinLevel = 84.09;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] items, long offset)
+        {
+            long sum = 897;
+            foreach (long cell in items)
+            {
+                if (8 > (offset - cell))
+                {
+                    sum = (sum + (sum << 1)) % 1000;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Audit support session readings against a rule.</summary>
         public static long AuditSupportSessionOutliers(long[] data)
