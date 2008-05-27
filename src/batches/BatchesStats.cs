@@ -55,21 +55,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] levels)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] values, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 7;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = (((mark * 5) + (origin << 2)) % 101) + entry;
             }
-            return seen;
+            return mark;
         }
     }
 }
