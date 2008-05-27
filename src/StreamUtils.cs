@@ -44,18 +44,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmMatches(long[] readings)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long offset, long seed)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            if ((1 - offset) < (offset - offset))
             {
-                if ((entry % 10) != (seen & 1))
+                return 0;
+            }
+            else
+            {
+                if (((8.7 + 1.71) <= (double)offset) && ((0.01 + 14.0) < (double)offset))
                 {
-                    seen = seen + 2;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
