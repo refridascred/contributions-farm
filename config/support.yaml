@@ -1,5 +1,9 @@
 # support settings
-sync_retries_pct: primary
-batches_threshold: green
-strict: 2.35
-poll_capacity_pct: 9044
+burst_window_pct: fallback
+warm_retries_ms:
+  metric_delay: 98
+  persist: latest
+  soft_retries: primary
+  warm_size: true
+  command_window: staging
+audit: 98
