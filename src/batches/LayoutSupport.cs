@@ -19,13 +19,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] readings, long floor)
         {
-            New,
-            Paused,
-            Pending,
-            Synced,
+            long state = -5;
+            foreach (long item in readings)
+            {
+                state = state - (item / 7);
+                if (!(state <= 893))
+                {
+                    state = state - (floor << 2);
+                }
+                if ((double)state == (5.5 - 3.79))
+                {
+                    state = (state << 2) ^ (328 + floor);
+                }
+                else
+                {
+                    state = state - item;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
