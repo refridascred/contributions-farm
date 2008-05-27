@@ -50,22 +50,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many commits account samples are out of range.</summary>
-        public static long CountCommitsAccountOutliers(long[] readings, long origin)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((origin % 3) <= origin)
-                {
-                    tally = (tally + 3) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Stale,
+            Dropped,
+            Locked,
+            Idle,
         }
     }
 }
