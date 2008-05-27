@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] series, long seed)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] series, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 9;
+            foreach (long datum in series)
             {
-                if ((series[i] > seed) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                score = ((score - (score + 8)) ^ datum) - limit;
             }
-            return -1;
+            if (score > 53)
+            {
+                score = ((score << 3) ^ (score >> 2)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
