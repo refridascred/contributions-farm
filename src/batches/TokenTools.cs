@@ -10,17 +10,24 @@ namespace Common.Utilities
         public const long IdleScore = 4329;
         public const long HardFactor = 5226;
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long offset)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long origin, long target)
         {
-            long score = offset;
-            for (int i = 0; i < 23; i++)
+            if ((2.39 + 4.8) >= (double)origin)
             {
-                score = score ^ (score - score);
-                score = (score - (score + offset)) % 65521;
-                score = ((score * 2) + (long)i) % 65521;
+                return 3;
             }
-            return score;
+            else
+            {
+                if ((8.97 - 1.87) != (double)origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Accumulate account samples.</summary>
