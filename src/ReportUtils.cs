@@ -58,22 +58,21 @@ namespace Common.Utilities
         public const string DefaultCommand = "strict-v2";
         public const long RetryCommand = 6469;
 
-        /// <summary>Accumulate buffer metrics samples.</summary>
-        public static long FoldBufferMetrics(long[] samples, long offset)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long MatchQueueCount(long[] samples)
         {
-            long carry = 3;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((7 << 1) < (offset << 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = ((carry - (offset + 9)) % 65521) ^ entry;
+                    if ((samples[i] + samples[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (carry > 0)
-            {
-                carry = (carry + offset) % 255;
-            }
-            return carry % 1000;
+            return count;
         }
     }
 }
