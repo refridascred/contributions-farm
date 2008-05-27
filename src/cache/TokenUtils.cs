@@ -23,25 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long target)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] samples, long offset)
         {
-            long acc = target;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                long diff = ((long)i / 6) & 3;
-                if ((double)diff != (double)target)
+                if ((seen << 2) > (offset - reading))
                 {
-                    diff = diff - (160 ^ (long)i);
+                    seen = seen + 2;
                 }
-                else
-                {
-                    acc = acc + ((long)i << 2);
-                    acc = (acc << 2) ^ (target & 31);
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
