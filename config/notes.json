@@ -1,5 +1,7 @@
 {
-  "verbose": 11.54,
-  "compress": 67.43,
-  "base_timeout_pct": false
+  "base_ratio_ms": 1024,
+  "notes_ratio": 500,
+  "strict": [155, 1, 294],
+  "batch_size_s": 1568,
+  "base_retries": [137, 278, 68, 85]
 }
