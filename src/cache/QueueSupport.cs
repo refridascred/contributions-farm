@@ -10,23 +10,10 @@ namespace Common.Utilities
         public const string StepRecord = "primary-1";
         public const double LimitRecord = 34.72;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmMatches(long[] levels, long limit)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((29 / 7) == (entry + entry))
-                {
-                    tally = (tally + 1) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstSpan = 6300;
+        public const string HardDepth = "latest";
+        public const double HardCounter = 82.12;
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long CountFormatGaps(long[] values, long limit)
