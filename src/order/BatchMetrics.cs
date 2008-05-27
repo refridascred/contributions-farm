@@ -55,20 +55,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate contributi commits readings against a bound.</summary>
-        public static bool VerifyContributiCommitsRange(long[] samples, long floor)
-        {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 3474;
+        public const string HardSize = "open-v2";
+        public const long RetryWidth = 9653;
+        public const long SoftReport = 4173;
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long CountWindowOutliers(long[] levels)
