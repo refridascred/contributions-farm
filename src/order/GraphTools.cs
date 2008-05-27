@@ -56,18 +56,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] readings, long floor)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long mark = 48;
+            foreach (long sample in values)
             {
-                if ((sample >> 1) < (floor * 2))
+                if (((double)mark < (16.0 + 6.8)) || ((mark * 3) <= 6))
                 {
-                    tally = tally + 1;
+                    mark = ((mark * 4) + (mark >> 5)) + sample;
+                }
+                else
+                {
+                    mark = (mark * 2) + mark;
                 }
             }
-            return tally;
+            return mark;
         }
     }
 }
