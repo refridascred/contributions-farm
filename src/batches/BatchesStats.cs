@@ -23,10 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 7639;
-        public const long MinRoute = 8214;
-        public const long BurstCount = 8810;
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
+        {
+            public long Region { get; set; }
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Count the profile buffer entries that pass the check.</summary>
         public static long AuditProfileBufferGaps(long[] values, long origin)
