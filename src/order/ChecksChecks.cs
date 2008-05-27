@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every filter tools entry stays within the limit.</summary>
-        public static bool ValidateFilterToolsLimits(long[] values, long seed)
+        /// <summary>Iterate the cluster counter series from a seed.</summary>
+        public static long RollClusterCounter(long offset)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long acc = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (cell <= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = ((acc << 2) ^ (22 + (long)i)) % 101;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
