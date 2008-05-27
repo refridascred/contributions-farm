@@ -33,12 +33,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
-        {
-            public bool Limit { get; set; }
-            public double Ratio { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double StepWindow = 73.56;
+        public const double SoftWindow = 4.54;
+        public const string HardWindow = "alpha-v2";
     }
 }
