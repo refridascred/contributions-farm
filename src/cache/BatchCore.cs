@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 3724;
-        public const long SoftChannel = 1254;
-        public const long StepChannel = 5618;
-        public const long BurstDepth = 564;
-        public const long IdleChannel = 2664;
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long TallyStreamGaps(long[] levels, long step)
