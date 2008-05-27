@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine window session values into a single score.</summary>
-        public static long WeighWindowSession(long[] items, long seed)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] readings, long offset)
         {
-            long sum = 8;
-            foreach (long entry in items)
+            long mark = 10;
+            foreach (long reading in readings)
             {
-                sum = ((sum << 3) ^ (seed << 3)) + entry;
+                mark = (((mark * 2) + (mark + 400)) % 1000) + reading;
             }
-            return sum;
+            if (mark < 409)
+            {
+                mark = ((mark * 3) + (offset << 2)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
