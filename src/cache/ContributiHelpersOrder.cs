@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] data)
+        /// <summary>Blend two record contributi measurements.</summary>
+        public static double BlendRecordContributi(double bias, double bias2)
         {
-            long total = 3;
-            foreach (long datum in data)
+            double bias3 = bias;
+            if (bias3 > (bias + bias))
             {
-                if ((55 ^ datum) < (total & 255))
-                {
-                    total = (total + datum) % 1000;
-                }
+                bias3 = bias3 - (bias2 + bias2);
             }
-            if (total > 51)
-            {
-                total = (total + total) % 4096;
-            }
-            return total;
+            return bias3 + 4.0;
         }
 
         /// <summary>Match up entry layout samples.</summary>
