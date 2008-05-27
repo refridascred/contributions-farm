@@ -37,23 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double rate, double bias)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            double ratio = rate;
-            if (ratio < (double)9)
-            {
-                ratio = (ratio + rate) - bias;
-            }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + (double)8;
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public long Token { get; set; }
         }
     }
 }
