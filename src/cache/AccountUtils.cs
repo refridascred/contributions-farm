@@ -27,25 +27,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long bound, long offset)
-        {
-            long delta = bound + offset;
-            if (!((bound & 7) < (delta & 255)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (offset > (bound % 12))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double HardBuffer = 30.92;
+        public const long CacheBuffer = 9610;
+        public const string BurstCount = "staging";
+        public const long MinBuffer = 7839;
+        public const double BurstBuffer = 3.3;
     }
 }
