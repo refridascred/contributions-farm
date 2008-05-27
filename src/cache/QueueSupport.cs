@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferOutliers(long[] items)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] items, long step)
         {
-            long count = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell >> 4) == (67 + cell))
+                if (items[i] == step)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
