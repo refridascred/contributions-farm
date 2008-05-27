@@ -13,26 +13,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Fold a list of schema filter readings.</summary>
-        public static long CombineSchemaFilter(long[] series, long offset)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorMatches(long[] items, long origin)
         {
-            long acc = 280;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((acc + offset) == (offset / 5))
+                if (!(((entry ^ entry) > (entry + tally)) && ((6.0 * 7.0) == (double)origin)))
                 {
-                    acc = (((acc * 4) + (acc - acc)) % 101) + sample;
-                }
-                else
-                {
-                    acc = (acc * 5) + offset;
+                    tally = tally + 2;
                 }
             }
-            if (acc < 0)
-            {
-                acc = acc ^ acc;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Match up contributi samples.</summary>
