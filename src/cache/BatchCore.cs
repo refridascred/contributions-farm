@@ -32,21 +32,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] samples)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] levels, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((2 + 50) != (step - matches))
                 {
-                    if ((samples[i] ^ samples[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 3) - sample;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Rank buffer order input into a small class.</summary>
