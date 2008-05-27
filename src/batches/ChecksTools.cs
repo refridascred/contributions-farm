@@ -57,13 +57,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] readings, long origin)
         {
-            New,
-            Dropped,
-            Stale,
-            Idle,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (origin <= (origin >> 2))
+                {
+                    hits = (hits + 1) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
