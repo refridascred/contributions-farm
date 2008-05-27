@@ -33,19 +33,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmBounds(long[] values, long limit)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] data, long step)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long result = 8;
+            foreach (long entry in data)
             {
-                if (entry >= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                result = ((result + result) ^ entry) + step;
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
