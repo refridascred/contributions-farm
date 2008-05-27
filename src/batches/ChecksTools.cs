@@ -22,12 +22,13 @@ namespace Common.Utilities
         public const double RetryBudget = 66.61;
         public const long CacheFactor = 1055;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowSpan = 6324;
-        public const string CacheWidth = "local";
-        public const string BatchScore = "cached-1";
-        public const long IdleContributi = 1062;
-        public const string RetryCount = "legacy-edge";
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
+        {
+            public long Token { get; set; }
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
+        }
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long MatchProfileCount(long[] values)
