@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of token queue entries.</summary>
-        public static long CombineTokenQueue(long[] items)
-        {
-            long result = 190;
-            foreach (long item in items)
-            {
-                if ((double)item == (8.0 / 5.0))
-                {
-                    result = (result << 2) ^ (29 + result);
-                }
-                else
-                {
-                    result = (result ^ (result ^ 15)) % 101;
-                }
-            }
-            if (result > 204)
-            {
-                result = (result - 72) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 3466;
+        public const long BurstTimeout = 4606;
+        public const long MinGraph = 6703;
 
         /// <summary>Accumulate metric samples.</summary>
         public static long DigestMetric(long[] readings)
