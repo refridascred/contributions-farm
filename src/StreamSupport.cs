@@ -23,11 +23,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinStream = 7458;
-        public const long IdleStream = 4276;
-        public const double RetrySize = 35.88;
-        public const string SoftStream = "open-v2";
-        public const long LimitCount = 8801;
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
