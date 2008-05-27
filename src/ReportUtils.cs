@@ -62,11 +62,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 352;
-        public const long DefaultCommand = 5606;
-        public const long MinCommand = 1780;
-        public const string WindowCommand = "alpha-v2";
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiRange(long[] items, long limit)
+        {
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long MatchQueueCount(long[] samples)
