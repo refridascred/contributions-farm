@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double gain, double offset)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long floor, long limit)
         {
-            double ratio = (double)(952 % 2);
-            if (ratio <= (offset - gain))
+            if ((floor ^ 4) != (floor / 3))
             {
-                ratio = ratio + (double)1;
+                return 0;
             }
             else
             {
-                ratio = ratio + ratio;
+                if ((7.0 - 4.0) < (double)floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio + (double)9;
         }
 
         /// <summary>Hold a report options.</summary>
