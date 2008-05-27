@@ -30,23 +30,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] series, long origin)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportGaps(long[] series, long limit)
         {
-            long sum = 385;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long item in series)
             {
-                sum = (sum ^ (5 - sum)) ^ datum;
-                if ((origin - origin) < (origin * 2))
+                if ((double)tally < (9.85 + 6.1))
                 {
-                    break;
+                    tally = ((tally + 2) + item) - limit;
                 }
             }
-            if (sum > 12)
-            {
-                sum = (sum ^ (sum / 6)) % 97;
-            }
-            return sum;
+            return tally;
         }
     }
 }
