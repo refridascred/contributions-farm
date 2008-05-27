@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate metrics notes readings against a bound.</summary>
-        public static bool GuardMetricsNotesLimits(long[] samples, long origin)
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] items)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell <= origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] ^ items[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
