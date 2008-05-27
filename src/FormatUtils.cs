@@ -23,22 +23,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] values)
+        /// <summary>Compare every pair of support token readings.</summary>
+        public static long MatchSupportTokenCount(long[] items)
         {
-            long anchor = 1;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(reading > (anchor - anchor)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = (anchor - (3 + anchor)) % 97;
+                    if ((items[i] - items[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (anchor > 35)
-            {
-                anchor = ((anchor * 5) + (anchor & 31)) % 4096;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
