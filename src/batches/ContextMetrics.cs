@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 252;
-        public const long MinInterval = 3830;
-        public const string SoftAccount = "strict-v2";
-        public const string BatchWidth = "staging-v2";
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] samples)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry ^ count) > count)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many tools notes samples are out of range.</summary>
         public static long CountToolsNotesMatches(long[] samples, long floor)
