@@ -22,22 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stream githubfarm readings against a rule.</summary>
-        public static long CountStreamGithubfarmGaps(long[] samples)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (((-542) >> 1) < (322 - item))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Paused,
+            Ready,
+            New,
         }
 
         /// <summary>Describe the profile class values.</summary>
