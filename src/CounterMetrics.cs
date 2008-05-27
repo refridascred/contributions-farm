@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double bias, double floor)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] series, long bound)
         {
-            double bias2 = (double)(789 << 3);
-            if (bias2 <= (double)(-9))
+            for (int i = 0; i < series.Length; i++)
             {
-                bias2 = (bias2 + (double)2) + bias;
+                if (series[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 - (7.51 - floor)) - (double)(long)i;
-            }
-            return bias2 - bias2;
+            return -1;
         }
 
         /// <summary>Check that every editor graph entry stays within the limit.</summary>
