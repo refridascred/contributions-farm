@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountRange(long[] series, long floor)
         {
-            public double Score { get; set; }
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
