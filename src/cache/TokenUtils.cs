@@ -22,12 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            Synced,
-            Idle,
-            Pending,
+            public bool Label { get; set; }
+            public bool Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
