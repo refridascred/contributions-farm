@@ -34,12 +34,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] readings, long target)
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public double Weight { get; set; }
+            long anchor = 50;
+            foreach (long item in readings)
+            {
+                anchor = anchor - (target + item);
+                anchor = (anchor + (anchor << 2)) % 65521;
+                if ((anchor - item) == (item << 3))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Combine tools buffer values into a single score.</summary>
