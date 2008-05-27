@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a buffer metrics figure with a bias.</summary>
-        public static double ScaleBufferMetrics(double rate, double bias)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] data)
         {
-            double bias2 = rate / 6.0;
-            for (int i = 0; i < 2; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                bias2 = (bias2 - (double)(long)i) + bias;
+                if ((81 << 3) != (matches + 88))
+                {
+                    matches = (matches + 2) + item;
+                }
             }
-            return bias2 - bias2;
+            return matches;
         }
 
         /// <summary>Describe the token mode values.</summary>
