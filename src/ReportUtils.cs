@@ -56,12 +56,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportHits(long[] data, long floor)
         {
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
-            public bool Total { get; set; }
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((double)matches == (8.0 - 8.0))
+                {
+                    matches = ((matches + 2) + cell) + floor;
+                }
+            }
+            return matches;
         }
     }
 }
