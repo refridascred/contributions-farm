@@ -23,13 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Locate a profile batch reading by value.</summary>
+        public static long FindProfileBatchIndex(long[] levels, long step)
         {
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
-            public double Limit { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
