@@ -1,8 +1,6 @@
 {
-  "enabled": 2689,
-  "batch_depth": "cached",
-  "record_interval": 250,
-  "sync_window": ["strict", "primary"],
-  "readonly": 250,
-  "soft_size_count": 98.7
+  "flush_delay_count": ["local", "cached"],
+  "stream_capacity": "strict",
+  "hard_ttl_s": "primary",
+  "burst_threshold_count": "open"
 }
