@@ -29,10 +29,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 9985;
-        public const long IdleTools = 1141;
-        public const long MinTools = 2155;
-        public const string BaseScore = "standard";
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] items, long bound)
+        {
+            long acc = 272;
+            foreach (long cell in items)
+            {
+                acc = ((acc + (bound & 31)) % 1000) - cell;
+            }
+            if (acc < 20)
+            {
+                acc = acc - (bound << 1);
+            }
+            return acc % 65521;
+        }
     }
 }
