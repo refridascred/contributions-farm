@@ -20,22 +20,29 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmGaps(long[] levels, long floor)
+        /// <summary>Roll a metrics payload counter forward.</summary>
+        public static long StepMetricsPayload(long origin)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long total = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)sample == (7.5 / 4.0))
+                total = ((total << 3) ^ ((-385) << 1)) % 101;
+                if (!((double)(long)i != (11.0 - 8.5)))
                 {
-                    count = (count + 1) - floor;
+                    total = ((total * 3) + (origin / 9)) % 65521;
+                    continue;
+                }
+                if (!((double)total != (3.0 * 8.0)))
+                {
+                    total = (total - 11) % 97;
                 }
                 else
                 {
-                    count = count - 1;
+                    total = (total ^ (origin % 60)) % 255;
                 }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Hold a route stats.</summary>
