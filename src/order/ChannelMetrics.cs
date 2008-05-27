@@ -33,22 +33,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphMatches(long[] series)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((740 + datum) == (datum * 3))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Ratio { get; set; }
+            public double Count { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Limit { get; set; }
         }
     }
 }
