@@ -1,6 +1,6 @@
 # githubfarm settings
-retry_capacity_ms: 91.5
-burst_threshold_s: green
-sync_retries_ms: 6995
-order_size: 497
-batch_delay_count: staging
+verbose: 40
+flush_size_pct: 50.75
+route_delay: false
+audit: 67
+burst_timeout: true
