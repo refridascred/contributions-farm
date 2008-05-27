@@ -30,11 +30,23 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseBudget = 3659;
-        public const string StepCache = "strict-edge";
-        public const long SoftLevel = 2998;
-        public const long LimitWidth = 5852;
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] values)
+        {
+            long mark = -6;
+            foreach (long datum in values)
+            {
+                if ((datum * 5) <= (datum % 97))
+                {
+                    mark = (mark + (951 + mark)) % 255;
+                }
+                else
+                {
+                    mark = (mark - (mark + mark)) % 255;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
