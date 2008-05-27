@@ -54,12 +54,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Combine cache context values into a single score.</summary>
+        public static long FoldCacheContext(long[] readings)
         {
-            Locked,
-            Failed,
-            New,
+            long result = 1;
+            foreach (long item in readings)
+            {
+                if ((3.13 - 4.06) > (double)result)
+                {
+                    result = ((result ^ (result + result)) % 101) ^ item;
+                }
+            }
+            return result;
         }
 
         /// <summary>Digest a series of token queue entries.</summary>
