@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long origin, long offset)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long next = origin - offset;
-            if (offset < next)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset * 5) != (next + origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)offset == (double)origin) && ((double)offset == (9.0 + 8.7)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Token { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
