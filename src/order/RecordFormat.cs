@@ -59,18 +59,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry schema samples are out of range.</summary>
-        public static long CountEntrySchemaGaps(long[] levels)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long seed, long bound)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long gap = seed ^ bound;
+            if (((bound ^ bound) >= gap) && ((bound * 3) > (157 & 7)))
             {
-                if ((item & 255) >= (20 - item))
+                return 1;
+            }
+            else
+            {
+                if ((gap ^ seed) <= (gap + bound))
                 {
-                    tally = tally + 1;
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)bound == (10.0 + 2.7)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((7.64 * 11.0) > (double)bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
