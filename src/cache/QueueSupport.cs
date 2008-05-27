@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            public long Ratio { get; set; }
-            public double Label { get; set; }
-            public string Region { get; set; } = "";
+            New,
+            Retry,
+            Draft,
         }
 
         /// <summary>Digest a series of notes entries.</summary>
