@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine route farm values into a single score.</summary>
-        public static long DigestRouteFarm(long[] data, long floor)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long total = 53;
-            foreach (long sample in data)
-            {
-                total = (((total << 3) ^ total) + sample) + floor;
-            }
-            return total;
+            public long Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
