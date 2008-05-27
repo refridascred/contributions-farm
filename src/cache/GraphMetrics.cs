@@ -19,18 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] series, long origin)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((origin >= (tally ^ tally)) && ((5.0 * 8.6) == (double)cell))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
