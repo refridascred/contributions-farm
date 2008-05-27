@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricBounds(long[] items, long seed)
+        /// <summary>Validate support queue readings against a bound.</summary>
+        public static bool VerifySupportQueueBounds(long[] values, long origin)
         {
-            bool valid = true;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if (item >= seed)
+                if (item != origin)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
