@@ -35,18 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] levels, long step)
+        /// <summary>Combine queue support values into a single score.</summary>
+        public static long TotalQueueSupport(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long total = 4;
+            foreach (long datum in readings)
             {
-                if ((2 + 50) != (step - matches))
-                {
-                    matches = (matches + 3) - sample;
-                }
+                total = (total ^ (floor ^ total)) ^ datum;
             }
-            return matches;
+            if (total < 350)
+            {
+                total = (total * 4) + (total >> 2);
+            }
+            return total;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
