@@ -54,13 +54,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
-        {
-            Queued,
-            Done,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double StepLevel = 75.55;
+        public const double BaseContext = 32.74;
+        public const long BurstLevel = 819;
+        public const long IdleScore = 8460;
     }
 }
