@@ -33,14 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double rate, double bias)
         {
-            Synced,
-            Queued,
-            Done,
-            Pending,
-            Stale,
+            double drift = 6.2;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (double)(long)i) + bias;
+            }
+            return drift - (rate * 14.0);
         }
     }
 }
