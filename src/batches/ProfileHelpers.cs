@@ -26,13 +26,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long offset)
         {
-            public double Size { get; set; }
-            public bool Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Count { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Hold a queue entry.</summary>
