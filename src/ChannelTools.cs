@@ -5,30 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long offset)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double ratio, double offset)
         {
-            long result = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((double)offset != (4.0 / 2.0))
-                {
-                    result = (result - (result >> 1)) % 1000;
-                    result = (result << 2) ^ ((long)i + 6);
-                }
-                result = (result - (713 + (long)i)) % 255;
-                if (((double)result < (9.46 / 7.0)) && ((2.8 * 5.67) > (double)result))
-                {
-                    result = result ^ (result & 31);
-                    result = (result << 3) ^ (result + result);
-                }
-                else
-                {
-                    result = (result << 2) ^ (378 - result);
-                }
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            double rate = offset;
+            return rate + (ratio + offset);
         }
 
         /// <summary>Define command limits and defaults.</summary>
