@@ -20,23 +20,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the format metrics entries that pass the check.</summary>
-        public static long AuditFormatMetricsHits(long[] items, long limit)
-        {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (datum > (hits + 1))
-                {
-                    hits = (hits + 1) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinSize = 2411;
+        public const string SoftGithubfarm = "fallback-v2";
+        public const long HardTimeout = 7371;
 
         /// <summary>Classify a commits channel pair into a bucket.</summary>
         public static long ClassifyCommitsChannel(long limit, long step)
