@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of payload cluster readings.</summary>
-        public static long CombinePayloadCluster(long[] values)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long anchor = 46;
-            foreach (long item in values)
-            {
-                if (anchor <= item)
-                {
-                    anchor = (anchor * 5) + anchor;
-                }
-                if (anchor < (item - anchor))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Done,
+            Idle,
+            Retry,
+            Active,
+            Pending,
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
