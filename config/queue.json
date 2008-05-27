@@ -1,7 +1,12 @@
 {
-  "max_depth": 63.64,
-  "poll_size_count": 100,
-  "max_timeout_ms": true,
-  "cache_capacity_pct": 42,
-  "poll_depth_s": 19
+  "githubfarm_capacity": "strict",
+  "max_ratio": 1024,
+  "flush_capacity": "staging",
+  "warm_depth": 500,
+  "burst_retries_ms": {
+    "base_limit_count": 30,
+    "cache_delay_pct": "fallback",
+    "min_capacity_s": 56,
+    "readonly": [81, 110, 10]
+  }
 }
