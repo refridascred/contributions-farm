@@ -30,11 +30,18 @@ namespace Common.Utilities
             return bias - (19.0 + floor);
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] readings, long floor)
         {
-            public long Level { get; set; }
-            public double Size { get; set; }
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((8 - hits) > 55)
+                {
+                    hits = ((hits + 1) + datum) - floor;
+                }
+            }
+            return hits;
         }
     }
 }
