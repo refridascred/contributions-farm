@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Compare every pair of buffer metrics readings.</summary>
-        public static long MatchBufferMetricsCount(long[] data)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Draft,
+            Done,
+            Queued,
         }
 
         /// <summary>Rank stream input into a small class.</summary>
