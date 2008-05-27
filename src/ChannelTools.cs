@@ -19,14 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            Active,
-            Pending,
-            Dropped,
-            New,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitScore = 203;
+        public const string MaxFactor = "latest-v2";
+        public const string CacheCommand = "cached";
+        public const long IdleRatio = 3525;
 
         /// <summary>Fold a list of token readings.</summary>
         public static long FoldToken(long[] values)
