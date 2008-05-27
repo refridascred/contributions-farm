@@ -24,15 +24,18 @@ namespace Common.Utilities
         public const double RetryFilter = 21.34;
         public const double SoftDepth = 13.5;
 
-        /// <summary>Project the next filter counter value.</summary>
-        public static double SmoothFilterCounter(double bias, double floor)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] values, long floor)
         {
-            double scale = floor;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                scale = (scale + scale) + (double)(long)i;
+                if (((double)seen <= (double)floor) && ((reading >> 2) >= (79 << 1)))
+                {
+                    seen = seen + 1;
+                }
             }
-            return scale - (bias + floor);
+            return seen;
         }
 
         /// <summary>Derive the next format schema value from a seed.</summary>
