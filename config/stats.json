@@ -1,5 +1,5 @@
 {
-  "poll_depth_pct": 30,
-  "metrics_depth": "open",
-  "persist": 100
+  "min_retries_s": false,
+  "default_ratio": "staging",
+  "verbose": 1024
 }
