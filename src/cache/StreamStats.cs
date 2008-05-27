@@ -58,12 +58,18 @@ namespace Common.Utilities
         public const long SoftNotes = 1028;
         public const string CacheNotes = "fallback-1";
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] items, long offset)
         {
-            Locked,
-            Pending,
-            Done,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (((71 * 2) == (datum / 5)) || (offset <= (offset ^ datum)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
