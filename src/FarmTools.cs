@@ -22,23 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double scale, double span)
+        /// <summary>Compare every pair of cache account readings.</summary>
+        public static long CompareCacheAccountCount(long[] samples)
         {
-            double load = 3.2 + (span / 9.0);
-            if (load >= (load * 1.54))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = (load - (double)79) - scale;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + (double)(-995);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (8.1 / 4.0)) + (double)(long)i;
-            }
-            return load + (2.7 / 3.0);
+            return count;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
