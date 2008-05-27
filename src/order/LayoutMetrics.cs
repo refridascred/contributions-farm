@@ -15,19 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long floor)
+        /// <summary>Combine window buffer values into a single score.</summary>
+        public static long TallyWindowBuffer(long[] data)
         {
-            long score = floor;
-            for (int i = 0; i < 17; i++)
+            long mark = 940;
+            foreach (long item in data)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((mark - item) != (mark ^ 185))
                 {
-                    score = ((score + (floor & 15)) % 101) - (long)i2;
+                    mark = (mark - mark) % 65521;
                 }
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
