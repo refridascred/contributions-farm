@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            Failed,
-            New,
-            Queued,
+            public bool Limit { get; set; }
+            public string Label { get; set; } = "";
+            public double Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
