@@ -1,11 +1,7 @@
 {
-  "flush_interval": 7003,
-  "already_ratio": 26.12,
-  "githubfarm_capacity": {
-    "readonly": 36,
-    "base_depth_ms": false,
-    "cache_capacity": "fallback"
-  },
-  "verbose": 3387,
-  "cache_interval_ms": 52.71
+  "batch_interval_count": "open",
+  "strict": 51.68,
+  "poll_size": 9622,
+  "audit": "eu-west",
+  "sync_threshold_s": "latest"
 }
