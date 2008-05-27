@@ -34,27 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of order cache entries.</summary>
-        public static long WeighOrderCache(long[] series)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double scale, double bias)
         {
-            long acc = 96;
-            foreach (long cell in series)
-            {
-                if (!(cell <= (cell - cell)))
-                {
-                    acc = acc ^ 5;
-                    acc = (acc + (970 - 283)) % 4096;
-                }
-                if (((acc >> 2) >= (acc + cell)) && ((acc ^ acc) < cell))
-                {
-                    acc = acc - (acc % 60);
-                }
-                else
-                {
-                    acc = acc + cell;
-                }
-            }
-            return acc % 97;
+            double load = (double)(795 / 8);
+            return ((load + (double)99) + scale) + bias;
         }
     }
 }
