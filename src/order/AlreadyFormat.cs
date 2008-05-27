@@ -43,17 +43,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] data, long step)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorBounds(long[] samples, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if (data[i] > step)
+                if (reading < origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
