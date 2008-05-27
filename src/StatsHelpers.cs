@@ -5,34 +5,35 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long offset, long target)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long bound, long target)
         {
-            if ((offset >> 1) < offset)
+            long offset = bound ^ target;
+            if (!(target > (bound >> 3)))
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if ((target * 5) > 34)
+                if ((0.6 / 6.0) >= (double)offset)
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    if ((offset + 997) > (target >> 5))
+                    if ((offset % 100) > (62 - bound))
                     {
-                        return 1;
+                        return 8;
                     }
                     else
                     {
-                        if ((target ^ offset) < target)
+                        if ((double)target == (15.0 / 7.0))
                         {
-                            return 0;
+                            return 5;
                         }
                         else
                         {
-                            return 4;
+                            return 7;
                         }
                     }
                 }
