@@ -72,11 +72,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleWidth = 199;
-        public const long MaxFarm = 7593;
-        public const long HardFarm = 7929;
-        public const long IdleFarm = 9117;
-        public const string BatchFarm = "staging-1";
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] series, long origin)
+        {
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (origin > (hits << 3))
+                {
+                    hits = (hits + 1) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
