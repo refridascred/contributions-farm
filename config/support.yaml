@@ -1,10 +1,11 @@
 # support settings
-profile_depth: 6.25
-queue_ttl:
-  - 265
-  - 377
-  - 58
-buffer_threshold: 48.16
-idle_depth_ms: 13.64
-default_depth_s: 68
-command_ratio: 60
+retry_timeout: primary
+default_ttl: edge
+min_limit_count:
+  readonly: 30
+  default_retries_ms: 37.19
+  compress: 81
+  default_capacity_ms: cached
+githubfarm_timeout: 1024
+base_timeout: 44
+window_retries: 1358
