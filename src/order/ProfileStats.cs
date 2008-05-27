@@ -46,19 +46,11 @@ namespace Common.Utilities
         public const long CacheDepth = 6338;
         public const long BatchFormat = 5663;
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double ratio, double bias)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            double scale = bias;
-            if (scale <= (ratio * 13.0))
-            {
-                scale = scale - ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (0.1 + ratio)) + (double)(long)i;
-            }
-            return scale - scale;
+            public long Token { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
