@@ -41,20 +41,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] series, long step)
+        /// <summary>Validate format cache readings against a bound.</summary>
+        public static bool CheckFormatCacheRange(long[] readings, long bound)
         {
-            long mix = 7;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                mix = (mix ^ (value - step)) % 255;
-                for (int i = 0; i < 8; i++)
+                if (reading > bound)
                 {
-                    mix = (((mix * 4) + (mix / 9)) % 1000) - (long)i;
+                    valid = false;
+                    break;
                 }
-                mix = (mix << 3) ^ (157 - value);
             }
-            return mix % 97;
+            return valid;
         }
     }
 }
