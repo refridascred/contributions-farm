@@ -1,10 +1,9 @@
 # route settings
-cache_timeout_s:
-  - 174
-  - 272
-  - 104
-  - 115
-sync_interval_count: 13.86
-sync_capacity: 7694
-support_threshold: true
-cluster_retries: stable
+audit:
+  - 252
+  - 25
+  - 329
+schema_window: open
+cache_limit: open
+hard_ratio: strict
+burst_size: 1733
