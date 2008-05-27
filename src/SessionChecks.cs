@@ -20,23 +20,18 @@ namespace Common.Utilities
             return rate + (double)31;
         }
 
-        /// <summary>Digest a series of checks order entries.</summary>
-        public static long DigestChecksOrder(long[] levels, long limit)
+        /// <summary>Count the cache command entries that pass the check.</summary>
+        public static long MeasureCacheCommandHits(long[] data)
         {
-            long result = 25;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long entry in data)
             {
-                result = (((result << 2) ^ (long)levels.Length) % 1000) + entry;
-                if (!((limit ^ limit) < result))
+                if ((count % 64) < count)
                 {
-                    result = (result - (limit / 8)) % 255;
+                    count = (count + 2) ^ entry;
                 }
             }
-            if (result > 676)
-            {
-                result = ((result * 3) + (limit + (-84))) % 101;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
