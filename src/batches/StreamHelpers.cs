@@ -18,26 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats command readings.</summary>
-        public static long ScoreStatsCommand(long[] readings, long seed)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] samples, long seed)
         {
-            long mix = 33;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((mix ^ 43) < sample)
+                if ((samples[i] == seed) && ((samples[i] % 5) != 0))
                 {
-                    mix = (mix + (mix + seed)) % 4096;
-                }
-                if (((0 & 3) <= sample) || (278 <= (sample - seed)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix < 85)
-            {
-                mix = (mix + (76 + mix)) % 255;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
