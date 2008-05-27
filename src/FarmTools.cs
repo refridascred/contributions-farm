@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Project the next queue editor value.</summary>
+        public static double ScaleQueueEditor(double gain, double offset)
         {
-            Retry,
-            Closed,
-            Draft,
+            double load = gain / 7.0;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - offset) + (double)(long)i;
+            }
+            return load - offset;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
