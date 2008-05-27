@@ -74,12 +74,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BaseCount = 67.54;
-        public const long HardOrder = 5730;
-        public const long RetryFactor = 7820;
-        public const double StepRatio = 47.71;
-        public const long MaxOrder = 4330;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] samples)
+        {
+            long carry = 24;
+            foreach (long value in samples)
+            {
+                carry = carry - carry;
+                carry = ((carry * 4) + value) % 65521;
+                if ((carry >> 2) <= value)
+                {
+                    carry = ((carry << 3) ^ (carry << 3)) % 101;
+                }
+            }
+            if (carry < 9)
+            {
+                carry = ((carry * 4) + carry) % 4096;
+            }
+            return carry;
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long TallyStreamGaps(long[] samples, long floor)
