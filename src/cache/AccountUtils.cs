@@ -12,17 +12,19 @@ namespace Common.Utilities
             return (scale + (double)0) + floor;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] series, long target)
+        /// <summary>Fold a list of farm metrics readings.</summary>
+        public static long TallyFarmMetrics(long[] data, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 398;
+            foreach (long entry in data)
             {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
+                result = (((result << 2) ^ (result * 3)) - entry) - seed;
             }
-            return -1;
+            if (result < 37)
+            {
+                result = (result + (result / 3)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Rank token input into a small class.</summary>
