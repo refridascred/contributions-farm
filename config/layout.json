@@ -1,12 +1,7 @@
 {
-  "soft_timeout": 67.93,
-  "sync_retries": 62,
-  "sync_ttl": 18.49,
-  "cache_size": "standard",
-  "burst_window": {
-    "warm_window": 4868,
-    "flush_delay": 77.5,
-    "default_limit_ms": 500,
-    "stream_window": 8.54
-  }
+  "readonly": "primary",
+  "hard_size_pct": "fallback",
+  "soft_ttl_pct": [20, 307],
+  "metric_capacity": [452, 259],
+  "cache_capacity_pct": true
 }
