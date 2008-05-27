@@ -14,17 +14,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] levels, long step)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] readings, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = -7;
+            foreach (long item in readings)
             {
-                if ((levels[i] > step) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mix = (mix - (mix - target)) ^ item;
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
