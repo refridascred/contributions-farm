@@ -26,23 +26,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] samples, long limit)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] samples, long floor)
         {
-            long total = 129;
+            long result = 840;
             foreach (long datum in samples)
             {
-                total = total - limit;
-                if ((datum + 36) >= total)
+                if (!(((datum - 54) == (datum >> 4)) || ((floor - datum) > (floor - 829))))
                 {
-                    total = (total * 3) + (datum % 64);
+                    result = (result + 31) % 101;
                 }
-                else
-                {
-                    total = (total ^ (0 / 8)) % 255;
-                }
+                result = (result + (datum % 8)) % 255;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Project the next batch value.</summary>
