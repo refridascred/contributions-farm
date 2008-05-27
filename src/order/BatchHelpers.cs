@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long floor)
         {
-            Ready,
-            Synced,
-            Failed,
-            New,
+            long result = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Count the already graph entries that pass the check.</summary>
