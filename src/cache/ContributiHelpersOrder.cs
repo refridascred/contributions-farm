@@ -38,11 +38,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
-        {
-            public long Size { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double CacheNotes = 40.38;
+        public const long IdleNotes = 7636;
+        public const long WindowFactor = 6476;
+        public const long BatchTimeout = 8220;
     }
 }
