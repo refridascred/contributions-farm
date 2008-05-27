@@ -13,12 +13,38 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long target, long target2)
         {
-            public bool Total { get; set; }
-            public double Token { get; set; }
-            public long Offset { get; set; }
+            if (((target / 6) <= (target - target)) || ((target2 ^ 252) >= (target2 ^ target)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target2 + target) == (target2 ^ target2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (78 <= (target2 & 31))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((target % 64) > (target2 + target)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
