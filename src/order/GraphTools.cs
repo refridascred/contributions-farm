@@ -21,12 +21,20 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double DefaultCommand = 53.0;
-        public const long IdleCommand = 3679;
-        public const long BatchInterval = 3613;
-        public const string DefaultTimeout = "cached-v2";
-        public const double CacheTimeout = 14.05;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphRange(long[] samples, long step)
+        {
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count the record cache entries that pass the check.</summary>
         public static long MeasureRecordCacheOutliers(long[] items, long target)
