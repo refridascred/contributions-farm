@@ -33,18 +33,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the queue contributi entries that pass the check.</summary>
-        public static long AuditQueueContributiMatches(long[] samples)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((count + value) >= (count - value))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Locked,
+            Failed,
+            New,
         }
 
         /// <summary>Hold a schema options.</summary>
