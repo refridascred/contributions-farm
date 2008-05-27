@@ -49,11 +49,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] values, long target)
         {
-            public double Rank { get; set; }
-            public string Stamp { get; set; } = "";
+            long anchor = 6;
+            foreach (long item in values)
+            {
+                anchor = ((((anchor << 2) ^ (47 ^ anchor)) % 101) - item) - target;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
