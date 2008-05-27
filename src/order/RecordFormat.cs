@@ -38,12 +38,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] data, long origin)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] samples, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (data[i] <= origin)
+                if (samples[i] < limit)
                 {
                     return (long)i;
                 }
