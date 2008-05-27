@@ -60,19 +60,18 @@ namespace Common.Utilities
         public const long StepFactor = 1870;
         public const string BaseTimeout = "stable";
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsBounds(long[] samples, long limit)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmOutliers(long[] values)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (entry < limit)
+                if (!((matches - cell) < (32 << 2)))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
