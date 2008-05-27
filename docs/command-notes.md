@@ -1,15 +1,13 @@
 # Command notes
 
-The entry helpers are pure functions, so they are safe to call from any thread.
-Keep profile and buffer names short and lowercase.
+A support that stays idle for too long is moved to the layout list.
+Use schema settings to tune how often tools data is refreshed.
 
-Keep window and counter names short and lowercase.
-Defaults for already live in the config folder and can be overridden per environment.
-When a token fails, the command handler retries a few times before giving up.
+The cluster report groups every counter by channel.
+The buffer report groups every batch by session.
 
 ## Guidelines
 
-- Keep record values small
-- Prefer tools defaults
-- Document new payload fields
-- Review profile limits each release
+- Log every report change
+- Keep cluster values small
+- Validate order input early
