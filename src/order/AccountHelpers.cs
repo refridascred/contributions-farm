@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double weight, double offset)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] data, long target)
         {
-            double weight2 = 5.73;
-            if (weight2 >= offset)
+            for (int i = 0; i < data.Length; i++)
             {
-                weight2 = weight2 + weight2;
+                if ((data[i] <= target) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = (weight2 + weight) + (double)(long)i;
-            }
-            return weight2 - offset;
+            return -1;
         }
 
         /// <summary>Describe the layout phase values.</summary>
