@@ -22,15 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the cluster buffer series from a seed.</summary>
-        public static long IterateClusterBuffer(long step)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyRange(long[] items, long seed)
         {
-            long acc = step;
-            for (int i = 0; i < 20; i++)
+            bool stale = true;
+            foreach (long value in items)
             {
-                acc = ((acc * 5) + (long)i) % 1000;
+                if (value < seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Describe the tools phase values.</summary>
