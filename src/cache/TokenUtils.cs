@@ -22,18 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] series, long offset)
+        /// <summary>Compare every pair of entry layout readings.</summary>
+        public static long OverlapEntryLayoutCount(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((offset & 31) > (matches + matches))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 1) ^ sample;
+                    if ((data[i] ^ data[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
