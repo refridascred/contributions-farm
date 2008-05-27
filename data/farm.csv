@@ -1,10 +1,7 @@
-id,level,weight
-1,50.74,open
-2,623,20.52
-3,278,26.23
-4,legacy,legacy
-5,522,standard
-6,667,834
-7,10.35,92.14
-8,8.05,green
-9,standard,strict
+id,owner,weight,active
+1,948,blue,16
+2,stable,793,45.8
+3,34.43,stable,115
+4,stable,35.89,latest
+5,eu-west,fallback,48.66
+6,51.01,85.8,6.11
