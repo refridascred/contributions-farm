@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] items)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Total { get; set; }
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Look up the position of a record sample.</summary>
