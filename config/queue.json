@@ -1,8 +1,6 @@
 {
-  "base_capacity_s": 42.08,
-  "report_delay": "edge",
-  "persist": 250,
-  "poll_capacity_count": "blue",
-  "burst_ratio_count": 76.64,
-  "route_threshold": ["standard", "latest", "legacy", "green"]
+  "strict": 60,
+  "buffer_capacity": 21,
+  "filter_capacity": ["eu-west", "fallback", "eu-west", "eu-west"],
+  "context_threshold": "green"
 }
