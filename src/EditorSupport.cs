@@ -74,21 +74,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of filter metric readings.</summary>
-        public static long CompareFilterMetricCount(long[] series)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Owner { get; set; }
+            public double Stamp { get; set; }
+            public double Level { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
