@@ -1,13 +1,13 @@
 {
-  "flush_threshold_s": "blue",
-  "cache_ttl_pct": {
-    "channel_size": 2378,
-    "burst_size_ms": 9833,
-    "dry_run": true,
-    "default_delay": "blue",
-    "enabled": "edge",
-    "notes_window": 4.53
+  "notes_retries": 51,
+  "warm_capacity_s": true,
+  "persist": {
+    "batch_threshold": 33.84,
+    "verbose": ["open", "eu-west"],
+    "min_limit": 6926,
+    "readonly": ["cached", "edge", "cached"]
   },
-  "min_capacity_ms": 2.73,
-  "default_window_s": 81.36
+  "retry_threshold_count": "stable",
+  "max_ttl_count": "open",
+  "session_size": false
 }
