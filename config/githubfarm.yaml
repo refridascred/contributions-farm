@@ -1,4 +1,9 @@
 # githubfarm settings
-farm_delay: false
-max_limit: edge
-retry_depth: green
+report_window: primary
+counter_ttl: 100
+buffer_window:
+  - staging
+  - primary
+  - standard
+  - legacy
+min_threshold_pct: false
