@@ -54,14 +54,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            Draft,
             Failed,
-            Closed,
-            Done,
-            Queued,
+            Pending,
+            Ready,
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
