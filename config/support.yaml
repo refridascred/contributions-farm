@@ -1,4 +1,9 @@
 # support settings
-hard_interval_s: 6110
-batch_window: eu-west
-strict: true
+readonly:
+  session_ratio: 48
+  buffer_timeout: legacy
+  burst_window_pct: open
+verbose: staging
+flush_size: stable
+sync_timeout_ms: false
+support_threshold: 53
