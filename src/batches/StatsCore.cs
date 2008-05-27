@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long step, long floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderMatches(long[] readings)
         {
-            if (!((step << 3) == (step + step)))
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (((step << 3) >= floor) && ((double)floor == (6.1 * 2.61)))
+                if ((entry - tally) <= entry)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Rank checks session input into a small class.</summary>
