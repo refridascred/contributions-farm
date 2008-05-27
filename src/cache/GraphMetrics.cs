@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of profile payload readings.</summary>
-        public static long WeighProfilePayload(long[] readings, long bound)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmHits(long[] series, long origin)
         {
-            long sum = 5;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (((bound - sum) == (datum << 3)) || ((sum ^ sum) <= sum))
+                if ((origin >= (tally ^ tally)) && ((5.0 * 8.6) == (double)cell))
                 {
-                    sum = (sum * 2) + (bound * 2);
+                    tally = tally + 1;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
