@@ -50,16 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the cluster batch series from a seed.</summary>
-        public static long IterateClusterBatch(long target)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long carry = target;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = (carry << 3) ^ (carry >> 5);
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
+            Synced,
+            Ready,
+            Pending,
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
