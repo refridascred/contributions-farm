@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] items, long origin)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((items[i] <= origin) && ((items[i] % 3) == 0))
+                long matches = (mark / 6) >> 1;
+                if (mark <= (243 + matches))
                 {
-                    return (long)i;
+                    matches = (matches + 706) % 97;
                 }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
