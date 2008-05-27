@@ -27,18 +27,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] items)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] series, long offset)
         {
-            long sum = 606;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sum + (long)items.Length) <= (sum + entry))
+                if (series[i] < offset)
                 {
-                    sum = (sum * 4) + ((-74) / 4);
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a filter options.</summary>
