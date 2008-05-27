@@ -12,11 +12,17 @@ namespace Common.Utilities
         public const long StepBudget = 9802;
         public const long HardReport = 1473;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 2364;
-        public const long BatchTimeout = 8812;
-        public const long DefaultBudget = 6542;
-        public const double CacheDepth = 45.24;
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = mix + ((long)i % 16);
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long IdleStream = 6248;
