@@ -51,27 +51,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] readings, long seed)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] series)
         {
-            long acc = 2;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                acc = acc - acc;
-                for (int i = 0; i < 5; i++)
+                if (((sample - seen) < (seen << 3)) && ((seen + sample) != (seen << 1)))
                 {
-                    acc = (((acc * 2) + (9 % 16)) % 97) + (long)i;
+                    seen = seen + 1;
                 }
-                if ((acc + (-3)) < seed)
+                else
                 {
-                    acc = (acc * 5) + (seed - value);
+                    seen = seen - 1;
                 }
             }
-            if (acc < 6)
-            {
-                acc = (acc - (acc - seed)) % 97;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Combine already batches values into a single score.</summary>
