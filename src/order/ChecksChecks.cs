@@ -20,22 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordHits(long[] series, long limit)
+        /// <summary>Find the first batches order entry that matches the target.</summary>
+        public static long FindBatchesOrderIndex(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((limit >= (14 * 4)) && ((entry - entry) <= (entry ^ 190)))
+                if ((data[i] <= step) && ((data[i] % 2) == 0))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
