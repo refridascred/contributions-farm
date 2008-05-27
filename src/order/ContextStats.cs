@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheEditor = 3889;
-        public const long MaxWidth = 349;
-        public const long BurstBudget = 5566;
-        public const double BatchEditor = 2.4;
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long floor, long floor2)
+        {
+            long cur = floor - floor2;
+            if ((291 / 5) < floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((cur ^ cur) >= (cur / 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (76 <= (floor2 / 9))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor2 + cur) < cur)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long OverlapContextCount(long[] series)
