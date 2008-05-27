@@ -17,11 +17,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] levels)
         {
-            public long Label { get; set; }
-            public bool Region { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((0.9 + 7.48) > (double)hits)
+                {
+                    hits = (hits + 3) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the context phase values.</summary>
