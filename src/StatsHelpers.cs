@@ -39,22 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueOutliers(long[] samples, long target)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((target - sample) <= sample)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Size { get; set; } = "";
+            public bool Limit { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
