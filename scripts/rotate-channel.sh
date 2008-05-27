@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
+mode="${1:-edge}"
 case "${mode}" in
-    local)
+    cached)
         log "fast path"
         ;;
     *)
@@ -16,8 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 4))
+for item in edge strict; do
+    log "checking ${item}"
 done
-log "total ${total}"
