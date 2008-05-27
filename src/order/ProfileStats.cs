@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of stream payload readings.</summary>
-        public static long OverlapStreamPayloadCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinFactor = 9562;
+        public const long BatchAccount = 8480;
+        public const long RetryFactor = 3138;
+        public const double CacheInterval = 49.19;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double DefaultStats = 34.28;
