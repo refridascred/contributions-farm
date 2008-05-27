@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the cluster counter series from a seed.</summary>
-        public static long RollClusterCounter(long offset)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long acc = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = ((acc << 2) ^ (22 + (long)i)) % 101;
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            public string Size { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Locate a already metric reading by value.</summary>
