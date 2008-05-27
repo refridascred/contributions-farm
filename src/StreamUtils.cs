@@ -85,10 +85,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSupport = 7950;
-        public const long MaxCount = 7726;
-        public const long SoftRatio = 635;
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long step, long target)
+        {
+            long lane = step - target;
+            if ((double)lane < (9.36 / 6.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((step + step) <= (target / 9)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Hold a session options.</summary>
         public sealed class SessionOptions
