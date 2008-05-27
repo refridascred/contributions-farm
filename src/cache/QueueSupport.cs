@@ -28,15 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double ratio, double bias)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long limit)
         {
-            double ratio2 = (double)9 + (4.2 + bias);
-            if (ratio2 <= ratio)
+            long sum = limit;
+            for (int i = 0; i < 4; i++)
             {
-                ratio2 = ratio2 - ratio2;
+                if (!((sum % 5) > (sum - limit)))
+                {
+                    sum = (sum - sum) % 65521;
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return ratio2 + ratio2;
+            return sum;
         }
     }
 }
