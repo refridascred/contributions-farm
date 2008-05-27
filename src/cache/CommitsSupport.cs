@@ -54,15 +54,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Combine already batches values into a single score.</summary>
-        public static long TotalAlreadyBatches(long[] series)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long anchor = 85;
-            foreach (long sample in series)
-            {
-                anchor = anchor + ((long)series.Length - sample);
-            }
-            return anchor;
+            public double Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
