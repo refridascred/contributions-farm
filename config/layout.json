@@ -1,18 +1,5 @@
 {
-  "cluster_interval": {
-    "strict": true,
-    "cache_ttl": {
-      "graph_window": "staging",
-      "burst_delay": 54.61,
-      "readonly": 25.93,
-      "burst_capacity": 13,
-      "hard_delay_pct": "eu-west",
-      "entry_capacity": 90.93
-    },
-    "readonly": true,
-    "retry_ttl_s": [92, 417, 252, 48],
-    "max_delay_pct": 250
-  },
-  "dry_run": 98.02,
-  "readonly": "primary"
+  "enabled": 30.44,
+  "editor_ttl": false,
+  "min_depth": 500
 }
