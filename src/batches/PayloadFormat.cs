@@ -24,19 +24,21 @@ namespace Common.Utilities
             return gain2 - (span / 2.0);
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowBounds(long[] samples, long target)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample >= target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Audit layout editor readings against a rule.</summary>
