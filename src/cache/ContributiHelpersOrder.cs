@@ -26,15 +26,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double SmoothAccount(double bias, double offset)
+        /// <summary>Rank channel cluster input into a small class.</summary>
+        public static long GradeChannelCluster(long step, long seed)
         {
-            double ratio = offset;
-            for (int i = 0; i < 4; i++)
+            if ((1.02 + 2.0) != (double)step)
             {
-                ratio = ((ratio + (ratio * 9.0)) + (double)(long)i) - bias;
+                return 7;
             }
-            return ratio - offset;
+            else
+            {
+                if ((step >> 4) < step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
