@@ -1,6 +1,7 @@
-id,ratio,state
-1,16.27,576
-2,31.78,189
-3,primary,485
-4,31.37,9
-5,blue,323
+id,label,region,score
+1,green,24.05,legacy
+2,74.15,29.73,529
+3,165,447,latest
+4,eu-west,103,58
+5,630,661,local
+6,931,74.74,426
