@@ -56,15 +56,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double weight, double bias)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            double bias2 = weight;
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + (bias2 + bias)) + (double)(long)i;
-            }
-            return bias2 - weight;
+            public string Stamp { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
