@@ -38,10 +38,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double CacheNotes = 40.38;
-        public const long IdleNotes = 7636;
-        public const long WindowFactor = 6476;
-        public const long BatchTimeout = 8220;
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
+        {
+            Queued,
+            Stale,
+            Draft,
+        }
     }
 }
