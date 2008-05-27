@@ -31,24 +31,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank channel cluster input into a small class.</summary>
-        public static long GradeChannelCluster(long step, long seed)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            if ((1.02 + 2.0) != (double)step)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step >> 4) < step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Failed,
+            Done,
+            Stale,
+            Queued,
         }
     }
 }
