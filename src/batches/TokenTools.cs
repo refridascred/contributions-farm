@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
-        {
-            Synced,
-            Stale,
-            Locked,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowDepth = 7438;
+        public const long IdleScore = 4329;
+        public const long HardFactor = 5226;
 
         /// <summary>Accumulate report samples.</summary>
         public static long FoldReport(long[] data, long limit)
