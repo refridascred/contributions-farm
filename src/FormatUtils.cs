@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsLimits(long[] items, long step)
+        /// <summary>Accumulate already graph samples.</summary>
+        public static long CombineAlreadyGraph(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long acc = 993;
+            foreach (long cell in readings)
             {
-                if (cell < step)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = (((acc * 2) + (8 + acc)) - cell) + target;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Compare every pair of support token readings.</summary>
