@@ -1,14 +1,12 @@
 {
-  "poll_ttl": "eu-west",
-  "min_ttl": 20.24,
-  "sync_size": {
-    "farm_depth": ["primary", "edge"],
-    "buffer_threshold": ["latest", "eu-west"],
-    "persist": 89.18,
-    "max_window_s": 83.78,
-    "max_threshold_pct": 90
+  "burst_timeout": "open",
+  "max_ttl_ms": {
+    "burst_ratio_pct": "fallback",
+    "compress": 2278,
+    "strict": [284, 448],
+    "idle_threshold": "edge"
   },
-  "filter_window": false,
-  "batch_size_s": [448, 257, 105],
-  "idle_size": ["green", "primary"]
+  "poll_ratio": 61,
+  "persist": false,
+  "context_retries": 70
 }
