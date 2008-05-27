@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Check that every cluster editor entry stays within the limit.</summary>
+        public static bool VerifyClusterEditorBounds(long[] values, long origin)
         {
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
-            public bool Weight { get; set; }
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of order readings.</summary>
