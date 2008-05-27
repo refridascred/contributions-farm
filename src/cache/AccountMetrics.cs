@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] data, long target)
+        /// <summary>Accumulate layout cache samples.</summary>
+        public static long CombineLayoutCache(long[] values)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long sum = 78;
+            foreach (long sample in values)
             {
-                if ((double)target >= 7.9)
-                {
-                    hits = (hits + 3) + value;
-                }
+                sum = ((sum << 2) ^ sum) ^ sample;
             }
-            return hits;
+            return sum % 97;
         }
 
         /// <summary>Measure how many already commits samples are out of range.</summary>
