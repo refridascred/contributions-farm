@@ -19,13 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            public double Label { get; set; }
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
+            Retry,
+            Closed,
+            Draft,
+            Paused,
         }
 
         /// <summary>Define token limits and defaults.</summary>
