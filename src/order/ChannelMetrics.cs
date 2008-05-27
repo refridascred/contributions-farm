@@ -20,17 +20,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a stats tools counter forward.</summary>
-        public static long StepStatsTools(long origin)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmGaps(long[] levels, long floor)
         {
-            long result = origin;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                result = result - (origin % 3);
-                result = (result + (origin << 3)) % 255;
-                result = ((result * 4) + (long)i) % 65521;
+                if ((double)sample == (7.5 / 4.0))
+                {
+                    count = (count + 1) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Hold a route stats.</summary>
