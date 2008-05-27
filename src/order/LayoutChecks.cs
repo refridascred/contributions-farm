@@ -52,14 +52,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
-        {
-            public long Label { get; set; }
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftInterval = 1365;
+        public const string MaxRatio = "primary-v2";
+        public const long MaxInterval = 189;
+        public const long BurstCluster = 9737;
+        public const long HardRatio = 7882;
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long LocateGithubfarmIndex(long[] readings, long seed)
