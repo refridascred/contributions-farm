@@ -12,13 +12,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderGaps(long[] data, long bound)
         {
-            Pending,
-            Synced,
-            Idle,
-            Queued,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (((bound - matches) <= value) || (((bound >> 2) > (matches & 7)) || ((11.0 * 0.75) >= (double)value)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
