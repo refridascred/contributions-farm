@@ -26,38 +26,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long floor, long bound)
+        /// <summary>Find the first schema report entry that matches the target.</summary>
+        public static long LookupSchemaReportIndex(long[] series, long offset)
         {
-            if (((floor ^ bound) <= bound) && ((bound ^ 9) < bound))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)floor > (5.49 / 6.0))
+                if (series[i] == offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (floor > (bound ^ 79))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound - bound) >= (982 ^ floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
