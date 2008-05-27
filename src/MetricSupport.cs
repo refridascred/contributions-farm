@@ -12,20 +12,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long origin)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] values, long seed)
         {
-            long anchor = origin;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                long matches = (origin - (long)i) + anchor;
-                if ((origin & 63) >= (matches % 24))
+                if ((values[i] >= seed) && ((values[i] % 3) != 0))
                 {
-                    anchor = (anchor << 3) ^ (origin * 2);
+                    return (long)i;
                 }
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Measure how many batch context samples are out of range.</summary>
