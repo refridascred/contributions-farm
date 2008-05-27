@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long step, long target)
         {
-            Closed,
-            Draft,
-            Ready,
+            long cur = step ^ target;
+            if ((target - cur) < (cur + step))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step % 3) <= target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (85 < (step * 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (cur < (step + target))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the already level values.</summary>
