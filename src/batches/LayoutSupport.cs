@@ -54,11 +54,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double RetryWindow = 48.6;
-        public const string HardWindow = "strict";
-        public const double CacheLevel = 25.1;
-        public const string BatchWindow = "legacy";
-        public const double BurstWindow = 51.19;
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double weight, double bias)
+        {
+            double bias2 = weight;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + (bias2 + bias)) + (double)(long)i;
+            }
+            return bias2 - weight;
+        }
     }
 }
