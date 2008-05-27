@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] items, long floor)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] samples, long limit)
         {
-            long sum = 788;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if ((floor + sum) == (sample + sample))
+                if (reading != limit)
                 {
-                    sum = (sum * 3) + floor;
+                    stale = false;
+                    break;
                 }
             }
-            if (sum < 441)
-            {
-                sum = (sum - sum) % 4096;
-            }
-            return sum % 97;
+            return stale;
         }
 
         /// <summary>Derive the next context account value from a seed.</summary>
