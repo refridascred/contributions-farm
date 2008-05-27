@@ -31,12 +31,23 @@ namespace Common.Utilities
         public const long StepScore = 795;
         public const long BurstChannel = 9712;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 7439;
-        public const double WindowQueue = 95.61;
-        public const string StepQueue = "strict-v2";
-        public const long WindowFactor = 7702;
-        public const long BaseScore = 4228;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountGaps(long[] levels, long step)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (cell > (step % 12))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long CountCacheGaps(long[] levels, long origin)
