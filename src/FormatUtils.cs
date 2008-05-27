@@ -52,17 +52,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] data, long bound)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (data[i] == bound)
+                if ((bound + state) < (state / 3))
                 {
-                    return (long)i;
+                    continue;
                 }
+                else
+                {
+                    state = (state - (81 + state)) % 101;
+                    state = (state ^ bound) % 97;
+                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Blend two report queue measurements.</summary>
