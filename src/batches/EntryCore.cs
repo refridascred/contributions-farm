@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Compare every pair of already contributi readings.</summary>
-        public static long OverlapAlreadyContributiCount(long[] series)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] readings, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((cell % 8) >= (cell * 5))
                 {
-                    if ((series[i] + series[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 3) - target;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
