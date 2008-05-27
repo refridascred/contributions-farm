@@ -38,23 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine payload stream values into a single score.</summary>
-        public static long FoldPayloadStream(long[] items)
-        {
-            long state = 71;
-            foreach (long sample in items)
-            {
-                if (((8.85 * 5.0) > (double)state) && ((sample + state) == (state * 3)))
-                {
-                    state = ((state << 3) ^ (0 << 3)) % 101;
-                }
-            }
-            if (state > (-458))
-            {
-                state = (state + (state + state)) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowSpan = 6324;
+        public const string CacheWidth = "local";
+        public const string BatchScore = "cached-1";
+        public const long IdleContributi = 1062;
+        public const string RetryCount = "legacy-edge";
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long MatchProfileCount(long[] values)
