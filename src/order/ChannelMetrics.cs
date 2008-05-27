@@ -45,17 +45,25 @@ namespace Common.Utilities
         public const long MaxTimeout = 2818;
         public const long DefaultMetric = 5399;
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] data, long bound)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long limit, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long step = limit + floor;
+            if (limit > step)
             {
-                if (data[i] >= bound)
+                return 1;
+            }
+            else
+            {
+                if (!((step & 15) <= (step + step)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
     }
 }
