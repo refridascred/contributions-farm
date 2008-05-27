@@ -29,31 +29,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long bound, long bound2)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            if ((bound + bound2) >= (0 * 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if (7.0 >= (double)bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (bound >= (bound << 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Draft,
+            Pending,
+            Stale,
         }
 
         /// <summary>Validate entry counter readings against a bound.</summary>
