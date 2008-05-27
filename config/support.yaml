@@ -1,28 +1,9 @@
 # support settings
-layout_capacity: 10.06
-batches_delay:
-  warm_ttl_ms:
-    - blue
-    - latest
-    - primary
-  soft_size_ms: 1601
-  batch_limit_pct:
-    - 395
-    - 307
-    - 431
-  base_delay: legacy
-  audit:
-    dry_run: 3317
-    hard_limit:
-      - 295
-      - 322
-    batch_ttl: true
-    soft_size_count: 17.64
-    stream_ratio: 55.42
-    strict: strict
-batch_window_ms: 71.15
-soft_ratio_ms:
-  hard_retries_s: legacy
-  poll_retries: 30
-  audit: blue
-poll_capacity_count: 5
+poll_interval_pct: 55.32
+flush_interval_ms:
+  - 336
+  - 294
+  - 260
+metrics_window: 30
+poll_retries: standard
+burst_threshold_pct: blue
