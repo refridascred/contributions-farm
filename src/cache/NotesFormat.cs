@@ -39,19 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long step)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long total = step;
-            for (int i = 0; i < 16; i++)
-            {
-                if (((total - step) < 2) || ((13.0 + 4.0) != (double)(long)i))
-                {
-                    total = ((total << 2) ^ (-229)) % 65521;
-                }
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            public long Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a notes snapshot.</summary>
