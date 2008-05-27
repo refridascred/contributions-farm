@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate record stats samples.</summary>
-        public static long FoldRecordStats(long[] samples, long offset)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] readings, long floor)
         {
-            long score = 37;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((score + datum) > (offset + score)) && ((12.0 - 4.8) != (double)score))
+                if ((readings[i] > floor) && ((readings[i] % 5) == 0))
                 {
-                    score = (score + (score & 3)) % 65521;
-                }
-                else
-                {
-                    score = (score ^ 85) % 255;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
