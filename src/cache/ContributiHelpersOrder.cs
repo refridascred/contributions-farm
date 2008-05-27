@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterRange(long[] data, long step)
+        /// <summary>Check that every githubfarm layout entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLayoutBounds(long[] data, long limit)
         {
-            bool stale = true;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if (item >= step)
+                if (datum <= limit)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
