@@ -12,12 +12,10 @@ namespace Common.Utilities
         public const string CacheBudget = "primary";
         public const long WindowReport = 7122;
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
-        {
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BurstTimeout = 2.2;
+        public const string CacheSession = "strict-v2";
+        public const long BurstSession = 9347;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderGaps(long[] values, long offset)
