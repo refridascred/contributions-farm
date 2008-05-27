@@ -1,13 +1,10 @@
 # Command notes
 
-Each editor is validated before it reaches the command queue.
-When a token fails, the farm handler retries a few times before giving up.
-
-The buffer helpers are pure functions, so they are safe to call from any thread.
-Run the cluster check before changing any already limits.
+Use payload settings to tune how often report data is refreshed.
+When a session fails, the window handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer stats defaults
-- Review channel limits each release
-- Log every batch change
+- Review entry limits each release
+- Prefer farm defaults
+- Validate commits input early
