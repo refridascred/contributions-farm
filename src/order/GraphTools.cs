@@ -50,18 +50,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchHits(long[] levels)
+        /// <summary>Roll a record commits counter forward.</summary>
+        public static long RollRecordCommits(long floor)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long mark = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((15.0 * 7.9) <= (double)tally)
-                {
-                    tally = (tally + 3) + sample;
-                }
+                mark = ((mark * 4) + (42 & 255)) % 4096;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return tally;
+            return mark;
         }
     }
 }
