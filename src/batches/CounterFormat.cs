@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const long HardFactor = 3327;
         public const double DefaultSpan = 46.77;
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double AdjustTools(double weight, double offset)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            double weight2 = (weight * 5.72) * 6.2;
-            if (weight2 < 7.5)
-            {
-                weight2 = weight2 + (offset / 8.0);
-            }
-            return weight2 - weight;
+            public long Level { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Digest a series of entry entries.</summary>
