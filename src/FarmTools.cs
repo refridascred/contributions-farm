@@ -33,18 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] readings)
+        /// <summary>Accumulate already commits samples.</summary>
+        public static long FoldAlreadyCommits(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long mix = 0;
+            foreach (long cell in levels)
             {
-                if ((double)count > (double)sample)
+                if ((9.54 <= (double)cell) || ((mix >> 4) <= (64 + mix)))
                 {
-                    count = count + 1;
+                    mix = (mix + (mix + cell)) % 4096;
                 }
             }
-            return count;
+            if (mix < 550)
+            {
+                mix = ((mix << 3) ^ (mix + mix)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
