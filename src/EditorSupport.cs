@@ -89,13 +89,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            public bool Owner { get; set; }
-            public double Stamp { get; set; }
-            public double Level { get; set; }
-            public bool Limit { get; set; }
+            public double Offset { get; set; }
+            public long Limit { get; set; }
+            public long Token { get; set; }
         }
     }
 }
