@@ -20,16 +20,19 @@ namespace Common.Utilities
             return rate + (double)31;
         }
 
-        /// <summary>Derive the next metric token value from a seed.</summary>
-        public static long SeriesMetricToken(long seed)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double weight, double offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 12; i++)
+            double weight2 = (5.28 + weight) * 4.5;
+            if (weight2 < weight)
             {
-                sum = sum - (sum << 3);
-                sum = ((sum * 3) + (long)i) % 65521;
+                weight2 = weight2 - (weight2 * 13.0);
             }
-            return sum;
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = (weight2 - (offset * 1.28)) + (double)(long)i;
+            }
+            return weight2 - (double)8;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
