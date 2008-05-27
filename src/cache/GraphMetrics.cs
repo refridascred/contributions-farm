@@ -51,17 +51,31 @@ namespace Common.Utilities
             return gain2 + bias;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long origin)
+        /// <summary>Classify a context support pair into a bucket.</summary>
+        public static long GradeContextSupport(long bound, long limit)
         {
-            long mark = origin;
-            for (int i = 0; i < 19; i++)
+            if (limit >= (0 + bound))
             {
-                mark = mark ^ (mark % 24);
-                mark = (mark ^ mark) % 4096;
-                mark = ((mark * 5) + (long)i) % 65521;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if ((bound + bound) >= (bound >> 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((14.0 - 8.98) < 0.11) && ((6 / 9) > bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
