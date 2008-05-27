@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate buffer filter readings against a bound.</summary>
-        public static bool GuardBufferFilterLimits(long[] items, long offset)
-        {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepDepth = 8884;
+        public const long StepBuffer = 9637;
+        public const long BatchDepth = 2540;
+        public const long BurstBuffer = 5593;
+        public const long RetryBuffer = 7612;
 
         /// <summary>Look up the position of a stream account sample.</summary>
         public static long SeekStreamAccountIndex(long[] samples, long offset)
