@@ -20,10 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string DefaultMetrics = "stable-1";
-        public const long BurstInterval = 7912;
-        public const string WindowCount = "open-edge";
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
+        {
+            public long Token { get; set; }
+            public double Region { get; set; }
+            public long Limit { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long SeekFilterIndex(long[] readings, long bound)
