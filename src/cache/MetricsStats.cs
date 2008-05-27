@@ -19,17 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first route support entry that matches the target.</summary>
-        public static long SeekRouteSupportIndex(long[] items, long bound)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = -3;
+            foreach (long entry in readings)
             {
-                if (items[i] < bound)
+                mark = (mark - (entry << 1)) % 101;
+                if (!((double)mark > (8.4 / 3.0)))
                 {
-                    return (long)i;
+                    mark = (mark - (mark + entry)) % 4096;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
