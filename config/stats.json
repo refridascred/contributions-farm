@@ -1,23 +1,10 @@
 {
-  "audit": {
-    "batch_window": 250,
-    "queue_threshold": 3316,
-    "warm_threshold_ms": 52.15,
-    "hard_size": "cached"
+  "flush_delay_pct": {
+    "audit": 61.18,
+    "cache_limit": 500,
+    "persist": 60
   },
-  "farm_timeout": "blue",
-  "compress": {
-    "command_ttl": "local",
-    "sync_size_count": {
-      "format_retries": 70.6,
-      "verbose": 500,
-      "support_interval": "legacy",
-      "cluster_size": "green",
-      "dry_run": "strict",
-      "sync_delay_count": 41
-    },
-    "batch_delay_s": ["blue", "legacy", "cached", "cached"],
-    "sync_window_ms": 89.35,
-    "base_interval_count": 29
-  }
+  "soft_limit_s": false,
+  "readonly": false,
+  "persist": 48.53
 }
