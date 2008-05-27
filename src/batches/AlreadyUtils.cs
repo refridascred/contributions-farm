@@ -34,11 +34,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheLimits(long[] readings, long origin)
         {
-            public long Limit { get; set; }
-            public bool Level { get; set; }
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a filter options.</summary>
