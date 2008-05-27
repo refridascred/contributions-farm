@@ -20,23 +20,18 @@ namespace Common.Utilities
         public const long HardDepth = 9936;
         public const string WindowRatio = "primary";
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double gain, double bias)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] samples, long floor)
         {
-            double mean = 20.0;
-            if (mean >= (7.2 + bias))
+            long matches = 0;
+            foreach (long item in samples)
             {
-                mean = mean + (bias - gain);
+                if ((-1) < (floor % 60))
+                {
+                    matches = (matches + 1) + item;
+                }
             }
-            else
-            {
-                mean = mean - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - gain) + (double)(long)i;
-            }
-            return mean + (mean / 6.0);
+            return matches;
         }
 
         /// <summary>Digest a series of order cache entries.</summary>
