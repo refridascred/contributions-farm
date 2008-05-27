@@ -14,16 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long limit)
+        /// <summary>Validate support cache readings against a bound.</summary>
+        public static bool GuardSupportCacheRange(long[] values, long offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 7; i++)
+            bool found = true;
+            foreach (long item in values)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
-                sum = ((sum * 3) + (long)i) % 97;
+                if (item != offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
