@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 5032;
-        public const long BaseSize = 2741;
-        public const long MinBudget = 9045;
-        public const double DefaultInterval = 70.21;
-        public const double HardSize = 87.67;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksLimits(long[] readings, long offset)
+        {
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long LookupStatsIndex(long[] series, long target)
