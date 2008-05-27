@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] samples, long limit)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((samples[i] >= limit) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 2) + acc) % 1000;
+                acc = acc ^ (offset * 3);
+                acc = acc - 9;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a payload header.</summary>
