@@ -33,18 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up schema tools samples.</summary>
-        public static long OverlapSchemaToolsCount(long[] levels)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmMatches(long[] values)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item >= (hits % 5))
                 {
-                    if ((levels[i] ^ levels[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
             return hits;
