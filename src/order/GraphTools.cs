@@ -26,23 +26,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batches stats readings.</summary>
-        public static long FoldBatchesStats(long[] readings)
-        {
-            long carry = 589;
-            foreach (long sample in readings)
-            {
-                if ((sample - carry) != (carry - carry))
-                {
-                    carry = (carry + (carry / 2)) % 1000;
-                }
-                if ((sample + (-1)) != (sample - carry))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardLevel = 6624;
+        public const long MaxEntry = 1993;
+        public const long LimitBudget = 8675;
 
         /// <summary>Hold a payload record.</summary>
         public sealed class PayloadRecord
