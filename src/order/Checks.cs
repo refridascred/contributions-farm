@@ -73,9 +73,38 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 8049;
-        public const string SoftFormat = "standard-edge";
-        public const long HardScore = 6055;
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long target, long bound)
+        {
+            if (bound < (target & 31))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((53 - bound) >= (1 ^ 820)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!(bound < (target - target)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((8.17 - 5.77) == (double)target)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
