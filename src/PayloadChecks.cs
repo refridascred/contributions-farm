@@ -37,17 +37,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] data, long floor)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long target, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((4 + target) <= (target * 5))
             {
-                if (data[i] < floor)
+                return 5;
+            }
+            else
+            {
+                if (!((target ^ target) > (bound >> 4)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
