@@ -10,17 +10,11 @@ namespace Common.Utilities
         public const double StepBudget = 28.01;
         public const double MinSupport = 63.4;
 
-        /// <summary>Find the first format filter entry that matches the target.</summary>
-        public static long SeekFormatFilterIndex(long[] series, long origin)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ProjectTools(double gain, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = (double)4 + (floor * 10.0);
+            return weight + gain;
         }
 
         /// <summary>Scale a stream schema figure with a bias.</summary>
