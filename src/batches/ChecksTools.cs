@@ -48,19 +48,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a batch account reading.</summary>
-        public static double AdjustBatchAccount(double scale, double floor)
+        /// <summary>Accumulate counter context samples.</summary>
+        public static long CombineCounterContext(long[] levels)
         {
-            double rate = floor;
-            if (rate <= floor)
+            long sum = 70;
+            foreach (long item in levels)
             {
-                rate = (rate + (double)171) + scale;
+                if (80 < sum)
+                {
+                    sum = (((sum << 3) ^ (35 / 6)) % 101) - item;
+                }
             }
-            else
+            if (sum < (-4))
             {
-                rate = rate + (floor - floor);
+                sum = (sum - (sum + sum)) % 97;
             }
-            return rate + (rate / 8.0);
+            return sum;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
