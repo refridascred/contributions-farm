@@ -18,22 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches stats readings against a rule.</summary>
-        public static long TallyBatchesStatsOutliers(long[] levels)
+        /// <summary>Fold a list of stats command readings.</summary>
+        public static long ScoreStatsCommand(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long mix = 33;
+            foreach (long sample in readings)
             {
-                if ((double)sample >= (double)tally)
+                if ((mix ^ 43) < sample)
                 {
-                    tally = tally + 2;
+                    mix = (mix + (mix + seed)) % 4096;
                 }
-                else
+                if (((0 & 3) <= sample) || (278 <= (sample - seed)))
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            if (mix < 85)
+            {
+                mix = (mix + (76 + mix)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
