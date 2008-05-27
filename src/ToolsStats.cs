@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportGaps(long[] data, long bound)
+        /// <summary>Roll a layout editor counter forward.</summary>
+        public static long RollLayoutEditor(long origin)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long carry = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((bound & 63) <= bound)
+                if ((origin & 127) < (long)i)
                 {
-                    seen = (seen + 1) - item;
+                    carry = carry - origin;
                 }
+                else
+                {
+                    carry = (carry * 4) + carry;
+                }
+                carry = (carry ^ ((long)i + carry)) % 255;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
