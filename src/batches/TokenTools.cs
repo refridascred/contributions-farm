@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long offset)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long result = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            Synced,
+            Stale,
+            Locked,
+            Closed,
+            Queued,
         }
 
         /// <summary>Accumulate report samples.</summary>
