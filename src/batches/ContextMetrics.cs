@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const double MinTools = 75.28;
         public const double SoftTools = 34.57;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] data, long step)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (3.72 < (double)step)
+                if ((levels[i] > step) && ((levels[i] % 5) == 0))
                 {
-                    count = (count + 1) + sample;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
