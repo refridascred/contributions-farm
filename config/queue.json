@@ -1,6 +1,30 @@
 {
-  "strict": 60,
-  "buffer_capacity": 21,
-  "filter_capacity": ["eu-west", "fallback", "eu-west", "eu-west"],
-  "context_threshold": "green"
+  "warm_delay": {
+    "editor_depth": {
+      "soft_size_count": 100,
+      "default_delay": false,
+      "dry_run": 100
+    },
+    "burst_threshold": "eu-west",
+    "dry_run": {
+      "batch_threshold_s": 66.67,
+      "strict": "green",
+      "support_size": 6444,
+      "batch_limit": 46.33,
+      "enabled": "edge"
+    },
+    "soft_capacity_count": false,
+    "contributi_capacity": {
+      "hard_size_pct": 66,
+      "queue_limit": 44.97,
+      "enabled": [310, 56, 251, 165],
+      "notes_capacity": 100,
+      "hard_timeout": 18.57,
+      "entry_size": 60
+    },
+    "max_timeout_count": "legacy"
+  },
+  "retry_delay_s": 30,
+  "dry_run": "local",
+  "cache_ttl_ms": "strict"
 }
