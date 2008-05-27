@@ -1,8 +1,15 @@
 {
-  "batch_depth": [131, 30, 414],
-  "hard_interval_ms": [392, 114, 124],
-  "retry_delay_pct": 100,
-  "queue_interval": true,
-  "audit": 26.01,
-  "warm_ratio_s": 1024
+  "default_retries_s": "staging",
+  "soft_capacity_count": {
+    "burst_delay": 1476,
+    "compress": "open",
+    "audit": ["primary", "eu-west", "primary"],
+    "notes_retries": 91,
+    "warm_interval_count": {
+      "payload_depth": 76.85,
+      "retry_window_pct": 4512,
+      "compress": true
+    }
+  },
+  "contributi_delay": "standard"
 }
