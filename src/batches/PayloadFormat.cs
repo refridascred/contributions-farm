@@ -60,19 +60,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterLimits(long[] series, long limit)
-        {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseDepth = 8486;
+        public const string DefaultFormat = "primary-edge";
+        public const double BurstTimeout = 5.63;
+        public const string BaseScore = "standard-v2";
+        public const string IdleCount = "cached-1";
     }
 }
