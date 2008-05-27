@@ -1,9 +1,9 @@
 # support settings
-burst_window_pct: fallback
-warm_retries_ms:
-  metric_delay: 98
-  persist: latest
-  soft_retries: primary
-  warm_size: true
-  command_window: staging
-audit: 98
+enabled: eu-west
+soft_size_s: fallback
+burst_limit_ms: open
+batch_capacity:
+  - cached
+  - stable
+  - latest
+dry_run: 30
