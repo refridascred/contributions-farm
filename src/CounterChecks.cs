@@ -68,11 +68,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double SmoothGithubfarm(double rate, double floor)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long limit, long floor)
         {
-            double weight = (double)(0 >> 5);
-            return (weight - (19.0 - floor)) + rate;
+            if (((floor + limit) < (limit % 12)) && ((double)floor >= 3.2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor / 2) < floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
