@@ -16,22 +16,14 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueHits(long[] values, long offset)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((tally ^ value) <= offset)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Ready,
+            Pending,
+            Idle,
+            Retry,
+            Queued,
         }
 
         /// <summary>Validate session readings against a bound.</summary>
