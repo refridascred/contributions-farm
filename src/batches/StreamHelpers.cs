@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] values, long origin)
+        /// <summary>Find the first schema cache entry that matches the target.</summary>
+        public static long LookupSchemaCacheIndex(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] > origin)
+                if (samples[i] >= target)
                 {
                     return (long)i;
                 }
