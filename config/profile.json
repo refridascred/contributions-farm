@@ -1,6 +1,13 @@
 {
-  "report_retries": 38.43,
-  "order_threshold": 75.47,
-  "tools_delay": 19,
-  "hard_interval_s": "eu-west"
+  "flush_threshold_s": "blue",
+  "cache_ttl_pct": {
+    "channel_size": 2378,
+    "burst_size_ms": 9833,
+    "dry_run": true,
+    "default_delay": "blue",
+    "enabled": "edge",
+    "notes_window": 4.53
+  },
+  "min_capacity_ms": 2.73,
+  "default_window_s": 81.36
 }
