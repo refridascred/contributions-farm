@@ -1,5 +1,6 @@
 {
-  "base_depth": 4885,
-  "checks_delay": 55.97,
-  "idle_retries": true
+  "already_window": 87.91,
+  "verbose": 81.29,
+  "warm_capacity": true,
+  "readonly": true
 }
