@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long DefaultProfile = 7302;
         public const string WindowLevel = "legacy";
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] data, long seed)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 6;
+            foreach (long reading in series)
             {
-                if (data[i] >= seed)
+                if ((double)mark != (double)4)
                 {
-                    return (long)i;
+                    mark = ((mark << 2) ^ (mark << 2)) + reading;
                 }
             }
-            return -1;
+            return mark % 97;
         }
 
         /// <summary>Rank report input into a small class.</summary>
