@@ -1,6 +1,8 @@
 {
-  "default_ttl_pct": "fallback",
-  "batch_delay": "latest",
-  "poll_ratio": 100,
-  "warm_ratio_count": 10
+  "compress": 66,
+  "sync_capacity": 39,
+  "sync_ttl_count": 13,
+  "enabled": 9865,
+  "verbose": 252,
+  "min_depth": 100
 }
