@@ -1,16 +1,8 @@
 {
-  "stats_depth": 21.23,
-  "audit": "cached",
-  "warm_delay_pct": {
-    "soft_depth": {
-      "batch_threshold_s": true,
-      "warm_retries_count": "legacy",
-      "poll_window_s": "green"
-    },
-    "idle_timeout_s": "legacy",
-    "max_ttl": true,
-    "warm_window": "edge",
-    "contributi_ttl": 5814,
-    "burst_limit_s": 15.14
-  }
+  "cache_size": "legacy",
+  "min_size": 42.39,
+  "readonly": "primary",
+  "buffer_ratio": 38.47,
+  "checks_depth": 91,
+  "warm_timeout": 30
 }
