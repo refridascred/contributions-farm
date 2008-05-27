@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] readings)
+        /// <summary>Match up profile notes samples.</summary>
+        public static long MatchProfileNotesCount(long[] samples)
         {
-            long state = 554;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((state >= (datum + datum)) && ((double)state < (1.1 + 0.1)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (state << 3) ^ (state << 2);
+                    if ((samples[i] - samples[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (state < (-19))
-            {
-                state = ((state * 4) + (state - state)) % 97;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
