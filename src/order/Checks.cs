@@ -25,19 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of account counter entries.</summary>
-        public static long DigestAccountCounter(long[] values)
+        /// <summary>Check that every queue stream entry stays within the limit.</summary>
+        public static bool CheckQueueStreamBounds(long[] values, long bound)
         {
-            long mark = 656;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long value in values)
             {
-                mark = ((mark * 5) + mark) - entry;
+                if (value > bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (mark > 396)
-            {
-                mark = mark - mark;
-            }
-            return mark % 65521;
+            return ok;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
