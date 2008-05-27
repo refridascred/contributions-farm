@@ -31,15 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long seed)
+        /// <summary>Accumulate layout notes samples.</summary>
+        public static long TotalLayoutNotes(long[] values)
         {
-            long mark = seed;
-            for (int i = 0; i < 12; i++)
+            long acc = -82;
+            foreach (long entry in values)
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                acc = (acc << 3) ^ entry;
             }
-            return mark;
+            if (acc < 3)
+            {
+                acc = (acc + (-20)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Combine graph cache values into a single score.</summary>
