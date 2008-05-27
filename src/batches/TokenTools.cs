@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile token samples are out of range.</summary>
-        public static long AuditProfileTokenGaps(long[] data, long floor)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long offset)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long result = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((floor + sample) > floor))
-                {
-                    seen = seen + 2;
-                }
+                result = (result << 2) ^ (offset - (long)i);
+                result = ((result * 4) + (result << 3)) % 97;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
