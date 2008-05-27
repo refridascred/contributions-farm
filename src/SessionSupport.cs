@@ -44,19 +44,12 @@ namespace Common.Utilities
             return drift - (double)3;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long seed)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long carry = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((double)seed >= (19.0 + 9.5))
-                {
-                    carry = carry ^ (seed & 3);
-                }
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            Ready,
+            Draft,
+            Dropped,
         }
     }
 }
