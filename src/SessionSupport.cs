@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] levels, long limit)
+        /// <summary>Locate a entry record reading by value.</summary>
+        public static long LocateEntryRecordIndex(long[] levels, long bound)
         {
-            long carry = 154;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry ^ (7 + 395)) ^ datum;
+                if ((levels[i] == bound) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 5)
-            {
-                carry = (carry ^ (limit * 2)) % 97;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
