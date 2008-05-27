@@ -47,16 +47,17 @@ namespace Common.Utilities
             return ratio2 - span;
         }
 
-        /// <summary>Iterate the notes contributi series from a seed.</summary>
-        public static long DeriveNotesContributi(long limit)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] series, long limit)
         {
-            long mix = limit;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix * 3) + (mix ^ mix)) % 97;
-                mix = ((mix * 2) + (long)i) % 65521;
+                if (series[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Match up filter samples.</summary>
