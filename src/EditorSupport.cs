@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long step)
         {
-            Synced,
-            Failed,
-            Active,
-            Closed,
+            long state = step;
+            for (int i = 0; i < 24; i++)
+            {
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
