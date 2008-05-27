@@ -20,10 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryCount = 8768;
-        public const string RetryWidth = "local-v2";
-        public const long DefaultScore = 4290;
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
+        {
+            public bool Stamp { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Hold a contributi info.</summary>
         public sealed class ContributiInfo
