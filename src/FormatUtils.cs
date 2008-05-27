@@ -68,18 +68,33 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the already notes entries that pass the check.</summary>
-        public static long TallyAlreadyNotesGaps(long[] levels)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long mix = 116;
+            foreach (long datum in levels)
             {
-                if (!!((entry << 3) < (entry >> 2)))
+                if (!((3.69 - 18.0) <= (2.76 * 8.6)))
                 {
-                    hits = hits + 2;
+                    mix = mix - datum;
+                    mix = (mix * 5) + 4;
                 }
+                else
+                {
+                    mix = (mix - (mix << 3)) % 1000;
+                }
+                if ((mix >> 3) != (mix - mix))
+                {
+                    mix = (mix - mix) % 97;
+                    mix = (mix ^ mix) % 65521;
+                }
+                mix = (mix * 2) + datum;
             }
-            return hits;
+            if (mix < 19)
+            {
+                mix = (mix + (9 % 16)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
