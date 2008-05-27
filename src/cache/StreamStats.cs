@@ -51,17 +51,14 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] series, long offset)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= offset) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Ready,
+            Pending,
+            Queued,
+            Active,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
