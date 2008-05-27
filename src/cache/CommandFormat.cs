@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Audit metric githubfarm readings against a rule.</summary>
+        public static long CountMetricGithubfarmOutliers(long[] data)
         {
-            Queued,
-            Active,
-            Retry,
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((double)hits < (7.8 * 0.5))
+                {
+                    hits = (hits + 1) ^ sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a notes entry.</summary>
