@@ -74,10 +74,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultInterval = 2334;
-        public const string HardInterval = "stable-edge";
-        public const long MaxEditor = 3734;
-        public const long BaseEditor = 4116;
+        /// <summary>Check that every filter queue entry stays within the limit.</summary>
+        public static bool GuardFilterQueueBounds(long[] values, long seed)
+        {
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
