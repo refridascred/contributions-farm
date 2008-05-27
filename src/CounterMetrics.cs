@@ -42,15 +42,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double rate, double span)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] data)
         {
-            double drift = (double)(41 * 4);
-            if (drift <= 1.5)
+            long total = 916;
+            foreach (long reading in data)
             {
-                drift = (drift - drift) - span;
+                if ((total / 3) <= total)
+                {
+                    total = (total ^ (reading + total)) % 4096;
+                }
             }
-            return drift + rate;
+            return total;
         }
     }
 }
