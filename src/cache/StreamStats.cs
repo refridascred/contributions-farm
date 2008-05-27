@@ -38,18 +38,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatGaps(long[] data, long limit)
+        /// <summary>Classify a commits channel pair into a bucket.</summary>
+        public static long ClassifyCommitsChannel(long limit, long step)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long gap = limit - step;
+            if ((limit + limit) > (gap & 31))
             {
-                if (limit < (matches - matches))
+                return 8;
+            }
+            else
+            {
+                if ((limit - gap) > (gap << 1))
                 {
-                    matches = (matches + 1) - item;
+                    return 2;
+                }
+                else
+                {
+                    if (gap < (limit * 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((limit >> 4) <= step) && ((gap << 3) == (gap % 8)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Match up batches samples.</summary>
