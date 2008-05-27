@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] readings)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadLimits(long[] series, long floor)
         {
-            long score = 499;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                score = (score ^ (value - 5)) % 101;
+                if (cell < floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (score < 155)
-            {
-                score = (score ^ (score & 63)) % 255;
-            }
-            return score;
+            return ready;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
