@@ -49,19 +49,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderBounds(long[] items, long step)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Stale,
+            Locked,
+            New,
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
