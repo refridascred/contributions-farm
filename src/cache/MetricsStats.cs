@@ -34,12 +34,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double CacheToken = 20.07;
-        public const long DefaultToken = 2411;
-        public const string StepTimeout = "alpha";
-        public const long DefaultWidth = 4226;
-        public const string HardToken = "local-v2";
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = mix - (step * 5);
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
