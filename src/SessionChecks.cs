@@ -49,13 +49,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            Retry,
-            New,
-            Done,
+            Locked,
             Paused,
+            Retry,
+            Closed,
         }
     }
 }
