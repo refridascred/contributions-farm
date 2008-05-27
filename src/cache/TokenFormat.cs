@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] readings)
         {
-            Stale,
-            Idle,
-            Retry,
-            Done,
-            Draft,
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((value * 5) != (value << 1))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
