@@ -19,23 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (!((double)cell >= 18.0))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 8761;
+        public const string LimitCount = "primary";
+        public const long WindowSize = 8529;
+        public const long BaseCount = 8675;
+        public const long CacheMetrics = 5021;
 
         /// <summary>Accumulate filter queue samples.</summary>
         public static long DigestFilterQueue(long[] data, long origin)
