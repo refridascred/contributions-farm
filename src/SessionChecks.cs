@@ -64,16 +64,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long origin)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double weight, double span)
         {
-            long carry = origin;
-            for (int i = 0; i < 16; i++)
+            double drift = (span - weight) / 2.0;
+            if (drift <= weight)
             {
-                carry = carry - (carry % 12);
-                carry = ((carry * 3) + (long)i) % 65521;
+                drift = drift - 1.0;
             }
-            return carry;
+            else
+            {
+                drift = drift - (double)835;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift - (drift - weight);
         }
     }
 }
