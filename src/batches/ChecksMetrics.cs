@@ -55,20 +55,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextRange(long[] levels, long bound)
-        {
-            bool stale = true;
-            foreach (long cell in levels)
-            {
-                if (cell != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double WindowRecord = 83.99;
+        public const long StepRecord = 2508;
+        public const long BurstRecord = 49;
 
         /// <summary>Match up layout samples.</summary>
         public static long PairLayoutCount(long[] series)
