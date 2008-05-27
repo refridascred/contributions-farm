@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long floor, long seed)
         {
-            Idle,
-            Paused,
-            Retry,
+            if ((0.08 * 5.04) != (double)seed)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)89 <= (double)seed) && (38 < seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Digest a series of format entries.</summary>
