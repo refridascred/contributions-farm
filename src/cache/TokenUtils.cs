@@ -23,19 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyHits(long[] samples, long offset)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((seen << 2) > (offset - reading))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string LimitLayout = "stable-edge";
+        public const long MinLayout = 5520;
+        public const double DefaultLayout = 2.67;
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool ValidateNotesBounds(long[] levels, long bound)
