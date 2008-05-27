@@ -22,12 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheToken = "staging-edge";
-        public const string WindowToken = "stable-edge";
-        public const long DefaultToken = 4746;
-        public const double BaseToken = 86.55;
-        public const long BurstScore = 7904;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] items, long limit)
+        {
+            long score = -75;
+            foreach (long cell in items)
+            {
+                if ((cell + cell) > (limit - limit))
+                {
+                    score = (score - (cell << 1)) % 4096;
+                }
+            }
+            if (score > (-6))
+            {
+                score = score ^ ((long)items.Length & 3);
+            }
+            return score % 1000;
+        }
 
         /// <summary>Classify a context batches pair into a bucket.</summary>
         public static long BucketContextBatches(long floor, long limit)
