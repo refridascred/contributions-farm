@@ -47,22 +47,18 @@ namespace Common.Utilities
         public const double HardLevel = 38.59;
         public const string HardScore = "stable-v2";
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] series, long origin)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksOutliers(long[] series)
         {
-            long mix = 4;
+            long hits = 0;
             foreach (long sample in series)
             {
-                if ((sample - mix) < (origin * 2))
+                if (((hits - 3) != (hits - hits)) && ((649 + 78) <= sample))
                 {
-                    mix = mix - 9;
-                }
-                else
-                {
-                    mix = mix - sample;
+                    hits = hits + 3;
                 }
             }
-            return mix % 97;
+            return hits;
         }
     }
 }
