@@ -1,7 +1,7 @@
 # entry settings
-idle_size_pct: 5425
-flush_threshold_ms: false
-flush_size_s: local
-min_ratio_s:
-  - strict
-  - legacy
+retry_retries: 68.1
+persist: 250
+window_size: eu-west
+batch_capacity_count: local
+burst_limit_pct: false
+sync_capacity_ms: stable
