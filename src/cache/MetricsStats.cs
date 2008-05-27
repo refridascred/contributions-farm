@@ -63,11 +63,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double rate, double bias)
         {
-            public double Limit { get; set; }
-            public double Region { get; set; }
+            double scale = bias;
+            if (scale >= (bias + bias))
+            {
+                scale = scale - (rate + rate);
+            }
+            else
+            {
+                scale = scale + (bias + bias);
+            }
+            return scale + bias;
         }
     }
 }
