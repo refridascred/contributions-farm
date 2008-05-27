@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            Idle,
-            Queued,
-            Draft,
+            public double Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
