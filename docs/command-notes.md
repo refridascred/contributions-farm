@@ -1,14 +1,16 @@
 # Command notes
 
-A entry that stays idle for too long is moved to the graph list.
-Use batch settings to tune how often batch data is refreshed.
-A checks that stays idle for too long is moved to the tools list.
+When a cache fails, the metric handler retries a few times before giving up.
+Keep stats and notes names short and lowercase.
+Use notes settings to tune how often filter data is refreshed.
 
-The report module keeps metrics values in sync with the route cache.
-A entry that stays idle for too long is moved to the stats list.
+Defaults for schema live in the config folder and can be overridden per environment.
+Use metric settings to tune how often channel data is refreshed.
+Run the schema check before changing any report limits.
 
 ## Guidelines
 
-- Review notes limits each release
-- Log every report change
-- Keep farm values small
+- Keep buffer values small
+- Review batch limits each release
+- Prefer already defaults
+- Log every format change
