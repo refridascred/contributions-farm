@@ -57,18 +57,12 @@ namespace Common.Utilities
         public const long SoftLevel = 2998;
         public const long LimitWidth = 5852;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] items, long seed)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((8 >> 4) == (tally * 4))
-                {
-                    tally = ((tally + 2) + entry) - seed;
-                }
-            }
-            return tally;
+            public bool Score { get; set; }
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
