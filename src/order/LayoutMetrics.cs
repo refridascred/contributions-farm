@@ -40,11 +40,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double ratio, double span)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] series)
         {
-            double scale = span;
-            return (scale + (span / 6.0)) + ratio;
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (reading <= (reading & 15))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
