@@ -31,22 +31,19 @@ namespace Common.Utilities
         public const long StepScore = 795;
         public const long BurstChannel = 9712;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountGaps(long[] levels, long step)
+        /// <summary>Check that every schema cache entry stays within the limit.</summary>
+        public static bool GuardSchemaCacheRange(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if (cell > (step % 12))
+                if (datum >= bound)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Describe the channel state values.</summary>
