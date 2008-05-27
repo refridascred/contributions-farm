@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 9429;
-        public const string HardAlready = "stable-1";
-        public const double MaxAlready = 43.28;
-        public const double DefaultAlready = 0.69;
-        public const long StepSpan = 668;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum < (double)tally)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
