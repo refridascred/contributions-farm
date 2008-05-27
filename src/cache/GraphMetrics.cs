@@ -36,19 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double gain, double bias)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] values)
         {
-            double gain2 = gain;
-            if (gain2 < (gain * 6.32))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain2 = gain2 + (double)3;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = (gain2 - bias) + (double)(long)i;
-            }
-            return gain2 + bias;
+            return hits;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
