@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksMatches(long[] levels, long step)
+        /// <summary>Match up window session samples.</summary>
+        public static long PairWindowSessionCount(long[] series)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum + count) >= (count ^ count))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 1) - step;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((series[i] + series[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Match up batches samples.</summary>
