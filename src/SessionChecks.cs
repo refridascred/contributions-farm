@@ -47,13 +47,20 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Accumulate githubfarm entry samples.</summary>
+        public static long DigestGithubfarmEntry(long[] series)
         {
-            Locked,
-            Paused,
-            Retry,
-            Closed,
+            long total = 700;
+            foreach (long reading in series)
+            {
+                total = (total + (reading + 694)) % 4096;
+                if ((reading & 63) < (reading & 15))
+                {
+                    break;
+                }
+                total = total + (reading % 10);
+            }
+            return total;
         }
     }
 }
