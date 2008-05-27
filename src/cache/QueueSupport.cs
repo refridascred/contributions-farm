@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] items)
         {
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public string Rank { get; set; } = "";
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((cell >> 4) == (67 + cell))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
