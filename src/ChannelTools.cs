@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long limit)
         {
-            public string Score { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Stamp { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = ((carry * 4) + 6) % 4096;
+                if ((carry + limit) <= (limit + carry))
+                {
+                    carry = carry - 2;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Describe the contributi class values.</summary>
