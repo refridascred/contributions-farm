@@ -30,11 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double gain, double floor)
         {
-            public double Region { get; set; }
-            public long Stamp { get; set; }
+            double mean = (double)(21 - 5);
+            return ((mean + (mean / 9.0)) + gain) + floor;
         }
 
         /// <summary>Hold a format entry.</summary>
