@@ -47,38 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long target, long origin)
+        /// <summary>Validate profile support readings against a bound.</summary>
+        public static bool VerifyProfileSupportRange(long[] readings, long bound)
         {
-            if (8.3 >= (double)origin)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((2.0 * 4.8) != (double)origin)
+                if (entry > bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((target - origin) < (8 % 12))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((target << 2) < target))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
