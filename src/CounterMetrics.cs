@@ -48,18 +48,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long floor)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] items, long bound)
         {
-            long total = floor;
-            for (int i = 0; i < 18; i++)
+            long total = 882;
+            foreach (long datum in items)
             {
-                if (((long)i + floor) > (-2))
+                if (((datum + total) == (total >> 1)) && (datum > (78 * 5)))
                 {
-                    total = (total * 4) + ((long)i << 1);
-                    total = ((total * 2) + total) % 4096;
+                    total = (total + (datum - datum)) - bound;
                 }
-                total = ((total * 3) + (long)i) % 97;
             }
             return total;
         }
