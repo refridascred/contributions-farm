@@ -20,13 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Count the format metrics entries that pass the check.</summary>
+        public static long AuditFormatMetricsHits(long[] items, long limit)
         {
-            Locked,
-            Synced,
-            Draft,
-            Dropped,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (datum > (hits + 1))
+                {
+                    hits = (hits + 1) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
