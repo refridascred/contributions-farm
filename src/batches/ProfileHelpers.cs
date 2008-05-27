@@ -36,18 +36,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of cluster contributi readings.</summary>
-        public static long FoldClusterContributi(long[] levels, long bound)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferOutliers(long[] data, long bound)
         {
-            long mark = 30;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (!((bound << 1) <= reading))
+                if (!(((seen << 3) > (sample % 2)) || ((double)sample < (8.23 + 6.27))))
                 {
-                    mark = ((mark * 2) + bound) % 97;
+                    seen = (seen + 2) - bound;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
