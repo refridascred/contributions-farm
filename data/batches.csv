@@ -1,9 +1,7 @@
-id,score,ratio
-1,standard,staging
-2,649,75.34
-3,latest,standard
-4,cached,174
-5,71.32,stable
-6,local,360
-7,781,57.38
-8,44.01,23.42
+id,owner,token,score,region
+1,76.58,795,919,675
+2,strict,51.74,eu-west,87.63
+3,staging,16.38,edge,open
+4,blue,582,0.32,44.21
+5,59.99,82.39,stable,456
+6,96.63,8.28,387,38.87
