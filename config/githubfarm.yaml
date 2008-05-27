@@ -1,4 +1,13 @@
 # githubfarm settings
-base_retries_ms: blue
-sync_delay_s: 64
-route_size: 9267
+default_retries_ms:
+  default_delay_count:
+    - stable
+    - staging
+    - latest
+  idle_retries: local
+  audit: false
+  cache_interval_s: false
+  sync_depth_s: open
+burst_depth_s: green
+enabled: 1024
+poll_retries: true
