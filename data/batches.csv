@@ -1,6 +1,8 @@
-id,label,count
-1,689,123
-2,145,67
-3,857,65.62
-4,3.46,edge
-5,951,standard
+id,score,count,active
+1,73.43,730,47
+2,eu-west,6.46,309
+3,20.31,953,21.28
+4,43.91,703,blue
+5,587,546,0.68
+6,edge,918,cached
+7,85.28,65,primary
