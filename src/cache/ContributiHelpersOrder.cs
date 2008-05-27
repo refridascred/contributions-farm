@@ -12,22 +12,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsGaps(long[] data)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelOutliers(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (!((count + count) > (sample ^ count)))
+                if (offset < (offset + (-82)))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 1) + value;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Blend two account measurements.</summary>
