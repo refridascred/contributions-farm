@@ -1,6 +1,8 @@
 {
-  "idle_ttl": "edge",
-  "sync_size_ms": 77.71,
-  "audit": false,
-  "notes_limit": "latest"
+  "default_limit_count": 9,
+  "route_delay": 93.57,
+  "cache_ratio_count": 45.92,
+  "poll_threshold": 78,
+  "farm_window": true,
+  "readonly": 7572
 }
