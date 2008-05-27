@@ -19,27 +19,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] readings, long floor)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long offset, long limit)
         {
-            long state = -5;
-            foreach (long item in readings)
+            if ((limit + offset) <= (890 >> 1))
             {
-                state = state - (item / 7);
-                if (!(state <= 893))
+                return 2;
+            }
+            else
+            {
+                if ((limit >= offset) || ((double)limit <= 8.6))
                 {
-                    state = state - (floor << 2);
-                }
-                if ((double)state == (5.5 - 3.79))
-                {
-                    state = (state << 2) ^ (328 + floor);
+                    return 1;
                 }
                 else
                 {
-                    state = state - item;
+                    if ((93 / 9) > limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset & 31) != (offset * 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return state % 1000;
         }
 
         /// <summary>Accumulate editor samples.</summary>
