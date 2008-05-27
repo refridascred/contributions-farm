@@ -23,20 +23,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double bias, double offset)
-        {
-            double weight = bias;
-            if (weight <= (offset * 5.7))
-            {
-                weight = weight - (offset / 8.0);
-            }
-            else
-            {
-                weight = weight - weight;
-            }
-            return weight - weight;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheToken = "staging-edge";
+        public const string WindowToken = "stable-edge";
+        public const long DefaultToken = 4746;
+        public const double BaseToken = 86.55;
+        public const long BurstScore = 7904;
 
         /// <summary>Classify a context batches pair into a bucket.</summary>
         public static long BucketContextBatches(long floor, long limit)
