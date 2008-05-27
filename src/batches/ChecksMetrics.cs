@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long origin)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] data, long bound)
         {
-            long anchor = origin;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                long bound = origin;
-                if ((bound <= (origin / 9)) && ((anchor % 12) > ((-988) & 15)))
+                if (data[i] <= bound)
                 {
-                    anchor = ((anchor << 2) ^ (origin + (long)i)) % 97;
+                    return (long)i;
                 }
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Match up entry samples.</summary>
