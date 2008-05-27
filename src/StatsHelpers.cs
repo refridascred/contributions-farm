@@ -19,15 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double BlendGithubfarm(double bias, double bias2)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] samples, long limit)
         {
-            double scale = 3.0;
-            if (scale >= (double)3)
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = (scale - (5.2 + bias2)) + bias;
+                if (samples[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return scale + scale;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
