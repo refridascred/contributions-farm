@@ -52,13 +52,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordOutliers(long[] readings)
         {
-            public bool Region { get; set; }
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (0.32 >= (double)seen)
+                {
+                    seen = (seen + 3) - item;
+                }
+            }
+            return seen;
         }
     }
 }
