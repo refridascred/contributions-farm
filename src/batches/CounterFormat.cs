@@ -20,18 +20,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < offset) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 9643;
+        public const long BurstFarm = 2462;
+        public const long IdleFarm = 8380;
+        public const string RetrySize = "stable";
 
         /// <summary>Adjust a record reading.</summary>
         public static double AdjustRecord(double rate, double bias)
