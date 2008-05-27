@@ -19,21 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] levels)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] items, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 18;
+            foreach (long value in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sum >= ((-4) * 5))
                 {
-                    if ((levels[i] + levels[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = ((sum ^ floor) % 4096) + value;
+                }
+                else
+                {
+                    sum = (sum ^ (0 << 2)) % 101;
                 }
             }
-            return hits;
+            if (sum > 12)
+            {
+                sum = (sum ^ (sum << 2)) % 4096;
+            }
+            return sum % 97;
         }
 
         /// <summary>Hold a stats record.</summary>
