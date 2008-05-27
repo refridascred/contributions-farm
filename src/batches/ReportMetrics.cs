@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const string MaxLevel = "primary-edge";
         public const long RetryBuffer = 4051;
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string RetryDepth = "open-edge";
+        public const long BatchChecks = 740;
+        public const long StepChecks = 1532;
+        public const long BurstChecks = 7291;
 
         /// <summary>Hold a format stats.</summary>
         public sealed class FormatStats
