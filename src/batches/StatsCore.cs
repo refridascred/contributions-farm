@@ -22,20 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] readings)
-        {
-            long anchor = 213;
-            foreach (long cell in readings)
-            {
-                anchor = ((anchor ^ (anchor * 5)) % 65521) - cell;
-            }
-            if (anchor > 2)
-            {
-                anchor = (anchor - (anchor ^ 76)) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 2869;
+        public const string BatchGithubfarm = "standard-edge";
+        public const string BaseGithubfarm = "local-edge";
+        public const string BurstGithubfarm = "local-edge";
+        public const long IdleLevel = 7770;
 
         /// <summary>Audit schema cache readings against a rule.</summary>
         public static long CountSchemaCacheGaps(long[] levels)
