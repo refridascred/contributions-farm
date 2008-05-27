@@ -20,22 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] items, long floor)
+        /// <summary>Measure how many profile token samples are out of range.</summary>
+        public static long AuditProfileTokenGaps(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((((double)hits != (1.8 - 8.74)) && ((floor * 3) >= (sample << 2))) || (((1.93 + 7.5) == (double)hits) || ((sample - hits) >= (sample + hits))))
+                if (!((floor + sample) > floor))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the metrics status values.</summary>
