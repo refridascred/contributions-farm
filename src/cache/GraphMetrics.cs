@@ -35,17 +35,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the metrics queue series from a seed.</summary>
-        public static long DeriveMetricsQueue(long target)
+        /// <summary>Look up the position of a route commits sample.</summary>
+        public static long LocateRouteCommitsIndex(long[] items, long offset)
         {
-            long result = target;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result << 3) ^ (target % 100)) % 4096;
-                result = (result + (747 * 5)) % 97;
-                result = ((result * 2) + (long)i) % 97;
+                if ((items[i] >= offset) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a already stats.</summary>
