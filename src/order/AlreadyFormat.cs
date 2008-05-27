@@ -64,22 +64,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit graph cluster readings against a rule.</summary>
-        public static long CountGraphClusterHits(long[] readings)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (((double)value >= (9.0 * 3.0)) || ((value << 2) <= (value - 1)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public double Label { get; set; }
+            public long Count { get; set; }
         }
     }
 }
