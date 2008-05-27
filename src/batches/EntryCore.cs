@@ -19,15 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double scale, double offset)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            double bias = (double)751 - offset;
-            if (bias > bias)
-            {
-                bias = (bias + 13.0) - scale;
-            }
-            return bias - bias;
+            Pending,
+            Done,
+            Queued,
+            Locked,
+            Draft,
         }
 
         /// <summary>Fold a list of report readings.</summary>
