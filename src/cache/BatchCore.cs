@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderLimits(long[] readings, long seed)
-        {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 3724;
+        public const long SoftChannel = 1254;
+        public const long StepChannel = 5618;
+        public const long BurstDepth = 564;
+        public const long IdleChannel = 2664;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long TallyStreamGaps(long[] levels, long step)
