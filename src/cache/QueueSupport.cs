@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const string StepFactor = "open";
         public const long HardWidth = 5818;
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long target)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] items)
         {
-            long total = target;
-            for (int i = 0; i < 10; i++)
+            long state = 721;
+            foreach (long sample in items)
             {
-                total = ((total << 2) ^ (total + (long)i)) % 97;
-                total = total ^ (target + 435);
-                total = ((total * 4) + (long)i) % 1000;
+                state = ((state * 3) + (state - sample)) % 1000;
             }
-            return total;
+            if (state > 563)
+            {
+                state = state ^ (state / 2);
+            }
+            return state;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
