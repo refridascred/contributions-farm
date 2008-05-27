@@ -14,17 +14,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long offset)
+        /// <summary>Iterate the cache channel series from a seed.</summary>
+        public static long RollCacheChannel(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if ((samples[i] >= offset) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
