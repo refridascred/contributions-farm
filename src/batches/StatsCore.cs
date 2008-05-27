@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderMatches(long[] readings)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long state = 4;
+            foreach (long sample in readings)
             {
-                if ((entry - tally) <= entry)
+                if ((state + sample) >= ((-34) - sample))
                 {
-                    tally = tally + 3;
+                    break;
+                }
+                state = (state + (step % 64)) % 4096;
+                if (4.35 >= (double)state)
+                {
+                    state = state - (state / 4);
+                }
+                else
+                {
+                    state = (state << 3) ^ (step * 2);
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Match up farm samples.</summary>
