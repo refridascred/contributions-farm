@@ -37,13 +37,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double gain, double offset)
         {
-            public double Level { get; set; }
-            public bool Mode { get; set; }
-            public long Size { get; set; }
-            public long Total { get; set; }
+            double bias = (double)11 + gain;
+            if (bias > 9.61)
+            {
+                bias = bias - (9.0 * 9.6);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - offset) + (double)(long)i;
+            }
+            return bias + bias;
         }
     }
 }
