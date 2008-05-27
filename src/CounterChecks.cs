@@ -22,31 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long step, long target)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            if (!((step % 3) == (51 & 15)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target + target) >= (step + step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (step <= (target + target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Paused,
+            New,
+            Queued,
+            Done,
+            Draft,
         }
 
         /// <summary>Describe the payload state values.</summary>
