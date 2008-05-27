@@ -47,18 +47,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] samples)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((item + count) == (count << 1))
+                if ((samples[i] >= seed) && ((samples[i] % 5) == 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
