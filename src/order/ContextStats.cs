@@ -33,18 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string LimitInterval = "stable-edge";
+        public const long CacheOrder = 5098;
+        public const string WindowLevel = "stable";
+        public const long IdleOrder = 2123;
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long MeasureEntryOutliers(long[] series)
