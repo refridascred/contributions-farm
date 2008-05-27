@@ -51,12 +51,16 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftWidth = 4389;
-        public const double WindowDepth = 85.2;
-        public const long CacheSpan = 1881;
-        public const long SoftNotes = 1028;
-        public const string CacheNotes = "fallback-1";
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double gain, double offset)
+        {
+            double ratio = (double)3 * 10.0;
+            if (ratio >= offset)
+            {
+                ratio = (ratio + (7.01 * 7.7)) + gain;
+            }
+            return ratio + offset;
+        }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long AuditToolsHits(long[] items, long offset)
