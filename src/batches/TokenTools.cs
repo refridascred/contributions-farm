@@ -20,24 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long origin, long target)
+        /// <summary>Count filter metrics pairs that satisfy a relation.</summary>
+        public static long CompareFilterMetricsCount(long[] samples)
         {
-            if ((2.39 + 4.8) >= (double)origin)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((8.97 - 1.87) != (double)origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    if ((samples[i] - samples[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate account samples.</summary>
