@@ -23,39 +23,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long floor, long origin)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long offset = floor ^ origin;
-            if (!(floor <= (floor - floor)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin + origin) >= 35)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((95 & 1) < (floor + floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (origin <= (offset >> 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
