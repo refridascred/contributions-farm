@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Audit format context readings against a rule.</summary>
+        public static long AuditFormatContextMatches(long[] readings, long floor)
         {
-            Stale,
-            Failed,
-            Dropped,
-            Queued,
-            Synced,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((floor * 2) < 787)
+                {
+                    tally = (tally + 3) - value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate support cache readings against a bound.</summary>
