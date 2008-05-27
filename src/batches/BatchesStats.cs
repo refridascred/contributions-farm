@@ -55,15 +55,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] values, long origin)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] samples)
         {
-            long mark = 7;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                mark = (((mark * 5) + (origin << 2)) % 101) + entry;
+                if ((count ^ count) <= (count & 1))
+                {
+                    count = (count + 1) + reading;
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
