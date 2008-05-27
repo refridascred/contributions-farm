@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] samples, long offset)
+        /// <summary>Check that every filter tools entry stays within the limit.</summary>
+        public static bool ValidateFilterToolsLimits(long[] values, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if (samples[i] == offset)
+                if (cell <= seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
