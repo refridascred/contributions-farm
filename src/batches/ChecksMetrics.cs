@@ -55,18 +55,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesOutliers(long[] readings)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextRange(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if ((double)sample >= (double)(-45))
+                if (cell != bound)
                 {
-                    seen = seen + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Match up layout samples.</summary>
