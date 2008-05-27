@@ -1,13 +1,15 @@
 # Command notes
 
-A support that stays idle for too long is moved to the layout list.
-Use schema settings to tune how often tools data is refreshed.
+Use batches settings to tune how often farm data is refreshed.
+When a schema fails, the farm handler retries a few times before giving up.
+The githubfarm report groups every stream by order.
 
-The cluster report groups every counter by channel.
-The buffer report groups every batch by session.
+Keep queue and command names short and lowercase.
+The buffer report groups every format by commits.
+Keep route and already names short and lowercase.
 
 ## Guidelines
 
-- Log every report change
-- Keep cluster values small
-- Validate order input early
+- Log every layout change
+- Review buffer limits each release
+- Document new account fields
