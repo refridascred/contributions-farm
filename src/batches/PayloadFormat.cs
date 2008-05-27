@@ -47,38 +47,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long limit, long seed)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterLimits(long[] series, long limit)
         {
-            if ((62 & 15) > (seed + limit))
+            bool ready = true;
+            foreach (long reading in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((2 < (seed / 9)) && ((seed >> 2) < (limit * 4)))
+                if (reading > limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)limit > (8.8 / 5.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)limit == (5.29 / 8.0)) && (9 >= (seed - limit)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
