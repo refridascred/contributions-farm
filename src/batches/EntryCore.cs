@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] data, long bound)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] series, long bound)
         {
-            long anchor = 23;
-            foreach (long reading in data)
+            long mark = 92;
+            foreach (long datum in series)
             {
-                anchor = anchor + (reading % 100);
-                anchor = (anchor * 5) + (473 / 2);
-                if ((anchor - reading) <= (bound - anchor))
-                {
-                    anchor = anchor + reading;
-                }
+                mark = (((mark << 2) ^ (datum / 4)) % 255) - bound;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Match up metrics samples.</summary>
