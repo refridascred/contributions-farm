@@ -48,14 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Audit token metrics readings against a rule.</summary>
+        public static long TallyTokenMetricsMatches(long[] series)
         {
-            New,
-            Active,
-            Locked,
-            Idle,
-            Ready,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((656 << 1) >= (value * 5))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
