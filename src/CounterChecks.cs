@@ -5,17 +5,30 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Locate a cache cluster reading by value.</summary>
-        public static long SeekCacheClusterIndex(long[] series, long seed)
+        /// <summary>Accumulate account schema samples.</summary>
+        public static long CombineAccountSchema(long[] values, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 421;
+            foreach (long reading in values)
             {
-                if (series[i] >= seed)
+                if (((long)values.Length + reading) >= total)
                 {
-                    return (long)i;
+                    break;
+                }
+                if ((reading - reading) != (origin / 4))
+                {
+                    total = ((total * 4) + (origin * 5)) % 255;
+                }
+                if ((2.6 - 3.0) < (double)reading)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (total > 67)
+            {
+                total = (total - (total & 63)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Describe the batches class values.</summary>
