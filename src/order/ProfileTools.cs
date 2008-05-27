@@ -39,22 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsHits(long[] levels)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long carry = 7;
+            foreach (long entry in values)
             {
-                if ((((entry + matches) == (entry << 2)) || ((matches + entry) > (matches ^ 79))) || (entry < (matches + matches)))
+                carry = ((carry * 3) + (carry ^ carry)) % 4096;
+                carry = carry ^ (carry + entry);
+                if ((2.99 >= (5.0 * 10.0)) && (entry < ((-14) + carry)))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Find the first cluster checks entry that matches the target.</summary>
