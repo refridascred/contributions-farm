@@ -49,12 +49,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
+            public double Rank { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Compare every pair of token readings.</summary>
