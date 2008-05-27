@@ -5,37 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long seed, long origin)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long offset, long offset2)
         {
-            long span = seed - origin;
-            if (((seed - origin) > (seed + span)) || ((double)3 <= (double)span))
+            if (offset2 >= (offset / 7))
             {
                 return 1;
             }
             else
             {
-                if ((seed + origin) < (origin - seed))
+                if ((offset2 << 1) < offset2)
                 {
                     return 8;
                 }
                 else
                 {
-                    if (((origin + seed) > span) && (span > (span + seed)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)seed == (double)span)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return 3;
                 }
             }
         }
