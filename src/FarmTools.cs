@@ -47,9 +47,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 3520;
-        public const string MaxBuffer = "cached-edge";
-        public const long CacheInterval = 22;
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
+        {
+            public string Mode { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
+        }
     }
 }
