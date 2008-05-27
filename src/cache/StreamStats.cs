@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
             public long Token { get; set; }
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
+            public bool Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Fold a list of context readings.</summary>
