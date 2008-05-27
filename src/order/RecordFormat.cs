@@ -20,12 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] items, long limit)
         {
-            public double Label { get; set; }
-            public double Flag { get; set; }
-            public bool Count { get; set; }
+            long mark = 8;
+            foreach (long value in items)
+            {
+                mark = (mark + mark) % 101;
+                if (((6 ^ value) > limit) && ((mark + 0) < limit))
+                {
+                    mark = ((mark << 2) ^ limit) % 255;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
