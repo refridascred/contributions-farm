@@ -34,18 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueOutliers(long[] levels, long offset)
+        /// <summary>Roll a layout token counter forward.</summary>
+        public static long RollLayoutToken(long offset)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long sum = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (!!((offset / 9) <= reading))
-                {
-                    seen = seen + 1;
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return seen;
+            return sum;
         }
     }
 }
