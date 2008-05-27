@@ -56,11 +56,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] readings, long floor)
         {
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample >> 1) < (floor * 2))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
