@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 7628;
-        public const long MinNotes = 7320;
-        public const double BatchNotes = 64.09;
-        public const long BatchLevel = 3690;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] samples, long bound)
+        {
+            long state = 108;
+            foreach (long entry in samples)
+            {
+                state = ((state ^ ((-9) >> 2)) % 65521) ^ entry;
+            }
+            if (state < 729)
+            {
+                state = (state ^ bound) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const string HardSpan = "latest-1";
