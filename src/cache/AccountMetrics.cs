@@ -22,11 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double DefaultCount = 7.76;
-        public const double MaxBuffer = 89.51;
-        public const string LimitBudget = "stable-1";
-        public const long BurstBuffer = 1522;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] items)
+        {
+            long carry = 75;
+            foreach (long reading in items)
+            {
+                if (!(carry >= (carry + carry)))
+                {
+                    carry = (((carry * 2) + carry) % 101) + reading;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
