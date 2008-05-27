@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] values, long origin)
+        /// <summary>Count the context profile entries that pass the check.</summary>
+        public static long MeasureContextProfileHits(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((18 >> 5) >= (origin % 60))
+                if (((seen & 63) < (3 & 31)) && ((item > (234 - item)) && ((item % 60) <= (seen & 127))))
                 {
-                    hits = (hits + 1) - datum;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
