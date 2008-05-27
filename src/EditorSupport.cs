@@ -57,19 +57,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] readings, long limit)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryMatches(long[] items, long limit)
         {
-            long acc = 837;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                acc = ((acc * 3) + (item * 3)) - limit;
+                if (((98 - limit) >= entry) || ((hits + limit) <= (entry - hits)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (acc > 4)
-            {
-                acc = ((acc * 2) + acc) % 101;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
