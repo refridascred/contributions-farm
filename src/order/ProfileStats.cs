@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinFactor = 9562;
-        public const long BatchAccount = 8480;
-        public const long RetryFactor = 3138;
-        public const double CacheInterval = 49.19;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = anchor + 253;
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double DefaultStats = 34.28;
