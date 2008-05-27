@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextHits(long[] levels, long floor)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (((long)levels.Length + floor) >= (matches + matches))
+                if (843 < (item - target))
                 {
-                    matches = (matches + 2) + value;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Fold a list of order readings.</summary>
