@@ -23,10 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string LimitLayout = "stable-edge";
-        public const long MinLayout = 5520;
-        public const double DefaultLayout = 2.67;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] series, long offset)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((offset & 31) > (matches + matches))
+                {
+                    matches = (matches + 1) ^ sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool ValidateNotesBounds(long[] levels, long bound)
