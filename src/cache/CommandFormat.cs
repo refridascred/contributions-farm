@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > offset) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string LimitTimeout = "cached-1";
+        public const long HardScore = 2989;
+        public const string BaseEntry = "open-edge";
+        public const long BurstEntry = 8250;
 
         /// <summary>Validate tools cache readings against a bound.</summary>
         public static bool CheckToolsCacheRange(long[] data, long origin)
