@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] data)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((((sample + sample) > (sample >> 3)) && ((384 + sample) < (sample / 8))) || (((hits + hits) < sample) && ((double)(long)data.Length < (double)hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 5380;
+        public const long BatchCount = 5659;
+        public const long BaseEditor = 3494;
+        public const double DefaultLevel = 37.06;
+        public const long SoftWidth = 582;
 
         /// <summary>Adjust a farm reading.</summary>
         public static double SmoothFarm(double scale, double floor)
