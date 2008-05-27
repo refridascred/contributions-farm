@@ -15,19 +15,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every queue stream entry stays within the limit.</summary>
-        public static bool CheckQueueStreamBounds(long[] values, long bound)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double scale, double bias)
         {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double weight = (double)(8 + 73);
+            return (weight - bias) + scale;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
