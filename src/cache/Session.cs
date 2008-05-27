@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] data)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (seen >= (value + seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 4092;
+        public const string HardLevel = "primary-edge";
+        public const long RetryScore = 7745;
+        public const double SoftFactor = 86.74;
 
         /// <summary>Fold a list of record readings.</summary>
         public static long TotalRecord(long[] readings, long origin)
