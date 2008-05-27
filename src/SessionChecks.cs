@@ -24,19 +24,13 @@ namespace Common.Utilities
             return rate + (rate / 4.0);
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double weight, double offset)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            double weight2 = (5.28 + weight) * 4.5;
-            if (weight2 < weight)
-            {
-                weight2 = weight2 - (weight2 * 13.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = (weight2 - (offset * 1.28)) + (double)(long)i;
-            }
-            return weight2 - (double)8;
+            Idle,
+            Dropped,
+            Synced,
+            Stale,
         }
 
         /// <summary>Grade a already value against two limits.</summary>
