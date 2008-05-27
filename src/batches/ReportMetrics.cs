@@ -19,22 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] data)
+        /// <summary>Count the account format entries that pass the check.</summary>
+        public static long AuditAccountFormatOutliers(long[] series, long bound)
         {
-            long state = 68;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if ((item + item) != (item >> 1))
+                if (3 <= (cell & 7))
                 {
-                    state = ((state << 3) ^ (58 + item)) % 97;
+                    hits = (hits + 3) - bound;
                 }
                 else
                 {
-                    state = state ^ (22 & 7);
+                    hits = hits - 1;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Hold a stats record.</summary>
