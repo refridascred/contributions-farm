@@ -36,18 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] readings, long floor)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)matches <= (double)60)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = ((matches + 1) + cell) - floor;
+                    if ((samples[i] + samples[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
