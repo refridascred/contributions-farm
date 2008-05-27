@@ -30,22 +30,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterHits(long[] readings)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((17.0 / 8.0) == (double)entry)
+                if (((long)values.Length & 15) != (seen << 1))
                 {
-                    matches = matches + 1;
+                    seen = (seen + 2) ^ entry;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Accumulate batch samples.</summary>
