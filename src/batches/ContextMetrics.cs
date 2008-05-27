@@ -32,12 +32,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorBounds(long[] levels, long target)
         {
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public string Flag { get; set; } = "";
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a buffer options.</summary>
