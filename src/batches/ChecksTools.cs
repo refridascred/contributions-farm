@@ -20,32 +20,23 @@ namespace Common.Utilities
         public const long HardDepth = 9936;
         public const string WindowRatio = "primary";
 
-        /// <summary>Rank graph stream input into a small class.</summary>
-        public static long GradeGraphStream(long limit, long seed)
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double gain, double bias)
         {
-            long lane = limit ^ seed;
-            if ((double)seed < 10.0)
+            double mean = 20.0;
+            if (mean >= (7.2 + bias))
             {
-                return 0;
+                mean = mean + (bias - gain);
             }
             else
             {
-                if ((limit ^ limit) < lane)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit ^ 3) >= (lane / 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                mean = mean - bias;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - gain) + (double)(long)i;
+            }
+            return mean + (mean / 6.0);
         }
 
         /// <summary>Digest a series of order cache entries.</summary>
