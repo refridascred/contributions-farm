@@ -48,13 +48,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] data)
         {
-            Locked,
-            Ready,
-            Pending,
-            Active,
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
