@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] readings)
+        /// <summary>Audit batches stats readings against a rule.</summary>
+        public static long TallyBatchesStatsOutliers(long[] levels)
         {
-            long carry = 4;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                carry = ((carry + (36 + carry)) % 101) ^ datum;
+                if ((double)sample >= (double)tally)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
