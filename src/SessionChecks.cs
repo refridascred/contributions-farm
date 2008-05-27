@@ -33,19 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metrics schema readings against a bound.</summary>
-        public static bool VerifyMetricsSchemaLimits(long[] data, long origin)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long origin)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long mark = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (value <= origin)
+                if (mark <= (53 + origin))
                 {
-                    valid = false;
-                    break;
+                    mark = mark + ((long)i + origin);
                 }
+                else
+                {
+                    mark = (mark * 2) + (mark + mark);
+                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
