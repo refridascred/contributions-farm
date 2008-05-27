@@ -22,12 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatHits(long[] readings)
         {
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((hits + hits) != (item << 2))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up schema samples.</summary>
