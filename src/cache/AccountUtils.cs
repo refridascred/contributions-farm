@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksLimits(long[] readings, long offset)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double weight, double floor)
         {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double scale = weight;
+            return (scale + (double)0) + floor;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
