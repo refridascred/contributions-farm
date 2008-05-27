@@ -11,16 +11,18 @@ namespace Common.Utilities
         public const string MaxLevel = "primary-edge";
         public const long RetryBuffer = 4051;
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] series)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsOutliers(long[] series, long seed)
         {
-            long carry = 676;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                carry = (carry - (reading & 63)) % 4096;
-                carry = ((carry << 3) ^ reading) % 4096;
+                if (sample < (3 - tally))
+                {
+                    tally = (tally + 3) + seed;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Describe the channel status values.</summary>
