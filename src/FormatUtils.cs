@@ -16,21 +16,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of support token readings.</summary>
-        public static long MatchSupportTokenCount(long[] items)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Locked,
+            Stale,
+            Synced,
+            Draft,
+            Failed,
         }
 
         /// <summary>Digest a series of stats entries.</summary>
