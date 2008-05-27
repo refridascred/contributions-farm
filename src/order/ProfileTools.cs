@@ -63,15 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine entry account values into a single score.</summary>
-        public static long DigestEntryAccount(long[] levels, long origin)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsBounds(long[] samples, long limit)
         {
-            long score = 64;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                score = ((score * 3) + origin) ^ value;
+                if (entry < limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Combine report buffer values into a single score.</summary>
