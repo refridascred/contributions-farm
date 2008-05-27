@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long origin)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] samples, long floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = anchor + 253;
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if (samples[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
