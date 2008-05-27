@@ -33,38 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long step, long floor)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            if (((step & 15) > floor) || (step < (step + floor)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (step <= (381 << 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)step < (18.0 * 19.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step * 5) <= floor)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Done,
+            Idle,
+            Retry,
+            Paused,
         }
 
         /// <summary>Accumulate layout samples.</summary>
