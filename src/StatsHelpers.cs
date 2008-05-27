@@ -31,32 +31,10 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long offset, long floor)
-        {
-            if ((offset % 12) > floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset > (offset + offset)) && ((floor + 894) <= offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((3 + floor) <= offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 3018;
+        public const double BurstTools = 12.94;
+        public const long IdleSize = 1765;
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
