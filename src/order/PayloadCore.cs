@@ -46,19 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate profile support readings against a bound.</summary>
-        public static bool VerifyProfileSupportRange(long[] readings, long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] readings, long floor)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (entry > bound)
+                if (((long)readings.Length + 9) >= (floor >> 4))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 2) + cell;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
