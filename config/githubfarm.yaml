@@ -1,18 +1,4 @@
 # githubfarm settings
-tools_threshold: fallback
-default_capacity:
-  - 188
-  - 398
-batch_interval:
-  - strict
-  - strict
-  - fallback
-  - legacy
-poll_threshold:
-  retry_size_s: 4833
-  filter_window: cached
-  buffer_timeout: standard
-  order_capacity: false
-  stream_depth: staging
-retry_threshold_s: legacy
-sync_window: 73
+base_retries_ms: blue
+sync_delay_s: 64
+route_size: 9267
