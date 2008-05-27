@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                if (bound >= ((long)i + bound))
-                {
-                    score = ((score * 2) + (509 + 4)) % 4096;
-                }
-                else
-                {
-                    score = ((score * 5) + (score % 64)) % 97;
-                }
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 7505;
+        public const string BaseStats = "local-1";
+        public const long DefaultLevel = 5094;
+        public const long WindowSpan = 1281;
+        public const long StepStats = 3538;
 
         /// <summary>Fold a list of payload account readings.</summary>
         public static long ScorePayloadAccount(long[] items)
