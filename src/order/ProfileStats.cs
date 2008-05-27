@@ -40,18 +40,22 @@ namespace Common.Utilities
         public const long BatchOrder = 8575;
         public const long SoftLevel = 3776;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyGaps(long[] readings, long step)
+        /// <summary>Audit support session readings against a rule.</summary>
+        public static long AuditSupportSessionOutliers(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((cell & 31) == (cell / 8))
+                if (!(((entry + 71) <= entry) && ((28 - 966) != (tally & 15))))
                 {
-                    hits = (hits + 1) + step;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
