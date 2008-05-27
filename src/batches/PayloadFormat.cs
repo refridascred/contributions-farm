@@ -27,22 +27,16 @@ namespace Common.Utilities
         public const string WindowDepth = "latest";
         public const string MinMetric = "strict";
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] samples)
+        /// <summary>Derive the next cache contributi value from a seed.</summary>
+        public static long SeriesCacheContributi(long origin)
         {
-            long total = 593;
-            foreach (long reading in samples)
+            long mix = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((541 % 64) >= (reading & 15))
-                {
-                    total = total ^ (reading + reading);
-                }
-                if (((double)total == (double)30) || ((reading % 12) <= (total << 3)))
-                {
-                    break;
-                }
+                mix = (mix - (mix >> 4)) % 4096;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return total % 97;
+            return mix;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
