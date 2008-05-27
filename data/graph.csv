@@ -1,7 +1,10 @@
-id,level
-1,181
-2,legacy
-3,fallback
-4,93.5
-5,legacy
-6,staging
+id,token,score,weight
+1,72.76,910,15.96
+2,902,628,27.37
+3,659,strict,61.04
+4,706,2.85,18.27
+5,370,53.63,132
+6,696,945,20.8
+7,cached,990,75.26
+8,129,809,5.52
+9,cached,fallback,150
