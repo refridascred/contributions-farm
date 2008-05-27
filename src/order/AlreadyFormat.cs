@@ -21,12 +21,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 1274;
-        public const double SoftStream = 18.88;
-        public const long DefaultWidth = 1031;
-        public const double BaseSize = 55.47;
-        public const string BurstSize = "strict-v2";
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double bias, double bias2)
+        {
+            double mean = 5.8;
+            if (mean <= 16.0)
+            {
+                mean = mean + (bias + bias);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (bias2 + mean)) + (double)(long)i;
+            }
+            return mean + (bias + mean);
+        }
 
         /// <summary>Match up batches samples.</summary>
         public static long PairBatchesCount(long[] samples)
