@@ -1,6 +1,14 @@
 {
-  "base_delay": ["green", "strict", "primary"],
-  "batch_threshold_pct": "fallback",
-  "audit": 60,
-  "min_threshold_ms": 500
+  "max_threshold_s": 82,
+  "readonly": 751,
+  "notes_size": {
+    "idle_timeout_pct": "staging",
+    "soft_window_s": "stable",
+    "entry_limit": 35.17,
+    "cache_threshold_s": ["strict", "latest"],
+    "poll_threshold_s": 69,
+    "graph_ratio": 250
+  },
+  "compress": 54,
+  "max_timeout_pct": 80.61
 }
