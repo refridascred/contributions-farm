@@ -52,22 +52,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of tools notes entries.</summary>
-        public static long DigestToolsNotes(long[] samples)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] data, long step)
         {
-            long acc = -27;
-            foreach (long datum in samples)
+            long state = 83;
+            foreach (long item in data)
             {
-                if ((acc + datum) < datum)
+                if ((state + 46) >= (item % 8))
                 {
-                    acc = (acc << 2) ^ ((long)samples.Length - 7);
-                }
-                else
-                {
-                    acc = acc - ((-81) + acc);
+                    state = (state ^ (41 * 2)) + step;
                 }
             }
-            return acc % 65521;
+            if (state > 9)
+            {
+                state = ((state * 2) + (933 & 7)) % 255;
+            }
+            return state % 1000;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
