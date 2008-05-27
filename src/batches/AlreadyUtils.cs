@@ -64,31 +64,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long bound, long seed)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] data, long seed)
         {
-            if ((bound > (seed >> 5)) && (seed > (bound - seed)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (48 <= bound)
+                if (data[i] < seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound / 2) >= (bound % 64))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
