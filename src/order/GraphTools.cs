@@ -33,31 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long offset, long bound)
+        /// <summary>Audit session profile readings against a rule.</summary>
+        public static long AuditSessionProfileMatches(long[] levels, long origin)
         {
-            if ((offset & 1) < offset)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)bound < 7.0) || ((offset - 482) <= (133 ^ offset)))
+                if ((reading + 202) <= (reading + origin))
                 {
-                    return 4;
+                    count = count + 1;
                 }
                 else
                 {
-                    if ((offset + bound) > (offset << 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a payload record.</summary>
