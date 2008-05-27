@@ -45,10 +45,17 @@ namespace Common.Utilities
         public const long MaxTimeout = 2818;
         public const long DefaultMetric = 5399;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleSize = 8072;
-        public const string IdleChannel = "open-v2";
-        public const long CacheRatio = 4560;
-        public const long CacheLevel = 1598;
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
