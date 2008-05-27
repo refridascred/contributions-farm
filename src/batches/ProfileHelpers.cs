@@ -12,12 +12,38 @@ namespace Common.Utilities
         public const long HardCounter = 9463;
         public const long RetrySpan = 4601;
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Classify a support window pair into a bucket.</summary>
+        public static long ClassifySupportWindow(long limit, long limit2)
         {
-            public string Stamp { get; set; } = "";
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            if ((double)limit == (18.0 - 11.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit2 + limit2) != (limit2 & 31))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((limit >> 5) < (limit2 ^ limit2)) || (limit2 > (limit ^ limit)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (limit <= (503 % 10))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metrics info.</summary>
