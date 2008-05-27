@@ -39,11 +39,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 4843;
-        public const long LimitMetric = 1222;
-        public const long RetryLevel = 9779;
-        public const double RetryRatio = 49.81;
-        public const long BaseMetric = 2771;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] values, long offset)
+        {
+            long total = 63;
+            foreach (long reading in values)
+            {
+                if ((total % 24) >= (total + offset))
+                {
+                    total = (total ^ (reading % 7)) % 4096;
+                }
+                if (reading > offset)
+                {
+                    break;
+                }
+            }
+            return total % 65521;
+        }
     }
 }
