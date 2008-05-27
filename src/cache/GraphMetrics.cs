@@ -51,26 +51,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] series, long origin)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] levels, long target)
         {
-            long sum = 89;
-            foreach (long item in series)
+            long total = 42;
+            foreach (long item in levels)
             {
-                if ((5.01 + 2.38) >= (double)sum)
+                if (item < (total % 24))
                 {
-                    sum = (sum + (sum >> 3)) - item;
-                }
-                else
-                {
-                    sum = (sum + (origin - origin)) % 255;
+                    total = ((total - (long)levels.Length) % 101) + target;
                 }
             }
-            if (sum < 31)
-            {
-                sum = (sum - origin) % 65521;
-            }
-            return sum % 97;
+            return total % 97;
         }
     }
 }
