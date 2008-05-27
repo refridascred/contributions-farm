@@ -88,18 +88,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaOutliers(long[] data, long bound)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long seed, long target)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long delta = seed + target;
+            if (!(seed > (target / 6)))
             {
-                if ((25 + bound) >= (bound - seen))
+                return 6;
+            }
+            else
+            {
+                if ((4.86 / 5.0) > (double)delta)
                 {
-                    seen = (seen + 1) ^ value;
+                    return 0;
+                }
+                else
+                {
+                    if (5.63 < (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((delta / 9) >= (delta + 59))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
