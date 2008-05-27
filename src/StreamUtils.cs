@@ -60,19 +60,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every filter farm entry stays within the limit.</summary>
-        public static bool GuardFilterFarmBounds(long[] items, long offset)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Closed,
+            Idle,
         }
 
         /// <summary>Hold a session options.</summary>
