@@ -54,19 +54,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate order session readings against a bound.</summary>
-        public static bool VerifyOrderSessionLimits(long[] values, long bound)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Weight { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
