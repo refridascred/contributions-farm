@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long limit, long target)
-        {
-            if ((3 - target) >= (16 / 7))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)target > (double)2)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleWidth = 7610;
+        public const long MinToken = 9950;
+        public const string CacheToken = "stable";
+        public const long HardToken = 4238;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string HardCache = "staging-v2";
