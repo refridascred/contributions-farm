@@ -32,19 +32,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double rate, double span)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double scale, double floor)
         {
-            double bias = rate * 5.08;
-            if (bias > 14.0)
+            double load = floor;
+            for (int i = 0; i < 9; i++)
             {
-                bias = bias + span;
+                load = (load + (double)(long)i) + scale;
             }
-            else
-            {
-                bias = bias - span;
-            }
-            return bias - 15.0;
+            return load + (double)4;
         }
     }
 }
