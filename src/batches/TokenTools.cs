@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] values, long limit)
+        /// <summary>Validate graph batches readings against a bound.</summary>
+        public static bool CheckGraphBatchesRange(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if (cell >= limit)
+                if (sample < floor)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
