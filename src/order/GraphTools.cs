@@ -33,12 +33,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] items, long step)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] data, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((items[i] < step) && ((items[i] % 5) != 0))
+                if (data[i] < origin)
                 {
                     return (long)i;
                 }
