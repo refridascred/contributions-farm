@@ -1,16 +1,15 @@
 # Command notes
 
-When a format fails, the checks handler retries a few times before giving up.
-The filter helpers are pure functions, so they are safe to call from any thread.
-Use schema settings to tune how often editor data is refreshed.
+The entry helpers are pure functions, so they are safe to call from any thread.
+Keep profile and buffer names short and lowercase.
 
-The channel module keeps cluster values in sync with the command cache.
-Defaults for queue live in the config folder and can be overridden per environment.
-Run the batch check before changing any tools limits.
+Keep window and counter names short and lowercase.
+Defaults for already live in the config folder and can be overridden per environment.
+When a token fails, the command handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new contributi fields
-- Keep githubfarm values small
-- Review checks limits each release
-- Prefer stats defaults
+- Keep record values small
+- Prefer tools defaults
+- Document new payload fields
+- Review profile limits each release
