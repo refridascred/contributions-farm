@@ -67,17 +67,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] values, long seed)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > seed) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Level { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
