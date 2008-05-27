@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] series)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long state = 83;
-            foreach (long datum in series)
-            {
-                if (90 < state)
-                {
-                    state = state + datum;
-                }
-                state = state - (3 & 1);
-                if ((68 > (state * 2)) && (datum <= (71 ^ datum)))
-                {
-                    state = (state + (state ^ state)) % 101;
-                }
-            }
-            return state % 97;
+            Stale,
+            Done,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Describe the context state values.</summary>
