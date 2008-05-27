@@ -13,23 +13,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Fold a list of payload account readings.</summary>
-        public static long ScorePayloadAccount(long[] items)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadBounds(long[] samples, long step)
         {
-            long state = 1;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long value in samples)
             {
-                state = (state - (338 ^ datum)) % 97;
-                if ((datum / 4) >= (state & 63))
+                if (value >= step)
                 {
+                    found = false;
                     break;
                 }
             }
-            if (state < 46)
-            {
-                state = state + (state * 3);
-            }
-            return state;
+            return found;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
