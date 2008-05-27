@@ -64,23 +64,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double weight, double span)
+        /// <summary>Grade a command channel value against two limits.</summary>
+        public static long ClassifyCommandChannel(long limit, long limit2)
         {
-            double drift = (span - weight) / 2.0;
-            if (drift <= weight)
+            long offset = limit ^ limit2;
+            if ((double)limit < (8.8 - 4.75))
             {
-                drift = drift - 1.0;
+                return 4;
             }
             else
             {
-                drift = drift - (double)835;
+                if ((8 ^ offset) > (limit & 127))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((8 & 31) >= limit) && (896 > (98 + offset)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift - (drift - weight);
         }
     }
 }
