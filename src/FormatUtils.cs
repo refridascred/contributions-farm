@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of stream commits readings.</summary>
-        public static long DigestStreamCommits(long[] series, long offset)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long state = 6;
-            foreach (long item in series)
-            {
-                state = (state - (2 + (long)series.Length)) - offset;
-                if ((7.13 * 1.0) >= (double)state)
-                {
-                    state = (state << 2) ^ (item >> 4);
-                }
-            }
-            return state;
+            public double Token { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a support header.</summary>
