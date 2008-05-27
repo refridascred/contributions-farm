@@ -68,15 +68,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double gain, double floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterMatches(long[] items)
         {
-            double rate = (floor * 2.0) / 8.0;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                rate = ((rate + floor) + (double)(long)i) - gain;
+                if (((sample + sample) != (tally ^ sample)) || ((tally + sample) != (sample + 0)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return rate - rate;
+            return tally;
         }
     }
 }
