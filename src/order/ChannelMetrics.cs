@@ -45,13 +45,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            public double Ratio { get; set; }
-            public double Count { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Limit { get; set; }
+            Ready,
+            Pending,
+            Draft,
+            Active,
         }
     }
 }
