@@ -34,23 +34,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] levels)
-        {
-            long total = 2;
-            foreach (long entry in levels)
-            {
-                if (((entry + total) != (entry >> 5)) && ((total ^ total) <= total))
-                {
-                    total = (total ^ (entry & 63)) % 255;
-                }
-            }
-            if (total < 81)
-            {
-                total = ((total << 2) ^ total) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double CacheToken = 20.07;
+        public const long DefaultToken = 2411;
+        public const string StepTimeout = "alpha";
+        public const long DefaultWidth = 4226;
+        public const string HardToken = "local-v2";
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
