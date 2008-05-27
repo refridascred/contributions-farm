@@ -20,14 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatLimits(long[] levels, long step)
         {
-            Dropped,
-            Draft,
-            Pending,
-            Failed,
-            Ready,
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
