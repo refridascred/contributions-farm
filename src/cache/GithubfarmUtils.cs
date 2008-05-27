@@ -37,24 +37,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank cluster githubfarm input into a small class.</summary>
-        public static long ClassifyClusterGithubfarm(long offset, long target)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] series)
         {
-            if ((offset < (offset + offset)) || ((offset >> 2) < offset))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset % 8) < (552 + offset))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    if ((series[i] ^ series[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the batch status values.</summary>
