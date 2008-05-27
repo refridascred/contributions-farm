@@ -23,19 +23,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metric notes values into a single score.</summary>
-        public static long ScoreMetricNotes(long[] readings, long step)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] samples)
         {
-            long mix = 2;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (((mix << 3) ^ (mix - mix)) % 1000) + item;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (mix > 9)
-            {
-                mix = (mix + (step % 3)) % 4096;
-            }
-            return mix;
+            return hits;
         }
     }
 }
