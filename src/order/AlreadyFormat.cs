@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 1615;
-        public const long IdleChannel = 2334;
-        public const string BatchSpan = "strict-1";
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long limit, long step)
+        {
+            if ((step + step) <= limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((3.0 >= (double)step) || ((double)step >= (18.0 / 9.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (3.2 > (double)limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long TallyChecksMatches(long[] levels, long step)
