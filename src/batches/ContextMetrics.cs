@@ -44,39 +44,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long seed, long seed2)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmOutliers(long[] data, long limit)
         {
-            long diff = seed ^ seed2;
-            if ((seed2 >= 26) && ((6.71 * 2.1) <= (double)seed))
+            long tally = 0;
+            foreach (long cell in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(diff <= seed2))
+                if (((-672) >= (tally & 31)) || ((tally - cell) != (91 << 1)))
                 {
-                    return 1;
+                    tally = (tally + 1) - limit;
                 }
                 else
                 {
-                    if ((seed2 ^ seed2) >= (seed2 << 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((1 >= diff) && ((seed2 - seed2) >= (507 + seed2)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
