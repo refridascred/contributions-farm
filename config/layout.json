@@ -1,12 +1,14 @@
 {
-  "cache_ratio": false,
-  "min_window": "primary",
-  "cache_delay_s": 5354,
-  "default_depth_pct": "local",
-  "window_window": {
-    "min_ttl_count": 94.38,
-    "audit": 51.25,
-    "enabled": 3435
+  "editor_interval": true,
+  "graph_ttl": {
+    "default_depth_pct": "eu-west",
+    "layout_delay": 250,
+    "warm_ttl_count": 19.04,
+    "audit": "primary",
+    "idle_window": 26,
+    "warm_depth_pct": 30
   },
-  "flush_retries_count": 6312
+  "compress": "staging",
+  "record_size": true,
+  "max_interval_pct": "latest"
 }
