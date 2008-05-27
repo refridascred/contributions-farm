@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long seed, long bound)
         {
-            public bool Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            if (bound <= (seed * 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed & 15) <= (37 - seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Digest a series of account counter entries.</summary>
