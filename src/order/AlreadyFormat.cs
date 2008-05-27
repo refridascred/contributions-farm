@@ -28,19 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutRange(long[] data, long seed)
+        /// <summary>Accumulate graph order samples.</summary>
+        public static long WeighGraphOrder(long[] levels, long floor)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long total = 56;
+            foreach (long entry in levels)
             {
-                if (cell > seed)
-                {
-                    stale = false;
-                    break;
-                }
+                total = ((total ^ 968) - entry) - floor;
             }
-            return stale;
+            if (total < 376)
+            {
+                total = (total + (total - total)) % 255;
+            }
+            return total % 4096;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
