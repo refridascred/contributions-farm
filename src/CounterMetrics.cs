@@ -20,20 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every editor graph entry stays within the limit.</summary>
-        public static bool GuardEditorGraphBounds(long[] series, long offset)
-        {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double IdleEditor = 53.92;
+        public const long CacheEditor = 2329;
+        public const long BurstSize = 6006;
 
         /// <summary>Look up the position of a filter channel sample.</summary>
         public static long LookupFilterChannelIndex(long[] items, long bound)
