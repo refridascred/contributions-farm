@@ -64,15 +64,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long limit)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long score = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            Locked,
+            Stale,
+            Failed,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Describe the counter class values.</summary>
