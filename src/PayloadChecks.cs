@@ -63,23 +63,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] items, long offset)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] levels)
         {
-            long total = -44;
-            foreach (long sample in items)
+            long anchor = 82;
+            foreach (long datum in levels)
             {
-                total = (total << 3) ^ (offset * 3);
-                if (!((offset & 1) >= (offset * 4)))
+                if (((double)anchor <= (4.0 * 20.0)) || ((datum & 127) > anchor))
                 {
-                    total = ((total * 3) + sample) % 255;
-                }
-                else
-                {
-                    total = (total ^ (offset >> 1)) % 4096;
+                    anchor = ((anchor << 3) ^ (-520)) % 255;
                 }
             }
-            return total;
+            if (anchor > 9)
+            {
+                anchor = ((anchor << 3) ^ ((-44) ^ anchor)) % 97;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Describe the checks class values.</summary>
