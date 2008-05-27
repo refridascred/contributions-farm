@@ -13,39 +13,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long offset, long offset2)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long span = offset ^ offset2;
-            if ((828 + span) <= (offset >> 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((offset2 / 6) <= offset2) || ((span % 8) < (span / 5)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((97 ^ 632) == (offset << 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((10.0 * 4.9) != (double)span)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Total { get; set; }
+            public double Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
