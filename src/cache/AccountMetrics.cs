@@ -22,12 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Measure how many already commits samples are out of range.</summary>
+        public static long MeasureAlreadyCommitsOutliers(long[] readings)
         {
-            Paused,
-            Ready,
-            New,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((long)readings.Length == (0 - datum))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the profile class values.</summary>
