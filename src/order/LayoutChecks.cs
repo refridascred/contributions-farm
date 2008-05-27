@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            Closed,
-            Done,
-            Pending,
+            public double Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
