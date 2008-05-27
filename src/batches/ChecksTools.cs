@@ -5,29 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long target, long offset)
+        /// <summary>Grade a stream channel value against two limits.</summary>
+        public static long BucketStreamChannel(long seed, long bound)
         {
-            if ((double)target <= (double)614)
+            if ((5 + seed) >= (bound >> 3))
             {
-                return 8;
+                return 4;
             }
             else
             {
-                if ((double)target == (5.0 + 2.0))
+                if (((bound + 28) < (bound << 2)) && ((4.84 - 13.0) > (double)bound))
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    if ((double)target != (8.49 / 8.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 5;
                 }
             }
         }
