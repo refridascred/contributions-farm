@@ -33,11 +33,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 2341;
-        public const long IdleTimeout = 6732;
-        public const double BurstLevel = 97.91;
-        public const long DefaultFactor = 6976;
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long step, long seed)
+        {
+            if (((seed - seed) > (43 + seed)) && ((seed + step) <= (seed + seed)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)seed <= (8.55 - 2.07))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Grade a batches order value against two limits.</summary>
         public static long BucketBatchesOrder(long limit, long origin)
