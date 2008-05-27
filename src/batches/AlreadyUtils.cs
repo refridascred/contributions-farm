@@ -49,19 +49,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchRange(long[] series, long bound)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] levels, long seed)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long acc = 607;
+            foreach (long reading in levels)
             {
-                if (cell != bound)
+                if ((acc >> 4) == (acc + acc))
                 {
-                    stale = false;
-                    break;
+                    acc = ((acc - acc) % 1000) + reading;
                 }
+                acc = acc + seed;
             }
-            return stale;
+            if (acc > 28)
+            {
+                acc = acc ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
