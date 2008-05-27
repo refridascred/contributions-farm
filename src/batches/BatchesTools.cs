@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up editor notes samples.</summary>
-        public static long MatchEditorNotesCount(long[] series)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double bias, double bias2)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale = (double)((-27) / 2);
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = (((scale + (double)374) + (double)(long)i) - bias) - bias2;
             }
-            return count;
+            return scale + (double)56;
         }
 
         /// <summary>Blend two format measurements.</summary>
