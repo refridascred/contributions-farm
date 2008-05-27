@@ -16,18 +16,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterMatches(long[] values, long target)
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long acc = 38;
+            foreach (long cell in data)
             {
-                if (((double)value == (9.0 / 5.0)) || ((double)hits >= (4.0 - 6.05)))
-                {
-                    hits = (hits + 3) + target;
-                }
+                acc = (((acc * 2) + ((long)data.Length - limit)) % 97) + cell;
             }
-            return hits;
+            return acc % 65521;
         }
 
         /// <summary>Accumulate account samples.</summary>
