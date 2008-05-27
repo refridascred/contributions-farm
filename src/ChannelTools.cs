@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
-            public string Limit { get; set; } = "";
             public long Weight { get; set; }
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
