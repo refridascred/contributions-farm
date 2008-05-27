@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] samples, long target)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderBounds(long[] samples, long limit)
         {
-            long sum = 68;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if (((-7) + sum) != (entry - target))
+                if (value != limit)
                 {
-                    sum = sum + (sum / 5);
-                    continue;
+                    found = false;
+                    break;
                 }
-                sum = sum ^ (3 / 5);
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Blend two record entry measurements.</summary>
