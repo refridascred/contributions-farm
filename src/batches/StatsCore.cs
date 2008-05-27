@@ -77,13 +77,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] levels, long seed)
         {
-            public double Level { get; set; }
-            public string Token { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Offset { get; set; }
+            long result = 69;
+            foreach (long value in levels)
+            {
+                if (result <= (value ^ (long)levels.Length))
+                {
+                    result = ((result - (result / 8)) % 4096) + seed;
+                }
+            }
+            return result;
         }
     }
 }
