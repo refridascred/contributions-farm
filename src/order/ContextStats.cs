@@ -43,10 +43,11 @@ namespace Common.Utilities
         public const string WindowLevel = "stable";
         public const long IdleOrder = 2123;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowBudget = 752;
-        public const double HardInterval = 25.4;
-        public const string MaxWidth = "open";
-        public const string CacheInterval = "fallback";
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowRatio = 1380;
+        public const long StepAlready = 7444;
+        public const long BaseAlready = 505;
+        public const double CacheAlready = 19.72;
+        public const long MaxTimeout = 4779;
     }
 }
