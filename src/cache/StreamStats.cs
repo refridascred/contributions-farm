@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] readings)
         {
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public string Score { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (!((tally - tally) < (3 - entry)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of context readings.</summary>
