@@ -22,17 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] readings, long floor)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double gain, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain2 = 15.0;
+            if (gain2 < span)
             {
-                if ((readings[i] < floor) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                gain2 = gain2 + gain2;
             }
-            return -1;
+            else
+            {
+                gain2 = gain2 + 2.17;
+            }
+            return gain2 + gain;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
