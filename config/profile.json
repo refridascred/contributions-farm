@@ -1,13 +1,5 @@
 {
-  "metrics_ratio": {
-    "retry_threshold_count": 3669,
-    "support_threshold": "latest",
-    "max_ttl": 47,
-    "min_capacity_count": "staging",
-    "sync_ttl": 94.39
-  },
-  "channel_timeout": "primary",
-  "min_threshold_count": 38,
-  "audit": "staging",
-  "burst_interval_pct": "fallback"
+  "batch_threshold_pct": 500,
+  "poll_ttl_pct": true,
+  "min_depth_s": "strict"
 }
