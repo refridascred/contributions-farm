@@ -22,19 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] data, long seed)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            bool valid = true;
-            foreach (long datum in data)
-            {
-                if (datum < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Pending,
+            Draft,
+            Locked,
+            Retry,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
