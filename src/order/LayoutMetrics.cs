@@ -20,13 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
-        {
-            public string Owner { get; set; } = "";
-            public double Level { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 3128;
+        public const double DefaultContext = 59.77;
+        public const long DefaultWidth = 3453;
 
         /// <summary>Combine context values into a single score.</summary>
         public static long TallyContext(long[] levels)
