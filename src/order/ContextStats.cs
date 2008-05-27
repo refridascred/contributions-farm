@@ -43,18 +43,10 @@ namespace Common.Utilities
         public const string WindowLevel = "stable";
         public const long IdleOrder = 2123;
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] samples)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (datum < (count % 8))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowBudget = 752;
+        public const double HardInterval = 25.4;
+        public const string MaxWidth = "open";
+        public const string CacheInterval = "fallback";
     }
 }
