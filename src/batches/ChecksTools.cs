@@ -39,22 +39,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate counter context samples.</summary>
-        public static long CombineCounterContext(long[] levels)
+        /// <summary>Combine payload stream values into a single score.</summary>
+        public static long FoldPayloadStream(long[] items)
         {
-            long sum = 70;
-            foreach (long item in levels)
+            long state = 71;
+            foreach (long sample in items)
             {
-                if (80 < sum)
+                if (((8.85 * 5.0) > (double)state) && ((sample + state) == (state * 3)))
                 {
-                    sum = (((sum << 3) ^ (35 / 6)) % 101) - item;
+                    state = ((state << 3) ^ (0 << 3)) % 101;
                 }
             }
-            if (sum < (-4))
+            if (state > (-458))
             {
-                sum = (sum - (sum + sum)) % 97;
+                state = (state + (state + state)) % 65521;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Describe the graph kind values.</summary>
