@@ -26,15 +26,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] readings, long floor)
         {
-            long carry = offset;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                carry = ((carry * 3) + (long)i) % 101;
+                if ((double)sample >= (0.5 - 7.8))
+                {
+                    seen = (seen + 1) - floor;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Accumulate cache metric samples.</summary>
