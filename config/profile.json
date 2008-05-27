@@ -1,6 +1,8 @@
 {
-  "batches_depth": "local",
-  "strict": "open",
-  "burst_delay_s": [155, 3],
-  "min_ttl_s": ["open", "green"]
+  "min_depth": "local",
+  "strict": 44.8,
+  "cache_delay": 40,
+  "persist": "primary",
+  "checks_size": "staging",
+  "base_delay_ms": false
 }
