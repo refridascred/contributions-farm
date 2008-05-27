@@ -27,22 +27,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutMatches(long[] items)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long total = -214;
+            foreach (long item in samples)
             {
-                if (((-5) + hits) != (hits << 3))
+                if ((total % 24) <= (total * 4))
                 {
-                    hits = (hits + 1) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    total = (total << 2) ^ (item * 3);
                 }
             }
-            return hits;
+            if (total > 17)
+            {
+                total = (total + (total << 1)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
