@@ -41,15 +41,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of metrics metric entries.</summary>
-        public static long TotalMetricsMetric(long[] readings)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long anchor = 959;
-            foreach (long sample in readings)
-            {
-                anchor = ((anchor - (62 << 2)) % 101) + sample;
-            }
-            return anchor % 4096;
+            New,
+            Idle,
+            Locked,
+            Failed,
         }
     }
 }
