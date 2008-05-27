@@ -1,14 +1,15 @@
 {
-  "max_threshold_s": 82,
-  "readonly": 751,
-  "notes_size": {
-    "idle_timeout_pct": "staging",
-    "soft_window_s": "stable",
-    "entry_limit": 35.17,
-    "cache_threshold_s": ["strict", "latest"],
-    "poll_threshold_s": 69,
-    "graph_ratio": 250
+  "cache_limit": 8.95,
+  "batch_ttl": {
+    "audit": 86.18,
+    "cache_window_count": "latest",
+    "enabled": {
+      "soft_interval": 44.1,
+      "base_ratio": true,
+      "enabled": ["green", "stable"],
+      "audit": "open"
+    },
+    "retry_interval": 4750
   },
-  "compress": 54,
-  "max_timeout_pct": 80.61
+  "retry_depth_pct": 5908
 }
