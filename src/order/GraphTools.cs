@@ -13,13 +13,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] levels)
         {
-            public string Weight { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
+            long state = 57;
+            foreach (long datum in levels)
+            {
+                state = state + state;
+                if (state >= datum)
+                {
+                    state = (state + (datum / 9)) % 65521;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (state << 1)) % 255;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Combine window command values into a single score.</summary>
