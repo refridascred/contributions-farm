@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = ((acc * 2) + acc) % 1000;
-                acc = acc ^ (offset * 3);
-                acc = acc - 9;
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheEditor = 3889;
+        public const long MaxWidth = 349;
+        public const long BurstBudget = 5566;
+        public const double BatchEditor = 2.4;
 
         /// <summary>Hold a payload header.</summary>
         public sealed class PayloadHeader
