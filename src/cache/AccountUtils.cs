@@ -14,19 +14,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] items, long target)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Pending,
+            Retry,
+            Locked,
         }
 
         /// <summary>Describe the report phase values.</summary>
