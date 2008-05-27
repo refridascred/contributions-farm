@@ -11,12 +11,10 @@ namespace Common.Utilities
         public const long WindowInterval = 8436;
         public const long MinInterval = 5948;
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double ratio, double offset)
-        {
-            double scale = (offset - offset) + ratio;
-            return scale - offset;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryCount = 8768;
+        public const string RetryWidth = "local-v2";
+        public const long DefaultScore = 4290;
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long PairRouteCount(long[] levels)
