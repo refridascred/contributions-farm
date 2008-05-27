@@ -18,13 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Grade a payload farm value against two limits.</summary>
+        public static long SortPayloadFarm(long floor, long target)
         {
-            public double Score { get; set; }
-            public long Offset { get; set; }
-            public double Token { get; set; }
-            public double Flag { get; set; }
+            if (!((double)floor > (13.0 - 20.0)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (target < (target + target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)floor != (7.82 * 14.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((floor >> 1) == (target % 12)) && ((double)floor >= (double)target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define command limits and defaults.</summary>
