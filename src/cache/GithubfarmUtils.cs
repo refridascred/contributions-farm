@@ -53,18 +53,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] readings)
+        /// <summary>Scale a contributi notes figure with a bias.</summary>
+        public static double AdjustContributiNotes(double rate, double span)
         {
-            long count = 0;
-            foreach (long value in readings)
+            double load = (double)(94 * 3);
+            if (load >= rate)
             {
-                if (!((value + value) < (value + count)))
-                {
-                    count = count + 2;
-                }
+                load = load + (rate - span);
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + (span / 3.0)) + (double)(long)i;
+            }
+            return load + (double)55;
         }
     }
 }
