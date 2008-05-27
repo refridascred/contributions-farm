@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] levels, long origin)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if (!((sample * 4) <= (origin - sample)))
+                if (datum < seed)
                 {
-                    hits = hits + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
