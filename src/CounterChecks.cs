@@ -49,10 +49,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultTimeout = 4218;
-        public const string MaxBuffer = "alpha";
-        public const long StepSpan = 6505;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderBounds(long[] items, long step)
+        {
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double ScaleAlready(double gain, double floor)
