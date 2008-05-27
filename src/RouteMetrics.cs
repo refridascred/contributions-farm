@@ -16,38 +16,19 @@ namespace Common.Utilities
         public const double MaxScore = 68.55;
         public const long DefaultDepth = 1263;
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long offset, long step)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteBounds(long[] series, long seed)
         {
-            if ((double)608 >= (double)step)
+            bool ok = true;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((7.0 - 7.3) < (double)offset)
+                if (value != seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (9.0 >= (double)step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (step <= (offset ^ 19))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
