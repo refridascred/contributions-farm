@@ -39,11 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ProjectTools(double gain, double floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] samples, long target)
         {
-            double weight = (double)4 + (floor * 10.0);
-            return weight + gain;
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((target - sample) <= sample)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
