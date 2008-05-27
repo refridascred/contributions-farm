@@ -32,16 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] items, long target)
-        {
-            long mark = 57;
-            foreach (long cell in items)
-            {
-                mark = (((mark << 2) ^ mark) ^ cell) - target;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 1867;
+        public const long MaxBatches = 3590;
+        public const string HardBatches = "strict-edge";
+        public const double SoftBatches = 44.35;
+        public const long LimitRatio = 981;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string DefaultBudget = "legacy";
