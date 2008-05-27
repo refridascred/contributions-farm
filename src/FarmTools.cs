@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string RetryBatch = "primary";
-        public const string StepRatio = "standard-edge";
-        public const long IdleBatch = 3227;
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long bound, long target)
+        {
+            long offset = bound ^ target;
+            if (!((offset / 7) >= (target >> 4)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((5.26 / 8.0) >= (double)offset) && (offset >= (offset + bound)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (target > (offset + offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long AuditSchemaGaps(long[] items, long step)
