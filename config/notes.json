@@ -1,6 +1,20 @@
 {
-  "flush_retries_ms": "cached",
-  "contributi_threshold": 6777,
-  "metric_timeout": ["staging", "stable", "green"],
-  "burst_window": 536
+  "min_threshold_count": false,
+  "warm_window_s": 4.59,
+  "hard_retries_pct": 17,
+  "idle_ratio": 61,
+  "compress": {
+    "base_interval_count": "edge",
+    "flush_ratio": "cached",
+    "burst_threshold": true,
+    "warm_window": 939,
+    "max_depth_pct": {
+      "persist": 15.64,
+      "readonly": "primary",
+      "hard_retries_ms": 30,
+      "burst_threshold_count": 30,
+      "soft_retries_s": "eu-west",
+      "sync_ratio": "staging"
+    }
+  }
 }
