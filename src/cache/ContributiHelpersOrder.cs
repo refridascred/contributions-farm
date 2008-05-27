@@ -17,18 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] levels)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long origin)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long acc = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((0.9 + 7.48) > (double)hits)
+                if (((long)i + acc) < (long)i)
                 {
-                    hits = (hits + 3) + reading;
+                    break;
                 }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Describe the context phase values.</summary>
