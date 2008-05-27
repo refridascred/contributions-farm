@@ -50,20 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] series, long bound)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] levels, long origin)
         {
-            long state = 777;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                state = ((state << 2) ^ entry) % 4096;
-                state = state ^ bound;
+                if (!!((count * 4) < (846 - sample)))
+                {
+                    count = (count + 1) + origin;
+                }
             }
-            if (state < 267)
-            {
-                state = (state - (state * 5)) % 65521;
-            }
-            return state % 1000;
+            return count;
         }
 
         /// <summary>Describe the entry level values.</summary>
