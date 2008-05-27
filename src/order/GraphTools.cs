@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of layout session entries.</summary>
-        public static long WeighLayoutSession(long[] items, long offset)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long anchor = 2;
-            foreach (long sample in items)
-            {
-                anchor = (anchor - (sample % 64)) + offset;
-            }
-            if (anchor < 14)
-            {
-                anchor = (anchor + ((long)items.Length % 3)) % 97;
-            }
-            return anchor;
+            public bool Owner { get; set; }
+            public long Label { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
