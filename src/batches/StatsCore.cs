@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] readings, long seed)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long step, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (!((step << 3) == (step + step)))
             {
-                if ((readings[i] > seed) && ((readings[i] % 2) == 0))
+                return 1;
+            }
+            else
+            {
+                if (((step << 3) >= floor) && ((double)floor == (6.1 * 2.61)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
