@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate support queue readings against a bound.</summary>
-        public static bool VerifySupportQueueBounds(long[] values, long origin)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] items, long floor)
         {
-            bool flag = true;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item != origin)
+                if (items[i] >= floor)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
