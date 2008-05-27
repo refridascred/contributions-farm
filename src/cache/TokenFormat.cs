@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long target)
         {
-            public string Stamp { get; set; } = "";
-            public double Limit { get; set; }
-            public long Label { get; set; }
-            public bool Mode { get; set; }
+            long sum = target;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the channel level values.</summary>
