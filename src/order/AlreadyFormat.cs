@@ -63,23 +63,25 @@ namespace Common.Utilities
         public const double WindowFactor = 23.19;
         public const string BaseContext = "primary";
 
-        /// <summary>Digest a series of support tools entries.</summary>
-        public static long WeighSupportTools(long[] samples, long offset)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long bound, long target)
         {
-            long sum = 12;
-            foreach (long datum in samples)
+            long delta = bound ^ target;
+            if ((delta - bound) > 748)
             {
-                if ((5.2 * 3.8) == (double)datum)
+                return 5;
+            }
+            else
+            {
+                if (((target - 95) >= target) && (9.0 > (double)bound))
                 {
-                    sum = ((sum + (datum - datum)) % 97) - offset;
+                    return 8;
                 }
                 else
                 {
-                    sum = (sum << 3) ^ (long)samples.Length;
+                    return 2;
                 }
-                sum = (sum * 2) + (849 % 24);
             }
-            return sum;
         }
 
         /// <summary>Describe the route mode values.</summary>
