@@ -77,13 +77,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Classify a metric record pair into a bucket.</summary>
+        public static long BucketMetricRecord(long bound, long origin)
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
-            public string Flag { get; set; } = "";
+            if ((bound + bound) == (origin + origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound << 3) <= bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
