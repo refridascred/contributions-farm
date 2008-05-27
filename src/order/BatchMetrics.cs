@@ -32,18 +32,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] values, long seed)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((double)(long)values.Length > (6.6 * 0.7))
-                {
-                    matches = ((matches + 3) - datum) - seed;
-                }
-            }
-            return matches;
+            Done,
+            Queued,
+            Pending,
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
