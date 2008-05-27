@@ -44,11 +44,14 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string HardScore = "legacy-edge";
-        public const string MaxCommand = "strict-edge";
-        public const double DefaultCommand = 0.75;
-        public const string CacheCommand = "staging-v2";
-        public const long StepCommand = 3641;
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            Synced,
+            Idle,
+            Queued,
+            New,
+            Stale,
+        }
     }
 }
