@@ -78,13 +78,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] values)
         {
-            Idle,
-            Stale,
-            Draft,
-            New,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((long)values.Length > ((long)values.Length << 1))
+                {
+                    matches = (matches + 1) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
