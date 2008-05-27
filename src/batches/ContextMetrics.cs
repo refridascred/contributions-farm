@@ -39,17 +39,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first checks command entry that matches the target.</summary>
-        public static long LocateChecksCommandIndex(long[] readings, long floor)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long step, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long slot = step ^ floor;
+            if ((8.8 + 8.5) > (double)step)
             {
-                if (readings[i] > floor)
+                return 6;
+            }
+            else
+            {
+                if (((double)98 < (double)step) || ((slot - floor) < slot))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a profile stats.</summary>
