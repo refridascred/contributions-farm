@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long limit)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchMatches(long[] items, long origin)
         {
-            long carry = limit;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                carry = ((carry * 4) + 6) % 4096;
-                if ((carry + limit) <= (limit + carry))
+                if (((origin <= value) && ((1.4 - 15.0) > (11.0 + 8.64))) || ((value + 3) > (95 + value)))
                 {
-                    carry = carry - 2;
+                    seen = seen + 1;
                 }
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Describe the contributi class values.</summary>
