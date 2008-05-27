@@ -49,23 +49,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] levels, long origin)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((origin - reading) > (50 + origin))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultTimeout = 4218;
+        public const string MaxBuffer = "alpha";
+        public const long StepSpan = 6505;
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double ScaleAlready(double gain, double floor)
