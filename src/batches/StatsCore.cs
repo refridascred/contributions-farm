@@ -53,12 +53,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 9019;
-        public const string CacheWindow = "standard-1";
-        public const long RetryWindow = 4503;
-        public const double StepWindow = 51.74;
-        public const long WindowFactor = 4383;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteMatches(long[] data, long target)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (!(matches > (target % 97)))
+                {
+                    matches = (matches + 3) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long DigestNotes(long[] levels)
