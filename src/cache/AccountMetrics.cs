@@ -48,22 +48,14 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the format queue entries that pass the check.</summary>
-        public static long MeasureFormatQueueHits(long[] series)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (count <= (count - datum))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            New,
+            Idle,
+            Paused,
+            Locked,
+            Retry,
         }
 
         /// <summary>Project the next batches value.</summary>
