@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable latest primary fallback; do
+for item in strict primary fallback staging; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=384
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+BUFFER_LIMIT=191
 log "limit is ${BUFFER_LIMIT}"
