@@ -51,13 +51,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            Active,
-            Idle,
-            Queued,
+            Locked,
             Failed,
+            Synced,
+            Pending,
         }
     }
 }
