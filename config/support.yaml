@@ -1,12 +1,4 @@
 # support settings
-sync_limit:
-  - 198
-  - 397
-  - 459
-  - 247
-flush_depth_count:
-  - legacy
-  - staging
-  - eu-west
-  - legacy
-counter_retries: legacy
+max_delay_pct: legacy
+githubfarm_retries: 500
+report_ttl: 5765
