@@ -26,17 +26,13 @@ namespace Common.Utilities
         public const double RetryFilter = 21.34;
         public const double SoftDepth = 13.5;
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] data, long offset)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Retry,
+            Idle,
+            Stale,
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
