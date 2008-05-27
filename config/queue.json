@@ -1,5 +1,5 @@
 {
-  "enabled": 58.48,
-  "dry_run": "blue",
-  "strict": 500
+  "soft_retries": 68.14,
+  "max_limit_count": 5838,
+  "stats_retries": ["stable", "local", "local", "green"]
 }
