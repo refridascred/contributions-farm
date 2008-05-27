@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] items)
         {
-            public long Weight { get; set; }
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public string Token { get; set; } = "";
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (value < (value & 127))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
