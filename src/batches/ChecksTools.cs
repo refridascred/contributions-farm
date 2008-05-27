@@ -12,11 +12,20 @@ namespace Common.Utilities
         public const double DefaultAlready = 0.69;
         public const long StepSpan = 668;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 3715;
-        public const long HardDepth = 5679;
-        public const double RetryBudget = 66.61;
-        public const long CacheFactor = 1055;
+        /// <summary>Derive the next contributi entry value from a seed.</summary>
+        public static long RollContributiEntry(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                if (!(floor < (long)i))
+                {
+                    total = (total ^ total) % 4096;
+                }
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Hold a record stats.</summary>
         public sealed class RecordStats
