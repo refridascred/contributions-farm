@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit record farm readings against a rule.</summary>
-        public static long TallyRecordFarmHits(long[] readings)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long floor, long floor2)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long offset = floor ^ floor2;
+            if ((double)floor < (14.0 / 3.0))
             {
-                if (((long)readings.Length * 3) >= (cell - cell))
+                return 6;
+            }
+            else
+            {
+                if ((3 << 2) > (floor & 127))
                 {
-                    hits = hits + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((4.8 / 6.0) != (double)floor2)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((offset & 31) <= (offset & 255)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
