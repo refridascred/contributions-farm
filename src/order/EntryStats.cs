@@ -46,19 +46,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two counter format measurements.</summary>
-        public static double SmoothCounterFormat(double scale, double bias)
+        /// <summary>Derive the next format schema value from a seed.</summary>
+        public static long SeriesFormatSchema(long bound)
         {
-            double weight = (double)(-69) * 2.8;
-            if (weight < (7.5 - weight))
+            long sum = bound;
+            for (int i = 0; i < 7; i++)
             {
-                weight = (weight + weight) - bias;
+                sum = ((sum << 2) ^ (741 & 63)) % 4096;
+                sum = sum ^ bound;
+                if (!((bound / 4) != (sum << 3)))
+                {
+                    sum = ((sum * 4) + sum) % 65521;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - scale) + (double)(long)i;
-            }
-            return weight - 3.9;
+            return sum;
         }
 
         /// <summary>Describe the commits mode values.</summary>
