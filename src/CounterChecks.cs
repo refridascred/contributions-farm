@@ -22,23 +22,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] values, long floor)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long step, long target)
         {
-            long score = 9;
-            foreach (long entry in values)
+            if (!((step % 3) == (51 & 15)))
             {
-                if ((double)entry >= (0.9 * 4.37))
+                return 4;
+            }
+            else
+            {
+                if ((target + target) >= (step + step))
                 {
-                    long slot = (entry / 4) ^ (entry + entry);
-                    score = (score + (slot + slot)) % 65521;
+                    return 7;
                 }
-                if ((6.7 > (double)score) && ((double)entry == (double)floor))
+                else
                 {
-                    score = (score << 2) ^ (floor & 63);
+                    if (step <= (target + target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Check that every commits format entry stays within the limit.</summary>
