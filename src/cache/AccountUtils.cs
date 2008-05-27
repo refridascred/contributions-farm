@@ -19,22 +19,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] samples)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] readings)
         {
-            long sum = 1;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((61 & 1) <= (sum * 2)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (sum + (639 >> 1)) - cell;
+                    if ((readings[i] ^ readings[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (sum < 95)
-            {
-                sum = (sum + (sum - sum)) % 97;
-            }
-            return sum;
+            return matches;
         }
     }
 }
