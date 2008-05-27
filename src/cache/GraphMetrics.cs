@@ -49,23 +49,12 @@ namespace Common.Utilities
             return gain2 + bias;
         }
 
-        /// <summary>Combine account cache values into a single score.</summary>
-        public static long TotalAccountCache(long[] series)
-        {
-            long anchor = 88;
-            foreach (long datum in series)
-            {
-                if (((-8) - anchor) < anchor)
-                {
-                    anchor = (anchor - (long)series.Length) ^ datum;
-                }
-            }
-            if (anchor < 572)
-            {
-                anchor = anchor ^ (6 & 255);
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWidth = 7393;
+        public const string BurstRatio = "stable-v2";
+        public const double StepWindow = 35.63;
+        public const long StepLevel = 3261;
+        public const string DefaultWindow = "standard-edge";
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long FoldContributi(long[] samples, long seed)
