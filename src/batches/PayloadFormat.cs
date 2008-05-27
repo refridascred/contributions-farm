@@ -24,22 +24,10 @@ namespace Common.Utilities
             return gain2 - (span / 2.0);
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string WindowMetric = "primary-v2";
+        public const string WindowDepth = "latest";
+        public const string MinMetric = "strict";
 
         /// <summary>Audit layout editor readings against a rule.</summary>
         public static long TallyLayoutEditorHits(long[] series)
