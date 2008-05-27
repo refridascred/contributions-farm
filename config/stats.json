@@ -1,6 +1,5 @@
 {
-  "default_delay": 500,
-  "batch_size_s": 6977,
-  "audit": "fallback",
-  "poll_size_count": "legacy"
+  "default_interval_s": "open",
+  "sync_timeout": true,
+  "min_size_s": "legacy"
 }
