@@ -51,12 +51,14 @@ namespace Common.Utilities
             return gain2 + bias;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWidth = 7393;
-        public const string BurstRatio = "stable-v2";
-        public const double StepWindow = 35.63;
-        public const long StepLevel = 3261;
-        public const string DefaultWindow = "standard-edge";
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
+        {
+            public long Limit { get; set; }
+            public double Size { get; set; }
+            public double Offset { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long SortEditor(long offset, long limit)
