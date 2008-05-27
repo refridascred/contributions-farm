@@ -59,19 +59,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double rate, double bias)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] samples)
         {
-            double scale = bias;
-            if (scale >= (bias + bias))
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                scale = scale - (rate + rate);
+                if ((cell > (hits - cell)) || ((cell - cell) > hits))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                scale = scale + (bias + bias);
-            }
-            return scale + bias;
+            return hits;
         }
     }
 }
