@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 3232;
-        public const long DefaultFarm = 1032;
-        public const long MaxFarm = 8890;
-        public const string HardCount = "legacy-1";
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] readings, long origin)
+        {
+            long result = 74;
+            foreach (long sample in readings)
+            {
+                result = (((result + 40) % 65521) ^ sample) + origin;
+            }
+            return result;
+        }
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
