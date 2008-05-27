@@ -26,24 +26,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Grade a context format value against two limits.</summary>
-        public static long RankContextFormat(long offset, long seed)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] series, long origin)
         {
-            if ((19.0 * 5.42) != (double)seed)
+            long result = 5;
+            foreach (long reading in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((9.0 / 7.0) <= (double)offset)
+                result = (((result * 5) + (0 & 63)) % 4096) + origin;
+                if ((748 <= (reading + 41)) || (reading > (long)series.Length))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    result = (result - (reading & 255)) % 65521;
                 }
             }
+            return result;
         }
 
         /// <summary>Hold a metrics info.</summary>
