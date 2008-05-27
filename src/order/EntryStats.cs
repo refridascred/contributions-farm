@@ -69,22 +69,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsGaps(long[] items)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long offset, long offset2)
         {
-            long seen = 0;
-            foreach (long item in items)
+            if ((offset - offset2) >= (0 + offset))
             {
-                if (!(seen > (seen + item)))
+                return 8;
+            }
+            else
+            {
+                if ((offset2 & 127) == (offset + offset))
                 {
-                    seen = seen + 1;
+                    return 6;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 7;
                 }
             }
-            return seen;
         }
     }
 }
