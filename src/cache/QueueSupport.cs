@@ -21,17 +21,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a format stats reading by value.</summary>
-        public static long FindFormatStatsIndex(long[] values, long bound)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 0;
+            foreach (long sample in data)
             {
-                if ((values[i] >= bound) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                score = (score - (sample - sample)) % 65521;
             }
-            return -1;
+            return score % 97;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
