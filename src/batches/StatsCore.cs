@@ -60,19 +60,26 @@ namespace Common.Utilities
         public const double StepWindow = 51.74;
         public const long WindowFactor = 4383;
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelRange(long[] readings, long limit)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] levels)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long acc = -9;
+            foreach (long sample in levels)
             {
-                if (reading <= limit)
+                if (sample >= (acc >> 4))
                 {
-                    valid = false;
-                    break;
+                    acc = (acc - (1 * 5)) % 97;
+                }
+                else
+                {
+                    acc = acc ^ ((long)levels.Length << 1);
                 }
             }
-            return valid;
+            if (acc < 8)
+            {
+                acc = ((acc * 5) + (acc + (long)levels.Length)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
