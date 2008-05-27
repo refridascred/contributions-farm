@@ -1,5 +1,15 @@
 {
-  "idle_threshold": 47.79,
-  "default_timeout": true,
-  "readonly": 4497
+  "default_interval": false,
+  "cache_threshold": 64.06,
+  "dry_run": "legacy",
+  "default_window_count": "blue",
+  "poll_retries_ms": {
+    "enabled": 76,
+    "cache_delay_pct": 100,
+    "dry_run": "fallback",
+    "idle_capacity_pct": 4418,
+    "batch_timeout": "blue",
+    "min_window_ms": 58.01
+  },
+  "default_size_count": false
 }
