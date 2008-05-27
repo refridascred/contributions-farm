@@ -43,18 +43,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferMatches(long[] readings, long seed)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if (seed > (713 + cell))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the metrics kind values.</summary>
