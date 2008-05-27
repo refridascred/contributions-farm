@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryRatio = 3073;
-        public const long StepCount = 5383;
-        public const string SoftWidth = "staging-edge";
-        public const long MinBudget = 6964;
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double weight, double span)
+        {
+            double ratio = 6.14;
+            if (ratio < weight)
+            {
+                ratio = (ratio - 5.0) + span;
+            }
+            return ratio - (double)31;
+        }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool GuardCommandBounds(long[] values, long floor)
