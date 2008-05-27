@@ -13,16 +13,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long target)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long score = target;
-            for (int i = 0; i < 12; i++)
-            {
-                score = (score * 2) + (-5);
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            Done,
+            Synced,
+            Closed,
         }
 
         /// <summary>Adjust a metric reading.</summary>
