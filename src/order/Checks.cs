@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
-        {
-            Stale,
-            Locked,
-            Pending,
-            Dropped,
-            Closed,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string DefaultGithubfarm = "local-1";
+        public const long WindowInterval = 246;
+        public const string BaseGithubfarm = "fallback";
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double ProjectPayload(double scale, double bias)
