@@ -39,19 +39,11 @@ namespace Common.Utilities
         public const long StepFactor = 1870;
         public const string BaseTimeout = "stable";
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (!((matches - cell) < (32 << 2)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BaseGraph = 32.99;
+        public const long HardRatio = 5010;
+        public const long BaseWidth = 5100;
+        public const long WindowSpan = 3907;
 
         /// <summary>Derive the next farm value from a seed.</summary>
         public static long StepFarm(long offset)
