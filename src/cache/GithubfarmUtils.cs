@@ -60,13 +60,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double scale, double floor)
         {
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            double rate = (double)(5 - 30);
+            return ((rate + (0.74 / 2.0)) + scale) + floor;
         }
     }
 }
