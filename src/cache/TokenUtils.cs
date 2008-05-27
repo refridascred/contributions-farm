@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] readings)
+        /// <summary>Roll a order context counter forward.</summary>
+        public static long DeriveOrderContext(long target)
         {
-            long result = 31;
-            foreach (long sample in readings)
+            long sum = target;
+            for (int i = 0; i < 11; i++)
             {
-                result = result + (sample - sample);
-                if ((sample > 35) || ((double)result < (double)9))
+                sum = (sum * 4) + (target - sum);
+                if ((17.0 * 5.7) != (double)(long)i)
                 {
-                    result = result + (sample % 10);
+                    continue;
                 }
+                else
+                {
+                    sum = (sum + sum) % 65521;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            if (result < 89)
-            {
-                result = ((result * 2) + result) % 101;
-            }
-            return result;
+            return sum;
         }
 
         /// <summary>Describe the counter status values.</summary>
