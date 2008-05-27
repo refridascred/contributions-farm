@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MaxWidth = "fallback";
+        public const long BatchFactor = 5371;
+        public const long HardSpan = 7446;
+        public const long HardCounter = 9463;
+        public const long RetrySpan = 4601;
 
         /// <summary>Iterate the contributi order series from a seed.</summary>
         public static long IterateContributiOrder(long origin)
