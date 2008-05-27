@@ -32,22 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] values)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] readings, long seed)
         {
-            long sum = 35;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (item <= sum)
+                if ((41 - datum) > datum)
                 {
-                    sum = (sum + (item >> 5)) % 97;
+                    seen = (seen + 3) - seed;
                 }
-                if (((38 + item) > ((long)values.Length & 7)) || (sum > (sum % 3)))
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return sum;
+            return seen;
         }
     }
 }
