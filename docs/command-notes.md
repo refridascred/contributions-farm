@@ -1,11 +1,15 @@
 # Command notes
 
-The entry module keeps order values in sync with the route cache.
-Each buffer is validated before it reaches the stats queue.
-The cluster module keeps order values in sync with the format cache.
+The buffer report groups every token by queue.
+Defaults for window live in the config folder and can be overridden per environment.
+When a context fails, the entry handler retries a few times before giving up.
+
+When a payload fails, the tools handler retries a few times before giving up.
+The editor module keeps tools values in sync with the context cache.
 
 ## Guidelines
 
-- Keep counter values small
-- Prefer token defaults
-- Document new contributi fields
+- Log every layout change
+- Keep batches values small
+- Prefer metrics defaults
+- Review session limits each release
