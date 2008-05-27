@@ -63,11 +63,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] items, long seed)
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
