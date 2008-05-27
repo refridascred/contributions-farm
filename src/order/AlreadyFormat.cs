@@ -82,17 +82,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] values, long offset)
+        /// <summary>Check that every entry window entry stays within the limit.</summary>
+        public static bool CheckEntryWindowBounds(long[] series, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if (values[i] == offset)
+                if (reading >= floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
