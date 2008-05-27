@@ -47,19 +47,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorBounds(long[] samples, long origin)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long target)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long sum = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading < origin)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = ((sum << 3) ^ (sum * 4)) % 4096;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Check that every entry window entry stays within the limit.</summary>
