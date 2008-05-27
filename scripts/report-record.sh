@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=420
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+RECORD_LIMIT=207
 log "limit is ${RECORD_LIMIT}"
 
-for item in green stable legacy; do
+for item in standard stable; do
     log "checking ${item}"
 done
