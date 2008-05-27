@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every metric stream entry stays within the limit.</summary>
-        public static bool GuardMetricStreamLimits(long[] items, long offset)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
