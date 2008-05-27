@@ -38,12 +38,32 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Classify a context batches pair into a bucket.</summary>
+        public static long BucketContextBatches(long floor, long limit)
         {
-            public bool Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public double Size { get; set; }
+            long slot = floor ^ limit;
+            if ((limit + slot) < (slot + slot))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)floor <= (7.4 / 7.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)limit > (5.75 + 3.1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
