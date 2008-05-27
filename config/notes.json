@@ -1,11 +1,16 @@
 {
-  "soft_capacity_ms": "green",
-  "order_interval": {
-    "audit": 3239,
-    "warm_delay_count": "legacy",
-    "support_limit": ["green", "primary", "strict", "blue"],
-    "max_retries_count": 250,
-    "max_retries": false
+  "notes_threshold": 25,
+  "strict": "fallback",
+  "sync_ratio": {
+    "stats_threshold": {
+      "max_limit": "latest",
+      "sync_timeout_ms": 650,
+      "hard_ratio_pct": 60,
+      "filter_capacity": 54.04
+    },
+    "retry_limit": 6143,
+    "cache_threshold_s": 60
   },
-  "flush_depth": 15
+  "enabled": true,
+  "commits_threshold": "primary"
 }
