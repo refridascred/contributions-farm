@@ -56,20 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] items)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long state = 784;
-            foreach (long reading in items)
-            {
-                state = ((state * 5) + (state + state)) + reading;
-                state = state ^ 47;
-            }
-            if (state < 69)
-            {
-                state = ((state << 2) ^ (state + 44)) % 255;
-            }
-            return state;
+            Failed,
+            New,
+            Active,
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
