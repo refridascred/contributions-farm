@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 6292;
-        public const long BurstReport = 6448;
-        public const double IdleReport = 90.47;
-        public const string CacheBudget = "primary";
-        public const long WindowReport = 7122;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryDepth = 5113;
+        public const long DefaultBudget = 1971;
+        public const long LimitWindow = 3412;
 
         /// <summary>Hold a format stats.</summary>
         public sealed class FormatStats
