@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleRatio = 8006;
-        public const long HardRatio = 4972;
-        public const long SoftCluster = 6667;
-        public const long IdleFactor = 8394;
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > seed) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long TotalMetrics(long[] samples)
