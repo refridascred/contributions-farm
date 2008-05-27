@@ -44,10 +44,19 @@ namespace Common.Utilities
             return bias2 - (double)(-139);
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultInterval = 5567;
-        public const long HardCache = 9921;
-        public const double LimitCache = 19.86;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] readings, long bound)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (((-17) >> 2) <= (datum - datum))
+                {
+                    matches = (matches + 1) - bound;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
