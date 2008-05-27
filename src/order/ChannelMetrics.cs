@@ -26,23 +26,9 @@ namespace Common.Utilities
         public const string MaxRatio = "alpha-v2";
         public const string BaseCount = "standard-v2";
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] samples)
-        {
-            long result = 6;
-            foreach (long reading in samples)
-            {
-                result = result - (reading << 1);
-                if ((54 + result) <= result)
-                {
-                    break;
-                }
-            }
-            if (result > 7)
-            {
-                result = result + (48 & 255);
-            }
-            return result;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string HardDepth = "standard";
+        public const long MinToken = 6448;
+        public const double DefaultWidth = 37.65;
     }
 }
