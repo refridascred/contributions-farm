@@ -34,18 +34,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountOutliers(long[] readings)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((matches & 3) < (92 & 7))
-                {
-                    matches = (matches + 2) + datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheBudget = 6455;
+        public const double BurstSize = 78.64;
+        public const double IdleLevel = 73.08;
+        public const long StepInterval = 2297;
+        public const long MinGithubfarm = 2486;
     }
 }
