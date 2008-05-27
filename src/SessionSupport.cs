@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long offset, long offset2)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordGaps(long[] series, long target)
         {
-            if (offset2 >= (offset / 7))
+            long hits = 0;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset2 << 1) < offset2)
+                if (((target % 24) < (target - sample)) || ((hits >> 3) > hits))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Blend two filter measurements.</summary>
