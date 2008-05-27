@@ -30,15 +30,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] data, long step)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] items, long offset)
         {
-            long result = 8;
-            foreach (long entry in data)
+            long score = -238;
+            foreach (long value in items)
             {
-                result = ((result + result) ^ entry) + step;
+                if (((8.39 / 6.0) == (double)value) && (value >= (offset >> 3)))
+                {
+                    score = ((score * 4) + (value - value)) % 65521;
+                }
             }
-            return result;
+            return score;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
