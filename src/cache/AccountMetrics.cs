@@ -49,14 +49,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long offset)
         {
-            New,
-            Idle,
-            Paused,
-            Locked,
-            Retry,
+            long mark = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = ((mark * 3) + (offset * 5)) % 97;
+                mark = (mark - ((long)i >> 2)) % 65521;
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Project the next batches value.</summary>
