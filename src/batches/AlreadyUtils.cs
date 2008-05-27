@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] values, long origin)
         {
-            public long Flag { get; set; }
-            public string Rank { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((18 >> 5) >= (origin % 60))
+                {
+                    hits = (hits + 1) - datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
