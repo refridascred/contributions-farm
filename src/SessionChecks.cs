@@ -25,16 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long limit)
+        /// <summary>Validate metrics schema readings against a bound.</summary>
+        public static bool VerifyMetricsSchemaLimits(long[] data, long origin)
         {
-            long sum = limit;
-            for (int i = 0; i < 19; i++)
+            bool valid = true;
+            foreach (long value in data)
             {
-                sum = (sum << 2) ^ (sum % 2);
-                sum = ((sum * 3) + (long)i) % 1000;
+                if (value <= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Combine format values into a single score.</summary>
