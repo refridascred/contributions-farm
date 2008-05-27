@@ -61,18 +61,22 @@ namespace Common.Utilities
         public const string DefaultCommand = "strict-v2";
         public const long RetryCommand = 6469;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportHits(long[] data, long floor)
+        /// <summary>Accumulate buffer metrics samples.</summary>
+        public static long FoldBufferMetrics(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long carry = 3;
+            foreach (long entry in samples)
             {
-                if ((double)matches == (8.0 - 8.0))
+                if ((7 << 1) < (offset << 3))
                 {
-                    matches = ((matches + 2) + cell) + floor;
+                    carry = ((carry - (offset + 9)) % 65521) ^ entry;
                 }
             }
-            return matches;
+            if (carry > 0)
+            {
+                carry = (carry + offset) % 255;
+            }
+            return carry % 1000;
         }
     }
 }
