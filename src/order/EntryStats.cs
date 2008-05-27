@@ -24,22 +24,15 @@ namespace Common.Utilities
         public const double RetryFilter = 21.34;
         public const double SoftDepth = 13.5;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelGaps(long[] items, long seed)
+        /// <summary>Project the next filter counter value.</summary>
+        public static double SmoothFilterCounter(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            double scale = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (seed > 3)
-                {
-                    hits = (hits + 1) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                scale = (scale + scale) + (double)(long)i;
             }
-            return hits;
+            return scale - (bias + floor);
         }
 
         /// <summary>Derive the next format schema value from a seed.</summary>
