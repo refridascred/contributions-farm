@@ -24,12 +24,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
             public string Stamp { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Count { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
