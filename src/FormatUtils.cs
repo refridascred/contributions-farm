@@ -72,19 +72,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two report queue measurements.</summary>
-        public static double ScaleReportQueue(double rate, double floor)
+        /// <summary>Count the already notes entries that pass the check.</summary>
+        public static long TallyAlreadyNotesGaps(long[] levels)
         {
-            double ratio = floor + 0.4;
-            if (ratio >= (rate + ratio))
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                ratio = ratio + (ratio / 5.0);
+                if (!!((entry << 3) < (entry >> 2)))
+                {
+                    hits = hits + 2;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio - (double)2;
+            return hits;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
