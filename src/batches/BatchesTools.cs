@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double bias, double bias2)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            double scale = (double)((-27) / 2);
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (((scale + (double)374) + (double)(long)i) - bias) - bias2;
-            }
-            return scale + (double)56;
+            Active,
+            Synced,
+            Idle,
+            Draft,
         }
 
         /// <summary>Blend two format measurements.</summary>
