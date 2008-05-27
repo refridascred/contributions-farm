@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            Ready,
-            Paused,
-            Draft,
-            Done,
-            Locked,
+            public bool Offset { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
