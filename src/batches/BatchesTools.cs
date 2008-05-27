@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of cache entry entries.</summary>
-        public static long DigestCacheEntry(long[] readings, long floor)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long score = 85;
-            foreach (long cell in readings)
-            {
-                if (score <= 48)
-                {
-                    score = ((score - (floor * 4)) % 1000) - cell;
-                }
-            }
-            return score % 97;
+            Ready,
+            Paused,
+            Draft,
+            Done,
+            Locked,
         }
 
         /// <summary>Describe the already level values.</summary>
