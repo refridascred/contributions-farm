@@ -25,19 +25,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next session stream value.</summary>
-        public static double ScaleSessionStream(double weight, double floor)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double SmoothMetric(double gain, double offset)
         {
-            double scale = floor;
-            if (scale < (double)118)
-            {
-                scale = scale - weight;
-            }
-            else
-            {
-                scale = scale + weight;
-            }
-            return scale + floor;
+            double scale = gain;
+            return scale + (offset / 5.0);
         }
     }
 }
