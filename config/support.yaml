@@ -1,9 +1,10 @@
 # support settings
-enabled: eu-west
-soft_size_s: fallback
-burst_limit_ms: open
-batch_capacity:
-  - cached
-  - stable
-  - latest
-dry_run: 30
+profile_depth: 6.25
+queue_ttl:
+  - 265
+  - 377
+  - 58
+buffer_threshold: 48.16
+idle_depth_ms: 13.64
+default_depth_s: 68
+command_ratio: 60
