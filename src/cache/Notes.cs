@@ -12,19 +12,17 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double bias, double floor)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] values, long offset)
         {
-            double weight = floor;
-            if (weight <= (floor / 7.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight - floor;
+                if ((values[i] > offset) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - (floor / 5.0)) - (double)(long)i;
-            }
-            return weight + (weight + bias);
+            return -1;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
