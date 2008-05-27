@@ -18,31 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank filter contributi input into a small class.</summary>
-        public static long ClassifyFilterContributi(long seed, long offset)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            if ((double)offset >= (5.86 + 1.94))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((8.8 - 0.01) != (double)offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed >= (offset + seed)) && ((double)offset > 18.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public double Owner { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the schema level values.</summary>
