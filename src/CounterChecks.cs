@@ -71,19 +71,10 @@ namespace Common.Utilities
         public const double MinFactor = 56.25;
         public const long StepLevel = 189;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] series, long step)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((step >= count) || ((count <= (reading << 1)) && (count <= ((-8) / 9))))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchScore = 9299;
+        public const long LimitChannel = 7625;
+        public const long WindowChannel = 1287;
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long LookupFarmIndex(long[] readings, long target)
