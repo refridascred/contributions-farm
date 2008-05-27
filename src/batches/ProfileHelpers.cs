@@ -36,13 +36,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            public double Token { get; set; }
-            public double Weight { get; set; }
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
+            New,
+            Stale,
+            Paused,
+            Done,
+            Pending,
         }
 
         /// <summary>Hold a cache stats.</summary>
