@@ -30,19 +30,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine queue support values into a single score.</summary>
-        public static long TotalQueueSupport(long[] readings, long floor)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] readings)
         {
-            long total = 4;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total ^ (floor ^ total)) ^ datum;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (total < 350)
-            {
-                total = (total * 4) + (total >> 2);
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
