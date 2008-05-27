@@ -13,23 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double AdjustRoute(double ratio, double span)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] levels, long offset)
         {
-            double bias = span;
-            if (bias <= (3.9 + ratio))
+            bool ok = true;
+            foreach (long item in levels)
             {
-                bias = bias + bias;
+                if (item > offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias + (bias * 8.36);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - (span - span)) - (double)(long)i;
-            }
-            return bias + (span - ratio);
+            return ok;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
