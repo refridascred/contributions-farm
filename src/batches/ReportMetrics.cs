@@ -16,18 +16,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsOutliers(long[] series, long seed)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample < (3 - tally))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 3) + seed;
+                    if ((levels[i] + levels[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Fold a list of context readings.</summary>
