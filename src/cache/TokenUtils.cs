@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] levels, long step)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] items)
         {
-            long state = 42;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)datum < (double)step))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = state - (state << 2);
+                    if ((items[i] + items[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
