@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Find the first batch route entry that matches the target.</summary>
-        public static long SeekBatchRouteIndex(long[] values, long target)
+        /// <summary>Combine token already values into a single score.</summary>
+        public static long TallyTokenAlready(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 5;
+            foreach (long sample in levels)
             {
-                if (values[i] > target)
+                if (((double)mark > 8.0) || ((sample * 5) >= (mark + (-90))))
                 {
-                    return (long)i;
+                    mark = (mark ^ (sample - sample)) % 65521;
                 }
             }
-            return -1;
+            if (mark > 2)
+            {
+                mark = mark ^ (mark >> 2);
+            }
+            return mark;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
