@@ -38,22 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] readings)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsHits(long[] readings, long bound)
         {
-            long carry = 642;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((carry % 24) <= carry)
+                if ((double)entry >= (4.7 + 2.1))
                 {
-                    carry = carry ^ (carry ^ 9);
-                }
-                if (((long)readings.Length % 64) == (sample >> 3))
-                {
-                    carry = (carry << 3) ^ (2 + carry);
+                    tally = (tally + 2) + bound;
                 }
             }
-            return carry % 4096;
+            return tally;
         }
     }
 }
