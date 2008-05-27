@@ -43,12 +43,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string DefaultBudget = "legacy";
-        public const double BatchWidth = 39.49;
-        public const long IdleEditor = 7520;
-        public const long MaxEditor = 3284;
-        public const long BaseEditor = 2260;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheTimeout = 9305;
+        public const long IdleTimeout = 5701;
+        public const long WindowFactor = 6291;
+        public const long StepFactor = 8933;
+        public const string CacheRatio = "stable-v2";
 
         /// <summary>Validate batches payload readings against a bound.</summary>
         public static bool CheckBatchesPayloadBounds(long[] series, long floor)
