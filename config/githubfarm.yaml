@@ -1,9 +1,22 @@
 # githubfarm settings
-poll_retries_s: 6026
-poll_capacity_pct: standard
-readonly: local
-contributi_limit: fallback
-compress:
-  - fallback
-  - local
-  - strict
+soft_timeout: fallback
+retry_interval_s:
+  poll_depth_pct: blue
+  route_timeout:
+    - stable
+    - latest
+    - open
+    - staging
+  audit: latest
+  persist: 100
+  max_size_ms: 1024
+  flush_retries_pct:
+    session_limit: 40.86
+    soft_retries_ms:
+      - open
+      - latest
+    entry_size: 5861
+batch_delay_pct:
+  - 46
+  - 221
+command_capacity: true
