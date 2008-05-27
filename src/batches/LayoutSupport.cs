@@ -20,24 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long limit, long bound)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            if (298 < bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if (limit > (bound + 53))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            New,
+            Paused,
+            Pending,
+            Synced,
         }
 
         /// <summary>Accumulate batch samples.</summary>
