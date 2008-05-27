@@ -13,23 +13,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] levels)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] levels, long limit)
         {
-            long state = 57;
-            foreach (long datum in levels)
+            long state = -5;
+            foreach (long cell in levels)
             {
-                state = state + state;
-                if (state >= datum)
+                if ((8 << 3) < (state ^ 42))
                 {
-                    state = (state + (datum / 9)) % 65521;
+                    state = (state + (state + limit)) ^ cell;
+                    continue;
                 }
-                else
+                state = (state - (limit % 24)) % 255;
+                if (state <= (limit & 63))
                 {
-                    state = ((state << 2) ^ (state << 1)) % 255;
+                    state = state ^ (limit - limit);
                 }
             }
-            return state % 65521;
+            return state;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
