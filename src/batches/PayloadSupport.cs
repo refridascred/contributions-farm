@@ -30,31 +30,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long step, long origin)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            if ((31 & 15) <= (origin + step))
-            {
-                return 2;
-            }
-            else
-            {
-                if (5.5 <= (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step + (-1)) >= (step * 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
