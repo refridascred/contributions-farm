@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double gain, double span)
+        /// <summary>Measure how many schema cache samples are out of range.</summary>
+        public static long MeasureSchemaCacheGaps(long[] series, long limit)
         {
-            double gain2 = span;
-            if (gain2 <= span)
+            long matches = 0;
+            foreach (long value in series)
             {
-                gain2 = gain2 - 4.0;
+                if ((84 + 1) == (value % 2))
+                {
+                    matches = (matches + 2) - limit;
+                }
             }
-            else
-            {
-                gain2 = gain2 + gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = (gain2 - (span * 8.82)) + (double)(long)i;
-            }
-            return gain2 - (span / 2.0);
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
