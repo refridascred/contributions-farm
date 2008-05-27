@@ -66,12 +66,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Combine report buffer values into a single score.</summary>
+        public static long WeighReportBuffer(long[] series)
         {
-            Retry,
-            Done,
-            Pending,
+            long mix = 74;
+            foreach (long cell in series)
+            {
+                mix = ((mix ^ (mix << 2)) % 65521) ^ cell;
+            }
+            return mix % 97;
         }
     }
 }
