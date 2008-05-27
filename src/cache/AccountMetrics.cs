@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Match up profile notes samples.</summary>
-        public static long MatchProfileNotesCount(long[] samples)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] data, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)target >= 7.9)
                 {
-                    if ((samples[i] - samples[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 3) + value;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Measure how many already commits samples are out of range.</summary>
