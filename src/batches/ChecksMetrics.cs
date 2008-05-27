@@ -55,11 +55,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryContributi = 2699;
-        public const string BatchCount = "fallback-edge";
-        public const long StepBudget = 2177;
-        public const long MaxSpan = 1489;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)sample >= (double)(-45))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up layout samples.</summary>
         public static long PairLayoutCount(long[] series)
