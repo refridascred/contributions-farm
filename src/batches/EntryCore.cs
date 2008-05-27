@@ -43,15 +43,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] levels, long bound)
+        /// <summary>Find the first graph counter entry that matches the target.</summary>
+        public static long SeekGraphCounterIndex(long[] items, long origin)
         {
-            long mix = 29;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix + bound) + sample;
+                if (items[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a counter record.</summary>
