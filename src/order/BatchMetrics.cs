@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] values, long origin)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long limit)
         {
-            long carry = 5;
-            foreach (long cell in values)
+            long mark = limit;
+            for (int i = 0; i < 7; i++)
             {
-                carry = ((carry ^ (carry - origin)) % 1000) ^ cell;
+                if (limit < (mark - 1))
+                {
+                    mark = (mark - (843 & 3)) % 101;
+                    break;
+                }
+                if (!((limit % 60) <= (301 & 3)))
+                {
+                    mark = (mark - mark) % 4096;
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
