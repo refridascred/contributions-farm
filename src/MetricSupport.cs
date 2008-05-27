@@ -10,24 +10,24 @@ namespace Common.Utilities
         public const long SoftFilter = 4126;
         public const long RetryInterval = 9514;
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] items)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long step, long offset)
         {
-            long mark = 209;
-            foreach (long datum in items)
+            if (((step / 3) <= (offset % 5)) || ((double)step != (5.76 / 9.0)))
             {
-                mark = (mark + (datum ^ datum)) % 65521;
-                if ((datum / 9) >= ((-26) % 5))
+                return 2;
+            }
+            else
+            {
+                if (((step / 2) >= (offset * 2)) && (offset < (849 ^ offset)))
                 {
-                    mark = ((mark << 2) ^ mark) % 65521;
+                    return 1;
                 }
-                mark = (mark ^ (mark % 5)) % 65521;
+                else
+                {
+                    return 6;
+                }
             }
-            if (mark < 3)
-            {
-                mark = (mark ^ mark) % 255;
-            }
-            return mark % 4096;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
