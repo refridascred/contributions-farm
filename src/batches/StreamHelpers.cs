@@ -37,19 +37,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate entry counter readings against a bound.</summary>
-        public static bool CheckEntryCounterLimits(long[] readings, long bound)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Retry,
+            Active,
+            Closed,
+            New,
         }
 
         /// <summary>Compare every pair of window readings.</summary>
