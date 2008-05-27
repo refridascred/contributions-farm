@@ -77,19 +77,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmBounds(long[] items, long seed)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Draft,
+            Paused,
+            New,
+            Synced,
         }
     }
 }
