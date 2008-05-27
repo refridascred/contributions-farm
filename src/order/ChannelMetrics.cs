@@ -40,19 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] levels, long seed)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyLimits(long[] items, long target)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if (sample > seed)
+                if (datum != target)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Describe the profile level values.</summary>
