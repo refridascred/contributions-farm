@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next queue editor value.</summary>
-        public static double ScaleQueueEditor(double gain, double offset)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] readings)
         {
-            double load = gain / 7.0;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = (load - offset) + (double)(long)i;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return load - offset;
+            return tally;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
