@@ -35,32 +35,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a command cache value against two limits.</summary>
-        public static long RankCommandCache(long floor, long floor2)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] values, long seed)
         {
-            long step = floor ^ floor2;
-            if ((6.0 * 8.6) == (double)step)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor - floor) < 336)
+                if ((values[i] > seed) && ((values[i] % 5) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((floor2 >> 5) >= (272 - floor)) || ((floor2 / 9) <= (step & 255)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
