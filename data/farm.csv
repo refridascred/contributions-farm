@@ -1,6 +1,8 @@
-id,score,region,ratio
-1,local,open,91.48
-2,latest,943,85.06
-3,19.77,2.88,95.55
-4,44.1,strict,blue
-5,42.61,standard,71.72
+id,region,label,token
+1,primary,staging,811
+2,894,256,87.67
+3,eu-west,381,63.95
+4,32.56,latest,286
+5,209,66.55,29.25
+6,39.46,59.36,primary
+7,333,21.06,open
