@@ -1,8 +1,8 @@
 {
-  "cache_size": "legacy",
-  "min_size": 42.39,
-  "readonly": "primary",
-  "buffer_ratio": 38.47,
-  "checks_depth": 91,
-  "warm_timeout": 30
+  "flush_retries": "stable",
+  "strict": [496, 109, 206],
+  "retry_threshold_s": 30,
+  "persist": "primary",
+  "retry_depth_ms": 100,
+  "soft_ttl_count": 7394
 }
