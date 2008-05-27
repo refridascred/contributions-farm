@@ -25,27 +25,17 @@ namespace Common.Utilities
         public const double DefaultContext = 59.77;
         public const long DefaultWidth = 3453;
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] levels)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] values, long offset)
         {
-            long result = 474;
-            foreach (long entry in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result * 3) + (result + result);
-                if (!((entry > (entry << 3)) || ((result * 4) <= (result & 31))))
+                if (values[i] < offset)
                 {
-                    result = result + (result << 3);
-                }
-                if (((result + entry) <= (entry + entry)) && (entry <= (entry & 63)))
-                {
-                    result = (result + (result - entry)) % 4096;
+                    return (long)i;
                 }
             }
-            if (result > 5)
-            {
-                result = ((result * 2) + result) % 4096;
-            }
-            return result;
+            return -1;
         }
     }
 }
