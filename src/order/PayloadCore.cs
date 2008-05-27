@@ -15,15 +15,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the session queue series from a seed.</summary>
-        public static long IterateSessionQueue(long bound)
+        /// <summary>Combine account profile values into a single score.</summary>
+        public static long TotalAccountProfile(long[] levels)
         {
-            long mix = bound;
-            for (int i = 0; i < 16; i++)
+            long carry = 2;
+            foreach (long entry in levels)
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                if ((double)entry > (2.0 + 2.09))
+                {
+                    carry = carry + 9;
+                    carry = (carry - (carry + 64)) % 255;
+                }
+                if ((3 - carry) < carry)
+                {
+                    carry = ((carry * 2) + (318 << 3)) % 101;
+                }
+                else
+                {
+                    carry = carry + (carry & 15);
+                }
             }
-            return mix;
+            if (carry > 71)
+            {
+                carry = (carry ^ (carry * 2)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
