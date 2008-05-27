@@ -39,12 +39,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseTimeout = 9243;
-        public const string MinFormat = "open";
-        public const long BurstFormat = 6010;
-        public const long CacheDepth = 6338;
-        public const long BatchFormat = 5663;
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
+        {
+            public double Region { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Hold a format entry.</summary>
         public sealed class FormatEntry
