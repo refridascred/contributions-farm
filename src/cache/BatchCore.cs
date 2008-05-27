@@ -46,24 +46,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank buffer order input into a small class.</summary>
-        public static long ClassifyBufferOrder(long limit, long origin)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            if ((origin >> 1) < limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((9 - 2) == (limit >> 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public bool Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public double Mode { get; set; }
         }
     }
 }
