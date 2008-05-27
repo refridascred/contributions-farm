@@ -1,22 +1,9 @@
 # entry settings
-default_interval_ms:
-  - 407
-  - 29
-soft_interval_s: 500
-persist: 4600
-enabled:
-  retry_timeout_count: cached
-  batch_capacity: true
-  max_ttl_pct:
-    - 207
-    - 196
-    - 44
-    - 138
-  metric_limit: 30
-  batch_retries_ms: local
-  retry_capacity_ms:
-    - 397
-    - 370
-    - 202
-    - 464
-sync_limit_count: strict
+profile_capacity: true
+buffer_size: eu-west
+enabled: 9534
+poll_limit_pct:
+  - 191
+  - 136
+soft_interval_ms: edge
+hard_delay_ms: 69
