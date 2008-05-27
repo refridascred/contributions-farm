@@ -51,16 +51,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long floor)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long mark = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = mark + 473;
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            Active,
+            Idle,
+            Queued,
+            Failed,
         }
     }
 }
