@@ -19,11 +19,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            public double Token { get; set; }
-            public long Level { get; set; }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Audit session readings against a rule.</summary>
