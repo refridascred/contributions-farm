@@ -46,12 +46,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long seed, long step)
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public bool Mode { get; set; }
+            if (step >= (step / 7))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed & 127) > (seed << 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed + seed) < ((-7) / 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
