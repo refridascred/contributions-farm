@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheStats = 7505;
-        public const string BaseStats = "local-1";
-        public const long DefaultLevel = 5094;
-        public const long WindowSpan = 1281;
-        public const long StepStats = 3538;
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
+        {
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Fold a list of payload account readings.</summary>
         public static long ScorePayloadAccount(long[] items)
