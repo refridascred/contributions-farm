@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long bound)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportLimits(long[] series, long origin)
         {
-            long score = bound;
-            for (int i = 0; i < 19; i++)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                score = ((score << 2) ^ ((long)i ^ score)) % 1000;
-                score = ((score * 3) + (long)i) % 1000;
+                if (reading > origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
