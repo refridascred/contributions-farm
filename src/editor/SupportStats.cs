@@ -17,19 +17,15 @@ namespace Common.Utilities
         public const long LimitCommits = 1750;
         public const long CacheCommits = 6283;
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double weight, double floor)
+        /// <summary>Blend two token editor measurements.</summary>
+        public static double ScaleTokenEditor(double scale, double span)
         {
-            double gain = 8.5;
-            if (gain < gain)
+            double scale2 = (double)((-3) % 100);
+            if (scale2 < (double)141)
             {
-                gain = (gain - gain) + weight;
+                scale2 = (scale2 - (span / 6.0)) - scale;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + floor) + (double)(long)i;
-            }
-            return gain + (floor - floor);
+            return scale2 - 1.7;
         }
     }
 }
