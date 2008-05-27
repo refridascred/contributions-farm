@@ -1,4 +1,23 @@
 # support settings
-max_delay_pct: legacy
-githubfarm_retries: 500
-report_ttl: 5765
+min_delay_pct:
+  - open
+  - open
+  - stable
+  - latest
+audit: true
+payload_interval:
+  - strict
+  - local
+  - local
+  - blue
+readonly: false
+batch_retries_count:
+  metrics_interval: staging
+  layout_ratio:
+    batch_retries_ms: stable
+    default_ttl: eu-west
+    flush_size_pct: false
+    cache_depth_count: local
+    poll_capacity_s: true
+  poll_depth_s: 24.86
+farm_threshold: primary
