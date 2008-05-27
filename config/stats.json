@@ -1,5 +1,17 @@
 {
-  "idle_window_count": 1912,
-  "max_size": false,
-  "metrics_size": 1569
+  "max_threshold": 1024,
+  "strict": 60,
+  "filter_limit": "green",
+  "default_interval_pct": {
+    "default_retries": 250,
+    "tools_ratio": 48,
+    "strict": {
+      "sync_retries_count": 95.51,
+      "default_delay_pct": "stable",
+      "sync_capacity": "fallback",
+      "metrics_ttl": "eu-west"
+    },
+    "layout_depth": "open"
+  },
+  "sync_retries_s": "blue"
 }
