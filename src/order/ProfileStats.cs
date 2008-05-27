@@ -40,22 +40,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit farm route readings against a rule.</summary>
-        public static long AuditFarmRouteGaps(long[] data)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((double)tally < (11.0 / 7.0))
-                {
-                    tally = (tally + 1) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Flag { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
