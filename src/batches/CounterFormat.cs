@@ -33,22 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutMatches(long[] readings, long seed)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((41 - datum) > datum)
-                {
-                    seen = (seen + 3) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Synced,
+            Queued,
+            Done,
+            Pending,
+            Stale,
         }
     }
 }
