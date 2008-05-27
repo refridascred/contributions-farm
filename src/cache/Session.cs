@@ -41,13 +41,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate format cache readings against a bound.</summary>
-        public static bool CheckFormatCacheRange(long[] readings, long bound)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] data, long limit)
         {
             bool valid = true;
-            foreach (long reading in readings)
+            foreach (long entry in data)
             {
-                if (reading > bound)
+                if (entry <= limit)
                 {
                     valid = false;
                     break;
