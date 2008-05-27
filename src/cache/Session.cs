@@ -28,12 +28,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadGaps(long[] levels)
         {
-            public long Owner { get; set; }
-            public bool Score { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((count >> 3) >= (cell & 7))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
