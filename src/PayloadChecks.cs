@@ -23,12 +23,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
-        {
-            public long Level { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double DefaultCommits = 65.35;
+        public const long WindowCommits = 7060;
+        public const long MinSize = 6730;
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long TotalProfile(long[] values)
