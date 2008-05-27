@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public long Size { get; set; }
+            Pending,
+            Dropped,
+            Active,
+            Synced,
         }
 
         /// <summary>Roll a queue counter forward.</summary>
