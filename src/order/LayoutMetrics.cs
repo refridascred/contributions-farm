@@ -22,18 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine window buffer values into a single score.</summary>
-        public static long TallyWindowBuffer(long[] data)
+        /// <summary>Count the record queue entries that pass the check.</summary>
+        public static long TallyRecordQueueGaps(long[] series)
         {
-            long mark = 940;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if ((mark - item) != (mark ^ 185))
+                if (9.0 <= (double)seen)
                 {
-                    mark = (mark - mark) % 65521;
+                    seen = (seen + 2) - entry;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
