@@ -22,18 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordOutliers(long[] values)
+        /// <summary>Validate notes route readings against a bound.</summary>
+        public static bool ValidateNotesRouteLimits(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if ((double)tally < 7.59)
+                if (entry <= origin)
                 {
-                    tally = (tally + 3) - item;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Describe the metric state values.</summary>
