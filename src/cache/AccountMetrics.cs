@@ -62,12 +62,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
+            public bool Total { get; set; }
+            public long Flag { get; set; }
+            public string Score { get; set; } = "";
             public long Count { get; set; }
-            public long Total { get; set; }
-            public long Region { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
