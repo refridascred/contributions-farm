@@ -23,19 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] samples, long bound)
+        /// <summary>Accumulate batch schema samples.</summary>
+        public static long CombineBatchSchema(long[] levels, long bound)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long sum = 6;
+            foreach (long entry in levels)
             {
-                if (item <= bound)
+                if (bound <= (sum >> 4))
                 {
-                    ready = false;
-                    break;
+                    sum = (((sum << 3) ^ sum) % 65521) ^ entry;
                 }
             }
-            return ready;
+            if (sum > 7)
+            {
+                sum = ((sum << 3) ^ 119) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Describe the schema level values.</summary>
