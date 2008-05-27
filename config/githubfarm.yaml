@@ -1,23 +1,6 @@
 # githubfarm settings
-idle_window_s: true
-queue_interval:
-  - 53
-  - 140
-  - 458
-min_limit_pct: true
-compress: staging
-flush_retries_ms: 92.0
-sync_interval_count:
-  sync_retries_ms: false
-  burst_limit_pct: 1834
-  cache_size_ms:
-    stats_size: 4.85
-    strict:
-      - latest
-      - eu-west
-      - staging
-      - edge
-    enabled: true
-    batch_interval: 60
-    compress: 62
-  soft_limit_ms: 89
+flush_capacity_count: 100
+soft_timeout_pct: 21.41
+enabled: fallback
+readonly: true
+layout_ttl: 80.43
