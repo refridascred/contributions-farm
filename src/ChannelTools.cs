@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] series)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] values, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 96;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                mark = mark ^ (step + mark);
+                if (item < (mark - item))
                 {
-                    if ((series[i] - series[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark + (mark & 63)) % 65521;
+                    mark = (mark << 2) ^ step;
+                    break;
                 }
+                mark = (mark + step) % 97;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Define command limits and defaults.</summary>
