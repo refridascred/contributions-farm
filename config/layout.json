@@ -1,5 +1,6 @@
 {
-  "cache_timeout_pct": [264, 126],
-  "already_ratio": [181, 285, 6],
-  "base_size": [292, 218, 489]
+  "cache_timeout": true,
+  "already_size": "eu-west",
+  "warm_retries": "blue",
+  "dry_run": 57
 }
