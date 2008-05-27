@@ -32,17 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] readings, long origin)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] readings, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if (readings[i] <= origin)
+                if (cell > bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
