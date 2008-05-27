@@ -1,7 +1,8 @@
 {
-  "base_delay": 4622,
-  "cache_retries": false,
-  "readonly": true,
-  "idle_depth": 76.65,
-  "account_retries": false
+  "compress": "local",
+  "sync_size": 69,
+  "poll_window_count": true,
+  "contributi_delay": 6,
+  "poll_ratio_count": [164, 412, 151, 35],
+  "profile_limit": 1024
 }
