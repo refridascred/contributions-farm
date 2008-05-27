@@ -51,13 +51,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] series, long offset)
         {
-            Queued,
-            Paused,
-            Failed,
-            Ready,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= offset) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
