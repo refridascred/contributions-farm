@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] readings, long floor)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading + reading) == (reading / 7))
-                {
-                    hits = (hits + 2) + floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MinFilter = 41.93;
+        public const long SoftFilter = 4126;
+        public const long RetryInterval = 9514;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long MinMetrics = 8761;
