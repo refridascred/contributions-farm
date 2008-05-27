@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long seed)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] levels)
         {
-            long anchor = seed;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seed + anchor) > (seed >> 1))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = anchor + (anchor / 9);
+                    if ((levels[i] ^ levels[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
