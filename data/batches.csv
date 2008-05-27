@@ -1,8 +1,6 @@
-id,rank,active
-1,137,58.41
-2,strict,916
-3,790,green
-4,stable,legacy
-5,cached,455
-6,842,latest
-7,latest,latest
+id,label,count
+1,689,123
+2,145,67
+3,857,65.62
+4,3.46,edge
+5,951,standard
