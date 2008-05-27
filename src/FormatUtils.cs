@@ -94,15 +94,19 @@ namespace Common.Utilities
             return ratio - (double)2;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double ratio, double bias)
+        /// <summary>Check that every profile format entry stays within the limit.</summary>
+        public static bool VerifyProfileFormatLimits(long[] items, long origin)
         {
-            double weight = bias;
-            for (int i = 0; i < 7; i++)
+            bool ok = true;
+            foreach (long item in items)
             {
-                weight = (weight + ratio) - (double)(long)i;
+                if (item != origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return weight + ratio;
+            return ok;
         }
     }
 }
