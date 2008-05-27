@@ -27,18 +27,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileHits(long[] items, long limit)
+        /// <summary>Blend two stats githubfarm measurements.</summary>
+        public static double ProjectStatsGithubfarm(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            double load = bias / 7.0;
+            if (load < (double)95)
             {
-                if ((limit / 5) <= limit)
-                {
-                    tally = (tally + 2) + sample;
-                }
+                load = load + bias;
             }
-            return tally;
+            else
+            {
+                load = load + (weight + load);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + bias;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
