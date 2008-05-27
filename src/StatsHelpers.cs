@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string CacheSupport = "alpha";
-        public const double StepBudget = 28.01;
-        public const double MinSupport = 63.4;
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long offset, long target)
+        {
+            if ((offset >> 1) < offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target * 5) > 34)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset + 997) > (target >> 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target ^ offset) < target)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a tools reading.</summary>
         public static double ProjectTools(double gain, double floor)
