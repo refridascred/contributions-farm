@@ -19,24 +19,14 @@ namespace Common.Utilities
         public const string LimitBudget = "stable-1";
         public const long BurstBuffer = 1522;
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long limit, long floor)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            if (((floor - limit) >= floor) || ((double)limit > (3.8 * 18.0)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit ^ 11) >= floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Locked,
+            Ready,
+            New,
+            Done,
+            Closed,
         }
 
         /// <summary>Digest a series of route entries.</summary>
