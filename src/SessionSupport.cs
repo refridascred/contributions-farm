@@ -30,15 +30,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] levels)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long offset, long step)
         {
-            long score = -2;
-            foreach (long cell in levels)
+            long prev = offset - step;
+            if (644 >= (offset & 63))
             {
-                score = ((score << 2) ^ (score - (long)levels.Length)) - cell;
+                return 7;
             }
-            return score;
+            else
+            {
+                if ((((-2) ^ step) != (4 - prev)) && ((prev + step) < (offset >> 4)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
