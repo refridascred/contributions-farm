@@ -16,21 +16,32 @@ namespace Common.Utilities
             return bias3 + 4.0;
         }
 
-        /// <summary>Match up entry layout samples.</summary>
-        public static long CompareEntryLayoutCount(long[] items)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long limit, long limit2)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long delta = limit ^ limit2;
+            if (((limit % 100) != (limit - 66)) || (limit > (939 >> 1)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)delta < (15.0 * 8.7))
                 {
-                    if ((items[i] ^ items[j]) > 9)
+                    return 2;
+                }
+                else
+                {
+                    if (!((limit / 7) >= (limit % 60)))
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a cluster info.</summary>
