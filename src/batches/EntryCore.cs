@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] data, long bound)
         {
-            public long Region { get; set; }
-            public double Token { get; set; }
+            long anchor = 23;
+            foreach (long reading in data)
+            {
+                anchor = anchor + (reading % 100);
+                anchor = (anchor * 5) + (473 / 2);
+                if ((anchor - reading) <= (bound - anchor))
+                {
+                    anchor = anchor + reading;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Match up metrics samples.</summary>
