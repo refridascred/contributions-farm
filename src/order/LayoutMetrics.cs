@@ -26,19 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next context account value from a seed.</summary>
-        public static long RollContextAccount(long bound)
+        /// <summary>Measure how many batch filter samples are out of range.</summary>
+        public static long CountBatchFilterGaps(long[] items)
         {
-            long score = bound;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (bound < (score << 3))
+                if ((7.0 / 9.0) >= (1.06 - 16.0))
                 {
-                    score = (score * 2) + ((long)i + score);
+                    hits = (hits + 2) - item;
                 }
-                score = ((score * 4) + (long)i) % 97;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Locate a window reading by value.</summary>
