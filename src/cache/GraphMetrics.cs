@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteGaps(long[] levels)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (datum <= (count + datum))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            New,
+            Paused,
+            Idle,
+            Done,
+            Synced,
         }
 
         /// <summary>Hold a notes options.</summary>
