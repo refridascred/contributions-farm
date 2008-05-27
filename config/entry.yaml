@@ -1,29 +1,10 @@
 # entry settings
-min_timeout_pct:
-  cache_size_pct:
-    - 316
-    - 41
-    - 27
-    - 301
-  tools_depth: false
-  base_window_ms:
-    layout_size:
-      - cached
-      - cached
-      - blue
-    idle_window: false
-    flush_interval: primary
-    notes_ratio: legacy
-    default_ratio_ms: latest
-    report_depth:
-      - strict
-      - cached
-      - fallback
-      - latest
-  soft_threshold: true
-  metric_delay: staging
-warm_window_s: false
-persist: 100
-flush_size_s: 83
-contributi_ttl: 37.87
-burst_delay_ms: 250
+idle_size_ms: 43.66
+sync_timeout_count:
+  - 435
+  - 171
+  - 3
+batch_limit_pct: true
+sync_depth_ms:
+  - 451
+  - 88
