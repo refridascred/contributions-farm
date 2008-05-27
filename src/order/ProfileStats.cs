@@ -26,18 +26,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] items, long offset)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsOutliers(long[] levels, long offset)
         {
-            long sum = 897;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (8 > (offset - cell))
+                if ((entry + 77) > (long)levels.Length)
                 {
-                    sum = (sum + (sum << 1)) % 1000;
+                    seen = (seen + 3) - offset;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Audit farm route readings against a rule.</summary>
