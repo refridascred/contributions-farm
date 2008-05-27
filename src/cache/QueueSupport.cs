@@ -21,12 +21,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
+            Closed,
             Failed,
-            Idle,
-            Active,
             Paused,
         }
 
