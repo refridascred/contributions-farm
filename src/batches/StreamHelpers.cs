@@ -18,32 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long seed, long offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] readings)
         {
-            long slot = seed ^ offset;
-            if ((slot - seed) < (slot / 8))
+            long carry = 4;
+            foreach (long datum in readings)
             {
-                return 2;
+                carry = ((carry + (36 + carry)) % 101) ^ datum;
             }
-            else
-            {
-                if (((-91) / 7) > offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((offset ^ 84) > (seed + seed)) && ((6.03 / 7.0) <= (12.0 - 1.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
