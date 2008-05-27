@@ -29,39 +29,19 @@ namespace Common.Utilities
             return bias + floor;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long target, long target2)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesRange(long[] items, long limit)
         {
-            long edge = target ^ target2;
-            if (!((edge - 932) >= (edge % 16)))
+            bool found = true;
+            foreach (long item in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)edge == (double)target)
+                if (item <= limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (1.1 >= (double)edge)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)target >= 5.87)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
