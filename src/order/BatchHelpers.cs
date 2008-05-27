@@ -33,18 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesMatches(long[] data, long seed)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (4 <= (seed & 15))
-                {
-                    hits = (hits + 1) ^ datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 8195;
+        public const string RetryScore = "staging-1";
+        public const string HardInterval = "local";
+        public const long HardFilter = 5244;
     }
 }
