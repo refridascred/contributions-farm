@@ -1,15 +1,10 @@
 {
-  "cache_ratio_pct": {
-    "compress": 6,
-    "sync_window": false,
-    "persist": "latest",
-    "flush_threshold_pct": 32
+  "readonly": {
+    "warm_limit_ms": "edge",
+    "payload_ttl": "strict",
+    "warm_threshold_s": "cached"
   },
-  "retry_limit": "fallback",
-  "base_ttl_ms": {
-    "min_depth_count": "fallback",
-    "farm_delay": 250,
-    "soft_ttl": "legacy"
-  },
-  "graph_retries": 25.33
+  "cache_limit_pct": 500,
+  "contributi_ttl": "eu-west",
+  "audit": true
 }
