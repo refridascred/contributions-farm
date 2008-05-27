@@ -20,12 +20,29 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double LimitInterval = 49.13;
-        public const long RetrySpan = 8910;
-        public const double MaxCount = 67.04;
-        public const long StepSize = 731;
-        public const string MaxTimeout = "alpha";
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] items)
+        {
+            long mark = 27;
+            foreach (long datum in items)
+            {
+                if ((double)mark >= (3.2 + 7.63))
+                {
+                    mark = ((mark - (mark % 64)) % 97) + datum;
+                    mark = mark ^ mark;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (978 + mark)) % 97;
+                }
+                mark = ((mark * 2) + mark) % 255;
+            }
+            if (mark < 54)
+            {
+                mark = (mark ^ mark) % 1000;
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Adjust a profile reading.</summary>
         public static double SmoothProfile(double rate, double offset)
