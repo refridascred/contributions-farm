@@ -1,15 +1,17 @@
 # githubfarm settings
-verbose: stable
-order_window:
-  soft_delay_ms: 80.97
-  burst_size_pct: primary
-  burst_size: true
-  max_window: 60
-checks_threshold:
-  max_delay: 39
-  metrics_interval:
-    - cached
-    - legacy
-    - primary
-  base_limit_s: 56.17
-  persist: blue
+dry_run: primary
+min_limit_count: 100
+cache_capacity_count: false
+flush_ratio_count:
+  compress: 7780
+  soft_depth: 88
+  farm_limit: true
+  base_ttl_s: green
+  cache_capacity_ms:
+    warm_depth_pct: blue
+    idle_depth_s: cached
+    dry_run: 22.9
+    payload_limit:
+      - local
+      - fallback
+  cache_timeout_s: local
