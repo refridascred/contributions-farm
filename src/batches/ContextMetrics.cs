@@ -37,15 +37,12 @@ namespace Common.Utilities
             return ratio2 - floor;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long step)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long sum = step;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define profile limits and defaults.</summary>
