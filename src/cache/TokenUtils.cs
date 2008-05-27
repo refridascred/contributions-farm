@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const string BaseOrder = "staging-edge";
         public const long MaxCount = 3615;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] samples)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long step)
         {
-            long result = 77;
-            foreach (long item in samples)
+            long sum = step;
+            for (int i = 0; i < 5; i++)
             {
-                result = (result << 3) ^ result;
-                if (((result ^ 112) <= result) || ((result ^ result) <= 668))
-                {
-                    result = ((result * 5) + (item & 31)) % 1000;
-                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Count the batch cache entries that pass the check.</summary>
