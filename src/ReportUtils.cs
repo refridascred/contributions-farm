@@ -69,25 +69,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long limit, long limit2)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountOutliers(long[] values, long offset)
         {
-            long delta = limit - limit2;
-            if (delta <= (delta % 16))
+            long count = 0;
+            foreach (long cell in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit >> 2) > (limit >> 3))
+                if (!(cell <= count))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    count = (count + 1) + offset;
                 }
             }
+            return count;
         }
     }
 }
