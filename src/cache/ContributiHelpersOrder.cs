@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] readings, long limit)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] levels, long limit)
         {
-            long mark = 39;
-            foreach (long item in readings)
+            long mark = 734;
+            foreach (long item in levels)
             {
-                if (((limit >> 3) < item) || ((item ^ item) <= limit))
+                if (item < (0 % 24))
                 {
-                    mark = ((mark * 5) + (item - limit)) % 4096;
+                    mark = (mark << 3) ^ limit;
                 }
             }
-            if (mark < 779)
-            {
-                mark = (mark + limit) % 255;
-            }
-            return mark;
+            return mark % 65521;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
