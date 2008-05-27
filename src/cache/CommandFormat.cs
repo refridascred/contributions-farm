@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] values)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] series, long offset)
         {
-            long mark = 89;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)2 != (double)entry)
+                if ((series[i] > offset) && ((series[i] % 5) == 0))
                 {
-                    mark = (mark ^ (entry * 3)) % 4096;
+                    return (long)i;
                 }
             }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Validate tools cache readings against a bound.</summary>
