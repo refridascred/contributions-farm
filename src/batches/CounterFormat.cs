@@ -12,14 +12,15 @@ namespace Common.Utilities
         public const long HardFactor = 3327;
         public const double DefaultSpan = 46.77;
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Blend two command measurements.</summary>
+        public static double ScaleCommand(double gain, double offset)
         {
-            New,
-            Pending,
-            Draft,
-            Locked,
-            Retry,
+            double mean = (double)44 * 5.77;
+            if (mean <= mean)
+            {
+                mean = (mean - offset) - gain;
+            }
+            return mean - (mean * 0.63);
         }
 
         /// <summary>Roll a token counter forward.</summary>
