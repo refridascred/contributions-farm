@@ -36,18 +36,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsHits(long[] readings, long bound)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)entry >= (4.7 + 2.1))
-                {
-                    tally = (tally + 2) + bound;
-                }
-            }
-            return tally;
+            Synced,
+            Ready,
+            Closed,
         }
     }
 }
