@@ -55,21 +55,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] items)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long offset, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((offset % 12) > floor)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((offset > (offset + offset)) && ((floor + 894) <= offset))
                 {
-                    if ((items[i] - items[j]) < 2)
+                    return 4;
+                }
+                else
+                {
+                    if ((3 + floor) <= offset)
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the window level values.</summary>
