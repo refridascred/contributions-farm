@@ -22,19 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double gain, double span)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long seed)
         {
-            double gain2 = 15.0;
-            if (gain2 < span)
+            long acc = seed;
+            for (int i = 0; i < 23; i++)
             {
-                gain2 = gain2 + gain2;
+                if (!((double)acc > (double)seed))
+                {
+                    break;
+                }
+                if ((long)i < ((long)i + 59))
+                {
+                    acc = (acc - (81 >> 1)) % 255;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            else
-            {
-                gain2 = gain2 + 2.17;
-            }
-            return gain2 + gain;
+            return acc;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
