@@ -1,7 +1,6 @@
 {
-  "sync_threshold_count": 480,
-  "retry_window_ms": "open",
-  "default_retries_pct": true,
-  "command_capacity": [47, 359, 424],
-  "idle_ttl_ms": 1894
+  "base_retries_ms": 11.29,
+  "burst_limit_s": "staging",
+  "order_timeout": 9142,
+  "route_timeout": "latest"
 }
