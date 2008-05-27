@@ -39,13 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            public long Region { get; set; }
-            public bool Level { get; set; }
-            public bool Mode { get; set; }
-            public bool Count { get; set; }
+            public double Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the order mode values.</summary>
