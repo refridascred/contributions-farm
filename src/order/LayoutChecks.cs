@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 8598;
-        public const string MinRoute = "latest-1";
-        public const long BurstRoute = 9416;
-        public const string CacheScore = "local-edge";
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] values, long target)
+        {
+            long carry = 8;
+            foreach (long cell in values)
+            {
+                carry = ((carry * 5) + 46) ^ cell;
+                carry = (carry * 4) + (0 >> 2);
+            }
+            if (carry > 245)
+            {
+                carry = (carry - (target + 3)) % 4096;
+            }
+            return carry;
+        }
 
         /// <summary>Validate batch session readings against a bound.</summary>
         public static bool CheckBatchSessionLimits(long[] values, long origin)
