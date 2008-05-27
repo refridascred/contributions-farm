@@ -52,31 +52,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long step, long origin)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] data, long bound)
         {
-            if ((step << 2) >= (origin ^ origin))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (step <= origin)
+                if (data[i] == bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step + origin) < 353)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two report queue measurements.</summary>
