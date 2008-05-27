@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultScore = 1969;
-        public const long WindowLayout = 6022;
-        public const string MinLayout = "primary-1";
-        public const long BatchLevel = 4608;
-        public const long CacheFactor = 7110;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] values, long origin)
+        {
+            long carry = 5;
+            foreach (long cell in values)
+            {
+                carry = ((carry ^ (carry - origin)) % 1000) ^ cell;
+            }
+            return carry;
+        }
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long ScoreGraph(long[] items, long target)
