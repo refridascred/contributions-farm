@@ -1,5 +1,7 @@
 {
-  "default_window": "legacy",
-  "default_capacity": false,
-  "window_size": 49.76
+  "audit": "standard",
+  "farm_size": true,
+  "default_size_s": "eu-west",
+  "poll_threshold_s": "blue",
+  "cache_ttl": ["edge", "cached", "latest", "cached"]
 }
