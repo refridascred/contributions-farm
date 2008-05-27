@@ -50,18 +50,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountGaps(long[] readings, long floor)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (((long)readings.Length + 9) >= (floor >> 4))
-                {
-                    hits = (hits + 2) + cell;
-                }
-            }
-            return hits;
+            New,
+            Active,
+            Locked,
+            Idle,
+            Ready,
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
