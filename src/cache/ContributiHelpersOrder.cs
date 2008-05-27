@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] levels, long limit)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterRange(long[] data, long step)
         {
-            long mark = 734;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if (item < (0 % 24))
+                if (item >= step)
                 {
-                    mark = (mark << 3) ^ limit;
+                    stale = false;
+                    break;
                 }
             }
-            return mark % 65521;
+            return stale;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
