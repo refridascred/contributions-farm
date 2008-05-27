@@ -48,18 +48,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] values)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long result = 574;
-            foreach (long item in values)
-            {
-                if (((8.4 / 8.0) == (double)item) || (item >= (17 + result)))
-                {
-                    result = (result ^ result) % 65521;
-                }
-            }
-            return result % 4096;
+            Locked,
+            Ready,
+            Pending,
+            Active,
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
