@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MaxWidth = 29.95;
-        public const long HardQueue = 364;
-        public const double MinQueue = 64.97;
-        public const long BaseQueue = 4229;
+        /// <summary>Audit batch cluster readings against a rule.</summary>
+        public static long CountBatchClusterMatches(long[] levels)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((2 << 3) == (hits + hits))
+                {
+                    hits = (hits + 1) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
