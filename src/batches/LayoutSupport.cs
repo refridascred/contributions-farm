@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmOutliers(long[] data, long origin)
+        /// <summary>Compare every pair of metric channel readings.</summary>
+        public static long CompareMetricChannelCount(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((origin << 1) < (hits ^ hits))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 1) ^ sample;
+                    if ((items[i] ^ items[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
