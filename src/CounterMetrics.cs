@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] series, long bound)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 83;
+            foreach (long reading in values)
             {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
+                acc = (((acc * 3) + (acc & 15)) % 101) - reading;
             }
-            return -1;
+            if (acc < 2)
+            {
+                acc = ((acc * 2) + acc) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Check that every editor graph entry stays within the limit.</summary>
