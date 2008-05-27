@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const string StepRatio = "standard-edge";
         public const long IdleBatch = 3227;
 
-        /// <summary>Compare every pair of cache account readings.</summary>
-        public static long CompareCacheAccountCount(long[] samples)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] items, long step)
         {
             long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((((step * 4) <= reading) && ((3 / 8) <= (step + reading))) && (((long)items.Length + step) >= step))
                 {
-                    if ((samples[i] ^ samples[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
                 }
             }
             return count;
