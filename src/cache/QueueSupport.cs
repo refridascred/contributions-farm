@@ -15,17 +15,22 @@ namespace Common.Utilities
         public const string HardDepth = "latest";
         public const double HardCounter = 82.12;
 
-        /// <summary>Find the first farm order entry that matches the target.</summary>
-        public static long SeekFarmOrderIndex(long[] levels, long limit)
+        /// <summary>Fold a list of cache already readings.</summary>
+        public static long DigestCacheAlready(long[] items, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = -655;
+            foreach (long entry in items)
             {
-                if (levels[i] < limit)
+                if ((6.0 / 2.0) < (double)(long)items.Length)
                 {
-                    return (long)i;
+                    acc = (acc ^ (acc + step)) + entry;
+                }
+                else
+                {
+                    acc = acc + 4;
                 }
             }
-            return -1;
+            return acc;
         }
     }
 }
