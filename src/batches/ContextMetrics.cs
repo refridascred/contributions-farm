@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const double MinTools = 75.28;
         public const double SoftTools = 34.57;
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] data, long step)
         {
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (3.72 < (double)step)
+                {
+                    count = (count + 1) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
