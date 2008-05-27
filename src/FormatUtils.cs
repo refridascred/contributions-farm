@@ -75,19 +75,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double rate, double span)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long bound)
         {
-            double mean = span;
-            if (mean > span)
+            long carry = bound;
+            for (int i = 0; i < 10; i++)
             {
-                mean = (mean + (double)739) + rate;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - (span / 7.0);
+            return carry;
         }
     }
 }
