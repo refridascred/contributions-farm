@@ -33,19 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsRange(long[] series, long bound)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] readings)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (reading <= bound)
+                if ((double)count > (double)sample)
                 {
-                    found = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
