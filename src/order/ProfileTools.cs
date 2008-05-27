@@ -55,17 +55,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first cluster checks entry that matches the target.</summary>
-        public static long FindClusterChecksIndex(long[] values, long seed)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < seed) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public bool Total { get; set; }
+            public long Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
