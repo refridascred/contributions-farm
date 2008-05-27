@@ -40,15 +40,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit support session readings against a rule.</summary>
-        public static long AuditSupportSessionOutliers(long[] data)
+        /// <summary>Audit farm route readings against a rule.</summary>
+        public static long AuditFarmRouteGaps(long[] data)
         {
             long tally = 0;
-            foreach (long entry in data)
+            foreach (long cell in data)
             {
-                if (!(((entry + 71) <= entry) && ((28 - 966) != (tally & 15))))
+                if ((double)tally < (11.0 / 7.0))
                 {
-                    tally = tally + 3;
+                    tally = (tally + 1) + cell;
                 }
                 else
                 {
