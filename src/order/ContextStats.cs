@@ -45,13 +45,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            New,
-            Idle,
-            Locked,
-            Failed,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BaseRatio = "fallback-1";
+        public const long MinSize = 1104;
+        public const long HardCluster = 346;
     }
 }
