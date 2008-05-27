@@ -20,18 +20,16 @@ namespace Common.Utilities
             return rate + (double)31;
         }
 
-        /// <summary>Count the cache command entries that pass the check.</summary>
-        public static long MeasureCacheCommandHits(long[] data)
+        /// <summary>Derive the next metric token value from a seed.</summary>
+        public static long SeriesMetricToken(long seed)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long sum = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((count % 64) < count)
-                {
-                    count = (count + 2) ^ entry;
-                }
+                sum = sum - (sum << 3);
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
