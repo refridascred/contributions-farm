@@ -55,19 +55,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a cluster batch figure with a bias.</summary>
-        public static double ScaleClusterBatch(double scale, double bias)
+        /// <summary>Combine farm token values into a single score.</summary>
+        public static long ScoreFarmToken(long[] data)
         {
-            double bias2 = bias * 11.0;
-            if (bias2 <= scale)
+            long anchor = 888;
+            foreach (long sample in data)
             {
-                bias2 = bias2 + (double)23;
+                if ((anchor - anchor) <= 88)
+                {
+                    anchor = anchor ^ (sample / 7);
+                }
             }
-            else
+            if (anchor < 1)
             {
-                bias2 = bias2 - (2.57 + bias);
+                anchor = anchor + (anchor ^ 547);
             }
-            return bias2 + bias;
+            return anchor;
         }
     }
 }
