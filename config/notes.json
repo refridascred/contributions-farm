@@ -1,5 +1,5 @@
 {
-  "soft_ttl_s": "fallback",
-  "poll_limit_s": "cached",
-  "burst_capacity_count": [409, 200]
+  "verbose": 11.54,
+  "compress": 67.43,
+  "base_timeout_pct": false
 }
