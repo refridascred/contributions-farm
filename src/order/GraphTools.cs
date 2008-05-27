@@ -47,13 +47,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Count the record cache entries that pass the check.</summary>
+        public static long MeasureRecordCacheOutliers(long[] items, long target)
         {
-            public string Limit { get; set; } = "";
-            public bool Total { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (target < (target ^ value))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
