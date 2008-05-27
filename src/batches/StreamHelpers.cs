@@ -45,12 +45,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            Draft,
-            Pending,
-            Stale,
+            public long Label { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the route mode values.</summary>
