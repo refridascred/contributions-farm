@@ -28,18 +28,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] data)
+        /// <summary>Measure how many batch context samples are out of range.</summary>
+        public static long AuditBatchContextHits(long[] samples, long seed)
         {
             long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((reading < (count >> 4)) && (((889 / 7) > (618 ^ count)) || ((count >> 1) == (822 + count))))
                 {
-                    if ((data[i] + data[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 1) + seed;
                 }
             }
             return count;
