@@ -22,12 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextGaps(long[] values)
         {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public double Score { get; set; }
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((double)(long)values.Length <= 13.0)
+                {
+                    matches = (matches + 2) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
