@@ -23,19 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((((196 + 75) >= (tally - 2)) || ((tally - tally) > (entry - entry))) || ((entry & 127) > entry))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 7639;
+        public const long MinRoute = 8214;
+        public const long BurstCount = 8810;
 
         /// <summary>Count the profile buffer entries that pass the check.</summary>
         public static long AuditProfileBufferGaps(long[] values, long origin)
