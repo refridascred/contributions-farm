@@ -22,15 +22,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] series)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long seed, long offset)
         {
-            long total = 1;
-            foreach (long entry in series)
+            long offset2 = seed - offset;
+            if ((seed * 4) < (seed >> 2))
             {
-                total = ((total + (total / 6)) % 65521) + entry;
+                return 5;
             }
-            return total;
+            else
+            {
+                if ((offset + 314) < offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed - offset) == (offset2 ^ offset2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset2 - seed) == (541 << 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define context limits and defaults.</summary>
