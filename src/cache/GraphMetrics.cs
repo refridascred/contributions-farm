@@ -48,12 +48,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            public double Flag { get; set; }
-            public bool Ratio { get; set; }
-            public string Level { get; set; } = "";
+            public long Count { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Fold a list of session readings.</summary>
