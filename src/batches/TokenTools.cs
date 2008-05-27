@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] items)
+        /// <summary>Locate a support layout reading by value.</summary>
+        public static long FindSupportLayoutIndex(long[] items, long limit)
         {
-            long hits = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (items[i] >= limit)
                 {
-                    if ((items[i] ^ items[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many profile token samples are out of range.</summary>
