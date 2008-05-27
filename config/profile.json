@@ -1,10 +1,5 @@
 {
-  "readonly": {
-    "warm_limit_ms": "edge",
-    "payload_ttl": "strict",
-    "warm_threshold_s": "cached"
-  },
-  "cache_limit_pct": 500,
-  "contributi_ttl": "eu-west",
-  "audit": true
+  "tools_interval": "green",
+  "retry_depth": "open",
+  "persist": [333, 217, 120, 225]
 }
