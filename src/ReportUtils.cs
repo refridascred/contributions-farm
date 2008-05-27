@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const long HardEditor = 3676;
         public const long HardScore = 5279;
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            public long Score { get; set; }
-            public double Total { get; set; }
-            public bool Offset { get; set; }
-            public string Size { get; set; } = "";
+            Paused,
+            Active,
+            Pending,
         }
 
         /// <summary>Rank order input into a small class.</summary>
