@@ -33,22 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit session profile readings against a rule.</summary>
-        public static long AuditSessionProfileMatches(long[] levels, long origin)
+        /// <summary>Fold a list of batches stats readings.</summary>
+        public static long FoldBatchesStats(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long carry = 589;
+            foreach (long sample in readings)
             {
-                if ((reading + 202) <= (reading + origin))
+                if ((sample - carry) != (carry - carry))
                 {
-                    count = count + 1;
+                    carry = (carry + (carry / 2)) % 1000;
                 }
-                else
+                if ((sample + (-1)) != (sample - carry))
                 {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Hold a payload record.</summary>
