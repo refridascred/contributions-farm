@@ -31,14 +31,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiLimits(long[] values, long target)
         {
-            Failed,
-            Ready,
-            Pending,
-            Queued,
-            Active,
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
