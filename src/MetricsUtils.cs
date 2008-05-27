@@ -74,21 +74,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] levels)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 7;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((long)readings.Length / 3) != (result / 3))
                 {
-                    if ((levels[i] - levels[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((result ^ result) % 1000) - reading;
                 }
             }
-            return seen;
+            return result;
         }
     }
 }
