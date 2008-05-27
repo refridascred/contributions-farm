@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double weight, double offset)
         {
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
-            public string Rank { get; set; } = "";
+            double weight2 = 5.73;
+            if (weight2 >= offset)
+            {
+                weight2 = weight2 + weight2;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 + weight) + (double)(long)i;
+            }
+            return weight2 - offset;
         }
 
         /// <summary>Describe the layout phase values.</summary>
