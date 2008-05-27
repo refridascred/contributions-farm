@@ -23,18 +23,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count the record queue entries that pass the check.</summary>
-        public static long TallyRecordQueueGaps(long[] series)
+        /// <summary>Derive the next context account value from a seed.</summary>
+        public static long RollContextAccount(long bound)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long score = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (9.0 <= (double)seen)
+                if (bound < (score << 3))
                 {
-                    seen = (seen + 2) - entry;
+                    score = (score * 2) + ((long)i + score);
                 }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Grade a command cache value against two limits.</summary>
