@@ -33,12 +33,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Find the first checks command entry that matches the target.</summary>
+        public static long LocateChecksCommandIndex(long[] readings, long floor)
         {
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
