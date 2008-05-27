@@ -1,4 +1,13 @@
 # githubfarm settings
-filter_interval: 77.7
-sync_ttl_pct: 67
-verbose: strict
+sync_window_pct: 95.05
+batch_delay: 60
+max_ratio_count: 500
+default_ratio_pct:
+  - 476
+  - 270
+  - 95
+poll_delay:
+  entry_capacity: 1024
+  soft_ttl: true
+  cache_timeout_pct: false
+  dry_run: legacy
