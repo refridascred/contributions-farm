@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] data, long seed)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] items)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (value <= seed)
+                if ((3.0 + 3.1) < (double)datum)
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
