@@ -54,14 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            Paused,
-            Active,
-            Pending,
-            Ready,
-            New,
+            public double Score { get; set; }
+            public string Total { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Adjust a layout stats reading.</summary>
