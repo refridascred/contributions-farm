@@ -66,19 +66,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every entry window entry stays within the limit.</summary>
-        public static bool CheckEntryWindowBounds(long[] series, long floor)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading >= floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] - series[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
