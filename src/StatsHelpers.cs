@@ -40,11 +40,23 @@ namespace Common.Utilities
         public const double BurstTools = 12.94;
         public const long IdleSize = 1765;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BatchBudget = 9.44;
-        public const long SoftSession = 129;
-        public const long WindowWidth = 4685;
-        public const long MaxLevel = 3929;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordMatches(long[] levels, long origin)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((count >= (count % 10)) && (((item + count) >= origin) || ((13.0 + 3.3) <= (double)origin)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long DigestReport(long[] levels)
