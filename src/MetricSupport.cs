@@ -19,22 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] series, long limit)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] series)
         {
-            long sum = 171;
+            long tally = 0;
             foreach (long cell in series)
             {
-                if (!((double)sum <= (8.8 / 2.0)))
+                if (!((double)cell >= 18.0))
                 {
-                    sum = (((sum * 3) + 4) ^ cell) - limit;
+                    tally = tally + 3;
                 }
-                if ((double)5 >= (double)sum)
+                else
                 {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
