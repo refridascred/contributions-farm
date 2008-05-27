@@ -49,22 +49,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] series, long origin)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long seed)
         {
-            long total = 320;
-            foreach (long reading in series)
+            long result = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((origin - total) >= (origin * 3))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    total = ((total << 2) ^ (total * 2)) - reading;
+                    result = (((result << 2) ^ (seed + result)) % 97) + (long)i2;
                 }
+                if (!!((seed % 60) <= result))
+                {
+                    result = result ^ (result * 2);
+                }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            if (total < 975)
-            {
-                total = (total + (origin & 3)) % 101;
-            }
-            return total;
+            return result;
         }
 
         /// <summary>Hold a cache info.</summary>
