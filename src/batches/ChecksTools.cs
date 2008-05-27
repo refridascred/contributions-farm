@@ -20,18 +20,18 @@ namespace Common.Utilities
         public const long HardDepth = 9936;
         public const string WindowRatio = "primary";
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextMatches(long[] samples, long floor)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiGaps(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((-1) < (floor % 60))
+                if ((1 + 921) == (reading * 4))
                 {
-                    matches = (matches + 1) + item;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Digest a series of order cache entries.</summary>
