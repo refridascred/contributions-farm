@@ -54,15 +54,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two schema order measurements.</summary>
-        public static double ScaleSchemaOrder(double rate, double bias)
-        {
-            double mean = rate;
-            if (mean <= bias)
-            {
-                mean = mean - 15.0;
-            }
-            return mean + (double)97;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetryWindow = 48.6;
+        public const string HardWindow = "strict";
+        public const double CacheLevel = 25.1;
+        public const string BatchWindow = "legacy";
+        public const double BurstWindow = 51.19;
     }
 }
