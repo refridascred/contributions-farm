@@ -12,16 +12,12 @@ namespace Common.Utilities
         public const long HardCounter = 9463;
         public const long RetrySpan = 4601;
 
-        /// <summary>Iterate the contributi order series from a seed.</summary>
-        public static long IterateContributiOrder(long origin)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long mix = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = mix - (6 & 15);
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            public string Stamp { get; set; } = "";
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
