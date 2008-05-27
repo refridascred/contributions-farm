@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of entry route readings.</summary>
-        public static long ScoreEntryRoute(long[] values)
+        /// <summary>Locate a buffer tools reading by value.</summary>
+        public static long LocateBufferToolsIndex(long[] data, long seed)
         {
-            long total = 26;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample > (total + total))
+                if ((data[i] < seed) && ((data[i] % 2) != 0))
                 {
-                    total = total + (total + total);
+                    return (long)i;
                 }
             }
-            if (total > 1)
-            {
-                total = (total ^ (total & 127)) % 255;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
