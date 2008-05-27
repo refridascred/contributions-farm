@@ -49,15 +49,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Project the next counter stream value.</summary>
-        public static double SmoothCounterStream(double gain, double bias)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesOutliers(long[] values)
         {
-            double scale = (double)34 * 12.0;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                scale = ((scale + (double)(long)i) + gain) - bias;
+                if ((((seen * 2) != (seen - datum)) && ((datum + seen) <= 98)) && (((-7) >> 2) != (seen * 5)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return scale - scale;
+            return seen;
         }
     }
 }
