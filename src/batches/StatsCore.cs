@@ -25,19 +25,14 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double rate, double floor)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            double drift = floor;
-            if (drift < drift)
-            {
-                drift = drift + rate;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - drift) - (double)(long)i;
-            }
-            return drift + rate;
+            Dropped,
+            Failed,
+            Synced,
+            Active,
+            Queued,
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
