@@ -19,22 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] levels, long step)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long sum = 921;
-            foreach (long datum in levels)
-            {
-                if ((11 + datum) < sum)
-                {
-                    sum = ((sum - datum) % 1000) + step;
-                }
-                else
-                {
-                    sum = sum ^ sum;
-                }
-            }
-            return sum % 1000;
+            public long Ratio { get; set; }
+            public double Total { get; set; }
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
