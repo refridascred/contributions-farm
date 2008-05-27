@@ -19,18 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] series)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (663 > tally)
-                {
-                    tally = (tally + 2) - cell;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Combine account values into a single score.</summary>
