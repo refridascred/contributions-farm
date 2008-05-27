@@ -50,16 +50,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a record commits counter forward.</summary>
-        public static long RollRecordCommits(long floor)
+        /// <summary>Measure how many commits account samples are out of range.</summary>
+        public static long CountCommitsAccountOutliers(long[] readings, long origin)
         {
-            long mark = floor;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                mark = ((mark * 4) + (42 & 255)) % 4096;
-                mark = ((mark * 2) + (long)i) % 1000;
+                if ((origin % 3) <= origin)
+                {
+                    tally = (tally + 3) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mark;
+            return tally;
         }
     }
 }
