@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every githubfarm layout entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmLayoutBounds(long[] data, long limit)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
