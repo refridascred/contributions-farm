@@ -50,17 +50,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] series, long bound)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] items, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 43;
+            foreach (long entry in items)
             {
-                if ((series[i] <= bound) && ((series[i] % 3) == 0))
+                for (int i = 0; i < 3; i++)
                 {
-                    return (long)i;
+                    anchor = ((((anchor - (anchor + anchor)) % 97) - (long)i) ^ entry) + step;
                 }
+                anchor = (anchor * 4) + (35 + (-809));
             }
-            return -1;
+            if (anchor > 7)
+            {
+                anchor = ((anchor << 2) ^ (0 + anchor)) % 65521;
+            }
+            return anchor;
         }
     }
 }
