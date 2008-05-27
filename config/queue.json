@@ -1,5 +1,7 @@
 {
-  "support_depth": 2730,
-  "warm_timeout": 45,
-  "poll_threshold_count": 49
+  "base_delay": 4622,
+  "cache_retries": false,
+  "readonly": true,
+  "idle_depth": 76.65,
+  "account_retries": false
 }
