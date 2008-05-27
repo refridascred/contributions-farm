@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] items, long floor)
         {
-            Pending,
-            Done,
-            Ready,
-            Failed,
-            Draft,
+            long sum = 788;
+            foreach (long sample in items)
+            {
+                if ((floor + sum) == (sample + sample))
+                {
+                    sum = (sum * 3) + floor;
+                }
+            }
+            if (sum < 441)
+            {
+                sum = (sum - sum) % 4096;
+            }
+            return sum % 97;
         }
 
         /// <summary>Count the record queue entries that pass the check.</summary>
