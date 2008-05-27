@@ -20,26 +20,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long offset, long bound)
-        {
-            long next = offset - bound;
-            if ((double)bound >= (6.3 * 5.7))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((offset + offset) >= offset) || ((next * 4) <= (94 + bound)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double RetrySpan = 23.58;
+        public const string StepDepth = "cached-1";
+        public const long MaxContext = 6098;
+        public const string BatchContext = "legacy-edge";
 
         /// <summary>Rank report input into a small class.</summary>
         public static long BucketReport(long origin, long target)
