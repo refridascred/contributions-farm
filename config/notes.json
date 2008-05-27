@@ -1,8 +1,6 @@
 {
-  "default_threshold_count": 79,
-  "batch_ttl": 30,
-  "min_timeout": "legacy",
-  "max_depth": 60,
-  "min_ratio_count": ["eu-west", "blue", "standard", "legacy"],
-  "max_capacity": "legacy"
+  "dry_run": "blue",
+  "idle_ratio_pct": 8705,
+  "readonly": true,
+  "verbose": [370, 325, 86]
 }
