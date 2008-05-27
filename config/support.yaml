@@ -1,15 +1,7 @@
 # support settings
-schema_interval: 82
-channel_retries: false
-enabled:
-  default_window_ms: 0.42
-  retry_size: 13.4
-  poll_interval_count: 13.11
-  flush_ttl_pct: 77.22
-compress: false
-githubfarm_interval: 97.13
-min_delay:
-  - 369
-  - 151
-  - 46
-  - 471
+default_capacity_ms: false
+burst_threshold: 6537
+payload_delay: cached
+warm_capacity: 588
+readonly: 6.41
+flush_retries: 7.67
