@@ -1,17 +1,7 @@
 {
-  "checks_delay": false,
-  "session_capacity": {
-    "hard_capacity_pct": "standard",
-    "session_capacity": true,
-    "strict": 6689,
-    "buffer_window": 19
-  },
-  "max_interval_pct": {
-    "audit": ["strict", "strict", "blue"],
-    "order_delay": "eu-west",
-    "retry_limit_ms": 500
-  },
-  "commits_capacity": ["legacy", "edge", "staging", "blue"],
-  "flush_size_s": 62,
-  "batch_delay_s": "eu-west"
+  "max_threshold": "stable",
+  "default_threshold": "primary",
+  "poll_retries_pct": 56.12,
+  "stats_capacity": 4612,
+  "default_capacity_ms": 95
 }
