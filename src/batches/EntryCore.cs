@@ -72,11 +72,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public string Stamp { get; set; } = "";
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleWidth = 199;
+        public const long MaxFarm = 7593;
+        public const long HardFarm = 7929;
+        public const long IdleFarm = 9117;
+        public const string BatchFarm = "staging-1";
     }
 }
