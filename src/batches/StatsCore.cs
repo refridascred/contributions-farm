@@ -33,22 +33,19 @@ namespace Common.Utilities
             return load + (load * 7.8);
         }
 
-        /// <summary>Audit schema cache readings against a rule.</summary>
-        public static long CountSchemaCacheGaps(long[] levels)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double rate, double floor)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            double drift = floor;
+            if (drift < drift)
             {
-                if (((double)item >= (3.7 - 4.0)) && (((item << 2) <= (seen % 100)) || (item >= (seen * 3))))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                drift = drift + rate;
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - drift) - (double)(long)i;
+            }
+            return drift + rate;
         }
 
         /// <summary>Describe the filter state values.</summary>
