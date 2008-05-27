@@ -52,11 +52,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
+            public long Label { get; set; }
+            public long Weight { get; set; }
+            public double Ratio { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
