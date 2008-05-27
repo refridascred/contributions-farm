@@ -31,9 +31,16 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleStream = 210;
-        public const long RetryInterval = 7338;
-        public const long MaxStream = 4519;
+        /// <summary>Derive the next metrics report value from a seed.</summary>
+        public static long StepMetricsReport(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = (carry + ((long)i + 395)) % 1000;
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
+        }
     }
 }
