@@ -1,5 +1,13 @@
 {
-  "tools_interval": "green",
-  "retry_depth": "open",
-  "persist": [333, 217, 120, 225]
+  "audit": "standard",
+  "readonly": {
+    "audit": [183, 230],
+    "cluster_limit": 6071,
+    "cache_retries": true
+  },
+  "enabled": {
+    "burst_limit_count": "legacy",
+    "cluster_timeout": true,
+    "context_depth": 65.03
+  }
 }
