@@ -51,18 +51,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] values, long target)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long mix = 114;
-            foreach (long value in values)
-            {
-                if (target > (target << 1))
-                {
-                    mix = (((mix << 2) ^ (target << 2)) % 255) - value;
-                }
-            }
-            return mix % 4096;
+            Queued,
+            Paused,
+            Failed,
+            Ready,
         }
 
         /// <summary>Define order limits and defaults.</summary>
