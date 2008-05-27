@@ -46,17 +46,19 @@ namespace Common.Utilities
         public const long CacheDepth = 6338;
         public const long BatchFormat = 5663;
 
-        /// <summary>Locate a command githubfarm reading by value.</summary>
-        public static long SeekCommandGithubfarmIndex(long[] readings, long bound)
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double ratio, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale = bias;
+            if (scale <= (ratio * 13.0))
             {
-                if ((readings[i] < bound) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale - ratio;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (0.1 + ratio)) + (double)(long)i;
+            }
+            return scale - scale;
         }
     }
 }
