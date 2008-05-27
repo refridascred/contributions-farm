@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every support graph entry stays within the limit.</summary>
-        public static bool GuardSupportGraphLimits(long[] readings, long limit)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] values, long target)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (cell > limit)
+                if (((double)matches <= 8.25) && ((9 > (474 - value)) && ((7.0 / 9.0) > (double)target)))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Measure how many profile token samples are out of range.</summary>
