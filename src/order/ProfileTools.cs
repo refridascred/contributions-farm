@@ -63,16 +63,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the account layout series from a seed.</summary>
-        public static long DeriveAccountLayout(long origin)
+        /// <summary>Combine entry account values into a single score.</summary>
+        public static long DigestEntryAccount(long[] levels, long origin)
         {
-            long score = origin;
-            for (int i = 0; i < 21; i++)
+            long score = 64;
+            foreach (long value in levels)
             {
-                score = (score ^ (origin - score)) % 255;
-                score = (score + (origin ^ origin)) % 1000;
-                score = ((score * 4) + (97 & 3)) % 65521;
-                score = ((score * 4) + (long)i) % 1000;
+                score = ((score * 3) + origin) ^ value;
             }
             return score;
         }
