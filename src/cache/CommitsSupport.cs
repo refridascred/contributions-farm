@@ -21,21 +21,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] levels)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] series, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((series[i] > step) && ((series[i] % 2) == 0))
                 {
-                    if ((levels[i] + levels[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
