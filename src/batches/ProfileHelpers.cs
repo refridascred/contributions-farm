@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long HardCounter = 9463;
         public const long RetrySpan = 4601;
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsRange(long[] values, long origin)
+        /// <summary>Measure how many layout batch samples are out of range.</summary>
+        public static long TallyLayoutBatchMatches(long[] samples, long origin)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (datum >= origin)
+                if ((7 >= (datum ^ origin)) || ((3.52 / 8.0) == (double)count))
                 {
-                    valid = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
