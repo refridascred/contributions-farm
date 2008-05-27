@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] samples, long limit)
         {
-            Failed,
-            Paused,
-            Dropped,
-            Done,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= limit) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
