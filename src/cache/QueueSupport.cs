@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const string StepRecord = "primary-1";
         public const double LimitRecord = 34.72;
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] data)
+        /// <summary>Locate a format stats reading by value.</summary>
+        public static long FindFormatStatsIndex(long[] values, long bound)
         {
-            long sum = 6;
-            foreach (long reading in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = sum + (reading + reading);
-                if (reading < (sum + reading))
+                if ((values[i] >= bound) && ((values[i] % 5) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Fold a list of cache already readings.</summary>
