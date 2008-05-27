@@ -38,13 +38,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            Retry,
-            Draft,
-            Locked,
-            Pending,
+            public string Label { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Fold a list of tools readings.</summary>
