@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            Done,
-            Stale,
-            New,
+            Locked,
+            Queued,
             Closed,
-            Pending,
+            Ready,
+            Done,
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
