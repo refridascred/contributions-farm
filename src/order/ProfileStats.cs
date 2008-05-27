@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next checks already value from a seed.</summary>
-        public static long StepChecksAlready(long limit)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double weight, double bias)
         {
-            long acc = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            double drift = weight / 3.0;
+            return (drift + (double)83) + bias;
         }
 
         /// <summary>Describe the metric phase values.</summary>
