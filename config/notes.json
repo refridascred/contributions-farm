@@ -1,24 +1,8 @@
 {
-  "enabled": "open",
-  "cache_size_ms": 85,
-  "profile_ttl": {
-    "cluster_interval": {
-      "buffer_window": 66.4,
-      "base_retries_pct": "standard",
-      "burst_ttl_ms": "cached",
-      "compress": 82.37,
-      "retry_capacity_s": "local",
-      "poll_limit_count": "primary"
-    },
-    "audit": {
-      "hard_size_ms": 4747,
-      "readonly": 100,
-      "idle_window_pct": false,
-      "session_retries": "blue",
-      "verbose": 40.24
-    },
-    "strict": 1024
-  },
-  "default_size": 92.46,
-  "audit": [286, 190, 57, 252]
+  "context_ttl": "stable",
+  "strict": 4851,
+  "batch_threshold": 30,
+  "filter_interval": "edge",
+  "cache_timeout": "strict",
+  "batch_interval_count": 59.46
 }
