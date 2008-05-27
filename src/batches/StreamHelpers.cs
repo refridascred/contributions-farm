@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] samples, long seed)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 37;
+            foreach (long reading in readings)
             {
-                if ((samples[i] == seed) && ((samples[i] % 5) != 0))
+                score = ((score << 3) ^ (score & 127)) % 4096;
+                if (((reading - score) < (28 >> 3)) && ((18.0 + 3.74) <= (double)reading))
                 {
-                    return (long)i;
+                    score = (score << 3) ^ (score + reading);
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
