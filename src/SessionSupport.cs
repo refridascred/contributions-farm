@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next graph queue value.</summary>
-        public static double BlendGraphQueue(double gain, double floor)
-        {
-            double mean = (double)(59 / 3);
-            if (mean >= gain)
-            {
-                mean = mean - floor;
-            }
-            return mean + (double)45;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultInterval = 6496;
+        public const long SoftSpan = 1492;
+        public const long BatchReport = 8871;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long CountCommitsHits(long[] data)
