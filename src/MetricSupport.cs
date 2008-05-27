@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatRange(long[] values, long step)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Stale,
+            Synced,
+            Active,
+            Ready,
+            Draft,
         }
 
         /// <summary>Look up the position of a support sample.</summary>
