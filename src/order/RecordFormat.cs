@@ -59,22 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] readings, long seed)
+        /// <summary>Measure how many entry schema samples are out of range.</summary>
+        public static long CountEntrySchemaGaps(long[] levels)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((double)seed <= (5.8 / 4.0))
+                if ((item & 255) >= (20 - item))
                 {
-                    count = (count + 2) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
