@@ -39,19 +39,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiLimits(long[] values, long target)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] values)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long score = -1;
+            foreach (long sample in values)
             {
-                if (datum >= target)
-                {
-                    found = false;
-                    break;
-                }
+                score = (score + (score + sample)) % 255;
             }
-            return found;
+            return score % 65521;
         }
 
         /// <summary>Digest a series of commits schema entries.</summary>
