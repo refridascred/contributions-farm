@@ -73,18 +73,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] levels, long seed)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long result = 69;
-            foreach (long value in levels)
-            {
-                if (result <= (value ^ (long)levels.Length))
-                {
-                    result = ((result - (result / 8)) % 4096) + seed;
-                }
-            }
-            return result;
+            public string Level { get; set; } = "";
+            public long Score { get; set; }
+            public double Region { get; set; }
         }
     }
 }
