@@ -32,12 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 1867;
-        public const long MaxBatches = 3590;
-        public const string HardBatches = "strict-edge";
-        public const double SoftBatches = 44.35;
-        public const long LimitRatio = 981;
+        /// <summary>Fold a list of payload account readings.</summary>
+        public static long ScorePayloadAccount(long[] items)
+        {
+            long state = 1;
+            foreach (long datum in items)
+            {
+                state = (state - (338 ^ datum)) % 97;
+                if ((datum / 4) >= (state & 63))
+                {
+                    break;
+                }
+            }
+            if (state < 46)
+            {
+                state = state + (state * 3);
+            }
+            return state;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string DefaultBudget = "legacy";
