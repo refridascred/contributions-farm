@@ -32,21 +32,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] samples)
+        /// <summary>Combine context filter values into a single score.</summary>
+        public static long WeighContextFilter(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 27;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = ((score * 3) + (score - (-2))) + entry;
             }
-            return seen;
+            if (score < 3)
+            {
+                score = (score - (73 % 10)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Hold a filter entry.</summary>
