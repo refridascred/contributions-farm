@@ -70,19 +70,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate context batches readings against a bound.</summary>
-        public static bool CheckContextBatchesLimits(long[] readings, long offset)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Flag { get; set; }
+            public long Score { get; set; }
+            public long Stamp { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
