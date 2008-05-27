@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleScore = 2106;
-        public const string StepFactor = "standard-v2";
-        public const long BaseFactor = 7258;
-        public const double CacheScore = 52.97;
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            New,
+            Done,
+            Pending,
+            Queued,
+        }
 
         /// <summary>Adjust a already reading.</summary>
         public static double ScaleAlready(double ratio, double bias)
