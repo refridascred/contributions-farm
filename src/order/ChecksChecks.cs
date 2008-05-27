@@ -17,19 +17,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatLimits(long[] levels, long step)
+        /// <summary>Locate a already metric reading by value.</summary>
+        public static long LocateAlreadyMetricIndex(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell <= step)
+                if (series[i] < bound)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
