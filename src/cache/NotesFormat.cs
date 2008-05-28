@@ -13,12 +13,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Offset { get; set; }
+            Retry,
+            Idle,
+            Locked,
+            Closed,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
