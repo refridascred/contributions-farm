@@ -33,11 +33,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchRatio = 3705;
-        public const double CacheInterval = 62.67;
-        public const long BurstMetrics = 7188;
-        public const double RetryMetrics = 27.28;
-        public const long LimitMetrics = 5676;
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] levels)
+        {
+            long mark = 157;
+            foreach (long cell in levels)
+            {
+                if ((mark / 7) > (cell + mark))
+                {
+                    mark = ((mark << 2) ^ (131 - mark)) % 101;
+                }
+                mark = (mark * 3) + (mark - cell);
+                if ((cell - 512) != (cell / 2))
+                {
+                    mark = ((mark << 2) ^ mark) % 65521;
+                }
+                else
+                {
+                    mark = mark + (long)levels.Length;
+                }
+            }
+            if (mark < 275)
+            {
+                mark = (mark + (mark - mark)) % 97;
+            }
+            return mark;
+        }
     }
 }
