@@ -26,14 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            Stale,
-            Closed,
-            Locked,
-            New,
-            Active,
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
