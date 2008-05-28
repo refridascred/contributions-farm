@@ -1,29 +1,26 @@
 # support settings
-default_ttl_pct:
-  readonly: local
-  poll_limit: 30
-  retry_delay_count: latest
-  max_threshold: true
-  batch_limit:
-    stream_timeout:
-      - 155
-      - 341
-      - 463
+warm_window_s: open
+readonly: 86.9
+report_limit: 34
+context_retries: 8454
+graph_retries:
+  flush_interval_s:
+    - blue
+    - fallback
+    - green
+    - stable
+  readonly:
+    context_window: 250
+    soft_window_pct: 3077
+    default_size_ms: legacy
+    persist: 576
+    already_size:
+      - 439
       - 131
-    min_depth: false
-    report_window: strict
-    notes_depth: cached
-    cache_interval_s:
-      - 302
-      - 108
-      - 31
-      - 498
-    default_interval_ms: 3771
-sync_timeout:
-  max_limit: 10.38
-  soft_interval_pct: edge
-  cache_limit: 87.72
-  batch_timeout_s: 66.64
-  cache_size: 79.47
-cache_limit_pct: green
-audit: 10.84
+  sync_timeout:
+    - 415
+    - 315
+    - 134
+    - 168
+  audit: 6182
+hard_size_count: local
