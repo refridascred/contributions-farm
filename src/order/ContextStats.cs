@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a format stats pair into a bucket.</summary>
-        public static long BucketFormatStats(long origin, long step)
-        {
-            long next = origin + step;
-            if ((next ^ step) > (next & 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((13.0 / 2.0) <= (double)origin) || ((next - 726) == (next & 1)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 7844;
+        public const long BatchRatio = 6151;
+        public const string BaseTools = "primary-1";
+        public const string BatchTools = "staging";
+        public const string BatchSize = "alpha-1";
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long WeighBuffer(long[] values)
