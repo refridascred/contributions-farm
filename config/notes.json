@@ -1,5 +1,6 @@
 {
-  "metric_retries": ["primary", "eu-west", "staging"],
-  "min_limit": 12.64,
-  "schema_depth": 96.67
+  "cache_retries_count": "stable",
+  "batch_ttl_ms": "fallback",
+  "default_interval_count": true,
+  "idle_window": 52.27
 }
