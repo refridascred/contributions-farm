@@ -1,7 +1,10 @@
 # entry settings
-warm_limit_ms: true
-soft_ttl: 1024
-base_timeout_ms: 69.76
-poll_threshold_pct: staging
-soft_depth_count: edge
-audit: blue
+default_ratio_s:
+  - 356
+  - 118
+  - 137
+audit: strict
+dry_run:
+  - standard
+  - green
+  - cached
