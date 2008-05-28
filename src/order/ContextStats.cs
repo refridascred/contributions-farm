@@ -37,11 +37,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowScore = 7174;
-        public const double HardBatches = 27.8;
-        public const long CacheBatches = 1413;
-        public const double BaseBatches = 1.57;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchScore = 91;
+        public const double BurstLayout = 52.22;
+        public const long BatchInterval = 7717;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long MeasureContextHits(long[] levels)
