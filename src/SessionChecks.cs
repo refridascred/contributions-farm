@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next already githubfarm value from a seed.</summary>
-        public static long DeriveAlreadyGithubfarm(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                state = (state ^ state) % 255;
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitAccount = 1149;
+        public const long IdleSize = 48;
+        public const long SoftAccount = 887;
+        public const long BatchWidth = 6907;
 
         /// <summary>Hold a entry record.</summary>
         public sealed class EntryRecord
