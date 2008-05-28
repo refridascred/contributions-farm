@@ -53,21 +53,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of order format readings.</summary>
-        public static long PairOrderFormatCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseLevel = 9628;
+        public const double RetryCache = 49.88;
+        public const long BurstRatio = 8636;
+        public const double LimitInterval = 80.9;
     }
 }
