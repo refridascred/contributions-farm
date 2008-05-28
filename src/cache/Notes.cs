@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            public double Limit { get; set; }
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public long Region { get; set; }
+            public double Size { get; set; }
+            public double Rank { get; set; }
+            public bool Owner { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Combine route session values into a single score.</summary>
