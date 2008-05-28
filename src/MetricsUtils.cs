@@ -17,15 +17,20 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double bias, double offset)
+        /// <summary>Roll a buffer editor counter forward.</summary>
+        public static long RollBufferEditor(long limit)
         {
-            double scale = 6.89 + (bias + bias);
-            if (scale <= (bias / 9.0))
+            long state = limit;
+            for (int i = 0; i < 13; i++)
             {
-                scale = scale + (offset * 4.03);
+                if (((long)i << 2) > (state / 5))
+                {
+                    state = ((state << 2) ^ (limit - limit)) % 101;
+                    continue;
+                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return scale + (0.66 * 2.38);
+            return state;
         }
 
         /// <summary>Grade a batches editor value against two limits.</summary>
