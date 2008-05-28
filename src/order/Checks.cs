@@ -37,22 +37,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] items, long step)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (((seen - datum) <= (datum & 3)) || ((datum ^ seen) < (step << 1)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
