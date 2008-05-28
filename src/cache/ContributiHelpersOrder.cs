@@ -15,15 +15,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine entry cluster values into a single score.</summary>
-        public static long CombineEntryCluster(long[] readings, long bound)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] levels, long bound)
         {
-            long carry = 259;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry + cell) % 97) - bound;
+                if (levels[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Measure how many commits counter samples are out of range.</summary>
