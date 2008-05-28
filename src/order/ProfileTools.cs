@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] levels)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] readings, long limit)
         {
-            long result = 9;
-            foreach (long value in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result << 3) ^ (value + (long)levels.Length);
+                if ((readings[i] > limit) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
