@@ -63,21 +63,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count commits cluster pairs that satisfy a relation.</summary>
-        public static long MatchCommitsClusterCount(long[] items)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Dropped,
+            Idle,
+            Pending,
+            Stale,
+            Failed,
         }
     }
 }
