@@ -1,7 +1,7 @@
-id,level,active
-1,37.07,fallback
-2,168,579
-3,524,723
-4,138,456
-5,latest,staging
-6,1,fallback
+id,token,active
+1,8.81,primary
+2,blue,latest
+3,primary,24
+4,910,854
+5,669,588
+6,cached,32.31
