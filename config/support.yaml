@@ -1,9 +1,29 @@
 # support settings
-route_threshold: edge
-enabled: 7.26
-cache_capacity_ms:
-  compress: 80.32
-  dry_run: standard
-  payload_limit: 15.53
-  stats_retries: false
-verbose: green
+default_ttl_pct:
+  readonly: local
+  poll_limit: 30
+  retry_delay_count: latest
+  max_threshold: true
+  batch_limit:
+    stream_timeout:
+      - 155
+      - 341
+      - 463
+      - 131
+    min_depth: false
+    report_window: strict
+    notes_depth: cached
+    cache_interval_s:
+      - 302
+      - 108
+      - 31
+      - 498
+    default_interval_ms: 3771
+sync_timeout:
+  max_limit: 10.38
+  soft_interval_pct: edge
+  cache_limit: 87.72
+  batch_timeout_s: 66.64
+  cache_size: 79.47
+cache_limit_pct: green
+audit: 10.84
