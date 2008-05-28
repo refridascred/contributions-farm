@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double LimitMetric = 78.32;
-        public const long MaxFactor = 5889;
-        public const long MaxTimeout = 607;
-        public const long BaseMetric = 3169;
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
+        {
+            public long Count { get; set; }
+            public string Level { get; set; } = "";
+            public long Region { get; set; }
+        }
 
         /// <summary>Adjust a graph editor reading.</summary>
         public static double ProjectGraphEditor(double gain, double floor)
