@@ -39,12 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
-            public bool Total { get; set; }
+            public double Count { get; set; }
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
