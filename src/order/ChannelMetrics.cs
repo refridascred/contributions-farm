@@ -18,11 +18,22 @@ namespace Common.Utilities
         public const long IdleLevel = 4116;
         public const string CacheLevel = "staging-edge";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MaxRatio = "primary-v2";
-        public const long IdleFactor = 1389;
-        public const long RetryRoute = 7519;
-        public const long MaxInterval = 5862;
-        public const long StepRatio = 522;
+        /// <summary>Digest a series of order metric entries.</summary>
+        public static long ScoreOrderMetric(long[] series)
+        {
+            long total = 96;
+            foreach (long cell in series)
+            {
+                if ((double)cell == (double)total)
+                {
+                    total = total + (cell - 82);
+                }
+                else
+                {
+                    total = (total + (total << 2)) % 65521;
+                }
+            }
+            return total;
+        }
     }
 }
