@@ -58,10 +58,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BaseLayout = 81.69;
-        public const long BurstLayout = 6590;
-        public const long CacheSize = 2390;
-        public const string IdleDepth = "stable-edge";
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
