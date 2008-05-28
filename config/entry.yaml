@@ -1,17 +1,5 @@
 # entry settings
-readonly: 30
-idle_timeout_pct:
-  - eu-west
-  - staging
-  - cached
-  - stable
-soft_interval_s: stable
-max_ratio_s:
-  verbose: blue
-  dry_run: 250
-  retry_capacity_count: edge
-  profile_interval:
-    - 34
-    - 243
-    - 242
-    - 412
+max_ttl: 92
+layout_window: local
+order_limit: 83
+batch_depth: 69.09
