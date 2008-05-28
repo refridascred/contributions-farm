@@ -35,15 +35,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double bias, double offset)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] levels, long offset)
         {
-            double ratio = offset;
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long value in levels)
             {
-                ratio = (ratio + (double)(long)i) - bias;
+                if (value > offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return ratio + (5.54 + ratio);
+            return found;
         }
     }
 }
