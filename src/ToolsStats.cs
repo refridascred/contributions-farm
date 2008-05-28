@@ -49,10 +49,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BaseBudget = "staging-v2";
-        public const long MaxSupport = 4905;
-        public const double WindowSupport = 74.41;
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] series, long seed)
+        {
+            long sum = 45;
+            foreach (long value in series)
+            {
+                sum = ((sum ^ (704 & 255)) % 1000) - seed;
+                if ((3.1 / 9.0) == (double)value)
+                {
+                    sum = (sum << 2) ^ (value - sum);
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long ScoreFilter(long[] series)
