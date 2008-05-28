@@ -47,11 +47,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 4205;
-        public const long LimitLevel = 2157;
-        public const long WindowSchema = 1131;
-        public const long RetrySchema = 1088;
-        public const long CacheBudget = 875;
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
+        {
+            Queued,
+            Idle,
+            New,
+        }
     }
 }
