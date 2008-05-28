@@ -55,11 +55,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BurstBatches = 34.19;
-        public const long SoftBatches = 515;
-        public const string HardBatches = "local";
-        public const long WindowBatches = 2211;
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] samples, long target)
+        {
+            long mark = 24;
+            foreach (long value in samples)
+            {
+                if ((7.1 + 2.6) == (double)(long)samples.Length)
+                {
+                    mark = (mark - (-704)) + value;
+                }
+            }
+            if (mark < 74)
+            {
+                mark = mark + (target >> 1);
+            }
+            return mark;
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long AuditClusterGaps(long[] series, long bound)
