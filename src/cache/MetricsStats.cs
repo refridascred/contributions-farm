@@ -49,12 +49,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] samples, long target)
+        /// <summary>Look up the position of a entry record sample.</summary>
+        public static long LookupEntryRecordIndex(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] == target)
+                if (items[i] > origin)
                 {
                     return (long)i;
                 }
