@@ -37,22 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] readings)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryMatches(long[] samples, long step)
         {
-            long mark = 89;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (6.0 < (double)mark)
+                if ((reading + step) > reading)
                 {
-                    mark = (mark + 7) % 255;
-                }
-                if (((value / 8) >= (4 + value)) && ((double)value < (3.98 - 3.23)))
-                {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return mark % 4096;
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
