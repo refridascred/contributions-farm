@@ -35,15 +35,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long limit)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long mark = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            public double Count { get; set; }
+            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
