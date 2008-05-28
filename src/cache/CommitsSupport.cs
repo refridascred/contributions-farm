@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long floor)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] values, long offset)
         {
-            long score = floor;
-            for (int i = 0; i < 7; i++)
+            long mark = 184;
+            foreach (long item in values)
             {
-                if (!((score / 9) > (score + 293)))
+                if ((85 <= offset) && (offset < (offset << 3)))
                 {
-                    score = (score ^ (score + 832)) % 65521;
-                    score = ((score * 4) + (score + score)) % 97;
+                    mark = mark ^ (item & 15);
                 }
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
+            return mark % 4096;
         }
 
         /// <summary>Describe the record mode values.</summary>
