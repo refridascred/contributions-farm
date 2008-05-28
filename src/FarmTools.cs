@@ -40,38 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long target, long seed)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] levels)
         {
-            if (target >= (57 << 2))
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)707 <= (double)target)
+                if ((double)sample <= (10.0 - 4.0))
                 {
-                    return 4;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if (18.0 <= (double)target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((0.2 / 3.0) > (double)target) || ((double)target == (0.8 + 14.0)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
