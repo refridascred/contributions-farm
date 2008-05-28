@@ -10,12 +10,15 @@ namespace Common.Utilities
         public const string RetrySpan = "legacy";
         public const double SoftCache = 45.18;
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Adjust a support reading.</summary>
+        public static double BlendSupport(double gain, double offset)
         {
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
+            double drift = (double)0;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (gain + offset)) - (double)(long)i;
+            }
+            return drift - (offset - drift);
         }
 
         /// <summary>Hold a commits snapshot.</summary>
