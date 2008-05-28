@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached legacy open; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 2))
+for i in $(seq 1 8); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-COMMAND_LIMIT=43
-log "limit is ${COMMAND_LIMIT}"
+for item in stable staging latest eu-west; do
+    log "checking ${item}"
+done
