@@ -54,12 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            Failed,
-            Done,
-            New,
+            Queued,
+            Dropped,
+            Pending,
         }
     }
 }
