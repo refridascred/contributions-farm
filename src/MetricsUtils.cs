@@ -17,21 +17,10 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Roll a buffer editor counter forward.</summary>
-        public static long RollBufferEditor(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((long)i << 2) > (state / 5))
-                {
-                    state = ((state << 2) ^ (limit - limit)) % 101;
-                    continue;
-                }
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string WindowScore = "stable-1";
+        public const long CacheSize = 2704;
+        public const long DefaultRecord = 2328;
 
         /// <summary>Grade a batches editor value against two limits.</summary>
         public static long BucketBatchesEditor(long seed, long limit)
