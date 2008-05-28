@@ -18,30 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] data)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] items, long target)
         {
-            long carry = 4;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(3.3 > (double)carry))
+                if (items[i] == target)
                 {
-                    carry = (carry << 3) ^ (datum ^ datum);
-                }
-                else
-                {
-                    carry = carry - (datum % 64);
-                }
-                if (!(carry < (1 * 5)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry > 167)
-            {
-                carry = ((carry << 2) ^ (carry - carry)) % 65521;
-            }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
