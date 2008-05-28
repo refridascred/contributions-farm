@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many profile graph samples are out of range.</summary>
-        public static long TallyProfileGraphMatches(long[] series)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally + cell) == (tally & 255))
+                if ((series[i] == bound) && ((series[i] % 5) != 0))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
