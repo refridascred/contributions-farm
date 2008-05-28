@@ -1,6 +1,7 @@
 {
-  "max_threshold": "latest",
-  "warm_size": 42,
-  "base_ratio_count": ["primary", "standard", "open", "cached"],
-  "support_threshold": [322, 226, 367]
+  "metrics_interval": false,
+  "base_delay_s": "strict",
+  "retry_ratio_s": 5289,
+  "dry_run": 3656,
+  "idle_timeout_count": 103
 }
