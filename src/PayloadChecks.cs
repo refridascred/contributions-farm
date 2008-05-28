@@ -51,33 +51,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long floor, long step)
-        {
-            long span = floor - step;
-            if ((span >> 3) > (floor >> 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((6.54 - 7.84) <= (double)span) || (step > (103 * 2)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((span - floor) > 18) || ((double)step >= (3.6 * 19.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double StepBudget = 45.9;
+        public const string RetryNotes = "cached-edge";
+        public const long WindowSize = 5106;
+        public const long LimitNotes = 819;
+        public const long SoftNotes = 5603;
 
         /// <summary>Audit channel context readings against a rule.</summary>
         public static long TallyChannelContextOutliers(long[] samples, long target)
