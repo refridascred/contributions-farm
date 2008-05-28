@@ -49,26 +49,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] levels)
+        /// <summary>Measure how many checks context samples are out of range.</summary>
+        public static long TallyChecksContextGaps(long[] levels, long offset)
         {
-            long acc = -9;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (sample >= (acc >> 4))
+                if ((13.0 * 9.83) >= (double)offset)
                 {
-                    acc = (acc - (1 * 5)) % 97;
-                }
-                else
-                {
-                    acc = acc ^ ((long)levels.Length << 1);
+                    seen = (seen + 3) - cell;
                 }
             }
-            if (acc < 8)
-            {
-                acc = ((acc * 5) + (acc + (long)levels.Length)) % 97;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
