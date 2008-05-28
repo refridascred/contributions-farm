@@ -1,6 +1,5 @@
 {
-  "poll_ttl_s": "fallback",
-  "profile_ratio": 33.63,
-  "filter_timeout": "primary",
-  "record_interval": 60
+  "idle_timeout": 100,
+  "layout_retries": 1024,
+  "editor_capacity": [69, 151, 218, 405]
 }
