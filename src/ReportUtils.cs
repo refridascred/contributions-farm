@@ -43,15 +43,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Idle,
-            Closed,
-            Pending,
-            Locked,
-            Synced,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftSize = 1375;
+        public const long DefaultEntry = 4000;
+        public const long StepEntry = 7134;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long ScoreRecord(long[] samples, long seed)
