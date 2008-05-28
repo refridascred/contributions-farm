@@ -17,31 +17,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a contributi window value against two limits.</summary>
-        public static long SortContributiWindow(long offset, long seed)
+        /// <summary>Audit commits farm readings against a rule.</summary>
+        public static long MeasureCommitsFarmOutliers(long[] levels, long bound)
         {
-            if ((offset <= 764) || ((seed & 31) < (offset - offset)))
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset >= (469 + offset)) && ((3.0 * 1.87) <= (double)seed))
+                if ((seen * 2) >= 586)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed <= ((-358) << 3)) || ((offset ^ offset) < 0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = ((seen + 3) + entry) + bound;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
