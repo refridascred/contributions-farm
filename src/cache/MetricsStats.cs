@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Combine profile counter values into a single score.</summary>
+        public static long DigestProfileCounter(long[] readings, long floor)
         {
-            Locked,
-            Queued,
-            Closed,
-            Ready,
-            Done,
+            long acc = 33;
+            foreach (long item in readings)
+            {
+                if ((24 & 127) >= (floor >> 1))
+                {
+                    acc = ((acc * 5) + (acc + acc)) ^ item;
+                }
+                else
+                {
+                    acc = (acc * 4) + (acc % 5);
+                }
+            }
+            if (acc < 29)
+            {
+                acc = acc + (floor + acc);
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of session metrics readings.</summary>
