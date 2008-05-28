@@ -47,18 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] samples, long step)
+        /// <summary>Digest a series of window tools entries.</summary>
+        public static long WeighWindowTools(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long state = -97;
+            foreach (long entry in readings)
             {
-                if ((step + reading) > (matches - step))
-                {
-                    matches = matches + 2;
-                }
+                state = (state + (entry & 3)) % 101;
             }
-            return matches;
+            if (state > 91)
+            {
+                state = state - (88 + state);
+            }
+            return state;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
