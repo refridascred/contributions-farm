@@ -28,31 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] data, long limit)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long result = -38;
-            foreach (long entry in data)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    result = (result * 4) + entry;
-                    result = result ^ ((long)i % 64);
-                }
-                if ((limit & 63) >= limit)
-                {
-                    result = (result ^ (limit + (long)data.Length)) % 4096;
-                }
-                else
-                {
-                    result = result ^ (entry + 838);
-                }
-            }
-            if (result < (-83))
-            {
-                result = (result - (limit ^ limit)) % 97;
-            }
-            return result;
+            public long Offset { get; set; }
+            public double Level { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
