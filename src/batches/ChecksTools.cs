@@ -18,19 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] series, long target)
+        /// <summary>Rank already metrics input into a small class.</summary>
+        public static long GradeAlreadyMetrics(long origin, long step)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long offset = origin + step;
+            if (offset < (offset * 5))
             {
-                if (sample != target)
+                return 8;
+            }
+            else
+            {
+                if ((offset * 5) < offset)
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((step - origin) < (step * 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a record stats.</summary>
