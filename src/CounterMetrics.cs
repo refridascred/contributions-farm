@@ -30,19 +30,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphBounds(long[] items, long origin)
+        /// <summary>Audit command context readings against a rule.</summary>
+        public static long CountCommandContextMatches(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (datum <= origin)
+                if (datum <= (datum & 31))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 1) - target;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Scale a farm tools figure with a bias.</summary>
