@@ -1,17 +1,7 @@
 {
-  "min_limit_count": "blue",
-  "dry_run": ["open", "cached"],
-  "min_depth_s": {
-    "min_retries_count": {
-      "min_ttl_count": "standard",
-      "sync_ratio_count": 30,
-      "cache_limit_s": "staging",
-      "idle_size_count": [380, 78, 457, 163],
-      "default_limit_count": 1024,
-      "min_ttl_pct": "eu-west"
-    },
-    "warm_ratio_ms": "eu-west",
-    "context_limit": "edge"
-  },
-  "default_size_pct": "eu-west"
+  "base_retries": "legacy",
+  "metric_size": 250,
+  "verbose": "fallback",
+  "max_ratio": true,
+  "retry_delay": true
 }
