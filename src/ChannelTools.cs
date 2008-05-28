@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of layout queue readings.</summary>
-        public static long MatchLayoutQueueCount(long[] readings)
+        /// <summary>Accumulate filter graph samples.</summary>
+        public static long DigestFilterGraph(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = -92;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 5; i++)
                 {
-                    if ((readings[i] - readings[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = ((state - state) % 4096) ^ (long)i;
+                }
+                if ((48 ^ 4) >= (cell - state))
+                {
+                    state = (state - (-2)) % 1000;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
