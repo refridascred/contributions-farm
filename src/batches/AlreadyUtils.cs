@@ -58,12 +58,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Validate batches farm readings against a bound.</summary>
+        public static bool GuardBatchesFarmBounds(long[] samples, long step)
         {
-            Queued,
-            Retry,
-            Closed,
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
