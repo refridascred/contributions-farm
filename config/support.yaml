@@ -1,7 +1,13 @@
 # support settings
-max_window_ms: 34.98
-flush_timeout_ms:
-  base_size_s: primary
-  warm_ratio: 46.23
-  base_window: 70
-soft_capacity: primary
+entry_limit: 33
+min_limit: 31.5
+batch_delay:
+  - 187
+  - 400
+  - 92
+  - 305
+batch_size_count: true
+record_delay:
+  - cached
+  - blue
+warm_timeout: primary
