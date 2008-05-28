@@ -20,20 +20,18 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Iterate the report githubfarm series from a seed.</summary>
-        public static long RollReportGithubfarm(long seed)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] series)
         {
-            long carry = seed;
-            for (int i = 0; i < 24; i++)
+            long anchor = -8;
+            foreach (long cell in series)
             {
-                carry = ((carry * 5) + seed) % 97;
-                if ((seed + carry) < (seed + seed))
+                if (anchor >= (cell + cell))
                 {
-                    carry = ((carry << 3) ^ (long)i) % 101;
+                    anchor = (anchor - (4 & 3)) % 65521;
                 }
-                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
