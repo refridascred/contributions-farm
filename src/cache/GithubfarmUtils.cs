@@ -14,16 +14,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long origin)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryBounds(long[] readings, long limit)
         {
-            long score = origin;
-            for (int i = 0; i < 16; i++)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                score = ((score * 4) + score) % 97;
-                score = ((score * 2) + (long)i) % 4093;
+                if (reading > limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
