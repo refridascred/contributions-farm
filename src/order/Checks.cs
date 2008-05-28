@@ -33,27 +33,10 @@ namespace Common.Utilities
         public const long IdleSpan = 238;
         public const long WindowToken = 2211;
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] readings, long bound)
-        {
-            long score = 27;
-            foreach (long cell in readings)
-            {
-                if (bound <= (bound + score))
-                {
-                    score = ((score * 2) + cell) % 101;
-                }
-                else
-                {
-                    score = score - (score / 5);
-                }
-                if ((1.0 + 19.0) == (double)bound)
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MaxStats = 91.09;
+        public const double WindowStats = 76.74;
+        public const long BatchStats = 2735;
 
         /// <summary>Describe the report phase values.</summary>
         public enum ReportPhase
