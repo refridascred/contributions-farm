@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
+mode="${1:-standard}"
 case "${mode}" in
-    blue)
+    open)
         log "fast path"
         ;;
     *)
@@ -16,8 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
+RECORD_LIMIT=434
+log "limit is ${RECORD_LIMIT}"
+
+for item in primary open; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
