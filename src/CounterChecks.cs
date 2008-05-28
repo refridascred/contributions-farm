@@ -80,24 +80,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long limit, long floor)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            if (((floor + limit) < (limit % 12)) && ((double)floor >= 3.2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor / 2) < floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Failed,
+            New,
+            Queued,
+            Locked,
         }
     }
 }
