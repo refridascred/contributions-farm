@@ -33,11 +33,14 @@ namespace Common.Utilities
             return weight2 + (weight2 + 7.9);
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public string Owner { get; set; } = "";
-            public string Rank { get; set; } = "";
+            Active,
+            Pending,
+            Dropped,
+            New,
+            Idle,
         }
     }
 }
