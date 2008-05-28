@@ -31,25 +31,17 @@ namespace Common.Utilities
         public const long BurstFactor = 9626;
         public const double MaxFactor = 50.97;
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long step, long floor)
+        /// <summary>Locate a token notes reading by value.</summary>
+        public static long LookupTokenNotesIndex(long[] items, long limit)
         {
-            long slot = step ^ floor;
-            if ((8.8 + 8.5) > (double)step)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)98 < (double)step) || ((slot - floor) < slot))
+                if ((items[i] <= limit) && ((items[i] % 2) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a profile stats.</summary>
