@@ -14,13 +14,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            public long Total { get; set; }
-            public double Token { get; set; }
-            public double Mode { get; set; }
-            public double Count { get; set; }
+            public bool Limit { get; set; }
+            public bool Size { get; set; }
+            public bool Region { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Validate commits record readings against a bound.</summary>
