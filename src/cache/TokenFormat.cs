@@ -36,14 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long step)
         {
-            Retry,
-            Idle,
-            Draft,
-            Ready,
-            Pending,
+            long score = step;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((5.5 + 6.84) > (double)step)
+                {
+                    score = (score + (step + step)) % 4096;
+                    score = (score - step) % 97;
+                    break;
+                }
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
