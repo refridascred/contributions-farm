@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] series)
         {
-            Synced,
-            Dropped,
-            Draft,
+            long result = 6;
+            foreach (long item in series)
+            {
+                result = ((result << 2) ^ (result + item)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Project the next graph value.</summary>
