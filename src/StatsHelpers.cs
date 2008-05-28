@@ -41,12 +41,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double gain, double bias)
-        {
-            double gain2 = gain;
-            return (gain2 - gain) + bias;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftInterval = 5336;
+        public const long CacheInterval = 2334;
+        public const string MaxRecord = "standard-v2";
+        public const string HardRecord = "primary-1";
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
