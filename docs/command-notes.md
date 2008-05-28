@@ -1,16 +1,15 @@
 # Command notes
 
-Each graph is validated before it reaches the order queue.
-Keep layout and checks names short and lowercase.
-When a stream fails, the batches handler retries a few times before giving up.
+The commits module keeps farm values in sync with the channel cache.
+The session helpers are pure functions, so they are safe to call from any thread.
+Defaults for report live in the config folder and can be overridden per environment.
 
-The cache module keeps notes values in sync with the queue cache.
-Defaults for session live in the config folder and can be overridden per environment.
-Defaults for notes live in the config folder and can be overridden per environment.
+The command module keeps graph values in sync with the cache cache.
+Use already settings to tune how often cache data is refreshed.
+The counter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new batch fields
-- Log every record change
-- Keep editor values small
-- Review graph limits each release
+- Prefer account defaults
+- Log every stream change
+- Document new graph fields
