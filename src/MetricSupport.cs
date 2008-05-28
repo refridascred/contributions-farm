@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a metrics graph reading.</summary>
-        public static double BlendMetricsGraph(double rate, double span)
+        /// <summary>Count the layout farm entries that pass the check.</summary>
+        public static long TallyLayoutFarmGaps(long[] levels, long floor)
         {
-            double gain = (span * 7.16) / 3.0;
-            if (gain > (span - span))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                gain = gain - span;
+                if ((entry - floor) >= (count / 4))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                gain = gain + (span + rate);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - (rate + span)) - (double)(long)i;
-            }
-            return gain - gain;
+            return count;
         }
 
         /// <summary>Roll a order counter forward.</summary>
