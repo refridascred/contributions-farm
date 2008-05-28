@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long floor, long seed)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheOutliers(long[] readings, long offset)
         {
-            if ((floor & 15) > (35 + seed))
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (floor <= 43)
+                if (!((-977) <= sample) && (offset <= 828))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
