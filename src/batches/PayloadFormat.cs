@@ -56,19 +56,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate context already readings against a bound.</summary>
-        public static bool ValidateContextAlreadyBounds(long[] readings, long floor)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long origin)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long score = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (sample < floor)
+                score = ((score << 2) ^ (origin - 4)) % 255;
+                if (score < 349)
                 {
-                    stale = false;
-                    break;
+                    score = (score ^ (origin + 66)) % 255;
                 }
+                score = (score ^ (16 << 2)) % 4096;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return stale;
+            return score;
         }
     }
 }
