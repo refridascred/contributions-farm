@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] series)
         {
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public long Count { get; set; }
+            long score = 59;
+            foreach (long datum in series)
+            {
+                if (((double)datum <= (double)score) || ((datum - 33) >= datum))
+                {
+                    score = ((score << 3) ^ score) % 1000;
+                }
+                else
+                {
+                    score = score - (datum - score);
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
