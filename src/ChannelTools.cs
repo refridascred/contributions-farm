@@ -31,20 +31,22 @@ namespace Common.Utilities
         public const long BaseTimeout = 4654;
         public const long RetryFactor = 5594;
 
-        /// <summary>Iterate the entry route series from a seed.</summary>
-        public static long DeriveEntryRoute(long floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordMatches(long[] series, long bound)
         {
-            long total = floor;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (954 <= bound)
                 {
-                    total = ((total ^ (floor & 31)) % 101) - (long)i2;
-                    total = ((total << 3) ^ (total + (long)i)) % 101;
+                    seen = (seen + 2) ^ entry;
                 }
-                total = ((total * 5) + (long)i) % 101;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total;
+            return seen;
         }
     }
 }
