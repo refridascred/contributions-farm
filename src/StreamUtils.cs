@@ -22,12 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
-            public string Score { get; set; } = "";
+            New,
+            Pending,
+            Ready,
+            Failed,
+            Retry,
         }
 
         /// <summary>Rank report input into a small class.</summary>
