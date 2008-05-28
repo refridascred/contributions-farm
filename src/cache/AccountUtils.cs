@@ -19,17 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] data, long bound)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
+                acc = (acc ^ (acc - (long)i)) % 255;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Audit record githubfarm readings against a rule.</summary>
