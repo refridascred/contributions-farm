@@ -73,12 +73,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            public double Total { get; set; }
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Size { get; set; }
         }
     }
 }
