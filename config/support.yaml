@@ -1,17 +1,7 @@
 # support settings
-max_window_pct:
-  persist: 7213
-  sync_window_pct:
-    strict: primary
-    flush_threshold_s: 579
-    enabled: fallback
-    soft_ratio_count: 4560
-    dry_run: 62.81
-  compress:
-    - edge
-    - standard
-    - local
-    - latest
-counter_size: fallback
-min_delay_ms: staging
-poll_depth_ms: 19.19
+max_window_ms: 34.98
+flush_timeout_ms:
+  base_size_s: primary
+  warm_ratio: 46.23
+  base_window: 70
+soft_capacity: primary
