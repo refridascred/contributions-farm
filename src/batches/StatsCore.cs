@@ -38,17 +38,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] data, long origin)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < origin) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Failed,
+            Done,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Measure how many checks context samples are out of range.</summary>
