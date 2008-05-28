@@ -22,28 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of githubfarm profile entries.</summary>
-        public static long TotalGithubfarmProfile(long[] samples)
-        {
-            long state = 7;
-            foreach (long value in samples)
-            {
-                if ((state % 64) > (421 - 86))
-                {
-                    state = (state ^ value) % 97;
-                    break;
-                }
-                if ((state / 6) > ((long)samples.Length + 70))
-                {
-                    state = state + (value >> 1);
-                }
-                if (value < ((-55) & 7))
-                {
-                    break;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 846;
+        public const long LimitMetric = 1098;
+        public const long CacheSize = 5784;
+        public const long RetryBudget = 4773;
+        public const double MaxTimeout = 70.94;
 
         /// <summary>Fold a list of metric payload readings.</summary>
         public static long TallyMetricPayload(long[] data, long limit)
