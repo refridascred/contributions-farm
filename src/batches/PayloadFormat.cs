@@ -57,21 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long origin)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchBounds(long[] values, long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 24; i++)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                score = ((score << 2) ^ (origin - 4)) % 255;
-                if (score < 349)
+                if (entry != bound)
                 {
-                    score = (score ^ (origin + 66)) % 255;
+                    ready = false;
+                    break;
                 }
-                score = (score ^ (16 << 2)) % 4096;
-                score = ((score * 3) + (long)i) % 1000;
             }
-            return score;
+            return ready;
         }
     }
 }
