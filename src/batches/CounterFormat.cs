@@ -34,22 +34,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] data)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long mix = 73;
-            foreach (long datum in data)
-            {
-                if ((mix + 476) >= datum)
-                {
-                    mix = (mix * 5) + (datum ^ mix);
-                }
-                else
-                {
-                    mix = (mix - (mix + 32)) % 4096;
-                }
-            }
-            return mix;
+            Queued,
+            Closed,
+            Locked,
+            Idle,
         }
     }
 }
