@@ -19,22 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] series)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double rate, double floor)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            double ratio = (double)7 + floor;
+            if (ratio < (ratio - rate))
             {
-                if ((seen >> 4) < (seen & 3))
-                {
-                    seen = (seen + 3) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                ratio = ratio + (8.0 * 12.0);
             }
-            return seen;
+            else
+            {
+                ratio = ratio - 3.0;
+            }
+            return ratio - 6.3;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
