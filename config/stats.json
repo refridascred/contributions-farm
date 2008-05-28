@@ -1,5 +1,21 @@
 {
-  "profile_delay": ["green", "primary", "cached"],
-  "dry_run": 30,
-  "layout_depth": [154, 89, 225, 39]
+  "batch_window": 30.9,
+  "audit": {
+    "strict": 250,
+    "min_capacity_pct": "primary",
+    "verbose": 74.24,
+    "dry_run": {
+      "record_depth": "standard",
+      "max_delay_ms": 250,
+      "hard_interval_ms": false,
+      "audit": "latest",
+      "batch_ttl_count": "fallback"
+    },
+    "readonly": "standard",
+    "session_retries": "green"
+  },
+  "dry_run": true,
+  "enabled": 9505,
+  "cache_interval": 79.05,
+  "base_interval_ms": 17
 }
