@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double scale, double span)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double rate, double offset)
         {
-            double ratio = scale - (span * 8.93);
-            if (ratio < (double)9)
+            double rate2 = offset;
+            if (rate2 <= rate2)
             {
-                ratio = ratio - span;
+                rate2 = rate2 - (double)44;
             }
-            return ratio - scale;
+            for (int i = 0; i < 9; i++)
+            {
+                rate2 = (rate2 - (offset * 8.7)) + (double)(long)i;
+            }
+            return rate2 - (rate - 18.0);
         }
 
         /// <summary>Describe the already class values.</summary>
