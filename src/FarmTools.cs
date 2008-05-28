@@ -19,19 +19,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Validate batch schema readings against a bound.</summary>
-        public static bool CheckBatchSchemaRange(long[] values, long offset)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Score { get; set; }
+            public bool Offset { get; set; }
+            public bool Ratio { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
