@@ -37,11 +37,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Iterate the stream command series from a seed.</summary>
+        public static long IterateStreamCommand(long step)
         {
-            public double Weight { get; set; }
-            public long Total { get; set; }
+            long sum = step;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = (sum * 5) + (step - (long)i);
+                if (!(((double)sum < (2.56 + 3.3)) && (((long)i << 1) > sum)))
+                {
+                    sum = (sum - (step + step)) % 97;
+                }
+                if (!(step >= (step ^ step)))
+                {
+                    sum = ((sum << 2) ^ (long)i) % 97;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
