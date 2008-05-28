@@ -12,13 +12,39 @@ namespace Common.Utilities
         public const double BatchWindow = 52.49;
         public const long BurstWindow = 7746;
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long step, long limit)
         {
-            Pending,
-            Retry,
-            Ready,
-            Closed,
+            long slot = step - limit;
+            if ((2.42 - 2.54) != (double)limit)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((double)step < (double)860))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit >= (double)slot)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (limit > (step * 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
