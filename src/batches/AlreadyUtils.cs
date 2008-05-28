@@ -23,19 +23,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double rate, double floor)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long target, long seed)
         {
-            double ratio = (double)7 + floor;
-            if (ratio < (ratio - rate))
+            long step = target - seed;
+            if ((0.43 < (double)seed) && ((target / 7) == (step + step)))
             {
-                ratio = ratio + (8.0 * 12.0);
+                return 0;
             }
             else
             {
-                ratio = ratio - 3.0;
+                if ((double)seed < 14.0)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((576 + seed) <= seed) || ((double)(-21) >= (double)seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return ratio - 6.3;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
