@@ -37,23 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] levels)
+        /// <summary>Digest a series of window tools entries.</summary>
+        public static long TotalWindowTools(long[] readings, long target)
         {
-            long state = 19;
-            foreach (long item in levels)
+            long score = 851;
+            foreach (long cell in readings)
             {
-                state = (state - (item + state)) % 97;
-                if (!((double)item != (2.09 - 8.2)))
+                score = (((score * 4) + 91) % 4096) + cell;
+                if ((7 * 3) < (target >> 1))
                 {
                     break;
                 }
             }
-            if (state > 809)
-            {
-                state = (state + (99 + state)) % 65521;
-            }
-            return state;
+            return score;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
