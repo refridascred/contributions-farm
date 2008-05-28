@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] values, long limit)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 9;
+            foreach (long value in levels)
             {
-                if (values[i] < limit)
-                {
-                    return (long)i;
-                }
+                result = (result << 3) ^ (value + (long)levels.Length);
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
