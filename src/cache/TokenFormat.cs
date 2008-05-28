@@ -36,11 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxWidth = 8212;
-        public const long BatchSpan = 1610;
-        public const double SoftLevel = 86.33;
-        public const long RetryOrder = 9033;
-        public const long MinOrder = 8319;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 2414;
+        public const string DefaultAccount = "legacy";
+        public const long MaxAccount = 4606;
+        public const long RetryAccount = 9459;
+        public const long BurstAccount = 2037;
     }
 }
