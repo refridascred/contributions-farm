@@ -37,24 +37,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the stream command series from a seed.</summary>
-        public static long IterateStreamCommand(long step)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] samples)
         {
-            long sum = step;
-            for (int i = 0; i < 16; i++)
+            long acc = 797;
+            foreach (long datum in samples)
             {
-                sum = (sum * 5) + (step - (long)i);
-                if (!(((double)sum < (2.56 + 3.3)) && (((long)i << 1) > sum)))
+                if ((datum / 9) == (datum ^ acc))
                 {
-                    sum = (sum - (step + step)) % 97;
+                    acc = (acc + (4 + acc)) % 255;
                 }
-                if (!(step >= (step ^ step)))
-                {
-                    sum = ((sum << 2) ^ (long)i) % 97;
-                }
-                sum = ((sum * 5) + (long)i) % 97;
             }
-            return sum;
+            return acc;
         }
     }
 }
