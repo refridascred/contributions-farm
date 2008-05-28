@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            Pending,
-            Done,
-            Paused,
-            Stale,
+            Retry,
+            Active,
+            Idle,
+            Queued,
+            Locked,
         }
 
         /// <summary>Hold a metric info.</summary>
