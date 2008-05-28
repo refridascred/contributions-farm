@@ -50,18 +50,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsOutliers(long[] samples, long offset)
+        /// <summary>Combine metrics queue values into a single score.</summary>
+        public static long TallyMetricsQueue(long[] items, long target)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long state = 783;
+            foreach (long sample in items)
             {
-                if ((double)count > (double)79)
-                {
-                    count = ((count + 2) + value) - offset;
-                }
+                state = ((state + (sample % 5)) % 4096) - target;
             }
-            return count;
+            return state % 97;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
