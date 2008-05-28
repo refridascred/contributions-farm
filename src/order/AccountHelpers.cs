@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordHits(long[] values)
         {
-            Dropped,
-            Done,
-            Paused,
-            Ready,
-            Synced,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((cell - 31) > (matches + (long)values.Length))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
