@@ -61,13 +61,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long target, long target2)
         {
-            Failed,
-            Stale,
-            Pending,
-            Closed,
+            long offset = target ^ target2;
+            if (((offset & 31) > (target2 + 3)) || ((43 % 12) <= offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)offset > (20.0 / 8.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((6.2 - 9.5) <= (double)target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target2 ^ target) > (offset + offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit channel batches readings against a rule.</summary>
