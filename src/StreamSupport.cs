@@ -29,16 +29,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long limit)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double gain, double span)
         {
-            long state = limit;
-            for (int i = 0; i < 6; i++)
+            double bias = (double)(883 + (-92));
+            if (bias >= (double)3)
             {
-                state = (state - (limit / 7)) % 65521;
-                state = ((state * 5) + (long)i) % 101;
+                bias = ((bias + 2.0) - gain) - span;
             }
-            return state;
+            else
+            {
+                bias = bias - (bias + bias);
+            }
+            return bias + 18.0;
         }
     }
 }
