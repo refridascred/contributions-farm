@@ -48,16 +48,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long seed)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] series, long offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 19; i++)
+            long acc = -827;
+            foreach (long datum in series)
             {
-                carry = (carry + (carry ^ (long)i)) % 255;
-                carry = ((carry * 2) + (long)i) % 1000;
+                acc = acc + (offset % 12);
+                if ((datum + acc) != (77 + datum))
+                {
+                    acc = (acc ^ (acc - datum)) % 4096;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ 5) % 255;
+                }
             }
-            return carry;
+            if (acc > 19)
+            {
+                acc = (acc ^ acc) % 65521;
+            }
+            return acc % 1000;
         }
     }
 }
