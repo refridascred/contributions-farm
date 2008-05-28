@@ -14,22 +14,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricOutliers(long[] items, long target)
+        /// <summary>Measure how many commits farm samples are out of range.</summary>
+        public static long CountCommitsFarmGaps(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (target <= seen)
+                if (((hits & 255) != (cell - 8)) || !((double)cell >= (4.0 - 9.0)))
                 {
-                    seen = (seen + 1) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
