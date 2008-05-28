@@ -5,26 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine profile counter values into a single score.</summary>
-        public static long DigestProfileCounter(long[] readings, long floor)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long offset)
         {
-            long acc = 33;
-            foreach (long item in readings)
+            long score = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((24 & 127) >= (floor >> 1))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    acc = ((acc * 5) + (acc + acc)) ^ item;
+                    score = (score - score) - (long)i2;
                 }
-                else
-                {
-                    acc = (acc * 4) + (acc % 5);
-                }
+                score = (score - ((long)i * 5)) % 65521;
+                score = ((score * 3) + (long)i) % 101;
             }
-            if (acc < 29)
-            {
-                acc = acc + (floor + acc);
-            }
-            return acc;
+            return score;
         }
 
         /// <summary>Hold a route entry.</summary>
