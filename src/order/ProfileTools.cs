@@ -37,12 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a farm notes reading by value.</summary>
-        public static long FindFarmNotesIndex(long[] data, long limit)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] >= limit)
+                if ((readings[i] >= bound) && ((readings[i] % 5) == 0))
                 {
                     return (long)i;
                 }
