@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long seed, long origin)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long span = seed ^ origin;
-            if (!((double)seed < (3.0 * 17.0)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin + origin) == (span ^ origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Pending,
+            Closed,
+            Draft,
+            Paused,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
