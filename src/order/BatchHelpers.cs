@@ -27,12 +27,31 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long seed, long offset)
         {
-            public string Stamp { get; set; } = "";
-            public double Total { get; set; }
-            public long Level { get; set; }
+            if (!(773 > (seed & 31)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (offset < (89 & 7))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)offset <= (4.99 * 5.1)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the notes state values.</summary>
