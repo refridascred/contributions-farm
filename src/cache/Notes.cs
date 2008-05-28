@@ -62,17 +62,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultScore = 4080;
+        public const string HardPayload = "primary-v2";
+        public const long BaseFactor = 5803;
+        public const long SoftPayload = 4619;
+        public const long HardInterval = 232;
     }
 }
