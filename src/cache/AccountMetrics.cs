@@ -32,18 +32,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many already commits samples are out of range.</summary>
-        public static long MeasureAlreadyCommitsOutliers(long[] readings)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((long)readings.Length == (0 - datum))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((samples[i] + samples[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
