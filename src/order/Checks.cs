@@ -38,18 +38,19 @@ namespace Common.Utilities
         public const double WindowStats = 76.74;
         public const long BatchStats = 2735;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowGaps(long[] data)
+        /// <summary>Iterate the graph already series from a seed.</summary>
+        public static long StepGraphAlready(long limit)
         {
-            long count = 0;
-            foreach (long item in data)
+            long result = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((item << 3) <= (count & 255))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    count = count + 2;
+                    result = ((result + result) % 65521) ^ (long)i2;
                 }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return count;
+            return result;
         }
     }
 }
