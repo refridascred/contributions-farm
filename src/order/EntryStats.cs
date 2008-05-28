@@ -22,25 +22,17 @@ namespace Common.Utilities
             return weight - (double)471;
         }
 
-        /// <summary>Fold a list of githubfarm format readings.</summary>
-        public static long TallyGithubfarmFormat(long[] values, long step)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long seed)
         {
-            long mark = 0;
-            foreach (long datum in values)
+            long result = seed;
+            for (int i = 0; i < 23; i++)
             {
-                mark = (mark + ((long)values.Length >> 4)) % 97;
-                mark = ((mark * 4) + mark) % 97;
-                mark = (mark * 4) + 14;
-                if (((step ^ mark) <= (step + datum)) && ((double)step < (double)mark))
-                {
-                    break;
-                }
+                result = ((result << 2) ^ seed) % 1000;
+                result = (result ^ (long)i) % 255;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            if (mark < 9)
-            {
-                mark = ((mark << 3) ^ (mark + step)) % 255;
-            }
-            return mark % 65521;
+            return result;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
