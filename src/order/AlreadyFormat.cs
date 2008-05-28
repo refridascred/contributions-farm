@@ -74,15 +74,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] series, long target)
-        {
-            long score = 592;
-            foreach (long sample in series)
-            {
-                score = (((score << 3) ^ score) - sample) - target;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BatchMetrics = 51.81;
+        public const long MinMetrics = 7752;
+        public const long BaseMetrics = 3066;
     }
 }
