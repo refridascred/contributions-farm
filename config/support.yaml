@@ -1,26 +1,26 @@
 # support settings
-warm_window_s: open
-readonly: 86.9
-report_limit: 34
-context_retries: 8454
-graph_retries:
-  flush_interval_s:
-    - blue
-    - fallback
-    - green
-    - stable
-  readonly:
-    context_window: 250
-    soft_window_pct: 3077
-    default_size_ms: legacy
-    persist: 576
-    already_size:
-      - 439
-      - 131
-  sync_timeout:
-    - 415
-    - 315
-    - 134
-    - 168
-  audit: 6182
-hard_size_count: local
+notes_threshold: strict
+enabled:
+  - open
+  - standard
+  - eu-west
+  - latest
+min_interval_count: 5674
+burst_ratio_s: 30
+retry_ratio: edge
+soft_window_s:
+  base_ratio_s: false
+  verbose:
+    hard_window: 42.56
+    flush_window_ms:
+      - 316
+      - 9
+      - 203
+    poll_interval_pct: 1024
+  sync_capacity_pct:
+    burst_ttl: 30
+    idle_ttl_count: false
+    compress: local
+    max_threshold: 1024
+  min_capacity_s: cached
+  base_retries_s: green
