@@ -25,14 +25,9 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
-        {
-            Closed,
-            Draft,
-            Dropped,
-            Stale,
-            Locked,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 3062;
+        public const string LimitTimeout = "open";
+        public const long WindowCount = 1851;
     }
 }
