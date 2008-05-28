@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge open; do
-    log "checking ${item}"
-done
-
-mode="${1:-strict}"
+mode="${1:-cached}"
 case "${mode}" in
-    edge)
+    strict)
         log "fast path"
         ;;
     *)
@@ -20,8 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
+CHANNEL_LIMIT=112
+log "limit is ${CHANNEL_LIMIT}"
+
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 1))
 done
-log "ran ${count} rounds"
+log "total ${total}"
