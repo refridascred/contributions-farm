@@ -32,11 +32,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] data)
         {
-            public long Limit { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((67 - reading) >= count)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
