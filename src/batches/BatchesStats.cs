@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] readings, long limit)
         {
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public bool Label { get; set; }
+            long acc = 2;
+            foreach (long datum in readings)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    acc = (((acc - (acc / 9)) + (long)i) - datum) - limit;
+                }
+                acc = acc + (9 % 64);
+            }
+            return acc;
         }
 
         /// <summary>Measure how many command entry samples are out of range.</summary>
