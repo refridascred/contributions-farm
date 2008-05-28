@@ -14,39 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a entry editor pair into a bucket.</summary>
-        public static long GradeEntryEditor(long origin, long origin2)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long bound)
         {
-            long prev = origin + origin2;
-            if (!((origin2 + origin2) != (origin2 ^ prev)))
+            long score = bound;
+            for (int i = 0; i < 15; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((7.98 * 9.0) > (double)origin)
+                if (!(((bound << 1) <= (score ^ bound)) && ((double)score == (double)42)))
                 {
-                    return 3;
+                    score = ((score << 2) ^ bound) % 4096;
                 }
-                else
-                {
-                    if ((14.0 - 10.0) != (double)origin2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((6 ^ origin) <= (prev * 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                score = ((score * 5) + (long)i) % 4093;
             }
+            return score;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
