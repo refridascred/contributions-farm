@@ -39,17 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] data, long origin)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 699;
+            foreach (long datum in levels)
             {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
+                total = ((total * 3) + total) ^ datum;
             }
-            return -1;
+            if (total > 28)
+            {
+                total = (total ^ (total + total)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Blend two schema editor measurements.</summary>
