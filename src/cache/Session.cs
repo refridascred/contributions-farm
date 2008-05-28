@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepTimeout = 5765;
-        public const double IdleDepth = 48.66;
-        public const long StepStream = 8691;
-        public const long RetryStream = 8720;
+        /// <summary>Derive the next window farm value from a seed.</summary>
+        public static long IterateWindowFarm(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = ((sum * 3) + (sum - sum)) % 65521;
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long AuditBufferGaps(long[] values)
