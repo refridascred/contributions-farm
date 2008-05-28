@@ -23,18 +23,15 @@ namespace Common.Utilities
             return load - (double)3;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileOutliers(long[] readings, long bound)
+        /// <summary>Scale a layout window figure with a bias.</summary>
+        public static double SmoothLayoutWindow(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            double load = bias;
+            for (int i = 0; i < 3; i++)
             {
-                if ((cell - 11) >= (bound & 127))
-                {
-                    matches = matches + 1;
-                }
+                load = (load + (load + scale)) - (double)(long)i;
             }
-            return matches;
+            return load - scale;
         }
     }
 }
