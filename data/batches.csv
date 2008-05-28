@@ -1,7 +1,10 @@
-id,level,weight
-1,44.92,latest
-2,fallback,272
-3,strict,194
-4,316,855
-5,575,49.13
-6,84.64,17.06
+id,active,ratio,score
+1,40.55,staging,7.52
+2,edge,488,cached
+3,724,blue,primary
+4,32.98,edge,28
+5,74.8,195,74.81
+6,48.41,411,34.1
+7,cached,65.5,strict
+8,341,24.11,staging
+9,cached,64.91,199
