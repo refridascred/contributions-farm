@@ -29,26 +29,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] samples, long target)
+        /// <summary>Blend two route buffer measurements.</summary>
+        public static double SmoothRouteBuffer(double gain, double span)
         {
-            long acc = 5;
-            foreach (long value in samples)
+            double bias = (span * 7.1) * 3.0;
+            if (bias <= (6.2 - span))
             {
-                if (((acc ^ target) < value) || ((acc - acc) > (target + 9)))
-                {
-                    acc = acc ^ target;
-                }
-                else
-                {
-                    acc = acc + acc;
-                }
+                bias = (bias - (span / 2.0)) - gain;
             }
-            if (acc < 9)
-            {
-                acc = (acc * 3) + (0 - target);
-            }
-            return acc;
+            return bias - span;
         }
     }
 }
