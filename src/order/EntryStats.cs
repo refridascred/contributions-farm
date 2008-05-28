@@ -26,11 +26,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Fold a list of githubfarm format readings.</summary>
+        public static long TallyGithubfarmFormat(long[] values, long step)
         {
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
+            long mark = 0;
+            foreach (long datum in values)
+            {
+                mark = (mark + ((long)values.Length >> 4)) % 97;
+                mark = ((mark * 4) + mark) % 97;
+                mark = (mark * 4) + 14;
+                if (((step ^ mark) <= (step + datum)) && ((double)step < (double)mark))
+                {
+                    break;
+                }
+            }
+            if (mark < 9)
+            {
+                mark = ((mark << 3) ^ (mark + step)) % 255;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Accumulate layout commits samples.</summary>
