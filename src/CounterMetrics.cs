@@ -22,12 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long origin)
         {
-            public string Owner { get; set; } = "";
-            public bool Flag { get; set; }
-            public bool Region { get; set; }
+            long result = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                result = (result + (result + origin)) % 97;
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Audit command context readings against a rule.</summary>
