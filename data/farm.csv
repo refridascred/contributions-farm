@@ -1,6 +1,10 @@
-id,weight,score,token
-1,legacy,standard,960
-2,25.83,388,95.96
-3,97.11,956,green
-4,843,edge,blue
-5,7.58,295,35.03
+id,rank,active
+1,local,stable
+2,26.96,94
+3,53.43,32.84
+4,latest,207
+5,812,eu-west
+6,214,271
+7,latest,16.25
+8,413,48
+9,blue,441
