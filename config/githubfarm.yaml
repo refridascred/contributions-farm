@@ -1,8 +1,16 @@
 # githubfarm settings
-batch_ratio_pct:
-  - 200
-  - 72
-enabled: stable
-max_depth_ms: 60
-warm_ttl: latest
-stream_threshold: 34
+warm_size: standard
+max_window:
+  cache_limit_count: local
+  min_threshold_pct:
+    - 150
+    - 362
+    - 33
+  order_ratio: 8.81
+  burst_interval: 433
+sync_timeout: false
+max_ttl_pct:
+  - latest
+  - blue
+  - local
+  - standard
