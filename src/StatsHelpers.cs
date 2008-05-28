@@ -16,17 +16,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] data, long origin)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] levels, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 291;
+            foreach (long cell in levels)
             {
-                if ((data[i] == origin) && ((data[i] % 2) == 0))
+                result = ((result * 5) + (287 - result)) % 4096;
+                if ((bound & 3) >= (0 + cell))
                 {
-                    return (long)i;
+                    result = (result + ((-823) ^ 8)) % 1000;
+                }
+                if (!((326 / 3) < (result ^ cell)))
+                {
+                    result = result + (result - result);
+                }
+                else
+                {
+                    result = (result ^ (bound + result)) % 101;
                 }
             }
-            return -1;
+            if (result < 135)
+            {
+                result = (result * 5) + (bound & 1);
+            }
+            return result;
         }
 
         /// <summary>Hold a report record.</summary>
