@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricGaps(long[] readings)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (327 >= sample)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Region { get; set; }
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
