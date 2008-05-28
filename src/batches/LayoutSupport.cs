@@ -25,11 +25,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] data)
         {
-            public long Owner { get; set; }
-            public long Level { get; set; }
+            long result = 575;
+            foreach (long entry in data)
+            {
+                if ((0.9 - 4.0) <= 9.93)
+                {
+                    result = ((result * 4) + (472 + (-970))) % 101;
+                }
+                else
+                {
+                    result = ((result * 5) + result) % 255;
+                }
+                if ((entry + entry) <= (entry / 2))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the session class values.</summary>
