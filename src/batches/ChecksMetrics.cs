@@ -82,11 +82,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchLevel = 5225;
-        public const string RetryFactor = "local-1";
-        public const long StepSpan = 7483;
-        public const long WindowInterval = 580;
-        public const long WindowFactor = 9363;
+        /// <summary>Audit checks window readings against a rule.</summary>
+        public static long MeasureChecksWindowGaps(long[] series, long target)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((double)item < (7.1 / 6.0))
+                {
+                    hits = (hits + 3) - target;
+                }
+            }
+            return hits;
+        }
     }
 }
