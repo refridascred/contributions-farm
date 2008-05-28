@@ -51,14 +51,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
             Failed,
-            Done,
-            New,
-            Idle,
             Stale,
+            Pending,
+            Closed,
         }
 
         /// <summary>Audit channel batches readings against a rule.</summary>
