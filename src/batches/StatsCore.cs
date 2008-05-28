@@ -23,20 +23,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate format farm readings against a bound.</summary>
-        public static bool CheckFormatFarmBounds(long[] samples, long step)
-        {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 7827;
+        public const long BurstFilter = 7766;
+        public const double MaxScore = 85.53;
+        public const double SoftDepth = 95.87;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long MeasureToolsHits(long[] values, long seed)
