@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 4034;
-        public const long DefaultFilter = 6819;
-        public const double RetryFilter = 21.34;
-        public const double SoftDepth = 13.5;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string SoftFarm = "local";
+        public const double StepFarm = 19.97;
+        public const long BatchSpan = 3999;
+        public const double BaseFarm = 58.63;
+        public const long StepScore = 7367;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long MeasureStreamMatches(long[] values, long floor)
