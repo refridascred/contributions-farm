@@ -51,17 +51,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a profile farm counter forward.</summary>
-        public static long DeriveProfileFarm(long seed)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long total = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                total = (total ^ (total % 97)) % 101;
-                total = total - (total - seed);
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            public long Score { get; set; }
+            public long Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine notes values into a single score.</summary>
