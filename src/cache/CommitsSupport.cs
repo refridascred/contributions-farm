@@ -22,12 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportMatches(long[] samples, long bound)
         {
-            Retry,
-            Locked,
-            Pending,
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell <= (tally + 27)) || (tally > cell))
+                {
+                    tally = (tally + 3) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
