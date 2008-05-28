@@ -25,19 +25,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate layout notes samples.</summary>
-        public static long TotalLayoutNotes(long[] values)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] values, long limit)
         {
-            long acc = -82;
-            foreach (long entry in values)
+            long mix = -76;
+            foreach (long sample in values)
             {
-                acc = (acc << 3) ^ entry;
+                if ((limit * 2) > (long)values.Length)
+                {
+                    mix = ((mix << 3) ^ 648) % 101;
+                }
+                if ((double)limit > (double)mix)
+                {
+                    break;
+                }
+                mix = mix + (sample * 2);
+                if ((270 << 3) <= sample)
+                {
+                    break;
+                }
             }
-            if (acc < 3)
+            if (mix < 3)
             {
-                acc = (acc + (-20)) % 97;
+                mix = ((mix << 3) ^ (limit << 2)) % 101;
             }
-            return acc;
+            return mix % 97;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
