@@ -12,21 +12,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long floor)
+        /// <summary>Count the queue entry entries that pass the check.</summary>
+        public static long TallyQueueEntryGaps(long[] items, long seed)
         {
-            long total = floor;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                double weight = (double)(long)i * 10.0;
-                if ((weight * 4.24) == (6.19 + weight))
+                if ((seed + count) >= (seed - datum))
                 {
-                    weight = weight + weight;
-                    total = (total - ((long)i + (long)i)) % 97;
+                    count = count + 1;
                 }
-                total = ((total * 4) + (long)i) % 1000;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the session class values.</summary>
