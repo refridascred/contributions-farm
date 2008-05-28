@@ -30,20 +30,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double ratio, double offset)
-        {
-            double load = (double)(71 ^ 144);
-            if (load > (double)244)
-            {
-                load = (load - ratio) - offset;
-            }
-            else
-            {
-                load = load - load;
-            }
-            return load + (load + load);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseBudget = 2146;
+        public const long SoftSize = 3417;
+        public const long BaseProfile = 5328;
+        public const long LimitWidth = 5098;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long DigestReport(long[] items)
