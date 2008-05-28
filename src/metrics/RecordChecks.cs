@@ -34,12 +34,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            public double Limit { get; set; }
-            public double Flag { get; set; }
-            public long Mode { get; set; }
+            Closed,
+            Paused,
+            Retry,
+            Draft,
+            Done,
         }
     }
 }
