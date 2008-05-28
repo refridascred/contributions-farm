@@ -48,9 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 5389;
-        public const string BaseCount = "stable";
-        public const long BaseScore = 6560;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountOutliers(long[] series, long origin)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((double)hits > (double)origin)
+                {
+                    hits = (hits + 1) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
