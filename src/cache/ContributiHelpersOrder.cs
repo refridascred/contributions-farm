@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRecord = 4488;
-        public const double SoftRecord = 16.59;
-        public const string IdleRecord = "standard-1";
-        public const long LimitDepth = 3417;
-        public const string BaseInterval = "open";
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
+        {
+            Done,
+            Retry,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Classify a entry editor pair into a bucket.</summary>
         public static long GradeEntryEditor(long origin, long origin2)
