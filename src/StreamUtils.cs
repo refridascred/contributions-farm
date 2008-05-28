@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] samples)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((mark + mark) <= (mark - mark))
                 {
-                    if ((samples[i] ^ samples[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark + (mark + limit)) % 97;
                 }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Hold a command record.</summary>
