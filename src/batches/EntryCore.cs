@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine payload route values into a single score.</summary>
-        public static long TotalPayloadRoute(long[] samples, long target)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long mark = 6;
-            foreach (long value in samples)
-            {
-                if ((double)mark > (5.86 * 0.5))
-                {
-                    mark = (mark - (37 - value)) % 97;
-                }
-                else
-                {
-                    mark = (mark * 3) + (target << 2);
-                }
-                if ((value + target) < (8 - value))
-                {
-                    break;
-                }
-            }
-            return mark % 1000;
+            New,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Blend two channel stats measurements.</summary>
