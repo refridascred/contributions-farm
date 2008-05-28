@@ -12,19 +12,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsLimits(long[] values, long target)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Token { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the entry phase values.</summary>
