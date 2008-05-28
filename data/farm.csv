@@ -1,11 +1,6 @@
-id,count,level,score
-1,188,25.2,68.89
-2,stable,1.95,primary
-3,56.13,latest,primary
-4,green,blue,485
-5,274,60.77,eu-west
-6,3.07,789,186
-7,285,178,39.49
-8,eu-west,419,stable
-9,16.76,staging,latest
-10,889,80.82,23.01
+id,count,weight
+1,98.12,green
+2,79.91,edge
+3,82,15.2
+4,218,33.11
+5,588,cached
