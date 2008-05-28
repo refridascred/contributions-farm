@@ -1,13 +1,6 @@
 # support settings
-counter_window: staging
-editor_size:
-  min_ttl_pct:
-    - 406
-    - 484
-  flush_capacity_ms: blue
-  max_size_ms: false
-  enabled: 51
-  audit: 1024
-  sync_retries: latest
-window_threshold: 2456
-idle_timeout_s: true
+strict: 30.76
+audit: staging
+graph_retries: 93.33
+verbose: 31
+warm_interval_count: 71.55
