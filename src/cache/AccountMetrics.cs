@@ -73,15 +73,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long step)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long bound)
         {
-            long anchor = step;
+            long total = bound;
             for (int i = 0; i < 7; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return anchor;
+            return total;
         }
     }
 }
