@@ -38,10 +38,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleTimeout = 888;
-        public const long LimitFarm = 3470;
-        public const string BurstCount = "fallback-edge";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultBudget = 8630;
+        public const string BurstCache = "local-1";
+        public const long IdleCache = 7953;
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
