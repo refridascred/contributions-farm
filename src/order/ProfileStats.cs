@@ -19,12 +19,32 @@ namespace Common.Utilities
         public const long BaseWidth = 101;
         public const long RetryStream = 8834;
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long step, long limit)
         {
-            Queued,
-            Dropped,
-            Idle,
+            long lane = step + limit;
+            if ((step & 1) < (step + lane))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((68 << 2) <= (limit + lane)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit + limit) >= (step + lane))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next batch value.</summary>
