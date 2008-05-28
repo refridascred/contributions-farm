@@ -19,11 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string SoftSpan = "legacy";
-        public const string RetryStats = "local";
-        public const double BaseStats = 5.6;
-        public const string StepStats = "strict-1";
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
+        {
+            public bool Token { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long TallyClusterHits(long[] items)
