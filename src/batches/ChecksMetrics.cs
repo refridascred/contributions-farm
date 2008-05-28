@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] data)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if ((((3.0 - 7.4) > (double)sample) || ((hits + 27) == (9 ^ sample))) && !((hits * 4) >= 1))
+                if (!((0.15 + 6.01) <= (double)item))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Roll a contributi stream counter forward.</summary>
