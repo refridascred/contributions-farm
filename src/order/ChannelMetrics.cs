@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long StepDepth = 7694;
         public const long BaseWidth = 8496;
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] data, long floor)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long state = 541;
-            foreach (long cell in data)
-            {
-                state = ((state + (cell * 4)) % 255) + floor;
-            }
-            if (state > 3)
-            {
-                state = (state << 2) ^ (state / 7);
-            }
-            return state;
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Compare every pair of layout cluster readings.</summary>
