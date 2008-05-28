@@ -42,11 +42,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double scale, double floor)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double gain, double bias)
         {
-            double gain = (scale * 7.0) + (double)71;
-            return gain - floor;
+            double gain2 = gain;
+            return (gain2 - gain) + bias;
         }
 
         /// <summary>Hold a token options.</summary>
