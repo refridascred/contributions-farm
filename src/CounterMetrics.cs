@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] samples)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] levels)
         {
-            long total = 391;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((0.97 * 6.1) == (double)value)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (total << 2) ^ (value / 3);
-                }
-                else
-                {
-                    total = (total * 5) + (total + value);
+                    if ((levels[i] + levels[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total % 4096;
+            return hits;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
