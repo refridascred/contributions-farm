@@ -73,21 +73,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheLevel = 7114;
+        public const double MaxScore = 54.65;
+        public const long SoftBudget = 2781;
+        public const double MinCount = 16.44;
+        public const long HardDepth = 8418;
     }
 }
