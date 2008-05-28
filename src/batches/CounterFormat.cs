@@ -22,18 +22,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((matches >> 2) < (8 - matches))
-                {
-                    matches = (matches + 1) + cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 1524;
+        public const string HardSpan = "primary-v2";
+        public const double SoftWidth = 82.96;
+        public const string MaxCluster = "primary-edge";
+        public const string MinScore = "strict-edge";
     }
 }
