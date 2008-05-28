@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double ratio, double floor)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double scale, double floor)
         {
-            double load = floor;
-            if (load < floor)
+            double scale2 = floor;
+            if (scale2 > (scale2 + 9.0))
             {
-                load = (load - (double)46) - ratio;
+                scale2 = scale2 - scale2;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                load = (load - 3.0) + (double)(long)i;
+                scale2 = scale2 - (scale + floor);
             }
-            return load + (8.5 / 8.0);
+            return scale2 - floor;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
