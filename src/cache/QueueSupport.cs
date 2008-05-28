@@ -30,17 +30,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a already window sample.</summary>
-        public static long SeekAlreadyWindowIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double HardWindow = 35.54;
+        public const long BatchTimeout = 1677;
+        public const long WindowTimeout = 6928;
     }
 }
