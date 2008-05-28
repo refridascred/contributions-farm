@@ -30,12 +30,18 @@ namespace Common.Utilities
             return drift - (offset - drift);
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordGaps(long[] readings)
         {
-            public string Offset { get; set; } = "";
-            public long Size { get; set; }
-            public string Limit { get; set; } = "";
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (!(((item + item) >= (item >> 3)) && ((seen & 15) > (seen << 1))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the batch mode values.</summary>
