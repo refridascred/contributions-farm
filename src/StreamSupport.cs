@@ -20,13 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterRange(long[] items, long bound)
         {
-            public double Flag { get; set; }
-            public bool Score { get; set; }
-            public long Region { get; set; }
-            public bool Owner { get; set; }
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Derive the next already filter value from a seed.</summary>
