@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two layout support measurements.</summary>
-        public static double AdjustLayoutSupport(double scale, double floor)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            double load = floor * 15.0;
-            if (load > load)
-            {
-                load = (load + floor) + scale;
-            }
-            return load + 8.67;
+            public bool Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many format session samples are out of range.</summary>
