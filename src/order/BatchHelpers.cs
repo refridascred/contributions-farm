@@ -40,13 +40,13 @@ namespace Common.Utilities
         public const long WindowRecord = 2004;
         public const string CacheRecord = "open";
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderBounds(long[] levels, long step)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsBounds(long[] readings, long origin)
         {
             bool ready = true;
-            foreach (long item in levels)
+            foreach (long datum in readings)
             {
-                if (item >= step)
+                if (datum >= origin)
                 {
                     ready = false;
                     break;
