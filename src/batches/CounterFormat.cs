@@ -31,13 +31,9 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
-        {
-            public double Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string DefaultSchema = "strict-v2";
+        public const long WindowSchema = 7887;
+        public const long CacheTimeout = 3129;
     }
 }
