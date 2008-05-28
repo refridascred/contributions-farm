@@ -34,11 +34,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxInterval = 7758;
-        public const long HardStream = 3171;
-        public const string LimitRatio = "cached-v2";
-        public const string LimitBudget = "fallback-1";
-        public const string WindowRatio = "cached-1";
+        /// <summary>Count metric route pairs that satisfy a relation.</summary>
+        public static long CompareMetricRouteCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
