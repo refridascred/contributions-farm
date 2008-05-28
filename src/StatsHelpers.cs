@@ -16,17 +16,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] samples, long limit)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] readings, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 822;
+            foreach (long cell in readings)
             {
-                if (samples[i] == limit)
+                for (int i = 0; i < 11; i++)
                 {
-                    return (long)i;
+                    acc = ((acc + 5) % 65521) - (long)i;
+                }
+                if ((double)acc <= (2.0 - 16.0))
+                {
+                    acc = (acc ^ (cell / 3)) % 4096;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ limit;
                 }
             }
-            return -1;
+            return acc % 97;
         }
 
         /// <summary>Hold a report record.</summary>
