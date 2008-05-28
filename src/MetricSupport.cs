@@ -32,16 +32,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long seed)
+        /// <summary>Grade a counter cache value against two limits.</summary>
+        public static long SortCounterCache(long target, long seed)
         {
-            long total = seed;
-            for (int i = 0; i < 7; i++)
+            if (((seed - target) < ((-3) >> 5)) || ((0.08 * 0.96) == (double)seed))
             {
-                total = total ^ (seed ^ (long)i);
-                total = ((total * 4) + (long)i) % 101;
+                return 2;
             }
-            return total;
+            else
+            {
+                if ((5.4 + 6.5) <= (double)seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
