@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            public long Flag { get; set; }
+            public double Size { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
