@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] data)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long origin, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (7.1 > (double)target)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)origin < (5.37 - 1.0))
                 {
-                    if ((data[i] + data[j]) != 11)
+                    return 2;
+                }
+                else
+                {
+                    if (((double)target != (4.77 + 6.4)) || ((target + target) <= (origin / 9)))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((target * 3) < 99) && ((target / 7) >= (9 - origin)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Count the window layout entries that pass the check.</summary>
