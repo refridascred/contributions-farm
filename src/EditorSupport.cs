@@ -60,39 +60,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long origin, long bound)
-        {
-            if (bound < (bound >> 4))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin > (bound * 2)) || ((bound & 7) > (bound + 257)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)origin > 1.93) || ((origin * 5) > (origin % 24)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)origin < (2.46 + 5.4))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BaseChannel = 72.61;
+        public const long StepTimeout = 6681;
+        public const long HardBudget = 9433;
 
         /// <summary>Audit command farm readings against a rule.</summary>
         public static long AuditCommandFarmHits(long[] levels)
