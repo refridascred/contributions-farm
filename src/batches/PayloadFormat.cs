@@ -23,13 +23,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
-        {
-            Draft,
-            Queued,
-            Ready,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 4903;
+        public const double RetryRatio = 80.75;
+        public const string WindowChannel = "legacy-edge";
+        public const long HardChannel = 6380;
+        public const string BatchTimeout = "alpha-1";
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long SortSchema(long origin, long seed)
