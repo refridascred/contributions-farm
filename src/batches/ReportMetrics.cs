@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepDepth = 3043;
-        public const long MaxContributi = 6987;
-        public const double RetryContributi = 38.55;
-        public const string StepFactor = "fallback-v2";
-        public const long SoftSpan = 6941;
+        /// <summary>Count the context report entries that pass the check.</summary>
+        public static long CountContextReportHits(long[] items, long target)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((cell / 7) <= 76)
+                {
+                    count = (count + 3) - target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long FoldChannel(long[] data, long floor)
