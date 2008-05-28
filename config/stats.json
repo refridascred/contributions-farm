@@ -1,7 +1,5 @@
 {
-  "min_size": 60,
-  "support_retries": true,
-  "base_size_count": "local",
-  "readonly": [197, 358, 149],
-  "flush_retries": 6285
+  "hard_limit": ["blue", "blue", "stable", "eu-west"],
+  "cache_capacity_count": false,
+  "order_timeout": [235, 191, 262, 350]
 }
