@@ -32,10 +32,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BatchFactor = "legacy";
-        public const long WindowInterval = 4161;
-        public const long SoftScore = 2427;
-        public const string MinBudget = "fallback-v2";
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                total = total ^ (seed ^ (long)i);
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
+        }
     }
 }
