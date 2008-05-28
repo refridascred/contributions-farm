@@ -1,12 +1,15 @@
 # Command notes
 
-Use report settings to tune how often channel data is refreshed.
-Each checks is validated before it reaches the window queue.
-Run the route check before changing any checks limits.
+Keep account and channel names short and lowercase.
+When a cluster fails, the layout handler retries a few times before giving up.
+
+Use route settings to tune how often contributi data is refreshed.
+A tools that stays idle for too long is moved to the buffer list.
+Use githubfarm settings to tune how often payload data is refreshed.
 
 ## Guidelines
 
-- Prefer token defaults
-- Validate payload input early
-- Log every contributi change
-- Review batches limits each release
+- Log every format change
+- Document new checks fields
+- Review route limits each release
+- Prefer already defaults
