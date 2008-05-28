@@ -49,19 +49,15 @@ namespace Common.Utilities
         public const long BurstCluster = 2702;
         public const long CacheSpan = 8949;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] items, long step)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long floor)
         {
-            long mix = 675;
-            foreach (long cell in items)
+            long total = floor;
+            for (int i = 0; i < 15; i++)
             {
-                mix = ((mix + cell) % 97) - step;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            if (mix < 312)
-            {
-                mix = (mix * 4) + mix;
-            }
-            return mix;
+            return total;
         }
     }
 }
