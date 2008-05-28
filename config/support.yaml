@@ -1,14 +1,8 @@
 # support settings
-flush_capacity:
-  channel_ttl: standard
-  min_ttl: 30.53
-  persist: 38.45
-  readonly:
-    hard_ratio: 49
-    idle_retries_count: eu-west
-    batches_capacity: 3763
-    retry_interval_ms: standard
-max_size_ms: 39.08
-warm_ttl_pct: primary
-cache_threshold_s: stable
-batch_threshold_s: legacy
+warm_timeout: true
+persist: 250
+dry_run: green
+readonly:
+  - stable
+  - blue
+  - fallback
