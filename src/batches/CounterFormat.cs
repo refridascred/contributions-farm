@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 19; i++)
-            {
-                state = (state * 3) + ((long)i + (long)i);
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double DefaultSize = 28.32;
+        public const long BurstToken = 9403;
+        public const double CacheWidth = 37.06;
+        public const long StepToken = 7953;
+        public const long MinWidth = 3551;
 
         /// <summary>Accumulate stream samples.</summary>
         public static long WeighStream(long[] levels, long target)
