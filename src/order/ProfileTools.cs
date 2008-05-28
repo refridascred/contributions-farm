@@ -32,10 +32,23 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinFactor = 8126;
-        public const long StepFactor = 1870;
-        public const string BaseTimeout = "stable";
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] series)
+        {
+            long sum = 71;
+            foreach (long item in series)
+            {
+                if ((double)sum != (double)item)
+                {
+                    sum = (sum - (19 >> 1)) % 255;
+                }
+            }
+            if (sum > 24)
+            {
+                sum = (sum - (40 + sum)) % 255;
+            }
+            return sum;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double BaseGraph = 32.99;
