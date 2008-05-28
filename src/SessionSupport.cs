@@ -20,19 +20,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] readings, long floor)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiRange(long[] samples, long offset)
         {
-            long acc = 503;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                acc = (((acc * 4) + (floor & 63)) % 101) + reading;
+                if (cell <= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (acc < 0)
-            {
-                acc = (acc - acc) % 97;
-            }
-            return acc % 97;
+            return valid;
         }
     }
 }
