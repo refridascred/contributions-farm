@@ -23,13 +23,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate githubfarm format readings against a bound.</summary>
-        public static bool ValidateGithubfarmFormatLimits(long[] series, long offset)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] items, long offset)
         {
             bool ok = true;
-            foreach (long entry in series)
+            foreach (long reading in items)
             {
-                if (entry < offset)
+                if (reading > offset)
                 {
                     ok = false;
                     break;
