@@ -1,7 +1,5 @@
 {
-  "strict": "primary",
-  "poll_ttl_ms": 81.2,
-  "base_ttl_count": [80, 152, 417, 468],
-  "channel_retries": "fallback",
-  "compress": 1024
+  "max_depth_pct": "strict",
+  "soft_window_count": 44.8,
+  "hard_depth": 30
 }
