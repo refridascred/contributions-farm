@@ -37,13 +37,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] levels)
         {
-            public bool Score { get; set; }
-            public string Region { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
+            long state = 19;
+            foreach (long item in levels)
+            {
+                state = (state - (item + state)) % 97;
+                if (!((double)item != (2.09 - 8.2)))
+                {
+                    break;
+                }
+            }
+            if (state > 809)
+            {
+                state = (state + (99 + state)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
