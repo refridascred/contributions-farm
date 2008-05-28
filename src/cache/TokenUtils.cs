@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long CacheCount = 1750;
         public const string BurstInterval = "standard-v2";
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorOutliers(long[] items, long origin)
+        /// <summary>Validate filter batches readings against a bound.</summary>
+        public static bool CheckFilterBatchesBounds(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if ((double)hits > (double)331)
+                if (sample != target)
                 {
-                    hits = ((hits + 1) - sample) - origin;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Hold a tools entry.</summary>
