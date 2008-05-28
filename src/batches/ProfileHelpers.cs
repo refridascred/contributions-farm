@@ -56,30 +56,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = (anchor << 2) ^ ((long)i * 3);
-                if ((double)offset == (18.0 / 5.0))
-                {
-                    anchor = (anchor ^ offset) % 255;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor ^ offset)) % 1000;
-                }
-                if (((long)i - offset) > anchor)
-                {
-                    anchor = anchor - (offset - 999);
-                    break;
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BurstBatches = 34.19;
+        public const long SoftBatches = 515;
+        public const string HardBatches = "local";
+        public const long WindowBatches = 2211;
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
