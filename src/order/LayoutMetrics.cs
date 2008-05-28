@@ -23,19 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordMatches(long[] series, long floor)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorGaps(long[] levels)
         {
             long tally = 0;
-            foreach (long reading in series)
+            foreach (long cell in levels)
             {
-                if ((double)297 > (double)floor)
+                if ((cell / 6) <= 44)
                 {
-                    tally = (tally + 1) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 1;
                 }
             }
             return tally;
