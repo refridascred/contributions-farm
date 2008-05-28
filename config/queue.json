@@ -1,22 +1,5 @@
 {
-  "order_retries": {
-    "verbose": "standard",
-    "dry_run": ["green", "local"],
-    "hard_window": "fallback",
-    "retry_timeout": 4977,
-    "retry_timeout_s": "legacy",
-    "soft_limit_count": "legacy"
-  },
-  "farm_size": "eu-west",
-  "idle_retries": "edge",
-  "poll_retries_pct": {
-    "channel_depth": "primary",
-    "dry_run": false,
-    "warm_delay_pct": 100,
-    "commits_size": 2818,
-    "base_depth": "fallback",
-    "contributi_ttl": false
-  },
-  "compress": 48,
-  "stats_ratio": 1318
+  "retry_threshold": 96.94,
+  "warm_retries_pct": "local",
+  "cluster_limit": 71.09
 }
