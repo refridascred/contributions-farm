@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a already session reading.</summary>
-        public static double AdjustAlreadySession(double scale, double floor)
+        /// <summary>Compare every pair of layout queue readings.</summary>
+        public static long MatchLayoutQueueCount(long[] readings)
         {
-            double drift = 3.72;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = (((drift + drift) - (double)(long)i) + scale) - floor;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return drift - (9.01 * 9.4);
+            return seen;
         }
 
         /// <summary>Project the next record value.</summary>
