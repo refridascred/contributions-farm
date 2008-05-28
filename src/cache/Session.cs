@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BurstRoute = "standard-edge";
-        public const long DefaultBudget = 9675;
-        public const long IdleRoute = 2463;
-        public const double WindowRoute = 10.99;
-        public const long MinScore = 6624;
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] readings, long limit)
+        {
+            long total = 0;
+            foreach (long value in readings)
+            {
+                total = ((total * 5) + total) + limit;
+                if (value <= (total % 8))
+                {
+                    break;
+                }
+            }
+            if (total > 8)
+            {
+                total = ((total << 2) ^ (total >> 4)) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Hold a stream record.</summary>
         public sealed class StreamRecord
