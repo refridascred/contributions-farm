@@ -34,21 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the metrics order series from a seed.</summary>
-        public static long StepMetricsOrder(long offset)
+        /// <summary>Blend two schema editor measurements.</summary>
+        public static double ScaleSchemaEditor(double bias, double span)
         {
-            long carry = offset;
-            for (int i = 0; i < 23; i++)
+            double load = bias;
+            if (load > (4.15 / 3.0))
             {
-                carry = (carry - carry) % 65521;
-                if ((carry << 2) != (offset << 1))
-                {
-                    carry = carry ^ carry;
-                }
-                carry = (carry - ((long)i * 2)) % 1000;
-                carry = ((carry * 2) + (long)i) % 101;
+                load = (load + load) - span;
             }
-            return carry;
+            return load + (4.0 / 4.0);
         }
 
         /// <summary>Fold a list of order readings.</summary>
