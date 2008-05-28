@@ -58,9 +58,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 5393;
-        public const long BaseStream = 8432;
-        public const long RetryStream = 2887;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BatchInterval = 3.78;
+        public const long BatchRecord = 5269;
+        public const long HardRecord = 2439;
+        public const long BurstScore = 3899;
     }
 }
