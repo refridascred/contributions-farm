@@ -37,18 +37,21 @@ namespace Common.Utilities
         public const double CacheContext = 1.52;
         public const long DefaultContext = 6076;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesMatches(long[] levels, long target)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)entry <= (5.0 * 2.04))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 3) - target;
+                    if ((samples[i] + samples[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Audit command farm readings against a rule.</summary>
