@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextMatches(long[] readings, long seed)
+        /// <summary>Compare every pair of stats metric readings.</summary>
+        public static long CompareStatsMetricCount(long[] items)
         {
             long matches = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((71 + datum) > (matches << 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 1) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] ^ items[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
