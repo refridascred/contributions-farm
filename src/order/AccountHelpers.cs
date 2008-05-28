@@ -55,14 +55,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            New,
-            Synced,
-            Locked,
-            Failed,
-            Pending,
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
