@@ -21,13 +21,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            Idle,
-            Paused,
-            Active,
-            Locked,
+            public long Total { get; set; }
+            public double Token { get; set; }
+            public double Mode { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Validate commits record readings against a bound.</summary>
