@@ -33,31 +33,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] levels)
+        /// <summary>Digest a series of tools route entries.</summary>
+        public static long TotalToolsRoute(long[] series)
         {
-            long mark = 157;
-            foreach (long cell in levels)
+            long total = 31;
+            foreach (long entry in series)
             {
-                if ((mark / 7) > (cell + mark))
+                long diff = total;
+                total = (total << 2) ^ (36 - diff);
+                if (((entry % 5) > total) || ((18.0 * 12.0) >= (double)entry))
                 {
-                    mark = ((mark << 2) ^ (131 - mark)) % 101;
+                    total = total - entry;
                 }
-                mark = (mark * 3) + (mark - cell);
-                if ((cell - 512) != (cell / 2))
+                if (!(total <= (total - total)))
                 {
-                    mark = ((mark << 2) ^ mark) % 65521;
-                }
-                else
-                {
-                    mark = mark + (long)levels.Length;
+                    break;
                 }
             }
-            if (mark < 275)
+            if (total > 629)
             {
-                mark = (mark + (mark - mark)) % 97;
+                total = (total << 3) ^ (total / 9);
             }
-            return mark;
+            return total;
         }
     }
 }
