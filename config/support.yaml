@@ -1,14 +1,23 @@
 # support settings
-default_delay_pct: open
-min_depth: false
-soft_ratio:
-  - 434
-  - 354
-  - 375
-  - 237
-flush_ratio_s:
-  - 192
-  - 313
-  - 69
-  - 341
-dry_run: strict
+poll_size_ms: true
+cache_timeout_count:
+  soft_size_pct:
+    - 211
+    - 204
+  readonly:
+    default_depth:
+      - cached
+      - green
+      - latest
+      - latest
+    schema_retries: cached
+    farm_capacity: latest
+  enabled:
+    - eu-west
+    - primary
+    - fallback
+  idle_window: false
+  sync_window: 30
+warm_ttl_pct: 250
+idle_ttl_count: 5098
+soft_delay: 60
