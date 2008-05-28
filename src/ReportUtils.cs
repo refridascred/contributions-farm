@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const string DefaultChecks = "primary";
         public const long StepSpan = 2952;
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowRange(long[] samples, long step)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Queued,
+            Retry,
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
