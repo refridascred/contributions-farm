@@ -1,7 +1,6 @@
-id,score,label,count,owner
-1,639,643,cached,green
-2,fallback,72.74,74.57,90.88
-3,922,58.94,open,40.01
-4,legacy,green,edge,green
-5,489,389,50.86,fallback
-6,301,local,primary,477
+id,state,weight
+1,539,51.53
+2,961,84
+3,791,564
+4,721,cached
+5,28.76,31
