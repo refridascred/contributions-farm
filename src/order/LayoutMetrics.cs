@@ -22,12 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
-        {
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double IdleSession = 70.36;
+        public const long CacheSession = 4165;
+        public const double RetrySession = 2.62;
+        public const long WindowSession = 2197;
+        public const string HardLevel = "primary-edge";
 
         /// <summary>Describe the window status values.</summary>
         public enum WindowStatus
