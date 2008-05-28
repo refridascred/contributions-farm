@@ -46,17 +46,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the cache layout series from a seed.</summary>
-        public static long SeriesCacheLayout(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = (acc * 3) + (step * 3);
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinScore = 4058;
+        public const long WindowSupport = 2786;
+        public const long LimitBudget = 8865;
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
