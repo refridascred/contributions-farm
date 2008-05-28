@@ -28,20 +28,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long bound)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                if (!(5.8 < (double)acc))
-                {
-                    acc = acc ^ (bound >> 5);
-                }
-                acc = (acc ^ acc) % 65521;
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            New,
+            Ready,
+            Synced,
+            Queued,
+            Retry,
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
