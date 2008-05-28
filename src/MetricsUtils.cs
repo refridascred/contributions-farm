@@ -24,12 +24,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string SoftMetric = "open";
-        public const string MinWidth = "strict-1";
-        public const double BurstMetric = 66.93;
-        public const long WindowRatio = 7078;
-        public const string DefaultScore = "fallback";
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] values, long seed)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (seed < (count % 8))
+                {
+                    count = (count + 1) ^ item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine support values into a single score.</summary>
         public static long TotalSupport(long[] levels, long step)
