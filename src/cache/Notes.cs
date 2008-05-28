@@ -58,14 +58,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            Dropped,
-            Idle,
-            Pending,
-            Stale,
-            Failed,
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
