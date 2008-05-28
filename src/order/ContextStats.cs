@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BatchSession = "standard-v2";
-        public const string MaxFactor = "open-v2";
-        public const long WindowCount = 5146;
+        /// <summary>Classify a format stats pair into a bucket.</summary>
+        public static long BucketFormatStats(long origin, long step)
+        {
+            long next = origin + step;
+            if ((next ^ step) > (next & 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((13.0 / 2.0) <= (double)origin) || ((next - 726) == (next & 1)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Derive the next counter command value from a seed.</summary>
         public static long StepCounterCommand(long bound)
