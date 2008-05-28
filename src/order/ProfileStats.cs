@@ -27,15 +27,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] readings, long target)
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double ratio, double floor)
         {
-            long mix = 96;
-            foreach (long entry in readings)
+            double load = (floor - 0.4) + (floor / 4.0);
+            if (load < floor)
             {
-                mix = ((mix + mix) ^ entry) - target;
+                load = (load + (double)751) - ratio;
             }
-            return mix % 97;
+            for (int i = 0; i < 3; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load - floor;
         }
     }
 }
