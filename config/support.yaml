@@ -1,25 +1,24 @@
 # support settings
-dry_run:
-  hard_window_ms: true
-  window_threshold:
-    - stable
-    - edge
-    - edge
-  schema_window: false
-  schema_limit: false
-filter_depth:
-  max_limit: open
-  idle_timeout_ms: 30
-  batch_threshold_pct: staging
-  notes_ratio:
-    compress: 3186
-    strict: true
-    max_threshold: 82.56
-    warm_timeout:
-      - standard
-      - open
-      - fallback
-      - latest
-  default_limit_pct: 250
-  cache_threshold: false
-verbose: 8.19
+min_ttl:
+  sync_size: 4620
+  base_delay_pct: false
+  max_capacity_s:
+    - 196
+    - 325
+    - 94
+  batch_ratio_pct:
+    idle_ratio_count: 1024
+    cache_limit: 1024
+    editor_interval:
+      - 17
+      - 281
+  poll_timeout_s: open
+  readonly:
+    compress: 37
+    burst_retries_s: 500
+    min_delay_ms:
+      - 173
+      - 310
+    flush_ttl_count: latest
+idle_size: 30
+min_ratio_s: staging
