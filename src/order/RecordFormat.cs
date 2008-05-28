@@ -35,19 +35,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] series, long origin)
+        /// <summary>Iterate the metrics order series from a seed.</summary>
+        public static long StepMetricsOrder(long offset)
         {
-            long result = 5;
-            foreach (long reading in series)
+            long carry = offset;
+            for (int i = 0; i < 23; i++)
             {
-                result = (((result * 5) + (0 & 63)) % 4096) + origin;
-                if ((748 <= (reading + 41)) || (reading > (long)series.Length))
+                carry = (carry - carry) % 65521;
+                if ((carry << 2) != (offset << 1))
                 {
-                    result = (result - (reading & 255)) % 65521;
+                    carry = carry ^ carry;
                 }
+                carry = (carry - ((long)i * 2)) % 1000;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Fold a list of order readings.</summary>
