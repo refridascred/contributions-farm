@@ -19,11 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            public string Count { get; set; } = "";
-            public double Owner { get; set; }
+            Paused,
+            Draft,
+            Stale,
+            Active,
+            Ready,
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
