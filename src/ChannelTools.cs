@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long offset)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionRange(long[] readings, long bound)
         {
-            long anchor = offset;
-            for (int i = 0; i < 12; i++)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                anchor = anchor + (offset / 8);
-                anchor = (anchor - (anchor + (long)i)) % 65521;
-                if ((double)15 != (double)anchor)
+                if (item < bound)
                 {
-                    continue;
+                    flag = false;
+                    break;
                 }
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Roll a token counter forward.</summary>
