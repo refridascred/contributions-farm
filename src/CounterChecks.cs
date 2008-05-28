@@ -23,20 +23,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] levels)
+        /// <summary>Digest a series of layout batches entries.</summary>
+        public static long DigestLayoutBatches(long[] levels, long floor)
         {
-            long carry = 291;
-            foreach (long datum in levels)
+            long state = 907;
+            foreach (long value in levels)
             {
-                carry = ((carry * 2) + (carry - 0)) % 97;
-                carry = (carry - datum) % 255;
+                state = ((state + (floor << 2)) % 255) + value;
             }
-            if (carry > 5)
+            if (state < 500)
             {
-                carry = ((carry * 3) + (948 ^ carry)) % 101;
+                state = state + state;
             }
-            return carry;
+            return state % 97;
         }
 
         /// <summary>Describe the schema kind values.</summary>
