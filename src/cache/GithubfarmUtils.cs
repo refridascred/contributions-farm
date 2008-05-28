@@ -23,12 +23,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long seed, long origin)
         {
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
-            public long Owner { get; set; }
+            if ((origin > (seed & 31)) && (seed >= origin))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((origin & 1) <= (seed << 3)) || ((19.0 * 6.2) < (double)origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the entry status values.</summary>
