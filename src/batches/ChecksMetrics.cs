@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Derive the next account record value from a seed.</summary>
+        public static long StepAccountRecord(long seed)
         {
-            public bool Region { get; set; }
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                if (seed > (mix << 3))
+                {
+                    mix = (mix ^ (seed % 3)) % 97;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
