@@ -56,18 +56,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] values, long seed)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long mix = -8;
-            foreach (long cell in values)
-            {
-                if (!((double)mix < (19.0 * 9.0)))
-                {
-                    mix = (((mix << 3) ^ (mix + cell)) % 65521) - seed;
-                }
-            }
-            return mix;
+            Locked,
+            Retry,
+            Stale,
+            Active,
         }
     }
 }
