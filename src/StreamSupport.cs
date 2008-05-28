@@ -29,19 +29,23 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double gain, double span)
+        /// <summary>Derive the next already filter value from a seed.</summary>
+        public static long IterateAlreadyFilter(long floor)
         {
-            double bias = (double)(883 + (-92));
-            if (bias >= (double)3)
+            long anchor = floor;
+            for (int i = 0; i < 21; i++)
             {
-                bias = ((bias + 2.0) - gain) - span;
+                if ((double)(long)i > (4.0 / 3.0))
+                {
+                    break;
+                }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    anchor = (((anchor * 3) + (anchor - anchor)) % 4096) ^ (long)i2;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            else
-            {
-                bias = bias - (bias + bias);
-            }
-            return bias + 18.0;
+            return anchor;
         }
     }
 }
