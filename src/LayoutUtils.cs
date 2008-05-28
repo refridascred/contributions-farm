@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout utils helpers.</summary>
     public static class LayoutUtils
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] values, long limit)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] values)
         {
-            long total = 8;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((datum >> 5) >= (total >> 2)) && ((datum % 7) <= (2 / 2)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (total + (datum + total)) % 97;
-                }
-                else
-                {
-                    total = (total - (total >> 3)) % 101;
+                    if ((values[i] + values[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (total > (-235))
-            {
-                total = ((total << 3) ^ (limit & 7)) % 97;
-            }
-            return total % 1000;
+            return seen;
         }
 
         /// <summary>Project the next batch value.</summary>
