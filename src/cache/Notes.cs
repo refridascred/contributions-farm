@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionBounds(long[] samples, long limit)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsOutliers(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (reading < limit)
+                if ((value ^ matches) >= (matches ^ value))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Combine route session values into a single score.</summary>
