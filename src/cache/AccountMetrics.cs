@@ -56,22 +56,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteGaps(long[] data)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (!(item < (item & 1)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Queued,
+            Synced,
+            Closed,
         }
 
         /// <summary>Match up batches samples.</summary>
