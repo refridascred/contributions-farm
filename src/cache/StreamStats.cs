@@ -25,32 +25,20 @@ namespace Common.Utilities
         public const string SoftGithubfarm = "fallback-v2";
         public const long HardTimeout = 7371;
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long seed, long offset)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long floor)
         {
-            long lane = seed + offset;
-            if ((offset + 0) > lane)
+            long score = floor;
+            for (int i = 0; i < 22; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (offset <= (seed / 3))
+                score = ((score * 5) + (floor - (long)i)) % 97;
+                if (!((254 / 8) > floor))
                 {
-                    return 3;
+                    score = ((score << 3) ^ 681) % 4096;
                 }
-                else
-                {
-                    if ((lane << 1) != (offset >> 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                score = ((score * 3) + (long)i) % 101;
             }
+            return score;
         }
 
         /// <summary>Define account limits and defaults.</summary>
