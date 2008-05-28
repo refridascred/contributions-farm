@@ -20,15 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double rate, double bias)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            double gain = rate;
-            for (int i = 0; i < 8; i++)
-            {
-                gain = ((gain - (7.0 - rate)) + (double)(long)i) - bias;
-            }
-            return gain + (gain / 4.0);
+            public string Count { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
