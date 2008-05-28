@@ -18,12 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long floor, long bound)
         {
-            Closed,
-            Failed,
-            Paused,
+            if ((bound ^ bound) >= bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)floor >= (2.86 - 2.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
