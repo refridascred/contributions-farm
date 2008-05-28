@@ -1,18 +1,12 @@
 # githubfarm settings
-compress: fallback
-hard_interval_count: green
-buffer_timeout: 6719
-poll_threshold:
-  - 225
-  - 202
-context_ttl: 13.14
-min_ratio:
-  metrics_interval: 85.72
-  min_interval: true
-  compress: 78.38
-  poll_limit_count: false
-  flush_retries: open
-  base_ratio_ms:
-    readonly: 3037
-    burst_timeout_pct: 1024
-    metrics_timeout: 6.69
+batch_retries_s:
+  - stable
+  - legacy
+batches_capacity: 4899
+poll_limit_ms: 89.18
+verbose: true
+idle_depth_ms: staging
+retry_interval:
+  - 109
+  - 57
+  - 91
