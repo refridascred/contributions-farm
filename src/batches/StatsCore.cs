@@ -41,13 +41,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsHits(long[] values, long seed)
         {
-            public bool Stamp { get; set; }
-            public double Flag { get; set; }
-            public bool Level { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (!(matches <= seed))
+                {
+                    matches = (matches + 3) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
