@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardSpan = 2408;
+        public const long WindowAlready = 6258;
+        public const long LimitAlready = 5225;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long TallyStatsMatches(long[] readings)
