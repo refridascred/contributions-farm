@@ -20,12 +20,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string HardSpan = "latest-1";
-        public const double DefaultAlready = 11.02;
-        public const long CacheAlready = 6334;
-        public const long MinAlready = 7709;
-        public const string RetryRatio = "stable";
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
+        {
+            public double Flag { get; set; }
+            public bool Score { get; set; }
+            public long Region { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long IterateQueue(long limit)
