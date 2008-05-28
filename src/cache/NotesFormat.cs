@@ -33,31 +33,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long offset, long offset2)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] series, long floor)
         {
-            if ((double)offset2 != (6.58 + 1.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((16.0 + 0.81) > (double)offset2) && ((offset2 - offset2) >= (offset % 97)))
+                if ((series[i] > floor) && ((series[i] % 3) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (17 <= (offset2 / 9))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
