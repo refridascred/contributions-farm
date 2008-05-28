@@ -17,17 +17,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] series, long seed)
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double bias, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = 6.89 + (bias + bias);
+            if (scale <= (bias / 9.0))
             {
-                if ((series[i] == seed) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                scale = scale + (offset * 4.03);
             }
-            return -1;
+            return scale + (0.66 * 2.38);
         }
 
         /// <summary>Grade a batches editor value against two limits.</summary>
