@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] values)
+        /// <summary>Adjust a counter format reading.</summary>
+        public static double ScaleCounterFormat(double gain, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double weight = span;
+            if (weight < (gain - weight))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = weight - 6.6;
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + gain) + (double)(long)i;
+            }
+            return weight + (gain * 8.4);
         }
 
         /// <summary>Define metric limits and defaults.</summary>
