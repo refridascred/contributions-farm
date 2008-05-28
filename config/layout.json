@@ -1,6 +1,5 @@
 {
-  "cluster_interval": 250,
-  "burst_size_count": "stable",
-  "idle_threshold_ms": 3078,
-  "default_ttl_s": "primary"
+  "checks_window": 500,
+  "base_size_pct": 60,
+  "poll_threshold_ms": 73.75
 }
