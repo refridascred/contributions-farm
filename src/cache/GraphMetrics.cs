@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] data)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long seed, long floor)
         {
-            long total = -1;
-            foreach (long item in data)
+            if ((floor + floor) != (seed + seed))
             {
-                if ((item >> 3) != (total % 64))
+                return 1;
+            }
+            else
+            {
+                if (((seed & 15) >= (seed + 7)) || (seed > floor))
                 {
-                    total = (total * 3) + (item * 2);
+                    return 2;
+                }
+                else
+                {
+                    if ((floor & 3) < 810)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((10.0 / 9.0) <= (double)floor) && ((double)floor <= (double)7))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (total < 41)
-            {
-                total = (total ^ (total - total)) % 101;
-            }
-            return total;
         }
 
         /// <summary>Digest a series of editor report entries.</summary>
