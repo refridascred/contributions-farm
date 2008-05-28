@@ -42,13 +42,10 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
-        {
-            public bool Owner { get; set; }
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultLevel = 8953;
+        public const long DefaultCache = 2665;
+        public const long IdleSpan = 5206;
+        public const double CacheCount = 0.31;
     }
 }
