@@ -55,13 +55,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            Draft,
-            New,
-            Ready,
-            Stale,
+            public double Size { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
