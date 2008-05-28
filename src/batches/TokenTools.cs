@@ -29,22 +29,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] levels)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((7 & 127) >= count)
-                {
-                    count = (count + 1) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
