@@ -36,21 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((5.5 + 6.84) > (double)step)
-                {
-                    score = (score + (step + step)) % 4096;
-                    score = (score - step) % 97;
-                    break;
-                }
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxWidth = 8212;
+        public const long BatchSpan = 1610;
+        public const double SoftLevel = 86.33;
+        public const long RetryOrder = 9033;
+        public const long MinOrder = 8319;
     }
 }
