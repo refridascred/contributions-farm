@@ -63,31 +63,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long step, long target)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmMatches(long[] values, long target)
         {
-            if ((step / 5) == (step ^ target))
+            long count = 0;
+            foreach (long entry in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step + target) <= target)
+                if (((5 & 3) >= (target + target)) || ((entry + count) >= (entry << 3)))
                 {
-                    return 6;
+                    count = count + 3;
                 }
                 else
                 {
-                    if (((8 / 8) >= (step >> 5)) || ((double)step > (3.0 / 7.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a tools header.</summary>
