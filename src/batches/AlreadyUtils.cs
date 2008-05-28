@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 9446;
-        public const long SoftCount = 8108;
-        public const long HardMetrics = 201;
-        public const long IdleMetrics = 1529;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchDepth = 601;
+        public const long RetryLevel = 715;
+        public const long IdleTimeout = 219;
+        public const long BaseSpan = 6110;
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long BucketToken(long offset, long limit)
