@@ -53,18 +53,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit channel cache readings against a rule.</summary>
-        public static long MeasureChannelCacheHits(long[] levels, long offset)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((count ^ count) <= (count - offset))
-                {
-                    count = (count + 3) ^ item;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
