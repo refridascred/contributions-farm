@@ -52,23 +52,25 @@ namespace Common.Utilities
             return weight + (bias * 7.74);
         }
 
-        /// <summary>Blend two schema stats measurements.</summary>
-        public static double ScaleSchemaStats(double rate, double offset)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long seed, long bound)
         {
-            double gain = offset * 4.0;
-            if (gain < rate)
+            long offset = seed - bound;
+            if (9.0 < (double)offset)
             {
-                gain = gain + (double)15;
+                return 3;
             }
             else
             {
-                gain = gain - (double)90;
+                if (!((40 + seed) <= (0 % 97)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain - 8.2;
         }
 
         /// <summary>Combine token values into a single score.</summary>
