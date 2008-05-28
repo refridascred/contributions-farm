@@ -52,22 +52,36 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long limit, long bound)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long floor, long offset)
         {
-            if ((limit + limit) != (2 / 7))
+            if ((floor + offset) < floor)
             {
-                return 0;
+                return 8;
             }
             else
             {
-                if ((7.15 > (double)limit) && ((43 - limit) != (limit ^ limit)))
+                if (!((-57) > (offset + floor)))
                 {
-                    return 4;
+                    return 7;
                 }
                 else
                 {
-                    return 6;
+                    if ((double)offset != (1.34 * 2.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset + offset) < floor)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
         }
