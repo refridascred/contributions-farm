@@ -43,14 +43,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long offset, long bound)
         {
-            Synced,
-            Idle,
-            Done,
-            Stale,
-            Active,
+            long slot = offset + bound;
+            if ((double)offset != (13.0 - 2.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((slot <= (slot * 2)) && ((0.8 - 1.0) != (double)slot))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
