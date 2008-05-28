@@ -22,12 +22,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardDepth = 8677;
-        public const string MinFactor = "primary-v2";
-        public const long RetryCount = 9087;
-        public const string DefaultContributi = "fallback-1";
-        public const long CacheContributi = 6428;
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the window status values.</summary>
         public enum WindowStatus
