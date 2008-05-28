@@ -17,15 +17,23 @@ namespace Common.Utilities
         public const long LimitCommits = 1750;
         public const long CacheCommits = 6283;
 
-        /// <summary>Blend two token editor measurements.</summary>
-        public static double ScaleTokenEditor(double scale, double span)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double scale, double offset)
         {
-            double scale2 = (double)((-3) % 100);
-            if (scale2 < (double)141)
+            double load = (double)(83 - 9);
+            if (load <= load)
             {
-                scale2 = (scale2 - (span / 6.0)) - scale;
+                load = load + (scale + offset);
             }
-            return scale2 - 1.7;
+            else
+            {
+                load = load + (1.25 / 2.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (offset / 4.0)) + (double)(long)i;
+            }
+            return load + (double)295;
         }
     }
 }
