@@ -17,21 +17,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] levels)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = -77;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state << 3) ^ (state + state)) ^ reading;
             }
-            return seen;
+            if (state > 3)
+            {
+                state = (state ^ state) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a tools entry.</summary>
