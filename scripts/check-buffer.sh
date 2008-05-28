@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard local fallback latest; do
+for item in standard legacy staging green; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=451
-log "limit is ${BUFFER_LIMIT}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+mode="${1:-staging}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
