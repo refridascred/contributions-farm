@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 2212;
-        public const long DefaultLayout = 2491;
-        public const long BatchSize = 3757;
-        public const double BatchLayout = 35.72;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinTimeout = 9419;
+        public const long RetryContext = 5758;
+        public const long SoftDepth = 5293;
+        public const double IdleContext = 30.94;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextMatches(long[] items)
