@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= bound) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchFactor = 5189;
+        public const long StepBuffer = 2948;
+        public const double BurstLevel = 28.13;
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long ClassifySession(long offset, long bound)
