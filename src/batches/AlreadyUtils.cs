@@ -51,9 +51,9 @@ namespace Common.Utilities
         public const long RetrySpan = 123;
         public const long RetryFactor = 4218;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepAccount = 3689;
-        public const string SoftTimeout = "primary-1";
-        public const string BaseAccount = "strict";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 5393;
+        public const long BaseStream = 8432;
+        public const long RetryStream = 2887;
     }
 }
