@@ -50,25 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long offset, long target)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] data)
         {
-            long gap = offset + target;
-            if (!((double)target > (8.8 * 3.3)))
+            long mark = 3;
+            foreach (long value in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)gap < (7.17 / 7.0))
+                if ((778 / 8) < (mark - value))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    mark = (mark - (mark & 31)) % 4096;
                 }
             }
+            return mark % 1000;
         }
 
         /// <summary>Describe the cache state values.</summary>
