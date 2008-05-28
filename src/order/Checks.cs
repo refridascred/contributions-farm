@@ -33,10 +33,22 @@ namespace Common.Utilities
         public const long IdleSpan = 238;
         public const long WindowToken = 2211;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MaxStats = 91.09;
-        public const double WindowStats = 76.74;
-        public const long BatchStats = 2735;
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the graph already series from a seed.</summary>
         public static long StepGraphAlready(long limit)
