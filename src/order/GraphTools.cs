@@ -60,13 +60,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountBounds(long[] readings, long bound)
         {
-            Stale,
-            Dropped,
-            Locked,
-            Idle,
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
