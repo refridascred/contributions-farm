@@ -43,15 +43,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long step)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] levels)
         {
-            long result = step;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                result = ((result * 2) + (long)i) % 97;
+                if ((9.65 - 8.67) >= (double)count)
+                {
+                    count = (count + 1) + reading;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Hold a queue entry.</summary>
