@@ -1,5 +1,5 @@
 {
-  "batch_depth": "cached",
-  "min_threshold_ms": 250,
-  "verbose": "green"
+  "idle_limit_ms": ["legacy", "strict", "blue"],
+  "enabled": false,
+  "warm_interval": "green"
 }
