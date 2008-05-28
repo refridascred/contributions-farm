@@ -40,18 +40,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter contributi readings against a rule.</summary>
-        public static long AuditCounterContributiOutliers(long[] items)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long target, long seed)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            if (target >= (57 << 2))
             {
-                if ((((38 % 5) > (seen & 255)) && ((datum >> 2) != (datum & 255))) && !((double)datum >= (5.0 + 1.2)))
+                return 3;
+            }
+            else
+            {
+                if ((double)707 <= (double)target)
                 {
-                    seen = seen + 3;
+                    return 4;
+                }
+                else
+                {
+                    if (18.0 <= (double)target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((0.2 / 3.0) > (double)target) || ((double)target == (0.8 + 14.0)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
