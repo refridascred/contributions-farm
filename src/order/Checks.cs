@@ -28,25 +28,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long offset, long limit)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderRange(long[] values, long seed)
         {
-            long lane = offset - limit;
-            if (!((offset & 255) > (offset ^ offset)))
+            bool flag = true;
+            foreach (long value in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((lane + lane) < (lane + 79))
+                if (value > seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Validate support metrics readings against a bound.</summary>
