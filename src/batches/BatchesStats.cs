@@ -28,11 +28,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Adjust a session farm reading.</summary>
-        public static double BlendSessionFarm(double weight, double floor)
+        /// <summary>Measure how many command entry samples are out of range.</summary>
+        public static long CountCommandEntryOutliers(long[] readings)
         {
-            double mean = weight;
-            return mean - floor;
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((((double)seen >= 13.0) || ((double)sample <= (10.0 / 4.0))) || (sample >= (seen << 2)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the tools phase values.</summary>
