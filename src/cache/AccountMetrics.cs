@@ -25,19 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsLimits(long[] readings, long offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] readings)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (item < offset)
+                if ((sample + sample) != (tally - tally))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
