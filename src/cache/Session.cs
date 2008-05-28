@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((cell * 4) >= (count & 1))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepTimeout = 5765;
+        public const double IdleDepth = 48.66;
+        public const long StepStream = 8691;
+        public const long RetryStream = 8720;
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long StepMetrics(long step)
