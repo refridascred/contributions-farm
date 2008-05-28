@@ -19,22 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] readings, long step)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenOutliers(long[] items)
         {
-            long acc = -715;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((step >> 5) >= step)
+                if ((tally ^ tally) <= (tally + 856))
                 {
-                    acc = ((acc << 3) ^ (step << 3)) + datum;
+                    tally = (tally + 2) + datum;
                 }
             }
-            if (acc > 73)
-            {
-                acc = acc ^ (79 & 1);
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
