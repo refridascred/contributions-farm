@@ -33,15 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
-        {
-            Stale,
-            Failed,
-            Done,
-            Idle,
-            Active,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 1329;
+        public const string HardRecord = "standard-v2";
+        public const double BurstRecord = 98.45;
+        public const long WindowRecord = 2004;
+        public const string CacheRecord = "open";
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long ClassifyChannel(long origin, long limit)
