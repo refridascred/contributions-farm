@@ -44,22 +44,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] values)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long mark = 538;
-            foreach (long cell in values)
-            {
-                if ((mark - 3) != (cell - cell))
-                {
-                    mark = ((mark << 3) ^ cell) % 65521;
-                }
-            }
-            if (mark > 550)
-            {
-                mark = (mark << 3) ^ mark;
-            }
-            return mark;
+            New,
+            Dropped,
+            Synced,
+            Idle,
+            Locked,
         }
     }
 }
