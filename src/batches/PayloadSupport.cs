@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesGaps(long[] series, long origin)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            double scale = (double)(706 & 127);
+            if (scale > (gain / 8.0))
             {
-                if ((seen <= (seen + seen)) && ((6.1 - 12.0) == (double)datum))
-                {
-                    seen = (seen + 3) + origin;
-                }
+                scale = scale - 8.0;
             }
-            return seen;
+            else
+            {
+                scale = scale + (bias * 19.0);
+            }
+            return scale + scale;
         }
 
         /// <summary>Iterate the report githubfarm series from a seed.</summary>
