@@ -19,9 +19,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BurstCache = "latest-edge";
-        public const long BatchCache = 9792;
-        public const long RetryCache = 6658;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] series, long target)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (((reading >> 1) > (reading ^ target)) && (((0.6 * 6.5) != (double)reading) || ((target / 7) >= (reading >> 2))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
