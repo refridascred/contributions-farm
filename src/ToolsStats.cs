@@ -67,17 +67,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a stream record reading by value.</summary>
-        public static long LocateStreamRecordIndex(long[] samples, long origin)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Blend two buffer stats measurements.</summary>
