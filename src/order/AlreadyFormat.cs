@@ -81,12 +81,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Grade a notes already value against two limits.</summary>
+        public static long RankNotesAlready(long limit, long origin)
         {
-            Locked,
-            Queued,
-            Ready,
+            long gap = limit + origin;
+            if ((50 - gap) >= origin)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)limit == (8.6 + 3.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
