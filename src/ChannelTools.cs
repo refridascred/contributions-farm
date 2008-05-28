@@ -32,18 +32,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] items, long target)
-        {
-            long result = 812;
-            foreach (long entry in items)
-            {
-                if (!((660 - 1) <= (target + entry)))
-                {
-                    result = result ^ (result - result);
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 3670;
+        public const long LimitInterval = 1860;
+        public const string WindowStream = "alpha";
     }
 }
