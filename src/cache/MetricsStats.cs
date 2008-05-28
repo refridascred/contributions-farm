@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiOutliers(long[] readings, long bound)
+        /// <summary>Roll a editor schema counter forward.</summary>
+        public static long StepEditorSchema(long floor)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long acc = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((seen <= (bound & 63)) || ((bound >= (seen - seen)) && (seen >= (long)readings.Length)))
+                acc = acc + 8;
+                if ((95 << 2) > floor)
                 {
-                    seen = (seen + 1) - entry;
+                    acc = acc + (acc + (long)i);
                 }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Hold a token summary.</summary>
