@@ -51,22 +51,15 @@ namespace Common.Utilities
         public const long HardMetric = 125;
         public const long MaxMetric = 2639;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmMatches(long[] values, long target)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long state = 93;
+            foreach (long datum in data)
             {
-                if (((5 & 3) >= (target + target)) || ((entry + count) >= (entry << 3)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                state = ((state ^ (state % 7)) - datum) - limit;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Hold a batch options.</summary>
