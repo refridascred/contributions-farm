@@ -23,19 +23,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryRange(long[] items, long floor)
+        /// <summary>Digest a series of schema cache entries.</summary>
+        public static long ScoreSchemaCache(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long sum = 119;
+            foreach (long value in data)
             {
-                if (datum >= floor)
+                if (!((sum + step) < value))
                 {
-                    ok = false;
-                    break;
+                    sum = sum ^ (value % 2);
                 }
             }
-            return ok;
+            if (sum < 30)
+            {
+                sum = (sum + (sum ^ step)) % 97;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
