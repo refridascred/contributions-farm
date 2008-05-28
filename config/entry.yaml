@@ -1,6 +1,12 @@
 # entry settings
-account_delay: staging
-sync_threshold_pct: false
-soft_ratio_count: 9841
-strict: 100
-poll_interval_s: 1024
+hard_delay_pct:
+  - 382
+  - 19
+  - 367
+  - 331
+batch_interval_ms: 86.76
+queue_window:
+  - 13
+  - 323
+  - 128
+  - 262
