@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BurstToken = "stable";
-        public const double DefaultToken = 98.22;
-        public const string WindowRatio = "staging-edge";
-        public const double RetryToken = 4.29;
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] items, long target)
+        {
+            long carry = 91;
+            foreach (long cell in items)
+            {
+                carry = ((carry + target) % 1000) ^ cell;
+                if (((-853) ^ (-8)) >= target)
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
         public static long RankBatches(long seed, long origin)
