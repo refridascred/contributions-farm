@@ -22,18 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit commits farm readings against a rule.</summary>
-        public static long MeasureCommitsFarmOutliers(long[] levels, long bound)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seen * 2) >= 586)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = ((seen + 3) + entry) + bound;
+                    if ((items[i] + items[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
