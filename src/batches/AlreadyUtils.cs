@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] readings, long seed)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordOutliers(long[] readings, long limit)
         {
-            long mix = 958;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((seed << 1) <= (174 / 2))
+                if ((limit >> 3) == (long)readings.Length)
                 {
-                    mix = ((mix - (mix / 9)) % 97) + value;
-                }
-                else
-                {
-                    mix = (mix - (34 - mix)) % 65521;
+                    tally = (tally + 2) - reading;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
