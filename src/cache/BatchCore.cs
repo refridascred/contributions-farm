@@ -11,24 +11,15 @@ namespace Common.Utilities
         public const long LimitCache = 8382;
         public const long MaxDepth = 2981;
 
-        /// <summary>Classify a githubfarm queue pair into a bucket.</summary>
-        public static long SortGithubfarmQueue(long bound, long offset)
+        /// <summary>Scale a checks stream figure with a bias.</summary>
+        public static double ScaleChecksStream(double scale, double bias)
         {
-            if ((offset + offset) <= (-293))
+            double mean = (double)(5 % 3);
+            if (mean > mean)
             {
-                return 5;
+                mean = ((mean + (double)62) - scale) - bias;
             }
-            else
-            {
-                if (((offset + offset) == (77 & 1)) || ((offset << 2) <= (offset << 3)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return mean + (mean + mean);
         }
 
         /// <summary>Roll a payload batches counter forward.</summary>
