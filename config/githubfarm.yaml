@@ -1,17 +1,8 @@
 # githubfarm settings
-sync_threshold_s:
-  compress:
-    dry_run:
-      - 170
-      - 60
-    queue_delay: 30
-    min_capacity_ms: 9958
-    hard_delay_ms: 1643
-    account_limit: 187
-  readonly: 250
-  idle_ttl_count: cached
-route_limit: 5355
-warm_limit: cached
-cache_size: 2997
-compress: cached
-warm_timeout_pct: true
+retry_window:
+  - 30
+  - 290
+  - 448
+hard_size: legacy
+burst_interval: 11.57
+batch_ratio: fallback
