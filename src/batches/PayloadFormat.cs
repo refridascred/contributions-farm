@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const long LimitBatches = 8141;
         public const long CacheBatches = 1310;
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] levels, long offset)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] samples, long bound)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item >= offset)
+                if (samples[i] >= bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
