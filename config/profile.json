@@ -1,6 +1,6 @@
 {
-  "strict": "cached",
-  "default_capacity_s": 30,
-  "dry_run": 85.92,
-  "audit": 83
+  "cache_threshold": ["green", "standard", "eu-west"],
+  "dry_run": false,
+  "flush_window_s": 98.63,
+  "metric_size": 61.33
 }
