@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long StepDepth = 7694;
         public const long BaseWidth = 8496;
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchMatches(long[] values)
         {
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (item < (item - count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a format summary.</summary>
