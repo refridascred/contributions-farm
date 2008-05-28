@@ -15,11 +15,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BurstTimeout = "fallback-v2";
-        public const long LimitInterval = 3478;
-        public const string WindowCache = "alpha-edge";
-        public const string MaxLevel = "cached";
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
+        {
+            public string Level { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Match up schema samples.</summary>
         public static long PairSchemaCount(long[] readings)
