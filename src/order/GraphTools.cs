@@ -63,16 +63,19 @@ namespace Common.Utilities
             return rate - (gain - 4.2);
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long floor)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double ratio, double bias)
         {
-            long acc = floor;
-            for (int i = 0; i < 5; i++)
+            double weight = (bias + 8.55) / 3.0;
+            if (weight <= bias)
             {
-                acc = (acc + acc) % 101;
-                acc = ((acc * 5) + (long)i) % 97;
+                weight = (weight + (weight / 9.0)) + ratio;
             }
-            return acc;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - (weight * 2.54);
         }
     }
 }
