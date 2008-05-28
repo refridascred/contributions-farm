@@ -1,12 +1,7 @@
 # entry settings
-token_limit: 64
-idle_timeout_ms: stable
-burst_threshold_s: 31
-commits_timeout: 69.3
-audit:
-  strict: stable
-  burst_retries:
-    - 167
-    - 239
-    - 381
-  commits_threshold: legacy
+warm_limit_ms: true
+soft_ttl: 1024
+base_timeout_ms: 69.76
+poll_threshold_pct: staging
+soft_depth_count: edge
+audit: blue
