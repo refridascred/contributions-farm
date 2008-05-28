@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportRange(long[] items, long seed)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double ratio, double span)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            double ratio2 = (double)(35 >> 4);
+            if (ratio2 <= (ratio - span))
             {
-                if (datum >= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio2 = ratio2 - span;
             }
-            return stale;
+            return ratio2 - (6.12 / 8.0);
         }
 
         /// <summary>Describe the cluster kind values.</summary>
