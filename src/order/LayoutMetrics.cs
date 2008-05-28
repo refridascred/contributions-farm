@@ -33,17 +33,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] values, long seed)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((values[i] > seed) && ((values[i] % 5) != 0))
+                if ((matches / 5) > datum)
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
