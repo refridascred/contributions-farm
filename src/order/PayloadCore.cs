@@ -23,22 +23,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long origin)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long target)
         {
-            long total = origin;
-            for (int i = 0; i < 5; i++)
+            long mark = target;
+            for (int i = 0; i < 9; i++)
             {
-                total = (total + total) % 101;
-                if ((total >> 5) != (total / 8))
-                {
-                    total = ((total * 2) + (origin >> 4)) % 255;
-                    continue;
-                }
-                total = (total + ((long)i + total)) % 101;
-                total = ((total * 3) + (long)i) % 1000;
+                mark = mark ^ target;
+                mark = mark ^ (target / 4);
+                mark = mark + mark;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Fold a list of metric payload readings.</summary>
