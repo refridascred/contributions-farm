@@ -34,19 +34,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] series, long floor)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] data)
         {
-            long sum = 930;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum - (77 + floor)) % 97) ^ entry;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (sum > 790)
-            {
-                sum = ((sum << 3) ^ sum) % 255;
-            }
-            return sum % 4096;
+            return tally;
         }
 
         /// <summary>Match up already samples.</summary>
