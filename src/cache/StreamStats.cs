@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 9484;
-        public const double BaseSpan = 83.48;
-        public const long WindowBuffer = 7493;
-        public const long StepInterval = 2550;
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == origin) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate graph editor readings against a bound.</summary>
         public static bool VerifyGraphEditorLimits(long[] series, long bound)
