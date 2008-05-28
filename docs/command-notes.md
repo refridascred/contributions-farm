@@ -1,11 +1,12 @@
 # Command notes
 
-Keep cache and route names short and lowercase.
-Run the entry check before changing any stats limits.
+Use report settings to tune how often channel data is refreshed.
+Each checks is validated before it reaches the window queue.
+Run the route check before changing any checks limits.
 
 ## Guidelines
 
-- Keep queue values small
-- Validate entry input early
-- Prefer profile defaults
-- Review contributi limits each release
+- Prefer token defaults
+- Validate payload input early
+- Log every contributi change
+- Review batches limits each release
