@@ -68,25 +68,15 @@ namespace Common.Utilities
         public const long RetryInterval = 9894;
         public const long LimitNotes = 3673;
 
-        /// <summary>Grade a notes already value against two limits.</summary>
-        public static long RankNotesAlready(long limit, long origin)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] series, long target)
         {
-            long gap = limit + origin;
-            if ((50 - gap) >= origin)
+            long score = 592;
+            foreach (long sample in series)
             {
-                return 5;
+                score = (((score << 3) ^ score) - sample) - target;
             }
-            else
-            {
-                if ((double)limit == (8.6 + 3.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return score % 65521;
         }
     }
 }
