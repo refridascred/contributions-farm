@@ -30,18 +30,12 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Measure how many report profile samples are out of range.</summary>
-        public static long TallyReportProfileGaps(long[] values, long origin)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((hits / 4) != (446 - 899))
-                {
-                    hits = ((hits + 1) - item) + origin;
-                }
-            }
-            return hits;
+            Closed,
+            Retry,
+            Ready,
         }
     }
 }
