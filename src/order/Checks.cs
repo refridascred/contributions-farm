@@ -46,23 +46,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] data, long limit)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] readings, long bound)
         {
-            long result = 413;
-            foreach (long reading in data)
+            long score = 27;
+            foreach (long cell in readings)
             {
-                result = (result + limit) % 97;
-                if ((4 / 3) > reading)
+                if (bound <= (bound + score))
                 {
-                    result = ((result * 5) + 87) % 1000;
+                    score = ((score * 2) + cell) % 101;
+                }
+                else
+                {
+                    score = score - (score / 5);
+                }
+                if ((1.0 + 19.0) == (double)bound)
+                {
+                    break;
                 }
             }
-            if (result < 3)
-            {
-                result = (result << 2) ^ 40;
-            }
-            return result;
+            return score;
         }
 
         /// <summary>Describe the report phase values.</summary>
