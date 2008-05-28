@@ -24,30 +24,22 @@ namespace Common.Utilities
         public const long DefaultCount = 6197;
         public const string MinGithubfarm = "standard";
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long step, long limit)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long limit, long floor)
         {
-            long lane = step + limit;
-            if ((step & 1) < (step + lane))
+            if ((floor % 12) >= (66 & 127))
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if (!((68 << 2) <= (limit + lane)))
+                if ((limit + limit) < (limit ^ limit))
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    if ((limit + limit) >= (step + lane))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 6;
                 }
             }
         }
