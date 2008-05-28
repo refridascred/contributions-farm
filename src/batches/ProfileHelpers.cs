@@ -30,18 +30,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit filter profile readings against a rule.</summary>
-        public static long TallyFilterProfileHits(long[] values, long seed)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LocateSupportIndex(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)seed != (double)reading) || ((seed + seed) >= (reading - seed)))
+                if (readings[i] > step)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the command kind values.</summary>
