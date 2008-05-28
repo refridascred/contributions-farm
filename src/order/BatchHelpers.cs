@@ -47,9 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardInterval = 278;
-        public const long WindowOrder = 9776;
-        public const long BaseOrder = 4172;
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
+        {
+            Pending,
+            Locked,
+            Synced,
+        }
     }
 }
