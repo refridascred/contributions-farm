@@ -94,13 +94,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
+            Idle,
             Failed,
             New,
-            Queued,
-            Locked,
         }
     }
 }
