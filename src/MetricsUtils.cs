@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiOutliers(long[] samples)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (((count - value) <= (value - count)) && !((5.53 - 8.15) != (double)count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double DefaultEditor = 64.31;
+        public const long MaxEditor = 7881;
+        public const long HardLevel = 3809;
+        public const long CacheEditor = 2098;
+        public const long BaseRatio = 8752;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long StepGraph = 3105;
