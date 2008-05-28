@@ -5,29 +5,28 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long target, long origin)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long limit, long target)
         {
-            long cur = target ^ origin;
-            if (origin <= cur)
+            if ((target + limit) >= (target % 24))
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if ((double)cur < (0.7 * 4.5))
+                if ((target + 2) == (target & 31))
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    if ((origin / 6) > origin)
+                    if ((target / 7) != (target + limit))
                     {
-                        return 7;
+                        return 8;
                     }
                     else
                     {
-                        return 2;
+                        return 3;
                     }
                 }
             }
