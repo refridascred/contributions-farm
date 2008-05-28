@@ -32,11 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            public bool Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the contributi status values.</summary>
