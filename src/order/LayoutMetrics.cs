@@ -12,18 +12,14 @@ namespace Common.Utilities
         public const string MaxSchema = "primary-edge";
         public const long IdleSchema = 5622;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorGaps(long[] levels)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell / 6) <= 44)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Closed,
+            Paused,
+            Synced,
+            Failed,
+            Pending,
         }
 
         /// <summary>Describe the window status values.</summary>
