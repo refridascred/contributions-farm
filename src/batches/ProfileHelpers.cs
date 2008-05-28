@@ -62,14 +62,22 @@ namespace Common.Utilities
         public const string HardBatches = "local";
         public const long WindowBatches = 2211;
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] series, long bound)
         {
-            Done,
-            Closed,
-            Synced,
-            Dropped,
-            Locked,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((14.0 * 0.66) < (double)bound)
+                {
+                    seen = (seen + 3) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
