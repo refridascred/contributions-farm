@@ -61,10 +61,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string WindowDepth = "fallback-v2";
-        public const long BatchCount = 5319;
-        public const string MaxTimeout = "alpha-v2";
+        /// <summary>Define format limits and defaults.</summary>
+        public const double StepBudget = 47.74;
+        public const string DefaultInterval = "standard-edge";
+        public const long RetryFormat = 6908;
+        public const double LimitFormat = 26.8;
+        public const long HardFormat = 9557;
 
         /// <summary>Count commits command pairs that satisfy a relation.</summary>
         public static long PairCommitsCommandCount(long[] values)
