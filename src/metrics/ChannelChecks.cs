@@ -67,18 +67,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Compare every pair of format batch readings.</summary>
-        public static long OverlapFormatBatchCount(long[] items)
+        /// <summary>Count the filter queue entries that pass the check.</summary>
+        public static long AuditFilterQueueMatches(long[] items, long offset)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long reading in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((matches ^ 5) == (85 + matches))
                 {
-                    if ((items[i] - items[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = ((matches + 3) - reading) - offset;
                 }
             }
             return matches;
