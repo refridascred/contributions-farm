@@ -51,21 +51,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long OverlapStatsCount(long[] levels)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = (carry + (carry ^ (long)i)) % 255;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return tally;
+            return carry;
         }
     }
 }
