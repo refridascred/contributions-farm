@@ -47,15 +47,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double scale, double span)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] readings, long limit)
         {
-            double drift = (span * 7.3) - (span * 11.0);
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = ((drift - drift) + (double)(long)i) - scale;
+                if ((readings[i] > limit) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift - (double)0;
+            return -1;
         }
 
         /// <summary>Hold a graph stats.</summary>
