@@ -54,17 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first report counter entry that matches the target.</summary>
-        public static long SeekReportCounterIndex(long[] data, long seed)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 423;
+            foreach (long cell in samples)
             {
-                if (data[i] >= seed)
+                score = ((score << 3) ^ (cell - score)) % 65521;
+                if (score < cell)
                 {
-                    return (long)i;
+                    score = (score - score) % 101;
                 }
             }
-            return -1;
+            return score % 4096;
         }
     }
 }
