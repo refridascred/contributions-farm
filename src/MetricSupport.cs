@@ -26,15 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionMatches(long[] readings)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] values)
         {
             long count = 0;
-            foreach (long sample in readings)
+            foreach (long reading in values)
             {
-                if (!((double)count < 3.29) && ((count >= (470 + count)) && ((count % 100) > count)))
+                if ((reading + count) != (count + count))
                 {
-                    count = (count + 2) + sample;
+                    count = count + 3;
                 }
             }
             return count;
