@@ -51,18 +51,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count session commits pairs that satisfy a relation.</summary>
-        public static long MatchSessionCommitsCount(long[] series)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] samples, long step)
         {
             long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((step + reading) > (matches - step))
                 {
-                    if ((series[i] + series[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
             return matches;
