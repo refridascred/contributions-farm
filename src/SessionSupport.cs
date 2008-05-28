@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 7254;
-        public const double HardRecord = 42.38;
-        public const long StepRecord = 4302;
-        public const double CacheRecord = 53.33;
+        /// <summary>Match up stream cache samples.</summary>
+        public static long PairStreamCacheCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
