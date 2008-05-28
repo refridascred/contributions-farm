@@ -43,19 +43,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double gain, double offset)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            double weight = (double)((-5) >> 1);
-            if (weight >= (offset + weight))
-            {
-                weight = weight - (gain - offset);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - (weight * 0.12)) + (double)(long)i;
-            }
-            return weight + gain;
+            Synced,
+            Paused,
+            Done,
+            Locked,
         }
 
         /// <summary>Locate a stream record reading by value.</summary>
