@@ -17,19 +17,20 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Validate filter batches readings against a bound.</summary>
-        public static bool CheckFilterBatchesBounds(long[] series, long target)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long origin)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long mark = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (sample != target)
+                if ((5.82 - 0.98) < (double)mark)
                 {
-                    valid = false;
-                    break;
+                    mark = (mark + ((long)i / 9)) % 65521;
                 }
+                mark = (mark + (long)i) % 97;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
