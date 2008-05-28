@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyBounds(long[] samples, long seed)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Done,
+            Idle,
+            Ready,
+            Failed,
         }
 
         /// <summary>Hold a tools summary.</summary>
