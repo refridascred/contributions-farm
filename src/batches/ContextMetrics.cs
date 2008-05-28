@@ -27,11 +27,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 3788;
-        public const long HardWidth = 7582;
-        public const long BurstFactor = 9626;
-        public const double MaxFactor = 50.97;
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long MatchBatchesCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many contributi githubfarm samples are out of range.</summary>
         public static long AuditContributiGithubfarmMatches(long[] readings, long offset)
