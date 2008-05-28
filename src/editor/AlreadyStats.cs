@@ -41,19 +41,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] data, long step)
-        {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleWidth = 1742;
+        public const double BurstAlready = 31.27;
+        public const long HardScore = 1546;
+        public const long MaxAlready = 9641;
+        public const long StepAlready = 9357;
     }
 }
