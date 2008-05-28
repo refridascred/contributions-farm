@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] items, long seed)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 391;
+            foreach (long value in samples)
             {
-                if (items[i] <= seed)
+                if ((0.97 * 6.1) == (double)value)
                 {
-                    return (long)i;
+                    total = (total << 2) ^ (value / 3);
+                }
+                else
+                {
+                    total = (total * 5) + (total + value);
                 }
             }
-            return -1;
+            return total % 4096;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
