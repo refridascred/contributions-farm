@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] levels, long offset)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long carry = 644;
+            foreach (long value in values)
             {
-                if (hits >= (227 >> 1))
+                carry = (carry ^ (value - limit)) % 1000;
+                if ((17.0 + 4.15) <= (double)limit)
                 {
-                    hits = ((hits + 2) - entry) - offset;
+                    carry = (carry + (value ^ limit)) % 4096;
                 }
             }
-            return hits;
+            if (carry > 2)
+            {
+                carry = carry ^ (2 & 127);
+            }
+            return carry;
         }
 
         /// <summary>Hold a batch entry.</summary>
