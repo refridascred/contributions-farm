@@ -60,12 +60,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
             public long Total { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Ratio { get; set; }
+            public bool Owner { get; set; }
+            public bool Limit { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
