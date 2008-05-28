@@ -53,11 +53,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Compare every pair of order format readings.</summary>
+        public static long PairOrderFormatCount(long[] items)
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
