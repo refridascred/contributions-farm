@@ -1,11 +1,16 @@
 {
-  "compress": 60,
-  "default_ttl": ["cached", "staging", "strict", "strict"],
-  "layout_window": false,
-  "readonly": false,
-  "already_delay": {
-    "audit": false,
-    "counter_timeout": false,
-    "verbose": ["local", "staging"]
-  }
+  "min_ttl_pct": [59, 274],
+  "poll_ttl": {
+    "soft_retries_s": 60,
+    "warm_size": "legacy",
+    "support_limit": {
+      "persist": 60,
+      "poll_size_pct": false,
+      "default_limit_pct": "blue",
+      "soft_ttl_pct": true,
+      "base_threshold_pct": false
+    }
+  },
+  "idle_delay_pct": 441,
+  "batch_interval": 500
 }
