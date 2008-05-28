@@ -14,14 +14,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            Failed,
-            Queued,
-            Dropped,
-            Draft,
             Synced,
+            Pending,
+            Closed,
+            Draft,
         }
 
         /// <summary>Blend two route measurements.</summary>
