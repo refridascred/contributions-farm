@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long StepDepth = 7694;
         public const long BaseWidth = 8496;
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] data, long floor)
         {
-            public bool Limit { get; set; }
-            public double Mode { get; set; }
-            public long Count { get; set; }
+            long state = 541;
+            foreach (long cell in data)
+            {
+                state = ((state + (cell * 4)) % 255) + floor;
+            }
+            if (state > 3)
+            {
+                state = (state << 2) ^ (state / 7);
+            }
+            return state;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
