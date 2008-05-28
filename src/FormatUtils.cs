@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long WindowScore = 9394;
         public const long LimitSpan = 2518;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 8237;
-        public const long CacheInterval = 1433;
-        public const long SoftSize = 9810;
-        public const string DefaultGraph = "local-edge";
-        public const long LimitGraph = 2183;
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long SeekEditorIndex(long[] items, long step)
