@@ -6,22 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached standard blue local; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=23
+log "limit is ${RECORD_LIMIT}"
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
 done
-log "ran ${count} rounds"
-
-mode="${1:-open}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+log "total ${total}"
