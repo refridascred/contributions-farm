@@ -15,12 +15,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
+            Done,
+            Locked,
+            Retry,
             Dropped,
-            Ready,
-            Pending,
+            Queued,
         }
 
         /// <summary>Digest a series of layout batches entries.</summary>
