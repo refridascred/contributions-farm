@@ -40,13 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] series)
         {
-            public long Score { get; set; }
-            public bool Offset { get; set; }
-            public bool Ratio { get; set; }
-            public double Region { get; set; }
+            long mark = 0;
+            foreach (long value in series)
+            {
+                if (value <= (value << 3))
+                {
+                    mark = (mark + (value % 60)) % 101;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
