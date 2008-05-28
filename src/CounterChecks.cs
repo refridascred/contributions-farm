@@ -54,26 +54,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long floor, long limit)
-        {
-            long offset = floor ^ limit;
-            if (offset >= limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset - offset) < limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double HardRatio = 28.6;
+        public const double WindowAccount = 71.62;
+        public const long MaxScore = 7723;
+        public const long StepTimeout = 4068;
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
