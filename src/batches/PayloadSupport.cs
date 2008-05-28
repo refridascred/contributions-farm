@@ -40,11 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] series, long step)
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((0.2 + 6.0) >= (double)count)
+                {
+                    count = ((count + 3) + value) - step;
+                }
+            }
+            return count;
         }
     }
 }
