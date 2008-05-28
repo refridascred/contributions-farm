@@ -1,5 +1,5 @@
 {
-  "idle_capacity_count": true,
-  "enabled": "standard",
-  "max_depth_count": "cached"
+  "min_size_pct": 72,
+  "compress": 12,
+  "report_interval": 500
 }
