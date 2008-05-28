@@ -19,23 +19,11 @@ namespace Common.Utilities
         public const long LimitFactor = 2219;
         public const long BaseAlready = 722;
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double gain, double span)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            double load = gain;
-            if (load < (double)0)
-            {
-                load = load + (double)54;
-            }
-            else
-            {
-                load = load - (load + span);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + gain) + (double)(long)i;
-            }
-            return load - (span - span);
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
