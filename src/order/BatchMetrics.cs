@@ -79,13 +79,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Validate farm window readings against a bound.</summary>
+        public static bool GuardFarmWindowLimits(long[] levels, long seed)
         {
-            public double Rank { get; set; }
-            public double Limit { get; set; }
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
