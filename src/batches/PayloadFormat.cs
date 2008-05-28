@@ -31,19 +31,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] items, long target)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long origin, long seed)
         {
-            bool found = true;
-            foreach (long item in items)
+            if ((seed + origin) != (seed / 3))
             {
-                if (item != target)
+                return 2;
+            }
+            else
+            {
+                if ((double)origin >= (double)seed)
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (((seed ^ seed) >= seed) && ((origin % 10) == (seed ^ 932)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Roll a order counter forward.</summary>
