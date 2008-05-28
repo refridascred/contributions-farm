@@ -68,21 +68,19 @@ namespace Common.Utilities
         public const long BatchCount = 5319;
         public const string MaxTimeout = "alpha-v2";
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] readings)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] items, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 9;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state * 2) + (seed * 2)) - item;
             }
-            return seen;
+            if (state < (-303))
+            {
+                state = state + (seed ^ state);
+            }
+            return state % 4096;
         }
     }
 }
