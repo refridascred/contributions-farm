@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long limit)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaGaps(long[] series)
         {
-            long total = limit;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                total = (total - (83 - (long)i)) % 65521;
-                total = ((total * 3) + (long)i) % 97;
+                if (((count << 2) >= (reading & 31)) || (count <= (198 ^ reading)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
