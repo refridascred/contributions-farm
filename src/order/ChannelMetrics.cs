@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            Active,
+            Synced,
+            Done,
+            Pending,
+            Failed,
         }
 
         /// <summary>Define session limits and defaults.</summary>
