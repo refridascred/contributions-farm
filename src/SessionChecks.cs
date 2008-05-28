@@ -17,16 +17,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next editor contributi value from a seed.</summary>
-        public static long RollEditorContributi(long offset)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = (carry << 2) ^ (offset & 3);
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
+            public double Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
