@@ -73,28 +73,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] levels, long offset)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long origin)
         {
-            long anchor = -6;
-            foreach (long sample in levels)
+            long mix = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((anchor & 127) != (sample + sample))
+                if (((origin * 2) == (7 / 6)) || ((origin << 1) <= origin))
                 {
-                    anchor = (anchor + (offset - sample)) % 97;
-                    break;
+                    mix = (mix << 2) ^ (origin + (long)i);
                 }
-                if ((847 / 9) != (anchor + offset))
-                {
-                    anchor = (anchor - (sample + anchor)) % 65521;
-                    break;
-                }
-                if (sample >= (anchor % 16))
-                {
-                    anchor = ((anchor * 5) + sample) % 65521;
-                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return anchor % 65521;
+            return mix;
         }
     }
 }
