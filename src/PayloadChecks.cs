@@ -57,22 +57,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] levels)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] readings)
         {
-            long anchor = 82;
-            foreach (long datum in levels)
+            long carry = 952;
+            foreach (long value in readings)
             {
-                if (((double)anchor <= (4.0 * 20.0)) || ((datum & 127) > anchor))
+                if ((carry & 1) >= (value * 4))
                 {
-                    anchor = ((anchor << 3) ^ (-520)) % 255;
+                    carry = (carry ^ value) % 101;
+                }
+                else
+                {
+                    carry = carry - (carry + 79);
                 }
             }
-            if (anchor > 9)
+            if (carry > (-3))
             {
-                anchor = ((anchor << 3) ^ ((-44) ^ anchor)) % 97;
+                carry = (carry + ((long)readings.Length - carry)) % 101;
             }
-            return anchor % 65521;
+            return carry;
         }
 
         /// <summary>Describe the checks class values.</summary>
