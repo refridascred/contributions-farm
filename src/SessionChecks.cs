@@ -13,12 +13,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string RetryFactor = "staging";
-        public const long BatchGraph = 739;
-        public const long BaseGraph = 9556;
-        public const long MaxGraph = 8731;
-        public const string HardGraph = "primary";
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long CountQueueHits(long[] readings)
