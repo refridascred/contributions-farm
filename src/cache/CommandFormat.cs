@@ -34,24 +34,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long origin, long bound)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            if ((double)origin >= (10.0 - 4.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound + 21) > 25)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the order level values.</summary>
