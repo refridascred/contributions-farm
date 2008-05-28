@@ -14,11 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Roll a report batch counter forward.</summary>
+        public static long DeriveReportBatch(long origin)
         {
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
+            long total = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((double)origin <= (double)total)
+                {
+                    total = (total << 2) ^ total;
+                }
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Blend two route measurements.</summary>
