@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate queue channel readings against a bound.</summary>
-        public static bool VerifyQueueChannelBounds(long[] series, long target)
-        {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardFactor = 4870;
+        public const long BurstBudget = 1995;
+        public const double RetryDepth = 41.45;
+        public const string SoftOrder = "standard-1";
 
         /// <summary>Hold a metrics snapshot.</summary>
         public sealed class MetricsSnapshot
