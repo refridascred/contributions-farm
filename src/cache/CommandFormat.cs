@@ -54,9 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxTimeout = 59.31;
-        public const long StepRatio = 3875;
-        public const long BatchBatches = 1084;
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
+        {
+            Stale,
+            Retry,
+            Dropped,
+            Idle,
+        }
     }
 }
