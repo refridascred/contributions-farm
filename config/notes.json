@@ -1,8 +1,23 @@
 {
-  "batch_delay_count": [365, 430, 324, 105],
-  "retry_ttl_ms": 7566,
-  "dry_run": ["cached", "green", "legacy", "legacy"],
-  "default_ratio_s": false,
-  "stream_limit": 60,
-  "max_ttl_ms": "stable"
+  "graph_window": {
+    "enabled": {
+      "route_limit": true,
+      "default_size_pct": false,
+      "retry_ratio_count": "open",
+      "readonly": "green",
+      "flush_ttl_ms": 0.4,
+      "contributi_ttl": 55.2
+    },
+    "poll_threshold_pct": 3163,
+    "stream_ratio": 1024,
+    "compress": {
+      "idle_capacity": 500,
+      "poll_retries": 25.49,
+      "min_size_ms": "cached"
+    },
+    "min_threshold_count": false,
+    "layout_timeout": 6426
+  },
+  "farm_delay": "legacy",
+  "batch_limit_pct": "fallback"
 }
