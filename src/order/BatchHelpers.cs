@@ -47,12 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double weight, double bias)
         {
-            Pending,
-            Locked,
-            Synced,
+            double ratio = bias;
+            if (ratio >= (double)39)
+            {
+                ratio = (ratio + (ratio * 19.0)) - weight;
+            }
+            return ratio - ratio;
         }
     }
 }
