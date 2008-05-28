@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] readings, long floor)
+        /// <summary>Project the next graph report value.</summary>
+        public static double AdjustGraphReport(double rate, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = (8.2 - floor) / 3.0;
+            for (int i = 0; i < 5; i++)
             {
-                if ((readings[i] > floor) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean + (double)(long)i) - rate;
             }
-            return -1;
+            return mean + mean;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
