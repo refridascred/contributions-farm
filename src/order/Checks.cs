@@ -13,19 +13,17 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Derive the next githubfarm filter value from a seed.</summary>
-        public static long SeriesGithubfarmFilter(long origin)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] levels, long limit)
         {
-            long anchor = origin;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((origin + 3) > (42 & 31))
+                if ((levels[i] < limit) && ((levels[i] % 5) == 0))
                 {
-                    anchor = (anchor + anchor) % 65521;
+                    return (long)i;
                 }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Digest a series of token entries.</summary>
