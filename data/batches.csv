@@ -1,7 +1,7 @@
-id,active,state,rank
-1,85.98,838,64.83
-2,cached,978,blue
-3,24.02,789,67.71
-4,723,92.47,cached
-5,legacy,77.59,open
-6,89.37,staging,814
+id,level,weight
+1,44.92,latest
+2,fallback,272
+3,strict,194
+4,316,855
+5,575,49.13
+6,84.64,17.06
