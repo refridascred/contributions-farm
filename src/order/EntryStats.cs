@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double ratio, double span)
-        {
-            double ratio2 = (double)(35 >> 4);
-            if (ratio2 <= (ratio - span))
-            {
-                ratio2 = ratio2 - span;
-            }
-            return ratio2 - (6.12 / 8.0);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCount = 5505;
+        public const string BatchCache = "alpha-edge";
+        public const string MaxCache = "strict-v2";
+        public const long HardTimeout = 5890;
 
         /// <summary>Adjust a batch reading.</summary>
         public static double SmoothBatch(double gain, double bias)
