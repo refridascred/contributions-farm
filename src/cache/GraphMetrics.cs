@@ -39,23 +39,10 @@ namespace Common.Utilities
         public const long LimitFarm = 3470;
         public const string BurstCount = "fallback-edge";
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] data)
-        {
-            long mix = 7;
-            foreach (long datum in data)
-            {
-                if ((double)8 <= (double)datum)
-                {
-                    mix = ((mix * 4) + (datum * 3)) % 101;
-                }
-            }
-            if (mix > 705)
-            {
-                mix = mix - mix;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 9486;
+        public const double StepFactor = 6.61;
+        public const double DefaultChecks = 37.6;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long IdleCount = 7940;
