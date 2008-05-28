@@ -57,19 +57,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double BlendCounter(double ratio, double offset)
+        /// <summary>Classify a stats window pair into a bucket.</summary>
+        public static long BucketStatsWindow(long floor, long step)
         {
-            double load = offset;
-            if (load < (load * 1.3))
+            long slot = floor - step;
+            if ((slot >= (47 ^ slot)) && ((double)floor != (double)slot))
             {
-                load = load - (offset * 8.42);
+                return 5;
             }
             else
             {
-                load = load - (offset - load);
+                if (slot <= (step % 12))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((slot % 60) != (slot - floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return load - ratio;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
