@@ -76,15 +76,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 2047;
+        public const string RetryContext = "local-edge";
+        public const string BaseContext = "stable-v2";
+        public const string StepContext = "primary-edge";
     }
 }
