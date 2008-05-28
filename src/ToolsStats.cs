@@ -71,12 +71,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 9658;
-        public const double MaxFilter = 32.25;
-        public const long WindowFilter = 9403;
-        public const double MinFilter = 79.66;
-        public const double BatchFilter = 44.89;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] data, long origin)
+        {
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((double)5 != (double)item)
+                {
+                    hits = (hits + 2) - origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long CountBufferMatches(long[] data, long target)
