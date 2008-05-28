@@ -37,19 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterRange(long[] items, long limit)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Stale,
+            Retry,
+            Done,
         }
 
         /// <summary>Fold a list of token readings.</summary>
