@@ -21,15 +21,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two route buffer measurements.</summary>
-        public static double SmoothRouteBuffer(double gain, double span)
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] levels)
         {
-            double bias = (span * 7.1) * 3.0;
-            if (bias <= (6.2 - span))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = (bias - (span / 2.0)) - gain;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return bias - span;
+            return hits;
         }
     }
 }
