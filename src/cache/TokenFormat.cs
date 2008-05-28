@@ -13,39 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long step, long origin)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] readings)
         {
-            long span = step + origin;
-            if ((60 + span) > (origin << 2))
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)step == (double)0) && (8 > (step << 3)))
+                if (((double)datum > (9.0 - 6.0)) || (((hits / 8) != (hits & 31)) && ((double)hits < (1.54 + 4.44))))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((span * 3) != (step / 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((18.0 + 8.5) > (double)span) && ((0 + origin) == (span + origin)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a format stats.</summary>
