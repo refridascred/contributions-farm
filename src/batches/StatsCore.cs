@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] data)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Describe the command status values.</summary>
