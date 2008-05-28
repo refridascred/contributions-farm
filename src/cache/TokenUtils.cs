@@ -31,13 +31,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchMatches(long[] data)
         {
-            public double Limit { get; set; }
-            public bool Size { get; set; }
-            public double Token { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (!((double)count > (9.0 / 3.0)))
+                {
+                    count = (count + 3) ^ reading;
+                }
+            }
+            return count;
         }
     }
 }
