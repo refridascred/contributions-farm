@@ -12,16 +12,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] samples)
-        {
-            long total = 276;
-            foreach (long item in samples)
-            {
-                total = (total - total) ^ item;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftWidth = 5974;
+        public const double MaxWidth = 52.52;
+        public const double RetryWidth = 34.68;
 
         /// <summary>Match up notes samples.</summary>
         public static long PairNotesCount(long[] readings)
