@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaGaps(long[] series)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (((count << 2) >= (reading & 31)) || (count <= (198 ^ reading)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Rank { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
