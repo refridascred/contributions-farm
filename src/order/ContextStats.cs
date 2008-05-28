@@ -58,21 +58,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] items)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long seed, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((floor * 3) < (seed & 1))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (!((seed % 5) != (seed + floor)))
                 {
-                    if ((items[i] ^ items[j]) < 5)
+                    return 8;
+                }
+                else
+                {
+                    if (((floor >> 1) <= (seed + floor)) || ((floor + floor) > seed))
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
