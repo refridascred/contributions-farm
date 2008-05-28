@@ -13,32 +13,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long origin, long bound)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long origin)
         {
-            long edge = origin + bound;
-            if ((origin - 65) <= (edge ^ origin))
+            long mark = origin;
+            for (int i = 0; i < 14; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((edge - 609) > (origin % 5))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return 5;
+                    mark = ((mark + 400) % 101) - (long)i2;
                 }
-                else
-                {
-                    if ((origin + edge) > edge)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
+            return mark;
         }
 
         /// <summary>Validate session token readings against a bound.</summary>
