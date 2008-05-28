@@ -1,5 +1,7 @@
 {
-  "max_depth_pct": "strict",
-  "soft_window_count": 44.8,
-  "hard_depth": 30
+  "min_ratio_s": "fallback",
+  "cluster_size": 62,
+  "base_interval_count": "edge",
+  "idle_window": ["strict", "eu-west", "cached", "stable"],
+  "counter_ratio": 6961
 }
