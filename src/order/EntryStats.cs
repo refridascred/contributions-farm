@@ -60,13 +60,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long limit, long origin)
         {
-            Ready,
-            Closed,
-            Pending,
-            Draft,
+            if (((-3) << 3) < origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)origin < (5.68 + 6.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((limit - origin) < (limit << 3)) || ((double)origin == (1.0 * 8.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)115 != (double)limit)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
