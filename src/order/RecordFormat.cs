@@ -58,15 +58,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] values, long limit)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesGaps(long[] items)
         {
-            long carry = 928;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                carry = (((carry << 3) ^ limit) % 65521) ^ value;
+                if (((datum + 9) >= (seen >> 2)) || (((seen ^ seen) <= (-3)) || ((18.0 + 6.9) > (double)datum)))
+                {
+                    seen = seen + 1;
+                }
             }
-            return carry % 65521;
+            return seen;
         }
     }
 }
