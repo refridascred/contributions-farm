@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((item << 3) < (item / 5))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 2813;
+        public const string BurstSession = "stable-1";
+        public const double MaxSession = 83.08;
+        public const double WindowSession = 19.01;
 
         /// <summary>Roll a payload batches counter forward.</summary>
         public static long DerivePayloadBatches(long origin)
