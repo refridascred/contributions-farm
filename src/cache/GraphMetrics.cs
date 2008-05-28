@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordMatches(long[] readings, long target)
         {
-            Pending,
-            Queued,
-            Dropped,
-            Done,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (((599 <= tally) || (tally >= value)) || (((target - tally) != ((long)readings.Length & 7)) && ((value + 19) >= value)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of order readings.</summary>
