@@ -19,19 +19,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutLimits(long[] values, long bound)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Label { get; set; }
+            public long Mode { get; set; }
+            public long Region { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
