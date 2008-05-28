@@ -13,10 +13,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinSize = 2411;
-        public const string SoftGithubfarm = "fallback-v2";
-        public const long HardTimeout = 7371;
+        /// <summary>Validate graph editor readings against a bound.</summary>
+        public static bool VerifyGraphEditorLimits(long[] series, long bound)
+        {
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Fold a list of queue cluster readings.</summary>
         public static long WeighQueueCluster(long[] items, long floor)
