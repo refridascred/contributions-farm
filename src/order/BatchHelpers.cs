@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long limit, long limit2)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] series, long offset)
         {
-            if ((double)limit2 == (3.3 + 8.95))
+            long score = 8;
+            foreach (long entry in series)
             {
-                return 4;
+                score = ((score ^ ((long)series.Length ^ offset)) % 101) + entry;
             }
-            else
+            if (score > 797)
             {
-                if (limit2 >= (limit & 127))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)limit2 > (double)89))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                score = ((score * 4) + (score >> 1)) % 101;
             }
+            return score % 1000;
         }
 
         /// <summary>Define record limits and defaults.</summary>
