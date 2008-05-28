@@ -23,17 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long origin)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = (mark << 2) ^ origin;
-                mark = (mark - ((long)i + origin)) % 255;
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            Draft,
+            Failed,
+            Pending,
+            Active,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
