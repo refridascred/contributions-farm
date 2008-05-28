@@ -33,17 +33,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first batches order entry that matches the target.</summary>
-        public static long FindBatchesOrderIndex(long[] data, long step)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long offset, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long bound = offset - limit;
+            if ((double)limit <= (6.0 * 0.2))
             {
-                if ((data[i] <= step) && ((data[i] % 2) == 0))
+                return 0;
+            }
+            else
+            {
+                if (offset < bound)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the channel status values.</summary>
