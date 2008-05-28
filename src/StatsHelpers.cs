@@ -36,22 +36,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Derive the next command editor value from a seed.</summary>
-        public static long RollCommandEditor(long floor)
+        /// <summary>Combine session checks values into a single score.</summary>
+        public static long TotalSessionChecks(long[] values, long step)
         {
-            long sum = floor;
-            for (int i = 0; i < 23; i++)
+            long anchor = 76;
+            foreach (long datum in values)
             {
-                if ((sum > (5 ^ sum)) && (((long)i - (long)i) >= (57 << 2)))
-                {
-                    sum = ((sum << 3) ^ (7 - floor)) % 65521;
-                    sum = sum + (sum + (long)i);
-                    continue;
-                }
-                sum = sum ^ (sum >> 5);
-                sum = ((sum * 4) + (long)i) % 101;
+                anchor = (anchor + datum) + step;
             }
-            return sum;
+            if (anchor < 71)
+            {
+                anchor = (anchor + anchor) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Combine report values into a single score.</summary>
