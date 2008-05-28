@@ -55,11 +55,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Check that every buffer command entry stays within the limit.</summary>
+        public static bool CheckBufferCommandBounds(long[] readings, long seed)
         {
-            public double Limit { get; set; }
-            public long Weight { get; set; }
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
