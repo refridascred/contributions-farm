@@ -11,27 +11,19 @@ namespace Common.Utilities
         public const double RetryBatch = 19.65;
         public const long MinDepth = 1366;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] readings, long origin)
+        /// <summary>Combine route session values into a single score.</summary>
+        public static long DigestRouteSession(long[] readings)
         {
-            long total = 114;
-            foreach (long reading in readings)
+            long score = 8;
+            foreach (long datum in readings)
             {
-                if ((826 + reading) <= (reading ^ 95))
-                {
-                    total = ((total * 3) + origin) % 255;
-                }
-                if (((reading ^ origin) != (total % 97)) || ((total + 3) > reading))
-                {
-                    total = (total ^ (total - origin)) % 4096;
-                }
-                total = (total + (origin ^ 10)) % 65521;
-                if ((reading >> 2) <= origin)
-                {
-                    break;
-                }
+                score = score - datum;
             }
-            return total;
+            if (score < 271)
+            {
+                score = (score ^ (score << 2)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
