@@ -11,12 +11,24 @@ namespace Common.Utilities
         public const long LimitCache = 8382;
         public const long MaxDepth = 2981;
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Classify a githubfarm queue pair into a bucket.</summary>
+        public static long SortGithubfarmQueue(long bound, long offset)
         {
-            public string Level { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
+            if ((offset + offset) <= (-293))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((offset + offset) == (77 & 1)) || ((offset << 2) <= (offset << 3)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Roll a payload batches counter forward.</summary>
