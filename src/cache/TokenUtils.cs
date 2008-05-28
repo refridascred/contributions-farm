@@ -17,24 +17,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] readings, long floor)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] levels)
         {
-            long state = 706;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state + (floor - cell)) % 97;
-                state = (state + (0 / 5)) % 255;
-                if ((state < (cell / 5)) || ((cell >> 2) == ((-2) / 7)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = ((state * 4) + 1) % 1000;
-                }
-                if ((double)state <= (19.0 - 9.26))
-                {
-                    break;
+                    if ((levels[i] ^ levels[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
