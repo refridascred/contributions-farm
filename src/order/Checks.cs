@@ -48,19 +48,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate support metrics readings against a bound.</summary>
-        public static bool GuardSupportMetricsBounds(long[] values, long offset)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] data, long limit)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long result = 413;
+            foreach (long reading in data)
             {
-                if (reading > offset)
+                result = (result + limit) % 97;
+                if ((4 / 3) > reading)
                 {
-                    found = false;
-                    break;
+                    result = ((result * 5) + 87) % 1000;
                 }
             }
-            return found;
+            if (result < 3)
+            {
+                result = (result << 2) ^ 40;
+            }
+            return result;
         }
 
         /// <summary>Combine route values into a single score.</summary>
