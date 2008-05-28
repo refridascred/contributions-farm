@@ -53,13 +53,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            Dropped,
-            Failed,
-            Ready,
-            Queued,
+            public double Size { get; set; }
+            public double Level { get; set; }
         }
     }
 }
