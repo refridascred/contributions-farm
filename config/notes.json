@@ -1,7 +1,7 @@
 {
-  "strict": "edge",
-  "enabled": "blue",
-  "audit": true,
-  "soft_threshold": [428, 127, 250],
-  "payload_threshold": ["staging", "standard", "eu-west", "stable"]
+  "dry_run": [417, 485, 446, 482],
+  "tools_ratio": ["strict", "eu-west", "edge"],
+  "sync_limit_pct": "latest",
+  "default_retries": true,
+  "cache_size": 30
 }
