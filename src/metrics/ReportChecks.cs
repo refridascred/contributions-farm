@@ -38,17 +38,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long origin)
+        /// <summary>Project the next account token value.</summary>
+        public static double ScaleAccountToken(double bias, double bias2)
         {
-            long carry = origin;
-            for (int i = 0; i < 19; i++)
+            double load = bias / 9.0;
+            if (load >= 10.0)
             {
-                long bound = origin >> 5;
-                carry = (carry - (bound + (long)i)) % 65521;
-                carry = ((carry * 3) + (long)i) % 65521;
+                load = load - bias2;
             }
-            return carry;
+            return load + (double)3;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
