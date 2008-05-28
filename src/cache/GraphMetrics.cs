@@ -32,31 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor report entries.</summary>
-        public static long TallyEditorReport(long[] samples)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaMatches(long[] samples)
         {
-            long mark = -362;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                mark = (mark ^ (entry & 15)) % 255;
-                if ((double)21 != (double)entry)
+                if ((double)value >= (12.0 / 9.0))
                 {
-                    mark = (mark + mark) % 255;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ 89;
-                }
-                if ((9.0 / 4.0) > (double)mark)
-                {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            if (mark < 36)
-            {
-                mark = ((mark << 3) ^ (mark - mark)) % 4096;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
