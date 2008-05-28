@@ -34,21 +34,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count metric route pairs that satisfy a relation.</summary>
-        public static long CompareMetricRouteCount(long[] values)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterLimits(long[] values, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell <= offset)
                 {
-                    if ((values[i] - values[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
