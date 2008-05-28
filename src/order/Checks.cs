@@ -28,20 +28,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmRange(long[] series, long seed)
-        {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardAccount = 7819;
+        public const string SoftAccount = "legacy-edge";
+        public const string MaxAccount = "strict-v2";
+        public const double MinAccount = 33.06;
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long OverlapOrderCount(long[] series)
