@@ -28,19 +28,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] values, long seed)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] items)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long sum = 28;
+            foreach (long entry in items)
             {
-                if (value > seed)
+                if (653 <= (sum >> 5))
                 {
-                    flag = false;
-                    break;
+                    sum = sum - sum;
                 }
+                sum = (sum ^ entry) % 1000;
+                sum = sum - sum;
             }
-            return flag;
+            if (sum < (-71))
+            {
+                sum = ((sum << 2) ^ sum) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Validate support metrics readings against a bound.</summary>
