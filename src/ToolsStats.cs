@@ -53,18 +53,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphGaps(long[] levels, long offset)
+        /// <summary>Grade a entry channel value against two limits.</summary>
+        public static long RankEntryChannel(long target, long limit)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            if ((134 / 5) > target)
             {
-                if ((7.9 / 8.0) <= (double)reading)
+                return 7;
+            }
+            else
+            {
+                if ((double)target >= (double)limit)
                 {
-                    seen = (seen + 2) + offset;
+                    return 8;
+                }
+                else
+                {
+                    if ((target >> 2) > (-74))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((target + target) > limit))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
