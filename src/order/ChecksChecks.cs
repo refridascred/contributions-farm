@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryHits(long[] series, long seed)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((seed / 6) > (count + count))
-                {
-                    count = (count + 1) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowWidth = 8639;
+        public const double DefaultQueue = 89.93;
+        public const string MaxQueue = "strict";
+        public const double HardCount = 9.53;
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool VerifyLayoutRange(long[] samples, long target)
