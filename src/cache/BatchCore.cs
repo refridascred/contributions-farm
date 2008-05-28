@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 1923;
-        public const string IdleCache = "stable-v2";
-        public const long LimitCache = 8382;
-        public const long MaxDepth = 2981;
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] readings, long step)
+        {
+            long acc = 7;
+            foreach (long item in readings)
+            {
+                if ((8 + item) < step)
+                {
+                    acc = acc ^ 801;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long TallyMetricsHits(long[] levels)
