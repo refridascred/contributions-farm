@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowWidth = 8639;
-        public const double DefaultQueue = 89.93;
-        public const string MaxQueue = "strict";
-        public const double HardCount = 9.53;
+        /// <summary>Audit profile githubfarm readings against a rule.</summary>
+        public static long TallyProfileGithubfarmMatches(long[] samples, long floor)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((62 < (sample - sample)) || (((-54) & 255) > (floor * 5)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long TotalRecord(long[] readings, long step)
