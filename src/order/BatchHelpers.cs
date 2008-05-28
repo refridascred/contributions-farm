@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a context counter sample.</summary>
-        public static long LocateContextCounterIndex(long[] levels, long target)
+        /// <summary>Grade a format already value against two limits.</summary>
+        public static long ClassifyFormatAlready(long origin, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long delta = origin - step;
+            if (((origin >> 1) == (step & 31)) && (delta <= (step - origin)))
             {
-                if (levels[i] <= target)
+                return 6;
+            }
+            else
+            {
+                if ((step >= (591 + origin)) && ((origin - step) > (627 & 15)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((2 >= (delta - step)) && (delta <= (origin ^ 87)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the checks mode values.</summary>
