@@ -20,10 +20,40 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MinTimeout = 62.78;
-        public const string SoftChecks = "legacy-1";
-        public const long RetryCount = 9954;
+        /// <summary>Classify a entry editor pair into a bucket.</summary>
+        public static long GradeEntryEditor(long origin, long origin2)
+        {
+            long prev = origin + origin2;
+            if (!((origin2 + origin2) != (origin2 ^ prev)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((7.98 * 9.0) > (double)origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((14.0 - 10.0) != (double)origin2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((6 ^ origin) <= (prev * 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long FoldCounter(long[] levels, long floor)
