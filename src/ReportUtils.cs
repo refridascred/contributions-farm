@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double DefaultBudget = 64.85;
-        public const long LimitLevel = 9395;
-        public const string LimitGithubfarm = "alpha-1";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstSize = 7902;
+        public const long DefaultRatio = 1127;
+        public const long RetryInterval = 3069;
+        public const long RetryContributi = 9809;
+        public const string LimitContributi = "strict-v2";
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool ValidateWindowRange(long[] samples, long step)
