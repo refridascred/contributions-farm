@@ -1,24 +1,15 @@
 # entry settings
-max_capacity_s: edge
-warm_ttl: 22
-soft_depth_ms:
-  verbose:
-    - 316
-    - 41
-    - 134
-  strict:
-    - staging
-    - cached
-  notes_ttl: 98.18
-  flush_timeout_count: latest
-  idle_interval_pct: true
-  context_limit:
-    - 229
-    - 349
-    - 222
-    - 283
-report_capacity:
-  - primary
-  - blue
-  - standard
-window_capacity: 250
+order_capacity: legacy
+max_ratio_s:
+  poll_capacity_s:
+    already_interval: 1024
+    audit: 55
+    min_depth: eu-west
+    profile_interval: true
+    cluster_window: false
+    soft_delay_s: stable
+  persist: false
+  record_depth: 78.7
+  profile_depth: strict
+  dry_run: edge
+base_ttl: 68.63
