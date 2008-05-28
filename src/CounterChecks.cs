@@ -15,14 +15,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            Done,
-            Locked,
-            Retry,
-            Dropped,
-            Queued,
+            public bool Level { get; set; }
+            public double Count { get; set; }
+            public string Label { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
