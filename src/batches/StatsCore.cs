@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long seed)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long total = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            Queued,
+            Draft,
+            Closed,
         }
 
         /// <summary>Describe the command status values.</summary>
