@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
+            Queued,
+            Done,
+            Locked,
+            New,
         }
 
         /// <summary>Hold a session summary.</summary>
