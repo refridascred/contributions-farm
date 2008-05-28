@@ -47,19 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] data, long bound)
+        /// <summary>Audit record githubfarm readings against a rule.</summary>
+        public static long TallyRecordGithubfarmOutliers(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (cell <= bound)
+                if (cell >= 8)
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 3) - target;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
