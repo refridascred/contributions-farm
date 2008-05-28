@@ -20,24 +20,14 @@ namespace Common.Utilities
             return load - (load / 5.0);
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long floor, long bound)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            if ((bound ^ bound) >= bound)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)floor >= (2.86 - 2.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Synced,
+            Active,
+            New,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
