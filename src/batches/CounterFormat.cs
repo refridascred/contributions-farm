@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long step)
         {
-            Retry,
-            Active,
-            Idle,
-            Queued,
-            Locked,
+            long state = step;
+            for (int i = 0; i < 19; i++)
+            {
+                state = (state * 3) + ((long)i + (long)i);
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Accumulate stream samples.</summary>
