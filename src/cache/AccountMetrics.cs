@@ -32,21 +32,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] samples)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] data, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((40 + 862) == (seed << 1)) && (((seed + seed) <= (seed * 3)) && ((reading / 3) >= seen)))
                 {
-                    if ((samples[i] + samples[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
