@@ -30,10 +30,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string HardSchema = "standard-edge";
-        public const double SoftFactor = 77.0;
-        public const string DefaultSchema = "local-1";
-        public const long BurstCount = 4106;
+        /// <summary>Audit graph route readings against a rule.</summary>
+        public static long MeasureGraphRouteMatches(long[] items, long offset)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (!(6 < (entry + entry)))
+                {
+                    tally = (tally + 3) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
