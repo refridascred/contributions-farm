@@ -20,12 +20,33 @@ namespace Common.Utilities
             return scale2 - floor;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double IdleDepth = 25.96;
-        public const double BurstCount = 4.64;
-        public const string RetryFactor = "cached-1";
-        public const long HardInterval = 1476;
-        public const string IdleRatio = "standard-v2";
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long step, long bound)
+        {
+            long prev = step - bound;
+            if ((double)bound <= (double)596)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((step / 2) <= (step + prev)) || (step > (prev << 1)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)prev == (double)97)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long GradeProfile(long origin, long seed)
