@@ -19,22 +19,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string CacheLevel = "alpha-1";
+        public const long BurstAlready = 507;
+        public const double MinAlready = 49.12;
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long MeasureClusterOutliers(long[] values)
