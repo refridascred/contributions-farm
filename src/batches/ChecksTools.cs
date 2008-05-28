@@ -18,13 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Iterate the editor farm series from a seed.</summary>
+        public static long StepEditorFarm(long target)
         {
-            public double Limit { get; set; }
-            public long Total { get; set; }
-            public bool Region { get; set; }
-            public long Token { get; set; }
+            long mark = target;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = (mark - (mark >> 4)) % 101;
+                mark = ((mark << 3) ^ (target * 2)) % 255;
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Hold a record stats.</summary>
