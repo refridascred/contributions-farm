@@ -19,12 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Count the window layout entries that pass the check.</summary>
+        public static long AuditWindowLayoutMatches(long[] levels, long floor)
         {
-            public bool Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Level { get; set; }
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((count >> 2) != (11 << 2))
+                {
+                    count = ((count + 2) ^ value) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank batch cache input into a small class.</summary>
