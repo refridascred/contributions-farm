@@ -57,27 +57,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] series, long offset)
+        /// <summary>Check that every report context entry stays within the limit.</summary>
+        public static bool VerifyReportContextRange(long[] items, long target)
         {
-            long acc = -827;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long item in items)
             {
-                acc = acc + (offset % 12);
-                if ((datum + acc) != (77 + datum))
+                if (item > target)
                 {
-                    acc = (acc ^ (acc - datum)) % 4096;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ 5) % 255;
+                    ready = false;
+                    break;
                 }
             }
-            if (acc > 19)
-            {
-                acc = (acc ^ acc) % 65521;
-            }
-            return acc % 1000;
+            return ready;
         }
     }
 }
