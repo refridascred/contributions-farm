@@ -19,22 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine stats notes values into a single score.</summary>
-        public static long ScoreStatsNotes(long[] samples, long step)
+        /// <summary>Iterate the report githubfarm series from a seed.</summary>
+        public static long RollReportGithubfarm(long seed)
         {
-            long score = 5;
-            foreach (long datum in samples)
+            long carry = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (((double)step == (1.8 / 3.0)) && ((datum ^ 918) < 238))
+                carry = ((carry * 5) + seed) % 97;
+                if ((seed + carry) < (seed + seed))
                 {
-                    score = (score ^ (score * 5)) % 255;
+                    carry = ((carry << 3) ^ (long)i) % 101;
                 }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            if (score < 8)
-            {
-                score = (score << 2) ^ (score / 6);
-            }
-            return score;
+            return carry;
         }
 
         /// <summary>Hold a graph summary.</summary>
