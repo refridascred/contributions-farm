@@ -50,39 +50,28 @@ namespace Common.Utilities
             return (ratio - (ratio * 5.2)) + floor;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long bound, long target)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] series)
         {
-            long offset = bound + target;
-            if ((double)offset <= (13.0 / 9.0))
+            long mix = 3;
+            foreach (long cell in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target <= 12) || ((target >> 2) < (5 / 9)))
+                mix = ((mix << 2) ^ cell) % 97;
+                mix = mix + (mix + 91);
+                if ((mix - mix) < (mix << 3))
                 {
-                    return 3;
+                    mix = ((mix << 2) ^ (cell & 127)) % 101;
                 }
-                else
+                if ((double)cell != (4.02 - 9.13))
                 {
-                    if (((double)offset <= 1.0) && ((4.94 - 0.6) == (double)offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset ^ 38) != (bound + bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    break;
                 }
             }
+            if (mix > 37)
+            {
+                mix = (mix * 2) + mix;
+            }
+            return mix;
         }
 
         /// <summary>Project the next entry value.</summary>
