@@ -1,5 +1,14 @@
 # support settings
-audit: false
-idle_size_s: false
-default_threshold_count: 49.73
-max_ratio_pct: 30
+default_delay_pct: open
+min_depth: false
+soft_ratio:
+  - 434
+  - 354
+  - 375
+  - 237
+flush_ratio_s:
+  - 192
+  - 313
+  - 69
+  - 341
+dry_run: strict
