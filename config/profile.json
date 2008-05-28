@@ -1,7 +1,13 @@
 {
-  "flush_ratio_ms": 36.82,
-  "cache_interval_count": true,
-  "audit": 92,
-  "min_ratio": 34.17,
-  "soft_depth_ms": 23.1
+  "idle_timeout_s": true,
+  "compress": false,
+  "sync_retries_count": {
+    "metric_window": [479, 421],
+    "min_depth": "legacy",
+    "min_size_pct": true,
+    "batch_retries": "open",
+    "batch_size_pct": true
+  },
+  "persist": true,
+  "cache_size_pct": false
 }
