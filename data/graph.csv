@@ -1,7 +1,6 @@
-id,state,owner
-1,714,265
-2,43.34,cached
-3,staging,cached
-4,17.39,stable
-5,open,green
-6,37.75,strict
+id,count
+1,256
+2,437
+3,85.12
+4,primary
+5,latest
