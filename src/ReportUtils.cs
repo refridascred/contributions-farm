@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstSize = 7902;
-        public const long DefaultRatio = 1127;
-        public const long RetryInterval = 3069;
-        public const long RetryContributi = 9809;
-        public const string LimitContributi = "strict-v2";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 3786;
+        public const long StepChecks = 1826;
+        public const string DefaultChecks = "primary";
+        public const long StepSpan = 2952;
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool ValidateWindowRange(long[] samples, long step)
