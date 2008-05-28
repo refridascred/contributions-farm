@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] samples, long floor)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] readings, long offset)
         {
-            long carry = 5;
-            foreach (long item in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)carry >= (6.9 - 14.0)))
+                if (readings[i] > offset)
                 {
-                    carry = (carry - (carry % 97)) ^ item;
-                }
-                carry = (carry << 2) ^ 3;
-                if ((8.0 + 5.4) == (double)floor)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Hold a window entry.</summary>
