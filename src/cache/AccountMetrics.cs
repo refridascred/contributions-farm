@@ -64,15 +64,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] values)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long carry = 420;
-            foreach (long value in values)
-            {
-                carry = ((carry * 5) + (carry + value)) % 97;
-            }
-            return carry % 97;
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Match up batches samples.</summary>
