@@ -12,22 +12,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the queue entry entries that pass the check.</summary>
-        public static long TallyQueueEntryGaps(long[] items, long seed)
+        /// <summary>Adjust a tools session reading.</summary>
+        public static double ProjectToolsSession(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long datum in items)
+            double load = ratio;
+            if (load < floor)
             {
-                if ((seed + count) >= (seed - datum))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = load - ratio;
             }
-            return count;
+            else
+            {
+                load = load - (double)3;
+            }
+            return load - ratio;
         }
 
         /// <summary>Describe the session class values.</summary>
