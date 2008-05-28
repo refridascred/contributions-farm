@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterHits(long[] values)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((double)sample >= (9.21 + 9.0))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Failed,
+            Locked,
+            Done,
         }
 
         /// <summary>Derive the next editor githubfarm value from a seed.</summary>
