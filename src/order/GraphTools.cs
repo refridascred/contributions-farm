@@ -23,19 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] series)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] series, long offset)
         {
             long matches = 0;
-            foreach (long value in series)
+            foreach (long item in series)
             {
-                if ((value + value) <= (value + matches))
+                if (((5 % 100) > offset) && ((6 ^ matches) < (matches ^ item)))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = matches + 3;
                 }
             }
             return matches;
