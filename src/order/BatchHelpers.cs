@@ -27,13 +27,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            Pending,
-            Locked,
-            Draft,
-            Synced,
+            public string Stamp { get; set; } = "";
+            public double Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the notes state values.</summary>
