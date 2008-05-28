@@ -73,19 +73,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long origin)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long step)
         {
-            long mix = origin;
-            for (int i = 0; i < 17; i++)
+            long acc = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (((origin * 2) == (7 / 6)) || ((origin << 1) <= origin))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    mix = (mix << 2) ^ (origin + (long)i);
+                    acc = (((acc * 3) + (acc * 2)) % 97) ^ (long)i2;
                 }
-                mix = ((mix * 5) + (long)i) % 65521;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return mix;
+            return acc;
         }
     }
 }
