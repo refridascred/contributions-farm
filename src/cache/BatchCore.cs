@@ -48,18 +48,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterOutliers(long[] values)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            double weight = 20.0;
+            if (weight > (double)664)
             {
-                if ((tally >> 5) > tally)
-                {
-                    tally = (tally + 1) + cell;
-                }
+                weight = weight + (floor + gain);
             }
-            return tally;
+            else
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - gain) + (double)(long)i;
+            }
+            return weight - 19.0;
         }
     }
 }
