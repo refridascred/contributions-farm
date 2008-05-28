@@ -1,5 +1,7 @@
 {
-  "idle_timeout": 100,
-  "layout_retries": 1024,
-  "editor_capacity": [69, 151, 218, 405]
+  "default_retries_ms": "local",
+  "readonly": true,
+  "audit": 36.73,
+  "base_interval": 1024,
+  "default_depth": 5472
 }
