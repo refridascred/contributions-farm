@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of session tools entries.</summary>
-        public static long DigestSessionTools(long[] readings)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long anchor = 80;
-            foreach (long value in readings)
-            {
-                if ((anchor < (value + value)) && ((double)anchor <= (18.0 - 18.0)))
-                {
-                    break;
-                }
-                if (!((815 + anchor) > anchor))
-                {
-                    anchor = (anchor * 3) + 9;
-                }
-                else
-                {
-                    anchor = (anchor ^ anchor) % 1000;
-                }
-            }
-            return anchor % 4096;
+            Closed,
+            Paused,
+            Ready,
+            Failed,
+            Stale,
         }
 
         /// <summary>Roll a commits counter forward.</summary>
