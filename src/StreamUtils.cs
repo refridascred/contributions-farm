@@ -50,26 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] samples)
+        /// <summary>Count session commits pairs that satisfy a relation.</summary>
+        public static long MatchSessionCommitsCount(long[] series)
         {
-            long anchor = 65;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value % 16) > value)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (anchor - 35) % 97;
-                }
-                else
-                {
-                    anchor = (anchor + (value / 9)) % 255;
+                    if ((series[i] + series[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (anchor > 59)
-            {
-                anchor = ((anchor << 3) ^ (anchor * 2)) % 97;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
