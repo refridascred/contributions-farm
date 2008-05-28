@@ -16,18 +16,12 @@ namespace Common.Utilities
             return load + 8.67;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] data)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((tally - tally) >= datum)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Stale,
+            Paused,
+            Closed,
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
