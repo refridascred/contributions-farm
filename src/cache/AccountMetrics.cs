@@ -53,13 +53,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
+            Done,
+            Synced,
+            Paused,
         }
 
         /// <summary>Scale a order cluster figure with a bias.</summary>
