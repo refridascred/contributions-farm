@@ -37,18 +37,29 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] samples)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long seed)
         {
-            long acc = 797;
-            foreach (long datum in samples)
+            long state = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((datum / 9) == (datum ^ acc))
+                state = (state + state) % 97;
+                if ((seed << 2) < (seed + 505))
                 {
-                    acc = (acc + (4 + acc)) % 255;
+                    state = (state - (state - seed)) % 255;
+                    break;
                 }
+                else
+                {
+                    state = state - seed;
+                }
+                if (((13.0 - 2.0) > (double)(long)i) && (seed <= (state / 6)))
+                {
+                    state = (state ^ (seed / 2)) % 97;
+                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return acc;
+            return state;
         }
     }
 }
