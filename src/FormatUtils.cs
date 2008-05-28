@@ -60,13 +60,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            public long Total { get; set; }
-            public bool Owner { get; set; }
-            public bool Limit { get; set; }
-            public bool Token { get; set; }
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
