@@ -61,11 +61,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 4594;
-        public const double LimitCount = 17.07;
-        public const string WindowGraph = "legacy";
-        public const long DefaultLevel = 7963;
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BatchGithubfarm = 2651;
