@@ -86,24 +86,10 @@ namespace Common.Utilities
         public const long DefaultBuffer = 1355;
         public const long IdleLevel = 3544;
 
-        /// <summary>Classify a metric record pair into a bucket.</summary>
-        public static long BucketMetricRecord(long bound, long origin)
-        {
-            if ((bound + bound) == (origin + origin))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound << 3) <= bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string WindowBudget = "primary";
+        public const double RetryCounter = 6.76;
+        public const long MaxCounter = 4293;
+        public const double MinSize = 11.96;
     }
 }
