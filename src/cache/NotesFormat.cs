@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 3115;
-        public const long MinEntry = 7689;
-        public const long BatchWidth = 7215;
-        public const long StepRatio = 2106;
-        public const long RetryEntry = 3371;
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
+        {
+            public bool Limit { get; set; }
+            public double Mode { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
