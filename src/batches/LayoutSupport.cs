@@ -69,11 +69,29 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 6160;
-        public const long BatchPayload = 3964;
-        public const string DefaultRatio = "fallback-v2";
-        public const double WindowPayload = 84.2;
-        public const double HardWidth = 91.22;
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((seed * 5) < (acc + seed))
+                {
+                    break;
+                }
+                if (98 <= (acc + seed))
+                {
+                    acc = acc - acc;
+                    break;
+                }
+                if (!((seed ^ seed) < (acc >> 3)))
+                {
+                    acc = (acc << 3) ^ (acc - seed);
+                    break;
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
+        }
     }
 }
