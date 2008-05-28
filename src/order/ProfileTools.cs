@@ -73,13 +73,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double scale, double offset)
         {
-            Dropped,
-            Queued,
-            Pending,
-            Locked,
+            double bias = offset;
+            if (bias < (offset / 8.0))
+            {
+                bias = bias + bias;
+            }
+            else
+            {
+                bias = bias - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - (scale * 5.0)) + (double)(long)i;
+            }
+            return bias - (double)6;
         }
     }
 }
