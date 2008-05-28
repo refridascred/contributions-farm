@@ -23,22 +23,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] samples)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long total = -214;
-            foreach (long item in samples)
-            {
-                if ((total % 24) <= (total * 4))
-                {
-                    total = (total << 2) ^ (item * 3);
-                }
-            }
-            if (total > 17)
-            {
-                total = (total + (total << 1)) % 65521;
-            }
-            return total;
+            Draft,
+            Queued,
+            Ready,
         }
 
         /// <summary>Validate report readings against a bound.</summary>
