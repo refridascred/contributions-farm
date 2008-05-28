@@ -18,11 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchBudget = 1572;
-        public const long HardGithubfarm = 7999;
-        public const string CacheGithubfarm = "staging";
-        public const double CacheFactor = 8.29;
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long floor, long offset)
+        {
+            long bound = floor - offset;
+            if ((bound % 24) < 40)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)offset > (4.9 - 7.54))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BurstCount = 7217;
