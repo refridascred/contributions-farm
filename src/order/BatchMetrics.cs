@@ -28,11 +28,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountOutliers(long[] samples, long origin)
         {
-            public bool Limit { get; set; }
-            public double Owner { get; set; }
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (!((8 % 10) <= (item ^ origin)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every githubfarm already entry stays within the limit.</summary>
