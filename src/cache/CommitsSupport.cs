@@ -27,19 +27,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (!(((89 & 3) < (seen & 3)) && ((reading << 3) < seen)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitSize = 325;
+        public const string WindowRatio = "legacy";
+        public const double IdleScore = 50.27;
+        public const long StepBudget = 6293;
+        public const long StepBatch = 1129;
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long BucketAlready(long step, long target)
