@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double AdjustPayload(double gain, double offset)
         {
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
+            double bias = gain;
+            if (bias >= (gain * 2.0))
+            {
+                bias = bias + offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - (gain / 3.0)) + (double)(long)i;
+            }
+            return bias + (gain + 2.3);
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
