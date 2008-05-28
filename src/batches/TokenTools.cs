@@ -20,18 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the buffer filter entries that pass the check.</summary>
-        public static long MeasureBufferFilterOutliers(long[] series, long step)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            double gain = (scale * 8.48) * 2.3;
+            if (gain >= 0.5)
             {
-                if (((double)entry < 4.0) && ((tally + tally) < (step & 3)))
-                {
-                    tally = tally + 3;
-                }
+                gain = gain + (gain * 9.0);
             }
-            return tally;
+            else
+            {
+                gain = gain + floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (gain + floor)) + (double)(long)i;
+            }
+            return gain + (double)3;
         }
 
         /// <summary>Derive the next window format value from a seed.</summary>
