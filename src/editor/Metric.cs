@@ -12,14 +12,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Iterate the format order series from a seed.</summary>
+        public static long SeriesFormatOrder(long limit)
         {
-            Draft,
-            New,
-            Closed,
-            Idle,
-            Ready,
+            long mark = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = mark ^ mark;
+                mark = (mark * 3) + ((long)i << 2);
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
