@@ -88,12 +88,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            Idle,
-            Pending,
-            Ready,
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
