@@ -13,25 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long bound, long bound2)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long delta = bound ^ bound2;
-            if ((delta % 64) <= (delta >> 5))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((delta >> 1) < bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            New,
+            Active,
+            Stale,
         }
 
         /// <summary>Hold a format header.</summary>
