@@ -14,19 +14,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many session order samples are out of range.</summary>
-        public static long AuditSessionOrderMatches(long[] data, long offset)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((8.18 * 1.1) == (double)matches)
-                {
-                    matches = ((matches + 3) + entry) + offset;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 4109;
+        public const long MaxTools = 9327;
+        public const long MinTools = 3765;
+        public const string MinDepth = "standard-v2";
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long CountAlreadyMatches(long[] data)
