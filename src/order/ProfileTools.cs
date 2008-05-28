@@ -18,18 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] levels, long target)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long seed, long limit)
         {
-            long carry = -4;
-            foreach (long cell in levels)
+            if (!((limit ^ seed) < seed))
             {
-                if ((carry << 1) != (carry % 3))
+                return 7;
+            }
+            else
+            {
+                if ((9.3 + 5.6) != (double)seed)
                 {
-                    carry = ((carry - (target - carry)) % 1000) ^ cell;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return carry % 65521;
         }
 
         /// <summary>Fold a list of account readings.</summary>
