@@ -1,12 +1,11 @@
 # Command notes
 
-Run the profile check before changing any token limits.
-Use graph settings to tune how often context data is refreshed.
-The editor module keeps command values in sync with the batches cache.
+A counter that stays idle for too long is moved to the contributi list.
+The command report groups every profile by checks.
 
 ## Guidelines
 
-- Validate queue input early
-- Document new batch fields
-- Review notes limits each release
-- Prefer format defaults
+- Log every window change
+- Keep githubfarm values small
+- Prefer notes defaults
+- Document new tools fields
