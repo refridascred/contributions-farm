@@ -38,39 +38,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long limit, long seed)
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] series)
         {
-            long bound = limit ^ seed;
-            if (!(63 <= (limit ^ limit)))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed <= (6.9 / 4.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed & 255) > 73)
+                    if ((series[i] + series[j]) > 1)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((limit % 5) <= (bound << 1)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
