@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 3786;
-        public const long StepChecks = 1826;
-        public const string DefaultChecks = "primary";
-        public const long StepSpan = 2952;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string HardWidth = "open-1";
+        public const string MaxFactor = "fallback-edge";
+        public const long SoftFactor = 655;
+        public const long CacheFactor = 789;
 
         /// <summary>Describe the payload state values.</summary>
         public enum PayloadState
