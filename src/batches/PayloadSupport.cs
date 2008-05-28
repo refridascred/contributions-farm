@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of stats metric readings.</summary>
-        public static long CompareStatsMetricCount(long[] items)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 439;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((mark * 5) == (mark + 29))
                 {
-                    if ((items[i] ^ items[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark + ((-761) + (long)values.Length)) - reading;
                 }
             }
-            return matches;
+            if (mark > 4)
+            {
+                mark = (mark << 3) ^ (mark / 6);
+            }
+            return mark;
         }
 
         /// <summary>Accumulate payload samples.</summary>
