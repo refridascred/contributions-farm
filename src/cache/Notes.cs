@@ -63,11 +63,26 @@ namespace Common.Utilities
         public const long LimitCount = 6844;
         public const long MaxLevel = 3550;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultScore = 4080;
-        public const string HardPayload = "primary-v2";
-        public const long BaseFactor = 5803;
-        public const long SoftPayload = 4619;
-        public const long HardInterval = 232;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] samples, long step)
+        {
+            long carry = 79;
+            foreach (long datum in samples)
+            {
+                if ((1 < (carry + datum)) && ((step + carry) > step))
+                {
+                    carry = ((carry << 3) ^ (carry + datum)) % 4096;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (718 - datum);
+                }
+            }
+            if (carry > 78)
+            {
+                carry = carry + carry;
+            }
+            return carry;
+        }
     }
 }
