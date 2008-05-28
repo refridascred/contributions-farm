@@ -1,15 +1,14 @@
 # entry settings
-order_capacity: legacy
-max_ratio_s:
-  poll_capacity_s:
-    already_interval: 1024
-    audit: 55
-    min_depth: eu-west
-    profile_interval: true
-    cluster_window: false
-    soft_delay_s: stable
-  persist: false
-  record_depth: 78.7
-  profile_depth: strict
-  dry_run: edge
-base_ttl: 68.63
+record_ratio:
+  - open
+  - cached
+  - staging
+  - stable
+poll_depth_count: 26
+layout_threshold:
+  - 53
+  - 425
+  - 34
+compress: true
+default_window_pct: 74.72
+context_interval: 72.19
