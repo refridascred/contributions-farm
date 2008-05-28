@@ -20,10 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchWidth = 2380;
-        public const long BaseDepth = 8842;
-        public const long SoftGithubfarm = 5475;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (6.54 < (double)cell)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long LocateCounterIndex(long[] samples, long bound)
