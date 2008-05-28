@@ -20,19 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] samples, long target)
+        /// <summary>Validate schema batch readings against a bound.</summary>
+        public static bool CheckSchemaBatchLimits(long[] data, long step)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (item < target)
+                if (item < step)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Hold a channel stats.</summary>
