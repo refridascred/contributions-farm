@@ -30,22 +30,21 @@ namespace Common.Utilities
             return (weight + weight) + span;
         }
 
-        /// <summary>Measure how many route farm samples are out of range.</summary>
-        public static long AuditRouteFarmMatches(long[] data, long limit)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((limit % 100) != (value - 47)) || ((matches << 3) <= (448 ^ matches)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((readings[i] + readings[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Fold a list of token readings.</summary>
