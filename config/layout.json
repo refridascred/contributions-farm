@@ -1,8 +1,13 @@
 {
-  "min_size_ms": false,
-  "warm_timeout_ms": 60.13,
-  "burst_capacity_count": "standard",
-  "base_limit_ms": 64.26,
-  "context_depth": ["fallback", "fallback", "blue"],
-  "sync_threshold_count": 22.33
+  "hard_threshold_ms": 250,
+  "compress": ["standard", "legacy", "legacy"],
+  "cache_timeout_ms": ["staging", "eu-west", "blue"],
+  "enabled": true,
+  "account_retries": {
+    "min_threshold_pct": 72,
+    "default_timeout_s": 60,
+    "soft_window_ms": ["standard", "local", "eu-west", "latest"],
+    "audit": 250,
+    "dry_run": "strict"
+  }
 }
