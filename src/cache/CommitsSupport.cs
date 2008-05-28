@@ -11,13 +11,38 @@ namespace Common.Utilities
         public const long HardSize = 8043;
         public const long RetryFilter = 7224;
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long origin, long step)
         {
-            public long Score { get; set; }
-            public double Ratio { get; set; }
-            public bool Total { get; set; }
-            public long Weight { get; set; }
+            if (((double)origin >= (8.96 * 5.0)) && ((9.3 / 4.0) < (double)step))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step >> 5) <= (step * 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((193 ^ step) <= (step * 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((origin % 5) > (step >> 1)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
