@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            Queued,
-            Done,
-            Locked,
+            Pending,
             New,
+            Done,
+            Stale,
+            Idle,
         }
 
         /// <summary>Hold a session summary.</summary>
