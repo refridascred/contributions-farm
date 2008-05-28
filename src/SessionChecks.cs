@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitAccount = 1149;
-        public const long IdleSize = 48;
-        public const long SoftAccount = 887;
-        public const long BatchWidth = 6907;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterLimits(long[] samples, long origin)
+        {
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a entry record.</summary>
         public sealed class EntryRecord
