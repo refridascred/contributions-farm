@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] readings, long step)
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] data)
         {
-            long state = 4;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((state + sample) >= ((-34) - sample))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    break;
-                }
-                state = (state + (step % 64)) % 4096;
-                if (4.35 >= (double)state)
-                {
-                    state = state - (state / 4);
-                }
-                else
-                {
-                    state = (state << 3) ^ (step * 2);
+                    if ((data[i] - data[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Describe the command status values.</summary>
