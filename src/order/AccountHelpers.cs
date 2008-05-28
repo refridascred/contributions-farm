@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every githubfarm counter entry stays within the limit.</summary>
-        public static bool CheckGithubfarmCounterRange(long[] data, long offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] samples, long limit)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (item <= offset)
+                if ((sample * 2) >= (sample % 3))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 2) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
