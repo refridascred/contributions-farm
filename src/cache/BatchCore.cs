@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricOutliers(long[] items, long step)
         {
-            Locked,
-            Idle,
-            Stale,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((double)step == (6.06 - 6.58))
+                {
+                    count = (count + 2) - reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the commits metrics entries that pass the check.</summary>
