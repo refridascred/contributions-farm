@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextMatches(long[] values, long seed)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (seed > (977 + hits))
-                {
-                    hits = (hits + 3) + entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetrySize = 8524;
+        public const long BatchFactor = 9415;
+        public const long DefaultToken = 4621;
+        public const long CacheToken = 8746;
+        public const long IdleToken = 6077;
 
         /// <summary>Blend two channel stats measurements.</summary>
         public static double ProjectChannelStats(double rate, double span)
