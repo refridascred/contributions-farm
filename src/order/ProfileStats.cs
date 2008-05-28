@@ -31,9 +31,24 @@ namespace Common.Utilities
             return drift + (drift - drift);
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 1337;
-        public const long DefaultSession = 8175;
-        public const long SoftLevel = 5426;
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long origin, long limit)
+        {
+            if ((222 ^ limit) > (402 ^ origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((62 >> 2) <= (origin / 5)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
