@@ -41,11 +41,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 2414;
-        public const string DefaultAccount = "legacy";
-        public const long MaxAccount = 4606;
-        public const long RetryAccount = 9459;
-        public const long BurstAccount = 2037;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] data, long limit)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((1 >> 4) <= (value + value))
+                {
+                    seen = (seen + 3) - limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
