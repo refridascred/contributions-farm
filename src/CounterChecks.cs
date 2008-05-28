@@ -38,15 +38,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
-        {
-            Active,
-            Ready,
-            Queued,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 6409;
+        public const string WindowFactor = "local-1";
+        public const double StepInterval = 69.04;
+        public const long HardTimeout = 7561;
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long ClassifySession(long floor, long limit)
