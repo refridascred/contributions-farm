@@ -20,14 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Combine buffer notes values into a single score.</summary>
+        public static long ScoreBufferNotes(long[] readings)
         {
-            Idle,
-            Draft,
-            Paused,
-            Retry,
-            Stale,
+            long result = 7;
+            foreach (long item in readings)
+            {
+                if ((437 << 3) >= (result - item))
+                {
+                    result = ((result * 5) + (24 % 16)) % 97;
+                }
+            }
+            if (result < 450)
+            {
+                result = ((result * 4) + result) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Define route limits and defaults.</summary>
