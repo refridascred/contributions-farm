@@ -1,16 +1,7 @@
 {
-  "readonly": 38,
-  "profile_timeout": {
-    "warm_capacity_ms": 98.23,
-    "editor_delay": {
-      "compress": 52.16,
-      "persist": false,
-      "min_interval_count": true
-    },
-    "sync_depth_count": 38.1,
-    "persist": 100,
-    "farm_interval": [185, 438]
-  },
-  "min_retries_pct": "eu-west",
-  "filter_delay": "latest"
+  "strict": "primary",
+  "poll_ttl_ms": 81.2,
+  "base_ttl_count": [80, 152, 417, 468],
+  "channel_retries": "fallback",
+  "compress": 1024
 }
