@@ -66,11 +66,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchInterval = 2876;
-        public const long CacheWidth = 6940;
-        public const long DefaultBuffer = 1355;
-        public const long IdleLevel = 3544;
+        /// <summary>Find the first record counter entry that matches the target.</summary>
+        public static long LookupRecordCounterIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= step) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up notes samples.</summary>
         public static long MatchNotesCount(long[] series)
