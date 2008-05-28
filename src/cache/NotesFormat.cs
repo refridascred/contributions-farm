@@ -20,25 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long seed, long limit)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long diff = seed - limit;
-            if ((seed * 2) < diff)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((limit ^ diff) != ((-2) + 46)) || ((double)seed >= 10.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Pending,
+            Done,
+            New,
+            Idle,
+            Paused,
         }
 
         /// <summary>Locate a layout reading by value.</summary>
