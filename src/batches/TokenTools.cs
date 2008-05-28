@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate graph batches readings against a bound.</summary>
-        public static bool CheckGraphBatchesRange(long[] series, long floor)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long origin, long target)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            if ((2 % 16) <= (origin - target))
             {
-                if (sample < floor)
+                return 3;
+            }
+            else
+            {
+                if (8 >= (origin * 5))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (target < origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
