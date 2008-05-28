@@ -14,13 +14,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            Synced,
-            Pending,
-            Closed,
-            Draft,
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Blend two route measurements.</summary>
