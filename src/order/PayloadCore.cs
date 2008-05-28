@@ -30,10 +30,20 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string DefaultContributi = "stable";
-        public const double HardLevel = 38.59;
-        public const string HardScore = "stable-v2";
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionRange(long[] items, long origin)
+        {
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long TallyChecksOutliers(long[] series)
