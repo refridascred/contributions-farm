@@ -25,17 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] levels, long origin)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryHits(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (levels[i] < origin)
+                if (reading <= (reading - reading))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the commits kind values.</summary>
