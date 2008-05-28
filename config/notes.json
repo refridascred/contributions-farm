@@ -1,6 +1,7 @@
 {
-  "cache_retries_count": "stable",
-  "batch_ttl_ms": "fallback",
-  "default_interval_count": true,
-  "idle_window": 52.27
+  "strict": "edge",
+  "enabled": "blue",
+  "audit": true,
+  "soft_threshold": [428, 127, 250],
+  "payload_threshold": ["staging", "standard", "eu-west", "stable"]
 }
