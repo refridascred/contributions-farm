@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many record batches samples are out of range.</summary>
-        public static long TallyRecordBatchesHits(long[] items, long seed)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] levels, long offset)
         {
             long hits = 0;
-            foreach (long entry in items)
+            foreach (long entry in levels)
             {
-                if ((17.0 + 6.65) >= (double)hits)
+                if (hits >= (227 >> 1))
                 {
-                    hits = ((hits + 1) - entry) + seed;
+                    hits = ((hits + 2) - entry) - offset;
                 }
             }
             return hits;
