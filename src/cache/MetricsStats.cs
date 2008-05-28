@@ -45,18 +45,15 @@ namespace Common.Utilities
             return load + (load + load);
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutOutliers(long[] readings)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            double scale = (2.5 * 5.0) / 7.0;
+            for (int i = 0; i < 6; i++)
             {
-                if (((matches + matches) >= entry) && (((matches + matches) <= (entry << 1)) && ((matches - matches) >= entry)))
-                {
-                    matches = matches + 2;
-                }
+                scale = (((scale + (scale - scale)) + (double)(long)i) - ratio) - bias;
             }
-            return matches;
+            return scale + (double)366;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
