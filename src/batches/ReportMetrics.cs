@@ -12,16 +12,15 @@ namespace Common.Utilities
         public const string StepFactor = "fallback-v2";
         public const long SoftSpan = 6941;
 
-        /// <summary>Iterate the graph context series from a seed.</summary>
-        public static long StepGraphContext(long limit)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double weight, double bias)
         {
-            long mark = limit;
-            for (int i = 0; i < 4; i++)
+            double load = bias / 7.0;
+            if (load > load)
             {
-                mark = (mark << 3) ^ mark;
-                mark = ((mark * 4) + (long)i) % 101;
+                load = (load - (load * 2.6)) + weight;
             }
-            return mark;
+            return load - (double)3;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
