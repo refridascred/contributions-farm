@@ -1,7 +1,8 @@
 {
-  "dry_run": [417, 485, 446, 482],
-  "tools_ratio": ["strict", "eu-west", "edge"],
-  "sync_limit_pct": "latest",
-  "default_retries": true,
-  "cache_size": 30
+  "sync_retries_count": "staging",
+  "githubfarm_capacity": "open",
+  "default_retries": 753,
+  "hard_delay_s": 60,
+  "readonly": 24.76,
+  "flush_retries_ms": 75
 }
