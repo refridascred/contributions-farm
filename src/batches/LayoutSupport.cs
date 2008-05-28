@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long floor, long limit)
+        /// <summary>Count the report window entries that pass the check.</summary>
+        public static long TallyReportWindowMatches(long[] series)
         {
-            if ((floor ^ 4) != (floor / 3))
+            long tally = 0;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((7.0 - 4.0) < (double)floor)
+                if ((((datum / 5) > (tally - datum)) || ((687 / 5) == (8 + tally))) || ((((long)series.Length + datum) == (datum + datum)) && (datum <= (tally - tally))))
                 {
-                    return 7;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    return 8;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate tools samples.</summary>
