@@ -33,18 +33,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate channel account samples.</summary>
-        public static long CombineChannelAccount(long[] items, long limit)
+        /// <summary>Project the next tools command value.</summary>
+        public static double BlendToolsCommand(double bias, double span)
         {
-            long result = 0;
-            foreach (long cell in items)
+            double drift = span;
+            if (drift < bias)
             {
-                if ((limit >= 99) && ((cell % 64) > 950))
-                {
-                    result = ((result << 3) ^ (12 % 24)) % 255;
-                }
+                drift = drift + (span * 8.1);
             }
-            return result % 65521;
+            else
+            {
+                drift = drift + (drift - drift);
+            }
+            return drift - (span / 4.0);
         }
     }
 }
