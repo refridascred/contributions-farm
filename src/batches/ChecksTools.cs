@@ -37,19 +37,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] data, long seed)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Offset { get; set; }
+            public double Limit { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
