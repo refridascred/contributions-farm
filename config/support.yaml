@@ -1,20 +1,17 @@
 # support settings
-profile_limit:
-  - 161
-  - 5
-  - 208
-flush_retries_count:
-  soft_retries_s: 30
-  persist:
-    flush_retries_count: legacy
-    cache_ratio: 47.95
-    batch_interval: primary
-    entry_size: fallback
-    default_delay_s: 82.73
-  enabled: true
-  warm_depth_count: open
-  verbose: green
-  warm_size_count: cached
-persist: cached
-cluster_delay: edge
-readonly: true
+max_window_pct:
+  persist: 7213
+  sync_window_pct:
+    strict: primary
+    flush_threshold_s: 579
+    enabled: fallback
+    soft_ratio_count: 4560
+    dry_run: 62.81
+  compress:
+    - edge
+    - standard
+    - local
+    - latest
+counter_size: fallback
+min_delay_ms: staging
+poll_depth_ms: 19.19
