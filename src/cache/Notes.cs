@@ -43,21 +43,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long PairEntryCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 4205;
+        public const long LimitLevel = 2157;
+        public const long WindowSchema = 1131;
+        public const long RetrySchema = 1088;
+        public const long CacheBudget = 875;
     }
 }
