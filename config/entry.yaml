@@ -1,7 +1,17 @@
 # entry settings
-persist: true
-batch_depth_ms: 54
-notes_limit: 30
-warm_ttl_s: 42.15
-schema_threshold: staging
-githubfarm_size: 500
+readonly: 30
+idle_timeout_pct:
+  - eu-west
+  - staging
+  - cached
+  - stable
+soft_interval_s: stable
+max_ratio_s:
+  verbose: blue
+  dry_run: 250
+  retry_capacity_count: edge
+  profile_interval:
+    - 34
+    - 243
+    - 242
+    - 412
