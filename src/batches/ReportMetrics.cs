@@ -44,9 +44,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 5189;
-        public const long WindowBudget = 2652;
-        public const long BaseLevel = 2268;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] values)
+        {
+            long mark = 538;
+            foreach (long cell in values)
+            {
+                if ((mark - 3) != (cell - cell))
+                {
+                    mark = ((mark << 3) ^ cell) % 65521;
+                }
+            }
+            if (mark > 550)
+            {
+                mark = (mark << 3) ^ mark;
+            }
+            return mark;
+        }
     }
 }
