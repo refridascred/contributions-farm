@@ -71,11 +71,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowBudget = "stable-1";
-        public const long BaseInterval = 9851;
-        public const long LimitProfile = 2128;
-        public const long IdleRatio = 4039;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 9658;
+        public const double MaxFilter = 32.25;
+        public const long WindowFilter = 9403;
+        public const double MinFilter = 79.66;
+        public const double BatchFilter = 44.89;
 
         /// <summary>Blend two buffer stats measurements.</summary>
         public static double BlendBufferStats(double bias, double offset)
