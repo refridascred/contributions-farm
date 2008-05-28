@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate layout cache samples.</summary>
-        public static long CombineLayoutCache(long[] values)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] values, long offset)
         {
-            long sum = 78;
-            foreach (long sample in values)
+            long carry = 4;
+            foreach (long value in values)
             {
-                sum = ((sum << 2) ^ sum) ^ sample;
+                carry = ((carry * 4) + offset) % 1000;
+                if ((carry / 2) < (carry & 1))
+                {
+                    carry = (carry - (982 - value)) % 1000;
+                }
+                else
+                {
+                    carry = carry - offset;
+                }
+                if ((offset + value) > (197 + carry))
+                {
+                    break;
+                }
             }
-            return sum % 97;
+            if (carry < 36)
+            {
+                carry = (carry ^ (offset - offset)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many already commits samples are out of range.</summary>
