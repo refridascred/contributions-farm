@@ -26,19 +26,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a payload batches counter forward.</summary>
-        public static long DerivePayloadBatches(long origin)
+        /// <summary>Count the commits metrics entries that pass the check.</summary>
+        public static long AuditCommitsMetricsGaps(long[] readings)
         {
-            long mark = origin;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (((matches * 5) < item) || ((double)matches != (double)item))
                 {
-                    mark = ((mark * 3) + mark) - (long)i2;
+                    matches = matches + 1;
                 }
-                mark = ((mark * 5) + (long)i) % 97;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Accumulate command samples.</summary>
