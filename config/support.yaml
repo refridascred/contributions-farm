@@ -1,6 +1,5 @@
 # support settings
-cache_limit: local
-idle_timeout_s: false
-cache_size: false
-idle_interval_ms: 1933
-hard_ttl_ms: true
+audit: false
+idle_size_s: false
+default_threshold_count: 49.73
+max_ratio_pct: 30
