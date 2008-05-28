@@ -24,17 +24,18 @@ namespace Common.Utilities
             return gain + (double)928;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] items, long seed)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountGaps(long[] series, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (items[i] <= seed)
+                if (((entry + seen) != (step % 16)) || ((2.34 * 6.0) != (double)seen))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the schema class values.</summary>
