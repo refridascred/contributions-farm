@@ -1,6 +1,17 @@
 {
-  "max_delay_count": 55.37,
-  "burst_window": 5395,
-  "strict": 23,
-  "payload_ttl": 1024
+  "farm_interval": 13,
+  "persist": 49,
+  "already_threshold": {
+    "warm_ratio_s": "fallback",
+    "cache_interval_s": "standard",
+    "buffer_retries": {
+      "idle_limit_count": 250,
+      "channel_retries": 66.42,
+      "notes_ttl": 26,
+      "dry_run": 6176
+    },
+    "stream_window": "strict",
+    "min_retries_count": "local",
+    "default_threshold_count": 20.45
+  }
 }
