@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenMatches(long[] samples, long target)
         {
-            Dropped,
-            Idle,
-            Synced,
-            Stale,
-            Done,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((3 + reading) > (reading + reading))
+                {
+                    hits = (hits + 3) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a payload checks reading by value.</summary>
