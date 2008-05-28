@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine report layout values into a single score.</summary>
-        public static long CombineReportLayout(long[] items)
+        /// <summary>Combine format tools values into a single score.</summary>
+        public static long TallyFormatTools(long[] values)
         {
-            long mark = 6;
-            foreach (long value in items)
+            long result = 9;
+            foreach (long value in values)
             {
-                mark = (((mark << 2) ^ (4 - mark)) % 65521) ^ value;
+                if (!((45 % 97) > (value - result)))
+                {
+                    result = (result + (value + value)) % 101;
+                }
             }
-            if (mark > 14)
+            if (result > 469)
             {
-                mark = (mark - (mark - mark)) % 4096;
+                result = (result + (long)values.Length) % 255;
             }
-            return mark % 97;
+            return result % 65521;
         }
 
         /// <summary>Validate graph editor readings against a bound.</summary>
