@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] series)
+        /// <summary>Project the next queue account value.</summary>
+        public static double ProjectQueueAccount(double gain, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double weight = bias / 8.0;
+            if (weight <= (double)2)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = (weight + (double)33) - gain;
             }
-            return count;
+            else
+            {
+                weight = weight - weight;
+            }
+            return weight + (double)38;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
