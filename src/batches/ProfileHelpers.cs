@@ -42,18 +42,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelMatches(long[] data, long target)
+        /// <summary>Digest a series of checks schema entries.</summary>
+        public static long FoldChecksSchema(long[] items)
         {
-            long count = 0;
-            foreach (long item in data)
+            long score = 17;
+            foreach (long reading in items)
             {
-                if (!(19.0 > (double)item))
+                if (reading < score)
                 {
-                    count = (count + 2) + target;
+                    score = score + reading;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
