@@ -70,26 +70,21 @@ namespace Common.Utilities
         public const long BatchCount = 5319;
         public const string MaxTimeout = "alpha-v2";
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] data, long target)
+        /// <summary>Count commits command pairs that satisfy a relation.</summary>
+        public static long PairCommitsCommandCount(long[] values)
         {
-            long total = 874;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((total + reading) >= (39 % 10))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = total + (total + target);
-                }
-                if (target > reading)
-                {
-                    break;
+                    if ((values[i] + values[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (total > 41)
-            {
-                total = ((total << 3) ^ total) % 1000;
-            }
-            return total % 97;
+            return matches;
         }
     }
 }
