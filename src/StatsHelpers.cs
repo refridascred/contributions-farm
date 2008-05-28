@@ -51,23 +51,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] levels)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double rate, double span)
         {
-            long mark = 67;
-            foreach (long reading in levels)
+            double mean = span;
+            if (mean < (span * 0.9))
             {
-                mark = mark + (reading + mark);
-                if ((double)mark >= (7.09 / 7.0))
-                {
-                    mark = (mark + (9 % 5)) % 1000;
-                }
+                mean = mean + (double)33;
             }
-            if (mark < 40)
+            else
             {
-                mark = (mark << 2) ^ (mark + mark);
+                mean = mean + (19.0 - rate);
             }
-            return mark;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (span / 6.0)) + (double)(long)i;
+            }
+            return mean + span;
         }
     }
 }
