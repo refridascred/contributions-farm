@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the checks token series from a seed.</summary>
-        public static long RollChecksToken(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                result = (result + (seed / 6)) % 4096;
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 5588;
+        public const long HardContributi = 9164;
+        public const long CacheCount = 1750;
+        public const string BurstInterval = "standard-v2";
 
         /// <summary>Digest a series of session entries.</summary>
         public static long TotalSession(long[] readings)
