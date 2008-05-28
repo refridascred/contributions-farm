@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next window farm value from a seed.</summary>
-        public static long IterateWindowFarm(long offset)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long sum = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = ((sum * 3) + (sum - sum)) % 65521;
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
