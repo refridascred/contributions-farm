@@ -1,8 +1,7 @@
 {
-  "profile_capacity": 25,
-  "base_size_s": 46,
-  "flush_limit": "staging",
-  "readonly": "eu-west",
-  "graph_retries": "primary",
-  "hard_retries_ms": ["stable", "green"]
+  "notes_limit": "legacy",
+  "queue_ratio": 4775,
+  "schema_ratio": "local",
+  "graph_delay": ["local", "cached"],
+  "hard_retries_s": "staging"
 }
