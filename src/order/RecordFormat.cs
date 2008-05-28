@@ -77,18 +77,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesGaps(long[] items)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (((datum + 9) >= (seen >> 2)) || (((seen ^ seen) <= (-3)) || ((18.0 + 6.9) > (double)datum)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Level { get; set; }
+            public long Mode { get; set; }
+            public double Label { get; set; }
         }
     }
 }
