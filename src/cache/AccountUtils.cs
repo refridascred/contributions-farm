@@ -31,21 +31,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] series)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Size { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
