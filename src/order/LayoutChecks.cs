@@ -39,10 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 7492;
-        public const double IdleRatio = 33.4;
-        public const string BurstMetrics = "strict";
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long MeasureStreamGaps(long[] series)
