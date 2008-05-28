@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double ratio, double span)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long floor, long seed)
         {
-            double drift = 3.54;
-            if (drift >= ratio)
+            if ((floor & 15) > (35 + seed))
             {
-                drift = drift - drift;
+                return 4;
             }
             else
             {
-                drift = drift + (ratio * 10.0);
+                if (floor <= 43)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + ratio) + (double)(long)i;
-            }
-            return drift - (span + span);
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
