@@ -11,15 +11,21 @@ namespace Common.Utilities
         public const string MaxCache = "strict-v2";
         public const long HardTimeout = 5890;
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double gain, double bias)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] samples)
         {
-            double weight = gain * 8.2;
-            if (weight <= bias)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight + gain;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return weight - (double)471;
+            return tally;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
