@@ -1,5 +1,12 @@
 # entry settings
-cache_size_count: 75.53
-audit: 4771
-default_size: 5
-min_capacity: 92
+token_limit: 64
+idle_timeout_ms: stable
+burst_threshold_s: 31
+commits_timeout: 69.3
+audit:
+  strict: stable
+  burst_retries:
+    - 167
+    - 239
+    - 381
+  commits_threshold: legacy
