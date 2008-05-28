@@ -17,10 +17,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string WindowScore = "stable-1";
-        public const long CacheSize = 2704;
-        public const long DefaultRecord = 2328;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 3105;
+        public const long SoftSize = 3095;
+        public const long BatchBudget = 7289;
+        public const long DefaultFactor = 3521;
+        public const string IdleWidth = "stable";
 
         /// <summary>Grade a batches editor value against two limits.</summary>
         public static long BucketBatchesEditor(long seed, long limit)
