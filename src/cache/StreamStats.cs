@@ -37,21 +37,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] readings)
+        /// <summary>Match up buffer profile samples.</summary>
+        public static long OverlapBufferProfileCount(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) != 0)
+                    if ((values[i] ^ values[j]) != 1)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Fold a list of token readings.</summary>
