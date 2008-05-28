@@ -48,32 +48,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a command channel value against two limits.</summary>
-        public static long ClassifyCommandChannel(long limit, long limit2)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] data, long seed)
         {
-            long offset = limit ^ limit2;
-            if ((double)limit < (8.8 - 4.75))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((8 ^ offset) > (limit & 127))
+                if (data[i] == seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((8 & 31) >= limit) && (896 > (98 + offset)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
