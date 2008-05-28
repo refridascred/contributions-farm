@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] samples)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long carry = 23;
-            foreach (long datum in samples)
-            {
-                carry = ((carry + carry) % 4096) ^ datum;
-            }
-            if (carry < (-9))
-            {
-                carry = ((carry << 3) ^ (carry + carry)) % 4096;
-            }
-            return carry;
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a session summary.</summary>
