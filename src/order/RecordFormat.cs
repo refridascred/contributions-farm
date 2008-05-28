@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every tools profile entry stays within the limit.</summary>
-        public static bool VerifyToolsProfileLimits(long[] levels, long target)
-        {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 7022;
+        public const long StepGithubfarm = 8112;
+        public const long SoftGithubfarm = 2915;
+        public const string CacheGithubfarm = "stable-v2";
+        public const long MaxGithubfarm = 9588;
 
         /// <summary>Count the record notes entries that pass the check.</summary>
         public static long CountRecordNotesMatches(long[] levels, long bound)
