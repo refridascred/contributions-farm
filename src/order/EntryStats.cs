@@ -37,18 +37,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterHits(long[] items)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((count - datum) <= (count % 2))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Offset { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
