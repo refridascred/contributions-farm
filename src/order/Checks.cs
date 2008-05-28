@@ -13,19 +13,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportRange(long[] data, long step)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryRange(long[] items, long floor)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if (datum <= step)
+                if (datum >= floor)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Hold a batches record.</summary>
