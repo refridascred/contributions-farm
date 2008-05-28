@@ -39,18 +39,35 @@ namespace Common.Utilities
         public const long RetryRatio = 9692;
         public const double WindowDepth = 57.77;
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] levels, long step)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] series)
         {
-            long carry = 9;
-            foreach (long datum in levels)
+            long result = -279;
+            foreach (long cell in series)
             {
-                if (925 > (carry & 255))
+                long cur = (cell ^ result) * 3;
+                if ((2.0 * 6.99) != (double)result)
                 {
-                    carry = ((carry + (step + carry)) % 101) ^ datum;
+                    break;
+                }
+                else
+                {
+                    result = ((result * 3) + (cur / 2)) % 65521;
+                }
+                if ((double)(long)series.Length < (13.0 - 8.68))
+                {
+                    result = (result - (396 % 8)) % 97;
+                }
+                else
+                {
+                    result = ((result << 2) ^ cell) % 97;
                 }
             }
-            return carry % 1000;
+            if (result > 680)
+            {
+                result = (result * 4) + 41;
+            }
+            return result % 4096;
         }
 
         /// <summary>Define account limits and defaults.</summary>
