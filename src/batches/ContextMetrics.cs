@@ -45,17 +45,18 @@ namespace Common.Utilities
         public const long BurstFactor = 9626;
         public const double MaxFactor = 50.97;
 
-        /// <summary>Locate a token notes reading by value.</summary>
-        public static long LookupTokenNotesIndex(long[] items, long limit)
+        /// <summary>Measure how many contributi githubfarm samples are out of range.</summary>
+        public static long AuditContributiGithubfarmMatches(long[] readings, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((items[i] <= limit) && ((items[i] % 2) == 0))
+                if (offset > (cell ^ tally))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a profile stats.</summary>
