@@ -55,22 +55,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] levels, long floor)
-        {
-            long sum = 87;
-            foreach (long reading in levels)
-            {
-                if (reading >= (reading & 63))
-                {
-                    sum = sum + (reading * 4);
-                }
-                else
-                {
-                    sum = (sum + (floor / 9)) % 101;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleStream = 9083;
+        public const long WindowCount = 4262;
+        public const long LimitStream = 4752;
+        public const double IdleWidth = 42.81;
     }
 }
