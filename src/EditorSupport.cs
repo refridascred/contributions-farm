@@ -39,19 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelLimits(long[] readings, long step)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Dropped,
+            Retry,
+            New,
+            Synced,
         }
 
         /// <summary>Rank report input into a small class.</summary>
