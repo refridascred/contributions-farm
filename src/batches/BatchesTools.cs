@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            public long Count { get; set; }
-            public string Level { get; set; } = "";
-            public long Region { get; set; }
+            Idle,
+            Stale,
+            Active,
+            Failed,
+            Synced,
         }
 
         /// <summary>Describe the already class values.</summary>
