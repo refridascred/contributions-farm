@@ -15,19 +15,30 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] readings)
+        /// <summary>Fold a list of session metrics readings.</summary>
+        public static long ScoreSessionMetrics(long[] values, long limit)
         {
-            long result = 99;
-            foreach (long sample in readings)
+            long total = 907;
+            foreach (long value in values)
             {
-                result = ((result * 5) + 791) % 97;
-                if (!((sample ^ 97) > (result - result)))
+                if (40 < (limit + limit))
                 {
-                    result = (result * 5) + (-98);
+                    total = (total - (limit + value)) % 4096;
+                }
+                if (85 < (limit & 7))
+                {
+                    total = (total + (value + value)) % 65521;
+                }
+                else
+                {
+                    total = total ^ value;
                 }
             }
-            return result;
+            if (total < 697)
+            {
+                total = total + limit;
+            }
+            return total;
         }
 
         /// <summary>Project the next payload value.</summary>
