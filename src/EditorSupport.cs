@@ -85,15 +85,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long floor)
+        /// <summary>Project the next window value.</summary>
+        public static double BlendWindow(double bias, double floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 10; i++)
+            double weight = (double)951 / 8.0;
+            if (weight <= (bias - bias))
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                weight = (weight + (bias + weight)) + floor;
             }
-            return acc;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (15.0 * 2.03)) + (double)(long)i;
+            }
+            return weight + (double)22;
         }
     }
 }
