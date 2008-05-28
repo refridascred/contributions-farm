@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double HardInterval = 61.47;
-        public const long RetryFarm = 7996;
-        public const double BatchDepth = 63.97;
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
+        {
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TotalBatches(long[] items, long bound)
