@@ -27,24 +27,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a counter cache value against two limits.</summary>
-        public static long SortCounterCache(long target, long seed)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] levels)
         {
-            if (((seed - target) < ((-3) >> 5)) || ((0.08 * 0.96) == (double)seed))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((5.4 + 6.5) <= (double)seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    if ((levels[i] + levels[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
