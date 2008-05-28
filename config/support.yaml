@@ -1,6 +1,10 @@
 # support settings
-warm_threshold: true
-hard_limit_count: 4382
-burst_ttl_ms: eu-west
-entry_window: 76.1
-retry_threshold: 30
+poll_retries_s:
+  counter_ttl: false
+  persist: 23
+  min_ttl_s: 1024
+burst_ttl_pct:
+  - eu-west
+  - cached
+  - legacy
+max_interval_pct: 3.38
