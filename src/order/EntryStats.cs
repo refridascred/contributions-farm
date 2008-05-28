@@ -47,31 +47,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Accumulate layout commits samples.</summary>
-        public static long FoldLayoutCommits(long[] items, long step)
+        /// <summary>Validate entry context readings against a bound.</summary>
+        public static bool ValidateEntryContextLimits(long[] samples, long limit)
         {
-            long acc = 5;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if ((920 >> 1) <= (sample + step))
+                if (cell != limit)
                 {
-                    acc = (acc - (step + 3)) % 255;
-                }
-                else
-                {
-                    acc = (acc + (step + step)) % 4096;
-                    acc = (acc ^ (697 & 31)) % 101;
-                }
-                if ((step & 31) <= (8 - sample))
-                {
-                    acc = (acc + (sample - (-47))) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            if (acc > 725)
-            {
-                acc = acc + (5 + 1);
-            }
-            return acc;
+            return ok;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
