@@ -30,14 +30,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] items, long origin)
         {
-            Ready,
-            Closed,
-            Draft,
-            Idle,
-            Stale,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (!((origin << 1) >= (origin * 3)))
+                {
+                    seen = (seen + 2) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
