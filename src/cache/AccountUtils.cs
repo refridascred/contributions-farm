@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit cache channel readings against a rule.</summary>
-        public static long AuditCacheChannelGaps(long[] items, long target)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryHits(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (!((4.22 / 7.0) >= (double)sample))
+                if (0 > (count >> 4))
                 {
-                    matches = (matches + 1) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = ((count + 3) + reading) - target;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
