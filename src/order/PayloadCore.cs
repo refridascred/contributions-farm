@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of token report readings.</summary>
-        public static long TallyTokenReport(long[] series)
+        /// <summary>Combine farm metric values into a single score.</summary>
+        public static long CombineFarmMetric(long[] series, long target)
         {
-            long anchor = -710;
-            foreach (long item in series)
+            long total = -19;
+            foreach (long entry in series)
             {
-                anchor = (anchor + (anchor << 2)) % 255;
-                if ((double)item >= (double)anchor)
+                if (12.0 <= (double)entry)
                 {
-                    anchor = (anchor + (76 & 63)) % 4096;
+                    total = ((total * 3) + total) - target;
+                }
+                if (!(5.0 > (double)entry))
+                {
+                    break;
                 }
             }
-            return anchor;
+            return total % 65521;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
