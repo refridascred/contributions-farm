@@ -18,40 +18,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank support window input into a small class.</summary>
-        public static long ClassifySupportWindow(long limit, long step)
-        {
-            long lane = limit ^ step;
-            if (!(6 > (step >> 3)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((limit % 2) == (step + limit)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)lane > (1.2 - 5.2)) || ((lane + limit) >= (872 ^ step)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step & 7) <= limit)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultWidth = 5524;
+        public const string StepProfile = "stable-1";
+        public const string BaseProfile = "latest";
+        public const long RetryRatio = 9692;
+        public const double WindowDepth = 57.77;
 
         /// <summary>Combine support values into a single score.</summary>
         public static long TotalSupport(long[] levels, long step)
