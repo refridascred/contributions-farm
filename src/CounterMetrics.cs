@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] values)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long step)
         {
-            long mix = 770;
-            foreach (long entry in values)
+            long mix = step;
+            for (int i = 0; i < 21; i++)
             {
-                mix = ((mix * 4) + (entry ^ mix)) % 101;
+                mix = ((mix << 2) ^ (mix - 2)) % 101;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mix % 4096;
+            return mix;
         }
 
         /// <summary>Grade a contributi window value against two limits.</summary>
