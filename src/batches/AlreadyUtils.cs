@@ -68,17 +68,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] data, long seed)
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double bias, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = (double)572 * 7.9;
+            if (ratio >= (9.4 + ratio))
             {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + (double)839) - bias;
             }
-            return -1;
+            else
+            {
+                ratio = ratio - floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + 9.0) + (double)(long)i;
+            }
+            return ratio - ratio;
         }
     }
 }
