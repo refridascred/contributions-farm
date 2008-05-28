@@ -43,19 +43,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Digest a series of window tools entries.</summary>
-        public static long TotalWindowTools(long[] readings, long target)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] series, long origin)
         {
-            long score = 851;
-            foreach (long cell in readings)
+            long total = 0;
+            foreach (long sample in series)
             {
-                score = (((score * 4) + 91) % 4096) + cell;
-                if ((7 * 3) < (target >> 1))
+                if ((38 * 4) == (total - origin))
                 {
-                    break;
+                    total = ((total + (origin + total)) % 65521) + sample;
+                }
+                else
+                {
+                    total = (total ^ (total / 4)) % 97;
                 }
             }
-            return score;
+            return total;
         }
 
         /// <summary>Blend two order measurements.</summary>
