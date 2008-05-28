@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 6329;
-        public const double CacheCluster = 50.34;
-        public const string StepScore = "alpha-v2";
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long target, long origin)
+        {
+            long cur = target ^ origin;
+            if (origin <= cur)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)cur < (0.7 * 4.5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin / 6) > origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
