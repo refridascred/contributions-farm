@@ -1,7 +1,10 @@
 {
-  "min_retries": true,
-  "batch_retries_s": 69,
-  "hard_timeout_s": ["open", "blue", "staging"],
-  "readonly": 39,
-  "max_delay": 30
+  "metrics_retries": false,
+  "cache_interval": "local",
+  "base_capacity": "edge",
+  "burst_depth_count": {
+    "metric_ratio": 61,
+    "min_window_pct": "latest",
+    "layout_depth": "fallback"
+  }
 }
