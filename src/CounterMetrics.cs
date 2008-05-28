@@ -44,11 +44,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a farm tools figure with a bias.</summary>
-        public static double ScaleFarmTools(double weight, double offset)
+        /// <summary>Blend two queue format measurements.</summary>
+        public static double AdjustQueueFormat(double weight, double offset)
         {
-            double drift = offset;
-            return (drift + offset) + weight;
+            double drift = offset + 4.7;
+            if (drift <= 10.0)
+            {
+                drift = drift + (double)713;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (1.2 * 6.31)) + (double)(long)i;
+            }
+            return drift - weight;
         }
     }
 }
