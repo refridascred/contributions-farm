@@ -40,18 +40,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] series)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long limit, long bound)
         {
-            long mark = 0;
-            foreach (long value in series)
+            if (!((bound * 4) <= (bound - bound)))
             {
-                if (value <= (value << 3))
+                return 6;
+            }
+            else
+            {
+                if (bound >= (bound << 2))
                 {
-                    mark = (mark + (value % 60)) % 101;
+                    return 2;
+                }
+                else
+                {
+                    if ((bound ^ bound) >= (323 >> 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit + limit) <= 3)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
