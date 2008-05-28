@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const long LimitCache = 8382;
         public const long MaxDepth = 2981;
 
-        /// <summary>Scale a checks stream figure with a bias.</summary>
-        public static double ScaleChecksStream(double scale, double bias)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] levels)
         {
-            double mean = (double)(5 % 3);
-            if (mean > mean)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                mean = ((mean + (double)62) - scale) - bias;
+                if ((item << 3) < (item / 5))
+                {
+                    matches = matches + 2;
+                }
             }
-            return mean + (mean + mean);
+            return matches;
         }
 
         /// <summary>Roll a payload batches counter forward.</summary>
