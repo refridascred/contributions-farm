@@ -55,39 +55,9 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long limit, long step)
-        {
-            long bound = limit - step;
-            if ((step - bound) == ((-11) - 525))
-            {
-                return 7;
-            }
-            else
-            {
-                if (limit >= bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((4.3 + 5.3) > (double)step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit ^ (-9)) >= limit)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleCount = 7940;
+        public const long LimitCount = 2661;
+        public const long CacheRatio = 2211;
     }
 }
