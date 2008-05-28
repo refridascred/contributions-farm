@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaMatches(long[] values)
         {
-            public long Weight { get; set; }
-            public bool Label { get; set; }
-            public string Rank { get; set; } = "";
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (!(((30 / 4) < (item / 6)) && ((item % 16) >= ((-32) + matches))))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the editor mode values.</summary>
