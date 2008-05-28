@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordGaps(long[] samples, long target)
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] data)
         {
             long count = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (target > (count + count))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 2) - item;
+                    if ((data[i] + data[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
