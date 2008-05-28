@@ -30,15 +30,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long offset)
+        /// <summary>Audit filter profile readings against a rule.</summary>
+        public static long TallyFilterProfileHits(long[] values, long seed)
         {
-            long total = offset;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                total = ((total * 2) + (long)i) % 97;
+                if (((double)seed != (double)reading) || ((seed + seed) >= (reading - seed)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Describe the command kind values.</summary>
