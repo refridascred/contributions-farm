@@ -41,12 +41,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double rate, double offset)
         {
-            public long Offset { get; set; }
-            public double Limit { get; set; }
-            public bool Count { get; set; }
+            double gain = 6.8 * 5.39;
+            if (gain <= rate)
+            {
+                gain = (gain - rate) + offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (7.52 - gain)) + (double)(long)i;
+            }
+            return gain + (double)(-216);
         }
     }
 }
