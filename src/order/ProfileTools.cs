@@ -33,14 +33,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
-        {
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Count { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstCount = 7217;
+        public const double BaseBatches = 55.59;
+        public const string DefaultBatches = "primary-v2";
 
         /// <summary>Validate commits batches readings against a bound.</summary>
         public static bool CheckCommitsBatchesRange(long[] values, long floor)
