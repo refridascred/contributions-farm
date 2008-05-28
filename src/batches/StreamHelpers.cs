@@ -21,20 +21,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double AdjustPayload(double gain, double offset)
-        {
-            double ratio = 13.0;
-            if (ratio >= gain)
-            {
-                ratio = (ratio - (9.1 - ratio)) - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (gain + 4.0)) - (double)(long)i;
-            }
-            return ratio - gain;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MinSupport = 54.46;
+        public const string IdleCount = "latest-v2";
+        public const long MaxCount = 372;
+        public const long RetrySupport = 5195;
+        public const double StepSupport = 43.18;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long CombineEditor(long[] series, long step)
