@@ -30,21 +30,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] series)
+        /// <summary>Validate commits record readings against a bound.</summary>
+        public static bool VerifyCommitsRecordLimits(long[] samples, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample != floor)
                 {
-                    if ((series[i] - series[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
