@@ -51,21 +51,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] samples)
+        /// <summary>Adjust a token reading.</summary>
+        public static double AdjustToken(double weight, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = floor / 4.0;
+            if (mean >= floor)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = (mean - (11.0 * 1.53)) - weight;
             }
-            return matches;
+            else
+            {
+                mean = mean + 19.0;
+            }
+            return mean + 10.0;
         }
     }
 }
