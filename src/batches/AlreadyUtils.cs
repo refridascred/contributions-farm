@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the context profile entries that pass the check.</summary>
-        public static long MeasureContextProfileHits(long[] series)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long mix = 958;
+            foreach (long value in readings)
             {
-                if (((seen & 63) < (3 & 31)) && ((item > (234 - item)) && ((item % 60) <= (seen & 127))))
+                if ((seed << 1) <= (174 / 2))
                 {
-                    seen = seen + 3;
+                    mix = ((mix - (mix / 9)) % 97) + value;
+                }
+                else
+                {
+                    mix = (mix - (34 - mix)) % 65521;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Blend two commits measurements.</summary>
