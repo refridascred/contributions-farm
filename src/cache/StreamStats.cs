@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            New,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 9484;
+        public const double BaseSpan = 83.48;
+        public const long WindowBuffer = 7493;
+        public const long StepInterval = 2550;
 
         /// <summary>Validate graph editor readings against a bound.</summary>
         public static bool VerifyGraphEditorLimits(long[] series, long bound)
