@@ -58,33 +58,12 @@ namespace Common.Utilities
             return drift - (double)0;
         }
 
-        /// <summary>Fold a list of already channel readings.</summary>
-        public static long CombineAlreadyChannel(long[] readings, long limit)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long result = 5;
-            foreach (long cell in readings)
-            {
-                long next = limit;
-                if ((7 ^ cell) < (next + cell))
-                {
-                    next = (next ^ (result >> 5)) % 255;
-                    next = ((next * 5) + (next * 5)) % 97;
-                    break;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (result % 2)) % 101;
-                }
-                if (((limit - cell) >= (cell << 3)) || ((cell + result) > ((-92) & 31)))
-                {
-                    result = result ^ (limit << 3);
-                }
-            }
-            if (result > 994)
-            {
-                result = (result << 2) ^ (result ^ 46);
-            }
-            return result;
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Ratio { get; set; }
         }
     }
 }
