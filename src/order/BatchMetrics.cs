@@ -39,22 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window layout entries that pass the check.</summary>
-        public static long AuditWindowLayoutMatches(long[] levels, long floor)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] data)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((count >> 2) != (11 << 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = ((count + 2) ^ value) - floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((data[i] - data[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
