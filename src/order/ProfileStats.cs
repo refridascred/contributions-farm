@@ -36,11 +36,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 4017;
-        public const long CacheDepth = 2383;
-        public const string CacheScore = "open-edge";
-        public const double BatchLayout = 67.1;
-        public const long LimitDepth = 8841;
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
+        {
+            public string Offset { get; set; } = "";
+            public double Limit { get; set; }
+        }
     }
 }
