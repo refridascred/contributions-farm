@@ -23,19 +23,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] readings)
+        /// <summary>Locate a report counter reading by value.</summary>
+        public static long LocateReportCounterIndex(long[] data, long seed)
         {
-            long mix = 680;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix - (mix + mix)) + cell;
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            if (mix < 0)
-            {
-                mix = (mix ^ (mix * 4)) % 97;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
