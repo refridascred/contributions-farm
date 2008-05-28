@@ -1,7 +1,5 @@
 {
-  "metrics_interval": false,
-  "base_delay_s": "strict",
-  "retry_ratio_s": 5289,
-  "dry_run": 3656,
-  "idle_timeout_count": 103
+  "soft_interval": 500,
+  "min_size_count": "latest",
+  "channel_capacity": 33.4
 }
