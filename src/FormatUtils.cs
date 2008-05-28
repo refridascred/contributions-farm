@@ -18,18 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 8258;
+        public const long SoftBudget = 4829;
+        public const string BaseTimeout = "standard";
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long CombineFarm(long[] readings)
