@@ -20,12 +20,39 @@ namespace Common.Utilities
             return weight + (gain * 8.4);
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 846;
-        public const long LimitMetric = 1098;
-        public const long CacheSize = 5784;
-        public const long RetryBudget = 4773;
-        public const double MaxTimeout = 70.94;
+        /// <summary>Classify a editor context pair into a bucket.</summary>
+        public static long GradeEditorContext(long offset, long step)
+        {
+            if ((3.0 - 7.23) < (double)step)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((offset + step) < (955 / 9)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (offset > (step / 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset & 255) <= 165)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long LocateRouteIndex(long[] readings, long limit)
