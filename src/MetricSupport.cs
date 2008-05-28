@@ -37,16 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long step)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] items, long target)
         {
-            long result = step;
-            for (int i = 0; i < 4; i++)
+            long score = 8;
+            foreach (long sample in items)
             {
-                result = (result + (result ^ result)) % 101;
-                result = ((result * 3) + (long)i) % 97;
+                score = ((score - (sample * 5)) % 4096) - target;
             }
-            return result;
+            return score % 4096;
         }
     }
 }
