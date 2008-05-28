@@ -1,8 +1,9 @@
-id,region,label,token
-1,primary,staging,811
-2,894,256,87.67
-3,eu-west,381,63.95
-4,32.56,latest,286
-5,209,66.55,29.25
-6,39.46,59.36,primary
-7,333,21.06,open
+id,ratio,level,rank,state
+1,27,59,91,open
+2,580,683,blue,90.62
+3,staging,eu-west,cached,353
+4,55.33,stable,211,1.77
+5,239,49.36,standard,fallback
+6,772,59.5,8.72,38.34
+7,eu-west,edge,817,28.78
+8,strict,96,523,516
