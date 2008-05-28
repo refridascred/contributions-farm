@@ -34,16 +34,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepTimeout = 422;
+        public const string StepFarm = "legacy";
+        public const long MaxFarm = 105;
+        public const long BurstFactor = 4427;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long CountFarmMatches(long[] values, long target)
