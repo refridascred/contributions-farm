@@ -19,15 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next record counter value from a seed.</summary>
-        public static long StepRecordCounter(long seed)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] data, long bound)
         {
-            long total = seed;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total * 2) + (long)i) % 65521;
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Audit record githubfarm readings against a rule.</summary>
