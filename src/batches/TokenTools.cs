@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmLimits(long[] samples, long offset)
+        /// <summary>Validate account context readings against a bound.</summary>
+        public static bool ValidateAccountContextBounds(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if (item < offset)
+                if (item >= target)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Describe the farm mode values.</summary>
