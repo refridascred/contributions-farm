@@ -19,32 +19,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long offset, long limit)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsMatches(long[] values, long origin)
         {
-            long gap = offset - limit;
-            if ((double)gap == (8.1 * 9.6))
+            long seen = 0;
+            foreach (long sample in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((gap >= (886 + limit)) && ((double)offset >= (double)gap))
+                if ((seen / 3) > seen)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((gap >> 1) < (84 ^ limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    seen = ((seen + 2) + sample) + origin;
                 }
             }
+            return seen;
         }
 
         /// <summary>Blend two route buffer measurements.</summary>
