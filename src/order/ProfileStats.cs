@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            public long Weight { get; set; }
-            public double Score { get; set; }
+            Stale,
+            Dropped,
+            Failed,
+            Ready,
         }
 
         /// <summary>Hold a batches snapshot.</summary>
