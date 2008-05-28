@@ -81,12 +81,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string WindowNotes = "staging-edge";
-        public const string SoftBudget = "local";
-        public const string RetryWidth = "cached-edge";
-        public const long RetryInterval = 9894;
-        public const long LimitNotes = 3673;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = anchor ^ ((long)i / 8);
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate cache samples.</summary>
         public static long ScoreCache(long[] series, long target)
