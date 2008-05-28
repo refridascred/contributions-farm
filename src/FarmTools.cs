@@ -16,13 +16,10 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
-        {
-            Active,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BaseFactor = 74.79;
+        public const long IdleDepth = 1689;
+        public const string MaxFilter = "primary";
 
         /// <summary>Measure how many buffer metric samples are out of range.</summary>
         public static long CountBufferMetricGaps(long[] items, long target)
