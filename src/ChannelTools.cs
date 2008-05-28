@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double scale, double floor)
+        /// <summary>Look up the position of a stats commits sample.</summary>
+        public static long LookupStatsCommitsIndex(long[] samples, long bound)
         {
-            double scale2 = floor;
-            if (scale2 > (scale2 + 9.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale2 = scale2 - scale2;
+                if ((samples[i] > bound) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale2 = scale2 - (scale + floor);
-            }
-            return scale2 - floor;
+            return -1;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
