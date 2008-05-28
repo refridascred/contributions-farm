@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double SmoothFilter(double weight, double floor)
-        {
-            double scale = floor;
-            if (scale <= (weight + weight))
-            {
-                scale = scale - floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - weight;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultSize = 9839;
+        public const long MaxScore = 8412;
+        public const long MaxSpan = 6918;
+        public const long StepFarm = 1412;
+        public const long BatchWidth = 8392;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long CountRecordMatches(long[] series, long floor)
