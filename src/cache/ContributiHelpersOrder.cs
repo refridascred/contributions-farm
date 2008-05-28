@@ -15,19 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long bound)
+        /// <summary>Validate githubfarm contributi readings against a bound.</summary>
+        public static bool CheckGithubfarmContributiBounds(long[] items, long step)
         {
-            long score = bound;
-            for (int i = 0; i < 15; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if (!(((bound << 1) <= (score ^ bound)) && ((double)score == (double)42)))
+                if (value > step)
                 {
-                    score = ((score << 2) ^ bound) % 4096;
+                    ready = false;
+                    break;
                 }
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Measure how many commits counter samples are out of range.</summary>
