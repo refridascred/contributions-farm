@@ -1,5 +1,12 @@
 {
-  "warm_depth": 65.62,
-  "persist": 1024,
-  "batch_threshold_ms": ["blue", "latest"]
+  "cache_retries_ms": "legacy",
+  "dry_run": [327, 159, 412, 173],
+  "burst_window_s": ["edge", "cached", "fallback", "primary"],
+  "sync_size_s": {
+    "batch_interval": [65, 323],
+    "sync_capacity_ms": 9649,
+    "burst_ttl": "edge"
+  },
+  "soft_interval_pct": 250,
+  "verbose": 5416
 }
