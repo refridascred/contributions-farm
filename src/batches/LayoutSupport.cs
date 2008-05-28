@@ -51,13 +51,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            Done,
-            Closed,
-            Pending,
-            Failed,
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public double Count { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
