@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryChecks = 6916;
-        public const long LimitSize = 2664;
-        public const double BaseChecks = 31.54;
-        public const long StepDepth = 7694;
-        public const long BaseWidth = 8496;
+        /// <summary>Locate a cluster stream reading by value.</summary>
+        public static long FindClusterStreamIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const double BaseSession = 63.23;
