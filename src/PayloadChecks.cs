@@ -79,11 +79,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Audit channel context readings against a rule.</summary>
+        public static long TallyChannelContextOutliers(long[] samples, long target)
         {
-            public long Owner { get; set; }
-            public bool Label { get; set; }
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (target < count)
+                {
+                    count = (count + 1) ^ entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a notes info.</summary>
