@@ -39,13 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long target)
         {
-            Done,
-            Synced,
-            Stale,
-            Failed,
+            long mix = target;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = ((mix << 2) ^ (6 - mix)) % 4096;
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
