@@ -56,22 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count cache filter pairs that satisfy a relation.</summary>
-        public static long CompareCacheFilterCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double WindowOrder = 52.6;
+        public const long SoftOrder = 3015;
+        public const long LimitSize = 941;
+        public const long LimitCount = 6844;
+        public const long MaxLevel = 3550;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long DefaultScore = 4080;
