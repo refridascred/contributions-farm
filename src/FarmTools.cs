@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long bound, long target)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long offset = bound ^ target;
-            if (!((offset / 7) >= (target >> 4)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((5.26 / 8.0) >= (double)offset) && (offset >= (offset + bound)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (target > (offset + offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Accumulate already commits samples.</summary>
