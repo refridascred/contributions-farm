@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long floor, long seed)
-        {
-            if ((0.08 * 5.04) != (double)seed)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)89 <= (double)seed) && (38 < seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 438;
+        public const long BatchRatio = 3347;
+        public const long RetryQueue = 1417;
+        public const string BurstRatio = "local-v2";
 
         /// <summary>Digest a series of format entries.</summary>
         public static long ScoreFormat(long[] series)
