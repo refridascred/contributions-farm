@@ -23,12 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            Synced,
-            New,
-            Done,
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the entry status values.</summary>
