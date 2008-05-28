@@ -38,26 +38,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine queue token values into a single score.</summary>
-        public static long TotalQueueToken(long[] samples, long origin)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long target)
         {
-            long mark = 80;
-            foreach (long entry in samples)
+            long carry = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (((entry >> 4) <= origin) || ((mark >> 4) >= (mark << 3)))
-                {
-                    mark = (mark * 3) + 179;
-                }
-                if ((entry + origin) > origin)
-                {
-                    mark = (mark ^ origin) % 4096;
-                }
-                else
-                {
-                    mark = (mark + (mark % 16)) % 101;
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return mark % 1000;
+            return carry;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
