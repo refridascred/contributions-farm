@@ -31,15 +31,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of batch cluster readings.</summary>
-        public static long CombineBatchCluster(long[] readings)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long state = 747;
-            foreach (long value in readings)
-            {
-                state = ((state ^ (state * 4)) % 65521) + value;
-            }
-            return state % 65521;
+            public bool Limit { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
