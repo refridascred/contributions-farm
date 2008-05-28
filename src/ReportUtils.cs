@@ -44,20 +44,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] items, long limit)
-        {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLayout = 3331;
+        public const long BaseSize = 3731;
+        public const string BaseLayout = "open-edge";
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
