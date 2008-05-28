@@ -63,26 +63,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] readings)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long carry = 952;
-            foreach (long value in readings)
-            {
-                if ((carry & 1) >= (value * 4))
-                {
-                    carry = (carry ^ value) % 101;
-                }
-                else
-                {
-                    carry = carry - (carry + 79);
-                }
-            }
-            if (carry > (-3))
-            {
-                carry = (carry + ((long)readings.Length - carry)) % 101;
-            }
-            return carry;
+            public long Owner { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a notes info.</summary>
