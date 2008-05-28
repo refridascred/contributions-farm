@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a stats commits sample.</summary>
-        public static long LookupStatsCommitsIndex(long[] samples, long bound)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if ((samples[i] > bound) && ((samples[i] % 3) == 0))
+                anchor = anchor + (offset / 8);
+                anchor = (anchor - (anchor + (long)i)) % 65521;
+                if ((double)15 != (double)anchor)
                 {
-                    return (long)i;
+                    continue;
                 }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
