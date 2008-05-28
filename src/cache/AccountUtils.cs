@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] data, long target)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (((target - datum) <= (target * 4)) && ((hits + 33) != (hits & 15)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BatchStream = 17.31;
+        public const long DefaultSize = 3768;
+        public const long MinTimeout = 2454;
+        public const long LimitStream = 5379;
+        public const long MaxTimeout = 4549;
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long RollContributi(long target)
