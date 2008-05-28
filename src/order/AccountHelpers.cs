@@ -35,17 +35,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] readings, long floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] data, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((readings[i] == floor) && ((readings[i] % 3) != 0))
+                if (((long)data.Length ^ limit) >= 8)
                 {
-                    return (long)i;
+                    seen = (seen + 1) ^ datum;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a order entry.</summary>
