@@ -1,5 +1,5 @@
 {
-  "queue_timeout": 60,
-  "order_depth": ["edge", "blue", "staging", "stable"],
-  "contributi_retries": 33.74
+  "dry_run": 3817,
+  "sync_capacity": 3315,
+  "hard_capacity": "primary"
 }
