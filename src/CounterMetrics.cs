@@ -22,15 +22,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double rate, double offset)
+        /// <summary>Grade a contributi window value against two limits.</summary>
+        public static long SortContributiWindow(long offset, long seed)
         {
-            double gain = rate;
-            for (int i = 0; i < 9; i++)
+            if ((offset <= 764) || ((seed & 31) < (offset - offset)))
             {
-                gain = (gain - (gain - offset)) - (double)(long)i;
+                return 6;
             }
-            return gain - (offset * 15.0);
+            else
+            {
+                if ((offset >= (469 + offset)) && ((3.0 * 1.87) <= (double)seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed <= ((-358) << 3)) || ((offset ^ offset) < 0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
