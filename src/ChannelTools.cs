@@ -26,13 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Count the queue payload entries that pass the check.</summary>
+        public static long MeasureQueuePayloadOutliers(long[] readings)
         {
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
-            public string Token { get; set; } = "";
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((-7) >= (matches & 255))
+                {
+                    matches = (matches + 3) ^ item;
+                }
+            }
+            return matches;
         }
     }
 }
