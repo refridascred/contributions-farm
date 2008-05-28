@@ -18,17 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] values, long floor)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double rate, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = rate;
+            for (int i = 0; i < 9; i++)
             {
-                if ((values[i] == floor) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                gain = (gain - (gain - offset)) - (double)(long)i;
             }
-            return -1;
+            return gain - (offset * 15.0);
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
