@@ -15,20 +15,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] items, long origin)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] items, long limit)
         {
-            long carry = 27;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value > (origin - origin))
+                if (items[i] >= limit)
                 {
-                    carry = carry - ((-7) + 14);
-                    carry = (carry - (carry * 3)) % 97;
+                    return (long)i;
                 }
-                carry = (carry - (value / 2)) % 65521;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a stream header.</summary>
