@@ -1,10 +1,10 @@
 # Command notes
 
-Keep editor and queue names short and lowercase.
-Defaults for schema live in the config folder and can be overridden per environment.
+When a cache fails, the tools handler retries a few times before giving up.
+When a checks fails, the cache handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer checks defaults
-- Review cache limits each release
-- Log every command change
+- Review window limits each release
+- Log every channel change
+- Keep account values small
