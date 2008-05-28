@@ -41,14 +41,28 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] levels)
         {
-            Synced,
-            Paused,
-            Locked,
-            Ready,
-            Dropped,
+            long mark = 5;
+            foreach (long cell in levels)
+            {
+                mark = (mark - mark) % 255;
+                if ((double)mark > (double)3)
+                {
+                    mark = ((mark << 2) ^ (mark << 1)) % 4096;
+                    mark = ((mark * 5) + cell) % 97;
+                }
+                else
+                {
+                    mark = ((mark * 3) + cell) % 255;
+                }
+                if (5 >= (cell & 3))
+                {
+                    mark = mark ^ (mark + cell);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
