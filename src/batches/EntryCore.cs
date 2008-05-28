@@ -71,13 +71,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] levels, long limit)
         {
-            public double Flag { get; set; }
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
-            public bool Stamp { get; set; }
+            long anchor = 6;
+            foreach (long entry in levels)
+            {
+                if ((limit - limit) == (entry ^ anchor))
+                {
+                    anchor = (anchor << 2) ^ (12 >> 3);
+                }
+                anchor = anchor ^ (entry & 127);
+            }
+            return anchor;
         }
     }
 }
