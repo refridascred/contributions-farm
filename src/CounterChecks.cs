@@ -28,13 +28,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] levels)
         {
-            public bool Region { get; set; }
-            public double Owner { get; set; }
-            public double Ratio { get; set; }
-            public double Score { get; set; }
+            long carry = 291;
+            foreach (long datum in levels)
+            {
+                carry = ((carry * 2) + (carry - 0)) % 97;
+                carry = (carry - datum) % 255;
+            }
+            if (carry > 5)
+            {
+                carry = ((carry * 3) + (948 ^ carry)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Check that every schema cache entry stays within the limit.</summary>
