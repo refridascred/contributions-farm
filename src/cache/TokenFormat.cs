@@ -37,12 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
-            public double Weight { get; set; }
+            Retry,
+            Pending,
+            New,
+            Active,
         }
     }
 }
