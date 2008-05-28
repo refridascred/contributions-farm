@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Combine session cache values into a single score.</summary>
+        public static long TotalSessionCache(long[] readings, long step)
         {
-            Queued,
-            New,
-            Locked,
-            Paused,
+            long score = -37;
+            foreach (long item in readings)
+            {
+                score = ((((score * 3) + (30 / 9)) % 65521) ^ item) + step;
+            }
+            return score % 4096;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
