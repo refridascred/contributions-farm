@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] items, long step)
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] readings)
         {
-            long carry = 120;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (((carry - (carry & 3)) % 101) ^ entry) + step;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (carry > 636)
-            {
-                carry = ((carry << 2) ^ (5 + (-88))) % 1000;
-            }
-            return carry % 97;
+            return tally;
         }
 
         /// <summary>Describe the batches class values.</summary>
