@@ -33,10 +33,20 @@ namespace Common.Utilities
             return load - ratio;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSession = 6067;
-        public const long MinSpan = 671;
-        public const long CacheSize = 8660;
+        /// <summary>Accumulate token counter samples.</summary>
+        public static long FoldTokenCounter(long[] series)
+        {
+            long score = 15;
+            foreach (long cell in series)
+            {
+                score = ((score << 2) ^ (300 / 4)) % 4096;
+                if ((score >= (score ^ (long)series.Length)) || (cell < ((long)series.Length + cell)))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Combine metrics queue values into a single score.</summary>
         public static long TallyMetricsQueue(long[] items, long target)
