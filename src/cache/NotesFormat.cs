@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
-        {
-            public double Limit { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowTimeout = 3961;
+        public const long BatchProfile = 5585;
+        public const long CacheTimeout = 9065;
+        public const double HardTimeout = 54.6;
+        public const double BaseWidth = 60.42;
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long SeekLayoutIndex(long[] series, long floor)
