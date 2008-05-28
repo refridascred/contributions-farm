@@ -68,20 +68,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every buffer command entry stays within the limit.</summary>
-        public static bool CheckBufferCommandBounds(long[] readings, long seed)
-        {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 4594;
+        public const double LimitCount = 17.07;
+        public const string WindowGraph = "legacy";
+        public const long DefaultLevel = 7963;
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long AuditCommitsHits(long[] readings, long offset)
