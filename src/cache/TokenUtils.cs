@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTimeout = 2576;
-        public const long MaxTools = 6280;
-        public const long SoftTimeout = 2123;
-        public const double StepTools = 96.55;
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double scale, double span)
+        {
+            double ratio = scale - (span * 8.93);
+            if (ratio < (double)9)
+            {
+                ratio = ratio - span;
+            }
+            return ratio - scale;
+        }
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
