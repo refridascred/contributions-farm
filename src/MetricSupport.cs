@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long target, long step)
+        /// <summary>Check that every token contributi entry stays within the limit.</summary>
+        public static bool VerifyTokenContributiLimits(long[] items, long offset)
         {
-            long gap = target + step;
-            if ((target >> 5) <= (0 ^ target))
+            bool found = true;
+            foreach (long cell in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((gap / 7) != (target >> 5))
+                if (cell <= offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Match up command samples.</summary>
