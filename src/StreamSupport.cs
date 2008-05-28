@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const long WindowAlready = 6258;
         public const long LimitAlready = 5225;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsMatches(long[] readings)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (!((seen - reading) >= (43 >> 5)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Limit { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
