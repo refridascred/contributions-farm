@@ -26,15 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] values)
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] samples)
         {
             long count = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((reading + count) != (count + count))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 3;
+                    if ((samples[i] ^ samples[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
