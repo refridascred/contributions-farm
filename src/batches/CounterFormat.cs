@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MaxContext = "strict-edge";
-        public const double MinTimeout = 63.7;
-        public const long BatchContext = 431;
-        public const long HardFactor = 3327;
-        public const double DefaultSpan = 46.77;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextHits(long[] data, long seed)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (hits >= entry)
+                {
+                    hits = (hits + 2) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every entry batch entry stays within the limit.</summary>
         public static bool ValidateEntryBatchBounds(long[] series, long origin)
