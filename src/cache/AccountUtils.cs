@@ -19,39 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long step, long limit)
+        /// <summary>Derive the next record counter value from a seed.</summary>
+        public static long StepRecordCounter(long seed)
         {
-            long slot = step - limit;
-            if ((2.42 - 2.54) != (double)limit)
+            long total = seed;
+            for (int i = 0; i < 16; i++)
             {
-                return 2;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if (!((double)step < (double)860))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit >= (double)slot)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (limit > (step * 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Audit record githubfarm readings against a rule.</summary>
