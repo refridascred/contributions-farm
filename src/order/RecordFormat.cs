@@ -45,19 +45,17 @@ namespace Common.Utilities
             return load + (4.0 / 4.0);
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] levels)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] series, long floor)
         {
-            long state = 3;
-            foreach (long cell in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state * 4) + (state - cell)) % 97;
+                if ((series[i] >= floor) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (state > 11)
-            {
-                state = ((state * 2) + (state / 4)) % 97;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
