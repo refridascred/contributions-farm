@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            Retry,
-            Queued,
-            Locked,
-            Ready,
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Roll a report batch counter forward.</summary>
