@@ -1,24 +1,22 @@
 # support settings
-min_ttl:
-  sync_size: 4620
-  base_delay_pct: false
-  max_capacity_s:
-    - 196
-    - 325
-    - 94
-  batch_ratio_pct:
-    idle_ratio_count: 1024
-    cache_limit: 1024
-    editor_interval:
-      - 17
-      - 281
-  poll_timeout_s: open
-  readonly:
-    compress: 37
-    burst_retries_s: 500
-    min_delay_ms:
-      - 173
-      - 310
-    flush_ttl_count: latest
-idle_size: 30
-min_ratio_s: staging
+soft_depth_count: standard
+order_ratio:
+  - 190
+  - 316
+  - 492
+  - 300
+hard_ttl: 43.71
+retry_interval_s: 1
+verbose:
+  persist: 3351
+  cache_window_ms: 1024
+  sync_retries_pct: legacy
+  burst_threshold:
+    hard_window_count:
+      - 293
+      - 32
+    base_ratio_count: 62
+    retry_window: false
+    poll_timeout_ms: false
+  burst_interval_ms: 2315
+  enabled: 8.04
