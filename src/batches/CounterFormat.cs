@@ -15,12 +15,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long target)
         {
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
+            long total = target;
+            for (int i = 0; i < 17; i++)
+            {
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
