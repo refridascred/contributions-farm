@@ -61,12 +61,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 192;
-        public const long SoftWidth = 8071;
-        public const long BatchRatio = 7826;
-        public const long LimitFilter = 1256;
-        public const long WindowBudget = 3424;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string WindowNotes = "staging-edge";
+        public const string SoftBudget = "local";
+        public const string RetryWidth = "cached-edge";
+        public const long RetryInterval = 9894;
+        public const long LimitNotes = 3673;
 
         /// <summary>Grade a notes already value against two limits.</summary>
         public static long RankNotesAlready(long limit, long origin)
