@@ -39,14 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Scale a window metric figure with a bias.</summary>
+        public static double SmoothWindowMetric(double ratio, double floor)
         {
-            Failed,
-            Dropped,
-            Retry,
-            New,
-            Synced,
+            double bias = (ratio - ratio) * 16.0;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = ((bias - ratio) - (double)(long)i) - floor;
+            }
+            return bias + (ratio + ratio);
         }
 
         /// <summary>Rank report input into a small class.</summary>
