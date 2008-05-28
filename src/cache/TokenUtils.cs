@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] readings, long step)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long anchor = 52;
-            foreach (long item in readings)
-            {
-                anchor = ((anchor ^ (anchor - item)) % 101) + step;
-                anchor = (anchor ^ item) % 1000;
-            }
-            if (anchor > 591)
-            {
-                anchor = ((anchor << 3) ^ (anchor << 3)) % 65521;
-            }
-            return anchor;
+            Pending,
+            Draft,
+            New,
+            Locked,
         }
 
         /// <summary>Hold a checks entry.</summary>
