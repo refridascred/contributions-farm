@@ -23,18 +23,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] series)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long anchor = -8;
-            foreach (long cell in series)
-            {
-                if (anchor >= (cell + cell))
-                {
-                    anchor = (anchor - (4 & 3)) % 65521;
-                }
-            }
-            return anchor;
+            public double Limit { get; set; }
+            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a notes summary.</summary>
