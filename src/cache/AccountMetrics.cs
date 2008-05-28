@@ -20,12 +20,18 @@ namespace Common.Utilities
             return weight + (double)38;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Audit cache stats readings against a rule.</summary>
+        public static long TallyCacheStatsOutliers(long[] readings)
         {
-            Locked,
-            New,
-            Draft,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((value + (long)readings.Length) > (matches % 10))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the cache status values.</summary>
