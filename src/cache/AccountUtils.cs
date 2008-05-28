@@ -32,19 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every context cluster entry stays within the limit.</summary>
-        public static bool ValidateContextClusterLimits(long[] series, long target)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long origin)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long mark = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (entry < target)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
