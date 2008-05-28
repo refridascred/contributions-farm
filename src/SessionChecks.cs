@@ -38,17 +38,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BatchCommand = "standard-edge";
+        public const string DefaultSpan = "standard-1";
+        public const string StepFactor = "open";
+        public const double CacheCommand = 53.15;
     }
 }
