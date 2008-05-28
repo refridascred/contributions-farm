@@ -55,15 +55,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a channel record figure with a bias.</summary>
-        public static double SmoothChannelRecord(double gain, double floor)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double scale, double bias)
         {
-            double bias = 6.31;
-            if (bias > (floor + floor))
+            double scale2 = bias;
+            for (int i = 0; i < 5; i++)
             {
-                bias = (bias + (bias - floor)) + gain;
+                scale2 = (scale2 + scale) + (double)(long)i;
             }
-            return bias - (bias * 1.0);
+            return scale2 - 9.08;
         }
     }
 }
