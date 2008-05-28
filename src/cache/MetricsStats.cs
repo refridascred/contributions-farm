@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Roll a editor schema counter forward.</summary>
-        public static long StepEditorSchema(long floor)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] items, long seed)
         {
-            long acc = floor;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = acc + 8;
-                if ((95 << 2) > floor)
+                if ((items[i] <= seed) && ((items[i] % 5) != 0))
                 {
-                    acc = acc + (acc + (long)i);
+                    return (long)i;
                 }
-                acc = ((acc * 3) + (long)i) % 97;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
