@@ -27,17 +27,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a profile support sample.</summary>
-        public static long LookupProfileSupportIndex(long[] samples, long floor)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double BlendSchema(double ratio, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > floor) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = (double)(9 >> 1);
+            return ((drift - (7.6 / 8.0)) + ratio) + bias;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
