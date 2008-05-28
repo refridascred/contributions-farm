@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportLimits(long[] levels, long limit)
         {
-            public bool Stamp { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
