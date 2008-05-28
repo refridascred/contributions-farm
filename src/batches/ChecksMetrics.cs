@@ -57,15 +57,39 @@ namespace Common.Utilities
             return (ratio - (ratio * 5.2)) + floor;
         }
 
-        /// <summary>Adjust a layout account reading.</summary>
-        public static double ProjectLayoutAccount(double gain, double floor)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long bound, long target)
         {
-            double bias = 11.0 + (double)69;
-            if (bias >= bias)
+            long offset = bound + target;
+            if ((double)offset <= (13.0 / 9.0))
             {
-                bias = (bias - floor) - gain;
+                return 0;
             }
-            return bias + 3.72;
+            else
+            {
+                if ((target <= 12) || ((target >> 2) < (5 / 9)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)offset <= 1.0) && ((4.94 - 0.6) == (double)offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset ^ 38) != (bound + bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
