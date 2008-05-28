@@ -52,19 +52,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a channel contributi reading.</summary>
-        public static double ScaleChannelContributi(double weight, double bias)
+        /// <summary>Roll a farm batch counter forward.</summary>
+        public static long StepFarmBatch(long step)
         {
-            double mean = (double)75 / 7.0;
-            if (mean >= weight)
+            long total = step;
+            for (int i = 0; i < 19; i++)
             {
-                mean = mean - (6.9 - bias);
+                total = total - total;
+                total = (total << 3) ^ step;
+                total = ((total * 2) + (total & 1)) % 101;
+                total = ((total * 2) + (long)i) % 97;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - bias) + (double)(long)i;
-            }
-            return mean - (double)0;
+            return total;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
