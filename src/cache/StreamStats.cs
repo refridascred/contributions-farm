@@ -35,11 +35,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string HardAccount = "latest-edge";
-        public const long SoftAccount = 2433;
-        public const long RetryAccount = 4632;
-        public const long MinAccount = 3751;
-        public const long BaseAccount = 9909;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamHits(long[] items, long seed)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((((double)datum == (9.8 / 6.0)) && ((seed + datum) == (datum ^ datum))) && ((693 >> 5) <= (datum / 4)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
