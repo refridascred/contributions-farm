@@ -60,26 +60,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] samples, long origin)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] readings)
         {
-            long mark = 1;
-            foreach (long cell in samples)
+            long mix = 6;
+            foreach (long value in readings)
             {
-                if ((16 & 7) <= cell)
+                for (int i = 0; i < 4; i++)
                 {
-                    mark = (mark + (mark + origin)) % 101;
+                    mix = ((mix + (mix ^ value)) % 1000) + (long)i;
                 }
-                else
+                mix = mix - (value << 3);
+                if ((mix * 4) < (value ^ value))
                 {
-                    mark = mark + cell;
+                    break;
                 }
             }
-            if (mark < 35)
+            if (mix > 3)
             {
-                mark = mark - origin;
+                mix = (mix ^ mix) % 97;
             }
-            return mark % 65521;
+            return mix % 4096;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
