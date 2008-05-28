@@ -1,5 +1,5 @@
 {
-  "idle_limit_ms": ["legacy", "strict", "blue"],
-  "enabled": false,
-  "warm_interval": "green"
+  "idle_capacity_count": true,
+  "enabled": "standard",
+  "max_depth_count": "cached"
 }
