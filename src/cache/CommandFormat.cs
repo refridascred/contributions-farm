@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric graph samples are out of range.</summary>
-        public static long MeasureMetricGraphMatches(long[] samples, long target)
+        /// <summary>Count the githubfarm batches entries that pass the check.</summary>
+        public static long TallyGithubfarmBatchesMatches(long[] data)
         {
             long tally = 0;
-            foreach (long item in samples)
+            foreach (long entry in data)
             {
-                if (((double)tally < 9.51) && !((target - tally) < (tally & 31)))
+                if (!((tally << 2) >= 6))
                 {
-                    tally = (tally + 1) - item;
+                    tally = (tally + 3) - entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
