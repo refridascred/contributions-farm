@@ -63,21 +63,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count graph command pairs that satisfy a relation.</summary>
-        public static long PairGraphCommandCount(long[] levels)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsRange(long[] samples, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value <= step)
                 {
-                    if ((levels[i] ^ levels[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
