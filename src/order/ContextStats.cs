@@ -58,31 +58,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long seed, long floor)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long seed)
         {
-            if ((floor * 3) < (seed & 1))
+            long mark = seed;
+            for (int i = 0; i < 14; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((seed % 5) != (seed + floor)))
+                if (mark >= (386 + seed))
                 {
-                    return 8;
+                    continue;
                 }
                 else
                 {
-                    if (((floor >> 1) <= (seed + floor)) || ((floor + floor) > seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    mark = ((mark * 2) + mark) % 65521;
                 }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
+            return mark;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
