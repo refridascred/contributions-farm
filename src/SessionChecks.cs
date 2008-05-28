@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Derive the next already githubfarm value from a seed.</summary>
+        public static long DeriveAlreadyGithubfarm(long offset)
         {
-            Ready,
-            Dropped,
-            Done,
+            long state = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                state = (state ^ state) % 255;
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a order options.</summary>
