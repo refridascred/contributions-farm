@@ -79,10 +79,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string DefaultAlready = "strict-1";
-        public const long MaxLevel = 7057;
-        public const string SoftAlready = "alpha";
-        public const long BurstScore = 7312;
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
+        {
+            public string Stamp { get; set; } = "";
+            public double Mode { get; set; }
+        }
     }
 }
