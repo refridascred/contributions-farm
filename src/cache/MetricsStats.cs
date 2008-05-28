@@ -49,18 +49,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many contributi entry samples are out of range.</summary>
-        public static long TallyContributiEntryMatches(long[] values)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long value in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((count - value) >= count) && ((-39) > value))
+                if (samples[i] == target)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Digest a series of token entries.</summary>
