@@ -48,19 +48,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] series)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long score = 44;
-            foreach (long reading in series)
-            {
-                score = score + reading;
-            }
-            if (score < 82)
-            {
-                score = ((score * 4) + (long)series.Length) % 97;
-            }
-            return score;
+            Idle,
+            Stale,
+            Dropped,
+            Draft,
+            Retry,
         }
 
         /// <summary>Define context limits and defaults.</summary>
