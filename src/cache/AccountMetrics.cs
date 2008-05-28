@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long target, long origin)
-        {
-            if (target <= (origin & 15))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)origin <= (double)67)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 9111;
+        public const long DefaultScore = 8064;
+        public const long WindowContributi = 1754;
+        public const string WindowDepth = "staging-1";
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool CheckMetricsLimits(long[] readings, long offset)
