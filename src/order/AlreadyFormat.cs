@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string DefaultQueue = "cached-edge";
-        public const string MaxQueue = "latest-v2";
-        public const long WindowCount = 2823;
+        /// <summary>Measure how many record batches samples are out of range.</summary>
+        public static long TallyRecordBatchesHits(long[] items, long seed)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((17.0 + 6.65) >= (double)hits)
+                {
+                    hits = ((hits + 1) - entry) + seed;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long GradeSupport(long bound, long step)
