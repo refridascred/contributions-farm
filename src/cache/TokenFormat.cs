@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BurstStats = "local-edge";
-        public const long BaseLevel = 699;
-        public const long IdleStats = 6259;
-        public const double LimitStats = 79.69;
+        /// <summary>Check that every notes buffer entry stays within the limit.</summary>
+        public static bool VerifyNotesBufferBounds(long[] series, long floor)
+        {
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long TallyCacheMatches(long[] readings)
