@@ -44,19 +44,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two queue format measurements.</summary>
-        public static double AdjustQueueFormat(double weight, double offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] levels)
         {
-            double drift = offset + 4.7;
-            if (drift <= 10.0)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                drift = drift + (double)713;
+                if (((seen <= (datum >> 5)) || ((5.22 / 5.0) >= (double)datum)) || ((datum <= (datum % 12)) || ((datum * 3) >= seen)))
+                {
+                    seen = seen + 3;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (1.2 * 6.31)) + (double)(long)i;
-            }
-            return drift - weight;
+            return seen;
         }
     }
 }
