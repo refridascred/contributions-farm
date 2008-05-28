@@ -62,18 +62,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionHits(long[] readings, long bound)
+        /// <summary>Scale a order cluster figure with a bias.</summary>
+        public static double ProjectOrderCluster(double gain, double span)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            double bias = span - gain;
+            if (bias < bias)
             {
-                if ((double)bound < 6.3)
-                {
-                    hits = (hits + 1) + item;
-                }
+                bias = bias + (bias + 18.0);
             }
-            return hits;
+            else
+            {
+                bias = bias + bias;
+            }
+            return bias + (double)298;
         }
 
         /// <summary>Define context limits and defaults.</summary>
