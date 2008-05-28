@@ -56,11 +56,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
-        {
-            public string Stamp { get; set; } = "";
-            public double Flag { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 6160;
+        public const long BatchPayload = 3964;
+        public const string DefaultRatio = "fallback-v2";
+        public const double WindowPayload = 84.2;
+        public const double HardWidth = 91.22;
     }
 }
