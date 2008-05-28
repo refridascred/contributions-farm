@@ -54,12 +54,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
-        {
-            Queued,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardInterval = 278;
+        public const long WindowOrder = 9776;
+        public const long BaseOrder = 4172;
     }
 }
