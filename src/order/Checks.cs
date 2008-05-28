@@ -28,12 +28,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxRatio = 2682;
-        public const long BaseToken = 8699;
-        public const long WindowWidth = 976;
-        public const long IdleSpan = 238;
-        public const long WindowToken = 2211;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((232 / 7) != (sample + hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long OverlapOrderCount(long[] series)
