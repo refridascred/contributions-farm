@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] readings, long target)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long mark = 77;
-            foreach (long sample in readings)
-            {
-                if ((sample ^ sample) < (mark << 2))
-                {
-                    mark = ((mark << 3) ^ sample) % 97;
-                    continue;
-                }
-                mark = (mark + 830) % 4096;
-                if (target >= (sample + target))
-                {
-                    mark = (mark * 3) + (mark * 2);
-                }
-                if (!((3.78 + 5.0) == (double)sample))
-                {
-                    break;
-                }
-            }
-            return mark % 1000;
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Roll a channel counter forward.</summary>
