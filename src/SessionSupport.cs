@@ -30,25 +30,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long offset, long step)
+        /// <summary>Accumulate route schema samples.</summary>
+        public static long WeighRouteSchema(long[] items, long seed)
         {
-            long prev = offset - step;
-            if (644 >= (offset & 63))
+            long mix = 897;
+            foreach (long sample in items)
             {
-                return 7;
+                mix = (((mix << 2) ^ (54 >> 3)) ^ sample) + seed;
             }
-            else
-            {
-                if ((((-2) ^ step) != (4 - prev)) && ((prev + step) < (offset >> 4)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return mix % 97;
         }
     }
 }
