@@ -38,13 +38,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] items, long step)
         {
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (((seen - datum) <= (datum & 3)) || ((datum ^ seen) < (step << 1)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
