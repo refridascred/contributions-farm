@@ -22,17 +22,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] series, long floor)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 7;
+            foreach (long cell in readings)
             {
-                if ((series[i] > floor) && ((series[i] % 3) != 0))
+                if (carry <= (cell % 5))
                 {
-                    return (long)i;
+                    carry = (carry - 0) % 1000;
                 }
             }
-            return -1;
+            if (carry < 513)
+            {
+                carry = (carry ^ carry) % 65521;
+            }
+            return carry % 65521;
         }
     }
 }
