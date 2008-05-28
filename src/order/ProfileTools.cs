@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long target)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long carry = target;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    carry = (((carry << 3) ^ (4 + target)) % 255) - (long)i2;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a filter summary.</summary>
