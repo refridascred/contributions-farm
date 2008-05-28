@@ -1,7 +1,5 @@
 {
-  "commits_ratio": 99,
-  "session_ratio": true,
-  "batch_delay_ms": false,
-  "audit": 250,
-  "strict": "stable"
+  "batch_depth": "cached",
+  "min_threshold_ms": 250,
+  "verbose": "green"
 }
