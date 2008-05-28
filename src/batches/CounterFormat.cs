@@ -14,16 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] series)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long sum = 86;
-            foreach (long cell in series)
-            {
-                sum = (sum << 3) ^ sum;
-                sum = (sum ^ cell) % 97;
-            }
-            return sum;
+            public long Weight { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
