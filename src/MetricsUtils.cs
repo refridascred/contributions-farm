@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string SoftSize = "cached";
-        public const long LimitLevel = 7531;
-        public const double LimitWidth = 60.19;
-        public const long MinLevel = 9287;
-        public const long HardSession = 8495;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] readings)
+        {
+            long mark = 17;
+            foreach (long datum in readings)
+            {
+                if ((double)mark <= 2.8)
+                {
+                    mark = ((mark * 2) + datum) % 97;
+                }
+                mark = (mark + mark) % 97;
+                if (mark > (76 >> 5))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
