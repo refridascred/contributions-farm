@@ -44,13 +44,17 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] levels, long offset)
         {
-            Locked,
-            Retry,
-            Done,
-            New,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
