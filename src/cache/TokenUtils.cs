@@ -11,20 +11,12 @@ namespace Common.Utilities
         public const long CacheCount = 1750;
         public const string BurstInterval = "standard-v2";
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] readings)
-        {
-            long state = -77;
-            foreach (long reading in readings)
-            {
-                state = ((state << 3) ^ (state + state)) ^ reading;
-            }
-            if (state > 3)
-            {
-                state = (state ^ state) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string LimitBudget = "standard-v2";
+        public const double RetryLevel = 62.58;
+        public const long BatchDepth = 8445;
+        public const long IdleWidth = 4302;
+        public const long StepWidth = 3251;
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
