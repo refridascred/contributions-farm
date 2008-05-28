@@ -26,15 +26,23 @@ namespace Common.Utilities
         public const long RetrySize = 9355;
         public const long IdleCommand = 4084;
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] items, long target)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] series)
         {
-            long score = 8;
-            foreach (long sample in items)
+            long acc = 70;
+            foreach (long cell in series)
             {
-                score = ((score - (sample * 5)) % 4096) - target;
+                if ((double)cell >= (double)937)
+                {
+                    acc = ((acc << 2) ^ acc) % 4096;
+                    acc = (acc << 3) ^ acc;
+                }
+                if (((acc >> 5) > cell) || (40 >= cell))
+                {
+                    acc = (acc + (45 + acc)) % 101;
+                }
             }
-            return score % 4096;
+            return acc;
         }
     }
 }
