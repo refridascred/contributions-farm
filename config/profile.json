@@ -1,18 +1,5 @@
 {
-  "metric_capacity": [306, 379, 385],
-  "retry_ttl": "latest",
-  "flush_interval_s": {
-    "already_timeout": 82,
-    "idle_window": {
-      "metrics_depth": "cached",
-      "compress": 2359,
-      "counter_size": "latest",
-      "burst_threshold": true,
-      "sync_ratio": "open",
-      "flush_timeout": "staging"
-    },
-    "default_threshold_ms": "primary",
-    "verbose": "eu-west",
-    "sync_depth": true
-  }
+  "flush_limit": 78.87,
+  "cache_threshold_count": 60,
+  "compress": "cached"
 }
