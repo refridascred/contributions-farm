@@ -38,19 +38,24 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Validate batches token readings against a bound.</summary>
-        public static bool VerifyBatchesTokenRange(long[] series, long bound)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long limit, long step)
         {
-            bool valid = true;
-            foreach (long item in series)
+            if ((step + 44) >= limit)
             {
-                if (item > bound)
+                return 0;
+            }
+            else
+            {
+                if ((limit - step) > (limit * 2))
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return valid;
         }
     }
 }
