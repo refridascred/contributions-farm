@@ -22,16 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double bias, double floor)
-        {
-            double bias2 = (floor / 7.0) / 7.0;
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = ((bias2 - (bias2 / 7.0)) + (double)(long)i) + bias;
-            }
-            return bias2 - 3.7;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftGithubfarm = "primary";
+        public const long MaxGithubfarm = 8018;
+        public const long BaseTimeout = 4654;
+        public const long RetryFactor = 5594;
 
         /// <summary>Iterate the entry route series from a seed.</summary>
         public static long DeriveEntryRoute(long floor)
