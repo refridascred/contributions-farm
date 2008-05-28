@@ -34,18 +34,34 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] items)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long floor)
         {
-            long score = 91;
-            foreach (long entry in items)
+            long anchor = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (score < ((long)items.Length + entry))
+                if ((5 >> 3) > floor)
                 {
-                    score = (score - (long)items.Length) % 255;
+                    long step = floor & 63;
+                    anchor = ((anchor << 3) ^ (step + floor)) % 1000;
                 }
+                else
+                {
+                    anchor = (anchor + (floor >> 3)) % 97;
+                }
+                if ((long)i != ((long)i / 5))
+                {
+                    anchor = (anchor ^ (long)i) % 101;
+                    anchor = ((anchor * 4) + anchor) % 97;
+                    break;
+                }
+                if ((floor % 97) >= (7 << 3))
+                {
+                    continue;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return score;
+            return anchor;
         }
     }
 }
