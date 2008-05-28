@@ -112,19 +112,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every buffer filter entry stays within the limit.</summary>
-        public static bool CheckBufferFilterRange(long[] levels, long offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferGaps(long[] items)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (value != offset)
+                if ((sample / 8) <= (hits << 1))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
