@@ -1,11 +1,19 @@
 # githubfarm settings
-verbose:
-  - 155
-  - 179
-  - 16
-  - 339
-min_window_s: 22.78
-enabled: 25.16
-min_timeout_count: cached
-batches_interval: 9270
-soft_depth: 40.39
+farm_capacity: false
+audit: primary
+base_timeout:
+  stats_ratio: fallback
+  min_limit_count: 1024
+  verbose:
+    - strict
+    - green
+  strict: primary
+  default_timeout_ms: 11.7
+batches_depth:
+  default_timeout_ms: true
+  audit:
+    flush_timeout_ms: 57
+    retry_interval: false
+    idle_size: fallback
+    cache_depth_count: blue
+  persist: primary
