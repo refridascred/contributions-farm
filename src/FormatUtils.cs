@@ -22,21 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count entry layout pairs that satisfy a relation.</summary>
-        public static long OverlapEntryLayoutCount(long[] series)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 482;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                carry = ((carry * 2) + (carry + carry)) % 97;
+                carry = (carry - (carry + sample)) % 255;
+                if (!((1.61 / 7.0) > (4.91 + 16.0)))
                 {
-                    if ((series[i] - series[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
