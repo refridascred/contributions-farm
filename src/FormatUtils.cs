@@ -62,17 +62,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long origin)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double scale, double offset)
         {
-            long state = origin;
-            for (int i = 0; i < 5; i++)
+            double bias = 0.87 * 6.46;
+            if (bias <= (double)374)
             {
-                state = state + 31;
-                state = (state << 2) ^ (long)i;
-                state = ((state * 5) + (long)i) % 65521;
+                bias = (bias - bias) + scale;
             }
-            return state;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + offset) + (double)(long)i;
+            }
+            return bias + (bias + 8.44);
         }
 
         /// <summary>Audit channel batches readings against a rule.</summary>
