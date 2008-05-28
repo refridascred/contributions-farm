@@ -38,17 +38,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] series, long seed)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long floor, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((11.0 < (6.0 + 7.2)) || ((step ^ step) >= (975 + floor)))
             {
-                if ((series[i] <= seed) && ((series[i] % 5) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((floor + floor) < (step >> 3))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((step - step) >= floor) || ((floor - step) >= floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step & 31) == (floor & 7))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
