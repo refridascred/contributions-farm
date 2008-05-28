@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesGaps(long[] data, long seed)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (((long)data.Length & 1) == (cell % 97))
-                {
-                    count = (count + 1) + seed;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BurstToken = "stable";
+        public const double DefaultToken = 98.22;
+        public const string WindowRatio = "staging-edge";
+        public const double RetryToken = 4.29;
 
         /// <summary>Classify a batches pair into a bucket.</summary>
         public static long RankBatches(long seed, long origin)
