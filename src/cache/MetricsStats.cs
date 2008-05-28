@@ -45,18 +45,30 @@ namespace Common.Utilities
             return load + (load + load);
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportMatches(long[] levels)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] items)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long result = 2;
+            foreach (long reading in items)
             {
-                if ((tally - 2) < (value + value))
+                for (int i = 0; i < 8; i++)
                 {
-                    tally = tally + 1;
+                    result = ((result + result) % 255) + (long)i;
+                }
+                if ((reading / 9) < reading)
+                {
+                    result = (result << 2) ^ reading;
+                }
+                if ((reading ^ result) < result)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (result > 0)
+            {
+                result = ((result << 3) ^ (result / 9)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of token entries.</summary>
