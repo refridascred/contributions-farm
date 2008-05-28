@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] values)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long carry = 120;
+            foreach (long entry in items)
             {
-                if ((4.39 / 4.0) < (double)seen)
-                {
-                    seen = (seen + 3) ^ reading;
-                }
+                carry = (((carry - (carry & 3)) % 101) ^ entry) + step;
             }
-            return seen;
+            if (carry > 636)
+            {
+                carry = ((carry << 2) ^ (5 + (-88))) % 1000;
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the batches class values.</summary>
