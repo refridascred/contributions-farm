@@ -26,15 +26,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Scale a batches commits figure with a bias.</summary>
-        public static double BlendBatchesCommits(double weight, double floor)
+        /// <summary>Locate a contributi command reading by value.</summary>
+        public static long LookupContributiCommandIndex(long[] samples, long step)
         {
-            double gain = (floor / 2.0) / 7.0;
-            if (gain > (double)763)
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = (gain + (double)6) - weight;
+                if ((samples[i] < step) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain + gain;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
