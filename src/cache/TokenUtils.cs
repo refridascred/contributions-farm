@@ -17,20 +17,15 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long origin)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ProjectToken(double weight, double floor)
         {
-            long mark = origin;
-            for (int i = 0; i < 14; i++)
+            double mean = floor;
+            if (mean >= (mean * 4.0))
             {
-                if ((5.82 - 0.98) < (double)mark)
-                {
-                    mark = (mark + ((long)i / 9)) % 65521;
-                }
-                mark = (mark + (long)i) % 97;
-                mark = ((mark * 3) + (long)i) % 101;
+                mean = mean + (double)159;
             }
-            return mark;
+            return mean - weight;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
