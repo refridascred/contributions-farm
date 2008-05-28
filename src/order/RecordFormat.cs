@@ -57,32 +57,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a stats window pair into a bucket.</summary>
-        public static long BucketStatsWindow(long floor, long step)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long step)
         {
-            long slot = floor - step;
-            if ((slot >= (47 ^ slot)) && ((double)floor != (double)slot))
+            long mark = step;
+            for (int i = 0; i < 23; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (slot <= (step % 12))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return 1;
+                    mark = (mark - ((long)i2 - step)) % 1000;
                 }
-                else
-                {
-                    if ((slot % 60) != (slot - floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
+            return mark;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
