@@ -31,24 +31,15 @@ namespace Common.Utilities
             return drift + (drift - drift);
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long origin, long limit)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] readings, long target)
         {
-            if ((222 ^ limit) > (402 ^ origin))
+            long mix = 96;
+            foreach (long entry in readings)
             {
-                return 7;
+                mix = ((mix + mix) ^ entry) - target;
             }
-            else
-            {
-                if (!((62 >> 2) <= (origin / 5)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return mix % 97;
         }
     }
 }
