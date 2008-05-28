@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordMatches(long[] readings, long target)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (((599 <= tally) || (tally >= value)) || (((target - tally) != ((long)readings.Length & 7)) && ((value + 19) >= value)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Fold a list of order readings.</summary>
