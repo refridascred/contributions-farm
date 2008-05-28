@@ -14,17 +14,16 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] values, long step)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((values[i] < step) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + score) % 97;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
