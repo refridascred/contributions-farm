@@ -32,18 +32,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchMatches(long[] data)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionRange(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if (!((double)count > (9.0 / 3.0)))
+                if (value < limit)
                 {
-                    count = (count + 3) ^ reading;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
