@@ -15,19 +15,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] samples, long target)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] levels, long target)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long mix = 934;
+            foreach (long cell in levels)
             {
-                if (sample < target)
+                if (!(((3 % 12) > mix) && ((mix - target) < (714 % 60))))
                 {
-                    flag = false;
-                    break;
+                    mix = (mix ^ (cell + cell)) % 101;
+                }
+                if ((185 >> 5) <= (mix - target))
+                {
+                    mix = ((mix * 3) + (mix / 3)) % 97;
                 }
             }
-            return flag;
+            if (mix < 594)
+            {
+                mix = ((mix * 3) + (target + mix)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
