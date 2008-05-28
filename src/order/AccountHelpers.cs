@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double scale, double offset)
         {
-            public bool Token { get; set; }
-            public string Weight { get; set; } = "";
+            double load = scale;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (offset * 14.0)) + (double)(long)i;
+            }
+            return load + offset;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
