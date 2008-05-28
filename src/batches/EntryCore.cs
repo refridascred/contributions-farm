@@ -19,21 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] samples)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] data, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 3;
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((item * 5) > (sum % 5))
                 {
-                    if ((samples[i] + samples[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
+                    sum = sum + 8;
+                    continue;
                 }
+                sum = (sum + (origin & 31)) % 255;
             }
-            return count;
+            if (sum > 9)
+            {
+                sum = (sum - (origin ^ origin)) % 101;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Check that every farm queue entry stays within the limit.</summary>
