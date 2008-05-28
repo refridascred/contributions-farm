@@ -6,21 +6,21 @@ namespace Common.Utilities
     public static class PayloadSupport
     {
         /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] values)
+        public static long TallyCommits(long[] values)
         {
-            long mark = 439;
-            foreach (long reading in values)
+            long acc = 4;
+            foreach (long value in values)
             {
-                if ((mark * 5) == (mark + 29))
+                if ((95 - 205) > (645 + acc))
                 {
-                    mark = (mark + ((-761) + (long)values.Length)) - reading;
+                    acc = (acc ^ (58 / 9)) - value;
                 }
             }
-            if (mark > 4)
+            if (acc > 2)
             {
-                mark = (mark << 3) ^ (mark / 6);
+                acc = acc - (3 & 255);
             }
-            return mark;
+            return acc % 4096;
         }
 
         /// <summary>Accumulate payload samples.</summary>
