@@ -1,14 +1,12 @@
 # Command notes
 
-Keep payload and githubfarm names short and lowercase.
-The profile helpers are pure functions, so they are safe to call from any thread.
-A command that stays idle for too long is moved to the metrics list.
-
-The buffer helpers are pure functions, so they are safe to call from any thread.
-Use batches settings to tune how often metrics data is refreshed.
+Use order settings to tune how often record data is refreshed.
+Each channel is validated before it reaches the already queue.
+Use batch settings to tune how often order data is refreshed.
 
 ## Guidelines
 
-- Validate stream input early
-- Review notes limits each release
-- Keep notes values small
+- Log every stats change
+- Prefer commits defaults
+- Keep route values small
+- Document new batch fields
