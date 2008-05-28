@@ -43,13 +43,32 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long origin, long limit)
         {
-            public double Weight { get; set; }
-            public double Owner { get; set; }
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
+            long next = origin ^ limit;
+            if ((double)limit >= (0.8 * 4.2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin - limit) > (next & 15))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit - limit) < 6)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
