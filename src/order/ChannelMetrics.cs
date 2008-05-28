@@ -23,24 +23,14 @@ namespace Common.Utilities
         public const long IdleLevel = 4116;
         public const string CacheLevel = "staging-edge";
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long offset, long offset2)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            if ((395 + 742) < (offset2 ^ offset2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset2 - offset) >= (offset / 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Synced,
+            Closed,
+            Stale,
+            Failed,
+            Active,
         }
     }
 }
