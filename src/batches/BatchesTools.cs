@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BaseReport = "strict-1";
-        public const double DefaultReport = 75.84;
-        public const double SoftInterval = 22.55;
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double ratio, double span)
+        {
+            double ratio2 = span;
+            return ratio2 + ratio;
+        }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long CountMetricsMatches(long[] values, long origin)
