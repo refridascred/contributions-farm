@@ -61,20 +61,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double scale, double offset)
-        {
-            double bias = 0.87 * 6.46;
-            if (bias <= (double)374)
-            {
-                bias = (bias - bias) + scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + offset) + (double)(long)i;
-            }
-            return bias + (bias + 8.44);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardWidth = 7655;
+        public const string DefaultDepth = "stable-1";
+        public const long MaxCount = 1168;
+        public const long SoftChecks = 8524;
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long ScoreFarm(long[] items)
