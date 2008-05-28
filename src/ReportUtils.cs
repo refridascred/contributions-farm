@@ -26,18 +26,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] samples)
+        /// <summary>Check that every metrics already entry stays within the limit.</summary>
+        public static bool ValidateMetricsAlreadyBounds(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if ((double)seen > 1.54)
+                if (cell <= limit)
                 {
-                    seen = (seen + 3) + item;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
