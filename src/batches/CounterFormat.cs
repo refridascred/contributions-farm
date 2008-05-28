@@ -14,17 +14,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first stats format entry that matches the target.</summary>
-        public static long LocateStatsFormatIndex(long[] samples, long bound)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 86;
+            foreach (long cell in series)
             {
-                if (samples[i] <= bound)
-                {
-                    return (long)i;
-                }
+                sum = (sum << 3) ^ sum;
+                sum = (sum ^ cell) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
