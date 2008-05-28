@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] data, long step)
         {
-            New,
-            Draft,
-            Done,
+            long mark = 141;
+            foreach (long value in data)
+            {
+                if ((mark ^ mark) < (value * 2))
+                {
+                    mark = ((mark << 3) ^ mark) - step;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (39 + (-76))) % 4096;
+                }
+            }
+            if (mark < 85)
+            {
+                mark = (mark ^ mark) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
