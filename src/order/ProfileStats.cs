@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferMatches(long[] values, long bound)
         {
-            public double Rank { get; set; }
-            public double Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public bool Level { get; set; }
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (tally >= (bound + tally))
+                {
+                    tally = (tally + 1) ^ value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
