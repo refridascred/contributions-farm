@@ -56,18 +56,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the record cache entries that pass the check.</summary>
-        public static long MeasureRecordCacheOutliers(long[] items, long target)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long value in items)
+            double rate = offset;
+            if (rate <= offset)
             {
-                if (target < (target ^ value))
-                {
-                    matches = matches + 1;
-                }
+                rate = rate - (11.0 / 7.0);
             }
-            return matches;
+            return rate - (gain - 4.2);
         }
 
         /// <summary>Roll a tools counter forward.</summary>
