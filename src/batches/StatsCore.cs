@@ -46,22 +46,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteMatches(long[] data, long target)
+        /// <summary>Combine queue token values into a single score.</summary>
+        public static long TotalQueueToken(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long mark = 80;
+            foreach (long entry in samples)
             {
-                if (!(matches > (target % 97)))
+                if (((entry >> 4) <= origin) || ((mark >> 4) >= (mark << 3)))
                 {
-                    matches = (matches + 3) + reading;
+                    mark = (mark * 3) + 179;
+                }
+                if ((entry + origin) > origin)
+                {
+                    mark = (mark ^ origin) % 4096;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mark = (mark + (mark % 16)) % 101;
                 }
             }
-            return matches;
+            return mark % 1000;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
