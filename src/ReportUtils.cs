@@ -44,13 +44,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long bound, long step)
         {
-            public long Token { get; set; }
-            public double Flag { get; set; }
-            public double Count { get; set; }
-            public long Total { get; set; }
+            if ((bound - bound) >= step)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((bound % 16) != (step + bound)) && ((step - bound) > (3 + bound)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step % 64) >= (step % 8))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a order counter forward.</summary>
