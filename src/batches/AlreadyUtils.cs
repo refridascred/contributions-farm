@@ -55,15 +55,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutGaps(long[] levels, long step)
+        /// <summary>Match up token entry samples.</summary>
+        public static long PairTokenEntryCount(long[] data)
         {
             long hits = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((step * 5) < hits)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 1) ^ cell;
+                    if ((data[i] ^ data[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
