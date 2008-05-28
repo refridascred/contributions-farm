@@ -71,23 +71,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double bias, double floor)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            double ratio = (double)572 * 7.9;
-            if (ratio >= (9.4 + ratio))
-            {
-                ratio = (ratio + (double)839) - bias;
-            }
-            else
-            {
-                ratio = ratio - floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + 9.0) + (double)(long)i;
-            }
-            return ratio - ratio;
+            Queued,
+            Retry,
+            Closed,
         }
     }
 }
