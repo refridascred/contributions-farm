@@ -30,18 +30,15 @@ namespace Common.Utilities
             return gain + (gain / 4.0);
         }
 
-        /// <summary>Measure how many cache window samples are out of range.</summary>
-        public static long AuditCacheWindowGaps(long[] values, long limit)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double rate, double offset)
         {
-            long count = 0;
-            foreach (long reading in values)
+            double rate2 = (rate / 7.0) + offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((25 ^ reading) >= (reading / 6))
-                {
-                    count = (count + 3) - limit;
-                }
+                rate2 = (rate2 - (double)24) - (double)(long)i;
             }
-            return count;
+            return rate2 - offset;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
