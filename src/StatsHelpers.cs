@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] series, long floor)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long mix = 961;
-            foreach (long reading in series)
-            {
-                mix = (((mix << 2) ^ (floor << 3)) % 101) + reading;
-            }
-            return mix;
+            Pending,
+            Done,
+            Dropped,
+            Queued,
+            Synced,
         }
 
         /// <summary>Combine already values into a single score.</summary>
