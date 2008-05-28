@@ -1,13 +1,13 @@
 -- Create the stats_logs table.
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
-    ratio REAL,
-    active INTEGER NOT NULL DEFAULT 1,
-    state TEXT NOT NULL DEFAULT 'new'
+    level INTEGER,
+    count INTEGER NOT NULL DEFAULT 0,
+    label TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_active ON stats_logs (active);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_label ON stats_logs (label);
 
-INSERT INTO stats_logs (ratio, active, state) VALUES (52.79, 9, 'cached');
-INSERT INTO stats_logs (ratio, active, state) VALUES (67.31, 8, 'green');
-INSERT INTO stats_logs (ratio, active, state) VALUES (50.7, 23, 'latest');
+INSERT INTO stats_logs (level, count, label) VALUES (43, 91, 'blue');
+INSERT INTO stats_logs (level, count, label) VALUES (60, 97, 'open');
+INSERT INTO stats_logs (level, count, label) VALUES (58, 87, 'local');
