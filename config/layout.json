@@ -1,8 +1,17 @@
 {
-  "warm_capacity_count": "edge",
-  "idle_ttl": ["green", "fallback"],
-  "retry_limit_count": 88,
-  "batches_retries": "strict",
-  "poll_threshold_ms": true,
-  "max_ttl": true
+  "default_ttl_count": 60,
+  "dry_run": "legacy",
+  "strict": "eu-west",
+  "audit": {
+    "sync_delay": {
+      "audit": 55.4,
+      "min_window_pct": "standard",
+      "hard_delay_ms": 5205,
+      "soft_depth": 88.83,
+      "soft_window_pct": 5375,
+      "warm_ratio_count": false
+    },
+    "farm_size": "fallback",
+    "window_threshold": "edge"
+  }
 }
