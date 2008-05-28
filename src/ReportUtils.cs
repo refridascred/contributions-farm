@@ -26,21 +26,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count stats route pairs that satisfy a relation.</summary>
-        public static long PairStatsRouteCount(long[] samples)
+        /// <summary>Scale a batches commits figure with a bias.</summary>
+        public static double BlendBatchesCommits(double weight, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double gain = (floor / 2.0) / 7.0;
+            if (gain > (double)763)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = (gain + (double)6) - weight;
             }
-            return hits;
+            return gain + gain;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
