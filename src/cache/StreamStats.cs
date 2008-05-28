@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] series, long origin)
+        /// <summary>Combine report layout values into a single score.</summary>
+        public static long CombineReportLayout(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 6;
+            foreach (long value in items)
             {
-                if ((series[i] == origin) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mark = (((mark << 2) ^ (4 - mark)) % 65521) ^ value;
             }
-            return -1;
+            if (mark > 14)
+            {
+                mark = (mark - (mark - mark)) % 4096;
+            }
+            return mark % 97;
         }
 
         /// <summary>Validate graph editor readings against a bound.</summary>
