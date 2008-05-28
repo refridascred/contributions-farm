@@ -11,18 +11,10 @@ namespace Common.Utilities
         public const string MaxQueue = "strict";
         public const double HardCount = 9.53;
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= seed) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string IdleContributi = "primary-1";
+        public const long StepContributi = 8560;
+        public const string CacheTimeout = "legacy-v2";
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long IterateStream(long seed)
