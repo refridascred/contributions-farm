@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long PairRouteCount(long[] series)
+        /// <summary>Accumulate schema command samples.</summary>
+        public static long DigestSchemaCommand(long[] values, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 15;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((sum ^ offset) >= (sum / 3))
                 {
-                    if ((series[i] + series[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum - (623 * 4)) % 4096) ^ datum;
+                }
+                else
+                {
+                    sum = (sum - (offset + sum)) % 97;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Fold a list of context readings.</summary>
