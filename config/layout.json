@@ -1,6 +1,10 @@
 {
-  "sync_ratio_pct": "green",
-  "token_size": 34.02,
-  "order_ratio": "green",
-  "soft_ratio": "latest"
+  "idle_retries_ms": 39,
+  "min_ratio": {
+    "readonly": 61,
+    "default_ttl_pct": 100,
+    "idle_retries_s": 100,
+    "base_size": false
+  },
+  "batch_ttl_s": "standard"
 }
