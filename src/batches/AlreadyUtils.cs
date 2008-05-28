@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordOutliers(long[] readings, long limit)
+        /// <summary>Find the first contributi context entry that matches the target.</summary>
+        public static long FindContributiContextIndex(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((limit >> 3) == (long)readings.Length)
+                if (levels[i] > target)
                 {
-                    tally = (tally + 2) - reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
