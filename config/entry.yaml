@@ -1,7 +1,4 @@
 # entry settings
-cache_timeout_pct: eu-west
-cache_timeout_count: 500
-strict: legacy
-batches_ratio: true
-sync_delay: true
-flush_capacity: 61.1
+flush_timeout: 9435
+batch_capacity_pct: 66
+readonly: false
