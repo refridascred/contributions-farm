@@ -37,18 +37,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many command entry samples are out of range.</summary>
-        public static long CountCommandEntryOutliers(long[] readings)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long bound, long seed)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            if ((seed - seed) <= (seed << 1))
             {
-                if ((((double)seen >= 13.0) || ((double)sample <= (10.0 / 4.0))) || (sample >= (seen << 2)))
+                return 4;
+            }
+            else
+            {
+                if ((bound << 1) >= (bound + bound))
                 {
-                    seen = seen + 1;
+                    return 1;
+                }
+                else
+                {
+                    if ((bound + seed) < (seed ^ seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((seed & 7) <= (seed + 6)) || ((double)seed != (double)bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the tools phase values.</summary>
