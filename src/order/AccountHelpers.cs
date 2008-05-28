@@ -26,18 +26,17 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] items)
+        /// <summary>Locate a entry support reading by value.</summary>
+        public static long SeekEntrySupportIndex(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample * 5) < tally)
+                if (series[i] > seed)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
