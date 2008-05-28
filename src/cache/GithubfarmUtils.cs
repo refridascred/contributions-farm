@@ -43,21 +43,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up channel profile samples.</summary>
-        public static long PairChannelProfileCount(long[] samples)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Synced,
+            Idle,
+            Done,
+            Stale,
+            Active,
         }
     }
 }
