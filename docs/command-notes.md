@@ -1,11 +1,10 @@
 # Command notes
 
-Each batches is validated before it reaches the cache queue.
-Run the cluster check before changing any token limits.
+Run the githubfarm check before changing any batch limits.
+Defaults for buffer live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate schema input early
-- Document new payload fields
-- Keep order values small
-- Review schema limits each release
+- Prefer tools defaults
+- Validate route input early
+- Log every commits change
