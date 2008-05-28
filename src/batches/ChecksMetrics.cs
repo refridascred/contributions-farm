@@ -55,38 +55,17 @@ namespace Common.Utilities
             return bias + 3.72;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long step, long target)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] readings, long floor)
         {
-            if ((target % 8) >= step)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target << 3) <= (target ^ target))
+                if (readings[i] > floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((4 ^ step) == (step & 127)) && (target > (87 / 5)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (step < (step * 5))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
