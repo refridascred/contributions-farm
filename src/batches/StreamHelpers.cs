@@ -56,22 +56,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteGaps(long[] levels, long limit)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (1 >= (seen << 2))
-                {
-                    seen = ((seen + 3) + cell) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Total { get; set; }
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
