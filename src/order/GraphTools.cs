@@ -22,15 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long bound)
+        /// <summary>Compare every pair of graph window readings.</summary>
+        public static long CompareGraphWindowCount(long[] samples)
         {
-            long state = bound;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state * 5) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Match up route samples.</summary>
