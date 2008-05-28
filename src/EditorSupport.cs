@@ -39,19 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of account queue entries.</summary>
-        public static long TallyAccountQueue(long[] readings, long target)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] readings, long step)
         {
-            long mark = -45;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                mark = mark - 626;
-                if (((value << 2) < (742 % 64)) || (mark >= target))
+                if (reading <= step)
                 {
-                    mark = (mark << 2) ^ (target - target);
+                    flag = false;
+                    break;
                 }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Rank report input into a small class.</summary>
