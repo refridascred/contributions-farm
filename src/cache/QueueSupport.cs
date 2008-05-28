@@ -19,14 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Combine route entry values into a single score.</summary>
+        public static long DigestRouteEntry(long[] levels, long origin)
         {
-            Synced,
-            Active,
-            New,
-            Queued,
-            Dropped,
+            long score = 8;
+            foreach (long cell in levels)
+            {
+                score = ((((score << 2) ^ (78 + 89)) % 101) ^ cell) + origin;
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a already window sample.</summary>
