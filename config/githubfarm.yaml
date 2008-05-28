@@ -1,28 +1,11 @@
 # githubfarm settings
-command_delay: 9489
-idle_retries: 8786
-strict:
-  hard_delay: cached
-  strict: stable
-  min_threshold_ms:
-    idle_ttl:
-      - 423
-      - 207
-    farm_limit: true
-    hard_retries_count: 9440
-    githubfarm_timeout: 500
-    min_limit_s: fallback
-  audit: 70.18
-  readonly:
-    profile_delay: 31.41
-    record_interval: primary
-    verbose: 77.93
-    max_ttl: 1024
-    editor_size: 17.2
-  editor_retries:
-    retry_timeout: 6446
-    editor_delay:
-      - 454
-      - 215
-    session_interval: 67
-    stats_ttl: 250
+soft_limit:
+  - legacy
+  - latest
+  - green
+max_capacity_pct:
+  dry_run: 250
+  idle_limit_pct: cached
+  token_threshold: 20.59
+counter_limit: 4.08
+max_depth_s: 9378
