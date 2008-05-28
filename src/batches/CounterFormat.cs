@@ -16,19 +16,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Check that every entry batch entry stays within the limit.</summary>
-        public static bool ValidateEntryBatchBounds(long[] series, long origin)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] readings, long target)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if (reading >= origin)
+                if (reading != target)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
