@@ -43,17 +43,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] data, long target)
+        /// <summary>Check that every editor record entry stays within the limit.</summary>
+        public static bool ValidateEditorRecordLimits(long[] items, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if (data[i] >= target)
+                if (datum < offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
