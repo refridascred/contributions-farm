@@ -14,12 +14,10 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Project the next window stream value.</summary>
-        public static double ProjectWindowStream(double ratio, double span)
-        {
-            double load = ratio;
-            return (load + (load * 7.9)) + span;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double RetryFactor = 56.82;
+        public const long DefaultCount = 6197;
+        public const string MinGithubfarm = "standard";
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long ClassifyCluster(long step, long limit)
