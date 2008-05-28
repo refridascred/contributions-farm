@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            Ready,
-            Queued,
-            Paused,
+            public string Flag { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
