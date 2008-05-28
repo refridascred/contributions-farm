@@ -42,15 +42,19 @@ namespace Common.Utilities
         public const double BurstLayout = 52.22;
         public const long BatchInterval = 7717;
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double gain, double bias)
+        /// <summary>Validate batches token readings against a bound.</summary>
+        public static bool VerifyBatchesTokenRange(long[] series, long bound)
         {
-            double gain2 = bias;
-            if (gain2 > gain2)
+            bool valid = true;
+            foreach (long item in series)
             {
-                gain2 = (gain2 + (gain2 / 2.0)) + gain;
+                if (item > bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return gain2 + (gain2 * 12.0);
+            return valid;
         }
     }
 }
