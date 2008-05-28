@@ -30,22 +30,29 @@ namespace Common.Utilities
             return gain + (gain / 4.0);
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long step, long origin)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long floor, long offset)
         {
-            if (!((9 - 5) <= step))
+            if ((offset <= (offset / 5)) || ((offset >> 1) == (9 + offset)))
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if (((step % 3) == (origin & 127)) || ((origin % 3) != (638 - 5)))
+                if (!((248 + 4) < offset))
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    return 7;
+                    if (floor <= (floor * 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
