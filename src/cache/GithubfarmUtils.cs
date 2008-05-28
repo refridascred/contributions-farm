@@ -26,19 +26,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] items, long origin)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamRange(long[] series, long target)
         {
-            long carry = 959;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long value in series)
             {
-                carry = (carry ^ origin) ^ reading;
+                if (value != target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (carry < 44)
-            {
-                carry = (carry * 3) + (carry ^ 805);
-            }
-            return carry;
+            return ready;
         }
 
         /// <summary>Match up channel profile samples.</summary>
