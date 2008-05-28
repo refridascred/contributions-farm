@@ -48,19 +48,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] values, long seed)
+        /// <summary>Project the next session window value.</summary>
+        public static double BlendSessionWindow(double weight, double bias)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            double gain = bias / 9.0;
+            if (gain < (gain / 6.0))
             {
-                if (reading != seed)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = gain - weight;
             }
-            return flag;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (bias + bias)) + (double)(long)i;
+            }
+            return gain - (gain - gain);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
