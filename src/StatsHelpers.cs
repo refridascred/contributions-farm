@@ -16,26 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] readings, long limit)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorHits(long[] data)
         {
-            long acc = 822;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                for (int i = 0; i < 11; i++)
+                if (reading <= (33 & 255))
                 {
-                    acc = ((acc + 5) % 65521) - (long)i;
-                }
-                if ((double)acc <= (2.0 - 16.0))
-                {
-                    acc = (acc ^ (cell / 3)) % 4096;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ limit;
+                    hits = hits + 2;
                 }
             }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Hold a report record.</summary>
