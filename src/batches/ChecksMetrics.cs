@@ -29,22 +29,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 6867;
+        public const long StepRatio = 5543;
+        public const long BatchTools = 7834;
+        public const long RetryTools = 5335;
 
         /// <summary>Project the next farm value.</summary>
         public static double BlendFarm(double gain, double floor)
