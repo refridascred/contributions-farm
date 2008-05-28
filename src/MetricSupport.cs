@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double weight, double span)
         {
-            Stale,
-            Synced,
-            Active,
-            Ready,
-            Draft,
+            double weight2 = weight;
+            if (weight2 <= weight2)
+            {
+                weight2 = (weight2 - (weight2 - 0.25)) - span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight2 = (weight2 - (weight2 + 4.88)) + (double)(long)i;
+            }
+            return weight2 - (weight2 - 3.76);
         }
 
         /// <summary>Look up the position of a support sample.</summary>
