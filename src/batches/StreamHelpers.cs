@@ -57,14 +57,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
-        {
-            public bool Total { get; set; }
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleScore = 3839;
+        public const long MinWidth = 7031;
+        public const string MinBatches = "stable-edge";
+        public const double SoftLevel = 96.54;
+        public const long BurstBatches = 1270;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long TallyBufferGaps(long[] items)
