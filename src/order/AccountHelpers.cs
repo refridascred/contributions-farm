@@ -53,19 +53,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two githubfarm report measurements.</summary>
-        public static double SmoothGithubfarmReport(double bias, double offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksGaps(long[] data, long floor)
         {
-            double load = (double)((-6) + 9);
-            if (load < (5.7 + offset))
+            long hits = 0;
+            foreach (long item in data)
             {
-                load = load - (double)210;
+                if (hits >= item)
+                {
+                    hits = (hits + 3) - floor;
+                }
             }
-            else
-            {
-                load = load - bias;
-            }
-            return load - (0.3 + load);
+            return hits;
         }
 
         /// <summary>Hold a profile options.</summary>
