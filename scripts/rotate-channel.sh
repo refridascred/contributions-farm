@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in strict fallback edge primary; do
+for item in fallback cached stable eu-west; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=83
+CHANNEL_LIMIT=134
 log "limit is ${CHANNEL_LIMIT}"
