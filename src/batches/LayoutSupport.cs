@@ -5,22 +5,28 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the report window entries that pass the check.</summary>
-        public static long TallyReportWindowMatches(long[] series)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long mark = 77;
+            foreach (long sample in readings)
             {
-                if ((((datum / 5) > (tally - datum)) || ((687 / 5) == (8 + tally))) || ((((long)series.Length + datum) == (datum + datum)) && (datum <= (tally - tally))))
+                if ((sample ^ sample) < (mark << 2))
                 {
-                    tally = tally + 1;
+                    mark = ((mark << 3) ^ sample) % 97;
+                    continue;
                 }
-                else
+                mark = (mark + 830) % 4096;
+                if (target >= (sample + target))
                 {
-                    tally = tally - 1;
+                    mark = (mark * 3) + (mark * 2);
+                }
+                if (!((3.78 + 5.0) == (double)sample))
+                {
+                    break;
                 }
             }
-            return tally;
+            return mark % 1000;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
