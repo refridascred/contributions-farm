@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] samples, long bound)
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double ratio, double span)
         {
-            long state = 108;
-            foreach (long entry in samples)
+            double drift = 3.54;
+            if (drift >= ratio)
             {
-                state = ((state ^ ((-9) >> 2)) % 65521) ^ entry;
+                drift = drift - drift;
             }
-            if (state < 729)
+            else
             {
-                state = (state ^ bound) % 65521;
+                drift = drift + (ratio * 10.0);
             }
-            return state;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + ratio) + (double)(long)i;
+            }
+            return drift - (span + span);
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
