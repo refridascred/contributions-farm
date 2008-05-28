@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextHits(long[] data, long seed)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long sum = 8;
+            foreach (long sample in samples)
             {
-                if (hits >= entry)
-                {
-                    hits = (hits + 2) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = (((sum << 2) ^ (sum >> 4)) % 255) - sample;
             }
-            return hits;
+            return sum % 65521;
         }
 
         /// <summary>Check that every entry batch entry stays within the limit.</summary>
