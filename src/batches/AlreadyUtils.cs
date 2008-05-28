@@ -51,21 +51,9 @@ namespace Common.Utilities
         public const long RetrySpan = 123;
         public const long RetryFactor = 4218;
 
-        /// <summary>Match up buffer format samples.</summary>
-        public static long OverlapBufferFormatCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepAccount = 3689;
+        public const string SoftTimeout = "primary-1";
+        public const string BaseAccount = "strict";
     }
 }
