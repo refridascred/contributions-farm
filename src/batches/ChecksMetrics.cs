@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
-        {
-            Retry,
-            Draft,
-            Done,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheLevel = 8031;
+        public const string StepSchema = "local-edge";
+        public const string WindowLevel = "staging-edge";
+        public const double HardDepth = 32.9;
 
         /// <summary>Roll a contributi stream counter forward.</summary>
         public static long StepContributiStream(long floor)
