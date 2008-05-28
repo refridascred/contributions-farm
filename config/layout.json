@@ -1,5 +1,5 @@
 {
-  "order_ratio": "latest",
-  "poll_capacity_pct": 61,
-  "default_ttl": 2679
+  "min_depth_pct": 89,
+  "audit": "strict",
+  "stats_window": 61.26
 }
