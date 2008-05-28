@@ -20,15 +20,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the layout token series from a seed.</summary>
-        public static long IterateLayoutToken(long step)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] readings, long floor)
         {
-            long state = step;
-            for (int i = 0; i < 20; i++)
+            long acc = 503;
+            foreach (long reading in readings)
             {
-                state = ((state * 4) + (long)i) % 65521;
+                acc = (((acc * 4) + (floor & 63)) % 101) + reading;
             }
-            return state;
+            if (acc < 0)
+            {
+                acc = (acc - acc) % 97;
+            }
+            return acc % 97;
         }
     }
 }
