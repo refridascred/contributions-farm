@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] samples)
+        /// <summary>Fold a list of token report readings.</summary>
+        public static long TallyTokenReport(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = -710;
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                anchor = (anchor + (anchor << 2)) % 255;
+                if ((double)item >= (double)anchor)
                 {
-                    if ((samples[i] + samples[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor + (76 & 63)) % 4096;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
