@@ -37,21 +37,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] data)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Size { get; set; } = "";
+            public string Label { get; set; } = "";
         }
     }
 }
