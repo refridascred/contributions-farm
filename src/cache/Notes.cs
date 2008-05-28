@@ -12,14 +12,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            Done,
-            Closed,
-            New,
-            Stale,
-            Active,
+            Dropped,
+            Failed,
+            Retry,
         }
 
         /// <summary>Accumulate tools metric samples.</summary>
