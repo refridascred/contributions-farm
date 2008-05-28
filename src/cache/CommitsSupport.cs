@@ -34,11 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepTimeout = 422;
-        public const string StepFarm = "legacy";
-        public const long MaxFarm = 105;
-        public const long BurstFactor = 4427;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (!!((item + hits) != (34 << 3)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long CountFarmMatches(long[] values, long target)
