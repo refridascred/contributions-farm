@@ -13,19 +13,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryBounds(long[] readings, long limit)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            New,
+            Done,
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
