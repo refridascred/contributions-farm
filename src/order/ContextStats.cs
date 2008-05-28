@@ -42,18 +42,15 @@ namespace Common.Utilities
         public const double BurstLayout = 52.22;
         public const long BatchInterval = 7717;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextHits(long[] levels)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double gain, double bias)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            double gain2 = bias;
+            if (gain2 > gain2)
             {
-                if (((count / 8) <= 61) && ((count >> 1) <= count))
-                {
-                    count = (count + 3) + sample;
-                }
+                gain2 = (gain2 + (gain2 / 2.0)) + gain;
             }
-            return count;
+            return gain2 + (gain2 * 12.0);
         }
     }
 }
