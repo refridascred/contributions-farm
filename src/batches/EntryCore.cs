@@ -51,20 +51,38 @@ namespace Common.Utilities
             return load - weight;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] values)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long offset, long origin)
         {
-            long mix = 6;
-            foreach (long datum in values)
+            if ((origin / 3) == (offset & 255))
             {
-                mix = ((mix * 5) + (mix & 3)) % 101;
-                mix = mix + 18;
-                if (((mix >> 4) >= datum) || ((double)datum > (4.0 * 3.0)))
+                return 8;
+            }
+            else
+            {
+                if ((double)origin <= 2.6)
                 {
-                    mix = mix - (mix + mix);
+                    return 3;
+                }
+                else
+                {
+                    if (((origin >> 5) <= origin) && ((double)offset != (0.8 * 4.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (origin > offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Hold a graph header.</summary>
