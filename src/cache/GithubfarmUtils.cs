@@ -13,11 +13,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string RetryAlready = "cached-edge";
-        public const long BatchLevel = 2052;
-        public const long BurstSpan = 4091;
-        public const string BaseAlready = "stable";
+        /// <summary>Derive the next graph context value from a seed.</summary>
+        public static long RollGraphContext(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    score = ((score - score) % 255) + (long)i2;
+                    score = (score ^ score) % 97;
+                }
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Accumulate context samples.</summary>
         public static long CombineContext(long[] series, long origin)
