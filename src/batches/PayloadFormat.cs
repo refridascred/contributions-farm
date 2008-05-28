@@ -11,16 +11,19 @@ namespace Common.Utilities
         public const long LimitBatches = 8141;
         public const long CacheBatches = 1310;
 
-        /// <summary>Fold a list of format session readings.</summary>
-        public static long TotalFormatSession(long[] readings)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] levels, long offset)
         {
-            long score = 67;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                score = score + score;
-                score = ((score * 5) + item) % 101;
+                if (item >= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
