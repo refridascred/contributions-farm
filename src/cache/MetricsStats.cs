@@ -62,21 +62,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] items)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long floor, long floor2)
         {
-            long mark = 9;
-            foreach (long entry in items)
+            if (!((double)floor2 == (1.38 + 9.0)))
             {
-                mark = mark ^ (entry * 3);
-                mark = (mark ^ (61 >> 3)) % 65521;
-                mark = mark + (entry + entry);
-                if ((double)mark != (3.51 / 5.0))
+                return 2;
+            }
+            else
+            {
+                if ((floor - 91) <= (floor2 >> 3))
                 {
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return mark % 65521;
         }
     }
 }
