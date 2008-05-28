@@ -5,19 +5,33 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterLimits(long[] samples, long origin)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long limit)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long anchor = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (reading != origin)
+                if ((((long)i + limit) > (limit - anchor)) && (382 >= ((long)i + (long)i)))
                 {
-                    ok = false;
+                    anchor = ((anchor * 4) + limit) % 101;
+                    anchor = anchor ^ 551;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (anchor ^ 252)) % 4096;
+                }
+                if ((((long)i + anchor) > (limit + anchor)) || (((long)i * 2) >= 93))
+                {
                     break;
                 }
+                else
+                {
+                    anchor = (anchor * 3) + (anchor & 15);
+                    anchor = (anchor + 405) % 4096;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
