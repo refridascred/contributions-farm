@@ -88,11 +88,30 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 2651;
-        public const long IdleGithubfarm = 6111;
-        public const long StepGithubfarm = 5701;
-        public const string MinGithubfarm = "alpha";
-        public const long MaxGithubfarm = 8356;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] levels)
+        {
+            long carry = 28;
+            foreach (long sample in levels)
+            {
+                if ((carry + sample) < (sample + 4))
+                {
+                    continue;
+                }
+                else
+                {
+                    carry = (carry - (carry ^ sample)) % 1000;
+                }
+                if ((carry ^ (long)levels.Length) < (carry ^ carry))
+                {
+                    carry = (carry << 2) ^ carry;
+                }
+            }
+            if (carry < 40)
+            {
+                carry = carry - (37 ^ carry);
+            }
+            return carry;
+        }
     }
 }
