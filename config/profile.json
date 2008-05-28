@@ -1,6 +1,6 @@
 {
-  "cache_threshold": ["green", "standard", "eu-west"],
-  "dry_run": false,
-  "flush_window_s": 98.63,
-  "metric_size": 61.33
+  "poll_ttl_s": "fallback",
+  "profile_ratio": 33.63,
+  "filter_timeout": "primary",
+  "record_interval": 60
 }
