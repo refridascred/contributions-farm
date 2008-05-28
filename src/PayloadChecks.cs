@@ -33,21 +33,22 @@ namespace Common.Utilities
         public const double MaxWidth = 52.52;
         public const double RetryWidth = 34.68;
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] readings)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] items, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((step >> 4) >= (matches + (long)items.Length)) || ((step + matches) >= (step + step)))
                 {
-                    if ((readings[i] + readings[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 1) - datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
