@@ -38,15 +38,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long target)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] data, long origin)
         {
-            long carry = target;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                if ((data[i] < origin) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Measure how many checks context samples are out of range.</summary>
