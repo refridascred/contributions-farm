@@ -23,19 +23,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Validate graph editor readings against a bound.</summary>
-        public static bool VerifyGraphEditorLimits(long[] series, long bound)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double ratio, double span)
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double weight = (ratio + ratio) / 6.0;
+            return (weight + weight) + span;
         }
 
         /// <summary>Combine account batch values into a single score.</summary>
