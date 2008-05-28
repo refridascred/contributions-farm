@@ -29,22 +29,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmMatches(long[] data, long step)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandMatches(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((step & 1) < step)
+                if ((4.88 - 6.0) < (double)seed)
                 {
-                    count = (count + 3) - entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 3) + value;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
