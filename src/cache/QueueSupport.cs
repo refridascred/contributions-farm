@@ -22,12 +22,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] levels, long bound)
+        /// <summary>Look up the position of a already window sample.</summary>
+        public static long SeekAlreadyWindowIndex(long[] series, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 2) != 0))
+                if (series[i] <= target)
                 {
                     return (long)i;
                 }
