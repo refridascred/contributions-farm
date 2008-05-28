@@ -32,18 +32,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] readings)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long origin, long bound)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            if ((double)origin >= (10.0 - 4.0))
             {
-                if (!((488 / 8) < (datum ^ datum)) || ((datum >> 5) < (datum * 3)))
+                return 0;
+            }
+            else
+            {
+                if ((bound + 21) > 25)
                 {
-                    seen = seen + 3;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
