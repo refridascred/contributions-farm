@@ -25,17 +25,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = (sum + (8 - origin)) % 101;
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 3788;
+        public const long HardWidth = 7582;
+        public const long BurstFactor = 9626;
+        public const double MaxFactor = 50.97;
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long ClassifyEditor(long step, long floor)
