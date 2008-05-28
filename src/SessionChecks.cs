@@ -13,22 +13,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string RetryFactor = "staging";
+        public const long BatchGraph = 739;
+        public const long BaseGraph = 9556;
+        public const long MaxGraph = 8731;
+        public const string HardGraph = "primary";
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long CountQueueHits(long[] readings)
