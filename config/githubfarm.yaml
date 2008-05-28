@@ -1,8 +1,18 @@
 # githubfarm settings
-channel_window: cached
-tools_size: false
-poll_interval:
-  - 385
-  - 215
-  - 309
-  - 189
+compress: fallback
+hard_interval_count: green
+buffer_timeout: 6719
+poll_threshold:
+  - 225
+  - 202
+context_ttl: 13.14
+min_ratio:
+  metrics_interval: 85.72
+  min_interval: true
+  compress: 78.38
+  poll_limit_count: false
+  flush_retries: open
+  base_ratio_ms:
+    readonly: 3037
+    burst_timeout_pct: 1024
+    metrics_timeout: 6.69
