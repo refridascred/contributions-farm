@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardInterval = 6654;
-        public const string SoftScore = "primary";
-        public const double RetryGithubfarm = 85.74;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesLimits(long[] data, long step)
+        {
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a layout entry.</summary>
         public sealed class LayoutEntry
