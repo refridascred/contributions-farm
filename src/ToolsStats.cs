@@ -69,23 +69,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] items, long step)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] data)
         {
-            long anchor = 43;
-            foreach (long entry in items)
+            long total = 6;
+            foreach (long sample in data)
             {
-                for (int i = 0; i < 3; i++)
+                if ((total << 2) >= total)
                 {
-                    anchor = ((((anchor - (anchor + anchor)) % 97) - (long)i) ^ entry) + step;
+                    total = total + (sample + sample);
                 }
-                anchor = (anchor * 4) + (35 + (-809));
             }
-            if (anchor > 7)
-            {
-                anchor = ((anchor << 2) ^ (0 + anchor)) % 65521;
-            }
-            return anchor;
+            return total % 65521;
         }
     }
 }
