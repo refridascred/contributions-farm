@@ -1,10 +1,17 @@
 # entry settings
-default_ratio_s:
-  - 356
-  - 118
-  - 137
-audit: strict
-dry_run:
-  - standard
-  - green
-  - cached
+cache_size_count: true
+idle_capacity:
+  - 419
+  - 151
+  - 355
+soft_size:
+  - latest
+  - fallback
+min_retries: 21
+idle_capacity_pct:
+  poll_interval: 35.98
+  strict: false
+  stream_threshold: blue
+  persist: false
+  audit: 1837
+  poll_timeout_s: 94
