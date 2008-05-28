@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=45
+log "limit is ${CHANNEL_LIMIT}"
 
-for item in cached staging blue edge; do
+for item in local fallback; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=90
-log "limit is ${CHANNEL_LIMIT}"
