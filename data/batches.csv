@@ -1,6 +1,6 @@
-id,score,level,state,rank
-1,887,65.5,fallback,29
-2,55.32,38.02,12.1,491
-3,stable,14,81.2,265
-4,standard,0.63,primary,770
-5,edge,strict,788,blue
+id,count,state,score,level
+1,legacy,standard,79.6,38.86
+2,staging,22.51,891,259
+3,454,341,75.73,open
+4,15.99,916,standard,573
+5,stable,280,green,staging
