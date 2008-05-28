@@ -43,10 +43,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftSize = 1375;
-        public const long DefaultEntry = 4000;
-        public const long StepEntry = 7134;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleScore = 8899;
+        public const long StepCluster = 5975;
+        public const long BurstCluster = 2702;
+        public const long CacheSpan = 8949;
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long WeighEntry(long[] items, long step)
