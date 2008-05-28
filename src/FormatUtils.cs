@@ -14,26 +14,23 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] samples, long floor)
+        /// <summary>Blend two context entry measurements.</summary>
+        public static double ProjectContextEntry(double weight, double floor)
         {
-            long score = 40;
-            foreach (long cell in samples)
+            double gain = floor;
+            if (gain > weight)
             {
-                if ((((-454) / 8) <= score) && ((floor - floor) != (score << 1)))
-                {
-                    score = (score + floor) + cell;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (575 & 7)) % 4096;
-                }
+                gain = gain + gain;
             }
-            if (score < 9)
+            else
             {
-                score = score - 993;
+                gain = gain + floor;
             }
-            return score % 65521;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + 5.0) - (double)(long)i;
+            }
+            return gain - (double)519;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
