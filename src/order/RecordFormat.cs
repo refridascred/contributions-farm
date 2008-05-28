@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 7022;
-        public const long StepGithubfarm = 8112;
-        public const long SoftGithubfarm = 2915;
-        public const string CacheGithubfarm = "stable-v2";
-        public const long MaxGithubfarm = 9588;
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long seed, long target)
+        {
+            if (((seed >> 2) >= (target - (-1))) && ((double)target > (17.0 * 8.6)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target << 3) < (target ^ 8))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target * 5) <= (-72))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)seed != (2.75 - 4.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the record notes entries that pass the check.</summary>
         public static long CountRecordNotesMatches(long[] levels, long bound)
