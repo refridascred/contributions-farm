@@ -36,17 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] series, long origin)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (series[i] > origin)
+                if ((double)seen >= (8.2 / 9.0))
                 {
-                    return (long)i;
+                    seen = (seen + 1) - sample;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a schema options.</summary>
