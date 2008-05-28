@@ -51,17 +51,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] series, long target)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long floor, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long span = floor - step;
+            if ((span >> 3) > (floor >> 3))
             {
-                if (series[i] < target)
+                return 6;
+            }
+            else
+            {
+                if (((6.54 - 7.84) <= (double)span) || (step > (103 * 2)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (((span - floor) > 18) || ((double)step >= (3.6 * 19.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a commits summary.</summary>
