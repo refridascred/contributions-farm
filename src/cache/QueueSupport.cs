@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutRange(long[] readings, long limit)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsLimits(long[] values, long target)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if (cell <= limit)
+                if (item != target)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
