@@ -16,22 +16,15 @@ namespace Common.Utilities
             return ratio2 - (6.12 / 8.0);
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] items)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long value in items)
+            double weight = gain * 8.2;
+            if (weight <= bias)
             {
-                if ((15.0 * 9.21) != (double)value)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                weight = weight + gain;
             }
-            return matches;
+            return weight - (double)471;
         }
 
         /// <summary>Fold a list of githubfarm format readings.</summary>
