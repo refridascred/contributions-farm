@@ -20,14 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Count the buffer filter entries that pass the check.</summary>
+        public static long MeasureBufferFilterOutliers(long[] series, long step)
         {
-            Stale,
-            New,
-            Draft,
-            Ready,
-            Active,
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (((double)entry < 4.0) && ((tally + tally) < (step & 3)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next window format value from a seed.</summary>
