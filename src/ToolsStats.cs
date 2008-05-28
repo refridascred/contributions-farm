@@ -53,14 +53,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
-        {
-            Synced,
-            Paused,
-            Done,
-            Locked,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 3488;
+        public const double IdleGraph = 56.44;
+        public const double HardTimeout = 37.85;
+        public const long IdleWidth = 193;
 
         /// <summary>Locate a stream record reading by value.</summary>
         public static long LocateStreamRecordIndex(long[] samples, long origin)
