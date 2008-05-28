@@ -1,6 +1,11 @@
-id,level,state,active
-1,stable,74.54,986
-2,35.28,802,standard
-3,931,strict,387
-4,59.15,75.0,161
-5,645,blue,79.19
+id,region,weight,score,label
+1,9.68,stable,strict,55.07
+2,fallback,cached,271,legacy
+3,primary,230,33.46,local
+4,25.65,645,blue,992
+5,local,eu-west,370,786
+6,98.49,787,local,824
+7,open,eu-west,945,8.12
+8,865,primary,66.12,23.45
+9,legacy,fallback,local,green
+10,edge,339,34.32,15.48
