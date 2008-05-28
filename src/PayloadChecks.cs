@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstChannel = 8681;
-        public const string HardInterval = "stable-1";
-        public const long DefaultSize = 173;
-        public const double BaseCount = 42.46;
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long DigestChecks(long[] samples)
