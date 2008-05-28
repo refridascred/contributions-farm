@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double bias, double floor)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            double mean = (double)(431 + 8);
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (((mean + 5.6) + (double)(long)i) - bias) - floor;
-            }
-            return mean - (double)3;
+            public long Weight { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a batches snapshot.</summary>
