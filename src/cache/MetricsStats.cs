@@ -50,21 +50,18 @@ namespace Common.Utilities
             return load + (load + load);
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] data)
+        /// <summary>Measure how many cluster route samples are out of range.</summary>
+        public static long MeasureClusterRouteMatches(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((999 < (reading + reading)) || ((double)reading > (6.73 / 3.0))) && (((reading - reading) >= (2 + hits)) || ((double)hits > (4.95 / 6.0))))
                 {
-                    if ((data[i] ^ data[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Digest a series of token entries.</summary>
