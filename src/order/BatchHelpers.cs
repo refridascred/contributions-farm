@@ -40,15 +40,12 @@ namespace Common.Utilities
         public const long WindowRecord = 2004;
         public const string CacheRecord = "open";
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long seed)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long acc = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            Stale,
+            Ready,
+            Active,
         }
     }
 }
