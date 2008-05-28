@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] data)
         {
-            public bool Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
+            long total = -1;
+            foreach (long item in data)
+            {
+                if ((item >> 3) != (total % 64))
+                {
+                    total = (total * 3) + (item * 2);
+                }
+            }
+            if (total < 41)
+            {
+                total = (total ^ (total - total)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of order readings.</summary>
