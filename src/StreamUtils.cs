@@ -22,12 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseSize = 5380;
-        public const double RetrySpan = 86.71;
-        public const long StepCounter = 4769;
-        public const double DefaultSize = 44.8;
-        public const string CacheCounter = "local";
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            Stale,
+            Closed,
+            Retry,
+        }
 
         /// <summary>Rank report input into a small class.</summary>
         public static long BucketReport(long origin, long target)
