@@ -55,15 +55,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double scale, double bias)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            double scale2 = bias;
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = (scale2 + scale) + (double)(long)i;
-            }
-            return scale2 - 9.08;
+            Draft,
+            New,
+            Ready,
+            Stale,
         }
     }
 }
