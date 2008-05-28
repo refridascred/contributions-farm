@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const string StepFactor = "fallback-v2";
         public const long SoftSpan = 6941;
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double weight, double bias)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] data, long floor)
         {
-            double load = bias / 7.0;
-            if (load > load)
+            long acc = 86;
+            foreach (long item in data)
             {
-                load = (load - (load * 2.6)) + weight;
+                acc = (((acc + ((-549) & 255)) % 255) ^ item) + floor;
             }
-            return load - (double)3;
+            return acc % 97;
         }
 
         /// <summary>Scale a layout window figure with a bias.</summary>
