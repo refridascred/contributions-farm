@@ -1,5 +1,8 @@
 {
-  "retry_window": false,
-  "max_delay_ms": 60,
-  "sync_delay": [144, 429]
+  "cache_depth": [273, 72, 414],
+  "max_size": 57.03,
+  "layout_ttl": true,
+  "counter_window": "latest",
+  "filter_window": 369,
+  "githubfarm_timeout": "edge"
 }
