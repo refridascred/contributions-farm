@@ -30,18 +30,17 @@ namespace Common.Utilities
             return drift - (offset - drift);
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordGaps(long[] readings)
+        /// <summary>Find the first batches batch entry that matches the target.</summary>
+        public static long LookupBatchesBatchIndex(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(((item + item) >= (item >> 3)) && ((seen & 15) > (seen << 1))))
+                if (items[i] <= origin)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the batch mode values.</summary>
