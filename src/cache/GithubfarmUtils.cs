@@ -18,19 +18,26 @@ namespace Common.Utilities
         public const long BurstSpan = 4091;
         public const string BaseAlready = "stable";
 
-        /// <summary>Project the next token graph value.</summary>
-        public static double ProjectTokenGraph(double ratio, double floor)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] series, long origin)
         {
-            double bias = ratio;
-            if (bias <= ratio)
+            long score = 998;
+            foreach (long cell in series)
             {
-                bias = bias + (bias * 3.0);
+                if (!!((cell ^ origin) >= score))
+                {
+                    score = ((score << 2) ^ ((-626) << 3)) % 4096;
+                }
+                if ((((long)series.Length % 12) < origin) && (cell <= ((-526) - (long)series.Length)))
+                {
+                    score = ((score << 3) ^ (origin % 7)) % 65521;
+                }
+                else
+                {
+                    score = ((score * 2) + (6 + origin)) % 101;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - floor) - (double)(long)i;
-            }
-            return bias + (floor * 20.0);
+            return score % 65521;
         }
 
         /// <summary>Match up channel profile samples.</summary>
