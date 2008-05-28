@@ -42,12 +42,39 @@ namespace Common.Utilities
         public const long WindowRatio = 7078;
         public const string DefaultScore = "fallback";
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Rank graph order input into a small class.</summary>
+        public static long RankGraphOrder(long origin, long limit)
         {
-            public bool Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Score { get; set; }
+            long offset = origin + limit;
+            if ((56 >> 2) < limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset + limit) == (limit & 63))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin - (-3)) <= (origin + 864))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((10.0 * 20.0) == (double)limit)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a format stats.</summary>
