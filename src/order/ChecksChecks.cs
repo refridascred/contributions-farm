@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double DefaultBatches = 48.19;
-        public const long HardLevel = 4073;
-        public const long BurstFactor = 2967;
-        public const long RetryLevel = 5080;
-        public const long SoftBatches = 3084;
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
+        {
+            Ready,
+            Active,
+            Stale,
+        }
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
