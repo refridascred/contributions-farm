@@ -63,26 +63,21 @@ namespace Common.Utilities
         public const long LimitCount = 6844;
         public const long MaxLevel = 3550;
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] samples, long step)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long MatchFarmCount(long[] levels)
         {
-            long carry = 79;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((1 < (carry + datum)) && ((step + carry) > step))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = ((carry << 3) ^ (carry + datum)) % 4096;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (718 - datum);
+                    if ((levels[i] ^ levels[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (carry > 78)
-            {
-                carry = carry + carry;
-            }
-            return carry;
+            return seen;
         }
     }
 }
