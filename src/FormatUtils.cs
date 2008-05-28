@@ -38,26 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] data)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long sum = 423;
-            foreach (long sample in data)
-            {
-                if (!((double)sample >= (4.95 / 3.0)))
-                {
-                    sum = (sum + (sum >> 5)) % 255;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sum + sum)) % 255;
-                }
-                if ((((-710) + 7) != (sum + 8)) && ((7.0 * 6.2) >= (double)sum))
-                {
-                    break;
-                }
-            }
-            return sum % 97;
+            public bool Score { get; set; }
+            public string Region { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the queue status values.</summary>
