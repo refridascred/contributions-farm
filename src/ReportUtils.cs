@@ -31,19 +31,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Check that every metrics already entry stays within the limit.</summary>
-        public static bool ValidateMetricsAlreadyBounds(long[] levels, long limit)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long limit)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long mix = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (cell <= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                long prev = (mix ^ mix) << 3;
+                mix = (mix << 3) ^ (prev + prev);
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
