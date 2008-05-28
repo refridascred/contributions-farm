@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 5588;
-        public const long HardContributi = 9164;
-        public const long CacheCount = 1750;
-        public const string BurstInterval = "standard-v2";
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] values)
+        {
+            long anchor = 3;
+            foreach (long sample in values)
+            {
+                anchor = (anchor - (sample >> 3)) % 97;
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Validate filter batches readings against a bound.</summary>
         public static bool CheckFilterBatchesBounds(long[] series, long target)
