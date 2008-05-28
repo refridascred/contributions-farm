@@ -1,8 +1,7 @@
 # githubfarm settings
-idle_timeout_s: 79.1
-sync_ttl_count:
-  - primary
-  - primary
-  - staging
-  - strict
-readonly: 2.21
+sync_ratio: staging
+max_capacity_pct: 500
+min_window: 24.37
+retry_size_s:
+  - 292
+  - 487
