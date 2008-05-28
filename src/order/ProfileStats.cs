@@ -13,15 +13,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Ready,
-            Failed,
-            Paused,
-            Queued,
-            Locked,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinFactor = 6018;
+        public const long StepWidth = 3358;
+        public const long BaseWidth = 101;
+        public const long RetryStream = 8834;
 
         /// <summary>Project the next support value.</summary>
         public static double ScaleSupport(double ratio, double offset)
