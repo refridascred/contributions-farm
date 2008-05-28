@@ -33,19 +33,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphRange(long[] samples, long step)
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum < step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
