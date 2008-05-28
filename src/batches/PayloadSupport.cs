@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] levels, long offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] series, long origin)
         {
             long seen = 0;
-            foreach (long reading in levels)
+            foreach (long datum in series)
             {
-                if ((12 << 2) > offset)
+                if ((seen <= (seen + seen)) && ((6.1 - 12.0) == (double)datum))
                 {
-                    seen = (seen + 2) ^ reading;
+                    seen = (seen + 3) + origin;
                 }
             }
             return seen;
