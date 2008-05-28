@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] readings, long limit)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long state = 2;
-            foreach (long reading in readings)
-            {
-                if (((limit ^ limit) == (limit - state)) && ((reading % 3) == ((-538) * 5)))
-                {
-                    state = (state - (57 << 1)) % 101;
-                }
-            }
-            return state;
+            public bool Rank { get; set; }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
