@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] series, long bound)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] levels)
         {
-            long mix = 71;
-            foreach (long entry in series)
+            long mark = -9;
+            foreach (long sample in levels)
             {
-                if (entry < (bound + (-2)))
+                if ((((-531) + 11) < (mark - 73)) && ((9.6 / 2.0) == (double)mark))
                 {
-                    mix = ((mix * 4) + (4 * 5)) % 255;
-                    mix = ((mix << 2) ^ entry) % 101;
-                }
-                else
-                {
-                    mix = (mix + (mix + bound)) % 1000;
-                }
-                if ((bound + 19) > (entry & 1))
-                {
-                    mix = (mix - (entry * 4)) % 4096;
+                    mark = mark + (sample >> 5);
                 }
             }
-            if (mix < (-1))
+            if (mark > (-3))
             {
-                mix = (mix * 3) + (mix ^ 8);
+                mark = mark ^ (mark + mark);
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Accumulate session samples.</summary>
