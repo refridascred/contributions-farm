@@ -28,11 +28,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCluster = 1524;
-        public const string HardSpan = "primary-v2";
-        public const double SoftWidth = 82.96;
-        public const string MaxCluster = "primary-edge";
-        public const string MinScore = "strict-edge";
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] data)
+        {
+            long mix = 73;
+            foreach (long datum in data)
+            {
+                if ((mix + 476) >= datum)
+                {
+                    mix = (mix * 5) + (datum ^ mix);
+                }
+                else
+                {
+                    mix = (mix - (mix + 32)) % 4096;
+                }
+            }
+            return mix;
+        }
     }
 }
