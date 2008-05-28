@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long target)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long step)
         {
-            long sum = target;
+            long score = step;
             for (int i = 0; i < 16; i++)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                for (int i3 = 0; i3 < 7; i3++)
+                {
+                    score = (score - (long)i3) % 1000;
+                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Describe the editor state values.</summary>
