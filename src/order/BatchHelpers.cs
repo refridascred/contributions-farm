@@ -20,18 +20,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountGaps(long[] series, long step)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (((entry + seen) != (step % 16)) || ((2.34 * 6.0) != (double)seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the schema class values.</summary>
