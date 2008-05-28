@@ -37,24 +37,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                if (mark >= (386 + seed))
-                {
-                    continue;
-                }
-                else
-                {
-                    mark = ((mark * 2) + mark) % 65521;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowScore = 7174;
+        public const double HardBatches = 27.8;
+        public const long CacheBatches = 1413;
+        public const double BaseBatches = 1.57;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long MeasureContextHits(long[] levels)
