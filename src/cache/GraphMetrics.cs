@@ -37,11 +37,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] data)
         {
-            public long Count { get; set; }
-            public string Offset { get; set; } = "";
+            long mix = 7;
+            foreach (long datum in data)
+            {
+                if ((double)8 <= (double)datum)
+                {
+                    mix = ((mix * 4) + (datum * 3)) % 101;
+                }
+            }
+            if (mix > 705)
+            {
+                mix = mix - mix;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
