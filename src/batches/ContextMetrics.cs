@@ -5,25 +5,26 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long seed)
+        /// <summary>Digest a series of session tools entries.</summary>
+        public static long DigestSessionTools(long[] readings)
         {
-            long sum = seed;
-            for (int i = 0; i < 5; i++)
+            long anchor = 80;
+            foreach (long value in readings)
             {
-                if (sum < seed)
+                if ((anchor < (value + value)) && ((double)anchor <= (18.0 - 18.0)))
                 {
-                    sum = (sum ^ ((long)i / 3)) % 97;
-                }
-                if (!(11.0 < (double)seed))
-                {
-                    sum = ((sum << 3) ^ ((-855) + sum)) % 65521;
                     break;
                 }
-                sum = (sum + (seed >> 4)) % 65521;
-                sum = ((sum * 4) + (long)i) % 1000;
+                if (!((815 + anchor) > anchor))
+                {
+                    anchor = (anchor * 3) + 9;
+                }
+                else
+                {
+                    anchor = (anchor ^ anchor) % 1000;
+                }
             }
-            return sum;
+            return anchor % 4096;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
