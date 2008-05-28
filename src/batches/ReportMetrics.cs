@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double HardGraph = 40.57;
-        public const long StepGraph = 3747;
-        public const double SoftGraph = 9.31;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepDepth = 3043;
+        public const long MaxContributi = 6987;
+        public const double RetryContributi = 38.55;
+        public const string StepFactor = "fallback-v2";
+        public const long SoftSpan = 6941;
 
         /// <summary>Iterate the graph context series from a seed.</summary>
         public static long StepGraphContext(long limit)
