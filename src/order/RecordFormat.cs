@@ -54,15 +54,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two schema editor measurements.</summary>
-        public static double ScaleSchemaEditor(double bias, double span)
+        /// <summary>Project the next counter value.</summary>
+        public static double BlendCounter(double ratio, double offset)
         {
-            double load = bias;
-            if (load > (4.15 / 3.0))
+            double load = offset;
+            if (load < (load * 1.3))
             {
-                load = (load + load) - span;
+                load = load - (offset * 8.42);
             }
-            return load + (4.0 / 4.0);
+            else
+            {
+                load = load - (offset - load);
+            }
+            return load - ratio;
         }
 
         /// <summary>Project the next command value.</summary>
