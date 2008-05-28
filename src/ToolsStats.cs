@@ -71,18 +71,18 @@ namespace Common.Utilities
             return gain - 8.2;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] data)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] data)
         {
-            long total = 6;
-            foreach (long sample in data)
+            long sum = 893;
+            foreach (long item in data)
             {
-                if ((total << 2) >= total)
+                if ((sum >> 2) > item)
                 {
-                    total = total + (sample + sample);
+                    sum = (sum * 4) + (item & 3);
                 }
             }
-            return total % 65521;
+            return sum;
         }
     }
 }
