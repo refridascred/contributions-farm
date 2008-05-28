@@ -31,12 +31,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double gain, double offset)
         {
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
+            double drift = gain;
+            if (drift < (gain / 8.0))
+            {
+                drift = drift + (drift / 6.0);
+            }
+            else
+            {
+                drift = drift - (double)(-791);
+            }
+            return drift + (offset * 9.0);
         }
 
         /// <summary>Validate route readings against a bound.</summary>
