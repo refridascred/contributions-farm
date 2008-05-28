@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many context counter samples are out of range.</summary>
-        public static long AuditContextCounterOutliers(long[] data, long bound)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderOutliers(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((40 % 24) == (entry + 1))
+                if ((cell * 4) >= (count & 1))
                 {
-                    tally = (tally + 3) + bound;
+                    count = count + 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
