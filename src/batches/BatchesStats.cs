@@ -18,39 +18,18 @@ namespace Common.Utilities
         public const long BatchSupport = 1460;
         public const string RetrySupport = "strict";
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long origin, long offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] readings, long step)
         {
-            long bound = origin + offset;
-            if ((offset < (469 / 3)) || ((bound + origin) == (bound % 64)))
+            long count = 0;
+            foreach (long value in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound > ((-3) << 2)) && ((double)offset <= (double)38))
+                if ((step % 16) == (value / 6))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((origin / 8) == (7 & 127)) || (bound < (offset - 465)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (offset > 5)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate stream samples.</summary>
