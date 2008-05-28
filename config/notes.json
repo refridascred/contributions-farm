@@ -1,5 +1,19 @@
 {
-  "default_limit_count": 70.65,
-  "editor_window": true,
-  "flush_ttl": 41.7
+  "flush_depth_pct": 500,
+  "cache_ratio": {
+    "min_ttl_s": 6836,
+    "buffer_retries": "stable",
+    "record_window": {
+      "min_timeout": 250,
+      "channel_window": 60.23,
+      "support_window": 47.21,
+      "cache_limit_pct": true,
+      "soft_interval_pct": "edge"
+    },
+    "warm_delay_ms": "cached",
+    "sync_ratio": 81,
+    "soft_interval": 500
+  },
+  "burst_ratio_s": "blue",
+  "compress": ["legacy", "stable", "eu-west", "cached"]
 }
