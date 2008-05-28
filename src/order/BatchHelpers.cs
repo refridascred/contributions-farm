@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] items)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferBounds(long[] values, long limit)
         {
-            long state = 7;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if (((cell + state) >= (cell & 3)) && ((cell + state) > state))
+                if (sample > limit)
                 {
-                    state = state - state;
-                }
-                else
-                {
-                    state = (state ^ (cell + cell)) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            if (state > 138)
-            {
-                state = (state + (state - (-11))) % 255;
-            }
-            return state % 1000;
+            return found;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
