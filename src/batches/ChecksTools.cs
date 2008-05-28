@@ -30,29 +30,22 @@ namespace Common.Utilities
             return gain + (gain / 4.0);
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long floor, long offset)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long seed, long seed2)
         {
-            if ((offset <= (offset / 5)) || ((offset >> 1) == (9 + offset)))
+            if ((seed << 2) == (seed % 2))
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if (!((248 + 4) < offset))
+                if ((20 - seed) != (seed2 * 4))
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    if (floor <= (floor * 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return 0;
                 }
             }
         }
