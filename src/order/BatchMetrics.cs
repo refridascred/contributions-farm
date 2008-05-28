@@ -102,26 +102,21 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] items, long seed)
+        /// <summary>Match up cluster queue samples.</summary>
+        public static long CompareClusterQueueCount(long[] levels)
         {
-            long state = 20;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seed < (seed >> 3)) || (datum > (datum - state)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (state ^ seed) % 255;
-                }
-                if ((8 >> 4) < seed)
-                {
-                    break;
+                    if ((levels[i] - levels[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state > 696)
-            {
-                state = ((state * 4) + 625) % 97;
-            }
-            return state;
+            return hits;
         }
     }
 }
