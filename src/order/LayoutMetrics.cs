@@ -11,22 +11,22 @@ namespace Common.Utilities
         public const double MaxDepth = 74.37;
         public const long StepDepth = 449;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] levels, long offset)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordMatches(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((95 / 6) <= (hits + offset))
+                if ((double)297 > (double)floor)
                 {
-                    hits = (hits + 2) + entry;
+                    tally = (tally + 1) ^ reading;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
