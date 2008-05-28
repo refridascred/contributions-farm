@@ -19,16 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double scale, double offset)
-        {
-            double load = scale;
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (offset * 14.0)) + (double)(long)i;
-            }
-            return load + offset;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftTimeout = 6899;
+        public const long CacheSize = 6796;
+        public const long DefaultSize = 9493;
 
         /// <summary>Audit schema graph readings against a rule.</summary>
         public static long CountSchemaGraphOutliers(long[] levels)
