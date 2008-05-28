@@ -1,5 +1,5 @@
 {
-  "hard_ttl_count": ["latest", "stable", "legacy"],
-  "default_size_s": ["legacy", "cached", "staging", "stable"],
-  "githubfarm_timeout": 6120
+  "batches_interval": "staging",
+  "soft_limit_s": true,
+  "idle_interval_s": "legacy"
 }
