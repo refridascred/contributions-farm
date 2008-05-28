@@ -42,13 +42,18 @@ namespace Common.Utilities
             return scale - (double)917;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelMatches(long[] data, long target)
         {
-            Done,
-            Retry,
-            Failed,
-            Synced,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (!(19.0 > (double)item))
+                {
+                    count = (count + 2) + target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
