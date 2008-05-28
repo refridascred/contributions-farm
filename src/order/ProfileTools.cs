@@ -44,19 +44,23 @@ namespace Common.Utilities
         public const double BaseBatches = 55.59;
         public const string DefaultBatches = "primary-v2";
 
-        /// <summary>Validate commits batches readings against a bound.</summary>
-        public static bool CheckCommitsBatchesRange(long[] values, long floor)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long seed)
         {
-            bool found = true;
-            foreach (long item in values)
+            long state = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (item != floor)
+                if (!((seed + (long)i) >= ((long)i / 2)))
                 {
-                    found = false;
-                    break;
+                    continue;
                 }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    state = (state ^ (17 + state)) ^ (long)i2;
+                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Project the next commits value.</summary>
