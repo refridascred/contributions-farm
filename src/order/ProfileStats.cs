@@ -16,14 +16,11 @@ namespace Common.Utilities
             return mean - (double)3;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            Synced,
-            Locked,
-            New,
-            Pending,
-            Paused,
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
