@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long StepStream = 8691;
         public const long RetryStream = 8720;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] samples)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (!((matches - entry) > entry))
+                if ((double)tally < (1.0 * 8.79))
                 {
-                    matches = matches + 2;
+                    tally = (tally + 1) ^ sample;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Accumulate layout notes samples.</summary>
