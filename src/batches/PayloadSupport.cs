@@ -32,18 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] series, long step)
+        /// <summary>Check that every schema session entry stays within the limit.</summary>
+        public static bool ValidateSchemaSessionBounds(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if ((0.2 + 6.0) >= (double)count)
+                if (cell < limit)
                 {
-                    count = ((count + 3) + value) - step;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
