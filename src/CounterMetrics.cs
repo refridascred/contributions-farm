@@ -23,19 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate support cache readings against a bound.</summary>
-        public static bool GuardSupportCacheRange(long[] values, long offset)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Ready,
+            Synced,
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
