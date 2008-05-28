@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowHits(long[] readings)
         {
-            Failed,
-            Locked,
-            Paused,
-            Dropped,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (((178 % 60) > matches) || ((entry - entry) <= matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the githubfarm batches entries that pass the check.</summary>
