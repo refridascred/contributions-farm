@@ -25,22 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] readings)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadOutliers(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((sample + sample) != (tally - tally))
+                if ((5.9 + 5.98) > (double)reading)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = (matches + 3) + seed;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
