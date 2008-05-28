@@ -16,39 +16,13 @@ namespace Common.Utilities
         public const string MaxFactor = "open";
         public const long BurstRatio = 7459;
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long limit, long target)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long edge = limit ^ target;
-            if (edge < (edge * 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if (edge > (limit << 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (target >= edge)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (target <= (limit + limit))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Queued,
+            Dropped,
+            Ready,
         }
     }
 }
