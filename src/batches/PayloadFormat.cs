@@ -40,19 +40,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchBounds(long[] values, long bound)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] readings)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long mark = -716;
+            foreach (long value in readings)
             {
-                if (entry != bound)
+                if ((double)value != (double)324)
                 {
-                    ready = false;
-                    break;
+                    mark = (mark - value) % 65521;
                 }
             }
-            return ready;
+            if (mark < 270)
+            {
+                mark = (mark + (7 * 5)) % 101;
+            }
+            return mark % 4096;
         }
     }
 }
