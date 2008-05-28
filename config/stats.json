@@ -1,18 +1,5 @@
 {
-  "record_ttl": 75.25,
-  "min_delay_count": "legacy",
-  "dry_run": "cached",
-  "persist": "open",
-  "base_retries_s": {
-    "commits_delay": {
-      "max_depth_s": 500,
-      "min_depth_s": 28.68,
-      "cache_capacity": 98,
-      "farm_ratio": "fallback",
-      "strict": "legacy"
-    },
-    "batch_limit_count": false,
-    "default_capacity_s": "eu-west"
-  },
-  "compress": 100
+  "hard_ttl_count": ["latest", "stable", "legacy"],
+  "default_size_s": ["legacy", "cached", "staging", "stable"],
+  "githubfarm_timeout": 6120
 }
