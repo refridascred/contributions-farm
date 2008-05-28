@@ -69,22 +69,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] values, long offset)
+        /// <summary>Find the first report counter entry that matches the target.</summary>
+        public static long SeekReportCounterIndex(long[] data, long seed)
         {
-            long total = 63;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((total % 24) >= (total + offset))
+                if (data[i] >= seed)
                 {
-                    total = (total ^ (reading % 7)) % 4096;
-                }
-                if (reading > offset)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total % 65521;
+            return -1;
         }
     }
 }
