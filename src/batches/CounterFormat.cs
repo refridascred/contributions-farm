@@ -22,13 +22,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            Queued,
-            Closed,
-            Locked,
-            Idle,
+            public double Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
