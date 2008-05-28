@@ -12,18 +12,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many format session samples are out of range.</summary>
-        public static long MeasureFormatSessionGaps(long[] values)
+        /// <summary>Audit checks batches readings against a rule.</summary>
+        public static long AuditChecksBatchesHits(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((double)matches > 9.0)
+                if (((seen << 2) > reading) && (((double)reading > (3.0 * 7.0)) && ((seen + reading) <= (3 - reading))))
                 {
-                    matches = (matches + 2) - datum;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Accumulate route schema samples.</summary>
