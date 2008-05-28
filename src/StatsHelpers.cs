@@ -43,11 +43,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double scale, double floor)
         {
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
+            double gain = (scale * 7.0) + (double)71;
+            return gain - floor;
         }
 
         /// <summary>Combine session checks values into a single score.</summary>
