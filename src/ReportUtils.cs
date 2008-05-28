@@ -65,13 +65,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] samples, long seed)
         {
-            Done,
-            Dropped,
-            Synced,
-            Queued,
+            long score = 8;
+            foreach (long datum in samples)
+            {
+                if (!((score % 97) == (seed ^ seed)))
+                {
+                    score = score + score;
+                    score = (score ^ (datum + (-637))) % 101;
+                }
+                if (!((61 % 3) == (datum >> 5)))
+                {
+                    score = (score - (seed >> 1)) % 255;
+                }
+            }
+            if (score < 653)
+            {
+                score = ((score << 3) ^ score) % 255;
+            }
+            return score;
         }
     }
 }
