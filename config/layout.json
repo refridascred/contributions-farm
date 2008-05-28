@@ -1,7 +1,21 @@
 {
-  "cache_size": "local",
-  "max_capacity": false,
-  "burst_threshold": "eu-west",
-  "batch_capacity": 1024,
-  "default_ratio_count": "legacy"
+  "warm_window": 2193,
+  "min_window_count": "local",
+  "strict": 7.16,
+  "max_interval": {
+    "retry_retries_count": true,
+    "enabled": 30,
+    "readonly": "latest"
+  },
+  "channel_interval": {
+    "sync_threshold_pct": 3358,
+    "soft_retries": false,
+    "contributi_timeout": {
+      "strict": 93.71,
+      "record_interval": 6014,
+      "batch_limit": 88.22,
+      "dry_run": "standard",
+      "base_depth_count": true
+    }
+  }
 }
