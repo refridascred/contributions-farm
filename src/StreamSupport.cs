@@ -20,19 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate schema batch readings against a bound.</summary>
-        public static bool CheckSchemaBatchLimits(long[] data, long step)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsMatches(long[] readings)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (item < step)
+                if (!((seen - reading) >= (43 >> 5)))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
