@@ -1,8 +1,9 @@
-id,owner,region,ratio,label
-1,staging,501,cached,940
-2,610,978,staging,17.2
-3,392,open,9,strict
-4,standard,53.47,261,0.83
-5,blue,staging,671,436
-6,edge,72.7,5.39,82.95
-7,open,1.24,cached,26.1
+id,level,owner,active,ratio
+1,705,27,local,56
+2,78.66,25.14,216,482
+3,cached,blue,892,81.89
+4,local,913,217,latest
+5,132,primary,green,953
+6,80.32,993,925,888
+7,257,open,43.68,748
+8,edge,828,90.57,25.06
