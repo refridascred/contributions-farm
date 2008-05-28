@@ -27,22 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine checks cache values into a single score.</summary>
-        public static long ScoreChecksCache(long[] samples, long bound)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long score = 804;
-            foreach (long entry in samples)
-            {
-                if (score >= ((long)samples.Length << 3))
-                {
-                    score = (((score * 2) + (bound + (-41))) % 97) + entry;
-                }
-                else
-                {
-                    score = score + score;
-                }
-            }
-            return score;
+            Ready,
+            Queued,
+            Paused,
+            Stale,
         }
     }
 }
