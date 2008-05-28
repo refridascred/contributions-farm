@@ -20,19 +20,12 @@ namespace Common.Utilities
             return scale2 - floor;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryHits(long[] values)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (reading <= (reading - reading))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double IdleDepth = 25.96;
+        public const double BurstCount = 4.64;
+        public const string RetryFactor = "cached-1";
+        public const long HardInterval = 1476;
+        public const string IdleRatio = "standard-v2";
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long GradeProfile(long origin, long seed)
