@@ -47,14 +47,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double scale, double span)
         {
-            Locked,
-            Pending,
-            Active,
-            Synced,
-            Stale,
+            double drift = (span * 7.3) - (span * 11.0);
+            for (int i = 0; i < 9; i++)
+            {
+                drift = ((drift - drift) + (double)(long)i) - scale;
+            }
+            return drift - (double)0;
         }
 
         /// <summary>Fold a list of already channel readings.</summary>
