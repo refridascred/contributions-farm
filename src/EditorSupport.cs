@@ -17,19 +17,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] samples, long target)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] series, long target)
         {
-            long sum = 631;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum - (cell - cell)) % 4096) - target;
-                if (((3.9 * 6.12) < (double)sum) && ((double)cell < 3.03))
+                if (series[i] == target)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Rank report input into a small class.</summary>
