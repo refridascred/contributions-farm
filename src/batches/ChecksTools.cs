@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long seed, long limit)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaGaps(long[] readings)
         {
-            long lane = seed ^ limit;
-            if (((lane - limit) < lane) && ((6 - seed) > (seed ^ 364)))
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((lane + lane) >= lane)
+                if (((long)readings.Length & 15) > (matches ^ 23))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((lane > (limit + lane)) && (seed > (lane / 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed + lane) == (seed & 127))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = (matches + 3) ^ cell;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
