@@ -22,19 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate entry metrics readings against a bound.</summary>
-        public static bool ValidateEntryMetricsLimits(long[] readings, long seed)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Queued,
+            Draft,
+            Pending,
+            Idle,
         }
 
         /// <summary>Hold a metrics entry.</summary>
