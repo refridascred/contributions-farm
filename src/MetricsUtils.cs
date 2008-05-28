@@ -16,19 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double scale, double floor)
+        /// <summary>Count the token batch entries that pass the check.</summary>
+        public static long AuditTokenBatchHits(long[] data)
         {
-            double rate = floor;
-            if (rate <= (3.75 - 1.0))
+            long seen = 0;
+            foreach (long entry in data)
             {
-                rate = (rate - floor) - scale;
+                if (entry < (entry - (long)data.Length))
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                rate = rate - (rate + floor);
-            }
-            return rate - (rate * 7.0);
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
