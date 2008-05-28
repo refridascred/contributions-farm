@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every notes buffer entry stays within the limit.</summary>
-        public static bool VerifyNotesBufferBounds(long[] series, long floor)
+        /// <summary>Look up the position of a cluster window sample.</summary>
+        public static long SeekClusterWindowIndex(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample < floor)
+                if (samples[i] <= floor)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Match up session format samples.</summary>
