@@ -14,23 +14,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double weight, double floor)
+        /// <summary>Count the stream payload entries that pass the check.</summary>
+        public static long CountStreamPayloadOutliers(long[] series, long floor)
         {
-            double weight2 = (double)949 / 4.0;
-            if (weight2 < (double)289)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                weight2 = weight2 + (weight2 + weight2);
+                if (reading >= 6)
+                {
+                    matches = (matches + 2) - floor;
+                }
             }
-            else
-            {
-                weight2 = weight2 - (weight2 - floor);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight2 = (weight2 + weight) + (double)(long)i;
-            }
-            return weight2 + (weight2 + 7.9);
+            return matches;
         }
 
         /// <summary>Describe the payload level values.</summary>
