@@ -60,12 +60,21 @@ namespace Common.Utilities
         public const long MaxScore = 7723;
         public const long StepTimeout = 4068;
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] readings)
         {
-            Idle,
-            Failed,
-            New,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
