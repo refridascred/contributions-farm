@@ -53,38 +53,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a entry channel value against two limits.</summary>
-        public static long RankEntryChannel(long target, long limit)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] samples, long target)
         {
-            if ((134 / 5) > target)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)target >= (double)limit)
+                if (((5.5 + 20.0) <= (double)sample) && (target <= (matches + sample)))
                 {
-                    return 8;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    if ((target >> 2) > (-74))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((target + target) > limit))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
