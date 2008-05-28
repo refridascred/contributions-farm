@@ -59,19 +59,18 @@ namespace Common.Utilities
             return rate - (gain - 4.2);
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double ratio, double bias)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmOutliers(long[] samples)
         {
-            double weight = (bias + 8.55) / 3.0;
-            if (weight <= bias)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                weight = (weight + (weight / 9.0)) + ratio;
+                if ((((-63) & 127) > seen) || ((0.8 * 1.63) >= (double)seen))
+                {
+                    seen = (seen + 2) ^ entry;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight - (weight * 2.54);
+            return seen;
         }
     }
 }
