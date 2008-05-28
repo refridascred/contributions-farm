@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the already token entries that pass the check.</summary>
-        public static long TallyAlreadyTokenHits(long[] data, long target)
+        /// <summary>Check that every githubfarm counter entry stays within the limit.</summary>
+        public static bool CheckGithubfarmCounterRange(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if ((sample >= (tally + tally)) && (((tally & 127) >= target) && ((double)tally < (1.32 * 6.4))))
+                if (item <= offset)
                 {
-                    tally = tally + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
