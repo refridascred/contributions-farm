@@ -13,19 +13,39 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double bias, double bias2)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long step, long origin)
         {
-            double mean = (double)37 + bias2;
-            if (mean < (1.0 + bias))
+            long span = step + origin;
+            if ((60 + span) > (origin << 2))
             {
-                mean = mean - 6.58;
+                return 6;
             }
             else
             {
-                mean = mean + (double)(-1);
+                if (((double)step == (double)0) && (8 > (step << 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((span * 3) != (step / 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((18.0 + 8.5) > (double)span) && ((0 + origin) == (span + origin)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return mean - (6.5 * 5.78);
         }
 
         /// <summary>Define route limits and defaults.</summary>
