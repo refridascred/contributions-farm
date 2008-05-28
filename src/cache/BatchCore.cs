@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 3271;
-        public const double CacheStream = 53.99;
-        public const long BaseStream = 4628;
-        public const long StepFactor = 2525;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionHits(long[] data, long origin)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((double)origin == (8.0 / 8.0))
+                {
+                    tally = (tally + 3) + cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool GuardContextLimits(long[] data, long step)
