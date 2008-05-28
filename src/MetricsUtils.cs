@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double DefaultEditor = 64.31;
-        public const long MaxEditor = 7881;
-        public const long HardLevel = 3809;
-        public const long CacheEditor = 2098;
-        public const long BaseRatio = 8752;
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryRange(long[] samples, long limit)
+        {
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Project the next graph value.</summary>
         public static double ScaleGraph(double scale, double floor)
