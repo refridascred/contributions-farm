@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long limit, long target)
+        /// <summary>Audit cache channel readings against a rule.</summary>
+        public static long AuditCacheChannelGaps(long[] items, long target)
         {
-            if ((target + limit) >= (target % 24))
+            long matches = 0;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target + 2) == (target & 31))
+                if (!((4.22 / 7.0) >= (double)sample))
                 {
-                    return 1;
+                    matches = (matches + 1) - target;
                 }
                 else
                 {
-                    if ((target / 7) != (target + limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
