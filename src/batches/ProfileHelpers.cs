@@ -41,19 +41,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] samples)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadBounds(long[] samples, long seed)
         {
-            long mark = 349;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                mark = (mark - (cell ^ mark)) % 65521;
+                if (item <= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (mark > 13)
-            {
-                mark = ((mark << 3) ^ mark) % 97;
-            }
-            return mark;
+            return ready;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
