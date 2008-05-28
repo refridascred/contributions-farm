@@ -22,18 +22,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesHits(long[] samples, long target)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long seed)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long score = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((4.1 - 14.0) < (double)target))
-                {
-                    count = (count + 2) + value;
-                }
+                score = (score << 3) ^ (70 - 66);
+                score = ((score * 2) + (long)i) % 101;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
