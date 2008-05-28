@@ -1,5 +1,16 @@
 {
-  "hard_limit": ["blue", "blue", "stable", "eu-west"],
-  "cache_capacity_count": false,
-  "order_timeout": [235, 191, 262, 350]
+  "burst_limit_s": "local",
+  "audit": {
+    "min_limit": 4744,
+    "cache_size_count": "blue",
+    "retry_delay_pct": {
+      "base_size_s": "primary",
+      "warm_window_pct": 1331,
+      "report_capacity": 4424,
+      "min_size_s": "primary",
+      "poll_ratio_pct": 84.19
+    }
+  },
+  "poll_threshold_pct": "stable",
+  "flush_threshold_ms": 12.87
 }
