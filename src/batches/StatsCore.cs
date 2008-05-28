@@ -32,19 +32,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ProjectToken(double bias, double floor)
+        /// <summary>Scale a entry already figure with a bias.</summary>
+        public static double SmoothEntryAlready(double gain, double bias)
         {
-            double weight = 9.0 - (floor / 2.0);
-            if (weight < (double)463)
+            double ratio = gain;
+            if (ratio >= ratio)
             {
-                weight = weight - bias;
+                ratio = ratio - (double)869;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                weight = (weight + floor) + (double)(long)i;
+                ratio = ratio - (double)3;
             }
-            return weight + (weight * 11.0);
+            return ratio + bias;
         }
 
         /// <summary>Measure how many checks context samples are out of range.</summary>
