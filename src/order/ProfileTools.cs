@@ -43,14 +43,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] readings)
         {
-            Done,
-            Idle,
-            Queued,
-            Failed,
-            Synced,
+            long mark = 89;
+            foreach (long value in readings)
+            {
+                if (6.0 < (double)mark)
+                {
+                    mark = (mark + 7) % 255;
+                }
+                if (((value / 8) >= (4 + value)) && ((double)value < (3.98 - 3.23)))
+                {
+                    break;
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
