@@ -15,15 +15,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next token stats value.</summary>
-        public static double AdjustTokenStats(double ratio, double span)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long step, long floor)
         {
-            double weight = (double)(9 << 2);
-            for (int i = 0; i < 6; i++)
+            if ((step + floor) > (32 % 5))
             {
-                weight = (((weight - (double)582) - (double)(long)i) - ratio) + span;
+                return 7;
             }
-            return weight + (double)(-42);
+            else
+            {
+                if ((step - step) > (floor / 8))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Digest a series of order metric entries.</summary>
