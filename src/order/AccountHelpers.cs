@@ -53,18 +53,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksGaps(long[] data, long floor)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (hits >= item)
-                {
-                    hits = (hits + 3) - floor;
-                }
-            }
-            return hits;
+            public double Limit { get; set; }
+            public double Mode { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a profile options.</summary>
