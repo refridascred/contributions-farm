@@ -86,26 +86,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long origin, long floor)
-        {
-            long cur = origin - floor;
-            if ((origin ^ 376) < (origin ^ 723))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((cur << 1) == (floor + cur))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string WindowDepth = "fallback-v2";
+        public const long BatchCount = 5319;
+        public const string MaxTimeout = "alpha-v2";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double BurstSize = 75.64;
