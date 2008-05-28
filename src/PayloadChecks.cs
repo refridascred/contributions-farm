@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long floor)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] values)
         {
-            long score = floor;
-            for (int i = 0; i < 20; i++)
+            long mark = -52;
+            foreach (long item in values)
             {
-                score = (score - ((long)i + 4)) % 255;
-                score = (score ^ floor) % 65521;
-                score = ((score * 2) + (long)i) % 65521;
+                if (!(57 > (item + mark)))
+                {
+                    mark = mark + mark;
+                }
+                else
+                {
+                    mark = (mark - (96 ^ item)) % 1000;
+                }
             }
-            return score;
+            return mark % 1000;
         }
 
         /// <summary>Grade a metrics metric value against two limits.</summary>
