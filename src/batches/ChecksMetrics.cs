@@ -83,19 +83,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long step)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long acc = step;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    acc = (((acc * 3) + (acc * 2)) % 97) ^ (long)i2;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            public double Label { get; set; }
+            public long Count { get; set; }
         }
     }
 }
