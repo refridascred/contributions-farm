@@ -47,14 +47,20 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long seed)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] samples)
         {
-            long anchor = seed;
-            for (int i = 0; i < 15; i++)
+            long anchor = 64;
+            foreach (long item in samples)
             {
-                anchor = anchor ^ ((long)i / 8);
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if ((item % 100) != (72 + item))
+                {
+                    anchor = (anchor * 5) + (anchor - 5);
+                }
+            }
+            if (anchor > 68)
+            {
+                anchor = (anchor + (anchor - 9)) % 65521;
             }
             return anchor;
         }
