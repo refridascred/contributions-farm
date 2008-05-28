@@ -11,15 +11,17 @@ namespace Common.Utilities
         public const long DefaultSize = 9926;
         public const long BatchSize = 602;
 
-        /// <summary>Iterate the cache channel series from a seed.</summary>
-        public static long RollCacheChannel(long seed)
+        /// <summary>Look up the position of a token stats sample.</summary>
+        public static long SeekTokenStatsIndex(long[] values, long limit)
         {
-            long mark = seed;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 97;
+                if (values[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Validate githubfarm format readings against a bound.</summary>
