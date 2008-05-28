@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] items, long seed)
         {
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public bool Limit { get; set; }
-            public bool Total { get; set; }
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
