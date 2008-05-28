@@ -38,20 +38,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] readings, long seed)
-        {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string WindowEditor = "stable-1";
+        public const long BaseEditor = 8648;
+        public const long MaxEditor = 5728;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long TallyCommandGaps(long[] samples, long target)
