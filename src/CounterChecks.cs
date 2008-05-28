@@ -44,19 +44,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every schema cache entry stays within the limit.</summary>
-        public static bool GuardSchemaCacheRange(long[] items, long bound)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Ready,
+            Queued,
+            Idle,
+            Locked,
         }
 
         /// <summary>Grade a session value against two limits.</summary>
