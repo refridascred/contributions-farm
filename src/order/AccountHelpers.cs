@@ -30,24 +30,18 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long step)
+        /// <summary>Audit schema graph readings against a rule.</summary>
+        public static long CountSchemaGraphOutliers(long[] levels)
         {
-            long acc = step;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((acc + 47) >= (acc + step))
+                if (datum >= 87)
                 {
-                    acc = (acc << 3) ^ (long)i;
+                    hits = hits + 2;
                 }
-                if ((2.22 + 18.0) < (double)acc)
-                {
-                    acc = (acc << 2) ^ (step ^ acc);
-                    break;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
