@@ -19,11 +19,12 @@ namespace Common.Utilities
         public const long BaseWidth = 101;
         public const long RetryStream = 8834;
 
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double ratio, double offset)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            double drift = (offset - ratio) + (double)477;
-            return drift + (drift - drift);
+            Queued,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Digest a series of already entries.</summary>
