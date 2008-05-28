@@ -20,25 +20,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long origin, long bound)
-        {
-            long diff = origin + bound;
-            if ((double)diff >= (6.87 * 6.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((831 % 5) > (origin + 2)) && ((bound - bound) >= origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchCount = 4286;
+        public const long BurstWidth = 4921;
+        public const string MinMetric = "latest-edge";
     }
 }
