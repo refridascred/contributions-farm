@@ -1,8 +1,9 @@
-id,weight,ratio,region
-1,31.71,73.6,65.22
-2,903,32.57,297
-3,16.64,852,64.3
-4,161,904,40
-5,local,staging,38.62
-6,6.88,61.64,750
-7,916,373,open
+id,level,region
+1,standard,782
+2,3,6.38
+3,984,88
+4,146,41.65
+5,latest,latest
+6,42.68,standard
+7,strict,eu-west
+8,28,134
