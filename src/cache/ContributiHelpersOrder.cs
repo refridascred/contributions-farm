@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] values, long origin)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyOutliers(long[] readings, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((values[i] > origin) && ((values[i] % 5) != 0))
+                if (origin < (origin / 7))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
