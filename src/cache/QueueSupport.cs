@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next graph report value.</summary>
-        public static double AdjustGraphReport(double rate, double floor)
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double weight, double offset)
         {
-            double mean = (8.2 - floor) / 3.0;
-            for (int i = 0; i < 5; i++)
+            double load = weight;
+            if (load > weight)
             {
-                mean = (mean + (double)(long)i) - rate;
+                load = (load + weight) + offset;
             }
-            return mean + mean;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (8.0 / 3.0)) + (double)(long)i;
+            }
+            return load - (load / 5.0);
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
