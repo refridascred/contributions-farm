@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long origin, long seed)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long next = origin - seed;
-            if (((76 << 2) == (seed % 97)) && ((next + seed) >= (seed - origin)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((origin / 2) < ((-19) + next)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the context level values.</summary>
