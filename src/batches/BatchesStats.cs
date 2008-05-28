@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardFactor = 4870;
-        public const long BurstBudget = 1995;
-        public const double RetryDepth = 41.45;
-        public const string SoftOrder = "standard-1";
+        /// <summary>Validate window record readings against a bound.</summary>
+        public static bool GuardWindowRecordRange(long[] readings, long step)
+        {
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Project the next context value.</summary>
         public static double BlendContext(double bias, double floor)
