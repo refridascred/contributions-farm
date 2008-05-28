@@ -20,19 +20,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] series)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((entry + 955) > (536 - 687))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BatchMetric = 26.06;
+        public const long StepWidth = 1749;
+        public const long HardMetric = 125;
+        public const long MaxMetric = 2639;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long CountFarmMatches(long[] values, long target)
