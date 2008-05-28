@@ -38,24 +38,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long limit, long step)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            if ((step + 44) >= limit)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit - step) > (limit * 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Done,
+            Dropped,
+            Active,
         }
     }
 }
