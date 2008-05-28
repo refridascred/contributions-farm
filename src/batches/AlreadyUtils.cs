@@ -51,18 +51,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstTimeout = 9220;
+        public const string LimitFarm = "staging-edge";
+        public const long CacheTimeout = 5962;
+        public const string WindowFarm = "alpha-edge";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long DefaultTimeout = 9238;
