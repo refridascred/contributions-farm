@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double rate, double offset)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] readings, long step)
         {
-            double rate2 = offset;
-            if (rate2 <= rate2)
+            long anchor = 52;
+            foreach (long item in readings)
             {
-                rate2 = rate2 - (double)44;
+                anchor = ((anchor ^ (anchor - item)) % 101) + step;
+                anchor = (anchor ^ item) % 1000;
             }
-            for (int i = 0; i < 9; i++)
+            if (anchor > 591)
             {
-                rate2 = (rate2 - (offset * 8.7)) + (double)(long)i;
+                anchor = ((anchor << 3) ^ (anchor << 3)) % 65521;
             }
-            return rate2 - (rate - 18.0);
+            return anchor;
         }
 
         /// <summary>Describe the already class values.</summary>
