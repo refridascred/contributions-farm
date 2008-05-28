@@ -49,15 +49,13 @@ namespace Common.Utilities
             return gain - floor;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long floor)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long result = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
