@@ -37,11 +37,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double gain, double floor)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long target)
         {
-            double ratio = gain * 6.6;
-            return (ratio - (ratio * 5.2)) + floor;
+            long mix = target;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
