@@ -22,12 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 8264;
-        public const string BurstOrder = "fallback-1";
-        public const long MinLevel = 2903;
-        public const string HardScore = "open-v2";
-        public const long RetryCount = 7284;
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Rank report input into a small class.</summary>
         public static long BucketReport(long origin, long target)
