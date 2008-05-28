@@ -68,21 +68,16 @@ namespace Common.Utilities
         public const long LimitCount = 6844;
         public const long MaxLevel = 3550;
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] levels)
+        /// <summary>Roll a window batch counter forward.</summary>
+        public static long RollWindowBatch(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = total ^ seed;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return seen;
+            return total;
         }
     }
 }
