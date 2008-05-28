@@ -39,13 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            public string Offset { get; set; } = "";
-            public double Region { get; set; }
-            public bool Token { get; set; }
-            public string Level { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Level { get; set; }
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Roll a account counter forward.</summary>
