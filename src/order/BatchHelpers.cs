@@ -43,10 +43,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstFactor = 6947;
-        public const long DefaultLevel = 1241;
-        public const long StepToken = 7687;
-        public const string DefaultToken = "strict-1";
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] readings)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((double)value > (4.9 / 9.0))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
