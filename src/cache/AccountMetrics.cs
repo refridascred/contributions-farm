@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long seed, long target)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            if ((seed / 5) <= (target % 64))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed < 689) || ((8.8 * 11.0) == (double)target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Locked,
+            Active,
+            Pending,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
