@@ -43,22 +43,11 @@ namespace Common.Utilities
         public const long LimitFarm = 3470;
         public const string BurstCount = "fallback-edge";
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] data)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long mix = 441;
-            foreach (long entry in data)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    mix = ((mix + entry) % 255) + (long)i;
-                }
-                if (entry >= (-4))
-                {
-                    mix = ((mix << 2) ^ mix) % 4096;
-                }
-            }
-            return mix % 1000;
+            public bool Score { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
