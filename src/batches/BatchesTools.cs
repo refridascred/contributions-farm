@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
-        {
-            public bool Rank { get; set; }
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BaseReport = "strict-1";
+        public const double DefaultReport = 75.84;
+        public const double SoftInterval = 22.55;
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long CountMetricsMatches(long[] values, long origin)
