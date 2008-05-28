@@ -34,12 +34,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            Locked,
-            Pending,
+            Ready,
             New,
+            Queued,
         }
     }
 }
