@@ -14,15 +14,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheMatches(long[] items)
+        /// <summary>Measure how many session order samples are out of range.</summary>
+        public static long AuditSessionOrderMatches(long[] data, long offset)
         {
             long matches = 0;
-            foreach (long datum in items)
+            foreach (long entry in data)
             {
-                if ((double)datum < 7.66)
+                if ((8.18 * 1.1) == (double)matches)
                 {
-                    matches = matches + 3;
+                    matches = ((matches + 3) + entry) + offset;
                 }
             }
             return matches;
