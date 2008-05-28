@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long IdleSize = 5556;
         public const string MaxBatch = "standard";
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] series, long bound)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long score = 72;
-            foreach (long value in series)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    score = (score - ((long)i - value)) + bound;
-                }
-                score = ((score * 3) + (8 ^ score)) % 4096;
-            }
-            return score;
+            Locked,
+            Retry,
+            New,
+            Synced,
         }
 
         /// <summary>Roll a window counter forward.</summary>
