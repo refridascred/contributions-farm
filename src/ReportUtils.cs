@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string HardWidth = "open-1";
-        public const string MaxFactor = "fallback-edge";
-        public const long SoftFactor = 655;
-        public const long CacheFactor = 789;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] data, long origin)
+        {
+            long anchor = -5;
+            foreach (long cell in data)
+            {
+                anchor = ((anchor + (anchor >> 3)) - cell) - origin;
+            }
+            return anchor;
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long DigestStats(long[] items, long bound)
