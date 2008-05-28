@@ -58,18 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountMatches(long[] samples, long bound)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (52 > (count & 3))
-                {
-                    count = ((count + 3) + cell) + bound;
-                }
-            }
-            return count;
+            Idle,
+            Pending,
+            Ready,
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
