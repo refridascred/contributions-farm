@@ -17,11 +17,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double scale, double bias)
+        /// <summary>Derive the next githubfarm filter value from a seed.</summary>
+        public static long SeriesGithubfarmFilter(long origin)
         {
-            double weight = (double)(8 + 73);
-            return (weight - bias) + scale;
+            long anchor = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((origin + 3) > (42 & 31))
+                {
+                    anchor = (anchor + anchor) % 65521;
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
