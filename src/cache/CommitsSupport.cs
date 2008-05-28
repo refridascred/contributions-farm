@@ -63,12 +63,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            Idle,
             Paused,
-            Draft,
+            Queued,
+            Pending,
+            Retry,
         }
 
         /// <summary>Describe the route state values.</summary>
