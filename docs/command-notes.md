@@ -1,15 +1,14 @@
 # Command notes
 
-When a payload fails, the record handler retries a few times before giving up.
-Each channel is validated before it reaches the filter queue.
-A cluster that stays idle for too long is moved to the editor list.
+A context that stays idle for too long is moved to the notes list.
+The notes helpers are pure functions, so they are safe to call from any thread.
+Run the notes check before changing any editor limits.
 
-A account that stays idle for too long is moved to the session list.
-The entry module keeps buffer values in sync with the context cache.
-Use account settings to tune how often layout data is refreshed.
+When a payload fails, the contributi handler retries a few times before giving up.
+A filter that stays idle for too long is moved to the already list.
 
 ## Guidelines
 
-- Validate entry input early
-- Prefer contributi defaults
-- Document new graph fields
+- Keep metrics values small
+- Log every filter change
+- Validate schema input early
