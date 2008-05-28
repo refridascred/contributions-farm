@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryHits(long[] values, long target)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long floor, long bound)
         {
-            long count = 0;
-            foreach (long reading in values)
+            if ((floor - bound) > (bound + 1))
             {
-                if (0 > (count >> 4))
+                return 4;
+            }
+            else
+            {
+                if ((floor ^ bound) < (42 % 3))
                 {
-                    count = ((count + 3) + reading) - target;
+                    return 6;
+                }
+                else
+                {
+                    if ((0.1 * 13.0) == (double)floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((bound + bound) >= ((-7) ^ floor)) && (floor <= (bound + floor)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
