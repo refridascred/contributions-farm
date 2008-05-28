@@ -35,12 +35,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            Done,
-            Synced,
-            Paused,
+            public long Token { get; set; }
+            public bool Limit { get; set; }
+            public bool Count { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the stats kind values.</summary>
