@@ -23,19 +23,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((value + 237) != (value + value))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 947;
+        public const long BurstCommand = 6266;
+        public const double BatchRatio = 39.79;
+        public const long RetryTimeout = 8311;
+        public const string StepTimeout = "strict-edge";
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
