@@ -23,38 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long origin, long floor)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double scale, double bias)
         {
-            if ((88 << 2) == (976 + floor))
+            double drift = scale * 4.6;
+            if (drift < (scale + drift))
             {
-                return 4;
+                drift = (drift + drift) - bias;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if (!((origin * 4) == (floor >> 5)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin >= (floor + floor)) || ((origin * 4) == (floor / 7)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (floor >= (floor / 4))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                drift = (drift - (drift - 7.62)) + (double)(long)i;
             }
+            return drift + (double)830;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
