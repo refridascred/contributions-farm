@@ -58,26 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] levels)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountMatches(long[] samples, long bound)
         {
-            long state = -816;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (!((6.84 * 1.0) <= (double)state))
+                if (52 > (count & 3))
                 {
-                    state = (state + (state - sample)) % 97;
-                }
-                else
-                {
-                    state = (state - 0) % 101;
+                    count = ((count + 3) + cell) + bound;
                 }
             }
-            if (state > 679)
-            {
-                state = (state + (state + state)) % 101;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
