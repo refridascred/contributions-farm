@@ -1,7 +1,12 @@
 {
-  "burst_capacity_s": [325, 248, 233],
-  "min_threshold_s": "staging",
-  "idle_retries_s": "staging",
-  "retry_window": ["cached", "staging", "blue", "primary"],
-  "min_threshold": 2212
+  "payload_ttl": true,
+  "default_threshold_pct": 9510,
+  "tools_capacity": {
+    "max_delay": true,
+    "default_delay": "cached",
+    "retry_retries_s": "primary"
+  },
+  "poll_depth_count": 81.46,
+  "warm_ttl": "eu-west",
+  "base_limit_count": 43
 }
