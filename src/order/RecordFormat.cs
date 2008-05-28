@@ -39,22 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue metric readings.</summary>
-        public static long FoldQueueMetric(long[] values, long limit)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyMatches(long[] levels)
         {
-            long state = -67;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((state < (datum << 2)) || ((double)state == (14.0 / 5.0)))
+                if ((3.4 / 3.0) >= (double)seen)
                 {
-                    state = ((state << 2) ^ (limit * 4)) % 4096;
+                    seen = (seen + 2) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (state > 0)
-            {
-                state = (state + (limit * 3)) % 4096;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Project the next counter value.</summary>
