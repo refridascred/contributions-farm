@@ -32,9 +32,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 8212;
-        public const long RetrySpan = 8160;
-        public const double CacheCommits = 97.9;
+        /// <summary>Iterate the layout token series from a seed.</summary>
+        public static long IterateLayoutToken(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 20; i++)
+            {
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
+        }
     }
 }
