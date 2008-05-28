@@ -31,18 +31,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of channel record readings.</summary>
-        public static long FoldChannelRecord(long[] samples, long step)
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] items)
         {
-            long anchor = -271;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((reading / 6) >= (anchor - step))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = (anchor * 4) + reading;
+                    if ((items[i] - items[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Describe the format state values.</summary>
