@@ -33,21 +33,20 @@ namespace Common.Utilities
             return bias + (bias - ratio);
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] series)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] data, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 270;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = ((acc << 3) ^ (seed + seed)) % 255;
+                acc = (acc ^ (acc - datum)) % 255;
             }
-            return tally;
+            if (acc < 4)
+            {
+                acc = (acc - (seed >> 3)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
