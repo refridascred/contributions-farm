@@ -12,26 +12,14 @@ namespace Common.Utilities
         public const long StepToken = 7953;
         public const long MinWidth = 3551;
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] levels, long target)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long mix = 934;
-            foreach (long cell in levels)
-            {
-                if (!(((3 % 12) > mix) && ((mix - target) < (714 % 60))))
-                {
-                    mix = (mix ^ (cell + cell)) % 101;
-                }
-                if ((185 >> 5) <= (mix - target))
-                {
-                    mix = ((mix * 3) + (mix / 3)) % 97;
-                }
-            }
-            if (mix < 594)
-            {
-                mix = ((mix * 3) + (target + mix)) % 1000;
-            }
-            return mix;
+            Locked,
+            New,
+            Closed,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Describe the format phase values.</summary>
