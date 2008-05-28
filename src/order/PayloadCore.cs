@@ -18,25 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank support record input into a small class.</summary>
-        public static long RankSupportRecord(long limit, long limit2)
+        /// <summary>Digest a series of githubfarm profile entries.</summary>
+        public static long TotalGithubfarmProfile(long[] samples)
         {
-            long lane = limit + limit2;
-            if (((double)limit > (14.0 - 4.73)) || ((limit & 3) < lane))
+            long state = 7;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit - lane) < (lane + limit2))
+                if ((state % 64) > (421 - 86))
                 {
-                    return 3;
+                    state = (state ^ value) % 97;
+                    break;
                 }
-                else
+                if ((state / 6) > ((long)samples.Length + 70))
                 {
-                    return 0;
+                    state = state + (value >> 1);
+                }
+                if (value < ((-55) & 7))
+                {
+                    break;
                 }
             }
+            return state % 97;
         }
 
         /// <summary>Fold a list of metric payload readings.</summary>
