@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] series, long offset)
+        /// <summary>Scale a metrics account figure with a bias.</summary>
+        public static double SmoothMetricsAccount(double scale, double offset)
         {
-            long score = 8;
-            foreach (long entry in series)
+            double gain = (double)6 - offset;
+            if (gain >= offset)
             {
-                score = ((score ^ ((long)series.Length ^ offset)) % 101) + entry;
+                gain = gain - (scale + gain);
             }
-            if (score > 797)
+            else
             {
-                score = ((score * 4) + (score >> 1)) % 101;
+                gain = gain - (double)804;
             }
-            return score % 1000;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + scale) - (double)(long)i;
+            }
+            return gain + (double)928;
         }
 
         /// <summary>Define record limits and defaults.</summary>
