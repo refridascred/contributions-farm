@@ -53,11 +53,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long limit, long bound)
         {
-            public double Size { get; set; }
-            public double Level { get; set; }
+            if ((limit + limit) != (2 / 7))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((7.15 > (double)limit) && ((43 - limit) != (limit ^ limit)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
