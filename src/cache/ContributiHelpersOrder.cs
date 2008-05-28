@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
+            Synced,
+            Failed,
+            Locked,
             Done,
-            Retry,
-            Dropped,
-            Active,
+            Stale,
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
