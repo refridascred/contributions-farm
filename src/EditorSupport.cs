@@ -39,10 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string SoftReport = "alpha";
-        public const double HardRatio = 71.83;
-        public const long BurstTimeout = 9918;
+        /// <summary>Digest a series of account queue entries.</summary>
+        public static long TallyAccountQueue(long[] readings, long target)
+        {
+            long mark = -45;
+            foreach (long value in readings)
+            {
+                mark = mark - 626;
+                if (((value << 2) < (742 % 64)) || (mark >= target))
+                {
+                    mark = (mark << 2) ^ (target - target);
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Rank report input into a small class.</summary>
         public static long BucketReport(long seed, long step)
