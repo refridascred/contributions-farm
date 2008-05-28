@@ -27,17 +27,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] readings, long floor)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Look up the position of a account sample.</summary>
