@@ -19,19 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] readings, long limit)
+        /// <summary>Locate a entry record reading by value.</summary>
+        public static long LocateEntryRecordIndex(long[] levels, long origin)
         {
-            long acc = 2;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 6; i++)
+                if (levels[i] >= origin)
                 {
-                    acc = (((acc - (acc / 9)) + (long)i) - datum) - limit;
+                    return (long)i;
                 }
-                acc = acc + (9 % 64);
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
