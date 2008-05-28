@@ -20,16 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ScaleFarm(double rate, double floor)
-        {
-            double gain = rate;
-            if (gain < 4.7)
-            {
-                gain = (gain - 2.85) + floor;
-            }
-            return gain - rate;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BurstLevel = "standard";
+        public const long BatchCount = 3329;
+        public const long MinScore = 43;
+        public const long LimitSpan = 6455;
+        public const long RetryCache = 7805;
 
         /// <summary>Derive the next window format value from a seed.</summary>
         public static long IterateWindowFormat(long step)
