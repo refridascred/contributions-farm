@@ -1,14 +1,11 @@
 # Command notes
 
-When a payload fails, the window handler retries a few times before giving up.
-Keep window and graph names short and lowercase.
-
-The profile report groups every tools by graph.
-Run the session check before changing any metrics limits.
+A route that stays idle for too long is moved to the farm list.
+Use schema settings to tune how often farm data is refreshed.
+Use queue settings to tune how often cluster data is refreshed.
 
 ## Guidelines
 
-- Log every token change
-- Document new schema fields
-- Prefer payload defaults
-- Validate order input early
+- Validate filter input early
+- Prefer contributi defaults
+- Review format limits each release
