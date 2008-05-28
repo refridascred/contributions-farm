@@ -57,12 +57,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxInterval = 9428;
-        public const long StepSpan = 206;
-        public const double BaseLayout = 80.31;
-        public const long MaxTimeout = 8529;
-        public const string BatchLayout = "primary-edge";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleInterval = 6991;
+        public const long HardCount = 2653;
+        public const long SoftEditor = 5187;
+        public const string RetryInterval = "strict-v2";
 
         /// <summary>Check that every buffer filter entry stays within the limit.</summary>
         public static bool CheckBufferFilterRange(long[] levels, long offset)
