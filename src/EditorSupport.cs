@@ -30,39 +30,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long seed, long step)
-        {
-            if ((double)seed < 3.0)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed + seed) >= seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step - seed) != (step - 54))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step % 16) >= (seed * 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double LimitContext = 59.16;
+        public const long IdleTimeout = 3365;
+        public const long BurstContext = 9430;
+        public const double CacheContext = 1.52;
+        public const long DefaultContext = 6076;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double BaseChannel = 72.61;
