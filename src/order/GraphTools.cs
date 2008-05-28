@@ -41,21 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] samples)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = -8;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                result = (result + (result & 255)) + sample;
+                if ((5 >> 5) < (result ^ result))
                 {
-                    if ((samples[i] ^ samples[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result ^ result) % 101;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Adjust a channel contributi reading.</summary>
