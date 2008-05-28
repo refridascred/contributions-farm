@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 2813;
-        public const string BurstSession = "stable-1";
-        public const double MaxSession = 83.08;
-        public const double WindowSession = 19.01;
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
+        {
+            Locked,
+            Idle,
+            Stale,
+        }
 
         /// <summary>Roll a payload batches counter forward.</summary>
         public static long DerivePayloadBatches(long origin)
