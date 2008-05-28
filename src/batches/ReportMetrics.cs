@@ -22,13 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Iterate the graph context series from a seed.</summary>
+        public static long StepGraphContext(long limit)
         {
-            Dropped,
-            Closed,
-            Pending,
-            Locked,
+            long mark = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = (mark << 3) ^ mark;
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
