@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate cache format samples.</summary>
-        public static long WeighCacheFormat(long[] samples, long target)
-        {
-            long mix = 1;
-            foreach (long item in samples)
-            {
-                mix = mix + (target + item);
-                mix = (mix - (item - mix)) % 4096;
-                if (!(item > (target ^ (-80))))
-                {
-                    mix = (mix - target) % 1000;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 3200;
+        public const long CacheTimeout = 6855;
+        public const long MinDepth = 9791;
+        public const double StepFactor = 9.61;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long TallyContributiMatches(long[] readings)
