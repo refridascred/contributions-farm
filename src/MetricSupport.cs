@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double weight, double span)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long target, long step)
         {
-            double weight2 = weight;
-            if (weight2 <= weight2)
+            long gap = target + step;
+            if ((target >> 5) <= (0 ^ target))
             {
-                weight2 = (weight2 - (weight2 - 0.25)) - span;
+                return 7;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                weight2 = (weight2 - (weight2 + 4.88)) + (double)(long)i;
+                if ((gap / 7) != (target >> 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return weight2 - (weight2 - 3.76);
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
