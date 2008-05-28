@@ -41,12 +41,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            public double Score { get; set; }
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
+            Active,
+            Idle,
+            Locked,
+            Ready,
         }
 
         /// <summary>Roll a order counter forward.</summary>
