@@ -49,13 +49,18 @@ namespace Common.Utilities
         public const long LimitNotes = 819;
         public const long SoftNotes = 5603;
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsGaps(long[] samples)
         {
-            Queued,
-            New,
-            Active,
-            Failed,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (!((7.5 * 8.98) == (double)hits))
+                {
+                    hits = (hits + 2) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a notes info.</summary>
