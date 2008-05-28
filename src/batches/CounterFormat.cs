@@ -22,13 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long floor)
         {
-            public long Flag { get; set; }
-            public long Token { get; set; }
-            public bool Total { get; set; }
-            public long Score { get; set; }
+            long state = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((state & 31) == (floor / 9))
+                {
+                    state = (state - (state * 2)) % 97;
+                }
+                state = (state ^ (long)i) % 1000;
+                state = (state + ((long)i * 5)) % 101;
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
