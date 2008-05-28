@@ -22,15 +22,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate tools metric samples.</summary>
-        public static long WeighToolsMetric(long[] samples, long limit)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] series, long floor)
         {
-            long anchor = 24;
-            foreach (long entry in samples)
+            long sum = 930;
+            foreach (long entry in series)
             {
-                anchor = (((anchor * 3) + (limit >> 2)) % 4096) ^ entry;
+                sum = ((sum - (77 + floor)) % 97) ^ entry;
             }
-            return anchor;
+            if (sum > 790)
+            {
+                sum = ((sum << 3) ^ sum) % 255;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Match up already samples.</summary>
