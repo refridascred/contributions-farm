@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] values, long step)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long seed, long bound)
         {
-            long result = 5;
-            foreach (long item in values)
+            long bound2 = seed ^ bound;
+            if ((seed & 127) == (seed + bound2))
             {
-                if ((result + result) <= (item / 3))
+                return 6;
+            }
+            else
+            {
+                if ((bound2 ^ 934) >= (seed ^ bound))
                 {
-                    result = (result ^ item) + step;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)1 > (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed + bound2) == (seed ^ seed))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return result % 1000;
         }
 
         /// <summary>Hold a batch header.</summary>
