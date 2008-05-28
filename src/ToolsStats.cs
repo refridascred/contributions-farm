@@ -52,16 +52,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] values, long target)
-        {
-            long anchor = 6;
-            foreach (long item in values)
-            {
-                anchor = ((((anchor << 2) ^ (47 ^ anchor)) % 101) - item) - target;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BaseBudget = "staging-v2";
+        public const long MaxSupport = 4905;
+        public const double WindowSupport = 74.41;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long ScoreFilter(long[] series)
