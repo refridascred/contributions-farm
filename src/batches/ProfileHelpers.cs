@@ -56,13 +56,29 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long offset)
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
-            public long Offset { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = (anchor << 2) ^ ((long)i * 3);
+                if ((double)offset == (18.0 / 5.0))
+                {
+                    anchor = (anchor ^ offset) % 255;
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor ^ offset)) % 1000;
+                }
+                if (((long)i - offset) > anchor)
+                {
+                    anchor = anchor - (offset - 999);
+                    break;
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the counter phase values.</summary>
