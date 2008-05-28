@@ -40,26 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long limit, long floor)
-        {
-            long cur = limit ^ floor;
-            if (!((double)cur == (double)limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if (limit < (cur - limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MinFactor = 89.68;
+        public const long DefaultCluster = 9487;
+        public const long RetryCluster = 1998;
+        public const long StepFactor = 149;
+        public const string StepSpan = "cached";
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long CountGithubfarmHits(long[] series, long seed)
