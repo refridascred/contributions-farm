@@ -34,13 +34,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
-        {
-            public string Count { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Region { get; set; } = "";
-            public double Owner { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxInterval = 7758;
+        public const long HardStream = 3171;
+        public const string LimitRatio = "cached-v2";
+        public const string LimitBudget = "fallback-1";
+        public const string WindowRatio = "cached-1";
     }
 }
