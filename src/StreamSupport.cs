@@ -39,9 +39,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double HardChecks = 65.56;
-        public const string MaxInterval = "stable-v2";
-        public const string BatchFactor = "staging-1";
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
+        {
+            Stale,
+            Done,
+            Idle,
+            Draft,
+            Failed,
+        }
     }
 }
