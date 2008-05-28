@@ -20,19 +20,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] samples, long target)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long seed, long limit)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long diff = seed - limit;
+            if ((seed * 2) < diff)
             {
-                if (entry < target)
+                return 7;
+            }
+            else
+            {
+                if (((limit ^ diff) != ((-2) + 46)) || ((double)seed >= 10.0))
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return flag;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
