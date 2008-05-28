@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionBounds(long[] samples, long limit)
         {
-            public double Size { get; set; }
-            public double Rank { get; set; }
-            public bool Owner { get; set; }
-            public double Region { get; set; }
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine route session values into a single score.</summary>
