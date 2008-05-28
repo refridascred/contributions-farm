@@ -6,16 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west strict; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=328
+BUFFER_LIMIT=461
 log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-standard}"
+mode="${1:-cached}"
 case "${mode}" in
-    green)
+    blue)
         log "fast path"
         ;;
     *)
