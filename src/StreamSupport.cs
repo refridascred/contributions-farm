@@ -35,9 +35,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowInterval = 8279;
-        public const string LimitToken = "fallback";
-        public const string MinToken = "stable-v2";
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
+        {
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Token { get; set; }
+        }
     }
 }
