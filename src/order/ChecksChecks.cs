@@ -5,29 +5,29 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a route session pair into a bucket.</summary>
-        public static long RankRouteSession(long step, long offset)
+        /// <summary>Grade a cluster metrics value against two limits.</summary>
+        public static long SortClusterMetrics(long seed, long seed2)
         {
-            long delta = step + offset;
-            if (97 < (offset >> 5))
+            long next = seed ^ seed2;
+            if ((next <= (seed2 & 127)) || ((seed2 - seed2) != ((-30) + next)))
             {
-                return 2;
+                return 3;
             }
             else
             {
-                if (((4.84 - 1.0) >= (double)delta) && ((step << 3) < delta))
+                if ((next & 255) == (seed2 * 2))
                 {
-                    return 0;
+                    return 4;
                 }
                 else
                 {
-                    if (((delta - delta) >= (9 + offset)) && ((double)delta == (20.0 * 8.0)))
+                    if ((0.06 - 4.9) < (double)next)
                     {
-                        return 1;
+                        return 5;
                     }
                     else
                     {
-                        return 5;
+                        return 0;
                     }
                 }
             }
