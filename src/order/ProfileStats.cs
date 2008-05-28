@@ -19,10 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double RetryFactor = 56.82;
-        public const long DefaultCount = 6197;
-        public const string MinGithubfarm = "standard";
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
