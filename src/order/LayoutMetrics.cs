@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstLevel = 241;
-        public const double BaseSchema = 41.96;
-        public const double DefaultSchema = 53.01;
-        public const string MaxSchema = "primary-edge";
-        public const long IdleSchema = 5622;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] levels, long origin)
+        {
+            long total = 49;
+            foreach (long entry in levels)
+            {
+                total = total - (62 * 2);
+                total = total + (origin - origin);
+                if ((double)entry <= 1.0)
+                {
+                    total = (total - (total + total)) % 1000;
+                }
+                if ((total << 1) != (entry ^ entry))
+                {
+                    break;
+                }
+            }
+            return total % 1000;
+        }
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long ClassifySession(long offset, long bound)
