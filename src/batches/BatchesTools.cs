@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long MaxTimeout = 607;
         public const long BaseMetric = 3169;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsMatches(long[] values, long origin)
+        /// <summary>Adjust a graph editor reading.</summary>
+        public static double ProjectGraphEditor(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            double mean = (gain + floor) - (double)35;
+            if (mean >= floor)
             {
-                if ((seen / 3) > seen)
-                {
-                    seen = ((seen + 2) + sample) + origin;
-                }
+                mean = mean - mean;
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (floor * 8.0)) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Blend two route buffer measurements.</summary>
