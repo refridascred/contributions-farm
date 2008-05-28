@@ -26,15 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next counter command value from a seed.</summary>
-        public static long StepCounterCommand(long bound)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] values)
         {
-            long mark = bound;
-            for (int i = 0; i < 17; i++)
+            long state = 515;
+            foreach (long value in values)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                for (int i = 0; i < 6; i++)
+                {
+                    state = ((state ^ state) % 65521) + (long)i;
+                    state = (state + (8 >> 4)) % 97;
+                }
+                if ((value >> 3) > 489)
+                {
+                    state = state + (state / 9);
+                }
             }
-            return mark;
+            return state % 4096;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
