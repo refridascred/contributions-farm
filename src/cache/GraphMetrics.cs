@@ -5,35 +5,28 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long seed, long floor)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long seed, long floor)
         {
-            if ((floor + floor) != (seed + seed))
+            if (!(floor < (floor ^ floor)))
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if (((seed & 15) >= (seed + 7)) || (seed > floor))
+                if (!((floor + floor) >= (seed + floor)))
                 {
-                    return 2;
+                    return 4;
                 }
                 else
                 {
-                    if ((floor & 3) < 810)
+                    if ((floor - 8) >= (seed - floor))
                     {
-                        return 7;
+                        return 3;
                     }
                     else
                     {
-                        if (((10.0 / 9.0) <= (double)floor) && ((double)floor <= (double)7))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        return 8;
                     }
                 }
             }
