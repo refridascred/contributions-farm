@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string StepCounter = "local-1";
-        public const long BurstCounter = 6544;
-        public const string CacheDepth = "strict";
-        public const long MinScore = 4923;
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
