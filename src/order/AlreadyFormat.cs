@@ -68,18 +68,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 192;
+        public const long SoftWidth = 8071;
+        public const long BatchRatio = 7826;
+        public const long LimitFilter = 1256;
+        public const long WindowBudget = 3424;
 
         /// <summary>Grade a notes already value against two limits.</summary>
         public static long RankNotesAlready(long limit, long origin)
