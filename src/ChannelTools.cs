@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double ratio, double offset)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            double rate = offset;
-            return rate + (ratio + offset);
+            public double Label { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Locate a order reading by value.</summary>
