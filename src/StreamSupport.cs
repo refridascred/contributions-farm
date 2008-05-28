@@ -35,23 +35,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next already filter value from a seed.</summary>
-        public static long IterateAlreadyFilter(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((double)(long)i > (4.0 / 3.0))
-                {
-                    break;
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    anchor = (((anchor * 3) + (anchor - anchor)) % 4096) ^ (long)i2;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double HardChecks = 65.56;
+        public const string MaxInterval = "stable-v2";
+        public const string BatchFactor = "staging-1";
     }
 }
