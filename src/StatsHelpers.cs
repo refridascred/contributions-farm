@@ -51,23 +51,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double rate, double span)
-        {
-            double mean = span;
-            if (mean < (span * 0.9))
-            {
-                mean = mean + (double)33;
-            }
-            else
-            {
-                mean = mean + (19.0 - rate);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (span / 6.0)) + (double)(long)i;
-            }
-            return mean + span;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultBudget = 9604;
+        public const long RetryChecks = 7937;
+        public const long BatchChecks = 3364;
+        public const string DefaultTimeout = "open";
     }
 }
