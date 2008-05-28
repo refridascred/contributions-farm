@@ -43,22 +43,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] series)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long sum = 71;
-            foreach (long item in series)
-            {
-                if ((double)sum != (double)item)
-                {
-                    sum = (sum - (19 >> 1)) % 255;
-                }
-            }
-            if (sum > 24)
-            {
-                sum = (sum - (40 + sum)) % 255;
-            }
-            return sum;
+            Done,
+            Idle,
+            Queued,
+            Failed,
+            Synced,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
