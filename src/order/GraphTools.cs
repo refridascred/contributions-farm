@@ -45,15 +45,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double gain, double offset)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long limit)
         {
-            double rate = offset;
-            if (rate <= offset)
+            long mix = limit;
+            for (int i = 0; i < 19; i++)
             {
-                rate = rate - (11.0 / 7.0);
+                mix = mix + (mix % 100);
+                if (mix >= limit)
+                {
+                    mix = mix + (limit + mix);
+                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return rate - (gain - 4.2);
+            return mix;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
