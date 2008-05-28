@@ -69,19 +69,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] series)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] series, long seed)
         {
-            long result = 2;
-            foreach (long cell in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (result + (result - 628)) + cell;
+                if ((series[i] <= seed) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (result > 60)
-            {
-                result = (result + (result * 5)) % 255;
-            }
-            return result;
+            return -1;
         }
     }
 }
