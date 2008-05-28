@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheLevel = 8031;
-        public const string StepSchema = "local-edge";
-        public const string WindowLevel = "staging-edge";
-        public const double HardDepth = 32.9;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((((3.0 - 7.4) > (double)sample) || ((hits + 27) == (9 ^ sample))) && !((hits * 4) >= 1))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a contributi stream counter forward.</summary>
         public static long StepContributiStream(long floor)
