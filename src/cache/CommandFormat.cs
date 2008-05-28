@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            Retry,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string LimitRatio = "legacy-v2";
+        public const long HardBudget = 7365;
+        public const double BaseInterval = 24.48;
+        public const long BatchLevel = 5223;
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
