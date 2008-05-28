@@ -26,13 +26,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long offset, long offset2)
         {
-            public double Label { get; set; }
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public bool Score { get; set; }
+            if ((395 + 742) < (offset2 ^ offset2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset2 - offset) >= (offset / 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
