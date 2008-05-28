@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionHits(long[] data, long origin)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((double)origin == (8.0 / 8.0))
-                {
-                    tally = (tally + 3) + cell;
-                }
-            }
-            return tally;
+            Draft,
+            Queued,
+            Synced,
+            Paused,
+            Active,
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
