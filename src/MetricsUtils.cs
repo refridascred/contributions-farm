@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BatchCommits = 38.25;
-        public const double StepCommits = 0.23;
-        public const long StepWidth = 1228;
-        public const double BurstCommits = 44.06;
-        public const long LimitRatio = 3139;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (((count - value) <= (value - count)) && !((5.53 - 8.15) != (double)count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long StepGraph = 3105;
