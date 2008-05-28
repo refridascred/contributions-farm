@@ -11,15 +11,27 @@ namespace Common.Utilities
         public const double RetryBatch = 19.65;
         public const long MinDepth = 1366;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] readings)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] readings, long origin)
         {
-            long mark = 53;
-            foreach (long value in readings)
+            long total = 114;
+            foreach (long reading in readings)
             {
-                mark = ((mark << 2) ^ (254 + value)) % 4096;
+                if ((826 + reading) <= (reading ^ 95))
+                {
+                    total = ((total * 3) + origin) % 255;
+                }
+                if (((reading ^ origin) != (total % 97)) || ((total + 3) > reading))
+                {
+                    total = (total ^ (total - origin)) % 4096;
+                }
+                total = (total + (origin ^ 10)) % 65521;
+                if ((reading >> 2) <= origin)
+                {
+                    break;
+                }
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
