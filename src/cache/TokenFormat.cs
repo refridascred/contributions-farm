@@ -18,21 +18,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up session format samples.</summary>
-        public static long CompareSessionFormatCount(long[] samples)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 4;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(3.3 > (double)carry))
                 {
-                    if ((samples[i] - samples[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry << 3) ^ (datum ^ datum);
+                }
+                else
+                {
+                    carry = carry - (datum % 64);
+                }
+                if (!(carry < (1 * 5)))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (carry > 167)
+            {
+                carry = ((carry << 2) ^ (carry - carry)) % 65521;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
