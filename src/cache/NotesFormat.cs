@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long limit, long origin)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] samples)
         {
-            if ((4.26 * 4.6) > (double)limit)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((3 & 63) < limit))
+                if (((0.1 + 7.73) > (double)value) && (value >= ((-750) / 8)))
                 {
-                    return 2;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if (!((limit % 8) > origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the record mode values.</summary>
