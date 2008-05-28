@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
-        {
-            Draft,
-            Queued,
-            Synced,
-            Paused,
-            Active,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 1923;
+        public const string IdleCache = "stable-v2";
+        public const long LimitCache = 8382;
+        public const long MaxDepth = 2981;
 
         /// <summary>Hold a graph record.</summary>
         public sealed class GraphRecord
