@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] values)
         {
-            public long Flag { get; set; }
-            public double Size { get; set; }
-            public double Weight { get; set; }
+            long mark = 7;
+            foreach (long datum in values)
+            {
+                mark = (mark - (mark + mark)) % 255;
+                if (12.0 >= (double)datum)
+                {
+                    mark = (mark - datum) % 97;
+                }
+                else
+                {
+                    mark = mark + 96;
+                }
+            }
+            if (mark > 73)
+            {
+                mark = ((mark << 2) ^ (mark * 5)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
