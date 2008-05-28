@@ -1,5 +1,8 @@
 {
-  "readonly": false,
-  "compress": 97.88,
-  "cache_retries": 500
+  "strict": ["legacy", "standard"],
+  "poll_depth": 250,
+  "enabled": ["local", "staging"],
+  "audit": 30,
+  "buffer_capacity": [454, 354, 389, 119],
+  "max_ttl": 2402
 }
