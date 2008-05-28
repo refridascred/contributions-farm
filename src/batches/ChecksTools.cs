@@ -50,16 +50,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long step)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long seed, long offset)
         {
-            long carry = step;
-            for (int i = 0; i < 7; i++)
+            if ((double)offset < (4.05 * 7.76))
             {
-                carry = (carry << 3) ^ carry;
-                carry = ((carry * 3) + (long)i) % 65521;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if ((seed >> 1) < (offset + offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset <= 1.61)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
