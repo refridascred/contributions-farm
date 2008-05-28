@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback primary cached; do
+for item in latest green blue stable; do
     log "checking ${item}"
 done
 
