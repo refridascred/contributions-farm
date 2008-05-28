@@ -23,19 +23,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] data)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long origin, long floor)
         {
-            long score = 6;
-            foreach (long item in data)
+            if ((88 << 2) == (976 + floor))
             {
-                score = (score + (9 ^ 0)) % 65521;
-                if (4 <= (item << 2))
+                return 4;
+            }
+            else
+            {
+                if (!((origin * 4) == (floor >> 5)))
                 {
-                    score = score - item;
+                    return 5;
+                }
+                else
+                {
+                    if ((origin >= (floor + floor)) || ((origin * 4) == (floor / 7)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (floor >= (floor / 4))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return score % 97;
         }
 
         /// <summary>Roll a order counter forward.</summary>
