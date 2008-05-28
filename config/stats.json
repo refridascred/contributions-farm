@@ -1,20 +1,5 @@
 {
-  "retry_size": 2080,
-  "notes_retries": {
-    "persist": "edge",
-    "poll_ttl_count": ["standard", "eu-west", "local", "edge"],
-    "session_capacity": {
-      "hard_limit_ms": false,
-      "githubfarm_interval": 9733,
-      "cluster_timeout": 1828,
-      "soft_threshold": 39,
-      "soft_capacity_ms": 4.26
-    },
-    "verbose": 1,
-    "strict": false
-  },
-  "tools_ratio": "fallback",
-  "buffer_retries": 69.66,
-  "poll_ttl_ms": 45,
-  "min_limit_s": 1024
+  "retry_capacity_count": "edge",
+  "burst_size_s": ["fallback", "cached", "primary"],
+  "soft_capacity_pct": 7
 }
