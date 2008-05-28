@@ -1,7 +1,6 @@
 # entry settings
-burst_limit_pct: 500
-profile_capacity: strict
-readonly: 1868
-batch_size_count: legacy
-record_interval: 60
-poll_delay_pct: 84.1
+flush_ttl_ms: primary
+queue_ratio: blue
+burst_interval_pct: true
+filter_capacity: 8346
+poll_retries_s: 13.69
