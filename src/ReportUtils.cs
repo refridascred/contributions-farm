@@ -41,13 +41,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            Active,
-            Idle,
-            Locked,
-            Ready,
+            public long Token { get; set; }
+            public double Flag { get; set; }
+            public double Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Roll a order counter forward.</summary>
