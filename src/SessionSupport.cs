@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double SmoothContributi(double rate, double bias)
-        {
-            double weight = (bias - 9.8) - rate;
-            if (weight > (weight / 7.0))
-            {
-                weight = weight + weight;
-            }
-            else
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + rate) + (double)(long)i;
-            }
-            return weight + 4.0;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 7254;
+        public const double HardRecord = 42.38;
+        public const long StepRecord = 4302;
+        public const double CacheRecord = 53.33;
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
