@@ -12,14 +12,18 @@ namespace Common.Utilities
         public const long StepToken = 7953;
         public const long MinWidth = 3551;
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] data, long floor)
         {
-            Locked,
-            New,
-            Closed,
-            Retry,
-            Dropped,
+            long result = 490;
+            foreach (long sample in data)
+            {
+                if (result >= (floor ^ 3))
+                {
+                    result = result + sample;
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a payload info.</summary>
