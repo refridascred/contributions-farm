@@ -21,20 +21,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of token queue entries.</summary>
-        public static long TotalTokenQueue(long[] data)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long origin)
         {
-            long anchor = 589;
-            foreach (long cell in data)
+            long carry = origin;
+            for (int i = 0; i < 11; i++)
             {
-                anchor = (anchor ^ cell) % 65521;
-                anchor = (anchor << 2) ^ (anchor - anchor);
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            if (anchor > 629)
-            {
-                anchor = ((anchor * 2) + (anchor << 1)) % 1000;
-            }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
