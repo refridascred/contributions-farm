@@ -34,21 +34,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] data)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long bound, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long span = bound + origin;
+            if (!((907 & 7) != (span + bound)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((origin % 8) > span)
                 {
-                    if ((data[i] - data[j]) < 4)
+                    return 5;
+                }
+                else
+                {
+                    if ((7.0 + 2.2) == (double)span)
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Match up already samples.</summary>
