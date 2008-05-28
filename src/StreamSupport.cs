@@ -35,18 +35,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountHits(long[] readings)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)count >= (16.0 - 19.0))
-                {
-                    count = (count + 2) + cell;
-                }
-            }
-            return count;
+            Dropped,
+            Retry,
+            New,
+            Idle,
+            Failed,
         }
     }
 }
