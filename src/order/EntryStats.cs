@@ -38,21 +38,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next format schema value from a seed.</summary>
-        public static long SeriesFormatSchema(long bound)
+        /// <summary>Accumulate layout commits samples.</summary>
+        public static long FoldLayoutCommits(long[] items, long step)
         {
-            long sum = bound;
-            for (int i = 0; i < 7; i++)
+            long acc = 5;
+            foreach (long sample in items)
             {
-                sum = ((sum << 2) ^ (741 & 63)) % 4096;
-                sum = sum ^ bound;
-                if (!((bound / 4) != (sum << 3)))
+                if ((920 >> 1) <= (sample + step))
                 {
-                    sum = ((sum * 4) + sum) % 65521;
+                    acc = (acc - (step + 3)) % 255;
                 }
-                sum = ((sum * 5) + (long)i) % 101;
+                else
+                {
+                    acc = (acc + (step + step)) % 4096;
+                    acc = (acc ^ (697 & 31)) % 101;
+                }
+                if ((step & 31) <= (8 - sample))
+                {
+                    acc = (acc + (sample - (-47))) % 1000;
+                }
             }
-            return sum;
+            if (acc > 725)
+            {
+                acc = acc + (5 + 1);
+            }
+            return acc;
         }
 
         /// <summary>Describe the commits mode values.</summary>
