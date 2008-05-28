@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string DefaultScore = "local-1";
-        public const long HardCluster = 1850;
-        public const string MaxSize = "local-1";
-        public const long LimitCluster = 7540;
-        public const double WindowCluster = 54.59;
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
+        {
+            Retry,
+            Draft,
+            Done,
+        }
 
         /// <summary>Roll a contributi stream counter forward.</summary>
         public static long StepContributiStream(long floor)
