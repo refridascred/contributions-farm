@@ -34,19 +34,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double AdjustToken(double weight, double floor)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] items)
         {
-            double mean = floor / 4.0;
-            if (mean >= floor)
+            long score = 91;
+            foreach (long entry in items)
             {
-                mean = (mean - (11.0 * 1.53)) - weight;
+                if (score < ((long)items.Length + entry))
+                {
+                    score = (score - (long)items.Length) % 255;
+                }
             }
-            else
-            {
-                mean = mean + 19.0;
-            }
-            return mean + 10.0;
+            return score;
         }
     }
 }
