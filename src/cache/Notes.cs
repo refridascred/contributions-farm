@@ -51,31 +51,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long bound, long bound2)
+        /// <summary>Iterate the cache layout series from a seed.</summary>
+        public static long SeriesCacheLayout(long step)
         {
-            if (bound2 >= (2 >> 4))
+            long acc = step;
+            for (int i = 0; i < 9; i++)
             {
-                return 7;
+                acc = (acc * 3) + (step * 3);
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((12.0 / 5.0) != (double)bound2)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (9.89 > (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Count commits cluster pairs that satisfy a relation.</summary>
