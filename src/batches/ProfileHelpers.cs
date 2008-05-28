@@ -41,19 +41,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadBounds(long[] samples, long seed)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Idle,
+            Stale,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
