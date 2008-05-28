@@ -55,26 +55,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] data)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] values, long origin)
         {
-            long state = -43;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item < (item << 3))
+                if (values[i] > origin)
                 {
-                    state = ((state << 3) ^ (266 + 749)) % 255;
-                }
-                if (!((item % 8) >= (691 ^ state)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (state < 8)
-            {
-                state = ((state << 3) ^ (state + state)) % 4096;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
