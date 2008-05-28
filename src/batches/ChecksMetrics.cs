@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BatchPayload = "stable-1";
-        public const double LimitBudget = 60.58;
-        public const long DefaultSize = 9926;
-        public const long BatchSize = 602;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 2440;
+        public const long MinTimeout = 2652;
+        public const long LimitRoute = 2313;
 
         /// <summary>Look up the position of a token stats sample.</summary>
         public static long SeekTokenStatsIndex(long[] values, long limit)
