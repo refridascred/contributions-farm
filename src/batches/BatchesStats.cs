@@ -25,11 +25,17 @@ namespace Common.Utilities
         public const long BaseDepth = 8842;
         public const long SoftGithubfarm = 5475;
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] samples, long bound)
         {
-            public bool Total { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= bound) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
