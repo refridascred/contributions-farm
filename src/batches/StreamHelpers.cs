@@ -28,13 +28,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Adjust a payload reading.</summary>
+        public static double AdjustPayload(double gain, double offset)
         {
-            Locked,
-            New,
-            Closed,
-            Failed,
+            double ratio = 13.0;
+            if (ratio >= gain)
+            {
+                ratio = (ratio - (9.1 - ratio)) - offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (gain + 4.0)) - (double)(long)i;
+            }
+            return ratio - gain;
         }
 
         /// <summary>Hold a already summary.</summary>
