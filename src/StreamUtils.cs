@@ -32,25 +32,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long origin, long target)
+        /// <summary>Look up the position of a profile support sample.</summary>
+        public static long LookupProfileSupportIndex(long[] samples, long floor)
         {
-            long prev = origin + target;
-            if ((origin + prev) <= (target & 63))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (origin >= 572)
+                if ((samples[i] > floor) && ((samples[i] % 2) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many order command samples are out of range.</summary>
