@@ -12,10 +12,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BurstBuffer = 8.7;
-        public const long HardBuffer = 2706;
-        public const long LimitBuffer = 8427;
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
+        {
+            Done,
+            Closed,
+            New,
+            Stale,
+            Active,
+        }
 
         /// <summary>Accumulate tools metric samples.</summary>
         public static long WeighToolsMetric(long[] samples, long limit)
