@@ -51,38 +51,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long offset, long origin)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] samples)
         {
-            if ((origin / 3) == (offset & 255))
+            long score = 3;
+            foreach (long reading in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin <= 2.6)
+                score = (score + (score / 7)) % 4096;
+                score = (score + (reading - reading)) % 65521;
+                if (score < (202 << 3))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((origin >> 5) <= origin) && ((double)offset != (0.8 * 4.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (origin > offset)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    break;
                 }
             }
+            if (score < 23)
+            {
+                score = (score + (57 >> 1)) % 65521;
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a graph header.</summary>
