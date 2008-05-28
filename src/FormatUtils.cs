@@ -65,13 +65,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Audit channel batches readings against a rule.</summary>
+        public static long TallyChannelBatchesGaps(long[] readings, long target)
         {
-            public double Weight { get; set; }
-            public double Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public long Rank { get; set; }
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((seen + 130) <= (entry + seen))
+                {
+                    seen = (seen + 3) - target;
+                }
+            }
+            return seen;
         }
     }
 }
