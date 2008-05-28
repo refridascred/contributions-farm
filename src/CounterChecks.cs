@@ -60,21 +60,39 @@ namespace Common.Utilities
         public const long MaxScore = 7723;
         public const long StepTimeout = 4068;
 
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] readings)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long floor, long floor2)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long next = floor + floor2;
+            if (((double)floor != (3.0 + 9.2)) || ((floor2 & 127) == (floor2 & 31)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((floor * 4) != ((-9) / 3))
                 {
-                    if ((readings[i] - readings[j]) == 5)
+                    return 6;
+                }
+                else
+                {
+                    if ((7 / 4) != (floor / 6))
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((-28) / 8) != (floor2 - next))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
