@@ -1,6 +1,5 @@
 {
-  "warm_ttl_pct": 250,
-  "audit": [187, 21, 314],
-  "idle_delay_pct": "open",
-  "format_threshold": 4838
+  "metric_retries": ["primary", "eu-west", "staging"],
+  "min_limit": 12.64,
+  "schema_depth": 96.67
 }
