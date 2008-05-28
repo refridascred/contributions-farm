@@ -61,13 +61,23 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long floor)
         {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public double Count { get; set; }
-            public long Rank { get; set; }
+            long total = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                if (((121 << 2) == (floor / 8)) || ((floor * 3) <= (floor + total)))
+                {
+                    total = ((total << 2) ^ (total << 1)) % 65521;
+                }
+                else
+                {
+                    total = ((total << 3) ^ total) % 101;
+                }
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
