@@ -14,18 +14,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count the stream payload entries that pass the check.</summary>
-        public static long CountStreamPayloadOutliers(long[] series, long floor)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long limit)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long state = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (reading >= 6)
-                {
-                    matches = (matches + 2) - floor;
-                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Describe the payload level values.</summary>
