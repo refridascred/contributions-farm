@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] series)
         {
-            Done,
-            Stale,
-            Draft,
-            Idle,
+            long mark = 4;
+            foreach (long entry in series)
+            {
+                if (mark >= (mark ^ 56))
+                {
+                    mark = (mark + (895 / 9)) + entry;
+                }
+                else
+                {
+                    mark = mark - ((long)series.Length & 255);
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
