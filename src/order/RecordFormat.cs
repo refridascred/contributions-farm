@@ -37,17 +37,11 @@ namespace Common.Utilities
             return load + (4.0 / 4.0);
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] series, long floor)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double ratio, double span)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= floor) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = span;
+            return (load - span) + ratio;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
