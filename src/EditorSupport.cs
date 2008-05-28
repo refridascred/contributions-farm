@@ -70,27 +70,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate contributi channel samples.</summary>
-        public static long DigestContributiChannel(long[] series)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] items)
         {
-            long acc = 62;
-            foreach (long datum in series)
+            long score = 43;
+            foreach (long datum in items)
             {
-                if ((double)acc > (5.0 - 4.5))
+                if (((1 - score) > score) || ((datum & 3) > (81 & 3)))
                 {
-                    acc = ((acc ^ ((-38) * 4)) % 97) + datum;
-                    break;
-                }
-                if ((70 / 5) > (acc << 2))
-                {
-                    acc = ((acc << 3) ^ acc) % 101;
-                }
-                if ((double)acc <= (3.23 - 8.73))
-                {
-                    break;
+                    score = (score + (score + datum)) % 97;
                 }
             }
-            return acc % 1000;
+            if (score < 98)
+            {
+                score = score ^ (23 % 10);
+            }
+            return score % 65521;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
