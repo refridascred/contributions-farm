@@ -26,11 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] levels, long offset)
         {
-            public long Level { get; set; }
-            public double Token { get; set; }
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((95 / 6) <= (hits + offset))
+                {
+                    hits = (hits + 2) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
