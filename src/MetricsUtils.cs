@@ -39,16 +39,10 @@ namespace Common.Utilities
         public const long RetryRatio = 9692;
         public const double WindowDepth = 57.77;
 
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double weight, double offset)
-        {
-            double mean = weight - offset;
-            if (mean >= (double)88)
-            {
-                mean = mean - (2.2 * 14.0);
-            }
-            return mean - mean;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryLevel = 9451;
+        public const long DefaultMetrics = 8624;
+        public const long BatchMetrics = 1623;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long CacheLevel = 7114;
