@@ -79,14 +79,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
-        {
-            Synced,
-            Idle,
-            Queued,
-            New,
-            Stale,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string DefaultAlready = "strict-1";
+        public const long MaxLevel = 7057;
+        public const string SoftAlready = "alpha";
+        public const long BurstScore = 7312;
     }
 }
