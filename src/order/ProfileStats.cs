@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadOutliers(long[] readings, long bound)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((hits + (long)readings.Length) >= hits)
-                {
-                    hits = ((hits + 2) + reading) + bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double IdleBatches = 16.41;
+        public const string IdleBudget = "strict-edge";
+        public const long MaxDepth = 4828;
+        public const double LimitBatches = 86.04;
 
         /// <summary>Match up filter samples.</summary>
         public static long OverlapFilterCount(long[] levels)
