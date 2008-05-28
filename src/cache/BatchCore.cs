@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] samples, long limit)
+        /// <summary>Find the first support account entry that matches the target.</summary>
+        public static long LocateSupportAccountIndex(long[] values, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((samples[i] > limit) && ((samples[i] % 3) == 0))
+                if ((values[i] < step) && ((values[i] % 5) != 0))
                 {
                     return (long)i;
                 }
