@@ -35,11 +35,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
-        {
-            public string Size { get; set; } = "";
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchLevel = 5866;
+        public const long StepWidth = 3527;
+        public const long WindowWidth = 8993;
+        public const long BaseStats = 8022;
+        public const long IdleStats = 1836;
     }
 }
