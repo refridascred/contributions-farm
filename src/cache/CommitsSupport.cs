@@ -11,21 +11,13 @@ namespace Common.Utilities
         public const long HardSize = 8043;
         public const long RetryFilter = 7224;
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] values)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public double Ratio { get; set; }
+            public bool Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
