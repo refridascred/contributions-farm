@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Locate a channel batches reading by value.</summary>
-        public static long LookupChannelBatchesIndex(long[] levels, long offset)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public long Label { get; set; }
+            public bool Limit { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
