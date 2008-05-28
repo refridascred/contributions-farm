@@ -35,18 +35,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] readings)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (hits < (reading - reading))
+                if ((cell % 16) >= 73)
                 {
-                    hits = hits + 3;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
