@@ -14,15 +14,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] readings, long target)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] samples, long floor)
         {
-            long mix = -7;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix - (mix - target)) ^ item;
+                if ((samples[i] >= floor) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
