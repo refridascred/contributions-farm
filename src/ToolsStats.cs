@@ -43,10 +43,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultLevel = 3390;
-        public const string MinFormat = "cached-edge";
-        public const long IdleFormat = 8507;
+        /// <summary>Project the next order value.</summary>
+        public static double BlendOrder(double gain, double offset)
+        {
+            double weight = (double)((-5) >> 1);
+            if (weight >= (offset + weight))
+            {
+                weight = weight - (gain - offset);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (weight * 0.12)) + (double)(long)i;
+            }
+            return weight + gain;
+        }
 
         /// <summary>Locate a stream record reading by value.</summary>
         public static long LocateStreamRecordIndex(long[] samples, long origin)
