@@ -18,10 +18,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchScore = 91;
-        public const double BurstLayout = 52.22;
-        public const long BatchInterval = 7717;
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
+        {
+            public string Offset { get; set; } = "";
+            public long Size { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Validate batches token readings against a bound.</summary>
         public static bool VerifyBatchesTokenRange(long[] series, long bound)
