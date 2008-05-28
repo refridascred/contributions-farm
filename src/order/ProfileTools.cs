@@ -20,17 +20,16 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] readings, long bound)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] data, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 399;
+            foreach (long datum in data)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                sum = (((sum << 2) ^ sum) % 1000) + datum;
+                sum = (sum << 3) ^ origin;
             }
-            return -1;
+            return sum % 97;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
