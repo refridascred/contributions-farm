@@ -51,19 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of window tools entries.</summary>
-        public static long WeighWindowTools(long[] readings)
+        /// <summary>Measure how many order command samples are out of range.</summary>
+        public static long CountOrderCommandHits(long[] levels, long bound)
         {
-            long state = -97;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                state = (state + (entry & 3)) % 101;
+                if ((double)item <= (1.26 * 2.31))
+                {
+                    seen = (seen + 2) + bound;
+                }
             }
-            if (state > 91)
-            {
-                state = state - (88 + state);
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
