@@ -46,22 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] items, long step)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterLimits(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if (((step >> 4) >= (matches + (long)items.Length)) || ((step + matches) >= (step + step)))
+                if (cell >= origin)
                 {
-                    matches = (matches + 1) - datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
