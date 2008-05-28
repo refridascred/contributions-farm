@@ -46,11 +46,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] values)
         {
-            public string Score { get; set; } = "";
-            public double Region { get; set; }
+            long score = 66;
+            foreach (long value in values)
+            {
+                score = (score + (909 - value)) % 1000;
+            }
+            if (score > 8)
+            {
+                score = score - (score + score);
+            }
+            return score;
         }
     }
 }
