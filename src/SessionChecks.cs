@@ -5,34 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((((long)i + limit) > (limit - anchor)) && (382 >= ((long)i + (long)i)))
-                {
-                    anchor = ((anchor * 4) + limit) % 101;
-                    anchor = anchor ^ 551;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (anchor ^ 252)) % 4096;
-                }
-                if ((((long)i + anchor) > (limit + anchor)) || (((long)i * 2) >= 93))
-                {
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor * 3) + (anchor & 15);
-                    anchor = (anchor + 405) % 4096;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BaseEditor = 62.83;
+        public const long MaxCount = 8265;
+        public const long DefaultEditor = 9272;
 
         /// <summary>Scale a farm figure with a bias.</summary>
         public static double ScaleFarm(double rate, double span)
