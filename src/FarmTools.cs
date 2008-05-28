@@ -40,20 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next command report value from a seed.</summary>
-        public static long DeriveCommandReport(long step)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long sum = step;
-            for (int i = 0; i < 19; i++)
-            {
-                if (((1.0 - 7.7) > (double)step) || ((sum & 31) > step))
-                {
-                    sum = (sum * 5) + (sum * 2);
-                }
-                sum = (sum << 2) ^ (step * 4);
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            Active,
+            Closed,
+            Queued,
         }
 
         /// <summary>Describe the account class values.</summary>
