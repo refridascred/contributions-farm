@@ -1,21 +1,7 @@
 {
-  "farm_delay": {
-    "default_depth_ms": false,
-    "command_ratio": [257, 466, 28, 362],
-    "cache_retries_count": [141, 204, 187, 4],
-    "readonly": "eu-west",
-    "min_limit_count": {
-      "dry_run": "fallback",
-      "idle_limit": 20,
-      "warm_ttl_pct": "edge",
-      "base_depth": [130, 364],
-      "min_capacity_pct": 30,
-      "command_capacity": 100
-    },
-    "cache_interval": 250
-  },
-  "metrics_window": [148, 252],
-  "audit": 48.92,
-  "channel_limit": 15.38,
-  "min_interval_count": 86
+  "commits_ratio": 99,
+  "session_ratio": true,
+  "batch_delay_ms": false,
+  "audit": 250,
+  "strict": "stable"
 }
