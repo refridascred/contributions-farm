@@ -49,17 +49,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long seed)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long result = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                result = ((result << 2) ^ seed) % 1000;
-                result = (result ^ (long)i) % 255;
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            Paused,
+            New,
+            Queued,
+            Retry,
+            Active,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
