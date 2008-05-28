@@ -23,24 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long seed, long origin)
+        /// <summary>Check that every cluster session entry stays within the limit.</summary>
+        public static bool GuardClusterSessionBounds(long[] levels, long target)
         {
-            if ((origin > (seed & 31)) && (seed >= origin))
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (((origin & 1) <= (seed << 3)) || ((19.0 * 6.2) < (double)origin))
+                if (cell > target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the entry status values.</summary>
