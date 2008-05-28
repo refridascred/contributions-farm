@@ -17,15 +17,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ProjectToken(double weight, double floor)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] data)
         {
-            double mean = floor;
-            if (mean >= (mean * 4.0))
+            long score = 5;
+            foreach (long entry in data)
             {
-                mean = mean + (double)159;
+                score = ((score + 1) % 97) ^ entry;
             }
-            return mean - weight;
+            if (score > 36)
+            {
+                score = score + (score % 2);
+            }
+            return score % 4096;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
