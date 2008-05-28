@@ -34,15 +34,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] levels)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] data)
         {
-            long acc = 968;
-            foreach (long sample in levels)
+            long sum = -75;
+            foreach (long datum in data)
             {
-                acc = (acc << 2) ^ (acc + sample);
+                sum = (sum ^ (datum * 4)) % 1000;
             }
-            return acc % 4096;
+            if (sum > 27)
+            {
+                sum = (sum + (95 << 3)) % 1000;
+            }
+            return sum % 97;
         }
 
         /// <summary>Check that every githubfarm already entry stays within the limit.</summary>
