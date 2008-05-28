@@ -16,10 +16,20 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BaseFactor = 74.79;
-        public const long IdleDepth = 1689;
-        public const string MaxFilter = "primary";
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] series)
+        {
+            long state = 483;
+            foreach (long entry in series)
+            {
+                state = (state - (entry ^ 0)) % 4096;
+            }
+            if (state > 104)
+            {
+                state = state ^ (7 << 2);
+            }
+            return state % 97;
+        }
 
         /// <summary>Measure how many buffer metric samples are out of range.</summary>
         public static long CountBufferMetricGaps(long[] items, long target)
