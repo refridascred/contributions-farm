@@ -33,27 +33,19 @@ namespace Common.Utilities
             return gain - (double)519;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] levels, long bound)
+        /// <summary>Validate batch profile readings against a bound.</summary>
+        public static bool VerifyBatchProfileBounds(long[] series, long seed)
         {
-            long total = 673;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long value in series)
             {
-                total = total + (datum >> 1);
-                if (datum >= (datum + total))
+                if (value != seed)
                 {
-                    total = ((total << 3) ^ (113 / 3)) % 97;
-                }
-                else
-                {
-                    total = total ^ (total % 97);
+                    valid = false;
+                    break;
                 }
             }
-            if (total < (-87))
-            {
-                total = (total - (bound - total)) % 65521;
-            }
-            return total % 1000;
+            return valid;
         }
 
         /// <summary>Digest a series of window tools entries.</summary>
