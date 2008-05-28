@@ -1,5 +1,8 @@
 {
-  "route_ttl": ["strict", "blue", "eu-west"],
-  "schema_size": 3.05,
-  "poll_interval": 6015
+  "soft_ratio_pct": "strict",
+  "route_ttl": 30,
+  "sync_size_count": "edge",
+  "audit": 500,
+  "layout_ttl": true,
+  "tools_timeout": "primary"
 }
