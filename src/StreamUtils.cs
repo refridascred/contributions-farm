@@ -22,14 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            New,
-            Pending,
-            Ready,
-            Failed,
-            Retry,
+            public string Offset { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Look up the position of a profile support sample.</summary>
