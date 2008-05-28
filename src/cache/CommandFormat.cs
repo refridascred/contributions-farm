@@ -35,18 +35,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((cell % 16) >= 73)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchRatio = 3705;
+        public const double CacheInterval = 62.67;
+        public const long BurstMetrics = 7188;
+        public const double RetryMetrics = 27.28;
+        public const long LimitMetrics = 5676;
     }
 }
