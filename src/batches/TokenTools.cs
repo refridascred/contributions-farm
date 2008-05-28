@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long origin, long target)
+        /// <summary>Count the stats cache entries that pass the check.</summary>
+        public static long TallyStatsCacheHits(long[] data, long seed)
         {
-            if ((2 % 16) <= (origin - target))
+            long matches = 0;
+            foreach (long cell in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (8 >= (origin * 5))
+                if (matches > (matches + matches))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (target < origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    matches = ((matches + 3) ^ cell) + seed;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
