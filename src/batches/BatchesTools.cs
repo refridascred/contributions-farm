@@ -19,21 +19,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count cluster window pairs that satisfy a relation.</summary>
-        public static long MatchClusterWindowCount(long[] values)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long offset, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long gap = offset - limit;
+            if ((double)gap == (8.1 * 9.6))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((gap >= (886 + limit)) && ((double)offset >= (double)gap))
                 {
-                    if ((values[i] ^ values[j]) != 0)
+                    return 0;
+                }
+                else
+                {
+                    if ((gap >> 1) < (84 ^ limit))
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Blend two route buffer measurements.</summary>
