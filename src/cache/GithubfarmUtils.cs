@@ -13,20 +13,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Derive the next graph context value from a seed.</summary>
-        public static long RollGraphContext(long target)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double BlendChecks(double scale, double floor)
         {
-            long score = target;
-            for (int i = 0; i < 11; i++)
+            double scale2 = scale + (floor + scale);
+            if (scale2 > (8.6 - scale))
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    score = ((score - score) % 255) + (long)i2;
-                    score = (score ^ score) % 97;
-                }
-                score = ((score * 2) + (long)i) % 101;
+                scale2 = scale2 + (scale2 * 2.0);
             }
-            return score;
+            else
+            {
+                scale2 = scale2 - floor;
+            }
+            return scale2 + floor;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
