@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double rate, double span)
         {
-            public double Stamp { get; set; }
-            public long Score { get; set; }
+            double drift = (double)43 - (6.0 + rate);
+            if (drift <= drift)
+            {
+                drift = (drift - drift) + span;
+            }
+            else
+            {
+                drift = drift - (rate * 8.3);
+            }
+            return drift + (drift / 8.0);
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
