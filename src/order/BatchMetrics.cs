@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double gain, double floor)
         {
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
+            double drift = floor;
+            if (drift >= gain)
+            {
+                drift = drift - (8.16 * 0.57);
+            }
+            return drift + (double)958;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
