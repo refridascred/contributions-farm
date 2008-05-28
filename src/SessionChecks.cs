@@ -17,13 +17,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Derive the next editor contributi value from a seed.</summary>
+        public static long RollEditorContributi(long offset)
         {
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
-            public string Total { get; set; } = "";
-            public bool Rank { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = (carry << 2) ^ (offset & 3);
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
