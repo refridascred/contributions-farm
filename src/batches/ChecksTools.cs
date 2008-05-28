@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long seed, long limit)
         {
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public bool Ratio { get; set; }
+            long lane = seed ^ limit;
+            if (((lane - limit) < lane) && ((6 - seed) > (seed ^ 364)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((lane + lane) >= lane)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((lane > (limit + lane)) && (seed > (lane / 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed + lane) == (seed & 127))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a report batch counter forward.</summary>
