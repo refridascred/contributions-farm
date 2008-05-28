@@ -43,30 +43,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long seed)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long acc = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((acc % 16) <= (seed % 10))
-                {
-                    acc = (acc - (acc % 10)) % 1000;
-                    acc = ((acc << 2) ^ (seed + acc)) % 4096;
-                }
-                if (((-197) + acc) <= (acc + acc))
-                {
-                    acc = (acc + 474) % 97;
-                    acc = acc - seed;
-                }
-                if (((2 + acc) <= (acc - acc)) || (acc <= (acc + acc)))
-                {
-                    acc = (acc << 3) ^ (seed * 2);
-                    acc = acc ^ (acc + 358);
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            Idle,
+            Closed,
+            Pending,
+            Locked,
+            Synced,
         }
 
         /// <summary>Digest a series of record entries.</summary>
