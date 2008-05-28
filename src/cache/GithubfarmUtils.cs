@@ -46,25 +46,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long offset, long bound)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long slot = offset + bound;
-            if ((double)offset != (13.0 - 2.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((slot <= (slot * 2)) && ((0.8 - 1.0) != (double)slot))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Closed,
+            Paused,
+            Dropped,
+            Locked,
         }
     }
 }
