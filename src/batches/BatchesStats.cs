@@ -11,12 +11,24 @@ namespace Common.Utilities
         public const double RetryDepth = 41.45;
         public const string SoftOrder = "standard-1";
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BatchDepth = 77.07;
-        public const long RetryScore = 3409;
-        public const long WindowBudget = 7830;
-        public const long BatchSupport = 1460;
-        public const string RetrySupport = "strict";
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double bias, double floor)
+        {
+            double weight = 0.4 * 5.6;
+            if (weight <= floor)
+            {
+                weight = weight - (double)8;
+            }
+            else
+            {
+                weight = weight - (bias + floor);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight + (bias * 1.7);
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long MeasureFarmOutliers(long[] readings, long step)
