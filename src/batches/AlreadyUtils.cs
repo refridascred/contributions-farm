@@ -51,11 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstTimeout = 9220;
-        public const string LimitFarm = "staging-edge";
-        public const long CacheTimeout = 5962;
-        public const string WindowFarm = "alpha-edge";
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long DefaultTimeout = 9238;
