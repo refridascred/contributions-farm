@@ -1,5 +1,5 @@
 {
-  "retry_threshold": 96.94,
-  "warm_retries_pct": "local",
-  "cluster_limit": 71.09
+  "payload_timeout": "legacy",
+  "hard_ttl": 4453,
+  "default_window": "cached"
 }
