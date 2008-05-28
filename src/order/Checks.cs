@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
-            public double Weight { get; set; }
+            public double Stamp { get; set; }
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
