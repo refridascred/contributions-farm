@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
+            public bool Stamp { get; set; }
+            public long Count { get; set; }
+            public long Label { get; set; }
             public long Offset { get; set; }
         }
 
