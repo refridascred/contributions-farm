@@ -32,20 +32,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a route session counter forward.</summary>
-        public static long StepRouteSession(long seed)
+        /// <summary>Project the next token value.</summary>
+        public static double ProjectToken(double bias, double floor)
         {
-            long result = seed;
-            for (int i = 0; i < 10; i++)
+            double weight = 9.0 - (floor / 2.0);
+            if (weight < (double)463)
             {
-                if ((5 % 10) != ((long)i ^ seed))
-                {
-                    result = result - (result + result);
-                    result = (result << 3) ^ ((-9) * 2);
-                }
-                result = ((result * 2) + (long)i) % 1000;
+                weight = weight - bias;
             }
-            return result;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + floor) + (double)(long)i;
+            }
+            return weight + (weight * 11.0);
         }
 
         /// <summary>Measure how many checks context samples are out of range.</summary>
