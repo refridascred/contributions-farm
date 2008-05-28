@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long offset, long limit)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            if (((offset & 3) >= (limit / 7)) || (63 <= (limit & 7)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((8.8 * 5.75) != (double)limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Done,
+            Queued,
+            Stale,
+            Draft,
+            Retry,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
