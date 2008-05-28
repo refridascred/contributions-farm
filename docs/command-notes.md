@@ -1,11 +1,14 @@
 # Command notes
 
-A counter that stays idle for too long is moved to the contributi list.
-The command report groups every profile by checks.
+Use layout settings to tune how often editor data is refreshed.
+The contributi helpers are pure functions, so they are safe to call from any thread.
+
+Keep farm and githubfarm names short and lowercase.
+The contributi helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every window change
-- Keep githubfarm values small
-- Prefer notes defaults
-- Document new tools fields
+- Prefer account defaults
+- Keep report values small
+- Validate token input early
+- Log every notes change
