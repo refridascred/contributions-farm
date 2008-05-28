@@ -58,10 +58,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BatchInterval = 3.78;
-        public const long BatchRecord = 5269;
-        public const long HardRecord = 2439;
-        public const long BurstScore = 3899;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutGaps(long[] levels, long step)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((step * 5) < hits)
+                {
+                    hits = (hits + 1) ^ cell;
+                }
+            }
+            return hits;
+        }
     }
 }
