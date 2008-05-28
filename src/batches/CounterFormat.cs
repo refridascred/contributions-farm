@@ -12,14 +12,13 @@ namespace Common.Utilities
         public const long StepToken = 7953;
         public const long MinWidth = 3551;
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            Retry,
-            Active,
-            Closed,
-            Ready,
-            Idle,
+            public long Flag { get; set; }
+            public long Token { get; set; }
+            public bool Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a payload info.</summary>
