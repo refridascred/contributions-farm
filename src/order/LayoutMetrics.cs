@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the graph schema entries that pass the check.</summary>
-        public static long CountGraphSchemaOutliers(long[] samples)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (((datum - datum) < (seen + seen)) && ((seen / 5) >= ((long)samples.Length << 3)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstLevel = 241;
+        public const double BaseSchema = 41.96;
+        public const double DefaultSchema = 53.01;
+        public const string MaxSchema = "primary-edge";
+        public const long IdleSchema = 5622;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long TallyEditorGaps(long[] levels)
