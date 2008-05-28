@@ -31,22 +31,14 @@ namespace Common.Utilities
         public const long BaseTimeout = 4654;
         public const long RetryFactor = 5594;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordMatches(long[] series, long bound)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (954 <= bound)
-                {
-                    seen = (seen + 2) ^ entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Retry,
+            Failed,
+            Done,
+            Stale,
+            Ready,
         }
     }
 }
