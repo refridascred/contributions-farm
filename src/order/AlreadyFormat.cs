@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmBounds(long[] items, long limit)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaRange(long[] readings, long seed)
         {
             bool ok = true;
-            foreach (long reading in items)
+            foreach (long datum in readings)
             {
-                if (reading != limit)
+                if (datum >= seed)
                 {
                     ok = false;
                     break;
