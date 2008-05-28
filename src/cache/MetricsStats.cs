@@ -21,12 +21,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 2521;
-        public const long WindowFactor = 1276;
-        public const double WindowTools = 70.32;
-        public const long HardDepth = 960;
-        public const double BurstSpan = 85.92;
+        /// <summary>Digest a series of token queue entries.</summary>
+        public static long TotalTokenQueue(long[] data)
+        {
+            long anchor = 589;
+            foreach (long cell in data)
+            {
+                anchor = (anchor ^ cell) % 65521;
+                anchor = (anchor << 2) ^ (anchor - anchor);
+            }
+            if (anchor > 629)
+            {
+                anchor = ((anchor * 2) + (anchor << 1)) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long AuditBatchOutliers(long[] samples, long limit)
