@@ -43,18 +43,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] readings)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((double)value > (4.9 / 9.0))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public double Owner { get; set; }
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
