@@ -23,22 +23,17 @@ namespace Common.Utilities
         public const long SoftBudget = 4829;
         public const string BaseTimeout = "standard";
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] readings)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] levels, long step)
         {
-            long total = 37;
-            foreach (long value in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((value + total) != (total >> 3)))
+                if ((levels[i] == step) && ((levels[i] % 3) == 0))
                 {
-                    total = ((total * 5) + (45 - total)) % 255;
-                }
-                else
-                {
-                    total = ((total * 3) + (value - value)) % 4096;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Digest a series of window tools entries.</summary>
