@@ -33,10 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BatchWidth = 30.66;
-        public const long BaseEditor = 6010;
-        public const long BatchSize = 7261;
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next farm value from a seed.</summary>
         public static long StepFarm(long offset)
