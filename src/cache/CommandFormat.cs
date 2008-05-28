@@ -11,20 +11,12 @@ namespace Common.Utilities
         public const long HardOrder = 9601;
         public const double StepWidth = 37.78;
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long bound)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long state = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                state = state + (17 + 5);
-                if ((long)i > (bound % 16))
-                {
-                    state = (state ^ ((long)i * 2)) % 101;
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
