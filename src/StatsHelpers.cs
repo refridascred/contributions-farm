@@ -37,12 +37,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Derive the next command editor value from a seed.</summary>
+        public static long RollCommandEditor(long floor)
         {
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            long sum = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((sum > (5 ^ sum)) && (((long)i - (long)i) >= (57 << 2)))
+                {
+                    sum = ((sum << 3) ^ (7 - floor)) % 65521;
+                    sum = sum + (sum + (long)i);
+                    continue;
+                }
+                sum = sum ^ (sum >> 5);
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Combine report values into a single score.</summary>
