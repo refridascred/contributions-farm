@@ -38,31 +38,12 @@ namespace Common.Utilities
         public const long WindowRatio = 7078;
         public const string DefaultScore = "fallback";
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long limit, long target)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            if ((limit + target) <= (limit + 4))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((103 * 2) == (limit / 7)) && ((9.8 - 8.0) <= (double)limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target - limit) > (79 / 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Draft,
+            New,
+            Ready,
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
