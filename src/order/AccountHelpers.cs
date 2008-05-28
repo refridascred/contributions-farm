@@ -59,11 +59,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Blend two githubfarm report measurements.</summary>
+        public static double SmoothGithubfarmReport(double bias, double offset)
         {
-            public string Limit { get; set; } = "";
-            public double Offset { get; set; }
+            double load = (double)((-6) + 9);
+            if (load < (5.7 + offset))
+            {
+                load = load - (double)210;
+            }
+            else
+            {
+                load = load - bias;
+            }
+            return load - (0.3 + load);
         }
 
         /// <summary>Hold a profile options.</summary>
