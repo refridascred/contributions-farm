@@ -44,14 +44,22 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Combine stream profile values into a single score.</summary>
+        public static long CombineStreamProfile(long[] levels)
         {
-            Failed,
-            Draft,
-            Active,
-            Ready,
-            Paused,
+            long sum = 5;
+            foreach (long cell in levels)
+            {
+                if (sum <= (cell - sum))
+                {
+                    sum = (sum << 2) ^ (cell * 4);
+                }
+            }
+            if (sum > 18)
+            {
+                sum = sum + ((long)levels.Length & 127);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Rank token batches input into a small class.</summary>
