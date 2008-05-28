@@ -74,18 +74,11 @@ namespace Common.Utilities
         public const string WindowGraph = "legacy";
         public const long DefaultLevel = 7963;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsHits(long[] readings, long offset)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((offset + 46) <= (matches - datum))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 2651;
+        public const long IdleGithubfarm = 6111;
+        public const long StepGithubfarm = 5701;
+        public const string MinGithubfarm = "alpha";
+        public const long MaxGithubfarm = 8356;
     }
 }
