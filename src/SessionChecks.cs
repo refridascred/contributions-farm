@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BaseEditor = 62.83;
-        public const long MaxCount = 8265;
-        public const long DefaultEditor = 9272;
+        /// <summary>Find the first route already entry that matches the target.</summary>
+        public static long FindRouteAlreadyIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= bound) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long MeasureRecordOutliers(long[] samples)
