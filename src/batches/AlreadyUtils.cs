@@ -18,33 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long target, long seed)
-        {
-            long step = target - seed;
-            if ((0.43 < (double)seed) && ((target / 7) == (step + step)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)seed < 14.0)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((576 + seed) <= seed) || ((double)(-21) >= (double)seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 9446;
+        public const long SoftCount = 8108;
+        public const long HardMetrics = 201;
+        public const long IdleMetrics = 1529;
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long BucketToken(long offset, long limit)
