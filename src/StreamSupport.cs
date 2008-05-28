@@ -20,22 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit commits token readings against a rule.</summary>
-        public static long AuditCommitsTokenGaps(long[] data, long offset)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsRange(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if ((41 >> 4) >= (offset % 8))
+                if (cell >= origin)
                 {
-                    hits = (hits + 1) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
