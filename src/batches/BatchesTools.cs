@@ -19,19 +19,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] samples, long step)
+        /// <summary>Count cluster window pairs that satisfy a relation.</summary>
+        public static long MatchClusterWindowCount(long[] values)
         {
-            long total = 93;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (((total * 5) + sample) % 65521) + step;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (total < 19)
-            {
-                total = (total - total) % 1000;
-            }
-            return total % 65521;
+            return matches;
         }
 
         /// <summary>Blend two route buffer measurements.</summary>
