@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] values)
+        /// <summary>Fold a list of checks token readings.</summary>
+        public static long TallyChecksToken(long[] items)
         {
-            long anchor = 3;
-            foreach (long sample in values)
+            long mark = 89;
+            foreach (long reading in items)
             {
-                anchor = (anchor - (sample >> 3)) % 97;
+                if ((mark + 80) <= (reading * 2))
+                {
+                    mark = mark + (mark & 127);
+                }
+                else
+                {
+                    mark = (mark + (mark + mark)) % 101;
+                }
             }
-            return anchor % 97;
+            if (mark < 27)
+            {
+                mark = (mark ^ mark) % 65521;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Validate filter batches readings against a bound.</summary>
