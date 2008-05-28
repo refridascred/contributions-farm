@@ -25,19 +25,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every schema session entry stays within the limit.</summary>
-        public static bool ValidateSchemaSessionBounds(long[] data, long limit)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell < limit)
+                if (values[i] == offset)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
