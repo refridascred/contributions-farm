@@ -48,19 +48,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Project the next session window value.</summary>
-        public static double BlendSessionWindow(double weight, double bias)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamBounds(long[] levels, long origin)
         {
-            double gain = bias / 9.0;
-            if (gain < (gain / 6.0))
+            bool ready = true;
+            foreach (long value in levels)
             {
-                gain = gain - weight;
+                if (value != origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (bias + bias)) + (double)(long)i;
-            }
-            return gain - (gain - gain);
+            return ready;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
