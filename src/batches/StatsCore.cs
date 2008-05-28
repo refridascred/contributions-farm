@@ -28,22 +28,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] data)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((6.8 / 3.0) > (double)entry)
+                if ((items[i] < step) && ((items[i] % 2) == 0))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Combine queue token values into a single score.</summary>
