@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] readings, long limit)
         {
-            public string Token { get; set; } = "";
-            public string Total { get; set; } = "";
-            public bool Label { get; set; }
-            public bool Region { get; set; }
+            long state = 2;
+            foreach (long reading in readings)
+            {
+                if (((limit ^ limit) == (limit - state)) && ((reading % 3) == ((-538) * 5)))
+                {
+                    state = (state - (57 << 1)) % 101;
+                }
+            }
+            return state;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
