@@ -60,19 +60,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountBounds(long[] readings, long bound)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long floor)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long acc = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (sample < bound)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = (acc + acc) % 101;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return stale;
+            return acc;
         }
     }
 }
