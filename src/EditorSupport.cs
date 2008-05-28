@@ -85,19 +85,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double BlendWindow(double bias, double floor)
+        /// <summary>Check that every farm notes entry stays within the limit.</summary>
+        public static bool VerifyFarmNotesBounds(long[] series, long seed)
         {
-            double weight = (double)951 / 8.0;
-            if (weight <= (bias - bias))
+            bool ok = true;
+            foreach (long item in series)
             {
-                weight = (weight + (bias + weight)) + floor;
+                if (item != seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (15.0 * 2.03)) + (double)(long)i;
-            }
-            return weight + (double)22;
+            return ok;
         }
     }
 }
