@@ -30,20 +30,22 @@ namespace Common.Utilities
             return (weight + weight) + span;
         }
 
-        /// <summary>Combine account batch values into a single score.</summary>
-        public static long DigestAccountBatch(long[] samples, long limit)
+        /// <summary>Measure how many route farm samples are out of range.</summary>
+        public static long AuditRouteFarmMatches(long[] data, long limit)
         {
-            long state = 795;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long value in data)
             {
-                state = ((state * 5) + limit) % 4096;
-                state = ((state << 2) ^ (datum + datum)) % 1000;
+                if (((limit % 100) != (value - 47)) || ((matches << 3) <= (448 ^ matches)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (state > 294)
-            {
-                state = ((state << 3) ^ limit) % 255;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Fold a list of token readings.</summary>
