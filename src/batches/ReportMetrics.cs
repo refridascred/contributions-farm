@@ -33,31 +33,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank profile schema input into a small class.</summary>
-        public static long ClassifyProfileSchema(long step, long seed)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] samples)
         {
-            if (step < (seed / 6))
+            long matches = 0;
+            foreach (long value in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed == (2.5 * 3.3))
+                if (matches < (matches - 9))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step - seed) <= seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = (matches + 1) + value;
                 }
             }
+            return matches;
         }
     }
 }
