@@ -34,23 +34,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] series)
+        /// <summary>Match up profile cluster samples.</summary>
+        public static long PairProfileClusterCount(long[] items)
         {
-            long acc = 70;
-            foreach (long cell in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)cell >= (double)937)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = ((acc << 2) ^ acc) % 4096;
-                    acc = (acc << 3) ^ acc;
-                }
-                if (((acc >> 5) > cell) || (40 >= cell))
-                {
-                    acc = (acc + (45 + acc)) % 101;
+                    if ((items[i] + items[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc;
+            return seen;
         }
     }
 }
