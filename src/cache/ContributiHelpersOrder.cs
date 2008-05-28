@@ -29,10 +29,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleStream = 9083;
-        public const long WindowCount = 4262;
-        public const long LimitStream = 4752;
-        public const double IdleWidth = 42.81;
+        /// <summary>Measure how many commits counter samples are out of range.</summary>
+        public static long CountCommitsCounterGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (((double)entry < (13.0 - 1.0)) || ((double)(long)data.Length > (15.0 + 8.19)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
