@@ -15,20 +15,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] data, long step)
-        {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BurstTimeout = "fallback-v2";
+        public const long LimitInterval = 3478;
+        public const string WindowCache = "alpha-edge";
+        public const string MaxLevel = "cached";
 
         /// <summary>Match up schema samples.</summary>
         public static long PairSchemaCount(long[] readings)
