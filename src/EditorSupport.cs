@@ -83,34 +83,34 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a editor cluster value against two limits.</summary>
-        public static long RankEditorCluster(long limit, long bound)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long origin, long bound)
         {
-            if (bound > (bound - bound))
+            if (bound < (bound >> 4))
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if (bound >= (bound - 4))
+                if ((origin > (bound * 2)) || ((bound & 7) > (bound + 257)))
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    if ((double)bound == (5.0 * 10.0))
+                    if (((double)origin > 1.93) || ((origin * 5) > (origin % 24)))
                     {
-                        return 3;
+                        return 8;
                     }
                     else
                     {
-                        if ((bound - bound) >= (limit / 3))
+                        if ((double)origin < (2.46 + 5.4))
                         {
-                            return 8;
+                            return 4;
                         }
                         else
                         {
-                            return 1;
+                            return 6;
                         }
                     }
                 }
