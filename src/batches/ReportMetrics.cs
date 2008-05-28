@@ -30,18 +30,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Audit profile already readings against a rule.</summary>
-        public static long TallyProfileAlreadyHits(long[] series, long target)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((87 + hits) != (target % 97))
-                {
-                    hits = (hits + 1) ^ item;
-                }
-            }
-            return hits;
+            Locked,
+            Pending,
+            New,
         }
     }
 }
