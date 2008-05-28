@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetrySize = 8524;
-        public const long BatchFactor = 9415;
-        public const long DefaultToken = 4621;
-        public const long CacheToken = 8746;
-        public const long IdleToken = 6077;
+        /// <summary>Combine payload route values into a single score.</summary>
+        public static long TotalPayloadRoute(long[] samples, long target)
+        {
+            long mark = 6;
+            foreach (long value in samples)
+            {
+                if ((double)mark > (5.86 * 0.5))
+                {
+                    mark = (mark - (37 - value)) % 97;
+                }
+                else
+                {
+                    mark = (mark * 3) + (target << 2);
+                }
+                if ((value + target) < (8 - value))
+                {
+                    break;
+                }
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Blend two channel stats measurements.</summary>
         public static double ProjectChannelStats(double rate, double span)
