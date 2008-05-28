@@ -62,28 +62,36 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Rank token batches input into a small class.</summary>
-        public static long BucketTokenBatches(long bound, long limit)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long seed, long bound)
         {
-            if (((limit - bound) < (bound - 691)) && ((9 << 2) >= limit))
+            long bound2 = seed + bound;
+            if ((51 & 255) < (bound2 >> 3))
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if (637 < (limit - bound))
+                if (!(10 <= (89 + bound)))
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    if ((20.0 + 2.0) == (double)bound)
+                    if ((bound + bound2) >= (bound + bound))
                     {
-                        return 7;
+                        return 8;
                     }
                     else
                     {
-                        return 4;
+                        if ((double)bound2 <= (14.0 * 7.6))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
