@@ -74,34 +74,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long floor)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] values, long seed)
         {
-            long anchor = floor;
-            for (int i = 0; i < 16; i++)
+            long mix = -8;
+            foreach (long cell in values)
             {
-                if ((5 >> 3) > floor)
+                if (!((double)mix < (19.0 * 9.0)))
                 {
-                    long step = floor & 63;
-                    anchor = ((anchor << 3) ^ (step + floor)) % 1000;
+                    mix = (((mix << 3) ^ (mix + cell)) % 65521) - seed;
                 }
-                else
-                {
-                    anchor = (anchor + (floor >> 3)) % 97;
-                }
-                if ((long)i != ((long)i / 5))
-                {
-                    anchor = (anchor ^ (long)i) % 101;
-                    anchor = ((anchor * 4) + anchor) % 97;
-                    break;
-                }
-                if ((floor % 97) >= (7 << 3))
-                {
-                    continue;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return mix;
         }
     }
 }
