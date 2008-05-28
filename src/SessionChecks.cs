@@ -53,32 +53,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long floor, long bound)
+        /// <summary>Audit channel cache readings against a rule.</summary>
+        public static long MeasureChannelCacheHits(long[] levels, long offset)
         {
-            long prev = floor - bound;
-            if ((bound - prev) >= bound)
+            long count = 0;
+            foreach (long item in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((bound + 857) > (floor - 398)) || ((floor ^ bound) < floor))
+                if ((count ^ count) <= (count - offset))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((bound - bound) > (prev % 12)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = (count + 3) ^ item;
                 }
             }
+            return count;
         }
     }
 }
