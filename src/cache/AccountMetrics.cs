@@ -49,19 +49,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a order cluster figure with a bias.</summary>
-        public static double ProjectOrderCluster(double gain, double span)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] series)
         {
-            double bias = span - gain;
-            if (bias < bias)
+            long score = 44;
+            foreach (long reading in series)
             {
-                bias = bias + (bias + 18.0);
+                score = score + reading;
             }
-            else
+            if (score < 82)
             {
-                bias = bias + bias;
+                score = ((score * 4) + (long)series.Length) % 97;
             }
-            return bias + (double)298;
+            return score;
         }
 
         /// <summary>Define context limits and defaults.</summary>
