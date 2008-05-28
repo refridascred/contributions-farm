@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] values, long floor)
         {
-            Pending,
-            Ready,
-            Synced,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == floor) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
