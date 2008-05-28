@@ -40,21 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] items)
+        /// <summary>Audit counter contributi readings against a rule.</summary>
+        public static long AuditCounterContributiOutliers(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((((38 % 5) > (seen & 255)) && ((datum >> 2) != (datum & 255))) && !((double)datum >= (5.0 + 1.2)))
                 {
-                    if ((items[i] - items[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
