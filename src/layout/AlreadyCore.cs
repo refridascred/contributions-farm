@@ -66,9 +66,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 3155;
-        public const long BurstCluster = 784;
-        public const double SoftCluster = 40.76;
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] series, long step)
+        {
+            long sum = 51;
+            foreach (long entry in series)
+            {
+                sum = (((sum << 3) ^ (entry + 56)) % 65521) + step;
+            }
+            return sum;
+        }
     }
 }
