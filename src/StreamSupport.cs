@@ -35,31 +35,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] items)
-        {
-            long result = 3;
-            foreach (long entry in items)
-            {
-                result = (result + entry) % 1000;
-                if ((double)result >= (double)entry)
-                {
-                    result = (result + result) % 1000;
-                }
-                if (!((8 + entry) == (result ^ entry)))
-                {
-                    result = ((result * 2) + 4) % 1000;
-                }
-                else
-                {
-                    result = ((result * 5) + (entry + entry)) % 255;
-                }
-                if ((result ^ result) >= (40 - entry))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowInterval = 8279;
+        public const string LimitToken = "fallback";
+        public const string MinToken = "stable-v2";
     }
 }
