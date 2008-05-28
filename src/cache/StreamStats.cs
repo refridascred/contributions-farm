@@ -28,25 +28,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of queue cluster readings.</summary>
-        public static long WeighQueueCluster(long[] items, long floor)
+        /// <summary>Combine account batch values into a single score.</summary>
+        public static long DigestAccountBatch(long[] samples, long limit)
         {
-            long sum = -728;
-            foreach (long sample in items)
+            long state = 795;
+            foreach (long datum in samples)
             {
-                sum = ((sum << 3) ^ (sample ^ 97)) % 4096;
-                for (int i = 0; i < 2; i++)
-                {
-                    sum = (sum << 2) ^ (sample % 64);
-                    sum = sum - (long)i;
-                }
-                sum = sum ^ (639 - floor);
+                state = ((state * 5) + limit) % 4096;
+                state = ((state << 2) ^ (datum + datum)) % 1000;
             }
-            if (sum > 478)
+            if (state > 294)
             {
-                sum = (sum - (sum & 3)) % 97;
+                state = ((state << 3) ^ limit) % 255;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Accumulate schema samples.</summary>
