@@ -37,10 +37,19 @@ namespace Common.Utilities
         public const double CacheContext = 1.52;
         public const long DefaultContext = 6076;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BaseChannel = 72.61;
-        public const long StepTimeout = 6681;
-        public const long HardBudget = 9433;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesMatches(long[] levels, long target)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)entry <= (5.0 * 2.04))
+                {
+                    seen = (seen + 3) - target;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit command farm readings against a rule.</summary>
         public static long AuditCommandFarmHits(long[] levels)
