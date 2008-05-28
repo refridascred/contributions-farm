@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] readings)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Draft,
+            Idle,
+            New,
+            Synced,
+            Done,
         }
 
         /// <summary>Describe the batches class values.</summary>
