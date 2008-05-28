@@ -45,21 +45,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] levels)
+        /// <summary>Count cache filter pairs that satisfy a relation.</summary>
+        public static long CompareCacheFilterCount(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) > 8)
+                    if ((samples[i] ^ samples[j]) == 15)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
