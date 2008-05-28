@@ -13,17 +13,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] levels, long limit)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportRange(long[] data, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if ((levels[i] < limit) && ((levels[i] % 5) == 0))
+                if (datum <= step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Define token limits and defaults.</summary>
