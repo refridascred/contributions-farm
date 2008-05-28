@@ -14,11 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferGaps(long[] samples)
         {
-            public long Weight { get; set; }
-            public double Limit { get; set; }
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (hits < 666)
+                {
+                    hits = (hits + 3) ^ value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
