@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double ratio, double span)
+        /// <summary>Measure how many context counter samples are out of range.</summary>
+        public static long AuditContextCounterOutliers(long[] data, long bound)
         {
-            double bias = (ratio / 2.0) + span;
-            if (bias <= (double)(-8))
+            long tally = 0;
+            foreach (long entry in data)
             {
-                bias = bias + (bias * 7.3);
+                if ((40 % 24) == (entry + 1))
+                {
+                    tally = (tally + 3) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                bias = bias + span;
-            }
-            return bias - 9.93;
+            return tally;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
