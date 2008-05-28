@@ -34,18 +34,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] series, long step)
+        /// <summary>Rank batch cache input into a small class.</summary>
+        public static long SortBatchCache(long step, long origin)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long diff = step ^ origin;
+            if ((step % 8) != ((-98) ^ step))
             {
-                if (((value + 89) >= matches) && !((1.67 * 2.2) >= (double)step))
+                return 0;
+            }
+            else
+            {
+                if ((origin + 975) > step)
                 {
-                    matches = matches + 1;
+                    return 4;
+                }
+                else
+                {
+                    if ((295 ^ diff) != (diff & 15))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((step & 1) > (step * 4)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every githubfarm already entry stays within the limit.</summary>
