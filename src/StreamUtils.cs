@@ -22,21 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] data)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 69;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = ((acc - ((long)samples.Length + acc)) % 4096) + reading;
+                acc = acc - (acc & 1);
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Look up the position of a profile support sample.</summary>
