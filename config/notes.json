@@ -1,5 +1,16 @@
 {
-  "soft_interval": 500,
-  "min_size_count": "latest",
-  "channel_capacity": 33.4
+  "warm_retries_ms": false,
+  "idle_interval_count": 76.13,
+  "sync_interval_s": true,
+  "persist": {
+    "idle_window_pct": true,
+    "sync_delay_ms": 3250,
+    "batch_limit_count": true
+  },
+  "max_size_ms": {
+    "sync_threshold_s": true,
+    "hard_size_s": "strict",
+    "enabled": 24.83,
+    "min_capacity_s": ["staging", "primary"]
+  }
 }
