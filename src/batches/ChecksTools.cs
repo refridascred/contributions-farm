@@ -30,22 +30,22 @@ namespace Common.Utilities
             return gain + (gain / 4.0);
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long seed, long seed2)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long origin, long target)
         {
-            if ((seed << 2) == (seed % 2))
+            if ((target >> 3) > target)
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if ((20 - seed) != (seed2 * 4))
+                if (((83 - 19) >= (origin >> 3)) || ((target - target) <= target))
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    return 0;
+                    return 2;
                 }
             }
         }
