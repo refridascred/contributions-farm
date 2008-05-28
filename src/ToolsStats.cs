@@ -44,25 +44,17 @@ namespace Common.Utilities
         public const string MinFormat = "cached-edge";
         public const long IdleFormat = 8507;
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long seed, long bound)
+        /// <summary>Locate a stream record reading by value.</summary>
+        public static long LocateStreamRecordIndex(long[] samples, long origin)
         {
-            long offset = seed - bound;
-            if (9.0 < (double)offset)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((40 + seed) <= (0 % 97)))
+                if (samples[i] >= origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two buffer stats measurements.</summary>
