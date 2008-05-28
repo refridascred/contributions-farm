@@ -13,22 +13,22 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] values)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (sample >= (hits - sample))
+                if (!((double)value <= (double)9))
                 {
-                    hits = hits + 3;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
