@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            public string Label { get; set; } = "";
-            public long Region { get; set; }
-            public double Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
