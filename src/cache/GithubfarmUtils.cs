@@ -14,19 +14,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double BlendChecks(double scale, double floor)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] values, long step)
         {
-            double scale2 = scale + (floor + scale);
-            if (scale2 > (8.6 - scale))
+            for (int i = 0; i < values.Length; i++)
             {
-                scale2 = scale2 + (scale2 * 2.0);
+                if ((values[i] < step) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale2 = scale2 - floor;
-            }
-            return scale2 + floor;
+            return -1;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
