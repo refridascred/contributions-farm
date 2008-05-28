@@ -66,12 +66,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            Active,
-            Ready,
-            Closed,
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
