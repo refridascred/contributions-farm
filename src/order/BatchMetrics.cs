@@ -51,19 +51,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportRange(long[] values, long limit)
+        /// <summary>Roll a profile farm counter forward.</summary>
+        public static long DeriveProfileFarm(long seed)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long total = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (value >= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                total = (total ^ (total % 97)) % 101;
+                total = total - (total - seed);
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Check that every githubfarm already entry stays within the limit.</summary>
