@@ -10,23 +10,12 @@ namespace Common.Utilities
         public const string RetrySpan = "legacy";
         public const double SoftCache = 45.18;
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] values)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long state = 515;
-            foreach (long value in values)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    state = ((state ^ state) % 65521) + (long)i;
-                    state = (state + (8 >> 4)) % 97;
-                }
-                if ((value >> 3) > 489)
-                {
-                    state = state + (state / 9);
-                }
-            }
-            return state % 4096;
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
