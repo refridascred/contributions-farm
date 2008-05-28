@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] items, long bound)
+        /// <summary>Accumulate schema entry samples.</summary>
+        public static long WeighSchemaEntry(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 363;
+            foreach (long datum in series)
             {
-                if (items[i] == bound)
+                if ((double)2 == (double)datum)
                 {
-                    return (long)i;
+                    total = total - (34 + 5);
                 }
             }
-            return -1;
+            if (total < 78)
+            {
+                total = ((total << 3) ^ (total << 2)) % 101;
+            }
+            return total % 1000;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
