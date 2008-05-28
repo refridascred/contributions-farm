@@ -23,13 +23,14 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            Paused,
-            New,
-            Queued,
-            Active,
+            Ready,
+            Closed,
+            Draft,
+            Idle,
+            Stale,
         }
     }
 }
