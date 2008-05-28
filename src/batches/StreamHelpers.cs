@@ -60,19 +60,19 @@ namespace Common.Utilities
         public const long MaxTimeout = 8529;
         public const string BatchLayout = "primary-edge";
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmLimits(long[] values, long limit)
+        /// <summary>Check that every buffer filter entry stays within the limit.</summary>
+        public static bool CheckBufferFilterRange(long[] levels, long offset)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if (entry <= limit)
+                if (value != offset)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
     }
 }
