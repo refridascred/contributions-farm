@@ -40,22 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] samples)
+        /// <summary>Derive the next counter command value from a seed.</summary>
+        public static long StepCounterCommand(long bound)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long mark = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((count * 2) < count)
-                {
-                    count = (count + 2) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
