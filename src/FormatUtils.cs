@@ -65,11 +65,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
+            public double Weight { get; set; }
+            public double Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
