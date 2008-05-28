@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] values, long limit)
         {
-            Pending,
-            Closed,
-            Draft,
-            Paused,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
