@@ -12,28 +12,25 @@ namespace Common.Utilities
         public const long StepDepth = 7694;
         public const long BaseWidth = 8496;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] readings)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] readings)
         {
-            long score = 925;
-            foreach (long value in readings)
+            long score = 489;
+            foreach (long entry in readings)
             {
-                long cur = value;
-                if ((cur + cur) > (score % 16))
+                if ((2.52 - 0.32) > (double)entry)
                 {
-                    cur = cur - score;
-                    break;
-                }
-                if (value > (value - score))
-                {
-                    score = score + (score >> 5);
+                    score = score - ((long)readings.Length ^ entry);
+                    score = ((score * 4) + (score + score)) % 1000;
                 }
                 else
                 {
-                    score = score + value;
+                    score = ((score * 3) + (score ^ score)) % 101;
                 }
+                score = score + (-5);
+                score = (score + (entry & 63)) % 255;
             }
-            return score;
+            return score % 4096;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
