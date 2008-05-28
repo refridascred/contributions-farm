@@ -20,17 +20,12 @@ namespace Common.Utilities
             return weight + (double)38;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] values, long target)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            New,
+            Draft,
         }
 
         /// <summary>Describe the cache status values.</summary>
