@@ -35,31 +35,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long origin, long seed)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            if ((seed + origin) != (seed / 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)origin >= (double)seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((seed ^ seed) >= seed) && ((origin % 10) == (seed ^ 932)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public double Offset { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Roll a order counter forward.</summary>
