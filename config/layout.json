@@ -1,9 +1,6 @@
 {
-  "metrics_threshold": {
-    "base_depth_count": ["open", "cached"],
-    "poll_interval": "cached",
-    "soft_delay_s": 4024
-  },
-  "support_window": 94.75,
-  "cluster_ttl": false
+  "cluster_interval": 250,
+  "burst_size_count": "stable",
+  "idle_threshold_ms": 3078,
+  "default_ttl_s": "primary"
 }
