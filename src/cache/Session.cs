@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const double WindowRoute = 10.99;
         public const long MinScore = 6624;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] values)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((double)tally < (1.0 * 8.79))
-                {
-                    tally = (tally + 1) ^ sample;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Combine cache values into a single score.</summary>
