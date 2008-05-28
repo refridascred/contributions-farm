@@ -1,9 +1,9 @@
 # githubfarm settings
-buffer_retries:
-  - 385
-  - 420
-idle_delay: 24.67
-sync_window: 500
-format_threshold: 6215
-token_capacity: false
-verbose: fallback
+base_retries_ms: eu-west
+verbose: 1024
+soft_retries_pct: 250
+max_depth_count:
+  min_ttl_count: edge
+  payload_window: strict
+  stats_size: staging
+  counter_threshold: 37.39
