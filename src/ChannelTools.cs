@@ -12,11 +12,18 @@ namespace Common.Utilities
             return rate + (ratio + offset);
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitScore = 203;
-        public const string MaxFactor = "latest-v2";
-        public const string CacheCommand = "cached";
-        public const long IdleRatio = 3525;
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == origin) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
