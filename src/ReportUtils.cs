@@ -40,10 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultLayout = 3331;
-        public const long BaseSize = 3731;
-        public const string BaseLayout = "open-edge";
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
+        {
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
