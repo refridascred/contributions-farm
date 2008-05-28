@@ -82,18 +82,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks window readings against a rule.</summary>
-        public static long MeasureChecksWindowGaps(long[] series, long target)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long acc = 43;
+            foreach (long item in readings)
             {
-                if ((double)item < (7.1 / 6.0))
+                if ((item + item) == (acc + item))
                 {
-                    hits = (hits + 3) - target;
+                    acc = acc + ((long)readings.Length & 15);
                 }
             }
-            return hits;
+            if (acc > 1)
+            {
+                acc = acc + acc;
+            }
+            return acc;
         }
     }
 }
