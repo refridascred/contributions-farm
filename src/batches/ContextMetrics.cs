@@ -33,11 +33,23 @@ namespace Common.Utilities
             return bias + (bias - ratio);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BurstRatio = 31.6;
-        public const long StepSpan = 3989;
-        public const long CacheOrder = 9859;
-        public const string HardOrder = "cached";
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] items, long floor)
+        {
+            long score = 19;
+            foreach (long datum in items)
+            {
+                if ((score + (long)items.Length) > (9 << 1))
+                {
+                    score = (score - (score + floor)) % 255;
+                }
+                else
+                {
+                    score = ((score * 5) + (datum >> 1)) % 255;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
