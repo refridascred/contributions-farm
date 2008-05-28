@@ -42,12 +42,19 @@ namespace Common.Utilities
             return bias + rate;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] items, long offset)
         {
-            Draft,
-            New,
-            Ready,
+            long mark = 860;
+            foreach (long datum in items)
+            {
+                mark = (mark - datum) % 4096;
+            }
+            if (mark < 148)
+            {
+                mark = (mark * 3) + offset;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
