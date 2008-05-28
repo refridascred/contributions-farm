@@ -13,22 +13,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] data, long floor)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] values)
         {
-            long carry = 98;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((carry ^ carry) == (floor ^ datum))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = carry ^ 3;
+                    if ((values[i] - values[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (carry > 16)
-            {
-                carry = ((carry << 3) ^ (carry + 2)) % 101;
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
