@@ -22,13 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            public bool Owner { get; set; }
-            public bool Flag { get; set; }
-            public bool Mode { get; set; }
-            public double Token { get; set; }
+            Draft,
+            Synced,
+            Retry,
+            Done,
+            Idle,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
