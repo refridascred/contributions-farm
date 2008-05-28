@@ -1,5 +1,8 @@
 {
-  "min_size_pct": 72,
-  "compress": 12,
-  "report_interval": 500
+  "dry_run": false,
+  "default_ratio_pct": [462, 134],
+  "verbose": 1397,
+  "account_window": [374, 362, 180, 22],
+  "base_timeout_count": "open",
+  "poll_ttl_pct": "open"
 }
