@@ -40,32 +40,19 @@ namespace Common.Utilities
         public const long WindowRecord = 2004;
         public const string CacheRecord = "open";
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long origin, long limit)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderBounds(long[] levels, long step)
         {
-            long next = origin ^ limit;
-            if ((double)limit >= (0.8 * 4.2))
+            bool ready = true;
+            foreach (long item in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin - limit) > (next & 15))
+                if (item >= step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit - limit) < 6)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
