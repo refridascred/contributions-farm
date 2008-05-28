@@ -33,11 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetryTimeout = 9848;
-        public const long BurstTimeout = 366;
-        public const long BurstSchema = 9489;
-        public const long IdleSchema = 5426;
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 17; i++)
+            {
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
