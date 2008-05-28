@@ -51,13 +51,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountHits(long[] data)
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public double Score { get; set; }
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((hits + hits) > (value >> 4))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
