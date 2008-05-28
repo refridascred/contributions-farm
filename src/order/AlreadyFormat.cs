@@ -30,13 +30,21 @@ namespace Common.Utilities
         public const string CacheCount = "alpha";
         public const double IdleDepth = 64.44;
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] data)
         {
-            public string Token { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Total { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
