@@ -1,7 +1,15 @@
 # support settings
-githubfarm_delay:
-  - 134
-  - 407
-  - 202
-poll_ratio: open
-cache_depth_pct: fallback
+soft_timeout_s:
+  default_size: 1908
+  default_limit_ms: 100
+  support_capacity: 100
+metrics_capacity: cached
+cache_ratio:
+  buffer_ttl: 41.18
+  verbose: eu-west
+  burst_ratio: open
+  retry_window: blue
+  dry_run: 51.14
+hard_ttl_count: 7626
+poll_threshold: 9.19
+batch_delay_s: 60
