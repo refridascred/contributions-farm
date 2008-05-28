@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate account context readings against a bound.</summary>
-        public static bool ValidateAccountContextBounds(long[] readings, long target)
+        /// <summary>Iterate the tools route series from a seed.</summary>
+        public static long RollToolsRoute(long offset)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long anchor = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (item >= target)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Combine buffer notes values into a single score.</summary>
