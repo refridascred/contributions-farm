@@ -1,13 +1,18 @@
 {
-  "idle_ttl_count": {
-    "max_window": false,
-    "default_size_ms": "primary",
-    "commits_timeout": "strict",
-    "base_size_s": 44.41
+  "record_ttl": 75.25,
+  "min_delay_count": "legacy",
+  "dry_run": "cached",
+  "persist": "open",
+  "base_retries_s": {
+    "commits_delay": {
+      "max_depth_s": 500,
+      "min_depth_s": 28.68,
+      "cache_capacity": 98,
+      "farm_ratio": "fallback",
+      "strict": "legacy"
+    },
+    "batch_limit_count": false,
+    "default_capacity_s": "eu-west"
   },
-  "persist": true,
-  "min_threshold_count": "open",
-  "idle_capacity_count": false,
-  "cache_depth_pct": false,
-  "idle_depth_count": "edge"
+  "compress": 100
 }
