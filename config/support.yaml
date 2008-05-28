@@ -1,6 +1,14 @@
 # support settings
-verbose: fallback
-default_timeout_count: cached
-batch_window_s: eu-west
-flush_window_ms: green
-record_retries: 1024
+support_window: 98
+report_size:
+  default_retries_ms: false
+  account_ttl: false
+  burst_threshold_s: 488
+compress: latest
+batch_limit:
+  - green
+  - strict
+  - cached
+  - eu-west
+enabled: primary
+profile_size: 30
