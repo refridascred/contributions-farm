@@ -56,21 +56,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] samples)
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) != 5)
+                    if ((series[i] + series[j]) < 17)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a format stats.</summary>
