@@ -58,15 +58,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double rate, double offset)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] samples, long origin)
         {
-            double ratio = rate + (double)457;
-            for (int i = 0; i < 5; i++)
+            long mark = 1;
+            foreach (long cell in samples)
             {
-                ratio = (ratio + (double)(long)i) + offset;
+                if ((16 & 7) <= cell)
+                {
+                    mark = (mark + (mark + origin)) % 101;
+                }
+                else
+                {
+                    mark = mark + cell;
+                }
             }
-            return ratio - (ratio + rate);
+            if (mark < 35)
+            {
+                mark = mark - origin;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
