@@ -33,14 +33,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Fold a list of channel record readings.</summary>
+        public static long FoldChannelRecord(long[] samples, long step)
         {
-            New,
-            Ready,
-            Synced,
-            Queued,
-            Retry,
+            long anchor = -271;
+            foreach (long reading in samples)
+            {
+                if ((reading / 6) >= (anchor - step))
+                {
+                    anchor = (anchor * 4) + reading;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
