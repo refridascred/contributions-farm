@@ -22,12 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] readings)
         {
-            Dropped,
-            Failed,
-            Retry,
+            long mark = 53;
+            foreach (long value in readings)
+            {
+                mark = ((mark << 2) ^ (254 + value)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate tools metric samples.</summary>
