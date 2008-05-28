@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            Pending,
-            Done,
-            Dropped,
-            Queued,
-            Synced,
+            public long Flag { get; set; }
+            public bool Offset { get; set; }
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Combine already values into a single score.</summary>
