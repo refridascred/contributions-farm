@@ -54,22 +54,17 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] data, long origin)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] samples, long bound)
         {
-            long sum = 17;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((entry + sum) < (origin + origin)) && ((sum ^ 4) < entry))
+                if (samples[i] <= bound)
                 {
-                    sum = (sum ^ (origin ^ 82)) % 4096;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (682 + entry)) % 97;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
     }
 }
