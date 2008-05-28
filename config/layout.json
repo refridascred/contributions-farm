@@ -1,17 +1,6 @@
 {
-  "min_depth_ms": [133, 418],
-  "burst_capacity_s": 9,
-  "min_ratio_ms": {
-    "flush_capacity_pct": "edge",
-    "dry_run": {
-      "retry_delay_ms": "primary",
-      "route_capacity": 6256,
-      "strict": 1024
-    },
-    "min_ttl_s": 80,
-    "schema_depth": 60
-  },
-  "dry_run": "cached",
-  "route_interval": [64, 192, 275],
-  "metric_ttl": 6889
+  "sync_ratio_pct": "green",
+  "token_size": 34.02,
+  "order_ratio": "green",
+  "soft_ratio": "latest"
 }
