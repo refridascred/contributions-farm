@@ -1,6 +1,15 @@
 # githubfarm settings
-filter_capacity: 11
-notes_timeout:
-  - primary
-  - standard
-idle_limit_pct: legacy
+flush_ttl_pct: 500
+soft_depth_pct: 94.64
+default_ratio: stable
+idle_limit_pct:
+  compress: primary
+  default_delay_pct: staging
+  support_delay: false
+  hard_delay: cached
+  warm_window:
+    cache_retries_pct: 30
+    verbose: 30
+    max_threshold: staging
+    strict: 16
+already_depth: 23.61
