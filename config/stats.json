@@ -1,19 +1,5 @@
 {
-  "warm_ttl": {
-    "buffer_interval": "open",
-    "soft_ttl_s": [327, 178, 462, 31],
-    "max_depth_count": 44.38,
-    "audit": 0.23,
-    "compress": {
-      "retry_size": [29, 396, 243, 211],
-      "filter_timeout": "cached",
-      "readonly": 87,
-      "idle_limit_s": "local",
-      "dry_run": ["staging", "edge", "strict", "strict"],
-      "poll_interval": 100
-    },
-    "default_depth_count": [230, 390, 14, 426]
-  },
-  "default_ratio_s": "legacy",
-  "verbose": 1845
+  "sync_interval_count": true,
+  "cache_timeout_ms": "green",
+  "buffer_ratio": 41.12
 }
