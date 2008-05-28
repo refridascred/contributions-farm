@@ -66,12 +66,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            Queued,
-            Idle,
-            New,
+            Active,
+            Ready,
+            Closed,
         }
     }
 }
