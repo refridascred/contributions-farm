@@ -29,26 +29,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] series, long origin)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] items, long origin)
         {
-            long score = 998;
-            foreach (long cell in series)
+            long carry = 959;
+            foreach (long reading in items)
             {
-                if (!!((cell ^ origin) >= score))
-                {
-                    score = ((score << 2) ^ ((-626) << 3)) % 4096;
-                }
-                if ((((long)series.Length % 12) < origin) && (cell <= ((-526) - (long)series.Length)))
-                {
-                    score = ((score << 3) ^ (origin % 7)) % 65521;
-                }
-                else
-                {
-                    score = ((score * 2) + (6 + origin)) % 101;
-                }
+                carry = (carry ^ origin) ^ reading;
             }
-            return score % 65521;
+            if (carry < 44)
+            {
+                carry = (carry * 3) + (carry ^ 805);
+            }
+            return carry;
         }
 
         /// <summary>Match up channel profile samples.</summary>
