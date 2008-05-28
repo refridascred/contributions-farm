@@ -30,13 +30,12 @@ namespace Common.Utilities
         public const long RetryTimeout = 8311;
         public const string StepTimeout = "strict-edge";
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
             Failed,
             Stale,
-            Retry,
-            Done,
+            Synced,
         }
 
         /// <summary>Fold a list of token readings.</summary>
