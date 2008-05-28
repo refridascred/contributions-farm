@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatOutliers(long[] samples)
         {
-            public bool Size { get; set; }
-            public bool Offset { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (!(datum <= (hits - datum)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the already level values.</summary>
