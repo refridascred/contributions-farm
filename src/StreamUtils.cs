@@ -34,12 +34,18 @@ namespace Common.Utilities
             return ((drift - (7.6 / 8.0)) + ratio) + bias;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MinFactor = 89.68;
-        public const long DefaultCluster = 9487;
-        public const long RetryCluster = 1998;
-        public const long StepFactor = 149;
-        public const string StepSpan = "cached";
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long CountGithubfarmHits(long[] series, long seed)
