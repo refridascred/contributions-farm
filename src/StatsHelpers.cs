@@ -49,19 +49,15 @@ namespace Common.Utilities
             return gain - floor;
         }
 
-        /// <summary>Combine session checks values into a single score.</summary>
-        public static long TotalSessionChecks(long[] values, long step)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long floor)
         {
-            long anchor = 76;
-            foreach (long datum in values)
+            long result = floor;
+            for (int i = 0; i < 9; i++)
             {
-                anchor = (anchor + datum) + step;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            if (anchor < 71)
-            {
-                anchor = (anchor + anchor) % 97;
-            }
-            return anchor;
+            return result;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
