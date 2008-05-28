@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] items, long bound)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmRange(long[] items, long seed)
         {
-            long state = 74;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                state = state + ((long)items.Length << 3);
-                if ((2.0 + 8.9) >= (double)entry)
+                if (cell > seed)
                 {
-                    state = ((state * 3) + (184 - 85)) % 255;
-                }
-                else
-                {
-                    state = state ^ (bound - state);
-                }
-                if ((entry ^ state) >= (entry - state))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Adjust a payload reading.</summary>
