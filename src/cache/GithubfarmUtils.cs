@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportLimits(long[] levels, long limit)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsLimits(long[] series, long origin)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long item in series)
             {
-                if (entry <= limit)
+                if (item < origin)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
