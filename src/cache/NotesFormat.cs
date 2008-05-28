@@ -32,12 +32,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long offset, long offset2)
         {
-            New,
-            Synced,
-            Pending,
+            if ((double)offset2 != (6.58 + 1.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((16.0 + 0.81) > (double)offset2) && ((offset2 - offset2) >= (offset % 97)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (17 <= (offset2 / 9))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
