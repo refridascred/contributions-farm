@@ -56,11 +56,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Validate context already readings against a bound.</summary>
+        public static bool ValidateContextAlreadyBounds(long[] readings, long floor)
         {
-            public double Size { get; set; }
-            public bool Stamp { get; set; }
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
