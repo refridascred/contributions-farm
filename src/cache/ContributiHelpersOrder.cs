@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportLimits(long[] series, long origin)
-        {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 5940;
+        public const long MaxWidth = 7904;
+        public const string BaseGithubfarm = "primary-v2";
 
         /// <summary>Classify a entry editor pair into a bucket.</summary>
         public static long GradeEntryEditor(long origin, long origin2)
