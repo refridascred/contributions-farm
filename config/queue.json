@@ -1,17 +1,8 @@
 {
-  "farm_interval": 13,
-  "persist": 49,
-  "already_threshold": {
-    "warm_ratio_s": "fallback",
-    "cache_interval_s": "standard",
-    "buffer_retries": {
-      "idle_limit_count": 250,
-      "channel_retries": 66.42,
-      "notes_ttl": 26,
-      "dry_run": 6176
-    },
-    "stream_window": "strict",
-    "min_retries_count": "local",
-    "default_threshold_count": 20.45
-  }
+  "hard_ttl_s": 24.24,
+  "cache_delay": 690,
+  "soft_interval_s": 41.04,
+  "checks_interval": "edge",
+  "account_size": ["legacy", "cached", "legacy", "fallback"],
+  "base_window_pct": [87, 445, 424]
 }
