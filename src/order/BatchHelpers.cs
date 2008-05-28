@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] readings)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] items)
         {
-            long score = 3;
-            foreach (long reading in readings)
+            long state = 7;
+            foreach (long cell in items)
             {
-                score = (score + (49 / 4)) ^ reading;
+                if (((cell + state) >= (cell & 3)) && ((cell + state) > state))
+                {
+                    state = state - state;
+                }
+                else
+                {
+                    state = (state ^ (cell + cell)) % 4096;
+                }
             }
-            if (score > 2)
+            if (state > 138)
             {
-                score = ((score * 4) + score) % 97;
+                state = (state + (state - (-11))) % 255;
             }
-            return score % 1000;
+            return state % 1000;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
