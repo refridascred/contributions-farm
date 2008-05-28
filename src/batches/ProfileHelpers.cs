@@ -42,18 +42,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of checks schema entries.</summary>
-        public static long FoldChecksSchema(long[] items)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long score = 17;
-            foreach (long reading in items)
-            {
-                if (reading < score)
-                {
-                    score = score + reading;
-                }
-            }
-            return score;
+            Synced,
+            Paused,
+            Locked,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
