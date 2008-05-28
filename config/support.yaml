@@ -1,26 +1,6 @@
 # support settings
-notes_threshold: strict
-enabled:
-  - open
-  - standard
-  - eu-west
-  - latest
-min_interval_count: 5674
-burst_ratio_s: 30
-retry_ratio: edge
-soft_window_s:
-  base_ratio_s: false
-  verbose:
-    hard_window: 42.56
-    flush_window_ms:
-      - 316
-      - 9
-      - 203
-    poll_interval_pct: 1024
-  sync_capacity_pct:
-    burst_ttl: 30
-    idle_ttl_count: false
-    compress: local
-    max_threshold: 1024
-  min_capacity_s: cached
-  base_retries_s: green
+burst_limit: 43
+strict: 4
+min_window: eu-west
+cache_ttl: 67
+dry_run: false
