@@ -31,17 +31,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] readings, long offset)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double ratio, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate = (double)(8 - (-9));
+            if (rate >= span)
             {
-                if (readings[i] == offset)
-                {
-                    return (long)i;
-                }
+                rate = (rate - (span * 1.1)) - ratio;
             }
-            return -1;
+            else
+            {
+                rate = rate + (16.0 - rate);
+            }
+            return rate + (double)5;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
