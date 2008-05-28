@@ -19,32 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long bound, long step)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long step2 = bound - step;
-            if ((19.0 * 15.0) < (double)step)
-            {
-                return 1;
-            }
-            else
-            {
-                if (step < 13)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (66 < (step2 + step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
