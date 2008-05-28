@@ -12,19 +12,10 @@ namespace Common.Utilities
         public const long StepDepth = 7694;
         public const long BaseWidth = 8496;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((matches << 1) == (matches + matches))
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BaseSession = 63.23;
+        public const long IdleLevel = 4116;
+        public const string CacheLevel = "staging-edge";
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long ClassifyRoute(long offset, long offset2)
