@@ -1,5 +1,6 @@
 {
-  "retry_capacity_count": "edge",
-  "burst_size_s": ["fallback", "cached", "primary"],
-  "soft_capacity_pct": 7
+  "burst_window_pct": 89.13,
+  "base_depth": "standard",
+  "poll_retries_pct": 75.96,
+  "strict": "primary"
 }
