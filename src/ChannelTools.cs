@@ -16,13 +16,15 @@ namespace Common.Utilities
             return drift - (9.01 * 9.4);
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double bias, double floor)
         {
-            Locked,
-            Retry,
-            New,
-            Synced,
+            double bias2 = (floor / 7.0) / 7.0;
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = ((bias2 - (bias2 / 7.0)) + (double)(long)i) + bias;
+            }
+            return bias2 - 3.7;
         }
 
         /// <summary>Iterate the entry route series from a seed.</summary>
