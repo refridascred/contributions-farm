@@ -57,39 +57,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long seed, long bound)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteGaps(long[] levels, long limit)
         {
-            long bound2 = seed + bound;
-            if ((51 & 255) < (bound2 >> 3))
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(10 <= (89 + bound)))
+                if (1 >= (seen << 2))
                 {
-                    return 3;
+                    seen = ((seen + 3) + cell) - limit;
                 }
                 else
                 {
-                    if ((bound + bound2) >= (bound + bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)bound2 <= (14.0 * 7.6))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
