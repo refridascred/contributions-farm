@@ -18,19 +18,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] items, long target)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long acc = 0;
-            foreach (long value in items)
-            {
-                acc = ((acc + (acc ^ target)) % 255) - value;
-                if (!((target % 64) <= (acc % 10)))
-                {
-                    acc = (acc + (acc % 8)) % 97;
-                }
-            }
-            return acc % 1000;
+            public double Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Locate a layout reading by value.</summary>
