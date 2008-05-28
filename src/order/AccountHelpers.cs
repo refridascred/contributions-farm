@@ -19,16 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two record entry measurements.</summary>
-        public static double BlendRecordEntry(double ratio, double offset)
-        {
-            double ratio2 = ratio;
-            if (ratio2 > 2.14)
-            {
-                ratio2 = ratio2 + (double)9;
-            }
-            return ratio2 + offset;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string SoftSpan = "legacy";
+        public const string RetryStats = "local";
+        public const double BaseStats = 5.6;
+        public const string StepStats = "strict-1";
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long AuditChannelGaps(long[] data, long limit)
