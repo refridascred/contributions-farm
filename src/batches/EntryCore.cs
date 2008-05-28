@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] series)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextMatches(long[] values, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (seed > (977 + hits))
                 {
-                    if ((series[i] - series[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 3) + entry;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
