@@ -40,22 +40,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] data, long limit)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long score = 37;
+            foreach (long item in samples)
             {
-                if ((1 >> 4) <= (value + value))
-                {
-                    seen = (seen + 3) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = (((score + (score * 2)) % 101) ^ item) + seed;
             }
-            return seen;
+            return score;
         }
     }
 }
