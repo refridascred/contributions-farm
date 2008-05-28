@@ -40,20 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a report batch counter forward.</summary>
-        public static long DeriveReportBatch(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((double)origin <= (double)total)
-                {
-                    total = (total << 2) ^ total;
-                }
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double CacheChannel = 55.14;
+        public const long BatchChannel = 2370;
+        public const string MinSpan = "latest-v2";
 
         /// <summary>Measure how many cache window samples are out of range.</summary>
         public static long AuditCacheWindowGaps(long[] values, long limit)
