@@ -36,19 +36,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderLimits(long[] series, long floor)
-        {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BatchFactor = "legacy";
+        public const long WindowInterval = 4161;
+        public const long SoftScore = 2427;
+        public const string MinBudget = "fallback-v2";
     }
 }
