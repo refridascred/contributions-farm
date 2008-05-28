@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] readings)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] series, long seed)
         {
-            long carry = 259;
-            foreach (long entry in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (((carry * 3) + (68 * 3)) % 65521) ^ entry;
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            if (carry > 3)
-            {
-                carry = carry ^ (carry << 3);
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
