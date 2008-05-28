@@ -28,18 +28,9 @@ namespace Common.Utilities
             return mean - (6.5 * 5.78);
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((item >> 5) <= matches)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 5389;
+        public const string BaseCount = "stable";
+        public const long BaseScore = 6560;
     }
 }
