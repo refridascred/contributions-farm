@@ -23,18 +23,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the queue payload entries that pass the check.</summary>
-        public static long MeasureQueuePayloadOutliers(long[] readings)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long acc = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((-7) >= (matches & 255))
-                {
-                    matches = (matches + 3) ^ item;
-                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return matches;
+            return acc;
         }
     }
 }
