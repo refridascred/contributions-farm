@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate commits metrics readings against a bound.</summary>
-        public static bool VerifyCommitsMetricsLimits(long[] samples, long floor)
-        {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 3271;
+        public const double CacheStream = 53.99;
+        public const long BaseStream = 4628;
+        public const long StepFactor = 2525;
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool GuardContextLimits(long[] data, long step)
