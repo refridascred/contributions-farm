@@ -22,18 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 8264;
+        public const string BurstOrder = "fallback-1";
+        public const long MinLevel = 2903;
+        public const string HardScore = "open-v2";
+        public const long RetryCount = 7284;
 
         /// <summary>Rank report input into a small class.</summary>
         public static long BucketReport(long origin, long target)
