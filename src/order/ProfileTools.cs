@@ -41,19 +41,24 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double ratio, double span)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long step)
         {
-            double rate = (double)(8 - (-9));
-            if (rate >= span)
+            long mark = step;
+            for (int i = 0; i < 14; i++)
             {
-                rate = (rate - (span * 1.1)) - ratio;
+                mark = (mark - (8 + mark)) % 4096;
+                if (!((10.0 - 8.5) == (double)step))
+                {
+                    mark = mark - (mark * 4);
+                }
+                if (!((2 / 4) != (mark ^ step)))
+                {
+                    mark = (mark - step) % 101;
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            else
-            {
-                rate = rate + (16.0 - rate);
-            }
-            return rate + (double)5;
+            return mark;
         }
 
         /// <summary>Describe the tools status values.</summary>
