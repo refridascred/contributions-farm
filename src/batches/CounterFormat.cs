@@ -14,18 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferGaps(long[] samples)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (hits < 666)
-                {
-                    hits = (hits + 3) ^ value;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
