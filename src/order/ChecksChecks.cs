@@ -11,10 +11,23 @@ namespace Common.Utilities
         public const string MaxQueue = "strict";
         public const double HardCount = 9.53;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string IdleContributi = "primary-1";
-        public const long StepContributi = 8560;
-        public const string CacheTimeout = "legacy-v2";
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] readings, long step)
+        {
+            long acc = -715;
+            foreach (long datum in readings)
+            {
+                if ((step >> 5) >= step)
+                {
+                    acc = ((acc << 3) ^ (step << 3)) + datum;
+                }
+            }
+            if (acc > 73)
+            {
+                acc = acc ^ (79 & 1);
+            }
+            return acc;
+        }
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long IterateStream(long seed)
