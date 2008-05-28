@@ -45,21 +45,16 @@ namespace Common.Utilities
             return weight - 20.0;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] series)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = (carry << 3) ^ carry;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return matches;
+            return carry;
         }
     }
 }
