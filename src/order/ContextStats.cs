@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 7844;
-        public const long BatchRatio = 6151;
-        public const string BaseTools = "primary-1";
-        public const string BatchTools = "staging";
-        public const string BatchSize = "alpha-1";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MinCount = 89.5;
+        public const string RetrySpan = "legacy";
+        public const double SoftCache = 45.18;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long WeighBuffer(long[] values)
