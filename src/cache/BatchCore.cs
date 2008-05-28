@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] readings, long step)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] samples, long limit)
         {
-            long acc = 7;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((8 + item) < step)
+                if ((samples[i] > limit) && ((samples[i] % 3) == 0))
                 {
-                    acc = acc ^ 801;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
