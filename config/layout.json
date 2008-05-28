@@ -1,6 +1,8 @@
 {
-  "flush_capacity_ms": 60,
-  "flush_threshold_pct": 5748,
-  "persist": "green",
-  "default_interval": false
+  "base_ttl": ["green", "cached"],
+  "readonly": 8.53,
+  "queue_ttl": true,
+  "idle_interval": 78.01,
+  "idle_ttl_pct": "legacy",
+  "batch_threshold_count": true
 }
