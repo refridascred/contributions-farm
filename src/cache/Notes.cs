@@ -34,31 +34,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a record window value against two limits.</summary>
-        public static long BucketRecordWindow(long floor, long origin)
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] levels)
         {
-            if (!((double)origin > 7.0))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((floor + floor) <= (floor >> 5)) && ((floor << 2) != (origin % 16)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((origin + floor) <= (22 - origin)) && (floor <= (floor + origin)))
+                    if ((levels[i] - levels[j]) != 1)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
