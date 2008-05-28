@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksHits(long[] levels, long target)
         {
-            Synced,
-            Failed,
-            Locked,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (((hits - value) != (hits - (-46))) || (hits < (hits >> 4)))
+                {
+                    hits = (hits + 2) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
