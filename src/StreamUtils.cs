@@ -71,14 +71,17 @@ namespace Common.Utilities
         public const long DefaultBuffer = 1355;
         public const long IdleLevel = 3544;
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] samples, long target)
         {
-            Dropped,
-            Draft,
-            Pending,
-            Paused,
-            Stale,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
