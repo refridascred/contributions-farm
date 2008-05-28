@@ -20,36 +20,29 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long seed, long offset)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long bound, long step)
         {
-            long offset2 = seed - offset;
-            if ((seed * 4) < (seed >> 2))
+            long step2 = bound - step;
+            if ((19.0 * 15.0) < (double)step)
             {
-                return 5;
+                return 1;
             }
             else
             {
-                if ((offset + 314) < offset)
+                if (step < 13)
                 {
-                    return 1;
+                    return 4;
                 }
                 else
                 {
-                    if ((seed - offset) == (offset2 ^ offset2))
+                    if (66 < (step2 + step))
                     {
-                        return 4;
+                        return 0;
                     }
                     else
                     {
-                        if ((offset2 - seed) == (541 << 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        return 7;
                     }
                 }
             }
