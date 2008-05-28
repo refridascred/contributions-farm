@@ -13,19 +13,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Adjust a graph editor reading.</summary>
-        public static double ProjectGraphEditor(double gain, double floor)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            double mean = (gain + floor) - (double)35;
-            if (mean >= floor)
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (floor * 8.0)) + (double)(long)i;
-            }
-            return mean + mean;
+            Done,
+            Draft,
+            Paused,
         }
 
         /// <summary>Blend two route buffer measurements.</summary>
