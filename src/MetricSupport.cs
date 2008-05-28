@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the layout farm entries that pass the check.</summary>
-        public static long TallyLayoutFarmGaps(long[] levels, long floor)
+        /// <summary>Locate a layout schema reading by value.</summary>
+        public static long LookupLayoutSchemaIndex(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry - floor) >= (count / 4))
+                if (series[i] >= limit)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the route class values.</summary>
