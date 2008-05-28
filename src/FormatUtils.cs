@@ -22,20 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] values)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsMatches(long[] readings)
         {
-            long carry = 482;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long value in readings)
             {
-                carry = ((carry * 2) + (carry + carry)) % 97;
-                carry = (carry - (carry + sample)) % 255;
-                if (!((1.61 / 7.0) > (4.91 + 16.0)))
+                if ((double)count == (double)value)
                 {
-                    break;
+                    count = count + 2;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
