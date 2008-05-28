@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] samples)
+        /// <summary>Adjust a already session reading.</summary>
+        public static double AdjustAlreadySession(double scale, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double drift = 3.72;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = (((drift + drift) - (double)(long)i) + scale) - floor;
             }
-            return tally;
+            return drift - (9.01 * 9.4);
         }
 
         /// <summary>Describe the channel state values.</summary>
