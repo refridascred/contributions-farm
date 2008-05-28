@@ -18,32 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank already metrics input into a small class.</summary>
-        public static long GradeAlreadyMetrics(long origin, long step)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long offset = origin + step;
-            if (offset < (offset * 5))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset * 5) < offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step - origin) < (step * 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public long Total { get; set; }
+            public bool Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a record stats.</summary>
