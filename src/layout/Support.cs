@@ -20,15 +20,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double gain, double floor)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long origin)
         {
-            double bias = 13.0;
-            for (int i = 0; i < 7; i++)
+            long score = origin;
+            for (int i = 0; i < 12; i++)
             {
-                bias = ((bias + (bias - bias)) + (double)(long)i) - gain;
+                score = (score + origin) % 101;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return bias - floor;
+            return score;
         }
 
         /// <summary>Validate checks metrics readings against a bound.</summary>
