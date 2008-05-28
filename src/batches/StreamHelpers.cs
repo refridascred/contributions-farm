@@ -21,12 +21,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinSupport = 54.46;
-        public const string IdleCount = "latest-v2";
-        public const long MaxCount = 372;
-        public const long RetrySupport = 5195;
-        public const double StepSupport = 43.18;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)tally >= (double)entry)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long CombineEditor(long[] series, long step)
