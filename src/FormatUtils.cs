@@ -71,39 +71,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long target, long target2)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long origin)
         {
-            long offset = target ^ target2;
-            if (((offset & 31) > (target2 + 3)) || ((43 % 12) <= offset))
+            long state = origin;
+            for (int i = 0; i < 5; i++)
             {
-                return 0;
+                state = state + 31;
+                state = (state << 2) ^ (long)i;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((double)offset > (20.0 / 8.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((6.2 - 9.5) <= (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target2 ^ target) > (offset + offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Audit channel batches readings against a rule.</summary>
