@@ -35,10 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 3018;
-        public const double BurstTools = 12.94;
-        public const long IdleSize = 1765;
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+        }
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
