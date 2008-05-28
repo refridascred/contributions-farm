@@ -14,11 +14,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 4109;
-        public const long MaxTools = 9327;
-        public const long MinTools = 3765;
-        public const string MinDepth = "standard-v2";
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
+        {
+            Ready,
+            Failed,
+            Paused,
+            Queued,
+            Locked,
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long CountAlreadyMatches(long[] data)
