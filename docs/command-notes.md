@@ -1,11 +1,11 @@
 # Command notes
 
-Use farm settings to tune how often profile data is refreshed.
-The stats module keeps cache values in sync with the cluster cache.
+The cache report groups every graph by account.
+Use cluster settings to tune how often notes data is refreshed.
 
 ## Guidelines
 
-- Document new stats fields
-- Log every session change
-- Keep channel values small
-- Validate notes input early
+- Prefer cache defaults
+- Log every contributi change
+- Validate account input early
+- Review counter limits each release
