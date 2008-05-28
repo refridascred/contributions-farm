@@ -52,18 +52,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many order command samples are out of range.</summary>
-        public static long CountOrderCommandHits(long[] levels, long bound)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long limit, long floor)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long cur = limit ^ floor;
+            if (!((double)cur == (double)limit))
             {
-                if ((double)item <= (1.26 * 2.31))
+                return 4;
+            }
+            else
+            {
+                if (limit < (cur - limit))
                 {
-                    seen = (seen + 2) + bound;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Find the first record counter entry that matches the target.</summary>
