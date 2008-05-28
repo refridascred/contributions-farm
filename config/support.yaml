@@ -1,8 +1,30 @@
 # support settings
-warm_timeout: true
-persist: 250
-dry_run: green
-readonly:
+max_size_ms: fallback
+base_depth:
+  format_delay:
+    - fallback
+    - cached
+    - local
+    - eu-west
+  cache_delay_ms:
+    - stable
+    - standard
+    - standard
+    - legacy
+  layout_timeout: green
+  persist: 8750
+  max_capacity_pct: 44
+warm_capacity: strict
+batches_ttl: 40.9
+flush_delay_count:
+  - edge
   - stable
-  - blue
-  - fallback
+  - staging
+  - edge
+cache_interval_count:
+  warm_ratio_pct:
+    - 53
+    - 144
+    - 494
+  base_interval_pct: 28.77
+  warm_ttl: 35
