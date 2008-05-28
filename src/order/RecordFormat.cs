@@ -39,22 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyMatches(long[] levels)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((3.4 / 3.0) >= (double)seen)
-                {
-                    seen = (seen + 2) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Offset { get; set; } = "";
+            public double Region { get; set; }
+            public bool Token { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Roll a account counter forward.</summary>
