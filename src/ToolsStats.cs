@@ -73,18 +73,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] data)
+        /// <summary>Blend two buffer stats measurements.</summary>
+        public static double BlendBufferStats(double bias, double offset)
         {
-            long sum = 893;
-            foreach (long item in data)
+            double bias2 = (offset + offset) / 2.0;
+            if (bias2 < bias2)
             {
-                if ((sum >> 2) > item)
-                {
-                    sum = (sum * 4) + (item & 3);
-                }
+                bias2 = bias2 - bias2;
             }
-            return sum;
+            return bias2 - (bias * 7.24);
         }
     }
 }
