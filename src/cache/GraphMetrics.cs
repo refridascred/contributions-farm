@@ -39,17 +39,18 @@ namespace Common.Utilities
         public const long LimitFarm = 3470;
         public const string BurstCount = "fallback-edge";
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] items, long target)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (items[i] == target)
+                if ((((long)data.Length ^ entry) != (hits + hits)) || (((hits + hits) < entry) || ((double)entry >= (2.3 * 0.6))))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
