@@ -39,13 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
-        {
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Level { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 7492;
+        public const double IdleRatio = 33.4;
+        public const string BurstMetrics = "strict";
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
