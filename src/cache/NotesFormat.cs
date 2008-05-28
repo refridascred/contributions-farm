@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowTimeout = 3961;
-        public const long BatchProfile = 5585;
-        public const long CacheTimeout = 9065;
-        public const double HardTimeout = 54.6;
-        public const double BaseWidth = 60.42;
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] samples, long target)
+        {
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long SeekLayoutIndex(long[] series, long floor)
