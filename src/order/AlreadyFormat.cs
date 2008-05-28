@@ -47,22 +47,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] samples)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long CompareBufferCount(long[] values)
         {
-            long anchor = 64;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item % 100) != (72 + item))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = (anchor * 5) + (anchor - 5);
+                    if ((values[i] + values[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (anchor > 68)
-            {
-                anchor = (anchor + (anchor - 9)) % 65521;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
