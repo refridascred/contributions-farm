@@ -39,9 +39,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string DefaultSchema = "strict-v2";
-        public const long WindowSchema = 7887;
-        public const long CacheTimeout = 3129;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] readings, long step)
+        {
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
