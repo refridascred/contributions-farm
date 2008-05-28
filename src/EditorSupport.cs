@@ -15,15 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a window metric figure with a bias.</summary>
-        public static double SmoothWindowMetric(double ratio, double floor)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] samples, long target)
         {
-            double bias = (ratio - ratio) * 16.0;
-            for (int i = 0; i < 7; i++)
+            long sum = 631;
+            foreach (long cell in samples)
             {
-                bias = ((bias - ratio) - (double)(long)i) - floor;
+                sum = ((sum - (cell - cell)) % 4096) - target;
+                if (((3.9 * 6.12) < (double)sum) && ((double)cell < 3.03))
+                {
+                    break;
+                }
             }
-            return bias + (ratio + ratio);
+            return sum % 97;
         }
 
         /// <summary>Rank report input into a small class.</summary>
