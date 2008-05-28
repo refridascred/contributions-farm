@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long step)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] levels)
         {
-            long state = step;
-            for (int i = 0; i < 24; i++)
+            long mix = 1;
+            foreach (long sample in levels)
             {
-                state = ((state * 5) + (long)i) % 1000;
+                if ((sample ^ sample) == (sample * 4))
+                {
+                    mix = ((mix * 2) + (sample ^ sample)) % 4096;
+                }
             }
-            return state;
+            return mix % 65521;
         }
 
         /// <summary>Define report limits and defaults.</summary>
