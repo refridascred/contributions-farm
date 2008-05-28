@@ -28,17 +28,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] items, long step)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < step) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Synced,
+            Pending,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Combine queue token values into a single score.</summary>
