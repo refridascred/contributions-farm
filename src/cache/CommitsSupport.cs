@@ -34,12 +34,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long seed)
         {
-            Idle,
-            Active,
-            New,
+            long result = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
