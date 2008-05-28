@@ -38,11 +38,40 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 6409;
-        public const string WindowFactor = "local-1";
-        public const double StepInterval = 69.04;
-        public const long HardTimeout = 7561;
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long limit, long seed)
+        {
+            long bound = limit ^ seed;
+            if (!(63 <= (limit ^ limit)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)seed <= (6.9 / 4.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed & 255) > 73)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((limit % 5) <= (bound << 1)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long ClassifySession(long floor, long limit)
