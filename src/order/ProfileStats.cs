@@ -24,18 +24,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyMatches(long[] data)
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((51 - value) > (937 - value))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            double drift = (offset - ratio) + (double)477;
+            return drift + (drift - drift);
         }
 
         /// <summary>Define session limits and defaults.</summary>
