@@ -22,13 +22,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            Locked,
-            Retry,
-            Stale,
-            Active,
+            public long Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
