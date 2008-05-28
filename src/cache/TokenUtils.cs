@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheRatio = 9181;
-        public const string DefaultSize = "stable-edge";
-        public const double DefaultBatches = 18.49;
-        public const long LimitSize = 4366;
-        public const string BatchLevel = "latest-v2";
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] series, long seed)
+        {
+            long score = 858;
+            foreach (long datum in series)
+            {
+                score = ((score - score) % 65521) + seed;
+                score = ((score << 2) ^ (datum - score)) % 97;
+            }
+            return score % 1000;
+        }
 
         /// <summary>Validate filter batches readings against a bound.</summary>
         public static bool CheckFilterBatchesBounds(long[] series, long target)
