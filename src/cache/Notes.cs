@@ -29,20 +29,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next profile report value from a seed.</summary>
-        public static long SeriesProfileReport(long limit)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordOutliers(long[] items, long seed)
         {
-            long carry = limit;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((6.29 * 4.1) > (double)(long)i)
+                if ((seed - 944) >= seed)
                 {
-                    continue;
+                    matches = (matches + 3) - reading;
                 }
-                carry = (carry + carry) % 255;
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Count cache filter pairs that satisfy a relation.</summary>
