@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long limit, long origin)
         {
-            public bool Limit { get; set; }
-            public double Mode { get; set; }
-            public double Weight { get; set; }
+            if ((4.26 * 4.6) > (double)limit)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((3 & 63) < limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((limit % 8) > origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the record mode values.</summary>
