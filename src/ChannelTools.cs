@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double ratio, double floor)
         {
-            Done,
-            Queued,
-            Stale,
-            Draft,
-            Retry,
+            double load = floor;
+            if (load < floor)
+            {
+                load = (load - (double)46) - ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - 3.0) + (double)(long)i;
+            }
+            return load + (8.5 / 8.0);
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
