@@ -25,18 +25,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsOutliers(long[] levels)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (((reading > hits) && ((hits - hits) > (6 ^ 1))) || !((reading + hits) <= reading))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Blend two counter measurements.</summary>
