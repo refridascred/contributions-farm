@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double ratio, double span)
         {
-            Retry,
-            Idle,
-            Ready,
+            double bias = (ratio / 2.0) + span;
+            if (bias <= (double)(-8))
+            {
+                bias = bias + (bias * 7.3);
+            }
+            else
+            {
+                bias = bias + span;
+            }
+            return bias - 9.93;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
