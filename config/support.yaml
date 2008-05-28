@@ -1,26 +1,6 @@
 # support settings
-retry_delay_ms: legacy
-profile_ratio:
-  persist: 12
-  flush_window: 3032
-  batch_size_pct:
-    window_ttl: standard
-    max_window_ms: 3988
-    min_timeout_count:
-      - legacy
-      - open
-      - stable
-      - staging
-  burst_capacity_pct:
-    soft_interval: green
-    poll_capacity_pct: staging
-    min_ttl_s: green
-    retry_interval_ms: 0.77
-    dry_run: 4836
-retry_threshold: false
-enabled: 37.13
-flush_retries: 1024
-hard_ratio_s:
-  - eu-west
-  - fallback
-  - open
+batch_threshold: standard
+channel_delay: 2178
+command_threshold: cached
+hard_delay_ms: eu-west
+burst_threshold_pct: latest
