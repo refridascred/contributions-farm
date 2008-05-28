@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] samples)
-        {
-            long state = 536;
-            foreach (long entry in samples)
-            {
-                if ((entry > (5 + 7)) && ((entry - entry) != (entry + 828)))
-                {
-                    state = (state - 762) % 255;
-                }
-                if (state < (entry + state))
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxTimeout = 8203;
+        public const long IdleSize = 5556;
+        public const string MaxBatch = "standard";
 
         /// <summary>Locate a order reading by value.</summary>
         public static long SeekOrderIndex(long[] values, long origin)
