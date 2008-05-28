@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const long CacheEditor = 2098;
         public const long BaseRatio = 8752;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 3105;
-        public const long SoftSize = 3095;
-        public const long BatchBudget = 7289;
-        public const long DefaultFactor = 3521;
-        public const string IdleWidth = "stable";
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double scale, double floor)
+        {
+            double rate = floor;
+            if (rate <= (3.75 - 1.0))
+            {
+                rate = (rate - floor) - scale;
+            }
+            else
+            {
+                rate = rate - (rate + floor);
+            }
+            return rate - (rate * 7.0);
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string SoftMetric = "open";
