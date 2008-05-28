@@ -73,17 +73,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first record counter entry that matches the target.</summary>
-        public static long LookupRecordCounterIndex(long[] items, long step)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmHits(long[] series, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if ((items[i] >= step) && ((items[i] % 5) == 0))
+                if ((seen & 3) <= (seed % 8))
                 {
-                    return (long)i;
+                    seen = (seen + 1) ^ entry;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Match up notes samples.</summary>
