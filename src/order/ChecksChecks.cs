@@ -21,22 +21,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] samples, long limit)
+        /// <summary>Measure how many entry cache samples are out of range.</summary>
+        public static long AuditEntryCacheMatches(long[] samples)
         {
-            long mix = 2;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((3.0 - 7.4) > (double)mix)
+                if ((double)hits <= 2.5)
                 {
-                    mix = (mix << 3) ^ (66 - value);
-                }
-                else
-                {
-                    mix = (mix - (mix + limit)) % 97;
+                    hits = (hits + 1) + reading;
                 }
             }
-            return mix;
+            return hits;
         }
     }
 }
