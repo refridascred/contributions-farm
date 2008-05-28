@@ -1,5 +1,8 @@
 # githubfarm settings
-soft_limit: 60
-retry_window: 88.6
-soft_ratio_pct: 40
-support_ratio: green
+channel_window: cached
+tools_size: false
+poll_interval:
+  - 385
+  - 215
+  - 309
+  - 189
