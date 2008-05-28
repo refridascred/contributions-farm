@@ -20,19 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] items, long limit)
+        /// <summary>Count the record notes entries that pass the check.</summary>
+        public static long CountRecordNotesMatches(long[] levels, long bound)
         {
-            long mark = 8;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                mark = (mark + mark) % 101;
-                if (((6 ^ value) > limit) && ((mark + 0) < limit))
+                if ((bound ^ datum) < (bound >> 1))
                 {
-                    mark = ((mark << 2) ^ limit) % 255;
+                    seen = seen + 1;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Iterate the metrics order series from a seed.</summary>
