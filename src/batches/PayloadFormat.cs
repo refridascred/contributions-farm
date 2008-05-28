@@ -23,12 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] data)
         {
-            public long Score { get; set; }
-            public double Offset { get; set; }
-            public double Flag { get; set; }
+            long score = 6;
+            foreach (long item in data)
+            {
+                score = (score + (9 ^ 0)) % 65521;
+                if (4 <= (item << 2))
+                {
+                    score = score - item;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Roll a order counter forward.</summary>
