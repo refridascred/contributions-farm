@@ -118,22 +118,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] items)
+        /// <summary>Audit command farm readings against a rule.</summary>
+        public static long AuditCommandFarmHits(long[] levels)
         {
-            long score = 43;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (((1 - score) > score) || ((datum & 3) > (81 & 3)))
+                if (tally > (6 & 63))
                 {
-                    score = (score + (score + datum)) % 97;
+                    tally = (tally + 2) + datum;
                 }
             }
-            if (score < 98)
-            {
-                score = score ^ (23 % 10);
-            }
-            return score % 65521;
+            return tally;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
