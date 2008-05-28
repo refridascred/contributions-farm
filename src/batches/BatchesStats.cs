@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate window record readings against a bound.</summary>
-        public static bool GuardWindowRecordRange(long[] readings, long step)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyBounds(long[] samples, long seed)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if (datum != step)
+                if (reading <= seed)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Hold a tools summary.</summary>
