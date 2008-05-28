@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long floor, long bound)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            if ((floor - bound) > (bound + 1))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor ^ bound) < (42 % 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((0.1 * 13.0) == (double)floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((bound + bound) >= ((-7) ^ floor)) && (floor <= (bound + floor)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the batches class values.</summary>
