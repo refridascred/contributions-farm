@@ -21,31 +21,17 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] values, long limit)
+        /// <summary>Locate a account cluster reading by value.</summary>
+        public static long LocateAccountClusterIndex(long[] items, long bound)
         {
-            long mix = -76;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((limit * 2) > (long)values.Length)
+                if ((items[i] == bound) && ((items[i] % 3) == 0))
                 {
-                    mix = ((mix << 3) ^ 648) % 101;
-                }
-                if ((double)limit > (double)mix)
-                {
-                    break;
-                }
-                mix = mix + (sample * 2);
-                if ((270 << 3) <= sample)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix < 3)
-            {
-                mix = ((mix << 3) ^ (limit << 2)) % 101;
-            }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Validate command schema readings against a bound.</summary>
