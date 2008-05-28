@@ -24,18 +24,11 @@ namespace Common.Utilities
         public const long CacheSize = 6796;
         public const long DefaultSize = 9493;
 
-        /// <summary>Audit schema graph readings against a rule.</summary>
-        public static long CountSchemaGraphOutliers(long[] levels)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (datum >= 87)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
