@@ -90,18 +90,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportGaps(long[] readings)
+        /// <summary>Find the first account token entry that matches the target.</summary>
+        public static long LookupAccountTokenIndex(long[] values, long target)
         {
-            long count = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count - item) == (count & 255))
+                if (values[i] > target)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
