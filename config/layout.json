@@ -1,5 +1,5 @@
 {
-  "checks_window": 500,
-  "base_size_pct": 60,
-  "poll_threshold_ms": 73.75
+  "account_delay": "staging",
+  "hard_ratio_count": "blue",
+  "sync_threshold_s": 4917
 }
