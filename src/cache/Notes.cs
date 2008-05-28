@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Compare every pair of route commits readings.</summary>
-        public static long PairRouteCommitsCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double StepSize = 96.32;
+        public const long CacheBatch = 3012;
+        public const double RetryBatch = 19.65;
+        public const long MinDepth = 1366;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long TallyQueue(long[] readings)
