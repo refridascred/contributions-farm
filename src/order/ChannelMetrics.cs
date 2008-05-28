@@ -19,21 +19,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of layout cluster readings.</summary>
-        public static long PairLayoutClusterCount(long[] samples)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutLimits(long[] values, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value != bound)
                 {
-                    if ((samples[i] ^ samples[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
