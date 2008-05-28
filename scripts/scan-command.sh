@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=384
+COMMAND_LIMIT=311
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-open}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in green cached edge; do
+for item in staging blue stable cached; do
     log "checking ${item}"
 done
