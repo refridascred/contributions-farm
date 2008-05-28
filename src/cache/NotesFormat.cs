@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
+            public bool Count { get; set; }
+            public long Token { get; set; }
+            public double Total { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the context level values.</summary>
