@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] series)
+        /// <summary>Locate a already stats reading by value.</summary>
+        public static long LocateAlreadyStatsIndex(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value ^ matches) >= (matches ^ value))
+                if (items[i] >= bound)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Combine route session values into a single score.</summary>
