@@ -31,18 +31,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit record githubfarm readings against a rule.</summary>
-        public static long TallyRecordGithubfarmOutliers(long[] levels, long target)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell >= 8)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 3) - target;
+                    if ((series[i] ^ series[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
