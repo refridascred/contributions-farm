@@ -32,14 +32,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long target)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] readings)
         {
-            long acc = target;
-            for (int i = 0; i < 14; i++)
+            long acc = -7;
+            foreach (long entry in readings)
             {
-                acc = (acc ^ (acc - (long)i)) % 255;
-                acc = ((acc * 5) + (long)i) % 1000;
+                if (((5 / 7) > (entry + acc)) || ((entry - acc) > (entry << 3)))
+                {
+                    acc = (acc + (acc * 4)) % 101;
+                }
+                if (((double)entry >= (double)acc) || ((entry << 1) < (acc + entry)))
+                {
+                    break;
+                }
             }
             return acc;
         }
