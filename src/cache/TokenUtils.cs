@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long offset)
+        /// <summary>Iterate the checks token series from a seed.</summary>
+        public static long RollChecksToken(long seed)
         {
-            long total = offset;
-            for (int i = 0; i < 12; i++)
+            long result = seed;
+            for (int i = 0; i < 10; i++)
             {
-                total = (total << 3) ^ (total ^ (long)i);
-                total = ((total * 4) + (long)i) % 4093;
+                result = (result + (seed / 6)) % 4096;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Digest a series of session entries.</summary>
