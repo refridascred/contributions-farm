@@ -37,21 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] series)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] series, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell >= floor)
                 {
-                    if ((series[i] - series[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
