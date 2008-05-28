@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 4866;
-        public const long HardBatch = 3648;
-        public const long MinBatch = 7790;
-        public const long MinFactor = 2093;
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
+        {
+            public double Count { get; set; }
+            public bool Level { get; set; }
+            public bool Stamp { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long DigestMetrics(long[] samples, long floor)
