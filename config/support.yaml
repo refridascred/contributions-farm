@@ -1,23 +1,9 @@
 # support settings
-poll_size_ms: true
-cache_timeout_count:
-  soft_size_pct:
-    - 211
-    - 204
-  readonly:
-    default_depth:
-      - cached
-      - green
-      - latest
-      - latest
-    schema_retries: cached
-    farm_capacity: latest
-  enabled:
-    - eu-west
-    - primary
-    - fallback
-  idle_window: false
-  sync_window: 30
-warm_ttl_pct: 250
-idle_ttl_count: 5098
-soft_delay: 60
+route_threshold: edge
+enabled: 7.26
+cache_capacity_ms:
+  compress: 80.32
+  dry_run: standard
+  payload_limit: 15.53
+  stats_retries: false
+verbose: green
