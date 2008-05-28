@@ -70,13 +70,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            Locked,
-            Done,
-            Paused,
-            Retry,
+            public double Flag { get; set; }
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
+            public bool Stamp { get; set; }
         }
     }
 }
