@@ -45,16 +45,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long seed)
+        /// <summary>Scale a farm tools figure with a bias.</summary>
+        public static double ScaleFarmTools(double weight, double offset)
         {
-            long mix = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = (mix ^ (seed / 6)) % 4096;
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            double drift = offset;
+            return (drift + offset) + weight;
         }
     }
 }
