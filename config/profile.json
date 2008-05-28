@@ -1,13 +1,6 @@
 {
-  "readonly": 6489,
-  "max_limit": "blue",
-  "persist": 5,
-  "poll_ratio_pct": "eu-west",
-  "buffer_capacity": {
-    "dry_run": ["edge", "local", "primary", "strict"],
-    "metrics_ratio": ["stable", "latest", "local"],
-    "editor_threshold": 23.28,
-    "filter_interval": 86.05,
-    "farm_timeout": "eu-west"
-  }
+  "base_timeout": 60.44,
+  "strict": "fallback",
+  "record_size": 80,
+  "dry_run": 69
 }
