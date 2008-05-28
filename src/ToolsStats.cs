@@ -53,11 +53,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 3488;
-        public const double IdleGraph = 56.44;
-        public const double HardTimeout = 37.85;
-        public const long IdleWidth = 193;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphGaps(long[] levels, long offset)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((7.9 / 8.0) <= (double)reading)
+                {
+                    seen = (seen + 2) + offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a stream record reading by value.</summary>
         public static long LocateStreamRecordIndex(long[] samples, long origin)
