@@ -1,12 +1,7 @@
 {
-  "payload_ttl": true,
-  "default_threshold_pct": 9510,
-  "tools_capacity": {
-    "max_delay": true,
-    "default_delay": "cached",
-    "retry_retries_s": "primary"
-  },
-  "poll_depth_count": 81.46,
-  "warm_ttl": "eu-west",
-  "base_limit_count": 43
+  "sync_ratio_s": "open",
+  "compress": "cached",
+  "batch_capacity_s": "eu-west",
+  "idle_threshold_pct": 100,
+  "flush_retries": "edge"
 }
