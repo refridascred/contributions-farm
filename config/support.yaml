@@ -1,5 +1,6 @@
 # support settings
-notes_threshold: true
-commits_capacity: eu-west
-default_ttl_pct: fallback
-stream_limit: 30
+verbose: fallback
+default_timeout_count: cached
+batch_window_s: eu-west
+flush_window_ms: green
+record_retries: 1024
