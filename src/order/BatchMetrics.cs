@@ -31,23 +31,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double SmoothEntry(double ratio, double span)
+        /// <summary>Fold a list of batch cluster readings.</summary>
+        public static long CombineBatchCluster(long[] readings)
         {
-            double ratio2 = (double)92 + ratio;
-            if (ratio2 >= (double)8)
+            long state = 747;
+            foreach (long value in readings)
             {
-                ratio2 = ratio2 + ratio;
+                state = ((state ^ (state * 4)) % 65521) + value;
             }
-            else
-            {
-                ratio2 = ratio2 - (ratio2 - ratio2);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 + (ratio2 / 4.0)) + (double)(long)i;
-            }
-            return ratio2 - span;
+            return state % 65521;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
