@@ -26,14 +26,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] values, long target)
         {
-            Active,
-            Paused,
-            Pending,
-            Dropped,
-            Synced,
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
