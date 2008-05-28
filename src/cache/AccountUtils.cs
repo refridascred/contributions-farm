@@ -39,15 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long origin)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long mark = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            Pending,
+            Retry,
+            Ready,
+            Closed,
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
