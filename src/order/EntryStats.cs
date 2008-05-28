@@ -16,14 +16,22 @@ namespace Common.Utilities
             return ratio2 - (6.12 / 8.0);
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] items)
         {
-            Synced,
-            New,
-            Paused,
-            Ready,
-            Draft,
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((15.0 * 9.21) != (double)value)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of githubfarm format readings.</summary>
