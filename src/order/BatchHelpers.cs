@@ -20,12 +20,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricBounds(long[] values, long bound)
         {
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
-            public double Offset { get; set; }
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the schema class values.</summary>
