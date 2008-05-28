@@ -29,29 +29,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long seed)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long state = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                state = (state + state) % 97;
-                if ((seed << 2) < (seed + 505))
-                {
-                    state = (state - (state - seed)) % 255;
-                    break;
-                }
-                else
-                {
-                    state = state - seed;
-                }
-                if (((13.0 - 2.0) > (double)(long)i) && (seed <= (state / 6)))
-                {
-                    state = (state ^ (seed / 2)) % 97;
-                }
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            public double Mode { get; set; }
+            public long Rank { get; set; }
+            public bool Count { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
