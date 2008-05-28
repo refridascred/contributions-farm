@@ -25,19 +25,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of layout batches entries.</summary>
-        public static long DigestLayoutBatches(long[] levels, long floor)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] data, long offset)
         {
-            long state = 907;
-            foreach (long value in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state + (floor << 2)) % 255) + value;
+                if (data[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            if (state < 500)
-            {
-                state = state + state;
-            }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
