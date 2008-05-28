@@ -31,18 +31,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountOutliers(long[] values)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((3.2 + 2.4) == (double)entry)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Synced,
+            Retry,
+            Failed,
+            Queued,
         }
 
         /// <summary>Describe the account status values.</summary>
