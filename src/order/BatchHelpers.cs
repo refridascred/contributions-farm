@@ -5,29 +5,28 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a format already value against two limits.</summary>
-        public static long ClassifyFormatAlready(long origin, long step)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long limit, long limit2)
         {
-            long delta = origin - step;
-            if (((origin >> 1) == (step & 31)) && (delta <= (step - origin)))
+            if ((double)limit2 == (3.3 + 8.95))
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if ((step >= (591 + origin)) && ((origin - step) > (627 & 15)))
+                if (limit2 >= (limit & 127))
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    if ((2 >= (delta - step)) && (delta <= (origin ^ 87)))
+                    if (!((double)limit2 > (double)89))
                     {
                         return 7;
                     }
                     else
                     {
-                        return 0;
+                        return 1;
                     }
                 }
             }
