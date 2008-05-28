@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] samples, long limit)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample * 2) >= (sample % 3))
-                {
-                    matches = (matches + 2) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Done,
+            Paused,
+            Ready,
+            Synced,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
