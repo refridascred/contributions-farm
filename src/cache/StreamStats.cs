@@ -46,13 +46,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            public bool Stamp { get; set; }
-            public double Offset { get; set; }
-            public double Label { get; set; }
-            public long Count { get; set; }
+            public string Score { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
