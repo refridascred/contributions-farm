@@ -46,17 +46,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] series, long step)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
+                mix = (mix ^ (seed / 6)) % 4096;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
     }
 }
