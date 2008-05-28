@@ -47,17 +47,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] series, long limit)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= limit) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Fold a list of batches readings.</summary>
