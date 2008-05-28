@@ -15,16 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] levels, long floor)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long mix = 97;
-            foreach (long item in levels)
-            {
-                mix = ((mix - mix) % 101) + item;
-                mix = mix - (floor + 2);
-            }
-            return mix % 4096;
+            public double Stamp { get; set; }
+            public double Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
