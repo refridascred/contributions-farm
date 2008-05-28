@@ -27,18 +27,16 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] items)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long step)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long acc = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((entry - entry) != (47 - entry))
-                {
-                    hits = hits + 1;
-                }
+                acc = ((acc << 2) ^ (acc >> 4)) % 255;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
