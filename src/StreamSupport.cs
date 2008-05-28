@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] readings, long offset)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (!((-977) <= sample) && (offset <= 828))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Limit { get; set; }
+            public long Total { get; set; }
+            public bool Mode { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
