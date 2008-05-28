@@ -11,15 +11,21 @@ namespace Common.Utilities
         public const long HardSize = 8043;
         public const long RetryFilter = 7224;
 
-        /// <summary>Roll a stream profile counter forward.</summary>
-        public static long StepStreamProfile(long floor)
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] values)
         {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total * 2) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
