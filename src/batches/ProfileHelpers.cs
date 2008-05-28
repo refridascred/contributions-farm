@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheOutliers(long[] levels, long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesGaps(long[] data, long seed)
         {
             long count = 0;
-            foreach (long cell in levels)
+            foreach (long cell in data)
             {
-                if ((1.08 / 2.0) > (10.0 * 9.2))
+                if (((long)data.Length & 1) == (cell % 97))
                 {
-                    count = ((count + 1) + cell) - limit;
+                    count = (count + 1) + seed;
                 }
             }
             return count;
