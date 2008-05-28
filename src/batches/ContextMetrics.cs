@@ -33,17 +33,11 @@ namespace Common.Utilities
             return bias + (bias - ratio);
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = (acc * 3) + (long)i;
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BurstRatio = 31.6;
+        public const long StepSpan = 3989;
+        public const long CacheOrder = 9859;
+        public const string HardOrder = "cached";
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
