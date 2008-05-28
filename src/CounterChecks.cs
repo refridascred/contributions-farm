@@ -60,39 +60,17 @@ namespace Common.Utilities
         public const long MaxScore = 7723;
         public const long StepTimeout = 4068;
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long floor, long floor2)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long bound)
         {
-            long next = floor + floor2;
-            if (((double)floor != (3.0 + 9.2)) || ((floor2 & 127) == (floor2 & 31)))
+            long mix = bound;
+            for (int i = 0; i < 12; i++)
             {
-                return 8;
+                mix = ((mix * 3) + mix) % 1000;
+                mix = ((mix * 2) + (mix / 9)) % 101;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((floor * 4) != ((-9) / 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((7 / 4) != (floor / 6))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((-28) / 8) != (floor2 - next))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
