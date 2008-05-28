@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCount = 5505;
-        public const string BatchCache = "alpha-edge";
-        public const string MaxCache = "strict-v2";
-        public const long HardTimeout = 5890;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (!(datum > (datum & 7)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long CompareProfileCount(long[] samples)
