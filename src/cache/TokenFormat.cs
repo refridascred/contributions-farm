@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a cluster window sample.</summary>
-        public static long SeekClusterWindowIndex(long[] samples, long floor)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double SmoothChecks(double bias, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias2 = (floor + bias) * 8.4;
+            if (bias2 >= (floor + floor))
             {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 + (double)889;
             }
-            return -1;
+            else
+            {
+                bias2 = bias2 + floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + (floor - bias2)) + (double)(long)i;
+            }
+            return bias2 + (floor - bias2);
         }
 
         /// <summary>Locate a cache reading by value.</summary>
