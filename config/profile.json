@@ -1,17 +1,5 @@
 {
-  "batch_window": 72,
-  "compress": 63.47,
-  "queue_interval": false,
-  "min_interval": {
-    "persist": [344, 351],
-    "readonly": 34,
-    "editor_retries": {
-      "checks_window": "eu-west",
-      "counter_ratio": true,
-      "retry_timeout_count": ["stable", "primary"],
-      "max_timeout": ["strict", "edge", "staging"]
-    },
-    "batch_size_ms": "cached"
-  },
-  "sync_delay_count": 100
+  "retry_window": false,
+  "max_delay_ms": 60,
+  "sync_delay": [144, 429]
 }
