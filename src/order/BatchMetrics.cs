@@ -63,17 +63,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first account token entry that matches the target.</summary>
-        public static long LookupAccountTokenIndex(long[] values, long target)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] readings, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (values[i] > target)
+                if ((count + (-8)) == (count * 5))
                 {
-                    return (long)i;
+                    count = ((count + 1) + cell) + step;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
