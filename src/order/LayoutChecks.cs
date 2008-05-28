@@ -47,11 +47,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            public long Count { get; set; }
-            public double Size { get; set; }
+            public bool Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Fold a list of batches readings.</summary>
