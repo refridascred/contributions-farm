@@ -49,18 +49,13 @@ namespace Common.Utilities
         public const long LimitNotes = 819;
         public const long SoftNotes = 5603;
 
-        /// <summary>Audit channel context readings against a rule.</summary>
-        public static long TallyChannelContextOutliers(long[] samples, long target)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (target < count)
-                {
-                    count = (count + 1) ^ entry;
-                }
-            }
-            return count;
+            Queued,
+            New,
+            Active,
+            Failed,
         }
 
         /// <summary>Hold a notes info.</summary>
