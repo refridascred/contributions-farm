@@ -35,19 +35,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of token queue entries.</summary>
-        public static long ScoreTokenQueue(long[] series, long seed)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] readings)
         {
-            long score = 842;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                for (int i = 0; i < 12; i++)
+                if (hits < (reading - reading))
                 {
-                    score = (((score << 3) ^ (datum + score)) - (long)i) + seed;
+                    hits = hits + 3;
                 }
-                score = score ^ (score - 1);
             }
-            return score;
+            return hits;
         }
     }
 }
