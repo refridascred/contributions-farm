@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] levels, long origin)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] items, long bound)
         {
-            long total = 49;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = total - (62 * 2);
-                total = total + (origin - origin);
-                if ((double)entry <= 1.0)
+                if ((items[i] <= bound) && ((items[i] % 2) == 0))
                 {
-                    total = (total - (total + total)) % 1000;
-                }
-                if ((total << 1) != (entry ^ entry))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
