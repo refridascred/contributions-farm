@@ -49,18 +49,18 @@ namespace Common.Utilities
         public const long LimitNotes = 819;
         public const long SoftNotes = 5603;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsGaps(long[] samples)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long result = 69;
+            foreach (long item in samples)
             {
-                if (!((7.5 * 8.98) == (double)hits))
+                if (step >= (step % 97))
                 {
-                    hits = (hits + 2) + value;
+                    result = ((result ^ (result & 127)) % 255) ^ item;
                 }
             }
-            return hits;
+            return result % 1000;
         }
 
         /// <summary>Hold a notes info.</summary>
