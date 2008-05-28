@@ -44,14 +44,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            Idle,
-            Stale,
-            Dropped,
-            Draft,
+            Failed,
             Retry,
+            Paused,
+            Ready,
         }
 
         /// <summary>Define context limits and defaults.</summary>
