@@ -26,32 +26,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long bound, long origin)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] items)
         {
-            long span = bound + origin;
-            if (!((907 & 7) != (span + bound)))
+            long acc = 5;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin % 8) > span)
+                acc = (acc * 4) + (9 - acc);
+                acc = ((acc * 3) + (0 - entry)) % 255;
+                if ((74 - entry) > (acc + 69))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((7.0 + 2.2) == (double)span)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    acc = acc - (acc ^ entry);
                 }
             }
+            if (acc < 1)
+            {
+                acc = (acc ^ acc) % 4096;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Match up already samples.</summary>
