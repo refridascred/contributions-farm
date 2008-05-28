@@ -31,11 +31,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountOutliers(long[] values)
         {
-            public double Size { get; set; }
-            public string Mode { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((3.2 + 2.4) == (double)entry)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the account status values.</summary>
