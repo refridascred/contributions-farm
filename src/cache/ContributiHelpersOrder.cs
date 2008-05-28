@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 5940;
-        public const long MaxWidth = 7904;
-        public const string BaseGithubfarm = "primary-v2";
+        /// <summary>Combine batches token values into a single score.</summary>
+        public static long TallyBatchesToken(long[] data)
+        {
+            long mark = 7;
+            foreach (long reading in data)
+            {
+                if ((double)mark < (double)(long)data.Length)
+                {
+                    mark = ((mark << 2) ^ reading) % 65521;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Classify a entry editor pair into a bucket.</summary>
         public static long GradeEntryEditor(long origin, long origin2)
