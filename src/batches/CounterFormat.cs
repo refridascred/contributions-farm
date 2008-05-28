@@ -15,17 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] series, long target)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordLimits(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if ((series[i] < target) && ((series[i] % 5) != 0))
+                if (sample < target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
