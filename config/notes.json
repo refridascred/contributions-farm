@@ -1,6 +1,15 @@
 {
-  "githubfarm_timeout": false,
-  "flush_timeout": false,
-  "sync_delay_ms": 9547,
-  "enabled": 6.27
+  "editor_threshold": ["local", "cached", "eu-west"],
+  "command_window": 60,
+  "persist": true,
+  "idle_delay_ms": "staging",
+  "soft_depth_count": {
+    "warm_ttl_count": 11.36,
+    "cache_interval": 7705,
+    "soft_capacity_pct": "strict",
+    "burst_threshold_s": false,
+    "persist": true,
+    "sync_threshold_pct": 6
+  },
+  "sync_window_s": "legacy"
 }
