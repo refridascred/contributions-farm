@@ -19,14 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            Paused,
+            Retry,
             Draft,
-            Stale,
-            Active,
-            Ready,
+            Paused,
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
