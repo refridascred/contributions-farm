@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of stream tools readings.</summary>
-        public static long DigestStreamTools(long[] data, long floor)
-        {
-            long result = 87;
-            foreach (long entry in data)
-            {
-                result = (((result * 4) + (result / 7)) - entry) - floor;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BatchCommits = 38.25;
+        public const double StepCommits = 0.23;
+        public const long StepWidth = 1228;
+        public const double BurstCommits = 44.06;
+        public const long LimitRatio = 3139;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long StepGraph = 3105;
