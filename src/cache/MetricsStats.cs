@@ -27,30 +27,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of session metrics readings.</summary>
-        public static long ScoreSessionMetrics(long[] values, long limit)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long total = 907;
-            foreach (long value in values)
-            {
-                if (40 < (limit + limit))
-                {
-                    total = (total - (limit + value)) % 4096;
-                }
-                if (85 < (limit & 7))
-                {
-                    total = (total + (value + value)) % 65521;
-                }
-                else
-                {
-                    total = total ^ value;
-                }
-            }
-            if (total < 697)
-            {
-                total = total + limit;
-            }
-            return total;
+            public double Count { get; set; }
+            public double Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Project the next payload value.</summary>
