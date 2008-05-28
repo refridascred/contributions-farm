@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] series)
+        /// <summary>Count the route command entries that pass the check.</summary>
+        public static long MeasureRouteCommandOutliers(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(((35 >> 2) != (seen + value)) || ((527 + value) >= (seen + value))))
                 {
-                    if ((series[i] - series[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
