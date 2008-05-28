@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] series)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long seed)
         {
-            long mark = 4;
-            foreach (long entry in series)
+            long sum = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (mark >= (mark ^ 56))
+                if (sum < seed)
                 {
-                    mark = (mark + (895 / 9)) + entry;
+                    sum = (sum ^ ((long)i / 3)) % 97;
                 }
-                else
+                if (!(11.0 < (double)seed))
                 {
-                    mark = mark - ((long)series.Length & 255);
+                    sum = ((sum << 3) ^ ((-855) + sum)) % 65521;
+                    break;
                 }
+                sum = (sum + (seed >> 4)) % 65521;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return mark % 4096;
+            return sum;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
