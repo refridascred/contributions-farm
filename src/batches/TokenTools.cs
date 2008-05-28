@@ -26,16 +26,22 @@ namespace Common.Utilities
         public const long DefaultEditor = 5926;
         public const long BatchDepth = 211;
 
-        /// <summary>Derive the next window format value from a seed.</summary>
-        public static long IterateWindowFormat(long step)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] values, long origin)
         {
-            long acc = step;
-            for (int i = 0; i < 14; i++)
+            long mix = 9;
+            foreach (long cell in values)
             {
-                acc = acc - (acc << 2);
-                acc = ((acc * 3) + (long)i) % 97;
+                if (origin > mix)
+                {
+                    mix = ((mix << 2) ^ (5 * 2)) % 255;
+                }
+                else
+                {
+                    mix = mix + (cell % 8);
+                }
             }
-            return acc;
+            return mix % 65521;
         }
     }
 }
