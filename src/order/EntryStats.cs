@@ -28,14 +28,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            Paused,
-            New,
-            Queued,
-            Retry,
-            Active,
+            public double Flag { get; set; }
+            public long Size { get; set; }
+            public double Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
