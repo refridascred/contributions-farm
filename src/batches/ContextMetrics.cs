@@ -26,21 +26,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] data)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double ratio, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double bias = (span + span) / 8.0;
+            return bias + (bias - ratio);
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
