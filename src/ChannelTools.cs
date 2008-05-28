@@ -39,14 +39,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] values, long seed)
         {
-            Retry,
-            Failed,
-            Done,
-            Stale,
-            Ready,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
