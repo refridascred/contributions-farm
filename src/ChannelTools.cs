@@ -32,24 +32,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long origin, long seed)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] readings)
         {
-            if (((seed >> 4) <= (seed - seed)) || ((8.0 + 3.0) <= (double)origin))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed + 969) == (origin + seed))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    if ((readings[i] + readings[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
     }
 }
