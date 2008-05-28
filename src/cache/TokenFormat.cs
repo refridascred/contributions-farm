@@ -31,19 +31,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] levels, long offset)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Idle,
+            Draft,
+            Ready,
+            Pending,
         }
     }
 }
