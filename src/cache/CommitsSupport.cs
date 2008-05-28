@@ -41,16 +41,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine tools buffer values into a single score.</summary>
-        public static long ScoreToolsBuffer(long[] levels)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long step, long target)
         {
-            long result = 654;
-            foreach (long value in levels)
+            if ((step / 5) == (step ^ target))
             {
-                result = (result + (result & 127)) % 65521;
-                result = (result + value) % 97;
+                return 7;
             }
-            return result % 4096;
+            else
+            {
+                if ((step + target) <= target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((8 / 8) >= (step >> 5)) || ((double)step > (3.0 / 7.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every buffer command entry stays within the limit.</summary>
