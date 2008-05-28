@@ -40,13 +40,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long step)
         {
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            long result = step;
+            for (int i = 0; i < 20; i++)
+            {
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Hold a queue entry.</summary>
