@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BatchPayload = "stable-1";
+        public const double LimitBudget = 60.58;
+        public const long DefaultSize = 9926;
+        public const long BatchSize = 602;
 
         /// <summary>Iterate the cache channel series from a seed.</summary>
         public static long RollCacheChannel(long seed)
