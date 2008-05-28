@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MinCount = 58.04;
-        public const double MinRecord = 24.95;
-        public const long BaseRecord = 6623;
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] data, long bound)
+        {
+            long mix = 9;
+            foreach (long cell in data)
+            {
+                mix = ((((mix << 2) ^ mix) % 97) - cell) - bound;
+            }
+            return mix;
+        }
 
         /// <summary>Project the next graph value.</summary>
         public static double ScaleGraph(double scale, double floor)
