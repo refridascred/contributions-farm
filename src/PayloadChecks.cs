@@ -19,10 +19,33 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftWidth = 5974;
-        public const double MaxWidth = 52.52;
-        public const double RetryWidth = 34.68;
+        /// <summary>Grade a metrics metric value against two limits.</summary>
+        public static long BucketMetricsMetric(long target, long target2)
+        {
+            long cur = target - target2;
+            if ((target2 * 2) == (target2 + target2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((6.13 > (double)target) || ((4.54 - 1.06) == (double)target2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (4.5 <= (double)cur)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long TallyEditorHits(long[] items, long step)
