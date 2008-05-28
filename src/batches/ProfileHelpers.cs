@@ -30,17 +30,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] readings, long step)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] > step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the command kind values.</summary>
