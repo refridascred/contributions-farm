@@ -27,16 +27,17 @@ namespace Common.Utilities
         public const long RetryBudget = 4773;
         public const double MaxTimeout = 70.94;
 
-        /// <summary>Fold a list of metric payload readings.</summary>
-        public static long TallyMetricPayload(long[] data, long limit)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] readings, long limit)
         {
-            long state = 673;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state + (state + limit)) % 65521) - item;
-                state = ((state * 5) + (limit >> 4)) % 101;
+                if ((readings[i] > limit) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the context status values.</summary>
