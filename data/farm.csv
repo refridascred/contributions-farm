@@ -1,6 +1,8 @@
-id,level,owner
-1,376,285
-2,cached,standard
-3,16.32,73.06
-4,247,487
-5,91.84,207
+id,active,owner,token
+1,443,98.02,eu-west
+2,10.78,399,59.0
+3,stable,standard,standard
+4,405,latest,998
+5,863,35.49,73.26
+6,local,1.06,eu-west
+7,staging,81,latest
