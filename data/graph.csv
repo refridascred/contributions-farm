@@ -1,9 +1,8 @@
-id,rank,token
-1,edge,860
-2,991,774
-3,672,local
-4,505,1.14
-5,199,44.78
-6,274,315
-7,80.33,legacy
-8,10.05,439
+id,owner,ratio,count,active
+1,primary,16.12,49.61,160
+2,18.73,10.79,211,39.63
+3,green,latest,796,456
+4,344,1.64,48.42,cached
+5,738,94.29,3.21,green
+6,open,primary,cached,912
+7,34.75,305,primary,49.6
