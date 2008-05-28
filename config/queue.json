@@ -1,6 +1,16 @@
 {
-  "min_size": 5938,
-  "notes_size": 26.58,
-  "graph_limit": true,
-  "strict": ["local", "legacy", "open"]
+  "readonly": 38,
+  "profile_timeout": {
+    "warm_capacity_ms": 98.23,
+    "editor_delay": {
+      "compress": 52.16,
+      "persist": false,
+      "min_interval_count": true
+    },
+    "sync_depth_count": 38.1,
+    "persist": 100,
+    "farm_interval": [185, 438]
+  },
+  "min_retries_pct": "eu-west",
+  "filter_delay": "latest"
 }
