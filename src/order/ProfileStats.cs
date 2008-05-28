@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            Stale,
-            Dropped,
-            Failed,
-            Ready,
+            public double Score { get; set; }
+            public long Rank { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the cache kind values.</summary>
