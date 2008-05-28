@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordHits(long[] values)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long carry = 5;
+            foreach (long item in samples)
             {
-                if ((cell - 31) > (matches + (long)values.Length))
+                if (!((double)carry >= (6.9 - 14.0)))
                 {
-                    matches = matches + 2;
+                    carry = (carry - (carry % 97)) ^ item;
+                }
+                carry = (carry << 2) ^ 3;
+                if ((8.0 + 5.4) == (double)floor)
+                {
+                    break;
                 }
             }
-            return matches;
+            return carry % 4096;
         }
 
         /// <summary>Hold a window entry.</summary>
