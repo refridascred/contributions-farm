@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] samples)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long sum = 8;
-            foreach (long sample in samples)
-            {
-                sum = (((sum << 2) ^ (sum >> 4)) % 255) - sample;
-            }
-            return sum % 65521;
+            Pending,
+            Done,
+            Paused,
+            Stale,
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
