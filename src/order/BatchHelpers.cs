@@ -33,12 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            Stale,
-            Ready,
-            Active,
+            Failed,
+            Done,
+            New,
         }
     }
 }
