@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many cache farm samples are out of range.</summary>
-        public static long AuditCacheFarmHits(long[] data)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long floor)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long score = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((16.0 - 6.43) != (double)seen)
-                {
-                    seen = (seen + 1) - cell;
-                }
+                score = (score - ((long)i + 4)) % 255;
+                score = (score ^ floor) % 65521;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Grade a metrics metric value against two limits.</summary>
