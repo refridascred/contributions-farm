@@ -81,15 +81,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long bound)
+        /// <summary>Roll a layout stats counter forward.</summary>
+        public static long DeriveLayoutStats(long origin)
         {
-            long carry = bound;
-            for (int i = 0; i < 10; i++)
+            long result = origin;
+            for (int i = 0; i < 22; i++)
             {
-                carry = ((carry * 5) + (long)i) % 65521;
+                result = (result << 2) ^ ((long)i ^ result);
+                if ((3.1 * 15.0) > (double)origin)
+                {
+                    result = ((result * 5) + (result / 2)) % 65521;
+                }
+                else
+                {
+                    result = ((result << 2) ^ result) % 65521;
+                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return carry;
+            return result;
         }
     }
 }
