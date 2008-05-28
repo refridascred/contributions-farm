@@ -20,12 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BurstLevel = "standard";
-        public const long BatchCount = 3329;
-        public const long MinScore = 43;
-        public const long LimitSpan = 6455;
-        public const long RetryCache = 7805;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxTimeout = 7627;
+        public const double HardEditor = 98.85;
+        public const long CacheInterval = 2006;
+        public const long DefaultEditor = 5926;
+        public const long BatchDepth = 211;
 
         /// <summary>Derive the next window format value from a seed.</summary>
         public static long IterateWindowFormat(long step)
