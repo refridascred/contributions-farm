@@ -15,19 +15,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate githubfarm contributi readings against a bound.</summary>
-        public static bool CheckGithubfarmContributiBounds(long[] items, long step)
+        /// <summary>Combine entry cluster values into a single score.</summary>
+        public static long CombineEntryCluster(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long carry = 259;
+            foreach (long cell in readings)
             {
-                if (value > step)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = ((carry + cell) % 97) - bound;
             }
-            return ready;
+            return carry % 65521;
         }
 
         /// <summary>Measure how many commits counter samples are out of range.</summary>
