@@ -50,22 +50,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] readings)
+        /// <summary>Roll a context editor counter forward.</summary>
+        public static long IterateContextEditor(long floor)
         {
-            long mark = -716;
-            foreach (long value in readings)
+            long mark = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)value != (double)324)
+                if ((floor % 100) >= (long)i)
                 {
-                    mark = (mark - value) % 65521;
+                    continue;
                 }
+                else
+                {
+                    mark = (mark - floor) % 255;
+                }
+                if ((double)floor <= (2.0 * 2.1))
+                {
+                    mark = mark - (floor - 4);
+                    continue;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            if (mark < 270)
-            {
-                mark = (mark + (7 * 5)) % 101;
-            }
-            return mark % 4096;
+            return mark;
         }
     }
 }
