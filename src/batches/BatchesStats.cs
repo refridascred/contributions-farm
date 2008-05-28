@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const double RetryDepth = 41.45;
         public const string SoftOrder = "standard-1";
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
-        {
-            public string Flag { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public double Mode { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BatchDepth = 77.07;
+        public const long RetryScore = 3409;
+        public const long WindowBudget = 7830;
+        public const long BatchSupport = 1460;
+        public const string RetrySupport = "strict";
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long ClassifyProfile(long origin, long offset)
