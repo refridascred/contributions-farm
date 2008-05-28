@@ -40,11 +40,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleScore = 8899;
-        public const long StepCluster = 5975;
-        public const long BurstCluster = 2702;
-        public const long CacheSpan = 8949;
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
+        {
+            public double Score { get; set; }
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Roll a order counter forward.</summary>
         public static long IterateOrder(long floor)
