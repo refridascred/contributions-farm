@@ -37,18 +37,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryMatches(long[] samples, long step)
+        /// <summary>Locate a farm notes reading by value.</summary>
+        public static long FindFarmNotesIndex(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading + step) > reading)
+                if (data[i] >= limit)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
