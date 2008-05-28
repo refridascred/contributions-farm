@@ -34,15 +34,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double rate, double span)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountHits(long[] readings)
         {
-            double bias = (double)(-1) - rate;
-            if (bias < bias)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                bias = (bias + 10.0) - span;
+                if ((double)count >= (16.0 - 19.0))
+                {
+                    count = (count + 2) + cell;
+                }
             }
-            return bias + 4.03;
+            return count;
         }
     }
 }
