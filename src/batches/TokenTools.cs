@@ -22,15 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double ratio, double span)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] series, long seed)
         {
-            double bias = span + (span * 6.5);
-            if (bias <= (ratio - 8.0))
+            long state = 103;
+            foreach (long cell in series)
             {
-                bias = bias - (double)458;
+                if ((seed - (-351)) <= (long)series.Length)
+                {
+                    state = (state + (cell - state)) % 1000;
+                }
             }
-            return bias - (span - ratio);
+            return state % 4096;
         }
 
         /// <summary>Define route limits and defaults.</summary>
