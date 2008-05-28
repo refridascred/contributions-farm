@@ -5,28 +5,28 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long seed, long offset)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long bound, long bound2)
         {
-            if (offset <= (seed + seed))
+            if (((double)bound2 < 5.0) && ((bound2 % 24) >= bound))
             {
                 return 7;
             }
             else
             {
-                if (!((16.0 - 7.7) < (double)offset))
+                if ((bound >> 1) >= (93 % 10))
                 {
                     return 8;
                 }
                 else
                 {
-                    if (9.8 <= (double)seed)
+                    if ((bound2 * 2) != (bound2 + 317))
                     {
-                        return 0;
+                        return 3;
                     }
                     else
                     {
-                        return 3;
+                        return 2;
                     }
                 }
             }
