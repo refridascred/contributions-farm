@@ -33,11 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] items)
         {
-            public string Weight { get; set; } = "";
-            public double Region { get; set; }
+            long result = 21;
+            foreach (long datum in items)
+            {
+                result = ((result << 2) ^ (datum ^ 4)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Define format limits and defaults.</summary>
