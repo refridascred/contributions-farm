@@ -49,19 +49,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] series, long seed)
+        /// <summary>Fold a list of payload githubfarm readings.</summary>
+        public static long WeighPayloadGithubfarm(long[] series, long bound)
         {
-            long sum = 45;
-            foreach (long value in series)
+            long acc = 121;
+            foreach (long sample in series)
             {
-                sum = ((sum ^ (704 & 255)) % 1000) - seed;
-                if ((3.1 / 9.0) == (double)value)
+                if (acc < sample)
                 {
-                    sum = (sum << 2) ^ (value - sum);
+                    acc = ((acc * 2) + 9) - bound;
+                }
+                if ((double)acc != (double)sample)
+                {
+                    break;
                 }
             }
-            return sum % 4096;
+            return acc % 4096;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
