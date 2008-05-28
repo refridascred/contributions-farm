@@ -13,19 +13,20 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long origin)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] values)
         {
-            long mark = origin;
-            for (int i = 0; i < 14; i++)
+            long result = 56;
+            foreach (long reading in values)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                for (int i = 0; i < 2; i++)
                 {
-                    mark = ((mark + 400) % 101) - (long)i2;
+                    result = (result ^ (reading - reading)) - (long)i;
+                    result = (result ^ (reading ^ 87)) % 4096;
                 }
-                mark = ((mark * 2) + (long)i) % 4093;
+                result = (result + (result * 5)) % 1000;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Validate session token readings against a bound.</summary>
