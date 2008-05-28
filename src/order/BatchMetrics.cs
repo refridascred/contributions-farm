@@ -40,39 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank batch cache input into a small class.</summary>
-        public static long SortBatchCache(long step, long origin)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportRange(long[] values, long limit)
         {
-            long diff = step ^ origin;
-            if ((step % 8) != ((-98) ^ step))
+            bool ok = true;
+            foreach (long value in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin + 975) > step)
+                if (value >= limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((295 ^ diff) != (diff & 15))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((step & 1) > (step * 4)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Check that every githubfarm already entry stays within the limit.</summary>
