@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine route session values into a single score.</summary>
-        public static long DigestRouteSession(long[] readings)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long offset)
         {
-            long score = 8;
-            foreach (long datum in readings)
+            long anchor = offset;
+            for (int i = 0; i < 18; i++)
             {
-                score = score - datum;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            if (score < 271)
-            {
-                score = (score ^ (score << 2)) % 65521;
-            }
-            return score;
+            return anchor;
         }
 
         /// <summary>Match up contributi samples.</summary>
