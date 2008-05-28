@@ -46,15 +46,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long offset)
+        /// <summary>Iterate the batch stats series from a seed.</summary>
+        public static long SeriesBatchStats(long offset)
         {
-            long acc = offset;
-            for (int i = 0; i < 21; i++)
+            long anchor = offset;
+            for (int i = 0; i < 22; i++)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                anchor = ((anchor << 2) ^ (anchor + anchor)) % 255;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return acc;
+            return anchor;
         }
     }
 }
