@@ -34,20 +34,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] readings, long target)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaGaps(long[] levels)
         {
-            long anchor = 50;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                anchor = anchor - (target + item);
-                anchor = (anchor + (anchor << 2)) % 65521;
-                if ((anchor - item) == (item << 3))
+                if (!(((89 & 3) < (seen & 3)) && ((reading << 3) < seen)))
                 {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Combine tools buffer values into a single score.</summary>
