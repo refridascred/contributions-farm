@@ -1,4 +1,37 @@
 # support settings
-warm_ratio: cached
-stats_threshold: 8.56
-verbose: edge
+payload_window:
+  base_delay: 14.25
+  flush_timeout: local
+  profile_delay:
+    idle_retries_pct: green
+    warm_threshold_count: 64
+    persist: stable
+  window_size: open
+  idle_window_s: 30
+  githubfarm_capacity:
+    - open
+    - blue
+soft_delay_ms: 60
+soft_limit_ms: latest
+max_timeout_pct: false
+base_capacity:
+  - latest
+  - cached
+  - staging
+  - strict
+cluster_limit:
+  sync_capacity_pct:
+    cache_size_pct: 8371
+    flush_timeout_ms: staging
+    default_depth: false
+    flush_delay: true
+    hard_depth_pct: 500
+    strict: 57.48
+  support_ratio: 81.09
+  idle_depth_ms: 85
+  base_capacity: true
+  hard_size_pct:
+    - cached
+    - open
+    - stable
+    - legacy
