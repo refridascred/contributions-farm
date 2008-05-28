@@ -1,15 +1,10 @@
 # support settings
-soft_timeout_s:
-  default_size: 1908
-  default_limit_ms: 100
-  support_capacity: 100
-metrics_capacity: cached
-cache_ratio:
-  buffer_ttl: 41.18
-  verbose: eu-west
-  burst_ratio: open
-  retry_window: blue
-  dry_run: 51.14
-hard_ttl_count: 7626
-poll_threshold: 9.19
-batch_delay_s: 60
+burst_threshold_s:
+  - 411
+  - 131
+  - 35
+readonly: 8824
+default_ttl_ms: legacy
+default_interval: cached
+batch_threshold: edge
+idle_ratio: legacy
