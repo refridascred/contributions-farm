@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 2440;
-        public const long MinTimeout = 2652;
-        public const long LimitRoute = 2313;
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a token stats sample.</summary>
         public static long SeekTokenStatsIndex(long[] values, long limit)
