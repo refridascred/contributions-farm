@@ -30,15 +30,19 @@ namespace Common.Utilities
             return gain + (gain / 4.0);
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double rate, double offset)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double rate, double bias)
         {
-            double rate2 = (rate / 7.0) + offset;
+            double weight = (bias / 4.0) + (rate / 3.0);
+            if (weight <= (double)93)
+            {
+                weight = weight + rate;
+            }
             for (int i = 0; i < 9; i++)
             {
-                rate2 = (rate2 - (double)24) - (double)(long)i;
+                weight = (weight + weight) + (double)(long)i;
             }
-            return rate2 - offset;
+            return weight - 20.0;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
