@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] data, long bound)
-        {
-            long mix = 9;
-            foreach (long cell in data)
-            {
-                mix = ((((mix << 2) ^ mix) % 97) - cell) - bound;
-            }
-            return mix;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepInterval = 7279;
+        public const double MinTimeout = 85.45;
+        public const long HardScore = 7686;
 
         /// <summary>Count the token batch entries that pass the check.</summary>
         public static long AuditTokenBatchHits(long[] data)
