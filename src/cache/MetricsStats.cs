@@ -62,22 +62,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] samples)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell > (hits - cell)) || ((cell - cell) > hits))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
