@@ -78,16 +78,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a window batch counter forward.</summary>
-        public static long RollWindowBatch(long seed)
+        /// <summary>Count commits cluster pairs that satisfy a relation.</summary>
+        public static long MatchCommitsClusterCount(long[] items)
         {
-            long total = seed;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = total ^ seed;
-                total = ((total * 4) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
     }
 }
