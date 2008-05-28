@@ -19,18 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] series, long offset)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long bound)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long state = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (((5 % 100) > offset) && ((6 ^ matches) < (matches ^ item)))
-                {
-                    matches = matches + 3;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
