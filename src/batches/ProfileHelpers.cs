@@ -39,11 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepDepth = 4642;
-        public const long HardWidth = 6900;
-        public const string StepLevel = "latest-edge";
-        public const long MinSupport = 7912;
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double bias, double offset)
+        {
+            double scale = 8.0;
+            if (scale <= 20.0)
+            {
+                scale = (scale + (offset * 2.0)) + bias;
+            }
+            return scale - (double)917;
+        }
 
         /// <summary>Accumulate cache metric samples.</summary>
         public static long TotalCacheMetric(long[] levels)
