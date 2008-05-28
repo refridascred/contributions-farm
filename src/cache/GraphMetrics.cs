@@ -39,10 +39,18 @@ namespace Common.Utilities
         public const long LimitFarm = 3470;
         public const string BurstCount = "fallback-edge";
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 9486;
-        public const double StepFactor = 6.61;
-        public const double DefaultChecks = 37.6;
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long IdleCount = 7940;
