@@ -32,18 +32,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheGaps(long[] data, long seed)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsLimits(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long item in readings)
             {
-                if (!((40 + 862) == (seed << 1)) && (((seed + seed) <= (seed * 3)) && ((reading / 3) >= seen)))
+                if (item < offset)
                 {
-                    seen = seen + 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
