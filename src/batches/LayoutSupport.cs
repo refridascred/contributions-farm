@@ -23,26 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] data)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long result = 575;
-            foreach (long entry in data)
-            {
-                if ((0.9 - 4.0) <= 9.93)
-                {
-                    result = ((result * 4) + (472 + (-970))) % 101;
-                }
-                else
-                {
-                    result = ((result * 5) + result) % 255;
-                }
-                if ((entry + entry) <= (entry / 2))
-                {
-                    break;
-                }
-            }
-            return result;
+            Synced,
+            Paused,
+            Closed,
         }
 
         /// <summary>Describe the session class values.</summary>
