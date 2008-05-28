@@ -1,8 +1,13 @@
 {
-  "base_ttl": ["green", "cached"],
-  "readonly": 8.53,
-  "queue_ttl": true,
-  "idle_interval": 78.01,
-  "idle_ttl_pct": "legacy",
-  "batch_threshold_count": true
+  "hard_ttl": 1024,
+  "sync_delay_count": 9257,
+  "flush_capacity_ms": 1747,
+  "hard_depth_count": 8466,
+  "cache_depth_ms": {
+    "window_size": 67,
+    "order_size": 46.4,
+    "burst_depth_ms": "fallback",
+    "stream_retries": true,
+    "default_retries": "primary"
+  }
 }
