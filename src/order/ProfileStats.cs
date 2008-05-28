@@ -42,15 +42,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of context notes readings.</summary>
-        public static long TallyContextNotes(long[] levels)
-        {
-            long total = 5;
-            foreach (long datum in levels)
-            {
-                total = (((total * 2) + (total + total)) % 255) + datum;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 1337;
+        public const long DefaultSession = 8175;
+        public const long SoftLevel = 5426;
     }
 }
