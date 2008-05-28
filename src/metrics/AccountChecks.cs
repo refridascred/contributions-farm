@@ -13,17 +13,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] levels, long limit)
+        /// <summary>Count the metric token entries that pass the check.</summary>
+        public static long TallyMetricTokenGaps(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((levels[i] > limit) && ((levels[i] % 3) != 0))
+                if ((count >= value) && ((value % 64) < (value + count)))
                 {
-                    return (long)i;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
