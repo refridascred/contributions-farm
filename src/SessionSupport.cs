@@ -26,15 +26,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate route schema samples.</summary>
-        public static long WeighRouteSchema(long[] items, long seed)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] levels)
         {
-            long mix = 897;
-            foreach (long sample in items)
+            long carry = 733;
+            foreach (long value in levels)
             {
-                mix = (((mix << 2) ^ (54 >> 3)) ^ sample) + seed;
+                if ((carry & 255) > carry)
+                {
+                    carry = carry ^ value;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (carry / 9)) % 4096;
+                }
             }
-            return mix % 97;
+            return carry % 4096;
         }
     }
 }
