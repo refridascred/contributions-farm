@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Rank record githubfarm input into a small class.</summary>
+        public static long GradeRecordGithubfarm(long seed, long floor)
         {
-            Locked,
-            Active,
-            Pending,
+            if ((8 ^ seed) < seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if (floor >= (seed ^ floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
