@@ -18,22 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the githubfarm batches entries that pass the check.</summary>
-        public static long TallyGithubfarmBatchesMatches(long[] data)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long bound, long bound2)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long delta = bound ^ bound2;
+            if ((delta % 64) <= (delta >> 5))
             {
-                if (!((tally << 2) >= 6))
+                return 8;
+            }
+            else
+            {
+                if ((delta >> 1) < bound)
                 {
-                    tally = (tally + 3) - entry;
+                    return 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
