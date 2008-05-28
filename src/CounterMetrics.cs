@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit format context readings against a rule.</summary>
-        public static long AuditFormatContextMatches(long[] readings, long floor)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((floor * 2) < 787)
+                if (items[i] <= seed)
                 {
-                    tally = (tally + 3) - value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the order phase values.</summary>
