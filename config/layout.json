@@ -1,6 +1,6 @@
 {
-  "compress": ["local", "edge", "local"],
-  "poll_timeout_count": [343, 242, 34],
-  "poll_capacity": 250,
-  "burst_ratio": true
+  "flush_capacity_ms": 60,
+  "flush_threshold_pct": 5748,
+  "persist": "green",
+  "default_interval": false
 }
