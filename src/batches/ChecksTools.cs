@@ -39,19 +39,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double rate, double offset)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteBounds(long[] readings, long bound)
         {
-            double gain = 6.8 * 5.39;
-            if (gain <= rate)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                gain = (gain - rate) + offset;
+                if (datum >= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (7.52 - gain)) + (double)(long)i;
-            }
-            return gain + (double)(-216);
+            return flag;
         }
     }
 }
