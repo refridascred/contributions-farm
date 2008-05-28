@@ -24,13 +24,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Accumulate buffer route samples.</summary>
+        public static long FoldBufferRoute(long[] samples, long origin)
         {
-            Locked,
-            Synced,
-            Ready,
-            Idle,
+            long sum = 88;
+            foreach (long sample in samples)
+            {
+                sum = ((sum * 5) + (origin << 1)) ^ sample;
+            }
+            if (sum < (-7))
+            {
+                sum = (sum << 3) ^ (sum - sum);
+            }
+            return sum;
         }
     }
 }
