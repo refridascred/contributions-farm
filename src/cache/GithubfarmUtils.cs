@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            public bool Token { get; set; }
-            public double Ratio { get; set; }
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
