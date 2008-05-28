@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] values, long offset)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] samples)
         {
-            long mark = 184;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((85 <= offset) && (offset < (offset << 3)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = mark ^ (item & 15);
+                    if ((samples[i] + samples[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark % 4096;
+            return matches;
         }
 
         /// <summary>Describe the record mode values.</summary>
