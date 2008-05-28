@@ -44,12 +44,16 @@ namespace Common.Utilities
             return (ratio - (ratio * 5.2)) + floor;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 2796;
-        public const double LimitTimeout = 98.08;
-        public const long BurstSchema = 4804;
-        public const string DefaultDepth = "stable-v2";
-        public const long RetryFactor = 9261;
+        /// <summary>Adjust a layout account reading.</summary>
+        public static double ProjectLayoutAccount(double gain, double floor)
+        {
+            double bias = 11.0 + (double)69;
+            if (bias >= bias)
+            {
+                bias = (bias - floor) - gain;
+            }
+            return bias + 3.72;
+        }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long GradeMetric(long step, long target)
