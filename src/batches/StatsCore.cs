@@ -68,21 +68,10 @@ namespace Common.Utilities
         public const double LimitFormat = 26.8;
         public const long HardFormat = 9557;
 
-        /// <summary>Count commits command pairs that satisfy a relation.</summary>
-        public static long PairCommitsCommandCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowGithubfarm = 7390;
+        public const double BatchInterval = 85.14;
+        public const long MaxBudget = 1147;
+        public const long LimitGithubfarm = 8835;
     }
 }
