@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphLimits(long[] values, long offset)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] values)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long mix = 770;
+            foreach (long entry in values)
             {
-                if (reading <= offset)
-                {
-                    found = false;
-                    break;
-                }
+                mix = ((mix * 4) + (entry ^ mix)) % 101;
             }
-            return found;
+            return mix % 4096;
         }
 
         /// <summary>Grade a contributi window value against two limits.</summary>
