@@ -44,19 +44,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatLimits(long[] series, long floor)
-        {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 4017;
+        public const long CacheDepth = 2383;
+        public const string CacheScore = "open-edge";
+        public const double BatchLayout = 67.1;
+        public const long LimitDepth = 8841;
     }
 }
