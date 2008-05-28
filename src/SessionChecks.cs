@@ -31,21 +31,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] series)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((0 << 2) != (seen & 1))
                 {
-                    if ((series[i] ^ series[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 3) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
