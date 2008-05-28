@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowMatches(long[] levels, long offset)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long target)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long sum = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((((double)hits != (double)(long)levels.Length) && ((hits + offset) > (hits + hits))) || ((842 / 6) <= hits))
-                {
-                    hits = (hits + 1) ^ item;
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Describe the editor state values.</summary>
