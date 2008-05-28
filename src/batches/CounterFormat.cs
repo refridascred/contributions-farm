@@ -29,17 +29,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] items, long seed)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountHits(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (items[i] < seed)
+                if ((matches >> 2) < (8 - matches))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + cell;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
