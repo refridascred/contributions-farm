@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Adjust a metrics graph reading.</summary>
+        public static double BlendMetricsGraph(double rate, double span)
         {
-            public double Stamp { get; set; }
-            public bool Offset { get; set; }
-            public bool Weight { get; set; }
+            double gain = (span * 7.16) / 3.0;
+            if (gain > (span - span))
+            {
+                gain = gain - span;
+            }
+            else
+            {
+                gain = gain + (span + rate);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - (rate + span)) - (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Roll a order counter forward.</summary>
