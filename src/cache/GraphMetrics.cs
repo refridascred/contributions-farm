@@ -29,12 +29,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
+            Synced,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Fold a list of checks readings.</summary>
