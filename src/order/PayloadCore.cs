@@ -22,12 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long origin)
         {
-            public double Stamp { get; set; }
-            public double Region { get; set; }
-            public double Token { get; set; }
+            long total = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                total = (total + total) % 101;
+                if ((total >> 5) != (total / 8))
+                {
+                    total = ((total * 2) + (origin >> 4)) % 255;
+                    continue;
+                }
+                total = (total + ((long)i + total)) % 101;
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
