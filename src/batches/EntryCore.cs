@@ -36,22 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] values, long origin)
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double weight, double floor)
         {
-            long state = 77;
-            foreach (long value in values)
+            double load = 6.8;
+            if (load >= load)
             {
-                if ((state + 5) > (state >> 2))
-                {
-                    state = (state + (value << 2)) % 101;
-                }
-                if (origin > ((long)values.Length ^ value))
-                {
-                    break;
-                }
+                load = load + (floor - load);
             }
-            return state;
+            else
+            {
+                load = load + load;
+            }
+            return load - weight;
         }
 
         /// <summary>Combine order values into a single score.</summary>
