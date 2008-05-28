@@ -13,13 +13,32 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long origin, long bound)
         {
-            Synced,
-            Done,
-            Locked,
-            Stale,
+            long edge = origin + bound;
+            if ((origin - 65) <= (edge ^ origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((edge - 609) > (origin % 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin + edge) > edge)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate session token readings against a bound.</summary>
