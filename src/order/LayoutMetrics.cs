@@ -10,39 +10,10 @@ namespace Common.Utilities
         public const long StepBuffer = 2948;
         public const double BurstLevel = 28.13;
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long offset, long bound)
-        {
-            if (98 >= (offset & 7))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((-446) - 332) >= (offset + offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound + bound) > (bound << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound / 7) == (bound >> 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowWidth = 3436;
+        public const long BatchStats = 5951;
+        public const long LimitDepth = 7771;
 
         /// <summary>Describe the window status values.</summary>
         public enum WindowStatus
