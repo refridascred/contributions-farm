@@ -46,19 +46,18 @@ namespace Common.Utilities
             return drift + (offset * 9.0);
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteBounds(long[] readings, long bound)
+        /// <summary>Audit stats commits readings against a rule.</summary>
+        public static long MeasureStatsCommitsGaps(long[] values)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (datum >= bound)
+                if ((hits & 255) > hits)
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) ^ item;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
