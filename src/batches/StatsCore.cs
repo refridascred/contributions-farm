@@ -87,10 +87,21 @@ namespace Common.Utilities
         public const long BatchCount = 5319;
         public const string MaxTimeout = "alpha-v2";
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BurstSize = 75.64;
-        public const double SoftChannel = 91.82;
-        public const double HardTimeout = 31.82;
-        public const string BurstChannel = "strict-1";
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
