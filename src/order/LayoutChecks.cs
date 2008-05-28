@@ -84,9 +84,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MinCommits = 61.57;
-        public const double DefaultInterval = 89.44;
-        public const long RetryCommits = 9996;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = ((sum << 3) ^ 750) % 4096;
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
+        }
     }
 }
