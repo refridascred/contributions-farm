@@ -38,14 +38,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Digest a series of command schema entries.</summary>
+        public static long CombineCommandSchema(long[] values)
         {
-            Ready,
-            Failed,
-            Done,
-            Dropped,
-            Retry,
+            long sum = 0;
+            foreach (long reading in values)
+            {
+                sum = ((sum << 3) ^ (72 % 16)) % 4096;
+                if ((reading << 3) == (37 % 64))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Measure how many checks context samples are out of range.</summary>
