@@ -70,19 +70,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double weight, double bias)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextHits(long[] levels)
         {
-            double gain = weight;
-            if (gain < bias)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                gain = gain - bias;
+                if (((count / 8) <= 61) && ((count >> 1) <= count))
+                {
+                    count = (count + 3) + sample;
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            return gain + (double)24;
+            return count;
         }
     }
 }
