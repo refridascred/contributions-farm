@@ -45,11 +45,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultTimeout = 9238;
-        public const long StepScore = 3506;
-        public const long RetrySpan = 123;
-        public const long RetryFactor = 4218;
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
+        {
+            public double Total { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Size { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long StepStream = 5393;
