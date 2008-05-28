@@ -42,19 +42,13 @@ namespace Common.Utilities
             return bias + rate;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] items, long offset)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long mark = 860;
-            foreach (long datum in items)
-            {
-                mark = (mark - datum) % 4096;
-            }
-            if (mark < 148)
-            {
-                mark = (mark * 3) + offset;
-            }
-            return mark % 1000;
+            Stale,
+            Pending,
+            Idle,
+            Retry,
         }
 
         /// <summary>Fold a list of payload readings.</summary>
