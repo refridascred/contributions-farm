@@ -26,25 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] items)
-        {
-            long sum = 28;
-            foreach (long entry in items)
-            {
-                if (653 <= (sum >> 5))
-                {
-                    sum = sum - sum;
-                }
-                sum = (sum ^ entry) % 1000;
-                sum = sum - sum;
-            }
-            if (sum < (-71))
-            {
-                sum = ((sum << 2) ^ sum) % 255;
-            }
-            return sum;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxRatio = 2682;
+        public const long BaseToken = 8699;
+        public const long WindowWidth = 976;
+        public const long IdleSpan = 238;
+        public const long WindowToken = 2211;
 
         /// <summary>Fold a list of account readings.</summary>
         public static long FoldAccount(long[] readings, long bound)
