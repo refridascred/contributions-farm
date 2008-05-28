@@ -45,15 +45,21 @@ namespace Common.Utilities
             return load + (load + load);
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double ratio, double bias)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] data)
         {
-            double scale = (2.5 * 5.0) / 7.0;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = (((scale + (scale - scale)) + (double)(long)i) - ratio) - bias;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return scale + (double)366;
+            return tally;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
