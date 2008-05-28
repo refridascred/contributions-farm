@@ -67,12 +67,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public long Ratio { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowBudget = "stable-1";
+        public const long BaseInterval = 9851;
+        public const long LimitProfile = 2128;
+        public const long IdleRatio = 4039;
 
         /// <summary>Blend two buffer stats measurements.</summary>
         public static double BlendBufferStats(double bias, double offset)
