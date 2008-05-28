@@ -53,18 +53,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit buffer editor readings against a rule.</summary>
-        public static long CountBufferEditorHits(long[] readings, long offset)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long floor, long bound)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long prev = floor - bound;
+            if ((bound - prev) >= bound)
             {
-                if (((offset ^ offset) <= (seen * 2)) && !((reading * 5) != (offset + (-28))))
+                return 3;
+            }
+            else
+            {
+                if (((bound + 857) > (floor - 398)) || ((floor ^ bound) < floor))
                 {
-                    seen = seen + 2;
+                    return 4;
+                }
+                else
+                {
+                    if (!((bound - bound) > (prev % 12)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
