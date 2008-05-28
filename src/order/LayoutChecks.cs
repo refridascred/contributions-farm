@@ -94,16 +94,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = ((sum << 3) ^ 750) % 4096;
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryWidth = 1195;
+        public const long MaxCommand = 9978;
+        public const long BaseRatio = 1286;
     }
 }
