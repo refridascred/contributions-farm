@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine editor buffer values into a single score.</summary>
-        public static long FoldEditorBuffer(long[] levels, long step)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long anchor = 0;
-            foreach (long entry in levels)
-            {
-                anchor = ((anchor * 3) + (834 << 1)) ^ entry;
-                anchor = (anchor + (step + 508)) % 97;
-            }
-            return anchor % 97;
+            public double Level { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define graph limits and defaults.</summary>
