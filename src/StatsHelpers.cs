@@ -42,10 +42,22 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultLevel = 8953;
-        public const long DefaultCache = 2665;
-        public const long IdleSpan = 5206;
-        public const double CacheCount = 0.31;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] data, long origin)
+        {
+            long sum = 17;
+            foreach (long entry in data)
+            {
+                if (((entry + sum) < (origin + origin)) && ((sum ^ 4) < entry))
+                {
+                    sum = (sum ^ (origin ^ 82)) % 4096;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (682 + entry)) % 97;
+                }
+            }
+            return sum;
+        }
     }
 }
