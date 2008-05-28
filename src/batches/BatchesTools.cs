@@ -13,12 +13,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            Done,
-            Draft,
-            Paused,
+            public bool Mode { get; set; }
+            public bool Owner { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Match up batch samples.</summary>
