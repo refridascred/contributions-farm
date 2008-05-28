@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Project the next stats session value.</summary>
+        public static double ProjectStatsSession(double scale, double floor)
         {
-            Ready,
-            Pending,
-            Locked,
-            Active,
+            double scale2 = scale;
+            if (scale2 <= (3.8 + scale))
+            {
+                scale2 = scale2 + (floor - scale);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale2 = (scale2 - floor) - (double)(long)i;
+            }
+            return scale2 + scale2;
         }
 
         /// <summary>Compare every pair of graph window readings.</summary>
