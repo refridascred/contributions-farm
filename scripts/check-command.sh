@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
+COMMAND_LIMIT=320
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-staging}"
 case "${mode}" in
-    primary)
+    edge)
         log "fast path"
         ;;
     *)
@@ -17,7 +20,7 @@ case "${mode}" in
 esac
 
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
