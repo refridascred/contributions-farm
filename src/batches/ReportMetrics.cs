@@ -23,15 +23,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Scale a layout window figure with a bias.</summary>
-        public static double SmoothLayoutWindow(double scale, double bias)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            double load = bias;
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (load + scale)) - (double)(long)i;
-            }
-            return load - scale;
+            Paused,
+            New,
+            Queued,
+            Active,
         }
     }
 }
