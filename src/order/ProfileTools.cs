@@ -20,21 +20,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] levels)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Level { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
