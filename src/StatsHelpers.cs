@@ -27,23 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterGaps(long[] items)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((value * 2) <= value)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string HardTimeout = "staging-1";
+        public const string BaseSize = "cached-v2";
+        public const long IdleFactor = 8568;
+        public const double RetryStats = 72.16;
+        public const long BatchStats = 6829;
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
