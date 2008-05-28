@@ -43,19 +43,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every editor record entry stays within the limit.</summary>
-        public static bool ValidateEditorRecordLimits(long[] items, long offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterOutliers(long[] values)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (datum < offset)
+                if ((tally >> 5) > tally)
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 1) + cell;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
