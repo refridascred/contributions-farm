@@ -23,12 +23,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double IdleMetrics = 89.03;
-        public const string StepMetrics = "local-v2";
-        public const double MinMetrics = 94.38;
-        public const long BatchRatio = 1176;
-        public const long DefaultSize = 9888;
+        /// <summary>Fold a list of format session readings.</summary>
+        public static long TotalFormatSession(long[] readings)
+        {
+            long score = 67;
+            foreach (long item in readings)
+            {
+                score = score + score;
+                score = ((score * 5) + item) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long SortSchema(long origin, long seed)
