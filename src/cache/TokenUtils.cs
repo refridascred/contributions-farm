@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long CacheCount = 1750;
         public const string BurstInterval = "standard-v2";
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string LimitBudget = "standard-v2";
-        public const double RetryLevel = 62.58;
-        public const long BatchDepth = 8445;
-        public const long IdleWidth = 4302;
-        public const long StepWidth = 3251;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorOutliers(long[] items, long origin)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((double)hits > (double)331)
+                {
+                    hits = ((hits + 1) - sample) - origin;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
