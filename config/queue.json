@@ -1,8 +1,8 @@
 {
-  "hard_ttl_s": 24.24,
-  "cache_delay": 690,
-  "soft_interval_s": 41.04,
-  "checks_interval": "edge",
-  "account_size": ["legacy", "cached", "legacy", "fallback"],
-  "base_window_pct": [87, 445, 424]
+  "max_limit": [329, 170],
+  "poll_capacity_pct": true,
+  "persist": 17.39,
+  "max_interval": "strict",
+  "flush_interval_count": 1024,
+  "entry_window": false
 }
