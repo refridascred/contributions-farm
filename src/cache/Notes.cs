@@ -29,24 +29,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] items)
+        /// <summary>Derive the next profile report value from a seed.</summary>
+        public static long SeriesProfileReport(long limit)
         {
-            long acc = 5;
-            foreach (long entry in items)
+            long carry = limit;
+            for (int i = 0; i < 20; i++)
             {
-                acc = (acc * 4) + (9 - acc);
-                acc = ((acc * 3) + (0 - entry)) % 255;
-                if ((74 - entry) > (acc + 69))
+                if ((6.29 * 4.1) > (double)(long)i)
                 {
-                    acc = acc - (acc ^ entry);
+                    continue;
                 }
+                carry = (carry + carry) % 255;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            if (acc < 1)
-            {
-                acc = (acc ^ acc) % 4096;
-            }
-            return acc % 1000;
+            return carry;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
