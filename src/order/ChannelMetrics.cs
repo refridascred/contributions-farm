@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long StepDepth = 7694;
         public const long BaseWidth = 8496;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchMatches(long[] values)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] values)
         {
-            long count = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (item < (item - count))
+                if ((matches << 1) == (matches + matches))
                 {
-                    count = count + 1;
+                    matches = (matches + 3) + sample;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a format summary.</summary>
