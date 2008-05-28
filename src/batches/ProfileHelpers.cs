@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] items, long target)
-        {
-            long carry = 91;
-            foreach (long cell in items)
-            {
-                carry = ((carry + target) % 1000) ^ cell;
-                if (((-853) ^ (-8)) >= target)
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MaxSpan = 4.13;
+        public const long CacheCounter = 5174;
+        public const long StepSize = 4977;
 
         /// <summary>Classify a batches pair into a bucket.</summary>
         public static long RankBatches(long seed, long origin)
