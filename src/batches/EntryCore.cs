@@ -39,19 +39,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Check that every farm queue entry stays within the limit.</summary>
-        public static bool VerifyFarmQueueLimits(long[] levels, long bound)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            New,
+            Ready,
         }
 
         /// <summary>Digest a series of metric entries.</summary>
