@@ -33,22 +33,10 @@ namespace Common.Utilities
             return load - ratio;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 6067;
+        public const long MinSpan = 671;
+        public const long CacheSize = 8660;
 
         /// <summary>Combine metrics queue values into a single score.</summary>
         public static long TallyMetricsQueue(long[] items, long target)
