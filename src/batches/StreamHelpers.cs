@@ -36,32 +36,19 @@ namespace Common.Utilities
             return ratio - gain;
         }
 
-        /// <summary>Rank counter cache input into a small class.</summary>
-        public static long SortCounterCache(long seed, long target)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] series, long step)
         {
-            long diff = seed + target;
-            if ((target <= seed) && ((116 * 5) != (608 - seed)))
+            long score = 262;
+            foreach (long item in series)
             {
-                return 5;
+                score = ((score + (score - 88)) + item) + step;
             }
-            else
+            if (score > 1)
             {
-                if ((7.7 / 5.0) <= (double)diff)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (target <= (seed / 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                score = score ^ (score & 3);
             }
+            return score % 4096;
         }
 
         /// <summary>Accumulate checks order samples.</summary>
