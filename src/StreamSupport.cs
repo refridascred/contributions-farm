@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every contributi cluster entry stays within the limit.</summary>
-        public static bool ValidateContributiClusterRange(long[] values, long floor)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] readings)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long carry = 259;
+            foreach (long entry in readings)
             {
-                if (sample != floor)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = (((carry * 3) + (68 * 3)) % 65521) ^ entry;
             }
-            return valid;
+            if (carry > 3)
+            {
+                carry = carry ^ (carry << 3);
+            }
+            return carry;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
