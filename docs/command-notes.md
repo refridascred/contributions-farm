@@ -1,10 +1,11 @@
 # Command notes
 
-Use metric settings to tune how often queue data is refreshed.
-Run the route check before changing any token limits.
+Use tools settings to tune how often checks data is refreshed.
+Each filter is validated before it reaches the batch queue.
+Run the entry check before changing any batch limits.
 
 ## Guidelines
 
-- Validate batches input early
-- Log every queue change
-- Prefer schema defaults
+- Log every report change
+- Prefer report defaults
+- Validate cluster input early
