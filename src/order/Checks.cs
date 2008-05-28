@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double AdjustPayload(double gain, double offset)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long seed)
         {
-            double bias = gain;
-            if (bias >= (gain * 2.0))
+            long carry = seed;
+            for (int i = 0; i < 14; i++)
             {
-                bias = bias + offset;
+                carry = (carry * 5) + carry;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - (gain / 3.0)) + (double)(long)i;
-            }
-            return bias + (gain + 2.3);
+            return carry;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
