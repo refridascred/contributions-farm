@@ -57,22 +57,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a layout stats counter forward.</summary>
-        public static long DeriveLayoutStats(long origin)
+        /// <summary>Fold a list of already channel readings.</summary>
+        public static long CombineAlreadyChannel(long[] readings, long limit)
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
+            long result = 5;
+            foreach (long cell in readings)
             {
-                result = (result << 2) ^ ((long)i ^ result);
-                if ((3.1 * 15.0) > (double)origin)
+                long next = limit;
+                if ((7 ^ cell) < (next + cell))
                 {
-                    result = ((result * 5) + (result / 2)) % 65521;
+                    next = (next ^ (result >> 5)) % 255;
+                    next = ((next * 5) + (next * 5)) % 97;
+                    break;
                 }
                 else
                 {
-                    result = ((result << 2) ^ result) % 65521;
+                    result = ((result << 2) ^ (result % 2)) % 101;
                 }
-                result = ((result * 2) + (long)i) % 4093;
+                if (((limit - cell) >= (cell << 3)) || ((cell + result) > ((-92) & 31)))
+                {
+                    result = result ^ (limit << 3);
+                }
+            }
+            if (result > 994)
+            {
+                result = (result << 2) ^ (result ^ 46);
             }
             return result;
         }
