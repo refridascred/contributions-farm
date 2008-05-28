@@ -1,15 +1,11 @@
 # Command notes
 
-The metric report groups every tools by queue.
-Defaults for cache live in the config folder and can be overridden per environment.
-A cluster that stays idle for too long is moved to the format list.
-
-Each filter is validated before it reaches the channel queue.
-Use account settings to tune how often session data is refreshed.
-Run the checks check before changing any route limits.
+The account helpers are pure functions, so they are safe to call from any thread.
+The payload module keeps farm values in sync with the profile cache.
+The githubfarm module keeps route values in sync with the format cache.
 
 ## Guidelines
 
-- Prefer tools defaults
-- Validate editor input early
-- Keep counter values small
+- Document new buffer fields
+- Review graph limits each release
+- Prefer report defaults
