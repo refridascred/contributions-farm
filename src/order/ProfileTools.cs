@@ -23,24 +23,21 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long seed, long limit)
+        /// <summary>Compare every pair of payload cache readings.</summary>
+        public static long OverlapPayloadCacheCount(long[] samples)
         {
-            if (!((limit ^ seed) < seed))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((9.3 + 5.6) != (double)seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    if ((samples[i] + samples[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate schema samples.</summary>
