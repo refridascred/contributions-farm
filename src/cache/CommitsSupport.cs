@@ -34,31 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long origin, long limit)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            if ((double)origin != (16.0 * 7.66))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin ^ limit) < (limit - 0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((2.69 * 3.29) == (double)limit) || (789 >= limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Idle,
+            Active,
+            New,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
