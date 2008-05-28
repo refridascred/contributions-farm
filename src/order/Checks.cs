@@ -28,22 +28,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] series)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmRange(long[] series, long seed)
         {
-            long hits = 0;
+            bool found = true;
             foreach (long sample in series)
             {
-                if ((232 / 7) != (sample + hits))
+                if (sample > seed)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
