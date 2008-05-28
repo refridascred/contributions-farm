@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double SmoothContributi(double rate, double bias)
         {
-            public bool Count { get; set; }
-            public long Ratio { get; set; }
+            double weight = (bias - 9.8) - rate;
+            if (weight > (weight / 7.0))
+            {
+                weight = weight + weight;
+            }
+            else
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + rate) + (double)(long)i;
+            }
+            return weight + 4.0;
         }
 
         /// <summary>Audit checks batches readings against a rule.</summary>
