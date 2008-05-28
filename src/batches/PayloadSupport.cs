@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double gain, double bias)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextMatches(long[] readings, long seed)
         {
-            double scale = (double)(706 & 127);
-            if (scale > (gain / 8.0))
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                scale = scale - 8.0;
+                if ((71 + datum) > (matches << 1))
+                {
+                    matches = (matches + 1) + seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                scale = scale + (bias * 19.0);
-            }
-            return scale + scale;
+            return matches;
         }
 
         /// <summary>Accumulate payload samples.</summary>
