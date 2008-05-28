@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] readings, long bound)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchMatches(long[] levels)
         {
-            long result = 18;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((reading ^ (long)readings.Length) < (bound - result))
+                if ((count ^ sample) > count)
                 {
-                    result = result - reading;
+                    count = count + 1;
                 }
             }
-            if (result < 129)
-            {
-                result = ((result << 2) ^ result) % 1000;
-            }
-            return result % 97;
+            return count;
         }
 
         /// <summary>Digest a series of schema cache entries.</summary>
