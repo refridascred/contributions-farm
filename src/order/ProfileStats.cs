@@ -42,10 +42,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitCount = 9610;
-        public const double MinFactor = 33.06;
-        public const long DefaultSpan = 8179;
-        public const string LimitMetrics = "alpha-v2";
+        /// <summary>Fold a list of context notes readings.</summary>
+        public static long TallyContextNotes(long[] levels)
+        {
+            long total = 5;
+            foreach (long datum in levels)
+            {
+                total = (((total * 2) + (total + total)) % 255) + datum;
+            }
+            return total % 4096;
+        }
     }
 }
