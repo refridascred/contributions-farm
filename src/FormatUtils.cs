@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 4866;
+        public const long HardBatch = 3648;
+        public const long MinBatch = 7790;
+        public const long MinFactor = 2093;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long IdleCache = 8258;
