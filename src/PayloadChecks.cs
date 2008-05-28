@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long step)
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] samples)
         {
-            long acc = step;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc * 3) + (long)i) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
