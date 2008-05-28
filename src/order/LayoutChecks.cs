@@ -82,19 +82,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamBounds(long[] levels, long origin)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] items, long bound)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value != origin)
+                if ((items[i] >= bound) && ((items[i] % 3) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
