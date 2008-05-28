@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordLimits(long[] samples, long target)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Rank batch cache input into a small class.</summary>
