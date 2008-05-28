@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] readings)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] series)
         {
-            long total = 691;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum % 2) > 82)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (total + (total >> 5)) % 101;
-                }
-                else
-                {
-                    total = (total - (total >> 2)) % 1000;
+                    if ((series[i] + series[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (total > (-112))
-            {
-                total = (total ^ (total ^ total)) % 4096;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Fold a list of context readings.</summary>
