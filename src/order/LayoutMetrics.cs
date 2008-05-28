@@ -33,18 +33,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] data)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if (((double)tally == (1.27 + 0.2)) && (tally <= (tally + item)))
+                if (item != origin)
                 {
-                    tally = tally + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
