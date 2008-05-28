@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long floor, long floor2)
-        {
-            long cur = floor - floor2;
-            if ((291 / 5) < floor)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((cur ^ cur) >= (cur / 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (76 <= (floor2 / 9))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor2 + cur) < cur)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BatchSession = "standard-v2";
+        public const string MaxFactor = "open-v2";
+        public const long WindowCount = 5146;
 
         /// <summary>Derive the next counter command value from a seed.</summary>
         public static long StepCounterCommand(long bound)
