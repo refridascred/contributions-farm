@@ -41,15 +41,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double rate, double bias)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            double weight = (double)((-181) + 321);
-            if (weight > (rate + bias))
-            {
-                weight = weight - (bias * 13.0);
-            }
-            return weight + (bias * 7.74);
+            public double Flag { get; set; }
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Rank stream input into a small class.</summary>
