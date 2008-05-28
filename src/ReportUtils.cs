@@ -26,17 +26,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Locate a contributi command reading by value.</summary>
-        public static long LookupContributiCommandIndex(long[] samples, long step)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesGaps(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((samples[i] < step) && ((samples[i] % 5) != 0))
+                if ((double)seen > 1.54)
                 {
-                    return (long)i;
+                    seen = (seen + 3) + item;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
