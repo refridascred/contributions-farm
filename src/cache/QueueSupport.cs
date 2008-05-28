@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public string Score { get; set; } = "";
+            Ready,
+            Draft,
+            Paused,
         }
 
         /// <summary>Hold a session summary.</summary>
