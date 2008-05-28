@@ -58,23 +58,36 @@ namespace Common.Utilities
         public const long IdleLevel = 3112;
         public const string BatchContributi = "legacy-v2";
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double scale, double floor)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] series)
         {
-            double gain = (floor / 2.0) - scale;
-            if (gain > (scale + floor))
+            long total = 67;
+            foreach (long value in series)
             {
-                gain = gain - scale;
+                if ((20.0 + 4.0) == (double)value)
+                {
+                    total = ((total * 5) + (total % 16)) % 65521;
+                    total = (total * 2) + (value + total);
+                    break;
+                }
+                else
+                {
+                    total = total ^ value;
+                }
+                if ((total % 24) <= (total - value))
+                {
+                    total = (total + (total - value)) % 1000;
+                }
+                else
+                {
+                    total = (total + total) % 1000;
+                }
             }
-            else
+            if (total < (-534))
             {
-                gain = gain - (double)58;
+                total = ((total * 4) + (total ^ 4)) % 1000;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain + (double)12;
+            return total;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
