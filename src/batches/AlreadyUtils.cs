@@ -24,25 +24,22 @@ namespace Common.Utilities
         public const long IdleTimeout = 219;
         public const long BaseSpan = 6110;
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long offset, long limit)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] samples)
         {
-            long lane = offset - limit;
-            if (((double)8 == (double)lane) || ((limit * 2) <= (lane >> 4)))
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit != (3.12 + 4.0))
+                if ((24 + seen) <= cell)
                 {
-                    return 8;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    return 2;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
