@@ -42,17 +42,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] items, long floor)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Match up token entry samples.</summary>
