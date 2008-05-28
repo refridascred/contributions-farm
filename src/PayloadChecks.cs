@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] values)
+        /// <summary>Measure how many cache farm samples are out of range.</summary>
+        public static long AuditCacheFarmHits(long[] data)
         {
-            long mark = 7;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                mark = (mark - (mark + mark)) % 255;
-                if (12.0 >= (double)datum)
+                if ((16.0 - 6.43) != (double)seen)
                 {
-                    mark = (mark - datum) % 97;
-                }
-                else
-                {
-                    mark = mark + 96;
+                    seen = (seen + 1) - cell;
                 }
             }
-            if (mark > 73)
-            {
-                mark = ((mark << 2) ^ (mark * 5)) % 101;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
