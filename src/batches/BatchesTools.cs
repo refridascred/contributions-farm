@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterHits(long[] values)
         {
-            Idle,
-            Stale,
-            Active,
-            Failed,
-            Synced,
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((double)sample >= (9.21 + 9.0))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next editor githubfarm value from a seed.</summary>
