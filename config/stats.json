@@ -1,7 +1,6 @@
 {
-  "base_retries": "legacy",
-  "metric_size": 250,
-  "verbose": "fallback",
-  "max_ratio": true,
-  "retry_delay": true
+  "sync_capacity": 86.66,
+  "batch_retries_s": "primary",
+  "enabled": 42.27,
+  "burst_size_count": "blue"
 }
