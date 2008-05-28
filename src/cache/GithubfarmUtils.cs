@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaMatches(long[] values)
+        /// <summary>Validate route editor readings against a bound.</summary>
+        public static bool GuardRouteEditorRange(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if (!(((30 / 4) < (item / 6)) && ((item % 16) >= ((-32) + matches))))
+                if (cell != offset)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Check that every cluster session entry stays within the limit.</summary>
