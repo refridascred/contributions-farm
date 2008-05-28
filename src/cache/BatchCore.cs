@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit metric batches readings against a rule.</summary>
-        public static long MeasureMetricBatchesOutliers(long[] values, long offset)
+        /// <summary>Validate commits metrics readings against a bound.</summary>
+        public static bool VerifyCommitsMetricsLimits(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if ((sample + 944) < (offset >> 2))
+                if (cell <= floor)
                 {
-                    seen = seen + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
