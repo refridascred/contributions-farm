@@ -21,25 +21,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long target, long floor)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterLimits(long[] data, long bound)
         {
-            long span = target ^ floor;
-            if (floor > 90)
+            bool found = true;
+            foreach (long cell in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target - floor) > (span >> 3))
+                if (cell <= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
