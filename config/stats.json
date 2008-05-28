@@ -1,6 +1,7 @@
 {
-  "warm_ratio_pct": false,
-  "idle_size_ms": 38.32,
-  "graph_delay": [191, 185, 352],
-  "persist": "strict"
+  "burst_capacity_s": [325, 248, 233],
+  "min_threshold_s": "staging",
+  "idle_retries_s": "staging",
+  "retry_window": ["cached", "staging", "blue", "primary"],
+  "min_threshold": 2212
 }
