@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine batches token values into a single score.</summary>
-        public static long TallyBatchesToken(long[] data)
-        {
-            long mark = 7;
-            foreach (long reading in data)
-            {
-                if ((double)mark < (double)(long)data.Length)
-                {
-                    mark = ((mark << 2) ^ reading) % 65521;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRecord = 4488;
+        public const double SoftRecord = 16.59;
+        public const string IdleRecord = "standard-1";
+        public const long LimitDepth = 3417;
+        public const string BaseInterval = "open";
 
         /// <summary>Classify a entry editor pair into a bucket.</summary>
         public static long GradeEntryEditor(long origin, long origin2)
