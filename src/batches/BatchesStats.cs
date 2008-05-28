@@ -41,25 +41,18 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long limit, long origin)
+        /// <summary>Measure how many report profile samples are out of range.</summary>
+        public static long TallyReportProfileGaps(long[] values, long origin)
         {
-            long cur = limit ^ origin;
-            if (8 < (cur / 3))
+            long hits = 0;
+            foreach (long item in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)cur >= (5.64 / 5.0))
+                if ((hits / 4) != (446 - 899))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    hits = ((hits + 1) - item) + origin;
                 }
             }
+            return hits;
         }
     }
 }
