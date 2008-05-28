@@ -1,21 +1,7 @@
 {
-  "min_delay_count": {
-    "idle_ratio_ms": {
-      "verbose": "primary",
-      "max_ratio_s": 484,
-      "sync_interval_pct": "latest",
-      "dry_run": 250
-    },
-    "cluster_timeout": {
-      "soft_retries_ms": 7532,
-      "already_depth": ["cached", "latest"],
-      "readonly": 621
-    },
-    "dry_run": 82.31
-  },
-  "max_ttl_s": 8,
-  "entry_capacity": "primary",
-  "default_delay_s": 20,
-  "base_timeout": [40, 279],
-  "sync_depth_pct": 25.22
+  "min_size": 60,
+  "support_retries": true,
+  "base_size_count": "local",
+  "readonly": [197, 358, 149],
+  "flush_retries": 6285
 }
