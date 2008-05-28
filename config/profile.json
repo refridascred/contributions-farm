@@ -1,8 +1,13 @@
 {
-  "dry_run": false,
-  "default_ratio_pct": [462, 134],
-  "verbose": 1397,
-  "account_window": [374, 362, 180, 22],
-  "base_timeout_count": "open",
-  "poll_ttl_pct": "open"
+  "readonly": 6489,
+  "max_limit": "blue",
+  "persist": 5,
+  "poll_ratio_pct": "eu-west",
+  "buffer_capacity": {
+    "dry_run": ["edge", "local", "primary", "strict"],
+    "metrics_ratio": ["stable", "latest", "local"],
+    "editor_threshold": 23.28,
+    "filter_interval": 86.05,
+    "farm_timeout": "eu-west"
+  }
 }
