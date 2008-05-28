@@ -1,15 +1,9 @@
 # githubfarm settings
-flush_ttl_pct: 500
-soft_depth_pct: 94.64
-default_ratio: stable
-idle_limit_pct:
-  compress: primary
-  default_delay_pct: staging
-  support_delay: false
-  hard_delay: cached
-  warm_window:
-    cache_retries_pct: 30
-    verbose: 30
-    max_threshold: staging
-    strict: 16
-already_depth: 23.61
+buffer_retries:
+  - 385
+  - 420
+idle_delay: 24.67
+sync_window: 500
+format_threshold: 6215
+token_capacity: false
+verbose: fallback
