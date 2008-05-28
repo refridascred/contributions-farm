@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long offset)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiOutliers(long[] readings, long bound)
         {
-            long score = offset;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((seen <= (bound & 63)) || ((bound >= (seen - seen)) && (seen >= (long)readings.Length)))
                 {
-                    score = (score - score) - (long)i2;
+                    seen = (seen + 1) - entry;
                 }
-                score = (score - ((long)i * 5)) % 65521;
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a already header.</summary>
