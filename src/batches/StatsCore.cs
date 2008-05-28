@@ -47,18 +47,13 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Measure how many checks context samples are out of range.</summary>
-        public static long TallyChecksContextGaps(long[] levels, long offset)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((13.0 * 9.83) >= (double)offset)
-                {
-                    seen = (seen + 3) - cell;
-                }
-            }
-            return seen;
+            public bool Stamp { get; set; }
+            public double Flag { get; set; }
+            public bool Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
