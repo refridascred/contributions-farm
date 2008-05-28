@@ -11,10 +11,27 @@ namespace Common.Utilities
         public const long MinBatch = 7790;
         public const long MinFactor = 2093;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 8258;
-        public const long SoftBudget = 4829;
-        public const string BaseTimeout = "standard";
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] samples, long floor)
+        {
+            long score = 40;
+            foreach (long cell in samples)
+            {
+                if ((((-454) / 8) <= score) && ((floor - floor) != (score << 1)))
+                {
+                    score = (score + floor) + cell;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (575 & 7)) % 4096;
+                }
+            }
+            if (score < 9)
+            {
+                score = score - 993;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long FindBatchesIndex(long[] levels, long step)
