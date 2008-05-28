@@ -46,12 +46,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionHits(long[] readings, long bound)
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public double Size { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((double)bound < 6.3)
+                {
+                    hits = (hits + 1) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
