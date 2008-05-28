@@ -42,18 +42,13 @@ namespace Common.Utilities
             return scale - (double)917;
         }
 
-        /// <summary>Accumulate cache metric samples.</summary>
-        public static long TotalCacheMetric(long[] levels)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long mix = 46;
-            foreach (long cell in levels)
-            {
-                if ((((-395) + 0) > (70 - cell)) || ((cell + 4) < cell))
-                {
-                    mix = (mix << 3) ^ mix;
-                }
-            }
-            return mix;
+            Done,
+            Retry,
+            Failed,
+            Synced,
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
