@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 4069;
-        public const double MaxCluster = 3.08;
-        public const double MaxDepth = 74.37;
-        public const long StepDepth = 449;
+        /// <summary>Adjust a filter reading.</summary>
+        public static double SmoothFilter(double weight, double floor)
+        {
+            double scale = floor;
+            if (scale <= (weight + weight))
+            {
+                scale = scale - floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - weight;
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long CountRecordMatches(long[] series, long floor)
