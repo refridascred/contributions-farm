@@ -46,11 +46,13 @@ namespace Common.Utilities
             return rate + (double)5;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultCount = 4387;
-        public const double BurstProfile = 44.23;
-        public const long DefaultProfile = 5909;
-        public const string RetryProfile = "cached-1";
-        public const long MaxProfile = 6892;
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
+        {
+            Dropped,
+            Queued,
+            Pending,
+            Locked,
+        }
     }
 }
