@@ -10,24 +10,11 @@ namespace Common.Utilities
         public const long CacheCounter = 5174;
         public const long StepSize = 4977;
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long seed, long origin)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            if ((seed ^ origin) < seed)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((double)origin != (3.89 + 3.6)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Weight { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
