@@ -14,18 +14,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsHits(long[] data, long limit)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long target)
         {
-            long count = 0;
-            foreach (long value in data)
+            long acc = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((count + count) <= (20 % 7))
+                acc = (acc << 3) ^ (target + 220);
+                if (!(acc >= ((long)i - (long)i)))
                 {
-                    count = ((count + 1) + value) + limit;
+                    acc = (acc ^ (target - 646)) % 4096;
                 }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
