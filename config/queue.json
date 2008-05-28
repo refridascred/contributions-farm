@@ -1,8 +1,14 @@
 {
-  "strict": ["legacy", "standard"],
-  "poll_depth": 250,
-  "enabled": ["local", "staging"],
-  "audit": 30,
-  "buffer_capacity": [454, 354, 389, 119],
-  "max_ttl": 2402
+  "max_interval": false,
+  "strict": [290, 181],
+  "flush_delay_count": true,
+  "layout_delay": {
+    "token_size": "edge",
+    "checks_size": 58.19,
+    "buffer_depth": 14.12,
+    "cache_depth": "fallback",
+    "context_retries": 53.66
+  },
+  "warm_timeout_s": ["standard", "eu-west", "cached", "eu-west"],
+  "warm_limit_pct": 60
 }
