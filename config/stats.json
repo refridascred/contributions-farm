@@ -1,5 +1,6 @@
 {
-  "batches_interval": "staging",
-  "soft_limit_s": true,
-  "idle_interval_s": "legacy"
+  "warm_ratio_pct": false,
+  "idle_size_ms": 38.32,
+  "graph_delay": [191, 185, 352],
+  "persist": "strict"
 }
