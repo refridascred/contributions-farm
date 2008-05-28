@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            Queued,
-            Draft,
-            Closed,
+            public bool Size { get; set; }
+            public long Score { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the command status values.</summary>
