@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every token contributi entry stays within the limit.</summary>
-        public static bool VerifyTokenContributiLimits(long[] items, long offset)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Stamp { get; set; }
+            public bool Offset { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Roll a order counter forward.</summary>
