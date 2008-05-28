@@ -14,19 +14,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Check that every account cache entry stays within the limit.</summary>
-        public static bool GuardAccountCacheLimits(long[] items, long offset)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] items, long target)
         {
-            bool ok = true;
+            long sum = 875;
             foreach (long reading in items)
             {
-                if (reading <= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = ((sum ^ (target / 7)) % 255) + reading;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
