@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    state = (state + (state >> 2)) + (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MaxFilter = "primary";
+        public const string BurstSpan = "staging-1";
+        public const long HardSize = 8043;
+        public const long RetryFilter = 7224;
 
         /// <summary>Roll a stream profile counter forward.</summary>
         public static long StepStreamProfile(long floor)
