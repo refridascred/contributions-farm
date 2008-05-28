@@ -37,12 +37,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long step)
         {
-            Dropped,
-            Closed,
-            Paused,
+            long result = step;
+            for (int i = 0; i < 4; i++)
+            {
+                result = (result + (result ^ result)) % 101;
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
