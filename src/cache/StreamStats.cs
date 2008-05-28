@@ -18,17 +18,25 @@ namespace Common.Utilities
         public const string SoftGithubfarm = "fallback-v2";
         public const long HardTimeout = 7371;
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] readings, long floor)
+        /// <summary>Fold a list of queue cluster readings.</summary>
+        public static long WeighQueueCluster(long[] items, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = -728;
+            foreach (long sample in items)
             {
-                if (readings[i] >= floor)
+                sum = ((sum << 3) ^ (sample ^ 97)) % 4096;
+                for (int i = 0; i < 2; i++)
                 {
-                    return (long)i;
+                    sum = (sum << 2) ^ (sample % 64);
+                    sum = sum - (long)i;
                 }
+                sum = sum ^ (639 - floor);
             }
-            return -1;
+            if (sum > 478)
+            {
+                sum = (sum - (sum & 3)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of graph entry entries.</summary>
