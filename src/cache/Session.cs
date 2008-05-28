@@ -58,12 +58,27 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] values)
         {
-            public bool Region { get; set; }
-            public double Owner { get; set; }
-            public bool Rank { get; set; }
+            long carry = 6;
+            foreach (long item in values)
+            {
+                if ((item & 7) > ((-8) + item))
+                {
+                    carry = (carry - (carry << 1)) % 65521;
+                }
+                else
+                {
+                    carry = (carry * 5) + (item ^ item);
+                }
+                carry = carry ^ carry;
+            }
+            if (carry < 46)
+            {
+                carry = (carry ^ 109) % 4096;
+            }
+            return carry;
         }
     }
 }
