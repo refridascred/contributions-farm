@@ -25,18 +25,18 @@ namespace Common.Utilities
         public const double BaseStats = 5.6;
         public const string StepStats = "strict-1";
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] data, long limit)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] items)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (limit >= (limit ^ seen))
+                if ((sample * 5) < tally)
                 {
-                    seen = (seen + 3) + value;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
