@@ -1,5 +1,10 @@
 {
-  "payload_timeout": "legacy",
-  "hard_ttl": 4453,
-  "default_window": "cached"
+  "queue_timeout": "eu-west",
+  "warm_ratio_s": {
+    "flush_capacity": ["eu-west", "latest", "green"],
+    "poll_capacity_count": true,
+    "flush_size": 6934,
+    "burst_delay": ["legacy", "edge", "primary", "latest"]
+  },
+  "strict": 86.28
 }
