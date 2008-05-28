@@ -32,12 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Check that every context cluster entry stays within the limit.</summary>
+        public static bool ValidateContextClusterLimits(long[] series, long target)
         {
-            Synced,
-            Locked,
-            Done,
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
