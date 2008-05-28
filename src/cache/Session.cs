@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long StepStream = 8691;
         public const long RetryStream = 8720;
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long step)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] samples)
         {
-            long result = step;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((48 < (step << 3)) || ((step ^ (long)i) >= result))
+                if (!((matches - entry) > entry))
                 {
-                    result = ((result * 4) + result) % 4096;
+                    matches = matches + 2;
                 }
-                result = ((result * 3) + (long)i) % 101;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Accumulate layout notes samples.</summary>
