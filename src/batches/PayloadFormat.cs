@@ -23,12 +23,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 4903;
-        public const double RetryRatio = 80.75;
-        public const string WindowChannel = "legacy-edge";
-        public const long HardChannel = 6380;
-        public const string BatchTimeout = "alpha-1";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double IdleMetrics = 89.03;
+        public const string StepMetrics = "local-v2";
+        public const double MinMetrics = 94.38;
+        public const long BatchRatio = 1176;
+        public const long DefaultSize = 9888;
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long SortSchema(long origin, long seed)
