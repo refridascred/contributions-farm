@@ -22,11 +22,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long seed)
         {
-            public long Ratio { get; set; }
-            public string Limit { get; set; } = "";
+            long score = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((double)(long)i >= (5.9 - 4.0))
+                {
+                    score = ((score << 2) ^ (score % 24)) % 255;
+                    continue;
+                }
+                else
+                {
+                    score = (score - (score + (long)i)) % 97;
+                }
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
