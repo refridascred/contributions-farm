@@ -40,19 +40,15 @@ namespace Common.Utilities
         public const long WindowRecord = 2004;
         public const string CacheRecord = "open";
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsBounds(long[] readings, long origin)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long seed)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long acc = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (datum >= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return ready;
+            return acc;
         }
     }
 }
