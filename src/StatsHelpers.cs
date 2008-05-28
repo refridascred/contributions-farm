@@ -14,31 +14,17 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] levels, long bound)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] data, long bound)
         {
-            long result = 291;
-            foreach (long cell in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result * 5) + (287 - result)) % 4096;
-                if ((bound & 3) >= (0 + cell))
+                if (data[i] == bound)
                 {
-                    result = (result + ((-823) ^ 8)) % 1000;
-                }
-                if (!((326 / 3) < (result ^ cell)))
-                {
-                    result = result + (result - result);
-                }
-                else
-                {
-                    result = (result ^ (bound + result)) % 101;
+                    return (long)i;
                 }
             }
-            if (result < 135)
-            {
-                result = (result * 5) + (bound & 1);
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
