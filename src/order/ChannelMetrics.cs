@@ -15,24 +15,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long step, long floor)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] items, long origin)
         {
-            if ((step + floor) > (32 % 5))
+            long carry = 27;
+            foreach (long value in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step - step) > (floor / 8))
+                if (value > (origin - origin))
                 {
-                    return 2;
+                    carry = carry - ((-7) + 14);
+                    carry = (carry - (carry * 3)) % 97;
                 }
-                else
-                {
-                    return 4;
-                }
+                carry = (carry - (value / 2)) % 65521;
             }
+            return carry;
         }
 
         /// <summary>Hold a stream header.</summary>
