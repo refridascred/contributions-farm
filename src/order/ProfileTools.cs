@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] values, long seed)
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            long mark = 502;
+            foreach (long entry in values)
+            {
+                if (((entry << 1) <= (seed << 3)) || ((double)(long)values.Length == (double)seed))
+                {
+                    mark = (mark ^ (entry - (-5))) % 97;
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Hold a layout entry.</summary>
