@@ -1,9 +1,7 @@
 # entry settings
-burst_interval: 60
-min_ratio_s:
-  max_timeout_ms: 60
-  flush_delay_pct: 41
-  cluster_timeout: latest
-  sync_limit: false
-  sync_interval: 8957
-audit: false
+burst_limit_pct: 500
+profile_capacity: strict
+readonly: 1868
+batch_size_count: legacy
+record_interval: 60
+poll_delay_pct: 84.1
