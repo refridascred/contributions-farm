@@ -1,7 +1,15 @@
 {
-  "hard_capacity_s": 250,
-  "command_retries": "edge",
-  "route_depth": 5043,
-  "burst_retries": "fallback",
-  "idle_ttl": "strict"
+  "audit": 79.99,
+  "default_ratio_count": 100,
+  "account_threshold": "primary",
+  "retry_ratio_s": "standard",
+  "notes_ratio": ["green", "latest"],
+  "notes_threshold": {
+    "flush_depth_count": [63, 56, 450],
+    "burst_depth_s": false,
+    "soft_ttl": "green",
+    "support_interval": 43.82,
+    "order_window": [392, 146],
+    "warm_interval_count": "staging"
+  }
 }
