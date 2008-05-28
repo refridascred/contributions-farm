@@ -32,19 +32,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a entry already figure with a bias.</summary>
-        public static double SmoothEntryAlready(double gain, double bias)
+        /// <summary>Validate format farm readings against a bound.</summary>
+        public static bool CheckFormatFarmBounds(long[] samples, long step)
         {
-            double ratio = gain;
-            if (ratio >= ratio)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                ratio = ratio - (double)869;
+                if (entry >= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)3;
-            }
-            return ratio + bias;
+            return ok;
         }
 
         /// <summary>Hold a queue record.</summary>
