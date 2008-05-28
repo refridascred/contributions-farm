@@ -104,11 +104,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            public string Stamp { get; set; } = "";
-            public double Mode { get; set; }
+            Locked,
+            Idle,
+            Closed,
         }
     }
 }
