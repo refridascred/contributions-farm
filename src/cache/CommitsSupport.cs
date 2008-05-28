@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] samples)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    if ((samples[i] + samples[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (state + (state >> 2)) + (long)i2;
                 }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
