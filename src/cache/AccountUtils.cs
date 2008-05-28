@@ -40,17 +40,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a context account reading by value.</summary>
-        public static long FindContextAccountIndex(long[] items, long offset)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long target, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long span = target ^ floor;
+            if (floor > 90)
             {
-                if ((items[i] <= offset) && ((items[i] % 5) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((target - floor) > (span >> 3))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
     }
 }
