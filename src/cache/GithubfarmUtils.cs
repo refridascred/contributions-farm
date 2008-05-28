@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsLimits(long[] series, long origin)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Weight { get; set; }
+            public bool Label { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
