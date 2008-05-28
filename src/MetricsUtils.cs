@@ -30,21 +30,12 @@ namespace Common.Utilities
         public const long WindowRatio = 7078;
         public const string DefaultScore = "fallback";
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] series)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a format stats.</summary>
