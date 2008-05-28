@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long limit)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] levels, long origin)
         {
-            long mark = limit;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((mark + mark) <= (mark - mark))
+                if ((levels[i] >= origin) && ((levels[i] % 3) != 0))
                 {
-                    mark = (mark + (mark + limit)) % 97;
+                    return (long)i;
                 }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a command record.</summary>
