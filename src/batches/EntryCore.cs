@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] readings, long origin)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (readings[i] <= origin)
+                if ((double)datum >= 2.64)
                 {
-                    return (long)i;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
