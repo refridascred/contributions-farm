@@ -31,15 +31,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double bias, double offset)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long offset)
         {
-            double scale = 8.0;
-            if (scale <= 20.0)
+            long total = offset;
+            for (int i = 0; i < 17; i++)
             {
-                scale = (scale + (offset * 2.0)) + bias;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return scale - (double)917;
+            return total;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
