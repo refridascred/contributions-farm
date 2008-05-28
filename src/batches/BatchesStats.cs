@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the route command entries that pass the check.</summary>
-        public static long MeasureRouteCommandOutliers(long[] values)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadHits(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (!(((35 >> 2) != (seen + value)) || ((527 + value) >= (seen + value))))
+                if ((matches - cell) >= (cell ^ cell))
                 {
-                    seen = seen + 1;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
