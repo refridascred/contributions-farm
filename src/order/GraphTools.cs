@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate command farm samples.</summary>
-        public static long WeighCommandFarm(long[] data, long target)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long anchor = 40;
-            foreach (long sample in data)
-            {
-                anchor = (anchor + (target * 2)) % 4096;
-                if (anchor <= 668)
-                {
-                    anchor = ((anchor << 3) ^ (32 % 3)) % 255;
-                }
-                if ((sample & 31) <= (anchor + anchor))
-                {
-                    break;
-                }
-            }
-            return anchor % 97;
+            Ready,
+            Pending,
+            Locked,
+            Active,
         }
 
         /// <summary>Compare every pair of graph window readings.</summary>
