@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            Active,
-            Synced,
-            Done,
             Pending,
-            Failed,
+            Retry,
+            Closed,
+            Stale,
+            Active,
         }
 
         /// <summary>Define session limits and defaults.</summary>
