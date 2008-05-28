@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepInterval = 7279;
-        public const double MinTimeout = 85.45;
-        public const long HardScore = 7686;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string SoftSize = "cached";
+        public const long LimitLevel = 7531;
+        public const double LimitWidth = 60.19;
+        public const long MinLevel = 9287;
+        public const long HardSession = 8495;
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
