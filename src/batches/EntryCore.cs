@@ -37,22 +37,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] series, long target)
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double bias, double offset)
         {
-            long result = 394;
-            foreach (long cell in series)
+            double drift = (offset * 14.0) / 4.0;
+            for (int i = 0; i < 3; i++)
             {
-                if (!((target / 3) <= (result + cell)))
-                {
-                    result = result - (cell + result);
-                }
-                if (1.2 < (double)(long)series.Length)
-                {
-                    result = (result - cell) % 101;
-                }
+                drift = (drift - (bias * 3.1)) + (double)(long)i;
             }
-            return result % 4096;
+            return drift - 3.38;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
