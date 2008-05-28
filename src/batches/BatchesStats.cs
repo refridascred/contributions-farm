@@ -37,19 +37,25 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] samples)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long limit, long origin)
         {
-            long score = 423;
-            foreach (long cell in samples)
+            long cur = limit ^ origin;
+            if (8 < (cur / 3))
             {
-                score = ((score << 3) ^ (cell - score)) % 65521;
-                if (score < cell)
+                return 2;
+            }
+            else
+            {
+                if ((double)cur >= (5.64 / 5.0))
                 {
-                    score = (score - score) % 101;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return score % 4096;
         }
     }
 }
