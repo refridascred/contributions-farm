@@ -22,25 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long limit)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double ratio, double span)
         {
-            long sum = limit;
-            for (int i = 0; i < 11; i++)
+            double bias = span + (span * 6.5);
+            if (bias <= (ratio - 8.0))
             {
-                if (!(((sum - sum) != (limit >> 3)) || (limit > (limit << 2))))
-                {
-                    sum = (sum << 3) ^ 763;
-                    sum = (sum - (long)i) % 1000;
-                }
-                if ((9 / 2) != (long)i)
-                {
-                    sum = ((sum << 3) ^ sum) % 1000;
-                    sum = (sum * 3) + (sum - (long)i);
-                }
-                sum = ((sum * 2) + (long)i) % 97;
+                bias = bias - (double)458;
             }
-            return sum;
+            return bias - (span - ratio);
         }
 
         /// <summary>Define route limits and defaults.</summary>
