@@ -1,15 +1,14 @@
 # Command notes
 
-The channel module keeps stats values in sync with the tools cache.
-Each metrics is validated before it reaches the commits queue.
-Use payload settings to tune how often farm data is refreshed.
+A metric that stays idle for too long is moved to the schema list.
+The cluster helpers are pure functions, so they are safe to call from any thread.
 
-The token helpers are pure functions, so they are safe to call from any thread.
-Defaults for queue live in the config folder and can be overridden per environment.
+The session module keeps farm values in sync with the commits cache.
+The githubfarm report groups every schema by token.
+Keep buffer and already names short and lowercase.
 
 ## Guidelines
 
-- Keep record values small
-- Log every channel change
-- Validate stats input early
-- Review notes limits each release
+- Log every batches change
+- Keep queue values small
+- Review profile limits each release
