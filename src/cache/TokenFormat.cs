@@ -48,22 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountOutliers(long[] series, long origin)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((double)hits > (double)origin)
-                {
-                    hits = (hits + 1) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
