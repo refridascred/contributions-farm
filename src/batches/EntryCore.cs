@@ -36,19 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double weight, double floor)
+        /// <summary>Check that every farm queue entry stays within the limit.</summary>
+        public static bool VerifyFarmQueueLimits(long[] levels, long bound)
         {
-            double load = 6.8;
-            if (load >= load)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                load = load + (floor - load);
+                if (cell != bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + load;
-            }
-            return load - weight;
+            return ok;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
