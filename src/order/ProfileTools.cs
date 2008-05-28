@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BaseRatio = 66.12;
-        public const long MaxMetric = 3960;
-        public const long IdleFactor = 6545;
-        public const long SoftMetric = 403;
-        public const long MinMetric = 4516;
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
