@@ -31,17 +31,24 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Locate a entry support reading by value.</summary>
-        public static long SeekEntrySupportIndex(long[] series, long seed)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (series[i] > seed)
+                if ((acc + 47) >= (acc + step))
                 {
-                    return (long)i;
+                    acc = (acc << 3) ^ (long)i;
                 }
+                if ((2.22 + 18.0) < (double)acc)
+                {
+                    acc = (acc << 2) ^ (step ^ acc);
+                    break;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
