@@ -40,13 +40,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] samples, long seed)
+        /// <summary>Combine checks cache values into a single score.</summary>
+        public static long ScoreChecksCache(long[] samples, long bound)
         {
-            long score = 37;
-            foreach (long item in samples)
+            long score = 804;
+            foreach (long entry in samples)
             {
-                score = (((score + (score * 2)) % 101) ^ item) + seed;
+                if (score >= ((long)samples.Length << 3))
+                {
+                    score = (((score * 2) + (bound + (-41))) % 97) + entry;
+                }
+                else
+                {
+                    score = score + score;
+                }
             }
             return score;
         }
