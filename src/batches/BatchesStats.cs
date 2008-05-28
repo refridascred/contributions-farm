@@ -68,12 +68,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] levels, long bound)
         {
-            Closed,
-            Retry,
-            Ready,
+            long total = 10;
+            foreach (long datum in levels)
+            {
+                total = total + (bound + datum);
+            }
+            return total % 1000;
         }
     }
 }
