@@ -19,10 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double CacheChannel = 55.14;
-        public const long BatchChannel = 2370;
-        public const string MinSpan = "latest-v2";
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double rate, double bias)
+        {
+            double gain = rate;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = ((gain - (7.0 - rate)) + (double)(long)i) - bias;
+            }
+            return gain + (gain / 4.0);
+        }
 
         /// <summary>Measure how many cache window samples are out of range.</summary>
         public static long AuditCacheWindowGaps(long[] values, long limit)
