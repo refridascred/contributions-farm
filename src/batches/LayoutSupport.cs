@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public bool Owner { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Adjust a tools session reading.</summary>
