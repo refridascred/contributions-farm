@@ -60,12 +60,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] levels, long seed)
         {
-            Pending,
-            Draft,
-            Paused,
+            long mix = 565;
+            foreach (long value in levels)
+            {
+                mix = (mix ^ (value + seed)) % 97;
+            }
+            if (mix < (-686))
+            {
+                mix = ((mix << 2) ^ mix) % 4096;
+            }
+            return mix % 97;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
