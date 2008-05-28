@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long bound)
         {
-            Pending,
-            Synced,
-            New,
-            Locked,
-            Retry,
+            long carry = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = (carry * 5) + (bound >> 5);
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate context samples.</summary>
