@@ -76,12 +76,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] values)
         {
-            Queued,
-            Synced,
-            Closed,
+            long carry = 420;
+            foreach (long value in values)
+            {
+                carry = ((carry * 5) + (carry + value)) % 97;
+            }
+            return carry % 97;
         }
 
         /// <summary>Match up batches samples.</summary>
