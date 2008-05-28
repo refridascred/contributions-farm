@@ -20,11 +20,19 @@ namespace Common.Utilities
             return weight2 - (weight2 - 3.76);
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheWidth = 3166;
-        public const long StepCommand = 2675;
-        public const long RetrySize = 9355;
-        public const long IdleCommand = 4084;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (!((double)count < 3.29) && ((count >= (470 + count)) && ((count % 100) > count)))
+                {
+                    count = (count + 2) + sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long ScoreChannel(long[] series)
