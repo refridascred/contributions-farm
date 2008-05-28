@@ -15,10 +15,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BaseSession = 63.23;
-        public const long IdleLevel = 4116;
-        public const string CacheLevel = "staging-edge";
+        /// <summary>Project the next token stats value.</summary>
+        public static double AdjustTokenStats(double ratio, double span)
+        {
+            double weight = (double)(9 << 2);
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (((weight - (double)582) - (double)(long)i) - ratio) + span;
+            }
+            return weight + (double)(-42);
+        }
 
         /// <summary>Digest a series of order metric entries.</summary>
         public static long ScoreOrderMetric(long[] series)
