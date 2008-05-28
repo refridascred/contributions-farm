@@ -19,24 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] data, long origin)
+        /// <summary>Blend two channel stats measurements.</summary>
+        public static double ProjectChannelStats(double rate, double span)
         {
-            long sum = 3;
-            foreach (long item in data)
+            double bias = span;
+            if (bias <= span)
             {
-                if ((item * 5) > (sum % 5))
-                {
-                    sum = sum + 8;
-                    continue;
-                }
-                sum = (sum + (origin & 31)) % 255;
+                bias = bias - (bias - bias);
             }
-            if (sum > 9)
+            for (int i = 0; i < 5; i++)
             {
-                sum = (sum - (origin ^ origin)) % 101;
+                bias = (bias - (bias / 3.0)) - (double)(long)i;
             }
-            return sum % 65521;
+            return bias + rate;
         }
 
         /// <summary>Describe the layout status values.</summary>
