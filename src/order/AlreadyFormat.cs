@@ -65,18 +65,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] readings)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long origin, long offset)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long lane = origin + offset;
+            if (!((4 - 36) > (lane - origin)))
             {
-                if ((double)count == (15.0 - 19.0))
+                return 6;
+            }
+            else
+            {
+                if ((double)lane >= (5.22 + 8.0))
                 {
-                    count = (count + 1) ^ reading;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
     }
 }
