@@ -36,10 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BatchCommand = "standard-edge";
-        public const string DefaultSpan = "standard-1";
-        public const string StepFactor = "open";
-        public const double CacheCommand = 53.15;
+        /// <summary>Audit buffer editor readings against a rule.</summary>
+        public static long CountBufferEditorHits(long[] readings, long offset)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (((offset ^ offset) <= (seen * 2)) && !((reading * 5) != (offset + (-28))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
