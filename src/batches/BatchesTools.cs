@@ -30,19 +30,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] values, long target)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
