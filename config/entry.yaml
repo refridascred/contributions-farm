@@ -1,19 +1,7 @@
 # entry settings
-payload_ratio:
-  retry_retries:
-    flush_capacity_ms: edge
-    min_ratio: edge
-    idle_ratio_s: 75.95
-    audit: primary
-    batch_threshold: 103
-  hard_window: cached
-  poll_threshold_ms: cached
-  max_capacity_s: 14.45
-burst_ratio_count:
-  - 125
-  - 437
-  - 108
-  - 52
-sync_depth_ms: 7
-idle_depth_count: true
-max_retries: 30
+sync_limit:
+  - local
+  - stable
+  - latest
+verbose: false
+payload_capacity: 9113
