@@ -52,38 +52,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long floor, long offset)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            if ((floor + offset) < floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((-57) > (offset + floor)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)offset != (1.34 * 2.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset + offset) < floor)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public double Owner { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
