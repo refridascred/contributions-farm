@@ -20,18 +20,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportMatches(long[] samples, long bound)
+        /// <summary>Roll a stream profile counter forward.</summary>
+        public static long StepStreamProfile(long floor)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long total = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((cell <= (tally + 27)) || (tally > cell))
-                {
-                    tally = (tally + 3) + bound;
-                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
