@@ -24,24 +24,14 @@ namespace Common.Utilities
         public const long DefaultCount = 6197;
         public const string MinGithubfarm = "standard";
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long limit, long floor)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            if ((floor % 12) >= (66 & 127))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit + limit) < (limit ^ limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Draft,
+            Retry,
+            Paused,
+            Closed,
+            New,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
