@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] items)
+        /// <summary>Compare every pair of channel session readings.</summary>
+        public static long PairChannelSessionCount(long[] items)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((((long)items.Length - cell) > count) || ((cell / 5) <= (cell ^ cell))) && ((double)cell > (double)count))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 1;
+                    if ((items[i] ^ items[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
