@@ -105,21 +105,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up cluster queue samples.</summary>
-        public static long CompareClusterQueueCount(long[] levels)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
