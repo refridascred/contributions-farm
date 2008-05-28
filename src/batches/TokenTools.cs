@@ -30,9 +30,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 6128;
-        public const long DefaultFactor = 6971;
-        public const long MaxCommits = 2751;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowRoute = 1580;
+        public const string MaxRoute = "latest";
+        public const long BaseBudget = 9964;
+        public const double HardTimeout = 47.17;
     }
 }
