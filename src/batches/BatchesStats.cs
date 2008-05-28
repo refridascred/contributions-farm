@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] samples)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (6.54 < (double)cell)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Ready,
+            Queued,
+            Paused,
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
