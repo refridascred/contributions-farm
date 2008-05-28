@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] items)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] series, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 961;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = (((mix << 2) ^ (floor << 3)) % 101) + reading;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
