@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string LimitTimeout = "cached-1";
-        public const long HardScore = 2989;
-        public const string BaseEntry = "open-edge";
-        public const long BurstEntry = 8250;
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long bound, long offset)
+        {
+            if (offset < (offset - bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound / 2) >= (offset - offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((16.0 / 9.0) < (double)offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound - offset) <= (offset << 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string IdleStream = "staging-edge";
