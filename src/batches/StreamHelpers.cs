@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] items, long seed)
+        /// <summary>Accumulate cache format samples.</summary>
+        public static long WeighCacheFormat(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long mix = 1;
+            foreach (long item in samples)
             {
-                if (cell > seed)
+                mix = mix + (target + item);
+                mix = (mix - (item - mix)) % 4096;
+                if (!(item > (target ^ (-80))))
                 {
-                    ok = false;
-                    break;
+                    mix = (mix - target) % 1000;
                 }
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Adjust a payload reading.</summary>
