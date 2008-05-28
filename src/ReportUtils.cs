@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long SoftFactor = 655;
         public const long CacheFactor = 789;
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] items, long bound)
         {
-            Locked,
-            Queued,
-            Retry,
+            long mix = 8;
+            foreach (long sample in items)
+            {
+                mix = (((mix << 3) ^ mix) % 65521) ^ sample;
+            }
+            if (mix > 93)
+            {
+                mix = (mix + (bound ^ mix)) % 4096;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
