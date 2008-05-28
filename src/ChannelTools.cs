@@ -20,32 +20,18 @@ namespace Common.Utilities
             return scale2 - floor;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long step, long bound)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesHits(long[] samples, long target)
         {
-            long prev = step - bound;
-            if ((double)bound <= (double)596)
+            long count = 0;
+            foreach (long value in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (((step / 2) <= (step + prev)) || (step > (prev << 1)))
+                if (!((4.1 - 14.0) < (double)target))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)prev == (double)97)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = (count + 2) + value;
                 }
             }
+            return count;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
