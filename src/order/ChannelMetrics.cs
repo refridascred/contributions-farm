@@ -35,22 +35,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of order metric entries.</summary>
-        public static long ScoreOrderMetric(long[] series)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadMatches(long[] data)
         {
-            long total = 96;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((double)cell == (double)total)
+                if ((5 / 8) <= (tally >> 5))
                 {
-                    total = total + (cell - 82);
-                }
-                else
-                {
-                    total = (total + (total << 2)) % 65521;
+                    tally = (tally + 2) + sample;
                 }
             }
-            return total;
+            return tally;
         }
     }
 }
