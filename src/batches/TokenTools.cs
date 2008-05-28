@@ -26,13 +26,22 @@ namespace Common.Utilities
         public const long DefaultEditor = 5926;
         public const long BatchDepth = 211;
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] levels)
         {
-            public string Level { get; set; } = "";
-            public double Count { get; set; }
-            public string Region { get; set; } = "";
-            public string Size { get; set; } = "";
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((7 & 127) >= count)
+                {
+                    count = (count + 1) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
