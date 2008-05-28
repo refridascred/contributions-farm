@@ -1,5 +1,8 @@
 {
-  "sync_interval_count": true,
-  "cache_timeout_ms": "green",
-  "buffer_ratio": 41.12
+  "profile_capacity": 25,
+  "base_size_s": 46,
+  "flush_limit": "staging",
+  "readonly": "eu-west",
+  "graph_retries": "primary",
+  "hard_retries_ms": ["stable", "green"]
 }
