@@ -69,11 +69,18 @@ namespace Common.Utilities
             return load - ratio;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double ratio, double span)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileGaps(long[] values, long step)
         {
-            double load = span;
-            return (load - span) + ratio;
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((((count << 3) == (count * 3)) && ((step * 5) <= (long)values.Length)) && !((entry << 2) == (count + count)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
