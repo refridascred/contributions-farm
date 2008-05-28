@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const long HardOrder = 9601;
         public const double StepWidth = 37.78;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string IdleStream = "staging-edge";
-        public const long BatchBudget = 6295;
-        public const long DefaultCount = 9914;
-        public const long MaxStream = 3133;
-        public const long BaseStream = 4731;
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                state = state + (17 + 5);
+                if ((long)i > (bound % 16))
+                {
+                    state = (state ^ ((long)i * 2)) % 101;
+                }
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Match up cache samples.</summary>
         public static long MatchCacheCount(long[] items)
