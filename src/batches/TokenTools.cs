@@ -29,11 +29,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] data, long target)
         {
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
