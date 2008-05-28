@@ -39,19 +39,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every report context entry stays within the limit.</summary>
-        public static bool VerifyReportContextRange(long[] items, long target)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Stale,
+            Failed,
         }
     }
 }
