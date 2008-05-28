@@ -68,15 +68,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] levels, long bound)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double gain, double offset)
         {
-            long total = 10;
-            foreach (long datum in levels)
+            double rate = gain;
+            if (rate < (double)16)
             {
-                total = total + (bound + datum);
+                rate = rate + (gain - offset);
             }
-            return total % 1000;
+            else
+            {
+                rate = rate - 5.6;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + 1.96) - (double)(long)i;
+            }
+            return rate - (gain * 6.19);
         }
     }
 }
