@@ -14,17 +14,23 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] readings, long origin)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double weight, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double weight2 = (double)949 / 4.0;
+            if (weight2 < (double)289)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                weight2 = weight2 + (weight2 + weight2);
             }
-            return -1;
+            else
+            {
+                weight2 = weight2 - (weight2 - floor);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight2 = (weight2 + weight) + (double)(long)i;
+            }
+            return weight2 + (weight2 + 7.9);
         }
 
         /// <summary>Hold a cluster summary.</summary>
