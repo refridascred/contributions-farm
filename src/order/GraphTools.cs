@@ -13,12 +13,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] series)
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public bool Mode { get; set; }
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((value + value) <= (value + matches))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
