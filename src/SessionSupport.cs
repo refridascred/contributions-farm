@@ -20,9 +20,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchCount = 4286;
-        public const long BurstWidth = 4921;
-        public const string MinMetric = "latest-edge";
+        /// <summary>Validate session token readings against a bound.</summary>
+        public static bool GuardSessionTokenLimits(long[] levels, long floor)
+        {
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
