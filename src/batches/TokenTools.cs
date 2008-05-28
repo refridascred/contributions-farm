@@ -20,12 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxTimeout = 7627;
-        public const double HardEditor = 98.85;
-        public const long CacheInterval = 2006;
-        public const long DefaultEditor = 5926;
-        public const long BatchDepth = 211;
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
+        {
+            Pending,
+            Retry,
+            Done,
+            New,
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long MeasureMetricGaps(long[] levels)
