@@ -26,19 +26,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double scale, double bias)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamHits(long[] data, long limit)
         {
-            double drift = scale * 4.6;
-            if (drift < (scale + drift))
+            long matches = 0;
+            foreach (long cell in data)
             {
-                drift = (drift + drift) - bias;
+                if ((double)cell == (double)limit)
+                {
+                    matches = matches + 3;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (drift - 7.62)) + (double)(long)i;
-            }
-            return drift + (double)830;
+            return matches;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
