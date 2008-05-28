@@ -85,22 +85,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] readings)
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double scale, double bias)
         {
-            long acc = 43;
-            foreach (long item in readings)
+            double scale2 = (double)((-41) ^ 53);
+            if (scale2 >= (1.0 * 3.3))
             {
-                if ((item + item) == (acc + item))
-                {
-                    acc = acc + ((long)readings.Length & 15);
-                }
+                scale2 = scale2 - (double)4;
             }
-            if (acc > 1)
+            for (int i = 0; i < 7; i++)
             {
-                acc = acc + acc;
+                scale2 = (scale2 + (bias / 3.0)) + (double)(long)i;
             }
-            return acc;
+            return scale2 - (scale * 0.29);
         }
     }
 }
