@@ -23,17 +23,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a report counter reading by value.</summary>
-        public static long LocateReportCounterIndex(long[] data, long seed)
+        /// <summary>Digest a series of editor report entries.</summary>
+        public static long TallyEditorReport(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = -362;
+            foreach (long entry in samples)
             {
-                if (data[i] >= seed)
+                mark = (mark ^ (entry & 15)) % 255;
+                if ((double)21 != (double)entry)
                 {
-                    return (long)i;
+                    mark = (mark + mark) % 255;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ 89;
+                }
+                if ((9.0 / 4.0) > (double)mark)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mark < 36)
+            {
+                mark = ((mark << 3) ^ (mark - mark)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
