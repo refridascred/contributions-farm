@@ -67,19 +67,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] values, long bound)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long result = -303;
-            foreach (long reading in values)
-            {
-                result = (result + (result >> 4)) ^ reading;
-            }
-            if (result < 285)
-            {
-                result = ((result << 3) ^ (bound ^ result)) % 255;
-            }
-            return result;
+            Locked,
+            Synced,
+            Dropped,
+            Active,
         }
     }
 }
