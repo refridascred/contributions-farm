@@ -37,12 +37,18 @@ namespace Common.Utilities
         public const long WindowRatio = 7078;
         public const string DefaultScore = "fallback";
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] levels, long step)
         {
-            Draft,
-            New,
-            Ready,
+            long carry = 9;
+            foreach (long datum in levels)
+            {
+                if (925 > (carry & 255))
+                {
+                    carry = ((carry + (step + carry)) % 101) ^ datum;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
