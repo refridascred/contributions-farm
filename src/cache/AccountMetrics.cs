@@ -5,31 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] values, long offset)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long target, long origin)
         {
-            long carry = 4;
-            foreach (long value in values)
+            if (target <= (origin & 15))
             {
-                carry = ((carry * 4) + offset) % 1000;
-                if ((carry / 2) < (carry & 1))
+                return 4;
+            }
+            else
+            {
+                if ((double)origin <= (double)67)
                 {
-                    carry = (carry - (982 - value)) % 1000;
+                    return 3;
                 }
                 else
                 {
-                    carry = carry - offset;
-                }
-                if ((offset + value) > (197 + carry))
-                {
-                    break;
+                    return 8;
                 }
             }
-            if (carry < 36)
-            {
-                carry = (carry ^ (offset - offset)) % 65521;
-            }
-            return carry;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
