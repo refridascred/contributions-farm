@@ -30,19 +30,24 @@ namespace Common.Utilities
             return gain + (gain / 4.0);
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double rate, double bias)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long step, long origin)
         {
-            double weight = (bias / 4.0) + (rate / 3.0);
-            if (weight <= (double)93)
+            if (!((9 - 5) <= step))
             {
-                weight = weight + rate;
+                return 4;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                weight = (weight + weight) + (double)(long)i;
+                if (((step % 3) == (origin & 127)) || ((origin % 3) != (638 - 5)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return weight - 20.0;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
