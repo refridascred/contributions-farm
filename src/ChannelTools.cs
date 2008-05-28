@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const long IdleSize = 5556;
         public const string MaxBatch = "standard";
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == origin) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitDepth = 5703;
+        public const double BatchFactor = 97.35;
+        public const string SoftContributi = "primary-v2";
+        public const long WindowWidth = 8258;
 
         /// <summary>Roll a window counter forward.</summary>
         public static long DeriveWindow(long floor)
