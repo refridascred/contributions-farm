@@ -1,10 +1,10 @@
 # Command notes
 
-Keep commits and buffer names short and lowercase.
-Keep buffer and buffer names short and lowercase.
+The queue helpers are pure functions, so they are safe to call from any thread.
+Each channel is validated before it reaches the payload queue.
 
 ## Guidelines
 
-- Validate format input early
-- Log every graph change
-- Prefer order defaults
+- Document new account fields
+- Review metric limits each release
+- Log every window change
