@@ -14,11 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsHits(long[] data, long limit)
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((count + count) <= (20 % 7))
+                {
+                    count = ((count + 1) + value) + limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
