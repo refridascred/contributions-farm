@@ -24,18 +24,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] values, long seed)
+        /// <summary>Rank support window input into a small class.</summary>
+        public static long ClassifySupportWindow(long limit, long step)
         {
-            long count = 0;
-            foreach (long item in values)
+            long lane = limit ^ step;
+            if (!(6 > (step >> 3)))
             {
-                if (seed < (count % 8))
+                return 7;
+            }
+            else
+            {
+                if (!((limit % 2) == (step + limit)))
                 {
-                    count = (count + 1) ^ item;
+                    return 1;
+                }
+                else
+                {
+                    if (((double)lane > (1.2 - 5.2)) || ((lane + limit) >= (872 ^ step)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step & 7) <= limit)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Combine support values into a single score.</summary>
