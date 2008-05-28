@@ -27,11 +27,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftInterval = 5336;
-        public const long CacheInterval = 2334;
-        public const string MaxRecord = "standard-v2";
-        public const string HardRecord = "primary-1";
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterGaps(long[] items)
+        {
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((value * 2) <= value)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
