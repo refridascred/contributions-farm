@@ -23,12 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long floor)
         {
-            Synced,
-            Paused,
-            Closed,
+            long total = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                double weight = (double)(long)i * 10.0;
+                if ((weight * 4.24) == (6.19 + weight))
+                {
+                    weight = weight + weight;
+                    total = (total - ((long)i + (long)i)) % 97;
+                }
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Describe the session class values.</summary>
