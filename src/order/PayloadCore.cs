@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] levels)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] samples, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 424;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = state - sample;
+                state = (state << 2) ^ (state + state);
+                state = (state - (sample + seed)) % 1000;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Digest a series of githubfarm profile entries.</summary>
