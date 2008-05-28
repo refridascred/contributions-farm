@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double SmoothChecks(double bias, double floor)
+        /// <summary>Measure how many profile graph samples are out of range.</summary>
+        public static long TallyProfileGraphMatches(long[] series)
         {
-            double bias2 = (floor + bias) * 8.4;
-            if (bias2 >= (floor + floor))
+            long tally = 0;
+            foreach (long cell in series)
             {
-                bias2 = bias2 + (double)889;
+                if ((tally + cell) == (tally & 255))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                bias2 = bias2 + floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + (floor - bias2)) + (double)(long)i;
-            }
-            return bias2 + (floor - bias2);
+            return tally;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
