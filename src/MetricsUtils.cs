@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] series)
-        {
-            long result = 6;
-            foreach (long item in series)
-            {
-                result = ((result << 2) ^ (result + item)) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MinCount = 58.04;
+        public const double MinRecord = 24.95;
+        public const long BaseRecord = 6623;
 
         /// <summary>Project the next graph value.</summary>
         public static double ScaleGraph(double scale, double floor)
