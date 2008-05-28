@@ -37,14 +37,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] levels, long offset)
         {
-            Done,
-            New,
-            Retry,
-            Ready,
-            Active,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
