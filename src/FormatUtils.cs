@@ -76,18 +76,24 @@ namespace Common.Utilities
             return bias + (bias + 8.44);
         }
 
-        /// <summary>Audit channel batches readings against a rule.</summary>
-        public static long TallyChannelBatchesGaps(long[] readings, long target)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long acc = 446;
+            foreach (long item in items)
             {
-                if ((seen + 130) <= (entry + seen))
+                if (!((double)item >= (double)826))
                 {
-                    seen = (seen + 3) - target;
+                    acc = (acc + 4) % 65521;
                 }
+                acc = ((acc * 3) + (acc + (long)items.Length)) % 97;
+                acc = (acc - (long)items.Length) % 97;
             }
-            return seen;
+            if (acc > 61)
+            {
+                acc = (acc - (acc % 2)) % 97;
+            }
+            return acc % 4096;
         }
     }
 }
