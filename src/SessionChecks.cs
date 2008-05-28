@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const long MaxCount = 8265;
         public const long DefaultEditor = 9272;
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double rate, double span)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordOutliers(long[] samples)
         {
-            double drift = (double)43 - (6.0 + rate);
-            if (drift <= drift)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                drift = (drift - drift) + span;
+                if ((331 << 3) >= sample)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                drift = drift - (rate * 8.3);
-            }
-            return drift + (drift / 8.0);
+            return count;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
