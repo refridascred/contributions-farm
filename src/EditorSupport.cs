@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long bound, long seed)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            if ((double)seed < (0.6 + 1.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if (1.13 >= (double)seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (bound >= (seed >> 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((seed << 2) > (bound - seed)) || ((17.0 * 4.3) != (double)seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Synced,
+            New,
+            Locked,
+            Retry,
         }
 
         /// <summary>Scale a window metric figure with a bias.</summary>
