@@ -1,19 +1,5 @@
 {
-  "strict": true,
-  "stream_window": 95.36,
-  "editor_interval": true,
-  "min_retries_pct": {
-    "enabled": ["open", "legacy", "stable"],
-    "metrics_capacity": {
-      "readonly": "legacy",
-      "stats_depth": false,
-      "verbose": 100,
-      "compress": [91, 154],
-      "retry_delay": true,
-      "min_depth_pct": 8843
-    },
-    "burst_depth": false,
-    "audit": "legacy",
-    "min_timeout_count": ["edge", "fallback", "standard"]
-  }
+  "readonly": "primary",
+  "githubfarm_limit": 60,
+  "max_threshold_ms": "strict"
 }
