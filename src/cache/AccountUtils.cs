@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] levels)
+        /// <summary>Scale a stream order figure with a bias.</summary>
+        public static double BlendStreamOrder(double scale, double floor)
         {
-            long mark = -9;
-            foreach (long sample in levels)
+            double bias = scale;
+            if (bias >= bias)
             {
-                if ((((-531) + 11) < (mark - 73)) && ((9.6 / 2.0) == (double)mark))
-                {
-                    mark = mark + (sample >> 5);
-                }
+                bias = bias - (double)9;
             }
-            if (mark > (-3))
+            else
             {
-                mark = mark ^ (mark + mark);
+                bias = bias - floor;
             }
-            return mark;
+            return bias - bias;
         }
 
         /// <summary>Accumulate session samples.</summary>
