@@ -1,6 +1,25 @@
 # support settings
-strict: 30.76
-audit: staging
-graph_retries: 93.33
-verbose: 31
-warm_interval_count: 71.55
+dry_run:
+  hard_window_ms: true
+  window_threshold:
+    - stable
+    - edge
+    - edge
+  schema_window: false
+  schema_limit: false
+filter_depth:
+  max_limit: open
+  idle_timeout_ms: 30
+  batch_threshold_pct: staging
+  notes_ratio:
+    compress: 3186
+    strict: true
+    max_threshold: 82.56
+    warm_timeout:
+      - standard
+      - open
+      - fallback
+      - latest
+  default_limit_pct: 250
+  cache_threshold: false
+verbose: 8.19
