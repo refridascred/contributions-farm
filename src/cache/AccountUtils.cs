@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitWindow = 0.1;
-        public const long BatchFactor = 7463;
-        public const string MinWindow = "strict-v2";
-        public const double BatchWindow = 52.49;
-        public const long BurstWindow = 7746;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double StepRatio = 18.48;
+        public const long BatchScore = 7089;
+        public const double IdleFactor = 68.8;
+        public const string BurstGraph = "legacy-1";
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long ClassifyMetric(long step, long limit)
