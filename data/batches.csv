@@ -1,10 +1,6 @@
-id,token,rank,count
-1,984,316,225
-2,450,710,972
-3,732,60.29,21.08
-4,812,422,green
-5,971,969,stable
-6,259,999,20.35
-7,open,69.39,primary
-8,891,231,418
-9,683,latest,cached
+id,level,state,active
+1,stable,74.54,986
+2,35.28,802,standard
+3,931,strict,387
+4,59.15,75.0,161
+5,645,blue,79.19
