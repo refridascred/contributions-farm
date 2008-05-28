@@ -49,18 +49,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] series)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((hits - 3) != (hits - hits)) && ((649 + 78) <= sample))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((levels[i] ^ levels[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
