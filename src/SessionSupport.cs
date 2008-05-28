@@ -16,12 +16,18 @@ namespace Common.Utilities
             return load + 8.67;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Measure how many format session samples are out of range.</summary>
+        public static long MeasureFormatSessionGaps(long[] values)
         {
-            Stale,
-            Paused,
-            Closed,
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((double)matches > 9.0)
+                {
+                    matches = (matches + 2) - datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
