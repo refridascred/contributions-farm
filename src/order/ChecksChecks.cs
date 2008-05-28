@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const string MaxQueue = "strict";
         public const double HardCount = 9.53;
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutRange(long[] samples, long target)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] data, long seed)
         {
-            bool found = true;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value != target)
+                if ((data[i] >= seed) && ((data[i] % 2) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
