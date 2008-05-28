@@ -41,22 +41,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of payload githubfarm readings.</summary>
-        public static long WeighPayloadGithubfarm(long[] series, long bound)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double rate, double bias)
         {
-            long acc = 121;
-            foreach (long sample in series)
+            double weight = (double)((-181) + 321);
+            if (weight > (rate + bias))
             {
-                if (acc < sample)
-                {
-                    acc = ((acc * 2) + 9) - bound;
-                }
-                if ((double)acc != (double)sample)
-                {
-                    break;
-                }
+                weight = weight - (bias * 13.0);
             }
-            return acc % 4096;
+            return weight + (bias * 7.74);
         }
 
         /// <summary>Blend two schema stats measurements.</summary>
