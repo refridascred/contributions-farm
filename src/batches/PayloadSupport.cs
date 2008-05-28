@@ -19,17 +19,23 @@ namespace Common.Utilities
         public const long LimitFactor = 2219;
         public const long BaseAlready = 722;
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] values, long offset)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double gain, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double load = gain;
+            if (load < (double)0)
             {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
+                load = load + (double)54;
             }
-            return -1;
+            else
+            {
+                load = load - (load + span);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + gain) + (double)(long)i;
+            }
+            return load - (span - span);
         }
     }
 }
