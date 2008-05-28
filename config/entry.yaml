@@ -1,12 +1,4 @@
 # entry settings
-order_ratio:
-  hard_retries_pct: 93.67
-  warm_ratio: 6185
-  burst_window_ms: 8
-  poll_window: true
-  warm_window_pct: true
-max_limit_s: primary
-sync_ttl_pct: staging
-soft_capacity: 100
-hard_window: 65.14
-retry_ratio_count: false
+commits_capacity: 500
+githubfarm_window: eu-west
+flush_interval: 84
