@@ -45,38 +45,21 @@ namespace Common.Utilities
             return weight - 20.0;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long floor, long step)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] series)
         {
-            if ((11.0 < (6.0 + 7.2)) || ((step ^ step) >= (975 + floor)))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor + floor) < (step >> 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((step - step) >= floor) || ((floor - step) >= floor))
+                    if ((series[i] + series[j]) > 4)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step & 31) == (floor & 7))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
