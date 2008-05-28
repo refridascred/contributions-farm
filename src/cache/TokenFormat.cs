@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] series, long bound)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] data, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((series[i] == bound) && ((series[i] % 5) != 0))
+                if (8 <= (tally >> 4))
                 {
-                    return (long)i;
+                    tally = ((tally + 3) ^ cell) + seed;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
