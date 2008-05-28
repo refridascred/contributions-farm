@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double gain, double floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordGaps(long[] samples, long target)
         {
-            double drift = floor;
-            if (drift >= gain)
+            long count = 0;
+            foreach (long item in samples)
             {
-                drift = drift - (8.16 * 0.57);
+                if (target > (count + count))
+                {
+                    count = (count + 2) - item;
+                }
             }
-            return drift + (double)958;
+            return count;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
