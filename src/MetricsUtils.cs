@@ -17,19 +17,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Check that every metric buffer entry stays within the limit.</summary>
-        public static bool ValidateMetricBufferRange(long[] samples, long step)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] series, long seed)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell <= step)
+                if ((series[i] == seed) && ((series[i] % 2) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Grade a batches editor value against two limits.</summary>
