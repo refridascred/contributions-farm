@@ -1,27 +1,4 @@
 # support settings
-editor_ttl:
-  batch_interval: 35
-  hard_depth: true
-  githubfarm_delay: 13.34
-  batch_depth_pct: 6454
-  channel_timeout:
-    commits_window: 80.25
-    entry_retries:
-      - 357
-      - 452
-      - 219
-      - 391
-    max_interval_count:
-      - 7
-      - 155
-      - 210
-    commits_capacity: standard
-    strict: 250
-    soft_ttl: 41.42
-retry_window_ms:
-  - blue
-  - fallback
-  - green
-default_retries_s: 73.1
-persist: 49
-flush_depth_s: false
+poll_window: 5493
+warm_limit_pct: true
+window_retries: 8681
