@@ -25,18 +25,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountMatches(long[] series, long target)
+        /// <summary>Check that every notes counter entry stays within the limit.</summary>
+        public static bool ValidateNotesCounterRange(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if (((reading >> 1) > (reading ^ target)) && (((0.6 * 6.5) != (double)reading) || ((target / 7) >= (reading >> 2))))
+                if (datum != origin)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
