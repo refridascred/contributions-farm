@@ -68,19 +68,26 @@ namespace Common.Utilities
         public const long BatchCount = 5319;
         public const string MaxTimeout = "alpha-v2";
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] items, long seed)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] data, long target)
         {
-            long state = 9;
-            foreach (long item in items)
+            long total = 874;
+            foreach (long reading in data)
             {
-                state = ((state * 2) + (seed * 2)) - item;
+                if ((total + reading) >= (39 % 10))
+                {
+                    total = total + (total + target);
+                }
+                if (target > reading)
+                {
+                    break;
+                }
             }
-            if (state < (-303))
+            if (total > 41)
             {
-                state = state + (seed ^ state);
+                total = ((total << 3) ^ total) % 1000;
             }
-            return state % 4096;
+            return total % 97;
         }
     }
 }
