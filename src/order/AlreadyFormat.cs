@@ -33,38 +33,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long offset, long bound)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            if (9.0 <= (double)offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((offset % 7) < 4) && (354 > (49 - offset)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((18.0 > (double)offset) && ((bound ^ offset) < (offset + bound)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((bound / 7) != (offset + offset)) || (bound < (1 << 3)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
