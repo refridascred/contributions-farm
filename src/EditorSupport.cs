@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] levels)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long bound, long seed)
         {
-            long mix = 1;
-            foreach (long sample in levels)
+            if ((double)seed < (0.6 + 1.0))
             {
-                if ((sample ^ sample) == (sample * 4))
+                return 3;
+            }
+            else
+            {
+                if (1.13 >= (double)seed)
                 {
-                    mix = ((mix * 2) + (sample ^ sample)) % 4096;
+                    return 7;
+                }
+                else
+                {
+                    if (bound >= (seed >> 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((seed << 2) > (bound - seed)) || ((17.0 * 4.3) != (double)seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return mix % 65521;
         }
 
         /// <summary>Define report limits and defaults.</summary>
