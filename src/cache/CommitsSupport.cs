@@ -34,15 +34,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteMatches(long[] samples)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountHits(long[] series)
         {
             long hits = 0;
-            foreach (long item in samples)
+            foreach (long entry in series)
             {
-                if (!!((item + hits) != (34 << 3)))
+                if ((entry + 955) > (536 - 687))
                 {
-                    hits = hits + 3;
+                    hits = hits + 1;
                 }
             }
             return hits;
