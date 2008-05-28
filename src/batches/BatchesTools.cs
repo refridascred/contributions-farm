@@ -14,10 +14,20 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string LimitInterval = "stable-edge";
-        public const long BurstWidth = 1104;
-        public const double BurstCount = 97.52;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] samples, long step)
+        {
+            long total = 93;
+            foreach (long sample in samples)
+            {
+                total = (((total * 5) + sample) % 65521) + step;
+            }
+            if (total < 19)
+            {
+                total = (total - total) % 1000;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long MeasureGithubfarmMatches(long[] data, long step)
