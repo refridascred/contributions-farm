@@ -78,19 +78,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] levels, long seed)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long offset, long bound)
         {
-            long mix = 565;
-            foreach (long value in levels)
+            long lane = offset ^ bound;
+            if ((bound / 3) == (lane * 5))
             {
-                mix = (mix ^ (value + seed)) % 97;
+                return 4;
             }
-            if (mix < (-686))
+            else
             {
-                mix = ((mix << 2) ^ mix) % 4096;
+                if (((bound % 12) <= (2 - bound)) && ((offset % 5) >= lane))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((8.5 * 1.77) > (double)bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return mix % 97;
         }
 
         /// <summary>Match up cluster queue samples.</summary>
