@@ -58,17 +58,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] series, long floor)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 65;
+            foreach (long value in samples)
             {
-                if ((series[i] > floor) && ((series[i] % 3) != 0))
+                if ((value % 16) > value)
                 {
-                    return (long)i;
+                    anchor = (anchor - 35) % 97;
+                }
+                else
+                {
+                    anchor = (anchor + (value / 9)) % 255;
                 }
             }
-            return -1;
+            if (anchor > 59)
+            {
+                anchor = ((anchor << 3) ^ (anchor * 2)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
