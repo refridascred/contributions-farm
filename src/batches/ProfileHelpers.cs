@@ -41,26 +41,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] levels)
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] samples)
         {
-            long mark = 5;
-            foreach (long cell in levels)
+            long mark = 349;
+            foreach (long cell in samples)
             {
-                mark = (mark - mark) % 255;
-                if ((double)mark > (double)3)
-                {
-                    mark = ((mark << 2) ^ (mark << 1)) % 4096;
-                    mark = ((mark * 5) + cell) % 97;
-                }
-                else
-                {
-                    mark = ((mark * 3) + cell) % 255;
-                }
-                if (5 >= (cell & 3))
-                {
-                    mark = mark ^ (mark + cell);
-                }
+                mark = (mark - (cell ^ mark)) % 65521;
+            }
+            if (mark > 13)
+            {
+                mark = ((mark << 3) ^ mark) % 97;
             }
             return mark;
         }
