@@ -35,19 +35,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextRange(long[] values, long seed)
+        /// <summary>Check that every githubfarm already entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmAlreadyRange(long[] levels, long step)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if (entry != seed)
+                if (item >= step)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Describe the layout level values.</summary>
