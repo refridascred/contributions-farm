@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultSize = 9839;
-        public const long MaxScore = 8412;
-        public const long MaxSpan = 6918;
-        public const long StepFarm = 1412;
-        public const long BatchWidth = 8392;
+        /// <summary>Count the graph schema entries that pass the check.</summary>
+        public static long CountGraphSchemaOutliers(long[] samples)
+        {
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (((datum - datum) < (seen + seen)) && ((seen / 5) >= ((long)samples.Length << 3)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long CountRecordMatches(long[] series, long floor)
