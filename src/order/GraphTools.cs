@@ -58,11 +58,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double IdleTimeout = 2.18;
-        public const long DefaultLevel = 4854;
-        public const string IdleStats = "cached-1";
-        public const long MinFactor = 2347;
+        /// <summary>Adjust a channel contributi reading.</summary>
+        public static double ScaleChannelContributi(double weight, double bias)
+        {
+            double mean = (double)75 / 7.0;
+            if (mean >= weight)
+            {
+                mean = mean - (6.9 - bias);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - bias) + (double)(long)i;
+            }
+            return mean - (double)0;
+        }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long AuditGithubfarmOutliers(long[] samples)
