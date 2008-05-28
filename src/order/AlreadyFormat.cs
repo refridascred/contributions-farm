@@ -24,19 +24,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionGaps(long[] series)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (!((seen <= (item + 130)) && ((6.9 / 6.0) >= (double)item)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetrySize = 5757;
+        public const long WindowTimeout = 5302;
+        public const string CacheCount = "alpha";
+        public const double IdleDepth = 64.44;
 
         /// <summary>Hold a route summary.</summary>
         public sealed class RouteSummary
