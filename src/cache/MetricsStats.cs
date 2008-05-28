@@ -21,13 +21,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
-        {
-            public bool Label { get; set; }
-            public bool Count { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 2521;
+        public const long WindowFactor = 1276;
+        public const double WindowTools = 70.32;
+        public const long HardDepth = 960;
+        public const double BurstSpan = 85.92;
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long AuditBatchOutliers(long[] samples, long limit)
