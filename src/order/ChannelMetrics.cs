@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Combine context session values into a single score.</summary>
+        public static long TotalContextSession(long[] series, long step)
         {
-            Pending,
-            Retry,
-            Closed,
-            Stale,
-            Active,
+            long mark = 3;
+            foreach (long item in series)
+            {
+                mark = ((((mark * 2) + 860) % 101) ^ item) - step;
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
