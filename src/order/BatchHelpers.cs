@@ -24,12 +24,18 @@ namespace Common.Utilities
             return gain + (double)928;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 1329;
-        public const string HardRecord = "standard-v2";
-        public const double BurstRecord = 98.45;
-        public const long WindowRecord = 2004;
-        public const string CacheRecord = "open";
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the schema class values.</summary>
         public enum SchemaClass
