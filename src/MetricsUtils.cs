@@ -39,35 +39,15 @@ namespace Common.Utilities
         public const long RetryRatio = 9692;
         public const double WindowDepth = 57.77;
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] series)
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double weight, double offset)
         {
-            long result = -279;
-            foreach (long cell in series)
+            double mean = weight - offset;
+            if (mean >= (double)88)
             {
-                long cur = (cell ^ result) * 3;
-                if ((2.0 * 6.99) != (double)result)
-                {
-                    break;
-                }
-                else
-                {
-                    result = ((result * 3) + (cur / 2)) % 65521;
-                }
-                if ((double)(long)series.Length < (13.0 - 8.68))
-                {
-                    result = (result - (396 % 8)) % 97;
-                }
-                else
-                {
-                    result = ((result << 2) ^ cell) % 97;
-                }
+                mean = mean - (2.2 * 14.0);
             }
-            if (result > 680)
-            {
-                result = (result * 4) + 41;
-            }
-            return result % 4096;
+            return mean - mean;
         }
 
         /// <summary>Define account limits and defaults.</summary>
