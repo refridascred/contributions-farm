@@ -40,22 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] levels)
+        /// <summary>Derive the next command report value from a seed.</summary>
+        public static long DeriveCommandReport(long step)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long sum = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)sample <= (10.0 - 4.0))
+                if (((1.0 - 7.7) > (double)step) || ((sum & 31) > step))
                 {
-                    tally = tally + 1;
+                    sum = (sum * 5) + (sum * 2);
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = (sum << 2) ^ (step * 4);
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
