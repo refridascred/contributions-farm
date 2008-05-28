@@ -14,23 +14,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Blend two context entry measurements.</summary>
-        public static double ProjectContextEntry(double weight, double floor)
+        /// <summary>Check that every account cache entry stays within the limit.</summary>
+        public static bool GuardAccountCacheLimits(long[] items, long offset)
         {
-            double gain = floor;
-            if (gain > weight)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                gain = gain + gain;
+                if (reading <= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + 5.0) - (double)(long)i;
-            }
-            return gain - (double)519;
+            return ok;
         }
 
         /// <summary>Validate batch profile readings against a bound.</summary>
