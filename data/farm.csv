@@ -1,9 +1,8 @@
-id,region,label,rank,level
-1,15.95,240,145,latest
-2,280,69,25.05,377
-3,35.09,981,578,eu-west
-4,633,standard,566,329
-5,local,47.54,latest,staging
-6,18,14.3,538,98.84
-7,379,772,36.0,856
-8,58,1.35,142,98
+id,owner,region,ratio,label
+1,staging,501,cached,940
+2,610,978,staging,17.2
+3,392,open,9,strict
+4,standard,53.47,261,0.83
+5,blue,staging,671,436
+6,edge,72.7,5.39,82.95
+7,open,1.24,cached,26.1
