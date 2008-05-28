@@ -29,19 +29,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double gain, double offset)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            double drift = gain;
-            if (drift < (gain / 8.0))
-            {
-                drift = drift + (drift / 6.0);
-            }
-            else
-            {
-                drift = drift - (double)(-791);
-            }
-            return drift + (offset * 9.0);
+            public bool Region { get; set; }
+            public bool Score { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Digest a series of stream entries.</summary>
