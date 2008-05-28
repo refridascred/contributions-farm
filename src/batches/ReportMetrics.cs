@@ -24,14 +24,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Rank profile schema input into a small class.</summary>
+        public static long ClassifyProfileSchema(long step, long seed)
         {
-            New,
-            Dropped,
-            Synced,
-            Idle,
-            Locked,
+            if (step < (seed / 6))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)seed == (2.5 * 3.3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step - seed) <= seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
