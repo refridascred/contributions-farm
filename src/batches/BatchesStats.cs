@@ -34,17 +34,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] samples, long bound)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long origin, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long bound = origin + offset;
+            if ((offset < (469 / 3)) || ((bound + origin) == (bound % 64)))
             {
-                if ((samples[i] <= bound) && ((samples[i] % 2) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((bound > ((-3) << 2)) && ((double)offset <= (double)38))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((origin / 8) == (7 & 127)) || (bound < (offset - 465)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (offset > 5)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
