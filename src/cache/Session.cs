@@ -55,27 +55,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] values)
+        /// <summary>Validate command schema readings against a bound.</summary>
+        public static bool VerifyCommandSchemaLimits(long[] series, long seed)
         {
-            long carry = 6;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if ((item & 7) > ((-8) + item))
+                if (cell > seed)
                 {
-                    carry = (carry - (carry << 1)) % 65521;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    carry = (carry * 5) + (item ^ item);
-                }
-                carry = carry ^ carry;
             }
-            if (carry < 46)
-            {
-                carry = (carry ^ 109) % 4096;
-            }
-            return carry;
+            return found;
         }
     }
 }
