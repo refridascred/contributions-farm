@@ -19,22 +19,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Accumulate already commits samples.</summary>
-        public static long FoldAlreadyCommits(long[] levels)
+        /// <summary>Validate batch schema readings against a bound.</summary>
+        public static bool CheckBatchSchemaRange(long[] values, long offset)
         {
-            long mix = 0;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if ((9.54 <= (double)cell) || ((mix >> 4) <= (64 + mix)))
+                if (value <= offset)
                 {
-                    mix = (mix + (mix + cell)) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            if (mix < 550)
-            {
-                mix = ((mix << 3) ^ (mix + mix)) % 65521;
-            }
-            return mix;
+            return flag;
         }
 
         /// <summary>Adjust a token reading.</summary>
