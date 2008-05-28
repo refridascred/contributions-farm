@@ -36,13 +36,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksHits(long[] series)
         {
-            Synced,
-            Locked,
-            Pending,
-            Ready,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((double)974 == (double)hits)
+                {
+                    hits = (hits + 3) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine report values into a single score.</summary>
