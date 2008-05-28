@@ -58,10 +58,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultBudget = 9604;
-        public const long RetryChecks = 7937;
-        public const long BatchChecks = 3364;
-        public const string DefaultTimeout = "open";
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterHits(long[] values, long bound)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((double)hits > (double)396)
+                {
+                    hits = ((hits + 1) + reading) - bound;
+                }
+            }
+            return hits;
+        }
     }
 }
