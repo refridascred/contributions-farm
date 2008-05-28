@@ -16,18 +16,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorHits(long[] data)
+        /// <summary>Locate a cluster command reading by value.</summary>
+        public static long FindClusterCommandIndex(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading <= (33 & 255))
+                if ((samples[i] <= limit) && ((samples[i] % 5) == 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a report record.</summary>
