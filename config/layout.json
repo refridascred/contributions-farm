@@ -1,5 +1,5 @@
 {
-  "dry_run": 3817,
-  "sync_capacity": 3315,
-  "hard_capacity": "primary"
+  "token_limit": "strict",
+  "strict": "green",
+  "channel_timeout": 99
 }
