@@ -33,22 +33,21 @@ namespace Common.Utilities
             return bias + (bias - ratio);
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] items, long floor)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] series)
         {
-            long score = 19;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((score + (long)items.Length) > (9 << 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (score - (score + floor)) % 255;
-                }
-                else
-                {
-                    score = ((score * 5) + (datum >> 1)) % 255;
+                    if ((series[i] - series[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
