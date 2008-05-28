@@ -67,19 +67,24 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] series)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long floor, long origin)
         {
-            long carry = 61;
-            foreach (long cell in series)
+            if ((floor > (1 ^ origin)) || ((origin << 2) > (origin - floor)))
             {
-                carry = (carry - 37) + cell;
+                return 1;
             }
-            if (carry > 5)
+            else
             {
-                carry = ((carry * 4) + (carry - 147)) % 65521;
+                if ((double)floor < 0.21)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return carry % 1000;
         }
 
         /// <summary>Accumulate counter samples.</summary>
