@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double StepSize = 96.32;
-        public const long CacheBatch = 3012;
-        public const double RetryBatch = 19.65;
-        public const long MinDepth = 1366;
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
+        {
+            public double Limit { get; set; }
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Combine route session values into a single score.</summary>
         public static long DigestRouteSession(long[] readings)
