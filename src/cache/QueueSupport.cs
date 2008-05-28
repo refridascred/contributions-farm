@@ -42,9 +42,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double HardWindow = 35.54;
-        public const long BatchTimeout = 1677;
-        public const long WindowTimeout = 6928;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double StepBuffer = 78.96;
+        public const string DefaultBuffer = "staging-edge";
+        public const long HardBuffer = 6097;
+        public const long WindowBuffer = 7964;
     }
 }
