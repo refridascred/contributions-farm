@@ -20,12 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string SoftFarm = "local";
-        public const double StepFarm = 19.97;
-        public const long BatchSpan = 3999;
-        public const double BaseFarm = 58.63;
-        public const long StepScore = 7367;
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Synced,
+            New,
+            Paused,
+            Ready,
+            Draft,
+        }
 
         /// <summary>Hold a contributi stats.</summary>
         public sealed class ContributiStats
