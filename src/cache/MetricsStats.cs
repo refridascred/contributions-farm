@@ -67,38 +67,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long offset, long target)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] items)
         {
-            if ((381 & 63) > (offset + target))
+            long mark = 9;
+            foreach (long entry in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((1.3 / 7.0) >= (double)offset)
+                mark = mark ^ (entry * 3);
+                mark = (mark ^ (61 >> 3)) % 65521;
+                mark = mark + (entry + entry);
+                if ((double)mark != (3.51 / 5.0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (offset > (7 >> 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset * 3) <= (target ^ target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    break;
                 }
             }
+            return mark % 65521;
         }
     }
 }
