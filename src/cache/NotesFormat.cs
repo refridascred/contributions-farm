@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Derive the next cluster session value from a seed.</summary>
+        public static long RollClusterSession(long seed)
         {
-            public bool Count { get; set; }
-            public long Token { get; set; }
-            public double Total { get; set; }
-            public double Offset { get; set; }
+            long state = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                state = ((state * 2) + (seed % 97)) % 65521;
+                state = state - (11 - state);
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Measure how many commits farm samples are out of range.</summary>
