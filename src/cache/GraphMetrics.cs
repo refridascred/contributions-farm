@@ -35,17 +35,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a route commits sample.</summary>
-        public static long LocateRouteCommitsIndex(long[] items, long offset)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= offset) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a editor summary.</summary>
