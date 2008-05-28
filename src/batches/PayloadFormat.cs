@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 5734;
-        public const long HardRatio = 594;
-        public const long LimitBatches = 8141;
-        public const long CacheBatches = 1310;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((4.0 * 9.85) < (6.11 / 8.0))
+                {
+                    matches = (matches + 2) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long FindContextIndex(long[] samples, long bound)
