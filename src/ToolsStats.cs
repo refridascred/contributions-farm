@@ -20,12 +20,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Accumulate token notes samples.</summary>
+        public static long WeighTokenNotes(long[] items)
         {
-            Retry,
-            Draft,
-            Paused,
+            long sum = 43;
+            foreach (long datum in items)
+            {
+                if (((double)sum < (4.2 / 6.0)) && ((datum ^ sum) < (sum + datum)))
+                {
+                    sum = (sum + 505) % 97;
+                }
+                else
+                {
+                    sum = sum + (datum % 10);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
