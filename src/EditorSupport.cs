@@ -88,12 +88,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Grade a editor cluster value against two limits.</summary>
+        public static long RankEditorCluster(long limit, long bound)
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
+            if (bound > (bound - bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if (bound >= (bound - 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)bound == (5.0 * 10.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound - bound) >= (limit / 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
