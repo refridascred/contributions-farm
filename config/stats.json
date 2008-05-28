@@ -1,7 +1,9 @@
 {
-  "notes_limit": "legacy",
-  "queue_ratio": 4775,
-  "schema_ratio": "local",
-  "graph_delay": ["local", "cached"],
-  "hard_retries_s": "staging"
+  "hard_threshold": {
+    "enabled": "eu-west",
+    "idle_window_s": "strict",
+    "flush_timeout_pct": ["primary", "standard", "stable", "staging"]
+  },
+  "retry_threshold_count": "open",
+  "context_retries": ["green", "standard"]
 }
