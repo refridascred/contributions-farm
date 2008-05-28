@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 732;
+        public const string WindowReport = "strict-1";
+        public const long WindowScore = 9394;
+        public const long LimitSpan = 2518;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long CountToolsMatches(long[] readings)
