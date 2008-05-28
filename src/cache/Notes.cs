@@ -61,12 +61,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double WindowOrder = 52.6;
-        public const long SoftOrder = 3015;
-        public const long LimitSize = 941;
-        public const long LimitCount = 6844;
-        public const long MaxLevel = 3550;
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long bound, long bound2)
+        {
+            if (bound2 >= (2 >> 4))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((12.0 / 5.0) != (double)bound2)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (9.89 > (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a window batch counter forward.</summary>
         public static long RollWindowBatch(long seed)
