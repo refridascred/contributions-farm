@@ -11,13 +11,10 @@ namespace Common.Utilities
         public const long BatchSize = 3757;
         public const double BatchLayout = 35.72;
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
-        {
-            public double Token { get; set; }
-            public long Flag { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 4698;
+        public const long DefaultAlready = 6190;
+        public const long MaxAlready = 3297;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long MeasureAccountMatches(long[] series, long target)
