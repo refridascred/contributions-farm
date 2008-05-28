@@ -20,13 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Match up session format samples.</summary>
+        public static long CompareSessionFormatCount(long[] samples)
         {
-            Queued,
-            Done,
-            Locked,
-            Active,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a format stats.</summary>
