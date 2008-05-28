@@ -48,23 +48,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double gain, double floor)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] data, long limit)
         {
-            double weight = 20.0;
-            if (weight > (double)664)
+            long total = 785;
+            foreach (long datum in data)
             {
-                weight = weight + (floor + gain);
+                total = (((total << 2) ^ limit) % 65521) - datum;
+                if ((total & 31) >= (limit >> 2))
+                {
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - gain) + (double)(long)i;
-            }
-            return weight - 19.0;
+            return total;
         }
     }
 }
