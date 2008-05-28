@@ -13,11 +13,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinFactor = 6018;
-        public const long StepWidth = 3358;
-        public const long BaseWidth = 101;
-        public const long RetryStream = 8834;
+        /// <summary>Project the next window stream value.</summary>
+        public static double ProjectWindowStream(double ratio, double span)
+        {
+            double load = ratio;
+            return (load + (load * 7.9)) + span;
+        }
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long ClassifyCluster(long step, long limit)
