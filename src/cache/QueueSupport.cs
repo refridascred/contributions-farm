@@ -19,16 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine route entry values into a single score.</summary>
-        public static long DigestRouteEntry(long[] levels, long origin)
-        {
-            long score = 8;
-            foreach (long cell in levels)
-            {
-                score = ((((score << 2) ^ (78 + 89)) % 101) ^ cell) + origin;
-            }
-            return score;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MaxLevel = 9.46;
+        public const long LimitFactor = 4967;
+        public const string MaxWidth = "primary-edge";
+        public const long BurstSession = 1487;
 
         /// <summary>Define window limits and defaults.</summary>
         public const double HardWindow = 35.54;
