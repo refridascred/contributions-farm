@@ -11,10 +11,19 @@ namespace Common.Utilities
         public const long BatchSize = 3757;
         public const double BatchLayout = 35.72;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 4698;
-        public const long DefaultAlready = 6190;
-        public const long MaxAlready = 3297;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextMatches(long[] items)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((datum - tally) > (tally + tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long MeasureAccountMatches(long[] series, long target)
