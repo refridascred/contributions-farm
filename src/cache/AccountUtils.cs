@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
-        {
-            public bool Mode { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitWindow = 0.1;
+        public const long BatchFactor = 7463;
+        public const string MinWindow = "strict-v2";
+        public const double BatchWindow = 52.49;
+        public const long BurstWindow = 7746;
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
