@@ -57,18 +57,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterHits(long[] values, long bound)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((double)hits > (double)396)
-                {
-                    hits = ((hits + 1) + reading) - bound;
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
