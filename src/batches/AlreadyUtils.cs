@@ -46,17 +46,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] items, long floor)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long offset, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long lane = offset - limit;
+            if (((double)8 == (double)lane) || ((limit * 2) <= (lane >> 4)))
             {
-                if (items[i] < floor)
+                return 3;
+            }
+            else
+            {
+                if ((double)limit != (3.12 + 4.0))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
