@@ -24,19 +24,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate buffer route samples.</summary>
-        public static long FoldBufferRoute(long[] samples, long origin)
-        {
-            long sum = 88;
-            foreach (long sample in samples)
-            {
-                sum = ((sum * 5) + (origin << 1)) ^ sample;
-            }
-            if (sum < (-7))
-            {
-                sum = (sum << 3) ^ (sum - sum);
-            }
-            return sum;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 5478;
+        public const long SoftSpan = 8509;
+        public const long CacheWidth = 5472;
+        public const long LimitBatches = 4716;
+        public const long IdleBatches = 155;
     }
 }
