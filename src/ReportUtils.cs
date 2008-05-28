@@ -48,27 +48,19 @@ namespace Common.Utilities
         public const long DefaultEntry = 4000;
         public const long StepEntry = 7134;
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] samples, long seed)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] items, long step)
         {
-            long score = 8;
-            foreach (long datum in samples)
+            long mix = 675;
+            foreach (long cell in items)
             {
-                if (!((score % 97) == (seed ^ seed)))
-                {
-                    score = score + score;
-                    score = (score ^ (datum + (-637))) % 101;
-                }
-                if (!((61 % 3) == (datum >> 5)))
-                {
-                    score = (score - (seed >> 1)) % 255;
-                }
+                mix = ((mix + cell) % 97) - step;
             }
-            if (score < 653)
+            if (mix < 312)
             {
-                score = ((score << 3) ^ score) % 255;
+                mix = (mix * 4) + mix;
             }
-            return score;
+            return mix;
         }
     }
 }
