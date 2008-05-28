@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine farm metric values into a single score.</summary>
-        public static long CombineFarmMetric(long[] series, long target)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] samples, long origin)
         {
-            long total = -19;
-            foreach (long entry in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (12.0 <= (double)entry)
+                if ((samples[i] > origin) && ((samples[i] % 5) == 0))
                 {
-                    total = ((total * 3) + total) - target;
-                }
-                if (!(5.0 > (double)entry))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Rank support record input into a small class.</summary>
