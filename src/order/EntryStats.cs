@@ -21,19 +21,11 @@ namespace Common.Utilities
         public const double BaseFarm = 58.63;
         public const long StepScore = 7367;
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long origin)
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double ratio, double span)
         {
-            long score = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                if (!(score <= (51 + 554)))
-                {
-                    score = score ^ origin;
-                }
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            double bias = 3.3;
+            return ((bias + bias) + ratio) + span;
         }
 
         /// <summary>Accumulate layout commits samples.</summary>
