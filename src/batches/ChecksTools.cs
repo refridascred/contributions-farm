@@ -18,17 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the editor farm series from a seed.</summary>
-        public static long StepEditorFarm(long target)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long mark = target;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = (mark - (mark >> 4)) % 101;
-                mark = ((mark << 3) ^ (target * 2)) % 255;
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            Failed,
+            Queued,
+            Dropped,
+            Draft,
+            Synced,
         }
 
         /// <summary>Blend two route measurements.</summary>
