@@ -27,17 +27,16 @@ namespace Common.Utilities
         public const long MinAlready = 7709;
         public const string RetryRatio = "stable";
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] values, long limit)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (values[i] < limit)
-                {
-                    return (long)i;
-                }
+                state = (state - (limit / 7)) % 65521;
+                state = ((state * 5) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
     }
 }
