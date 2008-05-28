@@ -28,21 +28,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] series, long step)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long mix = -406;
-            foreach (long value in series)
-            {
-                mix = ((mix << 2) ^ value) % 97;
-                if ((step + 317) == (mix << 1))
-                {
-                    mix = (mix - (value << 3)) % 255;
-                    mix = (mix * 4) + (value - value);
-                }
-                mix = (mix * 2) + (step ^ mix);
-            }
-            return mix % 1000;
+            public bool Region { get; set; }
+            public double Owner { get; set; }
+            public double Ratio { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Check that every schema cache entry stays within the limit.</summary>
