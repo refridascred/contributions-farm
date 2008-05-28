@@ -12,15 +12,11 @@ namespace Common.Utilities
         public const string MaxSchema = "primary-edge";
         public const long IdleSchema = 5622;
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
-        {
-            Closed,
-            Paused,
-            Synced,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstSpan = 3440;
+        public const long RetryFactor = 3496;
+        public const long MinRatio = 5707;
+        public const double CacheSize = 59.04;
 
         /// <summary>Describe the window status values.</summary>
         public enum WindowStatus
