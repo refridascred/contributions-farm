@@ -31,19 +31,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamRange(long[] series, long target)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Size { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the account status values.</summary>
