@@ -34,10 +34,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double StepBuffer = 78.96;
-        public const string DefaultBuffer = "staging-edge";
-        public const long HardBuffer = 6097;
-        public const long WindowBuffer = 7964;
+        /// <summary>Count route editor pairs that satisfy a relation.</summary>
+        public static long PairRouteEditorCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
