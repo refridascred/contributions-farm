@@ -20,19 +20,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiRange(long[] samples, long offset)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long origin, long bound)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long diff = origin + bound;
+            if ((double)diff >= (6.87 * 6.0))
             {
-                if (cell <= offset)
+                return 6;
+            }
+            else
+            {
+                if (((831 % 5) > (origin + 2)) && ((bound - bound) >= origin))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return valid;
         }
     }
 }
