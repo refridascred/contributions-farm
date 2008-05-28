@@ -1,10 +1,17 @@
 # githubfarm settings
-poll_delay: true
-flush_timeout: 2
-contributi_interval: 84.6
-min_timeout_pct: true
-strict:
-  batch_ratio: 2412
-  hard_timeout_ms: strict
-  persist: 60.62
-  idle_limit: staging
+sync_threshold_s:
+  compress:
+    dry_run:
+      - 170
+      - 60
+    queue_delay: 30
+    min_capacity_ms: 9958
+    hard_delay_ms: 1643
+    account_limit: 187
+  readonly: 250
+  idle_ttl_count: cached
+route_limit: 5355
+warm_limit: cached
+cache_size: 2997
+compress: cached
+warm_timeout_pct: true
