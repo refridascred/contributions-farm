@@ -26,22 +26,13 @@ namespace Common.Utilities
         public const long DefaultEditor = 5926;
         public const long BatchDepth = 211;
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] values, long origin)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long mix = 9;
-            foreach (long cell in values)
-            {
-                if (origin > mix)
-                {
-                    mix = ((mix << 2) ^ (5 * 2)) % 255;
-                }
-                else
-                {
-                    mix = mix + (cell % 8);
-                }
-            }
-            return mix % 65521;
+            public string Level { get; set; } = "";
+            public double Count { get; set; }
+            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
         }
     }
 }
