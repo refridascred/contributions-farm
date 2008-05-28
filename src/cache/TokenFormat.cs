@@ -35,13 +35,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double bias, double offset)
         {
-            Retry,
-            Pending,
-            New,
-            Active,
+            double ratio = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (double)(long)i) - bias;
+            }
+            return ratio + (5.54 + ratio);
         }
     }
 }
