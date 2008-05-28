@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Find the first format githubfarm entry that matches the target.</summary>
-        public static long LookupFormatGithubfarmIndex(long[] readings, long step)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= step) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Locked,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Count the githubfarm batches entries that pass the check.</summary>
