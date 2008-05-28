@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 9111;
-        public const long DefaultScore = 8064;
-        public const long WindowContributi = 1754;
-        public const string WindowDepth = "staging-1";
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long seed, long target)
+        {
+            if ((seed / 5) <= (target % 64))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed < 689) || ((8.8 * 11.0) == (double)target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool CheckMetricsLimits(long[] readings, long offset)
