@@ -23,18 +23,25 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long target)
+        /// <summary>Rank support record input into a small class.</summary>
+        public static long RankSupportRecord(long limit, long limit2)
         {
-            long mark = target;
-            for (int i = 0; i < 9; i++)
+            long lane = limit + limit2;
+            if (((double)limit > (14.0 - 4.73)) || ((limit & 3) < lane))
             {
-                mark = mark ^ target;
-                mark = mark ^ (target / 4);
-                mark = mark + mark;
-                mark = ((mark * 3) + (long)i) % 101;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if ((limit - lane) < (lane + limit2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Fold a list of metric payload readings.</summary>
