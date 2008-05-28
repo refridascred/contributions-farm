@@ -26,18 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsMatches(long[] levels)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((9.65 - 8.67) >= (double)count)
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
+            Active,
+            Failed,
+            Retry,
+            Queued,
         }
 
         /// <summary>Describe the farm state values.</summary>
