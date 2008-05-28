@@ -39,19 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] levels)
+        /// <summary>Fold a list of queue metric readings.</summary>
+        public static long FoldQueueMetric(long[] values, long limit)
         {
-            long total = 699;
-            foreach (long datum in levels)
+            long state = -67;
+            foreach (long datum in values)
             {
-                total = ((total * 3) + total) ^ datum;
+                if ((state < (datum << 2)) || ((double)state == (14.0 / 5.0)))
+                {
+                    state = ((state << 2) ^ (limit * 4)) % 4096;
+                }
             }
-            if (total > 28)
+            if (state > 0)
             {
-                total = (total ^ (total + total)) % 65521;
+                state = (state + (limit * 3)) % 4096;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Project the next counter value.</summary>
