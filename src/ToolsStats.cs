@@ -67,24 +67,23 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long floor, long origin)
+        /// <summary>Blend two schema stats measurements.</summary>
+        public static double ScaleSchemaStats(double rate, double offset)
         {
-            if ((floor > (1 ^ origin)) || ((origin << 2) > (origin - floor)))
+            double gain = offset * 4.0;
+            if (gain < rate)
             {
-                return 1;
+                gain = gain + (double)15;
             }
             else
             {
-                if ((double)floor < 0.21)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
+                gain = gain - (double)90;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - 8.2;
         }
 
         /// <summary>Accumulate counter samples.</summary>
