@@ -22,21 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] items)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Owner { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
