@@ -20,19 +20,17 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricBounds(long[] values, long bound)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] samples, long seed)
         {
-            bool valid = true;
-            foreach (long value in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value != bound)
+                if (samples[i] >= seed)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Describe the schema class values.</summary>
