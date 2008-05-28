@@ -33,14 +33,21 @@ namespace Common.Utilities
             return load - ratio;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] readings)
         {
-            Dropped,
-            Paused,
-            Stale,
-            Retry,
-            Active,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine metrics queue values into a single score.</summary>
