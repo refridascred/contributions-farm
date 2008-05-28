@@ -50,13 +50,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] series, long target)
         {
-            Queued,
-            Failed,
-            Dropped,
-            Closed,
+            long result = 394;
+            foreach (long cell in series)
+            {
+                if (!((target / 3) <= (result + cell)))
+                {
+                    result = result - (cell + result);
+                }
+                if (1.2 < (double)(long)series.Length)
+                {
+                    result = (result - cell) % 101;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
