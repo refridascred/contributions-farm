@@ -18,40 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a buffer contributi pair into a bucket.</summary>
-        public static long ClassifyBufferContributi(long bound, long offset)
-        {
-            long cur = bound + offset;
-            if ((offset >> 5) >= cur)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((cur % 64) != (cur >> 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (454 > cur)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (bound > (bound + bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchBudget = 1572;
+        public const long HardGithubfarm = 7999;
+        public const string CacheGithubfarm = "staging";
+        public const double CacheFactor = 8.29;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BurstCount = 7217;
