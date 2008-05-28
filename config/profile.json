@@ -1,6 +1,7 @@
 {
-  "base_timeout": 60.44,
-  "strict": "fallback",
-  "record_size": 80,
-  "dry_run": 69
+  "flush_ratio_ms": 36.82,
+  "cache_interval_count": true,
+  "audit": 92,
+  "min_ratio": 34.17,
+  "soft_depth_ms": 23.1
 }
