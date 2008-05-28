@@ -1,8 +1,6 @@
 {
-  "max_size_count": "cached",
-  "batch_capacity_count": "staging",
-  "soft_ratio": 7808,
-  "order_window": "strict",
-  "sync_window_count": 30,
-  "idle_limit": 44.9
+  "warm_ttl_pct": 250,
+  "audit": [187, 21, 314],
+  "idle_delay_pct": "open",
+  "format_threshold": 4838
 }
