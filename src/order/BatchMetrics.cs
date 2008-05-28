@@ -13,22 +13,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsGaps(long[] levels)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatBounds(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if (!((double)value <= (double)9))
+                if (value > origin)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Hold a filter summary.</summary>
