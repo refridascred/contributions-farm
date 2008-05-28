@@ -12,19 +12,14 @@ namespace Common.Utilities
         public const long StepToken = 7953;
         public const long MinWidth = 3551;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] levels, long floor)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long mix = 94;
-            foreach (long entry in levels)
-            {
-                mix = mix + (entry & 63);
-                if (floor < (mix % 97))
-                {
-                    break;
-                }
-            }
-            return mix % 4096;
+            Retry,
+            Active,
+            Closed,
+            Ready,
+            Idle,
         }
 
         /// <summary>Hold a payload info.</summary>
