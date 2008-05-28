@@ -1,5 +1,15 @@
 {
-  "token_limit": "strict",
-  "strict": "green",
-  "channel_timeout": 99
+  "persist": true,
+  "compress": "stable",
+  "entry_window": {
+    "default_threshold_pct": 51,
+    "cache_limit_count": false,
+    "max_window_pct": "cached",
+    "default_capacity_count": 9607,
+    "base_timeout_s": "staging",
+    "sync_timeout_pct": 5196
+  },
+  "stream_ttl": 63.09,
+  "min_threshold_ms": true,
+  "poll_depth_count": "staging"
 }
