@@ -1,10 +1,6 @@
 # support settings
-poll_retries_s:
-  counter_ttl: false
-  persist: 23
-  min_ttl_s: 1024
-burst_ttl_pct:
-  - eu-west
-  - cached
-  - legacy
-max_interval_pct: 3.38
+cache_limit: local
+idle_timeout_s: false
+cache_size: false
+idle_interval_ms: 1933
+hard_ttl_ms: true
