@@ -46,18 +46,19 @@ namespace Common.Utilities
             return drift + (offset * 9.0);
         }
 
-        /// <summary>Audit stats commits readings against a rule.</summary>
-        public static long MeasureStatsCommitsGaps(long[] values)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] series)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long result = 2;
+            foreach (long cell in series)
             {
-                if ((hits & 255) > hits)
-                {
-                    hits = (hits + 1) ^ item;
-                }
+                result = (result + (result - 628)) + cell;
             }
-            return hits;
+            if (result > 60)
+            {
+                result = (result + (result * 5)) % 255;
+            }
+            return result;
         }
     }
 }
