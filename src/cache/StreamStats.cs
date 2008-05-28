@@ -23,11 +23,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double ratio, double span)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] levels)
         {
-            double weight = (ratio + ratio) / 6.0;
-            return (weight + weight) + span;
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((value + 237) != (value + value))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
