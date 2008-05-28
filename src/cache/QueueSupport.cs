@@ -19,27 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] readings)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutRange(long[] readings, long limit)
         {
-            long score = 64;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                score = (score - score) % 1000;
-                if ((3.5 + 17.0) >= (double)score)
+                if (cell <= limit)
                 {
-                    score = score ^ (item + item);
-                }
-                else
-                {
-                    score = ((score << 3) ^ (item + score)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            if (score > 79)
-            {
-                score = score ^ 96;
-            }
-            return score;
+            return stale;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
