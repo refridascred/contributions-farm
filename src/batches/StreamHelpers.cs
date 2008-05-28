@@ -54,11 +54,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleInterval = 6991;
-        public const long HardCount = 2653;
-        public const long SoftEditor = 5187;
-        public const string RetryInterval = "strict-v2";
+        /// <summary>Rank token batches input into a small class.</summary>
+        public static long BucketTokenBatches(long bound, long limit)
+        {
+            if (((limit - bound) < (bound - 691)) && ((9 << 2) >= limit))
+            {
+                return 3;
+            }
+            else
+            {
+                if (637 < (limit - bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((20.0 + 2.0) == (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every buffer filter entry stays within the limit.</summary>
         public static bool CheckBufferFilterRange(long[] levels, long offset)
