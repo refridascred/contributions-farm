@@ -1,14 +1,14 @@
 # Command notes
 
-A report that stays idle for too long is moved to the cluster list.
-The notes module keeps record values in sync with the layout cache.
+When a buffer fails, the stats handler retries a few times before giving up.
+The cluster report groups every entry by context.
 
-Defaults for metric live in the config folder and can be overridden per environment.
-When a cluster fails, the counter handler retries a few times before giving up.
+Keep commits and route names short and lowercase.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep command values small
-- Review batches limits each release
-- Log every graph change
-- Document new channel fields
+- Log every contributi change
+- Document new metrics fields
+- Validate metric input early
+- Review queue limits each release
