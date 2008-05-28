@@ -22,22 +22,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit graph route readings against a rule.</summary>
-        public static long MeasureGraphRouteMatches(long[] items, long offset)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(6 < (entry + entry)))
+                if ((levels[i] <= bound) && ((levels[i] % 2) != 0))
                 {
-                    tally = (tally + 3) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
