@@ -42,11 +42,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double rate, double offset)
         {
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
+            double ratio = rate + (double)457;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (double)(long)i) + offset;
+            }
+            return ratio - (ratio + rate);
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
