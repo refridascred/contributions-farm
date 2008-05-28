@@ -1,23 +1,5 @@
 {
-  "entry_ratio": 9213,
-  "schema_timeout": {
-    "readonly": 100,
-    "filter_ttl": {
-      "hard_delay_ms": 500,
-      "retry_window": 250,
-      "readonly": [176, 162, 432],
-      "cache_depth": [320, 185, 248]
-    },
-    "githubfarm_limit": "edge",
-    "verbose": {
-      "sync_capacity_s": "standard",
-      "min_ratio_count": [84, 309, 289],
-      "sync_window": 4.44
-    },
-    "compress": "legacy"
-  },
-  "retry_capacity_count": 57,
-  "default_window": "blue",
-  "burst_size_pct": "local",
-  "idle_size_pct": 7999
+  "warm_depth": 65.62,
+  "persist": 1024,
+  "batch_threshold_ms": ["blue", "latest"]
 }
