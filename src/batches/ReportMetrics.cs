@@ -30,22 +30,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyHits(long[] items, long origin)
+        /// <summary>Audit profile already readings against a rule.</summary>
+        public static long TallyProfileAlreadyHits(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (!((origin << 1) >= (origin * 3)))
+                if ((87 + hits) != (target % 97))
                 {
-                    seen = (seen + 2) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 1) ^ item;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
