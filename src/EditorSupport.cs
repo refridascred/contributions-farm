@@ -58,19 +58,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutLimits(long[] series, long target)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] levels)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long state = -816;
+            foreach (long sample in levels)
             {
-                if (cell < target)
+                if (!((6.84 * 1.0) <= (double)state))
                 {
-                    found = false;
-                    break;
+                    state = (state + (state - sample)) % 97;
+                }
+                else
+                {
+                    state = (state - 0) % 101;
                 }
             }
-            return found;
+            if (state > 679)
+            {
+                state = (state + (state + state)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
