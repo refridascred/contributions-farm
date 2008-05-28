@@ -1,17 +1,8 @@
 {
-  "default_ttl_count": 60,
-  "dry_run": "legacy",
-  "strict": "eu-west",
-  "audit": {
-    "sync_delay": {
-      "audit": 55.4,
-      "min_window_pct": "standard",
-      "hard_delay_ms": 5205,
-      "soft_depth": 88.83,
-      "soft_window_pct": 5375,
-      "warm_ratio_count": false
-    },
-    "farm_size": "fallback",
-    "window_threshold": "edge"
-  }
+  "min_size_ms": false,
+  "warm_timeout_ms": 60.13,
+  "burst_capacity_count": "standard",
+  "base_limit_ms": 64.26,
+  "context_depth": ["fallback", "fallback", "blue"],
+  "sync_threshold_count": 22.33
 }
