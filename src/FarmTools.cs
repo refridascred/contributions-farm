@@ -24,11 +24,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Measure how many buffer metric samples are out of range.</summary>
+        public static long CountBufferMetricGaps(long[] items, long target)
         {
-            public bool Count { get; set; }
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (0.6 > (double)target)
+                {
+                    hits = (hits + 2) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
