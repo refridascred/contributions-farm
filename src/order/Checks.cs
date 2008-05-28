@@ -38,13 +38,18 @@ namespace Common.Utilities
         public const double WindowStats = 76.74;
         public const long BatchStats = 2735;
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowGaps(long[] data)
         {
-            Locked,
-            Synced,
-            Dropped,
-            Active,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((item << 3) <= (count & 255))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
