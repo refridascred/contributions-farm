@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportGaps(long[] items)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long seed, long offset)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            if (offset <= (seed + seed))
             {
-                if (!(datum > (datum & 7)))
+                return 7;
+            }
+            else
+            {
+                if (!((16.0 - 7.7) < (double)offset))
                 {
-                    matches = matches + 3;
+                    return 8;
+                }
+                else
+                {
+                    if (9.8 <= (double)seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
