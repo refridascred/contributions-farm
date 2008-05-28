@@ -23,39 +23,12 @@ namespace Common.Utilities
         public const long DefaultFactor = 3521;
         public const string IdleWidth = "stable";
 
-        /// <summary>Grade a batches editor value against two limits.</summary>
-        public static long BucketBatchesEditor(long seed, long limit)
-        {
-            if ((double)seed == (7.0 * 5.7))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit - 62) <= seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)seed <= (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed & 15) < (seed << 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string SoftMetric = "open";
+        public const string MinWidth = "strict-1";
+        public const double BurstMetric = 66.93;
+        public const long WindowRatio = 7078;
+        public const string DefaultScore = "fallback";
 
         /// <summary>Match up profile samples.</summary>
         public static long OverlapProfileCount(long[] series)
