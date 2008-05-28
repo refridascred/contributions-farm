@@ -56,21 +56,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = mix + (mix % 100);
-                if (mix >= limit)
-                {
-                    mix = mix + (limit + mix);
-                }
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double IdleTimeout = 2.18;
+        public const long DefaultLevel = 4854;
+        public const string IdleStats = "cached-1";
+        public const long MinFactor = 2347;
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long AuditGithubfarmOutliers(long[] samples)
