@@ -44,18 +44,17 @@ namespace Common.Utilities
         public const long RetryAlready = 8918;
         public const long MinAlready = 9293;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] items)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)seen >= (8.2 / 9.0))
+                if ((series[i] <= limit) && ((series[i] % 5) == 0))
                 {
-                    seen = (seen + 1) - sample;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Accumulate graph samples.</summary>
