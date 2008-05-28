@@ -53,31 +53,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long seed, long bound)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            if ((seed + bound) <= seed)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed + 51) != (6 % 10))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)bound != (5.7 / 5.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Pending,
+            Draft,
+            Paused,
         }
 
         /// <summary>Find the first account token entry that matches the target.</summary>
