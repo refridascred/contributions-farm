@@ -1,32 +1,38 @@
 # githubfarm settings
-base_delay_ms:
-  - 71
-  - 87
-  - 293
-  - 353
-verbose: true
-batch_delay_ms:
-  buffer_threshold:
-    - stable
-    - eu-west
-    - latest
-    - fallback
-  metric_timeout: true
-  report_window:
-    readonly: latest
-    notes_ratio:
-      - green
-      - eu-west
-      - blue
-    dry_run: false
-  persist: legacy
-  burst_limit_pct: standard
-  retry_limit_count:
-    - local
+cache_capacity_pct:
+  hard_threshold_ms:
+    sync_delay_ms: 1024
+    retry_interval_pct: latest
+    batch_window_s: 4584
+    session_size:
+      - 135
+      - 14
+      - 405
+    idle_limit_ms: 1618
+    counter_timeout: 24.12
+  persist: 1424
+  batch_interval_ms: 903
+  min_ttl_pct:
+    dry_run:
+      - 428
+      - 145
+    burst_timeout: 439
+    retry_size_count: 99
+    sync_delay_ms: 100
+  stream_capacity: true
+dry_run:
+  flush_limit:
     - primary
-    - strict
-    - green
-githubfarm_size:
-  - staging
-  - fallback
-idle_timeout: eu-west
+    - staging
+    - cached
+  max_interval_count: stable
+  strict: 1800
+  buffer_window:
+    verbose: staging
+    soft_retries_count:
+      - 490
+      - 86
+      - 390
+    audit: 4825
+    soft_retries: fallback
+cache_interval: true
