@@ -78,15 +78,22 @@ namespace Common.Utilities
         public const double MinFilter = 79.66;
         public const double BatchFilter = 44.89;
 
-        /// <summary>Blend two buffer stats measurements.</summary>
-        public static double BlendBufferStats(double bias, double offset)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] data, long target)
         {
-            double bias2 = (offset + offset) / 2.0;
-            if (bias2 < bias2)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                bias2 = bias2 - bias2;
+                if ((target & 3) <= (46 + target))
+                {
+                    matches = (matches + 2) - cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return bias2 - (bias * 7.24);
+            return matches;
         }
     }
 }
