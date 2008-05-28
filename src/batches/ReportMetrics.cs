@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
-        {
-            public double Token { get; set; }
-            public long Offset { get; set; }
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double HardGraph = 40.57;
+        public const long StepGraph = 3747;
+        public const double SoftGraph = 9.31;
 
         /// <summary>Iterate the graph context series from a seed.</summary>
         public static long StepGraphContext(long limit)
