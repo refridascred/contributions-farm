@@ -1,13 +1,16 @@
 # support settings
-entry_limit: 33
-min_limit: 31.5
-batch_delay:
-  - 187
-  - 400
-  - 92
-  - 305
-batch_size_count: true
-record_delay:
-  - cached
-  - blue
-warm_timeout: primary
+readonly:
+  profile_depth: 283
+  dry_run: 9099
+  max_size_count: true
+  default_capacity:
+    - 481
+    - 159
+    - 22
+    - 36
+token_interval: 62
+burst_window_s: 500
+compress:
+  sync_limit_ms: 30
+  enabled: 77
+  strict: 250
