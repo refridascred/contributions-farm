@@ -14,13 +14,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricOutliers(long[] items, long target)
         {
-            Retry,
-            Idle,
-            Locked,
-            Closed,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (target <= seen)
+                {
+                    seen = (seen + 1) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
