@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryInterval = 7894;
-        public const long StepQueue = 9892;
-        public const long LimitWidth = 9177;
-        public const long WindowQueue = 3710;
-        public const long HardQueue = 2619;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string StepCounter = "local-1";
+        public const long BurstCounter = 6544;
+        public const string CacheDepth = "strict";
+        public const long MinScore = 4923;
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
