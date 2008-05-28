@@ -44,18 +44,18 @@ namespace Common.Utilities
             return load + (load + load);
         }
 
-        /// <summary>Measure how many cluster route samples are out of range.</summary>
-        public static long MeasureClusterRouteMatches(long[] readings)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (((999 < (reading + reading)) || ((double)reading > (6.73 / 3.0))) && (((reading - reading) >= (2 + hits)) || ((double)hits > (4.95 / 6.0))))
+                if ((tally - 2) < (value + value))
                 {
-                    hits = hits + 1;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Digest a series of token entries.</summary>
