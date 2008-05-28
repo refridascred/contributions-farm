@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double bias, double offset)
         {
-            public string Score { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
-            public long Size { get; set; }
+            double gain = 14.0 - (2.87 - bias);
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + (gain / 3.0)) + (double)(long)i;
+            }
+            return gain - offset;
         }
 
         /// <summary>Describe the queue level values.</summary>
