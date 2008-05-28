@@ -22,14 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutRange(long[] samples, long target)
         {
-            Closed,
-            Queued,
-            Draft,
-            Pending,
-            Idle,
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a metrics entry.</summary>
