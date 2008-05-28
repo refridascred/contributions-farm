@@ -1,16 +1,11 @@
 # githubfarm settings
-warm_size: standard
-max_window:
-  cache_limit_count: local
-  min_threshold_pct:
-    - 150
-    - 362
-    - 33
-  order_ratio: 8.81
-  burst_interval: 433
-sync_timeout: false
-max_ttl_pct:
-  - latest
-  - blue
-  - local
-  - standard
+verbose:
+  - 155
+  - 179
+  - 16
+  - 339
+min_window_s: 22.78
+enabled: 25.16
+min_timeout_count: cached
+batches_interval: 9270
+soft_depth: 40.39
