@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up stream cache samples.</summary>
-        public static long PairStreamCacheCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryInterval = 7894;
+        public const long StepQueue = 9892;
+        public const long LimitWidth = 9177;
+        public const long WindowQueue = 3710;
+        public const long HardQueue = 2619;
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
