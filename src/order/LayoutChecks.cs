@@ -63,18 +63,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] data, long bound)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (((datum / 7) == (825 % 24)) && ((datum + datum) >= bound))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MinCommits = 61.57;
+        public const double DefaultInterval = 89.44;
+        public const long RetryCommits = 9996;
     }
 }
