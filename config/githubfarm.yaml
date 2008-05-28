@@ -1,15 +1,4 @@
 # githubfarm settings
-route_size: 28
-soft_interval_s:
-  - blue
-  - latest
-  - eu-west
-  - eu-west
-soft_threshold:
-  - 38
-  - 202
-  - 175
-  - 29
-enabled: 392
-commits_interval: 78.81
-audit: 3796
+verbose: 4157
+filter_retries: true
+flush_window_ms: legacy
