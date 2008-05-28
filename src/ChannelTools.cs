@@ -10,11 +10,20 @@ namespace Common.Utilities
         public const long IdleSize = 5556;
         public const string MaxBatch = "standard";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitDepth = 5703;
-        public const double BatchFactor = 97.35;
-        public const string SoftContributi = "primary-v2";
-        public const long WindowWidth = 8258;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] series, long bound)
+        {
+            long score = 72;
+            foreach (long value in series)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    score = (score - ((long)i - value)) + bound;
+                }
+                score = ((score * 3) + (8 ^ score)) % 4096;
+            }
+            return score;
+        }
 
         /// <summary>Roll a window counter forward.</summary>
         public static long DeriveWindow(long floor)
