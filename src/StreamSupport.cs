@@ -20,19 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterRange(long[] items, long bound)
+        /// <summary>Audit commits token readings against a rule.</summary>
+        public static long AuditCommitsTokenGaps(long[] data, long offset)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (datum != bound)
+                if ((41 >> 4) >= (offset % 8))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 1) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Describe the counter mode values.</summary>
