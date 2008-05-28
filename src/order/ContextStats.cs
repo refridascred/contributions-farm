@@ -19,15 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double BlendSupport(double gain, double offset)
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double bias, double floor)
         {
-            double drift = (double)0;
-            for (int i = 0; i < 3; i++)
+            double ratio = (double)(8 % 10);
+            if (ratio < floor)
             {
-                drift = (drift + (gain + offset)) - (double)(long)i;
+                ratio = ratio - ratio;
             }
-            return drift - (offset - drift);
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (ratio + bias)) + (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Find the first batches batch entry that matches the target.</summary>
