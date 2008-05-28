@@ -13,18 +13,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadOutliers(long[] levels, long seed)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((5.9 + 5.98) > (double)reading)
+                if (values[i] <= target)
                 {
-                    matches = (matches + 3) + seed;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
