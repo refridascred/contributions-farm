@@ -1,19 +1,4 @@
 # support settings
-cluster_window: true
-metrics_delay: green
-flush_timeout_pct:
-  enabled:
-    - 460
-    - 283
-    - 116
-  sync_ratio_ms: true
-  filter_limit:
-    - fallback
-    - local
-    - cached
-  cache_retries:
-    - strict
-    - blue
-    - latest
-  cache_window_pct: 33.51
-  persist: 30
+warm_ratio: cached
+stats_threshold: 8.56
+verbose: edge
