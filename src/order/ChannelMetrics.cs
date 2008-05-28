@@ -35,18 +35,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadMatches(long[] data)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long limit)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long mark = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((5 / 8) <= (tally >> 5))
-                {
-                    tally = (tally + 2) + sample;
-                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return tally;
+            return mark;
         }
     }
 }
