@@ -20,21 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] samples)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = (mark << 2) ^ origin;
+                mark = (mark - ((long)i + origin)) % 255;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
