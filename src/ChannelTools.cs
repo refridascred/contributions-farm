@@ -34,17 +34,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] values, long seed)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long origin, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((seed >> 4) <= (seed - seed)) || ((8.0 + 3.0) <= (double)origin))
             {
-                if (values[i] <= seed)
+                return 7;
+            }
+            else
+            {
+                if ((seed + 969) == (origin + seed))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
     }
 }
