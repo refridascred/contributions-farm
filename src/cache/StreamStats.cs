@@ -18,21 +18,17 @@ namespace Common.Utilities
         public const string SoftGithubfarm = "fallback-v2";
         public const long HardTimeout = 7371;
 
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] data)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] readings, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (readings[i] >= floor)
                 {
-                    if ((data[i] - data[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Digest a series of graph entry entries.</summary>
