@@ -1,9 +1,7 @@
-id,level,region
-1,standard,782
-2,3,6.38
-3,984,88
-4,146,41.65
-5,latest,latest
-6,42.68,standard
-7,strict,eu-west
-8,28,134
+id,ratio,level,state
+1,latest,427,latest
+2,160,fallback,green
+3,78.87,845,92.35
+4,legacy,890,55.26
+5,742,1.41,61.18
+6,147,684,955
