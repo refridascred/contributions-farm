@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const double BaseFarm = 58.63;
         public const long StepScore = 7367;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamMatches(long[] values, long floor)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long origin)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long score = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (((double)seen <= (double)floor) && ((reading >> 2) >= (79 << 1)))
+                if (!(score <= (51 + 554)))
                 {
-                    seen = seen + 1;
+                    score = score ^ origin;
                 }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Accumulate layout commits samples.</summary>
