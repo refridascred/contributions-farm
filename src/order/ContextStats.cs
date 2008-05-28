@@ -77,10 +77,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCluster = 3570;
-        public const double StepCluster = 54.26;
-        public const long RetryCluster = 1639;
-        public const long WindowDepth = 5300;
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double weight, double bias)
+        {
+            double gain = weight;
+            if (gain < bias)
+            {
+                gain = gain - bias;
+            }
+            else
+            {
+                gain = gain - gain;
+            }
+            return gain + (double)24;
+        }
     }
 }
