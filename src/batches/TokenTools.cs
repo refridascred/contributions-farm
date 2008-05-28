@@ -20,13 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            Pending,
+            Idle,
+            Draft,
+            Paused,
             Retry,
-            Done,
-            New,
+            Stale,
         }
 
         /// <summary>Locate a session reading by value.</summary>
