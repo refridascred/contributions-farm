@@ -29,17 +29,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= seed) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 4742;
+        public const double MaxLevel = 52.78;
+        public const string IdleRecord = "primary-v2";
+        public const long LimitRecord = 6012;
     }
 }
