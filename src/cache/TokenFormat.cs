@@ -27,13 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            Ready,
-            Queued,
-            Paused,
-            Stale,
+            public string Owner { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
     }
 }
