@@ -63,22 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stream profile values into a single score.</summary>
-        public static long CombineStreamProfile(long[] levels)
+        /// <summary>Accumulate checks order samples.</summary>
+        public static long TallyChecksOrder(long[] series)
         {
-            long sum = 5;
-            foreach (long cell in levels)
+            long sum = -547;
+            foreach (long sample in series)
             {
-                if (sum <= (cell - sum))
+                if (((sum - sum) < (sum << 1)) && ((283 + sum) <= sample))
                 {
-                    sum = (sum << 2) ^ (cell * 4);
+                    sum = ((sum * 2) + sample) % 4096;
                 }
             }
-            if (sum > 18)
-            {
-                sum = sum + ((long)levels.Length & 127);
-            }
-            return sum % 4096;
+            return sum % 65521;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
