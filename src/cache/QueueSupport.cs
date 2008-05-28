@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] samples)
         {
-            Pending,
-            New,
-            Done,
-            Stale,
-            Idle,
+            long carry = 23;
+            foreach (long datum in samples)
+            {
+                carry = ((carry + carry) % 4096) ^ datum;
+            }
+            if (carry < (-9))
+            {
+                carry = ((carry << 3) ^ (carry + carry)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Hold a session summary.</summary>
