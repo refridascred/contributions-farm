@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next account record value from a seed.</summary>
-        public static long StepAccountRecord(long seed)
+        /// <summary>Roll a contributi stream counter forward.</summary>
+        public static long StepContributiStream(long floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 21; i++)
+            long sum = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (seed > (mix << 3))
-                {
-                    mix = (mix ^ (seed % 3)) % 97;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
