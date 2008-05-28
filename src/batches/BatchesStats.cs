@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] series)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long carry = 83;
-            foreach (long entry in series)
-            {
-                if ((carry - entry) < (long)series.Length)
-                {
-                    carry = ((carry << 2) ^ (carry * 5)) % 4096;
-                }
-            }
-            return carry;
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Adjust a session farm reading.</summary>
