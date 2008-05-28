@@ -35,30 +35,18 @@ namespace Common.Utilities
         public const long BaseProfile = 5328;
         public const long LimitWidth = 5098;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] items)
+        /// <summary>Measure how many contributi entry samples are out of range.</summary>
+        public static long TallyContributiEntryMatches(long[] values)
         {
-            long result = 2;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long value in values)
             {
-                for (int i = 0; i < 8; i++)
+                if (((count - value) >= count) && ((-39) > value))
                 {
-                    result = ((result + result) % 255) + (long)i;
-                }
-                if ((reading / 9) < reading)
-                {
-                    result = (result << 2) ^ reading;
-                }
-                if ((reading ^ result) < result)
-                {
-                    break;
+                    count = count + 2;
                 }
             }
-            if (result > 0)
-            {
-                result = ((result << 3) ^ (result / 9)) % 97;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Digest a series of token entries.</summary>
