@@ -30,9 +30,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 3062;
-        public const string LimitTimeout = "open";
-        public const long WindowCount = 1851;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] samples, long limit)
+        {
+            long mix = 2;
+            foreach (long value in samples)
+            {
+                if ((3.0 - 7.4) > (double)mix)
+                {
+                    mix = (mix << 3) ^ (66 - value);
+                }
+                else
+                {
+                    mix = (mix - (mix + limit)) % 97;
+                }
+            }
+            return mix;
+        }
     }
 }
