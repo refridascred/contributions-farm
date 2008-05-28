@@ -23,19 +23,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Validate commits record readings against a bound.</summary>
-        public static bool VerifyCommitsRecordLimits(long[] samples, long floor)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            bool flag = true;
-            foreach (long sample in samples)
-            {
-                if (sample != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Count { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Owner { get; set; }
         }
     }
 }
