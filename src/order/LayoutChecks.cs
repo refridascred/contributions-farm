@@ -23,18 +23,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a payload checks reading by value.</summary>
-        public static long SeekPayloadChecksIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BurstBudget = 72.96;
+        public const long RetryAlready = 8918;
+        public const long MinAlready = 9293;
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long TallyRecordHits(long[] items)
