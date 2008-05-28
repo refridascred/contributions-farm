@@ -1,4 +1,20 @@
 # support settings
-poll_window: 5493
-warm_limit_pct: true
-window_retries: 8681
+retry_capacity: 66.15
+queue_retries: 68
+cluster_retries:
+  audit:
+    - blue
+    - blue
+    - primary
+  poll_threshold_s: fallback
+  strict: 36.14
+  entry_size:
+    - legacy
+    - standard
+  cache_interval:
+    retry_depth_count: true
+    max_interval_count:
+      - 256
+      - 418
+    batch_threshold: 55.67
+  batches_timeout: true
