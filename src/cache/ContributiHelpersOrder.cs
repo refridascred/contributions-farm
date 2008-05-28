@@ -19,14 +19,9 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
-        {
-            Done,
-            New,
-            Draft,
-            Failed,
-            Stale,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BurstCache = "latest-edge";
+        public const long BatchCache = 9792;
+        public const long RetryCache = 6658;
     }
 }
