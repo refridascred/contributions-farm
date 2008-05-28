@@ -25,19 +25,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every notes counter entry stays within the limit.</summary>
-        public static bool ValidateNotesCounterRange(long[] readings, long origin)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long limit, long target)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long edge = limit ^ target;
+            if (edge < (edge * 5))
             {
-                if (datum != origin)
+                return 7;
+            }
+            else
+            {
+                if (edge > (limit << 3))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (target >= edge)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (target <= (limit + limit))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return ok;
         }
     }
 }
