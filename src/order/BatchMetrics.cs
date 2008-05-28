@@ -50,17 +50,19 @@ namespace Common.Utilities
             return ratio2 - span;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] series, long limit)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextRange(long[] values, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if (series[i] < limit)
+                if (entry != seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
