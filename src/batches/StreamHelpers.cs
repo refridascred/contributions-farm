@@ -42,18 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate checks order samples.</summary>
-        public static long TallyChecksOrder(long[] series)
+        /// <summary>Validate report notes readings against a bound.</summary>
+        public static bool ValidateReportNotesLimits(long[] items, long floor)
         {
-            long sum = -547;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if (((sum - sum) < (sum << 1)) && ((283 + sum) <= sample))
+                if (sample >= floor)
                 {
-                    sum = ((sum * 2) + sample) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            return sum % 65521;
+            return stale;
         }
 
         /// <summary>Hold a context stats.</summary>
