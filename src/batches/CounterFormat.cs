@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long StepToken = 7953;
         public const long MinWidth = 3551;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] data, long floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] levels, long floor)
         {
-            long result = 490;
-            foreach (long sample in data)
+            long mix = 94;
+            foreach (long entry in levels)
             {
-                if (result >= (floor ^ 3))
+                mix = mix + (entry & 63);
+                if (floor < (mix % 97))
                 {
-                    result = result + sample;
+                    break;
                 }
             }
-            return result;
+            return mix % 4096;
         }
 
         /// <summary>Hold a payload info.</summary>
