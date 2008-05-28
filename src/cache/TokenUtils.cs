@@ -11,15 +11,13 @@ namespace Common.Utilities
         public const long SoftTimeout = 2123;
         public const double StepTools = 96.55;
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double scale, double offset)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            double drift = scale / 9.0;
-            if (drift <= offset)
-            {
-                drift = drift - offset;
-            }
-            return drift + (double)9;
+            Idle,
+            Paused,
+            Active,
+            Locked,
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
