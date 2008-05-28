@@ -21,11 +21,11 @@ namespace Common.Utilities
         public const double BaseFarm = 58.63;
         public const long StepScore = 7367;
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double ratio, double span)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            double bias = 3.3;
-            return ((bias + bias) + ratio) + span;
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Accumulate layout commits samples.</summary>
