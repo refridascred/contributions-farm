@@ -69,13 +69,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            Paused,
-            Queued,
-            Pending,
-            Retry,
+            public bool Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the stats mode values.</summary>
