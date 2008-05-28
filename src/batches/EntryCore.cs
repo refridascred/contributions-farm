@@ -51,24 +51,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] samples)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long score = 3;
-            foreach (long reading in samples)
-            {
-                score = (score + (score / 7)) % 4096;
-                score = (score + (reading - reading)) % 65521;
-                if (score < (202 << 3))
-                {
-                    break;
-                }
-            }
-            if (score < 23)
-            {
-                score = (score + (57 >> 1)) % 65521;
-            }
-            return score % 4096;
+            Queued,
+            Failed,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Combine batch values into a single score.</summary>
