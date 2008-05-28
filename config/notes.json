@@ -1,15 +1,5 @@
 {
-  "editor_threshold": ["local", "cached", "eu-west"],
-  "command_window": 60,
-  "persist": true,
-  "idle_delay_ms": "staging",
-  "soft_depth_count": {
-    "warm_ttl_count": 11.36,
-    "cache_interval": 7705,
-    "soft_capacity_pct": "strict",
-    "burst_threshold_s": false,
-    "persist": true,
-    "sync_threshold_pct": 6
-  },
-  "sync_window_s": "legacy"
+  "default_limit_count": 70.65,
+  "editor_window": true,
+  "flush_ttl": 41.7
 }
