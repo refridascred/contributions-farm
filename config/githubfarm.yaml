@@ -1,11 +1,29 @@
 # githubfarm settings
-soft_limit:
-  - legacy
-  - latest
-  - green
-max_capacity_pct:
-  dry_run: 250
-  idle_limit_pct: cached
-  token_threshold: 20.59
-counter_limit: 4.08
-max_depth_s: 9378
+contributi_window:
+  verbose: legacy
+  queue_threshold:
+    flush_delay_count: 0.04
+    strict: latest
+    base_delay_ms: primary
+    context_retries: legacy
+  warm_capacity_count: true
+  warm_ratio_pct: 61
+  burst_interval_pct:
+    - stable
+    - standard
+schema_limit:
+  - standard
+  - blue
+idle_limit:
+  payload_capacity: 27
+  flush_capacity_s: 12
+  tools_ratio: 5055
+  warm_interval_ms: standard
+  sync_capacity_s:
+    - local
+    - latest
+    - local
+  persist:
+    - 486
+    - 60
+    - 325
