@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaRange(long[] readings, long seed)
-        {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string DefaultQueue = "cached-edge";
+        public const string MaxQueue = "latest-v2";
+        public const long WindowCount = 2823;
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long GradeSupport(long bound, long step)
