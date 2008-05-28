@@ -29,18 +29,26 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandMatches(long[] values, long seed)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long acc = 5;
+            foreach (long value in samples)
             {
-                if ((4.88 - 6.0) < (double)seed)
+                if (((acc ^ target) < value) || ((acc - acc) > (target + 9)))
                 {
-                    hits = (hits + 3) + value;
+                    acc = acc ^ target;
+                }
+                else
+                {
+                    acc = acc + acc;
                 }
             }
-            return hits;
+            if (acc < 9)
+            {
+                acc = (acc * 3) + (0 - target);
+            }
+            return acc;
         }
     }
 }
