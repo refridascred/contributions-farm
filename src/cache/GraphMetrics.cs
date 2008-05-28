@@ -52,9 +52,21 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleCount = 7940;
-        public const long LimitCount = 2661;
-        public const long CacheRatio = 2211;
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long CompareChannelCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
