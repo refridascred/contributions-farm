@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] readings, long bound)
         {
-            public double Stamp { get; set; }
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
+            long result = 18;
+            foreach (long reading in readings)
+            {
+                if ((reading ^ (long)readings.Length) < (bound - result))
+                {
+                    result = result - reading;
+                }
+            }
+            if (result < 129)
+            {
+                result = ((result << 2) ^ result) % 1000;
+            }
+            return result % 97;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
