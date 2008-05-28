@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double ratio, double span)
-        {
-            double ratio2 = span;
-            return ratio2 + ratio;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double LimitMetric = 78.32;
+        public const long MaxFactor = 5889;
+        public const long MaxTimeout = 607;
+        public const long BaseMetric = 3169;
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long CountMetricsMatches(long[] values, long origin)
