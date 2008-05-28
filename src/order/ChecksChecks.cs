@@ -13,16 +13,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] items, long bound)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] values, long step)
         {
-            long mark = 630;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                mark = mark ^ (bound + datum);
-                mark = ((mark * 5) + bound) % 101;
+                if ((double)step >= (double)sample)
+                {
+                    seen = seen + 2;
+                }
             }
-            return mark % 97;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
