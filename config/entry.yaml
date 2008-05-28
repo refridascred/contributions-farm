@@ -1,14 +1,29 @@
 # entry settings
-record_ratio:
-  - open
-  - cached
-  - staging
-  - stable
-poll_depth_count: 26
-layout_threshold:
-  - 53
-  - 425
-  - 34
-compress: true
-default_window_pct: 74.72
-context_interval: 72.19
+retry_size_ms: true
+session_depth:
+  strict:
+    - 349
+    - 475
+    - 401
+    - 438
+  warm_retries_count: true
+  batch_capacity_ms:
+    editor_timeout: 25.64
+    enabled: primary
+    poll_ttl_s: 2394
+    sync_capacity_s: true
+  verbose: 11
+  base_threshold: 100
+  layout_capacity:
+    flush_retries_pct: 52
+    cache_interval: 250
+    warm_timeout_ms: staging
+    batch_threshold:
+      - 376
+      - 324
+    cache_depth_ms: 29.51
+token_interval:
+  soft_window_pct: 5593
+  burst_ttl_ms: eu-west
+  hard_ttl_s: 13.94
+  max_depth_count: 96.22
