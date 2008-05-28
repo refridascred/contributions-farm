@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double StepRatio = 18.48;
-        public const long BatchScore = 7089;
-        public const double IdleFactor = 68.8;
-        public const string BurstGraph = "legacy-1";
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksOutliers(long[] data, long target)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (((target - datum) <= (target * 4)) && ((hits + 33) != (hits & 15)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long ClassifyMetric(long step, long limit)
