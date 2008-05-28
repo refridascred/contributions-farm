@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Fold a list of stream tools readings.</summary>
+        public static long DigestStreamTools(long[] data, long floor)
         {
-            public double Level { get; set; }
-            public string Label { get; set; } = "";
+            long result = 87;
+            foreach (long entry in data)
+            {
+                result = (((result * 4) + (result / 7)) - entry) - floor;
+            }
+            return result % 4096;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
