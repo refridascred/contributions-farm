@@ -26,11 +26,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double scale, double floor)
+        /// <summary>Match up channel profile samples.</summary>
+        public static long PairChannelProfileCount(long[] samples)
         {
-            double rate = (double)(5 - 30);
-            return ((rate + (0.74 / 2.0)) + scale) + floor;
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
