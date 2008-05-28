@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long seed)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long carry = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = (carry * 5) + carry;
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Derive the next githubfarm filter value from a seed.</summary>
