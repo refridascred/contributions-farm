@@ -44,13 +44,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
-        {
-            public double Flag { get; set; }
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultLevel = 3390;
+        public const string MinFormat = "cached-edge";
+        public const long IdleFormat = 8507;
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long BucketStream(long seed, long bound)
