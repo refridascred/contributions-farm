@@ -55,22 +55,39 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] items)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long limit, long step)
         {
-            long sum = 31;
-            foreach (long reading in items)
+            long bound = limit - step;
+            if ((step - bound) == ((-11) - 525))
             {
-                if ((sum <= (7 << 1)) || ((double)reading < (0.2 - 6.0)))
+                return 7;
+            }
+            else
+            {
+                if (limit >= bound)
                 {
-                    sum = (sum + (reading << 2)) % 101;
+                    return 5;
                 }
                 else
                 {
-                    sum = ((sum * 4) + (sum - sum)) % 1000;
+                    if ((4.3 + 5.3) > (double)step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit ^ (-9)) >= limit)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return sum;
         }
     }
 }
