@@ -1,7 +1,11 @@
 {
-  "record_interval": ["latest", "latest", "stable", "blue"],
-  "tools_threshold": "open",
-  "enabled": 34,
-  "compress": 78.79,
-  "verbose": true
+  "compress": 60,
+  "default_ttl": ["cached", "staging", "strict", "strict"],
+  "layout_window": false,
+  "readonly": false,
+  "already_delay": {
+    "audit": false,
+    "counter_timeout": false,
+    "verbose": ["local", "staging"]
+  }
 }
