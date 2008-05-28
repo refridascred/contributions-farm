@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
-        {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BurstRoute = "standard-edge";
+        public const long DefaultBudget = 9675;
+        public const long IdleRoute = 2463;
+        public const double WindowRoute = 10.99;
+        public const long MinScore = 6624;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long AuditBufferGaps(long[] values)
