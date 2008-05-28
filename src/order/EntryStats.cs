@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long bound, long bound2)
+        /// <summary>Match up format farm samples.</summary>
+        public static long OverlapFormatFarmCount(long[] items)
         {
-            if (((double)bound2 < 5.0) && ((bound2 % 24) >= bound))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound >> 1) >= (93 % 10))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound2 * 2) != (bound2 + 317))
+                    if ((items[i] - items[j]) < 6)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a record stats.</summary>
