@@ -42,16 +42,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] data, long limit)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long carry = 424;
-            foreach (long reading in data)
-            {
-                carry = ((carry + 46) % 101) + reading;
-                carry = (carry ^ (limit % 97)) % 97;
-            }
-            return carry;
+            public bool Stamp { get; set; }
+            public double Offset { get; set; }
+            public double Label { get; set; }
+            public long Count { get; set; }
         }
     }
 }
