@@ -14,20 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long target)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] items)
         {
-            long acc = target;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                acc = (acc << 3) ^ (target + 220);
-                if (!(acc >= ((long)i - (long)i)))
+                if ((double)datum < 7.66)
                 {
-                    acc = (acc ^ (target - 646)) % 4096;
+                    matches = matches + 3;
                 }
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
