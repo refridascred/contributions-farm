@@ -1,6 +1,15 @@
 # support settings
-batch_threshold: standard
-channel_delay: 2178
-command_threshold: cached
-hard_delay_ms: eu-west
-burst_threshold_pct: latest
+retry_depth_pct: eu-west
+retry_timeout_pct: 2203
+base_retries_pct: true
+checks_threshold:
+  - green
+  - strict
+support_window:
+  burst_delay_s: 36
+  window_threshold: 250
+  burst_threshold: standard
+  schema_ratio: green
+  poll_threshold_pct: 1648
+  poll_interval_count: cached
+max_delay: legacy
