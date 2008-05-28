@@ -1,8 +1,6 @@
 {
-  "entry_delay": "stable",
-  "route_retries": "blue",
-  "verbose": ["fallback", "cached", "strict"],
-  "readonly": "fallback",
-  "enabled": ["staging", "eu-west", "legacy"],
-  "base_threshold_ms": 6347
+  "filter_delay": 100,
+  "queue_size": true,
+  "poll_delay_pct": ["primary", "local", "local"],
+  "readonly": "staging"
 }
