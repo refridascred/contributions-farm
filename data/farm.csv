@@ -1,8 +1,9 @@
-id,active,owner,token
-1,443,98.02,eu-west
-2,10.78,399,59.0
-3,stable,standard,standard
-4,405,latest,998
-5,863,35.49,73.26
-6,local,1.06,eu-west
-7,staging,81,latest
+id,region,label,rank,level
+1,15.95,240,145,latest
+2,280,69,25.05,377
+3,35.09,981,578,eu-west
+4,633,standard,566,329
+5,local,47.54,latest,staging
+6,18,14.3,538,98.84
+7,379,772,36.0,856
+8,58,1.35,142,98
