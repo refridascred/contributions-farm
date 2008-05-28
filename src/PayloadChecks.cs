@@ -53,12 +53,24 @@ namespace Common.Utilities
         public const long IdleLevel = 3112;
         public const string BatchContributi = "legacy-v2";
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double StepBudget = 45.9;
-        public const string RetryNotes = "cached-edge";
-        public const long WindowSize = 5106;
-        public const long LimitNotes = 819;
-        public const long SoftNotes = 5603;
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double scale, double floor)
+        {
+            double gain = (floor / 2.0) - scale;
+            if (gain > (scale + floor))
+            {
+                gain = gain - scale;
+            }
+            else
+            {
+                gain = gain - (double)58;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain + (double)12;
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long ScoreStats(long[] samples, long step)
