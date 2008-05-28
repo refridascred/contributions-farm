@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long origin)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long sum = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                if (sum < (long)i)
-                {
-                    sum = sum - sum;
-                }
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            New,
+            Queued,
+            Paused,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
