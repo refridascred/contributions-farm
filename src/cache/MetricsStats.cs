@@ -29,11 +29,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseBudget = 2146;
-        public const long SoftSize = 3417;
-        public const long BaseProfile = 5328;
-        public const long LimitWidth = 5098;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] samples, long limit)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((double)value > (8.9 - 1.93))
+                {
+                    count = (count + 1) + limit;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many contributi entry samples are out of range.</summary>
         public static long TallyContributiEntryMatches(long[] values)
