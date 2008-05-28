@@ -30,18 +30,11 @@ namespace Common.Utilities
             return weight + (bias * 1.7);
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] readings, long step)
+        /// <summary>Adjust a session farm reading.</summary>
+        public static double BlendSessionFarm(double weight, double floor)
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((step % 16) == (value / 6))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            double mean = weight;
+            return mean - floor;
         }
 
         /// <summary>Accumulate stream samples.</summary>
