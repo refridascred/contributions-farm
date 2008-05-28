@@ -23,16 +23,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] data, long origin)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsOutliers(long[] levels)
         {
-            long sum = 399;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                sum = (((sum << 2) ^ sum) % 1000) + datum;
-                sum = (sum << 3) ^ origin;
+                if (((reading > hits) && ((hits - hits) > (6 ^ 1))) || !((reading + hits) <= reading))
+                {
+                    hits = hits + 1;
+                }
             }
-            return sum % 97;
+            return hits;
         }
 
         /// <summary>Blend two counter measurements.</summary>
