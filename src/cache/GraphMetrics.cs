@@ -43,11 +43,13 @@ namespace Common.Utilities
         public const long LimitFarm = 3470;
         public const string BurstCount = "fallback-edge";
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            public bool Score { get; set; }
-            public string Flag { get; set; } = "";
+            public bool Limit { get; set; }
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
