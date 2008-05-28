@@ -29,19 +29,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate batch profile readings against a bound.</summary>
-        public static bool VerifyBatchProfileBounds(long[] series, long seed)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] readings, long step)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long carry = 739;
+            foreach (long item in readings)
             {
-                if (value != seed)
+                if ((0.8 - 8.0) <= (double)(long)readings.Length)
                 {
-                    valid = false;
-                    break;
+                    carry = (carry - (step % 7)) + item;
+                }
+                if ((64 % 97) > step)
+                {
+                    carry = carry - carry;
                 }
             }
-            return valid;
+            return carry % 97;
         }
 
         /// <summary>Digest a series of window tools entries.</summary>
