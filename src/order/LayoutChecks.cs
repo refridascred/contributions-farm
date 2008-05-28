@@ -39,10 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BurstBudget = 72.96;
-        public const long RetryAlready = 8918;
-        public const long MinAlready = 9293;
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
+        {
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Level { get; set; }
+        }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long FindNotesIndex(long[] series, long limit)
