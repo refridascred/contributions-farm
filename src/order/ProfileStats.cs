@@ -48,19 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double ratio, double floor)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatLimits(long[] series, long floor)
         {
-            double load = (floor - 0.4) + (floor / 4.0);
-            if (load < floor)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                load = (load + (double)751) - ratio;
+                if (cell < floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load - floor;
+            return valid;
         }
     }
 }
