@@ -35,13 +35,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
-        {
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string IdleMetric = "cached-v2";
+        public const string CacheMetric = "alpha-edge";
+        public const long BatchSpan = 502;
+        public const long StepRatio = 1756;
     }
 }
