@@ -20,18 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] readings)
+        /// <summary>Count order buffer pairs that satisfy a relation.</summary>
+        public static long PairOrderBufferCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)datum > (9.0 - 6.0)) || (((hits / 8) != (hits & 31)) && ((double)hits < (1.54 + 4.44))))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((samples[i] + samples[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a format stats.</summary>
