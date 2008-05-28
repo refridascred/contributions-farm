@@ -58,11 +58,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BaseGraph = 32.99;
-        public const long HardRatio = 5010;
-        public const long BaseWidth = 5100;
-        public const long WindowSpan = 3907;
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BurstSpan = 26.97;
+        public const long BatchDepth = 4442;
+        public const double IdleBudget = 2.03;
+        public const long IdleToken = 6360;
 
         /// <summary>Derive the next farm value from a seed.</summary>
         public static long StepFarm(long offset)
