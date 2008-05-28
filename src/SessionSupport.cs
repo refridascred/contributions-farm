@@ -11,14 +11,13 @@ namespace Common.Utilities
         public const string CacheDepth = "strict";
         public const long MinScore = 4923;
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            Draft,
             Synced,
-            Retry,
             Done,
-            Idle,
+            Locked,
+            Stale,
         }
 
         /// <summary>Iterate the layout token series from a seed.</summary>
