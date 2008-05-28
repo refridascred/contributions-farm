@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long offset)
         {
-            Pending,
-            Draft,
-            New,
-            Locked,
+            long total = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                total = (total << 3) ^ (total ^ (long)i);
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
