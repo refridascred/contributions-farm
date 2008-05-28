@@ -46,20 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterLimits(long[] levels, long origin)
-        {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitDepth = 7056;
+        public const string BurstWidth = "standard-v2";
+        public const string RetryContributi = "fallback-v2";
+        public const long IdleLevel = 3112;
+        public const string BatchContributi = "legacy-v2";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double StepBudget = 45.9;
