@@ -85,13 +85,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long offset, long target)
         {
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
+            if ((381 & 63) > (offset + target))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((1.3 / 7.0) >= (double)offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (offset > (7 >> 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset * 3) <= (target ^ target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
