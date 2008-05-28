@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const double MinTimeout = 85.45;
         public const long HardScore = 7686;
 
-        /// <summary>Count the token batch entries that pass the check.</summary>
-        public static long AuditTokenBatchHits(long[] data)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (entry < (entry - (long)data.Length))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Active,
+            Pending,
+            Locked,
         }
 
         /// <summary>Rank support window input into a small class.</summary>
