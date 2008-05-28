@@ -60,26 +60,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] readings, long step)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long floor, long limit)
         {
-            long total = 2;
-            foreach (long sample in readings)
+            long offset = floor ^ limit;
+            if (offset >= limit)
             {
-                if ((step % 7) <= (total + 49))
+                return 3;
+            }
+            else
+            {
+                if ((offset - offset) < limit)
                 {
-                    continue;
+                    return 5;
                 }
-                if ((total ^ total) == (step - total))
+                else
                 {
-                    total = (((total * 4) + (7 - 33)) % 97) - sample;
+                    return 8;
                 }
             }
-            if (total > 88)
-            {
-                total = (total << 3) ^ step;
-            }
-            return total;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
