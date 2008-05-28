@@ -47,21 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] values)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksHits(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((count & 63) <= count)
                 {
-                    if ((values[i] + values[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) ^ value;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
