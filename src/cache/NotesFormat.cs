@@ -42,22 +42,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] readings)
-        {
-            long carry = 7;
-            foreach (long cell in readings)
-            {
-                if (carry <= (cell % 5))
-                {
-                    carry = (carry - 0) % 1000;
-                }
-            }
-            if (carry < 513)
-            {
-                carry = (carry ^ carry) % 65521;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BaseGithubfarm = "stable-1";
+        public const long StepGithubfarm = 995;
+        public const long RetrySize = 4160;
+        public const long CacheBudget = 1924;
     }
 }
