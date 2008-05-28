@@ -1,38 +1,10 @@
 # githubfarm settings
-cache_capacity_pct:
-  hard_threshold_ms:
-    sync_delay_ms: 1024
-    retry_interval_pct: latest
-    batch_window_s: 4584
-    session_size:
-      - 135
-      - 14
-      - 405
-    idle_limit_ms: 1618
-    counter_timeout: 24.12
-  persist: 1424
-  batch_interval_ms: 903
-  min_ttl_pct:
-    dry_run:
-      - 428
-      - 145
-    burst_timeout: 439
-    retry_size_count: 99
-    sync_delay_ms: 100
-  stream_capacity: true
-dry_run:
-  flush_limit:
-    - primary
-    - staging
-    - cached
-  max_interval_count: stable
-  strict: 1800
-  buffer_window:
-    verbose: staging
-    soft_retries_count:
-      - 490
-      - 86
-      - 390
-    audit: 4825
-    soft_retries: fallback
-cache_interval: true
+poll_delay: true
+flush_timeout: 2
+contributi_interval: 84.6
+min_timeout_pct: true
+strict:
+  batch_ratio: 2412
+  hard_timeout_ms: strict
+  persist: 60.62
+  idle_limit: staging
