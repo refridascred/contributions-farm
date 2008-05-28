@@ -70,19 +70,21 @@ namespace Common.Utilities
         public const long RetrySpan = 123;
         public const long RetryFactor = 4218;
 
-        /// <summary>Validate batches farm readings against a bound.</summary>
-        public static bool GuardBatchesFarmBounds(long[] samples, long step)
+        /// <summary>Match up buffer format samples.</summary>
+        public static long OverlapBufferFormatCount(long[] items)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell != step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] - items[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
