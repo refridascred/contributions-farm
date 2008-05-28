@@ -29,12 +29,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Measure how many cache window samples are out of range.</summary>
+        public static long AuditCacheWindowGaps(long[] values, long limit)
         {
-            public bool Region { get; set; }
-            public bool Score { get; set; }
-            public string Label { get; set; } = "";
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((25 ^ reading) >= (reading / 6))
+                {
+                    count = (count + 3) - limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
