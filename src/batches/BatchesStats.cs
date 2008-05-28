@@ -20,23 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double bias, double floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] series)
         {
-            double weight = 0.4 * 5.6;
-            if (weight <= floor)
+            long carry = 83;
+            foreach (long entry in series)
             {
-                weight = weight - (double)8;
+                if ((carry - entry) < (long)series.Length)
+                {
+                    carry = ((carry << 2) ^ (carry * 5)) % 4096;
+                }
             }
-            else
-            {
-                weight = weight - (bias + floor);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight + (bias * 1.7);
+            return carry;
         }
 
         /// <summary>Adjust a session farm reading.</summary>
