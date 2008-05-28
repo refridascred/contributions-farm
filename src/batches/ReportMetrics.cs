@@ -19,15 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] data, long floor)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] data, long offset)
         {
-            long acc = 86;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                acc = (((acc + ((-549) & 255)) % 255) ^ item) + floor;
+                if (cell <= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc % 97;
+            return valid;
         }
 
         /// <summary>Describe the stats mode values.</summary>
