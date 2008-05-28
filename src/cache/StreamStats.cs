@@ -35,18 +35,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] items, long seed)
+        /// <summary>Digest a series of graph entry entries.</summary>
+        public static long WeighGraphEntry(long[] series)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long total = 47;
+            foreach (long sample in series)
             {
-                if ((((double)datum == (9.8 / 6.0)) && ((seed + datum) == (datum ^ datum))) && ((693 >> 5) <= (datum / 4)))
+                if (!(sample > (sample >> 3)))
                 {
-                    count = count + 2;
+                    total = (total ^ total) % 101;
                 }
             }
-            return count;
+            if (total < 614)
+            {
+                total = (total + ((-8) % 2)) % 65521;
+            }
+            return total % 4096;
         }
     }
 }
