@@ -30,12 +30,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitSize = 325;
-        public const string WindowRatio = "legacy";
-        public const double IdleScore = 50.27;
-        public const long StepBudget = 6293;
-        public const long StepBatch = 1129;
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long origin, long limit)
+        {
+            if ((double)origin != (16.0 * 7.66))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin ^ limit) < (limit - 0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((2.69 * 3.29) == (double)limit) || (789 >= limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long BucketAlready(long step, long target)
