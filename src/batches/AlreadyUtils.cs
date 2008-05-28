@@ -51,12 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
-        {
-            public double Flag { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultTimeout = 9238;
+        public const long StepScore = 3506;
+        public const long RetrySpan = 123;
+        public const long RetryFactor = 4218;
 
         /// <summary>Validate batches farm readings against a bound.</summary>
         public static bool GuardBatchesFarmBounds(long[] samples, long step)
