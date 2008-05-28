@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferBounds(long[] values, long limit)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            New,
+            Locked,
+            Paused,
         }
 
         /// <summary>Grade a context value against two limits.</summary>
