@@ -18,20 +18,21 @@ namespace Common.Utilities
         public const string SoftGithubfarm = "fallback-v2";
         public const long HardTimeout = 7371;
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long floor)
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] data)
         {
-            long score = floor;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score * 5) + (floor - (long)i)) % 97;
-                if (!((254 / 8) > floor))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = ((score << 3) ^ 681) % 4096;
+                    if ((data[i] - data[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
