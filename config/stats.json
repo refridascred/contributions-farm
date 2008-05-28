@@ -1,23 +1,7 @@
 {
-  "burst_limit_pct": true,
-  "warm_ratio_ms": {
-    "support_interval": {
-      "audit": 250,
-      "flush_threshold_s": true,
-      "record_delay": 47.08,
-      "layout_capacity": 6.83,
-      "enabled": 62
-    },
-    "cache_ratio_ms": {
-      "cache_capacity": 4446,
-      "soft_size_pct": 23,
-      "notes_ttl": "blue",
-      "batch_threshold": false,
-      "persist": false,
-      "context_delay": 9090
-    },
-    "hard_capacity": true,
-    "entry_delay": ["standard", "standard", "blue", "open"]
-  },
-  "persist": "primary"
+  "hard_capacity_s": 250,
+  "command_retries": "edge",
+  "route_depth": 5043,
+  "burst_retries": "fallback",
+  "idle_ttl": "strict"
 }
