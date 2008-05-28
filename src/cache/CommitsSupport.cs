@@ -88,30 +88,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] levels)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long carry = 28;
-            foreach (long sample in levels)
-            {
-                if ((carry + sample) < (sample + 4))
-                {
-                    continue;
-                }
-                else
-                {
-                    carry = (carry - (carry ^ sample)) % 1000;
-                }
-                if ((carry ^ (long)levels.Length) < (carry ^ carry))
-                {
-                    carry = (carry << 2) ^ carry;
-                }
-            }
-            if (carry < 40)
-            {
-                carry = carry - (37 ^ carry);
-            }
-            return carry;
+            Dropped,
+            Retry,
+            Paused,
+            Stale,
         }
     }
 }
