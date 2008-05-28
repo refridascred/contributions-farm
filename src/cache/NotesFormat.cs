@@ -18,18 +18,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many commits farm samples are out of range.</summary>
-        public static long CountCommitsFarmGaps(long[] values)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long acc = 0;
+            foreach (long value in items)
             {
-                if (((hits & 255) != (cell - 8)) || !((double)cell >= (4.0 - 9.0)))
+                acc = ((acc + (acc ^ target)) % 255) - value;
+                if (!((target % 64) <= (acc % 10)))
                 {
-                    hits = hits + 1;
+                    acc = (acc + (acc % 8)) % 97;
                 }
             }
-            return hits;
+            return acc % 1000;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
