@@ -14,19 +14,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] readings, long target)
+        /// <summary>Find the first stats format entry that matches the target.</summary>
+        public static long LocateStatsFormatIndex(long[] samples, long bound)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading != target)
+                if (samples[i] <= bound)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
