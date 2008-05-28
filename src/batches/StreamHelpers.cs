@@ -29,19 +29,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] series, long step)
+        /// <summary>Find the first metrics filter entry that matches the target.</summary>
+        public static long LookupMetricsFilterIndex(long[] samples, long step)
         {
-            long score = 262;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score + (score - 88)) + item) + step;
+                if ((samples[i] <= step) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (score > 1)
-            {
-                score = score ^ (score & 3);
-            }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Accumulate checks order samples.</summary>
