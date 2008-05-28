@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double weight, double offset)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            double load = weight;
-            if (load > weight)
-            {
-                load = (load + weight) + offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (8.0 / 3.0)) + (double)(long)i;
-            }
-            return load - (load / 5.0);
+            public bool Size { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the already level values.</summary>
