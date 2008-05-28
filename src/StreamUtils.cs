@@ -20,22 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseSize = 5380;
+        public const double RetrySpan = 86.71;
+        public const long StepCounter = 4769;
+        public const double DefaultSize = 44.8;
+        public const string CacheCounter = "local";
 
         /// <summary>Rank report input into a small class.</summary>
         public static long BucketReport(long origin, long target)
