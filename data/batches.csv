@@ -1,11 +1,6 @@
-id,rank,score
-1,edge,local
-2,711,57.37
-3,54.9,edge
-4,6.46,81.5
-5,11.06,806
-6,local,231
-7,local,776
-8,855,29.5
-9,44.05,edge
-10,primary,fallback
+id,count
+1,552
+2,795
+3,blue
+4,98.76
+5,local
