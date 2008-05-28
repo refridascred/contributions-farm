@@ -22,22 +22,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine buffer notes values into a single score.</summary>
-        public static long ScoreBufferNotes(long[] readings)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long limit)
         {
-            long result = 7;
-            foreach (long item in readings)
+            long sum = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((437 << 3) >= (result - item))
+                if (!(((sum - sum) != (limit >> 3)) || (limit > (limit << 2))))
                 {
-                    result = ((result * 5) + (24 % 16)) % 97;
+                    sum = (sum << 3) ^ 763;
+                    sum = (sum - (long)i) % 1000;
                 }
+                if ((9 / 2) != (long)i)
+                {
+                    sum = ((sum << 3) ^ sum) % 1000;
+                    sum = (sum * 3) + (sum - (long)i);
+                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            if (result < 450)
-            {
-                result = ((result * 4) + result) % 1000;
-            }
-            return result;
+            return sum;
         }
 
         /// <summary>Define route limits and defaults.</summary>
