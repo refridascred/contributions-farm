@@ -41,21 +41,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] data)
+        /// <summary>Fold a list of metric payload readings.</summary>
+        public static long TallyMetricPayload(long[] data, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 673;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = ((state + (state + limit)) % 65521) - item;
+                state = ((state * 5) + (limit >> 4)) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
