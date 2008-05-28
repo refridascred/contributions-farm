@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatOutliers(long[] samples)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (!(datum <= (hits - datum)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
