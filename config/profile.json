@@ -1,5 +1,17 @@
 {
-  "flush_limit": 78.87,
-  "cache_threshold_count": 60,
-  "compress": "cached"
+  "base_delay_pct": {
+    "idle_capacity_count": [106, 75],
+    "enabled": ["fallback", "local", "standard"],
+    "report_ratio": true
+  },
+  "enabled": {
+    "burst_capacity": ["legacy", "strict", "edge", "eu-west"],
+    "poll_delay": 62.71,
+    "command_size": "latest",
+    "poll_ttl_count": 23.46,
+    "audit": ["blue", "open", "strict", "local"],
+    "warm_timeout": 5.96
+  },
+  "hard_window": "strict",
+  "retry_threshold_s": [185, 43, 234, 406]
 }
