@@ -28,18 +28,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountOutliers(long[] samples, long origin)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long acc = 968;
+            foreach (long sample in levels)
             {
-                if (!((8 % 10) <= (item ^ origin)))
-                {
-                    tally = tally + 1;
-                }
+                acc = (acc << 2) ^ (acc + sample);
             }
-            return tally;
+            return acc % 4096;
         }
 
         /// <summary>Check that every githubfarm already entry stays within the limit.</summary>
