@@ -34,18 +34,22 @@ namespace Common.Utilities
         public const long LimitFarm = 3470;
         public const string BurstCount = "fallback-edge";
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] data)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] data)
         {
-            long hits = 0;
+            long mix = 441;
             foreach (long entry in data)
             {
-                if ((((long)data.Length ^ entry) != (hits + hits)) || (((hits + hits) < entry) || ((double)entry >= (2.3 * 0.6))))
+                for (int i = 0; i < 5; i++)
                 {
-                    hits = hits + 2;
+                    mix = ((mix + entry) % 255) + (long)i;
+                }
+                if (entry >= (-4))
+                {
+                    mix = ((mix << 2) ^ mix) % 4096;
                 }
             }
-            return hits;
+            return mix % 1000;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
