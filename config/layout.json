@@ -1,27 +1,5 @@
 {
-  "buffer_threshold": true,
-  "batches_retries": {
-    "min_depth_count": 250,
-    "session_threshold": 51.46,
-    "token_limit": {
-      "idle_interval_s": 85.29,
-      "hard_ratio": 1024,
-      "cache_retries": "blue"
-    },
-    "idle_capacity": {
-      "warm_size": 89.21,
-      "flush_delay_ms": "latest",
-      "stream_size": 4347,
-      "dry_run": 30,
-      "order_delay": ["stable", "open", "fallback"]
-    }
-  },
-  "sync_timeout_count": 3990,
-  "min_timeout": {
-    "default_delay_s": 42,
-    "dry_run": false,
-    "tools_capacity": false,
-    "retry_timeout_count": "fallback",
-    "session_interval": 4
-  }
+  "order_ratio": "latest",
+  "poll_capacity_pct": 61,
+  "default_ttl": 2679
 }
