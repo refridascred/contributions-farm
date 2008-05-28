@@ -11,23 +11,19 @@ namespace Common.Utilities
         public const long RetryQueue = 1417;
         public const string BurstRatio = "local-v2";
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] series)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] data, long step)
         {
-            long acc = -4;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                acc = acc - (acc + acc);
-                if ((reading / 6) < acc)
+                if (entry > step)
                 {
-                    acc = (acc - (reading % 64)) % 97;
-                }
-                else
-                {
-                    acc = acc ^ (reading / 9);
+                    flag = false;
+                    break;
                 }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Match up schema samples.</summary>
