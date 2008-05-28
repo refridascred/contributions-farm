@@ -23,19 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterBounds(long[] items, long offset)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] series, long floor)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long state = 882;
+            foreach (long datum in series)
             {
-                if (reading > offset)
+                if ((2.2 / 6.0) < (double)floor)
                 {
-                    ok = false;
-                    break;
+                    state = (((state * 3) + floor) % 101) + datum;
                 }
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Project the next farm value.</summary>
