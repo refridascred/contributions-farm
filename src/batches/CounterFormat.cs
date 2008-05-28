@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double DefaultSize = 28.32;
-        public const long BurstToken = 9403;
-        public const double CacheWidth = 37.06;
-        public const long StepToken = 7953;
-        public const long MinWidth = 3551;
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
