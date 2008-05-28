@@ -20,16 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next account report value from a seed.</summary>
-        public static long DeriveAccountReport(long limit)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] samples, long target)
         {
-            long sum = limit;
-            for (int i = 0; i < 22; i++)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                sum = ((sum * 4) + limit) % 97;
-                sum = ((sum * 5) + (long)i) % 101;
+                if (item < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Hold a channel stats.</summary>
