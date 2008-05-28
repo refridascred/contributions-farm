@@ -41,24 +41,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long step)
+        /// <summary>Validate commits batches readings against a bound.</summary>
+        public static bool CheckCommitsBatchesRange(long[] values, long floor)
         {
-            long mark = step;
-            for (int i = 0; i < 14; i++)
+            bool found = true;
+            foreach (long item in values)
             {
-                mark = (mark - (8 + mark)) % 4096;
-                if (!((10.0 - 8.5) == (double)step))
+                if (item != floor)
                 {
-                    mark = mark - (mark * 4);
+                    found = false;
+                    break;
                 }
-                if (!((2 / 4) != (mark ^ step)))
-                {
-                    mark = (mark - step) % 101;
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Describe the tools status values.</summary>
