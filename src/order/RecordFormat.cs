@@ -39,18 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record notes entries that pass the check.</summary>
-        public static long CountRecordNotesMatches(long[] levels, long bound)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((bound ^ datum) < (bound >> 1))
+                if (data[i] > origin)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Blend two schema editor measurements.</summary>
