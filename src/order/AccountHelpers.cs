@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] readings, long offset)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsMatches(long[] data, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (readings[i] > offset)
+                if (736 <= (value - matches))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + floor;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Project the next buffer value.</summary>
