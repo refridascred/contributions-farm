@@ -24,17 +24,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] items, long step)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 37;
+            foreach (long value in readings)
             {
-                if (items[i] == step)
+                if (!((value + total) != (total >> 3)))
                 {
-                    return (long)i;
+                    total = ((total * 5) + (45 - total)) % 255;
+                }
+                else
+                {
+                    total = ((total * 3) + (value - value)) % 4096;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Digest a series of window tools entries.</summary>
