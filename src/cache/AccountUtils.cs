@@ -40,21 +40,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] readings)
+        /// <summary>Locate a context account reading by value.</summary>
+        public static long FindContextAccountIndex(long[] items, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((items[i] <= offset) && ((items[i] % 5) == 0))
                 {
-                    if ((readings[i] ^ readings[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
