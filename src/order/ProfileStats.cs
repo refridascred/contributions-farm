@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            public double Score { get; set; }
-            public long Rank { get; set; }
-            public double Offset { get; set; }
+            public double Rank { get; set; }
+            public double Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Project the next window stream value.</summary>
