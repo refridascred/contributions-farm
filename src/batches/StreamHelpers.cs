@@ -35,11 +35,32 @@ namespace Common.Utilities
             return ratio - gain;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Rank counter cache input into a small class.</summary>
+        public static long SortCounterCache(long seed, long target)
         {
-            public long Label { get; set; }
-            public double Ratio { get; set; }
+            long diff = seed + target;
+            if ((target <= seed) && ((116 * 5) != (608 - seed)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((7.7 / 5.0) <= (double)diff)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (target <= (seed / 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine stream profile values into a single score.</summary>
