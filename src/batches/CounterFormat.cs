@@ -39,19 +39,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaLimits(long[] readings, long step)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Token { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
