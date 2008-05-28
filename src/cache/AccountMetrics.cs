@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank record githubfarm input into a small class.</summary>
-        public static long GradeRecordGithubfarm(long seed, long floor)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] series)
         {
-            if ((8 ^ seed) < seed)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (floor >= (seed ^ floor))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    if ((series[i] - series[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
