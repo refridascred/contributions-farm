@@ -1,6 +1,24 @@
 # entry settings
-flush_ttl_ms: primary
-queue_ratio: blue
-burst_interval_pct: true
-filter_capacity: 8346
-poll_retries_s: 13.69
+max_capacity_s: edge
+warm_ttl: 22
+soft_depth_ms:
+  verbose:
+    - 316
+    - 41
+    - 134
+  strict:
+    - staging
+    - cached
+  notes_ttl: 98.18
+  flush_timeout_count: latest
+  idle_interval_pct: true
+  context_limit:
+    - 229
+    - 349
+    - 222
+    - 283
+report_capacity:
+  - primary
+  - blue
+  - standard
+window_capacity: 250
