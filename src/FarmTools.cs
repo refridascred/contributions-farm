@@ -40,38 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long limit, long bound)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long PairQueueCount(long[] items)
         {
-            if (!((bound * 4) <= (bound - bound)))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (bound >= (bound << 2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound ^ bound) >= (323 >> 5))
+                    if ((items[i] - items[j]) > 16)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit + limit) <= 3)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
