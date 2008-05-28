@@ -48,11 +48,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] values, long seed)
         {
-            public string Offset { get; set; } = "";
-            public double Score { get; set; }
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
