@@ -44,11 +44,18 @@ namespace Common.Utilities
         public const double IdleRatio = 33.4;
         public const string BurstMetrics = "strict";
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamGaps(long[] series)
         {
-            public bool Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (761 < (tally * 3))
+                {
+                    tally = (tally + 3) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
