@@ -48,12 +48,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
-            public double Stamp { get; set; }
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the batch state values.</summary>
