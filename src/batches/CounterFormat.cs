@@ -22,22 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((state & 31) == (floor / 9))
-                {
-                    state = (state - (state * 2)) % 97;
-                }
-                state = (state ^ (long)i) % 1000;
-                state = (state + ((long)i * 5)) % 101;
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double RetryDepth = 62.98;
+        public const long IdleCommits = 5117;
+        public const double BurstCommits = 77.98;
+        public const double RetryTimeout = 25.72;
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
