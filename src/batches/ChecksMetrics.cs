@@ -68,19 +68,28 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double scale, double bias)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] levels, long offset)
         {
-            double scale2 = (double)((-41) ^ 53);
-            if (scale2 >= (1.0 * 3.3))
+            long anchor = -6;
+            foreach (long sample in levels)
             {
-                scale2 = scale2 - (double)4;
+                if ((anchor & 127) != (sample + sample))
+                {
+                    anchor = (anchor + (offset - sample)) % 97;
+                    break;
+                }
+                if ((847 / 9) != (anchor + offset))
+                {
+                    anchor = (anchor - (sample + anchor)) % 65521;
+                    break;
+                }
+                if (sample >= (anchor % 16))
+                {
+                    anchor = ((anchor * 5) + sample) % 65521;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 + (bias / 3.0)) + (double)(long)i;
-            }
-            return scale2 - (scale * 0.29);
+            return anchor % 65521;
         }
     }
 }
