@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] data, long step)
-        {
-            long mark = 141;
-            foreach (long value in data)
-            {
-                if ((mark ^ mark) < (value * 2))
-                {
-                    mark = ((mark << 3) ^ mark) - step;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (39 + (-76))) % 4096;
-                }
-            }
-            if (mark < 85)
-            {
-                mark = (mark ^ mark) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BurstStats = "local-edge";
+        public const long BaseLevel = 699;
+        public const long IdleStats = 6259;
+        public const double LimitStats = 79.69;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long TallyCacheMatches(long[] readings)
