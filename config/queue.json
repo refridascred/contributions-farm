@@ -1,10 +1,14 @@
 {
-  "batch_threshold_count": "staging",
-  "format_size": 41.46,
-  "flush_capacity_s": {
-    "account_limit": "fallback",
-    "sync_interval_pct": 44,
-    "persist": 34.84,
-    "buffer_interval": false
-  }
+  "default_interval_pct": {
+    "profile_threshold": "staging",
+    "hard_delay": "fallback",
+    "editor_ttl": "eu-west",
+    "metrics_depth": "eu-west",
+    "enabled": false
+  },
+  "dry_run": ["eu-west", "blue", "staging"],
+  "idle_depth_pct": [411, 213, 173, 64],
+  "order_timeout": 80,
+  "cache_limit": [71, 132, 304, 332],
+  "batches_ratio": [363, 121, 77]
 }
