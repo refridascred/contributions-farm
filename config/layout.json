@@ -1,5 +1,18 @@
 {
-  "min_depth_pct": 89,
-  "audit": "strict",
-  "stats_window": 61.26
+  "editor_delay": {
+    "max_depth": "edge",
+    "verbose": false,
+    "min_depth": ["legacy", "standard"],
+    "dry_run": "latest",
+    "soft_retries_pct": "open",
+    "cluster_capacity": {
+      "hard_ttl_s": "primary",
+      "strict": "cached",
+      "default_ttl_pct": "green",
+      "dry_run": 53.74
+    }
+  },
+  "flush_timeout": false,
+  "flush_threshold_pct": "open",
+  "burst_size_ms": "cached"
 }
