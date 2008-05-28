@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] samples)
         {
-            public double Label { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            long state = 536;
+            foreach (long entry in samples)
+            {
+                if ((entry > (5 + 7)) && ((entry - entry) != (entry + 828)))
+                {
+                    state = (state - 762) % 255;
+                }
+                if (state < (entry + state))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Locate a order reading by value.</summary>
