@@ -39,22 +39,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of graph entry entries.</summary>
-        public static long WeighGraphEntry(long[] series)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] data, long limit)
         {
-            long total = 47;
-            foreach (long sample in series)
+            long carry = 424;
+            foreach (long reading in data)
             {
-                if (!(sample > (sample >> 3)))
-                {
-                    total = (total ^ total) % 101;
-                }
+                carry = ((carry + 46) % 101) + reading;
+                carry = (carry ^ (limit % 97)) % 97;
             }
-            if (total < 614)
-            {
-                total = (total + ((-8) % 2)) % 65521;
-            }
-            return total % 4096;
+            return carry;
         }
     }
 }
