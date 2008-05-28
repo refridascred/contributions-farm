@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseRatio = 66.12;
+        public const long MaxMetric = 3960;
+        public const long IdleFactor = 6545;
+        public const long SoftMetric = 403;
+        public const long MinMetric = 4516;
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
