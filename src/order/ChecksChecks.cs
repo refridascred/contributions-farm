@@ -33,26 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long offset, long limit)
-        {
-            long bound = offset - limit;
-            if ((double)limit <= (6.0 * 0.2))
-            {
-                return 0;
-            }
-            else
-            {
-                if (offset < bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetryTimeout = 9848;
+        public const long BurstTimeout = 366;
+        public const long BurstSchema = 9489;
+        public const long IdleSchema = 5426;
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
