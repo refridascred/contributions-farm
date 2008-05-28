@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every cluster editor entry stays within the limit.</summary>
-        public static bool VerifyClusterEditorBounds(long[] values, long origin)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Queued,
+            Dropped,
+            Done,
         }
 
         /// <summary>Fold a list of order readings.</summary>
