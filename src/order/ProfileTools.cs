@@ -50,11 +50,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BurstSpan = 26.97;
-        public const long BatchDepth = 4442;
-        public const double IdleBudget = 2.03;
-        public const long IdleToken = 6360;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BatchWidth = 30.66;
+        public const long BaseEditor = 6010;
+        public const long BatchSize = 7261;
 
         /// <summary>Derive the next farm value from a seed.</summary>
         public static long StepFarm(long offset)
