@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
-        {
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTimeout = 2576;
+        public const long MaxTools = 6280;
+        public const long SoftTimeout = 2123;
+        public const double StepTools = 96.55;
 
         /// <summary>Project the next cache value.</summary>
         public static double ScaleCache(double scale, double offset)
