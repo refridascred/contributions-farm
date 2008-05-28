@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] samples, long target)
+        /// <summary>Accumulate counter stream samples.</summary>
+        public static long FoldCounterStream(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long mix = -2;
+            foreach (long item in data)
             {
-                if ((3 + reading) > (reading + reading))
+                if ((mix & 31) > (item ^ mix))
                 {
-                    hits = (hits + 3) + target;
+                    mix = ((mix * 5) + ((long)data.Length ^ item)) % 4096;
                 }
             }
-            return hits;
+            if (mix > 651)
+            {
+                mix = mix - (mix & 255);
+            }
+            return mix;
         }
 
         /// <summary>Locate a payload checks reading by value.</summary>
