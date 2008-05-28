@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the stats cache entries that pass the check.</summary>
-        public static long TallyStatsCacheHits(long[] data, long seed)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] data, long origin)
         {
-            long matches = 0;
+            long count = 0;
             foreach (long cell in data)
             {
-                if (matches > (matches + matches))
+                if ((origin - 82) <= origin)
                 {
-                    matches = ((matches + 3) ^ cell) + seed;
+                    count = (count + 1) + cell;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
