@@ -19,10 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftTimeout = 6899;
-        public const long CacheSize = 6796;
-        public const long DefaultSize = 9493;
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = (mark + (long)i) % 97;
+                mark = (mark + offset) % 65521;
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
