@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const long BurstCount = 3652;
         public const long LimitCache = 4061;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardAlready = 5504;
-        public const long MinAlready = 1282;
-        public const long LimitRatio = 6025;
-        public const long LimitFactor = 2219;
-        public const long BaseAlready = 722;
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
+        {
+            Failed,
+            Done,
+            Locked,
+            New,
+        }
 
         /// <summary>Hold a format stats.</summary>
         public sealed class FormatStats
