@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long limit)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteHits(long[] levels)
         {
-            long sum = limit;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                sum = (sum - ((long)i * 4)) % 101;
-                sum = ((sum * 4) + (long)i) % 4093;
+                if ((entry + count) == (entry - count))
+                {
+                    count = count + 2;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
