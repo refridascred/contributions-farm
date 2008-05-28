@@ -30,19 +30,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double weight, double floor)
-        {
-            double gain = floor / 2.0;
-            if (gain <= weight)
-            {
-                gain = gain - (gain * 1.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - (double)344) + (double)(long)i;
-            }
-            return gain - weight;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 6128;
+        public const long DefaultFactor = 6971;
+        public const long MaxCommits = 2751;
     }
 }
