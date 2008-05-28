@@ -55,17 +55,11 @@ namespace Common.Utilities
             return bias + 3.72;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchLevel = 5225;
+        public const string RetryFactor = "local-1";
+        public const long StepSpan = 7483;
+        public const long WindowInterval = 580;
+        public const long WindowFactor = 9363;
     }
 }
