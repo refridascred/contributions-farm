@@ -26,22 +26,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] levels)
-        {
-            long carry = 733;
-            foreach (long value in levels)
-            {
-                if ((carry & 255) > carry)
-                {
-                    carry = carry ^ value;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (carry / 9)) % 4096;
-                }
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 8212;
+        public const long RetrySpan = 8160;
+        public const double CacheCommits = 97.9;
     }
 }
