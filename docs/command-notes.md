@@ -1,11 +1,11 @@
 # Command notes
 
-The account helpers are pure functions, so they are safe to call from any thread.
-The payload module keeps farm values in sync with the profile cache.
-The githubfarm module keeps route values in sync with the format cache.
+Use farm settings to tune how often profile data is refreshed.
+The stats module keeps cache values in sync with the cluster cache.
 
 ## Guidelines
 
-- Document new buffer fields
-- Review graph limits each release
-- Prefer report defaults
+- Document new stats fields
+- Log every session change
+- Keep channel values small
+- Validate notes input early
