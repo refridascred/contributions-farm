@@ -48,17 +48,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] values, long origin)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long offset, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (9.0 <= (double)offset)
             {
-                if (values[i] > origin)
+                return 3;
+            }
+            else
+            {
+                if (((offset % 7) < 4) && (354 > (49 - offset)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((18.0 > (double)offset) && ((bound ^ offset) < (offset + bound)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((bound / 7) != (offset + offset)) || (bound < (1 << 3)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
