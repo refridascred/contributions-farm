@@ -44,19 +44,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] series, long origin)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderMatches(long[] series, long floor)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (item != origin)
+                if (floor >= (cell - cell))
                 {
-                    ok = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
