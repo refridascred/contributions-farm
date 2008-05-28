@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] series, long seed)
+        /// <summary>Classify a route session pair into a bucket.</summary>
+        public static long RankRouteSession(long step, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long delta = step + offset;
+            if (97 < (offset >> 5))
             {
-                if (series[i] < seed)
+                return 2;
+            }
+            else
+            {
+                if (((4.84 - 1.0) >= (double)delta) && ((step << 3) < delta))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((delta - delta) >= (9 + offset)) && ((double)delta == (20.0 * 8.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first batches order entry that matches the target.</summary>
