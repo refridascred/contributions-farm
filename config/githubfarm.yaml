@@ -1,12 +1,32 @@
 # githubfarm settings
-batch_retries_s:
-  - stable
-  - legacy
-batches_capacity: 4899
-poll_limit_ms: 89.18
+base_delay_ms:
+  - 71
+  - 87
+  - 293
+  - 353
 verbose: true
-idle_depth_ms: staging
-retry_interval:
-  - 109
-  - 57
-  - 91
+batch_delay_ms:
+  buffer_threshold:
+    - stable
+    - eu-west
+    - latest
+    - fallback
+  metric_timeout: true
+  report_window:
+    readonly: latest
+    notes_ratio:
+      - green
+      - eu-west
+      - blue
+    dry_run: false
+  persist: legacy
+  burst_limit_pct: standard
+  retry_limit_count:
+    - local
+    - primary
+    - strict
+    - green
+githubfarm_size:
+  - staging
+  - fallback
+idle_timeout: eu-west
