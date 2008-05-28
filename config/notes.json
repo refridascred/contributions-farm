@@ -1,5 +1,8 @@
 {
-  "soft_retries_ms": 16,
-  "cache_ratio_s": ["standard", "blue"],
-  "max_size_s": 21.44
+  "max_size_count": "cached",
+  "batch_capacity_count": "staging",
+  "soft_ratio": 7808,
+  "order_window": "strict",
+  "sync_window_count": 30,
+  "idle_limit": 44.9
 }
