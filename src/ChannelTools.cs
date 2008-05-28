@@ -31,15 +31,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardLevel = 2056;
+        public const long BatchCount = 3548;
+        public const long RetryBatch = 5505;
     }
 }
