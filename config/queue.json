@@ -1,5 +1,20 @@
 {
-  "warm_depth_count": "local",
-  "readonly": 60,
-  "warm_capacity_s": "local"
+  "base_ratio_s": 100,
+  "layout_ratio": true,
+  "idle_ttl_pct": "legacy",
+  "window_limit": 43.14,
+  "profile_retries": 16,
+  "tools_delay": {
+    "command_timeout": "open",
+    "audit": true,
+    "compress": true,
+    "batch_depth_pct": {
+      "soft_retries": "eu-west",
+      "metric_timeout": "local",
+      "base_ttl": "standard",
+      "enabled": false
+    },
+    "sync_depth_pct": 30.55,
+    "soft_window_pct": 35
+  }
 }
