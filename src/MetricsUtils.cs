@@ -35,36 +35,28 @@ namespace Common.Utilities
         public const long WindowRatio = 7078;
         public const string DefaultScore = "fallback";
 
-        /// <summary>Rank graph order input into a small class.</summary>
-        public static long RankGraphOrder(long origin, long limit)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long limit, long target)
         {
-            long offset = origin + limit;
-            if ((56 >> 2) < limit)
+            if ((limit + target) <= (limit + 4))
             {
-                return 8;
+                return 4;
             }
             else
             {
-                if ((offset + limit) == (limit & 63))
+                if (((103 * 2) == (limit / 7)) && ((9.8 - 8.0) <= (double)limit))
                 {
-                    return 3;
+                    return 0;
                 }
                 else
                 {
-                    if ((origin - (-3)) <= (origin + 864))
+                    if ((target - limit) > (79 / 3))
                     {
-                        return 2;
+                        return 8;
                     }
                     else
                     {
-                        if ((10.0 * 20.0) == (double)limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        return 6;
                     }
                 }
             }
