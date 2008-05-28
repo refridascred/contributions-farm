@@ -34,19 +34,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] data)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] series, long step)
         {
-            long sum = -75;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long value in series)
             {
-                sum = (sum ^ (datum * 4)) % 1000;
+                if (((value + 89) >= matches) && !((1.67 * 2.2) >= (double)step))
+                {
+                    matches = matches + 1;
+                }
             }
-            if (sum > 27)
-            {
-                sum = (sum + (95 << 3)) % 1000;
-            }
-            return sum % 97;
+            return matches;
         }
 
         /// <summary>Check that every githubfarm already entry stays within the limit.</summary>
