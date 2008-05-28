@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long limit)
         {
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
-            public double Stamp { get; set; }
+            long total = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                total = (total - (83 - (long)i)) % 65521;
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Define session limits and defaults.</summary>
