@@ -63,13 +63,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            Dropped,
-            Retry,
-            Paused,
-            Stale,
+            Active,
+            Idle,
+            Closed,
+            Queued,
+            New,
         }
     }
 }
