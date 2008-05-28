@@ -27,11 +27,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double BlendSchema(double ratio, double bias)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] readings, long floor)
         {
-            double drift = (double)(9 >> 1);
-            return ((drift - (7.6 / 8.0)) + ratio) + bias;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
