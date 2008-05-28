@@ -29,13 +29,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
-        {
-            Synced,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleTimeout = 888;
+        public const long LimitFarm = 3470;
+        public const string BurstCount = "fallback-edge";
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long TotalChecks(long[] data)
