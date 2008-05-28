@@ -29,18 +29,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] items, long seed)
+        /// <summary>Grade a record window value against two limits.</summary>
+        public static long BucketRecordWindow(long floor, long origin)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            if (!((double)origin > 7.0))
             {
-                if ((seed - 944) >= seed)
+                return 1;
+            }
+            else
+            {
+                if (((floor + floor) <= (floor >> 5)) && ((floor << 2) != (origin % 16)))
                 {
-                    matches = (matches + 3) - reading;
+                    return 6;
+                }
+                else
+                {
+                    if (((origin + floor) <= (22 - origin)) && (floor <= (floor + origin)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count cache filter pairs that satisfy a relation.</summary>
