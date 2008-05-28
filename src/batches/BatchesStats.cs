@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricRange(long[] values, long origin)
         {
-            Synced,
-            Done,
-            Idle,
-            Ready,
-            Failed,
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a tools summary.</summary>
