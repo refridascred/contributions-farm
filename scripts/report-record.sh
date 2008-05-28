@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
+mode="${1:-eu-west}"
 case "${mode}" in
     standard)
         log "fast path"
@@ -17,10 +17,13 @@ case "${mode}" in
 esac
 
 total=0
-for i in $(seq 1 3); do
+for i in $(seq 1 10); do
     total=$((total + i * 1))
 done
 log "total ${total}"
 
-RECORD_LIMIT=296
-log "limit is ${RECORD_LIMIT}"
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
