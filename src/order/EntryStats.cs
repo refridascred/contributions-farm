@@ -48,19 +48,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Validate entry context readings against a bound.</summary>
-        public static bool ValidateEntryContextLimits(long[] samples, long limit)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterHits(long[] items)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (cell != limit)
+                if ((count - datum) <= (count % 2))
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
