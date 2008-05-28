@@ -67,19 +67,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] data, long limit)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long total = 785;
-            foreach (long datum in data)
-            {
-                total = (((total << 2) ^ limit) % 65521) - datum;
-                if ((total & 31) >= (limit >> 2))
-                {
-                    break;
-                }
-            }
-            return total;
+            public bool Offset { get; set; }
+            public long Region { get; set; }
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
