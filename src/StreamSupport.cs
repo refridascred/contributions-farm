@@ -17,10 +17,11 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string IdleMetric = "cached-v2";
-        public const string CacheMetric = "alpha-edge";
-        public const long BatchSpan = 502;
-        public const long StepRatio = 1756;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string LimitSpan = "stable";
+        public const double MinRatio = 59.95;
+        public const long MaxPayload = 1349;
+        public const long IdleLevel = 6830;
+        public const string CacheInterval = "strict-1";
     }
 }
