@@ -22,15 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] items)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long result = 21;
-            foreach (long datum in items)
-            {
-                result = ((result << 2) ^ (datum ^ 4)) % 1000;
-            }
-            return result;
+            Dropped,
+            Closed,
+            Pending,
+            Locked,
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
