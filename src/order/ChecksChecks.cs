@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const long RetryFarm = 7996;
         public const double BatchDepth = 63.97;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double CacheCluster = 9.96;
-        public const long MaxScore = 4559;
-        public const string HardCluster = "local-1";
-        public const long BurstWidth = 2265;
-        public const long MinSpan = 3073;
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] items, long bound)
+        {
+            long mark = 630;
+            foreach (long datum in items)
+            {
+                mark = mark ^ (bound + datum);
+                mark = ((mark * 5) + bound) % 101;
+            }
+            return mark % 97;
+        }
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
