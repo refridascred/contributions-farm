@@ -21,18 +21,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many entry cache samples are out of range.</summary>
-        public static long AuditEntryCacheMatches(long[] samples)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)hits <= 2.5)
-                {
-                    hits = (hits + 1) + reading;
-                }
-            }
-            return hits;
+            public double Weight { get; set; }
+            public long Total { get; set; }
         }
     }
 }
