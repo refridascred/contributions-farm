@@ -1,13 +1,13 @@
 {
-  "warm_threshold": "local",
-  "hard_ratio_ms": ["local", "local"],
-  "soft_limit_pct": {
-    "audit": true,
-    "batch_size_pct": 4522,
-    "max_ttl": 40,
-    "idle_threshold": 1024,
-    "max_delay": 42.04,
-    "burst_ttl_pct": 47
+  "account_size": 55,
+  "cache_window": "stable",
+  "hard_ttl_s": ["stable", "edge", "latest"],
+  "context_interval": 90,
+  "cache_window_count": {
+    "burst_depth": 3749,
+    "report_limit": "fallback",
+    "hard_window": "fallback",
+    "poll_capacity": 64.8
   },
-  "warm_timeout_count": "blue"
+  "session_size": 81.18
 }
