@@ -29,11 +29,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 6867;
-        public const long StepRatio = 5543;
-        public const long BatchTools = 7834;
-        public const long RetryTools = 5335;
+        /// <summary>Validate githubfarm format readings against a bound.</summary>
+        public static bool ValidateGithubfarmFormatLimits(long[] series, long offset)
+        {
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Project the next farm value.</summary>
         public static double BlendFarm(double gain, double floor)
