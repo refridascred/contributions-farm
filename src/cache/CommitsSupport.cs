@@ -63,11 +63,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public string Score { get; set; } = "";
-            public double Rank { get; set; }
+            Idle,
+            Paused,
+            Draft,
         }
 
         /// <summary>Describe the route state values.</summary>
