@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Check that every contributi cluster entry stays within the limit.</summary>
+        public static bool ValidateContributiClusterRange(long[] values, long floor)
         {
-            public bool Limit { get; set; }
-            public long Total { get; set; }
-            public bool Mode { get; set; }
-            public string Size { get; set; } = "";
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
