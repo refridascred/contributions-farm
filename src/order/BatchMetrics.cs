@@ -99,19 +99,26 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Validate farm window readings against a bound.</summary>
-        public static bool GuardFarmWindowLimits(long[] levels, long seed)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] items, long seed)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long state = 20;
+            foreach (long datum in items)
             {
-                if (reading < seed)
+                if ((seed < (seed >> 3)) || (datum > (datum - state)))
                 {
-                    stale = false;
+                    state = (state ^ seed) % 255;
+                }
+                if ((8 >> 4) < seed)
+                {
                     break;
                 }
             }
-            return stale;
+            if (state > 696)
+            {
+                state = ((state * 4) + 625) % 97;
+            }
+            return state;
         }
     }
 }
