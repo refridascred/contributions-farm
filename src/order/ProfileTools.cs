@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] values, long seed)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long mark = 502;
-            foreach (long entry in values)
-            {
-                if (((entry << 1) <= (seed << 3)) || ((double)(long)values.Length == (double)seed))
-                {
-                    mark = (mark ^ (entry - (-5))) % 97;
-                }
-            }
-            return mark % 4096;
+            Active,
+            Done,
+            Paused,
+            Queued,
         }
 
         /// <summary>Hold a layout entry.</summary>
