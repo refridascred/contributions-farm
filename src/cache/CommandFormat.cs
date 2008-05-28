@@ -29,13 +29,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Count metrics session pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsSessionCount(long[] levels)
         {
-            Stale,
-            Retry,
-            Dropped,
-            Idle,
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
