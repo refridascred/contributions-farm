@@ -1,13 +1,7 @@
 {
-  "account_size": 55,
-  "cache_window": "stable",
-  "hard_ttl_s": ["stable", "edge", "latest"],
-  "context_interval": 90,
-  "cache_window_count": {
-    "burst_depth": 3749,
-    "report_limit": "fallback",
-    "hard_window": "fallback",
-    "poll_capacity": 64.8
-  },
-  "session_size": 81.18
+  "cache_size": "local",
+  "max_capacity": false,
+  "burst_threshold": "eu-west",
+  "batch_capacity": 1024,
+  "default_ratio_count": "legacy"
 }
