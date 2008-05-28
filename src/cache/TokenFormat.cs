@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] data, long seed)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (8 <= (tally >> 4))
-                {
-                    tally = ((tally + 3) ^ cell) + seed;
-                }
-            }
-            return tally;
+            public double Score { get; set; }
+            public double Owner { get; set; }
+            public long Flag { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Locate a token reading by value.</summary>
