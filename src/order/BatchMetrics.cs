@@ -75,18 +75,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] readings, long step)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((count + (-8)) == (count * 5))
-                {
-                    count = ((count + 1) + cell) + step;
-                }
-            }
-            return count;
+            public double Rank { get; set; }
+            public double Limit { get; set; }
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
