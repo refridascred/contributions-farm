@@ -10,11 +10,12 @@ namespace Common.Utilities
         public const long WindowAlready = 6258;
         public const long LimitAlready = 5225;
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            public bool Limit { get; set; }
-            public double Count { get; set; }
+            public bool Owner { get; set; }
+            public string Level { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
