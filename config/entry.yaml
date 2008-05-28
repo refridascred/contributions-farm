@@ -1,7 +1,12 @@
 # entry settings
-sync_limit:
-  - local
-  - stable
-  - latest
-verbose: false
-payload_capacity: 9113
+order_ratio:
+  hard_retries_pct: 93.67
+  warm_ratio: 6185
+  burst_window_ms: 8
+  poll_window: true
+  warm_window_pct: true
+max_limit_s: primary
+sync_ttl_pct: staging
+soft_capacity: 100
+hard_window: 65.14
+retry_ratio_count: false
