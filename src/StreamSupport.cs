@@ -34,14 +34,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double rate, double span)
         {
-            Stale,
-            Done,
-            Idle,
-            Draft,
-            Failed,
+            double bias = (double)(-1) - rate;
+            if (bias < bias)
+            {
+                bias = (bias + 10.0) - span;
+            }
+            return bias + 4.03;
         }
     }
 }
