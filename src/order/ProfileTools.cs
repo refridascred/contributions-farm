@@ -18,19 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesLimits(long[] data, long step)
+        /// <summary>Classify a buffer contributi pair into a bucket.</summary>
+        public static long ClassifyBufferContributi(long bound, long offset)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long cur = bound + offset;
+            if ((offset >> 5) >= cur)
             {
-                if (sample < step)
+                return 3;
+            }
+            else
+            {
+                if ((cur % 64) != (cur >> 3))
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (454 > cur)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (bound > (bound + bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
