@@ -1,8 +1,13 @@
 {
-  "enabled": 70.33,
-  "warm_ttl_s": 1274,
-  "hard_ttl": ["stable", "edge", "primary"],
-  "session_capacity": true,
-  "readonly": "cached",
-  "warm_limit_count": 95
+  "checks_interval": 500,
+  "idle_ratio_ms": {
+    "channel_retries": 66,
+    "batch_timeout_s": "staging",
+    "stream_delay": false,
+    "enabled": false,
+    "base_delay_count": [393, 461],
+    "context_threshold": ["primary", "open", "eu-west", "fallback"]
+  },
+  "commits_interval": 1024,
+  "base_capacity_s": false
 }
