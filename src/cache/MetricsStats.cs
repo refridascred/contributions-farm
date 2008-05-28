@@ -21,12 +21,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            public double Count { get; set; }
-            public double Token { get; set; }
-            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public double Label { get; set; }
+            public double Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Project the next payload value.</summary>
