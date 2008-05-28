@@ -19,11 +19,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MaxLevel = 9.46;
-        public const long LimitFactor = 4967;
-        public const string MaxWidth = "primary-edge";
-        public const long BurstSession = 1487;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] readings)
+        {
+            long score = 64;
+            foreach (long item in readings)
+            {
+                score = (score - score) % 1000;
+                if ((3.5 + 17.0) >= (double)score)
+                {
+                    score = score ^ (item + item);
+                }
+                else
+                {
+                    score = ((score << 3) ^ (item + score)) % 4096;
+                }
+            }
+            if (score > 79)
+            {
+                score = score ^ 96;
+            }
+            return score;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double HardWindow = 35.54;
