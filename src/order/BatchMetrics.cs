@@ -64,19 +64,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every githubfarm already entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmAlreadyRange(long[] levels, long step)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] items, long target)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long mix = 5;
+            foreach (long item in items)
             {
-                if (item >= step)
+                if ((mix >> 2) >= mix)
                 {
-                    ok = false;
-                    break;
+                    mix = (((mix + mix) % 97) ^ item) - target;
                 }
             }
-            return ok;
+            if (mix > 24)
+            {
+                mix = mix + (44 % 64);
+            }
+            return mix;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
