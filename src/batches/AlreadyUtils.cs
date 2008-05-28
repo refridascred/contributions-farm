@@ -51,18 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] data)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long mark = 3;
-            foreach (long value in data)
-            {
-                if ((778 / 8) < (mark - value))
-                {
-                    mark = (mark - (mark & 31)) % 4096;
-                }
-            }
-            return mark % 1000;
+            public double Flag { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the cache state values.</summary>
