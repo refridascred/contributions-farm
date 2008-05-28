@@ -44,18 +44,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many contributi githubfarm samples are out of range.</summary>
-        public static long AuditContributiGithubfarmMatches(long[] readings, long offset)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long step)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long acc = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (offset > (cell ^ tally))
-                {
-                    tally = tally + 3;
-                }
+                acc = (acc * 3) + (long)i;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Hold a profile stats.</summary>
