@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate schema command samples.</summary>
-        public static long DigestSchemaCommand(long[] values, long offset)
-        {
-            long sum = 15;
-            foreach (long datum in values)
-            {
-                if ((sum ^ offset) >= (sum / 3))
-                {
-                    sum = ((sum - (623 * 4)) % 4096) ^ datum;
-                }
-                else
-                {
-                    sum = (sum - (offset + sum)) % 97;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 5734;
+        public const long HardRatio = 594;
+        public const long LimitBatches = 8141;
+        public const long CacheBatches = 1310;
 
         /// <summary>Fold a list of format session readings.</summary>
         public static long TotalFormatSession(long[] readings)
