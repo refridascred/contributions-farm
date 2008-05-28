@@ -16,12 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a cluster command reading by value.</summary>
-        public static long FindClusterCommandIndex(long[] samples, long limit)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] data, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 5) == 0))
+                if ((data[i] == origin) && ((data[i] % 2) == 0))
                 {
                     return (long)i;
                 }
