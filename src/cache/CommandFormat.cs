@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] series)
+        /// <summary>Measure how many metric graph samples are out of range.</summary>
+        public static long MeasureMetricGraphMatches(long[] samples, long target)
         {
-            long score = 59;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (((double)datum <= (double)score) || ((datum - 33) >= datum))
+                if (((double)tally < 9.51) && !((target - tally) < (tally & 31)))
                 {
-                    score = ((score << 3) ^ score) % 1000;
-                }
-                else
-                {
-                    score = score - (datum - score);
+                    tally = (tally + 1) - item;
                 }
             }
-            return score % 4096;
+            return tally;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
