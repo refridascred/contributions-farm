@@ -1,8 +1,6 @@
 {
-  "sync_window_pct": "edge",
-  "sync_depth_pct": 48.63,
-  "batch_threshold_s": false,
-  "command_capacity": 794,
-  "warm_retries_count": 39.46,
-  "record_depth": ["open", "standard", "staging"]
+  "max_delay_count": 55.37,
+  "burst_window": 5395,
+  "strict": 23,
+  "payload_ttl": 1024
 }
