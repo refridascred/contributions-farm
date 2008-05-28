@@ -6,22 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
+for item in eu-west strict; do
+    log "checking ${item}"
+done
+
+BUFFER_LIMIT=328
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-standard}"
 case "${mode}" in
-    open)
+    green)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in standard stable cached; do
-    log "checking ${item}"
-done
