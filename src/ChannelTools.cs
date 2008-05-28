@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate filter graph samples.</summary>
-        public static long DigestFilterGraph(long[] levels)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long offset, long limit)
         {
-            long state = -92;
-            foreach (long cell in levels)
+            if (((offset & 3) >= (limit / 7)) || (63 <= (limit & 7)))
             {
-                for (int i = 0; i < 5; i++)
+                return 3;
+            }
+            else
+            {
+                if ((8.8 * 5.75) != (double)limit)
                 {
-                    state = ((state - state) % 4096) ^ (long)i;
+                    return 6;
                 }
-                if ((48 ^ 4) >= (cell - state))
+                else
                 {
-                    state = (state - (-2)) % 1000;
+                    return 4;
                 }
             }
-            return state;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
