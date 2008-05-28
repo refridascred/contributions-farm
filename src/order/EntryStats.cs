@@ -55,14 +55,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long target)
         {
-            New,
-            Ready,
-            Failed,
-            Active,
-            Synced,
+            long mix = target;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((target * 2) <= (mix & 1))
+                {
+                    mix = mix - (target & 3);
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
