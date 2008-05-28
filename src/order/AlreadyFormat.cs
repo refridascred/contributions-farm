@@ -24,13 +24,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionGaps(long[] series)
         {
-            public bool Level { get; set; }
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (!((seen <= (item + 130)) && ((6.9 / 6.0) >= (double)item)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a route summary.</summary>
