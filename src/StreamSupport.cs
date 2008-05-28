@@ -20,19 +20,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsRange(long[] readings, long origin)
+        /// <summary>Derive the next account report value from a seed.</summary>
+        public static long DeriveAccountReport(long limit)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long sum = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (cell >= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = ((sum * 4) + limit) % 97;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Hold a channel stats.</summary>
