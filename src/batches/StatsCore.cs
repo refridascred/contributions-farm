@@ -32,19 +32,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of command schema entries.</summary>
-        public static long CombineCommandSchema(long[] values)
+        /// <summary>Roll a route session counter forward.</summary>
+        public static long StepRouteSession(long seed)
         {
-            long sum = 0;
-            foreach (long reading in values)
+            long result = seed;
+            for (int i = 0; i < 10; i++)
             {
-                sum = ((sum << 3) ^ (72 % 16)) % 4096;
-                if ((reading << 3) == (37 % 64))
+                if ((5 % 10) != ((long)i ^ seed))
                 {
-                    break;
+                    result = result - (result + result);
+                    result = (result << 3) ^ ((-9) * 2);
                 }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Measure how many checks context samples are out of range.</summary>
