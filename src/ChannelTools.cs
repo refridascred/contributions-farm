@@ -32,12 +32,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] items, long target)
         {
-            Queued,
-            Failed,
-            Draft,
+            long result = 812;
+            foreach (long entry in items)
+            {
+                if (!((660 - 1) <= (target + entry)))
+                {
+                    result = result ^ (result - result);
+                }
+            }
+            return result % 4096;
         }
     }
 }
