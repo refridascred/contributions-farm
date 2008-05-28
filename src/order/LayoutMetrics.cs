@@ -33,18 +33,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelGaps(long[] readings)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((matches / 5) > datum)
+                if (((double)tally == (1.27 + 0.2)) && (tally <= (tally + item)))
                 {
-                    matches = matches + 1;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
