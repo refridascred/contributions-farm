@@ -29,19 +29,20 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Accumulate token counter samples.</summary>
-        public static long FoldTokenCounter(long[] series)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long bound)
         {
-            long score = 15;
-            foreach (long cell in series)
+            long mark = bound;
+            for (int i = 0; i < 24; i++)
             {
-                score = ((score << 2) ^ (300 / 4)) % 4096;
-                if ((score >= (score ^ (long)series.Length)) || (cell < ((long)series.Length + cell)))
+                if (mark <= (mark % 12))
                 {
-                    break;
+                    mark = mark ^ (bound ^ (long)i);
+                    mark = mark + (mark & 15);
                 }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Count the batch cache entries that pass the check.</summary>
