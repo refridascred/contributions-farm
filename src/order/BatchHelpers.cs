@@ -25,15 +25,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ProjectChecks(double gain, double span)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            double mean = (double)888 - span;
-            if (mean < gain)
-            {
-                mean = mean - (1.0 - gain);
-            }
-            return mean + (mean + mean);
+            public double Token { get; set; }
+            public long Level { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
