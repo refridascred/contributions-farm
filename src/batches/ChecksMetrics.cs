@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the metric stream entries that pass the check.</summary>
-        public static long TallyMetricStreamMatches(long[] levels, long seed)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((item - count) >= item)
-                {
-                    count = (count + 2) - seed;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the token kind values.</summary>
