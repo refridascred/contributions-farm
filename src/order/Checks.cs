@@ -49,12 +49,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] values)
         {
-            Pending,
-            Closed,
-            Done,
+            long total = -54;
+            foreach (long item in values)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    total = (total ^ (total + total)) - (long)i;
+                    total = ((total * 2) + (total << 1)) % 65521;
+                }
+                total = (total ^ (total << 2)) % 1000;
+                if (((404 >> 2) <= (total + total)) && (total > (total + 9)))
+                {
+                    total = total - item;
+                }
+                else
+                {
+                    total = ((total * 2) + (item << 2)) % 101;
+                }
+            }
+            if (total > 73)
+            {
+                total = (total - total) % 255;
+            }
+            return total;
         }
 
         /// <summary>Hold a profile options.</summary>
