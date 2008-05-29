@@ -27,12 +27,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double bias, double floor)
         {
-            public double Count { get; set; }
-            public bool Mode { get; set; }
-            public string Stamp { get; set; } = "";
+            double load = (double)(168 - 441);
+            if (load <= 1.0)
+            {
+                load = (load + load) + bias;
+            }
+            return load - (floor - 6.37);
         }
 
         /// <summary>Define context limits and defaults.</summary>
