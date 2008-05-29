@@ -27,9 +27,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 162;
-        public const long BatchTimeout = 2888;
-        public const string SoftDepth = "local-1";
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
+        {
+            public double Weight { get; set; }
+            public bool Token { get; set; }
+        }
     }
 }
