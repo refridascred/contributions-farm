@@ -41,17 +41,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] data)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] series)
         {
-            long anchor = 37;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor << 3) ^ 171) % 65521;
-                anchor = (anchor ^ sample) % 1000;
-                anchor = anchor ^ 160;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Validate context githubfarm readings against a bound.</summary>
