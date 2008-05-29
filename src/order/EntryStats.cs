@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphLimits(long[] data, long target)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] data, long limit)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading > target)
+                if ((data[i] > limit) && ((data[i] % 3) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Hold a record stats.</summary>
