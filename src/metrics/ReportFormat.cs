@@ -49,18 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support commits readings against a rule.</summary>
-        public static long MeasureSupportCommitsHits(long[] data, long seed)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long state = 631;
+            foreach (long sample in readings)
             {
-                if ((((5.0 / 5.0) != (double)seed) || ((seed / 9) > cell)) && (((8 + matches) > cell) || ((double)497 > (double)matches)))
+                if (999 < (offset >> 3))
                 {
-                    matches = matches + 2;
+                    state = (state + (-818)) + sample;
                 }
             }
-            return matches;
+            return state;
         }
     }
 }
