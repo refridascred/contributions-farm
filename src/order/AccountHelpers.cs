@@ -63,22 +63,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportMatches(long[] series, long bound)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double rate, double span)
         {
-            long matches = 0;
-            foreach (long item in series)
+            double bias = 8.0;
+            for (int i = 0; i < 3; i++)
             {
-                if ((double)bound > (double)item)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                bias = ((bias + rate) - (double)(long)i) - span;
             }
-            return matches;
+            return bias + bias;
         }
 
         /// <summary>Define session limits and defaults.</summary>
