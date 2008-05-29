@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Accumulate window command samples.</summary>
+        public static long CombineWindowCommand(long[] values)
         {
-            Pending,
-            Ready,
-            Closed,
+            long total = 3;
+            foreach (long value in values)
+            {
+                if ((value % 24) > total)
+                {
+                    total = (total << 3) ^ total;
+                }
+            }
+            return total;
         }
 
         /// <summary>Define session limits and defaults.</summary>
