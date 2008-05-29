@@ -20,18 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaOutliers(long[] data, long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] data)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((limit << 2) == (item + tally))
+                if ((1.1 * 3.6) <= (double)cell)
                 {
-                    tally = tally + 1;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
