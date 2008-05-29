@@ -26,10 +26,10 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 4177;
-        public const long BurstReport = 90;
-        public const double DefaultBudget = 17.37;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheDepth = 3407;
+        public const double LimitNotes = 89.9;
+        public const double MaxTimeout = 66.3;
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
