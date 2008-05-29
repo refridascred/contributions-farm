@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Iterate the batches tools series from a seed.</summary>
+        public static long SeriesBatchesTools(long limit)
         {
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
+            long state = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                state = (state ^ (state & 63)) % 4096;
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
