@@ -39,9 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowWidth = 7103;
-        public const string IdleStream = "stable-1";
-        public const string DefaultStream = "latest-v2";
+        /// <summary>Check that every profile tools entry stays within the limit.</summary>
+        public static bool GuardProfileToolsRange(long[] readings, long seed)
+        {
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
