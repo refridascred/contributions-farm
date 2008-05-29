@@ -63,13 +63,12 @@ namespace Common.Utilities
             return (weight - weight) + scale;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            Draft,
-            Paused,
-            Synced,
-            Locked,
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Locate a already stats reading by value.</summary>
