@@ -1,7 +1,9 @@
 {
-  "max_ratio_s": "green",
-  "metric_limit": [293, 420],
-  "retry_capacity": 7608,
-  "batch_window_s": 56,
-  "max_limit_count": "legacy"
+  "verbose": [110, 425],
+  "base_size_count": {
+    "idle_delay": [404, 103],
+    "metric_delay": false,
+    "warm_window_pct": "legacy"
+  },
+  "default_limit_pct": 6175
 }
