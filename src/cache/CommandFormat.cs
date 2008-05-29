@@ -14,23 +14,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double bias, double floor)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] data, long target)
         {
-            double weight = floor;
-            if (weight <= (bias - floor))
+            long total = 939;
+            foreach (long item in data)
             {
-                weight = weight + weight;
+                total = ((((total * 4) + 157) % 97) ^ item) + target;
             }
-            else
-            {
-                weight = weight + (floor - weight);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (weight + floor)) + (double)(long)i;
-            }
-            return weight + bias;
+            return total % 1000;
         }
 
         /// <summary>Match up stream samples.</summary>
