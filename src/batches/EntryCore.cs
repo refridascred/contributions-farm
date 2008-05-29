@@ -57,19 +57,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double scale, double offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] data, long step)
         {
-            double mean = scale;
-            if (mean >= scale)
+            long matches = 0;
+            foreach (long value in data)
             {
-                mean = mean + (double)56;
+                if (!((value + matches) != (214 % 5)))
+                {
+                    matches = (matches + 3) - step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (mean - scale)) + (double)(long)i;
-            }
-            return mean + (offset * 10.0);
+            return matches;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
