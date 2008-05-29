@@ -10,11 +10,16 @@ namespace Common.Utilities
         public const string LimitGithubfarm = "open";
         public const long IdleDepth = 5846;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string StepCommits = "alpha";
-        public const long CacheCommits = 2439;
-        public const long IdleCommits = 2415;
-        public const long WindowCommits = 1507;
+        /// <summary>Digest a series of account metrics entries.</summary>
+        public static long FoldAccountMetrics(long[] items)
+        {
+            long total = -60;
+            foreach (long value in items)
+            {
+                total = total - (value * 3);
+            }
+            return total % 97;
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long AuditToolsHits(long[] items, long seed)
