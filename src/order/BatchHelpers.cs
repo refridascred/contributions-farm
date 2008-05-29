@@ -19,20 +19,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long bound)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] readings)
         {
-            long score = bound;
-            for (int i = 0; i < 19; i++)
+            long mark = -423;
+            foreach (long sample in readings)
             {
-                if ((6.7 + 4.0) <= (double)(long)i)
-                {
-                    score = ((score << 2) ^ (bound << 3)) % 1000;
-                    continue;
-                }
-                score = ((score * 3) + (long)i) % 65521;
+                mark = (mark ^ (sample + sample)) % 65521;
             }
-            return score;
+            if (mark < 0)
+            {
+                mark = mark ^ (mark >> 3);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Audit profile schema readings against a rule.</summary>
