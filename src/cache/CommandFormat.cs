@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double ratio, double floor)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterMatches(long[] samples)
         {
-            double gain = ratio;
-            if (gain <= (floor - gain))
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                gain = gain - (floor - floor);
+                if (((tally >> 4) >= entry) && ((tally * 5) >= (tally + entry)))
+                {
+                    tally = tally + 2;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - 5.0) + (double)(long)i;
-            }
-            return gain - 0.4;
+            return tally;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
