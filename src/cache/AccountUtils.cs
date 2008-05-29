@@ -20,12 +20,12 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double IdleSpan = 97.72;
-        public const long BurstGraph = 5904;
-        public const long DefaultGraph = 3770;
-        public const long SoftDepth = 5201;
-        public const long IdleGraph = 6001;
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
+        {
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
