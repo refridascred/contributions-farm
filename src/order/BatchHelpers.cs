@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long bound, long offset)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] data, long offset)
         {
-            long step = bound ^ offset;
-            if ((step + offset) > bound)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((3 << 2) >= (step << 2))
+                if ((data[i] < offset) && ((data[i] % 2) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((bound - step) < (81 & 31)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a order summary.</summary>
