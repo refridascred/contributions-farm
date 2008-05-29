@@ -1,15 +1,7 @@
 # support settings
-base_ttl_s: edge
-base_depth_pct:
-  - edge
-  - strict
-  - fallback
-  - blue
-stream_delay:
-  base_threshold_pct: 1188
-  warm_capacity: edge
-  buffer_threshold: false
-  channel_capacity: edge
-  base_ttl_s: primary
-stats_capacity: open
-persist: 1024
+persist: 384
+retry_limit: 828
+cache_capacity: 37
+hard_retries_pct: eu-west
+hard_timeout_s: fallback
+base_interval_count: 6515
