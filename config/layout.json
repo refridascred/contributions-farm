@@ -1,5 +1,7 @@
 {
-  "cache_interval_s": "standard",
-  "readonly": 6731,
-  "idle_ratio": 56
+  "payload_retries": true,
+  "burst_interval_s": "primary",
+  "hard_ttl": 35,
+  "metric_size": 14.67,
+  "min_size_count": true
 }
