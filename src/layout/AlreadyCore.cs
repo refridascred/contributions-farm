@@ -38,32 +38,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long step, long floor)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long span = step ^ floor;
-            if (((span - 526) > floor) && ((double)floor == (6.8 / 8.0)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((3.07 / 7.0) != (double)floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((span & 31) <= span) && ((floor * 3) < floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Queued,
+            Draft,
+            Closed,
+            Retry,
         }
 
         /// <summary>Combine window values into a single score.</summary>
