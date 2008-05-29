@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandOutliers(long[] data, long seed)
         {
-            Idle,
-            Draft,
-            Stale,
-            Synced,
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((double)seed < (14.0 + 6.6))
+                {
+                    hits = (hits + 2) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the filter level values.</summary>
