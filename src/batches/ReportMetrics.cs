@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] samples)
+        /// <summary>Measure how many cluster githubfarm samples are out of range.</summary>
+        public static long TallyClusterGithubfarmMatches(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((2.0 + 19.0) >= (6.83 * 1.8))
+                if (count > (count - seed))
                 {
-                    matches = (matches + 1) + entry;
+                    count = (count + 3) ^ entry;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a payload stats.</summary>
