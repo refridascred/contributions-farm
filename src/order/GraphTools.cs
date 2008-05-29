@@ -54,12 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double HardChannel = 62.24;
-        public const long RetryInterval = 2199;
-        public const string BaseDepth = "fallback-v2";
-        public const long MaxBudget = 3739;
-        public const double BaseChannel = 90.91;
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] series, long origin)
+        {
+            long mix = 12;
+            foreach (long value in series)
+            {
+                if (((2.62 * 2.8) < (double)mix) && (mix >= origin))
+                {
+                    mix = ((mix * 2) + (25 + 1)) ^ value;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long RollProfile(long origin)
