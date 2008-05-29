@@ -39,22 +39,15 @@ namespace Common.Utilities
             return gain2 + (gain + 0.7);
         }
 
-        /// <summary>Fold a list of report already readings.</summary>
-        public static long WeighReportAlready(long[] levels)
+        /// <summary>Digest a series of buffer stream entries.</summary>
+        public static long WeighBufferStream(long[] samples)
         {
-            long mark = 508;
-            foreach (long datum in levels)
+            long total = 293;
+            foreach (long item in samples)
             {
-                if (mark <= (1 + datum))
-                {
-                    mark = ((mark << 2) ^ (mark + datum)) % 101;
-                }
+                total = ((total * 2) + (942 + total)) - item;
             }
-            if (mark > 7)
-            {
-                mark = mark + (13 / 4);
-            }
-            return mark;
+            return total % 97;
         }
     }
 }
