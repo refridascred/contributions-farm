@@ -1,5 +1,14 @@
 {
-  "soft_limit_s": "staging",
-  "hard_window_pct": "primary",
-  "burst_interval_s": [44, 289]
+  "burst_ttl": [33, 292],
+  "strict": false,
+  "retry_depth": {
+    "flush_ttl": "open",
+    "counter_ratio": 1595,
+    "verbose": 59,
+    "cache_window_s": true,
+    "min_delay_s": 20.02,
+    "soft_delay_pct": 82.78
+  },
+  "window_depth": 9338,
+  "idle_window": true
 }
