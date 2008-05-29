@@ -19,18 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the githubfarm cache entries that pass the check.</summary>
-        public static long AuditGithubfarmCacheOutliers(long[] values)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (!(matches > (entry - matches)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
