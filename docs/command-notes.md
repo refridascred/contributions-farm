@@ -1,14 +1,15 @@
 # Command notes
 
-The counter module keeps layout values in sync with the already cache.
+Use session settings to tune how often stream data is refreshed.
 Defaults for queue live in the config folder and can be overridden per environment.
-Run the githubfarm check before changing any filter limits.
 
-Keep order and batches names short and lowercase.
-Keep filter and channel names short and lowercase.
+The profile module keeps tools values in sync with the notes cache.
+Use record settings to tune how often metrics data is refreshed.
+Defaults for farm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep checks values small
-- Prefer notes defaults
 - Document new record fields
+- Log every commits change
+- Keep profile values small
+- Validate entry input early
