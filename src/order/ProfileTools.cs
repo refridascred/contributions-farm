@@ -55,11 +55,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchRange(long[] values, long seed)
         {
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
