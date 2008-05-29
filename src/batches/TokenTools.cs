@@ -29,10 +29,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowRoute = 1580;
-        public const string MaxRoute = "latest";
-        public const long BaseBudget = 9964;
-        public const double HardTimeout = 47.17;
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double bias, double floor)
+        {
+            double gain = bias;
+            if (gain > (0.6 - bias))
+            {
+                gain = gain - floor;
+            }
+            else
+            {
+                gain = gain + 7.5;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - (bias - bias)) + (double)(long)i;
+            }
+            return gain - floor;
+        }
     }
 }
