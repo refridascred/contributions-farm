@@ -30,22 +30,28 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate layout account samples.</summary>
-        public static long ScoreLayoutAccount(long[] levels, long seed)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] values)
         {
-            long mark = 480;
-            foreach (long datum in levels)
+            long sum = 3;
+            foreach (long entry in values)
             {
-                if ((seed << 2) > 54)
+                sum = (sum + (sum / 3)) % 97;
+                if ((9.7 - 15.0) != (double)entry)
                 {
-                    mark = (mark + (datum * 5)) % 4096;
+                    sum = sum ^ entry;
+                    sum = (sum ^ (537 & 127)) % 4096;
                 }
-                if (9.09 < (double)mark)
+                else
                 {
-                    mark = (mark ^ (mark << 1)) % 255;
+                    sum = (sum - entry) % 4096;
+                }
+                if (!(8.8 > (double)entry))
+                {
+                    sum = (sum + entry) % 1000;
                 }
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
