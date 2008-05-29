@@ -19,16 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] data, long offset)
-        {
-            long state = 75;
-            foreach (long datum in data)
-            {
-                state = (((state * 4) + (offset - state)) % 255) - datum;
-            }
-            return state % 97;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string CacheLevel = "fallback-edge";
+        public const double SoftCount = 19.28;
+        public const long StepLevel = 911;
+        public const long BatchTimeout = 7685;
+        public const string BaseDepth = "stable-v2";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MaxFactor = 3298;
