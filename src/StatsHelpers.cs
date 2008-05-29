@@ -15,17 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] levels, long target)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double rate, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double drift = rate / 9.0;
+            if (drift < floor)
             {
-                if (levels[i] <= target)
-                {
-                    return (long)i;
-                }
+                drift = drift + (double)938;
             }
-            return -1;
+            else
+            {
+                drift = drift + (rate - 2.0);
+            }
+            return drift + drift;
         }
 
         /// <summary>Combine support profile values into a single score.</summary>
