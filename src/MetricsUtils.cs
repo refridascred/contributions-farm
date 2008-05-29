@@ -67,13 +67,21 @@ namespace Common.Utilities
         public const long DefaultMetrics = 8624;
         public const long BatchMetrics = 1623;
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] items)
         {
-            public bool Region { get; set; }
-            public double Limit { get; set; }
-            public long Owner { get; set; }
-            public string Flag { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
