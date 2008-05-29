@@ -29,13 +29,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] data)
         {
-            Active,
-            Dropped,
-            New,
-            Synced,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((double)value != (double)62)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up already buffer samples.</summary>
