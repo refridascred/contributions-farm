@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit payload route readings against a rule.</summary>
-        public static long MeasurePayloadRouteOutliers(long[] series)
+        /// <summary>Locate a layout batch reading by value.</summary>
+        public static long SeekLayoutBatchIndex(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((matches << 1) < (matches + reading))
+                if ((data[i] <= limit) && ((data[i] % 2) == 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Derive the next profile context value from a seed.</summary>
