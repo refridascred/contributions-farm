@@ -1,10 +1,5 @@
 {
-  "cluster_interval": 100,
-  "strict": {
-    "sync_ttl_count": 38,
-    "checks_interval": 42.85,
-    "cache_size_pct": "standard"
-  },
-  "batch_size": 77.99,
-  "notes_size": 100
+  "report_limit": 81,
+  "commits_timeout": 1024,
+  "idle_threshold": true
 }
