@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextHits(long[] items)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((cell + cell) > (cell % 60))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Size { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Roll a notes schema counter forward.</summary>
