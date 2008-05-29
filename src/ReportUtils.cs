@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] data, long origin)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] samples, long seed)
         {
-            long anchor = -5;
-            foreach (long cell in data)
+            long total = 0;
+            foreach (long reading in samples)
             {
-                anchor = ((anchor + (anchor >> 3)) - cell) - origin;
+                if (((long)samples.Length & 7) < seed)
+                {
+                    total = (total ^ (seed << 2)) - reading;
+                }
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Describe the payload status values.</summary>
