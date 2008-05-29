@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterMatches(long[] samples)
+        /// <summary>Match up channel samples.</summary>
+        public static long PairChannelCount(long[] readings)
         {
             long tally = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((tally >> 4) >= entry) && ((tally * 5) >= (tally + entry)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((readings[i] ^ readings[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
