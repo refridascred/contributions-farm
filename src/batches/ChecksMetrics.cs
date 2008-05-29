@@ -30,18 +30,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] series, long floor)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenRange(long[] values, long step)
         {
-            long state = 882;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if ((2.2 / 6.0) < (double)floor)
+                if (item != step)
                 {
-                    state = (((state * 3) + floor) % 101) + datum;
+                    valid = false;
+                    break;
                 }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
