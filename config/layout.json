@@ -1,9 +1,5 @@
 {
-  "schema_timeout": [375, 239],
-  "enabled": {
-    "notes_capacity": false,
-    "default_threshold_ms": "cached",
-    "retry_depth": "legacy"
-  },
-  "readonly": 36
+  "burst_delay_ms": 6239,
+  "payload_delay": 51,
+  "retry_interval_pct": ["stable", "open", "green"]
 }
