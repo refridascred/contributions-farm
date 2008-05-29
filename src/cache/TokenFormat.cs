@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
             Idle,
-            Locked,
-            Pending,
+            Queued,
+            Paused,
+            Draft,
+            Retry,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
