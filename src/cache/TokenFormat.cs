@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long seed, long bound)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] samples, long limit)
         {
-            if ((834 % 97) != (bound + seed))
+            long total = 830;
+            foreach (long cell in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((30 ^ seed) >= (seed & 1))
+                if ((total - total) < (total / 8))
                 {
-                    return 2;
+                    total = total ^ limit;
+                    total = (total ^ (949 - limit)) % 255;
                 }
-                else
+                if ((991 * 3) < ((long)samples.Length & 31))
                 {
-                    return 1;
+                    total = (total << 3) ^ (cell >> 1);
                 }
             }
+            return total;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
