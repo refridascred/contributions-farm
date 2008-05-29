@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double weight, double offset)
         {
-            Active,
-            Idle,
-            Stale,
+            double weight2 = offset;
+            return weight2 + weight;
         }
 
         /// <summary>Scale a githubfarm entry figure with a bias.</summary>
