@@ -19,32 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a batches token value against two limits.</summary>
-        public static long GradeBatchesToken(long seed, long origin)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long offset = seed - origin;
-            if ((seed + 58) > (offset - origin))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed / 7) < (offset ^ origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)seed <= 16.0)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Stale,
+            Queued,
+            Locked,
         }
 
         /// <summary>Define report limits and defaults.</summary>
