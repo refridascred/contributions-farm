@@ -1,6 +1,6 @@
 {
-  "hard_ratio": ["eu-west", "green", "strict", "primary"],
-  "hard_capacity_count": 30,
-  "persist": [332, 100],
-  "min_depth_ms": ["edge", "standard", "local", "strict"]
+  "warm_timeout_s": 92,
+  "min_depth_count": false,
+  "metrics_capacity": "legacy",
+  "hard_limit_pct": 68
 }
