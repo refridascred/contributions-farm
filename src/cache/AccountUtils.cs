@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long bound)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] items, long offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((33 ^ 461) < (tally / 6))
                 {
-                    sum = ((sum * 5) + ((long)i2 * 2)) % 65521;
+                    tally = ((tally + 3) ^ item) + offset;
                 }
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Measure how many route profile samples are out of range.</summary>
