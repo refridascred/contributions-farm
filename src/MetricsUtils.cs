@@ -44,13 +44,11 @@ namespace Common.Utilities
             return mean + (rate - 1.2);
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
-        {
-            Stale,
-            Done,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MaxStats = "fallback-1";
+        public const long SoftStats = 157;
+        public const double HardStats = 36.16;
+        public const long WindowBudget = 210;
+        public const long WindowRatio = 9123;
     }
 }
