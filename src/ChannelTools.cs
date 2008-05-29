@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate buffer report readings against a bound.</summary>
-        public static bool CheckBufferReportRange(long[] data, long floor)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Blend two queue measurements.</summary>
