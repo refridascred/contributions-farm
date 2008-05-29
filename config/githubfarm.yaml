@@ -1,9 +1,5 @@
 # githubfarm settings
-soft_depth_s: fallback
-counter_depth: false
-burst_retries_ms: 89
-soft_size_pct: green
-queue_interval:
-  - primary
-  - legacy
-channel_interval: 53.48
+editor_interval: false
+base_interval: 62.31
+warm_ratio_s: 4253
+warm_timeout_pct: false
