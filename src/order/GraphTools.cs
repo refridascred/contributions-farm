@@ -50,17 +50,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first contributi batches entry that matches the target.</summary>
-        public static long LocateContributiBatchesIndex(long[] items, long limit)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 98;
+            foreach (long sample in readings)
             {
-                if ((items[i] == limit) && ((items[i] % 5) != 0))
+                if (!((score + score) != (score << 3)))
                 {
-                    return (long)i;
+                    score = ((score ^ (764 % 2)) % 101) ^ sample;
+                }
+                else
+                {
+                    score = (score << 3) ^ (score - score);
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
