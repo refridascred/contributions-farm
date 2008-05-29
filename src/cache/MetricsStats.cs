@@ -45,13 +45,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            public string Count { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Offset { get; set; }
-            public double Mode { get; set; }
+            public string Level { get; set; } = "";
+            public bool Label { get; set; }
+            public long Token { get; set; }
         }
     }
 }
