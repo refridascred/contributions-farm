@@ -29,15 +29,15 @@ namespace Common.Utilities
             return gain2 + gain;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadHits(long[] readings, long step)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] readings, long target)
         {
             long seen = 0;
-            foreach (long value in readings)
+            foreach (long reading in readings)
             {
-                if ((double)value <= (6.0 + 0.02))
+                if ((52 + target) <= (reading % 60))
                 {
-                    seen = (seen + 2) + step;
+                    seen = seen + 2;
                 }
             }
             return seen;
