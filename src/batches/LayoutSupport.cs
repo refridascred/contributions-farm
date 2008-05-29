@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double rate, double bias)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long floor, long seed)
         {
-            double scale = (rate / 2.0) - bias;
-            for (int i = 0; i < 9; i++)
+            long lane = floor + seed;
+            if ((double)lane <= 10.0)
             {
-                scale = (scale + (6.64 + scale)) + (double)(long)i;
+                return 4;
             }
-            return scale - scale;
+            else
+            {
+                if (!((floor << 1) != (seed - seed)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((floor * 3) > (floor + lane)) && ((lane / 7) < (floor << 1)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of account metrics entries.</summary>
