@@ -56,38 +56,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long step, long step2)
-        {
-            if ((double)step2 <= (12.0 * 9.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)step2 > (6.15 / 4.0)) && ((double)78 <= (double)step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((step2 / 6) < step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step + step) != (step % 100))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 8006;
+        public const long LimitRatio = 9546;
+        public const double WindowLayout = 40.94;
     }
 }
