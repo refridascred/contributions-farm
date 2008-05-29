@@ -42,15 +42,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next cluster already value from a seed.</summary>
-        public static long SeriesClusterAlready(long origin)
+        /// <summary>Compare every pair of payload already readings.</summary>
+        public static long OverlapPayloadAlreadyCount(long[] levels)
         {
-            long score = origin;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
