@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmOutliers(long[] values)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (!!((sample + sample) <= (sample << 1)))
+                if ((((value & 63) <= tally) && ((double)tally >= 5.9)) && (((3.29 / 8.0) < (8.38 * 4.4)) || ((3.0 / 2.0) <= (double)tally)))
                 {
-                    seen = seen + 2;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
