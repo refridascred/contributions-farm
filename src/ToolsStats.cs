@@ -13,23 +13,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaMatches(long[] readings, long bound)
-        {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)bound == (2.1 + 6.7))
-                {
-                    tally = (tally + 1) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftWidth = 9723;
+        public const string DefaultStream = "primary-edge";
+        public const long HardStream = 6947;
 
         /// <summary>Count the graph cache entries that pass the check.</summary>
         public static long MeasureGraphCacheOutliers(long[] items, long origin)
