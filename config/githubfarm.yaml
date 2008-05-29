@@ -1,11 +1,39 @@
 # githubfarm settings
-poll_ttl_ms: stable
-burst_retries:
-  retry_limit: 28
-  retry_retries_ms: 53
-  retry_interval_s:
-    - eu-west
+cluster_retries: blue
+token_delay: true
+sync_limit_ms:
+  poll_threshold_count: strict
+  hard_retries:
+    - 215
+    - 100
+    - 440
+    - 275
+  batch_delay:
+    base_timeout: 47.3
+    githubfarm_threshold: 82
+    default_ttl_pct: cached
+    burst_threshold_s:
+      - 30
+      - 218
+      - 118
+      - 164
+    max_size_count: 8014
+    account_size: stable
+  readonly:
+    - 7
+    - 20
+  poll_size: 41.2
+  sync_ratio_pct: staging
+poll_timeout:
+  account_delay:
     - fallback
-  report_interval: true
-  hard_timeout_ms: fallback
-soft_retries_pct: false
+    - green
+    - blue
+  graph_size: 544
+  warm_threshold:
+    base_depth: 1024
+    persist: stable
+    farm_size: fallback
+    sync_ttl_pct: 59.71
+    verbose: true
+    tools_ttl: strict
