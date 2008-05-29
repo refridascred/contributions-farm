@@ -29,18 +29,11 @@ namespace Common.Utilities
         public const double MaxScore = 85.53;
         public const double SoftDepth = 95.87;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsHits(long[] values, long seed)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (!(matches <= seed))
-                {
-                    matches = (matches + 3) + cell;
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
