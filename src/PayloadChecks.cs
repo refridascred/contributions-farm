@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count graph token pairs that satisfy a relation.</summary>
-        public static long MatchGraphTokenCount(long[] levels)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = (mark ^ (mark / 3)) % 1000;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Fold a list of command readings.</summary>
