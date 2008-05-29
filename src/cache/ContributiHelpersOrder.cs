@@ -23,13 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
-        {
-            Idle,
-            New,
-            Active,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BatchAccount = 71.32;
+        public const long MinAccount = 8945;
+        public const long DefaultInterval = 5495;
+        public const long WindowSpan = 1863;
 
         /// <summary>Describe the stream state values.</summary>
         public enum StreamState
