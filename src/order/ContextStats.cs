@@ -34,13 +34,10 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
-        {
-            public string Weight { get; set; } = "";
-            public double Offset { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string IdleRatio = "standard-1";
+        public const string HardTools = "local-edge";
+        public const long IdleTools = 6140;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long TallyAlreadyMatches(long[] readings, long target)
