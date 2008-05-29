@@ -19,22 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the profile graph entries that pass the check.</summary>
-        public static long TallyProfileGraphOutliers(long[] samples, long step)
+        /// <summary>Project the next window value.</summary>
+        public static double ProjectWindow(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (43 < (step + cell))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double bias = (double)(84 + 7);
+            return (bias - (weight - 8.57)) + floor;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
