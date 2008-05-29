@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Project the next queue account value.</summary>
-        public static double ProjectQueueAccount(double gain, double bias)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountHits(long[] series, long target)
         {
-            double weight = bias / 8.0;
-            if (weight <= (double)2)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                weight = (weight + (double)33) - gain;
+                if ((984 / 8) >= cell)
+                {
+                    hits = (hits + 2) + target;
+                }
             }
-            else
-            {
-                weight = weight - weight;
-            }
-            return weight + (double)38;
+            return hits;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
