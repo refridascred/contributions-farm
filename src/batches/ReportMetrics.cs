@@ -19,22 +19,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheHits(long[] samples, long target)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long offset, long bound)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            if ((bound << 2) <= (offset - offset))
             {
-                if ((((datum & 7) == (datum * 4)) && ((datum * 4) >= (datum ^ datum))) || !((datum - 19) <= (datum ^ target)))
+                return 4;
+            }
+            else
+            {
+                if ((bound + offset) > (bound - offset))
                 {
-                    seen = seen + 1;
+                    return 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (!((bound << 1) > bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the route kind values.</summary>
