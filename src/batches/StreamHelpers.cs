@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutBounds(long[] items, long offset)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ProjectNotes(double scale, double offset)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            double weight = offset;
+            if (weight < (weight + offset))
             {
-                if (reading >= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = (weight + offset) - scale;
             }
-            return ok;
+            return weight - 8.96;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
