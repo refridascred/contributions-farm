@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryWidth = 4398;
-        public const long SoftCommits = 8318;
-        public const double RetryCommits = 74.06;
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long target, long floor)
+        {
+            if (!((9.28 - 6.6) <= (double)floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor & 255) == (target >> 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long MatchStreamCount(long[] items)
