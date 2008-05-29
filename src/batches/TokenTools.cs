@@ -14,19 +14,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double rate, double floor)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] series, long step)
         {
-            double bias = floor;
-            if (bias < bias)
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = bias - bias;
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias + (floor - rate);
-            }
-            return bias + (rate * 0.34);
+            return -1;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
