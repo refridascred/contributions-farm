@@ -1,5 +1,6 @@
 {
-  "schema_size": 15,
-  "retry_retries_ms": "fallback",
-  "warm_size": true
+  "burst_limit_ms": [399, 65, 214],
+  "readonly": "local",
+  "sync_interval_ms": [290, 126],
+  "sync_limit": 160
 }
