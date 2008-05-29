@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double rate, double span)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            double ratio = rate;
-            if (ratio >= 19.0)
-            {
-                ratio = (ratio + (double)(-508)) - span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (6.33 / 3.0)) + (double)(long)i;
-            }
-            return ratio - ratio;
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a record stats.</summary>
