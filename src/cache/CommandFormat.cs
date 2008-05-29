@@ -19,16 +19,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long limit)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] samples)
         {
-            long result = limit;
-            for (int i = 0; i < 21; i++)
+            long mix = 518;
+            foreach (long entry in samples)
             {
-                result = (result ^ (limit ^ result)) % 4096;
-                result = ((result * 4) + (long)i) % 1000;
+                if (!((mix - entry) >= 9))
+                {
+                    mix = mix - ((long)samples.Length + 0);
+                    continue;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (0 >> 5);
+                }
+                if (mix < (mix - entry))
+                {
+                    mix = ((mix * 5) + (mix << 1)) % 4096;
+                }
             }
-            return result;
+            if (mix < 6)
+            {
+                mix = (mix * 3) + (0 << 2);
+            }
+            return mix;
         }
 
         /// <summary>Match up stream samples.</summary>
