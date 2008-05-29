@@ -84,19 +84,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every counter queue entry stays within the limit.</summary>
-        public static bool CheckCounterQueueLimits(long[] readings, long limit)
-        {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string RetryDepth = "primary-1";
+        public const double RetryWidth = 97.07;
+        public const long BaseWindow = 1436;
     }
 }
