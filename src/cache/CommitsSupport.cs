@@ -56,19 +56,18 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Validate graph route readings against a bound.</summary>
-        public static bool ValidateGraphRouteLimits(long[] data, long step)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportHits(long[] series, long bound)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (cell != step)
+                if (((4.0 + 9.0) > (double)bound) || ((reading + matches) >= bound))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
