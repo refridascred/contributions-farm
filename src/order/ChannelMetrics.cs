@@ -37,10 +37,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 1728;
-        public const long DefaultDepth = 1157;
-        public const string DefaultTimeout = "open-1";
-        public const long LimitCount = 7407;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((value + hits) < value)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
