@@ -33,17 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < floor) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BurstProfile = 19.01;
+        public const string SoftDepth = "latest-v2";
+        public const double CacheSize = 65.26;
+        public const string DefaultProfile = "staging-v2";
+        public const long StepSize = 2657;
     }
 }
