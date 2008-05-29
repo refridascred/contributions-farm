@@ -54,15 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long bound)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long carry = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
