@@ -33,19 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesLimits(long[] series, long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelHits(long[] data, long seed)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (item <= floor)
+                if ((hits + seed) != (seed << 1))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 2) + cell;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
