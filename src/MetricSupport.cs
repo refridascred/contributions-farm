@@ -27,18 +27,18 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] series)
+        /// <summary>Measure how many metrics batch samples are out of range.</summary>
+        public static long CountMetricsBatchMatches(long[] data, long origin)
         {
-            long sum = 4;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((75 + 8) == (sum % 97))
+                if ((8.5 * 9.0) > (double)origin)
                 {
-                    sum = (sum * 5) + sample;
+                    tally = (tally + 2) + sample;
                 }
             }
-            return sum;
+            return tally;
         }
     }
 }
