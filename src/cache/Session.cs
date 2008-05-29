@@ -14,39 +14,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long origin, long limit)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long diff = origin + limit;
-            if ((diff & 3) <= 978)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((diff ^ 34) > diff)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((diff * 3) != (diff ^ diff))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((limit * 2) <= (limit + diff)) || ((origin << 2) >= diff))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Stale,
+            Done,
+            Idle,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
