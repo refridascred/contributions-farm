@@ -1,6 +1,7 @@
 {
-  "farm_limit": "green",
-  "batch_delay_ms": true,
-  "soft_ratio_ms": 35.22,
-  "burst_limit": "standard"
+  "hard_threshold_ms": "strict",
+  "burst_ratio_ms": 5236,
+  "schema_size": true,
+  "soft_ttl_pct": 500,
+  "batches_window": 500
 }
