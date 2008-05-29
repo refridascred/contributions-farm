@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] items)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ScaleEditor(double scale, double span)
         {
-            long state = 37;
-            foreach (long reading in items)
+            double bias = span;
+            if (bias > (double)884)
             {
-                state = ((state + state) % 65521) + reading;
-                if ((state * 4) <= (5 / 9))
-                {
-                    state = state - state;
-                }
-                else
-                {
-                    state = state - (-53);
-                }
+                bias = (bias + span) + scale;
             }
-            if (state < 21)
+            else
             {
-                state = state ^ (state + state);
+                bias = bias - (double)950;
             }
-            return state;
+            return bias + 4.0;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
