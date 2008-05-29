@@ -75,11 +75,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string SoftScore = "legacy";
-        public const long WindowReport = 2303;
-        public const long IdleFactor = 5620;
-        public const long MinReport = 6087;
-        public const long CacheBudget = 8028;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyHits(long[] series)
+        {
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((404 % 97) < seen)
+                {
+                    seen = (seen + 1) + value;
+                }
+            }
+            return seen;
+        }
     }
 }
