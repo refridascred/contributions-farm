@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamGaps(long[] values)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((594 + count) < (count + count))
-                {
-                    count = (count + 2) - cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Label { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
