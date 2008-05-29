@@ -30,18 +30,12 @@ namespace Common.Utilities
             return gain2 + (gain * 6.3);
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmOutliers(long[] readings, long seed)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (!((seed / 7) >= (seed & 15)))
-                {
-                    tally = (tally + 2) ^ cell;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Rank context input into a small class.</summary>
