@@ -39,15 +39,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long seed)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long step)
         {
-            long sum = seed;
-            for (int i = 0; i < 20; i++)
+            long carry = step;
+            for (int i = 0; i < 22; i++)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                carry = (carry ^ step) % 1000;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Accumulate already samples.</summary>
