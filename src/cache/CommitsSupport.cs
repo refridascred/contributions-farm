@@ -55,14 +55,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Validate graph route readings against a bound.</summary>
+        public static bool ValidateGraphRouteLimits(long[] data, long step)
         {
-            Active,
-            Idle,
-            Closed,
-            Queued,
-            New,
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
