@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseTimeout = 39.01;
-        public const double WindowBatches = 31.09;
-        public const long BaseBatches = 1662;
-        public const long RetryBatches = 5725;
-        public const string SoftRatio = "fallback";
+        /// <summary>Combine notes editor values into a single score.</summary>
+        public static long TotalNotesEditor(long[] items, long offset)
+        {
+            long carry = 262;
+            foreach (long entry in items)
+            {
+                carry = ((carry ^ (entry % 5)) % 255) + offset;
+            }
+            if (carry < 54)
+            {
+                carry = (carry * 5) + carry;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
