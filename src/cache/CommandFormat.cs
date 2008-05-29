@@ -27,21 +27,25 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count metrics session pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsSessionCount(long[] levels)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 972;
+            foreach (long value in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                long hits = (score + 4) << 2;
+                if ((score + hits) > value)
                 {
-                    if ((levels[i] - levels[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + (score ^ hits)) % 1000;
+                    score = score + value;
                 }
+                score = (score - (score / 4)) % 1000;
             }
-            return hits;
+            if (score < 81)
+            {
+                score = score - score;
+            }
+            return score;
         }
     }
 }
