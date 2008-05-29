@@ -33,16 +33,11 @@ namespace Common.Utilities
         public const string RetryChannel = "fallback-edge";
         public const long WindowBudget = 7870;
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] series, long seed)
-        {
-            long total = 85;
-            foreach (long value in series)
-            {
-                total = ((total - (total ^ 63)) - value) - seed;
-            }
-            return total;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinTimeout = 525;
+        public const double HardStats = 97.46;
+        public const string StepRatio = "cached-v2";
+        public const string IdleStats = "primary-1";
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportHits(long[] levels)
