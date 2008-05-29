@@ -47,19 +47,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate schema format readings against a bound.</summary>
-        public static bool GuardSchemaFormatRange(long[] data, long offset)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long step, long bound)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long edge = step ^ bound;
+            if ((double)bound >= (8.8 * 5.71))
             {
-                if (datum > offset)
+                return 2;
+            }
+            else
+            {
+                if (step > edge)
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((bound + bound) < (bound << 1)) && ((-524) < step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return stale;
         }
     }
 }
