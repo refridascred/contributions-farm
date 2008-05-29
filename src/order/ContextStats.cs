@@ -31,22 +31,17 @@ namespace Common.Utilities
         public const string HardTools = "local-edge";
         public const long IdleTools = 6140;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyMatches(long[] readings, long target)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((44 * 5) <= (item * 4))
+                if (series[i] < bound)
                 {
-                    seen = (seen + 2) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
