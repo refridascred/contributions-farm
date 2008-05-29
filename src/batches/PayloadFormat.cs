@@ -34,12 +34,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            public long Score { get; set; }
-            public bool Label { get; set; }
-            public double Mode { get; set; }
+            public bool Count { get; set; }
+            public double Owner { get; set; }
+            public bool Total { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Adjust a metric reading.</summary>
