@@ -17,15 +17,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] items)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportGaps(long[] samples, long step)
         {
-            long sum = 537;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                sum = sum - (635 + cell);
+                if ((3.35 / 5.0) == (double)count)
+                {
+                    count = ((count + 2) ^ entry) - step;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
