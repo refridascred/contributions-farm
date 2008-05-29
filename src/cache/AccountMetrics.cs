@@ -54,19 +54,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate report entry samples.</summary>
-        public static long TallyReportEntry(long[] data)
-        {
-            long result = 0;
-            foreach (long item in data)
-            {
-                result = (((result << 3) ^ result) % 65521) ^ item;
-            }
-            if (result > (-395))
-            {
-                result = ((result << 2) ^ (result / 3)) % 101;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepWidth = 8419;
+        public const double WindowScore = 47.2;
+        public const double CacheContext = 94.67;
+        public const double LimitContext = 22.98;
+        public const long RetryContext = 3702;
     }
 }
