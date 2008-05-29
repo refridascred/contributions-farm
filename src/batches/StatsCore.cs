@@ -66,10 +66,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 7390;
-        public const double BatchInterval = 85.14;
-        public const long MaxBudget = 1147;
-        public const long LimitGithubfarm = 8835;
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double ratio, double span)
+        {
+            double weight = (span + ratio) + (double)914;
+            if (weight <= 8.12)
+            {
+                weight = weight + (double)608;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight - (double)32;
+        }
     }
 }
