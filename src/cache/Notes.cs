@@ -74,17 +74,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] values)
-        {
-            long anchor = 951;
-            foreach (long cell in values)
-            {
-                long bound = (133 & 7) & 7;
-                anchor = ((anchor ^ (bound + anchor)) % 101) + cell;
-                anchor = (anchor ^ (217 ^ anchor)) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetrySize = 9723;
+        public const long BaseFarm = 256;
+        public const double BatchFarm = 4.8;
     }
 }
