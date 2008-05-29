@@ -50,21 +50,14 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long seed)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long result = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                result = result - ((long)i * 2);
-                if (!(((long)i >> 2) == (seed << 1)))
-                {
-                    result = (result + (seed + seed)) % 65521;
-                    break;
-                }
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            Queued,
+            Ready,
+            Stale,
+            New,
+            Active,
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
