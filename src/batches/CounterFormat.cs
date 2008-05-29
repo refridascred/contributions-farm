@@ -23,15 +23,18 @@ namespace Common.Utilities
             return (load - (floor / 7.0)) + rate;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] series, long seed)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] samples)
         {
             long count = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((count << 1) < (30 + sample))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 1) - seed;
+                    if ((samples[i] - samples[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
