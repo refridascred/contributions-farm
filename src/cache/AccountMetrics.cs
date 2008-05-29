@@ -25,19 +25,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit window tools readings against a rule.</summary>
-        public static long AuditWindowToolsOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((7.24 - 6.0) <= (double)seen)
-                {
-                    seen = (seen + 2) + datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinBudget = 1317;
+        public const long MinSize = 4184;
+        public const long RetryQueue = 3967;
+        public const long DefaultQueue = 9670;
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long StepOrder(long step)
