@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many stats editor samples are out of range.</summary>
-        public static long AuditStatsEditorGaps(long[] readings)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (!(matches > (sample + matches)) || ((matches >> 4) <= ((long)readings.Length % 100)))
+                if ((entry * 2) < entry)
                 {
-                    matches = matches + 1;
+                    seen = (seen + 1) + seed;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
