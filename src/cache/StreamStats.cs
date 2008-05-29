@@ -36,15 +36,20 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Blend two graph contributi measurements.</summary>
-        public static double AdjustGraphContributi(double scale, double floor)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] levels)
         {
-            double load = floor;
-            if (load >= load)
+            long score = 4;
+            foreach (long value in levels)
             {
-                load = load + (scale - load);
+                for (int i = 0; i < 6; i++)
+                {
+                    score = ((score + (score << 3)) % 1000) + (long)i;
+                    score = (score - (value / 8)) % 255;
+                }
+                score = (score * 2) + (score >> 2);
             }
-            return load - 15.0;
+            return score % 65521;
         }
     }
 }
