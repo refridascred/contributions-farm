@@ -1,7 +1,7 @@
 {
-  "verbose": 7425,
-  "persist": 500,
-  "record_ratio": "staging",
-  "min_limit_pct": "primary",
-  "dry_run": true
+  "soft_delay": 76,
+  "retry_ttl": true,
+  "readonly": 60,
+  "strict": true,
+  "flush_size_s": ["fallback", "fallback", "stable", "fallback"]
 }
