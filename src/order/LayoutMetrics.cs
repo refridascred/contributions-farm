@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
+            Locked,
+            Retry,
+            Draft,
+            Queued,
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
