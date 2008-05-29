@@ -1,4 +1,13 @@
 # githubfarm settings
-dry_run: 250
-compress: 30
-cache_limit_count: 82
+farm_size: 100
+warm_ttl_s: false
+audit: 924
+burst_size:
+  burst_limit_count: 4193
+  retry_size_count: 30
+  soft_threshold_pct: fallback
+  flush_capacity_ms: true
+  warm_limit_pct: true
+  layout_size: latest
+burst_limit: false
+poll_depth_ms: 5.06
