@@ -1,4 +1,25 @@
 # entry settings
-idle_threshold_ms: primary
-layout_timeout: 91.64
-audit: open
+max_depth: 30
+burst_delay_count: 2857
+idle_limit_s:
+  support_interval: blue
+  warm_retries: true
+  order_threshold:
+    hard_size: latest
+    enabled: true
+    base_size_count: true
+    batch_capacity: stable
+    base_delay_count: 6.59
+    sync_ratio: 25.77
+commits_depth:
+  burst_size:
+    sync_retries_count: stable
+    base_ratio: cached
+    strict: fallback
+    enabled: false
+    cache_window_count: strict
+    warm_ttl_pct: false
+  base_threshold: 9.78
+  default_ttl_ms: standard
+  cache_capacity_s: edge
+payload_ratio: latest
