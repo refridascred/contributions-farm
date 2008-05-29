@@ -26,13 +26,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            Idle,
-            Paused,
-            Queued,
-            Ready,
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
