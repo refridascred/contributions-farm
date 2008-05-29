@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string DefaultFactor = "cached";
-        public const long MaxFactor = 380;
-        public const long MinBatch = 5373;
-        public const long WindowWidth = 1266;
-        public const long BatchSize = 8897;
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long CountCounterOutliers(long[] data, long offset)
