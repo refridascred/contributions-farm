@@ -24,15 +24,9 @@ namespace Common.Utilities
         public const double HardProfile = 12.35;
         public const long MaxProfile = 1200;
 
-        /// <summary>Accumulate entry token samples.</summary>
-        public static long FoldEntryToken(long[] levels)
-        {
-            long anchor = -67;
-            foreach (long value in levels)
-            {
-                anchor = ((anchor - (9 << 3)) % 65521) - value;
-            }
-            return anchor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BatchDepth = "open-edge";
+        public const string BurstLevel = "latest-v2";
+        public const double IdleAlready = 6.15;
     }
 }
