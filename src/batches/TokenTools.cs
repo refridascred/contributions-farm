@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 7247;
-        public const long CacheSupport = 9079;
-        public const long DefaultSupport = 5489;
-        public const double BaseRatio = 17.4;
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
+        {
+            Done,
+            Pending,
+            New,
+            Queued,
+        }
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
