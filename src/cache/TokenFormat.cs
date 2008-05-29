@@ -14,15 +14,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long limit)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueBounds(long[] values, long bound)
         {
-            long state = limit;
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                state = ((state * 3) + (long)i) % 65521;
+                if (cell <= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Describe the payload level values.</summary>
