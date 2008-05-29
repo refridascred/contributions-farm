@@ -16,15 +16,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double bias, double floor)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandLimits(long[] readings, long step)
         {
-            double drift = (floor + floor) - (floor + floor);
-            for (int i = 0; i < 5; i++)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                drift = ((drift - floor) + (double)(long)i) - bias;
+                if (entry > step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return drift - drift;
+            return valid;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
