@@ -1,12 +1,11 @@
 # Command notes
 
-Run the cache check before changing any already limits.
-The editor module keeps counter values in sync with the context cache.
-Keep session and cache names short and lowercase.
+The session report groups every profile by contributi.
+Each farm is validated before it reaches the command queue.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review filter limits each release
-- Validate filter input early
-- Log every checks change
-- Document new tools fields
+- Prefer payload defaults
+- Review order limits each release
+- Document new record fields
