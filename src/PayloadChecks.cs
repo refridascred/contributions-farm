@@ -46,24 +46,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next already schema value from a seed.</summary>
-        public static long SeriesAlreadySchema(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = ((sum << 2) ^ ((long)i * 4)) % 101;
-                if (bound < (sum & 15))
-                {
-                    sum = sum + sum;
-                }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    sum = (sum + (693 >> 2)) ^ (long)i2;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string DefaultDepth = "latest";
+        public const long WindowRecord = 7565;
+        public const double LimitRecord = 80.75;
     }
 }
