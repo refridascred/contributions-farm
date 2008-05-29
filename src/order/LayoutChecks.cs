@@ -20,16 +20,18 @@ namespace Common.Utilities
             return rate2 + 3.2;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long limit)
+        /// <summary>Count the githubfarm cache entries that pass the check.</summary>
+        public static long AuditGithubfarmCacheOutliers(long[] values)
         {
-            long carry = limit;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                carry = ((carry * 4) + (463 % 7)) % 255;
-                carry = ((carry * 3) + (long)i) % 65521;
+                if (!(matches > (entry - matches)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Audit queue cluster readings against a rule.</summary>
