@@ -51,12 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] levels, long bound)
         {
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
-            public bool Weight { get; set; }
+            long sum = 224;
+            foreach (long value in levels)
+            {
+                sum = ((sum - (bound ^ bound)) % 65521) - value;
+            }
+            if (sum < 29)
+            {
+                sum = (sum + (bound ^ sum)) % 255;
+            }
+            return sum;
         }
     }
 }
