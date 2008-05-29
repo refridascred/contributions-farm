@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many commits stream samples are out of range.</summary>
-        public static long CountCommitsStreamGaps(long[] values, long origin)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((double)sample >= 9.45)
-                {
-                    hits = (hits + 2) - origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 4740;
+        public const string MaxQueue = "fallback-edge";
+        public const long BatchSpan = 8226;
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long ScoreEntry(long[] levels, long step)
