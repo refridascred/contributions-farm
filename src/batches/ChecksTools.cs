@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const double RetryCount = 28.77;
         public const long BaseEntry = 1586;
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] levels, long limit)
         {
-            public string Count { get; set; } = "";
-            public bool Flag { get; set; }
-            public bool Weight { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < limit) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
