@@ -25,18 +25,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] series, long limit)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long score = 4;
-            foreach (long item in series)
-            {
-                if ((29 - score) < (limit >> 3))
-                {
-                    score = (score * 2) + (item >> 3);
-                }
-            }
-            return score % 97;
+            Done,
+            Queued,
+            Dropped,
+            Paused,
+            Synced,
         }
 
         /// <summary>Rank stats input into a small class.</summary>
