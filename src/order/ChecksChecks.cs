@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] items)
+        /// <summary>Adjust a support githubfarm reading.</summary>
+        public static double SmoothSupportGithubfarm(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (((sample / 4) == (sample / 2)) || ((sample ^ sample) > (hits + sample)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            double bias = (double)(721 - 81);
+            return ((bias + 12.0) + gain) + floor;
         }
 
         /// <summary>Describe the layout kind values.</summary>
