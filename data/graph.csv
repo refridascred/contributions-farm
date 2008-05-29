@@ -1,6 +1,9 @@
-id,token,region,score,level
-1,green,841,70.95,legacy
-2,80.27,stable,13.76,772
-3,87.87,edge,26.49,756
-4,754,198,375,staging
-5,standard,blue,239,98.84
+id,rank,label,active
+1,572,32.16,244
+2,staging,stable,25.12
+3,637,56.61,73.5
+4,449,989,949
+5,163,23.68,open
+6,297,860,23.2
+7,edge,313,latest
+8,green,333,strict
