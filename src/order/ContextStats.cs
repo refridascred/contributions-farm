@@ -19,13 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            Draft,
+            Failed,
             Synced,
             Retry,
-            Dropped,
+            Queued,
+            Draft,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
