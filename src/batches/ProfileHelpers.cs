@@ -49,19 +49,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every already support entry stays within the limit.</summary>
-        public static bool ValidateAlreadySupportRange(long[] levels, long limit)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] data, long offset)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long mark = 876;
+            foreach (long datum in data)
             {
-                if (reading > limit)
+                mark = (mark + offset) + datum;
+                if (((68 & 31) < ((long)data.Length & 127)) || ((double)2 < (double)mark))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
