@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Check that every layout contributi entry stays within the limit.</summary>
+        public static bool CheckLayoutContributiBounds(long[] items, long offset)
         {
-            Done,
-            Closed,
-            Dropped,
-            Ready,
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
