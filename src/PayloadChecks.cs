@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] values)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] samples, long origin)
         {
-            long mark = -52;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(57 > (item + mark)))
+                if ((samples[i] < origin) && ((samples[i] % 2) == 0))
                 {
-                    mark = mark + mark;
-                }
-                else
-                {
-                    mark = (mark - (96 ^ item)) % 1000;
+                    return (long)i;
                 }
             }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Grade a metrics metric value against two limits.</summary>
