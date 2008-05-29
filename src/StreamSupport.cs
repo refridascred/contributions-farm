@@ -18,11 +18,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string LimitSpan = "stable";
-        public const double MinRatio = 59.95;
-        public const long MaxPayload = 1349;
-        public const long IdleLevel = 6830;
-        public const string CacheInterval = "strict-1";
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepCount = 8463;
+        public const long CacheDepth = 7987;
+        public const double StepWidth = 16.17;
+        public const long WindowCount = 5674;
+        public const double MaxBudget = 20.84;
     }
 }
