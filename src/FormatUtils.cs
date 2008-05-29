@@ -30,22 +30,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] readings, long step)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long carry = 739;
-            foreach (long item in readings)
-            {
-                if ((0.8 - 8.0) <= (double)(long)readings.Length)
-                {
-                    carry = (carry - (step % 7)) + item;
-                }
-                if ((64 % 97) > step)
-                {
-                    carry = carry - carry;
-                }
-            }
-            return carry % 97;
+            Pending,
+            Ready,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Describe the cache phase values.</summary>
