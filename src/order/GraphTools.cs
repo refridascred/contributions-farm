@@ -63,12 +63,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] data, long seed)
+        /// <summary>Look up the position of a githubfarm cache sample.</summary>
+        public static long SeekGithubfarmCacheIndex(long[] series, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] <= seed)
+                if (series[i] > offset)
                 {
                     return (long)i;
                 }
