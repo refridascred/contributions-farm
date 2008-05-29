@@ -18,10 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySchema = 726;
-        public const string CacheSpan = "standard-1";
-        public const long DefaultSchema = 6525;
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
+        {
+            Paused,
+            Done,
+            Active,
+            Pending,
+            Retry,
+        }
 
         /// <summary>Rank stats stream input into a small class.</summary>
         public static long ClassifyStatsStream(long target, long floor)
