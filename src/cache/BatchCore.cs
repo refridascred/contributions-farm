@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadOutliers(long[] items, long seed)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((seed > (entry >> 1)) || (hits >= (entry << 2)))
+                if ((((target ^ item) <= (target + 566)) || ((count + item) <= (target >> 2))) || (count < (item - count)))
                 {
-                    hits = hits + 1;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
