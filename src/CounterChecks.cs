@@ -31,22 +31,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiOutliers(long[] values, long floor)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long seed)
         {
-            long count = 0;
-            foreach (long value in values)
+            long state = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (value <= floor)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Describe the order mode values.</summary>
