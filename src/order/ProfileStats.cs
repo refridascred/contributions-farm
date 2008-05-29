@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
+            Active,
+            Synced,
+            New,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
