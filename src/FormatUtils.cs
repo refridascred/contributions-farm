@@ -41,11 +41,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 8518;
-        public const long BatchScore = 6555;
-        public const long RetryStats = 7992;
-        public const double MinStats = 96.14;
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
