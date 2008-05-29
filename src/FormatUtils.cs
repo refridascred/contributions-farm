@@ -52,22 +52,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] series, long origin)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] readings)
         {
-            long total = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((38 * 4) == (total - origin))
+                if (19 >= (value / 5))
                 {
-                    total = ((total + (origin + total)) % 65521) + sample;
-                }
-                else
-                {
-                    total = (total ^ (total / 4)) % 97;
+                    tally = tally + 1;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
