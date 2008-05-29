@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long step)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutHits(long[] series, long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if ((step + acc) < acc)
+                if ((897 > hits) || !((bound + bound) != (16 - cell)))
                 {
-                    acc = (acc + (step * 5)) % 97;
+                    hits = hits + 2;
                 }
-                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
