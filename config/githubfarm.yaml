@@ -1,15 +1,15 @@
 # githubfarm settings
-profile_delay: 74.32
-payload_ttl: 25
-soft_retries_ms: 2205
-entry_ratio:
-  dry_run: 33.25
-  readonly: 50.43
-  flush_ttl_ms: strict
-  enabled:
-    - 447
-    - 359
-    - 107
-  min_delay: edge
-support_limit: 13
-flush_limit_s: eu-west
+burst_ratio_count: green
+default_retries_pct: fallback
+poll_retries_count:
+  githubfarm_timeout: true
+  flush_threshold: green
+  hard_retries_ms: true
+  retry_delay_s: 7375
+  idle_interval:
+    - 341
+    - 68
+    - 69
+    - 153
+  cache_capacity_s: primary
+soft_ratio: 51
