@@ -25,22 +25,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] readings)
+        /// <summary>Classify a githubfarm layout pair into a bucket.</summary>
+        public static long SortGithubfarmLayout(long floor, long offset)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            if (floor <= (187 ^ floor))
             {
-                if ((sample >> 4) > (sample + sample))
+                return 2;
+            }
+            else
+            {
+                if (floor >= (offset - offset))
                 {
-                    seen = seen + 3;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (floor > (offset + floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((8.0 * 3.12) <= (double)offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
