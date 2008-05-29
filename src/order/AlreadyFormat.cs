@@ -59,19 +59,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] series, long offset)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long mix = 110;
-            foreach (long cell in series)
-            {
-                mix = (((mix * 5) + (offset * 4)) % 4096) - cell;
-            }
-            if (mix > 6)
-            {
-                mix = mix - mix;
-            }
-            return mix;
+            public long Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
