@@ -53,12 +53,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
-        {
-            Queued,
-            Stale,
-            Failed,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string SoftOrder = "fallback";
+        public const long BatchFactor = 9430;
+        public const string IdleScore = "latest-1";
     }
 }
