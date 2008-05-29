@@ -59,11 +59,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Accumulate session cluster samples.</summary>
+        public static long TotalSessionCluster(long[] readings)
         {
-            public long Flag { get; set; }
-            public double Owner { get; set; }
+            long mix = 9;
+            foreach (long reading in readings)
+            {
+                if (!((reading / 8) > reading))
+                {
+                    mix = ((mix << 2) ^ (reading ^ reading)) % 97;
+                }
+            }
+            if (mix < (-607))
+            {
+                mix = (mix + (mix * 2)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
