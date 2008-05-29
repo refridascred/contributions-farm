@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] readings)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Done,
+            Closed,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
