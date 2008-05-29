@@ -40,9 +40,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string SoftOrder = "fallback";
-        public const long BatchFactor = 9430;
-        public const string IdleScore = "latest-1";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitSpan = 3997;
+        public const long BaseBatches = 3718;
+        public const double BurstRatio = 67.12;
+        public const double LimitFactor = 66.42;
+        public const double MaxBatches = 51.26;
     }
 }
