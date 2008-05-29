@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long MaxAlready = 1558;
         public const long BurstWidth = 5843;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double HardEditor = 19.31;
-        public const string LimitEditor = "alpha-1";
-        public const double MaxScore = 8.69;
-        public const long BatchEditor = 2126;
-        public const long IdleLevel = 7941;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchGaps(long[] readings)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((seen - seen) > datum)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long SeriesCommits(long floor)
