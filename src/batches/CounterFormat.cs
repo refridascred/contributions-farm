@@ -32,9 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultScore = 9750;
-        public const string MaxFactor = "open-v2";
-        public const double BaseCount = 3.75;
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
+        }
     }
 }
