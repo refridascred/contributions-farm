@@ -29,9 +29,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 9801;
-        public const long DefaultDepth = 2430;
-        public const long BaseSize = 9354;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 2428;
+        public const long HardWidth = 1904;
+        public const long StepInterval = 3537;
     }
 }
