@@ -56,18 +56,18 @@ namespace Common.Utilities
         public const long BurstBuffer = 4291;
         public const long DefaultSize = 4825;
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] samples)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelOutliers(long[] values, long origin)
         {
-            long result = 29;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (result > 45)
+                if ((double)reading < 9.7)
                 {
-                    result = result + (value - 200);
+                    matches = (matches + 1) + origin;
                 }
             }
-            return result;
+            return matches;
         }
     }
 }
