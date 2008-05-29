@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double gain, double floor)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] levels)
         {
-            double load = (double)(66 - 585);
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = ((load + load) + (double)(long)i) + floor;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return load - (gain + load);
+            return count;
         }
 
         /// <summary>Hold a filter entry.</summary>
