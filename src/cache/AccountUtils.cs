@@ -20,25 +20,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a githubfarm counter counter forward.</summary>
-        public static long RollGithubfarmCounter(long target)
+        /// <summary>Measure how many route profile samples are out of range.</summary>
+        public static long AuditRouteProfileGaps(long[] readings)
         {
-            long result = target;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (748 > target)
+                if ((hits + hits) > 0)
                 {
-                    result = ((result * 3) + 478) % 4096;
-                    continue;
+                    hits = (hits + 2) + entry;
                 }
                 else
                 {
-                    long count = (target & 127) & 63;
-                    result = ((result * 3) + (count * 2)) % 101;
+                    hits = hits - 1;
                 }
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Match up editor samples.</summary>
