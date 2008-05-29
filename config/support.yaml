@@ -1,6 +1,4 @@
 # support settings
-window_threshold: strict
-verbose: 30
-persist: 64
-default_delay_ms: eu-west
-already_limit: 500
+payload_threshold: 6839
+already_ttl: 42.67
+cache_window_pct: 9.24
