@@ -22,14 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
-        {
-            Pending,
-            Stale,
-            Retry,
-            New,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchLevel = 646;
+        public const long IdleSize = 5211;
+        public const double IdleBatch = 5.94;
+        public const long SoftTimeout = 5780;
+        public const double SoftWidth = 17.68;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long AuditStreamHits(long[] data, long limit)
