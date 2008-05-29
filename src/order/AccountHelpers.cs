@@ -57,11 +57,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 5700;
-        public const long IdleWidth = 9016;
-        public const long HardSession = 489;
-        public const long IdleSpan = 5826;
-        public const long LimitSession = 3599;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MinSize = 3.03;
+        public const long HardMetrics = 7275;
+        public const long BaseMetrics = 4161;
+        public const long BatchWidth = 6190;
     }
 }
