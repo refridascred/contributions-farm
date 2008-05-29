@@ -39,11 +39,22 @@ namespace Common.Utilities
             return gain2 + (gain + 0.7);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepCount = 8463;
-        public const long CacheDepth = 7987;
-        public const double StepWidth = 16.17;
-        public const long WindowCount = 5674;
-        public const double MaxBudget = 20.84;
+        /// <summary>Fold a list of report already readings.</summary>
+        public static long WeighReportAlready(long[] levels)
+        {
+            long mark = 508;
+            foreach (long datum in levels)
+            {
+                if (mark <= (1 + datum))
+                {
+                    mark = ((mark << 2) ^ (mark + datum)) % 101;
+                }
+            }
+            if (mark > 7)
+            {
+                mark = mark + (13 / 4);
+            }
+            return mark;
+        }
     }
 }
