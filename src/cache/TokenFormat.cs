@@ -18,9 +18,38 @@ namespace Common.Utilities
         public const long MinEntry = 6566;
         public const long LimitSpan = 8315;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseGithubfarm = 23.05;
-        public const long SoftTimeout = 8752;
-        public const long DefaultGithubfarm = 5145;
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long limit, long bound)
+        {
+            if ((bound * 4) > bound)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit & 15) <= limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((18.0 / 9.0) != (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)limit != (0.7 + 18.0)) || ((limit >> 4) > (bound + 2)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
