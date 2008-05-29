@@ -1,5 +1,12 @@
 # support settings
-compress: 5862
-flush_limit_pct: primary
-poll_interval: 9554
-channel_size: legacy
+warm_depth_count:
+  - cached
+  - edge
+  - green
+  - standard
+cache_delay_s: primary
+strict:
+  hard_window: false
+  warm_capacity_s: stable
+  readonly: stable
+  flush_limit_count: 51
