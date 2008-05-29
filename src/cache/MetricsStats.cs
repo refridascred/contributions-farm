@@ -25,11 +25,12 @@ namespace Common.Utilities
         public const string RetryChannel = "fallback-edge";
         public const long WindowBudget = 7870;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinTimeout = 525;
-        public const double HardStats = 97.46;
-        public const string StepRatio = "cached-v2";
-        public const string IdleStats = "primary-1";
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 5203;
+        public const string BurstBudget = "alpha-v2";
+        public const long LimitToken = 1506;
+        public const long CacheSize = 5028;
+        public const long HardSize = 8964;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long SoftNotes = 8214;
