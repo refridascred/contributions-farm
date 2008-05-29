@@ -20,12 +20,16 @@ namespace Common.Utilities
             return gain - 0.4;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long limit)
         {
-            New,
-            Active,
-            Stale,
+            long result = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                result = (result ^ (limit ^ result)) % 4096;
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Match up stream samples.</summary>
