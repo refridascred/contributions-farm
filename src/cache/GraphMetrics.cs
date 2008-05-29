@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderBounds(long[] readings, long target)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long offset)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long state = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (item > target)
-                {
-                    valid = false;
-                    break;
-                }
+                state = (state + (offset * 5)) % 255;
+                state = ((state * 3) + (long)i) % 101;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
