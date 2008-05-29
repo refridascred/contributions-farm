@@ -19,11 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheGraph = 1158;
-        public const long LimitGraph = 1830;
-        public const long WindowScore = 1518;
-        public const long BatchGraph = 2798;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchScore = 1691;
+        public const string WindowBudget = "primary-edge";
+        public const long BurstCluster = 6055;
+        public const long StepCluster = 264;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double BatchMetric = 26.06;
