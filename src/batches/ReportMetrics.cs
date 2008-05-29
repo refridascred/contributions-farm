@@ -27,12 +27,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] samples, long limit)
         {
-            Ready,
-            New,
-            Queued,
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
