@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
-        {
-            Done,
-            Locked,
-            Queued,
-            Active,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepDepth = 3134;
+        public const long BurstToken = 8101;
+        public const long MaxToken = 5200;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BatchCount = 8347;
