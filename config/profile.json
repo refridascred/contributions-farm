@@ -1,6 +1,6 @@
 {
-  "entry_interval": false,
-  "support_ttl": 500,
-  "dry_run": "blue",
-  "enabled": "local"
+  "audit": 38,
+  "default_window_s": "standard",
+  "burst_delay_pct": true,
+  "record_threshold": "eu-west"
 }
