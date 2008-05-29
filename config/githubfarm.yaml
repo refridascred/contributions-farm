@@ -1,6 +1,4 @@
 # githubfarm settings
-retry_interval_s: 30
-burst_timeout_ms: false
-verbose:
-  - 172
-  - 25
+retry_depth_count: 14.65
+warm_delay_ms: false
+burst_window_s: 9329
