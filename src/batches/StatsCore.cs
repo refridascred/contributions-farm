@@ -34,13 +34,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] data, long origin)
         {
-            Stale,
-            Active,
-            Dropped,
-            Locked,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < origin) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate githubfarm stream samples.</summary>
