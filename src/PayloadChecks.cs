@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate stats context samples.</summary>
-        public static long TallyStatsContext(long[] items)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] series, long limit)
         {
-            long mark = 37;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (mark < (mark - sample))
+                if (series[i] <= limit)
                 {
-                    mark = (mark ^ (sample << 3)) % 4096;
-                }
-                else
-                {
-                    mark = (mark * 3) + (mark << 2);
-                }
-                if ((mark >> 3) <= (sample - mark))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
