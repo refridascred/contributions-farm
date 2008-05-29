@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            New,
-            Failed,
-            Draft,
-            Ready,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 111;
+        public const long IdleSize = 402;
+        public const long BurstCluster = 1618;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long TallyTokenOutliers(long[] items)
