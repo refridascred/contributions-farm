@@ -49,17 +49,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a entry record sample.</summary>
-        public static long LookupEntryRecordIndex(long[] items, long origin)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (items[i] > origin)
+                if (step >= (step >> 5))
                 {
-                    return (long)i;
+                    break;
                 }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
