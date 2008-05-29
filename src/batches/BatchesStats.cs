@@ -27,23 +27,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double BlendEntry(double weight, double floor)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double rate, double offset)
         {
-            double bias = (weight - weight) + weight;
-            if (bias >= bias)
+            double weight = rate;
+            if (weight >= (4.0 * 0.7))
             {
-                bias = bias + (bias + weight);
+                weight = (weight - (double)57) - offset;
             }
             else
             {
-                bias = bias + bias;
+                weight = weight + rate;
             }
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 8; i++)
             {
-                bias = (bias - (floor / 8.0)) - (double)(long)i;
+                weight = (weight + (rate * 1.26)) + (double)(long)i;
             }
-            return bias + (weight + 2.0);
+            return weight + rate;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
