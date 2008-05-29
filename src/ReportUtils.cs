@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] samples, long seed)
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double ratio, double floor)
         {
-            long total = 0;
-            foreach (long reading in samples)
+            double weight = floor + (1.58 + ratio);
+            if (weight > (double)48)
             {
-                if (((long)samples.Length & 7) < seed)
-                {
-                    total = (total ^ (seed << 2)) - reading;
-                }
+                weight = weight - 2.79;
             }
-            return total;
+            else
+            {
+                weight = weight - (weight + weight);
+            }
+            return weight + (ratio * 9.01);
         }
 
         /// <summary>Describe the profile class values.</summary>
