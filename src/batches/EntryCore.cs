@@ -67,11 +67,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            public long Flag { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
