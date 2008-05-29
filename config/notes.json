@@ -1,6 +1,11 @@
 {
-  "hard_depth_pct": 49.67,
-  "soft_ratio": 250,
-  "cache_retries": "legacy",
-  "verbose": "cached"
+  "default_window": [201, 438],
+  "hard_ratio_ms": {
+    "burst_ratio_ms": false,
+    "poll_ttl_count": "eu-west",
+    "default_limit_pct": "green",
+    "warm_size_s": ["legacy", "strict", "latest"],
+    "readonly": "staging"
+  },
+  "audit": 6760
 }
