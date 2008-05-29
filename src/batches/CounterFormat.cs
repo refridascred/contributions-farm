@@ -27,19 +27,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate entry layout readings against a bound.</summary>
-        public static bool VerifyEntryLayoutLimits(long[] data, long origin)
+        /// <summary>Count metric notes pairs that satisfy a relation.</summary>
+        public static long MatchMetricNotesCount(long[] data)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading >= origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((data[i] - data[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
