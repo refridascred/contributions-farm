@@ -42,18 +42,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksHits(long[] samples, long seed)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LocateSupportIndex(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (62 > item)
+                if (levels[i] >= step)
                 {
-                    tally = (tally + 2) - seed;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
