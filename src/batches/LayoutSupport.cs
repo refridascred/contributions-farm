@@ -39,21 +39,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] levels)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = (score ^ ((long)i * 4)) % 101;
+                score = ((score * 5) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
