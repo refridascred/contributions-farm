@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutOutliers(long[] values)
         {
-            Active,
-            Queued,
-            Stale,
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((datum - datum) <= (datum >> 3))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
