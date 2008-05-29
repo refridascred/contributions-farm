@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Match up notes record samples.</summary>
-        public static long CompareNotesRecordCount(long[] series)
+        /// <summary>Measure how many window layout samples are out of range.</summary>
+        public static long CountWindowLayoutMatches(long[] items)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long value in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((value & 15) >= hits)
                 {
-                    if ((series[i] - series[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
