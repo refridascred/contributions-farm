@@ -34,25 +34,11 @@ namespace Common.Utilities
         public const string BurstFactor = "fallback";
         public const double IdleCount = 74.91;
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long seed, long seed2)
+        /// <summary>Scale a layout context figure with a bias.</summary>
+        public static double ScaleLayoutContext(double ratio, double span)
         {
-            long next = seed + seed2;
-            if ((next ^ 9) >= next)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((4.0 * 7.49) > (double)next)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            double ratio2 = (double)(248 + 842);
+            return ((ratio2 - 7.98) + ratio) + span;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
