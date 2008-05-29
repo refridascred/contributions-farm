@@ -29,13 +29,17 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Look up the position of a channel notes sample.</summary>
+        public static long SeekChannelNotesIndex(long[] samples, long offset)
         {
-            Active,
-            Paused,
-            Failed,
-            Ready,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == offset) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
