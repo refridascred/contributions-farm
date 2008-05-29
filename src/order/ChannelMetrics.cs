@@ -39,18 +39,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] levels, long seed)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((seed >> 5) != (count & 3)) || !((seed % 2) != (value << 3)))
+                if ((levels[i] < floor) && ((levels[i] % 2) != 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
