@@ -19,20 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long bound)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long total = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                if (!((bound ^ 747) > total))
-                {
-                    total = total ^ bound;
-                }
-                total = total ^ bound;
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            public long Rank { get; set; }
+            public double Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
