@@ -45,18 +45,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] series, long seed)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double gain, double span)
         {
-            long count = 0;
-            foreach (long reading in series)
+            double load = span;
+            if (load > (gain / 6.0))
             {
-                if (2.0 <= (double)count)
-                {
-                    count = ((count + 3) - reading) - seed;
-                }
+                load = load + (load / 8.0);
             }
-            return count;
+            return load + (double)0;
         }
     }
 }
