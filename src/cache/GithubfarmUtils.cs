@@ -20,19 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every cluster session entry stays within the limit.</summary>
-        public static bool GuardClusterSessionBounds(long[] levels, long target)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadHits(long[] levels)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (cell > target)
+                if (!((tally << 2) < (sample * 3)) && !(sample > (69 + tally)))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Describe the entry status values.</summary>
