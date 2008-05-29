@@ -13,12 +13,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Locate a queue window reading by value.</summary>
-        public static long LocateQueueWindowIndex(long[] items, long target)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] levels, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] < target)
+                if (levels[i] < target)
                 {
                     return (long)i;
                 }
