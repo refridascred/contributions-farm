@@ -63,24 +63,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long floor, long floor2)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesMatches(long[] levels)
         {
-            if (!((double)floor2 == (1.38 + 9.0)))
+            long matches = 0;
+            foreach (long item in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor - 91) <= (floor2 >> 3))
+                if (8.9 >= (double)matches)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    matches = (matches + 3) + item;
                 }
             }
+            return matches;
         }
     }
 }
