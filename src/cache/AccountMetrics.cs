@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountHits(long[] series, long target)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((984 / 8) >= cell)
-                {
-                    hits = (hits + 2) + target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTimeout = 1085;
+        public const double BatchTools = 1.35;
+        public const string MaxTools = "stable";
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long StepMetric(long target)
