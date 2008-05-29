@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] values)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long floor)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long total = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((1.0 - 6.0) > (16.0 / 5.0))
-                {
-                    hits = (hits + 3) + datum;
-                }
+                total = (total ^ 15) % 101;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Describe the profile state values.</summary>
