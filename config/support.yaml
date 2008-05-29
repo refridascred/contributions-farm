@@ -1,24 +1,8 @@
 # support settings
-checks_interval:
-  channel_delay:
-    layout_ttl: legacy
-    idle_retries_ms: cached
-    burst_window_count: 40.6
-    entry_capacity: 5733
-  base_window_pct: 100
-  persist: 35.75
-  audit:
-    warm_interval_s: edge
-    hard_delay:
-      - 406
-      - 196
-      - 33
-    burst_ttl: 75
-    default_timeout_count: 85.4
-  cache_interval_ms: 100
-  compress: open
-editor_retries: false
-poll_capacity_s: 19
-hard_size_count: 100
-farm_timeout: stable
-window_timeout: false
+record_ttl: 500
+sync_ttl_count: 500
+cache_threshold: strict
+default_depth_count:
+  - 286
+  - 264
+flush_ttl_pct: strict
