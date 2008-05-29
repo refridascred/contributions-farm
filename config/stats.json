@@ -1,7 +1,14 @@
 {
-  "report_retries": 500,
-  "cache_capacity_pct": true,
-  "command_window": true,
-  "persist": true,
-  "idle_limit_ms": 36.06
+  "batch_timeout": {
+    "entry_ratio": ["strict", "edge"],
+    "channel_delay": ["staging", "open", "staging", "edge"],
+    "dry_run": "open",
+    "retry_window": ["latest", "fallback", "latest", "standard"],
+    "verbose": false,
+    "hard_window_ms": "cached"
+  },
+  "report_ttl": "strict",
+  "idle_retries": "cached",
+  "retry_interval_ms": [337, 8, 76],
+  "default_ratio_count": "blue"
 }
