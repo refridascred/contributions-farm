@@ -35,14 +35,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountGaps(long[] series)
         {
-            Dropped,
-            Draft,
-            Done,
-            Closed,
-            Queued,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (!((double)sample >= 6.65))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
