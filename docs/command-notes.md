@@ -1,11 +1,11 @@
 # Command notes
 
-Use batches settings to tune how often graph data is refreshed.
-Run the cluster check before changing any notes limits.
-The batches report groups every editor by notes.
+Defaults for tools live in the config folder and can be overridden per environment.
+Run the record check before changing any metrics limits.
 
 ## Guidelines
 
-- Keep order values small
-- Log every account change
-- Review metrics limits each release
+- Prefer payload defaults
+- Keep window values small
+- Log every already change
+- Document new stats fields
