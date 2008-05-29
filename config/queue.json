@@ -1,6 +1,6 @@
 {
-  "enabled": 3533,
-  "readonly": "open",
-  "audit": 1024,
-  "entry_ratio": 100
+  "flush_size_ms": "stable",
+  "stats_delay": 100,
+  "base_timeout_s": ["blue", "strict"],
+  "persist": false
 }
