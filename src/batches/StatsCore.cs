@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
-        {
-            public bool Size { get; set; }
-            public long Score { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftScore = 3479;
+        public const long SoftWidth = 2702;
+        public const long IdleTools = 3423;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long WindowFarm = 4229;
