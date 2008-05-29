@@ -67,16 +67,13 @@ namespace Common.Utilities
         public const long MaxScore = 7723;
         public const long StepTimeout = 4068;
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long origin)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long sum = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = ((sum << 2) ^ sum) % 65521;
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            Idle,
+            Paused,
+            Failed,
+            Stale,
         }
     }
 }
