@@ -1,5 +1,5 @@
 {
-  "default_ttl_pct": "stable",
-  "sync_interval": 30,
-  "burst_retries_pct": ["staging", "stable", "cached", "legacy"]
+  "batch_capacity_ms": [479, 92, 367, 108],
+  "audit": "staging",
+  "record_capacity": 32
 }
