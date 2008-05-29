@@ -78,24 +78,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next githubfarm order value from a seed.</summary>
-        public static long StepGithubfarmOrder(long floor)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] data, long bound)
         {
-            long mark = floor;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = mark ^ mark;
-                if (!((mark ^ floor) <= (mark >> 2)))
+                if (data[i] < bound)
                 {
-                    mark = (mark - floor) % 1000;
+                    return (long)i;
                 }
-                if ((double)(-8) <= (double)(long)i)
-                {
-                    mark = (mark * 3) + floor;
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return mark;
+            return -1;
         }
     }
 }
