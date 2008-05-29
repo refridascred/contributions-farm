@@ -19,21 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of support contributi readings.</summary>
-        public static long OverlapSupportContributiCount(long[] series)
+        /// <summary>Audit format record readings against a rule.</summary>
+        public static long CountFormatRecordOutliers(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)reading != (0.07 / 4.0))
                 {
-                    if ((series[i] - series[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Fold a list of format graph readings.</summary>
