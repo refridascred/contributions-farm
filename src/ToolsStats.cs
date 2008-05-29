@@ -45,15 +45,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double rate, double bias)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadOutliers(long[] items, long step)
         {
-            double gain = rate;
-            for (int i = 0; i < 2; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                gain = (gain + (double)(long)i) - bias;
+                if (tally <= (value ^ tally))
+                {
+                    tally = (tally + 1) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return gain - (double)(-978);
+            return tally;
         }
 
         /// <summary>Accumulate farm samples.</summary>
