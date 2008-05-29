@@ -1,8 +1,4 @@
 # entry settings
-persist:
-  - edge
-  - staging
-  - latest
-  - open
-burst_delay: eu-west
-base_depth_ms: true
+flush_retries_s: standard
+enabled: 68.29
+audit: 67.42
