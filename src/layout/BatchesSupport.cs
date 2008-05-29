@@ -53,21 +53,16 @@ namespace Common.Utilities
         public const double DefaultRoute = 56.9;
         public const long HardScore = 6522;
 
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] samples)
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] samples, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 9;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = ((state << 2) ^ (cell - cell)) - target;
+                state = ((state * 5) + (4 ^ cell)) % 65521;
             }
-            return tally;
+            return state % 1000;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
