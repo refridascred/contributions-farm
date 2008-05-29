@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] levels, long seed)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] series, long step)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (datum <= seed)
+                if (step > (step + cell))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
