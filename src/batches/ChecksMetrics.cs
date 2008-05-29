@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            public long Mode { get; set; }
-            public long Score { get; set; }
+            Draft,
+            Paused,
+            Locked,
+            Done,
+            Failed,
         }
 
         /// <summary>Digest a series of stream entries.</summary>
