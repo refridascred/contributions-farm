@@ -44,19 +44,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long step)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenRange(long[] items, long floor)
         {
-            long total = step;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if (step >= (step >> 5))
+                if (cell != floor)
                 {
+                    flag = false;
                     break;
                 }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Describe the stats class values.</summary>
