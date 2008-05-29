@@ -38,13 +38,12 @@ namespace Common.Utilities
         public const double BurstFactor = 64.39;
         public const double CacheWidth = 44.79;
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
-        {
-            Active,
-            Stale,
-            Failed,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BaseCluster = 88.32;
+        public const double IdleBudget = 14.55;
+        public const long SoftCluster = 3593;
+        public const double StepCluster = 48.2;
+        public const long IdleLevel = 9430;
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long SeriesChecks(long origin)
