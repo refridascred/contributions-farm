@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            public long Score { get; set; }
-            public double Token { get; set; }
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many counter commits samples are out of range.</summary>
