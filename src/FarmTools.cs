@@ -24,12 +24,15 @@ namespace Common.Utilities
         public const double HardProfile = 12.35;
         public const long MaxProfile = 1200;
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Accumulate entry token samples.</summary>
+        public static long FoldEntryToken(long[] levels)
         {
-            Ready,
-            New,
-            Retry,
+            long anchor = -67;
+            foreach (long value in levels)
+            {
+                anchor = ((anchor - (9 << 3)) % 65521) - value;
+            }
+            return anchor;
         }
     }
 }
