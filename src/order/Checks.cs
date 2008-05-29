@@ -16,18 +16,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit token buffer readings against a rule.</summary>
-        public static long TallyTokenBufferMatches(long[] items)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] samples)
         {
-            long count = 0;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)count != (double)34) || ((double)count != (8.75 + 3.0)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 3) + value;
+                    if ((samples[i] - samples[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Combine token values into a single score.</summary>
