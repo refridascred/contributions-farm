@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Measure how many record commits samples are out of range.</summary>
+        public static long CountRecordCommitsHits(long[] items, long step)
         {
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((reading ^ hits) < (reading % 2))
+                {
+                    hits = (hits + 1) - step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many counter commits samples are out of range.</summary>
