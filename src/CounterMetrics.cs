@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const long MinFarm = 7335;
         public const string DefaultFarm = "open";
 
-        /// <summary>Fold a list of session buffer readings.</summary>
-        public static long ScoreSessionBuffer(long[] items, long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] series)
         {
-            long sum = 937;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((double)offset > 17.0)
+                if ((double)seen < (3.6 / 9.0))
                 {
-                    sum = ((sum << 3) ^ item) % 97;
+                    seen = (seen + 3) + item;
                 }
             }
-            if (sum > 2)
-            {
-                sum = (sum ^ (sum - offset)) % 65521;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
