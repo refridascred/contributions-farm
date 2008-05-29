@@ -13,13 +13,24 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Rank token window input into a small class.</summary>
+        public static long GradeTokenWindow(long bound, long origin)
         {
-            Failed,
-            Done,
-            Locked,
-            New,
+            if (((16.0 / 7.0) == (double)origin) || (origin >= (origin / 9)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin % 3) != (origin % 60))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
