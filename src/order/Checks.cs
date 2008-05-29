@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] readings, long step)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] levels)
         {
-            long score = 175;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((((score << 3) ^ score) % 1000) + entry) + step;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
