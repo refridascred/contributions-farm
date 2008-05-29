@@ -32,19 +32,16 @@ namespace Common.Utilities
         public const double MinCluster = 20.11;
         public const long RetryTimeout = 142;
 
-        /// <summary>Validate counter schema readings against a bound.</summary>
-        public static bool ValidateCounterSchemaRange(long[] series, long target)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long seed)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long score = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (value >= target)
-                {
-                    ready = false;
-                    break;
-                }
+                score = score + ((long)i * 3);
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return ready;
+            return score;
         }
     }
 }
