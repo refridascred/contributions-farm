@@ -54,19 +54,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate context githubfarm readings against a bound.</summary>
-        public static bool VerifyContextGithubfarmLimits(long[] readings, long offset)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] levels, long origin)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item != offset)
+                if (levels[i] < origin)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
