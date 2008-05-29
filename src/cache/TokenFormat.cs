@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] readings)
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] data)
         {
-            long state = 377;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state ^ (state / 7)) % 65521) ^ datum;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state % 4096;
+            return tally;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
