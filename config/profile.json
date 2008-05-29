@@ -1,5 +1,17 @@
 {
-  "flush_threshold": false,
-  "max_depth": 79.97,
-  "profile_delay": 4703
+  "enabled": ["open", "strict"],
+  "verbose": {
+    "retry_retries_s": [253, 315, 241],
+    "soft_depth_pct": [149, 129, 295],
+    "idle_threshold_count": ["latest", "local", "primary"],
+    "min_retries_ms": 73.39,
+    "hard_limit_s": 5353
+  },
+  "order_threshold": 75.29,
+  "burst_timeout_ms": {
+    "max_ttl": [4, 80, 296, 235],
+    "idle_retries_s": 88,
+    "token_limit": ["open", "staging", "strict", "eu-west"],
+    "flush_window_s": 60
+  }
 }
