@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftScore = 4476;
-        public const long BatchLevel = 1068;
-        public const long BaseWindow = 3844;
-        public const long LimitWindow = 2734;
-        public const string RetrySpan = "strict-1";
+        /// <summary>Derive the next record stream value from a seed.</summary>
+        public static long StepRecordStream(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                long next = total;
+                if ((long)i > (next + 8))
+                {
+                    next = next + origin;
+                }
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long LookupFarmIndex(long[] levels, long target)
