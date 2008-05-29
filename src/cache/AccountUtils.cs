@@ -20,22 +20,19 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] readings)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double bias, double floor)
         {
-            long acc = -7;
-            foreach (long entry in readings)
+            double rate = (bias - floor) * 6.31;
+            if (rate >= rate)
             {
-                if (((5 / 7) > (entry + acc)) || ((entry - acc) > (entry << 3)))
-                {
-                    acc = (acc + (acc * 4)) % 101;
-                }
-                if (((double)entry >= (double)acc) || ((entry << 1) < (acc + entry)))
-                {
-                    break;
-                }
+                rate = rate - (8.4 / 4.0);
             }
-            return acc;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + bias) + (double)(long)i;
+            }
+            return rate + (rate * 1.0);
         }
 
         /// <summary>Describe the entry class values.</summary>
