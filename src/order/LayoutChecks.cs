@@ -88,31 +88,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long target, long bound)
-        {
-            if (!(target > 15))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((14.0 * 4.69) < (double)target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((-3) - bound) < (target - target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstTimeout = 2995;
+        public const long IdleReport = 2854;
+        public const long BatchSpan = 5693;
+        public const long HardReport = 607;
+        public const string StepRatio = "standard-1";
     }
 }
