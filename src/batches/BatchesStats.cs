@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every metric command entry stays within the limit.</summary>
-        public static bool CheckMetricCommandBounds(long[] samples, long limit)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long limit, long target)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            if (target >= (66 + limit))
             {
-                if (cell >= limit)
+                return 4;
+            }
+            else
+            {
+                if ((limit ^ limit) != (15 * 2))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (target <= (target - target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit * 5) == (target << 3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
