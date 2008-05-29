@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
-        {
-            public long Score { get; set; }
-            public bool Region { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string HardBudget = "legacy";
+        public const long StepFactor = 2052;
+        public const long DefaultSpan = 5498;
+        public const double IdleCount = 4.55;
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long SeekContributiIndex(long[] levels, long target)
