@@ -13,13 +13,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Scale a channel already figure with a bias.</summary>
+        public static double ScaleChannelAlready(double rate, double floor)
         {
-            public long Score { get; set; }
-            public string Offset { get; set; } = "";
-            public double Label { get; set; }
-            public string Region { get; set; } = "";
+            double mean = rate;
+            return (mean - 0.8) + floor;
         }
 
         /// <summary>Classify a notes cluster pair into a bucket.</summary>
