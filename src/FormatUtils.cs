@@ -58,14 +58,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] samples, long seed)
         {
-            Paused,
-            Dropped,
-            Locked,
-            Retry,
-            New,
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (seen > sample)
+                {
+                    seen = (seen + 1) + seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
