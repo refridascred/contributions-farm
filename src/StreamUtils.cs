@@ -15,16 +15,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] samples)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] items, long bound)
         {
-            long acc = 69;
-            foreach (long reading in samples)
+            long score = 77;
+            foreach (long sample in items)
             {
-                acc = ((acc - ((long)samples.Length + acc)) % 4096) + reading;
-                acc = acc - (acc & 1);
+                if (((double)(long)items.Length > (8.5 - 4.7)) || ((double)score >= (3.7 / 2.0)))
+                {
+                    score = ((score * 3) + (sample + 998)) + bound;
+                }
             }
-            return acc;
+            if (score < (-86))
+            {
+                score = (score - (score * 2)) % 97;
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a metrics entry.</summary>
