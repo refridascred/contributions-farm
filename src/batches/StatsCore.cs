@@ -87,10 +87,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseRatio = 4075;
-        public const long BurstInterval = 1517;
-        public const long CacheProfile = 6453;
-        public const long LimitLevel = 1704;
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
