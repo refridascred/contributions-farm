@@ -1,39 +1,11 @@
 # support settings
-idle_retries_ms:
-  default_size: true
-  context_capacity:
-    command_retries:
-      - 296
-      - 343
-    sync_capacity: false
-    idle_depth_count: 72.91
-    base_ttl_s: 40.18
-  sync_depth_pct: 17.93
-  max_timeout_pct: true
-  entry_threshold: strict
-dry_run:
-  farm_depth: true
-  default_limit:
-    - standard
-    - stable
-    - stable
-  soft_ttl_s: 1133
-  persist:
-    - 112
-    - 186
-    - 119
-    - 25
-  idle_ratio_s:
-    - eu-west
-    - stable
-    - primary
-persist:
-  - blue
-  - stable
-order_capacity:
-  tools_delay: 55.11
-  dry_run: green
-  profile_delay: false
-  default_delay_ms: 1024
-  poll_retries_count: 2280
-idle_window_ms: 5510
+session_ratio: 9443
+schema_ratio: 75.15
+soft_delay_pct: 72
+cache_ttl_count: 100
+idle_retries_ms: 250
+checks_capacity:
+  - 472
+  - 480
+  - 113
+  - 411
