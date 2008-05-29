@@ -1,6 +1,15 @@
 {
-  "max_timeout": [8, 299, 300],
-  "strict": 70.53,
-  "burst_ttl": 850,
-  "hard_capacity": 71.01
+  "default_interval": {
+    "default_timeout_s": false,
+    "idle_retries_s": 77,
+    "compress": [401, 204, 86, 212],
+    "farm_retries": 46.26,
+    "format_retries": 100,
+    "schema_size": 500
+  },
+  "default_interval_count": "primary",
+  "cache_size_ms": 65.35,
+  "batch_threshold_s": [227, 74, 290, 312],
+  "warm_threshold_ms": "blue",
+  "cache_delay_pct": 60
 }
