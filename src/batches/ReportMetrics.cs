@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the context report entries that pass the check.</summary>
-        public static long CountContextReportHits(long[] items, long target)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long CompareRecordCount(long[] series)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell / 7) <= 76)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 3) - target;
+                    if ((series[i] + series[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
