@@ -29,39 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long offset, long limit)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double weight, double bias)
         {
-            long edge = offset + limit;
-            if (limit < (0 * 4))
+            double load = bias;
+            if (load <= (2.66 + bias))
             {
-                return 0;
+                load = load - (double)5;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((edge - 92) >= (edge & 15))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset < (edge / 2)) || ((6 ^ (-794)) < offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((-49) ^ offset) != (limit + offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                load = (load + (weight * 9.8)) - (double)(long)i;
             }
+            return load - (weight + weight);
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
