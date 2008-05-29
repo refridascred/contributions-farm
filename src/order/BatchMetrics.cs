@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BaseRecord = 5.43;
-        public const string StepTimeout = "stable-1";
-        public const long DefaultRecord = 325;
-        public const long RetryRecord = 4459;
-        public const long HardRecord = 4340;
+        /// <summary>Compare every pair of command order readings.</summary>
+        public static long OverlapCommandOrderCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the metrics status values.</summary>
         public enum MetricsStatus
