@@ -87,21 +87,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] items)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Rank { get; set; }
+            public bool Region { get; set; }
+            public double Size { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
