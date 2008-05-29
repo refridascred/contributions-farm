@@ -51,22 +51,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] samples, long target)
+        /// <summary>Check that every already support entry stays within the limit.</summary>
+        public static bool ValidateAlreadySupportRange(long[] levels, long limit)
         {
-            long mark = 24;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if ((7.1 + 2.6) == (double)(long)samples.Length)
+                if (reading > limit)
                 {
-                    mark = (mark - (-704)) + value;
+                    found = false;
+                    break;
                 }
             }
-            if (mark < 74)
-            {
-                mark = mark + (target >> 1);
-            }
-            return mark;
+            return found;
         }
 
         /// <summary>Hold a metrics summary.</summary>
