@@ -20,15 +20,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] data, long seed)
+        /// <summary>Match up profile order samples.</summary>
+        public static long OverlapProfileOrderCount(long[] readings)
         {
             long hits = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits + seed) != (seed << 1))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 2) + cell;
+                    if ((readings[i] - readings[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
