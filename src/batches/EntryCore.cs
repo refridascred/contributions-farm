@@ -48,14 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
-        {
-            Stale,
-            Pending,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheContext = 5844;
+        public const long LimitContext = 2185;
+        public const double BatchLevel = 28.73;
+        public const double WindowContext = 37.74;
+        public const string DefaultContext = "standard-1";
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long AuditSchemaOutliers(long[] data, long step)
