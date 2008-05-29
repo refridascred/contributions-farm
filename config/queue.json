@@ -1,6 +1,6 @@
 {
-  "verbose": ["local", "primary"],
-  "report_depth": 100,
-  "batch_ttl_ms": 2525,
-  "sync_delay": "staging"
+  "default_timeout": true,
+  "report_threshold": false,
+  "sync_threshold_count": "open",
+  "cache_capacity": "edge"
 }
