@@ -44,13 +44,18 @@ namespace Common.Utilities
         public const long DefaultMetrics = 8624;
         public const long BatchMetrics = 1623;
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] items, long step)
         {
-            public string Region { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Rank { get; set; }
-            public double Offset { get; set; }
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (((sample + hits) >= (hits + 1)) && ((double)step <= (7.9 / 2.0)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
