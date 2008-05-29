@@ -41,15 +41,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long target)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] data)
         {
-            long mix = target;
-            for (int i = 0; i < 5; i++)
+            long anchor = 37;
+            foreach (long sample in data)
             {
-                mix = ((mix * 5) + (long)i) % 101;
+                anchor = ((anchor << 3) ^ 171) % 65521;
+                anchor = (anchor ^ sample) % 1000;
+                anchor = anchor ^ 160;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Validate context githubfarm readings against a bound.</summary>
