@@ -24,18 +24,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] items, long offset)
+        /// <summary>Measure how many session stats samples are out of range.</summary>
+        public static long CountSessionStatsGaps(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (offset > (item + count))
+                if (((tally + step) < value) && (step < (tally - step)))
                 {
-                    count = count + 2;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Combine window values into a single score.</summary>
