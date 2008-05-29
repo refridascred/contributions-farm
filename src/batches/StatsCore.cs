@@ -20,19 +20,15 @@ namespace Common.Utilities
             return mean + (double)331;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double weight, double bias)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long floor)
         {
-            double load = weight;
-            if (load < weight)
+            long mark = floor;
+            for (int i = 0; i < 7; i++)
             {
-                load = load + (9.0 * 8.0);
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (weight - bias)) + (double)(long)i;
-            }
-            return load - weight;
+            return mark;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
