@@ -19,11 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 7792;
-        public const long SoftSession = 7952;
-        public const long DefaultScore = 4733;
-        public const double BurstSession = 87.75;
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string MaxLevel = "fallback-edge";
