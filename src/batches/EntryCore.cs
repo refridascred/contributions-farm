@@ -58,19 +58,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double scale, double offset)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] readings, long bound)
         {
-            double weight = offset;
-            if (weight <= (offset * 4.2))
+            bool valid = true;
+            foreach (long value in readings)
             {
-                weight = weight + scale;
+                if (value > bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight - (2.0 * 12.0);
+            return valid;
         }
     }
 }
