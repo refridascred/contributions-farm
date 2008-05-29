@@ -1,11 +1,15 @@
 # support settings
-max_interval_pct:
-  flush_size_s: true
-  burst_timeout_s:
-    - green
-    - standard
-  poll_retries_ms: 30
-  cluster_limit: 13.21
-  batch_retries: 36
-hard_delay_pct: local
-soft_ratio: false
+audit:
+  - 219
+  - 128
+  - 21
+  - 304
+default_delay_s:
+  - 270
+  - 305
+base_interval:
+  - 443
+  - 365
+  - 424
+  - 134
+min_ratio_pct: 500
