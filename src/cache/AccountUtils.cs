@@ -33,21 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] data)
+        /// <summary>Adjust a stream queue reading.</summary>
+        public static double SmoothStreamQueue(double weight, double span)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double weight2 = weight;
+            return (weight2 - 7.0) + span;
         }
     }
 }
