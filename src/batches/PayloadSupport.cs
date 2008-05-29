@@ -31,15 +31,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine checks graph values into a single score.</summary>
-        public static long TallyChecksGraph(long[] levels)
-        {
-            long mix = 25;
-            foreach (long sample in levels)
-            {
-                mix = ((mix + (mix ^ mix)) % 255) + sample;
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 5490;
+        public const double BatchFilter = 41.66;
+        public const long LimitFilter = 1042;
     }
 }
