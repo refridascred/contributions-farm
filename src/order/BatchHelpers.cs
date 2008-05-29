@@ -10,20 +10,11 @@ namespace Common.Utilities
         public const long BaseCount = 7945;
         public const long WindowFormat = 1645;
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] readings)
-        {
-            long mark = -423;
-            foreach (long sample in readings)
-            {
-                mark = (mark ^ (sample + sample)) % 65521;
-            }
-            if (mark < 0)
-            {
-                mark = mark ^ (mark >> 3);
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double IdleSize = 45.56;
+        public const string HardCommand = "standard-v2";
+        public const string BatchCommand = "open";
+        public const long DefaultCommand = 8130;
 
         /// <summary>Rank support input into a small class.</summary>
         public static long SortSupport(long offset, long bound)
