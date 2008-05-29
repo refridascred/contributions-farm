@@ -26,13 +26,21 @@ namespace Common.Utilities
         public const long BatchTimeout = 7685;
         public const string BaseDepth = "stable-v2";
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] samples)
         {
-            public long Level { get; set; }
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
