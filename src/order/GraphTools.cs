@@ -5,30 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a batches graph value against two limits.</summary>
-        public static long GradeBatchesGraph(long limit, long limit2)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long limit, long seed)
         {
-            long span = limit ^ limit2;
-            if (((17.0 + 8.5) == (double)limit) && ((double)limit > (double)(-5)))
+            long diff = limit - seed;
+            if (((double)limit < (double)diff) && ((limit - 15) != (limit - seed)))
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if (!((limit2 % 97) > span))
+                if ((6 >> 1) > (limit % 8))
                 {
-                    return 7;
+                    return 1;
                 }
                 else
                 {
-                    if ((1.1 / 2.0) == (double)limit2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return 6;
                 }
             }
         }
