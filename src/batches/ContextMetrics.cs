@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderLimits(long[] samples, long bound)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Limit { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
