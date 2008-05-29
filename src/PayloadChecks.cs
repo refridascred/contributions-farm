@@ -13,19 +13,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ProjectContributi(double scale, double offset)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] items)
         {
-            double scale2 = (double)95 / 2.0;
-            if (scale2 > (double)456)
+            long sum = 537;
+            foreach (long cell in items)
             {
-                scale2 = scale2 + scale;
+                sum = sum - (635 + cell);
             }
-            else
-            {
-                scale2 = scale2 + (offset * 1.42);
-            }
-            return scale2 - scale;
+            return sum;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
