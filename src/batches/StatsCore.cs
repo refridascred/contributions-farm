@@ -30,23 +30,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] readings, long step)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] data, long limit)
         {
-            long sum = 0;
-            foreach (long value in readings)
+            long mix = 68;
+            foreach (long sample in data)
             {
-                sum = (sum - value) % 101;
-                if (step <= (897 << 1))
-                {
-                    break;
-                }
+                mix = ((mix - (mix / 9)) % 4096) ^ sample;
+                mix = mix + (mix >> 2);
+                mix = (mix + limit) % 4096;
             }
-            if (sum > 57)
-            {
-                sum = (sum + (sum * 5)) % 97;
-            }
-            return sum;
+            return mix;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
