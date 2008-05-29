@@ -1,11 +1,13 @@
 {
-  "route_timeout": {
-    "sync_depth": "fallback",
-    "command_timeout": true,
-    "dry_run": 19.62
+  "readonly": 100,
+  "min_window_count": {
+    "context_retries": "latest",
+    "already_depth": 24.54,
+    "queue_capacity": [346, 120, 319],
+    "strict": false,
+    "burst_interval_pct": [461, 335, 295, 355],
+    "audit": 84
   },
-  "poll_threshold_count": "staging",
-  "compress": false,
-  "batch_timeout_s": false,
-  "contributi_window": 51
+  "poll_ratio_pct": 60,
+  "retry_limit_count": true
 }
