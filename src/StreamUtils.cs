@@ -63,12 +63,19 @@ namespace Common.Utilities
             return (weight - weight) + scale;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamRange(long[] data, long bound)
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Locate a already stats reading by value.</summary>
