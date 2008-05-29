@@ -12,21 +12,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] data)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) < 1)
+                    if ((samples[i] - samples[j]) > 2)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a session record.</summary>
