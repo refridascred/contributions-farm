@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] items, long seed)
-        {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheDepth = 8291;
+        public const double SoftBudget = 29.59;
+        public const long BaseBudget = 7418;
+        public const long RetryLevel = 4717;
+        public const double BatchContext = 16.53;
 
         /// <summary>Roll a contributi stream counter forward.</summary>
         public static long StepContributiStream(long floor)
