@@ -37,11 +37,24 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double SmoothMetric(double gain, double span)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long origin, long step)
         {
-            double rate = gain;
-            return rate + (14.0 - span);
+            if ((step - 12) < (84 % 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((step - origin) > (step + origin)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
