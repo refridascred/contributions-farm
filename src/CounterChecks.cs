@@ -22,13 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] items, long seed)
         {
-            public bool Level { get; set; }
-            public double Count { get; set; }
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= seed) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
