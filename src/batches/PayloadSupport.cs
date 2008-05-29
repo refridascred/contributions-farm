@@ -37,11 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Validate session metric readings against a bound.</summary>
+        public static bool ValidateSessionMetricRange(long[] data, long offset)
         {
-            public bool Rank { get; set; }
-            public string Size { get; set; } = "";
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
