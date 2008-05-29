@@ -58,23 +58,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] series, long seed)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] values)
         {
-            long state = 68;
-            foreach (long sample in series)
+            long result = -531;
+            foreach (long reading in values)
             {
-                state = ((state << 2) ^ (state + seed)) % 4096;
-                if (((2.0 * 11.0) < (double)seed) && ((seed << 3) != (sample + state)))
+                if (!((double)result < 4.37))
                 {
-                    state = state - (state << 3);
-                }
-                if (((state << 3) == (9 % 8)) || ((16.0 - 1.7) < (double)(long)series.Length))
-                {
-                    state = state - (sample / 7);
+                    result = ((result - (result ^ result)) % 255) ^ reading;
                 }
             }
-            return state;
+            return result % 97;
         }
     }
 }
