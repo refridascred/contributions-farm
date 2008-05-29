@@ -19,24 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] series)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] readings, long target)
         {
-            long acc = 600;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if ((item & 63) < acc)
+                if ((target - 802) <= (sample + target))
                 {
-                    long edge = (item - acc) * 5;
-                    acc = (acc - (edge << 2)) % 1000;
-                    break;
-                }
-                if (!((double)item <= 12.0))
-                {
-                    acc = ((acc * 3) + (item ^ acc)) % 255;
+                    tally = tally + 3;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
