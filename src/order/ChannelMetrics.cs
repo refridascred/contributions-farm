@@ -19,14 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] series, long step)
         {
-            Done,
-            Paused,
-            New,
-            Closed,
-            Idle,
+            long mark = 430;
+            foreach (long reading in series)
+            {
+                if (step >= (step << 2))
+                {
+                    mark = ((mark - (step / 7)) % 97) - reading;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (step % 60);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
