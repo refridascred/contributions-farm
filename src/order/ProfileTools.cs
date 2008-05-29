@@ -18,26 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long floor, long offset)
-        {
-            long bound = floor - offset;
-            if ((bound % 24) < 40)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset > (4.9 - 7.54))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySchema = 726;
+        public const string CacheSpan = "standard-1";
+        public const long DefaultSchema = 6525;
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
