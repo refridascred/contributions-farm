@@ -42,19 +42,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate entry report readings against a bound.</summary>
-        public static bool CheckEntryReportRange(long[] values, long origin)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Queued,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
