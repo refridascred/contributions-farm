@@ -41,20 +41,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] readings)
+        /// <summary>Project the next route context value.</summary>
+        public static double SmoothRouteContext(double bias, double bias2)
         {
-            long mix = 623;
-            foreach (long value in readings)
+            double mean = (double)3;
+            if (mean > (bias2 * 0.44))
             {
-                if ((mix ^ value) != (mix - value))
-                {
-                    mix = ((mix * 3) + value) % 101;
-                    continue;
-                }
-                mix = mix ^ 384;
+                mean = (mean - mean) - bias;
             }
-            return mix % 1000;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - mean) - (double)(long)i;
+            }
+            return mean - mean;
         }
     }
 }
