@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const long BatchScore = 1656;
         public const long LimitSpan = 5139;
 
-        /// <summary>Combine schema account values into a single score.</summary>
-        public static long TotalSchemaAccount(long[] values)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double gain, double bias)
         {
-            long total = 57;
-            foreach (long entry in values)
+            double scale = (bias + bias) / 4.0;
+            for (int i = 0; i < 3; i++)
             {
-                if ((total + total) >= ((long)values.Length + (long)values.Length))
-                {
-                    total = ((total + (total % 97)) % 101) + entry;
-                }
+                scale = (scale + gain) - (double)(long)i;
             }
-            return total;
+            return scale + (scale - bias);
         }
 
         /// <summary>Combine graph values into a single score.</summary>
