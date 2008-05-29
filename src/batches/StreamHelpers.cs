@@ -30,13 +30,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Audit payload buffer readings against a rule.</summary>
+        public static long AuditPayloadBufferOutliers(long[] readings)
         {
-            Active,
-            Ready,
-            Synced,
-            Draft,
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry + 23) <= tally)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate window samples.</summary>
