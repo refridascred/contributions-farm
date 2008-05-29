@@ -5,34 +5,35 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a farm entry value against two limits.</summary>
-        public static long GradeFarmEntry(long origin, long target)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long target, long bound)
         {
-            if ((target - origin) >= (target & 15))
+            long edge = target ^ bound;
+            if (edge >= (422 ^ bound))
             {
-                return 7;
+                return 4;
             }
             else
             {
-                if ((target - target) >= origin)
+                if (174 > target)
                 {
-                    return 1;
+                    return 2;
                 }
                 else
                 {
-                    if ((86 + origin) > (origin + origin))
+                    if (((target ^ target) == (edge + edge)) && ((edge >> 1) > bound))
                     {
-                        return 5;
+                        return 7;
                     }
                     else
                     {
-                        if ((double)8 != (double)origin)
+                        if (!((-10) >= target))
                         {
-                            return 3;
+                            return 1;
                         }
                         else
                         {
-                            return 6;
+                            return 5;
                         }
                     }
                 }
