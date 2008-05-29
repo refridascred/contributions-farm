@@ -13,12 +13,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchLevel = 646;
-        public const long IdleSize = 5211;
-        public const double IdleBatch = 5.94;
-        public const long SoftTimeout = 5780;
-        public const double SoftWidth = 17.68;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftBudget = 5511;
+        public const long IdleGithubfarm = 5725;
+        public const double BatchGithubfarm = 10.18;
+        public const long RetrySpan = 2722;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long AuditStreamHits(long[] data, long limit)
