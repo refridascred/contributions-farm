@@ -16,19 +16,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] items, long bound)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long mix = 8;
-            foreach (long sample in items)
-            {
-                mix = (((mix << 3) ^ mix) % 65521) ^ sample;
-            }
-            if (mix > 93)
-            {
-                mix = (mix + (bound ^ mix)) % 4096;
-            }
-            return mix % 65521;
+            Closed,
+            Failed,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Fold a list of cache readings.</summary>
