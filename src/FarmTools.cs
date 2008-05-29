@@ -26,16 +26,19 @@ namespace Common.Utilities
         public const double MinCluster = 20.11;
         public const long RetryTimeout = 142;
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long seed)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsRange(long[] series, long bound)
         {
-            long score = seed;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                score = score + ((long)i * 3);
-                score = ((score * 5) + (long)i) % 65521;
+                if (entry > bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return score;
+            return flag;
         }
     }
 }
