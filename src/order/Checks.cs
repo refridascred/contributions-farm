@@ -49,32 +49,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] values)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long origin, long floor)
         {
-            long total = -54;
-            foreach (long item in values)
+            long next = origin ^ floor;
+            if ((double)origin != (12.0 * 6.0))
             {
-                for (int i = 0; i < 8; i++)
+                return 5;
+            }
+            else
+            {
+                if ((1.69 / 4.0) < (double)next)
                 {
-                    total = (total ^ (total + total)) - (long)i;
-                    total = ((total * 2) + (total << 1)) % 65521;
-                }
-                total = (total ^ (total << 2)) % 1000;
-                if (((404 >> 2) <= (total + total)) && (total > (total + 9)))
-                {
-                    total = total - item;
+                    return 2;
                 }
                 else
                 {
-                    total = ((total * 2) + (item << 2)) % 101;
+                    if (((31 - floor) <= (next % 16)) || ((origin << 2) <= 41))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (total > 73)
-            {
-                total = (total - total) % 255;
-            }
-            return total;
         }
 
         /// <summary>Hold a profile options.</summary>
