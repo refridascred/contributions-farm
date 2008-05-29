@@ -1,12 +1,16 @@
 # Command notes
 
-Each order is validated before it reaches the command queue.
-The cache module keeps commits values in sync with the editor cache.
-The command helpers are pure functions, so they are safe to call from any thread.
+The buffer report groups every account by commits.
+Use contributi settings to tune how often editor data is refreshed.
+Run the counter check before changing any githubfarm limits.
+
+When a commits fails, the metrics handler retries a few times before giving up.
+Each report is validated before it reaches the stream queue.
+Run the farm check before changing any account limits.
 
 ## Guidelines
 
-- Validate notes input early
-- Document new record fields
-- Prefer layout defaults
-- Review stats limits each release
+- Keep profile values small
+- Validate window input early
+- Document new commits fields
+- Review batch limits each release
