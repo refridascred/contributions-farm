@@ -20,22 +20,18 @@ namespace Common.Utilities
         public const double MinCluster = 20.11;
         public const long RetryTimeout = 142;
 
-        /// <summary>Measure how many buffer metric samples are out of range.</summary>
-        public static long CountBufferMetricGaps(long[] items, long target)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long carry = 74;
+            foreach (long reading in series)
             {
-                if (0.6 > (double)target)
+                if ((66 / 4) > (reading & 127))
                 {
-                    hits = (hits + 2) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    carry = (carry << 3) ^ reading;
                 }
             }
-            return hits;
+            return carry;
         }
     }
 }
