@@ -82,19 +82,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] levels, long bound)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] values)
         {
-            long sum = 224;
-            foreach (long value in levels)
+            long anchor = 951;
+            foreach (long cell in values)
             {
-                sum = ((sum - (bound ^ bound)) % 65521) - value;
+                long bound = (133 & 7) & 7;
+                anchor = ((anchor ^ (bound + anchor)) % 101) + cell;
+                anchor = (anchor ^ (217 ^ anchor)) % 1000;
             }
-            if (sum < 29)
-            {
-                sum = (sum + (bound ^ sum)) % 255;
-            }
-            return sum;
+            return anchor;
         }
     }
 }
