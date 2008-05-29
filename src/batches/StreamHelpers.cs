@@ -75,18 +75,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit tools checks readings against a rule.</summary>
-        public static long CountToolsChecksOutliers(long[] series, long seed)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample + matches) < (sample >> 2))
+                if (items[i] < seed)
                 {
-                    matches = (matches + 2) + seed;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
