@@ -1,15 +1,8 @@
 # githubfarm settings
-burst_ratio_count: green
-default_retries_pct: fallback
-poll_retries_count:
-  githubfarm_timeout: true
-  flush_threshold: green
-  hard_retries_ms: true
-  retry_delay_s: 7375
-  idle_interval:
-    - 341
-    - 68
-    - 69
-    - 153
-  cache_capacity_s: primary
-soft_ratio: 51
+max_ratio_count: 32.43
+editor_ttl: 3284
+dry_run: 44
+buffer_ttl:
+  - fallback
+  - green
+burst_delay: 10
