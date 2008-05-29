@@ -34,18 +34,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first metrics filter entry that matches the target.</summary>
-        public static long LookupMetricsFilterIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= step) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchSize = 4443;
+        public const long DefaultWindow = 4040;
+        public const long SoftTimeout = 9182;
 
         /// <summary>Accumulate window samples.</summary>
         public static long TotalWindow(long[] readings)
