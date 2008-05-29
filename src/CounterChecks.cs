@@ -41,18 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsOutliers(long[] items, long origin)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (!((285 % 64) == (origin + value)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Compare every pair of support readings.</summary>
