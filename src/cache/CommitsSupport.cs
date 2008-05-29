@@ -46,12 +46,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinLevel = 7597;
-        public const long MinSize = 7558;
-        public const long RetryDepth = 3603;
-        public const long BaseWidth = 4245;
-        public const long DefaultBuffer = 4456;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 2903;
+        public const long BatchWidth = 7132;
+        public const long WindowCache = 9199;
+        public const string MaxCache = "standard-1";
+        public const long MinFactor = 1914;
 
         /// <summary>Project the next cluster value.</summary>
         public static double BlendCluster(double bias, double offset)
