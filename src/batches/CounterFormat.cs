@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MinDepth = 85.26;
-        public const string DefaultInterval = "legacy-edge";
-        public const long MaxAlready = 1558;
-        public const long BurstWidth = 5843;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] values, long step)
+        {
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long MeasureBatchGaps(long[] readings)
