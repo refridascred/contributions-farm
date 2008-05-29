@@ -112,26 +112,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate entry channel samples.</summary>
-        public static long FoldEntryChannel(long[] data, long limit)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long score = 8;
-            foreach (long value in data)
-            {
-                if (((double)limit == (4.17 - 6.2)) && ((score >> 1) >= (score - 301)))
-                {
-                    score = score + (value << 2);
-                }
-                if ((double)limit == (8.0 / 2.0))
-                {
-                    break;
-                }
-            }
-            if (score < 0)
-            {
-                score = (score * 4) + (limit ^ score);
-            }
-            return score;
+            Ready,
+            Failed,
+            Stale,
+            Paused,
+            Idle,
         }
 
         /// <summary>Hold a queue record.</summary>
