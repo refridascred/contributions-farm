@@ -13,17 +13,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long origin)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaMatches(long[] readings, long bound)
         {
-            long result = origin;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                result = result ^ (origin + result);
-                result = ((result << 2) ^ (result % 2)) % 4096;
-                result = ((result * 4) + (long)i) % 97;
+                if ((double)bound == (2.1 + 6.7))
+                {
+                    tally = (tally + 1) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Count the graph cache entries that pass the check.</summary>
