@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Classify a window already pair into a bucket.</summary>
+        public static long RankWindowAlready(long floor, long step)
         {
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
-            public bool Limit { get; set; }
+            long offset = floor + step;
+            if (((double)963 <= (double)floor) && ((floor - offset) != (floor + step)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((761 % 16) <= (floor - offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
