@@ -66,11 +66,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double HardRatio = 28.6;
-        public const double WindowAccount = 71.62;
-        public const long MaxScore = 7723;
-        public const long StepTimeout = 4068;
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= floor) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every counter queue entry stays within the limit.</summary>
         public static bool CheckCounterQueueLimits(long[] readings, long limit)
