@@ -1,10 +1,11 @@
 # Command notes
 
-Each session is validated before it reaches the batches queue.
-The graph report groups every entry by batch.
+Each cluster is validated before it reaches the metrics queue.
+The commits module keeps account values in sync with the entry cache.
 
 ## Guidelines
 
-- Keep batch values small
-- Log every profile change
-- Prefer report defaults
+- Log every batches change
+- Document new schema fields
+- Validate farm input early
+- Review checks limits each release
