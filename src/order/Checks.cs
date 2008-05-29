@@ -61,25 +61,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long bound, long step)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long next = bound + step;
-            if (((next - next) <= (step * 2)) && ((double)next == (8.2 + 8.81)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((2.2 / 3.0) != (double)bound) || ((next << 1) != (next + step)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public string Label { get; set; } = "";
+            public double Owner { get; set; }
         }
     }
 }
