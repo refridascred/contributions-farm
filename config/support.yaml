@@ -1,7 +1,15 @@
 # support settings
-cache_size_pct:
-  - 262
-  - 43
-idle_threshold: 3304
-readonly: false
-sync_threshold_count: 92.11
+base_ttl_s: edge
+base_depth_pct:
+  - edge
+  - strict
+  - fallback
+  - blue
+stream_delay:
+  base_threshold_pct: 1188
+  warm_capacity: edge
+  buffer_threshold: false
+  channel_capacity: edge
+  base_ttl_s: primary
+stats_capacity: open
+persist: 1024
