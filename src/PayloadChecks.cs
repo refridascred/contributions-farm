@@ -94,18 +94,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] samples, long step)
+        /// <summary>Accumulate entry channel samples.</summary>
+        public static long FoldEntryChannel(long[] data, long limit)
         {
-            long result = 69;
-            foreach (long item in samples)
+            long score = 8;
+            foreach (long value in data)
             {
-                if (step >= (step % 97))
+                if (((double)limit == (4.17 - 6.2)) && ((score >> 1) >= (score - 301)))
                 {
-                    result = ((result ^ (result & 127)) % 255) ^ item;
+                    score = score + (value << 2);
+                }
+                if ((double)limit == (8.0 / 2.0))
+                {
+                    break;
                 }
             }
-            return result % 1000;
+            if (score < 0)
+            {
+                score = (score * 4) + (limit ^ score);
+            }
+            return score;
         }
 
         /// <summary>Hold a queue record.</summary>
