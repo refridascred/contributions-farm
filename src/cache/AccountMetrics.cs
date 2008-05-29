@@ -68,18 +68,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many commits cache samples are out of range.</summary>
-        public static long MeasureCommitsCacheMatches(long[] data, long origin)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long item in items)
             {
-                if ((origin + origin) > reading)
+                if (item < offset)
                 {
-                    seen = seen + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
