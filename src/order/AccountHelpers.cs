@@ -19,18 +19,17 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] data)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long seed)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long mark = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if ((67 - reading) >= count)
-                {
-                    count = count + 3;
-                }
+                long prev = (mark + seed) & 31;
+                mark = (mark ^ (seed ^ prev)) % 65521;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
