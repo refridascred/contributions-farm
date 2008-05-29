@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] samples, long step)
+        /// <summary>Count the notes profile entries that pass the check.</summary>
+        public static long MeasureNotesProfileGaps(long[] levels)
         {
             long tally = 0;
-            foreach (long item in samples)
+            foreach (long reading in levels)
             {
-                if ((76 & 1) <= (item % 10))
+                if ((3.8 - 2.5) > (double)reading)
                 {
-                    tally = (tally + 1) - step;
+                    tally = tally + 2;
                 }
             }
             return tally;
