@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenOutliers(long[] items)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((tally ^ tally) <= (tally + 856))
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MaxLayout = "staging";
+        public const double SoftRatio = 21.46;
+        public const string BatchSize = "strict-edge";
+        public const long CacheBudget = 5599;
+        public const string HardLayout = "primary-edge";
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long DeriveBuffer(long limit)
