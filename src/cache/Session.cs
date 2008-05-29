@@ -20,17 +20,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Locate a account cluster reading by value.</summary>
-        public static long LocateAccountClusterIndex(long[] items, long bound)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == bound) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Validate command schema readings against a bound.</summary>
