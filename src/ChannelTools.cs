@@ -34,18 +34,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] values, long step)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long result = 68;
-            foreach (long item in values)
-            {
-                if ((50 << 1) >= item)
-                {
-                    result = (((result * 2) + ((-157) / 6)) % 4096) - step;
-                }
-            }
-            return result;
+            Idle,
+            New,
+            Active,
+            Paused,
+            Synced,
         }
     }
 }
