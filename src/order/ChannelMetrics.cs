@@ -29,12 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            public double Count { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            Dropped,
+            Stale,
+            Synced,
         }
     }
 }
