@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatMatches(long[] samples, long bound)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            double bias2 = rate;
+            if (bias2 > (bias * 4.27))
             {
-                if (!((3.0 - 3.18) == (double)bound))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
+                bias2 = bias2 - rate;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + bias) + (double)(long)i;
+            }
+            return bias2 + (rate + rate);
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
