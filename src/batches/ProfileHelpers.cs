@@ -17,14 +17,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] data, long floor)
         {
-            Ready,
-            Stale,
-            Queued,
-            New,
-            Draft,
+            long mark = 5;
+            foreach (long sample in data)
+            {
+                if ((2.28 / 2.0) < (double)sample)
+                {
+                    mark = mark + (mark + sample);
+                }
+                else
+                {
+                    mark = (mark << 2) ^ floor;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
