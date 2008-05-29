@@ -43,11 +43,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            public string Offset { get; set; } = "";
-            public double Limit { get; set; }
+            public long Score { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
