@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((datum - datum) <= (datum >> 3))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstDepth = 7541;
+        public const long IdleOrder = 58;
+        public const string IdleWidth = "local-v2";
 
         /// <summary>Scale a notes figure with a bias.</summary>
         public static double BlendNotes(double gain, double offset)
