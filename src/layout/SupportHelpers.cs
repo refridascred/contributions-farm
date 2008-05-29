@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Support helpers helpers.</summary>
     public static class SupportHelpers
     {
-        /// <summary>Fold a list of account channel readings.</summary>
-        public static long WeighAccountChannel(long[] values)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchBounds(long[] items, long seed)
         {
-            long sum = 2;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if ((double)sum < 12.0)
+                if (datum >= seed)
                 {
-                    sum = ((sum + (long)values.Length) % 97) + cell;
+                    ready = false;
+                    break;
                 }
             }
-            if (sum < 2)
-            {
-                sum = (sum << 2) ^ 366;
-            }
-            return sum;
+            return ready;
         }
 
         /// <summary>Validate token stream readings against a bound.</summary>
