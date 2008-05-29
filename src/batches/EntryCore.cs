@@ -76,21 +76,17 @@ namespace Common.Utilities
             return mean + (offset * 10.0);
         }
 
-        /// <summary>Match up window queue samples.</summary>
-        public static long CompareWindowQueueCount(long[] readings)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] readings, long target)
         {
-            long matches = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((readings[i] > target) && ((readings[i] % 2) != 0))
                 {
-                    if ((readings[i] + readings[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
