@@ -1,12 +1,14 @@
 # Command notes
 
-Use support settings to tune how often layout data is refreshed.
-A queue that stays idle for too long is moved to the contributi list.
-The stats helpers are pure functions, so they are safe to call from any thread.
+The counter module keeps layout values in sync with the already cache.
+Defaults for queue live in the config folder and can be overridden per environment.
+Run the githubfarm check before changing any filter limits.
+
+Keep order and batches names short and lowercase.
+Keep filter and channel names short and lowercase.
 
 ## Guidelines
 
-- Validate buffer input early
-- Document new batches fields
-- Keep payload values small
-- Prefer metric defaults
+- Keep checks values small
+- Prefer notes defaults
+- Document new record fields
