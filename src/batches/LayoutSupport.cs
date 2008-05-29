@@ -15,19 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelLimits(long[] items, long offset)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Look up the position of a layout support sample.</summary>
