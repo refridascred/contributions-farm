@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorLimits(long[] values, long seed)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] readings)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long anchor = 0;
+            foreach (long sample in readings)
             {
-                if (cell >= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = (anchor * 3) + (sample & 31);
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
