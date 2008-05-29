@@ -17,18 +17,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] data)
+        /// <summary>Check that every graph stats entry stays within the limit.</summary>
+        public static bool GuardGraphStatsLimits(long[] levels, long origin)
         {
-            long carry = 24;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if ((carry * 2) <= carry)
+                if (cell >= origin)
                 {
-                    carry = carry ^ (datum + datum);
+                    stale = false;
+                    break;
                 }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Adjust a batch record reading.</summary>
