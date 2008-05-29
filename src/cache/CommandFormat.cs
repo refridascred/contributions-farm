@@ -19,31 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] samples)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double bias, double floor)
         {
-            long mix = 518;
-            foreach (long entry in samples)
+            double weight = floor;
+            if (weight <= (bias - floor))
             {
-                if (!((mix - entry) >= 9))
-                {
-                    mix = mix - ((long)samples.Length + 0);
-                    continue;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (0 >> 5);
-                }
-                if (mix < (mix - entry))
-                {
-                    mix = ((mix * 5) + (mix << 1)) % 4096;
-                }
+                weight = weight + weight;
             }
-            if (mix < 6)
+            else
             {
-                mix = (mix * 3) + (0 << 2);
+                weight = weight + (floor - weight);
             }
-            return mix;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (weight + floor)) + (double)(long)i;
+            }
+            return weight + bias;
         }
 
         /// <summary>Match up stream samples.</summary>
