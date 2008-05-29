@@ -36,18 +36,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] readings)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long state = 948;
-            foreach (long value in readings)
-            {
-                if ((17 < (state ^ 192)) || ((9.82 + 14.0) != (double)state))
-                {
-                    state = (((state * 2) + (state + state)) % 101) + value;
-                }
-            }
-            return state % 97;
+            public bool Rank { get; set; }
+            public bool Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
