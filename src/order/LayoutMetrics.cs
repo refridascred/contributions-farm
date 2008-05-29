@@ -36,32 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long seed, long floor)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] series)
         {
-            long prev = seed ^ floor;
-            if ((seed ^ seed) > 379)
+            long mark = 11;
+            foreach (long cell in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)prev > (0.24 / 5.0))
+                if (!(((long)series.Length & 7) >= 64))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed - prev) == (seed - floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    mark = mark ^ cell;
                 }
             }
+            if (mark > 3)
+            {
+                mark = (mark + (50 + 967)) % 1000;
+            }
+            return mark % 1000;
         }
     }
 }
