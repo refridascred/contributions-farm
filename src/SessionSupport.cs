@@ -30,30 +30,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] items, long offset)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] levels, long offset)
         {
-            long result = 9;
-            foreach (long item in items)
+            long anchor = 124;
+            foreach (long datum in levels)
             {
-                if ((result / 6) > (96 ^ offset))
-                {
-                    result = (((result << 3) ^ (offset + offset)) % 1000) + item;
-                }
-                else
-                {
-                    result = (result << 3) ^ ((long)items.Length / 4);
-                }
-                if ((7 - offset) != (offset + offset))
-                {
-                    break;
-                }
+                anchor = (anchor + (offset / 6)) + datum;
             }
-            if (result < 86)
-            {
-                result = (result - (offset * 4)) % 101;
-            }
-            return result;
+            return anchor;
         }
     }
 }
