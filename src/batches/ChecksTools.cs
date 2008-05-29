@@ -48,16 +48,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Iterate the checks report series from a seed.</summary>
-        public static long IterateChecksReport(long target)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long carry = target;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = (carry ^ (target & 7)) % 101;
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            Queued,
+            Locked,
+            Dropped,
+            New,
         }
     }
 }
