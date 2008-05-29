@@ -29,21 +29,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] levels)
+        /// <summary>Check that every token already entry stays within the limit.</summary>
+        public static bool VerifyTokenAlreadyRange(long[] series, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample < target)
                 {
-                    if ((levels[i] - levels[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Define support limits and defaults.</summary>
