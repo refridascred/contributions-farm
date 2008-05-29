@@ -64,23 +64,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] samples)
-        {
-            long carry = 510;
-            foreach (long entry in samples)
-            {
-                if (((entry & 127) > ((-565) ^ carry)) || ((403 / 7) < (carry & 3)))
-                {
-                    carry = (carry + carry) % 65521;
-                }
-                else
-                {
-                    carry = (carry - carry) % 255;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseTimeout = 4625;
+        public const long CacheReport = 2032;
+        public const long IdleReport = 6672;
+        public const long MaxSpan = 5148;
+        public const long BurstDepth = 9041;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long RetrySize = 9723;
