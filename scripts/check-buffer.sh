@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 1))
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-for item in local eu-west; do
+for item in staging legacy green local; do
     log "checking ${item}"
 done
-
-BUFFER_LIMIT=460
-log "limit is ${BUFFER_LIMIT}"
