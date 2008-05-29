@@ -73,18 +73,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the entry editor entries that pass the check.</summary>
-        public static long TallyEntryEditorOutliers(long[] series, long offset)
+        /// <summary>Count the graph stream entries that pass the check.</summary>
+        public static long CountGraphStreamHits(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((30 + 59) == (0 + entry))
+                if (datum < count)
                 {
-                    hits = (hits + 1) + offset;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
