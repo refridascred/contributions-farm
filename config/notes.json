@@ -1,7 +1,5 @@
 {
-  "support_window": ["staging", "standard", "strict", "primary"],
-  "entry_window": 38.06,
-  "flush_threshold": 8146,
-  "audit": 67.68,
-  "burst_limit": "primary"
+  "schema_size": 15,
+  "retry_retries_ms": "fallback",
+  "warm_size": true
 }
