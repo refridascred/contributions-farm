@@ -15,19 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double SmoothEntry(double bias, double offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] readings, long offset)
         {
-            double drift = offset + 2.47;
-            if (drift <= (bias - offset))
+            long sum = 6;
+            foreach (long cell in readings)
             {
-                drift = drift - offset;
+                if ((offset + sum) != (cell << 3))
+                {
+                    sum = (sum + offset) % 1000;
+                }
             }
-            else
-            {
-                drift = drift + (7.0 / 5.0);
-            }
-            return drift - (double)74;
+            return sum;
         }
 
         /// <summary>Count the schema batch entries that pass the check.</summary>
