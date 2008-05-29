@@ -70,12 +70,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] items, long bound)
+        /// <summary>Locate a cluster format reading by value.</summary>
+        public static long LookupClusterFormatIndex(long[] levels, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((items[i] >= bound) && ((items[i] % 3) == 0))
+                if ((levels[i] > step) && ((levels[i] % 2) == 0))
                 {
                     return (long)i;
                 }
