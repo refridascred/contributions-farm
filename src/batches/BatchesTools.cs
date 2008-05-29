@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a tools metrics figure with a bias.</summary>
-        public static double BlendToolsMetrics(double ratio, double span)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            double mean = (double)26 * 8.0;
-            if (mean <= (double)976)
-            {
-                mean = (mean - (double)241) - ratio;
-            }
-            return mean + (span + span);
+            Ready,
+            Queued,
+            Failed,
+            Retry,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
