@@ -1,16 +1,7 @@
 # githubfarm settings
-compress:
-  warm_ratio:
-    default_threshold_pct: true
-    verbose: 87.23
-    warm_size_ms:
-      - 136
-      - 459
-    poll_ttl_s: 56
-    window_capacity: 30
-  strict: edge
-  base_threshold_ms: open
-  readonly: 69.82
-idle_depth_s: strict
-poll_delay_ms: cached
-warm_ratio_count: 24.76
+warm_ttl_ms: green
+window_ttl:
+  - 209
+  - 327
+  - 149
+base_size: 9994
