@@ -31,19 +31,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileRange(long[] levels, long limit)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Locked,
+            Queued,
         }
     }
 }
