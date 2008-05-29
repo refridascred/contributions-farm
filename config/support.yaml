@@ -1,31 +1,14 @@
 # support settings
-dry_run: 60.69
-flush_size: green
-idle_delay_count:
-  enabled:
-    hard_delay_pct: true
-    hard_depth: 5661
-    warm_limit:
-      - 384
-      - 308
-      - 382
-      - 35
-    poll_ttl:
-      - 279
-      - 299
-  cache_ratio_pct:
-    - latest
-    - open
-    - stable
-    - cached
-  githubfarm_capacity: 250
-  contributi_ttl: 4880
-  graph_interval: legacy
-  token_interval:
-    cache_interval: false
-    contributi_interval: 100
-    min_capacity_ms: 28
-    warm_depth_pct: eu-west
-    soft_interval_s: blue
-idle_interval: edge
-enabled: eu-west
+hard_delay_ms: 5341
+retry_ratio: 1024
+dry_run:
+  cluster_size:
+    - 419
+    - 303
+    - 104
+    - 260
+  flush_interval_ms: latest
+  sync_window: blue
+  sync_delay_count: legacy
+  persist: 78.4
+sync_size: 60
