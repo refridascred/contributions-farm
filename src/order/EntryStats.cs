@@ -37,12 +37,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
-        {
-            public string Offset { get; set; } = "";
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultWidth = 5598;
+        public const double DefaultSize = 58.33;
+        public const long DefaultInterval = 3176;
+        public const string LimitRatio = "latest-1";
 
         /// <summary>Define command limits and defaults.</summary>
         public const string BurstCommand = "local-v2";
