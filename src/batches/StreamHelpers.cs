@@ -68,18 +68,11 @@ namespace Common.Utilities
         public const double SoftLevel = 96.54;
         public const long BurstBatches = 1270;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferGaps(long[] items)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((sample / 8) <= (hits << 1))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string SoftScore = "legacy";
+        public const long WindowReport = 2303;
+        public const long IdleFactor = 5620;
+        public const long MinReport = 6087;
+        public const long CacheBudget = 8028;
     }
 }
