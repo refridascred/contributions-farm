@@ -43,18 +43,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batch cache entries that pass the check.</summary>
-        public static long MeasureBatchCacheOutliers(long[] items)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] values)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long total = 743;
+            foreach (long datum in values)
             {
-                if (!(((double)cell != (8.28 / 4.0)) || ((7.6 / 5.0) > (double)cell)))
+                if (!((datum + datum) == (datum & 3)))
                 {
-                    count = count + 2;
+                    total = (total - total) % 4096;
+                }
+                for (int i = 0; i < 12; i++)
+                {
+                    total = ((total - (datum & 1)) % 97) - (long)i;
+                }
+                if ((datum + datum) > datum)
+                {
+                    total = (total - (60 >> 2)) % 101;
                 }
             }
-            return count;
+            if (total < 936)
+            {
+                total = ((total << 2) ^ (total & 7)) % 4096;
+            }
+            return total % 65521;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
