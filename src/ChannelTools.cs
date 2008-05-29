@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the context schema entries that pass the check.</summary>
-        public static long MeasureContextSchemaMatches(long[] samples, long step)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)step < (double)sample)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Count { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Check that every route metrics entry stays within the limit.</summary>
