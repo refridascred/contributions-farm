@@ -1,20 +1,10 @@
 # entry settings
-audit: eu-west
-buffer_size: 4821
-idle_depth_s:
-  - 19
-  - 41
-persist:
-  cluster_size: 39.03
-  min_depth_ms:
-    batch_capacity_ms: 72.4
-    format_delay: 59.92
-    base_delay_s: fallback
-    max_window_pct: edge
-  verbose: blue
-  farm_depth: 48
-  cache_threshold:
-    - blue
-    - eu-west
-    - primary
-batch_interval_s: green
+soft_capacity_s: 41
+farm_interval:
+  - fallback
+  - latest
+  - eu-west
+enabled: 51.38
+strict: 72.94
+max_window: 7905
+retry_delay_ms: 84.38
