@@ -20,13 +20,12 @@ namespace Common.Utilities
             return weight2 - (bias + weight2);
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
-        {
-            public long Weight { get; set; }
-            public bool Level { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MaxRecord = "local";
+        public const long LimitSize = 1651;
+        public const long MinRecord = 1378;
+        public const long BatchLevel = 8124;
+        public const long MinInterval = 7757;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long MeasureToolsOutliers(long[] samples)
