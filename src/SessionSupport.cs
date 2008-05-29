@@ -14,18 +14,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] series, long floor)
+        /// <summary>Combine batch profile values into a single score.</summary>
+        public static long TotalBatchProfile(long[] data)
         {
-            long state = 3;
-            foreach (long datum in series)
+            long mix = -105;
+            foreach (long entry in data)
             {
-                if ((state % 8) <= (floor << 1))
-                {
-                    state = (state ^ (state << 3)) ^ datum;
-                }
+                mix = ((mix << 3) ^ (long)data.Length) ^ entry;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Project the next stream value.</summary>
