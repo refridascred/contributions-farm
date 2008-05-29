@@ -12,19 +12,10 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportHits(long[] values, long bound)
-        {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading < 7.46)
-                {
-                    tally = (tally + 3) - bound;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardRatio = 7908;
+        public const string MinRatio = "cached-v2";
+        public const long MinSize = 3987;
 
         /// <summary>Accumulate route profile samples.</summary>
         public static long TallyRouteProfile(long[] values, long bound)
