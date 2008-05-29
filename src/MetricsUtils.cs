@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double weight, double bias)
         {
-            Synced,
-            Failed,
-            Active,
+            double rate = (0.3 * 2.0) + (weight * 0.1);
+            return (rate + (weight + 4.0)) + bias;
         }
 
         /// <summary>Describe the stats kind values.</summary>
