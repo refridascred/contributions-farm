@@ -32,12 +32,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            Failed,
-            Pending,
-            Done,
+            Paused,
+            Dropped,
+            Locked,
+            Retry,
+            New,
         }
 
         /// <summary>Rank commits input into a small class.</summary>
