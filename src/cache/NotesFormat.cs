@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] samples)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (((0.1 + 7.73) > (double)value) && (value >= ((-750) / 8)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Total { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
