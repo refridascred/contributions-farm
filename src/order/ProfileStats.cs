@@ -29,12 +29,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 2490;
-        public const long MinGithubfarm = 5909;
-        public const double DefaultDepth = 36.37;
-        public const long RetryGithubfarm = 9252;
-        public const long CacheGithubfarm = 7430;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((sample + count) <= (42 + count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two queue measurements.</summary>
         public static double ScaleQueue(double scale, double span)
