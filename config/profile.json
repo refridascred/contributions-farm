@@ -1,5 +1,7 @@
 {
-  "enabled": [335, 270],
-  "cluster_delay": "primary",
-  "graph_retries": 40
+  "contributi_threshold": "blue",
+  "idle_size_ms": [53, 231],
+  "audit": false,
+  "cache_retries_ms": "blue",
+  "hard_depth": "stable"
 }
