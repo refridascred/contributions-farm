@@ -54,15 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double gain, double span)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenOutliers(long[] readings)
         {
-            double gain2 = gain;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                gain2 = (gain2 - (gain - span)) + (double)(long)i;
+                if (!((sample % 97) < (66 % 16)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return gain2 + gain;
+            return hits;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
