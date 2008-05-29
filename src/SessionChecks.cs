@@ -32,19 +32,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every notes filter entry stays within the limit.</summary>
-        public static bool VerifyNotesFilterRange(long[] series, long target)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] values)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample <= target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((values[i] - values[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Hold a filter entry.</summary>
