@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long target, long seed)
-        {
-            if ((693 ^ 66) > (target - target))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed / 7) > 50)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 1839;
+        public const long BurstSize = 7090;
+        public const long RetryLevel = 3448;
+        public const long IdleCount = 1854;
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long LookupCommandIndex(long[] readings, long offset)
