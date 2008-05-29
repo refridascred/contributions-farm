@@ -24,13 +24,11 @@ namespace Common.Utilities
         public const long BatchSession = 5676;
         public const long CacheSession = 8525;
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            public double Flag { get; set; }
-            public long Size { get; set; }
-            public double Stamp { get; set; }
-            public long Total { get; set; }
+            public bool Mode { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
