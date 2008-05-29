@@ -14,18 +14,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Look up the position of a checks farm sample.</summary>
-        public static long FindChecksFarmIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double StepInterval = 73.34;
+        public const long RetryStats = 473;
+        public const string BaseFactor = "staging";
+        public const string DefaultInterval = "standard";
 
         /// <summary>Match up cache record samples.</summary>
         public static long CompareCacheRecordCount(long[] values)
