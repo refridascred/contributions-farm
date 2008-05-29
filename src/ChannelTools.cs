@@ -32,18 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] readings, long origin)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] values, long step)
         {
-            long mark = 2;
-            foreach (long value in readings)
+            long result = 68;
+            foreach (long item in values)
             {
-                if (mark >= ((long)readings.Length + (long)readings.Length))
+                if ((50 << 1) >= item)
                 {
-                    mark = (((mark * 5) + (mark * 4)) - value) - origin;
+                    result = (((result * 2) + ((-157) / 6)) % 4096) - step;
                 }
             }
-            return mark;
+            return result;
         }
     }
 }
