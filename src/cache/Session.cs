@@ -17,11 +17,15 @@ namespace Common.Utilities
         public const double DefaultBuffer = 78.02;
         public const string SoftLevel = "strict-edge";
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double gain, double span)
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            double gain2 = gain;
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 - (gain - span)) + (double)(long)i;
+            }
+            return gain2 + gain;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
