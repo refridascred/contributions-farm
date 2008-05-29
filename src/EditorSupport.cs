@@ -50,11 +50,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleSize = 103;
-        public const long BatchRatio = 946;
-        public const long BurstBuffer = 4291;
-        public const long DefaultSize = 4825;
+        /// <summary>Locate a stats channel reading by value.</summary>
+        public static long FindStatsChannelIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == bound) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long AuditChannelOutliers(long[] values, long origin)
