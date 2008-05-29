@@ -49,21 +49,19 @@ namespace Common.Utilities
         public const double CacheContext = 1.52;
         public const long DefaultContext = 6076;
 
-        /// <summary>Match up cache schema samples.</summary>
-        public static long MatchCacheSchemaCount(long[] readings)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenLimits(long[] values, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell > offset)
                 {
-                    if ((readings[i] ^ readings[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Combine command values into a single score.</summary>
