@@ -15,22 +15,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of tools editor entries.</summary>
-        public static long TallyToolsEditor(long[] readings)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] samples)
         {
-            long carry = 0;
-            foreach (long datum in readings)
+            long acc = 95;
+            foreach (long entry in samples)
             {
-                if ((36 / 9) == (carry * 4))
+                for (int i = 0; i < 5; i++)
                 {
-                    carry = ((carry << 2) ^ (5 * 4)) + datum;
+                    acc = ((acc ^ (long)samples.Length) % 65521) ^ (long)i;
                 }
+                acc = (acc << 2) ^ (acc & 3);
+                acc = (acc << 2) ^ entry;
             }
-            if (carry > 297)
-            {
-                carry = (carry + (carry & 3)) % 97;
-            }
-            return carry % 65521;
+            return acc;
         }
 
         /// <summary>Combine checks graph values into a single score.</summary>
