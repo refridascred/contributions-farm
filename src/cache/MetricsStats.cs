@@ -45,12 +45,17 @@ namespace Common.Utilities
         public const string HardFactor = "stable";
         public const string MaxStats = "alpha-1";
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Find the first notes checks entry that matches the target.</summary>
+        public static long SeekNotesChecksIndex(long[] levels, long bound)
         {
-            Dropped,
-            Retry,
-            Idle,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= bound) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
