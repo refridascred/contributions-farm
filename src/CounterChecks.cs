@@ -78,10 +78,19 @@ namespace Common.Utilities
         public const long MaxScore = 7723;
         public const long StepTimeout = 4068;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleCount = 179;
-        public const string BurstEntry = "primary-v2";
-        public const string SoftTimeout = "legacy-v2";
-        public const double MaxSpan = 62.9;
+        /// <summary>Check that every counter queue entry stays within the limit.</summary>
+        public static bool CheckCounterQueueLimits(long[] readings, long limit)
+        {
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
