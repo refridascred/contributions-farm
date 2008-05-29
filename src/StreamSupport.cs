@@ -20,23 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ScaleChannel(double gain, double offset)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            double gain2 = gain;
-            if (gain2 >= gain)
-            {
-                gain2 = gain2 - (double)122;
-            }
-            else
-            {
-                gain2 = gain2 + gain2;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = (gain2 + offset) + (double)(long)i;
-            }
-            return gain2 + (gain + 0.7);
+            public long Label { get; set; }
+            public string Count { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
