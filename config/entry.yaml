@@ -1,6 +1,5 @@
 # entry settings
-batch_threshold_count: blue
-entry_limit: 3507
-base_delay: fallback
-window_timeout: 481
-default_window: false
+format_size: blue
+compress: 81.2
+sync_timeout: true
+retry_retries_s: 695
