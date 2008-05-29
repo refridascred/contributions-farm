@@ -1,13 +1,11 @@
 # Command notes
 
-Keep window and report names short and lowercase.
-When a command fails, the payload handler retries a few times before giving up.
-
-Defaults for tools live in the config folder and can be overridden per environment.
-Run the stats check before changing any cache limits.
+The counter module keeps support values in sync with the channel cache.
+The filter module keeps command values in sync with the farm cache.
 
 ## Guidelines
 
-- Document new stream fields
-- Review token limits each release
-- Log every cache change
+- Keep commits values small
+- Prefer metrics defaults
+- Document new notes fields
+- Validate token input early
