@@ -72,15 +72,17 @@ namespace Common.Utilities
         public const string WindowCount = "standard-1";
         public const string MinFormat = "open";
 
-        /// <summary>Combine githubfarm command values into a single score.</summary>
-        public static long ScoreGithubfarmCommand(long[] series)
+        /// <summary>Find the first editor token entry that matches the target.</summary>
+        public static long FindEditorTokenIndex(long[] series, long step)
         {
-            long mark = 9;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark + (356 >> 1)) - datum;
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return mark % 4096;
+            return -1;
         }
     }
 }
