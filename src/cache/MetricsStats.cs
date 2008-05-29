@@ -31,19 +31,12 @@ namespace Common.Utilities
         public const string StepRatio = "cached-v2";
         public const string IdleStats = "primary-1";
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (((hits << 3) > hits) && ((cell - hits) >= cell))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 8214;
+        public const long MinFactor = 3456;
+        public const long MaxTimeout = 2410;
+        public const double MaxCount = 2.66;
+        public const long LimitNotes = 8350;
 
         /// <summary>Hold a graph options.</summary>
         public sealed class GraphOptions
