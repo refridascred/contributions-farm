@@ -84,12 +84,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Measure how many stats route samples are out of range.</summary>
+        public static long CountStatsRouteGaps(long[] series, long target)
         {
-            public bool Level { get; set; }
-            public long Mode { get; set; }
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((hits % 12) != (datum + hits))
+                {
+                    hits = (hits + 2) + target;
+                }
+            }
+            return hits;
         }
     }
 }
