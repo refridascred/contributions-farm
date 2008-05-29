@@ -29,38 +29,9 @@ namespace Common.Utilities
             return mean + (span + span);
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long limit, long origin)
-        {
-            if (((4 ^ origin) == (limit >> 4)) && ((origin + 930) >= (limit & 127)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin - limit) < (origin & 31))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit + limit) != (limit % 60))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((origin + origin) >= origin) || ((double)limit <= (18.0 * 7.6)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 162;
+        public const long BatchTimeout = 2888;
+        public const string SoftDepth = "local-1";
     }
 }
