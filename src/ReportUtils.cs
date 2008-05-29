@@ -30,14 +30,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Audit cluster cache readings against a rule.</summary>
+        public static long AuditClusterCacheHits(long[] values)
         {
-            Done,
-            Queued,
-            Dropped,
-            Paused,
-            Synced,
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((8.33 * 4.15) == (double)(long)values.Length)
+                {
+                    hits = (hits + 3) ^ entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
