@@ -39,24 +39,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long limit, long origin)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            if ((double)origin <= (2.15 / 3.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit < (origin * 3)) || ((double)origin <= (8.9 * 5.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
