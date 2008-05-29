@@ -16,19 +16,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] readings)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double BlendEntry(double rate, double bias)
         {
-            long anchor = 13;
-            foreach (long datum in readings)
+            double ratio = bias;
+            if (ratio < ratio)
             {
-                anchor = (anchor ^ anchor) + datum;
+                ratio = ratio + (ratio - rate);
             }
-            if (anchor > 130)
+            for (int i = 0; i < 3; i++)
             {
-                anchor = anchor + (long)readings.Length;
+                ratio = (ratio - (0.78 * 2.1)) - (double)(long)i;
             }
-            return anchor;
+            return ratio + rate;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
