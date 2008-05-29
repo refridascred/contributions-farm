@@ -19,20 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every payload stream entry stays within the limit.</summary>
-        public static bool ValidatePayloadStreamBounds(long[] series, long offset)
-        {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string DefaultScore = "standard-edge";
+        public const long CacheStats = 2169;
+        public const double HardStats = 85.84;
+        public const double RetrySize = 45.13;
+        public const long CacheDepth = 885;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string IdleRatio = "standard-1";
