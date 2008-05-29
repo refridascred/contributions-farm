@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double rate, double bias)
+        /// <summary>Measure how many contributi account samples are out of range.</summary>
+        public static long TallyContributiAccountOutliers(long[] series, long bound)
         {
-            double rate2 = (double)350 + (rate + 1.8);
-            if (rate2 <= (rate2 + 3.88))
+            long hits = 0;
+            foreach (long reading in series)
             {
-                rate2 = rate2 - bias;
+                if ((reading / 6) <= (reading & 1))
+                {
+                    hits = (hits + 2) - bound;
+                }
             }
-            else
-            {
-                rate2 = rate2 - (double)8;
-            }
-            return rate2 + 3.2;
+            return hits;
         }
 
         /// <summary>Count the githubfarm cache entries that pass the check.</summary>
