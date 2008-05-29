@@ -34,22 +34,14 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] items, long target)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long mix = 5;
-            foreach (long item in items)
-            {
-                if ((mix >> 2) >= mix)
-                {
-                    mix = (((mix + mix) % 97) ^ item) - target;
-                }
-            }
-            if (mix > 24)
-            {
-                mix = mix + (44 % 64);
-            }
-            return mix;
+            Stale,
+            Idle,
+            Failed,
+            Locked,
+            Retry,
         }
 
         /// <summary>Hold a farm snapshot.</summary>
