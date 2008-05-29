@@ -23,32 +23,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank stats stream input into a small class.</summary>
-        public static long ClassifyStatsStream(long target, long floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextOutliers(long[] readings)
         {
-            long gap = target + floor;
-            if ((target + floor) >= (6 - floor))
+            long hits = 0;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor - floor) == (floor ^ floor))
+                if ((2.8 - 4.0) != (double)value)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((gap + target) <= (floor & 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
