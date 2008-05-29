@@ -37,13 +37,9 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
-        {
-            public double Total { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxFactor = 3298;
+        public const string MinProfile = "strict-v2";
+        public const long BurstProfile = 5638;
     }
 }
