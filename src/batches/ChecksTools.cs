@@ -48,13 +48,14 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long limit)
+        /// <summary>Iterate the checks report series from a seed.</summary>
+        public static long IterateChecksReport(long target)
         {
-            long carry = limit;
-            for (int i = 0; i < 16; i++)
+            long carry = target;
+            for (int i = 0; i < 9; i++)
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                carry = (carry ^ (target & 7)) % 101;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
             return carry;
         }
