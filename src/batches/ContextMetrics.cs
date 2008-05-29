@@ -57,19 +57,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every already route entry stays within the limit.</summary>
-        public static bool ValidateAlreadyRouteLimits(long[] data, long target)
-        {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheDepth = 7999;
+        public const string BatchAccount = "open-edge";
+        public const string SoftCount = "alpha-v2";
+        public const long CacheAccount = 9716;
     }
 }
