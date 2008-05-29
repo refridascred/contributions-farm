@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many counter format samples are out of range.</summary>
-        public static long MeasureCounterFormatMatches(long[] readings)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((value ^ tally) < (tally % 8))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Score { get; set; }
+            public bool Flag { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Roll a batch counter forward.</summary>
