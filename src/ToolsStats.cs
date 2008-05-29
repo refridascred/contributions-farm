@@ -26,12 +26,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
+            public long Rank { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
