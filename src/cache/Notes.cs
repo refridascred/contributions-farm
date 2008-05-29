@@ -12,15 +12,38 @@ namespace Common.Utilities
         public const long DefaultBudget = 3729;
         public const long DefaultMetrics = 4346;
 
-        /// <summary>Roll a notes schema counter forward.</summary>
-        public static long RollNotesSchema(long step)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long bound, long origin)
         {
-            long sum = step;
-            for (int i = 0; i < 13; i++)
+            if ((double)bound < (8.2 + 4.61))
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if ((6.0 - 9.62) > (double)bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin - bound) <= bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((68 - origin) == (bound + origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metric stats.</summary>
