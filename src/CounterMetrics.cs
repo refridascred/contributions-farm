@@ -50,10 +50,22 @@ namespace Common.Utilities
         public const long HardScore = 6119;
         public const string BaseFilter = "stable";
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxCommits = 8650;
-        public const double SoftCommits = 58.38;
-        public const string CacheCommits = "open-edge";
-        public const long IdleDepth = 1221;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] data)
+        {
+            long carry = 265;
+            foreach (long datum in data)
+            {
+                if (((carry >> 1) <= carry) && ((9 & 1) > (carry - datum)))
+                {
+                    carry = (carry * 2) + (datum - carry);
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ datum) % 1000;
+                }
+            }
+            return carry;
+        }
     }
 }
