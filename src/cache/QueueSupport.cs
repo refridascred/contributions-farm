@@ -28,11 +28,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 5478;
-        public const long SoftSpan = 8509;
-        public const long CacheWidth = 5472;
-        public const long LimitBatches = 4716;
-        public const long IdleBatches = 155;
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
+        {
+            Active,
+            Done,
+            Queued,
+            Ready,
+            Synced,
+        }
     }
 }
