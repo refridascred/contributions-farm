@@ -23,15 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long seed)
+        /// <summary>Check that every route metrics entry stays within the limit.</summary>
+        public static bool GuardRouteMetricsBounds(long[] items, long target)
         {
-            long mark = seed;
-            for (int i = 0; i < 20; i++)
+            bool ready = true;
+            foreach (long item in items)
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                if (item != target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Describe the batch kind values.</summary>
