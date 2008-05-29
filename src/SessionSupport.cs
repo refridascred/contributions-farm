@@ -29,32 +29,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long limit, long seed)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] samples, long target)
         {
-            long lane = limit + seed;
-            if (((lane + seed) <= seed) || (seed < (seed + 74)))
+            bool valid = true;
+            foreach (long item in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((lane % 3) <= (limit << 3))
+                if (item != target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)limit <= (6.0 * 2.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
