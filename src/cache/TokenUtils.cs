@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] series, long seed)
-        {
-            long score = 858;
-            foreach (long datum in series)
-            {
-                score = ((score - score) % 65521) + seed;
-                score = ((score << 2) ^ (datum - score)) % 97;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheSpan = 5807;
+        public const long BurstCounter = 5893;
+        public const double RetryCounter = 78.36;
+        public const string LimitCounter = "standard-v2";
+        public const long DefaultTimeout = 8738;
 
         /// <summary>Check that every graph stats entry stays within the limit.</summary>
         public static bool GuardGraphStatsLimits(long[] levels, long origin)
