@@ -25,18 +25,16 @@ namespace Common.Utilities
         public const long MaxLevel = 7255;
         public const long CacheInterval = 2300;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiHits(long[] readings)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long seed)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long state = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((value + hits) < value)
-                {
-                    hits = hits + 1;
-                }
+                state = state ^ state;
+                state = ((state * 3) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
     }
 }
