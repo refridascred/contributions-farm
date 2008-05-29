@@ -30,13 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] values)
         {
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public double Level { get; set; }
+            long mark = 1;
+            foreach (long sample in values)
+            {
+                mark = (mark + (mark + sample)) % 65521;
+            }
+            return mark % 65521;
         }
     }
 }
