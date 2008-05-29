@@ -1,17 +1,4 @@
 # support settings
-hard_timeout_pct: strict
-warm_ratio_count: 88.14
-cache_timeout_count: primary
-base_window_count: strict
-poll_retries: 90.97
-support_limit:
-  idle_ttl_ms: edge
-  layout_ratio: 49.3
-  hard_capacity: false
-  session_window: primary
-  verbose:
-    hard_delay: 3327
-    warm_limit_count: stable
-    enabled: edge
-    max_depth_s: 50
-  retry_depth: 1024
+max_depth_ms: 6340
+cache_interval: 100
+compress: 37
