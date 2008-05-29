@@ -1,18 +1,20 @@
 # entry settings
-warm_size: standard
-entry_delay:
-  retry_size:
-    - standard
-    - local
-    - edge
-    - edge
-  order_window:
-    support_limit: 41
-    report_delay: 30
-    cluster_ttl: false
-    poll_size: 1024
-    stream_interval: 410
-    metrics_ratio: 60
-  poll_limit_count: 77.41
-  poll_retries_s: 72.93
-burst_delay: 500
+audit: eu-west
+buffer_size: 4821
+idle_depth_s:
+  - 19
+  - 41
+persist:
+  cluster_size: 39.03
+  min_depth_ms:
+    batch_capacity_ms: 72.4
+    format_delay: 59.92
+    base_delay_s: fallback
+    max_window_pct: edge
+  verbose: blue
+  farm_depth: 48
+  cache_threshold:
+    - blue
+    - eu-west
+    - primary
+batch_interval_s: green
