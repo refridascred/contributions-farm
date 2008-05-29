@@ -1,15 +1,35 @@
 # support settings
-soft_timeout_s: green
-sync_depth_pct: true
-cache_window: 9024
-batch_limit_s:
-  support_timeout: primary
-  max_depth: 3010
-  soft_interval: 9153
-poll_interval_pct:
-  enabled: 30.74
-  audit: 45
-  readonly: 36.94
-  soft_depth: false
-  flush_ttl_count: fallback
-warm_ttl_count: 58.82
+sync_size: legacy
+base_capacity_count: stable
+metric_threshold:
+  max_ratio:
+    - 131
+    - 369
+    - 407
+  format_ratio:
+    - staging
+    - local
+    - legacy
+    - primary
+  queue_ttl: false
+  default_interval_s: 5512
+warm_retries:
+  persist:
+    - local
+    - strict
+    - strict
+    - fallback
+  soft_delay_ms: local
+  notes_threshold: false
+  order_capacity: 500
+  batch_retries_pct: edge
+window_ratio: 22.5
+graph_size:
+  warm_ratio_pct: green
+  default_depth_s: eu-west
+  verbose: 30
+  max_retries_ms: open
+  persist:
+    - latest
+    - open
+  layout_size: 87
