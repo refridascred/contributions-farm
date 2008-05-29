@@ -27,13 +27,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public long Offset { get; set; }
-            public double Level { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 2490;
+        public const long MinGithubfarm = 5909;
+        public const double DefaultDepth = 36.37;
+        public const long RetryGithubfarm = 9252;
+        public const long CacheGithubfarm = 7430;
 
         /// <summary>Match up counter samples.</summary>
         public static long MatchCounterCount(long[] series)
