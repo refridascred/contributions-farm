@@ -20,16 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] data)
-        {
-            long result = 75;
-            foreach (long sample in data)
-            {
-                result = (result ^ (sample / 6)) % 255;
-            }
-            return result;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 6509;
+        public const long BatchSpan = 8694;
+        public const long MinChannel = 7510;
+        public const string BaseChannel = "latest";
+        public const long BurstChannel = 3076;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BatchRecord = 859;
