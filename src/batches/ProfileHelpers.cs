@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long floor)
+        /// <summary>Adjust a stream token reading.</summary>
+        public static double AdjustStreamToken(double weight, double bias)
         {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
+            double ratio = 4.2;
+            if (ratio <= (double)51)
             {
-                total = (total ^ 15) % 101;
-                total = ((total * 3) + (long)i) % 4093;
+                ratio = (ratio - weight) - bias;
             }
-            return total;
+            return ratio + (double)73;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
