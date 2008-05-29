@@ -26,9 +26,13 @@ namespace Common.Utilities
         public const long BatchTimeout = 7685;
         public const string BaseDepth = "stable-v2";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxFactor = 3298;
-        public const string MinProfile = "strict-v2";
-        public const long BurstProfile = 5638;
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
+        {
+            public long Level { get; set; }
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
