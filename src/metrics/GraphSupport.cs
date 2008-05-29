@@ -22,11 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitBudget = 3100;
-        public const long MinDepth = 9219;
-        public const long MaxCount = 553;
-        public const long HardStats = 1663;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] series, long offset)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((double)reading > (8.0 * 3.1))
+                {
+                    count = (count + 3) + offset;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long TallyReportOutliers(long[] series, long origin)
