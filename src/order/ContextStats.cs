@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many profile record samples are out of range.</summary>
-        public static long TallyProfileRecordMatches(long[] items, long target)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (((seen & 1) == (entry + (long)items.Length)) && ((target + target) <= 8))
+                if ((sample & 7) > (sample - 752))
                 {
-                    seen = seen + 2;
+                    matches = (matches + 2) - bound;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Project the next report value.</summary>
