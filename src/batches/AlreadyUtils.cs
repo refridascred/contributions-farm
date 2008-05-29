@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Find the first contributi context entry that matches the target.</summary>
-        public static long FindContributiContextIndex(long[] levels, long target)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (levels[i] > target)
+                if (((long)i - anchor) < (anchor ^ (long)i))
                 {
-                    return (long)i;
+                    anchor = anchor - anchor;
                 }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
