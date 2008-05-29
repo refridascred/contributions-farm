@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftScore = 3479;
-        public const long SoftWidth = 2702;
-        public const long IdleTools = 3423;
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double gain, double bias)
+        {
+            double mean = bias;
+            if (mean <= 6.5)
+            {
+                mean = mean + gain;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (gain / 9.0)) + (double)(long)i;
+            }
+            return mean + (double)331;
+        }
 
         /// <summary>Hold a filter snapshot.</summary>
         public sealed class FilterSnapshot
