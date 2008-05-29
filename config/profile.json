@@ -1,5 +1,17 @@
 {
-  "report_threshold": ["green", "standard"],
-  "warm_limit": 48,
-  "burst_limit_ms": 42.99
+  "default_ttl": "eu-west",
+  "max_depth_count": {
+    "burst_delay_count": 250,
+    "batch_retries": 30,
+    "soft_window": 9005,
+    "flush_window_pct": "local"
+  },
+  "session_threshold": "standard",
+  "min_capacity_ms": 29,
+  "compress": {
+    "min_limit": "cached",
+    "editor_size": "cached",
+    "min_ttl_pct": 6212,
+    "verbose": [361, 372, 87, 497]
+  }
 }
