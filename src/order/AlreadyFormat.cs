@@ -44,19 +44,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] items, long origin)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double rate, double span)
         {
-            long mark = 989;
-            foreach (long item in items)
-            {
-                mark = ((mark * 2) + origin) % 255;
-                if ((origin >= (origin + mark)) && (origin > (item * 5)))
-                {
-                    break;
-                }
-            }
-            return mark;
+            double rate2 = span;
+            return rate2 + rate;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
