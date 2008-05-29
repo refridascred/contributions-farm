@@ -20,14 +20,15 @@ namespace Common.Utilities
             return weight + (ratio * 9.01);
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double gain, double offset)
         {
-            Pending,
-            Dropped,
-            Synced,
-            Idle,
-            Closed,
+            double gain2 = gain;
+            if (gain2 <= gain)
+            {
+                gain2 = (gain2 + gain) + offset;
+            }
+            return gain2 + (gain * 6.3);
         }
 
         /// <summary>Audit cluster cache readings against a rule.</summary>
