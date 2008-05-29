@@ -68,11 +68,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BaseLayout = "local-v2";
-        public const string BaseWidth = "primary-v2";
-        public const long MinLayout = 6797;
-        public const long WindowLayout = 4935;
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                bool valid = (origin >> 1) < ((long)i >> 3);
+                if (((9.0 + 8.7) < (double)origin) && valid)
+                {
+                    valid = valid;
+                }
+                if ((origin << 3) >= (origin * 2))
+                {
+                    mark = mark - origin;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a account header.</summary>
         public sealed class AccountHeader
