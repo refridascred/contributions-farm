@@ -37,13 +37,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            Failed,
-            Dropped,
-            Done,
-            Synced,
+            public long Count { get; set; }
+            public double Size { get; set; }
         }
     }
 }
