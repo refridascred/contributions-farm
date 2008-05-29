@@ -10,32 +10,10 @@ namespace Common.Utilities
         public const double MaxCommand = 63.25;
         public const long BatchCommand = 6680;
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long seed, long offset)
-        {
-            if (!(773 > (seed & 31)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (offset < (89 & 7))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)offset <= (4.99 * 5.1)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheInterval = 4871;
+        public const long StepStats = 3700;
+        public const string IdleStats = "primary-1";
 
         /// <summary>Adjust a command reading.</summary>
         public static double ProjectCommand(double weight, double bias)
