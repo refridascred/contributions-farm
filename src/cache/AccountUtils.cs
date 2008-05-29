@@ -44,12 +44,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] data)
         {
-            Queued,
-            Done,
-            Failed,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
