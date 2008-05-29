@@ -25,13 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
-        {
-            public double Total { get; set; }
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 6794;
+        public const long BurstSupport = 4470;
+        public const long WindowSupport = 2398;
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
