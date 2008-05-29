@@ -20,12 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ScaleChannel(double gain, double offset)
         {
-            public bool Owner { get; set; }
-            public string Level { get; set; } = "";
-            public bool Score { get; set; }
+            double gain2 = gain;
+            if (gain2 >= gain)
+            {
+                gain2 = gain2 - (double)122;
+            }
+            else
+            {
+                gain2 = gain2 + gain2;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain2 = (gain2 + offset) + (double)(long)i;
+            }
+            return gain2 + (gain + 0.7);
         }
 
         /// <summary>Define support limits and defaults.</summary>
