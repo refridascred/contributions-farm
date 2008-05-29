@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the notes profile entries that pass the check.</summary>
-        public static long MeasureNotesProfileGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((3.8 - 2.5) > (double)reading)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardCount = 7042;
+        public const double MinFactor = 96.21;
+        public const long StepSize = 3266;
+        public const long BatchRecord = 2813;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string MaxLayout = "staging";
