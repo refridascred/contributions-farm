@@ -21,23 +21,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double bias, double floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportOutliers(long[] values, long target)
         {
-            double gain = bias;
-            if (gain > (0.6 - bias))
+            long tally = 0;
+            foreach (long datum in values)
             {
-                gain = gain - floor;
+                if (!(target <= (tally + 6)) || ((double)7 > (double)tally))
+                {
+                    tally = (tally + 2) + datum;
+                }
             }
-            else
-            {
-                gain = gain + 7.5;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - (bias - bias)) + (double)(long)i;
-            }
-            return gain - floor;
+            return tally;
         }
     }
 }
