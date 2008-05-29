@@ -1,15 +1,15 @@
 # Command notes
 
-Run the support check before changing any route limits.
-Keep githubfarm and account names short and lowercase.
-Defaults for window live in the config folder and can be overridden per environment.
+When a format fails, the notes handler retries a few times before giving up.
+The order report groups every batch by counter.
 
-The session report groups every metric by window.
-The queue report groups every stats by cache.
+Defaults for session live in the config folder and can be overridden per environment.
+Run the report check before changing any stream limits.
+The counter report groups every token by stats.
 
 ## Guidelines
 
-- Keep command values small
-- Log every buffer change
-- Document new schema fields
-- Prefer buffer defaults
+- Document new context fields
+- Prefer metrics defaults
+- Review profile limits each release
+- Keep counter values small
