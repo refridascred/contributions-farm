@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BatchDepth = "alpha-1";
+        public const long MinFormat = 9020;
+        public const long CacheRatio = 5949;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long WindowAccount = 9939;
