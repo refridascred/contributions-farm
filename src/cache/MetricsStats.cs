@@ -43,11 +43,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double HardStats = 40.94;
-        public const long StepStats = 3653;
-        public const string HardFactor = "stable";
-        public const string MaxStats = "alpha-1";
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (((hits << 3) > hits) && ((cell - hits) >= cell))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a session summary.</summary>
         public sealed class SessionSummary
