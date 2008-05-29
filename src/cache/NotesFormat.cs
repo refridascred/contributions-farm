@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long floor)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double weight, double bias)
         {
-            long score = floor;
-            for (int i = 0; i < 7; i++)
+            double weight2 = weight;
+            if (weight2 > (double)0)
             {
-                score = ((score * 3) + (long)i) % 1000;
-                score = (score - (floor + score)) % 4096;
-                score = ((score * 3) + (long)i) % 1000;
+                weight2 = weight2 - bias;
             }
-            return score;
+            else
+            {
+                weight2 = weight2 + (bias + weight);
+            }
+            return weight2 - (bias + weight2);
         }
 
         /// <summary>Grade a window batches value against two limits.</summary>
