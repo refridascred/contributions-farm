@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiRange(long[] samples, long target)
+        /// <summary>Measure how many commits stream samples are out of range.</summary>
+        public static long CountCommitsStreamGaps(long[] values, long origin)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (datum >= target)
+                if ((double)sample >= 9.45)
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 2) - origin;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
