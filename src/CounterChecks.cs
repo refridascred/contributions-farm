@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] levels)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterRange(long[] values, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item >= step)
                 {
-                    if ((levels[i] ^ levels[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
