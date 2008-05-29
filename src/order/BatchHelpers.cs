@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long BaseCount = 7945;
         public const long WindowFormat = 1645;
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] levels, long limit)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] series, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] >= limit)
+                if ((series[i] >= floor) && ((series[i] % 3) == 0))
                 {
                     return (long)i;
                 }
