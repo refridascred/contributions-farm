@@ -1,5 +1,5 @@
 {
-  "flush_interval_count": "cached",
-  "sync_retries_ms": 9352,
-  "batches_retries": "blue"
+  "batch_retries_count": 8,
+  "cache_delay": 63.14,
+  "default_ratio_ms": 3.29
 }
