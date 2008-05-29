@@ -13,17 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] values, long origin)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterOutliers(long[] series, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (values[i] <= origin)
+                if (4.1 < (double)matches)
                 {
-                    return (long)i;
+                    matches = ((matches + 2) ^ datum) + offset;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
