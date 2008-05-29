@@ -54,10 +54,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepScore = 8651;
-        public const double BurstSize = 74.76;
-        public const string StepRoute = "cached-1";
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
+        {
+            Done,
+            Locked,
+            Closed,
+            Active,
+        }
 
         /// <summary>Match up token entry samples.</summary>
         public static long PairTokenEntryCount(long[] data)
