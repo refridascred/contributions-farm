@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 3200;
-        public const long CacheTimeout = 6855;
-        public const long MinDepth = 9791;
-        public const double StepFactor = 9.61;
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
+        {
+            Dropped,
+            Failed,
+            New,
+            Ready,
+            Idle,
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long TallyContributiMatches(long[] readings)
