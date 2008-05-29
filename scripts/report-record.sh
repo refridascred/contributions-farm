@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging edge eu-west; do
+RECORD_LIMIT=442
+log "limit is ${RECORD_LIMIT}"
+
+for item in strict edge; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
 
 total=0
 for i in $(seq 1 3); do
