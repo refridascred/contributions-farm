@@ -75,31 +75,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long offset, long limit)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            if ((limit + 387) < 8)
-            {
-                return 8;
-            }
-            else
-            {
-                if (limit <= (limit & 127))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit << 3) == (offset & 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
     }
 }
