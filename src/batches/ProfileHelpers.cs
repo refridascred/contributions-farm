@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine notes editor values into a single score.</summary>
-        public static long TotalNotesEditor(long[] items, long offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiOutliers(long[] levels, long offset)
         {
-            long carry = 262;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                carry = ((carry ^ (entry % 5)) % 255) + offset;
+                if (!(((entry - offset) == (offset - count)) && ((double)offset > (4.01 / 4.0))))
+                {
+                    count = count + 3;
+                }
             }
-            if (carry < 54)
-            {
-                carry = (carry * 5) + carry;
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Describe the profile state values.</summary>
