@@ -37,18 +37,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (8.0 < (double)seen)
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowSpan = 3581;
+        public const long MaxToken = 1028;
+        public const long StepBudget = 3859;
+        public const long HardInterval = 1665;
     }
 }
