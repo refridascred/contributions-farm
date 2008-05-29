@@ -26,19 +26,18 @@ namespace Common.Utilities
         public const double MinCluster = 20.11;
         public const long RetryTimeout = 142;
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsRange(long[] series, long bound)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsHits(long[] items, long offset)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (entry > bound)
+                if ((matches * 4) == (entry / 3))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 2) - offset;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
