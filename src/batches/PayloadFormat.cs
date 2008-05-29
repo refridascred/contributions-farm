@@ -35,9 +35,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowLevel = 1457;
-        public const long DefaultQueue = 9690;
-        public const long DefaultBudget = 3889;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Queued,
+            Draft,
+            Paused,
+            Retry,
+            Done,
+        }
     }
 }
