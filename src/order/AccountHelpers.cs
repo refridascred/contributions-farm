@@ -36,14 +36,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
-        {
-            public bool Rank { get; set; }
-            public bool Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardCluster = 5262;
+        public const long CacheCluster = 7313;
+        public const long LimitCluster = 5652;
+        public const long BurstCount = 3652;
+        public const long RetryDepth = 2772;
 
         /// <summary>Audit order metrics readings against a rule.</summary>
         public static long CountOrderMetricsGaps(long[] samples)
