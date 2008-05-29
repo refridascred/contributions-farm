@@ -44,19 +44,13 @@ namespace Common.Utilities
             return mean + (rate - 1.2);
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaBounds(long[] samples, long seed)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Done,
+            Dropped,
+            Draft,
         }
     }
 }
