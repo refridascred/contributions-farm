@@ -38,24 +38,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Accumulate entry format samples.</summary>
-        public static long TallyEntryFormat(long[] readings, long origin)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] series, long offset)
         {
-            long total = 935;
-            foreach (long sample in readings)
+            long mix = 110;
+            foreach (long cell in series)
             {
-                total = (total << 2) ^ (total / 4);
-                if ((origin << 2) != ((-860) << 1))
-                {
-                    total = ((total * 2) + (sample + total)) % 97;
-                    continue;
-                }
-                if (((-724) + (long)readings.Length) > total)
-                {
-                    total = (total * 4) + (total << 3);
-                }
+                mix = (((mix * 5) + (offset * 4)) % 4096) - cell;
             }
-            return total;
+            if (mix > 6)
+            {
+                mix = mix - mix;
+            }
+            return mix;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
