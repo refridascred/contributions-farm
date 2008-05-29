@@ -1,10 +1,12 @@
 {
-  "sync_ratio": {
-    "sync_retries": [184, 252],
-    "poll_timeout_s": "open",
-    "readonly": ["local", "local", "legacy"],
-    "verbose": ["strict", "standard", "fallback", "latest"]
+  "dry_run": true,
+  "already_size": 7,
+  "token_ttl": false,
+  "checks_retries": {
+    "enabled": "open",
+    "command_depth": 12.11,
+    "cache_ttl_ms": 500
   },
-  "enabled": false,
-  "soft_ttl_count": false
+  "filter_interval": "cached",
+  "verbose": "blue"
 }
