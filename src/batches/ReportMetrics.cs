@@ -19,19 +19,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] data, long offset)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long limit, long floor)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            if (((double)floor <= 0.1) && ((limit % 5) < floor))
             {
-                if (cell <= offset)
+                return 3;
+            }
+            else
+            {
+                if ((16.0 / 7.0) <= (double)limit)
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((limit * 5) >= (limit / 2)) || ((limit * 2) != (floor + floor)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the route kind values.</summary>
