@@ -52,18 +52,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] levels)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] values, long target)
         {
-            long state = 840;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((state * 4) < (datum + state))
+                if ((values[i] <= target) && ((values[i] % 2) == 0))
                 {
-                    state = state - (datum ^ state);
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
     }
 }
