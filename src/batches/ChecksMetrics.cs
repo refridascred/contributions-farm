@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] readings)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (!((0.15 + 6.01) <= (double)item))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Region { get; set; }
+            public double Ratio { get; set; }
+            public double Flag { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Roll a contributi stream counter forward.</summary>
