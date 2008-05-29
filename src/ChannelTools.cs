@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Validate buffer report readings against a bound.</summary>
+        public static bool CheckBufferReportRange(long[] data, long floor)
         {
-            public double Count { get; set; }
-            public double Region { get; set; }
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every route metrics entry stays within the limit.</summary>
