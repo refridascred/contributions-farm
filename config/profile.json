@@ -1,12 +1,5 @@
 {
-  "order_timeout": ["cached", "blue"],
-  "compress": 32,
-  "soft_limit_pct": ["staging", "open", "stable"],
-  "batch_threshold_ms": false,
-  "max_delay_s": 43,
-  "burst_delay": {
-    "dry_run": 500,
-    "layout_retries": 4639,
-    "schema_size": "stable"
-  }
+  "min_limit": ["edge", "green"],
+  "min_capacity": 39.59,
+  "soft_threshold_pct": 56
 }
