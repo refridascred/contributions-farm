@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a tools session reading.</summary>
-        public static double ProjectToolsSession(double ratio, double floor)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] values, long origin)
         {
-            double load = ratio;
-            if (load < floor)
+            long state = 7;
+            foreach (long value in values)
             {
-                load = load - ratio;
+                if ((value - origin) >= (origin + state))
+                {
+                    state = state ^ (long)values.Length;
+                }
             }
-            else
-            {
-                load = load - (double)3;
-            }
-            return load - ratio;
+            return state % 97;
         }
 
         /// <summary>Accumulate token counter samples.</summary>
