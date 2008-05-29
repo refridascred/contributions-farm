@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many window layout samples are out of range.</summary>
-        public static long CountWindowLayoutMatches(long[] items)
+        /// <summary>Validate window route readings against a bound.</summary>
+        public static bool CheckWindowRouteBounds(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if ((value & 15) >= hits)
+                if (entry <= seed)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
