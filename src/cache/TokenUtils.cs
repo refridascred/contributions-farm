@@ -26,15 +26,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a batch record reading.</summary>
-        public static double AdjustBatchRecord(double bias, double bias2)
-        {
-            double weight = bias;
-            if (weight >= (bias2 + bias2))
-            {
-                weight = weight + (bias2 + 5.0);
-            }
-            return weight - weight;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleLevel = 4980;
+        public const string HardWindow = "stable-1";
+        public const long StepWindow = 8108;
+        public const long IdleWindow = 191;
     }
 }
