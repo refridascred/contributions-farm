@@ -23,13 +23,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Stale,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BurstSize = 0.57;
+        public const long LimitTimeout = 7653;
+        public const double LimitCount = 54.62;
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
