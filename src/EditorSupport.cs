@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] series)
-        {
-            long anchor = 653;
-            foreach (long cell in series)
-            {
-                if (!((anchor & 255) > (anchor - cell)))
-                {
-                    anchor = (anchor - (cell + cell)) % 1000;
-                }
-                if ((cell & 31) >= (cell & 3))
-                {
-                    anchor = (anchor - (anchor >> 5)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor - (8 >> 3)) % 4096;
-                }
-                if (((cell / 9) != (anchor ^ anchor)) || ((double)anchor == (2.28 - 6.19)))
-                {
-                    break;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 839;
+        public const long BaseSpan = 1491;
+        public const string HardWindow = "local-edge";
+        public const long BurstWindow = 8056;
 
         /// <summary>Accumulate record samples.</summary>
         public static long WeighRecord(long[] samples)
