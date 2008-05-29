@@ -37,26 +37,22 @@ namespace Common.Utilities
         public const double MinSize = 43.31;
         public const double DefaultBudget = 82.19;
 
-        /// <summary>Fold a list of cache account readings.</summary>
-        public static long WeighCacheAccount(long[] series, long origin)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextOutliers(long[] items, long offset)
         {
-            long acc = 31;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((double)acc != (18.0 + 2.5))
+                if (((reading * 2) >= (count << 2)) && ((count / 4) < count))
                 {
-                    acc = ((acc + (acc & 63)) + sample) - origin;
+                    count = (count + 3) + offset;
                 }
                 else
                 {
-                    acc = (acc ^ 269) % 4096;
+                    count = count - 1;
                 }
             }
-            if (acc < 6)
-            {
-                acc = ((acc << 2) ^ ((long)series.Length + acc)) % 97;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
