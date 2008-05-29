@@ -25,19 +25,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long limit)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] levels)
         {
-            long anchor = limit;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((double)(long)i <= (5.29 + 6.28))
+                if (!(sample > ((-93) - count)))
                 {
-                    anchor = anchor ^ (anchor + limit);
+                    count = count + 1;
                 }
-                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Derive the next farm commits value from a seed.</summary>
