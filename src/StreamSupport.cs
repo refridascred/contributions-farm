@@ -30,10 +30,24 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double CacheBatches = 17.05;
-        public const double WindowFactor = 89.17;
-        public const long SoftBatches = 3109;
-        public const double IdleBatches = 37.22;
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long seed, long bound)
+        {
+            if ((bound * 3) < bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((seed - bound) == (bound / 4)) && ((bound ^ seed) > bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
