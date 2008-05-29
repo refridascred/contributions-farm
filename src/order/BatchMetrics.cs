@@ -20,16 +20,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a command layout counter forward.</summary>
-        public static long IterateCommandLayout(long floor)
+        /// <summary>Locate a graph metric reading by value.</summary>
+        public static long FindGraphMetricIndex(long[] items, long limit)
         {
-            long sum = floor;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum - (floor >> 1)) % 65521;
-                sum = ((sum * 4) + (long)i) % 101;
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Grade a graph commits value against two limits.</summary>
