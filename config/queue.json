@@ -1,5 +1,11 @@
 {
-  "poll_size": [391, 102, 345, 328],
-  "strict": 6674,
-  "burst_ttl_pct": "eu-west"
+  "idle_ratio": 62,
+  "batch_window": 30,
+  "layout_timeout": {
+    "idle_ttl_pct": true,
+    "strict": "standard",
+    "contributi_interval": 17.78
+  },
+  "already_ttl": 37.81,
+  "format_interval": false
 }
