@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowBounds(long[] readings, long limit)
-        {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 2052;
+        public const double RetryCount = 28.77;
+        public const long BaseEntry = 1586;
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
