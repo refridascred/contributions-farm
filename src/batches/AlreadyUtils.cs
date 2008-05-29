@@ -24,22 +24,32 @@ namespace Common.Utilities
         public const long IdleTimeout = 219;
         public const long BaseSpan = 6110;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] samples)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long StepChecks(long floor)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long mark = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((24 + seen) <= cell)
+                if (!((long)i == (floor + mark)))
                 {
-                    seen = seen + 3;
+                    break;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    mark = (mark ^ (80 - mark)) % 97;
                 }
+                if (((mark - 8) <= (floor & 7)) && ((floor - (long)i) <= floor))
+                {
+                    break;
+                }
+                if (floor > (long)i)
+                {
+                    mark = mark + (mark / 9);
+                    mark = (mark << 3) ^ floor;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a already entry.</summary>
