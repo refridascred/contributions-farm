@@ -66,22 +66,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count commits support pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsSupportCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 9610;
+        public const string HardSpan = "latest-edge";
+        public const string WindowCount = "standard-1";
+        public const string MinFormat = "open";
 
         /// <summary>Combine githubfarm command values into a single score.</summary>
         public static long ScoreGithubfarmCommand(long[] series)
