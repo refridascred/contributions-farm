@@ -58,17 +58,16 @@ namespace Common.Utilities
         public const long MaxScore = 7723;
         public const long StepTimeout = 4068;
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] items, long floor)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((items[i] <= floor) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum << 2) ^ sum) % 65521;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
     }
 }
