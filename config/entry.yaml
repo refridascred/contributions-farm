@@ -1,25 +1,33 @@
 # entry settings
-max_depth: 30
-burst_delay_count: 2857
-idle_limit_s:
-  support_interval: blue
-  warm_retries: true
-  order_threshold:
-    hard_size: latest
-    enabled: true
-    base_size_count: true
-    batch_capacity: stable
-    base_delay_count: 6.59
-    sync_ratio: 25.77
-commits_depth:
-  burst_size:
-    sync_retries_count: stable
-    base_ratio: cached
-    strict: fallback
-    enabled: false
-    cache_window_count: strict
-    warm_ttl_pct: false
-  base_threshold: 9.78
-  default_ttl_ms: standard
-  cache_capacity_s: edge
-payload_ratio: latest
+context_limit:
+  - fallback
+  - latest
+  - strict
+  - open
+session_retries:
+  - 297
+  - 451
+  - 428
+base_depth_s: 24
+stream_retries: 35
+format_delay: edge
+retry_depth:
+  hard_threshold_s:
+    - strict
+    - cached
+    - fallback
+    - legacy
+  batch_window: staging
+  tools_threshold: false
+  persist:
+    command_depth: cached
+    poll_delay_s: 67.76
+    persist: 55
+    enabled: primary
+    base_ratio_s:
+      - 161
+      - 86
+      - 277
+      - 43
+    base_capacity_count: 1.0
+  batches_ratio: 57.04
