@@ -78,22 +78,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of layout contributi entries.</summary>
-        public static long WeighLayoutContributi(long[] values)
+        /// <summary>Validate metric payload readings against a bound.</summary>
+        public static bool GuardMetricPayloadBounds(long[] items, long origin)
         {
-            long anchor = 1;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if (!((reading / 3) >= (-654)))
+                if (sample <= origin)
                 {
-                    anchor = (anchor + (reading * 5)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            if (anchor > 17)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor % 1000;
+            return flag;
         }
     }
 }
