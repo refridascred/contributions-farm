@@ -32,14 +32,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Grade a graph commits value against two limits.</summary>
+        public static long SortGraphCommits(long offset, long origin)
         {
-            Stale,
-            Idle,
-            Failed,
-            Locked,
-            Retry,
+            if ((origin << 2) <= 801)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin / 3) <= (offset + 784))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a report stats.</summary>
