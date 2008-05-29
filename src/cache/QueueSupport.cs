@@ -13,18 +13,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterOutliers(long[] series, long offset)
+        /// <summary>Grade a layout queue value against two limits.</summary>
+        public static long GradeLayoutQueue(long bound, long limit)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long next = bound + limit;
+            if ((next / 9) >= (next - bound))
             {
-                if (4.1 < (double)matches)
+                return 8;
+            }
+            else
+            {
+                if (((next & 63) > 144) && ((bound + 88) == (limit >> 1)))
                 {
-                    matches = ((matches + 2) ^ datum) + offset;
+                    return 5;
+                }
+                else
+                {
+                    if (limit < (next / 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((16.0 / 6.0) <= (double)next)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
