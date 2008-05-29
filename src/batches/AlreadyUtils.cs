@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long origin)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] series, long bound)
         {
-            long anchor = origin;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)i - anchor) < (anchor ^ (long)i))
+                if ((series[i] <= bound) && ((series[i] % 3) == 0))
                 {
-                    anchor = anchor - anchor;
+                    return (long)i;
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
