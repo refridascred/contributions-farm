@@ -19,14 +19,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double bias, double floor)
         {
-            Dropped,
-            Locked,
-            Paused,
-            Closed,
-            Pending,
+            double scale = (bias + 13.0) * 8.0;
+            if (scale >= (floor + floor))
+            {
+                scale = scale + scale;
+            }
+            else
+            {
+                scale = scale + (floor - scale);
+            }
+            return scale + (double)233;
         }
     }
 }
