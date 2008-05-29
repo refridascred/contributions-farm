@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] readings)
         {
-            Idle,
-            Queued,
-            Paused,
-            Draft,
-            Retry,
+            long state = 377;
+            foreach (long datum in readings)
+            {
+                state = ((state ^ (state / 7)) % 65521) ^ datum;
+            }
+            return state % 4096;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
