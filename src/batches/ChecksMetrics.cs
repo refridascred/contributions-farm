@@ -64,12 +64,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterRange(long[] series, long origin)
         {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-            public double Score { get; set; }
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
