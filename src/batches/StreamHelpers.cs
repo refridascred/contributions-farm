@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ProjectNotes(double scale, double offset)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferLimits(long[] values, long seed)
         {
-            double weight = offset;
-            if (weight < (weight + offset))
+            bool ready = true;
+            foreach (long reading in values)
             {
-                weight = (weight + offset) - scale;
+                if (reading != seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return weight - 8.96;
+            return ready;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
