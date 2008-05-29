@@ -25,15 +25,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double weight, double bias)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] readings, long seed)
         {
-            double ratio = bias;
-            if (ratio >= (double)39)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                ratio = (ratio + (ratio * 19.0)) - weight;
+                if ((seed + hits) == (item + seed))
+                {
+                    hits = hits + 1;
+                }
             }
-            return ratio - ratio;
+            return hits;
         }
     }
 }
