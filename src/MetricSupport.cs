@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long BatchSize = 8965;
         public const string HardTimeout = "fallback";
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutGaps(long[] series)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((reading / 6) <= count)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Stamp { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the cache phase values.</summary>
