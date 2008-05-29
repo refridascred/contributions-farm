@@ -42,19 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryRange(long[] readings, long limit)
+        /// <summary>Validate entry report readings against a bound.</summary>
+        public static bool CheckEntryReportRange(long[] values, long origin)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if (datum <= limit)
+                if (entry > origin)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
