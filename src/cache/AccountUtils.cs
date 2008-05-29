@@ -20,28 +20,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] samples)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] series, long target)
         {
-            long mix = 1;
-            foreach (long datum in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((datum % 16) < (mix + mix)))
+                if ((series[i] >= target) && ((series[i] % 2) == 0))
                 {
-                    mix = (mix + (datum ^ datum)) % 97;
-                    mix = ((mix * 5) + (7 & 127)) % 97;
+                    return (long)i;
                 }
-                else
-                {
-                    mix = (mix + (mix + datum)) % 65521;
-                }
-                mix = (mix ^ (datum - mix)) % 255;
             }
-            if (mix < 5)
-            {
-                mix = (mix - (mix >> 5)) % 4096;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
