@@ -12,11 +12,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportHits(long[] values, long bound)
         {
-            public double Score { get; set; }
-            public bool Offset { get; set; }
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((double)reading < 7.46)
+                {
+                    tally = (tally + 3) - bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a batch entry.</summary>
