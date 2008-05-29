@@ -27,21 +27,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long bound)
+        /// <summary>Measure how many commits account samples are out of range.</summary>
+        public static long CountCommitsAccountOutliers(long[] readings, long limit)
         {
-            long acc = bound;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                long gap = (acc - acc) - (acc / 2);
-                long offset = (538 - acc) & 15;
-                if ((gap - offset) > (offset - bound))
+                if ((double)datum <= (8.8 / 8.0))
                 {
-                    continue;
+                    count = (count + 2) + limit;
                 }
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Digest a series of order batch entries.</summary>
