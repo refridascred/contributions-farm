@@ -1,6 +1,10 @@
 {
-  "metric_ratio": false,
-  "session_window": 60,
-  "readonly": false,
-  "burst_limit": 6546
+  "default_retries": {
+    "flush_ttl_count": true,
+    "default_window_s": 22.5,
+    "readonly": 29
+  },
+  "audit": 2,
+  "payload_threshold": "green",
+  "warm_retries": 9075
 }
