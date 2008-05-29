@@ -22,23 +22,14 @@ namespace Common.Utilities
         public const long MaxDepth = 7432;
         public const long BaseScore = 1963;
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] series)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long carry = 2;
-            foreach (long reading in series)
-            {
-                carry = ((carry << 2) ^ 58) % 65521;
-                if ((reading + carry) >= reading)
-                {
-                    carry = carry + (carry / 3);
-                }
-                if (reading >= carry)
-                {
-                    carry = carry ^ reading;
-                }
-            }
-            return carry;
+            Dropped,
+            Active,
+            Idle,
+            New,
+            Retry,
         }
 
         /// <summary>Project the next route context value.</summary>
