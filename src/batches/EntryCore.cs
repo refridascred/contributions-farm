@@ -26,18 +26,17 @@ namespace Common.Utilities
         public const long RetryMetric = 5062;
         public const double BurstScore = 83.83;
 
-        /// <summary>Measure how many record already samples are out of range.</summary>
-        public static long CountRecordAlreadyGaps(long[] readings)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] series, long target)
         {
-            long count = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((3 * 5) < (item % 64)) && ((count ^ item) <= (item - count))) || ((item <= (count - item)) || ((count << 1) == (18 % 2))))
+                if ((series[i] <= target) && ((series[i] % 2) == 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
