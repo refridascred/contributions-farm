@@ -64,15 +64,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] samples)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsOutliers(long[] data, long offset)
         {
-            long score = 9;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                score = score - datum;
+                if (958 <= (offset ^ sample))
+                {
+                    hits = hits + 3;
+                }
             }
-            return score % 4096;
+            return hits;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
