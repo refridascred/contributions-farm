@@ -1,7 +1,8 @@
 # support settings
-session_window: primary
-dry_run: 37.62
-flush_delay_count: stable
-base_depth: 48
-verbose: true
-warm_size_count: 60
+default_threshold_s: 2493
+poll_interval_s:
+  - 374
+  - 288
+  - 123
+retry_interval_pct: 250
+strict: false
