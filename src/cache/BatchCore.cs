@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksMatches(long[] data)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((entry & 31) != (entry - 82)) && (((matches << 1) < (197 + entry)) || ((entry << 2) != (619 - entry))))
+                if ((samples[i] < seed) && ((samples[i] % 5) != 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Match up record samples.</summary>
