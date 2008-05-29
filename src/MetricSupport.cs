@@ -38,23 +38,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double rate, double span)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterOutliers(long[] levels, long target)
         {
-            double mean = (double)584 - (double)66;
-            if (mean >= (double)238)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                mean = mean + (rate + rate);
+                if (((4 % 8) >= count) || ((target >> 4) == (target / 8)))
+                {
+                    count = (count + 2) - datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                mean = mean - 8.4;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (rate - span)) + (double)(long)i;
-            }
-            return mean - mean;
+            return count;
         }
     }
 }
