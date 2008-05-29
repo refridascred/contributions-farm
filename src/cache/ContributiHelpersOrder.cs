@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the entry contributi entries that pass the check.</summary>
-        public static long AuditEntryContributiHits(long[] items, long limit)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((limit * 4) >= (limit + value))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Blend two filter support measurements.</summary>
