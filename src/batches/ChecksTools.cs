@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] values)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Draft,
+            Paused,
+            Dropped,
+            Active,
         }
 
         /// <summary>Rank graph input into a small class.</summary>
