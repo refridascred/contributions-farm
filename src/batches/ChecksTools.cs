@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] items, long seed)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] values)
         {
-            long acc = 264;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc << 3) ^ (acc ^ reading)) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (acc < 726)
-            {
-                acc = (acc + seed) % 65521;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
