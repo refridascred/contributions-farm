@@ -1,4 +1,22 @@
 # entry settings
-audit: true
-cache_retries: staging
-enabled: legacy
+audit:
+  editor_ratio: true
+  sync_ratio: 2001
+  audit: true
+  verbose:
+    tools_limit:
+      - 348
+      - 406
+      - 242
+      - 173
+    queue_limit: true
+    verbose:
+      - edge
+      - green
+      - blue
+  batch_ttl_s: 500
+  burst_delay_pct: 6666
+support_capacity: 8.01
+poll_interval_count:
+  - 426
+  - 366
