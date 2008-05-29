@@ -21,11 +21,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double weight, double bias)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] data, long bound)
         {
-            double weight2 = (double)(-8) * 8.14;
-            return ((weight2 - (5.1 * 7.85)) + weight) + bias;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= bound) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the window class values.</summary>
