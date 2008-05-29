@@ -62,31 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long seed, long offset)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] levels)
         {
-            if ((double)offset < (4.05 * 7.76))
+            long state = 840;
+            foreach (long datum in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed >> 1) < (offset + offset))
+                if ((state * 4) < (datum + state))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)offset <= 1.61)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    state = state - (datum ^ state);
                 }
             }
+            return state;
         }
     }
 }
