@@ -1,7 +1,7 @@
-id,count,active,weight,rank
-1,primary,97.66,9.59,edge
-2,edge,eu-west,66.9,eu-west
-3,green,24.78,284,local
-4,471,eu-west,5.21,eu-west
-5,11.79,eu-west,70.07,89
-6,16.42,strict,cached,47.34
+id,level,label,weight
+1,open,446,132
+2,914,72.22,1.25
+3,591,221,77.13
+4,standard,454,25.19
+5,9.77,81.55,71.12
+6,35.35,37.23,622
