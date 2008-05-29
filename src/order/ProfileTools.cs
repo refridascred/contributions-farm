@@ -39,10 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstCount = 7217;
-        public const double BaseBatches = 55.59;
-        public const string DefaultBatches = "primary-v2";
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
+        {
+            public double Rank { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long SeriesPayload(long seed)
