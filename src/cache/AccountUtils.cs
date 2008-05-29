@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a stream order figure with a bias.</summary>
-        public static double BlendStreamOrder(double scale, double floor)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            double bias = scale;
-            if (bias >= bias)
-            {
-                bias = bias - (double)9;
-            }
-            else
-            {
-                bias = bias - floor;
-            }
-            return bias - bias;
+            Locked,
+            Synced,
+            Queued,
+            Draft,
+            Ready,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
