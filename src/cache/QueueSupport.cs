@@ -13,11 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitContributi = 31.49;
-        public const string CacheSpan = "strict-v2";
-        public const long SoftContributi = 4918;
-        public const double MinContributi = 89.41;
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LocateCommitsIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long BucketPayload(long bound, long target)
