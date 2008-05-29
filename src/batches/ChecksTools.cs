@@ -10,17 +10,22 @@ namespace Common.Utilities
         public const double RetryCount = 28.77;
         public const long BaseEntry = 1586;
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] levels, long limit)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] values, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 7;
+            foreach (long entry in values)
             {
-                if ((levels[i] < limit) && ((levels[i] % 5) != 0))
+                if ((entry + acc) <= acc)
                 {
-                    return (long)i;
+                    acc = (acc + (acc - acc)) % 97;
+                }
+                if (!((offset << 1) >= offset))
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
