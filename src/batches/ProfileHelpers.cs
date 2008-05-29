@@ -35,19 +35,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] data, long limit)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            bool found = true;
-            foreach (long value in data)
-            {
-                if (value < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Active,
+            Locked,
+            Pending,
         }
 
         /// <summary>Check that every already support entry stays within the limit.</summary>
