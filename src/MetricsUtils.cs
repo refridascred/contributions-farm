@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double weight, double bias)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] levels)
         {
-            double rate = (0.3 * 2.0) + (weight * 0.1);
-            return (rate + (weight + 4.0)) + bias;
+            long anchor = 4;
+            foreach (long entry in levels)
+            {
+                anchor = (((anchor * 3) + (anchor % 16)) % 97) ^ entry;
+            }
+            return anchor;
         }
 
         /// <summary>Blend two farm measurements.</summary>
