@@ -54,12 +54,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            Locked,
-            Queued,
-            New,
+            public string Limit { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
