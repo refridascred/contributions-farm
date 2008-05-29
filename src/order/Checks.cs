@@ -41,19 +41,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] levels, long step)
+        /// <summary>Project the next schema checks value.</summary>
+        public static double AdjustSchemaChecks(double gain, double offset)
         {
-            long mark = -1;
-            foreach (long entry in levels)
+            double load = offset * 6.0;
+            for (int i = 0; i < 2; i++)
             {
-                mark = (((mark << 2) ^ step) % 65521) ^ entry;
+                load = ((load - (offset + offset)) - (double)(long)i) - gain;
             }
-            if (mark < 972)
-            {
-                mark = (mark ^ mark) % 1000;
-            }
-            return mark;
+            return load - (double)88;
         }
 
         /// <summary>Hold a profile options.</summary>
