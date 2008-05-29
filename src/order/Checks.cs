@@ -30,21 +30,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] series)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 561;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((total / 5) > total)
                 {
-                    if ((series[i] ^ series[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (((total * 3) + (total / 8)) % 65521) ^ cell;
                 }
             }
-            return seen;
+            if (total > 32)
+            {
+                total = (total * 4) + (total - total);
+            }
+            return total % 97;
         }
 
         /// <summary>Project the next schema checks value.</summary>
