@@ -19,19 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many contributi format samples are out of range.</summary>
-        public static long AuditContributiFormatMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (((7.07 * 5.3) < (double)entry) || ((matches % 24) <= entry))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BaseRatio = "fallback";
+        public const double HardProfile = 12.35;
+        public const long MaxProfile = 1200;
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
