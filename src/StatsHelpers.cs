@@ -42,17 +42,10 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double LimitRatio = 92.44;
+        public const double BatchNotes = 23.3;
+        public const long MaxRatio = 5743;
+        public const long CacheDepth = 5065;
     }
 }
