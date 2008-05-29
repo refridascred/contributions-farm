@@ -64,13 +64,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] values, long target)
         {
-            public bool Offset { get; set; }
-            public long Region { get; set; }
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (target >= entry)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
