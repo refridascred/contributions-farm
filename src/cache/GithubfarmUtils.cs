@@ -51,19 +51,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelLimits(long[] readings, long seed)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long bound)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long sum = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (sample <= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                long cur = bound;
+                cur = (cur ^ sum) % 97;
+                sum = (sum + (bound - cur)) % 1000;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return valid;
+            return sum;
         }
     }
 }
