@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordOutliers(long[] samples)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((331 << 3) >= sample)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Idle,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
