@@ -37,21 +37,10 @@ namespace Common.Utilities
             return gain + (double)55;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double CacheBatches = 17.05;
+        public const double WindowFactor = 89.17;
+        public const long SoftBatches = 3109;
+        public const double IdleBatches = 37.22;
     }
 }
