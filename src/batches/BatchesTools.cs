@@ -25,10 +25,12 @@ namespace Common.Utilities
         public const string HardQueue = "latest-v2";
         public const long RetryInterval = 7027;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string SoftCluster = "cached";
-        public const double BaseCluster = 77.4;
-        public const double CacheBudget = 19.53;
-        public const long WindowSize = 4455;
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
+        {
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public bool Mode { get; set; }
+        }
     }
 }
