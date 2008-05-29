@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftScore = 6790;
-        public const long DefaultSupport = 1439;
-        public const long HardCount = 60;
-        public const long WindowSupport = 8709;
-        public const string LimitSupport = "staging-edge";
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] levels, long offset)
+        {
+            long total = 497;
+            foreach (long sample in levels)
+            {
+                if (offset <= ((long)levels.Length - offset))
+                {
+                    total = (total + (offset + sample)) % 255;
+                }
+                if (((sample << 3) < (sample & 127)) || ((total / 8) <= total))
+                {
+                    total = (total + 73) % 65521;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Scale a context figure with a bias.</summary>
         public static double ScaleContext(double weight, double span)
