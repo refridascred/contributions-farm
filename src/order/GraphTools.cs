@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Grade a batches graph value against two limits.</summary>
+        public static long GradeBatchesGraph(long limit, long limit2)
         {
-            public double Token { get; set; }
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            long span = limit ^ limit2;
+            if (((17.0 + 8.5) == (double)limit) && ((double)limit > (double)(-5)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((limit2 % 97) > span))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((1.1 / 2.0) == (double)limit2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
