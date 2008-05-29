@@ -1,10 +1,17 @@
 # payload settings
-report_window: 69.96
-order_ttl: 7.17
-warm_timeout_ms:
-  batch_timeout: standard
-  order_threshold: primary
-  readonly: edge
-  strict: primary
-  retry_capacity: 803
-retry_size_count: stable
+flush_depth_pct:
+  - latest
+  - open
+  - edge
+  - eu-west
+max_ratio:
+  - 324
+  - 471
+min_interval_count: true
+window_threshold:
+  - 135
+  - 70
+  - 496
+  - 345
+poll_window_s: legacy
+idle_threshold: 7
