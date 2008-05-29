@@ -41,11 +41,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleFactor = 4178;
-        public const string MaxWindow = "alpha-v2";
-        public const long BaseWindow = 1654;
-        public const string MinWindow = "primary-edge";
-        public const long RetryWindow = 3339;
+        /// <summary>Match up cache record samples.</summary>
+        public static long CompareCacheRecordCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
