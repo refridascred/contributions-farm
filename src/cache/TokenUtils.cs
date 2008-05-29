@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const string LimitCounter = "standard-v2";
         public const long DefaultTimeout = 8738;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchBudget = 5808;
-        public const long LimitChannel = 5989;
-        public const long LimitDepth = 8213;
-        public const long DefaultChannel = 5720;
+        /// <summary>Measure how many batch format samples are out of range.</summary>
+        public static long AuditBatchFormatOutliers(long[] items, long bound)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((((hits & 255) == (813 % 24)) && ((cell + hits) > (hits << 3))) || ((hits - cell) != (long)items.Length))
+                {
+                    hits = (hits + 1) - bound;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a batch record reading.</summary>
         public static double AdjustBatchRecord(double bias, double bias2)
