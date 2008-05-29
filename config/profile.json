@@ -1,8 +1,5 @@
 {
-  "compress": 49.44,
-  "persist": 72.14,
-  "cache_depth_ms": ["staging", "legacy", "strict"],
-  "idle_interval": 65,
-  "warm_interval": 6728,
-  "graph_delay": 5679
+  "default_ttl_pct": "stable",
+  "sync_interval": 30,
+  "burst_retries_pct": ["staging", "stable", "cached", "legacy"]
 }
