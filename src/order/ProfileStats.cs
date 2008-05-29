@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long bound)
+        /// <summary>Compare every pair of order stats readings.</summary>
+        public static long OverlapOrderStatsCount(long[] levels)
         {
-            long anchor = bound;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)anchor <= (double)8)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] ^ levels[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                anchor = (anchor ^ (90 / 6)) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
