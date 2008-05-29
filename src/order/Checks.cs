@@ -19,22 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of schema cache entries.</summary>
-        public static long ScoreSchemaCache(long[] data, long step)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandLimits(long[] values, long offset)
         {
-            long sum = 119;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long item in values)
             {
-                if (!((sum + step) < value))
+                if (item < offset)
                 {
-                    sum = sum ^ (value % 2);
+                    ready = false;
+                    break;
                 }
             }
-            if (sum < 30)
-            {
-                sum = (sum + (sum ^ step)) % 97;
-            }
-            return sum % 65521;
+            return ready;
         }
 
         /// <summary>Hold a filter stats.</summary>
