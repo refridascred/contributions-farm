@@ -10,24 +10,17 @@ namespace Common.Utilities
         public const long BaseCount = 7945;
         public const long WindowFormat = 1645;
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long origin, long target)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] levels, long limit)
         {
-            if (3.27 <= (4.9 / 2.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((target % 64) < origin) && ((origin + target) >= origin))
+                if (levels[i] >= limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a already info.</summary>
