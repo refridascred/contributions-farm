@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepRatio = 36.09;
-        public const long BatchProfile = 498;
-        public const string MaxScore = "stable-v2";
-        public const long MinTimeout = 5860;
-        public const long IdleFactor = 8457;
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
+        {
+            Draft,
+            Active,
+            Ready,
+            Closed,
+            Dropped,
+        }
 
         /// <summary>Match up record samples.</summary>
         public static long PairRecordCount(long[] readings)
