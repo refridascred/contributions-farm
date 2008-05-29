@@ -1,7 +1,14 @@
 # githubfarm settings
-metric_delay: 21
-format_capacity: 65.91
-soft_size:
-  - strict
-  - strict
-poll_delay_s: latest
+hard_threshold: 94.53
+poll_delay_count: 57.78
+max_delay:
+  min_retries:
+    - 149
+    - 9
+  burst_timeout_s: fallback
+  strict: false
+token_depth:
+  retry_timeout_count: false
+  payload_ttl: eu-west
+  strict: blue
+  sync_window_count: staging
