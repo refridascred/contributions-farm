@@ -47,11 +47,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitSpan = 3997;
-        public const long BaseBatches = 3718;
-        public const double BurstRatio = 67.12;
-        public const double LimitFactor = 66.42;
-        public const double MaxBatches = 51.26;
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
+        {
+            Active,
+            Paused,
+            Failed,
+            Ready,
+        }
     }
 }
