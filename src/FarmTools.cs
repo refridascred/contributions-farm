@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BaseCount = "legacy-v2";
-        public const long LimitCluster = 7050;
-        public const long IdleCluster = 7488;
-        public const double MinCluster = 20.11;
-        public const long RetryTimeout = 142;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterMatches(long[] values)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (datum >= (15 % 2))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool ValidateBatchRange(long[] values, long seed)
