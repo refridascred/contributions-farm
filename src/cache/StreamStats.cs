@@ -30,12 +30,18 @@ namespace Common.Utilities
         public const long RetryTimeout = 8311;
         public const string StepTimeout = "strict-edge";
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyGaps(long[] data, long target)
         {
-            Failed,
-            Stale,
-            Synced,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((target << 3) != (target + 0))
+                {
+                    count = (count + 3) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of token readings.</summary>
