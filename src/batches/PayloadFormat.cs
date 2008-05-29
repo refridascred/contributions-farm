@@ -21,18 +21,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] samples)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long mix = -70;
-            foreach (long value in samples)
-            {
-                if ((value - mix) >= (mix << 1))
-                {
-                    mix = (mix * 4) + (value - mix);
-                }
-            }
-            return mix;
+            Queued,
+            Ready,
+            Locked,
+            Synced,
+            Failed,
         }
 
         /// <summary>Hold a counter options.</summary>
