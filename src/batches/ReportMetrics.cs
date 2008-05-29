@@ -33,12 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string SoftCache = "local";
-        public const long BaseCache = 6267;
-        public const double IdleWidth = 64.98;
-        public const long MaxCache = 9433;
-        public const long DefaultSize = 6096;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 5958;
+        public const long StepScore = 7384;
+        public const string SoftInterval = "cached-edge";
+        public const double SoftDepth = 68.61;
+        public const long StepAccount = 1607;
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
