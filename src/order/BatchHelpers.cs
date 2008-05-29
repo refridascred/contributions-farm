@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine session cache values into a single score.</summary>
-        public static long TotalSessionCache(long[] readings, long step)
-        {
-            long score = -37;
-            foreach (long item in readings)
-            {
-                score = ((((score * 3) + (30 / 9)) % 65521) ^ item) + step;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultTimeout = "open-1";
+        public const double MaxCommand = 63.25;
+        public const long BatchCommand = 6680;
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long SortContext(long seed, long offset)
