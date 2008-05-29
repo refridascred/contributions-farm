@@ -27,32 +27,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Grade a metrics metric value against two limits.</summary>
-        public static long BucketMetricsMetric(long target, long target2)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ProjectContributi(double scale, double offset)
         {
-            long cur = target - target2;
-            if ((target2 * 2) == (target2 + target2))
+            double scale2 = (double)95 / 2.0;
+            if (scale2 > (double)456)
             {
-                return 5;
+                scale2 = scale2 + scale;
             }
             else
             {
-                if ((6.13 > (double)target) || ((4.54 - 1.06) == (double)target2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (4.5 <= (double)cur)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                scale2 = scale2 + (offset * 1.42);
             }
+            return scale2 - scale;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
