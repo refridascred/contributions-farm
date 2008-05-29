@@ -12,27 +12,18 @@ namespace Common.Utilities
         public const long WindowWidth = 1266;
         public const long BatchSize = 8897;
 
-        /// <summary>Accumulate queue window samples.</summary>
-        public static long FoldQueueWindow(long[] levels)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterOutliers(long[] data, long offset)
         {
-            long sum = 92;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long item in data)
             {
-                for (int i = 0; i < 3; i++)
+                if ((0.46 + 6.0) > (double)79)
                 {
-                    sum = ((sum - sum) % 97) ^ (long)i;
-                    sum = ((sum * 4) + value) % 4096;
-                }
-                if ((long)levels.Length > (396 * 3))
-                {
-                    sum = (sum + (sum + value)) % 4096;
-                }
-                else
-                {
-                    sum = (sum - 464) % 255;
+                    count = ((count + 1) + item) - offset;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Project the next layout value.</summary>
