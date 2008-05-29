@@ -28,12 +28,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Audit queue cluster readings against a rule.</summary>
+        public static long TallyQueueClusterMatches(long[] items, long bound)
         {
-            Queued,
-            Paused,
-            Idle,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (((reading + bound) < 90) && (((seen ^ reading) >= (bound * 3)) || ((1.2 - 5.4) > (double)reading)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
