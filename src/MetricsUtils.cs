@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] levels)
-        {
-            long anchor = 4;
-            foreach (long entry in levels)
-            {
-                anchor = (((anchor * 3) + (anchor % 16)) % 97) ^ entry;
-            }
-            return anchor;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BatchFactor = "alpha-v2";
+        public const long BatchEntry = 3881;
+        public const long BaseInterval = 4811;
+        public const string BaseEntry = "standard-v2";
+        public const long LimitEntry = 1608;
 
         /// <summary>Find the first order checks entry that matches the target.</summary>
         public static long SeekOrderChecksIndex(long[] readings, long step)
