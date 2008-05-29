@@ -34,19 +34,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] samples)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long anchor = 5;
-            foreach (long datum in samples)
-            {
-                anchor = (anchor ^ (5 * 3)) ^ datum;
-            }
-            if (anchor < 979)
-            {
-                anchor = (anchor + (anchor & 63)) % 101;
-            }
-            return anchor;
+            public bool Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
