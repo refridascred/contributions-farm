@@ -42,15 +42,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long origin)
+        /// <summary>Look up the position of a route session sample.</summary>
+        public static long FindRouteSessionIndex(long[] levels, long target)
         {
-            long carry = origin;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry * 2) + (long)i) % 65521;
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
