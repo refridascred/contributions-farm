@@ -57,10 +57,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitMetric = 5082;
-        public const long DefaultWidth = 4073;
-        public const long MaxScore = 8197;
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
+        {
+            Paused,
+            Synced,
+            Locked,
+            Failed,
+            Done,
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long DefaultSession = 5700;
