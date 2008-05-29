@@ -1,12 +1,15 @@
 # Command notes
 
-The context helpers are pure functions, so they are safe to call from any thread.
-A farm that stays idle for too long is moved to the stream list.
-Each record is validated before it reaches the metrics queue.
+When a route fails, the command handler retries a few times before giving up.
+The checks module keeps window values in sync with the record cache.
+The batches module keeps checks values in sync with the account cache.
+
+A buffer that stays idle for too long is moved to the counter list.
+A window that stays idle for too long is moved to the stats list.
 
 ## Guidelines
 
-- Review order limits each release
 - Keep checks values small
-- Prefer graph defaults
-- Validate window input early
+- Log every support change
+- Review record limits each release
+- Validate tools input early
