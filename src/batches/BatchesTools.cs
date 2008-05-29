@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] values)
         {
-            public double Limit { get; set; }
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (!((datum % 7) < seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the stats state values.</summary>
