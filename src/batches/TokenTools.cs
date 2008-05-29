@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextGaps(long[] levels, long origin)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample / 9) <= sample)
-                {
-                    matches = (matches + 1) + origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 962;
+        public const long MaxScore = 5293;
+        public const double MinChecks = 9.12;
+        public const long BatchWidth = 6962;
+        public const double MaxChecks = 91.48;
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
