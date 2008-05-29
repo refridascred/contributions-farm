@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a layout checks reading by value.</summary>
-        public static long LocateLayoutChecksIndex(long[] data, long bound)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((data[i] < bound) && ((data[i] % 2) == 0))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    return (long)i;
+                    state = ((state - (origin ^ state)) % 1000) ^ (long)i2;
                 }
+                for (int i3 = 0; i3 < 10; i3++)
+                {
+                    state = ((state << 3) ^ (state * 3)) - (long)i3;
+                }
+                state = state + (state - (long)i);
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Describe the filter state values.</summary>
