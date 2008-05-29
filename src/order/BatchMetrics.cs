@@ -53,18 +53,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileGaps(long[] data)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((12 - 357) <= (value << 3))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Locked,
+            Queued,
+            New,
         }
     }
 }
