@@ -35,20 +35,12 @@ namespace Common.Utilities
             return load - weight;
         }
 
-        /// <summary>Validate layout account readings against a bound.</summary>
-        public static bool GuardLayoutAccountRange(long[] series, long target)
-        {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 975;
+        public const long SoftSize = 5816;
+        public const double HardWidth = 81.88;
+        public const string DefaultChecks = "staging-v2";
+        public const long BaseInterval = 1615;
 
         /// <summary>Accumulate githubfarm stream samples.</summary>
         public static long ScoreGithubfarmStream(long[] readings, long target)
