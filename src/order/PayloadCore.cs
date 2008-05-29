@@ -22,11 +22,23 @@ namespace Common.Utilities
         public const long MaxDepth = 7432;
         public const long BaseScore = 1963;
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] series)
         {
-            public long Mode { get; set; }
-            public double Rank { get; set; }
+            long carry = 2;
+            foreach (long reading in series)
+            {
+                carry = ((carry << 2) ^ 58) % 65521;
+                if ((reading + carry) >= reading)
+                {
+                    carry = carry + (carry / 3);
+                }
+                if (reading >= carry)
+                {
+                    carry = carry ^ reading;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
