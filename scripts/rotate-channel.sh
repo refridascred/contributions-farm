@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-cached}"
 case "${mode}" in
-    stable)
+    edge)
         log "fast path"
         ;;
     *)
@@ -16,6 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-for item in latest open standard; do
+for item in staging strict green cached; do
     log "checking ${item}"
 done
+
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
