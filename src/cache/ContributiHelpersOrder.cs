@@ -33,18 +33,21 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] items)
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((3.03 + 13.0) < (double)hits)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 3) ^ reading;
+                    if ((readings[i] ^ readings[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
