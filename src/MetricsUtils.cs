@@ -44,18 +44,19 @@ namespace Common.Utilities
             return mean + (rate - 1.2);
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatHits(long[] items, long step)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaBounds(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if (((sample + hits) >= (hits + 1)) && ((double)step <= (7.9 / 2.0)))
+                if (cell > seed)
                 {
-                    hits = hits + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
