@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long floor)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] readings, long step)
         {
-            long sum = floor;
-            for (int i = 0; i < 11; i++)
+            long score = 175;
+            foreach (long entry in readings)
             {
-                if (8 <= ((long)i - 725))
-                {
-                    sum = (sum - sum) % 1000;
-                    sum = (sum * 5) + ((long)i << 1);
-                }
-                if ((sum / 8) != (floor ^ sum))
-                {
-                    sum = (sum - floor) % 65521;
-                    sum = (sum - (floor - sum)) % 4096;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
+                score = ((((score << 3) ^ score) % 1000) + entry) + step;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Audit token buffer readings against a rule.</summary>
