@@ -25,18 +25,22 @@ namespace Common.Utilities
         public const string RetryChannel = "fallback-edge";
         public const long WindowBudget = 7870;
 
-        /// <summary>Count the tools layout entries that pass the check.</summary>
-        public static long MeasureToolsLayoutGaps(long[] items)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsHits(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (!((hits + hits) == (41 & 255)))
+                if (!((limit * 2) != (value + matches)))
                 {
-                    hits = (hits + 3) - entry;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
