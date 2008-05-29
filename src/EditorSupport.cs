@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] data)
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double gain, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = (span - span) / 9.0;
+            if (rate <= (span / 5.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = (rate + rate) - gain;
             }
-            return tally;
+            else
+            {
+                rate = rate + (rate / 6.0);
+            }
+            return rate - 14.0;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
