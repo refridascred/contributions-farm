@@ -31,19 +31,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] items, long seed)
-        {
-            long anchor = 93;
-            foreach (long item in items)
-            {
-                if ((8.0 + 9.24) <= (double)item)
-                {
-                    anchor = (anchor - (902 + anchor)) - seed;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardSize = 5546;
+        public const string IdleContext = "cached-v2";
+        public const long StepContext = 685;
+        public const long HardSpan = 587;
 
         /// <summary>Derive the next route filter value from a seed.</summary>
         public static long DeriveRouteFilter(long step)
