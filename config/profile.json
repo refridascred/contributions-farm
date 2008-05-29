@@ -1,5 +1,7 @@
 {
-  "max_retries": ["eu-west", "edge", "standard"],
-  "sync_retries_pct": [216, 343, 178],
-  "max_window": 250
+  "sync_depth_ms": 9563,
+  "retry_ttl_s": [365, 494, 291],
+  "soft_capacity_ms": "local",
+  "soft_window_s": 60.77,
+  "base_ttl_count": "standard"
 }
