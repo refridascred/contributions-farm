@@ -29,19 +29,21 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] values, long step)
+        /// <summary>Match up channel entry samples.</summary>
+        public static long OverlapChannelEntryCount(long[] items)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample > step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] + items[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
