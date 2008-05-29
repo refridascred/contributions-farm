@@ -19,15 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double gain, double offset)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long offset)
         {
-            double gain2 = gain;
-            if (gain2 <= gain)
+            long score = offset;
+            for (int i = 0; i < 13; i++)
             {
-                gain2 = (gain2 + gain) + offset;
+                if ((double)score >= (double)247)
+                {
+                    score = ((score << 2) ^ (offset - 688)) % 97;
+                }
+                score = (score + offset) % 101;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return gain2 + (gain * 6.3);
+            return score;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
