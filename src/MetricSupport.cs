@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseFactor = 7426;
-        public const long BatchCache = 4170;
-        public const string IdleCache = "standard-edge";
-        public const long BatchSize = 8965;
-        public const string HardTimeout = "fallback";
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
+        {
+            Draft,
+            Queued,
+            Closed,
+            Locked,
+        }
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long LocateCommitsIndex(long[] values, long target)
