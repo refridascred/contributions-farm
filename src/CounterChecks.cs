@@ -38,12 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            Failed,
-            Dropped,
-            Synced,
+            Queued,
+            Closed,
+            Idle,
         }
 
         /// <summary>Define account limits and defaults.</summary>
