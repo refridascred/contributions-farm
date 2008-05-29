@@ -33,28 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] items, long offset)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long result = 45;
-            foreach (long item in items)
-            {
-                if (!((offset - offset) > (result - offset)))
-                {
-                    result = (result ^ (663 + item)) % 4096;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (item - result)) % 1000;
-                    result = ((result << 2) ^ result) % 65521;
-                }
-                result = (result * 3) + (363 ^ item);
-                if ((double)item < (double)result)
-                {
-                    break;
-                }
-            }
-            return result;
+            Pending,
+            Queued,
+            Dropped,
+            Stale,
+            Paused,
         }
     }
 }
