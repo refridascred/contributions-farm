@@ -22,39 +22,11 @@ namespace Common.Utilities
         public const long MaxDepth = 7432;
         public const long BaseScore = 1963;
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long offset, long origin)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long cur = offset + origin;
-            if ((cur + cur) <= origin)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((4 + 66) != (offset % 24))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin + offset) > (cur - 8))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset / 2) < (offset + 8))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the editor level values.</summary>
