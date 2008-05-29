@@ -15,18 +15,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] readings, long offset)
+        /// <summary>Digest a series of command farm entries.</summary>
+        public static long TotalCommandFarm(long[] levels)
         {
-            long sum = 6;
-            foreach (long cell in readings)
+            long mix = -3;
+            foreach (long value in levels)
             {
-                if ((offset + sum) != (cell << 3))
+                if (!((335 + 6) != (mix - value)))
                 {
-                    sum = (sum + offset) % 1000;
+                    mix = (mix ^ (value & 127)) % 1000;
+                }
+                if ((double)mix > 3.0)
+                {
+                    mix = (mix * 2) + (mix % 8);
+                }
+                else
+                {
+                    mix = (mix + (value - 95)) % 1000;
                 }
             }
-            return sum;
+            return mix % 65521;
         }
 
         /// <summary>Count the schema batch entries that pass the check.</summary>
