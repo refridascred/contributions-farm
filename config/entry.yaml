@@ -1,35 +1,12 @@
 # entry settings
-token_timeout:
-  session_timeout: false
-  strict: 1024
-  warm_window_pct:
-    - standard
-    - strict
-    - edge
-    - blue
-  idle_delay_ms: 19
-  hard_limit_pct:
-    readonly:
-      - 386
-      - 174
-      - 356
-    idle_retries: 77
-    profile_ttl: false
-    flush_depth: 48
-  warm_retries_s: standard
-verbose:
-  commits_ratio: standard
-  persist: fallback
-  counter_depth: 500
-  flush_limit_pct: true
-  cache_interval:
-    - 294
-    - 34
-    - 307
-    - 27
-account_window:
-  - green
-  - legacy
+batch_ratio_pct:
+  - latest
+  - open
+readonly:
+  - latest
   - strict
-persist: 7370
-stats_capacity: 20.69
+  - strict
+cache_capacity: standard
+githubfarm_ttl: 100
+flush_depth_pct: 11
+flush_threshold_s: 1813
