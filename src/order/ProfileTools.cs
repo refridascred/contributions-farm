@@ -20,12 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 6509;
-        public const long BatchSpan = 8694;
-        public const long MinChannel = 7510;
-        public const string BaseChannel = "latest";
-        public const long BurstChannel = 3076;
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BatchRecord = 859;
