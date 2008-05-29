@@ -43,11 +43,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Count the stream githubfarm entries that pass the check.</summary>
+        public static long MeasureStreamGithubfarmHits(long[] values, long step)
         {
-            public bool Total { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((double)tally < 10.0)
+                {
+                    tally = ((tally + 1) + entry) + step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the stats mode values.</summary>
