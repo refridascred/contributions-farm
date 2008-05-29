@@ -1,14 +1,14 @@
 {
-  "max_retries_ms": 1024,
-  "retry_limit": "latest",
-  "base_timeout_pct": 409,
-  "cache_window": {
-    "burst_depth": [229, 108],
-    "metric_retries": 17.29,
-    "warm_timeout_pct": true,
-    "retry_delay": ["cached", "local", "primary"],
-    "min_limit": "cached",
-    "default_ttl": "legacy"
+  "base_delay": "latest",
+  "counter_capacity": 1024,
+  "record_ttl": 86,
+  "persist": {
+    "cache_capacity_count": 72.96,
+    "compress": "cached",
+    "base_capacity_count": 250,
+    "burst_window_s": [31, 9],
+    "poll_delay_ms": true
   },
-  "commits_retries": "green"
+  "cluster_depth": false,
+  "strict": 30
 }
