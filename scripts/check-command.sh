@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=431
+COMMAND_LIMIT=126
 log "limit is ${COMMAND_LIMIT}"
 
 total=0
