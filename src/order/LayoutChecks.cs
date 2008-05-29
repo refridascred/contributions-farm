@@ -97,9 +97,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryWidth = 1195;
-        public const long MaxCommand = 9978;
-        public const long BaseRatio = 1286;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterHits(long[] levels)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((5.0 >= (double)cell) && ((cell - matches) != (matches / 5)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
