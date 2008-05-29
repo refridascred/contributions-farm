@@ -14,11 +14,20 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBudget = 1123;
-        public const long RetryBuffer = 6841;
-        public const long RetryWidth = 2180;
-        public const long HardWidth = 6876;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksRange(long[] samples, long bound)
+        {
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long HardSize = 5546;
