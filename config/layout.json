@@ -1,7 +1,14 @@
 {
-  "dry_run": "primary",
-  "window_threshold": ["local", "staging", "open"],
-  "min_delay_pct": true,
-  "metrics_capacity": "legacy",
-  "flush_threshold_count": "green"
+  "max_retries_ms": 1024,
+  "retry_limit": "latest",
+  "base_timeout_pct": 409,
+  "cache_window": {
+    "burst_depth": [229, 108],
+    "metric_retries": 17.29,
+    "warm_timeout_pct": true,
+    "retry_delay": ["cached", "local", "primary"],
+    "min_limit": "cached",
+    "default_ttl": "legacy"
+  },
+  "commits_retries": "green"
 }
