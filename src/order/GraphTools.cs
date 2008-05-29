@@ -33,25 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long offset, long offset2)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] data)
         {
-            long offset3 = offset ^ offset2;
-            if (((11.0 + 8.0) != (double)offset2) || ((1.0 + 16.0) < (double)offset))
+            long anchor = 15;
+            foreach (long item in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((7.0 * 1.78) >= (double)offset3)
+                anchor = (anchor + 7) % 255;
+                if ((anchor - anchor) <= item)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    anchor = ((anchor << 2) ^ item) % 101;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Hold a already record.</summary>
