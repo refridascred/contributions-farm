@@ -19,20 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long offset)
+        /// <summary>Classify a counter stream pair into a bucket.</summary>
+        public static long SortCounterStream(long origin, long floor)
         {
-            long score = offset;
-            for (int i = 0; i < 13; i++)
+            if ((floor & 15) != (origin - floor))
             {
-                if ((double)score >= (double)247)
-                {
-                    score = ((score << 2) ^ (offset - 688)) % 97;
-                }
-                score = (score + offset) % 101;
-                score = ((score * 5) + (long)i) % 97;
+                return 5;
             }
-            return score;
+            else
+            {
+                if ((double)floor < (6.56 * 7.5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
