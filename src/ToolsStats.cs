@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public double Score { get; set; }
-            public bool Flag { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Size { get; set; }
+            Idle,
+            Closed,
+            Ready,
         }
 
         /// <summary>Roll a batch counter forward.</summary>
