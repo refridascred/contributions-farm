@@ -1,16 +1,14 @@
 # Command notes
 
-A context that stays idle for too long is moved to the farm list.
-The filter module keeps checks values in sync with the githubfarm cache.
-When a graph fails, the support handler retries a few times before giving up.
+Run the farm check before changing any format limits.
+Run the tools check before changing any stream limits.
 
-A farm that stays idle for too long is moved to the metrics list.
-Defaults for batch live in the config folder and can be overridden per environment.
-The stats report groups every payload by record.
+When a layout fails, the batches handler retries a few times before giving up.
+Defaults for support live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review batches limits each release
-- Prefer queue defaults
-- Log every cluster change
-- Validate command input early
+- Document new account fields
+- Validate format input early
+- Log every entry change
+- Review command limits each release
