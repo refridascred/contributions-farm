@@ -13,11 +13,14 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MaxFactor = "primary-v2";
-        public const double SoftCache = 37.8;
-        public const double RetrySpan = 8.38;
-        public const double BatchScore = 19.56;
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
+        {
+            public string Score { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Region { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Describe the window class values.</summary>
         public enum WindowClass
