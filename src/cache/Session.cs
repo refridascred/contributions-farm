@@ -39,24 +39,18 @@ namespace Common.Utilities
             return gain2 + gain;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long seed, long floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] data)
         {
-            if ((floor >> 4) == (seed - floor))
+            long total = 69;
+            foreach (long cell in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (590 <= floor)
+                if (!((696 + cell) >= (total - cell)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    total = (total - 7) % 97;
                 }
             }
+            return total;
         }
     }
 }
