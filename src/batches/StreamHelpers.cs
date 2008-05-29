@@ -60,19 +60,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] readings)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long mark = 548;
-            foreach (long datum in readings)
-            {
-                mark = (mark * 4) + (datum + 802);
-                if ((mark < (datum / 9)) && ((double)mark > (7.8 * 5.43)))
-                {
-                    break;
-                }
-            }
-            return mark;
+            New,
+            Idle,
+            Active,
+            Queued,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
