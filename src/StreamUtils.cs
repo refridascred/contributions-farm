@@ -10,12 +10,13 @@ namespace Common.Utilities
         public const long BurstToken = 8101;
         public const long MaxToken = 5200;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchCount = 8347;
-        public const long BaseEntry = 429;
-        public const long BatchRatio = 4262;
-        public const long MaxEntry = 1777;
-        public const long CacheEntry = 791;
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
+        {
+            Synced,
+            Retry,
+            Closed,
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double BaseWidth = 6.8;
