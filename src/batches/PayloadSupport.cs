@@ -33,19 +33,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] samples, long floor)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] items, long offset)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long result = 45;
+            foreach (long item in items)
             {
-                if (sample <= floor)
+                if (!((offset - offset) > (result - offset)))
                 {
-                    valid = false;
+                    result = (result ^ (663 + item)) % 4096;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (item - result)) % 1000;
+                    result = ((result << 2) ^ result) % 65521;
+                }
+                result = (result * 3) + (363 ^ item);
+                if ((double)item < (double)result)
+                {
                     break;
                 }
             }
-            return valid;
+            return result;
         }
     }
 }
