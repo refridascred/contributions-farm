@@ -1,6 +1,12 @@
 {
-  "sync_interval": true,
-  "base_interval": "strict",
-  "stream_window": false,
-  "compress": "open"
+  "base_window": {
+    "context_depth": 5525,
+    "strict": "cached",
+    "compress": 1355,
+    "min_threshold_count": "legacy",
+    "filter_interval": 26.11,
+    "sync_timeout_s": 11
+  },
+  "min_ttl_s": true,
+  "audit": 306
 }
