@@ -27,13 +27,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
-            public double Label { get; set; }
-            public long Mode { get; set; }
+            public double Score { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
