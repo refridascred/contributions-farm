@@ -21,12 +21,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long limit)
         {
-            Active,
-            Synced,
-            New,
+            long sum = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = (sum * 3) + ((-596) >> 4);
+                if (!(sum < (43 % 100)))
+                {
+                    sum = sum - (sum / 6);
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
