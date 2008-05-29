@@ -20,12 +20,16 @@ namespace Common.Utilities
             return rate2 + 3.2;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long limit)
         {
-            Pending,
-            Draft,
-            Ready,
+            long carry = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = ((carry * 4) + (463 % 7)) % 255;
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Audit queue cluster readings against a rule.</summary>
