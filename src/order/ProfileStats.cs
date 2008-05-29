@@ -51,22 +51,18 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] series)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((double)matches > (4.8 * 9.0))
+                if ((-25) >= (long)readings.Length)
                 {
-                    matches = (matches + 3) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = ((seen + 2) + entry) - floor;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
