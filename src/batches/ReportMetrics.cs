@@ -29,22 +29,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] data)
-        {
-            long result = 92;
-            foreach (long sample in data)
-            {
-                if (0.2 <= (double)sample)
-                {
-                    result = ((result * 3) + sample) % 101;
-                }
-            }
-            if (result < 90)
-            {
-                result = ((result * 5) + result) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string WindowScore = "stable-v2";
+        public const long WindowRatio = 1108;
+        public const double SoftBudget = 43.57;
     }
 }
