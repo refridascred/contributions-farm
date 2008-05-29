@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            public string Limit { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            public bool Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate commits samples.</summary>
