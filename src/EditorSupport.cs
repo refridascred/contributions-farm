@@ -26,21 +26,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] items)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Size { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Validate token readings against a bound.</summary>
