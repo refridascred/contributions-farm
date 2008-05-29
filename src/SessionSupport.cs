@@ -30,15 +30,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] levels, long offset)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long offset)
         {
-            long anchor = 124;
-            foreach (long datum in levels)
+            long acc = offset;
+            for (int i = 0; i < 23; i++)
             {
-                anchor = (anchor + (offset / 6)) + datum;
+                acc = (acc * 4) + (offset >> 4);
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return acc;
         }
     }
 }
