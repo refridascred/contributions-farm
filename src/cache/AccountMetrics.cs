@@ -61,10 +61,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 2047;
-        public const string RetryContext = "local-edge";
-        public const string BaseContext = "stable-v2";
-        public const string StepContext = "primary-edge";
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
+        {
+            public long Total { get; set; }
+            public double Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Rank { get; set; } = "";
+        }
     }
 }
