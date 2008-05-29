@@ -39,30 +39,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] values)
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] levels)
         {
-            long total = 743;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((datum + datum) == (datum & 3)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (total - total) % 4096;
-                }
-                for (int i = 0; i < 12; i++)
-                {
-                    total = ((total - (datum & 1)) % 97) - (long)i;
-                }
-                if ((datum + datum) > datum)
-                {
-                    total = (total - (60 >> 2)) % 101;
+                    if ((levels[i] ^ levels[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (total < 936)
-            {
-                total = ((total << 2) ^ (total & 7)) % 4096;
-            }
-            return total % 65521;
+            return hits;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
