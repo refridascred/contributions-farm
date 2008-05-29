@@ -23,26 +23,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of command farm entries.</summary>
-        public static long TotalCommandFarm(long[] levels)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long mix = -3;
-            foreach (long value in levels)
-            {
-                if (!((335 + 6) != (mix - value)))
-                {
-                    mix = (mix ^ (value & 127)) % 1000;
-                }
-                if ((double)mix > 3.0)
-                {
-                    mix = (mix * 2) + (mix % 8);
-                }
-                else
-                {
-                    mix = (mix + (value - 95)) % 1000;
-                }
-            }
-            return mix % 65521;
+            public long Weight { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
