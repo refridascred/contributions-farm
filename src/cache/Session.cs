@@ -23,11 +23,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long step)
         {
-            public string Total { get; set; } = "";
-            public double Region { get; set; }
+            long sum = step;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
