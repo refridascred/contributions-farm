@@ -13,13 +13,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] levels, long seed)
         {
-            public string Token { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Owner { get; set; }
-            public long Flag { get; set; }
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
