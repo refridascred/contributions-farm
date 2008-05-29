@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long limit)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorLimits(long[] values, long seed)
         {
-            long total = limit;
-            for (int i = 0; i < 10; i++)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (cell >= seed)
                 {
-                    total = ((total - (341 << 3)) % 1000) ^ (long)i2;
+                    ok = false;
+                    break;
                 }
-                total = ((total << 3) ^ ((long)i << 1)) % 65521;
-                total = ((total * 2) + (long)i) % 65521;
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
