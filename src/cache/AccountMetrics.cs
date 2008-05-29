@@ -48,22 +48,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] samples, long limit)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsRange(long[] levels, long step)
         {
-            long acc = -77;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if (limit > (reading + limit))
+                if (entry < step)
                 {
-                    acc = acc + (5 * 5);
+                    found = false;
+                    break;
                 }
             }
-            if (acc < 125)
-            {
-                acc = ((acc * 3) + acc) % 101;
-            }
-            return acc % 4096;
+            return found;
         }
 
         /// <summary>Describe the format phase values.</summary>
