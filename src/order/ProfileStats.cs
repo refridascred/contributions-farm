@@ -29,18 +29,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsMatches(long[] items)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] data)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample + count) <= (42 + count))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 1;
+                    if ((data[i] - data[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Blend two queue measurements.</summary>
