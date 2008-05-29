@@ -86,22 +86,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatHits(long[] items)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((hits * 5) < (hits >> 2))
+                if (5 > (matches ^ 64))
                 {
-                    hits = (hits + 2) - entry;
+                    matches = (matches + 2) + sample;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
