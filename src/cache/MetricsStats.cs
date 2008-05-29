@@ -25,22 +25,19 @@ namespace Common.Utilities
         public const string RetryChannel = "fallback-edge";
         public const long WindowBudget = 7870;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsHits(long[] data, long limit)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long anchor = 5;
+            foreach (long datum in samples)
             {
-                if (!((limit * 2) != (value + matches)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = (anchor ^ (5 * 3)) ^ datum;
             }
-            return matches;
+            if (anchor < 979)
+            {
+                anchor = (anchor + (anchor & 63)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
