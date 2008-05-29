@@ -51,21 +51,16 @@ namespace Common.Utilities
         public const double MaxCount = 2.66;
         public const long LimitNotes = 8350;
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] levels)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = (sum - ((long)i >> 1)) % 1000;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return seen;
+            return sum;
         }
     }
 }
