@@ -29,24 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] readings)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsBounds(long[] series, long floor)
         {
-            long score = 125;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if (!(score > (cell << 1)))
+                if (entry >= floor)
                 {
-                    score = (score ^ (score * 2)) % 101;
+                    found = false;
+                    break;
                 }
-                if (score >= (cell - cell))
-                {
-                    score = (score + (-22)) % 4096;
-                    score = score + (score * 2);
-                }
-                score = (score * 3) + cell;
             }
-            return score;
+            return found;
         }
 
         /// <summary>Hold a token options.</summary>
