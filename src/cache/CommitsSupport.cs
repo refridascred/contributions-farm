@@ -11,39 +11,12 @@ namespace Common.Utilities
         public const long HardSize = 8043;
         public const long RetryFilter = 7224;
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long origin, long step)
-        {
-            if (((double)origin >= (8.96 * 5.0)) && ((9.3 / 4.0) < (double)step))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step >> 5) <= (step * 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((193 ^ step) <= (step * 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((origin % 5) > (step >> 1)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string CacheRecord = "standard";
+        public const long IdleTimeout = 8046;
+        public const long BurstTimeout = 4459;
+        public const long BaseBudget = 7433;
+        public const string SoftCount = "stable";
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double BatchMetric = 26.06;
