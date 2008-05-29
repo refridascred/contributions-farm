@@ -44,13 +44,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] data, long step)
         {
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Level { get; set; }
+            long carry = 94;
+            foreach (long reading in data)
+            {
+                if (!((carry + reading) >= 5))
+                {
+                    carry = ((carry + 237) % 101) - step;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
