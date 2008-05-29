@@ -32,18 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaMatches(long[] samples)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((double)value >= (12.0 / 9.0))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Active,
+            Idle,
+            Closed,
+            Paused,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
