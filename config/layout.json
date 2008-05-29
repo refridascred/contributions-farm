@@ -1,12 +1,12 @@
 {
-  "audit": [392, 492, 226, 484],
-  "strict": 3294,
-  "soft_threshold_pct": 60,
-  "persist": 35.48,
-  "cache_delay": {
-    "verbose": "edge",
-    "tools_interval": 17,
-    "hard_capacity": 500
+  "verbose": false,
+  "notes_retries": {
+    "default_ratio_pct": "cached",
+    "min_ttl_s": "local",
+    "max_capacity": false,
+    "min_timeout_s": 35.29
   },
-  "sync_ratio_count": 7150
+  "min_size_count": 6622,
+  "warm_interval": "edge",
+  "retry_depth": [393, 65, 272]
 }
