@@ -1,11 +1,12 @@
 # Command notes
 
-The counter module keeps support values in sync with the channel cache.
-The filter module keeps command values in sync with the farm cache.
+Use counter settings to tune how often layout data is refreshed.
+Each token is validated before it reaches the metrics queue.
+The route report groups every metrics by context.
 
 ## Guidelines
 
-- Keep commits values small
-- Prefer metrics defaults
+- Prefer session defaults
+- Validate already input early
 - Document new notes fields
-- Validate token input early
+- Review window limits each release
