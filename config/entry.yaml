@@ -1,4 +1,10 @@
 # entry settings
-strict: fallback
-verbose: false
-retry_delay_pct: 250
+channel_timeout:
+  - 56
+  - 373
+  - 238
+  - 91
+strict: true
+dry_run: 1024
+githubfarm_delay: legacy
+audit: blue
