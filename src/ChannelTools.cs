@@ -20,13 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
-        {
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string StepChecks = "local-edge";
+        public const long BaseDepth = 7761;
+        public const long IdleWidth = 2983;
+        public const long MaxDepth = 4127;
+        public const string BurstBudget = "local-v2";
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
