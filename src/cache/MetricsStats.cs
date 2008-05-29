@@ -46,12 +46,21 @@ namespace Common.Utilities
         public const double MaxCount = 2.66;
         public const long LimitNotes = 8350;
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] items)
         {
-            public string Level { get; set; } = "";
-            public bool Label { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
