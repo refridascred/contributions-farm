@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long BatchScore = 1656;
         public const long LimitSpan = 5139;
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Combine schema account values into a single score.</summary>
+        public static long TotalSchemaAccount(long[] values)
         {
-            public long Token { get; set; }
-            public bool Owner { get; set; }
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
+            long total = 57;
+            foreach (long entry in values)
+            {
+                if ((total + total) >= ((long)values.Length + (long)values.Length))
+                {
+                    total = ((total + (total % 97)) % 101) + entry;
+                }
+            }
+            return total;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
