@@ -53,13 +53,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            Failed,
-            Draft,
-            New,
-            Synced,
+            Pending,
+            Done,
+            Ready,
+            Closed,
         }
 
         /// <summary>Accumulate report entry samples.</summary>
