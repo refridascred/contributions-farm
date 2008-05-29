@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate window route readings against a bound.</summary>
-        public static bool CheckWindowRouteBounds(long[] readings, long seed)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiHits(long[] samples)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (entry <= seed)
+                if (matches >= (reading >> 5))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
