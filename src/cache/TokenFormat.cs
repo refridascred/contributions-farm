@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextGaps(long[] samples, long limit)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long seed, long bound)
         {
-            long count = 0;
-            foreach (long value in samples)
+            if ((834 % 97) != (bound + seed))
             {
-                if ((5.8 * 8.2) >= (double)count)
+                return 3;
+            }
+            else
+            {
+                if ((30 ^ seed) >= (seed & 1))
                 {
-                    count = ((count + 3) + value) + limit;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
