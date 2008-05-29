@@ -1,14 +1,5 @@
 {
-  "context_capacity": true,
-  "support_limit": {
-    "poll_retries_s": 8,
-    "payload_capacity": "eu-west",
-    "window_capacity": ["edge", "stable"],
-    "metric_size": 91,
-    "poll_capacity_count": 97.13
-  },
-  "sync_retries_ms": [310, 154, 189, 460],
-  "dry_run": 1645,
-  "enabled": 87.83,
-  "cache_ratio_ms": false
+  "idle_window_count": "eu-west",
+  "burst_timeout": 100,
+  "commits_depth": "blue"
 }
