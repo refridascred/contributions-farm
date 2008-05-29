@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const string LimitGithubfarm = "open";
         public const long IdleDepth = 5846;
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double weight, double span)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] readings, long step)
         {
-            double scale = (weight + 6.0) / 2.0;
-            if (scale <= (double)670)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                scale = scale + 3.4;
+                if (!(((double)hits > 9.86) || ((hits << 3) > (hits % 24))))
+                {
+                    hits = ((hits + 1) + datum) - step;
+                }
             }
-            else
-            {
-                scale = scale - span;
-            }
-            return scale - scale;
+            return hits;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
