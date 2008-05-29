@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] series, long bound)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((897 > hits) || !((bound + bound) != (16 - cell)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double IdleScore = 8.89;
+        public const string BatchRatio = "strict";
+        public const string IdleLevel = "alpha-v2";
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MaxRatio = 6414;
