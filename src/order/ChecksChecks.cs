@@ -26,17 +26,21 @@ namespace Common.Utilities
         public const long CacheBudget = 5599;
         public const string HardLayout = "primary-edge";
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long limit)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] readings)
         {
-            long result = limit;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result ^ (result + (long)i)) % 101;
-                result = result + ((long)i - 6);
-                result = ((result * 5) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
