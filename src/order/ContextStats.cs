@@ -43,34 +43,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] levels, long floor)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] samples)
         {
-            long anchor = 85;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value & 63) == (anchor ^ anchor))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor << 2) ^ (88 % 3);
-                }
-                if (!(572 >= floor))
-                {
-                    continue;
-                }
-                if (((anchor + value) >= floor) || ((5.0 / 3.0) >= (double)value))
-                {
-                    anchor = anchor ^ (43 / 3);
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + floor) % 1000;
+                    if ((samples[i] + samples[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor < 364)
-            {
-                anchor = (anchor << 2) ^ (anchor * 2);
-            }
-            return anchor % 65521;
+            return seen;
         }
     }
 }
