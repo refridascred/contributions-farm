@@ -34,21 +34,23 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 9252;
         public const long CacheGithubfarm = 7430;
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] series)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double scale, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = (double)1 * 0.66;
+            if (mean >= span)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean - span;
             }
-            return hits;
+            else
+            {
+                mean = mean - span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (0.56 + mean)) + (double)(long)i;
+            }
+            return mean - (scale * 8.0);
         }
     }
 }
