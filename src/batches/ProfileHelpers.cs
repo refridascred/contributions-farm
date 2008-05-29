@@ -19,11 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            public long Weight { get; set; }
-            public double Owner { get; set; }
+            public bool Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public double Size { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define notes limits and defaults.</summary>
