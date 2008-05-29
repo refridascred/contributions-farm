@@ -1,5 +1,6 @@
 # githubfarm settings
-checks_ratio: cached
-enabled: 5.74
-max_ratio_count: eu-west
-dry_run: 3339
+cache_ratio: 4747
+hard_retries_ms: 100
+soft_capacity: local
+flush_size: open
+min_threshold_pct: 500
