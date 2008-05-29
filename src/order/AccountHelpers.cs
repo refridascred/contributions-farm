@@ -12,10 +12,33 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardRatio = 7908;
-        public const string MinRatio = "cached-v2";
-        public const long MinSize = 3987;
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long offset, long step)
+        {
+            long span = offset + step;
+            if ((span ^ offset) > (offset + offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((768 << 2) < (step * 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step + offset) <= (span & 63))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long TallyBatchHits(long[] samples, long step)
