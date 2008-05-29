@@ -1,15 +1,6 @@
 # support settings
-audit:
-  - 219
-  - 128
-  - 21
-  - 304
-default_delay_s:
-  - 270
-  - 305
-base_interval:
-  - 443
-  - 365
-  - 424
-  - 134
-min_ratio_pct: 500
+window_threshold: strict
+verbose: 30
+persist: 64
+default_delay_ms: eu-west
+already_limit: 500
