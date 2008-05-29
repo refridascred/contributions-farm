@@ -1,5 +1,21 @@
 {
-  "cache_retries": 23,
-  "batch_depth": true,
-  "sync_timeout": 5474
+  "record_capacity": {
+    "sync_threshold_pct": 533,
+    "max_retries": {
+      "poll_interval_s": 60.6,
+      "min_ratio_ms": [463, 311, 211, 335],
+      "idle_ratio_ms": "blue",
+      "min_ttl": [447, 439],
+      "dry_run": "stable"
+    },
+    "dry_run": "staging",
+    "token_threshold": true,
+    "strict": "cached",
+    "githubfarm_delay": "fallback"
+  },
+  "batch_capacity": true,
+  "min_window_ms": "primary",
+  "batch_timeout_count": [79, 402, 363, 115],
+  "hard_depth": "strict",
+  "sync_timeout": false
 }
