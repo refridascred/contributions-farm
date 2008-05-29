@@ -42,12 +42,24 @@ namespace Common.Utilities
             return load - (floor - 6.37);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double LimitContext = 59.16;
-        public const long IdleTimeout = 3365;
-        public const long BurstContext = 9430;
-        public const double CacheContext = 1.52;
-        public const long DefaultContext = 6076;
+        /// <summary>Scale a editor contributi figure with a bias.</summary>
+        public static double ProjectEditorContributi(double bias, double span)
+        {
+            double rate = span;
+            if (rate <= (2.9 + 0.41))
+            {
+                rate = rate - 6.01;
+            }
+            else
+            {
+                rate = rate + (bias * 9.1);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (12.0 / 9.0)) + (double)(long)i;
+            }
+            return rate + rate;
+        }
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool CheckTokenLimits(long[] values, long offset)
