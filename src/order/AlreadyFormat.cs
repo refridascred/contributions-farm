@@ -72,15 +72,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double rate, double floor)
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double bias, double floor)
         {
-            double bias = floor;
-            for (int i = 0; i < 2; i++)
+            double drift = (double)235 / 9.0;
+            if (drift > floor)
             {
-                bias = ((bias - (double)35) - (double)(long)i) + rate;
+                drift = drift - (double)79;
             }
-            return bias + (double)84;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - bias;
         }
     }
 }
