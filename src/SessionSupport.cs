@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            Synced,
-            Draft,
-            Active,
+            Ready,
+            Idle,
+            Done,
             Paused,
         }
 
