@@ -57,17 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] values, long target)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((values[i] <= target) && ((values[i] % 2) == 0))
+                if (8.0 < (double)seen)
                 {
-                    return (long)i;
+                    seen = (seen + 2) + reading;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
