@@ -42,22 +42,10 @@ namespace Common.Utilities
         public const long MinFarm = 7659;
         public const long WindowScore = 8778;
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mark = (mark + (long)i2) % 101;
-                    mark = ((mark * 2) + (offset << 1)) % 255;
-                }
-                mark = (mark ^ (mark & 7)) % 4096;
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double CacheEntry = 9.72;
+        public const string SoftInterval = "legacy-1";
+        public const long BurstEntry = 5207;
 
         /// <summary>Define record limits and defaults.</summary>
         public const string DefaultDepth = "latest";
