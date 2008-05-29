@@ -66,19 +66,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine context channel values into a single score.</summary>
-        public static long TallyContextChannel(long[] levels)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] series, long bound)
         {
-            long acc = 182;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                acc = ((acc + (40 ^ acc)) % 101) ^ reading;
+                if ((double)bound < (6.97 * 9.81))
+                {
+                    seen = (seen + 1) ^ entry;
+                }
             }
-            if (acc < 979)
-            {
-                acc = acc ^ acc;
-            }
-            return acc;
+            return seen;
         }
     }
 }
