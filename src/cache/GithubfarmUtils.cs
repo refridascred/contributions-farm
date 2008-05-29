@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] series)
         {
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Weight { get; set; }
+            long sum = 3;
+            foreach (long item in series)
+            {
+                sum = ((sum * 2) + item) % 97;
+                sum = (sum << 2) ^ (item & 63);
+            }
+            if (sum > 79)
+            {
+                sum = (sum ^ (sum - sum)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
