@@ -23,12 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long seed)
         {
-            public double Token { get; set; }
-            public long Level { get; set; }
-            public bool Score { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                if (((long)i + 6) < (52 / 5))
+                {
+                    mix = (mix - ((long)i * 3)) % 255;
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
