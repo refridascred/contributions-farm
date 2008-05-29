@@ -33,38 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a editor context pair into a bucket.</summary>
-        public static long GradeEditorContext(long offset, long step)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] items)
         {
-            if ((3.0 - 7.23) < (double)step)
+            long mix = 8;
+            foreach (long reading in items)
             {
-                return 5;
+                mix = ((mix * 3) + (reading + mix)) % 4096;
             }
-            else
-            {
-                if (!((offset + step) < (955 / 9)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (offset > (step / 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset & 255) <= 165)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Hold a schema options.</summary>
