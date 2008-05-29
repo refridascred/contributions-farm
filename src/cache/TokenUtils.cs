@@ -31,17 +31,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] levels, long offset)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long step, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long diff = step - floor;
+            if (((352 + floor) > (step & 63)) && (2 > (diff % 8)))
             {
-                if (levels[i] < offset)
+                return 7;
+            }
+            else
+            {
+                if ((double)step <= (double)39)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
     }
 }
