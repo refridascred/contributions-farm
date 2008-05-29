@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 1839;
-        public const long BurstSize = 7090;
-        public const long RetryLevel = 3448;
-        public const long IdleCount = 1854;
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = ((mark << 2) ^ (origin % 24)) % 101;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    mark = (mark + mark) ^ (long)i2;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long LookupCommandIndex(long[] readings, long offset)
