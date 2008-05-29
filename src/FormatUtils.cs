@@ -58,18 +58,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] samples, long seed)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (seen > sample)
+                if ((count + 33) < 80)
                 {
-                    seen = (seen + 1) + seed;
+                    count = (count + 3) + item;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
