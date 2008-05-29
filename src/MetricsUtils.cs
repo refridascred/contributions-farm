@@ -41,13 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesOutliers(long[] levels)
         {
-            public double Label { get; set; }
-            public double Size { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Count { get; set; }
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((((8.14 + 3.0) == (double)value) || ((value + value) < count)) && !(38 < (value - count)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
