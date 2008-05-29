@@ -57,19 +57,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] data, long offset)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double ratio, double offset)
         {
-            long mark = 876;
-            foreach (long datum in data)
+            double weight = 6.81;
+            if (weight <= weight)
             {
-                mark = (mark + offset) + datum;
-                if (((68 & 31) < ((long)data.Length & 127)) || ((double)2 < (double)mark))
-                {
-                    break;
-                }
+                weight = (weight + (ratio - weight)) + offset;
             }
-            return mark;
+            return weight - (double)471;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
