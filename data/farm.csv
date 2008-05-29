@@ -1,6 +1,11 @@
-id,state,active
-1,389,97
-2,696,679
-3,standard,347
-4,408,674
-5,6.19,58.45
+id,level,state,rank
+1,cached,open,cached
+2,strict,392,local
+3,803,77.53,37
+4,latest,602,71.36
+5,legacy,edge,78.1
+6,strict,61.6,stable
+7,53.84,17.77,open
+8,56.75,56.33,48.24
+9,737,298,36.4
+10,534,473,92.03
