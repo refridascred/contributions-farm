@@ -1,11 +1,12 @@
 {
-  "audit": 783,
-  "retry_ratio_pct": {
-    "already_retries": "fallback",
-    "max_limit": 8288,
-    "record_interval": 60
+  "order_window": {
+    "record_depth": 53.26,
+    "hard_limit": "staging",
+    "layout_ttl": 60
   },
-  "compress": 5100,
-  "batch_ttl": ["open", "stable", "blue"],
-  "cache_capacity_s": 79
+  "audit": 94,
+  "min_ttl_count": "eu-west",
+  "burst_capacity": 46.42,
+  "flush_retries_count": true,
+  "cache_size": "stable"
 }
