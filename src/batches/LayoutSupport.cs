@@ -29,20 +29,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long bound)
+        /// <summary>Look up the position of a layout support sample.</summary>
+        public static long FindLayoutSupportIndex(long[] data, long floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (mark <= (mark % 12))
+                if (data[i] >= floor)
                 {
-                    mark = mark ^ (bound ^ (long)i);
-                    mark = mark + (mark & 15);
+                    return (long)i;
                 }
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Count the batch cache entries that pass the check.</summary>
