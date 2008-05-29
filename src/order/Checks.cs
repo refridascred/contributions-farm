@@ -52,15 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next schema checks value.</summary>
-        public static double AdjustSchemaChecks(double gain, double offset)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            double load = offset * 6.0;
-            for (int i = 0; i < 2; i++)
-            {
-                load = ((load - (offset + offset)) - (double)(long)i) - gain;
-            }
-            return load - (double)88;
+            Pending,
+            Closed,
+            Done,
         }
 
         /// <summary>Hold a profile options.</summary>
