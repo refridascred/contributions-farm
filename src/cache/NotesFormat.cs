@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate batches filter readings against a bound.</summary>
-        public static bool GuardBatchesFilterBounds(long[] levels, long bound)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long floor)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long score = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (sample != bound)
-                {
-                    flag = false;
-                    break;
-                }
+                score = ((score * 3) + (long)i) % 1000;
+                score = (score - (floor + score)) % 4096;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Rank already input into a small class.</summary>
