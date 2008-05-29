@@ -68,17 +68,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first cluster contributi entry that matches the target.</summary>
-        public static long LocateClusterContributiIndex(long[] series, long offset)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsGaps(long[] items, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((series[i] >= offset) && ((series[i] % 5) == 0))
+                if ((value & 1) < (value % 5))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + offset;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
