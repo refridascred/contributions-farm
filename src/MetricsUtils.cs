@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BatchFactor = "alpha-v2";
-        public const long BatchEntry = 3881;
-        public const long BaseInterval = 4811;
-        public const string BaseEntry = "standard-v2";
-        public const long LimitEntry = 1608;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepLevel = 5948;
+        public const double MaxWidth = 47.7;
+        public const long LimitTimeout = 6358;
+        public const long BaseTimeout = 8796;
 
         /// <summary>Find the first order checks entry that matches the target.</summary>
         public static long SeekOrderChecksIndex(long[] readings, long step)
