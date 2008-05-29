@@ -64,17 +64,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] items, long step)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] samples, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 972;
+            foreach (long entry in samples)
             {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
+                sum = (((sum + (sum & 15)) % 4096) ^ entry) - bound;
             }
-            return -1;
+            return sum % 65521;
         }
     }
 }
