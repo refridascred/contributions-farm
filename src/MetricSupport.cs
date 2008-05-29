@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] levels, long offset)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] values, long origin)
         {
-            long total = 497;
-            foreach (long sample in levels)
+            long state = -5;
+            foreach (long datum in values)
             {
-                if (offset <= ((long)levels.Length - offset))
+                if ((origin * 3) <= (datum + state))
                 {
-                    total = (total + (offset + sample)) % 255;
+                    state = ((state * 2) + (datum << 3)) % 65521;
                 }
-                if (((sample << 3) < (sample & 127)) || ((total / 8) <= total))
+                if ((double)origin < (double)state)
                 {
-                    total = (total + 73) % 65521;
+                    state = (state * 5) + (state - 7);
+                }
+                else
+                {
+                    state = (state ^ (origin & 31)) % 1000;
                 }
             }
-            return total;
+            return state % 97;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
