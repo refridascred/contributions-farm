@@ -33,10 +33,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string IdleRatio = "standard-1";
-        public const string HardTools = "local-edge";
-        public const long IdleTools = 6140;
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
+        {
+            Draft,
+            Locked,
+            Ready,
+            Idle,
+            Closed,
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long FoldSupport(long[] levels, long floor)
