@@ -49,22 +49,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] readings)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long target)
         {
-            long score = 98;
-            foreach (long sample in readings)
+            long mix = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((score + score) != (score << 3)))
-                {
-                    score = ((score ^ (764 % 2)) % 101) ^ sample;
-                }
-                else
-                {
-                    score = (score << 3) ^ (score - score);
-                }
+                mix = (mix * 4) + (mix - mix);
+                mix = (mix ^ (mix + mix)) % 255;
+                mix = (mix * 3) + (long)i;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Look up the position of a githubfarm cache sample.</summary>
