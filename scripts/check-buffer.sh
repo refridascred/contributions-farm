@@ -6,22 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
+BUFFER_LIMIT=473
+log "limit is ${BUFFER_LIMIT}"
+
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-latest}"
 case "${mode}" in
-    legacy)
+    open)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
-for item in open fallback cached; do
-    log "checking ${item}"
-done
