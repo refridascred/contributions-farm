@@ -22,21 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] levels)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long target, long target2)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (((target2 & 1) == (target + 5)) || ((5 + target2) > (target & 255)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((target2 >> 4) != (80 + target))
                 {
-                    if ((levels[i] - levels[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
