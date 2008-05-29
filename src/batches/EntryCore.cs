@@ -14,20 +14,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutRange(long[] items, long seed)
-        {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 4024;
+        public const long HardGraph = 8612;
+        public const long LimitScore = 804;
+        public const long LimitWidth = 3700;
+        public const double MinGraph = 80.08;
 
         /// <summary>Define order limits and defaults.</summary>
         public const double IdleOrder = 32.89;
