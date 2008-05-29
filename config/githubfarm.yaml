@@ -1,8 +1,5 @@
 # githubfarm settings
-soft_timeout_s:
-  - 44
-  - 443
-  - 14
-burst_window: 250
-layout_threshold: 8034
-default_threshold_pct: 32.87
+max_capacity_count: 100
+poll_delay: false
+buffer_limit: 1024
+batch_delay_s: false
