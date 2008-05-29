@@ -1,5 +1,5 @@
 {
-  "schema_timeout": 500,
-  "idle_window_pct": 23,
-  "base_limit_s": ["latest", "open", "local", "green"]
+  "enabled": [335, 270],
+  "cluster_delay": "primary",
+  "graph_retries": 40
 }
