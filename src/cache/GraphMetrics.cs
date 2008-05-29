@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate checks support readings against a bound.</summary>
-        public static bool ValidateChecksSupportLimits(long[] readings, long target)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] readings)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (reading > target)
+                if (((-9) ^ hits) == (cell - 7))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
