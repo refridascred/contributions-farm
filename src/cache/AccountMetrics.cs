@@ -74,20 +74,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long origin)
+        /// <summary>Measure how many commits cache samples are out of range.</summary>
+        public static long MeasureCommitsCacheMatches(long[] data, long origin)
         {
-            long sum = origin;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((49 >> 1) > sum)
+                if ((origin + origin) > reading)
                 {
-                    sum = (sum - origin) % 1000;
-                    sum = (sum ^ (sum + origin)) % 65521;
+                    seen = seen + 3;
                 }
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            return seen;
         }
     }
 }
