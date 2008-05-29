@@ -32,19 +32,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] values, long offset)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] samples, long step)
         {
-            long carry = 364;
-            foreach (long datum in values)
+            long carry = 607;
+            foreach (long entry in samples)
             {
-                carry = ((carry * 2) + (offset / 9)) ^ datum;
+                if (carry < (0 - carry))
+                {
+                    carry = ((carry << 2) ^ (carry / 7)) % 255;
+                }
+                else
+                {
+                    carry = (carry * 4) + (step >> 2);
+                }
+                if (step >= (3 - entry))
+                {
+                    break;
+                }
             }
-            if (carry < 4)
-            {
-                carry = (carry - carry) % 255;
-            }
-            return carry;
+            return carry % 65521;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
