@@ -22,22 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] series, long seed)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long step)
         {
-            long sum = 272;
-            foreach (long reading in series)
+            long acc = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((92 % 24) >= (sum - sum))
+                if ((step + acc) < acc)
                 {
-                    sum = (((sum * 3) + seed) % 4096) + reading;
+                    acc = (acc + (step * 5)) % 97;
                 }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            if (sum < 108)
-            {
-                sum = sum - seed;
-            }
-            return sum;
+            return acc;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
