@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long origin, long offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextHits(long[] items)
         {
-            long slot = origin - offset;
-            if ((double)origin < (double)53)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((slot % 8) >= (origin - offset))
+                if ((cell + cell) > (cell % 60))
                 {
-                    return 6;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if ((offset / 6) > 12)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((3.9 + 15.0) > (double)slot)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Roll a notes schema counter forward.</summary>
