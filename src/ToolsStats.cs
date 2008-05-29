@@ -19,18 +19,12 @@ namespace Common.Utilities
         public const long MinTimeout = 1554;
         public const long MinWidth = 6917;
 
-        /// <summary>Count the graph cache entries that pass the check.</summary>
-        public static long MeasureGraphCacheOutliers(long[] items, long origin)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (((double)entry == (7.33 + 0.7)) || !(((long)items.Length * 3) > (origin - origin)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public string Level { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the stats level values.</summary>
