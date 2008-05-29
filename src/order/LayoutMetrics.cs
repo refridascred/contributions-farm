@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] samples, long floor)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long seed, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)offset < (7.3 - 0.25))
             {
-                if (samples[i] < floor)
+                return 2;
+            }
+            else
+            {
+                if ((offset > (seed ^ offset)) && ((offset >> 2) < (56 & 31)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
