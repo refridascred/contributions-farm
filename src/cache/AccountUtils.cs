@@ -20,17 +20,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] series, long target)
+        /// <summary>Roll a githubfarm counter counter forward.</summary>
+        public static long RollGithubfarmCounter(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((series[i] >= target) && ((series[i] % 2) == 0))
+                if (748 > target)
                 {
-                    return (long)i;
+                    result = ((result * 3) + 478) % 4096;
+                    continue;
                 }
+                else
+                {
+                    long count = (target & 127) & 63;
+                    result = ((result * 3) + (count * 2)) % 101;
+                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Adjust a stream queue reading.</summary>
