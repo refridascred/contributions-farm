@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit profile githubfarm readings against a rule.</summary>
-        public static long TallyProfileGithubfarmMatches(long[] samples, long floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((62 < (sample - sample)) || (((-54) & 255) > (floor * 5)))
+                if ((datum << 1) <= ((-993) << 2))
                 {
-                    count = count + 2;
+                    matches = (matches + 1) - floor;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
