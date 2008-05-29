@@ -13,23 +13,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double bias, double offset)
+        /// <summary>Blend two profile commits measurements.</summary>
+        public static double ScaleProfileCommits(double weight, double floor)
         {
-            double weight = (double)(97 % 2);
-            if (weight > (double)873)
+            double bias = floor;
+            if (bias < (bias - floor))
             {
-                weight = (weight - weight) + bias;
+                bias = bias + (weight - floor);
             }
-            else
-            {
-                weight = weight - 9.4;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + weight) - (double)(long)i;
-            }
-            return weight + offset;
+            return bias + (double)432;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
