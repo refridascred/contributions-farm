@@ -1,19 +1,13 @@
 {
-  "retry_interval": "cached",
-  "audit": {
-    "burst_threshold": {
-      "counter_ttl": "latest",
-      "sync_ratio": ["green", "cached", "strict", "stable"],
-      "sync_delay_s": 90.17,
-      "metric_capacity": "green",
-      "sync_retries_count": false,
-      "retry_window_s": "staging"
-    },
-    "cache_ttl_count": "latest",
-    "contributi_threshold": "stable"
+  "cache_delay": "latest",
+  "cache_ratio": 9.17,
+  "max_depth": [392, 101, 105, 416],
+  "compress": 500,
+  "context_delay": {
+    "sync_retries": 75.73,
+    "verbose": "staging",
+    "compress": 15,
+    "context_timeout": false
   },
-  "hard_limit": "primary",
-  "hard_ratio": 500,
-  "warm_limit": [106, 318, 330],
-  "strict": "edge"
+  "sync_timeout_count": 75
 }
