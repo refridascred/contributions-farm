@@ -47,21 +47,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count batch cluster pairs that satisfy a relation.</summary>
-        public static long MatchBatchClusterCount(long[] items)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] levels, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((444 % 24) > (step & 127))
                 {
-                    if ((items[i] ^ items[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 2) + datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
