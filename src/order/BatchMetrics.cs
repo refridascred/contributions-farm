@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Locate a queue window reading by value.</summary>
+        public static long LocateQueueWindowIndex(long[] items, long target)
         {
-            public double Token { get; set; }
-            public bool Region { get; set; }
-            public string Flag { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a counter record.</summary>
