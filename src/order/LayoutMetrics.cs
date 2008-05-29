@@ -18,23 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((((value & 63) <= tally) && ((double)tally >= 5.9)) && (((3.29 / 8.0) < (8.38 * 4.4)) || ((3.0 / 2.0) <= (double)tally)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 5009;
+        public const string RetryLevel = "latest-edge";
+        public const long MinRatio = 2505;
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long WeighBatches(long[] series)
