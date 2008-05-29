@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long step)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] values, long seed)
         {
-            long acc = step;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc - (long)i) % 4096;
-                acc = ((acc * 5) + (long)i) % 1000;
+                if ((values[i] < seed) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
