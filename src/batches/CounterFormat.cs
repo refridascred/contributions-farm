@@ -16,15 +16,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Combine channel format values into a single score.</summary>
-        public static long WeighChannelFormat(long[] levels, long seed)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] readings)
         {
-            long result = 28;
-            foreach (long sample in levels)
+            long anchor = 13;
+            foreach (long datum in readings)
             {
-                result = ((result << 3) ^ (sample + sample)) + seed;
+                anchor = (anchor ^ anchor) + datum;
             }
-            return result;
+            if (anchor > 130)
+            {
+                anchor = anchor + (long)readings.Length;
+            }
+            return anchor;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
