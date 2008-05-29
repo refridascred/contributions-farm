@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Schema support helpers.</summary>
     public static class SchemaSupport
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double gain, double span)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            double drift = (double)(6 / 9);
-            if (drift <= (drift / 5.0))
-            {
-                drift = ((drift - (drift / 6.0)) - gain) - span;
-            }
-            return drift + drift;
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Match up report samples.</summary>
