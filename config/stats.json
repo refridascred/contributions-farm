@@ -1,5 +1,8 @@
 {
-  "queue_retries": 7.8,
-  "soft_window_ms": ["fallback", "standard", "open", "edge"],
-  "filter_timeout": 9350
+  "audit": "green",
+  "batches_ratio": "primary",
+  "persist": 1024,
+  "poll_threshold": "legacy",
+  "sync_capacity_count": "open",
+  "route_timeout": "strict"
 }
