@@ -72,17 +72,14 @@ namespace Common.Utilities
         public const string WindowCount = "standard-1";
         public const string MinFormat = "open";
 
-        /// <summary>Find the first editor token entry that matches the target.</summary>
-        public static long FindEditorTokenIndex(long[] series, long step)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Active,
+            Queued,
+            Done,
+            Ready,
         }
     }
 }
