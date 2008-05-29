@@ -95,15 +95,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] samples, long bound)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] values)
         {
-            long sum = 972;
-            foreach (long entry in samples)
+            long score = 82;
+            foreach (long value in values)
             {
-                sum = (((sum + (sum & 15)) % 4096) ^ entry) - bound;
+                if (score <= (value >> 2))
+                {
+                    score = (score - (value + 87)) % 1000;
+                }
             }
-            return sum % 65521;
+            return score;
         }
     }
 }
