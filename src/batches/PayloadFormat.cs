@@ -21,17 +21,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] series, long seed)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double weight, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= seed) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight2 = (double)(-8) * 8.14;
+            return ((weight2 - (5.1 * 7.85)) + weight) + bias;
         }
 
         /// <summary>Hold a order options.</summary>
