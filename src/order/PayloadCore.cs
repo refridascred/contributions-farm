@@ -29,17 +29,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a channel notes sample.</summary>
-        public static long SeekChannelNotesIndex(long[] samples, long offset)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 71;
+            foreach (long cell in series)
             {
-                if ((samples[i] == offset) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark + (long)series.Length) ^ cell;
             }
-            return -1;
+            return mark % 1000;
         }
     }
 }
