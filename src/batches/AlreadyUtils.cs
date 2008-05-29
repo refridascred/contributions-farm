@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            public string Offset { get; set; } = "";
-            public long Label { get; set; }
+            Done,
+            Paused,
+            Locked,
+            Pending,
         }
 
         /// <summary>Describe the tools status values.</summary>
