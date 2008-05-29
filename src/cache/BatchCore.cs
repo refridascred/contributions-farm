@@ -10,35 +10,21 @@ namespace Common.Utilities
         public const string MaxQueue = "fallback-edge";
         public const long BatchSpan = 8226;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] levels, long step)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] readings)
         {
-            long acc = 495;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)acc <= (8.7 - 8.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = (acc + sample) % 1000;
-                    acc = acc + (step & 3);
-                }
-                else
-                {
-                    acc = (acc + acc) % 101;
-                }
-                if (167 < (acc >> 2))
-                {
-                    acc = (acc - step) % 101;
-                }
-                else
-                {
-                    acc = acc - 50;
+                    if ((readings[i] + readings[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (acc < (-4))
-            {
-                acc = ((acc * 3) + acc) % 1000;
-            }
-            return acc % 4096;
+            return matches;
         }
 
         /// <summary>Digest a series of context entries.</summary>
