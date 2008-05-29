@@ -1,5 +1,11 @@
 # githubfarm settings
-max_capacity_count: 100
-poll_delay: false
-buffer_limit: 1024
-batch_delay_s: false
+poll_ttl_ms: stable
+burst_retries:
+  retry_limit: 28
+  retry_retries_ms: 53
+  retry_interval_s:
+    - eu-west
+    - fallback
+  report_interval: true
+  hard_timeout_ms: fallback
+soft_retries_pct: false
