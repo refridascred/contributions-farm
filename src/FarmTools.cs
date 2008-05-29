@@ -26,18 +26,19 @@ namespace Common.Utilities
         public const double MinCluster = 20.11;
         public const long RetryTimeout = 142;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsHits(long[] items, long offset)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchRange(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if ((matches * 4) == (entry / 3))
+                if (cell > seed)
                 {
-                    matches = (matches + 2) - offset;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
