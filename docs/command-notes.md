@@ -1,10 +1,10 @@
 # Command notes
 
-Defaults for queue live in the config folder and can be overridden per environment.
-A already that stays idle for too long is moved to the farm list.
+Each session is validated before it reaches the batches queue.
+The graph report groups every entry by batch.
 
 ## Guidelines
 
-- Validate account input early
-- Document new record fields
-- Review batch limits each release
+- Keep batch values small
+- Log every profile change
+- Prefer report defaults
