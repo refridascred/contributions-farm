@@ -27,18 +27,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutHits(long[] series)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long seed, long step)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long bound = seed - step;
+            if ((double)seed <= (4.1 / 5.0))
             {
-                if (!(((-42) << 1) <= sample) && (tally < (tally % 16)))
+                return 1;
+            }
+            else
+            {
+                if ((seed + seed) >= (step + step))
                 {
-                    tally = tally + 1;
+                    return 4;
+                }
+                else
+                {
+                    if ((seed - bound) >= (seed >> 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a farm summary.</summary>
