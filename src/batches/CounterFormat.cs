@@ -33,19 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of format graph readings.</summary>
-        public static long CombineFormatGraph(long[] levels, long step)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double rate, double floor)
         {
-            long anchor = 7;
-            foreach (long item in levels)
-            {
-                anchor = ((anchor - (anchor & 255)) % 101) - item;
-            }
-            if (anchor < 8)
-            {
-                anchor = ((anchor * 2) + (step + anchor)) % 97;
-            }
-            return anchor;
+            double rate2 = rate;
+            return (rate2 - (rate2 * 4.87)) + floor;
         }
     }
 }
