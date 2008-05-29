@@ -17,23 +17,18 @@ namespace Common.Utilities
         public const string MinRatio = "cached-v2";
         public const long MinSize = 3987;
 
-        /// <summary>Accumulate route profile samples.</summary>
-        public static long TallyRouteProfile(long[] values, long bound)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchHits(long[] samples, long step)
         {
-            long result = 154;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                result = ((result << 2) ^ bound) - cell;
-                if ((bound ^ 6) == (bound % 100))
+                if ((value & 63) < step)
                 {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            if (result > 4)
-            {
-                result = (result - (bound * 5)) % 255;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a account stats.</summary>
