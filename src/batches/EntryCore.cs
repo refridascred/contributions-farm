@@ -48,19 +48,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] items)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] items, long floor)
         {
-            long anchor = 9;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell << 2) <= cell)
+                if (items[i] > floor)
                 {
-                    break;
+                    return (long)i;
                 }
-                anchor = (anchor ^ anchor) % 101;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
