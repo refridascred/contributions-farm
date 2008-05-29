@@ -28,14 +28,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long limit)
         {
-            Idle,
-            Ready,
-            Done,
-            Queued,
-            Pending,
+            long state = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of already session entries.</summary>
