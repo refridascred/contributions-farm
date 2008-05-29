@@ -1,18 +1,8 @@
 {
-  "audit": "stable",
-  "persist": [145, 409, 287, 486],
-  "warm_timeout_ms": {
-    "persist": {
-      "retry_ttl_ms": [80, 80],
-      "sync_ratio_ms": 91,
-      "min_timeout_s": "edge",
-      "verbose": "legacy",
-      "dry_run": "latest"
-    },
-    "audit": ["strict", "green", "strict"],
-    "stats_threshold": 2236,
-    "poll_ttl_count": 6.65
-  },
-  "burst_capacity": 59,
-  "base_delay_ms": [364, 108, 466]
+  "commits_depth": 250,
+  "account_interval": 54,
+  "schema_depth": true,
+  "max_delay_s": [3, 391, 86],
+  "cache_ttl_s": "eu-west",
+  "sync_ttl_ms": "staging"
 }
