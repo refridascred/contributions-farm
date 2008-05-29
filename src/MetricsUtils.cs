@@ -41,19 +41,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((((8.14 + 3.0) == (double)value) || ((value + value) < count)) && !(38 < (value - count)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowScore = 8959;
+        public const double BaseLayout = 14.28;
+        public const string DefaultTimeout = "fallback-edge";
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long StepMetrics(long floor)
