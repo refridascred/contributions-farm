@@ -15,21 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] readings)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricMatches(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)matches < 0.32)
                 {
-                    if ((readings[i] - readings[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 3) - cell;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
