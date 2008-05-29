@@ -62,19 +62,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ProjectFormat(double bias, double span)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            double rate = span;
-            if (rate >= (bias + span))
-            {
-                rate = rate + (span / 3.0);
-            }
-            else
-            {
-                rate = rate - bias;
-            }
-            return rate - bias;
+            Locked,
+            Synced,
+            Paused,
         }
     }
 }
