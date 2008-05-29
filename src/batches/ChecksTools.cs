@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 2052;
-        public const double RetryCount = 28.77;
-        public const long BaseEntry = 1586;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileMatches(long[] data)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((double)count < 4.2)
+                {
+                    count = (count + 1) + sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next stream value from a seed.</summary>
         public static long StepStream(long bound)
