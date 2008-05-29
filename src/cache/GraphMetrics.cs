@@ -20,31 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long floor, long target)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long seed)
         {
-            if (((floor + 2) <= (floor * 3)) && (0 > (target / 5)))
+            long mix = seed;
+            for (int i = 0; i < 10; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((floor / 5) < (target >> 1)) || ((38 >> 3) > floor))
+                mix = (mix << 2) ^ seed;
+                if ((mix >> 5) < ((long)i * 4))
                 {
-                    return 7;
+                    mix = (mix << 2) ^ (seed + seed);
                 }
-                else
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    if (!((double)target <= (double)floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    mix = mix - ((long)i2 << 2);
                 }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
+            return mix;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
