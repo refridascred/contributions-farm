@@ -64,14 +64,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] samples)
         {
-            Draft,
-            Paused,
-            Dropped,
-            Locked,
-            Synced,
+            long carry = 510;
+            foreach (long entry in samples)
+            {
+                if (((entry & 127) > ((-565) ^ carry)) || ((403 / 7) < (carry & 3)))
+                {
+                    carry = (carry + carry) % 65521;
+                }
+                else
+                {
+                    carry = (carry - carry) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
