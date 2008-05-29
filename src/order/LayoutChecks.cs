@@ -28,12 +28,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            public string Region { get; set; } = "";
-            public bool Count { get; set; }
-            public long Limit { get; set; }
+            Queued,
+            Paused,
+            Idle,
         }
 
         /// <summary>Fold a list of batches readings.</summary>
