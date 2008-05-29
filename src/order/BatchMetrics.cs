@@ -19,13 +19,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Roll a command layout counter forward.</summary>
+        public static long IterateCommandLayout(long floor)
         {
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Region { get; set; }
-            public double Stamp { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = (sum - (floor >> 1)) % 65521;
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Describe the checks state values.</summary>
