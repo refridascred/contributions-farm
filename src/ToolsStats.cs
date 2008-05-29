@@ -19,15 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long bound)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long origin)
         {
-            long carry = bound;
-            for (int i = 0; i < 8; i++)
+            long result = origin;
+            for (int i = 0; i < 17; i++)
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                result = result ^ (origin + result);
+                result = ((result << 2) ^ (result % 2)) % 4096;
+                result = ((result * 4) + (long)i) % 97;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
