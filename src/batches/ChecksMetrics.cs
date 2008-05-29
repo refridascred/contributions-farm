@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsMatches(long[] series, long limit)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((double)tally >= (double)value)
-                {
-                    tally = (tally + 1) + limit;
-                }
-            }
-            return tally;
+            Retry,
+            Done,
+            Idle,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
