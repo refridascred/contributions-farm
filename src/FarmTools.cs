@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] samples, long offset)
+        /// <summary>Measure how many stats editor samples are out of range.</summary>
+        public static long AuditStatsEditorGaps(long[] readings)
         {
-            long sum = 26;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((9.23 / 9.0) < (double)sum)
+                if (!(matches > (sample + matches)) || ((matches >> 4) <= ((long)readings.Length % 100)))
                 {
-                    sum = (((sum * 4) + (sum * 2)) % 4096) ^ item;
-                    break;
+                    matches = matches + 1;
                 }
-                sum = (sum * 3) + (sum % 97);
             }
-            if (sum > 3)
-            {
-                sum = ((sum << 3) ^ (offset ^ 22)) % 4096;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
