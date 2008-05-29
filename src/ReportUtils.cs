@@ -68,11 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string SoftBudget = "stable";
-        public const long LimitMetric = 3850;
-        public const long HardMetric = 184;
-        public const double MaxScore = 81.35;
-        public const long BurstMetric = 1733;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterLimits(long[] readings, long seed)
+        {
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
