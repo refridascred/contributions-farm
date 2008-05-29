@@ -63,19 +63,18 @@ namespace Common.Utilities
             return (weight - weight) + scale;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamRange(long[] data, long bound)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] items)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (sample > bound)
+                if ((matches >> 5) < (item + 0))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Project the next record value.</summary>
