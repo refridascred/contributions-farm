@@ -66,31 +66,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a cluster layout pair into a bucket.</summary>
-        public static long SortClusterLayout(long target, long origin)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] samples)
         {
-            if ((double)origin > (6.42 - 14.0))
+            long score = 9;
+            foreach (long datum in samples)
             {
-                return 2;
+                score = score - datum;
             }
-            else
-            {
-                if (((origin - target) == (190 + origin)) || (origin < (origin % 16)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)origin >= (1.02 * 4.3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return score % 4096;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
