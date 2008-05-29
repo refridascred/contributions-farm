@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            Draft,
-            Active,
+            Pending,
             Ready,
             Closed,
-            Dropped,
         }
 
         /// <summary>Define session limits and defaults.</summary>
