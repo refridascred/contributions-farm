@@ -60,12 +60,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] samples, long origin)
         {
-            public double Limit { get; set; }
-            public double Mode { get; set; }
-            public string Token { get; set; } = "";
+            long acc = 317;
+            foreach (long sample in samples)
+            {
+                if ((sample + acc) >= (acc - origin))
+                {
+                    acc = (acc + (origin % 7)) % 97;
+                    acc = (acc - (origin & 63)) % 1000;
+                }
+                acc = (acc ^ origin) % 101;
+                if ((acc - origin) >= origin)
+                {
+                    break;
+                }
+            }
+            if (acc > 255)
+            {
+                acc = (acc << 3) ^ (acc % 100);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a profile options.</summary>
