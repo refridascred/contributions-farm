@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many contributi account samples are out of range.</summary>
-        public static long TallyContributiAccountOutliers(long[] series, long bound)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long limit)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long state = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((reading / 6) <= (reading & 1))
+                if ((limit + limit) <= ((long)i / 4))
                 {
-                    hits = (hits + 2) - bound;
+                    state = (state + (limit * 3)) % 1000;
+                    break;
                 }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
