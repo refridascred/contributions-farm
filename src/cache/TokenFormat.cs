@@ -15,10 +15,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 9523;
-        public const long MinEntry = 6566;
-        public const long LimitSpan = 8315;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] readings, long target)
+        {
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (!(reading < (231 + 78)))
+                {
+                    count = (count + 1) - target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long DeriveContributi(long limit)
