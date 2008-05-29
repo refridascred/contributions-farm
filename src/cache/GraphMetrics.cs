@@ -34,14 +34,10 @@ namespace Common.Utilities
         public const string BurstCache = "local-1";
         public const long IdleCache = 7953;
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
-        {
-            public bool Limit { get; set; }
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BaseScore = "stable";
+        public const double StepBuffer = 8.25;
+        public const long MinBuffer = 7031;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long MeasureFarmMatches(long[] levels, long origin)
