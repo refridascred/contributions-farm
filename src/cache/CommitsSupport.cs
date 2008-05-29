@@ -14,15 +14,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long limit)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double weight, double bias)
         {
-            long mark = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            double mean = weight;
+            return (mean + (double)1) + bias;
         }
 
         /// <summary>Describe the metric class values.</summary>
