@@ -23,18 +23,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] samples)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (sample <= (0 - 249))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Offset { get; set; }
+            public long Count { get; set; }
+            public double Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit command commits readings against a rule.</summary>
