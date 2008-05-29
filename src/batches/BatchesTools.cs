@@ -13,15 +13,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next editor githubfarm value from a seed.</summary>
-        public static long RollEditorGithubfarm(long step)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long anchor = step;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            Done,
+            Paused,
+            Idle,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
