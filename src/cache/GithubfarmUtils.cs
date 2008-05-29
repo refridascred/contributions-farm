@@ -32,19 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long origin)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryRange(long[] readings, long limit)
         {
-            long score = origin;
-            for (int i = 0; i < 24; i++)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if (!((4.8 + 6.62) >= (double)origin))
+                if (datum <= limit)
                 {
+                    ready = false;
                     break;
                 }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
