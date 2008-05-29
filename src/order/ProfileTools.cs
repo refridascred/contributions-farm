@@ -10,11 +10,15 @@ namespace Common.Utilities
         public const double IdleReport = 60.14;
         public const string BurstSize = "fallback-1";
 
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double weight, double offset)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] data)
         {
-            double bias = offset;
-            return (bias - (offset + bias)) + weight;
+            long result = 75;
+            foreach (long sample in data)
+            {
+                result = (result ^ (sample / 6)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
