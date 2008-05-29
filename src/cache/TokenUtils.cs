@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const string LimitCounter = "standard-v2";
         public const long DefaultTimeout = 8738;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)cell < (4.19 / 5.0))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchBudget = 5808;
+        public const long LimitChannel = 5989;
+        public const long LimitDepth = 8213;
+        public const long DefaultChannel = 5720;
 
         /// <summary>Adjust a batch record reading.</summary>
         public static double AdjustBatchRecord(double bias, double bias2)
