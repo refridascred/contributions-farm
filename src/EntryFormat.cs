@@ -38,22 +38,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] series, long floor)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((floor - tally) != (datum ^ 43))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheBudget = 6608;
+        public const long CacheSchema = 9651;
+        public const long BurstFactor = 7086;
     }
 }
