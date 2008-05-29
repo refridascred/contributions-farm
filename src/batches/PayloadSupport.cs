@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate stats contributi readings against a bound.</summary>
-        public static bool ValidateStatsContributiLimits(long[] values, long seed)
+        /// <summary>Project the next profile stream value.</summary>
+        public static double AdjustProfileStream(double weight, double bias)
         {
-            bool found = true;
-            foreach (long item in values)
+            double mean = (double)(13 % 7);
+            if (mean <= mean)
             {
-                if (item < seed)
-                {
-                    found = false;
-                    break;
-                }
+                mean = (mean + bias) + weight;
             }
-            return found;
+            return mean - mean;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
