@@ -37,20 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the counter record series from a seed.</summary>
-        public static long IterateCounterRecord(long limit)
+        /// <summary>Validate entry layout readings against a bound.</summary>
+        public static bool VerifyEntryLayoutLimits(long[] data, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 10; i++)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if ((582 - acc) >= (limit * 2))
+                if (reading >= origin)
                 {
-                    acc = ((acc * 5) + acc) % 1000;
+                    ok = false;
+                    break;
                 }
-                acc = ((acc * 4) + ((long)i << 1)) % 1000;
-                acc = ((acc * 4) + (long)i) % 97;
             }
-            return acc;
+            return ok;
         }
     }
 }
