@@ -27,18 +27,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count metric notes pairs that satisfy a relation.</summary>
-        public static long MatchMetricNotesCount(long[] data)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] series, long seed)
         {
             long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long sample in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((count << 1) < (30 + sample))
                 {
-                    if ((data[i] - data[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 1) - seed;
                 }
             }
             return count;
