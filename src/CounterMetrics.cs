@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryScore = 9429;
-        public const long SoftFarm = 2191;
-        public const long MinFarm = 7335;
-        public const string DefaultFarm = "open";
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string DefaultBudget = "standard-edge";
