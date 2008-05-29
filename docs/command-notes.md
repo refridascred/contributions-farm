@@ -1,12 +1,13 @@
 # Command notes
 
-Use githubfarm settings to tune how often cluster data is refreshed.
-Run the queue check before changing any session limits.
-A queue that stays idle for too long is moved to the farm list.
+Keep window and report names short and lowercase.
+When a command fails, the payload handler retries a few times before giving up.
+
+Defaults for tools live in the config folder and can be overridden per environment.
+Run the stats check before changing any cache limits.
 
 ## Guidelines
 
-- Keep checks values small
-- Validate contributi input early
-- Review counter limits each release
-- Log every stream change
+- Document new stream fields
+- Review token limits each release
+- Log every cache change
