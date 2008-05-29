@@ -15,12 +15,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 5958;
-        public const long StepScore = 7384;
-        public const string SoftInterval = "cached-edge";
-        public const double SoftDepth = 68.61;
-        public const long StepAccount = 1607;
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((95 + origin) != (anchor + anchor))
+                {
+                    anchor = (anchor ^ (anchor - (long)i)) % 65521;
+                    anchor = (anchor - (51 * 2)) % 65521;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
