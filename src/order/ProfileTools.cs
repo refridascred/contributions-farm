@@ -36,13 +36,17 @@ namespace Common.Utilities
         public const long BaseRecord = 1149;
         public const long MinRecord = 9379;
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] data, long target)
         {
-            Stale,
-            Pending,
-            Failed,
-            Active,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
