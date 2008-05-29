@@ -37,10 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitScore = 3900;
-        public const string LimitRatio = "local-v2";
-        public const long BaseFactor = 4986;
+        /// <summary>Audit command commits readings against a rule.</summary>
+        public static long MeasureCommandCommitsOutliers(long[] series, long origin)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (((matches >> 5) < (9 % 16)) && ((matches / 7) > (origin - matches)))
+                {
+                    matches = (matches + 2) ^ item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
