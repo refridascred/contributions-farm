@@ -29,19 +29,30 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] samples, long target)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] items, long offset)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long result = 9;
+            foreach (long item in items)
             {
-                if (item != target)
+                if ((result / 6) > (96 ^ offset))
                 {
-                    valid = false;
+                    result = (((result << 3) ^ (offset + offset)) % 1000) + item;
+                }
+                else
+                {
+                    result = (result << 3) ^ ((long)items.Length / 4);
+                }
+                if ((7 - offset) != (offset + offset))
+                {
                     break;
                 }
             }
-            return valid;
+            if (result < 86)
+            {
+                result = (result - (offset * 4)) % 101;
+            }
+            return result;
         }
     }
 }
