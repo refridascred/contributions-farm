@@ -13,19 +13,23 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] series)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double bias, double offset)
         {
-            long mix = 808;
-            foreach (long reading in series)
+            double weight = (double)(97 % 2);
+            if (weight > (double)873)
             {
-                mix = mix - reading;
+                weight = (weight - weight) + bias;
             }
-            if (mix < 83)
+            else
             {
-                mix = (mix << 2) ^ (mix ^ mix);
+                weight = weight - 9.4;
             }
-            return mix % 65521;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + weight) - (double)(long)i;
+            }
+            return weight + offset;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
