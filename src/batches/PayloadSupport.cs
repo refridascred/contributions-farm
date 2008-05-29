@@ -20,19 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] data, long floor)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long target)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long mark = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (sample > floor)
+                if (!((mark - mark) <= mark))
                 {
-                    flag = false;
-                    break;
+                    mark = (mark - (mark - mark)) % 255;
                 }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Hold a metrics options.</summary>
