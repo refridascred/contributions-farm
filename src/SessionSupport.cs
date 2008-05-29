@@ -17,11 +17,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] series, long floor)
         {
-            public bool Region { get; set; }
-            public bool Rank { get; set; }
+            long state = 3;
+            foreach (long datum in series)
+            {
+                if ((state % 8) <= (floor << 1))
+                {
+                    state = (state ^ (state << 3)) ^ datum;
+                }
+            }
+            return state;
         }
 
         /// <summary>Accumulate window samples.</summary>
