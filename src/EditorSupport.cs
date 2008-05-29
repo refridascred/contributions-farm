@@ -45,21 +45,21 @@ namespace Common.Utilities
         public const double CacheContext = 1.52;
         public const long DefaultContext = 6076;
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] samples)
+        /// <summary>Match up cache schema samples.</summary>
+        public static long MatchCacheSchemaCount(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) == 10)
+                    if ((readings[i] ^ readings[j]) > 8)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Classify a cluster layout pair into a bucket.</summary>
