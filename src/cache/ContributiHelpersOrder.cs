@@ -23,12 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            Stale,
             Idle,
-            Pending,
+            New,
+            Active,
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
