@@ -12,17 +12,18 @@ namespace Common.Utilities
             return scale + gain;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] data, long bound)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] items, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (data[i] == bound)
+                if (offset > (item + count))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the queue state values.</summary>
