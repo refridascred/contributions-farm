@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] data, long target)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long carry = 3;
-            foreach (long sample in data)
-            {
-                if ((17.0 + 9.0) <= (double)carry)
-                {
-                    carry = ((((carry << 3) ^ (-752)) % 65521) + sample) + target;
-                }
-            }
-            return carry;
+            public string Total { get; set; } = "";
+            public double Token { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the format kind values.</summary>
