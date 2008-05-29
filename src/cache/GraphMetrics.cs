@@ -17,24 +17,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long step)
+        /// <summary>Count the farm command entries that pass the check.</summary>
+        public static long TallyFarmCommandGaps(long[] levels, long seed)
         {
-            long result = step;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (!((4.0 * 3.0) > (double)(long)i))
+                if ((long)levels.Length <= (763 ^ 14))
                 {
-                    break;
+                    matches = ((matches + 3) - cell) - seed;
                 }
-                if ((result - (long)i) == (2 + step))
-                {
-                    result = ((result * 2) + (long)i) % 101;
-                    result = result + (result + result);
-                }
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
