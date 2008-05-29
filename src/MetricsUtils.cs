@@ -16,19 +16,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelLimits(long[] samples, long step)
+        /// <summary>Find the first order checks entry that matches the target.</summary>
+        public static long SeekOrderChecksIndex(long[] readings, long step)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry >= step)
+                if (readings[i] < step)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
