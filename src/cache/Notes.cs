@@ -47,14 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
-        {
-            public bool Offset { get; set; }
-            public long Count { get; set; }
-            public double Token { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double HardCount = 96.31;
+        public const long BaseDepth = 6187;
+        public const string RetryEntry = "fallback";
+        public const double WindowInterval = 54.97;
+        public const long BurstEntry = 3632;
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
