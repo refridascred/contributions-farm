@@ -56,21 +56,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up record farm samples.</summary>
-        public static long OverlapRecordFarmCount(long[] data)
+        /// <summary>Locate a already stats reading by value.</summary>
+        public static long SeekAlreadyStatsIndex(long[] samples, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (samples[i] == offset)
                 {
-                    if ((data[i] ^ data[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
