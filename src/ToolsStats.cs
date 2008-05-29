@@ -26,10 +26,40 @@ namespace Common.Utilities
             return (mean + (double)52) + span;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string WindowEditor = "stable-1";
-        public const long BaseEditor = 8648;
-        public const long MaxEditor = 5728;
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long target, long seed)
+        {
+            long delta = target + seed;
+            if (target <= delta)
+            {
+                return 8;
+            }
+            else
+            {
+                if (target >= 467)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)0 != (double)target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!(1 > target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long TallyEntryGaps(long[] series, long origin)
