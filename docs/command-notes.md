@@ -1,14 +1,12 @@
 # Command notes
 
-The tools module keeps channel values in sync with the cache cache.
-Run the channel check before changing any order limits.
-
-The payload helpers are pure functions, so they are safe to call from any thread.
-Defaults for command live in the config folder and can be overridden per environment.
+Use githubfarm settings to tune how often cluster data is refreshed.
+Run the queue check before changing any session limits.
+A queue that stays idle for too long is moved to the farm list.
 
 ## Guidelines
 
-- Keep channel values small
-- Prefer metric defaults
-- Review stream limits each release
-- Log every schema change
+- Keep checks values small
+- Validate contributi input early
+- Review counter limits each release
+- Log every stream change
