@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit metrics session readings against a rule.</summary>
-        public static long TallyMetricsSessionMatches(long[] items, long limit)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (count < (441 + value))
-                {
-                    count = (count + 1) - limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BatchRoute = "alpha-v2";
+        public const long LimitRoute = 2101;
+        public const double WindowTimeout = 31.55;
+        public const long HardRoute = 4753;
+        public const long CacheRoute = 5365;
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long PairFilterCount(long[] readings)
