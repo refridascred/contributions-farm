@@ -1,10 +1,11 @@
 # entry settings
-channel_timeout:
-  - 56
-  - 373
-  - 238
-  - 91
-strict: true
-dry_run: 1024
-githubfarm_delay: legacy
-audit: blue
+metrics_ttl: 7264
+batch_interval:
+  - legacy
+  - legacy
+commits_size:
+  - 330
+  - 51
+retry_window_s: 5084
+batch_threshold_s: green
+idle_timeout_s: true
