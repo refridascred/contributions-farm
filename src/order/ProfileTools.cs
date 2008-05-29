@@ -65,22 +65,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate schema session samples.</summary>
-        public static long FoldSchemaSession(long[] samples, long limit)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long mix = 91;
-            foreach (long entry in samples)
-            {
-                if (((entry ^ limit) != (limit + limit)) && ((15.0 + 1.0) < (double)mix))
-                {
-                    mix = (mix ^ (mix + mix)) % 65521;
-                }
-            }
-            if (mix > 82)
-            {
-                mix = (mix - (mix & 127)) % 97;
-            }
-            return mix;
+            Failed,
+            Idle,
+            Retry,
         }
     }
 }
