@@ -14,13 +14,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] data)
         {
-            public double Total { get; set; }
-            public bool Weight { get; set; }
-            public string Count { get; set; } = "";
-            public double Offset { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the graph kind values.</summary>
