@@ -32,13 +32,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] series, long seed)
         {
-            public bool Score { get; set; }
-            public string Owner { get; set; } = "";
-            public double Label { get; set; }
-            public string Mode { get; set; } = "";
+            long total = 85;
+            foreach (long value in series)
+            {
+                total = ((total - (total ^ 63)) - value) - seed;
+            }
+            return total;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
