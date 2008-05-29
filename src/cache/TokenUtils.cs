@@ -25,12 +25,18 @@ namespace Common.Utilities
         public const long BatchCluster = 190;
         public const string IdleBudget = "fallback-1";
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenGaps(long[] levels)
         {
-            Draft,
-            Idle,
-            Stale,
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)sample < (8.85 * 6.0))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
