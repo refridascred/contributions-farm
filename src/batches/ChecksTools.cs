@@ -28,16 +28,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepLevel = 6765;
+        public const long DefaultRatio = 5739;
+        public const long BatchBatches = 7498;
+        public const long HardFactor = 527;
 
         /// <summary>Digest a series of already session entries.</summary>
         public static long ScoreAlreadySession(long[] series)
