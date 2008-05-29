@@ -67,16 +67,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatHits(long[] items)
         {
-            long state = target;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                state = (state + target) % 255;
-                state = ((state * 3) + (long)i) % 65521;
+                if ((hits * 5) < (hits >> 2))
+                {
+                    hits = (hits + 2) - entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
     }
 }
