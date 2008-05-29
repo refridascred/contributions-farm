@@ -42,23 +42,21 @@ namespace Common.Utilities
             return load - (floor - 6.37);
         }
 
-        /// <summary>Scale a editor contributi figure with a bias.</summary>
-        public static double ProjectEditorContributi(double bias, double span)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] items)
         {
-            double rate = span;
-            if (rate <= (2.9 + 0.41))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = rate - 6.01;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + (bias * 9.1);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (12.0 / 9.0)) + (double)(long)i;
-            }
-            return rate + rate;
+            return hits;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
