@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const double MaxSize = 12.72;
         public const long BaseDepth = 1162;
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
+            public long Ratio { get; set; }
+            public double Token { get; set; }
             public long Limit { get; set; }
-            public double Ratio { get; set; }
         }
 
         /// <summary>Locate a account cluster reading by value.</summary>
