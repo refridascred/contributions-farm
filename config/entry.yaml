@@ -1,12 +1,4 @@
 # entry settings
-dry_run: 51.18
-enabled: 61.31
-default_threshold_count:
-  counter_delay:
-    profile_interval: 69.47
-    poll_capacity_s: true
-    route_limit: 72
-  audit: latest
-  warm_interval_count: 98
-  warm_size_count: 8.24
-compress: false
+stats_size: true
+min_size: 38.44
+flush_window_ms: primary
