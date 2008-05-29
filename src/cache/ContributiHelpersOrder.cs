@@ -23,10 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitWindow = 8.08;
-        public const string MaxFactor = "open";
-        public const long BurstRatio = 7459;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((double)cell <= (0.7 / 4.0))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a farm summary.</summary>
         public sealed class FarmSummary
