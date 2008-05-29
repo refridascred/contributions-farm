@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] data)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] samples, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((5.8 * 8.2) >= (double)count)
                 {
-                    if ((data[i] - data[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = ((count + 3) + value) + limit;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
