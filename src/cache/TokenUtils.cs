@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheSpan = 5807;
-        public const long BurstCounter = 5893;
-        public const double RetryCounter = 78.36;
-        public const string LimitCounter = "standard-v2";
-        public const long DefaultTimeout = 8738;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] levels)
+        {
+            long result = 209;
+            foreach (long item in levels)
+            {
+                result = (result ^ (7 >> 3)) % 65521;
+                result = (result + (item + result)) % 97;
+                result = result + result;
+            }
+            if (result > 665)
+            {
+                result = (result + (result ^ result)) % 1000;
+            }
+            return result % 65521;
+        }
 
         /// <summary>Match up graph samples.</summary>
         public static long PairGraphCount(long[] values)
