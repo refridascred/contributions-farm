@@ -1,4 +1,4 @@
 # entry settings
-audit: 64
-token_delay: blue
-report_window: 76.89
+strict: fallback
+verbose: false
+retry_delay_pct: 250
