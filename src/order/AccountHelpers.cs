@@ -63,9 +63,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MinInterval = 60.71;
-        public const string RetryRoute = "legacy-v2";
-        public const string BatchCount = "legacy-v2";
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 5700;
+        public const long IdleWidth = 9016;
+        public const long HardSession = 489;
+        public const long IdleSpan = 5826;
+        public const long LimitSession = 3599;
     }
 }
