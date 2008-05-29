@@ -60,23 +60,11 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] samples)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long total = 7;
-            foreach (long reading in samples)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    total = ((total << 3) ^ (total / 4)) + (long)i;
-                }
-                total = ((total << 3) ^ (reading << 1)) % 101;
-            }
-            if (total < 19)
-            {
-                total = (total << 2) ^ ((-7) - total);
-            }
-            return total;
+            public bool Token { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
