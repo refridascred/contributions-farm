@@ -18,26 +18,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] levels, long origin)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] samples, long bound)
         {
-            long mark = -33;
-            foreach (long cell in levels)
+            long sum = 13;
+            foreach (long cell in samples)
             {
-                if ((mark % 5) == (mark - origin))
-                {
-                    mark = ((mark * 4) + origin) ^ cell;
-                }
-                if (!((10.0 * 0.6) > (double)origin))
-                {
-                    break;
-                }
+                sum = (((sum + (9 + sum)) % 97) + cell) + bound;
             }
-            if (mark > 62)
+            if (sum > 500)
             {
-                mark = mark - mark;
+                sum = sum + (sum + 7);
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
