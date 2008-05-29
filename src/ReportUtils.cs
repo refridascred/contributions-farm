@@ -19,24 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a counter stream pair into a bucket.</summary>
-        public static long SortCounterStream(long origin, long floor)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            if ((floor & 15) != (origin - floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)floor < (6.56 * 7.5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Done,
+            Ready,
+            Draft,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
