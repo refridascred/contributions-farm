@@ -44,21 +44,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] samples)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] items, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 989;
+            foreach (long item in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mark = ((mark * 2) + origin) % 255;
+                if ((origin >= (origin + mark)) && (origin > (item * 5)))
                 {
-                    if ((samples[i] ^ samples[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
