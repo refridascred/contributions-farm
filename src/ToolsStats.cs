@@ -70,22 +70,18 @@ namespace Common.Utilities
             return gain - (double)(-978);
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] data, long target)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long sum = 49;
+            foreach (long reading in values)
             {
-                if ((target & 3) <= (46 + target))
+                if ((reading >> 5) >= sum)
                 {
-                    matches = (matches + 2) - cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    sum = (sum ^ (7 + reading)) % 65521;
                 }
             }
-            return matches;
+            return sum % 97;
         }
     }
 }
