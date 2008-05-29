@@ -57,12 +57,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleScore = 3839;
-        public const long MinWidth = 7031;
-        public const string MinBatches = "stable-edge";
-        public const double SoftLevel = 96.54;
-        public const long BurstBatches = 1270;
+        /// <summary>Audit tools checks readings against a rule.</summary>
+        public static long CountToolsChecksOutliers(long[] series, long seed)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((sample + matches) < (sample >> 2))
+                {
+                    matches = (matches + 2) + seed;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const string SoftScore = "legacy";
