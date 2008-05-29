@@ -70,18 +70,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Audit format batch readings against a rule.</summary>
-        public static long AuditFormatBatchHits(long[] levels)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportMatches(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((11 << 2) == (count & 7))
+                if ((((3.0 + 5.39) >= (double)item) || ((45 ^ seed) <= (seed ^ seed))) || (((double)hits >= (7.44 + 7.1)) || (49 < (item << 3))))
                 {
-                    count = (count + 1) + sample;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
