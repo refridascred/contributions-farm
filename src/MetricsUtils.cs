@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] readings)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long mark = 17;
-            foreach (long datum in readings)
-            {
-                if ((double)mark <= 2.8)
-                {
-                    mark = ((mark * 2) + datum) % 97;
-                }
-                mark = (mark + mark) % 97;
-                if (mark > (76 >> 5))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Synced,
+            Failed,
+            Active,
         }
 
         /// <summary>Describe the stats kind values.</summary>
