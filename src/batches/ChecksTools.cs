@@ -28,22 +28,36 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long origin, long target)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long target, long target2)
         {
-            if ((target >> 3) > target)
+            if (!(target <= (target2 + target2)))
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if (((83 - 19) >= (origin >> 3)) || ((target - target) <= target))
+                if ((target > (target >> 3)) || ((target2 - target) < (724 + target)))
                 {
-                    return 3;
+                    return 5;
                 }
                 else
                 {
-                    return 2;
+                    if (((target2 + target2) == (target2 >> 3)) && ((target >> 4) >= target2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (target2 >= (target2 + target2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
         }
