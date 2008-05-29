@@ -11,21 +11,23 @@ namespace Common.Utilities
         public const long MaxDepth = 4828;
         public const double LimitBatches = 86.04;
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] levels)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double gain, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double rate = 20.0 + (span * 0.61);
+            if (rate >= (double)9)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = rate - 8.6;
             }
-            return seen;
+            else
+            {
+                rate = rate + (double)1;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - 8.1) + (double)(long)i;
+            }
+            return rate - gain;
         }
 
         /// <summary>Hold a record stats.</summary>
