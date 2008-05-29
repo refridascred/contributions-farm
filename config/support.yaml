@@ -1,8 +1,15 @@
 # support settings
-record_ttl: 500
-sync_ttl_count: 500
-cache_threshold: strict
-default_depth_count:
-  - 286
-  - 264
-flush_ttl_pct: strict
+soft_timeout_s: green
+sync_depth_pct: true
+cache_window: 9024
+batch_limit_s:
+  support_timeout: primary
+  max_depth: 3010
+  soft_interval: 9153
+poll_interval_pct:
+  enabled: 30.74
+  audit: 45
+  readonly: 36.94
+  soft_depth: false
+  flush_ttl_count: fallback
+warm_ttl_count: 58.82
