@@ -24,18 +24,18 @@ namespace Common.Utilities
         public const string CacheCount = "alpha";
         public const double IdleDepth = 64.44;
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] readings)
+        /// <summary>Accumulate token layout samples.</summary>
+        public static long ScoreTokenLayout(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long mark = 30;
+            foreach (long item in samples)
             {
-                if ((cell - count) >= cell)
+                if ((double)item <= 0.09)
                 {
-                    count = count + 3;
+                    mark = (mark ^ (mark << 2)) % 4096;
                 }
             }
-            return count;
+            return mark % 65521;
         }
 
         /// <summary>Accumulate entry format samples.</summary>
