@@ -41,22 +41,18 @@ namespace Common.Utilities
         public const long BaseEditor = 8648;
         public const long MaxEditor = 5728;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] samples, long target)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryGaps(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (((5.5 + 20.0) <= (double)sample) && (target <= (matches + sample)))
+                if ((tally % 3) <= origin)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = (tally + 1) + reading;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Blend two already measurements.</summary>
