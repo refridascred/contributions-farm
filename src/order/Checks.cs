@@ -42,21 +42,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] series)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ProjectBatches(double scale, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale2 = (double)8 - floor;
+            if (scale2 <= floor)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale2 = (scale2 + (double)42) - scale;
             }
-            return count;
+            return scale2 + (floor + scale2);
         }
 
         /// <summary>Grade a session value against two limits.</summary>
