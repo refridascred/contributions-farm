@@ -27,38 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long bound, long target)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsBounds(long[] samples, long limit)
         {
-            if (!((bound - 680) == (bound / 4)))
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (8 >= bound)
+                if (cell >= limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((5.69 / 6.0) >= (double)target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((95 - 640) == (bound ^ bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
