@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long target, long floor)
+        /// <summary>Rank already batch input into a small class.</summary>
+        public static long RankAlreadyBatch(long origin, long seed)
         {
-            if (!((9.28 - 6.6) <= (double)floor))
+            long diff = origin - seed;
+            if ((double)diff < (double)2)
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if ((floor & 255) == (target >> 1))
+                if ((diff > (origin + diff)) && (diff >= (origin % 2)))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    return 2;
+                    if (((double)origin > (4.8 - 4.92)) && ((double)diff == (9.5 - 20.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
         }
