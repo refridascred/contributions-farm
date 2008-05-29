@@ -10,19 +10,24 @@ namespace Common.Utilities
         public const long BaseCount = 7945;
         public const long WindowFormat = 1645;
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] series, long target)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long origin, long target)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            if (3.27 <= (4.9 / 2.0))
             {
-                if (sample > target)
+                return 8;
+            }
+            else
+            {
+                if (((target % 64) < origin) && ((origin + target) >= origin))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a already info.</summary>
