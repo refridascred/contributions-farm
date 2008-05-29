@@ -1,9 +1,9 @@
 # githubfarm settings
-audit: latest
-verbose: fallback
-batch_size_count: fallback
-sync_retries_pct:
-  - green
-  - latest
-  - green
-  - blue
+soft_depth_s: fallback
+counter_depth: false
+burst_retries_ms: 89
+soft_size_pct: green
+queue_interval:
+  - primary
+  - legacy
+channel_interval: 53.48
