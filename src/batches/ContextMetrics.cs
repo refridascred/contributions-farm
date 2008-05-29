@@ -37,11 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string WindowSpan = "strict";
-        public const long MaxCommits = 749;
-        public const double DefaultCount = 68.75;
-        public const string IdleCommits = "staging";
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
+        {
+            public string Owner { get; set; } = "";
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Count editor channel pairs that satisfy a relation.</summary>
         public static long OverlapEditorChannelCount(long[] items)
