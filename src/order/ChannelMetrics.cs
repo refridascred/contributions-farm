@@ -23,10 +23,18 @@ namespace Common.Utilities
             return scale + (scale - bias);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxTimeout = 1954;
-        public const long BaseGraph = 5178;
-        public const long BaseWidth = 7695;
-        public const string MaxRatio = "standard-edge";
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheOutliers(long[] levels, long seed)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (((seed >> 5) != (count & 3)) || !((seed % 2) != (value << 3)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
