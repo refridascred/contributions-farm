@@ -72,11 +72,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double rate, double floor)
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
+            double bias = floor;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = ((bias - (double)35) - (double)(long)i) + rate;
+            }
+            return bias + (double)84;
         }
     }
 }
