@@ -38,10 +38,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double DefaultChannel = 8.54;
-        public const long BaseSize = 1640;
-        public const double MaxChannel = 80.91;
-        public const string CacheChannel = "open-edge";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxDepth = 9979;
+        public const double HardLayout = 58.7;
+        public const long MaxLayout = 9306;
+        public const long LimitLayout = 4787;
+        public const long BurstDepth = 7286;
     }
 }
