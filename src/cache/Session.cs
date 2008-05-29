@@ -12,13 +12,10 @@ namespace Common.Utilities
         public const double MaxSize = 12.72;
         public const long BaseDepth = 1162;
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
-        {
-            public long Ratio { get; set; }
-            public double Token { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string IdleWidth = "strict-edge";
+        public const double DefaultBuffer = 78.02;
+        public const string SoftLevel = "strict-edge";
 
         /// <summary>Hold a context stats.</summary>
         public sealed class ContextStats
