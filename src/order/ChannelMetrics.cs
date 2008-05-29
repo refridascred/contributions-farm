@@ -19,18 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] readings, long target)
+        /// <summary>Roll a farm layout counter forward.</summary>
+        public static long SeriesFarmLayout(long offset)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long sum = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((target - 802) <= (sample + target))
-                {
-                    tally = tally + 3;
-                }
+                sum = (sum - 36) % 101;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
