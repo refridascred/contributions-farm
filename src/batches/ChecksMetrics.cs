@@ -19,15 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a contributi stream counter forward.</summary>
-        public static long StepContributiStream(long floor)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsMatches(long[] series, long limit)
         {
-            long sum = floor;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                if ((double)tally >= (double)value)
+                {
+                    tally = (tally + 1) + limit;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
