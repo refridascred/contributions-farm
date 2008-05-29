@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long floor, long step)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            if ((5 + step) > 2)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor + step) == (floor << 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((step % 8) >= (step / 4)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)floor != (19.0 * 4.4)) && (step <= (step % 60)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public string Token { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a commits stats.</summary>
