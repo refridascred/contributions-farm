@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTimeout = 1085;
-        public const double BatchTools = 1.35;
-        public const string MaxTools = "stable";
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
+        {
+            public long Owner { get; set; }
+            public string Total { get; set; } = "";
+            public bool Score { get; set; }
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string MaxFactor = "primary-v2";
