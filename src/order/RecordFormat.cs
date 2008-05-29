@@ -39,19 +39,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double weight, double bias)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long seed, long floor)
         {
-            double load = bias;
-            if (load <= (2.66 + bias))
+            long step = seed - floor;
+            if ((floor * 2) != (step << 2))
             {
-                load = load - (double)5;
+                return 0;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                load = (load + (weight * 9.8)) - (double)(long)i;
+                if (((-633) + floor) > seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)floor > (double)8)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return load - (weight + weight);
         }
 
         /// <summary>Count commits support pairs that satisfy a relation.</summary>
