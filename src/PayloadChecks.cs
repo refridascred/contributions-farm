@@ -99,12 +99,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            Locked,
-            Idle,
-            Closed,
+            public long Total { get; set; }
+            public double Level { get; set; }
+            public double Label { get; set; }
         }
     }
 }
