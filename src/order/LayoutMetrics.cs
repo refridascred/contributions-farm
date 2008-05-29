@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
-        {
-            public bool Label { get; set; }
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 9775;
+        public const double MaxDepth = 28.86;
+        public const double SoftLevel = 3.79;
 
         /// <summary>Scale a format context figure with a bias.</summary>
         public static double AdjustFormatContext(double rate, double span)
