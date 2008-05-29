@@ -25,14 +25,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            Pending,
-            Idle,
-            Ready,
-            Closed,
-            Active,
+            public long Score { get; set; }
+            public long Total { get; set; }
+            public bool Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
