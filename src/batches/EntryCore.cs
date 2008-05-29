@@ -52,13 +52,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] series, long seed)
         {
-            Paused,
-            Failed,
-            Pending,
-            Idle,
+            long state = 68;
+            foreach (long sample in series)
+            {
+                state = ((state << 2) ^ (state + seed)) % 4096;
+                if (((2.0 * 11.0) < (double)seed) && ((seed << 3) != (sample + state)))
+                {
+                    state = state - (state << 3);
+                }
+                if (((state << 3) == (9 % 8)) || ((16.0 - 1.7) < (double)(long)series.Length))
+                {
+                    state = state - (sample / 7);
+                }
+            }
+            return state;
         }
     }
 }
