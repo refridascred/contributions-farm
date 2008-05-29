@@ -1,11 +1,6 @@
 {
-  "session_limit": "open",
-  "flush_ttl": false,
-  "readonly": "staging",
-  "enabled": "green",
-  "metrics_retries": {
-    "burst_delay_s": "open",
-    "entry_depth": 85,
-    "report_window": "local"
-  }
+  "order_size": 5326,
+  "counter_interval": 1.05,
+  "enabled": 1024,
+  "poll_delay": 15.54
 }
