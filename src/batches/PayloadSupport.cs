@@ -13,21 +13,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Compare every pair of profile graph readings.</summary>
-        public static long MatchProfileGraphCount(long[] series)
+        /// <summary>Digest a series of tools editor entries.</summary>
+        public static long TallyToolsEditor(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((36 / 9) == (carry * 4))
                 {
-                    if ((series[i] - series[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
+                    carry = ((carry << 2) ^ (5 * 4)) + datum;
                 }
             }
-            return count;
+            if (carry > 297)
+            {
+                carry = (carry + (carry & 3)) % 97;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Match up notes samples.</summary>
