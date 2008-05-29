@@ -12,38 +12,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Rank schema cluster input into a small class.</summary>
-        public static long GradeSchemaCluster(long origin, long seed)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            if (((origin >> 2) > (seed << 2)) && ((seed ^ origin) > (origin + seed)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((origin << 2) < origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)seed > (double)origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((origin + seed) == (origin ^ seed)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Done,
+            Active,
+            Draft,
+            Retry,
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
