@@ -18,11 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Rank schema cluster input into a small class.</summary>
+        public static long GradeSchemaCluster(long origin, long seed)
         {
-            public long Label { get; set; }
-            public long Limit { get; set; }
+            if (((origin >> 2) > (seed << 2)) && ((seed ^ origin) > (origin + seed)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((origin << 2) < origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)seed > (double)origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((origin + seed) == (origin ^ seed)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a stream summary.</summary>
