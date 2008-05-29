@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double ratio, double floor)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            double weight = floor + (1.58 + ratio);
-            if (weight > (double)48)
-            {
-                weight = weight - 2.79;
-            }
-            else
-            {
-                weight = weight - (weight + weight);
-            }
-            return weight + (ratio * 9.01);
+            public string Rank { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Adjust a window reading.</summary>
