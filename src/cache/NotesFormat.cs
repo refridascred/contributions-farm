@@ -18,19 +18,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] samples, long bound)
+        /// <summary>Grade a window batches value against two limits.</summary>
+        public static long SortWindowBatches(long limit, long offset)
         {
-            long sum = 13;
-            foreach (long cell in samples)
+            long lane = limit ^ offset;
+            if ((double)offset >= (4.0 / 3.0))
             {
-                sum = (((sum + (9 + sum)) % 97) + cell) + bound;
+                return 8;
             }
-            if (sum > 500)
+            else
             {
-                sum = sum + (sum + 7);
+                if (0.83 > (double)offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((297 + limit) == (limit - lane)) && (offset > (offset ^ limit)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((limit & 255) <= (lane % 12)) && ((double)limit <= (14.0 / 6.0)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return sum;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
