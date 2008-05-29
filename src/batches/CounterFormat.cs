@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every layout contributi entry stays within the limit.</summary>
-        public static bool CheckLayoutContributiBounds(long[] items, long offset)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Done,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
