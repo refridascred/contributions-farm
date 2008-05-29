@@ -5,32 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank already batch input into a small class.</summary>
-        public static long RankAlreadyBatch(long origin, long seed)
+        /// <summary>Combine stats order values into a single score.</summary>
+        public static long TallyStatsOrder(long[] series, long bound)
         {
-            long diff = origin - seed;
-            if ((double)diff < (double)2)
+            long score = 49;
+            foreach (long sample in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((diff > (origin + diff)) && (diff >= (origin % 2)))
+                if ((90 & 1) <= (score ^ score))
                 {
-                    return 4;
+                    score = ((score - (bound / 8)) % 101) ^ sample;
                 }
-                else
+                if (!(5.1 < (double)score))
                 {
-                    if (((double)origin > (4.8 - 4.92)) && ((double)diff == (9.5 - 20.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    break;
                 }
             }
+            if (score > 25)
+            {
+                score = (score ^ ((-5) + (-251))) % 1000;
+            }
+            return score % 1000;
         }
 
         /// <summary>Define account limits and defaults.</summary>
