@@ -11,26 +11,12 @@ namespace Common.Utilities
         public const long MaxAlready = 1558;
         public const long BurstWidth = 5843;
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long step, long step2)
-        {
-            long diff = step ^ step2;
-            if (!(step > diff))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((diff / 6) == (diff << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double HardEditor = 19.31;
+        public const string LimitEditor = "alpha-1";
+        public const double MaxScore = 8.69;
+        public const long BatchEditor = 2126;
+        public const long IdleLevel = 7941;
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long SeriesCommits(long floor)
