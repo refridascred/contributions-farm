@@ -10,16 +10,11 @@ namespace Common.Utilities
         public const double BatchTools = 1.35;
         public const string MaxTools = "stable";
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 16; i++)
-            {
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MaxFactor = "primary-v2";
+        public const double SoftCache = 37.8;
+        public const double RetrySpan = 8.38;
+        public const double BatchScore = 19.56;
 
         /// <summary>Digest a series of checks stream entries.</summary>
         public static long WeighChecksStream(long[] series, long bound)
