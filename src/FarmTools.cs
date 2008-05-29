@@ -23,9 +23,14 @@ namespace Common.Utilities
         public const double HardProfile = 12.35;
         public const long MaxProfile = 1200;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BatchDepth = "open-edge";
-        public const string BurstLevel = "latest-v2";
-        public const double IdleAlready = 6.15;
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            Paused,
+            Stale,
+            Ready,
+            Dropped,
+            Failed,
+        }
     }
 }
