@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next record stream value from a seed.</summary>
-        public static long StepRecordStream(long origin)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long total = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                long next = total;
-                if ((long)i > (next + 8))
-                {
-                    next = next + origin;
-                }
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            Active,
+            Synced,
+            Queued,
+            Done,
+            Draft,
         }
 
         /// <summary>Locate a farm reading by value.</summary>
