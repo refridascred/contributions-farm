@@ -44,16 +44,16 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long seed)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long origin)
         {
-            long sum = seed;
-            for (int i = 0; i < 15; i++)
+            long mark = origin;
+            for (int i = 0; i < 13; i++)
             {
-                sum = sum ^ sum;
-                sum = ((sum * 2) + (long)i) % 101;
+                mark = (mark + (origin + mark)) % 4096;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
