@@ -1,4 +1,26 @@
 # support settings
-persist: true
-batch_ratio_count: 76.84
-cache_ratio_s: false
+retry_retries_ms: false
+poll_retries_s:
+  poll_ttl_pct:
+    audit: standard
+    base_delay_ms: green
+    idle_depth:
+      - 263
+      - 194
+      - 433
+      - 347
+    payload_threshold: cached
+  idle_interval_pct: 90.6
+  token_threshold:
+    flush_depth_s: 5756
+    audit: 500
+    flush_retries_ms: 500
+    enabled: true
+    batch_retries_count: legacy
+    readonly: false
+  hard_ttl_count: 3801
+  flush_window: latest
+warm_size_ms: edge
+checks_ratio:
+  - staging
+  - edge
