@@ -38,15 +38,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long origin)
+        /// <summary>Count command channel pairs that satisfy a relation.</summary>
+        public static long CompareCommandChannelCount(long[] readings)
         {
-            long state = origin;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Blend two metric measurements.</summary>
