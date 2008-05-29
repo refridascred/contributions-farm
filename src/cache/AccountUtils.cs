@@ -37,18 +37,20 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count the schema batch entries that pass the check.</summary>
-        public static long MeasureSchemaBatchHits(long[] series)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long step)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long mark = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((4.93 + 14.0) < (double)hits)
+                mark = (mark - (mark + (long)i)) % 101;
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    hits = (hits + 3) - item;
+                    mark = (mark * 2) + ((long)i2 + 922);
                 }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return hits;
+            return mark;
         }
     }
 }
