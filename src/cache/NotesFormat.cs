@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long offset)
         {
-            public bool Total { get; set; }
-            public double Mode { get; set; }
+            long state = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                state = (state * 5) + (offset >> 5);
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
