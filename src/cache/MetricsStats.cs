@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            Paused,
-            Queued,
-            Ready,
-            Retry,
+            public string Offset { get; set; } = "";
+            public double Region { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
