@@ -1,7 +1,5 @@
 {
-  "default_retries_ms": "local",
-  "readonly": true,
-  "audit": 36.73,
-  "base_interval": 1024,
-  "default_depth": 5472
+  "persist": 3904,
+  "hard_delay": true,
+  "metrics_capacity": 6.69
 }
