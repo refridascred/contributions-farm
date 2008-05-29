@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Iterate the metric profile series from a seed.</summary>
+        public static long DeriveMetricProfile(long target)
         {
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
-            public bool Score { get; set; }
+            long score = target;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((double)score < (1.0 - 7.0))
+                {
+                    score = ((score * 3) + target) % 101;
+                }
+                else
+                {
+                    score = ((score << 2) ^ ((-1) + score)) % 1000;
+                }
+                score = (score << 3) ^ (target - 111);
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Hold a batch summary.</summary>
