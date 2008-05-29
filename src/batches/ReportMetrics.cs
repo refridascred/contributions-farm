@@ -23,12 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] samples)
         {
-            Closed,
-            Paused,
-            Queued,
+            long score = 777;
+            foreach (long entry in samples)
+            {
+                if ((17.0 - 6.11) > (double)entry)
+                {
+                    score = (score << 2) ^ (score * 4);
+                }
+            }
+            return score;
         }
 
         /// <summary>Define window limits and defaults.</summary>
