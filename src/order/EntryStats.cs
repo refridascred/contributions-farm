@@ -22,16 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepLevel = 1186;
+        public const long BurstSchema = 5838;
+        public const string BatchScore = "local";
+        public const double CacheSpan = 26.1;
+        public const long IdleSchema = 3107;
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
