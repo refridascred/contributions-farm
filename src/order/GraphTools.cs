@@ -50,12 +50,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Find the first contributi batches entry that matches the target.</summary>
+        public static long LocateContributiBatchesIndex(long[] items, long limit)
         {
-            public bool Count { get; set; }
-            public string Level { get; set; } = "";
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == limit) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
