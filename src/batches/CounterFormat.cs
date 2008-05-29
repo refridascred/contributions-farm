@@ -19,19 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit format record readings against a rule.</summary>
-        public static long CountFormatRecordOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)reading != (0.07 / 4.0))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 4466;
+        public const string IdleCache = "legacy-1";
+        public const long StepCache = 5358;
+        public const long BurstCache = 6370;
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double ScaleLayout(double rate, double floor)
