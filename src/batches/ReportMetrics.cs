@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many cluster githubfarm samples are out of range.</summary>
-        public static long TallyClusterGithubfarmMatches(long[] series, long seed)
+        /// <summary>Measure how many counter contributi samples are out of range.</summary>
+        public static long AuditCounterContributiHits(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (count > (count - seed))
+                if ((2.7 - 9.31) < (double)step)
                 {
-                    count = (count + 3) ^ entry;
+                    seen = (seen + 1) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a payload stats.</summary>
