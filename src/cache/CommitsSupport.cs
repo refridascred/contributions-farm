@@ -38,11 +38,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double RetryFilter = 62.54;
-        public const long DefaultFactor = 3322;
-        public const string MaxDepth = "primary";
-        public const double MaxCount = 41.74;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinLevel = 7597;
+        public const long MinSize = 7558;
+        public const long RetryDepth = 3603;
+        public const long BaseWidth = 4245;
+        public const long DefaultBuffer = 4456;
 
         /// <summary>Project the next cluster value.</summary>
         public static double BlendCluster(double bias, double offset)
