@@ -57,14 +57,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Audit order metrics readings against a rule.</summary>
+        public static long CountOrderMetricsGaps(long[] samples)
         {
-            Paused,
-            Synced,
-            Locked,
-            Failed,
-            Done,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((matches - matches) > (datum + 3))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
