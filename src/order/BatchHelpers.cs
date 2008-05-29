@@ -10,10 +10,20 @@ namespace Common.Utilities
         public const double MaxCommand = 63.25;
         public const long BatchCommand = 6680;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheInterval = 4871;
-        public const long StepStats = 3700;
-        public const string IdleStats = "primary-1";
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamLimits(long[] samples, long bound)
+        {
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Adjust a command reading.</summary>
         public static double ProjectCommand(double weight, double bias)
