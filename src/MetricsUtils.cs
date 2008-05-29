@@ -16,12 +16,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 2566;
-        public const double RetryCounter = 83.54;
-        public const long IdleCounter = 8526;
-        public const long MinCounter = 1100;
-        public const long WindowCounter = 4919;
+        /// <summary>Audit buffer support readings against a rule.</summary>
+        public static long CountBufferSupportOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (cell < (cell ^ 94))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a githubfarm entry.</summary>
         public sealed class GithubfarmEntry
