@@ -1,6 +1,8 @@
 {
-  "session_capacity": 1024,
-  "max_size": true,
-  "min_limit_count": [437, 463, 354],
-  "burst_capacity_ms": [187, 311, 99]
+  "format_limit": "fallback",
+  "min_window_s": "legacy",
+  "dry_run": 12.56,
+  "retry_timeout": 1024,
+  "cache_ttl": 72,
+  "strict": "legacy"
 }
