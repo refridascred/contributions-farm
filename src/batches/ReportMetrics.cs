@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] series)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] data, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 3;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((17.0 + 9.0) <= (double)carry)
                 {
-                    if ((series[i] + series[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((((carry << 3) ^ (-752)) % 65521) + sample) + target;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
