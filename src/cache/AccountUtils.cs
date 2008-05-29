@@ -20,11 +20,22 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmHits(long[] readings)
         {
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((490 - matches) > reading)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the schema state values.</summary>
