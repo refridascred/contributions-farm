@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Audit cache layout readings against a rule.</summary>
+        public static long AuditCacheLayoutHits(long[] samples, long floor)
         {
-            public long Owner { get; set; }
-            public bool Token { get; set; }
-            public double Weight { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (floor < (floor - hits))
+                {
+                    hits = (hits + 2) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the format phase values.</summary>
