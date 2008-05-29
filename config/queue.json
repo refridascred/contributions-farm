@@ -1,8 +1,5 @@
 {
-  "default_timeout_count": 8.26,
-  "compress": "latest",
-  "retry_timeout": true,
-  "flush_delay": 23,
-  "burst_size": ["fallback", "open", "staging", "standard"],
-  "dry_run": ["fallback", "stable", "fallback"]
+  "poll_size": [391, 102, 345, 328],
+  "strict": 6674,
+  "burst_ttl_pct": "eu-west"
 }
