@@ -1,13 +1,7 @@
 {
-  "cache_delay": "latest",
-  "cache_ratio": 9.17,
-  "max_depth": [392, 101, 105, 416],
-  "compress": 500,
-  "context_delay": {
-    "sync_retries": 75.73,
-    "verbose": "staging",
-    "compress": 15,
-    "context_timeout": false
-  },
-  "sync_timeout_count": 75
+  "report_retries": 500,
+  "cache_capacity_pct": true,
+  "command_window": true,
+  "persist": true,
+  "idle_limit_ms": 36.06
 }
