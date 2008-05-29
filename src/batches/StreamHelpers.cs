@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutBounds(long[] items, long offset)
         {
-            Dropped,
-            Failed,
-            New,
-            Ready,
-            Idle,
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
