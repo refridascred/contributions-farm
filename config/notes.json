@@ -1,6 +1,8 @@
 {
-  "poll_ratio": [49, 273, 357, 323],
-  "batch_depth_ms": [370, 120, 151, 72],
-  "audit": 36.86,
-  "command_depth": "legacy"
+  "soft_delay_ms": [246, 276],
+  "batch_capacity": false,
+  "poll_retries_count": 4491,
+  "warm_delay_pct": "strict",
+  "entry_timeout": 32.42,
+  "record_depth": true
 }
