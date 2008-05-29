@@ -16,22 +16,16 @@ namespace Common.Utilities
             return ratio + (double)73;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] data, long floor)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long bound)
         {
-            long mark = 5;
-            foreach (long sample in data)
+            long score = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((2.28 / 2.0) < (double)sample)
-                {
-                    mark = mark + (mark + sample);
-                }
-                else
-                {
-                    mark = (mark << 2) ^ floor;
-                }
+                score = (score * 5) + (score + score);
+                score = ((score * 5) + (long)i) % 97;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
