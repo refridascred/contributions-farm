@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next account counter value from a seed.</summary>
-        public static long DeriveAccountCounter(long target)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long sum = target;
-            for (int i = 0; i < 5; i++)
-            {
-                long hits = (long)i;
-                if (((target - hits) <= (target * 5)) || ((sum + hits) >= (82 % 7)))
-                {
-                    sum = (sum - ((long)i + target)) % 255;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            Failed,
+            Stale,
+            Synced,
+            Paused,
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
