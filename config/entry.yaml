@@ -1,10 +1,10 @@
 # entry settings
-verbose:
-  - blue
-  - local
-  - open
-  - primary
-audit: false
-retry_ttl_s: 60
-max_interval_count: 30
-readonly: green
+cluster_limit: true
+soft_capacity_ms: standard
+compress:
+  - 274
+  - 384
+  - 252
+  - 473
+min_size_s: blue
+poll_ratio: strict
