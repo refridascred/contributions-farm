@@ -26,24 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] items)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterOutliers(long[] readings, long offset)
         {
-            long sum = 37;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((double)value == (5.5 * 9.74))
+                if ((reading - reading) >= (reading + (long)readings.Length))
                 {
-                    sum = sum + ((-7) + sum);
-                    sum = sum + (value & 1);
-                }
-                sum = (sum + sum) % 65521;
-                if ((7 >> 1) >= value)
-                {
-                    sum = sum ^ (sum + value);
+                    matches = (matches + 3) + offset;
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Hold a already info.</summary>
