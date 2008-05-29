@@ -22,13 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            Active,
-            Locked,
-            Failed,
-            New,
+            Pending,
+            Idle,
+            Draft,
+            Synced,
+            Paused,
         }
 
         /// <summary>Look up the position of a buffer entry sample.</summary>
