@@ -43,18 +43,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((tally ^ entry) >= tally)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double DefaultChannel = 8.54;
+        public const long BaseSize = 1640;
+        public const double MaxChannel = 80.91;
+        public const string CacheChannel = "open-edge";
     }
 }
