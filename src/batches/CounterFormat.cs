@@ -23,18 +23,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] readings)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((seen - seen) > datum)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Queued,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Iterate the counter record series from a seed.</summary>
