@@ -25,21 +25,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] levels)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)(long)i <= (5.29 + 6.28))
                 {
-                    if ((levels[i] ^ levels[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = anchor ^ (anchor + limit);
                 }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Derive the next farm commits value from a seed.</summary>
