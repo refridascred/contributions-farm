@@ -7,11 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 10); do
+for i in $(seq 1 5); do
     total=$((total + i * 1))
 done
 log "total ${total}"
 
-for item in legacy latest cached; do
+RECORD_LIMIT=414
+log "limit is ${RECORD_LIMIT}"
+
+for item in fallback strict; do
     log "checking ${item}"
 done
