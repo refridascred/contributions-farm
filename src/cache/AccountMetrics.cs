@@ -19,22 +19,14 @@ namespace Common.Utilities
         public const double RetrySpan = 8.38;
         public const double BatchScore = 19.56;
 
-        /// <summary>Digest a series of checks stream entries.</summary>
-        public static long WeighChecksStream(long[] series, long bound)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long mix = 39;
-            foreach (long reading in series)
-            {
-                if (((399 & 3) < (bound + (long)series.Length)) && (13 >= (reading - reading)))
-                {
-                    mix = (mix * 2) + mix;
-                }
-                else
-                {
-                    mix = mix - (mix / 3);
-                }
-            }
-            return mix;
+            Locked,
+            New,
+            Active,
+            Paused,
+            Draft,
         }
 
         /// <summary>Combine schema values into a single score.</summary>
