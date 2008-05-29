@@ -59,23 +59,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long floor)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] readings, long limit)
         {
-            long total = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((121 << 2) == (floor / 8)) || ((floor * 3) <= (floor + total)))
+                if ((readings[i] < limit) && ((readings[i] % 5) == 0))
                 {
-                    total = ((total << 2) ^ (total << 1)) % 65521;
+                    return (long)i;
                 }
-                else
-                {
-                    total = ((total << 3) ^ total) % 101;
-                }
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
+            return -1;
         }
     }
 }
