@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a support githubfarm reading.</summary>
-        public static double SmoothSupportGithubfarm(double gain, double floor)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            double bias = (double)(721 - 81);
-            return ((bias + 12.0) + gain) + floor;
+            public long Region { get; set; }
+            public long Token { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the layout kind values.</summary>
