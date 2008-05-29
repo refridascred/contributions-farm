@@ -49,13 +49,17 @@ namespace Common.Utilities
         public const double StepBuffer = 8.25;
         public const long MinBuffer = 7031;
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] values, long origin)
         {
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public bool Limit { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < origin) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
