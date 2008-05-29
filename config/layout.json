@@ -1,5 +1,7 @@
 {
-  "batch_retries_count": 8,
-  "cache_delay": 63.14,
-  "default_ratio_ms": 3.29
+  "base_depth_count": ["blue", "legacy"],
+  "hard_ratio_s": 6.84,
+  "burst_window_s": 81,
+  "hard_size_ms": ["latest", "strict", "staging"],
+  "context_size": 35.39
 }
