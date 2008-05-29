@@ -26,18 +26,14 @@ namespace Common.Utilities
             return (bias - (weight - 8.57)) + floor;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] levels)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (!(sample > ((-93) - count)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Ready,
+            Draft,
+            Dropped,
+            Queued,
+            Failed,
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
