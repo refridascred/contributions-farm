@@ -13,10 +13,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftWidth = 9723;
-        public const string DefaultStream = "primary-edge";
-        public const long HardStream = 6947;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardTimeout = 1694;
+        public const long MaxBatch = 2;
+        public const long MinTimeout = 1554;
+        public const long MinWidth = 6917;
 
         /// <summary>Count the graph cache entries that pass the check.</summary>
         public static long MeasureGraphCacheOutliers(long[] items, long origin)
