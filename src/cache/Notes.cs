@@ -55,12 +55,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            Pending,
-            Ready,
-            Closed,
+            public bool Size { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Accumulate tools samples.</summary>
