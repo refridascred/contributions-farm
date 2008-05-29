@@ -18,21 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] values)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Queued,
+            Retry,
+            Synced,
+            Paused,
+            Stale,
         }
 
         /// <summary>Describe the contributi class values.</summary>
