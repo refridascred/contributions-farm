@@ -5,35 +5,34 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long target, long bound)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long origin, long origin2)
         {
-            long edge = target ^ bound;
-            if (edge >= (422 ^ bound))
+            if (!((origin - origin) < origin))
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if (174 > target)
+                if (((double)origin == (double)4) || ((origin >> 3) < origin))
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    if (((target ^ target) == (edge + edge)) && ((edge >> 1) > bound))
+                    if (((origin - origin) <= 344) || ((origin2 & 31) < (origin2 & 3)))
                     {
                         return 7;
                     }
                     else
                     {
-                        if (!((-10) >= target))
+                        if (((origin + origin2) >= (4 - origin)) || (origin2 < (origin % 2)))
                         {
-                            return 1;
+                            return 2;
                         }
                         else
                         {
-                            return 5;
+                            return 6;
                         }
                     }
                 }
