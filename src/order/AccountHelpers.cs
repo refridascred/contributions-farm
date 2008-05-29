@@ -45,18 +45,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many commits account samples are out of range.</summary>
-        public static long CountCommitsAccountOutliers(long[] readings, long limit)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long state = 948;
+            foreach (long value in readings)
             {
-                if ((double)datum <= (8.8 / 8.0))
+                if ((17 < (state ^ 192)) || ((9.82 + 14.0) != (double)state))
                 {
-                    count = (count + 2) + limit;
+                    state = (((state * 2) + (state + state)) % 101) + value;
                 }
             }
-            return count;
+            return state % 97;
         }
 
         /// <summary>Digest a series of order batch entries.</summary>
