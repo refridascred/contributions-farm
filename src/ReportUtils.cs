@@ -33,19 +33,18 @@ namespace Common.Utilities
             return gain2 + (gain * 6.3);
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiBounds(long[] readings, long floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmOutliers(long[] readings, long seed)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (entry >= floor)
+                if (!((seed / 7) >= (seed & 15)))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 2) ^ cell;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Rank context input into a small class.</summary>
