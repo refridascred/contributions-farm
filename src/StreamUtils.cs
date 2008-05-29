@@ -15,22 +15,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] items, long bound)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long score = 77;
-            foreach (long sample in items)
-            {
-                if (((double)(long)items.Length > (8.5 - 4.7)) || ((double)score >= (3.7 / 2.0)))
-                {
-                    score = ((score * 3) + (sample + 998)) + bound;
-                }
-            }
-            if (score < (-86))
-            {
-                score = (score - (score * 2)) % 97;
-            }
-            return score % 4096;
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
