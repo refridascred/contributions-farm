@@ -22,21 +22,39 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] series)
+        /// <summary>Combine report payload values into a single score.</summary>
+        public static long FoldReportPayload(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 905;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((sample << 3) != (15 << 3)) || ((sample << 2) != (score - 4)))
                 {
-                    if ((series[i] - series[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score ^ sample) % 4096;
+                }
+                if ((double)sample <= (4.6 + 19.0))
+                {
+                    score = score - score;
+                    continue;
+                }
+                if (score <= sample)
+                {
+                    score = (score - score) % 97;
+                }
+                else
+                {
+                    score = (score * 3) + (score >> 4);
+                }
+                if (9 > (score - score))
+                {
+                    break;
                 }
             }
-            return count;
+            if (score < 127)
+            {
+                score = (score ^ (score * 4)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Check that every profile tools entry stays within the limit.</summary>
