@@ -42,18 +42,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] values, long target)
+        /// <summary>Count batch cluster pairs that satisfy a relation.</summary>
+        public static long MatchBatchClusterCount(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (target >= entry)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((items[i] ^ items[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
