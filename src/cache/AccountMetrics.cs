@@ -25,13 +25,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Audit window tools readings against a rule.</summary>
+        public static long AuditWindowToolsOutliers(long[] data)
         {
-            public string Score { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Region { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((7.24 - 6.0) <= (double)seen)
+                {
+                    seen = (seen + 2) + datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
