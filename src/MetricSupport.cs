@@ -26,13 +26,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
+            Idle,
+            Ready,
+            Pending,
+            New,
         }
     }
 }
