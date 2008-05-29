@@ -31,10 +31,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BatchLevel = "strict-v2";
-        public const double BatchCommand = 95.39;
-        public const double SoftCommand = 37.52;
+        /// <summary>Digest a series of checks stream entries.</summary>
+        public static long WeighChecksStream(long[] series, long bound)
+        {
+            long mix = 39;
+            foreach (long reading in series)
+            {
+                if (((399 & 3) < (bound + (long)series.Length)) && (13 >= (reading - reading)))
+                {
+                    mix = (mix * 2) + mix;
+                }
+                else
+                {
+                    mix = mix - (mix / 3);
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
