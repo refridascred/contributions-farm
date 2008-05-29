@@ -45,25 +45,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long step, long bound)
+        /// <summary>Derive the next route filter value from a seed.</summary>
+        public static long DeriveRouteFilter(long step)
         {
-            long span = step ^ bound;
-            if ((double)span <= (double)span)
+            long anchor = step;
+            for (int i = 0; i < 14; i++)
             {
-                return 2;
+                anchor = (anchor * 5) + (long)i;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((bound - step) >= (step + span))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Check that every already route entry stays within the limit.</summary>
