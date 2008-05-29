@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
-        {
-            Synced,
-            Done,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MinDepth = 85.26;
+        public const string DefaultInterval = "legacy-edge";
+        public const long MaxAlready = 1558;
+        public const long BurstWidth = 5843;
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long GradeReport(long step, long step2)
