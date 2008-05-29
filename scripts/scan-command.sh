@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback eu-west stable open; do
+for item in standard strict; do
     log "checking ${item}"
 done
 
-mode="${1:-stable}"
+mode="${1:-local}"
 case "${mode}" in
-    cached)
+    latest)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+COMMAND_LIMIT=157
+log "limit is ${COMMAND_LIMIT}"
