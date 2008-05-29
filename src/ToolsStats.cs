@@ -26,11 +26,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Count the graph cache entries that pass the check.</summary>
+        public static long MeasureGraphCacheOutliers(long[] items, long origin)
         {
-            public long Rank { get; set; }
-            public double Token { get; set; }
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (((double)entry == (7.33 + 0.7)) || !(((long)items.Length * 3) > (origin - origin)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the stats level values.</summary>
