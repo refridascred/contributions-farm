@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string CacheSpan = "alpha-v2";
-        public const string SoftLevel = "strict-v2";
-        public const long StepRoute = 4257;
-        public const long RetryRoute = 3588;
-        public const long SoftFactor = 4128;
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
+        {
+            public double Token { get; set; }
+            public bool Region { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
