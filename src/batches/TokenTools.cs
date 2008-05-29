@@ -14,11 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double rate, double floor)
         {
-            public long Weight { get; set; }
-            public double Level { get; set; }
+            double bias = floor;
+            if (bias < bias)
+            {
+                bias = bias - bias;
+            }
+            else
+            {
+                bias = bias + (floor - rate);
+            }
+            return bias + (rate * 0.34);
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
