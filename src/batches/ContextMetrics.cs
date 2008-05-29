@@ -37,12 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double HardRecord = 45.94;
-        public const long MinSpan = 5627;
-        public const long CacheSize = 1189;
-        public const long MaxRecord = 1673;
-        public const long MinRecord = 5767;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string WindowSpan = "strict";
+        public const long MaxCommits = 749;
+        public const double DefaultCount = 68.75;
+        public const string IdleCommits = "staging";
 
         /// <summary>Count editor channel pairs that satisfy a relation.</summary>
         public static long OverlapEditorChannelCount(long[] items)
