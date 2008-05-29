@@ -21,35 +21,28 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long seed, long bound)
+        /// <summary>Classify a cluster stream pair into a bucket.</summary>
+        public static long GradeClusterStream(long seed, long offset)
         {
-            if ((double)seed >= (double)bound)
+            if (!((10.0 - 4.5) <= (double)seed))
             {
-                return 3;
+                return 0;
             }
             else
             {
-                if (!((1.0 * 9.8) == (double)bound))
+                if ((19.0 - 4.82) <= (double)offset)
                 {
-                    return 1;
+                    return 4;
                 }
                 else
                 {
-                    if (((bound * 2) <= (seed >> 2)) && ((bound << 2) <= bound))
+                    if ((offset - offset) == (seed << 2))
                     {
                         return 8;
                     }
                     else
                     {
-                        if (((seed << 2) <= (bound - bound)) || ((seed + seed) >= (seed / 3)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        return 1;
                     }
                 }
             }
