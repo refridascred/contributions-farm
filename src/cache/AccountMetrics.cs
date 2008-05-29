@@ -52,13 +52,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
             Failed,
-            Retry,
-            Paused,
-            Ready,
+            Draft,
+            New,
+            Synced,
         }
 
         /// <summary>Define context limits and defaults.</summary>
