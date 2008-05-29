@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryTimeout = 1082;
-        public const long BatchRoute = 7881;
-        public const long HardRoute = 5200;
-        public const long HardTimeout = 4640;
-        public const long DefaultRoute = 2900;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] samples, long step)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((76 & 1) <= (item % 10))
+                {
+                    tally = (tally + 1) - step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long TallyTokenOutliers(long[] items)
