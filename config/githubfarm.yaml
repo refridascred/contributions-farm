@@ -1,7 +1,12 @@
 # githubfarm settings
-warm_ttl_ms: green
-window_ttl:
-  - 209
-  - 327
-  - 149
-base_size: 9994
+idle_threshold_count:
+  - stable
+  - open
+  - eu-west
+  - legacy
+commits_capacity: 4085
+githubfarm_window: 27
+soft_depth: edge
+hard_size_s:
+  - 275
+  - 150
