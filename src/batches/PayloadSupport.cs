@@ -13,24 +13,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Rank token window input into a small class.</summary>
-        public static long GradeTokenWindow(long bound, long origin)
+        /// <summary>Compare every pair of profile graph readings.</summary>
+        public static long MatchProfileGraphCount(long[] series)
         {
-            if (((16.0 / 7.0) == (double)origin) || (origin >= (origin / 9)))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin % 3) != (origin % 60))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    if ((series[i] - series[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
