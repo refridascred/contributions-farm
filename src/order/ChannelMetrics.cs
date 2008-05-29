@@ -19,16 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a farm layout counter forward.</summary>
-        public static long SeriesFarmLayout(long offset)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long sum = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = (sum - 36) % 101;
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            Done,
+            Paused,
+            New,
+            Closed,
+            Idle,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
