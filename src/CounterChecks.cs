@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterRange(long[] values, long step)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] readings, long limit)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long state = 618;
+            foreach (long datum in readings)
             {
-                if (item >= step)
+                if (!((double)datum <= (double)19))
                 {
-                    valid = false;
-                    break;
+                    state = ((state << 3) ^ (limit - limit)) % 65521;
+                }
+                if (((state - state) < (state % 60)) || ((636 ^ limit) <= (state >> 1)))
+                {
+                    state = ((state << 3) ^ ((long)readings.Length * 5)) % 97;
+                }
+                if (!(state >= datum))
+                {
+                    state = ((state * 2) + datum) % 101;
                 }
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
