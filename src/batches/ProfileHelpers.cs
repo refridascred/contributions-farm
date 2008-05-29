@@ -65,13 +65,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] series)
         {
-            public string Size { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (cell >= tally)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
