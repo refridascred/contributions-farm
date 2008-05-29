@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const long MinFarm = 7335;
         public const string DefaultFarm = "open";
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string DefaultBudget = "standard-edge";
+        public const long BaseLevel = 9774;
+        public const double BaseBudget = 38.74;
+        public const string MinWidth = "open-1";
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long AuditCommandGaps(long[] data)
