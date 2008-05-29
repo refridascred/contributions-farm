@@ -80,18 +80,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterHits(long[] levels)
+        /// <summary>Count the command checks entries that pass the check.</summary>
+        public static long AuditCommandChecksMatches(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((5.0 >= (double)cell) && ((cell - matches) != (matches / 5)))
+                if ((seen - seen) != (limit >> 2))
                 {
-                    matches = matches + 3;
+                    seen = (seen + 2) - sample;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
