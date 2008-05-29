@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count cluster profile pairs that satisfy a relation.</summary>
-        public static long OverlapClusterProfileCount(long[] series)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = ((carry + (carry + 2)) % 97) ^ sample;
             }
-            return seen;
+            if (carry > 251)
+            {
+                carry = (carry ^ (carry + carry)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
