@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long step, long floor)
         {
-            public bool Owner { get; set; }
-            public double Level { get; set; }
-            public double Rank { get; set; }
-            public long Size { get; set; }
+            long gap = step ^ floor;
+            if ((step * 5) == (gap / 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step % 12) != (gap - gap))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Digest a series of command entries.</summary>
