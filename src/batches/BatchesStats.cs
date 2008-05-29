@@ -35,38 +35,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long bound, long bound2)
+        /// <summary>Roll a queue format counter forward.</summary>
+        public static long StepQueueFormat(long origin)
         {
-            if (bound >= (213 & 255))
+            long mix = origin;
+            for (int i = 0; i < 12; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound2 == (4.7 - 1.63))
+                if (((double)origin <= (double)mix) && (((-549) << 3) == (origin % 24)))
                 {
-                    return 0;
+                    mix = mix + ((-8) + mix);
                 }
                 else
                 {
-                    if ((bound2 - bound2) >= (bound2 + bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (bound2 > (bound >> 4))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    mix = mix ^ (mix + origin);
                 }
+                if (((origin << 3) >= ((long)i - (long)i)) && ((9.13 / 9.0) <= (double)mix))
+                {
+                    mix = ((mix << 2) ^ (origin * 4)) % 4096;
+                }
+                else
+                {
+                    mix = (mix ^ (47 % 60)) % 65521;
+                }
+                mix = mix ^ (mix - origin);
+                mix = ((mix * 3) + (long)i) % 4093;
             }
+            return mix;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
