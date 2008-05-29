@@ -20,19 +20,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double AdjustChannel(double rate, double offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] values)
         {
-            double scale = offset;
-            if (scale <= (rate * 9.87))
+            long anchor = 62;
+            foreach (long reading in values)
             {
-                scale = scale - (3.4 * 5.8);
+                if ((516 ^ anchor) >= (reading % 8))
+                {
+                    anchor = (anchor ^ (anchor + anchor)) % 4096;
+                }
+                else
+                {
+                    anchor = anchor - (anchor >> 5);
+                }
             }
-            else
+            if (anchor > 398)
             {
-                scale = scale - offset;
+                anchor = anchor + (anchor + 45);
             }
-            return scale - scale;
+            return anchor;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
