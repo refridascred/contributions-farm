@@ -27,19 +27,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryRange(long[] data, long offset)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long score = 5;
+            foreach (long entry in values)
             {
-                if (entry < offset)
+                if (((8 * 2) < (9 + offset)) && ((802 * 5) > (score - entry)))
                 {
-                    valid = false;
-                    break;
+                    score = ((score * 2) + (offset + entry)) % 255;
                 }
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
