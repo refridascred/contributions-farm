@@ -19,12 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two stream batches measurements.</summary>
-        public static double AdjustStreamBatches(double gain, double span)
-        {
-            double gain2 = (double)(-40) + gain;
-            return (gain2 - (gain + gain2)) + span;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 2242;
+        public const string WindowTimeout = "staging";
+        public const long MaxLevel = 7255;
+        public const long CacheInterval = 2300;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long AuditContributiHits(long[] readings)
