@@ -49,26 +49,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] samples, long target)
+        /// <summary>Derive the next farm commits value from a seed.</summary>
+        public static long StepFarmCommits(long floor)
         {
-            long state = 33;
-            foreach (long entry in samples)
+            long total = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((664 ^ state) != ((long)samples.Length % 16))
-                {
-                    state = (((state * 3) + entry) % 1000) - target;
-                }
-                if ((8.09 <= (double)state) || ((state >> 4) < (entry & 127)))
-                {
-                    break;
-                }
+                total = ((total << 3) ^ (long)i) % 1000;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            if (state < (-50))
-            {
-                state = (state - (state << 3)) % 4096;
-            }
-            return state;
+            return total;
         }
     }
 }
