@@ -17,19 +17,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] data)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] data)
         {
-            long score = 5;
-            foreach (long entry in data)
+            long carry = 24;
+            foreach (long datum in data)
             {
-                score = ((score + 1) % 97) ^ entry;
+                if ((carry * 2) <= carry)
+                {
+                    carry = carry ^ (datum + datum);
+                }
             }
-            if (score > 36)
-            {
-                score = score + (score % 2);
-            }
-            return score % 4096;
+            return carry;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
