@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferOutliers(long[] readings, long offset)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (value >= (count + offset))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseFactor = 7426;
+        public const long BatchCache = 4170;
+        public const string IdleCache = "standard-edge";
+        public const long BatchSize = 8965;
+        public const string HardTimeout = "fallback";
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long MeasureLayoutGaps(long[] series)
