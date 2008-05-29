@@ -23,15 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double rate, double floor)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long seed)
         {
-            double load = rate / 2.0;
-            if (load > (load - rate))
+            long mark = seed;
+            for (int i = 0; i < 20; i++)
             {
-                load = (load - 2.0) - floor;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return load + load;
+            return mark;
         }
 
         /// <summary>Describe the batch kind values.</summary>
