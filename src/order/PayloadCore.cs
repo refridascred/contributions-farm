@@ -32,17 +32,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a buffer entry sample.</summary>
-        public static long LocateBufferEntryIndex(long[] readings, long step)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= step) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Mode { get; set; } = "";
+            public double Region { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
