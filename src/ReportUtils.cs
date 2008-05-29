@@ -69,12 +69,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long step, long step2)
         {
-            Draft,
-            Queued,
-            Closed,
+            if ((double)step == (double)step2)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step2 % 12) < (step2 * 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
