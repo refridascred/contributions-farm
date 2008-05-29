@@ -17,17 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] series, long target)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Count { get; set; }
+            public bool Mode { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define context limits and defaults.</summary>
