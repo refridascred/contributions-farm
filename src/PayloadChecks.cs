@@ -17,18 +17,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportGaps(long[] samples, long step)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long bound)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long mark = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((3.35 / 5.0) == (double)count)
+                mark = mark ^ mark;
+                mark = (mark * 3) + ((long)i >> 1);
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    count = ((count + 2) ^ entry) - step;
+                    mark = ((mark << 2) ^ (bound ^ bound)) ^ (long)i2;
                 }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
