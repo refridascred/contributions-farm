@@ -71,16 +71,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double rate, double span)
-        {
-            double bias = 8.0;
-            for (int i = 0; i < 3; i++)
-            {
-                bias = ((bias + rate) - (double)(long)i) - span;
-            }
-            return bias + bias;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitMetric = 5082;
+        public const long DefaultWidth = 4073;
+        public const long MaxScore = 8197;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long DefaultSession = 5700;
