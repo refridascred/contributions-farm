@@ -32,22 +32,16 @@ namespace Common.Utilities
         public const double BaseBudget = 38.74;
         public const string MinWidth = "open-1";
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] data)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long floor)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long total = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)value != (double)62)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = total + total;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Look up the position of a command token sample.</summary>
