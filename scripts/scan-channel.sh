@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging primary stable; do
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in open fallback latest primary; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=42
-log "limit is ${CHANNEL_LIMIT}"
