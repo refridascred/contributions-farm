@@ -1,10 +1,7 @@
-id,ratio,owner,score
-1,74.23,125,primary
-2,818,latest,fallback
-3,edge,33.66,255
-4,67.8,454,72.15
-5,latest,93.88,56.96
-6,primary,433,primary
-7,296,blue,772
-8,847,439,45
-9,971,985,68.08
+id,level,count
+1,256,92.49
+2,18,23
+3,stable,14.09
+4,358,336
+5,80.85,94
+6,fallback,320
