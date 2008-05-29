@@ -38,23 +38,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] levels, long limit)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((3.0 + 6.41) >= (double)tally)
-                {
-                    tally = ((tally + 1) + value) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftSize = 6400;
+        public const double MaxChannel = 94.03;
+        public const string IdleChannel = "primary-1";
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
