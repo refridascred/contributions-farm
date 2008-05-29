@@ -57,21 +57,21 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] values)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                result = result - ((long)i * 2);
+                if (!(((long)i >> 2) == (seed << 1)))
                 {
-                    if ((values[i] + values[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result + (seed + seed)) % 65521;
+                    break;
                 }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Define context limits and defaults.</summary>
