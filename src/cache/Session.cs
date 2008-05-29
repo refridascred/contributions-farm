@@ -28,10 +28,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BatchNotes = 84.92;
-        public const long LimitFactor = 8278;
-        public const string HardTimeout = "staging-1";
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterHits(long[] series, long seed)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((seed << 1) >= (hits + 7))
+                {
+                    hits = (hits + 3) + cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long CountChecksHits(long[] samples, long seed)
