@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long origin)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphMatches(long[] series)
         {
-            long mark = origin;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                mark = ((mark << 2) ^ (origin % 24)) % 101;
-                for (int i2 = 0; i2 < 8; i2++)
+                if (seen > 76)
                 {
-                    mark = (mark + mark) ^ (long)i2;
+                    seen = (seen + 2) + datum;
                 }
-                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
