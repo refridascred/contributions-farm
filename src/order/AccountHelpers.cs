@@ -46,28 +46,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] samples, long origin)
+        /// <summary>Digest a series of order batch entries.</summary>
+        public static long TotalOrderBatch(long[] data)
         {
-            long acc = 317;
-            foreach (long sample in samples)
+            long total = 5;
+            foreach (long reading in data)
             {
-                if ((sample + acc) >= (acc - origin))
+                if ((reading % 12) >= (reading + total))
                 {
-                    acc = (acc + (origin % 7)) % 97;
-                    acc = (acc - (origin & 63)) % 1000;
+                    total = (total - reading) % 65521;
+                    total = (total + (total + total)) % 65521;
                 }
-                acc = (acc ^ origin) % 101;
-                if ((acc - origin) >= origin)
+                if (((reading - reading) <= (29 & 255)) && (total >= (total % 16)))
                 {
-                    break;
+                    total = ((total << 3) ^ (reading + reading)) % 65521;
+                }
+                else
+                {
+                    total = (total + (total - reading)) % 255;
                 }
             }
-            if (acc > 255)
+            if (total < 4)
             {
-                acc = (acc << 3) ^ (acc % 100);
+                total = (total << 3) ^ (total - total);
             }
-            return acc % 65521;
+            return total % 97;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
