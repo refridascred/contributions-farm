@@ -61,10 +61,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double LimitRatio = 92.44;
-        public const double BatchNotes = 23.3;
-        public const long MaxRatio = 5743;
-        public const long CacheDepth = 5065;
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((13.0 / 8.0) <= (double)seen)
+                {
+                    seen = (seen + 2) ^ item;
+                }
+            }
+            return seen;
+        }
     }
 }
