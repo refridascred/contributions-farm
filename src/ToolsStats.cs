@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of payload stream entries.</summary>
-        public static long TotalPayloadStream(long[] items)
+        /// <summary>Measure how many counter format samples are out of range.</summary>
+        public static long MeasureCounterFormatMatches(long[] readings)
         {
-            long result = 448;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (0.41 < (double)result)
+                if ((value ^ tally) < (tally % 8))
                 {
-                    result = result + (cell * 4);
-                }
-                if (((double)cell < (7.6 + 2.75)) && ((-43) < ((long)items.Length << 3)))
-                {
-                    result = (result * 2) + (result / 6);
-                }
-                else
-                {
-                    result = (result + (cell * 2)) % 1000;
+                    tally = tally + 1;
                 }
             }
-            if (result > 25)
-            {
-                result = result ^ result;
-            }
-            return result % 97;
+            return tally;
         }
 
         /// <summary>Match up support samples.</summary>
