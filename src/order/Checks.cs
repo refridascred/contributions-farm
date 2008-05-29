@@ -22,21 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] samples)
+        /// <summary>Count the report filter entries that pass the check.</summary>
+        public static long AuditReportFilterMatches(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((sample / 2) == (sample + hits))
                 {
-                    if ((samples[i] - samples[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Look up the position of a order stats sample.</summary>
