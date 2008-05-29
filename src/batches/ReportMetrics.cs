@@ -19,31 +19,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long offset, long bound)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            if ((bound << 2) <= (offset - offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound + offset) > (bound - offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((bound << 1) > bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Closed,
+            Paused,
+            Queued,
         }
 
         /// <summary>Describe the route kind values.</summary>
