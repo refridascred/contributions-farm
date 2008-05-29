@@ -1,33 +1,10 @@
 # entry settings
-context_limit:
-  - fallback
-  - latest
-  - strict
+verbose:
+  - blue
+  - local
   - open
-session_retries:
-  - 297
-  - 451
-  - 428
-base_depth_s: 24
-stream_retries: 35
-format_delay: edge
-retry_depth:
-  hard_threshold_s:
-    - strict
-    - cached
-    - fallback
-    - legacy
-  batch_window: staging
-  tools_threshold: false
-  persist:
-    command_depth: cached
-    poll_delay_s: 67.76
-    persist: 55
-    enabled: primary
-    base_ratio_s:
-      - 161
-      - 86
-      - 277
-      - 43
-    base_capacity_count: 1.0
-  batches_ratio: 57.04
+  - primary
+audit: false
+retry_ttl_s: 60
+max_interval_count: 30
+readonly: green
