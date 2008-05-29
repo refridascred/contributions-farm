@@ -51,12 +51,22 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatGaps(long[] series)
         {
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
-            public string Label { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((double)matches > (4.8 * 9.0))
+                {
+                    matches = (matches + 3) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
