@@ -17,13 +17,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            Ready,
-            Idle,
-            Synced,
-            Pending,
+            public bool Region { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the checks status values.</summary>
