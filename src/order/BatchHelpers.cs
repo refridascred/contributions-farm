@@ -40,18 +40,32 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Audit profile schema readings against a rule.</summary>
-        public static long MeasureProfileSchemaGaps(long[] items, long target)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long offset, long bound)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long bound2 = offset ^ bound;
+            if ((bound <= offset) || ((offset * 4) < bound2))
             {
-                if ((5.3 * 4.33) >= (double)cell)
+                return 0;
+            }
+            else
+            {
+                if ((bound / 7) >= (offset >> 5))
                 {
-                    tally = (tally + 3) + target;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset > 4.28)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
