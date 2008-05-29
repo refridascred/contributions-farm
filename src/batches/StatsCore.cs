@@ -70,21 +70,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] items)
+        /// <summary>Audit channel already readings against a rule.</summary>
+        public static long TallyChannelAlreadyOutliers(long[] data, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((double)bound != (10.0 / 3.0)) || ((double)bound <= (9.7 * 7.0)))
                 {
-                    if ((items[i] ^ items[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 3) ^ sample;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
