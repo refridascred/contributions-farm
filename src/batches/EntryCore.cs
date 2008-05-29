@@ -79,13 +79,19 @@ namespace Common.Utilities
             return mean + (offset * 10.0);
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] levels, long step)
         {
-            Paused,
-            Done,
-            Closed,
-            Draft,
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
