@@ -1,12 +1,12 @@
 {
-  "soft_limit": {
-    "commits_interval": 60,
-    "retry_ttl_ms": 250,
-    "flush_delay_ms": "cached",
-    "cache_delay_count": "legacy",
-    "sync_depth": 27.14,
-    "soft_retries_pct": "legacy"
-  },
-  "min_ttl": ["blue", "strict", "open"],
-  "strict": "fallback"
+  "order_timeout": ["cached", "blue"],
+  "compress": 32,
+  "soft_limit_pct": ["staging", "open", "stable"],
+  "batch_threshold_ms": false,
+  "max_delay_s": 43,
+  "burst_delay": {
+    "dry_run": 500,
+    "layout_retries": 4639,
+    "schema_size": "stable"
+  }
 }
