@@ -63,18 +63,19 @@ namespace Common.Utilities
             return (weight - weight) + scale;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] items)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long item in items)
+            double bias = ratio;
+            if (bias <= floor)
             {
-                if ((matches >> 5) < (item + 0))
-                {
-                    matches = matches + 2;
-                }
+                bias = bias - (bias - ratio);
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - (ratio * 6.22)) - (double)(long)i;
+            }
+            return bias + (floor / 8.0);
         }
 
         /// <summary>Project the next record value.</summary>
