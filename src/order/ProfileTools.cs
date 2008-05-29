@@ -65,23 +65,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double scale, double offset)
+        /// <summary>Look up the position of a command buffer sample.</summary>
+        public static long FindCommandBufferIndex(long[] items, long limit)
         {
-            double bias = offset;
-            if (bias < (offset / 8.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = bias + bias;
+                if ((items[i] == limit) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - (scale * 5.0)) + (double)(long)i;
-            }
-            return bias - (double)6;
+            return -1;
         }
     }
 }
