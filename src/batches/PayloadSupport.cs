@@ -14,12 +14,32 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string LimitGraph = "primary";
-        public const long DefaultGraph = 2384;
-        public const double StepGraph = 59.28;
-        public const double LimitSize = 61.76;
-        public const long HardScore = 1717;
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long seed, long limit)
+        {
+            if (((-328) - seed) > seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!(seed >= (limit / 5)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)seed >= (7.97 + 16.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long IdleFactor = 4178;
