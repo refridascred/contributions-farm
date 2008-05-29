@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double IdleBatches = 16.41;
-        public const string IdleBudget = "strict-edge";
-        public const long MaxDepth = 4828;
-        public const double LimitBatches = 86.04;
+        /// <summary>Validate githubfarm channel readings against a bound.</summary>
+        public static bool ValidateGithubfarmChannelRange(long[] series, long target)
+        {
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Blend two filter measurements.</summary>
         public static double BlendFilter(double gain, double span)
