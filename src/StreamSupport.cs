@@ -20,13 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double scale, double floor)
         {
-            public long Label { get; set; }
-            public string Count { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Total { get; set; }
+            double gain = floor;
+            if (gain < (gain - 0.98))
+            {
+                gain = (gain - (gain * 20.0)) - scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - floor) + (double)(long)i;
+            }
+            return gain + (double)55;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
