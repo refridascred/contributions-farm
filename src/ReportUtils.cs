@@ -30,13 +30,12 @@ namespace Common.Utilities
             return gain2 + (gain * 6.3);
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
-        {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string SoftMetrics = "open";
+        public const long BaseMetrics = 3353;
+        public const long SoftCount = 9078;
+        public const string BurstFactor = "fallback";
+        public const double IdleCount = 74.91;
 
         /// <summary>Rank context input into a small class.</summary>
         public static long SortContext(long seed, long seed2)
