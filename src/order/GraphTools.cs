@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first payload notes entry that matches the target.</summary>
-        public static long LookupPayloadNotesIndex(long[] readings, long offset)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Accumulate commits samples.</summary>
