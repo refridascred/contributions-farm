@@ -31,11 +31,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultBudget = 9147;
-        public const long BatchLevel = 3527;
-        public const string CacheWidth = "fallback";
-        public const long LimitProfile = 8999;
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] series, long limit)
+        {
+            long score = 4;
+            foreach (long item in series)
+            {
+                if ((29 - score) < (limit >> 3))
+                {
+                    score = (score * 2) + (item >> 3);
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long GradeStats(long bound, long step)
