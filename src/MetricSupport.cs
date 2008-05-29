@@ -33,21 +33,18 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long origin)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] series)
         {
-            long score = origin;
-            for (int i = 0; i < 11; i++)
+            long sum = 4;
+            foreach (long sample in series)
             {
-                if ((((long)i % 12) != (origin * 2)) || ((score + score) >= ((long)i >> 2)))
+                if ((75 + 8) == (sum % 97))
                 {
-                    score = (score - (score >> 1)) % 4096;
-                    score = (score << 3) ^ ((long)i * 4);
+                    sum = (sum * 5) + sample;
                 }
-                score = (score ^ score) % 101;
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return sum;
         }
     }
 }
