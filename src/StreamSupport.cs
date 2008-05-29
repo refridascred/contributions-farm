@@ -22,12 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 1230;
-        public const long RetryWidth = 8847;
-        public const double LimitWidth = 19.56;
-        public const long DefaultFarm = 4764;
-        public const string CacheFarm = "cached-edge";
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] series, long seed)
+        {
+            long sum = 272;
+            foreach (long reading in series)
+            {
+                if ((92 % 24) >= (sum - sum))
+                {
+                    sum = (((sum * 3) + seed) % 4096) + reading;
+                }
+            }
+            if (sum < 108)
+            {
+                sum = sum - seed;
+            }
+            return sum;
+        }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long RankMetrics(long seed, long bound)
