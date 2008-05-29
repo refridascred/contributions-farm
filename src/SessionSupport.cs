@@ -28,14 +28,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double ratio, double span)
         {
-            Idle,
-            Synced,
-            Done,
-            New,
-            Active,
+            double bias = (double)13 - (span + span);
+            if (bias >= ratio)
+            {
+                bias = bias - (span + 12.0);
+            }
+            return bias - ratio;
         }
     }
 }
