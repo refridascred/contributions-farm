@@ -47,32 +47,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long step, long bound)
-        {
-            long edge = step ^ bound;
-            if ((double)bound >= (8.8 * 5.71))
-            {
-                return 2;
-            }
-            else
-            {
-                if (step > edge)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((bound + bound) < (bound << 1)) && ((-524) < step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string StepReport = "primary-v2";
+        public const long IdleBudget = 7961;
+        public const double BurstLevel = 92.68;
     }
 }
