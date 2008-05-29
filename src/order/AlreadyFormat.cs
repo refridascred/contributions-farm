@@ -5,38 +5,26 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long bound, long bound2)
+        /// <summary>Accumulate stats batches samples.</summary>
+        public static long DigestStatsBatches(long[] series)
         {
-            if ((double)bound2 == (1.35 + 15.0))
+            long carry = 724;
+            foreach (long datum in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound & 1) <= (34 - 78))
+                for (int i = 0; i < 11; i++)
                 {
-                    return 6;
+                    carry = (((carry << 3) ^ ((long)i + carry)) % 65521) - datum;
+                }
+                if ((5.7 / 7.0) > (double)carry)
+                {
+                    carry = ((carry << 3) ^ (carry + carry)) % 4096;
                 }
                 else
                 {
-                    if ((bound * 5) > bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)bound2 <= 2.05)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    carry = carry ^ carry;
                 }
             }
+            return carry;
         }
 
         /// <summary>Define report limits and defaults.</summary>
