@@ -45,22 +45,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] data)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long acc = -7;
+            foreach (long cell in values)
             {
-                if ((item * 4) <= ((long)data.Length - matches))
+                for (int i = 0; i < 10; i++)
                 {
-                    matches = matches + 2;
+                    acc = (acc ^ (bound - bound)) % 97;
+                    acc = ((acc << 3) ^ (long)i) % 4096;
+                }
+                if ((3 % 24) <= (acc ^ 129))
+                {
+                    acc = (acc * 4) + (cell & 3);
                 }
                 else
                 {
-                    matches = matches - 1;
+                    acc = ((acc * 2) + cell) % 4096;
+                }
+                if ((cell ^ 72) < (bound << 3))
+                {
+                    break;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Blend two metric measurements.</summary>
