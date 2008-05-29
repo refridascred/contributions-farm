@@ -54,13 +54,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
-        {
-            public string Count { get; set; } = "";
-            public long Weight { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepScore = 8651;
+        public const double BurstSize = 74.76;
+        public const string StepRoute = "cached-1";
 
         /// <summary>Match up token entry samples.</summary>
         public static long PairTokenEntryCount(long[] data)
