@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaMatches(long[] data)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((cell - tally) <= (tally << 3))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Idle,
+            Draft,
+            Stale,
+            Synced,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
