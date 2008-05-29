@@ -72,11 +72,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            public double Weight { get; set; }
-            public double Level { get; set; }
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Locate a already stats reading by value.</summary>
