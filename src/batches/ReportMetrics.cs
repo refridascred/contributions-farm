@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine stats order values into a single score.</summary>
-        public static long TallyStatsOrder(long[] series, long bound)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long score = 49;
-            foreach (long sample in series)
-            {
-                if ((90 & 1) <= (score ^ score))
-                {
-                    score = ((score - (bound / 8)) % 101) ^ sample;
-                }
-                if (!(5.1 < (double)score))
-                {
-                    break;
-                }
-            }
-            if (score > 25)
-            {
-                score = (score ^ ((-5) + (-251))) % 1000;
-            }
-            return score % 1000;
+            Stale,
+            Closed,
+            Synced,
+            Paused,
+            New,
         }
 
         /// <summary>Define account limits and defaults.</summary>
