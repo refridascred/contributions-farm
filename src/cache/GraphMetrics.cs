@@ -20,24 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long seed)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] readings, long step)
         {
-            long mix = seed;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                mix = (mix << 2) ^ seed;
-                if ((mix >> 5) < ((long)i * 4))
+                if ((double)entry < (2.5 - 0.8))
                 {
-                    mix = (mix << 2) ^ (seed + seed);
+                    hits = (hits + 3) - step;
                 }
-                for (int i2 = 0; i2 < 6; i2++)
+                else
                 {
-                    mix = mix - ((long)i2 << 2);
+                    hits = hits - 1;
                 }
-                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
