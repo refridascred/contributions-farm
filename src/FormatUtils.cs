@@ -19,16 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] items, long target)
-        {
-            long sum = 875;
-            foreach (long reading in items)
-            {
-                sum = ((sum ^ (target / 7)) % 255) + reading;
-            }
-            return sum;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 9939;
+        public const long HardSize = 186;
+        public const double CacheSize = 35.55;
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
