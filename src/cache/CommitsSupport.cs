@@ -14,11 +14,28 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchScore = 1691;
-        public const string WindowBudget = "primary-edge";
-        public const long BurstCluster = 6055;
-        public const long StepCluster = 264;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] values)
+        {
+            long acc = 5;
+            foreach (long sample in values)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    acc = acc - (4 << 2);
+                    acc = (acc - (long)i) % 101;
+                }
+                if (((long)values.Length > acc) && ((long)values.Length > sample))
+                {
+                    acc = (acc * 5) + (acc ^ 739);
+                }
+                if (!((double)acc == (7.17 + 19.0)))
+                {
+                    acc = (acc << 2) ^ 35;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
