@@ -33,15 +33,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double rate, double bias)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            double mean = (bias * 12.0) / 4.0;
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (mean - bias)) + (double)(long)i;
-            }
-            return mean + (rate - 1.2);
+            public double Label { get; set; }
+            public double Size { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
