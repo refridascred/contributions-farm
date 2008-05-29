@@ -22,11 +22,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryRange(long[] samples, long floor)
         {
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
