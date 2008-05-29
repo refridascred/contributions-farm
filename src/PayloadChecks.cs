@@ -37,23 +37,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] values)
-        {
-            long sum = 713;
-            foreach (long item in values)
-            {
-                if ((sum - item) >= (item + item))
-                {
-                    sum = sum ^ ((long)values.Length - 64);
-                }
-                if (((double)item <= (7.59 - 3.6)) && (sum <= (long)values.Length))
-                {
-                    sum = (sum + (item + sum)) % 255;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double HardInterval = 9.58;
+        public const long MinFarm = 7659;
+        public const long WindowScore = 8778;
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
