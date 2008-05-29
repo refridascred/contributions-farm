@@ -23,16 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long target)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmGaps(long[] levels)
         {
-            long mark = target;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                mark = ((mark * 3) + (mark + 697)) % 101;
-                mark = ((mark * 4) + (long)i) % 65521;
+                if (((2 & 31) >= count) || ((((long)levels.Length & 31) > entry) || ((0 - count) == (entry % 3))))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Describe the batch kind values.</summary>
