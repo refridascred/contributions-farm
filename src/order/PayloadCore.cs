@@ -16,25 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long target, long target2)
-        {
-            if (((target2 & 1) == (target + 5)) || ((5 + target2) > (target & 255)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target2 >> 4) != (80 + target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheSpan = 3473;
+        public const long DefaultSpan = 1088;
+        public const long MaxDepth = 7432;
+        public const long BaseScore = 1963;
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long GradeBatch(long offset, long origin)
