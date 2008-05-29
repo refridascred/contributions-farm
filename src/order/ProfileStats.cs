@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] samples, long offset)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterOutliers(long[] readings, long floor)
         {
-            long sum = 187;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((342 & 1) <= (offset * 2))
+                if ((reading + floor) >= (48 % 60))
                 {
-                    sum = ((sum + (offset & 15)) % 101) - item;
+                    matches = matches + 1;
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Adjust a window reading.</summary>
