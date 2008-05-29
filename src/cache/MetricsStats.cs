@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] series, long step)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueHits(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (step > (step + cell))
+                if ((double)floor < (double)99)
                 {
-                    tally = tally + 3;
+                    count = (count + 2) ^ sample;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
