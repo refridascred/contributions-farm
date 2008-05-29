@@ -56,21 +56,39 @@ namespace Common.Utilities
         public const double MaxCount = 2.66;
         public const long LimitNotes = 8350;
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] items)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long step, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long offset2 = step ^ offset;
+            if ((double)offset > (6.0 / 9.0))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (!(offset < (offset + step)))
                 {
-                    if ((items[i] - items[j]) == 17)
+                    return 0;
+                }
+                else
+                {
+                    if (3.0 <= (double)offset2)
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step - 448) >= (offset2 ^ 48))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
