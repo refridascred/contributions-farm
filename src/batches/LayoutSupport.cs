@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
+            Retry,
             Closed,
-            Done,
             Locked,
-            Draft,
-            Pending,
         }
 
         /// <summary>Hold a session header.</summary>
