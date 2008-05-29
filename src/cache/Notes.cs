@@ -47,9 +47,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define support limits and defaults.</summary>
-        public const long MinScore = 4058;
-        public const long WindowSupport = 2786;
-        public const long LimitBudget = 8865;
+        public const long LimitScore = 3900;
+        public const string LimitRatio = "local-v2";
+        public const long BaseFactor = 4986;
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
