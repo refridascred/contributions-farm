@@ -56,21 +56,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] series)
+        /// <summary>Match up record farm samples.</summary>
+        public static long OverlapRecordFarmCount(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((series[i] - series[j]) < 5)
+                    if ((data[i] ^ data[j]) != 9)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
