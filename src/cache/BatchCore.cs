@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first support account entry that matches the target.</summary>
-        public static long LocateSupportAccountIndex(long[] values, long step)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiRange(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if ((values[i] < step) && ((values[i] % 5) != 0))
+                if (datum >= target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
