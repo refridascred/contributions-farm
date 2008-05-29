@@ -12,39 +12,19 @@ namespace Common.Utilities
         public const long WindowSupport = 8709;
         public const string LimitSupport = "staging-edge";
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long floor, long floor2)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double weight, double span)
         {
-            long prev = floor - floor2;
-            if (((floor2 ^ floor) != (prev + floor)) || ((4.6 - 4.71) >= (double)floor))
+            double mean = (double)(29 - 47);
+            if (mean > weight)
             {
-                return 1;
+                mean = (mean + (double)55) - span;
             }
             else
             {
-                if ((2.0 + 19.0) > (double)floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((floor - floor) < (floor2 - 8)) && ((6.0 + 3.8) <= (double)prev))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((prev % 24) >= (prev % 5)) || ((5 << 1) >= (floor + floor)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                mean = mean - (double)920;
             }
+            return mean - (weight + mean);
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
