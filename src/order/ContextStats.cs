@@ -47,18 +47,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportGaps(long[] values)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (!((1 - tally) == (75 / 4)))
-                {
-                    tally = (tally + 2) - item;
-                }
-            }
-            return tally;
+            Idle,
+            Draft,
+            Queued,
+            Done,
+            Closed,
         }
     }
 }
