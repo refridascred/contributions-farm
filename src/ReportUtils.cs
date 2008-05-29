@@ -38,11 +38,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long origin)
         {
-            public bool Offset { get; set; }
-            public bool Size { get; set; }
+            long state = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Blend two metric measurements.</summary>
