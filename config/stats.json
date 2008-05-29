@@ -1,12 +1,5 @@
 {
-  "audit": 58,
-  "readonly": "eu-west",
-  "batch_window_count": 96,
-  "retry_interval_pct": {
-    "notes_interval": 60,
-    "base_size_ms": 14,
-    "channel_ratio": 64.87,
-    "cache_limit_pct": false,
-    "report_limit": ["stable", "cached", "cached"]
-  }
+  "soft_limit_s": "staging",
+  "hard_window_pct": "primary",
+  "burst_interval_s": [44, 289]
 }
