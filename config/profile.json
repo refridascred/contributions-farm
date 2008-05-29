@@ -1,13 +1,5 @@
 {
-  "profile_limit": "stable",
-  "batch_ttl": {
-    "sync_retries_pct": "blue",
-    "batch_delay": 58,
-    "max_threshold_ms": [133, 402],
-    "format_interval": "local",
-    "order_window": "eu-west"
-  },
-  "burst_ttl": 73,
-  "persist": "local",
-  "flush_delay_pct": true
+  "flush_threshold": false,
+  "max_depth": 79.97,
+  "profile_delay": 4703
 }
