@@ -12,15 +12,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double gain, double bias)
+        /// <summary>Measure how many counter commits samples are out of range.</summary>
+        public static long CountCounterCommitsGaps(long[] items, long origin)
         {
-            double scale = (bias + bias) / 4.0;
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                scale = (scale + gain) - (double)(long)i;
+                if ((value % 97) >= origin)
+                {
+                    hits = hits + 3;
+                }
             }
-            return scale + (scale - bias);
+            return hits;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
