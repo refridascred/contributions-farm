@@ -34,18 +34,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmOutliers(long[] readings, long target)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long seed)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long sum = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (item <= target)
-                {
-                    tally = tally + 3;
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Accumulate already samples.</summary>
