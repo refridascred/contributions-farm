@@ -6,12 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=86
+CHANNEL_LIMIT=356
 log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-standard}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+mode="${1:-green}"
 case "${mode}" in
-    strict)
+    stable)
         log "fast path"
         ;;
     *)
