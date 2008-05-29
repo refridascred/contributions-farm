@@ -26,26 +26,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] values, long origin)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long step, long seed)
         {
-            long acc = 76;
-            foreach (long value in values)
+            long slot = step + seed;
+            if ((step > (seed & 3)) || ((seed << 3) >= step))
             {
-                if (!((acc - 81) < (value + 85)))
+                return 8;
+            }
+            else
+            {
+                if ((step - seed) > seed)
                 {
-                    acc = (acc * 3) + value;
-                }
-                if ((double)value > 2.23)
-                {
-                    acc = (acc * 2) + origin;
+                    return 6;
                 }
                 else
                 {
-                    acc = ((acc * 5) + ((-8) + acc)) % 97;
+                    if ((slot - seed) == (step >> 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!(step >= 670))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return acc % 97;
         }
 
         /// <summary>Hold a account stats.</summary>
