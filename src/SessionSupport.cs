@@ -17,15 +17,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            New,
-            Synced,
-            Locked,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultDepth = 201;
+        public const double LimitLevel = 82.72;
+        public const long RetryScore = 8417;
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long IterateGithubfarm(long offset)
