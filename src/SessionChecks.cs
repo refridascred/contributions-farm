@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a cluster window sample.</summary>
-        public static long FindClusterWindowIndex(long[] items, long floor)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyHits(long[] items, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((items[i] < floor) && ((items[i] % 5) != 0))
+                if ((cell - hits) <= (seed / 7))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up queue samples.</summary>
