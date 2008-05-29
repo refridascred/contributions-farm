@@ -34,17 +34,12 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Find the first batches batch entry that matches the target.</summary>
-        public static long LookupBatchesBatchIndex(long[] items, long origin)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public double Offset { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
