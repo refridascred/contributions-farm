@@ -14,11 +14,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double weight, double bias)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            double mean = weight;
-            return (mean + (double)1) + bias;
+            Locked,
+            Done,
+            Pending,
+            Failed,
         }
 
         /// <summary>Describe the metric class values.</summary>
