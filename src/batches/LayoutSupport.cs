@@ -15,18 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] values, long origin)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelLimits(long[] items, long offset)
         {
-            long state = 7;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if ((value - origin) >= (origin + state))
+                if (sample >= offset)
                 {
-                    state = state ^ (long)values.Length;
+                    ready = false;
+                    break;
                 }
             }
-            return state % 97;
+            return ready;
         }
 
         /// <summary>Look up the position of a layout support sample.</summary>
