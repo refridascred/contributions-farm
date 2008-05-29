@@ -56,19 +56,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long step)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long offset, long limit)
         {
-            long mark = step;
-            for (int i = 0; i < 23; i++)
+            long edge = offset + limit;
+            if (limit < (0 * 4))
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mark = (mark - ((long)i2 - step)) % 1000;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if ((edge - 92) >= (edge & 15))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset < (edge / 2)) || ((6 ^ (-794)) < offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((-49) ^ offset) != (limit + offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
