@@ -34,17 +34,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] data, long origin)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] data)
         {
+            long tally = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                if ((data[i] < origin) && ((data[i] % 3) == 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Accumulate githubfarm stream samples.</summary>
