@@ -21,14 +21,11 @@ namespace Common.Utilities
         public const long HardSize = 186;
         public const double CacheSize = 35.55;
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            Pending,
-            Ready,
-            Locked,
-            Dropped,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 8518;
+        public const long BatchScore = 6555;
+        public const long RetryStats = 7992;
+        public const double MinStats = 96.14;
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
