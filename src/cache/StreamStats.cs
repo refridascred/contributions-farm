@@ -62,12 +62,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] readings, long step)
         {
-            Locked,
-            Synced,
-            Paused,
+            long mix = 60;
+            foreach (long cell in readings)
+            {
+                mix = ((mix << 2) ^ (cell * 3)) % 97;
+                if (((6.0 / 9.0) > (double)step) || ((step >> 3) != (step + step)))
+                {
+                    mix = ((mix * 4) + (mix ^ mix)) % 1000;
+                }
+                if ((cell + step) > (5 * 2))
+                {
+                    break;
+                }
+            }
+            return mix % 1000;
         }
     }
 }
