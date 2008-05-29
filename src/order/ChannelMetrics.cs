@@ -33,11 +33,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BurstProfile = 19.01;
-        public const string SoftDepth = "latest-v2";
-        public const double CacheSize = 65.26;
-        public const string DefaultProfile = "staging-v2";
-        public const long StepSize = 2657;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 1728;
+        public const long DefaultDepth = 1157;
+        public const string DefaultTimeout = "open-1";
+        public const long LimitCount = 7407;
     }
 }
