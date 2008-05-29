@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long limit, long target)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            if (target >= (66 + limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit ^ limit) != (15 * 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (target <= (target - target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit * 5) == (target << 3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Queued,
+            Failed,
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
