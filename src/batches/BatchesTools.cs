@@ -24,12 +24,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
-        {
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double WindowSpan = 28.74;
+        public const long WindowFactor = 1945;
+        public const double BaseInterval = 10.98;
+        public const long DefaultContributi = 5283;
     }
 }
