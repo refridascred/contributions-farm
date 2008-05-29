@@ -25,38 +25,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a githubfarm layout pair into a bucket.</summary>
-        public static long SortGithubfarmLayout(long floor, long offset)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] data)
         {
-            if (floor <= (187 ^ floor))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (floor >= (offset - offset))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (floor > (offset + floor))
+                    if ((data[i] - data[j]) == 1)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((8.0 * 3.12) <= (double)offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
