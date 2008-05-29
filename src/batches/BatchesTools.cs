@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            Failed,
-            Locked,
-            Done,
+            public double Limit { get; set; }
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the stats state values.</summary>
