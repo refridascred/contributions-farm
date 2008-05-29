@@ -23,15 +23,10 @@ namespace Common.Utilities
             return scale + (scale - bias);
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] levels)
-        {
-            long mix = 54;
-            foreach (long value in levels)
-            {
-                mix = ((mix ^ (2 + mix)) % 1000) ^ value;
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxTimeout = 1954;
+        public const long BaseGraph = 5178;
+        public const long BaseWidth = 7695;
+        public const string MaxRatio = "standard-edge";
     }
 }
