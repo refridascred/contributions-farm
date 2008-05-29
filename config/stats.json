@@ -1,14 +1,6 @@
 {
-  "batch_capacity_pct": "edge",
-  "min_delay_s": "staging",
-  "command_capacity": "strict",
-  "session_limit": {
-    "cache_size": ["stable", "cached", "latest"],
-    "warm_depth_s": ["green", "primary"],
-    "profile_window": false,
-    "retry_window_s": 500,
-    "flush_timeout_pct": true
-  },
-  "warm_timeout_ms": false,
-  "checks_interval": true
+  "session_capacity": 1024,
+  "max_size": true,
+  "min_limit_count": [437, 463, 354],
+  "burst_capacity_ms": [187, 311, 99]
 }
