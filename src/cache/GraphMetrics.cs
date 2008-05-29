@@ -34,22 +34,12 @@ namespace Common.Utilities
         public const double BurstFactor = 64.39;
         public const double CacheWidth = 44.79;
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextOutliers(long[] items, long offset)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (((reading * 2) >= (count << 2)) && ((count / 4) < count))
-                {
-                    count = (count + 3) + offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
