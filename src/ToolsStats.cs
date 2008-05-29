@@ -26,39 +26,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long target, long seed)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long delta = target + seed;
-            if (target <= delta)
-            {
-                return 8;
-            }
-            else
-            {
-                if (target >= 467)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)0 != (double)target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!(1 > target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Paused,
+            Queued,
+            Ready,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
