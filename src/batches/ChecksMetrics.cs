@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheDepth = 8291;
-        public const double SoftBudget = 29.59;
-        public const long BaseBudget = 7418;
-        public const long RetryLevel = 4717;
-        public const double BatchContext = 16.53;
+        /// <summary>Count the metric stream entries that pass the check.</summary>
+        public static long TallyMetricStreamMatches(long[] levels, long seed)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((item - count) >= item)
+                {
+                    count = (count + 2) - seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a contributi stream counter forward.</summary>
         public static long StepContributiStream(long floor)
