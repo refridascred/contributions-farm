@@ -1,7 +1,7 @@
 {
-  "contributi_threshold": "blue",
-  "idle_size_ms": [53, 231],
-  "audit": false,
-  "cache_retries_ms": "blue",
-  "hard_depth": "stable"
+  "dry_run": false,
+  "batches_ratio": "latest",
+  "report_limit": [377, 144, 42],
+  "burst_retries_ms": "primary",
+  "burst_capacity_count": "cached"
 }
