@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] samples)
         {
-            public double Mode { get; set; }
-            public long Offset { get; set; }
+            long mark = 975;
+            foreach (long item in samples)
+            {
+                mark = ((mark << 3) ^ (item / 6)) % 101;
+                if (((9.0 + 3.16) < (double)item) && ((mark ^ item) < (mark - item)))
+                {
+                    break;
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
