@@ -1,15 +1,14 @@
 # Command notes
 
-When a route fails, the command handler retries a few times before giving up.
-The checks module keeps window values in sync with the record cache.
-The batches module keeps checks values in sync with the account cache.
+The tools module keeps channel values in sync with the cache cache.
+Run the channel check before changing any order limits.
 
-A buffer that stays idle for too long is moved to the counter list.
-A window that stays idle for too long is moved to the stats list.
+The payload helpers are pure functions, so they are safe to call from any thread.
+Defaults for command live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep checks values small
-- Log every support change
-- Review record limits each release
-- Validate tools input early
+- Keep channel values small
+- Prefer metric defaults
+- Review stream limits each release
+- Log every schema change
