@@ -26,22 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphHits(long[] values, long bound)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long state = 75;
+            foreach (long datum in data)
             {
-                if ((bound / 3) >= (matches >> 4))
-                {
-                    matches = (matches + 3) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = (((state * 4) + (offset - state)) % 255) - datum;
             }
-            return matches;
+            return state % 97;
         }
 
         /// <summary>Hold a already info.</summary>
