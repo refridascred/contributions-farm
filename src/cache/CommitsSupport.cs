@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Blend two checks window measurements.</summary>
-        public static double ScaleChecksWindow(double scale, double offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaMatches(long[] data)
         {
-            double rate = 4.0;
-            if (rate > rate)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                rate = rate + offset;
+                if ((cell - tally) <= (tally << 3))
+                {
+                    tally = tally + 1;
+                }
             }
-            return rate - scale;
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
