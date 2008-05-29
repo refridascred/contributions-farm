@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueGaps(long[] readings, long step)
         {
-            public string Total { get; set; } = "";
-            public double Token { get; set; }
-            public bool Level { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((((double)(long)readings.Length >= 13.0) && (((-93) - hits) > (984 / 8))) || (11 > (item << 3)))
+                {
+                    hits = (hits + 2) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the format kind values.</summary>
