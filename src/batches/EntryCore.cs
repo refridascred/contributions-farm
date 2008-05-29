@@ -21,31 +21,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a cluster stream pair into a bucket.</summary>
-        public static long GradeClusterStream(long seed, long offset)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutRange(long[] items, long seed)
         {
-            if (!((10.0 - 4.5) <= (double)seed))
+            bool ready = true;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((19.0 - 4.82) <= (double)offset)
+                if (value != seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset - offset) == (seed << 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
