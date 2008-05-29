@@ -1,15 +1,12 @@
 # Command notes
 
-Defaults for route live in the config folder and can be overridden per environment.
-The format report groups every cache by queue.
-
-The commits report groups every graph by profile.
-Use entry settings to tune how often filter data is refreshed.
-Each cluster is validated before it reaches the channel queue.
+Use support settings to tune how often layout data is refreshed.
+A queue that stays idle for too long is moved to the contributi list.
+The stats helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review notes limits each release
-- Validate record input early
-- Keep account values small
-- Log every layout change
+- Validate buffer input early
+- Document new batches fields
+- Keep payload values small
+- Prefer metric defaults
