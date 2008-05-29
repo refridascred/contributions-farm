@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Check that every already editor entry stays within the limit.</summary>
+        public static bool ValidateAlreadyEditorRange(long[] values, long bound)
         {
-            Locked,
-            Synced,
-            Queued,
-            Draft,
-            Ready,
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
