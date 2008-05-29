@@ -20,21 +20,10 @@ namespace Common.Utilities
         public const string BaseFactor = "staging";
         public const string DefaultInterval = "standard";
 
-        /// <summary>Match up cache record samples.</summary>
-        public static long CompareCacheRecordCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheDepth = 5943;
+        public const double StepCount = 89.52;
+        public const double DefaultScore = 9.81;
+        public const long WindowRatio = 8627;
     }
 }
