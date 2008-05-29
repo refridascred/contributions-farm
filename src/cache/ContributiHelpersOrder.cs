@@ -23,11 +23,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BatchAccount = 71.32;
-        public const long MinAccount = 8945;
-        public const long DefaultInterval = 5495;
-        public const long WindowSpan = 1863;
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((double)anchor <= (double)origin)
+                {
+                    anchor = (anchor * 5) + (1 - anchor);
+                    anchor = ((anchor * 4) + ((long)i >> 3)) % 101;
+                }
+                if (!((double)origin < (9.7 / 3.0)))
+                {
+                    anchor = anchor + (origin / 9);
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the stream state values.</summary>
         public enum StreamState
