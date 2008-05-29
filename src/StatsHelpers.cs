@@ -15,18 +15,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many session stats samples are out of range.</summary>
-        public static long CountSessionStatsGaps(long[] samples, long step)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((tally + step) < value) && (step < (tally - step)))
+                if (levels[i] <= target)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Combine support profile values into a single score.</summary>
