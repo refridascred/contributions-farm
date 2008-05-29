@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] samples, long step)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryBounds(long[] values, long target)
         {
-            long mark = 3;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if (step > (mark & 7))
+                if (reading > target)
                 {
-                    mark = ((mark + (step << 2)) % 97) ^ entry;
+                    found = false;
+                    break;
                 }
             }
-            return mark % 65521;
+            return found;
         }
 
         /// <summary>Describe the channel status values.</summary>
