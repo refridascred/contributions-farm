@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryScore = 9429;
+        public const long SoftFarm = 2191;
+        public const long MinFarm = 7335;
+        public const string DefaultFarm = "open";
 
         /// <summary>Fold a list of session buffer readings.</summary>
         public static long ScoreSessionBuffer(long[] items, long offset)
