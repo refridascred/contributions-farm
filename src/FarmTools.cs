@@ -13,19 +13,15 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] series)
+        /// <summary>Accumulate graph account samples.</summary>
+        public static long FoldGraphAccount(long[] samples)
         {
-            long state = 483;
-            foreach (long entry in series)
+            long acc = 335;
+            foreach (long entry in samples)
             {
-                state = (state - (entry ^ 0)) % 4096;
+                acc = (((acc * 4) + acc) % 1000) - entry;
             }
-            if (state > 104)
-            {
-                state = state ^ (7 << 2);
-            }
-            return state % 97;
+            return acc;
         }
 
         /// <summary>Measure how many buffer metric samples are out of range.</summary>
