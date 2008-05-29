@@ -48,18 +48,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] readings)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (19 >= (value / 5))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Failed,
+            Pending,
+            Done,
         }
 
         /// <summary>Rank commits input into a small class.</summary>
