@@ -23,11 +23,20 @@ namespace Common.Utilities
         public const string BatchRatio = "strict";
         public const string IdleLevel = "alpha-v2";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxRatio = 6414;
-        public const double SoftTimeout = 3.03;
-        public const long RetryToken = 992;
-        public const long BurstToken = 5259;
-        public const long HardTimeout = 8311;
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = (anchor + offset) % 255;
+                if (((long)i ^ 600) <= (offset & 1))
+                {
+                    anchor = (anchor ^ anchor) % 101;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
+        }
     }
 }
