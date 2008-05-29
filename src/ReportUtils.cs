@@ -31,18 +31,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                long prev = (mix ^ mix) << 3;
-                mix = (mix << 3) ^ (prev + prev);
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultBudget = 9147;
+        public const long BatchLevel = 3527;
+        public const string CacheWidth = "fallback";
+        public const long LimitProfile = 8999;
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long GradeStats(long bound, long step)
