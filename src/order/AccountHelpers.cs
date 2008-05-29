@@ -12,32 +12,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long offset, long step)
+        /// <summary>Count the cache queue entries that pass the check.</summary>
+        public static long CountCacheQueueOutliers(long[] samples, long bound)
         {
-            long span = offset + step;
-            if ((span ^ offset) > (offset + offset))
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((768 << 2) < (step * 5))
+                if (((18.0 - 14.0) == (double)bound) && (hits <= (cell - hits)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step + offset) <= (span & 63))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
