@@ -64,17 +64,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] levels, long target)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 7;
+            foreach (long reading in samples)
             {
-                if ((levels[i] <= target) && ((levels[i] % 2) == 0))
+                for (int i = 0; i < 6; i++)
                 {
-                    return (long)i;
+                    total = ((total << 3) ^ (total / 4)) + (long)i;
                 }
+                total = ((total << 3) ^ (reading << 1)) % 101;
             }
-            return -1;
+            if (total < 19)
+            {
+                total = (total << 2) ^ ((-7) - total);
+            }
+            return total;
         }
     }
 }
