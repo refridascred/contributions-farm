@@ -31,14 +31,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Active,
-            Failed,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BatchLevel = "strict-v2";
+        public const double BatchCommand = 95.39;
+        public const double SoftCommand = 37.52;
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
