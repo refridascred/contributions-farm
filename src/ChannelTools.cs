@@ -32,9 +32,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 3670;
-        public const long LimitInterval = 1860;
-        public const string WindowStream = "alpha";
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Queued,
+            Done,
+            Closed,
+            Ready,
+        }
     }
 }
