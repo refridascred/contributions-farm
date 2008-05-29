@@ -18,17 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] data, long offset)
+        /// <summary>Scale a tools metrics figure with a bias.</summary>
+        public static double BlendToolsMetrics(double ratio, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = (double)26 * 8.0;
+            if (mean <= (double)976)
             {
-                if (data[i] == offset)
-                {
-                    return (long)i;
-                }
+                mean = (mean - (double)241) - ratio;
             }
-            return -1;
+            return mean + (span + span);
         }
 
         /// <summary>Hold a stats options.</summary>
