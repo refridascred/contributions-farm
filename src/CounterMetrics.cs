@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] items)
+        /// <summary>Audit graph batches readings against a rule.</summary>
+        public static long TallyGraphBatchesMatches(long[] levels)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((seen / 2) == (datum * 4))
                 {
-                    if ((items[i] ^ items[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
             return seen;
