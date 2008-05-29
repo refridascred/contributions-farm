@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long BaseCount = 7945;
         public const long WindowFormat = 1645;
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double ratio, double span)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] series, long target)
         {
-            double gain = ratio;
-            if (gain <= (double)8)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                gain = gain + (double)68;
+                if (sample > target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - ratio) + (double)(long)i;
-            }
-            return gain + span;
+            return stale;
         }
 
         /// <summary>Blend two checks measurements.</summary>
