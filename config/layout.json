@@ -1,7 +1,7 @@
 {
-  "payload_retries": true,
-  "burst_interval_s": "primary",
-  "hard_ttl": 35,
-  "metric_size": 14.67,
-  "min_size_count": true
+  "session_retries": [57, 366],
+  "cache_timeout_s": false,
+  "hard_threshold_count": [420, 86, 221],
+  "batch_timeout": true,
+  "editor_threshold": true
 }
