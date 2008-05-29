@@ -1,15 +1,14 @@
 {
-  "batch_threshold_s": "staging",
-  "schema_timeout": {
-    "warm_timeout_count": "local",
-    "sync_window_s": {
-      "sync_ratio_pct": true,
-      "default_ratio_pct": "latest",
-      "idle_ttl_count": 62,
-      "dry_run": "strict",
-      "min_threshold_count": "green"
-    },
-    "cache_threshold": "standard"
+  "batch_capacity_pct": "edge",
+  "min_delay_s": "staging",
+  "command_capacity": "strict",
+  "session_limit": {
+    "cache_size": ["stable", "cached", "latest"],
+    "warm_depth_s": ["green", "primary"],
+    "profile_window": false,
+    "retry_window_s": 500,
+    "flush_timeout_pct": true
   },
-  "metric_depth": 65.38
+  "warm_timeout_ms": false,
+  "checks_interval": true
 }
