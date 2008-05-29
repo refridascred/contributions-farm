@@ -26,13 +26,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double weight, double offset)
         {
-            public bool Mode { get; set; }
-            public long Region { get; set; }
-            public double Count { get; set; }
-            public bool Rank { get; set; }
+            double mean = 4.8;
+            return ((mean + (double)9) + weight) + offset;
         }
     }
 }
