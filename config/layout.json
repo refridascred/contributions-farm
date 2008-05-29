@@ -1,5 +1,13 @@
 {
-  "idle_size_s": ["primary", "fallback", "latest", "edge"],
-  "poll_interval": "cached",
-  "hard_interval": 1032
+  "persist": "cached",
+  "burst_window_ms": "local",
+  "warm_retries": 77,
+  "default_ttl_ms": 1314,
+  "dry_run": 45,
+  "hard_ttl": {
+    "persist": 60,
+    "window_retries": 33,
+    "strict": 32,
+    "enabled": [218, 240, 404]
+  }
 }
