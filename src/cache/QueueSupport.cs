@@ -22,19 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterOutliers(long[] data, long offset)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((0.46 + 6.0) > (double)79)
-                {
-                    count = ((count + 1) + item) - offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitContributi = 31.49;
+        public const string CacheSpan = "strict-v2";
+        public const long SoftContributi = 4918;
+        public const double MinContributi = 89.41;
 
         /// <summary>Project the next layout value.</summary>
         public static double AdjustLayout(double gain, double span)
