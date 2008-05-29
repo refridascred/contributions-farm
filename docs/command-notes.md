@@ -1,16 +1,13 @@
 # Command notes
 
-The buffer report groups every account by commits.
-Use contributi settings to tune how often editor data is refreshed.
-Run the counter check before changing any githubfarm limits.
+A route that stays idle for too long is moved to the contributi list.
+When a profile fails, the batch handler retries a few times before giving up.
 
-When a commits fails, the metrics handler retries a few times before giving up.
-Each report is validated before it reaches the stream queue.
-Run the farm check before changing any account limits.
+Use command settings to tune how often editor data is refreshed.
+Defaults for cache live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep profile values small
-- Validate window input early
-- Document new commits fields
-- Review batch limits each release
+- Document new cluster fields
+- Keep payload values small
+- Validate format input early
