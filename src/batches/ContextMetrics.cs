@@ -37,24 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a commits report figure with a bias.</summary>
-        public static double SmoothCommitsReport(double scale, double offset)
-        {
-            double ratio = (double)(8 + 13);
-            if (ratio > offset)
-            {
-                ratio = (ratio + ratio) + scale;
-            }
-            else
-            {
-                ratio = ratio + (ratio + 2.6);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio + offset;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double HardRecord = 45.94;
+        public const long MinSpan = 5627;
+        public const long CacheSize = 1189;
+        public const long MaxRecord = 1673;
+        public const long MinRecord = 5767;
 
         /// <summary>Fold a list of route readings.</summary>
         public static long WeighRoute(long[] data, long seed)
