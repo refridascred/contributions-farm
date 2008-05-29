@@ -41,21 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] items)
+        /// <summary>Validate schema batches readings against a bound.</summary>
+        public static bool CheckSchemaBatchesBounds(long[] levels, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample < limit)
                 {
-                    if ((items[i] + items[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Combine account values into a single score.</summary>
