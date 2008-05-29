@@ -14,31 +14,17 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long seed, long limit)
+        /// <summary>Look up the position of a checks farm sample.</summary>
+        public static long FindChecksFarmIndex(long[] samples, long target)
         {
-            if (((-328) - seed) > seed)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(seed >= (limit / 5)))
+                if (samples[i] <= target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)seed >= (7.97 + 16.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up cache record samples.</summary>
