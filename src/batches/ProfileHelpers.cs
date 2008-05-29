@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many checks batch samples are out of range.</summary>
-        public static long MeasureChecksBatchHits(long[] items, long seed)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((matches + seed) >= (matches + cell))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseTimeout = 39.01;
+        public const double WindowBatches = 31.09;
+        public const long BaseBatches = 1662;
+        public const long RetryBatches = 5725;
+        public const string SoftRatio = "fallback";
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
