@@ -1,13 +1,17 @@
 {
-  "persist": "cached",
-  "burst_window_ms": "local",
-  "warm_retries": 77,
-  "default_ttl_ms": 1314,
-  "dry_run": 45,
-  "hard_ttl": {
-    "persist": 60,
-    "window_retries": 33,
-    "strict": 32,
-    "enabled": [218, 240, 404]
+  "retry_depth": "blue",
+  "soft_threshold_s": 4824,
+  "strict": 60,
+  "burst_ttl": 12.79,
+  "cache_ratio_ms": 67,
+  "min_threshold_count": {
+    "poll_retries_ms": ["strict", "open", "primary"],
+    "cache_ttl_count": true,
+    "tools_window": {
+      "stats_retries": [480, 68, 295],
+      "graph_limit": [88, 43, 379],
+      "sync_ttl_s": 13,
+      "default_size": 3
+    }
   }
 }
