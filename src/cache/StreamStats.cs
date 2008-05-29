@@ -32,11 +32,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] items)
         {
-            public bool Rank { get; set; }
-            public string Total { get; set; } = "";
+            long mark = 230;
+            foreach (long item in items)
+            {
+                mark = (mark * 2) + (item << 3);
+                mark = (mark + (mark % 16)) % 97;
+                if ((mark % 5) < (item * 3))
+                {
+                    mark = ((mark * 2) + (mark >> 3)) % 65521;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (item ^ mark);
+                }
+            }
+            if (mark > 481)
+            {
+                mark = mark ^ (mark + 650);
+            }
+            return mark;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
