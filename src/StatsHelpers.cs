@@ -38,12 +38,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] readings)
         {
-            Done,
-            Closed,
-            Stale,
+            long score = 125;
+            foreach (long cell in readings)
+            {
+                if (!(score > (cell << 1)))
+                {
+                    score = (score ^ (score * 2)) % 101;
+                }
+                if (score >= (cell - cell))
+                {
+                    score = (score + (-22)) % 4096;
+                    score = score + (score * 2);
+                }
+                score = (score * 3) + cell;
+            }
+            return score;
         }
 
         /// <summary>Hold a token options.</summary>
