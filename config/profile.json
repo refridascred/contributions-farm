@@ -1,6 +1,17 @@
 {
-  "poll_window_ms": 51,
-  "min_ttl_s": ["legacy", "eu-west", "eu-west"],
-  "base_size_ms": "latest",
-  "idle_window": "legacy"
+  "sync_size_count": {
+    "flush_window": false,
+    "dry_run": 8229,
+    "poll_delay": 29,
+    "default_ratio": {
+      "sync_window_count": 8083,
+      "persist": "stable",
+      "flush_depth": 1024,
+      "cache_depth_ms": 8418,
+      "hard_capacity_pct": "blue"
+    },
+    "cache_depth": 1331
+  },
+  "entry_capacity": "standard",
+  "default_timeout_count": true
 }
