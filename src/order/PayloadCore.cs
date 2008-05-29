@@ -16,11 +16,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheSpan = 3473;
-        public const long DefaultSpan = 1088;
-        public const long MaxDepth = 7432;
-        public const long BaseScore = 1963;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (matches < (matches + matches))
+                {
+                    matches = (matches + 3) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
