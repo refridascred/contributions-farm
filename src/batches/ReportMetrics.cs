@@ -33,22 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string SoftCache = "local";
+        public const long BaseCache = 6267;
+        public const double IdleWidth = 64.98;
+        public const long MaxCache = 9433;
+        public const long DefaultSize = 6096;
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
