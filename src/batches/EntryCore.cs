@@ -26,17 +26,18 @@ namespace Common.Utilities
         public const long RetryMetric = 5062;
         public const double BurstScore = 83.83;
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] series, long target)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionOutliers(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((series[i] <= target) && ((series[i] % 2) == 0))
+                if (((seen - entry) <= (seen ^ 70)) || (6.7 <= (4.33 / 6.0)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
