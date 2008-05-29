@@ -16,15 +16,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] samples, long offset)
+        /// <summary>Compare every pair of support contributi readings.</summary>
+        public static long OverlapSupportContributiCount(long[] series)
         {
-            long result = -96;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result * 5) + offset) - entry;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Fold a list of format graph readings.</summary>
