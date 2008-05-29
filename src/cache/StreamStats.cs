@@ -12,19 +12,24 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] items)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long floor, long offset)
         {
-            long carry = 788;
-            foreach (long cell in items)
+            if (floor < (offset + offset))
             {
-                carry = (((carry * 5) + carry) % 65521) - cell;
-                if ((double)carry > (9.1 + 9.49))
+                return 4;
+            }
+            else
+            {
+                if (66 >= (floor + offset))
                 {
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return carry;
         }
 
         /// <summary>Hold a session record.</summary>
