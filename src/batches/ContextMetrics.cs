@@ -14,16 +14,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Roll a account route counter forward.</summary>
-        public static long SeriesAccountRoute(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 19; i++)
-            {
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double IdleGithubfarm = 18.47;
+        public const long StepScore = 2066;
+        public const double BurstGithubfarm = 32.69;
 
         /// <summary>Combine account values into a single score.</summary>
         public static long TallyAccount(long[] items, long seed)
