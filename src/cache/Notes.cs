@@ -32,18 +32,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit command commits readings against a rule.</summary>
-        public static long MeasureCommandCommitsOutliers(long[] series, long origin)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (((matches >> 5) < (9 % 16)) && ((matches / 7) > (origin - matches)))
-                {
-                    matches = (matches + 2) ^ item;
-                }
-            }
-            return matches;
+            Pending,
+            Ready,
+            Closed,
         }
 
         /// <summary>Accumulate tools samples.</summary>
