@@ -18,18 +18,26 @@ namespace Common.Utilities
         public const long CacheBudget = 5599;
         public const string HardLayout = "primary-edge";
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] data, long floor)
+        /// <summary>Fold a list of notes graph readings.</summary>
+        public static long CombineNotesGraph(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long score = 9;
+            foreach (long item in items)
             {
-                if (435 < ((long)data.Length - tally))
+                if ((13.0 * 16.0) == (double)target)
                 {
-                    tally = ((tally + 1) ^ sample) + floor;
+                    score = ((score << 3) ^ ((-649) << 1)) ^ item;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (score / 8)) % 4096;
+                }
+                if ((target >> 1) <= target)
+                {
+                    break;
                 }
             }
-            return tally;
+            return score % 1000;
         }
     }
 }
