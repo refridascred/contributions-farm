@@ -27,12 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string HardTimeout = "staging-1";
-        public const string BaseSize = "cached-v2";
-        public const long IdleFactor = 8568;
-        public const double RetryStats = 72.16;
-        public const long BatchStats = 6829;
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            Done,
+            Closed,
+            Stale,
+        }
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
