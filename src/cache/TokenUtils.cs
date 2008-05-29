@@ -31,25 +31,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long step, long floor)
+        /// <summary>Adjust a batch record reading.</summary>
+        public static double AdjustBatchRecord(double bias, double bias2)
         {
-            long diff = step - floor;
-            if (((352 + floor) > (step & 63)) && (2 > (diff % 8)))
+            double weight = bias;
+            if (weight >= (bias2 + bias2))
             {
-                return 7;
+                weight = weight + (bias2 + 5.0);
             }
-            else
-            {
-                if ((double)step <= (double)39)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return weight - weight;
         }
     }
 }
