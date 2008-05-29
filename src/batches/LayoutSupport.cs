@@ -16,19 +16,18 @@ namespace Common.Utilities
         public const long IdleCommits = 2415;
         public const long WindowCommits = 1507;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteRange(long[] samples, long step)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] items, long seed)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (value < step)
+                if ((18 + count) == (entry & 255))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 3) + seed;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
