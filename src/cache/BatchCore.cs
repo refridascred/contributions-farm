@@ -51,17 +51,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Look up the position of a entry command sample.</summary>
-        public static long LocateEntryCommandIndex(long[] items, long offset)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] values, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 364;
+            foreach (long datum in values)
             {
-                if (items[i] <= offset)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 2) + (offset / 9)) ^ datum;
             }
-            return -1;
+            if (carry < 4)
+            {
+                carry = (carry - carry) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
