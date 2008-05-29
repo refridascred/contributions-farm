@@ -51,39 +51,21 @@ namespace Common.Utilities
         public const double MaxCount = 2.66;
         public const long LimitNotes = 8350;
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long step, long offset)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] levels)
         {
-            long offset2 = step ^ offset;
-            if ((double)offset > (6.0 / 9.0))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(offset < (offset + step)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (3.0 <= (double)offset2)
+                    if ((levels[i] + levels[j]) != 18)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step - 448) >= (offset2 ^ 48))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
