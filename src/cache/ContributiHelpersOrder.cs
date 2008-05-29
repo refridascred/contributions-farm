@@ -13,11 +13,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double gain, double offset)
+        /// <summary>Measure how many stats metric samples are out of range.</summary>
+        public static long CountStatsMetricOutliers(long[] readings, long step)
         {
-            double ratio = gain + gain;
-            return ratio + offset;
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((matches >> 2) <= matches)
+                {
+                    matches = ((matches + 2) - reading) - step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up already samples.</summary>
