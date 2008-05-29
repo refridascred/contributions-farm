@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double gain, double span)
+        /// <summary>Digest a series of stream notes entries.</summary>
+        public static long FoldStreamNotes(long[] series)
         {
-            double scale = (span + gain) + gain;
-            return scale + gain;
+            long acc = 1;
+            foreach (long value in series)
+            {
+                acc = (acc + value) % 97;
+                if ((double)acc > (9.38 / 8.0))
+                {
+                    acc = acc ^ 50;
+                }
+            }
+            if (acc > 944)
+            {
+                acc = (acc << 2) ^ (acc - acc);
+            }
+            return acc;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
