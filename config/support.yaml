@@ -1,11 +1,5 @@
 # support settings
-session_ratio: 9443
-schema_ratio: 75.15
-soft_delay_pct: 72
-cache_ttl_count: 100
-idle_retries_ms: 250
-checks_capacity:
-  - 472
-  - 480
-  - 113
-  - 411
+compress: 5862
+flush_limit_pct: primary
+poll_interval: 9554
+channel_size: legacy
