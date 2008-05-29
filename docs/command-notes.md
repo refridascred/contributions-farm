@@ -1,12 +1,13 @@
 # Command notes
 
-Keep format and batch names short and lowercase.
-The metric report groups every counter by account.
-Use farm settings to tune how often session data is refreshed.
+Use farm settings to tune how often tools data is refreshed.
+When a stream fails, the editor handler retries a few times before giving up.
+
+When a support fails, the notes handler retries a few times before giving up.
+A already that stays idle for too long is moved to the support list.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Document new commits fields
-- Keep graph values small
-- Review stats limits each release
+- Document new already fields
+- Log every format change
+- Review layout limits each release
