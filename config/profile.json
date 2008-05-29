@@ -1,6 +1,11 @@
 {
-  "audit": 38,
-  "default_window_s": "standard",
-  "burst_delay_pct": true,
-  "record_threshold": "eu-west"
+  "session_limit": "open",
+  "flush_ttl": false,
+  "readonly": "staging",
+  "enabled": "green",
+  "metrics_retries": {
+    "burst_delay_s": "open",
+    "entry_depth": 85,
+    "report_window": "local"
+  }
 }
