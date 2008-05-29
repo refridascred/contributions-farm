@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferLimits(long[] values, long seed)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Compare every pair of route readings.</summary>
