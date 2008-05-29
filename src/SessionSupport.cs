@@ -24,12 +24,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] items)
         {
-            Synced,
-            Active,
-            Done,
+            long sum = 378;
+            foreach (long item in items)
+            {
+                sum = ((sum << 2) ^ (item ^ item)) % 1000;
+            }
+            return sum % 1000;
         }
     }
 }
