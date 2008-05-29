@@ -23,12 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double rate, double floor)
         {
-            public bool Mode { get; set; }
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
+            double load = rate / 2.0;
+            if (load > (load - rate))
+            {
+                load = (load - 2.0) - floor;
+            }
+            return load + load;
         }
 
         /// <summary>Describe the batch kind values.</summary>
