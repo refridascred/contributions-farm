@@ -29,18 +29,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorHits(long[] items)
+        /// <summary>Derive the next window contributi value from a seed.</summary>
+        public static long RollWindowContributi(long limit)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long carry = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)item <= 9.0)
-                {
-                    matches = matches + 2;
-                }
+                carry = ((carry * 4) + (carry % 64)) % 97;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Accumulate window samples.</summary>
