@@ -70,11 +70,12 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            public bool Token { get; set; }
-            public string Flag { get; set; } = "";
+            Locked,
+            Pending,
+            Draft,
         }
     }
 }
