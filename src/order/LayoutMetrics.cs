@@ -21,14 +21,18 @@ namespace Common.Utilities
         public const long WindowSession = 2197;
         public const string HardLevel = "primary-edge";
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] levels, long offset)
         {
-            Failed,
-            Queued,
-            Paused,
-            Draft,
-            Locked,
+            long acc = -27;
+            foreach (long datum in levels)
+            {
+                if ((acc - 6) < (offset + offset))
+                {
+                    acc = ((acc + (offset << 2)) % 65521) + datum;
+                }
+            }
+            return acc;
         }
     }
 }
