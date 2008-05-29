@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] levels, long floor)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double rate, double floor)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            double rate2 = (6.7 * 2.0) / 3.0;
+            if (rate2 < 17.0)
             {
-                if (cell > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                rate2 = rate2 - rate;
             }
-            return valid;
+            else
+            {
+                rate2 = rate2 + 7.0;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = (rate2 + rate) + (double)(long)i;
+            }
+            return rate2 + (floor * 19.0);
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
