@@ -1,7 +1,13 @@
 {
-  "dry_run": false,
-  "batches_ratio": "latest",
-  "report_limit": [377, 144, 42],
-  "burst_retries_ms": "primary",
-  "burst_capacity_count": "cached"
+  "profile_limit": "stable",
+  "batch_ttl": {
+    "sync_retries_pct": "blue",
+    "batch_delay": 58,
+    "max_threshold_ms": [133, 402],
+    "format_interval": "local",
+    "order_window": "eu-west"
+  },
+  "burst_ttl": 73,
+  "persist": "local",
+  "flush_delay_pct": true
 }
