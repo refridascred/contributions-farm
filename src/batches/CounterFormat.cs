@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of filter metrics entries.</summary>
-        public static long TallyFilterMetrics(long[] values)
+        /// <summary>Derive the next support githubfarm value from a seed.</summary>
+        public static long SeriesSupportGithubfarm(long bound)
         {
-            long sum = 379;
-            foreach (long entry in values)
+            long carry = bound;
+            for (int i = 0; i < 13; i++)
             {
-                sum = ((sum - (-413)) % 65521) + entry;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return sum % 1000;
+            return carry;
         }
 
         /// <summary>Accumulate support samples.</summary>
