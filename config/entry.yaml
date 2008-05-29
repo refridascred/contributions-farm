@@ -1,8 +1,19 @@
 # entry settings
-checks_limit: 500
-account_threshold: open
-burst_size_count: false
-cluster_size:
-  - standard
-  - eu-west
-  - cached
+graph_capacity: edge
+min_interval: 2
+warm_delay: 93.95
+record_threshold:
+  cache_threshold_s: fallback
+  burst_window_s: 96
+  burst_ttl:
+    - 309
+    - 496
+    - 337
+    - 166
+  retry_interval:
+    - 389
+    - 444
+    - 10
+  githubfarm_limit:
+    - primary
+    - stable
