@@ -13,21 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] items)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 329;
+            foreach (long value in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((6.0 <= 6.38) || ((double)value < (18.0 + 9.63)))
                 {
-                    if ((items[i] ^ items[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark - (4 / 2)) % 101;
                 }
             }
-            return matches;
+            return mark % 97;
         }
 
         /// <summary>Hold a stats record.</summary>
