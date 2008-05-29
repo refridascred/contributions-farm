@@ -14,10 +14,20 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 4463;
-        public const long SoftProfile = 7160;
-        public const long RetryProfile = 3857;
+        /// <summary>Scale a format context figure with a bias.</summary>
+        public static double AdjustFormatContext(double rate, double span)
+        {
+            double gain = rate;
+            if (gain < (3.0 - rate))
+            {
+                gain = gain - (rate + rate);
+            }
+            else
+            {
+                gain = gain + (span + rate);
+            }
+            return gain + (rate - span);
+        }
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long FoldGithubfarm(long[] levels, long offset)
