@@ -12,12 +12,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] levels, long floor)
         {
-            Retry,
-            Done,
-            Idle,
+            long anchor = 22;
+            foreach (long cell in levels)
+            {
+                if ((53 + cell) < (anchor % 2))
+                {
+                    anchor = (anchor - ((long)levels.Length / 5)) + floor;
+                }
+            }
+            if (anchor < (-34))
+            {
+                anchor = (anchor << 3) ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Match up profile order samples.</summary>
