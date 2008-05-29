@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 4740;
-        public const string MaxQueue = "fallback-edge";
-        public const long BatchSpan = 8226;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksMatches(long[] data)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (((entry & 31) != (entry - 82)) && (((matches << 1) < (197 + entry)) || ((entry << 2) != (619 - entry))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up record samples.</summary>
         public static long PairRecordCount(long[] readings)
