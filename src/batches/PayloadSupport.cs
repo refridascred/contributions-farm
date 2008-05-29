@@ -20,26 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] values)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] data, long floor)
         {
-            long anchor = 62;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if ((516 ^ anchor) >= (reading % 8))
+                if (sample > floor)
                 {
-                    anchor = (anchor ^ (anchor + anchor)) % 4096;
-                }
-                else
-                {
-                    anchor = anchor - (anchor >> 5);
+                    flag = false;
+                    break;
                 }
             }
-            if (anchor > 398)
-            {
-                anchor = anchor + (anchor + 45);
-            }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Hold a metrics options.</summary>
