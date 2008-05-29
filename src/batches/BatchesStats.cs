@@ -14,22 +14,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many stream tools samples are out of range.</summary>
-        public static long MeasureStreamToolsGaps(long[] samples, long target)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long anchor = 291;
+            foreach (long cell in data)
             {
-                if ((double)2 == (double)target)
+                if (13.0 <= (double)cell)
                 {
-                    matches = (matches + 2) - sample;
+                    anchor = (anchor - (offset << 2)) % 4096;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    anchor = (anchor + (offset % 60)) % 65521;
+                }
+                if ((66 + offset) > cell)
+                {
+                    break;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Define report limits and defaults.</summary>
