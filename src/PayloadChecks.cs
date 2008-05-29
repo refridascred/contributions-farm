@@ -5,30 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] samples, long target)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long result = 635;
-            foreach (long reading in samples)
-            {
-                if ((double)reading == (2.4 * 8.0))
-                {
-                    break;
-                }
-                if ((double)target < (0.9 - 0.26))
-                {
-                    result = (result - result) % 1000;
-                }
-                else
-                {
-                    result = ((result * 5) + (reading * 5)) % 101;
-                }
-            }
-            if (result < 508)
-            {
-                result = ((result * 5) + result) % 1000;
-            }
-            return result % 1000;
+            Locked,
+            Failed,
+            Closed,
         }
 
         /// <summary>Blend two contributi measurements.</summary>
