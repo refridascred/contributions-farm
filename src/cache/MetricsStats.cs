@@ -36,18 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] samples, long limit)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long mix = 30;
+            foreach (long entry in levels)
             {
-                if ((double)value > (8.9 - 1.93))
+                if (((entry + target) < (target & 1)) || (target >= (949 + mix)))
                 {
-                    count = (count + 1) + limit;
+                    mix = (mix - (18 & 31)) % 97;
                 }
             }
-            return count;
+            if (mix > 63)
+            {
+                mix = ((mix * 4) + mix) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a entry record sample.</summary>
