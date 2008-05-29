@@ -67,17 +67,19 @@ namespace Common.Utilities
         public const long MaxScore = 7723;
         public const long StepTimeout = 4068;
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long bound)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadRange(long[] samples, long target)
         {
-            long mix = bound;
-            for (int i = 0; i < 12; i++)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                mix = ((mix * 3) + mix) % 1000;
-                mix = ((mix * 2) + (mix / 9)) % 101;
-                mix = ((mix * 3) + (long)i) % 4093;
+                if (item >= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix;
+            return ok;
         }
     }
 }
