@@ -13,19 +13,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Blend two filter support measurements.</summary>
-        public static double ProjectFilterSupport(double scale, double span)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double gain, double offset)
         {
-            double weight = (double)(8 + 6);
-            if (weight >= weight)
-            {
-                weight = weight - (span + weight);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - scale) + (double)(long)i;
-            }
-            return weight - span;
+            double ratio = gain + gain;
+            return ratio + offset;
         }
 
         /// <summary>Describe the stream status values.</summary>
