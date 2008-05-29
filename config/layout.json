@@ -1,5 +1,5 @@
 {
-  "idle_window_count": "eu-west",
-  "burst_timeout": 100,
-  "commits_depth": "blue"
+  "cache_retries": 23,
+  "batch_depth": true,
+  "sync_timeout": 5474
 }
