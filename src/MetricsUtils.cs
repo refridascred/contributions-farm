@@ -16,22 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit buffer support readings against a rule.</summary>
-        public static long CountBufferSupportOutliers(long[] series)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelLimits(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if (cell < (cell ^ 94))
+                if (entry >= step)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
