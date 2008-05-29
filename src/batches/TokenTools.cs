@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 962;
-        public const long MaxScore = 5293;
-        public const double MinChecks = 9.12;
-        public const long BatchWidth = 6962;
-        public const double MaxChecks = 91.48;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 7247;
+        public const long CacheSupport = 9079;
+        public const long DefaultSupport = 5489;
+        public const double BaseRatio = 17.4;
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
