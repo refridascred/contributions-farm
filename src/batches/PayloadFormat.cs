@@ -34,22 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the window payload entries that pass the check.</summary>
-        public static long TallyWindowPayloadOutliers(long[] data)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((count * 2) != (datum + datum))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public bool Label { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Adjust a metric reading.</summary>
