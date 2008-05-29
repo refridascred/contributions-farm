@@ -37,24 +37,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long seed, long bound)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] data, long origin)
         {
-            if ((bound * 3) < bound)
+            long total = -7;
+            foreach (long entry in data)
             {
-                return 3;
+                total = (((total << 3) ^ (0 - entry)) % 97) + origin;
             }
-            else
-            {
-                if (((seed - bound) == (bound / 4)) && ((bound ^ seed) > bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return total % 97;
         }
     }
 }
