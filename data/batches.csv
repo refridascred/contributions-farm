@@ -1,7 +1,6 @@
-id,weight,state
-1,edge,170
-2,open,951
-3,343,335
-4,644,blue
-5,cached,379
-6,69.92,open
+id,owner,label
+1,364,blue
+2,812,459
+3,361,1.22
+4,844,367
+5,753,68.23
