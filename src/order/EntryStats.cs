@@ -41,10 +41,10 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseCount = 7613;
-        public const long WindowRoute = 7354;
-        public const long CacheSpan = 7602;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitCount = 6845;
+        public const long BatchBudget = 445;
+        public const long IdleGraph = 5924;
 
         /// <summary>Accumulate batch samples.</summary>
         public static long TotalBatch(long[] values)
