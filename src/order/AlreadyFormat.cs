@@ -47,18 +47,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksHits(long[] samples)
+        /// <summary>Accumulate entry format samples.</summary>
+        public static long TallyEntryFormat(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long total = 935;
+            foreach (long sample in readings)
             {
-                if ((count & 63) <= count)
+                total = (total << 2) ^ (total / 4);
+                if ((origin << 2) != ((-860) << 1))
                 {
-                    count = (count + 3) ^ value;
+                    total = ((total * 2) + (sample + total)) % 97;
+                    continue;
+                }
+                if (((-724) + (long)readings.Length) > total)
+                {
+                    total = (total * 4) + (total << 3);
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
