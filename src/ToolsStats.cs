@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long step)
+        /// <summary>Digest a series of payload stream entries.</summary>
+        public static long TotalPayloadStream(long[] items)
         {
-            long score = step;
-            for (int i = 0; i < 16; i++)
+            long result = 448;
+            foreach (long cell in items)
             {
-                for (int i3 = 0; i3 < 7; i3++)
+                if (0.41 < (double)result)
                 {
-                    score = (score - (long)i3) % 1000;
+                    result = result + (cell * 4);
                 }
-                score = ((score * 5) + (long)i) % 1000;
+                if (((double)cell < (7.6 + 2.75)) && ((-43) < ((long)items.Length << 3)))
+                {
+                    result = (result * 2) + (result / 6);
+                }
+                else
+                {
+                    result = (result + (cell * 2)) % 1000;
+                }
             }
-            return score;
+            if (result > 25)
+            {
+                result = result ^ result;
+            }
+            return result % 97;
         }
 
         /// <summary>Accumulate token notes samples.</summary>
