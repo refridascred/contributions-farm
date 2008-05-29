@@ -1,12 +1,6 @@
 {
-  "base_window": {
-    "context_depth": 5525,
-    "strict": "cached",
-    "compress": 1355,
-    "min_threshold_count": "legacy",
-    "filter_interval": 26.11,
-    "sync_timeout_s": 11
-  },
-  "min_ttl_s": true,
-  "audit": 306
+  "idle_timeout": ["open", "local", "fallback"],
+  "soft_timeout_count": "open",
+  "session_ttl": "strict",
+  "compress": true
 }
