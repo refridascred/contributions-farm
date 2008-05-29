@@ -27,13 +27,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            public double Count { get; set; }
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
+            Pending,
+            Draft,
+            Ready,
         }
 
         /// <summary>Hold a metric snapshot.</summary>
