@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutMatches(long[] items, long floor)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((datum << 1) <= ((-993) << 2))
-                {
-                    matches = (matches + 1) - floor;
-                }
-            }
-            return matches;
+            New,
+            Failed,
+            Draft,
+            Ready,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
