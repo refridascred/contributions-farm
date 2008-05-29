@@ -38,11 +38,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MinBatches = "legacy";
-        public const long RetryDepth = 5839;
-        public const long LimitBatches = 6437;
-        public const long RetryWidth = 4639;
-        public const double BurstBatches = 24.1;
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long origin, long origin2)
+        {
+            if ((origin + 4) < (1 - origin2))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin2 - origin2) == (origin + 9))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin + 5) >= origin2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin2 > (origin + origin)) && ((38 + 89) < (origin + origin)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
