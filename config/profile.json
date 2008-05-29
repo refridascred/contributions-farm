@@ -1,19 +1,7 @@
 {
-  "cache_timeout": 250,
-  "verbose": "legacy",
-  "cache_window": {
-    "audit": ["standard", "blue"],
-    "dry_run": 62.12,
-    "persist": "primary",
-    "retry_ratio_pct": "fallback",
-    "batch_interval": 19.73,
-    "enabled": {
-      "buffer_depth": 62.08,
-      "flush_timeout_ms": "latest",
-      "max_interval": 848,
-      "burst_depth_s": "local",
-      "retry_capacity_count": 75
-    }
-  },
-  "base_window": true
+  "verbose": 7425,
+  "persist": 500,
+  "record_ratio": "staging",
+  "min_limit_pct": "primary",
+  "dry_run": true
 }
