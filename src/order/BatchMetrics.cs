@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long origin, long target)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] items, long bound)
         {
-            if (7.1 > (double)target)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin < (5.37 - 1.0))
+                if (items[i] <= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)target != (4.77 + 6.4)) || ((target + target) <= (origin / 9)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((target * 3) < 99) && ((target / 7) >= (9 - origin)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
