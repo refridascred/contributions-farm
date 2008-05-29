@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            Stale,
-            Ready,
-            Synced,
-            Dropped,
-            New,
+            Locked,
+            Draft,
+            Pending,
+            Done,
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
