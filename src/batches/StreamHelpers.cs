@@ -75,13 +75,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
-        {
-            Queued,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheWidth = 2827;
+        public const long HardRatio = 2995;
+        public const double LimitTools = 32.03;
+        public const double BurstFactor = 40.01;
+        public const long SoftWidth = 4895;
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long AuditAlreadyHits(long[] series)
