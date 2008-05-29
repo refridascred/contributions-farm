@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const long SoftWidth = 2702;
         public const long IdleTools = 3423;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 4229;
-        public const long MinFactor = 9415;
-        public const long BatchFarm = 1080;
-        public const string BurstFarm = "stable-edge";
-        public const long LimitFactor = 8847;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 8339;
+        public const long MaxLevel = 3076;
+        public const long BurstFilter = 5711;
+        public const long BatchFilter = 1602;
 
         /// <summary>Hold a notes summary.</summary>
         public sealed class NotesSummary
