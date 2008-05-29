@@ -47,14 +47,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyMatches(long[] readings, long target)
         {
-            Idle,
-            Draft,
-            Queued,
-            Done,
-            Closed,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((44 * 5) <= (item * 4))
+                {
+                    seen = (seen + 2) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
