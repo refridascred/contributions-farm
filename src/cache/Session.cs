@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] samples, long step)
         {
-            New,
-            Queued,
-            Stale,
-            Done,
+            long mark = 3;
+            foreach (long entry in samples)
+            {
+                if (step > (mark & 7))
+                {
+                    mark = ((mark + (step << 2)) % 97) ^ entry;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Describe the channel status values.</summary>
