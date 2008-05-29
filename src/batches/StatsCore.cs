@@ -83,19 +83,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double ratio, double span)
-        {
-            double weight = (span + ratio) + (double)914;
-            if (weight <= 8.12)
-            {
-                weight = weight + (double)608;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight - (double)32;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseRatio = 4075;
+        public const long BurstInterval = 1517;
+        public const long CacheProfile = 6453;
+        public const long LimitLevel = 1704;
     }
 }
