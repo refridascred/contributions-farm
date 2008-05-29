@@ -29,14 +29,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
-        {
-            Active,
-            Pending,
-            Dropped,
-            New,
-            Idle,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseGithubfarm = 23.05;
+        public const long SoftTimeout = 8752;
+        public const long DefaultGithubfarm = 5145;
     }
 }
