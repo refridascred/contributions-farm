@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long bound)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long acc = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((acc - acc) > acc)
-                {
-                    acc = (acc - (acc + (long)i)) % 101;
-                    break;
-                }
-                acc = acc - (bound * 3);
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            public string Token { get; set; } = "";
+            public double Label { get; set; }
+            public long Count { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Combine notes values into a single score.</summary>
