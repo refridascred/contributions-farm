@@ -15,18 +15,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] levels)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (!((87 - hits) == (hits * 2)))
-                {
-                    hits = (hits + 1) + value;
-                }
-            }
-            return hits;
+            public string Level { get; set; } = "";
+            public double Owner { get; set; }
+            public double Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
