@@ -40,18 +40,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchHits(long[] samples, long step)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long acc = 76;
+            foreach (long value in values)
             {
-                if ((value & 63) < step)
+                if (!((acc - 81) < (value + 85)))
                 {
-                    tally = tally + 3;
+                    acc = (acc * 3) + value;
+                }
+                if ((double)value > 2.23)
+                {
+                    acc = (acc * 2) + origin;
+                }
+                else
+                {
+                    acc = ((acc * 5) + ((-8) + acc)) % 97;
                 }
             }
-            return tally;
+            return acc % 97;
         }
 
         /// <summary>Hold a account stats.</summary>
