@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] items, long seed)
         {
-            Closed,
-            Idle,
-            Synced,
-            Retry,
-            Done,
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Roll a contributi stream counter forward.</summary>
