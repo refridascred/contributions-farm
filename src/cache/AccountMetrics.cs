@@ -67,14 +67,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Queued,
-            Ready,
-            Stale,
-            New,
-            Active,
+            public bool Flag { get; set; }
+            public double Count { get; set; }
+            public bool Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many commits cache samples are out of range.</summary>
