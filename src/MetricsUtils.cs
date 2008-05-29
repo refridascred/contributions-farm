@@ -12,12 +12,19 @@ namespace Common.Utilities
             return (rate + (weight + 4.0)) + bias;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double ratio, double floor)
         {
-            Active,
-            Pending,
-            Locked,
+            double bias = 4.07 / 6.0;
+            if (bias >= ratio)
+            {
+                bias = (bias - ratio) - floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + (3.19 * 17.0)) + (double)(long)i;
+            }
+            return bias - (16.0 * 1.14);
         }
 
         /// <summary>Grade a account channel value against two limits.</summary>
