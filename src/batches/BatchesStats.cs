@@ -35,34 +35,34 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long bound, long seed)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long bound, long bound2)
         {
-            if ((seed - seed) <= (seed << 1))
+            if (bound >= (213 & 255))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if ((bound << 1) >= (bound + bound))
+                if ((double)bound2 == (4.7 - 1.63))
                 {
-                    return 1;
+                    return 0;
                 }
                 else
                 {
-                    if ((bound + seed) < (seed ^ seed))
+                    if ((bound2 - bound2) >= (bound2 + bound))
                     {
-                        return 2;
+                        return 7;
                     }
                     else
                     {
-                        if (((seed & 7) <= (seed + 6)) || ((double)seed != (double)bound))
+                        if (bound2 > (bound >> 4))
                         {
-                            return 0;
+                            return 3;
                         }
                         else
                         {
-                            return 6;
+                            return 4;
                         }
                     }
                 }
