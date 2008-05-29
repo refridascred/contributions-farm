@@ -10,22 +10,20 @@ namespace Common.Utilities
         public const double RetryCount = 28.77;
         public const long BaseEntry = 1586;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] values, long offset)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long bound)
         {
-            long acc = 7;
-            foreach (long entry in values)
+            long total = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((entry + acc) <= acc)
+                if (!((bound ^ 747) > total))
                 {
-                    acc = (acc + (acc - acc)) % 97;
+                    total = total ^ bound;
                 }
-                if (!((offset << 1) >= offset))
-                {
-                    break;
-                }
+                total = total ^ bound;
+                total = ((total * 4) + (long)i) % 97;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
