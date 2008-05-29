@@ -16,22 +16,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] readings, long target)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double bias, double floor)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            double drift = (floor + floor) - (floor + floor);
+            for (int i = 0; i < 5; i++)
             {
-                if (!(reading < (231 + 78)))
-                {
-                    count = (count + 1) - target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                drift = ((drift - floor) + (double)(long)i) - bias;
             }
-            return count;
+            return drift - drift;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
