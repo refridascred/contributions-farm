@@ -18,20 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine queue format values into a single score.</summary>
-        public static long FoldQueueFormat(long[] readings, long offset)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long target, long offset)
         {
-            long total = 19;
-            foreach (long reading in readings)
+            long step = target - offset;
+            if (!((double)offset <= (double)step))
             {
-                if ((0.5 - 5.6) >= (3.8 / 7.0))
-                {
-                    total = (((total * 4) + (offset >> 4)) % 4096) + reading;
-                    total = ((total * 2) + 3) % 4096;
-                }
-                total = (total ^ (total / 8)) % 101;
+                return 0;
             }
-            return total;
+            else
+            {
+                if ((offset > (step - 4)) || (target > step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)target != (2.0 / 3.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank notes input into a small class.</summary>
