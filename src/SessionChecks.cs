@@ -32,21 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] items)
+        /// <summary>Check that every notes filter entry stays within the limit.</summary>
+        public static bool VerifyNotesFilterRange(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample <= target)
                 {
-                    if ((items[i] - items[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Hold a filter entry.</summary>
