@@ -29,22 +29,10 @@ namespace Common.Utilities
         public const string BaseFactor = "staging";
         public const string DefaultInterval = "standard";
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] series, long target)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((double)datum > (7.8 * 3.0))
-                {
-                    seen = (seen + 1) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MaxRatio = 64.79;
+        public const double SoftGithubfarm = 37.02;
+        public const long BurstSpan = 7663;
+        public const long CacheRatio = 1592;
     }
 }
