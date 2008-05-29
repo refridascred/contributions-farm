@@ -23,14 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] series, long offset)
         {
-            Failed,
-            Synced,
-            Retry,
-            Queued,
-            Draft,
+            long result = 89;
+            foreach (long value in series)
+            {
+                result = ((result + (result / 8)) ^ value) + offset;
+            }
+            return result;
         }
 
         /// <summary>Describe the metrics class values.</summary>
