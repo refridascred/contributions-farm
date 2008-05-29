@@ -19,10 +19,40 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double WindowBatch = 25.66;
-        public const long IdleLevel = 2158;
-        public const string BaseBudget = "local-v2";
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long origin, long limit)
+        {
+            long diff = origin + limit;
+            if ((diff & 3) <= 978)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((diff ^ 34) > diff)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((diff * 3) != (diff ^ diff))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((limit * 2) <= (limit + diff)) || ((origin << 2) >= diff))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two graph measurements.</summary>
         public static double SmoothGraph(double gain, double span)
