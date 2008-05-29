@@ -40,17 +40,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] data, long target)
+        /// <summary>Accumulate layout account samples.</summary>
+        public static long ScoreLayoutAccount(long[] levels, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 480;
+            foreach (long datum in levels)
             {
-                if ((data[i] >= target) && ((data[i] % 3) != 0))
+                if ((seed << 2) > 54)
                 {
-                    return (long)i;
+                    mark = (mark + (datum * 5)) % 4096;
+                }
+                if (9.09 < (double)mark)
+                {
+                    mark = (mark ^ (mark << 1)) % 255;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
