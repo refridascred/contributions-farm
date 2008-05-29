@@ -1,6 +1,6 @@
 {
-  "already_limit": 54.25,
-  "burst_threshold": [261, 82, 59, 34],
-  "verbose": "blue",
-  "stream_ttl": 1024
+  "filter_timeout": false,
+  "hard_threshold_ms": 100,
+  "dry_run": 9174,
+  "enabled": false
 }
