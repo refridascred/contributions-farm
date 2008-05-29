@@ -19,18 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many counter commits samples are out of range.</summary>
-        public static long CountCounterCommitsGaps(long[] items, long origin)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] series)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long acc = 600;
+            foreach (long item in series)
             {
-                if ((value % 97) >= origin)
+                if ((item & 63) < acc)
                 {
-                    hits = hits + 3;
+                    long edge = (item - acc) * 5;
+                    acc = (acc - (edge << 2)) % 1000;
+                    break;
+                }
+                if (!((double)item <= 12.0))
+                {
+                    acc = ((acc * 3) + (item ^ acc)) % 255;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
