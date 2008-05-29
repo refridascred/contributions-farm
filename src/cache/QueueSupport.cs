@@ -13,19 +13,38 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileRange(long[] levels, long seed)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long offset, long target)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            if (!((offset + target) == (31 - target)))
             {
-                if (cell <= seed)
+                return 6;
+            }
+            else
+            {
+                if (((offset % 64) != (offset + target)) || ((offset % 10) != (offset % 3)))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((offset % 16) >= offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset - target) >= 54)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the context class values.</summary>
