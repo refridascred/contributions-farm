@@ -64,15 +64,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double gain, double span)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            double load = span;
-            if (load > (gain / 6.0))
-            {
-                load = load + (load / 8.0);
-            }
-            return load + (double)0;
+            Draft,
+            Queued,
+            Closed,
         }
     }
 }
