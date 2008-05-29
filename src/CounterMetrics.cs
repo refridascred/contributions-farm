@@ -47,18 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] levels)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaMatches(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (((seen <= (datum >> 5)) || ((5.22 / 5.0) >= (double)datum)) || ((datum <= (datum % 12)) || ((datum * 3) >= seen)))
+                if ((tally ^ entry) >= tally)
                 {
-                    seen = seen + 3;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
