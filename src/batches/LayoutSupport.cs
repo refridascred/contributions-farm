@@ -27,18 +27,16 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] items, long seed)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long seed)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long sum = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((18 + count) == (entry & 255))
-                {
-                    count = (count + 3) + seed;
-                }
+                sum = sum ^ sum;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
