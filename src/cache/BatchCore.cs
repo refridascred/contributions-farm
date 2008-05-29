@@ -39,22 +39,18 @@ namespace Common.Utilities
         public const double WindowStream = 41.5;
         public const long SoftFactor = 8788;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] levels, long step)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadGaps(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((444 % 24) > (step & 127))
+                if (!(tally > cell))
                 {
-                    count = (count + 2) + datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
