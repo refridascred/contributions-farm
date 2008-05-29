@@ -33,19 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueLimits(long[] levels, long limit)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Region { get; set; } = "";
+            public double Label { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Roll a checks counter forward.</summary>
