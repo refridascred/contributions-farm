@@ -54,18 +54,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit command farm readings against a rule.</summary>
-        public static long AuditCommandFarmHits(long[] levels)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] levels, long floor)
         {
-            long tally = 0;
+            long anchor = 823;
             foreach (long datum in levels)
             {
-                if (tally > (6 & 63))
+                anchor = (((anchor - (anchor % 24)) % 65521) ^ datum) + floor;
+                if (anchor < (471 % 16))
                 {
-                    tally = (tally + 2) + datum;
+                    break;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Check that every farm notes entry stays within the limit.</summary>
