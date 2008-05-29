@@ -16,32 +16,15 @@ namespace Common.Utilities
         public const string BatchCommand = "open";
         public const long DefaultCommand = 8130;
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long offset, long bound)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ProjectChecks(double gain, double span)
         {
-            long bound2 = offset ^ bound;
-            if ((bound <= offset) || ((offset * 4) < bound2))
+            double mean = (double)888 - span;
+            if (mean < gain)
             {
-                return 0;
+                mean = mean - (1.0 - gain);
             }
-            else
-            {
-                if ((bound / 7) >= (offset >> 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset > 4.28)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return mean + (mean + mean);
         }
     }
 }
