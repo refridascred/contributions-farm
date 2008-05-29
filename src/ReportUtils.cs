@@ -19,13 +19,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            Closed,
-            Failed,
-            Locked,
+            Pending,
             Dropped,
+            Synced,
+            Idle,
+            Closed,
         }
 
         /// <summary>Describe the schema kind values.</summary>
