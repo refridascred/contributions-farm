@@ -29,21 +29,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Match up channel entry samples.</summary>
-        public static long OverlapChannelEntryCount(long[] items)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            New,
+            Stale,
+            Idle,
         }
     }
 }
