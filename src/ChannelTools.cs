@@ -19,15 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double ratio, double bias)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] items, long origin)
         {
-            double mean = (double)(240 << 3);
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = ((mean + (mean / 4.0)) + (double)(long)i) + bias;
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return mean + (ratio / 5.0);
+            return -1;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
