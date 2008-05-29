@@ -1,8 +1,7 @@
 {
-  "batch_window": 2576,
-  "dry_run": "local",
-  "enabled": 21,
-  "schema_window": ["cached", "fallback"],
-  "max_depth_s": "latest",
-  "compress": "fallback"
+  "flush_depth": 30,
+  "persist": 1024,
+  "batch_limit": "standard",
+  "batches_interval": "blue",
+  "route_delay": 47.1
 }
