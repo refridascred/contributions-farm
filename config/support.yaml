@@ -1,11 +1,4 @@
 # support settings
-base_retries_s: 2221
-counter_threshold: edge
-warm_capacity_s: legacy
-default_interval:
-  cache_capacity:
-    - staging
-    - strict
-  flush_limit: 100
-  cache_timeout_count: 5791
-  retry_size_s: 83.31
+default_interval_ms: false
+cache_timeout: latest
+flush_delay_ms: 47
