@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandOutliers(long[] data, long seed)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] items)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((double)seed < (14.0 + 6.6))
+                if ((0 - matches) < (datum / 7))
                 {
-                    hits = (hits + 2) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the filter level values.</summary>
