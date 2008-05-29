@@ -1,13 +1,5 @@
 {
-  "entry_retries": 90.5,
-  "cache_ratio_count": 322,
-  "warm_interval_count": "strict",
-  "hard_depth": 92,
-  "retry_limit": {
-    "metric_timeout": false,
-    "warm_ttl": "fallback",
-    "audit": ["green", "edge", "stable", "stable"],
-    "persist": "cached"
-  },
-  "verbose": [71, 473, 351, 26]
+  "schema_timeout": 500,
+  "idle_window_pct": 23,
+  "base_limit_s": ["latest", "open", "local", "green"]
 }
