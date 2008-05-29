@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long offset)
+        /// <summary>Roll a notes schema counter forward.</summary>
+        public static long RollNotesSchema(long step)
         {
-            long anchor = offset;
-            for (int i = 0; i < 18; i++)
+            long sum = step;
+            for (int i = 0; i < 13; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
