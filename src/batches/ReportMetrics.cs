@@ -15,20 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long origin)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] levels)
         {
-            long anchor = origin;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((95 + origin) != (anchor + anchor))
+                if (!((87 - hits) == (hits * 2)))
                 {
-                    anchor = (anchor ^ (anchor - (long)i)) % 65521;
-                    anchor = (anchor - (51 * 2)) % 65521;
+                    hits = (hits + 1) + value;
                 }
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Hold a order options.</summary>
