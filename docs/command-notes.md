@@ -1,11 +1,14 @@
 # Command notes
 
-Keep report and metrics names short and lowercase.
-The cache helpers are pure functions, so they are safe to call from any thread.
-Each cluster is validated before it reaches the metric queue.
+Use buffer settings to tune how often batches data is refreshed.
+Use githubfarm settings to tune how often already data is refreshed.
+
+Keep checks and order names short and lowercase.
+Use cache settings to tune how often command data is refreshed.
+Run the order check before changing any session limits.
 
 ## Guidelines
 
-- Keep schema values small
-- Prefer session defaults
-- Review report limits each release
+- Log every payload change
+- Review metric limits each release
+- Validate checks input early
