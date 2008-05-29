@@ -1,7 +1,18 @@
 {
-  "sync_depth_ms": 9563,
-  "retry_ttl_s": [365, 494, 291],
-  "soft_capacity_ms": "local",
-  "soft_window_s": 60.77,
-  "base_ttl_count": "standard"
+  "counter_size": 804,
+  "burst_delay_pct": {
+    "audit": 32.45,
+    "verbose": 3333,
+    "min_interval_ms": "stable",
+    "metric_limit": ["stable", "stable"],
+    "poll_interval_s": {
+      "base_limit_s": "stable",
+      "retry_threshold_s": false,
+      "compress": 1024
+    }
+  },
+  "readonly": 27.85,
+  "dry_run": 62,
+  "metrics_delay": "staging",
+  "verbose": 21.51
 }
