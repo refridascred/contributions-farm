@@ -32,31 +32,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Grade a tools filter value against two limits.</summary>
-        public static long SortToolsFilter(long bound, long floor)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            if (0.8 > (double)floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor > (floor / 4)) || ((floor << 1) < bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)bound < (12.0 * 14.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Ready,
+            Queued,
+            Active,
+            Done,
+            Locked,
         }
 
         /// <summary>Measure how many profile entry samples are out of range.</summary>
