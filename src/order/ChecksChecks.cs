@@ -33,11 +33,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double weight, double offset)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long limit)
         {
-            double mean = 4.8;
-            return ((mean + (double)9) + weight) + offset;
+            long result = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                result = (result ^ (result + (long)i)) % 101;
+                result = result + ((long)i - 6);
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
