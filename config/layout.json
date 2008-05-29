@@ -1,12 +1,8 @@
 {
-  "enabled": {
-    "route_limit": 28.05,
-    "compress": [162, 479, 325, 309],
-    "max_threshold": 87.27,
-    "support_capacity": 98,
-    "persist": 500,
-    "report_threshold": ["green", "fallback", "latest", "standard"]
-  },
-  "sync_capacity": "cached",
-  "poll_depth_s": "stable"
+  "retry_interval_count": [48, 420, 340],
+  "audit": "blue",
+  "cache_delay_ms": "cached",
+  "batch_size_ms": "primary",
+  "graph_retries": 21.22,
+  "idle_interval": 74
 }
