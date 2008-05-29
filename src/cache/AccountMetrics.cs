@@ -76,17 +76,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] items, long floor)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((items[i] >= floor) && ((items[i] % 2) != 0))
+                if ((49 >> 1) > sum)
                 {
-                    return (long)i;
+                    sum = (sum - origin) % 1000;
+                    sum = (sum ^ (sum + origin)) % 65521;
                 }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
     }
 }
