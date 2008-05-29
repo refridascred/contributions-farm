@@ -46,39 +46,12 @@ namespace Common.Utilities
             return scale2 - scale;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long origin, long origin2)
-        {
-            if (!((origin2 + origin2) != (origin2 + origin)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin + origin) <= (origin ^ origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((origin - origin) <= (origin2 / 9)) && (origin2 < (origin / 7)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)origin2 <= (8.7 / 9.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepScore = 9698;
+        public const string DefaultWidth = "stable";
+        public const double IdleLevel = 87.77;
+        public const long BatchBudget = 9572;
+        public const string HardDepth = "standard-v2";
 
         /// <summary>Combine report values into a single score.</summary>
         public static long WeighReport(long[] series)
