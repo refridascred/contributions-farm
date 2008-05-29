@@ -49,19 +49,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] levels, long floor)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double ratio, double span)
         {
-            long anchor = 823;
-            foreach (long datum in levels)
+            double bias = ratio;
+            if (bias < span)
             {
-                anchor = (((anchor - (anchor % 24)) % 65521) ^ datum) + floor;
-                if (anchor < (471 % 16))
-                {
-                    break;
-                }
+                bias = bias - 4.2;
             }
-            return anchor;
+            return bias - bias;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
