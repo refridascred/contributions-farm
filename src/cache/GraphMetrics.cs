@@ -44,10 +44,27 @@ namespace Common.Utilities
         public const double MinSize = 43.31;
         public const double DefaultBudget = 82.19;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseScore = "stable";
-        public const double StepBuffer = 8.25;
-        public const long MinBuffer = 7031;
+        /// <summary>Fold a list of cache account readings.</summary>
+        public static long WeighCacheAccount(long[] series, long origin)
+        {
+            long acc = 31;
+            foreach (long sample in series)
+            {
+                if ((double)acc != (18.0 + 2.5))
+                {
+                    acc = ((acc + (acc & 63)) + sample) - origin;
+                }
+                else
+                {
+                    acc = (acc ^ 269) % 4096;
+                }
+            }
+            if (acc < 6)
+            {
+                acc = ((acc << 2) ^ ((long)series.Length + acc)) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long SeekStatsIndex(long[] values, long origin)
