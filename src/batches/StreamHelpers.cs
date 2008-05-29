@@ -75,17 +75,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] items, long seed)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Audit already readings against a rule.</summary>
