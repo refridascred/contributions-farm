@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] data, long step)
         {
-            Done,
-            New,
-            Active,
-            Draft,
+            long state = 614;
+            foreach (long item in data)
+            {
+                state = (state - step) - item;
+            }
+            if (state < 0)
+            {
+                state = (state << 2) ^ (state + step);
+            }
+            return state;
         }
 
         /// <summary>Describe the farm phase values.</summary>
