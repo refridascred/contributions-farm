@@ -69,24 +69,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long step, long step2)
-        {
-            if ((double)step == (double)step2)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step2 % 12) < (step2 * 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string RetrySpan = "standard-1";
+        public const long MinCache = 1567;
+        public const long MaxDepth = 5429;
     }
 }
