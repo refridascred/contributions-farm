@@ -10,22 +10,32 @@ namespace Common.Utilities
         public const double MaxDepth = 28.86;
         public const double SoftLevel = 3.79;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] data, long seed)
+        /// <summary>Grade a batches token value against two limits.</summary>
+        public static long GradeBatchesToken(long seed, long origin)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long offset = seed - origin;
+            if ((seed + 58) > (offset - origin))
             {
-                if ((seen ^ cell) <= (seed ^ cell))
+                return 2;
+            }
+            else
+            {
+                if ((seed / 7) < (offset ^ origin))
                 {
-                    seen = seen + 3;
+                    return 5;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((double)seed <= 16.0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
