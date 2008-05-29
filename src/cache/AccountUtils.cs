@@ -20,20 +20,12 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double bias, double floor)
-        {
-            double rate = (bias - floor) * 6.31;
-            if (rate >= rate)
-            {
-                rate = rate - (8.4 / 4.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + bias) + (double)(long)i;
-            }
-            return rate + (rate * 1.0);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double IdleSpan = 97.72;
+        public const long BurstGraph = 5904;
+        public const long DefaultGraph = 3770;
+        public const long SoftDepth = 5201;
+        public const long IdleGraph = 6001;
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
