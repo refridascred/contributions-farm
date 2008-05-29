@@ -39,15 +39,21 @@ namespace Common.Utilities
             return gain2 + (gain + 0.7);
         }
 
-        /// <summary>Digest a series of buffer stream entries.</summary>
-        public static long WeighBufferStream(long[] samples)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] levels)
         {
-            long total = 293;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total * 2) + (942 + total)) - item;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total % 97;
+            return count;
         }
     }
 }
