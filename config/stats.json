@@ -1,7 +1,10 @@
 {
-  "idle_capacity": 90.95,
-  "verbose": ["strict", "strict", "cached", "legacy"],
-  "warm_capacity_ms": ["staging", "primary"],
-  "batch_delay_ms": [207, 82, 18],
-  "flush_size": 33.95
+  "cluster_interval": 100,
+  "strict": {
+    "sync_ttl_count": 38,
+    "checks_interval": 42.85,
+    "cache_size_pct": "standard"
+  },
+  "batch_size": 77.99,
+  "notes_size": 100
 }
