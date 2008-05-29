@@ -66,18 +66,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] samples)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((-63) & 127) > seen) || ((0.8 * 1.63) >= (double)seen))
+                if (data[i] <= seed)
                 {
-                    seen = (seen + 2) ^ entry;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
