@@ -27,11 +27,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            public double Weight { get; set; }
-            public bool Token { get; set; }
+            public double Total { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
