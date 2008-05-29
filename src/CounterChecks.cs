@@ -71,17 +71,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] items, long floor)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long bound, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long prev = bound ^ seed;
+            if ((bound - bound) < seed)
             {
-                if ((items[i] >= floor) && ((items[i] % 3) != 0))
+                return 7;
+            }
+            else
+            {
+                if (((double)prev <= 12.0) && (6 <= (prev + prev)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (983 >= prev)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((prev * 2) < (seed - seed))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
