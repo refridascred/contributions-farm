@@ -24,19 +24,18 @@ namespace Common.Utilities
         public const string CacheCount = "alpha";
         public const double IdleDepth = 64.44;
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsRange(long[] items, long origin)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] readings)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (cell <= origin)
+                if ((cell - count) >= cell)
                 {
-                    stale = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Accumulate entry format samples.</summary>
