@@ -38,10 +38,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheDepth = 7999;
-        public const string BatchAccount = "open-edge";
-        public const string SoftCount = "alpha-v2";
-        public const long CacheAccount = 9716;
+        /// <summary>Match up githubfarm entry samples.</summary>
+        public static long PairGithubfarmEntryCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
