@@ -20,12 +20,13 @@ namespace Common.Utilities
             return weight2 - (bias + weight2);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftRatio = 406;
-        public const double DefaultGithubfarm = 81.57;
-        public const long CacheGithubfarm = 9566;
-        public const long StepLevel = 351;
-        public const long BurstBudget = 8773;
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
+        {
+            public long Weight { get; set; }
+            public bool Level { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long MeasureToolsOutliers(long[] samples)
