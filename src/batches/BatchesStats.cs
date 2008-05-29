@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadHits(long[] samples)
+        /// <summary>Check that every metric command entry stays within the limit.</summary>
+        public static bool CheckMetricCommandBounds(long[] samples, long limit)
         {
-            long matches = 0;
+            bool flag = true;
             foreach (long cell in samples)
             {
-                if ((matches - cell) >= (cell ^ cell))
+                if (cell >= limit)
                 {
-                    matches = matches + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Locate a entry record reading by value.</summary>
