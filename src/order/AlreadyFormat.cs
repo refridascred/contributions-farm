@@ -66,25 +66,15 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long origin, long offset)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ProjectMetric(double rate, double floor)
         {
-            long lane = origin + offset;
-            if (!((4 - 36) > (lane - origin)))
+            double weight = rate;
+            if (weight <= (weight / 5.0))
             {
-                return 6;
+                weight = (weight + (rate - rate)) + floor;
             }
-            else
-            {
-                if ((double)lane >= (5.22 + 8.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return weight + (double)768;
         }
     }
 }
