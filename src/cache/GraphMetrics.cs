@@ -20,13 +20,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long floor, long target)
         {
-            Paused,
-            Retry,
-            New,
-            Draft,
+            if (((floor + 2) <= (floor * 3)) && (0 > (target / 5)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((floor / 5) < (target >> 1)) || ((38 >> 3) > floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)target <= (double)floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
