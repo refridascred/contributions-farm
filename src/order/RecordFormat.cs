@@ -22,18 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] items)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountOutliers(long[] samples)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((((double)entry <= (6.0 * 9.0)) || (5.2 <= (double)entry)) || ((count % 16) <= entry))
                 {
-                    if ((items[i] - items[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
