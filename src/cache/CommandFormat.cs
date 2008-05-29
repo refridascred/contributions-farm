@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long target, long seed)
         {
-            Idle,
-            Pending,
-            Dropped,
-            Stale,
+            if ((693 ^ 66) > (target - target))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed / 7) > 50)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Look up the position of a command sample.</summary>
