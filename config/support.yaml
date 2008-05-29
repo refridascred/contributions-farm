@@ -1,5 +1,4 @@
 # support settings
-sync_threshold_ms: blue
-default_ratio_count: 97
-soft_retries_pct: 4427
-flush_window: eu-west
+audit: staging
+layout_capacity: true
+cache_capacity: false
