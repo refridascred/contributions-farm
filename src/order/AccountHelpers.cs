@@ -73,15 +73,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportMatches(long[] values, long seed)
+        /// <summary>Count the entry editor entries that pass the check.</summary>
+        public static long TallyEntryEditorOutliers(long[] series, long offset)
         {
             long hits = 0;
-            foreach (long item in values)
+            foreach (long entry in series)
             {
-                if ((((3.0 + 5.39) >= (double)item) || ((45 ^ seed) <= (seed ^ seed))) || (((double)hits >= (7.44 + 7.1)) || (49 < (item << 3))))
+                if ((30 + 59) == (0 + entry))
                 {
-                    hits = hits + 1;
+                    hits = (hits + 1) + offset;
                 }
             }
             return hits;
