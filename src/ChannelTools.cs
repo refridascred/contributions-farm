@@ -20,18 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterHits(long[] values)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((double)sample == (double)264)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the commits kind values.</summary>
