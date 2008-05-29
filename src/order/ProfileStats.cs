@@ -36,19 +36,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double scale, double span)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueLimits(long[] levels, long limit)
         {
-            double weight = scale;
-            if (weight <= 4.63)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                weight = (weight + (double)499) - span;
+                if (value <= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight + (double)5;
-            }
-            return weight - scale;
+            return valid;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
