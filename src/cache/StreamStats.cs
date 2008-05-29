@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] samples)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((seen ^ seen) != (reading >> 3))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Weight { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
