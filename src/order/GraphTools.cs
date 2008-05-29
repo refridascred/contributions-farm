@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next profile counter value from a seed.</summary>
-        public static long StepProfileCounter(long origin)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long mix = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            public double Token { get; set; }
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Compare every pair of graph window readings.</summary>
