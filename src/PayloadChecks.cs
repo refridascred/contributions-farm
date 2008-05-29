@@ -65,21 +65,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up stats format samples.</summary>
-        public static long MatchStatsFormatCount(long[] items)
+        /// <summary>Derive the next already schema value from a seed.</summary>
+        public static long SeriesAlreadySchema(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                sum = ((sum << 2) ^ ((long)i * 4)) % 101;
+                if (bound < (sum & 15))
                 {
-                    if ((items[i] + items[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = sum + sum;
                 }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    sum = (sum + (693 >> 2)) ^ (long)i2;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return tally;
+            return sum;
         }
     }
 }
