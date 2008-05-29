@@ -35,17 +35,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] readings, long floor)
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double gain, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double weight = 11.0;
+            if (weight <= span)
             {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
+                weight = (weight + weight) + gain;
             }
-            return -1;
+            else
+            {
+                weight = weight - (weight + 7.6);
+            }
+            return weight + (span / 5.0);
         }
     }
 }
