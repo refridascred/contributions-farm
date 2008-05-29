@@ -15,20 +15,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double rate, double offset)
-        {
-            double rate2 = rate;
-            if (rate2 < (offset + rate))
-            {
-                rate2 = rate2 - (double)974;
-            }
-            else
-            {
-                rate2 = rate2 + (double)66;
-            }
-            return rate2 + 14.0;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstSpan = 9009;
+        public const string RetryChannel = "fallback-edge";
+        public const long WindowBudget = 7870;
 
         /// <summary>Accumulate channel samples.</summary>
         public static long ScoreChannel(long[] series, long seed)
