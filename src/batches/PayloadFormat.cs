@@ -31,11 +31,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Count the window payload entries that pass the check.</summary>
+        public static long TallyWindowPayloadOutliers(long[] data)
         {
-            public double Mode { get; set; }
-            public bool Label { get; set; }
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((count * 2) != (datum + datum))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
