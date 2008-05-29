@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterOutliers(long[] readings, long floor)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long bound)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long anchor = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((reading + floor) >= (48 % 60))
+                if ((double)anchor <= (double)8)
                 {
-                    matches = matches + 1;
+                    break;
                 }
+                anchor = (anchor ^ (90 / 6)) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Describe the token class values.</summary>
