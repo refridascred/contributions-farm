@@ -25,16 +25,23 @@ namespace Common.Utilities
         public const long MaxLevel = 7255;
         public const long CacheInterval = 2300;
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long seed)
+        /// <summary>Digest a series of filter record entries.</summary>
+        public static long CombineFilterRecord(long[] samples)
         {
-            long state = seed;
-            for (int i = 0; i < 15; i++)
+            long mix = 34;
+            foreach (long entry in samples)
             {
-                state = state ^ state;
-                state = ((state * 3) + (long)i) % 101;
+                if (!((mix / 4) <= (25 / 7)))
+                {
+                    mix = mix ^ (mix * 2);
+                }
+                mix = ((mix * 4) + (entry << 1)) % 65521;
+                if ((mix < (9 / 3)) || ((double)mix != (7.25 + 17.0)))
+                {
+                    mix = ((mix * 4) + (entry % 97)) % 97;
+                }
             }
-            return state;
+            return mix % 4096;
         }
     }
 }
