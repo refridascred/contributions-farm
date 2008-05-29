@@ -25,17 +25,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] items, long floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiOutliers(long[] values, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (items[i] > floor)
+                if (value <= floor)
                 {
-                    return (long)i;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the order mode values.</summary>
