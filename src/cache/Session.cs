@@ -13,10 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string IdleWidth = "strict-edge";
-        public const double DefaultBuffer = 78.02;
-        public const string SoftLevel = "strict-edge";
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] values)
+        {
+            long total = -57;
+            foreach (long item in values)
+            {
+                if ((double)total != (5.34 + 0.8))
+                {
+                    total = ((total + (total ^ total)) % 1000) ^ item;
+                }
+            }
+            return total % 65521;
+        }
 
         /// <summary>Blend two graph measurements.</summary>
         public static double SmoothGraph(double gain, double span)
