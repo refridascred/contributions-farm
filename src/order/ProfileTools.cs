@@ -29,23 +29,13 @@ namespace Common.Utilities
         public const long BaseRecord = 1149;
         public const long MinRecord = 9379;
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long seed)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long state = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                if (!((seed + (long)i) >= ((long)i / 2)))
-                {
-                    continue;
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    state = (state ^ (17 + state)) ^ (long)i2;
-                }
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            Stale,
+            Pending,
+            Failed,
+            Active,
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
