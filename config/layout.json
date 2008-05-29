@@ -1,16 +1,9 @@
 {
-  "cache_depth_ms": {
-    "soft_size_ms": 83,
-    "max_depth": 39.1,
-    "warm_size": 74,
-    "batch_ratio": "stable",
-    "batch_threshold_s": {
-      "max_size": 34.92,
-      "poll_size": "local",
-      "enabled": 186
-    },
-    "warm_retries_ms": 25.28
+  "schema_timeout": [375, 239],
+  "enabled": {
+    "notes_capacity": false,
+    "default_threshold_ms": "cached",
+    "retry_depth": "legacy"
   },
-  "flush_capacity_ms": ["fallback", "stable", "primary", "local"],
-  "strict": 58
+  "readonly": 36
 }
