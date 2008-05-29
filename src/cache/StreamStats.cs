@@ -47,17 +47,38 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] items, long bound)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long step, long step2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((double)step2 <= (12.0 * 9.0))
             {
-                if ((items[i] == bound) && ((items[i] % 3) != 0))
+                return 6;
+            }
+            else
+            {
+                if (((double)step2 > (6.15 / 4.0)) && ((double)78 <= (double)step))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (!((step2 / 6) < step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step + step) != (step % 100))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
