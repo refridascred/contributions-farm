@@ -33,23 +33,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] series)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] readings, long bound)
         {
-            long state = 822;
-            foreach (long item in series)
+            long state = 9;
+            foreach (long item in readings)
             {
-                if (8.12 > (double)state)
-                {
-                    state = ((state * 5) + state) + item;
-                }
-                state = state + state;
+                state = ((((state << 2) ^ (state * 3)) % 255) ^ item) - bound;
             }
-            if (state < 5)
+            if (state > 4)
             {
-                state = (state ^ (state << 1)) % 97;
+                state = (state + (state % 5)) % 1000;
             }
-            return state % 65521;
+            return state;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
