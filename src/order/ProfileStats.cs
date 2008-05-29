@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate githubfarm channel readings against a bound.</summary>
-        public static bool ValidateGithubfarmChannelRange(long[] series, long target)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] samples, long offset)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long sum = 187;
+            foreach (long item in samples)
             {
-                if (datum < target)
+                if ((342 & 1) <= (offset * 2))
                 {
-                    stale = false;
-                    break;
+                    sum = ((sum + (offset & 15)) % 101) - item;
                 }
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Adjust a window reading.</summary>
