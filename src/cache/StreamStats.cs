@@ -36,19 +36,15 @@ namespace Common.Utilities
         public const long DefaultCounter = 8729;
         public const string HardFactor = "local-edge";
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] values)
+        /// <summary>Blend two graph contributi measurements.</summary>
+        public static double AdjustGraphContributi(double scale, double floor)
         {
-            long score = 66;
-            foreach (long value in values)
+            double load = floor;
+            if (load >= load)
             {
-                score = (score + (909 - value)) % 1000;
+                load = load + (scale - load);
             }
-            if (score > 8)
-            {
-                score = score - (score + score);
-            }
-            return score;
+            return load - 15.0;
         }
     }
 }
