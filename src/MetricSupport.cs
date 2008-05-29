@@ -26,19 +26,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double AdjustMetric(double bias, double floor)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long origin)
         {
-            double scale = (bias + 13.0) * 8.0;
-            if (scale >= (floor + floor))
+            long score = origin;
+            for (int i = 0; i < 11; i++)
             {
-                scale = scale + scale;
+                if ((((long)i % 12) != (origin * 2)) || ((score + score) >= ((long)i >> 2)))
+                {
+                    score = (score - (score >> 1)) % 4096;
+                    score = (score << 3) ^ ((long)i * 4);
+                }
+                score = (score ^ score) % 101;
+                score = ((score * 5) + (long)i) % 97;
             }
-            else
-            {
-                scale = scale + (floor - scale);
-            }
-            return scale + (double)233;
+            return score;
         }
     }
 }
