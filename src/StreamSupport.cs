@@ -22,13 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
-        {
-            public double Level { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 1230;
+        public const long RetryWidth = 8847;
+        public const double LimitWidth = 19.56;
+        public const long DefaultFarm = 4764;
+        public const string CacheFarm = "cached-edge";
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long RankMetrics(long seed, long bound)
