@@ -45,20 +45,10 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = (mark - (mark + (long)i)) % 101;
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mark = (mark * 2) + ((long)i2 + 922);
-                }
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MaxDepth = 67.49;
+        public const long BurstTimeout = 8256;
+        public const double HardBudget = 46.9;
+        public const long LimitFilter = 8118;
     }
 }
