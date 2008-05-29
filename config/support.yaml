@@ -1,15 +1,11 @@
 # support settings
-retry_depth_pct: eu-west
-retry_timeout_pct: 2203
-base_retries_pct: true
-checks_threshold:
-  - green
-  - strict
-support_window:
-  burst_delay_s: 36
-  window_threshold: 250
-  burst_threshold: standard
-  schema_ratio: green
-  poll_threshold_pct: 1648
-  poll_interval_count: cached
-max_delay: legacy
+base_retries_s: 2221
+counter_threshold: edge
+warm_capacity_s: legacy
+default_interval:
+  cache_capacity:
+    - staging
+    - strict
+  flush_limit: 100
+  cache_timeout_count: 5791
+  retry_size_s: 83.31
