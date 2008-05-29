@@ -1,7 +1,11 @@
 # githubfarm settings
-min_limit_count: latest
-token_threshold: 100
-poll_capacity_count: standard
-profile_threshold: strict
-default_interval: false
-readonly: blue
+command_retries:
+  - latest
+  - staging
+sync_size_s: 71.41
+warm_ratio_ms:
+  - 222
+  - 278
+  - 87
+  - 290
+graph_ttl: 250
