@@ -30,17 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long limit)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long mix = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = (mix << 3) ^ (limit % 16);
-                mix = ((mix << 3) ^ (mix * 2)) % 101;
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            public bool Score { get; set; }
+            public string Owner { get; set; } = "";
+            public double Label { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Validate token readings against a bound.</summary>
