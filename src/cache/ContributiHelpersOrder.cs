@@ -31,13 +31,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileRange(long[] levels, long limit)
         {
-            public bool Stamp { get; set; }
-            public double Level { get; set; }
-            public bool Score { get; set; }
-            public long Weight { get; set; }
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
