@@ -24,12 +24,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] samples, long origin)
         {
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
-            public double Limit { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (((double)hits > (double)origin) && ((double)hits == (double)origin))
+                {
+                    hits = (hits + 1) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next record value.</summary>
