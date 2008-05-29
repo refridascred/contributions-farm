@@ -19,13 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Measure how many contributi format samples are out of range.</summary>
+        public static long AuditContributiFormatMatches(long[] readings)
         {
-            public double Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Total { get; set; }
-            public bool Flag { get; set; }
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (((7.07 * 5.3) < (double)entry) || ((matches % 24) <= entry))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
