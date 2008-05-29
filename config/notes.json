@@ -1,8 +1,7 @@
 {
-  "support_ratio": ["primary", "strict", "legacy"],
-  "dry_run": 3464,
-  "poll_ratio": [415, 67, 256, 347],
-  "batch_depth": 4422,
-  "editor_interval": 6963,
-  "strict": 100
+  "support_window": ["staging", "standard", "strict", "primary"],
+  "entry_window": 38.06,
+  "flush_threshold": 8146,
+  "audit": 67.68,
+  "burst_limit": "primary"
 }
