@@ -39,13 +39,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] samples, long limit)
         {
-            public long Token { get; set; }
-            public bool Limit { get; set; }
-            public bool Count { get; set; }
-            public double Score { get; set; }
+            long acc = -77;
+            foreach (long reading in samples)
+            {
+                if (limit > (reading + limit))
+                {
+                    acc = acc + (5 * 5);
+                }
+            }
+            if (acc < 125)
+            {
+                acc = ((acc * 3) + acc) % 101;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
