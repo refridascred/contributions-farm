@@ -1,8 +1,16 @@
 # support settings
-default_threshold_s: 2493
-poll_interval_s:
-  - 374
-  - 288
-  - 123
-retry_interval_pct: 250
-strict: false
+max_threshold_ms: 2445
+default_timeout_s:
+  burst_ttl_ms: staging
+  support_interval:
+    command_window: 97.73
+    notes_window: 100
+    strict:
+      - 52
+      - 295
+      - 340
+    persist: false
+    flush_interval_count: 1024
+  max_retries_count: latest
+  flush_interval: latest
+dry_run: edge
