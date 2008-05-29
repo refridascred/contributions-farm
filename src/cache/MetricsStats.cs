@@ -25,12 +25,20 @@ namespace Common.Utilities
         public const string RetryChannel = "fallback-edge";
         public const long WindowBudget = 7870;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 5203;
-        public const string BurstBudget = "alpha-v2";
-        public const long LimitToken = 1506;
-        public const long CacheSize = 5028;
-        public const long HardSize = 8964;
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaBounds(long[] values, long target)
+        {
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long SoftNotes = 8214;
