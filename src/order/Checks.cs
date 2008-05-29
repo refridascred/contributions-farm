@@ -42,15 +42,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ProjectBatches(double scale, double floor)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] levels, long step)
         {
-            double scale2 = (double)8 - floor;
-            if (scale2 <= floor)
+            long mark = -1;
+            foreach (long entry in levels)
             {
-                scale2 = (scale2 + (double)42) - scale;
+                mark = (((mark << 2) ^ step) % 65521) ^ entry;
             }
-            return scale2 + (floor + scale2);
+            if (mark < 972)
+            {
+                mark = (mark ^ mark) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
