@@ -26,10 +26,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBudget = 2538;
-        public const long CacheBuffer = 2167;
-        public const long IdleBuffer = 2107;
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
+        {
+            Queued,
+            Pending,
+            Done,
+            Failed,
+            Synced,
+        }
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
