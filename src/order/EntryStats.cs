@@ -44,10 +44,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BurstCommand = "local-v2";
-        public const long BaseCommand = 4944;
-        public const long MaxCommand = 2966;
-        public const double CacheCommand = 37.11;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 8805;
+        public const double WindowContributi = 15.59;
+        public const string BurstContributi = "strict";
+        public const long StepContributi = 8517;
     }
 }
