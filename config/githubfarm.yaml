@@ -1,26 +1,4 @@
 # githubfarm settings
-flush_interval_ms:
-  - 280
-  - 403
-  - 145
-  - 317
-poll_delay_s: 96.05
-enabled: 95
-hard_ratio_pct:
-  - 296
-  - 310
-poll_ttl:
-  enabled: false
-  cache_interval_s: 46.18
-  batches_timeout:
-    notes_ttl: true
-    audit:
-      - 178
-      - 108
-      - 336
-      - 152
-    verbose: stable
-    strict: true
-    poll_ttl_count: 3003
-  account_retries: primary
-  retry_window_s: 93
+dry_run: 250
+compress: 30
+cache_limit_count: 82
