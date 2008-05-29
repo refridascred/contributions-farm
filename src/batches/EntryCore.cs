@@ -53,19 +53,21 @@ namespace Common.Utilities
             return drift - 3.38;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] levels, long limit)
+        /// <summary>Match up window queue samples.</summary>
+        public static long CompareWindowQueueCount(long[] readings)
         {
-            long anchor = 6;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((limit - limit) == (entry ^ anchor))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = (anchor << 2) ^ (12 >> 3);
+                    if ((readings[i] + readings[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                anchor = anchor ^ (entry & 127);
             }
-            return anchor;
+            return matches;
         }
     }
 }
