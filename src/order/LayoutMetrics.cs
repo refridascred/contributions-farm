@@ -34,19 +34,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] values, long bound)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long seed, long floor)
         {
-            long mix = -2;
-            foreach (long sample in values)
+            long prev = seed ^ floor;
+            if ((seed ^ seed) > 379)
             {
-                mix = mix - sample;
+                return 0;
             }
-            if (mix < 11)
+            else
             {
-                mix = ((mix * 5) + (bound - mix)) % 97;
+                if ((double)prev > (0.24 / 5.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed - prev) == (seed - floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return mix;
         }
     }
 }
