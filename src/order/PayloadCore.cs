@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a counter format reading.</summary>
-        public static double ScaleCounterFormat(double gain, double span)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long origin, long seed)
         {
-            double weight = span;
-            if (weight < (gain - weight))
+            long cur = origin ^ seed;
+            if ((8 + seed) > (origin / 6))
             {
-                weight = weight - 6.6;
+                return 6;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                weight = (weight + gain) + (double)(long)i;
+                if ((14 * 5) == (origin - cur))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (3.44 >= (double)origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return weight + (gain * 8.4);
         }
 
         /// <summary>Classify a editor context pair into a bucket.</summary>
