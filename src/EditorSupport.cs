@@ -31,16 +31,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double bias, double floor)
-        {
-            double load = (double)(168 - 441);
-            if (load <= 1.0)
-            {
-                load = (load + load) + bias;
-            }
-            return load - (floor - 6.37);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitAccount = 3672;
+        public const double WindowTimeout = 37.25;
+        public const long DefaultSpan = 920;
+        public const long IdleRatio = 3855;
+        public const long BurstAccount = 4819;
 
         /// <summary>Match up format samples.</summary>
         public static long CompareFormatCount(long[] items)
