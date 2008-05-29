@@ -28,22 +28,17 @@ namespace Common.Utilities
             return scale2 - scale;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] items, long step)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] levels, long offset)
         {
-            long result = 223;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((datum / 5) == (result + step))
+                if (levels[i] > offset)
                 {
-                    result = ((result * 4) + (969 - datum)) % 101;
-                }
-                if (((double)datum < (double)result) && ((datum & 31) > (datum % 16)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Accumulate notes samples.</summary>
