@@ -47,18 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] readings, long seed)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheLimits(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if ((seed + hits) == (item + seed))
+                if (value != origin)
                 {
-                    hits = hits + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
