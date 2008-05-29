@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchMetrics = "alpha";
-        public const long WindowDepth = 839;
-        public const long SoftFactor = 3716;
-        public const long DefaultBudget = 3729;
-        public const long DefaultMetrics = 4346;
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = ((carry * 3) + seed) % 101;
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long GradeToken(long target, long target2)
