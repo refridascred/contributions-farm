@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] readings, long origin)
+        /// <summary>Count the entry contributi entries that pass the check.</summary>
+        public static long AuditEntryContributiHits(long[] items, long limit)
         {
-            long acc = 31;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long value in items)
             {
-                acc = (((acc - (acc * 3)) % 255) + reading) + origin;
-                acc = ((acc * 2) + acc) % 255;
+                if ((limit * 4) >= (limit + value))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (acc > 1)
-            {
-                acc = (acc ^ (acc / 3)) % 4096;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Blend two filter support measurements.</summary>
