@@ -1,12 +1,6 @@
 {
-  "strict": {
-    "flush_threshold_count": 1024,
-    "dry_run": 52.98,
-    "cluster_ttl": 12.08,
-    "burst_retries_count": 68.02,
-    "base_size_s": 94.1
-  },
-  "report_timeout": "edge",
-  "idle_delay_ms": true,
-  "retry_timeout_s": 1793
+  "max_timeout": [8, 299, 300],
+  "strict": 70.53,
+  "burst_ttl": 850,
+  "hard_capacity": 71.01
 }
