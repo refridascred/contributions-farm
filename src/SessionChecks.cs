@@ -16,12 +16,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Find the first command report entry that matches the target.</summary>
+        public static long FindCommandReportIndex(long[] items, long bound)
         {
-            Idle,
-            Dropped,
-            Retry,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= bound) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the graph status values.</summary>
