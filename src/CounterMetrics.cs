@@ -22,11 +22,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string DefaultBudget = "standard-edge";
-        public const long BaseLevel = 9774;
-        public const double BaseBudget = 38.74;
-        public const string MinWidth = "open-1";
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long floor, long step)
+        {
+            long gap = floor - step;
+            if ((double)step != (double)floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((step ^ gap) >= ((-4) + 81)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long SoftFactor = 5631;
