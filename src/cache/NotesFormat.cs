@@ -18,32 +18,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long seed, long seed2)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] levels, long origin)
         {
-            long slot = seed ^ seed2;
-            if ((6 * 3) < slot)
+            long mark = -33;
+            foreach (long cell in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (1.0 <= (double)seed2)
+                if ((mark % 5) == (mark - origin))
                 {
-                    return 8;
+                    mark = ((mark * 4) + origin) ^ cell;
                 }
-                else
+                if (!((10.0 * 0.6) > (double)origin))
                 {
-                    if ((seed & 15) < (seed * 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    break;
                 }
             }
+            if (mark > 62)
+            {
+                mark = mark - mark;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
