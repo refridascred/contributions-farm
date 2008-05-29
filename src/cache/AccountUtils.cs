@@ -38,11 +38,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public string Size { get; set; } = "";
-            public double Limit { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MinBatches = "legacy";
+        public const long RetryDepth = 5839;
+        public const long LimitBatches = 6437;
+        public const long RetryWidth = 4639;
+        public const double BurstBatches = 24.1;
     }
 }
