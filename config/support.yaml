@@ -1,14 +1,17 @@
 # support settings
-hard_delay_ms: 5341
-retry_ratio: 1024
-dry_run:
-  cluster_size:
-    - 419
-    - 303
-    - 104
-    - 260
-  flush_interval_ms: latest
-  sync_window: blue
-  sync_delay_count: legacy
-  persist: 78.4
-sync_size: 60
+batch_ttl_s:
+  burst_ratio_count: true
+  graph_size:
+    - 349
+    - 64
+  flush_window_ms: 13.12
+  min_retries_count:
+    base_size_ms: 17
+    dry_run:
+      - 244
+      - 348
+      - 315
+    cache_delay_count: 56.35
+default_ttl_ms: 21.37
+stats_depth: 83.36
+stats_delay: 8555
