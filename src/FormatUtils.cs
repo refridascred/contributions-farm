@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxSize = 2681;
-        public const long StepWidth = 9800;
-        public const long MaxDepth = 3448;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseChecks = "cached-v2";
+        public const long BatchLevel = 2574;
+        public const long HardChecks = 6128;
+        public const long MaxBudget = 5339;
+        public const long MaxScore = 8874;
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long WeighFarm(long[] items)
