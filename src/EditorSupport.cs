@@ -62,15 +62,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double ratio, double span)
+        /// <summary>Classify a cluster layout pair into a bucket.</summary>
+        public static long SortClusterLayout(long target, long origin)
         {
-            double bias = ratio;
-            if (bias < span)
+            if ((double)origin > (6.42 - 14.0))
             {
-                bias = bias - 4.2;
+                return 2;
             }
-            return bias - bias;
+            else
+            {
+                if (((origin - target) == (190 + origin)) || (origin < (origin % 16)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)origin >= (1.02 * 4.3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metrics kind values.</summary>
