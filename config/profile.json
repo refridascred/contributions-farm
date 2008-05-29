@@ -1,9 +1,5 @@
 {
-  "poll_threshold": 98.87,
-  "batch_ttl_ms": [424, 17, 387, 212],
-  "schema_delay": {
-    "burst_retries": "latest",
-    "persist": true,
-    "burst_interval_s": 8844
-  }
+  "commits_ratio": "edge",
+  "warm_capacity": 6329,
+  "min_limit_count": 96.59
 }
