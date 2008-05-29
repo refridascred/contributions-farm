@@ -14,21 +14,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] samples)
-        {
-            long acc = 95;
-            foreach (long entry in samples)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    acc = ((acc ^ (long)samples.Length) % 65521) ^ (long)i;
-                }
-                acc = (acc << 2) ^ (acc & 3);
-                acc = (acc << 2) ^ entry;
-            }
-            return acc;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string LimitGraph = "primary";
+        public const long DefaultGraph = 2384;
+        public const double StepGraph = 59.28;
+        public const double LimitSize = 61.76;
+        public const long HardScore = 1717;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long MaxFilter = 5490;
