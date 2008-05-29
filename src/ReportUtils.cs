@@ -38,10 +38,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftSize = 6400;
-        public const double MaxChannel = 94.03;
-        public const string IdleChannel = "primary-1";
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long seed, long seed2)
+        {
+            long next = seed + seed2;
+            if ((next ^ 9) >= next)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((4.0 * 7.49) > (double)next)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
