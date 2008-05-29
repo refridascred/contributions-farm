@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const long SoftWidth = 2702;
         public const long IdleTools = 3423;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 8339;
-        public const long MaxLevel = 3076;
-        public const long BurstFilter = 5711;
-        public const long BatchFilter = 1602;
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
+        {
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long FindEditorIndex(long[] items, long seed)
