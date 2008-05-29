@@ -47,15 +47,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine metrics queue values into a single score.</summary>
-        public static long TallyMetricsQueue(long[] items, long target)
+        /// <summary>Count the batch cache entries that pass the check.</summary>
+        public static long MeasureBatchCacheOutliers(long[] items)
         {
-            long state = 783;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long cell in items)
             {
-                state = ((state + (sample % 5)) % 4096) - target;
+                if (!(((double)cell != (8.28 / 4.0)) || ((7.6 / 5.0) > (double)cell)))
+                {
+                    count = count + 2;
+                }
             }
-            return state % 97;
+            return count;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
