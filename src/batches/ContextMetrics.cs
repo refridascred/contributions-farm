@@ -31,11 +31,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double ratio, double span)
+        /// <summary>Scale a commits report figure with a bias.</summary>
+        public static double SmoothCommitsReport(double scale, double offset)
         {
-            double bias = (span + span) / 8.0;
-            return bias + (bias - ratio);
+            double ratio = (double)(8 + 13);
+            if (ratio > offset)
+            {
+                ratio = (ratio + ratio) + scale;
+            }
+            else
+            {
+                ratio = ratio + (ratio + 2.6);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio + offset;
         }
 
         /// <summary>Fold a list of route readings.</summary>
