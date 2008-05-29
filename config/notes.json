@@ -1,21 +1,5 @@
 {
-  "soft_window_pct": {
-    "readonly": 568,
-    "queue_ratio": "green",
-    "default_retries_pct": {
-      "context_ttl": [100, 276, 403],
-      "default_delay_count": "strict",
-      "verbose": true,
-      "buffer_ratio": 88.67
-    },
-    "default_retries_count": [78, 79, 370, 288],
-    "min_timeout_s": 6130,
-    "hard_ratio_count": "green"
-  },
-  "poll_timeout_s": {
-    "retry_size_pct": "standard",
-    "retry_delay_pct": "primary",
-    "verbose": 43
-  },
-  "sync_capacity": "legacy"
+  "compress": "strict",
+  "layout_capacity": [42, 211],
+  "strict": true
 }
