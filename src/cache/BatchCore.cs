@@ -19,11 +19,12 @@ namespace Common.Utilities
         public const long DefaultScore = 4733;
         public const double BurstSession = 87.75;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftWidth = 9061;
-        public const string BatchRatio = "legacy";
-        public const string WindowToken = "local";
-        public const long SoftToken = 1701;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MaxLevel = "fallback-edge";
+        public const long BurstWidth = 1605;
+        public const long MinStream = 1912;
+        public const double WindowStream = 41.5;
+        public const long SoftFactor = 8788;
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long TallyCounterHits(long[] levels, long step)
