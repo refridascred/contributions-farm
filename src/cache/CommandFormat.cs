@@ -13,18 +13,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit channel report readings against a rule.</summary>
-        public static long AuditChannelReportHits(long[] samples)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (reading > (seen % 97))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
+            public double Label { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
