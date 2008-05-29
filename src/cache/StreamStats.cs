@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine format tools values into a single score.</summary>
-        public static long TallyFormatTools(long[] values)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long result = 9;
-            foreach (long value in values)
-            {
-                if (!((45 % 97) > (value - result)))
-                {
-                    result = (result + (value + value)) % 101;
-                }
-            }
-            if (result > 469)
-            {
-                result = (result + (long)values.Length) % 255;
-            }
-            return result % 65521;
+            Paused,
+            Done,
+            Failed,
+            New,
         }
 
         /// <summary>Define command limits and defaults.</summary>
