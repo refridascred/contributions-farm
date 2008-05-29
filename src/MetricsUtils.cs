@@ -39,10 +39,24 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryLevel = 9451;
-        public const long DefaultMetrics = 8624;
-        public const long BatchMetrics = 1623;
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] series)
+        {
+            long state = 822;
+            foreach (long item in series)
+            {
+                if (8.12 > (double)state)
+                {
+                    state = ((state * 5) + state) + item;
+                }
+                state = state + state;
+            }
+            if (state < 5)
+            {
+                state = (state ^ (state << 1)) % 97;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long TallyFormatHits(long[] items, long step)
