@@ -29,10 +29,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            public bool Mode { get; set; }
+            public long Limit { get; set; }
             public double Size { get; set; }
         }
 
