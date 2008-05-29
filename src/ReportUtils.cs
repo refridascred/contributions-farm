@@ -35,31 +35,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long bound, long step)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            if ((bound - bound) >= step)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((bound % 16) != (step + bound)) && ((step - bound) > (3 + bound)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step % 64) >= (step % 8))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
