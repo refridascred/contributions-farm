@@ -38,14 +38,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            Done,
-            Pending,
-            Dropped,
-            Stale,
-            Queued,
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
