@@ -31,20 +31,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] levels, long target)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long limit)
         {
-            long mix = 30;
-            foreach (long entry in levels)
+            long mix = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (((entry + target) < (target & 1)) || (target >= (949 + mix)))
-                {
-                    mix = (mix - (18 & 31)) % 97;
-                }
-            }
-            if (mix > 63)
-            {
-                mix = ((mix * 4) + mix) % 1000;
+                mix = (mix << 3) ^ (limit % 16);
+                mix = ((mix << 3) ^ (mix * 2)) % 101;
+                mix = ((mix * 3) + (long)i) % 97;
             }
             return mix;
         }
