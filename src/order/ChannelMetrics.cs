@@ -19,22 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] series, long step)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatMatches(long[] samples, long bound)
         {
-            long mark = 430;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (step >= (step << 2))
+                if (!((3.0 - 3.18) == (double)bound))
                 {
-                    mark = ((mark - (step / 7)) % 97) - reading;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (step % 60);
+                    matches = (matches + 3) ^ datum;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
