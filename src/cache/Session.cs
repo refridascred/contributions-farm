@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] items)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long mark = 456;
-            foreach (long value in items)
-            {
-                if ((4.06 + 2.1) < (double)mark)
-                {
-                    mark = (mark - (value % 64)) % 255;
-                }
-            }
-            return mark;
+            New,
+            Queued,
+            Stale,
+            Done,
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
