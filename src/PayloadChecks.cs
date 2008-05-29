@@ -28,12 +28,23 @@ namespace Common.Utilities
             return scale2 - scale;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepScore = 9698;
-        public const string DefaultWidth = "stable";
-        public const double IdleLevel = 87.77;
-        public const long BatchBudget = 9572;
-        public const string HardDepth = "standard-v2";
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] items, long step)
+        {
+            long result = 223;
+            foreach (long datum in items)
+            {
+                if ((datum / 5) == (result + step))
+                {
+                    result = ((result * 4) + (969 - datum)) % 101;
+                }
+                if (((double)datum < (double)result) && ((datum & 31) > (datum % 16)))
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Accumulate notes samples.</summary>
         public static long CombineNotes(long[] values)
