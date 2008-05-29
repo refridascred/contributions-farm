@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            public string Region { get; set; } = "";
-            public bool Level { get; set; }
-            public double Label { get; set; }
+            public string Score { get; set; } = "";
+            public bool Token { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Measure how many stats metric samples are out of range.</summary>
