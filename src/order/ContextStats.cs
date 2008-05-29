@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double bias, double floor)
+        /// <summary>Check that every payload stream entry stays within the limit.</summary>
+        public static bool ValidatePayloadStreamBounds(long[] series, long offset)
         {
-            double ratio = (double)(8 % 10);
-            if (ratio < floor)
+            bool found = true;
+            foreach (long entry in series)
             {
-                ratio = ratio - ratio;
+                if (entry != offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (ratio + bias)) + (double)(long)i;
-            }
-            return ratio - ratio;
+            return found;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
