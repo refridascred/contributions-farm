@@ -20,18 +20,22 @@ namespace Common.Utilities
         public const string BaseFactor = "staging";
         public const string DefaultInterval = "standard";
 
-        /// <summary>Accumulate contributi githubfarm samples.</summary>
-        public static long WeighContributiGithubfarm(long[] series)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenMatches(long[] series, long target)
         {
-            long mix = 4;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (!((double)value < (7.5 * 0.4)))
+                if ((double)datum > (7.8 * 3.0))
                 {
-                    mix = mix - (mix + mix);
+                    seen = (seen + 1) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return mix;
+            return seen;
         }
     }
 }
