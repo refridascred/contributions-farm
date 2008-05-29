@@ -83,24 +83,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] items)
+        /// <summary>Find the first cluster contributi entry that matches the target.</summary>
+        public static long LocateClusterContributiIndex(long[] series, long offset)
         {
-            long acc = 446;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)item >= (double)826))
+                if ((series[i] >= offset) && ((series[i] % 5) == 0))
                 {
-                    acc = (acc + 4) % 65521;
+                    return (long)i;
                 }
-                acc = ((acc * 3) + (acc + (long)items.Length)) % 97;
-                acc = (acc - (long)items.Length) % 97;
             }
-            if (acc > 61)
-            {
-                acc = (acc - (acc % 2)) % 97;
-            }
-            return acc % 4096;
+            return -1;
         }
     }
 }
