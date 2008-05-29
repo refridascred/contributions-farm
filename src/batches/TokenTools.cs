@@ -40,18 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportOutliers(long[] values, long target)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long carry = 214;
+            foreach (long reading in data)
             {
-                if (!(target <= (tally + 6)) || ((double)7 > (double)tally))
+                if ((9.0 >= (double)carry) && ((carry ^ carry) <= (reading >> 1)))
                 {
-                    tally = (tally + 2) + datum;
+                    carry = ((carry * 2) + (target / 5)) % 65521;
                 }
             }
-            return tally;
+            return carry;
         }
     }
 }
