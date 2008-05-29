@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCount = 944;
+        public const double CacheCluster = 75.1;
+        public const long RetryDepth = 5245;
+        public const long BatchCluster = 190;
+        public const string IdleBudget = "fallback-1";
 
         /// <summary>Describe the contributi class values.</summary>
         public enum ContributiClass
