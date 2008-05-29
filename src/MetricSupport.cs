@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double weight, double offset)
-        {
-            double weight2 = offset;
-            return weight2 + weight;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftScore = 6790;
+        public const long DefaultSupport = 1439;
+        public const long HardCount = 60;
+        public const long WindowSupport = 8709;
+        public const string LimitSupport = "staging-edge";
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long GradeAccount(long floor, long floor2)
