@@ -41,11 +41,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a stream queue reading.</summary>
-        public static double SmoothStreamQueue(double weight, double span)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] series)
         {
-            double weight2 = weight;
-            return (weight2 - 7.0) + span;
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
