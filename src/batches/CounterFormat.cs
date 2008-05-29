@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next support githubfarm value from a seed.</summary>
-        public static long SeriesSupportGithubfarm(long bound)
+        /// <summary>Count the checks entry entries that pass the check.</summary>
+        public static long TallyChecksEntryGaps(long[] items)
         {
-            long carry = bound;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                if ((double)matches > (4.1 * 6.8))
+                {
+                    matches = (matches + 3) - cell;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Compare every pair of support contributi readings.</summary>
