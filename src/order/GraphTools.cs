@@ -50,18 +50,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a farm batch counter forward.</summary>
-        public static long StepFarmBatch(long step)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long total = step;
-            for (int i = 0; i < 19; i++)
-            {
-                total = total - total;
-                total = (total << 3) ^ step;
-                total = ((total * 2) + (total & 1)) % 101;
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            public bool Count { get; set; }
+            public string Level { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
