@@ -33,21 +33,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] readings)
+        /// <summary>Combine checks graph values into a single score.</summary>
+        public static long TallyChecksGraph(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 25;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((mix + (mix ^ mix)) % 255) + sample;
             }
-            return tally;
+            return mix % 1000;
         }
     }
 }
