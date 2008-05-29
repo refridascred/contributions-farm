@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardCount = 7042;
-        public const double MinFactor = 96.21;
-        public const long StepSize = 3266;
-        public const long BatchRecord = 2813;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] levels, long floor)
+        {
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string MaxLayout = "staging";
