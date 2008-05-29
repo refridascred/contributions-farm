@@ -13,18 +13,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsMatches(long[] data)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((double)cell <= (0.7 / 4.0))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Stale,
+            Idle,
+            Pending,
         }
 
         /// <summary>Hold a farm summary.</summary>
