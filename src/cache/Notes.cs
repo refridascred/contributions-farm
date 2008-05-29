@@ -67,15 +67,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a notes window figure with a bias.</summary>
-        public static double AdjustNotesWindow(double rate, double floor)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            double mean = (double)(22 * 3);
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (floor - 1.2)) + (double)(long)i;
-            }
-            return mean - rate;
+            Draft,
+            Paused,
+            Dropped,
+            Locked,
+            Synced,
         }
 
         /// <summary>Accumulate tools samples.</summary>
