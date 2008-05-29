@@ -39,11 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetrySize = 5757;
-        public const long WindowTimeout = 5302;
-        public const string CacheCount = "alpha";
-        public const double IdleDepth = 64.44;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 271;
+        public const long LimitWidth = 6893;
+        public const long HardBudget = 2310;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string BurstBatches = "alpha-1";
