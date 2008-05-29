@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long limit, long floor)
         {
-            public double Region { get; set; }
-            public double Ratio { get; set; }
-            public double Flag { get; set; }
-            public double Count { get; set; }
+            long lane = limit - floor;
+            if (!(lane >= limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((lane + lane) <= (floor & 255))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(45 > (lane & 15)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a contributi stream counter forward.</summary>
