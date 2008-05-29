@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 9807;
+        public const long CacheFactor = 7260;
+        public const double IdleTimeout = 96.3;
+        public const long IdleSpan = 7725;
+        public const long LimitCommand = 9312;
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
