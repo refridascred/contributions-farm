@@ -42,19 +42,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountOutliers(long[] levels)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((((long)levels.Length << 1) >= seen) || ((double)cell >= (double)seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchCount = 8347;
+        public const long BaseEntry = 429;
+        public const long BatchRatio = 4262;
+        public const long MaxEntry = 1777;
+        public const long CacheEntry = 791;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double BaseWidth = 6.8;
