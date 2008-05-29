@@ -20,23 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double gain, double span)
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double rate, double span)
         {
-            double rate = 20.0 + (span * 0.61);
-            if (rate >= (double)9)
+            double ratio = rate;
+            if (ratio >= 19.0)
             {
-                rate = rate - 8.6;
+                ratio = (ratio + (double)(-508)) - span;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                rate = rate + (double)1;
+                ratio = (ratio - (6.33 / 3.0)) + (double)(long)i;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - 8.1) + (double)(long)i;
-            }
-            return rate - gain;
+            return ratio - ratio;
         }
 
         /// <summary>Hold a record stats.</summary>
