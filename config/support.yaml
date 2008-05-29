@@ -1,35 +1,31 @@
 # support settings
-sync_size: legacy
-base_capacity_count: stable
-metric_threshold:
-  max_ratio:
-    - 131
-    - 369
-    - 407
-  format_ratio:
-    - staging
-    - local
-    - legacy
-    - primary
-  queue_ttl: false
-  default_interval_s: 5512
-warm_retries:
-  persist:
-    - local
-    - strict
-    - strict
-    - fallback
-  soft_delay_ms: local
-  notes_threshold: false
-  order_capacity: 500
-  batch_retries_pct: edge
-window_ratio: 22.5
-graph_size:
-  warm_ratio_pct: green
-  default_depth_s: eu-west
-  verbose: 30
-  max_retries_ms: open
-  persist:
+dry_run: 60.69
+flush_size: green
+idle_delay_count:
+  enabled:
+    hard_delay_pct: true
+    hard_depth: 5661
+    warm_limit:
+      - 384
+      - 308
+      - 382
+      - 35
+    poll_ttl:
+      - 279
+      - 299
+  cache_ratio_pct:
     - latest
     - open
-  layout_size: 87
+    - stable
+    - cached
+  githubfarm_capacity: 250
+  contributi_ttl: 4880
+  graph_interval: legacy
+  token_interval:
+    cache_interval: false
+    contributi_interval: 100
+    min_capacity_ms: 28
+    warm_depth_pct: eu-west
+    soft_interval_s: blue
+idle_interval: edge
+enabled: eu-west
