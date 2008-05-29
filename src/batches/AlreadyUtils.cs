@@ -18,21 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long MatchEntryCount(long[] levels)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] readings, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = -937;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = ((score << 2) ^ (value * 5)) % 1000;
+                score = (score * 2) + (value - floor);
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Describe the stats state values.</summary>
