@@ -1,6 +1,12 @@
 {
-  "order_size": 5326,
-  "counter_interval": 1.05,
-  "enabled": 1024,
-  "poll_delay": 15.54
+  "soft_limit": {
+    "commits_interval": 60,
+    "retry_ttl_ms": 250,
+    "flush_delay_ms": "cached",
+    "cache_delay_count": "legacy",
+    "sync_depth": 27.14,
+    "soft_retries_pct": "legacy"
+  },
+  "min_ttl": ["blue", "strict", "open"],
+  "strict": "fallback"
 }
