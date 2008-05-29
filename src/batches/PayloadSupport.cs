@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            public double Owner { get; set; }
-            public bool Rank { get; set; }
-            public string Mode { get; set; } = "";
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define stats limits and defaults.</summary>
