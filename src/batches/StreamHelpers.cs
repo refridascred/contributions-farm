@@ -20,22 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] levels)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long carry = 228;
-            foreach (long reading in levels)
-            {
-                if (((reading & 255) > ((long)levels.Length + reading)) || ((1.0 - 7.0) == (double)reading))
-                {
-                    carry = ((carry << 3) ^ (carry * 2)) % 1000;
-                }
-            }
-            if (carry > 8)
-            {
-                carry = ((carry << 3) ^ (carry - carry)) % 97;
-            }
-            return carry;
+            Pending,
+            Retry,
+            Closed,
+            Failed,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
