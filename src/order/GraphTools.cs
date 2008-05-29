@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            Idle,
-            Dropped,
-            Locked,
-            New,
-            Paused,
+            public string Limit { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Accumulate commits samples.</summary>
