@@ -14,12 +14,32 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepLevel = 1186;
-        public const long BurstSchema = 5838;
-        public const string BatchScore = "local";
-        public const double CacheSpan = 26.1;
-        public const long IdleSchema = 3107;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] values)
+        {
+            long anchor = 7;
+            foreach (long value in values)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    anchor = (anchor << 3) ^ (54 - anchor);
+                    anchor = (anchor + (anchor + (long)i)) % 65521;
+                }
+                if (value <= ((long)values.Length - value))
+                {
+                    anchor = ((anchor * 5) + value) % 255;
+                }
+                if ((value >> 3) == (anchor + 888))
+                {
+                    break;
+                }
+            }
+            if (anchor > 6)
+            {
+                anchor = (anchor - (anchor % 24)) % 101;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Describe the counter state values.</summary>
         public enum CounterState
