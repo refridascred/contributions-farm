@@ -32,18 +32,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] data, long limit)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (((long)data.Length ^ limit) >= 8)
-                {
-                    seen = (seen + 1) ^ datum;
-                }
-            }
-            return seen;
+            Pending,
+            Locked,
+            Closed,
         }
 
         /// <summary>Digest a series of order batch entries.</summary>
