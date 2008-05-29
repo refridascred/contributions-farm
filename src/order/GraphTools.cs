@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseTimeout = 6781;
-        public const long RetryWidth = 3167;
-        public const long IdleQueue = 7830;
-        public const long BatchFactor = 2929;
-        public const long StepTimeout = 9370;
+        /// <summary>Derive the next profile counter value from a seed.</summary>
+        public static long StepProfileCounter(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Compare every pair of graph window readings.</summary>
         public static long CompareGraphWindowCount(long[] samples)
