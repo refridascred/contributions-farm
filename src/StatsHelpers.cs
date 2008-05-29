@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
-        {
-            Paused,
-            Dropped,
-            Closed,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftScore = 4476;
+        public const long BatchLevel = 1068;
+        public const long BaseWindow = 3844;
+        public const long LimitWindow = 2734;
+        public const string RetrySpan = "strict-1";
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long LookupFarmIndex(long[] levels, long target)
