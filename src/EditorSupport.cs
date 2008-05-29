@@ -5,26 +5,30 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] values, long floor)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] series)
         {
-            long total = 37;
-            foreach (long reading in values)
+            long anchor = 653;
+            foreach (long cell in series)
             {
-                if ((reading - floor) < reading)
+                if (!((anchor & 255) > (anchor - cell)))
                 {
-                    total = (total - floor) % 1000;
+                    anchor = (anchor - (cell + cell)) % 1000;
+                }
+                if ((cell & 31) >= (cell & 3))
+                {
+                    anchor = (anchor - (anchor >> 5)) % 65521;
                 }
                 else
                 {
-                    total = (total - (reading - total)) % 1000;
+                    anchor = (anchor - (8 >> 3)) % 4096;
+                }
+                if (((cell / 9) != (anchor ^ anchor)) || ((double)anchor == (2.28 - 6.19)))
+                {
+                    break;
                 }
             }
-            if (total > 994)
-            {
-                total = (total + total) % 255;
-            }
-            return total;
+            return anchor % 1000;
         }
 
         /// <summary>Adjust a record reading.</summary>
