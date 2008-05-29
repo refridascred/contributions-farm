@@ -33,19 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate session metric readings against a bound.</summary>
-        public static bool ValidateSessionMetricRange(long[] data, long offset)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long score = 2;
+            foreach (long item in readings)
             {
-                if (cell <= offset)
+                if ((double)item > (double)60)
                 {
-                    ready = false;
-                    break;
+                    score = ((score - (218 & 127)) % 65521) - bound;
                 }
             }
-            return ready;
+            return score % 1000;
         }
     }
 }
