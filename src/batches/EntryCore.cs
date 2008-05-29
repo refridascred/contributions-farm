@@ -21,11 +21,10 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSupport = 63;
-        public const string BaseInterval = "stable-1";
-        public const double BatchSupport = 74.59;
-        public const string WindowLevel = "primary";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 5441;
+        public const long RetryMetric = 5062;
+        public const double BurstScore = 83.83;
 
         /// <summary>Define order limits and defaults.</summary>
         public const double IdleOrder = 32.89;
