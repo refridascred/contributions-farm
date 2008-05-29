@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
-        {
-            Retry,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MinGithubfarm = "standard-1";
+        public const string LimitGithubfarm = "open";
+        public const long IdleDepth = 5846;
 
         /// <summary>Measure how many commits context samples are out of range.</summary>
         public static long MeasureCommitsContextMatches(long[] readings, long target)
