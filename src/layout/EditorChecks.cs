@@ -28,23 +28,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the payload stats series from a seed.</summary>
-        public static long RollPayloadStats(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((step - (long)i) >= (mark + step))
-                {
-                    mark = (mark ^ (step + step)) % 4096;
-                }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mark = (((mark << 2) ^ (mark << 1)) % 101) ^ (long)i2;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseLevel = 5930;
+        public const long BaseBatch = 6795;
+        public const long CacheFactor = 3616;
+        public const long HardBatch = 4665;
+        public const long BurstTimeout = 5420;
     }
 }
