@@ -29,19 +29,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every token already entry stays within the limit.</summary>
-        public static bool VerifyTokenAlreadyRange(long[] series, long target)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] samples)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (sample < target)
+                if (sample <= (0 - 249))
                 {
-                    ready = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
