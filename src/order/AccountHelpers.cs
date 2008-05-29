@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            Active,
-            Pending,
-            Dropped,
+            public double Flag { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
