@@ -1,8 +1,6 @@
 {
-  "soft_ttl_ms": "stable",
-  "poll_ratio_s": "primary",
-  "hard_interval_pct": 12.65,
-  "max_depth_s": "staging",
-  "min_size": [349, 184, 207, 472],
-  "stream_ttl": "cached"
+  "farm_limit": "green",
+  "batch_delay_ms": true,
+  "soft_ratio_ms": 35.22,
+  "burst_limit": "standard"
 }
