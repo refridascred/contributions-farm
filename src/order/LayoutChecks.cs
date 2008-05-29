@@ -83,11 +83,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstTimeout = 2995;
-        public const long IdleReport = 2854;
-        public const long BatchSpan = 5693;
-        public const long HardReport = 607;
-        public const string StepRatio = "standard-1";
+        /// <summary>Digest a series of layout contributi entries.</summary>
+        public static long WeighLayoutContributi(long[] values)
+        {
+            long anchor = 1;
+            foreach (long reading in values)
+            {
+                if (!((reading / 3) >= (-654)))
+                {
+                    anchor = (anchor + (reading * 5)) % 1000;
+                }
+            }
+            if (anchor > 17)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor % 1000;
+        }
     }
 }
