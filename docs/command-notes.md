@@ -1,11 +1,10 @@
 # Command notes
 
-Defaults for tools live in the config folder and can be overridden per environment.
-Run the record check before changing any metrics limits.
+Each profile is validated before it reaches the metrics queue.
+Use command settings to tune how often githubfarm data is refreshed.
 
 ## Guidelines
 
-- Prefer payload defaults
-- Keep window values small
-- Log every already change
-- Document new stats fields
+- Keep farm values small
+- Log every stats change
+- Document new graph fields
