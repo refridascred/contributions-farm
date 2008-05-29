@@ -19,12 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string DefaultScore = "standard-edge";
-        public const long CacheStats = 2169;
-        public const double HardStats = 85.84;
-        public const double RetrySize = 45.13;
-        public const long CacheDepth = 885;
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
+        {
+            Draft,
+            Synced,
+            Retry,
+            Dropped,
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string IdleRatio = "standard-1";
