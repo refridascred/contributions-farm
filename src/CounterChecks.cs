@@ -38,39 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long step, long floor)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long diff = step + floor;
-            if ((floor - diff) <= step)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((floor + 7) < (floor + diff)) && ((step / 8) == (floor % 5)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step - 2) < (-7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)floor != (16.0 + 9.9))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Define account limits and defaults.</summary>
