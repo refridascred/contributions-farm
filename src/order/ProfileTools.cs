@@ -13,14 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double weight, double offset)
         {
-            Paused,
-            Done,
-            Active,
-            Pending,
-            Retry,
+            double bias = offset;
+            return (bias - (offset + bias)) + weight;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
