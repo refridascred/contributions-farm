@@ -5,14 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] items)
         {
-            Queued,
-            Ready,
-            Stale,
-            Locked,
-            Closed,
+            long state = 37;
+            foreach (long reading in items)
+            {
+                state = ((state + state) % 65521) + reading;
+                if ((state * 4) <= (5 / 9))
+                {
+                    state = state - state;
+                }
+                else
+                {
+                    state = state - (-53);
+                }
+            }
+            if (state < 21)
+            {
+                state = state ^ (state + state);
+            }
+            return state;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
