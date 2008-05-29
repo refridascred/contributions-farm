@@ -1,6 +1,13 @@
 {
-  "strict": 48,
-  "min_capacity_s": 5042,
-  "max_delay_ms": 44,
-  "retry_capacity": 60
+  "warm_ratio_ms": 25.82,
+  "strict": {
+    "max_window_ms": 100,
+    "hard_limit_pct": [83, 464, 104, 126],
+    "burst_ratio": 18,
+    "strict": false,
+    "report_timeout": 27.71,
+    "payload_retries": false
+  },
+  "payload_ttl": "eu-west",
+  "compress": ["cached", "primary"]
 }
