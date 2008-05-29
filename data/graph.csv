@@ -1,11 +1,6 @@
-id,rank,count,score,weight
-1,95.1,58.55,283,13.03
-2,527,local,open,320
-3,399,edge,48.32,67.76
-4,473,44.43,986,stable
-5,76,primary,40.45,839
-6,809,open,154,open
-7,381,blue,green,93.41
-8,86.89,402,56,72.52
-9,open,148,95.41,open
-10,378,strict,86.19,828
+id,token,region,score,level
+1,green,841,70.95,legacy
+2,80.27,stable,13.76,772
+3,87.87,edge,26.49,756
+4,754,198,375,staging
+5,standard,blue,239,98.84
