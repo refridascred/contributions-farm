@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] data)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double gain, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = (double)(66 - 585);
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = ((load + load) + (double)(long)i) + floor;
             }
-            return hits;
+            return load - (gain + load);
         }
 
         /// <summary>Hold a filter entry.</summary>
