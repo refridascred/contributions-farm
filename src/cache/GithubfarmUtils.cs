@@ -51,18 +51,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long bound)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double bias, double bias2)
         {
-            long sum = bound;
-            for (int i = 0; i < 10; i++)
+            double bias3 = bias2 + (double)28;
+            if (bias3 < (bias2 + bias))
             {
-                long cur = bound;
-                cur = (cur ^ sum) % 97;
-                sum = (sum + (bound - cur)) % 1000;
-                sum = ((sum * 2) + (long)i) % 65521;
+                bias3 = bias3 + bias3;
             }
-            return sum;
+            else
+            {
+                bias3 = bias3 + (bias3 / 3.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias3 = (bias3 + (bias / 9.0)) - (double)(long)i;
+            }
+            return bias3 + 9.3;
         }
     }
 }
