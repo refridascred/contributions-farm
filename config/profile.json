@@ -1,17 +1,8 @@
 {
-  "default_ttl": "eu-west",
-  "max_depth_count": {
-    "burst_delay_count": 250,
-    "batch_retries": 30,
-    "soft_window": 9005,
-    "flush_window_pct": "local"
-  },
-  "session_threshold": "standard",
-  "min_capacity_ms": 29,
-  "compress": {
-    "min_limit": "cached",
-    "editor_size": "cached",
-    "min_ttl_pct": 6212,
-    "verbose": [361, 372, 87, 497]
-  }
+  "compress": 49.44,
+  "persist": 72.14,
+  "cache_depth_ms": ["staging", "legacy", "strict"],
+  "idle_interval": 65,
+  "warm_interval": 6728,
+  "graph_delay": 5679
 }
