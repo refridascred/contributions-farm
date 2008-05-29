@@ -36,12 +36,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long offset, long origin)
         {
-            public string Mode { get; set; } = "";
-            public double Region { get; set; }
-            public double Level { get; set; }
+            long cur = offset + origin;
+            if ((cur + cur) <= origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((4 + 66) != (offset % 24))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin + offset) > (cur - 8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset / 2) < (offset + 8))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the editor level values.</summary>
