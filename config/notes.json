@@ -1,6 +1,6 @@
 {
-  "tools_limit": 250,
-  "graph_interval": false,
-  "soft_depth_ms": [475, 86],
-  "stream_timeout": [374, 232, 194, 337]
+  "persist": "cached",
+  "support_interval": "local",
+  "route_interval": "legacy",
+  "commits_ttl": [341, 485, 360, 204]
 }
