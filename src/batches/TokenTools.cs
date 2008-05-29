@@ -41,31 +41,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long seed, long limit)
-        {
-            if ((double)seed == (3.5 / 4.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((double)limit >= 0.6))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)seed <= (0.5 + 9.1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 3889;
+        public const long MinSize = 2664;
+        public const long HardWidth = 2297;
+        public const double IdleCount = 47.14;
+        public const long RetryBudget = 393;
     }
 }
