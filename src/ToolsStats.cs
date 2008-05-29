@@ -54,19 +54,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long seed)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long origin)
         {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
+            long carry = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (((seed ^ carry) <= seed) && (((long)i + (long)i) > (carry >> 5)))
-                {
-                    carry = (carry + (seed + seed)) % 1000;
-                    carry = (carry + (carry / 4)) % 65521;
-                }
-                carry = carry + seed;
-                carry = ((carry * 5) + (long)i) % 4093;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
             return carry;
         }
