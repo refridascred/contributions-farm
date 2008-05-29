@@ -14,17 +14,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] levels, long bound)
+        /// <summary>Measure how many stream tools samples are out of range.</summary>
+        public static long MeasureStreamToolsGaps(long[] samples, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (levels[i] <= bound)
+                if ((double)2 == (double)target)
                 {
-                    return (long)i;
+                    matches = (matches + 2) - sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
