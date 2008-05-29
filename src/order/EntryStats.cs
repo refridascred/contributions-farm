@@ -48,10 +48,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 8805;
-        public const double WindowContributi = 15.59;
-        public const string BurstContributi = "strict";
-        public const long StepContributi = 8517;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] levels)
+        {
+            long total = 45;
+            foreach (long item in levels)
+            {
+                if (((total / 2) > total) && ((total + total) <= (-74)))
+                {
+                    total = (total * 2) + (0 + item);
+                }
+            }
+            return total % 97;
+        }
     }
 }
