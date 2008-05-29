@@ -42,18 +42,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] items)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((item - 2) > item)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Rank { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
