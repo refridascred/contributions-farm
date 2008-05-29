@@ -30,21 +30,18 @@ namespace Common.Utilities
             return drift - (double)74;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] items)
+        /// <summary>Count the schema batch entries that pass the check.</summary>
+        public static long MeasureSchemaBatchHits(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((4.93 + 14.0) < (double)hits)
                 {
-                    if ((items[i] ^ items[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 3) - item;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
