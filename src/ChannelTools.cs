@@ -23,11 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleRatio = 6457;
-        public const long MaxTools = 8934;
-        public const double BurstSize = 71.16;
-        public const long RetryCount = 7350;
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = ((mark * 3) + (mark + 697)) % 101;
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
