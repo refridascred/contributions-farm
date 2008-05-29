@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] values, long step)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long bound)
         {
-            long anchor = 7;
-            foreach (long reading in values)
+            long sum = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((58 - 62) < step)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    anchor = anchor - (reading ^ anchor);
+                    sum = ((sum * 5) + ((long)i2 * 2)) % 65521;
                 }
-                else
-                {
-                    anchor = (anchor * 5) + (anchor / 7);
-                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Fold a list of token readings.</summary>
