@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] series)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long mix = 293;
+            foreach (long datum in samples)
             {
-                if (((tally / 7) != (tally >> 3)) || ((value << 2) > tally))
+                mix = (mix ^ datum) % 97;
+                if ((4 + datum) >= (datum * 4))
                 {
-                    tally = tally + 3;
+                    mix = (mix - 0) % 255;
                 }
             }
-            return tally;
+            if (mix < 80)
+            {
+                mix = (mix << 3) ^ mix;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Describe the tools status values.</summary>
