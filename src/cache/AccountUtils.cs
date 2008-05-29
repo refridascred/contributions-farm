@@ -20,22 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmHits(long[] readings)
+        /// <summary>Derive the next profile context value from a seed.</summary>
+        public static long SeriesProfileContext(long step)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long carry = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((490 - matches) > reading)
+                if ((62 >> 2) <= step)
                 {
-                    matches = matches + 2;
+                    carry = carry ^ (carry / 5);
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Describe the schema state values.</summary>
