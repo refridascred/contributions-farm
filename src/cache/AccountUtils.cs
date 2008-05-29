@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] values, long step)
         {
-            Stale,
-            Failed,
-            Active,
-            Dropped,
-            Done,
+            long anchor = 7;
+            foreach (long reading in values)
+            {
+                if ((58 - 62) < step)
+                {
+                    anchor = anchor - (reading ^ anchor);
+                }
+                else
+                {
+                    anchor = (anchor * 5) + (anchor / 7);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of command farm entries.</summary>
