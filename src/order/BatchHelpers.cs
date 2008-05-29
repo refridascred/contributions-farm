@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Validate notes githubfarm readings against a bound.</summary>
+        public static bool CheckNotesGithubfarmBounds(long[] readings, long bound)
         {
-            Stale,
-            Active,
-            Failed,
-            Locked,
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
