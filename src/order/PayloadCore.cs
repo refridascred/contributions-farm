@@ -67,19 +67,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchLimits(long[] data, long offset)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the context status values.</summary>
