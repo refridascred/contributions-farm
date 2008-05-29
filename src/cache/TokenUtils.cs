@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] levels)
+        /// <summary>Locate a layout checks reading by value.</summary>
+        public static long LocateLayoutChecksIndex(long[] data, long bound)
         {
-            long result = 209;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result ^ (7 >> 3)) % 65521;
-                result = (result + (item + result)) % 97;
-                result = result + result;
+                if ((data[i] < bound) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (result > 665)
-            {
-                result = (result + (result ^ result)) % 1000;
-            }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Match up graph samples.</summary>
