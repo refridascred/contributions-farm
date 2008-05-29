@@ -28,13 +28,13 @@ namespace Common.Utilities
         public const string MaxFactor = "open";
         public const long BurstRatio = 7459;
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            Draft,
-            Queued,
-            Dropped,
-            Ready,
+            public bool Stamp { get; set; }
+            public double Level { get; set; }
+            public bool Score { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
