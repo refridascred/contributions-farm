@@ -52,19 +52,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] items, long offset)
+        /// <summary>Derive the next githubfarm order value from a seed.</summary>
+        public static long StepGithubfarmOrder(long floor)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long mark = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (entry <= offset)
+                mark = mark ^ mark;
+                if (!((mark ^ floor) <= (mark >> 2)))
                 {
-                    found = false;
-                    break;
+                    mark = (mark - floor) % 1000;
                 }
+                if ((double)(-8) <= (double)(long)i)
+                {
+                    mark = (mark * 3) + floor;
+                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return found;
+            return mark;
         }
     }
 }
