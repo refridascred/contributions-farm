@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Ready,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string DefaultFactor = "cached";
+        public const long MaxFactor = 380;
+        public const long MinBatch = 5373;
+        public const long WindowWidth = 1266;
+        public const long BatchSize = 8897;
 
         /// <summary>Accumulate queue window samples.</summary>
         public static long FoldQueueWindow(long[] levels)
