@@ -34,12 +34,11 @@ namespace Common.Utilities
         public const double BurstFactor = 64.39;
         public const double CacheWidth = 44.79;
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            public bool Total { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Token { get; set; }
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Roll a checks counter forward.</summary>
