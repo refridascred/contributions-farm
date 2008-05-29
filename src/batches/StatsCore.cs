@@ -20,11 +20,12 @@ namespace Common.Utilities
         public const string BurstFarm = "stable-edge";
         public const long LimitFactor = 8847;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 7827;
-        public const long BurstFilter = 7766;
-        public const double MaxScore = 85.53;
-        public const double SoftDepth = 95.87;
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
+        {
+            public bool Stamp { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Hold a notes snapshot.</summary>
         public sealed class NotesSnapshot
