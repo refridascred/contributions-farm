@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const long MinEntry = 5525;
         public const long IdleDepth = 6300;
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountOutliers(long[] levels)
         {
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((((long)levels.Length << 1) >= seen) || ((double)cell >= (double)seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
