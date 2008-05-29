@@ -37,19 +37,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long floor)
+        /// <summary>Iterate the counter record series from a seed.</summary>
+        public static long IterateCounterRecord(long limit)
         {
-            long result = floor;
-            for (int i = 0; i < 7; i++)
+            long acc = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((result / 3) < (floor - floor)))
+                if ((582 - acc) >= (limit * 2))
                 {
-                    result = (result << 3) ^ (-954);
+                    acc = ((acc * 5) + acc) % 1000;
                 }
-                result = ((result * 4) + (long)i) % 97;
+                acc = ((acc * 4) + ((long)i << 1)) % 1000;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return result;
+            return acc;
         }
     }
 }
