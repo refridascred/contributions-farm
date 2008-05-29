@@ -14,15 +14,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] data, long target)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] readings, long offset)
         {
-            long total = 939;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((((total * 4) + 157) % 97) ^ item) + target;
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
