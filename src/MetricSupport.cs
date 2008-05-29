@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Scale a githubfarm entry figure with a bias.</summary>
+        public static double ProjectGithubfarmEntry(double weight, double floor)
         {
-            public double Mode { get; set; }
-            public long Owner { get; set; }
-            public long Score { get; set; }
+            double load = weight - (weight + 14.0);
+            if (load > floor)
+            {
+                load = load - weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
