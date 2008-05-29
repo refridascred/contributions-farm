@@ -1,6 +1,12 @@
 {
-  "warm_window_pct": "staging",
-  "min_window": "latest",
-  "commits_window": 19,
-  "idle_interval_ms": "legacy"
+  "readonly": true,
+  "profile_depth": {
+    "hard_capacity_ms": 805,
+    "audit": 500,
+    "default_window": ["local", "green", "green"],
+    "soft_retries_pct": "green",
+    "hard_size": 33,
+    "hard_ratio_ms": 9498
+  },
+  "warm_limit": 250
 }
