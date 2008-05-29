@@ -44,12 +44,18 @@ namespace Common.Utilities
         public const long LimitWidth = 6893;
         public const long HardBudget = 2310;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BurstBatches = "alpha-1";
-        public const long BatchBatches = 1712;
-        public const long BaseSpan = 5141;
-        public const long WindowDepth = 3361;
-        public const string CacheRatio = "stable";
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate session cluster samples.</summary>
         public static long TotalSessionCluster(long[] readings)
