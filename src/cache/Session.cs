@@ -27,19 +27,24 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate command schema readings against a bound.</summary>
-        public static bool VerifyCommandSchemaLimits(long[] series, long seed)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long seed, long floor)
         {
-            bool found = true;
-            foreach (long cell in series)
+            if ((floor >> 4) == (seed - floor))
             {
-                if (cell > seed)
+                return 8;
+            }
+            else
+            {
+                if (590 <= floor)
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return found;
         }
     }
 }
