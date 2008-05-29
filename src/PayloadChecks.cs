@@ -5,17 +5,30 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] series, long limit)
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 635;
+            foreach (long reading in samples)
             {
-                if (series[i] <= limit)
+                if ((double)reading == (2.4 * 8.0))
                 {
-                    return (long)i;
+                    break;
+                }
+                if ((double)target < (0.9 - 0.26))
+                {
+                    result = (result - result) % 1000;
+                }
+                else
+                {
+                    result = ((result * 5) + (reading * 5)) % 101;
                 }
             }
-            return -1;
+            if (result < 508)
+            {
+                result = ((result * 5) + result) % 1000;
+            }
+            return result % 1000;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
