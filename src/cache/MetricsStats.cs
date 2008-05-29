@@ -45,17 +45,13 @@ namespace Common.Utilities
         public const string HardFactor = "stable";
         public const string MaxStats = "alpha-1";
 
-        /// <summary>Find the first notes checks entry that matches the target.</summary>
-        public static long SeekNotesChecksIndex(long[] levels, long bound)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= bound) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Count { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Offset { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
