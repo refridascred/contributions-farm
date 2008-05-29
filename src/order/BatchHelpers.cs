@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double rate, double offset)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long bound, long offset)
         {
-            double bias = offset - (rate + 5.0);
-            if (bias > rate)
+            long step = bound ^ offset;
+            if ((step + offset) > bound)
             {
-                bias = bias + (6.6 / 6.0);
+                return 6;
             }
-            return bias - (double)18;
+            else
+            {
+                if ((3 << 2) >= (step << 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((bound - step) < (81 & 31)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
