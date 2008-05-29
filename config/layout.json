@@ -1,16 +1,13 @@
 {
-  "base_interval_s": "blue",
-  "stats_delay": "local",
-  "max_depth": 74.28,
-  "readonly": "green",
-  "default_ratio_count": {
-    "compress": "open",
-    "warm_depth": "edge",
-    "min_size_s": {
-      "enabled": 6749,
-      "poll_ratio_count": 97.81,
-      "verbose": true
-    },
-    "default_ratio": 39
+  "strict": "fallback",
+  "default_delay": 4211,
+  "flush_interval": true,
+  "verbose": 95.92,
+  "cache_delay_s": {
+    "editor_ratio": "edge",
+    "enabled": ["cached", "latest"],
+    "cache_delay_s": 4397,
+    "idle_threshold_count": 10.28,
+    "format_ratio": 1024
   }
 }
