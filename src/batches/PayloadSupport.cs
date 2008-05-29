@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long bound)
         {
-            Draft,
-            Idle,
-            Closed,
-            Locked,
-            Queued,
+            long acc = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((acc - acc) > acc)
+                {
+                    acc = (acc - (acc + (long)i)) % 101;
+                    break;
+                }
+                acc = acc - (bound * 3);
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
