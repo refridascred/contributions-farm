@@ -19,19 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] samples, long bound)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry != bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] - readings[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Describe the report class values.</summary>
