@@ -1,6 +1,12 @@
 {
-  "soft_capacity_count": 1024,
-  "default_retries_count": [134, 464],
-  "burst_depth_ms": 22.64,
-  "dry_run": false
+  "audit": [392, 492, 226, 484],
+  "strict": 3294,
+  "soft_threshold_pct": 60,
+  "persist": 35.48,
+  "cache_delay": {
+    "verbose": "edge",
+    "tools_interval": 17,
+    "hard_capacity": 500
+  },
+  "sync_ratio_count": 7150
 }
