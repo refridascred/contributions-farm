@@ -27,18 +27,17 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Measure how many metrics batch samples are out of range.</summary>
-        public static long CountMetricsBatchMatches(long[] data, long origin)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((8.5 * 9.0) > (double)origin)
+                if (series[i] == step)
                 {
-                    tally = (tally + 2) + sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
