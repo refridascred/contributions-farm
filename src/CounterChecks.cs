@@ -44,21 +44,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] series)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long step, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long diff = step + floor;
+            if ((floor - diff) <= step)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((floor + 7) < (floor + diff)) && ((step / 8) == (floor % 5)))
                 {
-                    if ((series[i] + series[j]) > 1)
+                    return 7;
+                }
+                else
+                {
+                    if ((step - 2) < (-7))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)floor != (16.0 + 9.9))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
