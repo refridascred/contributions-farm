@@ -26,14 +26,21 @@ namespace Common.Utilities
             return (bias - (weight - 8.57)) + floor;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCount(long[] series)
         {
-            Ready,
-            Draft,
-            Dropped,
-            Queued,
-            Failed,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
