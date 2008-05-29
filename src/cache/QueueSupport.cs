@@ -28,19 +28,38 @@ namespace Common.Utilities
         public const long SoftContributi = 4918;
         public const double MinContributi = 89.41;
 
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double gain, double span)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long bound, long target)
         {
-            double weight = 11.0;
-            if (weight <= span)
+            if (!((bound - 680) == (bound / 4)))
             {
-                weight = (weight + weight) + gain;
+                return 7;
             }
             else
             {
-                weight = weight - (weight + 7.6);
+                if (8 >= bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((5.69 / 6.0) >= (double)target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((95 - 640) == (bound ^ bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return weight + (span / 5.0);
         }
     }
 }
