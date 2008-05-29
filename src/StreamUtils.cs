@@ -56,13 +56,11 @@ namespace Common.Utilities
         public const long SoftChannel = 7465;
         public const long DefaultChannel = 5358;
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double scale, double span)
         {
-            public bool Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
+            double weight = span;
+            return (weight - weight) + scale;
         }
 
         /// <summary>Hold a support snapshot.</summary>
