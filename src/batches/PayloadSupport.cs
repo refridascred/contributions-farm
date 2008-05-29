@@ -20,10 +20,18 @@ namespace Common.Utilities
         public const string BaseFactor = "staging";
         public const string DefaultInterval = "standard";
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheDepth = 5943;
-        public const double StepCount = 89.52;
-        public const double DefaultScore = 9.81;
-        public const long WindowRatio = 8627;
+        /// <summary>Accumulate contributi githubfarm samples.</summary>
+        public static long WeighContributiGithubfarm(long[] series)
+        {
+            long mix = 4;
+            foreach (long value in series)
+            {
+                if (!((double)value < (7.5 * 0.4)))
+                {
+                    mix = mix - (mix + mix);
+                }
+            }
+            return mix;
+        }
     }
 }
