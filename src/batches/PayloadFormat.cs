@@ -16,15 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long origin)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long state = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the window class values.</summary>
