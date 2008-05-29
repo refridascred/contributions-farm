@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] data, long floor)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long bound, long bound2)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((double)bound2 == (1.35 + 15.0))
             {
-                if (data[i] < floor)
+                return 1;
+            }
+            else
+            {
+                if ((bound & 1) <= (34 - 78))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((bound * 5) > bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)bound2 <= 2.05)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
