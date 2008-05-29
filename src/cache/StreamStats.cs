@@ -23,19 +23,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueLimits(long[] data, long seed)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long seed, long seed2)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long edge = seed + seed2;
+            if ((8 + edge) <= (seed + 0))
             {
-                if (item > seed)
+                return 4;
+            }
+            else
+            {
+                if ((seed2 + 82) >= 36)
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ready;
         }
 
         /// <summary>Match up token samples.</summary>
