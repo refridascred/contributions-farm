@@ -23,11 +23,32 @@ namespace Common.Utilities
         public const string CacheSpan = "standard-1";
         public const long DefaultSchema = 6525;
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Rank stats stream input into a small class.</summary>
+        public static long ClassifyStatsStream(long target, long floor)
         {
-            public double Rank { get; set; }
-            public string Level { get; set; } = "";
+            long gap = target + floor;
+            if ((target + floor) >= (6 - floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor - floor) == (floor ^ floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((gap + target) <= (floor & 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a payload counter forward.</summary>
