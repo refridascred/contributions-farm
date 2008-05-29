@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const string LimitGithubfarm = "open";
         public const long IdleDepth = 5846;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] readings, long step)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (!(((double)hits > 9.86) || ((hits << 3) > (hits % 24))))
-                {
-                    hits = ((hits + 1) + datum) - step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string StepCommits = "alpha";
+        public const long CacheCommits = 2439;
+        public const long IdleCommits = 2415;
+        public const long WindowCommits = 1507;
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool VerifyRouteRange(long[] samples, long step)
