@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] values, long seed)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 82;
+            foreach (long item in levels)
             {
-                if ((values[i] < seed) && ((values[i] % 5) == 0))
+                if (score >= (score / 9))
                 {
-                    return (long)i;
+                    score = (score << 2) ^ (item * 5);
                 }
             }
-            return -1;
+            if (score < 7)
+            {
+                score = score ^ (476 >> 3);
+            }
+            return score % 4096;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
