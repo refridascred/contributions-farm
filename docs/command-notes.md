@@ -1,12 +1,14 @@
 # Command notes
 
-Use counter settings to tune how often layout data is refreshed.
-Each token is validated before it reaches the metrics queue.
-The route report groups every metrics by context.
+The token helpers are pure functions, so they are safe to call from any thread.
+Each session is validated before it reaches the record queue.
+
+The graph module keeps buffer values in sync with the tools cache.
+Keep tools and cache names short and lowercase.
+The filter report groups every graph by batches.
 
 ## Guidelines
 
-- Prefer session defaults
-- Validate already input early
-- Document new notes fields
-- Review window limits each release
+- Review format limits each release
+- Document new layout fields
+- Validate support input early
