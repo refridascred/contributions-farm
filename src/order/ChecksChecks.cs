@@ -20,12 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MaxLayout = "staging";
-        public const double SoftRatio = 21.46;
-        public const string BatchSize = "strict-edge";
-        public const long CacheBudget = 5599;
-        public const string HardLayout = "primary-edge";
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            Idle,
+            Draft,
+            Done,
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long CombineFarm(long[] samples)
