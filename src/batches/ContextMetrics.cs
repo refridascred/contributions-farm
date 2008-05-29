@@ -14,18 +14,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] items, long target)
+        /// <summary>Roll a account route counter forward.</summary>
+        public static long SeriesAccountRoute(long target)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long state = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((matches & 31) <= entry)
-                {
-                    matches = (matches + 1) + target;
-                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Combine account values into a single score.</summary>
