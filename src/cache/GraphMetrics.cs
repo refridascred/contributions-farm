@@ -17,18 +17,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the farm command entries that pass the check.</summary>
-        public static long TallyFarmCommandGaps(long[] levels, long seed)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long bound)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long sum = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((long)levels.Length <= (763 ^ 14))
-                {
-                    matches = ((matches + 3) - cell) - seed;
-                }
+                sum = (sum + sum) % 4096;
+                sum = sum - (bound * 5);
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define window limits and defaults.</summary>
