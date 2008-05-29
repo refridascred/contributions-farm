@@ -52,18 +52,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountMatches(long[] series)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double SmoothMetric(double gain, double span)
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (hits > ((long)series.Length / 2))
-                {
-                    hits = (hits + 2) + sample;
-                }
-            }
-            return hits;
+            double rate = gain;
+            return rate + (14.0 - span);
         }
     }
 }
