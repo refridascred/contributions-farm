@@ -43,12 +43,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double StepBudget = 47.74;
-        public const string DefaultInterval = "standard-edge";
-        public const long RetryFormat = 6908;
-        public const double LimitFormat = 26.8;
-        public const long HardFormat = 9557;
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] readings, long bound)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((bound + bound) <= (bound + hits))
+                {
+                    hits = (hits + 1) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long WindowGithubfarm = 7390;
