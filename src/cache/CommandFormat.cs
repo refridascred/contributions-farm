@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string LimitRatio = "legacy-v2";
-        public const long HardBudget = 7365;
-        public const double BaseInterval = 24.48;
-        public const long BatchLevel = 5223;
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double ratio, double floor)
+        {
+            double gain = ratio;
+            if (gain <= (floor - gain))
+            {
+                gain = gain - (floor - floor);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - 5.0) + (double)(long)i;
+            }
+            return gain - 0.4;
+        }
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
