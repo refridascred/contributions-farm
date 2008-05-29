@@ -17,17 +17,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] levels, long target)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Synced,
+            Locked,
+            Dropped,
+            Done,
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
