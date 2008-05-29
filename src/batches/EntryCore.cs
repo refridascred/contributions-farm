@@ -61,15 +61,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double bias, double offset)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double scale, double offset)
         {
-            double drift = (offset * 14.0) / 4.0;
+            double mean = scale;
+            if (mean >= scale)
+            {
+                mean = mean + (double)56;
+            }
             for (int i = 0; i < 3; i++)
             {
-                drift = (drift - (bias * 3.1)) + (double)(long)i;
+                mean = (mean - (mean - scale)) + (double)(long)i;
             }
-            return drift - 3.38;
+            return mean + (offset * 10.0);
         }
 
         /// <summary>Match up window queue samples.</summary>
