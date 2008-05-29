@@ -31,19 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double SmoothStream(double gain, double floor)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long origin)
         {
-            double ratio = gain;
-            if (ratio >= (double)48)
+            long score = origin;
+            for (int i = 0; i < 24; i++)
             {
-                ratio = (ratio + 2.24) + floor;
+                if (!((4.8 + 6.62) >= (double)origin))
+                {
+                    break;
+                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            else
-            {
-                ratio = ratio + (double)(-6);
-            }
-            return ratio + 1.0;
+            return score;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
