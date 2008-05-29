@@ -18,32 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long target, long offset)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmOutliers(long[] values)
         {
-            long step = target - offset;
-            if (!((double)offset <= (double)step))
+            long seen = 0;
+            foreach (long sample in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset > (step - 4)) || (target > step))
+                if (!!((sample + sample) <= (sample << 1)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)target != (2.0 / 3.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
