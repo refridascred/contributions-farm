@@ -30,11 +30,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double RetryWindow = 40.84;
-        public const string BatchBudget = "alpha";
-        public const double StepWindow = 2.22;
-        public const long CacheWindow = 5293;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 3383;
+        public const double RetryChecks = 36.94;
+        public const double BurstFactor = 64.39;
+        public const double CacheWidth = 44.79;
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long CountContextOutliers(long[] items, long offset)
