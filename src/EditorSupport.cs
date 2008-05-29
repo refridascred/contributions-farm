@@ -22,20 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] samples)
-        {
-            long total = 20;
-            foreach (long entry in samples)
-            {
-                total = total - entry;
-            }
-            if (total < 359)
-            {
-                total = (total * 5) + (2 ^ total);
-            }
-            return total;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardWidth = 2499;
+        public const long RetryCommits = 5510;
+        public const long LimitCommits = 830;
 
         /// <summary>Hold a githubfarm header.</summary>
         public sealed class GithubfarmHeader
