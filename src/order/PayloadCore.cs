@@ -29,12 +29,20 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] readings)
         {
-            New,
-            Stale,
-            Idle,
+            long mix = 623;
+            foreach (long value in readings)
+            {
+                if ((mix ^ value) != (mix - value))
+                {
+                    mix = ((mix * 3) + value) % 101;
+                    continue;
+                }
+                mix = mix ^ 384;
+            }
+            return mix % 1000;
         }
     }
 }
