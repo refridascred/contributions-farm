@@ -1,17 +1,12 @@
 {
-  "sync_size_count": {
-    "flush_window": false,
-    "dry_run": 8229,
-    "poll_delay": 29,
-    "default_ratio": {
-      "sync_window_count": 8083,
-      "persist": "stable",
-      "flush_depth": 1024,
-      "cache_depth_ms": 8418,
-      "hard_capacity_pct": "blue"
-    },
-    "cache_depth": 1331
+  "max_delay": 2968,
+  "default_ratio_count": {
+    "batch_ttl": ["eu-west", "open", "eu-west", "latest"],
+    "poll_size_s": "open",
+    "default_depth_ms": "strict",
+    "idle_ttl_ms": 500,
+    "flush_depth_s": true
   },
-  "entry_capacity": "standard",
-  "default_timeout_count": true
+  "githubfarm_depth": [267, 134, 74],
+  "strict": 250
 }
