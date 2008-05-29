@@ -62,13 +62,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
-        {
-            public long Total { get; set; }
-            public double Owner { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstBudget = 7762;
+        public const long WindowLevel = 6274;
+        public const long MinReport = 7645;
+        public const long WindowReport = 8449;
     }
 }
