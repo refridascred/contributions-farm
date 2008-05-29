@@ -55,23 +55,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double scale, double span)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            double mean = (double)1 * 0.66;
-            if (mean >= span)
-            {
-                mean = mean - span;
-            }
-            else
-            {
-                mean = mean - span;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (0.56 + mean)) + (double)(long)i;
-            }
-            return mean - (scale * 8.0);
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
