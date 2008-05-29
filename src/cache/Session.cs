@@ -19,19 +19,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] values)
-        {
-            long total = -57;
-            foreach (long item in values)
-            {
-                if ((double)total != (5.34 + 0.8))
-                {
-                    total = ((total + (total ^ total)) % 1000) ^ item;
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double WindowBatch = 25.66;
+        public const long IdleLevel = 2158;
+        public const string BaseBudget = "local-v2";
 
         /// <summary>Blend two graph measurements.</summary>
         public static double SmoothGraph(double gain, double span)
