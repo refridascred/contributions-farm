@@ -30,10 +30,21 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MaxDepth = 67.49;
-        public const long BurstTimeout = 8256;
-        public const double HardBudget = 46.9;
-        public const long LimitFilter = 8118;
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
