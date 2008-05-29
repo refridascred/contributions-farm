@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            Synced,
-            Closed,
-            Retry,
-            Stale,
-            Failed,
+            Active,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
