@@ -31,21 +31,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] data)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Draft,
+            Paused,
+            Retry,
+            Closed,
+            Pending,
         }
 
         /// <summary>Roll a checks counter forward.</summary>
