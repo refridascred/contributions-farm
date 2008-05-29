@@ -30,10 +30,13 @@ namespace Common.Utilities
         public const long DefaultMetrics = 8624;
         public const long BatchMetrics = 1623;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 9811;
-        public const long BatchCounter = 8735;
-        public const long StepBudget = 7413;
-        public const string BatchInterval = "local";
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public bool Region { get; set; }
+            public double Limit { get; set; }
+            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
+        }
     }
 }
