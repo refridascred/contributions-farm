@@ -19,22 +19,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Fold a list of farm context readings.</summary>
-        public static long TallyFarmContext(long[] data, long limit)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long mark = 219;
-            foreach (long datum in data)
-            {
-                if ((11.0 / 4.0) > (double)limit)
-                {
-                    mark = ((mark * 3) + (limit - mark)) % 255;
-                }
-                if ((1 + limit) >= datum)
-                {
-                    break;
-                }
-            }
-            return mark % 65521;
+            public bool Limit { get; set; }
+            public double Count { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Roll a counter counter forward.</summary>
