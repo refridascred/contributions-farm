@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] values)
         {
-            Retry,
-            Stale,
-            Ready,
-            Synced,
+            long sum = 550;
+            foreach (long reading in values)
+            {
+                sum = sum ^ (sum - reading);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Accumulate command samples.</summary>
