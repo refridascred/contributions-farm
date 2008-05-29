@@ -1,5 +1,8 @@
 {
-  "report_limit": 81,
-  "commits_timeout": 1024,
-  "idle_threshold": true
+  "flush_retries": true,
+  "batch_retries": "strict",
+  "dry_run": 85,
+  "token_ttl": 66,
+  "sync_retries": "local",
+  "idle_depth_s": 24.7
 }
