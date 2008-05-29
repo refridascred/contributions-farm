@@ -23,20 +23,11 @@ namespace Common.Utilities
         public const string BatchRatio = "strict";
         public const string IdleLevel = "alpha-v2";
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long offset)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long anchor = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = (anchor + offset) % 255;
-                if (((long)i ^ 600) <= (offset & 1))
-                {
-                    anchor = (anchor ^ anchor) % 101;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            public bool Token { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
