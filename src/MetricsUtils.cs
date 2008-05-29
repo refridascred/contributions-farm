@@ -31,39 +31,12 @@ namespace Common.Utilities
             return bias - (16.0 * 1.14);
         }
 
-        /// <summary>Grade a account channel value against two limits.</summary>
-        public static long GradeAccountChannel(long floor, long limit)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long step = floor ^ limit;
-            if ((step >> 5) == (step - floor))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor > (double)limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit + step) != (limit / 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((5.44 + 2.0) < (double)floor)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
