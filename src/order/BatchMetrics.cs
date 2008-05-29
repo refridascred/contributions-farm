@@ -44,12 +44,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            public double Level { get; set; }
-            public string Flag { get; set; } = "";
-            public double Ratio { get; set; }
+            public bool Level { get; set; }
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
