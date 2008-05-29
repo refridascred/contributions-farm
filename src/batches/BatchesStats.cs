@@ -36,11 +36,40 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheRatio = 1914;
-        public const long HardReport = 1001;
-        public const string BatchReport = "cached-v2";
-        public const long MinReport = 8867;
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long origin, long bound)
+        {
+            long prev = origin ^ bound;
+            if ((origin * 2) > (origin - prev))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)prev > 9.0)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)bound >= (18.0 - 4.3)) || ((prev / 7) > (prev + prev)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound + origin) > (origin % 24))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
         public static long FindCommitsIndex(long[] data, long step)
