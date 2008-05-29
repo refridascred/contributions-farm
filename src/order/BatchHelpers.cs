@@ -37,13 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Audit profile schema readings against a rule.</summary>
+        public static long MeasureProfileSchemaGaps(long[] items, long target)
         {
-            New,
-            Synced,
-            Active,
-            Stale,
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((5.3 * 4.33) >= (double)cell)
+                {
+                    tally = (tally + 3) + target;
+                }
+            }
+            return tally;
         }
     }
 }
