@@ -1,12 +1,9 @@
 # githubfarm settings
-idle_threshold_count:
-  - stable
-  - open
-  - eu-west
-  - legacy
-commits_capacity: 4085
-githubfarm_window: 27
-soft_depth: edge
-hard_size_s:
-  - 275
-  - 150
+audit: latest
+verbose: fallback
+batch_size_count: fallback
+sync_retries_pct:
+  - green
+  - latest
+  - green
+  - blue
