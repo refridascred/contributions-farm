@@ -43,18 +43,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] series)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmMatches(long[] levels, long origin)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((count - count) > count)
                 {
-                    if ((series[i] + series[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
+                    count = ((count + 1) - entry) + origin;
                 }
             }
             return count;
