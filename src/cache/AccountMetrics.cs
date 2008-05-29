@@ -48,19 +48,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsRange(long[] levels, long step)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] data, long step)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long score = -141;
+            foreach (long sample in data)
             {
-                if (entry < step)
-                {
-                    found = false;
-                    break;
-                }
+                score = (score + (long)data.Length) % 255;
+                score = score - (sample % 5);
             }
-            return found;
+            if (score < 2)
+            {
+                score = score + step;
+            }
+            return score % 4096;
         }
 
         /// <summary>Describe the format phase values.</summary>
