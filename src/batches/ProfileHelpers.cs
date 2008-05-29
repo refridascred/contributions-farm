@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiOutliers(long[] levels, long offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] values)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (!(((entry - offset) == (offset - count)) && ((double)offset > (4.01 / 4.0))))
+                if ((1.0 - 6.0) > (16.0 / 5.0))
                 {
-                    count = count + 3;
+                    hits = (hits + 3) + datum;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the profile state values.</summary>
