@@ -18,16 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] readings, long floor)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long score = -937;
-            foreach (long value in readings)
-            {
-                score = ((score << 2) ^ (value * 5)) % 1000;
-                score = (score * 2) + (value - floor);
-            }
-            return score;
+            public long Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the stats state values.</summary>
