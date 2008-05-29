@@ -1,7 +1,5 @@
 {
-  "base_depth_count": ["blue", "legacy"],
-  "hard_ratio_s": 6.84,
-  "burst_window_s": 81,
-  "hard_size_ms": ["latest", "strict", "staging"],
-  "context_size": 35.39
+  "idle_size_s": ["primary", "fallback", "latest", "edge"],
+  "poll_interval": "cached",
+  "hard_interval": 1032
 }
