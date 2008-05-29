@@ -63,11 +63,13 @@ namespace Common.Utilities
             return (weight - weight) + scale;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
+            Draft,
+            Paused,
+            Synced,
+            Locked,
         }
 
         /// <summary>Locate a already stats reading by value.</summary>
