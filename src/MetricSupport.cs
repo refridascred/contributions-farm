@@ -14,17 +14,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] values, long target)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Mode { get; set; }
+            public long Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Adjust a metric reading.</summary>
