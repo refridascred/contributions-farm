@@ -26,9 +26,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BurstLevel = "legacy-1";
-        public const long DefaultSession = 3294;
-        public const string HardSpan = "alpha";
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
+        {
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
+        }
     }
 }
