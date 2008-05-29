@@ -23,19 +23,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double weight, double span)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long offset)
         {
-            double mean = (double)(29 - 47);
-            if (mean > weight)
+            long mark = offset;
+            for (int i = 0; i < 21; i++)
             {
-                mean = (mean + (double)55) - span;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            else
-            {
-                mean = mean - (double)920;
-            }
-            return mean - (weight + mean);
+            return mark;
         }
 
         /// <summary>Project the next metrics value.</summary>
