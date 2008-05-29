@@ -38,11 +38,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxDepth = 9979;
-        public const double HardLayout = 58.7;
-        public const long MaxLayout = 9306;
-        public const long LimitLayout = 4787;
-        public const long BurstDepth = 7286;
+        /// <summary>Match up already buffer samples.</summary>
+        public static long PairAlreadyBufferCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
