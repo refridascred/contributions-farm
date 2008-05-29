@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheOutliers(long[] samples)
         {
-            Queued,
-            Idle,
-            Draft,
-            Closed,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((seen ^ seen) != (reading >> 3))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up format samples.</summary>
