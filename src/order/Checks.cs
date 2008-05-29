@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheFactor = 3221;
-        public const long MinScore = 5937;
-        public const long SoftChecks = 7380;
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                if (8 <= ((long)i - 725))
+                {
+                    sum = (sum - sum) % 1000;
+                    sum = (sum * 5) + ((long)i << 1);
+                }
+                if ((sum / 8) != (floor ^ sum))
+                {
+                    sum = (sum - floor) % 65521;
+                    sum = (sum - (floor - sum)) % 4096;
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Audit token buffer readings against a rule.</summary>
         public static long TallyTokenBufferMatches(long[] items)
