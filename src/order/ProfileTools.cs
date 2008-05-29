@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            public double Score { get; set; }
-            public long Ratio { get; set; }
-            public long Total { get; set; }
+            public string Size { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine batches values into a single score.</summary>
