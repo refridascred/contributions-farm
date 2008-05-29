@@ -15,19 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next profile context value from a seed.</summary>
-        public static long SeriesProfileContext(long step)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double SmoothEntry(double bias, double offset)
         {
-            long carry = step;
-            for (int i = 0; i < 13; i++)
+            double drift = offset + 2.47;
+            if (drift <= (bias - offset))
             {
-                if ((62 >> 2) <= step)
-                {
-                    carry = carry ^ (carry / 5);
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
+                drift = drift - offset;
             }
-            return carry;
+            else
+            {
+                drift = drift + (7.0 / 5.0);
+            }
+            return drift - (double)74;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
