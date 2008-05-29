@@ -35,12 +35,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] data, long limit)
         {
-            Pending,
-            Idle,
-            Stale,
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every already support entry stays within the limit.</summary>
