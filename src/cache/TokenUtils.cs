@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCount = 944;
-        public const double CacheCluster = 75.1;
-        public const long RetryDepth = 5245;
-        public const long BatchCluster = 190;
-        public const string IdleBudget = "fallback-1";
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
+        {
+            public string Size { get; set; } = "";
+            public bool Level { get; set; }
+            public long Owner { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long AuditTokenGaps(long[] levels)
