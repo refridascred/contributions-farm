@@ -38,39 +38,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long origin, long bound)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] values, long bound)
         {
-            long prev = origin ^ bound;
-            if ((origin * 2) > (origin - prev))
+            long hits = 0;
+            foreach (long entry in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)prev > 9.0)
+                if ((bound ^ 718) > hits)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)bound >= (18.0 - 4.3)) || ((prev / 7) > (prev + prev)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound + origin) > (origin % 24))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = (hits + 3) + entry;
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
