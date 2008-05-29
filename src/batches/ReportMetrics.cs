@@ -28,11 +28,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheInterval = 4895;
-        public const double SoftFactor = 56.76;
-        public const string LimitCache = "strict-v2";
-        public const long WindowLevel = 5410;
-        public const long HardCache = 3459;
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long PairFarmCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
