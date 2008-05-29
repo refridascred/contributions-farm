@@ -1,10 +1,33 @@
 # entry settings
-soft_capacity_s: 41
-farm_interval:
-  - fallback
-  - latest
-  - eu-west
-enabled: 51.38
-strict: 72.94
-max_window: 7905
-retry_delay_ms: 84.38
+buffer_window:
+  command_ttl: 57.67
+  flush_retries_count: 9129
+  enabled:
+    batch_window_s: false
+    tools_interval: legacy
+    batch_limit:
+      - standard
+      - cached
+  poll_depth_s: 8065
+  idle_delay_ms: 9575
+readonly:
+  flush_threshold_ms:
+    cache_delay_s:
+      - staging
+      - green
+      - strict
+      - latest
+    sync_limit_ms: fallback
+    flush_threshold:
+      - stable
+      - strict
+      - green
+    enabled: 30
+    context_threshold:
+      - strict
+      - stable
+    layout_interval: 26
+  notes_capacity: 58.93
+  soft_limit_pct: 3483
+  command_delay: 66
+compress: cached
