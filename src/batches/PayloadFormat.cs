@@ -39,24 +39,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long origin, long step)
-        {
-            if ((step - 12) < (84 % 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((step - origin) > (step + origin)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowLevel = 1457;
+        public const long DefaultQueue = 9690;
+        public const long DefaultBudget = 3889;
     }
 }
