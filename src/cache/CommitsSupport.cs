@@ -25,38 +25,14 @@ namespace Common.Utilities
         public const long BurstCluster = 6055;
         public const long StepCluster = 264;
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long limit, long seed)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            if (((seed + 29) == (limit & 63)) || (5.47 <= (double)seed))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit >> 5) >= (limit + seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((15.0 - 1.9) > (double)seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit * 4) == (limit ^ limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Dropped,
+            Ready,
+            New,
+            Synced,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
