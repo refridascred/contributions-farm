@@ -27,10 +27,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double WindowSpan = 28.74;
-        public const long WindowFactor = 1945;
-        public const double BaseInterval = 10.98;
-        public const long DefaultContributi = 5283;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] items)
+        {
+            long carry = 7;
+            foreach (long entry in items)
+            {
+                if ((entry & 255) <= (entry * 4))
+                {
+                    carry = (carry + (carry % 12)) % 4096;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (carry % 10);
+                }
+            }
+            return carry % 4096;
+        }
     }
 }
