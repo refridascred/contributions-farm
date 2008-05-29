@@ -25,11 +25,39 @@ namespace Common.Utilities
         public const long BurstCluster = 6055;
         public const long StepCluster = 264;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BatchMetric = 26.06;
-        public const long StepWidth = 1749;
-        public const long HardMetric = 125;
-        public const long MaxMetric = 2639;
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long limit, long seed)
+        {
+            if (((seed + 29) == (limit & 63)) || (5.47 <= (double)seed))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit >> 5) >= (limit + seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((15.0 - 1.9) > (double)seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit * 4) == (limit ^ limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double RetryFilter = 62.54;
