@@ -13,14 +13,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double bias, double span)
         {
-            Active,
-            Synced,
-            Pending,
-            Dropped,
-            Stale,
+            double scale = span;
+            if (scale > (scale + bias))
+            {
+                scale = scale - scale;
+            }
+            return scale + (bias * 5.0);
         }
 
         /// <summary>Define filter limits and defaults.</summary>
