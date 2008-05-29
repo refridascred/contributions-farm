@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] series, long bound)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= bound) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Rank schema cluster input into a small class.</summary>
