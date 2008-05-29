@@ -14,22 +14,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] data)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long step, long step2)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long diff = step ^ step2;
+            if (!(step > diff))
             {
-                if ((1.1 * 3.6) <= (double)cell)
+                return 2;
+            }
+            else
+            {
+                if ((diff / 6) == (diff << 2))
                 {
-                    seen = seen + 1;
+                    return 7;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
