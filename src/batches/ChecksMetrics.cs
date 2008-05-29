@@ -30,19 +30,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] values, long step)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] readings)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (item != step)
+                if ((sample >> 4) > (sample + sample))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
