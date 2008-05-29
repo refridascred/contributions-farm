@@ -34,11 +34,12 @@ namespace Common.Utilities
         public const double BurstFactor = 64.39;
         public const double CacheWidth = 44.79;
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
+            Active,
+            Stale,
+            Failed,
         }
 
         /// <summary>Roll a checks counter forward.</summary>
