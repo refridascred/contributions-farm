@@ -16,17 +16,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first command report entry that matches the target.</summary>
-        public static long FindCommandReportIndex(long[] items, long bound)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] items)
         {
+            long seen = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                if ((items[i] >= bound) && ((items[i] % 3) != 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the graph status values.</summary>
