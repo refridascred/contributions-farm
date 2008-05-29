@@ -21,12 +21,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 4024;
-        public const long HardGraph = 8612;
-        public const long LimitScore = 804;
-        public const long LimitWidth = 3700;
-        public const double MinGraph = 80.08;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepSupport = 63;
+        public const string BaseInterval = "stable-1";
+        public const double BatchSupport = 74.59;
+        public const string WindowLevel = "primary";
 
         /// <summary>Define order limits and defaults.</summary>
         public const double IdleOrder = 32.89;
