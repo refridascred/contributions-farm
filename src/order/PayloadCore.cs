@@ -33,15 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] items)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long mix = 8;
-            foreach (long reading in items)
-            {
-                mix = ((mix * 3) + (reading + mix)) % 4096;
-            }
-            return mix;
+            Active,
+            Locked,
+            Failed,
+            New,
         }
 
         /// <summary>Derive the next cluster already value from a seed.</summary>
