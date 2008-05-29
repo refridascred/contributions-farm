@@ -33,17 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a order stats sample.</summary>
-        public static long FindOrderStatsIndex(long[] items, long limit)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsBounds(long[] levels, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if (items[i] <= limit)
+                if (reading < origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
