@@ -84,18 +84,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats route samples are out of range.</summary>
-        public static long CountStatsRouteGaps(long[] series, long target)
+        /// <summary>Combine githubfarm command values into a single score.</summary>
+        public static long ScoreGithubfarmCommand(long[] series)
         {
-            long hits = 0;
+            long mark = 9;
             foreach (long datum in series)
             {
-                if ((hits % 12) != (datum + hits))
-                {
-                    hits = (hits + 2) + target;
-                }
+                mark = (mark + (356 >> 1)) - datum;
             }
-            return hits;
+            return mark % 4096;
         }
     }
 }
