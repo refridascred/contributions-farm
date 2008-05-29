@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileMatches(long[] data)
-        {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((double)count < 4.2)
-                {
-                    count = (count + 1) + sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftTimeout = 2943;
+        public const long SoftMetrics = 1224;
+        public const long BaseMetrics = 5119;
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
