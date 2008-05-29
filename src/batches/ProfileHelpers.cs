@@ -42,19 +42,25 @@ namespace Common.Utilities
         public const double SoftFactor = 77.84;
         public const long CacheSpan = 1671;
 
-        /// <summary>Check that every session layout entry stays within the limit.</summary>
-        public static bool VerifySessionLayoutBounds(long[] data, long floor)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long step)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long anchor = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (value > floor)
+                anchor = anchor ^ step;
+                if (((-46) << 3) >= (anchor + (long)i))
                 {
-                    stale = false;
+                    anchor = ((anchor * 5) + ((long)i % 5)) % 4096;
                     break;
                 }
+                if (((anchor + (long)i) == (long)i) && ((long)i != ((long)i + (long)i)))
+                {
+                    continue;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Adjust a window reading.</summary>
