@@ -46,19 +46,11 @@ namespace Common.Utilities
             return ratio + 1.0;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] readings, long bound)
-        {
-            long carry = 61;
-            foreach (long datum in readings)
-            {
-                carry = (carry ^ (bound ^ datum)) % 255;
-            }
-            if (carry > 2)
-            {
-                carry = (carry - (bound + bound)) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheScore = 6785;
+        public const string SoftRatio = "fallback-1";
+        public const double MinBudget = 12.53;
+        public const double SoftCount = 4.3;
+        public const long HardScore = 4182;
     }
 }
