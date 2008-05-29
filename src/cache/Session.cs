@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 2865;
-        public const long BatchEntry = 129;
-        public const string LimitSize = "latest-v2";
-        public const double MaxSize = 12.72;
-        public const long BaseDepth = 1162;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] levels, long floor)
+        {
+            long score = 288;
+            foreach (long cell in levels)
+            {
+                if ((score ^ cell) >= (floor % 10))
+                {
+                    score = (score + (floor - score)) % 255;
+                }
+                else
+                {
+                    score = (score ^ (cell / 8)) % 255;
+                }
+            }
+            return score % 65521;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string IdleWidth = "strict-edge";
