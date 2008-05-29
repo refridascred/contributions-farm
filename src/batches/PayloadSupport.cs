@@ -40,17 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] series, long offset)
+        /// <summary>Project the next channel value.</summary>
+        public static double AdjustChannel(double rate, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = offset;
+            if (scale <= (rate * 9.87))
             {
-                if ((series[i] > offset) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale - (3.4 * 5.8);
             }
-            return -1;
+            else
+            {
+                scale = scale - offset;
+            }
+            return scale - scale;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
