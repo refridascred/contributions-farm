@@ -43,18 +43,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] data, long step)
+        /// <summary>Fold a list of support schema readings.</summary>
+        public static long WeighSupportSchema(long[] items, long floor)
         {
-            long carry = 94;
-            foreach (long reading in data)
+            long sum = 3;
+            foreach (long entry in items)
             {
-                if (!((carry + reading) >= 5))
+                if ((floor + floor) != (sum + floor))
                 {
-                    carry = ((carry + 237) % 101) - step;
+                    sum = (sum << 2) ^ (floor - entry);
                 }
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
