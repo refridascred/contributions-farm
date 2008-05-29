@@ -1,10 +1,7 @@
 # support settings
-payload_depth: 23.74
-idle_limit_pct: 55
-commits_delay: green
-strict:
-  - 193
-  - 108
-  - 442
+session_window: primary
+dry_run: 37.62
+flush_delay_count: stable
+base_depth: 48
 verbose: true
-flush_threshold_count: false
+warm_size_count: 60
