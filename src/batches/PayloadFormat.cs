@@ -21,14 +21,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] series, long seed)
         {
-            Queued,
-            Ready,
-            Locked,
-            Synced,
-            Failed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= seed) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the window payload entries that pass the check.</summary>
