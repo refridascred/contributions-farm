@@ -1,13 +1,6 @@
 {
-  "warm_ratio_ms": 25.82,
-  "strict": {
-    "max_window_ms": 100,
-    "hard_limit_pct": [83, 464, 104, 126],
-    "burst_ratio": 18,
-    "strict": false,
-    "report_timeout": 27.71,
-    "payload_retries": false
-  },
-  "payload_ttl": "eu-west",
-  "compress": ["cached", "primary"]
+  "poll_window_ms": 51,
+  "min_ttl_s": ["legacy", "eu-west", "eu-west"],
+  "base_size_ms": "latest",
+  "idle_window": "legacy"
 }
