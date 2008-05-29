@@ -29,12 +29,38 @@ namespace Common.Utilities
             return mean + (span + span);
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long limit, long origin)
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public bool Mode { get; set; }
+            if (((4 ^ origin) == (limit >> 4)) && ((origin + 930) >= (limit & 127)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin - limit) < (origin & 31))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit + limit) != (limit % 60))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((origin + origin) >= origin) || ((double)limit <= (18.0 * 7.6)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
