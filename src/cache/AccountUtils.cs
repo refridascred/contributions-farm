@@ -27,14 +27,13 @@ namespace Common.Utilities
         public const long SoftDepth = 5201;
         public const long IdleGraph = 6001;
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            Done,
-            Idle,
-            Synced,
             Failed,
-            Dropped,
+            Stale,
+            Pending,
+            New,
         }
     }
 }
