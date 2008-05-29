@@ -66,11 +66,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultFormat = 9610;
-        public const string HardSpan = "latest-edge";
-        public const string WindowCount = "standard-1";
-        public const string MinFormat = "open";
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesLimits(long[] data, long bound)
+        {
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
