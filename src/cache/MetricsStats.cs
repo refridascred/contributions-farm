@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteHits(long[] levels)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry + count) == (entry - count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Paused,
+            Queued,
+            Ready,
+            Retry,
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
