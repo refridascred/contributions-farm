@@ -1,6 +1,6 @@
 {
-  "batches_capacity": 19,
-  "cache_ttl": 59.27,
-  "metrics_retries": 2.02,
-  "min_ratio_ms": 57.87
+  "already_limit": 54.25,
+  "burst_threshold": [261, 82, 59, 34],
+  "verbose": "blue",
+  "stream_ttl": 1024
 }
