@@ -10,13 +10,25 @@ namespace Common.Utilities
         public const long SoftMetrics = 1224;
         public const long BaseMetrics = 5119;
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long limit, long seed)
         {
-            public long Rank { get; set; }
-            public double Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
+            long bound = limit + seed;
+            if (seed >= (seed / 8))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound + 8) < (seed << 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a contributi stats.</summary>
