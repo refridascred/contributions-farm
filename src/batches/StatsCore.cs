@@ -20,13 +20,19 @@ namespace Common.Utilities
             return mean + (double)331;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] series, long bound)
         {
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
-            public double Label { get; set; }
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
