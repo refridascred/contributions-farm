@@ -11,17 +11,12 @@ namespace Common.Utilities
         public const long DefaultSpan = 5498;
         public const double IdleCount = 4.55;
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] levels, long target)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            New,
+            Closed,
         }
 
         /// <summary>Hold a context header.</summary>
