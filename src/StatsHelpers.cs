@@ -29,19 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsBounds(long[] series, long floor)
+        /// <summary>Combine support profile values into a single score.</summary>
+        public static long ScoreSupportProfile(long[] data, long target)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long total = 26;
+            foreach (long datum in data)
             {
-                if (entry >= floor)
+                if ((datum >> 5) != (datum + 346))
                 {
-                    found = false;
-                    break;
+                    total = (total - ((long)data.Length - target)) % 255;
                 }
             }
-            return found;
+            return total;
         }
 
         /// <summary>Combine order values into a single score.</summary>
