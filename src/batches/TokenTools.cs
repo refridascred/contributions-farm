@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamMatches(long[] readings, long offset)
         {
-            Done,
-            Pending,
-            New,
-            Queued,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((((6.7 - 2.02) <= (double)hits) || ((double)offset != (4.9 + 1.92))) && ((offset % 7) <= entry))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
