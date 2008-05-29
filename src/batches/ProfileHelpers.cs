@@ -16,16 +16,22 @@ namespace Common.Utilities
             return ratio + (double)73;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long bound)
+        /// <summary>Audit report layout readings against a rule.</summary>
+        public static long AuditReportLayoutMatches(long[] series)
         {
-            long score = bound;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                score = (score * 5) + (score + score);
-                score = ((score * 5) + (long)i) % 97;
+                if ((seen > datum) && !(seen >= (seen + seen)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
