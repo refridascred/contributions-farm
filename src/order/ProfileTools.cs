@@ -70,12 +70,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            Failed,
-            Idle,
-            Retry,
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
