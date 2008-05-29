@@ -14,27 +14,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] values)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long limit)
         {
-            long acc = 5;
-            foreach (long sample in values)
+            long mark = limit;
+            for (int i = 0; i < 11; i++)
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    acc = acc - (4 << 2);
-                    acc = (acc - (long)i) % 101;
-                }
-                if (((long)values.Length > acc) && ((long)values.Length > sample))
-                {
-                    acc = (acc * 5) + (acc ^ 739);
-                }
-                if (!((double)acc == (7.17 + 19.0)))
-                {
-                    acc = (acc << 2) ^ 35;
-                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Describe the metric class values.</summary>
