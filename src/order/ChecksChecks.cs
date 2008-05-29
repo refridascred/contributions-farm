@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double rate, double floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] items)
         {
-            double rate2 = (6.7 * 2.0) / 3.0;
-            if (rate2 < 17.0)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                rate2 = rate2 - rate;
+                if (((sample / 4) == (sample / 2)) || ((sample ^ sample) > (hits + sample)))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                rate2 = rate2 + 7.0;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 + rate) + (double)(long)i;
-            }
-            return rate2 + (floor * 19.0);
+            return hits;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
