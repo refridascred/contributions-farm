@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public double Score { get; set; }
-            public double Owner { get; set; }
-            public long Flag { get; set; }
-            public double Total { get; set; }
+            Idle,
+            Locked,
+            Pending,
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
