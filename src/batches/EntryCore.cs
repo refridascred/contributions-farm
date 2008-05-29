@@ -67,11 +67,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public long Flag { get; set; }
-            public bool Limit { get; set; }
+            Paused,
+            Failed,
+            Pending,
+            Idle,
         }
     }
 }
