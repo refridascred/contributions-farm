@@ -1,6 +1,6 @@
 {
-  "persist": "cached",
-  "support_interval": "local",
-  "route_interval": "legacy",
-  "commits_ttl": [341, 485, 360, 204]
+  "hard_depth_pct": 49.67,
+  "soft_ratio": 250,
+  "cache_retries": "legacy",
+  "verbose": "cached"
 }
