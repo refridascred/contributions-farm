@@ -38,10 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchSize = 4443;
-        public const long DefaultWindow = 4040;
-        public const long SoftTimeout = 9182;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((double)item <= 9.0)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate window samples.</summary>
         public static long TotalWindow(long[] readings)
