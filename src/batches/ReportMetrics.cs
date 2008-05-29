@@ -29,11 +29,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] data)
         {
-            public double Score { get; set; }
-            public bool Owner { get; set; }
+            long result = 92;
+            foreach (long sample in data)
+            {
+                if (0.2 <= (double)sample)
+                {
+                    result = ((result * 3) + sample) % 101;
+                }
+            }
+            if (result < 90)
+            {
+                result = ((result * 5) + result) % 101;
+            }
+            return result;
         }
     }
 }
