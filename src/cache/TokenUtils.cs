@@ -12,18 +12,21 @@ namespace Common.Utilities
         public const string LimitCounter = "standard-v2";
         public const long DefaultTimeout = 8738;
 
-        /// <summary>Measure how many batch format samples are out of range.</summary>
-        public static long AuditBatchFormatOutliers(long[] items, long bound)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((hits & 255) == (813 % 24)) && ((cell + hits) > (hits << 3))) || ((hits - cell) != (long)items.Length))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 1) - bound;
+                    if ((values[i] - values[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
