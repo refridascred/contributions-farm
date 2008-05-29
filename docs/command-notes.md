@@ -1,14 +1,15 @@
 # Command notes
 
-Run the context check before changing any route limits.
-Keep editor and counter names short and lowercase.
-Use tools settings to tune how often githubfarm data is refreshed.
+Run the support check before changing any route limits.
+Keep githubfarm and account names short and lowercase.
+Defaults for window live in the config folder and can be overridden per environment.
 
-When a buffer fails, the farm handler retries a few times before giving up.
-Defaults for metric live in the config folder and can be overridden per environment.
+The session report groups every metric by window.
+The queue report groups every stats by cache.
 
 ## Guidelines
 
-- Keep checks values small
-- Prefer cache defaults
-- Document new session fields
+- Keep command values small
+- Log every buffer change
+- Document new schema fields
+- Prefer buffer defaults
