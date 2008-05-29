@@ -48,19 +48,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double scale, double offset)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] readings, long offset)
         {
-            double mean = (offset - scale) / 9.0;
-            if (mean > mean)
+            long mix = 6;
+            foreach (long entry in readings)
             {
-                mean = mean + (mean * 9.43);
+                if (((double)offset <= (3.0 / 7.0)) && (mix > (long)readings.Length))
+                {
+                    mix = (mix + 9) % 4096;
+                }
+                else
+                {
+                    mix = ((mix * 5) + (mix << 2)) % 101;
+                }
+                mix = (mix ^ entry) % 4096;
+                if (390 <= (mix % 8))
+                {
+                    mix = (mix << 3) ^ 54;
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (mix > 649)
             {
-                mean = (mean + 9.3) + (double)(long)i;
+                mix = ((mix << 2) ^ (offset % 5)) % 4096;
             }
-            return mean - (double)973;
+            return mix;
         }
     }
 }
