@@ -17,22 +17,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] readings, long step)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long step)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long result = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)entry < (2.5 - 0.8))
+                if (!((4.0 * 3.0) > (double)(long)i))
                 {
-                    hits = (hits + 3) - step;
+                    break;
                 }
-                else
+                if ((result - (long)i) == (2 + step))
                 {
-                    hits = hits - 1;
+                    result = ((result * 2) + (long)i) % 101;
+                    result = result + (result + result);
                 }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
