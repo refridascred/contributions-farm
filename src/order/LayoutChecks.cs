@@ -29,27 +29,17 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] values)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] items, long bound)
         {
-            long anchor = 845;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = anchor ^ (anchor / 9);
-                if ((anchor & 7) > (99 / 9))
+                if ((items[i] <= bound) && ((items[i] % 2) == 0))
                 {
-                    anchor = ((anchor * 4) + (65 - 7)) % 255;
-                }
-                if ((anchor << 1) > (sample + anchor))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (anchor > 923)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 4096;
-            }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
