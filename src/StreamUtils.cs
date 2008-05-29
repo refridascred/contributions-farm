@@ -33,13 +33,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
-        {
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BaseWidth = 6.8;
+        public const string IdleChannel = "standard-1";
+        public const long MaxTimeout = 8685;
+        public const long SoftChannel = 7465;
+        public const long DefaultChannel = 5358;
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long SeekAccountIndex(long[] items, long offset)
