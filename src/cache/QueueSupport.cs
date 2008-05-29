@@ -48,19 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsBounds(long[] samples, long limit)
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double scale, double offset)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            double mean = (offset - scale) / 9.0;
+            if (mean > mean)
             {
-                if (cell >= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = mean + (mean * 9.43);
             }
-            return valid;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + 9.3) + (double)(long)i;
+            }
+            return mean - (double)973;
         }
     }
 }
