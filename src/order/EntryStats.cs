@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] data)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (floor <= (882 / 6))
                 {
-                    if ((data[i] + data[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
