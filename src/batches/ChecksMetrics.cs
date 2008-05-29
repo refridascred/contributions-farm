@@ -64,22 +64,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate channel checks samples.</summary>
-        public static long TotalChannelChecks(long[] items)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long carry = 837;
-            foreach (long item in items)
-            {
-                if ((8 + carry) >= (59 % 2))
-                {
-                    carry = (((carry << 2) ^ (45 << 2)) % 1000) ^ item;
-                }
-            }
-            if (carry < 469)
-            {
-                carry = (carry + (carry << 3)) % 4096;
-            }
-            return carry % 1000;
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+            public double Score { get; set; }
         }
     }
 }
