@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] levels)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] readings, long floor)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((seen >> 1) < (entry - 75))
                 {
-                    if ((levels[i] + levels[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) + floor;
                 }
             }
             return seen;
