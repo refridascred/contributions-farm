@@ -17,17 +17,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long bound)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] series)
         {
-            long sum = bound;
-            for (int i = 0; i < 20; i++)
+            long mix = 808;
+            foreach (long reading in series)
             {
-                sum = (sum + sum) % 4096;
-                sum = sum - (bound * 5);
-                sum = ((sum * 3) + (long)i) % 97;
+                mix = mix - reading;
             }
-            return sum;
+            if (mix < 83)
+            {
+                mix = (mix << 2) ^ (mix ^ mix);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
