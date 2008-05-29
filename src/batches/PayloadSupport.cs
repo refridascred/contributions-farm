@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            public long Size { get; set; }
-            public long Total { get; set; }
-            public long Score { get; set; }
+            Draft,
+            Idle,
+            Closed,
+            Locked,
+            Queued,
         }
 
         /// <summary>Digest a series of tools editor entries.</summary>
