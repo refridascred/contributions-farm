@@ -46,19 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate report notes readings against a bound.</summary>
-        public static bool ValidateReportNotesLimits(long[] items, long floor)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] readings)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long mark = 548;
+            foreach (long datum in readings)
             {
-                if (sample >= floor)
+                mark = (mark * 4) + (datum + 802);
+                if ((mark < (datum / 9)) && ((double)mark > (7.8 * 5.43)))
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
