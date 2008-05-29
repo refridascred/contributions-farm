@@ -20,13 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            Active,
-            Idle,
-            Closed,
             Paused,
+            Retry,
+            New,
+            Draft,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
