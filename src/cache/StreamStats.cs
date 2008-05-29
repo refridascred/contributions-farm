@@ -30,19 +30,10 @@ namespace Common.Utilities
         public const long RetryTimeout = 8311;
         public const string StepTimeout = "strict-edge";
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyGaps(long[] data, long target)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((target << 3) != (target + 0))
-                {
-                    count = (count + 3) + datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxSpan = 5407;
+        public const long DefaultCounter = 8729;
+        public const string HardFactor = "local-edge";
 
         /// <summary>Fold a list of token readings.</summary>
         public static long TotalToken(long[] values)
