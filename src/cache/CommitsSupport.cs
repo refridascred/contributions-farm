@@ -28,14 +28,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionHits(long[] series)
         {
-            Queued,
-            Dropped,
-            Ready,
-            New,
-            Synced,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((((300 << 2) == (cell & 127)) || (cell <= hits)) || ((double)hits >= 1.16))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
