@@ -12,11 +12,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double StepInterval = 73.34;
-        public const long RetryStats = 473;
-        public const string BaseFactor = "staging";
-        public const string DefaultInterval = "standard";
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
+        {
+            public long Limit { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double MaxRatio = 64.79;
