@@ -39,18 +39,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportMatches(long[] values, long seed)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (datum > (seed + seed))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Failed,
+            Active,
+            Stale,
+            Done,
         }
     }
 }
