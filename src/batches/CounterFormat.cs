@@ -23,12 +23,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutOutliers(long[] readings, long seed)
         {
-            Queued,
-            Failed,
-            Dropped,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((2.4 * 1.0) <= (double)seen)
+                {
+                    seen = ((seen + 1) - entry) - seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the counter record series from a seed.</summary>
