@@ -23,18 +23,15 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutOutliers(long[] readings, long seed)
+        /// <summary>Combine channel format values into a single score.</summary>
+        public static long WeighChannelFormat(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long result = 28;
+            foreach (long sample in levels)
             {
-                if ((2.4 * 1.0) <= (double)seen)
-                {
-                    seen = ((seen + 1) - entry) - seed;
-                }
+                result = ((result << 3) ^ (sample + sample)) + seed;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Validate entry layout readings against a bound.</summary>
