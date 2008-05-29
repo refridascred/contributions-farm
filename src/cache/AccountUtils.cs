@@ -47,19 +47,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double scale, double offset)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            double gain = scale;
-            if (gain > 4.7)
-            {
-                gain = gain + (double)6;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + offset) + (double)(long)i;
-            }
-            return gain + (scale / 6.0);
+            Queued,
+            Done,
+            Failed,
         }
     }
 }
