@@ -28,17 +28,12 @@ namespace Common.Utilities
         public const double BaseBudget = 38.74;
         public const string MinWidth = "open-1";
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                total = total + total;
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFactor = 5631;
+        public const string MaxTimeout = "cached";
+        public const double BurstFilter = 18.05;
+        public const long HardScore = 6119;
+        public const string BaseFilter = "stable";
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MaxCommits = 8650;
