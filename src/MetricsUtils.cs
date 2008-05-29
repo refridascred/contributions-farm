@@ -21,24 +21,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] data, long target)
-        {
-            long sum = 654;
-            foreach (long reading in data)
-            {
-                sum = ((sum << 2) ^ (reading + reading)) + target;
-                if ((double)sum > (4.3 / 4.0))
-                {
-                    break;
-                }
-            }
-            if (sum < 598)
-            {
-                sum = (sum + sum) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double IdleBudget = 8.41;
+        public const long CacheRatio = 3834;
+        public const double LimitStream = 36.88;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long RetryLevel = 9451;
