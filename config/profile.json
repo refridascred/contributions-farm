@@ -1,5 +1,21 @@
 {
-  "batch_capacity_ms": [479, 92, 367, 108],
-  "audit": "staging",
-  "record_capacity": 32
+  "min_capacity_count": {
+    "farm_capacity": true,
+    "cluster_timeout": {
+      "githubfarm_capacity": "primary",
+      "token_capacity": 76,
+      "schema_window": true
+    },
+    "batch_depth": {
+      "compress": false,
+      "schema_interval": 11.18,
+      "max_delay_ms": "local",
+      "idle_ttl_ms": ["open", "legacy", "cached", "green"],
+      "session_limit": 8599
+    },
+    "cache_ratio": 63.0
+  },
+  "payload_ttl": ["stable", "blue", "strict"],
+  "strict": 1024,
+  "enabled": "eu-west"
 }
