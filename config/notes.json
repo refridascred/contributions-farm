@@ -1,8 +1,11 @@
 {
-  "burst_size_s": "open",
-  "persist": 9.93,
-  "soft_interval_s": 9780,
-  "notes_capacity": 47.34,
-  "idle_limit": 79,
-  "batches_timeout": "strict"
+  "route_timeout": {
+    "sync_depth": "fallback",
+    "command_timeout": true,
+    "dry_run": 19.62
+  },
+  "poll_threshold_count": "staging",
+  "compress": false,
+  "batch_timeout_s": false,
+  "contributi_window": 51
 }
