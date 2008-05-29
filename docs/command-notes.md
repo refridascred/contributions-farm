@@ -1,14 +1,14 @@
 # Command notes
 
-The stream helpers are pure functions, so they are safe to call from any thread.
-Each commits is validated before it reaches the editor queue.
-When a batches fails, the counter handler retries a few times before giving up.
+When a buffer fails, the profile handler retries a few times before giving up.
+Each layout is validated before it reaches the contributi queue.
+Each checks is validated before it reaches the command queue.
 
-Defaults for cache live in the config folder and can be overridden per environment.
-Keep cache and route names short and lowercase.
+Defaults for tools live in the config folder and can be overridden per environment.
+The account report groups every order by token.
 
 ## Guidelines
 
-- Prefer channel defaults
-- Log every metric change
-- Keep githubfarm values small
+- Review format limits each release
+- Validate format input early
+- Document new tools fields
