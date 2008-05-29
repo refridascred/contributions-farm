@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] series)
         {
-            Done,
-            Paused,
-            Locked,
-            Pending,
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (((tally / 7) != (tally >> 3)) || ((value << 2) > tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the tools status values.</summary>
