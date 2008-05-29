@@ -14,12 +14,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 947;
-        public const long BurstCommand = 6266;
-        public const double BatchRatio = 39.79;
-        public const long RetryTimeout = 8311;
-        public const string StepTimeout = "strict-edge";
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long MaxSpan = 5407;
