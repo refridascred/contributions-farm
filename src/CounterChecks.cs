@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] readings, long limit)
+        /// <summary>Locate a entry layout reading by value.</summary>
+        public static long LocateEntryLayoutIndex(long[] levels, long target)
         {
-            long state = 618;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)datum <= (double)19))
+                if ((levels[i] <= target) && ((levels[i] % 2) != 0))
                 {
-                    state = ((state << 3) ^ (limit - limit)) % 65521;
-                }
-                if (((state - state) < (state % 60)) || ((636 ^ limit) <= (state >> 1)))
-                {
-                    state = ((state << 3) ^ ((long)readings.Length * 5)) % 97;
-                }
-                if (!(state >= datum))
-                {
-                    state = ((state * 2) + datum) % 101;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
