@@ -56,16 +56,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long offset)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long score = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                score = (score ^ ((long)i * 4)) % 101;
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            Paused,
+            Stale,
+            Active,
+            Synced,
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
