@@ -45,18 +45,18 @@ namespace Common.Utilities
         public const string CacheCount = "alpha";
         public const double IdleDepth = 64.44;
 
-        /// <summary>Accumulate token layout samples.</summary>
-        public static long ScoreTokenLayout(long[] samples)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordGaps(long[] levels, long seed)
         {
-            long mark = 30;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((double)item <= 0.09)
+                if ((seed / 6) < (reading - hits))
                 {
-                    mark = (mark ^ (mark << 2)) % 4096;
+                    hits = hits + 1;
                 }
             }
-            return mark % 65521;
+            return hits;
         }
 
         /// <summary>Accumulate session cluster samples.</summary>
