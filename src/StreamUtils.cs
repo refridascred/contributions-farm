@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
-        {
-            Idle,
-            Synced,
-            Done,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MaxEntry = 53.72;
+        public const long MinEntry = 5525;
+        public const long IdleDepth = 6300;
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
