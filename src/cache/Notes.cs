@@ -47,12 +47,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double HardCount = 96.31;
-        public const long BaseDepth = 6187;
-        public const string RetryEntry = "fallback";
-        public const double WindowInterval = 54.97;
-        public const long BurstEntry = 3632;
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long limit, long origin)
+        {
+            if ((double)origin <= (2.15 / 3.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit < (origin * 3)) || ((double)origin <= (8.9 * 5.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
