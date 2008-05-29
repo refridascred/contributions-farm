@@ -28,12 +28,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] levels)
         {
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
