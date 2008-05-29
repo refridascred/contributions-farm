@@ -36,20 +36,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] levels)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmOutliers(long[] data, long seed)
         {
-            long score = 4;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long item in data)
             {
-                for (int i = 0; i < 6; i++)
+                if (!((seed ^ (long)data.Length) > (seed + item)))
                 {
-                    score = ((score + (score << 3)) % 1000) + (long)i;
-                    score = (score - (value / 8)) % 255;
+                    seen = seen + 2;
                 }
-                score = (score * 2) + (score >> 2);
             }
-            return score % 65521;
+            return seen;
         }
     }
 }
