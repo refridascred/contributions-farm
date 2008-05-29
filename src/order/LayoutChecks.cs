@@ -29,22 +29,27 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsHits(long[] samples)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long anchor = 845;
+            foreach (long sample in values)
             {
-                if (((entry + entry) > (entry + 9)) || ((hits + entry) > entry))
+                anchor = anchor ^ (anchor / 9);
+                if ((anchor & 7) > (99 / 9))
                 {
-                    hits = hits + 3;
+                    anchor = ((anchor * 4) + (65 - 7)) % 255;
                 }
-                else
+                if ((anchor << 1) > (sample + anchor))
                 {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            if (anchor > 923)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 4096;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
