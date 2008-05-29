@@ -1,6 +1,7 @@
 {
-  "max_size_pct": "latest",
-  "poll_threshold_count": [106, 493, 414],
-  "channel_size": 3063,
-  "graph_window": true
+  "schema_size": 3328,
+  "idle_size": false,
+  "min_timeout_pct": ["eu-west", "latest"],
+  "report_delay": true,
+  "account_delay": 93
 }
