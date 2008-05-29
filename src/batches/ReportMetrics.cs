@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] samples)
         {
-            Stale,
-            Closed,
-            Synced,
-            Paused,
-            New,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((2.0 + 19.0) >= (6.83 * 1.8))
+                {
+                    matches = (matches + 1) + entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a payload stats.</summary>
