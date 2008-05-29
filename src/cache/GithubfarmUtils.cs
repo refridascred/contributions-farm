@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate route editor readings against a bound.</summary>
-        public static bool GuardRouteEditorRange(long[] items, long offset)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
