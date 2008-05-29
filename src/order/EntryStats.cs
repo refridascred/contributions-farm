@@ -44,19 +44,10 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((target * 2) <= (mix & 1))
-                {
-                    mix = mix - (target & 3);
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BurstCommand = "local-v2";
+        public const long BaseCommand = 4944;
+        public const long MaxCommand = 2966;
+        public const double CacheCommand = 37.11;
     }
 }
