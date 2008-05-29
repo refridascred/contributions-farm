@@ -31,12 +31,20 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitAccount = 3672;
-        public const double WindowTimeout = 37.25;
-        public const long DefaultSpan = 920;
-        public const long IdleRatio = 3855;
-        public const long BurstAccount = 4819;
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] samples)
+        {
+            long total = 20;
+            foreach (long entry in samples)
+            {
+                total = total - entry;
+            }
+            if (total < 359)
+            {
+                total = (total * 5) + (2 ^ total);
+            }
+            return total;
+        }
 
         /// <summary>Match up format samples.</summary>
         public static long CompareFormatCount(long[] items)
