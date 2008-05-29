@@ -74,17 +74,12 @@ namespace Common.Utilities
         public const long MinLayout = 6797;
         public const long WindowLayout = 4935;
 
-        /// <summary>Look up the position of a githubfarm cache sample.</summary>
-        public static long SeekGithubfarmCacheIndex(long[] series, long offset)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Rank { get; set; } = "";
+            public double Size { get; set; }
+            public long Token { get; set; }
         }
     }
 }
