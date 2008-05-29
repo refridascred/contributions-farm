@@ -26,12 +26,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Accumulate route profile samples.</summary>
+        public static long TallyRouteProfile(long[] values, long bound)
         {
-            public bool Limit { get; set; }
-            public double Count { get; set; }
-            public double Level { get; set; }
+            long result = 154;
+            foreach (long cell in values)
+            {
+                result = ((result << 2) ^ bound) - cell;
+                if ((bound ^ 6) == (bound % 100))
+                {
+                    break;
+                }
+            }
+            if (result > 4)
+            {
+                result = (result - (bound * 5)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Measure how many commits account samples are out of range.</summary>
