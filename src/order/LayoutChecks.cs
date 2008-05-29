@@ -42,27 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] readings)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long mix = 6;
-            foreach (long value in readings)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    mix = ((mix + (mix ^ value)) % 1000) + (long)i;
-                }
-                mix = mix - (value << 3);
-                if ((mix * 4) < (value ^ value))
-                {
-                    break;
-                }
-            }
-            if (mix > 3)
-            {
-                mix = (mix ^ mix) % 97;
-            }
-            return mix % 4096;
+            Closed,
+            New,
+            Retry,
         }
 
         /// <summary>Locate a cluster format reading by value.</summary>
