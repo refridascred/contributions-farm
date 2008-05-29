@@ -26,12 +26,19 @@ namespace Common.Utilities
         public const long RetryMetric = 5062;
         public const double BurstScore = 83.83;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double IdleOrder = 32.89;
-        public const long IdleSize = 9503;
-        public const long MinOrder = 829;
-        public const long BaseOrder = 5368;
-        public const double BurstOrder = 73.13;
+        /// <summary>Measure how many record already samples are out of range.</summary>
+        public static long CountRecordAlreadyGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((((3 * 5) < (item % 64)) && ((count ^ item) <= (item - count))) || ((item <= (count - item)) || ((count << 1) == (18 % 2))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long AuditSchemaOutliers(long[] data, long step)
