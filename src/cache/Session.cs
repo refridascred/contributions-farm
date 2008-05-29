@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] items)
         {
-            Ready,
-            Queued,
-            Draft,
+            long mark = 456;
+            foreach (long value in items)
+            {
+                if ((4.06 + 2.1) < (double)mark)
+                {
+                    mark = (mark - (value % 64)) % 255;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of format readings.</summary>
