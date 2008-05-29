@@ -20,20 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long limit)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] samples, long limit)
         {
-            long sum = limit;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum * 3) + ((-596) >> 4);
-                if (!(sum < (43 % 100)))
+                if (samples[i] < limit)
                 {
-                    sum = sum - (sum / 6);
+                    return (long)i;
                 }
-                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
