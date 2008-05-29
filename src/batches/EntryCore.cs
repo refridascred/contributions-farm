@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] values)
         {
-            Failed,
-            Stale,
-            Synced,
-            Paused,
+            long anchor = 66;
+            foreach (long datum in values)
+            {
+                anchor = ((anchor << 2) ^ datum) % 1000;
+                anchor = ((anchor << 2) ^ (anchor * 2)) % 101;
+            }
+            if (anchor > 10)
+            {
+                anchor = (anchor * 5) + (anchor + 7);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
