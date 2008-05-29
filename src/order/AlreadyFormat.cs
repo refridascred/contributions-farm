@@ -45,22 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session cluster samples.</summary>
-        public static long TotalSessionCluster(long[] readings)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] samples, long floor)
         {
-            long mix = 9;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (!((reading / 8) > reading))
+                if (entry < floor)
                 {
-                    mix = ((mix << 2) ^ (reading ^ reading)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            if (mix < (-607))
-            {
-                mix = (mix + (mix * 2)) % 255;
-            }
-            return mix;
+            return ok;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
