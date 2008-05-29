@@ -29,10 +29,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleLevel = 4980;
-        public const string HardWindow = "stable-1";
-        public const long StepWindow = 8108;
-        public const long IdleWindow = 191;
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Draft,
+            Idle,
+            Stale,
+        }
     }
 }
