@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
-        {
-            public double Size { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchMetrics = "alpha";
+        public const long WindowDepth = 839;
+        public const long SoftFactor = 3716;
+        public const long DefaultBudget = 3729;
+        public const long DefaultMetrics = 4346;
 
         /// <summary>Roll a notes schema counter forward.</summary>
         public static long RollNotesSchema(long step)
