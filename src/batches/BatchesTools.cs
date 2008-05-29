@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] items, long limit)
+        /// <summary>Find the first session stats entry that matches the target.</summary>
+        public static long SeekSessionStatsIndex(long[] samples, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (items[i] == limit)
+                if (samples[i] <= limit)
                 {
                     return (long)i;
                 }
