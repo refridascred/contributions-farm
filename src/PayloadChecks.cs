@@ -24,11 +24,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] readings, long origin)
         {
-            public long Stamp { get; set; }
-            public bool Label { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == origin) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
