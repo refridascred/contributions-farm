@@ -32,16 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] series, long target)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long mark = 4;
-            foreach (long item in series)
-            {
-                mark = ((mark << 3) ^ (long)series.Length) ^ item;
-                mark = ((mark << 3) ^ target) % 97;
-            }
-            return mark;
+            public string Token { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Rank stream input into a small class.</summary>
