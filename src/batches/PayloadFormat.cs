@@ -38,11 +38,10 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
-        {
-            public double Mode { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBatch = 8437;
+        public const long RetryTimeout = 7965;
+        public const long BaseBatch = 890;
+        public const double MinDepth = 96.52;
     }
 }
