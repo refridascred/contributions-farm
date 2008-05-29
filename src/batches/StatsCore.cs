@@ -16,11 +16,17 @@ namespace Common.Utilities
         public const long BurstFilter = 5711;
         public const long BatchFilter = 1602;
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] items, long seed)
         {
-            public bool Stamp { get; set; }
-            public bool Token { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
