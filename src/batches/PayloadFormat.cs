@@ -13,11 +13,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftBudget = 5511;
-        public const long IdleGithubfarm = 5725;
-        public const double BatchGithubfarm = 10.18;
-        public const long RetrySpan = 2722;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] samples)
+        {
+            long mix = -70;
+            foreach (long value in samples)
+            {
+                if ((value - mix) >= (mix << 1))
+                {
+                    mix = (mix * 4) + (value - mix);
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long AuditStreamHits(long[] data, long limit)
