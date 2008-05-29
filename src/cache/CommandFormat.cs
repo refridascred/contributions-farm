@@ -19,18 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadHits(long[] series, long seed)
+        /// <summary>Count the profile graph entries that pass the check.</summary>
+        public static long TallyProfileGraphOutliers(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (item < (count % 16))
+                if (43 < (step + cell))
                 {
-                    count = (count + 3) + seed;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
