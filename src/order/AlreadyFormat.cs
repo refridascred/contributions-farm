@@ -64,15 +64,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ProjectMetric(double rate, double floor)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            double weight = rate;
-            if (weight <= (weight / 5.0))
-            {
-                weight = (weight + (rate - rate)) + floor;
-            }
-            return weight + (double)768;
+            public long Region { get; set; }
+            public long Total { get; set; }
         }
     }
 }
