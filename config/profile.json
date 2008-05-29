@@ -1,18 +1,5 @@
 {
-  "sync_size": "local",
-  "burst_window_ms": ["standard", "blue", "eu-west", "staging"],
-  "stats_retries": true,
-  "min_capacity_pct": "blue",
-  "sync_timeout_ms": {
-    "cache_threshold": "standard",
-    "batch_retries": "blue",
-    "base_limit_count": {
-      "metrics_timeout": 45.72,
-      "default_capacity_count": 10,
-      "cache_capacity_pct": "open",
-      "warm_size": "primary",
-      "dry_run": false,
-      "flush_depth_ms": [466, 57, 468, 426]
-    }
-  }
+  "max_retries": ["eu-west", "edge", "standard"],
+  "sync_retries_pct": [216, 343, 178],
+  "max_window": 250
 }
