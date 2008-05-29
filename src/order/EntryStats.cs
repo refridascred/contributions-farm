@@ -18,11 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardCount = 9642;
-        public const long SoftSession = 4297;
-        public const long BatchSession = 5676;
-        public const long CacheSession = 8525;
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
