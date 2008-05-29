@@ -1,5 +1,5 @@
 {
-  "persist": 3904,
-  "hard_delay": true,
-  "metrics_capacity": 6.69
+  "batches_limit": 250,
+  "flush_delay_count": "edge",
+  "idle_window_ms": 31
 }
