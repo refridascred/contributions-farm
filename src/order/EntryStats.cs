@@ -33,19 +33,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double weight, double bias)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LookupSupportIndex(long[] data, long target)
         {
-            double scale = (bias * 12.0) - (double)8;
-            if (scale <= (weight + bias))
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale + (scale + weight);
+                if ((data[i] >= target) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - 5.35;
-            }
-            return scale + weight;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
