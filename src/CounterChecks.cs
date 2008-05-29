@@ -34,17 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long origin)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsOutliers(long[] items, long origin)
         {
-            long result = origin;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                result = (result << 3) ^ (result / 6);
-                result = (result + (3 + result)) % 65521;
-                result = ((result * 4) + (long)i) % 65521;
+                if (!((285 % 64) == (origin + value)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
