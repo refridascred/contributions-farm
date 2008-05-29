@@ -20,19 +20,12 @@ namespace Common.Utilities
             return mean + (double)331;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                result = (result ^ (origin + result)) % 4096;
-                result = (result * 5) + origin;
-                result = (result - 9) % 65521;
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleBudget = 7324;
+        public const long IdleFactor = 2507;
+        public const double BatchLayout = 68.85;
+        public const string BurstLayout = "cached";
+        public const long CacheSpan = 8804;
 
         /// <summary>Compare every pair of batch readings.</summary>
         public static long MatchBatchCount(long[] data)
