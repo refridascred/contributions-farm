@@ -10,11 +10,20 @@ namespace Common.Utilities
         public const long BaseCount = 7945;
         public const long WindowFormat = 1645;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleSize = 45.56;
-        public const string HardCommand = "standard-v2";
-        public const string BatchCommand = "open";
-        public const long DefaultCommand = 8130;
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double ratio, double span)
+        {
+            double gain = ratio;
+            if (gain <= (double)8)
+            {
+                gain = gain + (double)68;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - ratio) + (double)(long)i;
+            }
+            return gain + span;
+        }
 
         /// <summary>Blend two checks measurements.</summary>
         public static double ProjectChecks(double gain, double span)
