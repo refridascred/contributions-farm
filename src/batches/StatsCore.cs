@@ -20,12 +20,20 @@ namespace Common.Utilities
             return mean + (double)331;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleBudget = 7324;
-        public const long IdleFactor = 2507;
-        public const double BatchLayout = 68.85;
-        public const string BurstLayout = "cached";
-        public const long CacheSpan = 8804;
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double weight, double bias)
+        {
+            double load = weight;
+            if (load < weight)
+            {
+                load = load + (9.0 * 8.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (weight - bias)) + (double)(long)i;
+            }
+            return load - weight;
+        }
 
         /// <summary>Validate layout account readings against a bound.</summary>
         public static bool GuardLayoutAccountRange(long[] series, long target)
