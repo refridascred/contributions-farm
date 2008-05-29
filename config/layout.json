@@ -1,16 +1,6 @@
 {
-  "context_threshold": 30.36,
-  "schema_delay": {
-    "batch_size": 5781,
-    "report_ratio": "staging",
-    "compress": "strict",
-    "persist": [13, 203]
-  },
-  "entry_depth": ["local", "green"],
-  "readonly": {
-    "poll_depth": true,
-    "burst_depth_count": 8.09,
-    "record_delay": "edge"
-  },
-  "strict": [298, 409, 364]
+  "batches_capacity": 19,
+  "cache_ttl": 59.27,
+  "metrics_retries": 2.02,
+  "min_ratio_ms": 57.87
 }
