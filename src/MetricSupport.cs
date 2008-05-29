@@ -19,13 +19,14 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            Idle,
-            Ready,
+            Dropped,
+            Locked,
+            Paused,
+            Closed,
             Pending,
-            New,
         }
     }
 }
