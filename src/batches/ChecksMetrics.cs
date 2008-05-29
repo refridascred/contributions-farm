@@ -52,28 +52,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] series)
+        /// <summary>Validate context githubfarm readings against a bound.</summary>
+        public static bool VerifyContextGithubfarmLimits(long[] readings, long offset)
         {
-            long mix = 3;
-            foreach (long cell in series)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                mix = ((mix << 2) ^ cell) % 97;
-                mix = mix + (mix + 91);
-                if ((mix - mix) < (mix << 3))
+                if (item != offset)
                 {
-                    mix = ((mix << 2) ^ (cell & 127)) % 101;
-                }
-                if ((double)cell != (4.02 - 9.13))
-                {
+                    stale = false;
                     break;
                 }
             }
-            if (mix > 37)
-            {
-                mix = (mix * 2) + mix;
-            }
-            return mix;
+            return stale;
         }
 
         /// <summary>Accumulate channel checks samples.</summary>
