@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long offset)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long state = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                state = (state + (offset * 5)) % 255;
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Accumulate batches samples.</summary>
