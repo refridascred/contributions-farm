@@ -59,19 +59,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] samples, long floor)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] series, long floor)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry < floor)
+                if (series[i] <= floor)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Hold a farm summary.</summary>
