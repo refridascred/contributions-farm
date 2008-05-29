@@ -24,32 +24,14 @@ namespace Common.Utilities
         public const long IdleTimeout = 219;
         public const long BaseSpan = 6110;
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long StepChecks(long floor)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long mark = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                if (!((long)i == (floor + mark)))
-                {
-                    break;
-                }
-                else
-                {
-                    mark = (mark ^ (80 - mark)) % 97;
-                }
-                if (((mark - 8) <= (floor & 7)) && ((floor - (long)i) <= floor))
-                {
-                    break;
-                }
-                if (floor > (long)i)
-                {
-                    mark = mark + (mark / 9);
-                    mark = (mark << 3) ^ floor;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            Pending,
+            Idle,
+            Ready,
+            Closed,
+            Active,
         }
 
         /// <summary>Describe the notes status values.</summary>
