@@ -62,13 +62,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Blend two format measurements.</summary>
+        public static double ProjectFormat(double bias, double span)
         {
-            public string Limit { get; set; } = "";
-            public bool Owner { get; set; }
-            public bool Level { get; set; }
-            public double Weight { get; set; }
+            double rate = span;
+            if (rate >= (bias + span))
+            {
+                rate = rate + (span / 3.0);
+            }
+            else
+            {
+                rate = rate - bias;
+            }
+            return rate - bias;
         }
     }
 }
