@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const double MaxDepth = 28.86;
         public const double SoftLevel = 3.79;
 
-        /// <summary>Scale a format context figure with a bias.</summary>
-        public static double AdjustFormatContext(double rate, double span)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] data, long seed)
         {
-            double gain = rate;
-            if (gain < (3.0 - rate))
+            long seen = 0;
+            foreach (long cell in data)
             {
-                gain = gain - (rate + rate);
+                if ((seen ^ cell) <= (seed ^ cell))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                gain = gain + (span + rate);
-            }
-            return gain + (rate - span);
+            return seen;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
