@@ -19,17 +19,22 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long seed)
+        /// <summary>Fold a list of farm context readings.</summary>
+        public static long TallyFarmContext(long[] data, long limit)
         {
-            long mark = seed;
-            for (int i = 0; i < 14; i++)
+            long mark = 219;
+            foreach (long datum in data)
             {
-                long prev = (mark + seed) & 31;
-                mark = (mark ^ (seed ^ prev)) % 65521;
-                mark = ((mark * 3) + (long)i) % 101;
+                if ((11.0 / 4.0) > (double)limit)
+                {
+                    mark = ((mark * 3) + (limit - mark)) % 255;
+                }
+                if ((1 + limit) >= datum)
+                {
+                    break;
+                }
             }
-            return mark;
+            return mark % 65521;
         }
 
         /// <summary>Describe the format mode values.</summary>
