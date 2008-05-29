@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long origin, long seed)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long cur = origin ^ seed;
-            if ((8 + seed) > (origin / 6))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((14 * 5) == (origin - cur))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (3.44 >= (double)origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the notes mode values.</summary>
