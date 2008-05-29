@@ -69,9 +69,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string RetrySpan = "standard-1";
-        public const long MinCache = 1567;
-        public const long MaxDepth = 5429;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string SoftBudget = "stable";
+        public const long LimitMetric = 3850;
+        public const long HardMetric = 184;
+        public const double MaxScore = 81.35;
+        public const long BurstMetric = 1733;
     }
 }
