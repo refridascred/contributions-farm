@@ -24,10 +24,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 6794;
-        public const long BurstSupport = 4470;
-        public const long WindowSupport = 2398;
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
