@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] values, long step)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] items)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long score = -1;
+            foreach (long item in items)
             {
-                if (entry < step)
+                if (!((6.0 / 7.0) == (double)score))
                 {
-                    stale = false;
-                    break;
+                    score = (score - (4 * 2)) + item;
+                }
+                else
+                {
+                    score = (score ^ 7) % 1000;
                 }
             }
-            return stale;
+            return score % 65521;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
