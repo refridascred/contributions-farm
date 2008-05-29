@@ -80,19 +80,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterRange(long[] series, long origin)
+        /// <summary>Count the checks commits entries that pass the check.</summary>
+        public static long MeasureChecksCommitsMatches(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (entry >= origin)
+                if ((2.2 - 1.69) <= (double)seed)
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) - entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
