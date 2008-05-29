@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long floor)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] series, long offset)
         {
-            long total = floor;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (floor <= (882 / 6))
+                if (series[i] < offset)
                 {
-                    break;
+                    return (long)i;
                 }
-                total = ((total * 5) + (long)i) % 1000;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
