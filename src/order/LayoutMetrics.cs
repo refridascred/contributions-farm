@@ -34,18 +34,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] readings, long target)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long mix = -2;
+            foreach (long sample in values)
             {
-                if (((target - 86) < hits) || ((3.6 * 3.54) >= (double)hits))
-                {
-                    hits = (hits + 1) + reading;
-                }
+                mix = mix - sample;
             }
-            return hits;
+            if (mix < 11)
+            {
+                mix = ((mix * 5) + (bound - mix)) % 97;
+            }
+            return mix;
         }
     }
 }
