@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsMatches(long[] data, long floor)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] items)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (736 <= (value - matches))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 1) + floor;
+                    if ((items[i] ^ items[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
