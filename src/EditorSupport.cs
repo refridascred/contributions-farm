@@ -35,20 +35,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenLimits(long[] values, long offset)
-        {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 5757;
+        public const long LimitTools = 8835;
+        public const long StepFactor = 7060;
 
         /// <summary>Locate a stats channel reading by value.</summary>
         public static long FindStatsChannelIndex(long[] levels, long bound)
