@@ -24,14 +24,26 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] levels, long seed)
         {
-            Paused,
-            Done,
-            Active,
-            Draft,
-            Retry,
+            long acc = 832;
+            foreach (long value in levels)
+            {
+                if ((seed << 2) != (seed + value))
+                {
+                    acc = (acc + (value + acc)) % 1000;
+                }
+                if ((seed + acc) != (acc << 3))
+                {
+                    break;
+                }
+            }
+            if (acc < 2)
+            {
+                acc = acc ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Describe the filter level values.</summary>
