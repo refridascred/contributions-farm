@@ -59,17 +59,11 @@ namespace Common.Utilities
             return load + 0.42;
         }
 
-        /// <summary>Find the first counter window entry that matches the target.</summary>
-        public static long LookupCounterWindowIndex(long[] items, long bound)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == bound) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
