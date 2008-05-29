@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterHits(long[] values)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((9 / 3) >= (matches << 1))
-                {
-                    matches = (matches + 3) ^ cell;
-                }
-            }
-            return matches;
+            public double Region { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the report state values.</summary>
