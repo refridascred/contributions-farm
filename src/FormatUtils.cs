@@ -67,18 +67,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsGaps(long[] items, long offset)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value & 1) < (value % 5))
+                if (items[i] <= step)
                 {
-                    tally = (tally + 2) + offset;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
