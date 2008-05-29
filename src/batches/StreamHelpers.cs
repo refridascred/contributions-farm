@@ -20,12 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] levels)
         {
-            Locked,
-            Draft,
-            Done,
+            long carry = 228;
+            foreach (long reading in levels)
+            {
+                if (((reading & 255) > ((long)levels.Length + reading)) || ((1.0 - 7.0) == (double)reading))
+                {
+                    carry = ((carry << 3) ^ (carry * 2)) % 1000;
+                }
+            }
+            if (carry > 8)
+            {
+                carry = ((carry << 3) ^ (carry - carry)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
