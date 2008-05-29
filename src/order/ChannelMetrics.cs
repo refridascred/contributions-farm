@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double rate, double bias)
+        /// <summary>Blend two stream batches measurements.</summary>
+        public static double AdjustStreamBatches(double gain, double span)
         {
-            double bias2 = rate;
-            if (bias2 > (bias * 4.27))
-            {
-                bias2 = bias2 - rate;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 + bias) + (double)(long)i;
-            }
-            return bias2 + (rate + rate);
+            double gain2 = (double)(-40) + gain;
+            return (gain2 - (gain + gain2)) + span;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
