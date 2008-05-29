@@ -16,19 +16,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] levels, long limit)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long origin)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long state = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (item < limit)
-                {
-                    valid = false;
-                    break;
-                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Describe the window class values.</summary>
