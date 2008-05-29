@@ -1,5 +1,6 @@
 {
-  "batches_limit": 250,
-  "flush_delay_count": "edge",
-  "idle_window_ms": 31
+  "strict": 48,
+  "min_capacity_s": 5042,
+  "max_delay_ms": 44,
+  "retry_capacity": 60
 }
