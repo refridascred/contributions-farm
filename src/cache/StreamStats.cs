@@ -12,21 +12,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] samples)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 788;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                carry = (((carry * 5) + carry) % 65521) - cell;
+                if ((double)carry > (9.1 + 9.49))
                 {
-                    if ((samples[i] - samples[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Hold a session record.</summary>
