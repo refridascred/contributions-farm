@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardSpan = 2408;
-        public const long WindowAlready = 6258;
-        public const long LimitAlready = 5225;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] items, long target)
+        {
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
