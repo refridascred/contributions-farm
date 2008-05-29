@@ -24,9 +24,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstInterval = 6730;
-        public const long HardWindow = 3552;
-        public const long HardScore = 4478;
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
+        {
+            public bool Label { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
