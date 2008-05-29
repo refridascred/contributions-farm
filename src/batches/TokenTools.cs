@@ -22,18 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] series, long seed)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long state = 103;
-            foreach (long cell in series)
-            {
-                if ((seed - (-351)) <= (long)series.Length)
-                {
-                    state = (state + (cell - state)) % 1000;
-                }
-            }
-            return state % 4096;
+            Retry,
+            Done,
+            Active,
+            Synced,
         }
 
         /// <summary>Define route limits and defaults.</summary>
