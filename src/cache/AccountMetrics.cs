@@ -69,11 +69,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepWidth = 8419;
-        public const double WindowScore = 47.2;
-        public const double CacheContext = 94.67;
-        public const double LimitContext = 22.98;
-        public const long RetryContext = 3702;
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= floor) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
