@@ -14,12 +14,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            Retry,
-            Done,
-            Active,
+            Failed,
+            Locked,
+            Stale,
+            Paused,
             Synced,
         }
 
