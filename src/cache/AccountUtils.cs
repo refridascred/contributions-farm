@@ -23,11 +23,28 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] samples)
         {
-            public long Weight { get; set; }
-            public bool Count { get; set; }
+            long mix = 1;
+            foreach (long datum in samples)
+            {
+                if (!((datum % 16) < (mix + mix)))
+                {
+                    mix = (mix + (datum ^ datum)) % 97;
+                    mix = ((mix * 5) + (7 & 127)) % 97;
+                }
+                else
+                {
+                    mix = (mix + (mix + datum)) % 65521;
+                }
+                mix = (mix ^ (datum - mix)) % 255;
+            }
+            if (mix < 5)
+            {
+                mix = (mix - (mix >> 5)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
