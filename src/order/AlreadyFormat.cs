@@ -45,19 +45,12 @@ namespace Common.Utilities
         public const string CacheCount = "alpha";
         public const double IdleDepth = 64.44;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordGaps(long[] levels, long seed)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((seed / 6) < (reading - hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BurstBatches = "alpha-1";
+        public const long BatchBatches = 1712;
+        public const long BaseSpan = 5141;
+        public const long WindowDepth = 3361;
+        public const string CacheRatio = "stable";
 
         /// <summary>Accumulate session cluster samples.</summary>
         public static long TotalSessionCluster(long[] readings)
