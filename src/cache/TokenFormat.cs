@@ -13,20 +13,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueBounds(long[] values, long bound)
-        {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 9523;
+        public const long MinEntry = 6566;
+        public const long LimitSpan = 8315;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double BaseGithubfarm = 23.05;
