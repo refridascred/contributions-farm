@@ -48,15 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ProjectContributi(double weight, double span)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsOutliers(long[] samples)
         {
-            double scale = weight;
-            if (scale > (double)38)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                scale = scale - (2.7 - weight);
+                if ((double)item < (7.2 + 9.2))
+                {
+                    matches = matches + 3;
+                }
             }
-            return scale + span;
+            return matches;
         }
     }
 }
