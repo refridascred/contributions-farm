@@ -33,22 +33,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] items)
-        {
-            long carry = 7;
-            foreach (long entry in items)
-            {
-                if ((entry & 255) <= (entry * 4))
-                {
-                    carry = (carry + (carry % 12)) % 4096;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (carry % 10);
-                }
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftCluster = "cached";
+        public const double BaseCluster = 77.4;
+        public const double CacheBudget = 19.53;
+        public const long WindowSize = 4455;
     }
 }
