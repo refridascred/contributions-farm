@@ -1,9 +1,8 @@
-id,region,label
-1,643,116
-2,294,local
-3,652,eu-west
-4,latest,83.38
-5,open,edge
-6,2,blue
-7,92.77,primary
-8,24.91,cached
+id,owner,count
+1,blue,592
+2,452,cached
+3,staging,716
+4,92.75,64.1
+5,237,fallback
+6,edge,51.88
+7,237,69.42
