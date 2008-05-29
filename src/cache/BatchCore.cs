@@ -15,19 +15,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricMatches(long[] data)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((double)matches < 0.32)
-                {
-                    matches = (matches + 3) - cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 7792;
+        public const long SoftSession = 7952;
+        public const long DefaultScore = 4733;
+        public const double BurstSession = 87.75;
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long TotalChannel(long[] samples, long step)
