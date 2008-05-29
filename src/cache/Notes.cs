@@ -67,11 +67,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Scale a notes window figure with a bias.</summary>
+        public static double AdjustNotesWindow(double rate, double floor)
         {
-            public bool Size { get; set; }
-            public double Ratio { get; set; }
+            double mean = (double)(22 * 3);
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (floor - 1.2)) + (double)(long)i;
+            }
+            return mean - rate;
         }
 
         /// <summary>Accumulate tools samples.</summary>
