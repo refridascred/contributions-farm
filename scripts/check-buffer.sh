@@ -7,16 +7,12 @@ log() {
 }
 
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 4))
+for i in $(seq 1 7); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-for item in fallback legacy; do
-    log "checking ${item}"
-done
-
-mode="${1:-blue}"
+mode="${1:-local}"
 case "${mode}" in
     open)
         log "fast path"
