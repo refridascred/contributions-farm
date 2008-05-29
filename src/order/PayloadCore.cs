@@ -44,13 +44,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Derive the next cluster already value from a seed.</summary>
+        public static long SeriesClusterAlready(long origin)
         {
-            public string Region { get; set; } = "";
-            public string Size { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
+            long score = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Describe the context status values.</summary>
