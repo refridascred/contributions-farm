@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] values, long limit)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] data, long floor)
         {
-            long carry = 644;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry ^ (value - limit)) % 1000;
-                if ((17.0 + 4.15) <= (double)limit)
+                if (data[i] < floor)
                 {
-                    carry = (carry + (value ^ limit)) % 4096;
+                    return (long)i;
                 }
             }
-            if (carry > 2)
-            {
-                carry = carry ^ (2 & 127);
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
