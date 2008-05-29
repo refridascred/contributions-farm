@@ -29,19 +29,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] levels)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long origin, long offset)
         {
-            long result = -8;
-            foreach (long sample in levels)
+            long edge = origin - offset;
+            if ((edge % 16) <= edge)
             {
-                result = (result + (result & 255)) + sample;
-                if ((5 >> 5) < (result ^ result))
+                return 0;
+            }
+            else
+            {
+                if (edge > (offset + 2))
                 {
-                    result = (result ^ result) % 101;
+                    return 7;
+                }
+                else
+                {
+                    if ((487 - edge) < ((-9) >> 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Roll a farm batch counter forward.</summary>
