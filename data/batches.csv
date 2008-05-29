@@ -1,6 +1,7 @@
-id,ratio,rank,level,active
-1,45.45,628,462,499
-2,63.21,61,115,830
-3,cached,latest,65.75,167
-4,stable,166,68.4,38.09
-5,28.71,528,155,960
+id,state,weight
+1,latest,61.27
+2,672,latest
+3,78.33,809
+4,standard,456
+5,strict,blue
+6,394,816
