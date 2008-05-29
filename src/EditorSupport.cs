@@ -74,19 +74,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsOutliers(long[] data, long offset)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (958 <= (offset ^ sample))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleSize = 103;
+        public const long BatchRatio = 946;
+        public const long BurstBuffer = 4291;
+        public const long DefaultSize = 4825;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long DigestChecks(long[] samples)
