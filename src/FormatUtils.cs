@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] samples)
+        /// <summary>Find the first batch farm entry that matches the target.</summary>
+        public static long LocateBatchFarmIndex(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (matches >= (reading >> 5))
+                if (samples[i] <= origin)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
