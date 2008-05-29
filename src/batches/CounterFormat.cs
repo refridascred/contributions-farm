@@ -32,15 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long limit)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long floor)
         {
-            long mix = limit;
-            for (int i = 0; i < 15; i++)
+            long result = floor;
+            for (int i = 0; i < 7; i++)
             {
-                mix = ((mix * 4) + (long)i) % 65521;
+                if (!((result / 3) < (floor - floor)))
+                {
+                    result = (result << 3) ^ (-954);
+                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return mix;
+            return result;
         }
     }
 }
