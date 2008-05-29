@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string LimitDepth = "stable-v2";
-        public const double IdleReport = 60.14;
-        public const string BurstSize = "fallback-1";
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double gain, double bias)
+        {
+            double load = (gain / 6.0) - (double)37;
+            return load - bias;
+        }
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long FoldBatches(long[] data)
