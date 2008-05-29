@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultScore = 7417;
-        public const long WindowWidth = 2137;
-        public const double DefaultRecord = 22.96;
-        public const double HardInterval = 90.04;
-        public const string HardRecord = "strict-1";
+        /// <summary>Count cluster profile pairs that satisfy a relation.</summary>
+        public static long OverlapClusterProfileCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long OverlapBatchCount(long[] items)
