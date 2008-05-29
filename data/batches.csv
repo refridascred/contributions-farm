@@ -1,9 +1,7 @@
-id,rank,token,owner
-1,blue,eu-west,strict
-2,454,934,79.45
-3,6.85,383,legacy
-4,263,17.54,46.3
-5,89.47,773,strict
-6,stable,3.29,28
-7,9.51,97.56,849
-8,eu-west,486,865
+id,weight,state
+1,edge,170
+2,open,951
+3,343,335
+4,644,blue
+5,cached,379
+6,69.92,open
