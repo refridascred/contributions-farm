@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] levels, long floor)
+        /// <summary>Digest a series of notes batches entries.</summary>
+        public static long TotalNotesBatches(long[] levels)
         {
-            long score = 288;
-            foreach (long cell in levels)
+            long total = 829;
+            foreach (long reading in levels)
             {
-                if ((score ^ cell) >= (floor % 10))
+                if ((double)reading > (13.0 + 7.72))
                 {
-                    score = (score + (floor - score)) % 255;
-                }
-                else
-                {
-                    score = (score ^ (cell / 8)) % 255;
+                    total = total - reading;
                 }
             }
-            return score % 65521;
+            return total;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
