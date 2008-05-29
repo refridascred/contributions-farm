@@ -1,22 +1,12 @@
 {
-  "route_interval": 30,
-  "hard_capacity_pct": 500,
-  "sync_interval": {
-    "hard_delay": {
-      "audit": ["edge", "fallback", "eu-west", "staging"],
-      "cache_limit": 3210,
-      "soft_window_pct": 250
-    },
-    "report_retries": 60.47,
-    "retry_timeout": true,
-    "idle_threshold_pct": 1024,
-    "batch_timeout_s": {
-      "buffer_delay": false,
-      "min_timeout_count": 44,
-      "compress": "stable"
-    }
-  },
-  "max_interval_count": 1024,
-  "strict": false,
-  "counter_limit": "staging"
+  "audit": 58,
+  "readonly": "eu-west",
+  "batch_window_count": 96,
+  "retry_interval_pct": {
+    "notes_interval": 60,
+    "base_size_ms": 14,
+    "channel_ratio": 64.87,
+    "cache_limit_pct": false,
+    "report_limit": ["stable", "cached", "cached"]
+  }
 }
