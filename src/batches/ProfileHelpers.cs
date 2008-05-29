@@ -42,25 +42,19 @@ namespace Common.Utilities
         public const double SoftFactor = 77.84;
         public const long CacheSpan = 1671;
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long step)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferBounds(long[] readings, long floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 23; i++)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                anchor = anchor ^ step;
-                if (((-46) << 3) >= (anchor + (long)i))
+                if (value <= floor)
                 {
-                    anchor = ((anchor * 5) + ((long)i % 5)) % 4096;
+                    flag = false;
                     break;
                 }
-                if (((anchor + (long)i) == (long)i) && ((long)i != ((long)i + (long)i)))
-                {
-                    continue;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Adjust a window reading.</summary>
