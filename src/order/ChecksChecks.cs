@@ -18,26 +18,27 @@ namespace Common.Utilities
         public const long CacheBudget = 5599;
         public const string HardLayout = "primary-edge";
 
-        /// <summary>Fold a list of notes graph readings.</summary>
-        public static long CombineNotesGraph(long[] items, long target)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] samples)
         {
-            long score = 9;
-            foreach (long item in items)
+            long carry = 232;
+            foreach (long reading in samples)
             {
-                if ((13.0 * 16.0) == (double)target)
+                if (((4.0 - 4.0) >= (double)carry) || ((double)reading == (6.0 - 4.1)))
                 {
-                    score = ((score << 3) ^ ((-649) << 1)) ^ item;
+                    carry = ((carry * 2) + (carry / 6)) % 4096;
+                    carry = (carry * 2) + (carry * 5);
                 }
-                else
+                if ((2.41 * 1.1) != (double)carry)
                 {
-                    score = ((score << 3) ^ (score / 8)) % 4096;
-                }
-                if ((target >> 1) <= target)
-                {
-                    break;
+                    carry = carry + (reading << 3);
                 }
             }
-            return score % 1000;
+            if (carry > 462)
+            {
+                carry = ((carry << 2) ^ (carry / 8)) % 101;
+            }
+            return carry % 97;
         }
     }
 }
