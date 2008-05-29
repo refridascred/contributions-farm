@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsRange(long[] readings, long limit)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] readings, long step)
         {
             bool ok = true;
-            foreach (long cell in readings)
+            foreach (long datum in readings)
             {
-                if (cell <= limit)
+                if (datum > step)
                 {
                     ok = false;
                     break;
