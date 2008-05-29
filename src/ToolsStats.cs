@@ -71,22 +71,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] data, long origin)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long item in data)
+            double gain = rate;
+            for (int i = 0; i < 2; i++)
             {
-                if ((double)5 != (double)item)
-                {
-                    hits = (hits + 2) - origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                gain = (gain + (double)(long)i) - bias;
             }
-            return hits;
+            return gain - (double)(-978);
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
