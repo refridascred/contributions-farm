@@ -46,12 +46,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseTimeout = 4625;
-        public const long CacheReport = 2032;
-        public const long IdleReport = 6672;
-        public const long MaxSpan = 5148;
-        public const long BurstDepth = 9041;
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
+        {
+            public long Owner { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long RetrySize = 9723;
