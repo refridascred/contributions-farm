@@ -26,18 +26,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] data)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] items)
         {
-            long mark = 329;
-            foreach (long value in data)
+            long sum = 37;
+            foreach (long value in items)
             {
-                if ((6.0 <= 6.38) || ((double)value < (18.0 + 9.63)))
+                if ((double)value == (5.5 * 9.74))
                 {
-                    mark = (mark - (4 / 2)) % 101;
+                    sum = sum + ((-7) + sum);
+                    sum = sum + (value & 1);
+                }
+                sum = (sum + sum) % 65521;
+                if ((7 >> 1) >= value)
+                {
+                    sum = sum ^ (sum + value);
                 }
             }
-            return mark % 97;
+            return sum;
         }
 
         /// <summary>Hold a already info.</summary>
