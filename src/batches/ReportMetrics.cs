@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const long SoftCommits = 8318;
         public const double RetryCommits = 74.06;
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] samples)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] items)
         {
-            long score = 777;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((17.0 - 6.11) > (double)entry)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (score << 2) ^ (score * 4);
+                    if ((items[i] + items[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Hold a context record.</summary>
