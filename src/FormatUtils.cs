@@ -63,11 +63,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardWidth = 7655;
-        public const string DefaultDepth = "stable-1";
-        public const long MaxCount = 1168;
-        public const long SoftChecks = 8524;
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long bound, long bound2)
+        {
+            if (!(bound2 >= (bound2 & 127)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)bound2 >= (double)bound) && ((bound2 + 63) >= (bound2 & 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound2 ^ bound) == (bound2 & 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long ScoreFarm(long[] items)
