@@ -1,5 +1,6 @@
 {
-  "window_window": true,
-  "route_delay": 30,
-  "poll_depth_s": 2573
+  "max_size_pct": "latest",
+  "poll_threshold_count": [106, 493, 414],
+  "channel_size": 3063,
+  "graph_window": true
 }
