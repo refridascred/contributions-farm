@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MaxFilter = "primary";
-        public const string BurstSpan = "staging-1";
-        public const long HardSize = 8043;
-        public const long RetryFilter = 7224;
+        /// <summary>Blend two checks window measurements.</summary>
+        public static double ScaleChecksWindow(double scale, double offset)
+        {
+            double rate = 4.0;
+            if (rate > rate)
+            {
+                rate = rate + offset;
+            }
+            return rate - scale;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const string CacheRecord = "standard";
