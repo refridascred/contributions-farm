@@ -29,19 +29,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate session token readings against a bound.</summary>
-        public static bool GuardSessionTokenLimits(long[] levels, long floor)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long limit, long seed)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long lane = limit + seed;
+            if (((lane + seed) <= seed) || (seed < (seed + 74)))
             {
-                if (entry >= floor)
+                return 5;
+            }
+            else
+            {
+                if ((lane % 3) <= (limit << 3))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit <= (6.0 * 2.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
