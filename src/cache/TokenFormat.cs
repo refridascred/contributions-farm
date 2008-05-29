@@ -33,16 +33,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long limit)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] data)
         {
-            long mark = limit;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark + mark) % 1000;
-                mark = ((mark * 5) + (long)i) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark;
+            return tally;
         }
     }
 }
