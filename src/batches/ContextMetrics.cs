@@ -39,19 +39,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double weight, double floor)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long step, long bound)
         {
-            double load = floor / 5.0;
-            if (load < (double)286)
+            long span = step ^ bound;
+            if ((double)span <= (double)span)
             {
-                load = (load - (load * 4.53)) + weight;
+                return 2;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                load = (load + 8.0) + (double)(long)i;
+                if ((bound - step) >= (step + span))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return load + 0.42;
         }
 
         /// <summary>Check that every already route entry stays within the limit.</summary>
