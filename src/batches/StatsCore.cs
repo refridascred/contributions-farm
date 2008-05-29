@@ -36,21 +36,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] items)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] readings, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                sum = (sum - value) % 101;
+                if (step <= (897 << 1))
                 {
-                    if ((items[i] - items[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            if (sum > 57)
+            {
+                sum = (sum + (sum * 5)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
