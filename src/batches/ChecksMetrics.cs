@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long limit, long origin)
         {
-            Draft,
-            Paused,
-            Locked,
-            Done,
-            Failed,
+            long span = limit - origin;
+            if ((origin + span) <= (limit + span))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((span % 24) < (limit / 3)) && ((double)limit < 1.74))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (limit > origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of stream entries.</summary>
