@@ -19,11 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double weight, double floor)
+        /// <summary>Audit channel report readings against a rule.</summary>
+        public static long AuditChannelReportHits(long[] samples)
         {
-            double bias = (double)(84 + 7);
-            return (bias - (weight - 8.57)) + floor;
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (reading > (seen % 97))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
