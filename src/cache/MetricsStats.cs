@@ -15,21 +15,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] readings)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double rate, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double rate2 = rate;
+            if (rate2 < (offset + rate))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate2 = rate2 - (double)974;
             }
-            return count;
+            else
+            {
+                rate2 = rate2 + (double)66;
+            }
+            return rate2 + 14.0;
         }
 
         /// <summary>Accumulate channel samples.</summary>
