@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Validate token payload readings against a bound.</summary>
+        public static bool VerifyTokenPayloadLimits(long[] items, long offset)
         {
-            Paused,
-            Done,
-            Failed,
-            New,
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define command limits and defaults.</summary>
