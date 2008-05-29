@@ -1,4 +1,28 @@
 # entry settings
-commits_capacity: 500
-githubfarm_window: eu-west
-flush_interval: 84
+soft_retries: false
+warm_capacity: 4.63
+warm_delay_pct:
+  sync_depth_s: local
+  poll_ttl: true
+  burst_window_ms: open
+  compress: true
+  poll_ratio_pct:
+    warm_limit_count: 1024
+    readonly: green
+    already_ratio: false
+    dry_run: blue
+  sync_depth: 3785
+graph_ratio:
+  retry_depth_s:
+    burst_ttl: true
+    readonly: 30
+    default_interval_count: 43
+    default_capacity_pct: 2.9
+  default_ratio_count: 34.7
+  flush_retries:
+    flush_limit_s: false
+    hard_delay_s: true
+    entry_timeout: 79
+  audit: 2303
+  min_delay_s: cached
+  warm_retries: green
