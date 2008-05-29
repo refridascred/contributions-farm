@@ -34,17 +34,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] readings, long origin)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long limit, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long lane = limit + step;
+            if ((double)step == (7.44 + 3.0))
             {
-                if ((readings[i] == origin) && ((readings[i] % 3) == 0))
+                return 1;
+            }
+            else
+            {
+                if (step > (lane + 496))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((617 >> 5) != (limit - limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
