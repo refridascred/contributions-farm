@@ -47,18 +47,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmHits(long[] series, long seed)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((seen & 3) <= (seed % 8))
-                {
-                    seen = (seen + 1) ^ entry;
-                }
-            }
-            return seen;
+            public bool Token { get; set; }
+            public bool Count { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Locate a already stats reading by value.</summary>
