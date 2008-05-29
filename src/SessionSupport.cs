@@ -25,15 +25,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double ratio, double span)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] values, long step)
         {
-            double bias = (double)13 - (span + span);
-            if (bias >= ratio)
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = bias - (span + 12.0);
+                if ((values[i] < step) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias - ratio;
+            return -1;
         }
     }
 }
