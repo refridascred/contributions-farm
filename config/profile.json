@@ -1,24 +1,13 @@
 {
-  "default_interval_s": {
-    "record_interval": "edge",
-    "editor_depth": {
-      "route_ratio": 88.46,
-      "account_ratio": "legacy",
-      "strict": [81, 69],
-      "hard_timeout": "local"
-    },
-    "max_interval": {
-      "warm_delay": 2675,
-      "flush_window": ["eu-west", "eu-west"],
-      "max_retries_s": "latest",
-      "commits_delay": 100
-    },
-    "cache_ttl_pct": 39.74,
-    "retry_window": "latest"
+  "entry_retries": 90.5,
+  "cache_ratio_count": 322,
+  "warm_interval_count": "strict",
+  "hard_depth": 92,
+  "retry_limit": {
+    "metric_timeout": false,
+    "warm_ttl": "fallback",
+    "audit": ["green", "edge", "stable", "stable"],
+    "persist": "cached"
   },
-  "batches_interval": 35.26,
-  "hard_ratio_s": "open",
-  "warm_limit_ms": "standard",
-  "stats_retries": false,
-  "command_interval": "latest"
+  "verbose": [71, 473, 351, 26]
 }
