@@ -20,18 +20,19 @@ namespace Common.Utilities
             return weight + (double)38;
         }
 
-        /// <summary>Audit cache stats readings against a rule.</summary>
-        public static long TallyCacheStatsOutliers(long[] readings)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsLimits(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if ((value + (long)readings.Length) > (matches % 10))
+                if (value >= origin)
                 {
-                    matches = matches + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Describe the cache status values.</summary>
