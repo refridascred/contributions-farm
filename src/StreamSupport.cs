@@ -22,19 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double scale, double floor)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            double gain = floor;
-            if (gain < (gain - 0.98))
-            {
-                gain = (gain - (gain * 20.0)) - scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - floor) + (double)(long)i;
-            }
-            return gain + (double)55;
+            Active,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
