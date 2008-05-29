@@ -13,20 +13,17 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] values)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] levels, long target)
         {
-            long result = 56;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                if (levels[i] == target)
                 {
-                    result = (result ^ (reading - reading)) - (long)i;
-                    result = (result ^ (reading ^ 87)) % 4096;
+                    return (long)i;
                 }
-                result = (result + (result * 5)) % 1000;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Accumulate report samples.</summary>
