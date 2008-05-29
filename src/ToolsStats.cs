@@ -31,22 +31,21 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Accumulate token notes samples.</summary>
-        public static long WeighTokenNotes(long[] items)
+        /// <summary>Compare every pair of order entry readings.</summary>
+        public static long MatchOrderEntryCount(long[] items)
         {
-            long sum = 43;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)sum < (4.2 / 6.0)) && ((datum ^ sum) < (sum + datum)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = (sum + 505) % 97;
-                }
-                else
-                {
-                    sum = sum + (datum % 10);
+                    if ((items[i] - items[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
