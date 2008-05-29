@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] values)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatOutliers(long[] values)
         {
-            long hits = 0;
+            long seen = 0;
             foreach (long sample in values)
             {
-                if ((hits < (sample + hits)) || ((4.6 * 11.0) >= (double)hits))
+                if ((1 << 3) < seen)
                 {
-                    hits = hits + 2;
+                    seen = (seen + 1) ^ sample;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
