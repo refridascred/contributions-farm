@@ -46,13 +46,19 @@ namespace Common.Utilities
             return ratio + 1.0;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] readings, long bound)
         {
-            Closed,
-            Paused,
-            Dropped,
-            Locked,
+            long carry = 61;
+            foreach (long datum in readings)
+            {
+                carry = (carry ^ (bound ^ datum)) % 255;
+            }
+            if (carry > 2)
+            {
+                carry = (carry - (bound + bound)) % 97;
+            }
+            return carry;
         }
     }
 }
