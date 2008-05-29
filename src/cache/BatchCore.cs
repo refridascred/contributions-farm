@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate window command samples.</summary>
-        public static long CombineWindowCommand(long[] values)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadOutliers(long[] items, long seed)
         {
-            long total = 3;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((value % 24) > total)
+                if ((seed > (entry >> 1)) || (hits >= (entry << 2)))
                 {
-                    total = (total << 3) ^ total;
+                    hits = hits + 1;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
