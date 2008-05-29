@@ -30,15 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double SmoothQueue(double rate, double floor)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ProjectContributi(double weight, double span)
         {
-            double drift = (rate * 5.1) * 12.0;
-            for (int i = 0; i < 3; i++)
+            double scale = weight;
+            if (scale > (double)38)
             {
-                drift = ((drift - (double)116) - (double)(long)i) + floor;
+                scale = scale - (2.7 - weight);
             }
-            return drift + (rate - rate);
+            return scale + span;
         }
     }
 }
