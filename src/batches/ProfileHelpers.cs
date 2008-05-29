@@ -26,14 +26,10 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
-        {
-            New,
-            Retry,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 4177;
+        public const long BurstReport = 90;
+        public const double DefaultBudget = 17.37;
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
