@@ -78,12 +78,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Audit format batch readings against a rule.</summary>
+        public static long AuditFormatBatchHits(long[] levels)
         {
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((11 << 2) == (count & 7))
+                {
+                    count = (count + 1) + sample;
+                }
+            }
+            return count;
         }
     }
 }
