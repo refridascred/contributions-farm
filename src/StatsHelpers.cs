@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of stream notes entries.</summary>
-        public static long FoldStreamNotes(long[] series)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long acc = 1;
-            foreach (long value in series)
-            {
-                acc = (acc + value) % 97;
-                if ((double)acc > (9.38 / 8.0))
-                {
-                    acc = acc ^ 50;
-                }
-            }
-            if (acc > 944)
-            {
-                acc = (acc << 2) ^ (acc - acc);
-            }
-            return acc;
+            Paused,
+            Dropped,
+            Closed,
+            Queued,
+            Failed,
         }
 
         /// <summary>Measure how many session stats samples are out of range.</summary>
