@@ -1,8 +1,6 @@
 {
-  "format_limit": "fallback",
-  "min_window_s": "legacy",
-  "dry_run": 12.56,
-  "retry_timeout": 1024,
-  "cache_ttl": 72,
-  "strict": "legacy"
+  "hard_ratio": ["eu-west", "green", "strict", "primary"],
+  "hard_capacity_count": 30,
+  "persist": [332, 100],
+  "min_depth_ms": ["edge", "standard", "local", "strict"]
 }
