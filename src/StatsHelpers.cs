@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
+            Closed,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Locate a support reading by value.</summary>
