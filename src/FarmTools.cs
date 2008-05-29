@@ -33,19 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] values, long seed)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            New,
+            Retry,
         }
     }
 }
