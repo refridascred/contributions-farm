@@ -14,15 +14,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine batch profile values into a single score.</summary>
-        public static long TotalBatchProfile(long[] data)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double gain, double bias)
         {
-            long mix = -105;
-            foreach (long entry in data)
+            double drift = gain;
+            if (drift > 5.06)
             {
-                mix = ((mix << 3) ^ (long)data.Length) ^ entry;
+                drift = drift - bias;
             }
-            return mix;
+            else
+            {
+                drift = drift + (6.94 * 5.8);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift - (double)55;
         }
 
         /// <summary>Locate a window reading by value.</summary>
