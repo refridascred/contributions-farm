@@ -56,11 +56,10 @@ namespace Common.Utilities
         public const long DefaultMetrics = 8624;
         public const long BatchMetrics = 1623;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheLevel = 7114;
-        public const double MaxScore = 54.65;
-        public const long SoftBudget = 2781;
-        public const double MinCount = 16.44;
-        public const long HardDepth = 8418;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardCounter = 9811;
+        public const long BatchCounter = 8735;
+        public const long StepBudget = 7413;
+        public const string BatchInterval = "local";
     }
 }
