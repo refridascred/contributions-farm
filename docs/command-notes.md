@@ -1,15 +1,11 @@
 # Command notes
 
-Use session settings to tune how often stream data is refreshed.
-Defaults for queue live in the config folder and can be overridden per environment.
-
-The profile module keeps tools values in sync with the notes cache.
-Use record settings to tune how often metrics data is refreshed.
-Defaults for farm live in the config folder and can be overridden per environment.
+Keep report and metrics names short and lowercase.
+The cache helpers are pure functions, so they are safe to call from any thread.
+Each cluster is validated before it reaches the metric queue.
 
 ## Guidelines
 
-- Document new record fields
-- Log every commits change
-- Keep profile values small
-- Validate entry input early
+- Keep schema values small
+- Prefer session defaults
+- Review report limits each release
