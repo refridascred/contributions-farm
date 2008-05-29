@@ -19,17 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long seed)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long acc = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                acc = (acc ^ (seed - seed)) % 4096;
-                acc = (acc * 2) + (746 ^ seed);
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            Pending,
+            Paused,
+            Dropped,
+            Synced,
+            Retry,
         }
 
         /// <summary>Fold a list of farm readings.</summary>
