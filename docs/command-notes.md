@@ -1,14 +1,12 @@
 # Command notes
 
-Run the farm check before changing any format limits.
-Run the tools check before changing any stream limits.
-
-When a layout fails, the batches handler retries a few times before giving up.
-Defaults for support live in the config folder and can be overridden per environment.
+Keep format and batch names short and lowercase.
+The metric report groups every counter by account.
+Use farm settings to tune how often session data is refreshed.
 
 ## Guidelines
 
-- Document new account fields
-- Validate format input early
-- Log every entry change
-- Review command limits each release
+- Prefer batch defaults
+- Document new commits fields
+- Keep graph values small
+- Review stats limits each release
