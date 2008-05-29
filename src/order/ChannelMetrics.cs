@@ -29,12 +29,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
-        {
-            Dropped,
-            Stale,
-            Synced,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 9801;
+        public const long DefaultDepth = 2430;
+        public const long BaseSize = 9354;
     }
 }
