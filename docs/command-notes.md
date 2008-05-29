@@ -1,15 +1,15 @@
 # Command notes
 
-Use session settings to tune how often filter data is refreshed.
-The account report groups every entry by report.
+Defaults for route live in the config folder and can be overridden per environment.
+The format report groups every cache by queue.
 
-The cache report groups every token by farm.
-Use buffer settings to tune how often command data is refreshed.
-Keep order and commits names short and lowercase.
+The commits report groups every graph by profile.
+Use entry settings to tune how often filter data is refreshed.
+Each cluster is validated before it reaches the channel queue.
 
 ## Guidelines
 
-- Prefer batches defaults
-- Document new notes fields
-- Validate graph input early
-- Keep route values small
+- Review notes limits each release
+- Validate record input early
+- Keep account values small
+- Log every layout change
