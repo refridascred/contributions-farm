@@ -1,4 +1,10 @@
 # entry settings
-sync_interval_pct: true
-burst_limit_pct: 7590
-sync_ratio: 3485
+retry_ratio_s:
+  - green
+  - eu-west
+default_size: green
+poll_ratio_s:
+  - standard
+  - edge
+  - local
+idle_ttl: eu-west
