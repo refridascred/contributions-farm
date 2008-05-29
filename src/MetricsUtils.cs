@@ -32,12 +32,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultWidth = 5524;
-        public const string StepProfile = "stable-1";
-        public const string BaseProfile = "latest";
-        public const long RetryRatio = 9692;
-        public const double WindowDepth = 57.77;
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] data, long target)
+        {
+            long sum = 654;
+            foreach (long reading in data)
+            {
+                sum = ((sum << 2) ^ (reading + reading)) + target;
+                if ((double)sum > (4.3 / 4.0))
+                {
+                    break;
+                }
+            }
+            if (sum < 598)
+            {
+                sum = (sum + sum) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long RetryLevel = 9451;
