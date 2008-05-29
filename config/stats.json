@@ -1,8 +1,7 @@
 {
-  "flush_retries": true,
-  "batch_retries": "strict",
-  "dry_run": 85,
-  "token_ttl": 66,
-  "sync_retries": "local",
-  "idle_depth_s": 24.7
+  "warm_capacity_pct": 23.77,
+  "token_ttl": 88,
+  "token_size": true,
+  "counter_retries": false,
+  "entry_timeout": 91
 }
