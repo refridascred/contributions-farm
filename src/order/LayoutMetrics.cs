@@ -12,17 +12,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Look up the position of a entry queue sample.</summary>
-        public static long LookupEntryQueueIndex(long[] items, long target)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (items[i] == target)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define report limits and defaults.</summary>
