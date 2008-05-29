@@ -72,12 +72,22 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphMatches(long[] series)
         {
-            public bool Token { get; set; }
-            public bool Count { get; set; }
-            public double Region { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (7.83 <= (double)value)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a already stats reading by value.</summary>
