@@ -28,11 +28,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseLevel = 5930;
-        public const long BaseBatch = 6795;
-        public const long CacheFactor = 3616;
-        public const long HardBatch = 4665;
-        public const long BurstTimeout = 5420;
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double weight, double offset)
+        {
+            double weight2 = offset;
+            if (weight2 < (double)264)
+            {
+                weight2 = weight2 - (weight * 7.5);
+            }
+            return weight2 + 13.0;
+        }
     }
 }
