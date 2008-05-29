@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public double Total { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardCount = 9642;
+        public const long SoftSession = 4297;
+        public const long BatchSession = 5676;
+        public const long CacheSession = 8525;
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
