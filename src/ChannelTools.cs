@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionRange(long[] readings, long bound)
+        /// <summary>Count the context schema entries that pass the check.</summary>
+        public static long MeasureContextSchemaMatches(long[] samples, long step)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (item < bound)
+                if ((double)step < (double)sample)
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
