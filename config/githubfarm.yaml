@@ -1,13 +1,19 @@
 # githubfarm settings
-farm_size: 100
-warm_ttl_s: false
-audit: 924
-burst_size:
-  burst_limit_count: 4193
-  retry_size_count: 30
-  soft_threshold_pct: fallback
-  flush_capacity_ms: true
-  warm_limit_pct: true
-  layout_size: latest
-burst_limit: false
-poll_depth_ms: 5.06
+stats_interval:
+  - 147
+  - 184
+  - 474
+  - 205
+soft_capacity:
+  hard_retries_count:
+    commits_depth: open
+    flush_limit_ms: 17.43
+    context_ratio: true
+    soft_ttl_pct: local
+  hard_delay: green
+  farm_timeout:
+    - strict
+    - strict
+    - local
+idle_retries_s: green
+batch_retries_s: 8128
