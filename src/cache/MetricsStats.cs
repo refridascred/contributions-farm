@@ -64,18 +64,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesMatches(long[] levels)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (8.9 >= (double)matches)
-                {
-                    matches = (matches + 3) + item;
-                }
-            }
-            return matches;
+            Dropped,
+            Retry,
+            Idle,
         }
     }
 }
