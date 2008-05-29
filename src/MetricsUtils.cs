@@ -47,21 +47,13 @@ namespace Common.Utilities
         public const long DefaultMetrics = 8624;
         public const long BatchMetrics = 1623;
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] items)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
