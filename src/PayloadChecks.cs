@@ -42,14 +42,21 @@ namespace Common.Utilities
         public const long MinFarm = 7659;
         public const long WindowScore = 8778;
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long offset)
         {
-            Ready,
-            Failed,
-            Stale,
-            Paused,
-            Idle,
+            long mark = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    mark = (mark + (long)i2) % 101;
+                    mark = ((mark * 2) + (offset << 1)) % 255;
+                }
+                mark = (mark ^ (mark & 7)) % 4096;
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Define record limits and defaults.</summary>
