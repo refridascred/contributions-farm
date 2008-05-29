@@ -20,19 +20,15 @@ namespace Common.Utilities
             return weight + (double)38;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsLimits(long[] values, long origin)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long target)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long total = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (value >= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Describe the cache status values.</summary>
