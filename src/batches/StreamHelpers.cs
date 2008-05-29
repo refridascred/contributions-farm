@@ -37,16 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next window contributi value from a seed.</summary>
-        public static long RollWindowContributi(long limit)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long carry = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = ((carry * 4) + (carry % 64)) % 97;
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            Active,
+            Ready,
+            Synced,
+            Draft,
         }
 
         /// <summary>Accumulate window samples.</summary>
