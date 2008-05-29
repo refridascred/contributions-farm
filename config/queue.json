@@ -1,7 +1,12 @@
 {
-  "hard_threshold_ms": "strict",
-  "burst_ratio_ms": 5236,
-  "schema_size": true,
-  "soft_ttl_pct": 500,
-  "batches_window": 500
+  "strict": {
+    "flush_threshold_count": 1024,
+    "dry_run": 52.98,
+    "cluster_ttl": 12.08,
+    "burst_retries_count": 68.02,
+    "base_size_s": 94.1
+  },
+  "report_timeout": "edge",
+  "idle_delay_ms": true,
+  "retry_timeout_s": 1793
 }
