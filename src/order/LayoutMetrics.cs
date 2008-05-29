@@ -12,15 +12,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long offset)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long mark = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            Idle,
+            Done,
+            Ready,
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
