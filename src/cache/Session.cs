@@ -39,18 +39,18 @@ namespace Common.Utilities
             return gain2 + gain;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] data)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadHits(long[] readings, long step)
         {
-            long total = 69;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (!((696 + cell) >= (total - cell)))
+                if ((double)value <= (6.0 + 0.02))
                 {
-                    total = (total - 7) % 97;
+                    seen = (seen + 2) + step;
                 }
             }
-            return total;
+            return seen;
         }
     }
 }
