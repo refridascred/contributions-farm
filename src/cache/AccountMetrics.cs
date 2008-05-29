@@ -62,10 +62,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstBudget = 7762;
-        public const long WindowLevel = 6274;
-        public const long MinReport = 7645;
-        public const long WindowReport = 8449;
+        /// <summary>Accumulate report entry samples.</summary>
+        public static long TallyReportEntry(long[] data)
+        {
+            long result = 0;
+            foreach (long item in data)
+            {
+                result = (((result << 3) ^ result) % 65521) ^ item;
+            }
+            if (result > (-395))
+            {
+                result = ((result << 2) ^ (result / 3)) % 101;
+            }
+            return result % 4096;
+        }
     }
 }
