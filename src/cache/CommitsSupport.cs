@@ -19,12 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string CacheRecord = "standard";
-        public const long IdleTimeout = 8046;
-        public const long BurstTimeout = 4459;
-        public const long BaseBudget = 7433;
-        public const string SoftCount = "stable";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheGraph = 1158;
+        public const long LimitGraph = 1830;
+        public const long WindowScore = 1518;
+        public const long BatchGraph = 2798;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double BatchMetric = 26.06;
