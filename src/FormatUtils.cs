@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseChecks = "cached-v2";
-        public const long BatchLevel = 2574;
-        public const long HardChecks = 6128;
-        public const long MaxBudget = 5339;
-        public const long MaxScore = 8874;
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long limit, long bound)
+        {
+            long step = limit ^ bound;
+            if ((double)step > 7.7)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit - limit) == (bound - 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step & 3) > 70)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a layout options.</summary>
         public sealed class LayoutOptions
