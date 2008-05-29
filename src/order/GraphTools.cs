@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long limit, long seed)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long diff = limit - seed;
-            if (((double)limit < (double)diff) && ((limit - 15) != (limit - seed)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((6 >> 1) > (limit % 8))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Idle,
+            Dropped,
+            Locked,
+            New,
+            Paused,
         }
 
         /// <summary>Accumulate commits samples.</summary>
