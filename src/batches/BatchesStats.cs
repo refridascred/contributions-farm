@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            Locked,
-            Draft,
-            Pending,
-            Done,
+            Retry,
+            Stale,
+            Ready,
+            Synced,
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
