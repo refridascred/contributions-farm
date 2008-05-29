@@ -44,11 +44,11 @@ namespace Common.Utilities
             return load - (weight + weight);
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            public long Size { get; set; }
-            public bool Level { get; set; }
+            public double Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Combine githubfarm command values into a single score.</summary>
