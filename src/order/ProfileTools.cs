@@ -24,18 +24,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a payload record reading by value.</summary>
-        public static long LocatePayloadRecordIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRecord = 859;
+        public const long BaseRecord = 1149;
+        public const long MinRecord = 9379;
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long SeriesPayload(long seed)
