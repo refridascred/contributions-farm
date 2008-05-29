@@ -31,19 +31,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] samples, long limit)
-        {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstInterval = 6730;
+        public const long HardWindow = 3552;
+        public const long HardScore = 4478;
     }
 }
