@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] data, long origin)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long offset, long origin)
         {
-            long result = 826;
-            foreach (long item in data)
+            if (((origin + offset) < (offset ^ offset)) && (935 <= (7 + offset)))
             {
-                if (!((origin / 4) < item))
+                return 5;
+            }
+            else
+            {
+                if (origin < (origin >> 4))
                 {
-                    result = result + (item % 97);
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return result;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
