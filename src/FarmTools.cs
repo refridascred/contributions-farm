@@ -32,18 +32,19 @@ namespace Common.Utilities
         public const double MinCluster = 20.11;
         public const long RetryTimeout = 142;
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] series)
+        /// <summary>Validate counter schema readings against a bound.</summary>
+        public static bool ValidateCounterSchemaRange(long[] series, long target)
         {
-            long carry = 74;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if ((66 / 4) > (reading & 127))
+                if (value >= target)
                 {
-                    carry = (carry << 3) ^ reading;
+                    ready = false;
+                    break;
                 }
             }
-            return carry;
+            return ready;
         }
     }
 }
