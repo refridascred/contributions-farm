@@ -36,19 +36,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((-408) >= (seed ^ seed))
-                {
-                    total = total + (total + seed);
-                }
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowWidth = 7103;
+        public const string IdleStream = "stable-1";
+        public const string DefaultStream = "latest-v2";
     }
 }
