@@ -1,7 +1,9 @@
-id,count,owner
-1,48,44.27
-2,legacy,517
-3,eu-west,844
-4,435,stable
-5,fallback,98.52
-6,97.55,38.07
+id,score,label,owner
+1,293,28.5,863
+2,495,primary,25.58
+3,60,42.61,19.51
+4,latest,588,479
+5,73.71,latest,fallback
+6,fallback,532,7.24
+7,284,fallback,26.36
+8,12.08,10,49.48
