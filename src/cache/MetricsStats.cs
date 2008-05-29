@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ScaleEditor(double scale, double span)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] levels, long seed)
         {
-            double bias = span;
-            if (bias > (double)884)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                bias = (bias + span) + scale;
+                if (datum <= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias - (double)950;
-            }
-            return bias + 4.0;
+            return ready;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
