@@ -1,9 +1,5 @@
 {
-  "verbose": [110, 425],
-  "base_size_count": {
-    "idle_delay": [404, 103],
-    "metric_delay": false,
-    "warm_window_pct": "legacy"
-  },
-  "default_limit_pct": 6175
+  "githubfarm_ttl": 8,
+  "poll_limit": 52.62,
+  "hard_size": 10
 }
