@@ -1,11 +1,6 @@
 # githubfarm settings
-command_retries:
-  - latest
-  - staging
-sync_size_s: 71.41
-warm_ratio_ms:
-  - 222
-  - 278
-  - 87
-  - 290
-graph_ttl: 250
+enabled: 30
+min_size_pct: true
+persist: cached
+strict: 7596
+compress: 67
