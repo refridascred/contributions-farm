@@ -56,19 +56,9 @@ namespace Common.Utilities
         public const long MaxScore = 7723;
         public const long StepTimeout = 4068;
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadRange(long[] samples, long target)
-        {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftFactor = 9772;
+        public const double SoftWidth = 77.43;
+        public const long BatchSchema = 8822;
     }
 }
