@@ -12,17 +12,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long offset)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long mark = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = (mark + (long)i) % 97;
-                mark = (mark + offset) % 65521;
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            public double Score { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
