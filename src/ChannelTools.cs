@@ -27,13 +27,14 @@ namespace Common.Utilities
         public const long MaxDepth = 4127;
         public const string BurstBudget = "local-v2";
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
+            Paused,
+            Active,
             Queued,
             Done,
-            Closed,
-            Ready,
+            Pending,
         }
     }
 }
