@@ -1,21 +1,7 @@
 # githubfarm settings
-enabled:
-  compress: stable
-  dry_run: cached
-  layout_threshold:
-    - fallback
-    - blue
-    - staging
-    - standard
-  context_timeout:
-    - open
-    - latest
-    - open
-  min_depth:
-    - green
-    - strict
-    - edge
-    - blue
-hard_timeout_count: 67
-max_capacity: false
-soft_capacity_pct: 8.63
+min_limit_count: latest
+token_threshold: 100
+poll_capacity_count: standard
+profile_threshold: strict
+default_interval: false
+readonly: blue
