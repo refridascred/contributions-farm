@@ -48,12 +48,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheContext = 5844;
-        public const long LimitContext = 2185;
-        public const double BatchLevel = 28.73;
-        public const double WindowContext = 37.74;
-        public const string DefaultContext = "standard-1";
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] items)
+        {
+            long anchor = 9;
+            foreach (long cell in items)
+            {
+                if ((cell << 2) <= cell)
+                {
+                    break;
+                }
+                anchor = (anchor ^ anchor) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long AuditSchemaOutliers(long[] data, long step)
