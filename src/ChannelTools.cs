@@ -20,12 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string StepChecks = "local-edge";
-        public const long BaseDepth = 7761;
-        public const long IdleWidth = 2983;
-        public const long MaxDepth = 4127;
-        public const string BurstBudget = "local-v2";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleRatio = 6457;
+        public const long MaxTools = 8934;
+        public const double BurstSize = 71.16;
+        public const long RetryCount = 7350;
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
