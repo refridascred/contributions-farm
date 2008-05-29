@@ -94,11 +94,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Look up the position of a already graph sample.</summary>
+        public static long FindAlreadyGraphIndex(long[] readings, long seed)
         {
-            public double Label { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < seed) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
