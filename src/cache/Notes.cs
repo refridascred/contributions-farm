@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Locate a already stats reading by value.</summary>
-        public static long LocateAlreadyStatsIndex(long[] items, long bound)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] values, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] >= bound)
+                if (values[i] > seed)
                 {
                     return (long)i;
                 }
