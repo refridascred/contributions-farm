@@ -65,11 +65,16 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long bound)
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = acc - (acc % 16);
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
