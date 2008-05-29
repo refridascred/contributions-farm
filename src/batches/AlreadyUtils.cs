@@ -58,17 +58,35 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] data, long bound)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 9;
+            foreach (long item in series)
             {
-                if (data[i] < bound)
+                for (int i = 0; i < 6; i++)
                 {
-                    return (long)i;
+                    result = (((result * 4) + (limit * 4)) % 101) ^ (long)i;
+                    result = (result ^ (item / 7)) % 1000;
+                }
+                if (limit <= (item / 8))
+                {
+                    result = (result + limit) % 101;
+                }
+                if ((result + 885) == (result + limit))
+                {
+                    result = result + (limit + limit);
+                }
+                else
+                {
+                    result = (result + item) % 101;
                 }
             }
-            return -1;
+            if (result > 8)
+            {
+                result = result ^ (result << 3);
+            }
+            return result;
         }
     }
 }
