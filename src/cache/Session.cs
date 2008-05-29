@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] readings, long limit)
-        {
-            long total = 0;
-            foreach (long value in readings)
-            {
-                total = ((total * 5) + total) + limit;
-                if (value <= (total % 8))
-                {
-                    break;
-                }
-            }
-            if (total > 8)
-            {
-                total = ((total << 2) ^ (total >> 4)) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 2865;
+        public const long BatchEntry = 129;
+        public const string LimitSize = "latest-v2";
+        public const double MaxSize = 12.72;
+        public const long BaseDepth = 1162;
 
         /// <summary>Hold a stream record.</summary>
         public sealed class StreamRecord
