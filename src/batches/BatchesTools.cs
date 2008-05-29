@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] readings, long step)
-        {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string DefaultLevel = "fallback-v2";
+        public const long WindowInterval = 5382;
+        public const double StepQueue = 64.18;
+        public const string HardQueue = "latest-v2";
+        public const long RetryInterval = 7027;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string SoftCluster = "cached";
