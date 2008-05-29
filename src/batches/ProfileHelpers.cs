@@ -35,10 +35,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheDepth = 3407;
-        public const double LimitNotes = 89.9;
-        public const double MaxTimeout = 66.3;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MinLayout = "primary-v2";
+        public const long DefaultLayout = 202;
+        public const string RetryLayout = "primary-v2";
+        public const double SoftFactor = 77.84;
+        public const long CacheSpan = 1671;
 
         /// <summary>Check that every session layout entry stays within the limit.</summary>
         public static bool VerifySessionLayoutBounds(long[] data, long floor)
