@@ -19,31 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long limit, long floor)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] samples, long target)
         {
-            if (((double)floor <= 0.1) && ((limit % 5) < floor))
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((16.0 / 7.0) <= (double)limit)
+                if ((((datum & 7) == (datum * 4)) && ((datum * 4) >= (datum ^ datum))) || !((datum - 19) <= (datum ^ target)))
                 {
-                    return 1;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    if (((limit * 5) >= (limit / 2)) || ((limit * 2) != (floor + floor)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the route kind values.</summary>
