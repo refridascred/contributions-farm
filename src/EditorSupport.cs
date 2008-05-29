@@ -27,12 +27,13 @@ namespace Common.Utilities
         public const long RetryCommits = 5510;
         public const long LimitCommits = 830;
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            public string Size { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
+            Closed,
+            New,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
