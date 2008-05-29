@@ -36,18 +36,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] readings, long step)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCount(long[] data)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((6.9 * 1.0) <= (double)count)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = ((count + 2) ^ cell) + step;
+                    if ((data[i] + data[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
