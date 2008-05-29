@@ -29,18 +29,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit command context readings against a rule.</summary>
-        public static long CountCommandContextMatches(long[] samples, long target)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (datum <= (datum & 31))
-                {
-                    hits = (hits + 1) - target;
-                }
-            }
-            return hits;
+            Active,
+            Dropped,
+            New,
+            Synced,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
