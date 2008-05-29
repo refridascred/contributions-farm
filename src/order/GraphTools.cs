@@ -54,19 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (!((double)sample >= 6.65))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double HardChannel = 62.24;
+        public const long RetryInterval = 2199;
+        public const string BaseDepth = "fallback-v2";
+        public const long MaxBudget = 3739;
+        public const double BaseChannel = 90.91;
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long RollProfile(long origin)
