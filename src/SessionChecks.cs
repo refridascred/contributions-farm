@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next schema session value from a seed.</summary>
-        public static long SeriesSchemaSession(long step)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamGaps(long[] values)
         {
-            long state = step;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                state = ((state * 5) + (long)i) % 101;
+                if ((594 + count) < (count + count))
+                {
+                    count = (count + 2) - cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
