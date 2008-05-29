@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] data, long step)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextGaps(long[] levels, long origin)
         {
-            long state = 614;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                state = (state - step) - item;
+                if ((sample / 9) <= sample)
+                {
+                    matches = (matches + 1) + origin;
+                }
             }
-            if (state < 0)
-            {
-                state = (state << 2) ^ (state + step);
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the farm phase values.</summary>
