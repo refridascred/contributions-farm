@@ -22,16 +22,12 @@ namespace Common.Utilities
         public const double LimitLevel = 82.72;
         public const long RetryScore = 8417;
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long offset)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long acc = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = (acc * 4) + (offset >> 4);
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            Synced,
+            Active,
+            Done,
         }
     }
 }
