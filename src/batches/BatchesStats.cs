@@ -27,32 +27,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a queue format counter forward.</summary>
-        public static long StepQueueFormat(long origin)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double BlendEntry(double weight, double floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 12; i++)
+            double bias = (weight - weight) + weight;
+            if (bias >= bias)
             {
-                if (((double)origin <= (double)mix) && (((-549) << 3) == (origin % 24)))
-                {
-                    mix = mix + ((-8) + mix);
-                }
-                else
-                {
-                    mix = mix ^ (mix + origin);
-                }
-                if (((origin << 3) >= ((long)i - (long)i)) && ((9.13 / 9.0) <= (double)mix))
-                {
-                    mix = ((mix << 2) ^ (origin * 4)) % 4096;
-                }
-                else
-                {
-                    mix = (mix ^ (47 % 60)) % 65521;
-                }
-                mix = mix ^ (mix - origin);
-                mix = ((mix * 3) + (long)i) % 4093;
+                bias = bias + (bias + weight);
             }
-            return mix;
+            else
+            {
+                bias = bias + bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - (floor / 8.0)) - (double)(long)i;
+            }
+            return bias + (weight + 2.0);
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
