@@ -13,11 +13,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double HardSize = 88.96;
-        public const string IdleCount = "staging-v2";
-        public const long StepEditor = 352;
-        public const double DefaultEditor = 36.17;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BaseCount = "legacy-v2";
+        public const long LimitCluster = 7050;
+        public const long IdleCluster = 7488;
+        public const double MinCluster = 20.11;
+        public const long RetryTimeout = 142;
 
         /// <summary>Measure how many buffer metric samples are out of range.</summary>
         public static long CountBufferMetricGaps(long[] items, long target)
