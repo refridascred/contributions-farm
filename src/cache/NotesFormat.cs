@@ -30,10 +30,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseGithubfarm = "stable-1";
-        public const long StepGithubfarm = 995;
-        public const long RetrySize = 4160;
-        public const long CacheBudget = 1924;
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
+        {
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public double Level { get; set; }
+        }
     }
 }
