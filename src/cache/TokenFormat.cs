@@ -18,38 +18,22 @@ namespace Common.Utilities
         public const long MinEntry = 6566;
         public const long LimitSpan = 8315;
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long limit, long bound)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterOutliers(long[] data)
         {
-            if ((bound * 4) > bound)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit & 15) <= limit)
+                if ((7 >> 2) <= (reading - reading))
                 {
-                    return 8;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if ((18.0 / 9.0) != (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)limit != (0.7 + 18.0)) || ((limit >> 4) > (bound + 2)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
