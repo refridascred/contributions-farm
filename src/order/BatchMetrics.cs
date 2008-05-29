@@ -44,13 +44,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            public bool Level { get; set; }
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
-            public long Ratio { get; set; }
+            Done,
+            Pending,
+            Dropped,
+            Stale,
+            Queued,
         }
 
         /// <summary>Describe the payload level values.</summary>
