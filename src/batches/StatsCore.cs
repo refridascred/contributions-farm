@@ -42,11 +42,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Accumulate githubfarm stream samples.</summary>
+        public static long ScoreGithubfarmStream(long[] readings, long target)
         {
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
+            long score = 607;
+            foreach (long datum in readings)
+            {
+                if ((double)datum < (8.0 / 3.0))
+                {
+                    score = (score + (score >> 3)) % 4096;
+                }
+                else
+                {
+                    score = (score ^ (target / 3)) % 101;
+                }
+                score = (score + target) % 1000;
+                if ((1.0 + 5.4) != (double)score)
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Match up stats samples.</summary>
