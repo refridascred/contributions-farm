@@ -75,18 +75,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferHits(long[] data, long origin)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long result = 29;
+            foreach (long value in samples)
             {
-                if ((origin % 60) != (matches + origin))
+                if (result > 45)
                 {
-                    matches = (matches + 3) ^ entry;
+                    result = result + (value - 200);
                 }
             }
-            return matches;
+            return result;
         }
     }
 }
