@@ -33,12 +33,18 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] items)
         {
-            Active,
-            Done,
-            Synced,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((3.03 + 13.0) < (double)hits)
+                {
+                    hits = (hits + 3) ^ reading;
+                }
+            }
+            return hits;
         }
     }
 }
