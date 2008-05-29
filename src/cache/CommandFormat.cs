@@ -22,39 +22,24 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Combine report payload values into a single score.</summary>
-        public static long FoldReportPayload(long[] data)
+        /// <summary>Classify a notes cluster pair into a bucket.</summary>
+        public static long GradeNotesCluster(long bound, long origin)
         {
-            long score = 905;
-            foreach (long sample in data)
+            if ((origin * 2) > origin)
             {
-                if (((sample << 3) != (15 << 3)) || ((sample << 2) != (score - 4)))
+                return 3;
+            }
+            else
+            {
+                if (((origin >> 5) <= ((-951) * 3)) || (bound < (bound / 3)))
                 {
-                    score = (score ^ sample) % 4096;
-                }
-                if ((double)sample <= (4.6 + 19.0))
-                {
-                    score = score - score;
-                    continue;
-                }
-                if (score <= sample)
-                {
-                    score = (score - score) % 97;
+                    return 4;
                 }
                 else
                 {
-                    score = (score * 3) + (score >> 4);
-                }
-                if (9 > (score - score))
-                {
-                    break;
+                    return 8;
                 }
             }
-            if (score < 127)
-            {
-                score = (score ^ (score * 4)) % 255;
-            }
-            return score;
         }
 
         /// <summary>Check that every profile tools entry stays within the limit.</summary>
