@@ -21,18 +21,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextOutliers(long[] readings)
+        /// <summary>Locate a payload record reading by value.</summary>
+        public static long LocatePayloadRecordIndex(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((2.8 - 4.0) != (double)value)
+                if (levels[i] <= bound)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
