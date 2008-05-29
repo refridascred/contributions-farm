@@ -13,16 +13,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double bias, double span)
-        {
-            double scale = span;
-            if (scale > (scale + bias))
-            {
-                scale = scale - scale;
-            }
-            return scale + (bias * 5.0);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 4229;
+        public const long MinFactor = 9415;
+        public const long BatchFarm = 1080;
+        public const string BurstFarm = "stable-edge";
+        public const long LimitFactor = 8847;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long MaxFilter = 7827;
