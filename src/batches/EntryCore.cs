@@ -18,19 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two channel stats measurements.</summary>
-        public static double ProjectChannelStats(double rate, double span)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long seed, long bound)
         {
-            double bias = span;
-            if (bias <= span)
+            if ((double)seed >= (double)bound)
             {
-                bias = bias - (bias - bias);
+                return 3;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                bias = (bias - (bias / 3.0)) - (double)(long)i;
+                if (!((1.0 * 9.8) == (double)bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((bound * 2) <= (seed >> 2)) && ((bound << 2) <= bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((seed << 2) <= (bound - bound)) || ((seed + seed) >= (seed / 3)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return bias + rate;
         }
 
         /// <summary>Describe the queue class values.</summary>
