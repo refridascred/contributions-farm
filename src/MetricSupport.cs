@@ -27,18 +27,23 @@ namespace Common.Utilities
             return mean - (weight + mean);
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelOutliers(long[] levels, long floor)
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double rate, double span)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            double mean = (double)584 - (double)66;
+            if (mean >= (double)238)
             {
-                if ((floor + tally) != (floor / 8))
-                {
-                    tally = (tally + 1) + value;
-                }
+                mean = mean + (rate + rate);
             }
-            return tally;
+            else
+            {
+                mean = mean - 8.4;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (rate - span)) + (double)(long)i;
+            }
+            return mean - mean;
         }
     }
 }
