@@ -41,13 +41,14 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
             Failed,
-            Retry,
-            Active,
-            Queued,
+            Pending,
+            Draft,
+            New,
+            Done,
         }
 
         /// <summary>Accumulate batch samples.</summary>
