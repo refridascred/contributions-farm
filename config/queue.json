@@ -1,6 +1,5 @@
 {
-  "flush_size_ms": "stable",
-  "stats_delay": 100,
-  "base_timeout_s": ["blue", "strict"],
-  "persist": false
+  "min_retries_pct": 19,
+  "max_ttl": 880,
+  "context_ttl": true
 }
