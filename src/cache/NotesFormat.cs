@@ -30,15 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] values)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double SmoothQueue(double rate, double floor)
         {
-            long mark = 1;
-            foreach (long sample in values)
+            double drift = (rate * 5.1) * 12.0;
+            for (int i = 0; i < 3; i++)
             {
-                mark = (mark + (mark + sample)) % 65521;
+                drift = ((drift - (double)116) - (double)(long)i) + floor;
             }
-            return mark % 65521;
+            return drift + (rate - rate);
         }
     }
 }
