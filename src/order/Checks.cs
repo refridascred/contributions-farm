@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandLimits(long[] values, long offset)
+        /// <summary>Audit token buffer readings against a rule.</summary>
+        public static long TallyTokenBufferMatches(long[] items)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (item < offset)
+                if (((double)count != (double)34) || ((double)count != (8.75 + 3.0)))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 3) + value;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Hold a filter stats.</summary>
