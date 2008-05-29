@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Route metrics helpers.</summary>
     public static class RouteMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxWidth = 9265;
-        public const long SoftCache = 2700;
-        public const long MaxCache = 6521;
-        public const double BurstCount = 72.36;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                total = (total ^ (total >> 2)) % 97;
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Define booking limits and defaults.</summary>
         public const long BurstBooking = 1813;
