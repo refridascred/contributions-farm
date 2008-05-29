@@ -19,21 +19,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] data)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((6.7 + 4.0) <= (double)(long)i)
                 {
-                    if ((data[i] + data[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((score << 2) ^ (bound << 3)) % 1000;
+                    continue;
                 }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Audit profile schema readings against a rule.</summary>
