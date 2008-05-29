@@ -93,12 +93,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferHits(long[] data, long origin)
         {
-            Locked,
-            Pending,
-            Draft,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((origin % 60) != (matches + origin))
+                {
+                    matches = (matches + 3) ^ entry;
+                }
+            }
+            return matches;
         }
     }
 }
