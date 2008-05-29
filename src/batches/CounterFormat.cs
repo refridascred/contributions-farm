@@ -39,12 +39,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
-        {
-            public string Token { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultScore = 9750;
+        public const string MaxFactor = "open-v2";
+        public const double BaseCount = 3.75;
     }
 }
