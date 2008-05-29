@@ -1,44 +1,15 @@
 # githubfarm settings
-persist:
-  - 470
-  - 399
-  - 146
-  - 304
-base_timeout_s: 10.45
-account_size:
-  audit: 500
-  cache_ratio_count: 68
-  poll_size_s: edge
-  default_depth_s:
-    poll_threshold_pct: 95.51
-    batch_size_ms: edge
-    cache_interval: true
-    batch_depth_s: 500
-    burst_depth: 1024
-flush_limit_count:
-  strict:
-    dry_run: primary
-    base_ttl_s: true
-    min_depth:
-      - latest
-      - blue
-      - strict
-      - edge
-    idle_ttl_ms: 9052
-    sync_timeout_pct: false
-    schema_interval: eu-west
-  batches_ttl: legacy
-  min_limit:
-    metric_depth: false
-    max_timeout_s: 74
-    hard_threshold_s: edge
-    idle_ttl:
-      - 165
-      - 381
-      - 120
-    batch_delay:
-      - 31
-      - 123
-    command_threshold: false
-  base_ratio: true
-  persist: false
+profile_delay: 74.32
+payload_ttl: 25
+soft_retries_ms: 2205
+entry_ratio:
+  dry_run: 33.25
+  readonly: 50.43
+  flush_ttl_ms: strict
+  enabled:
+    - 447
+    - 359
+    - 107
+  min_delay: edge
+support_limit: 13
+flush_limit_s: eu-west
