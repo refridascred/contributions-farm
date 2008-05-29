@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdlePayload = 9775;
-        public const double MaxDepth = 28.86;
-        public const double SoftLevel = 3.79;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((9 / 3) >= (matches << 1))
+                {
+                    matches = (matches + 3) ^ cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a batches token value against two limits.</summary>
         public static long GradeBatchesToken(long seed, long origin)
