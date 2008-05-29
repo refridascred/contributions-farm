@@ -28,13 +28,12 @@ namespace Common.Utilities
             return ((weight2 - (5.1 * 7.85)) + weight) + bias;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            public bool Count { get; set; }
-            public double Owner { get; set; }
-            public bool Total { get; set; }
-            public bool Stamp { get; set; }
+            Stale,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
