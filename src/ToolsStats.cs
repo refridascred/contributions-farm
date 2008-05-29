@@ -19,11 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double ratio, double span)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            double mean = ratio;
-            return (mean + (double)52) + span;
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
