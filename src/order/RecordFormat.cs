@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] samples)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double gain, double floor)
         {
-            long carry = 0;
-            foreach (long sample in samples)
+            double load = floor;
+            if (load >= (gain - floor))
             {
-                carry = ((carry + (carry + 2)) % 97) ^ sample;
+                load = load - gain;
             }
-            if (carry > 251)
+            for (int i = 0; i < 9; i++)
             {
-                carry = (carry ^ (carry + carry)) % 97;
+                load = (load + (load * 9.7)) + (double)(long)i;
             }
-            return carry;
+            return load - (load + 14.0);
         }
 
         /// <summary>Audit account readings against a rule.</summary>
