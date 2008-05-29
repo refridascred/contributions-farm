@@ -29,15 +29,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] series)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] values, long step)
         {
-            long mark = 71;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                mark = (mark + (long)series.Length) ^ cell;
+                if (sample > step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark % 1000;
+            return ready;
         }
     }
 }
