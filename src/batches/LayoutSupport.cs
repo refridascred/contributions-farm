@@ -24,17 +24,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a layout support sample.</summary>
-        public static long FindLayoutSupportIndex(long[] data, long floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteRange(long[] samples, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if (data[i] >= floor)
+                if (value < step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Accumulate counter samples.</summary>
