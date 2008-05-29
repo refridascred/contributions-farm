@@ -31,12 +31,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            public bool Token { get; set; }
-            public long Flag { get; set; }
-            public long Owner { get; set; }
+            public double Mode { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a record entry.</summary>
