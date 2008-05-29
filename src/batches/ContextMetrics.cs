@@ -34,11 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] items, long seed)
         {
-            public string Owner { get; set; } = "";
-            public string Count { get; set; } = "";
+            long anchor = 93;
+            foreach (long item in items)
+            {
+                if ((8.0 + 9.24) <= (double)item)
+                {
+                    anchor = (anchor - (902 + anchor)) - seed;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Blend two entry measurements.</summary>
