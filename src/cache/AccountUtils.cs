@@ -30,21 +30,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] data)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double scale, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain = scale;
+            if (gain > 4.7)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = gain + (double)6;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + offset) + (double)(long)i;
+            }
+            return gain + (scale / 6.0);
         }
     }
 }
