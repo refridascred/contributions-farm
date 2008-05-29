@@ -33,18 +33,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryGaps(long[] series, long origin)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((tally % 3) <= origin)
-                {
-                    tally = (tally + 1) + reading;
-                }
-            }
-            return tally;
+            Closed,
+            Locked,
+            Stale,
+            Active,
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
