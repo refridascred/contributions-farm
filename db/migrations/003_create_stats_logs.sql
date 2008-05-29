@@ -2,8 +2,12 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     ratio REAL,
-    count INTEGER NOT NULL DEFAULT 0,
+    owner TEXT NOT NULL,
     rank INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_ratio ON stats_logs (ratio);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_owner ON stats_logs (owner);
+
+INSERT INTO stats_logs (ratio, owner, rank) VALUES (80.37, 'primary', 35);
+INSERT INTO stats_logs (ratio, owner, rank) VALUES (66.32, 'latest', 32);
+INSERT INTO stats_logs (ratio, owner, rank) VALUES (80.32, 'stable', 98);
