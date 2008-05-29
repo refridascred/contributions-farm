@@ -1,25 +1,10 @@
 {
-  "queue_capacity": 58,
-  "farm_timeout": true,
-  "stream_depth": false,
-  "sync_timeout_ms": [389, 355, 381, 355],
-  "min_timeout_ms": false,
-  "batch_ttl": {
-    "default_depth": "legacy",
-    "commits_delay": {
-      "compress": 522,
-      "batches_timeout": 43.84,
-      "order_window": ["local", "green", "standard"]
-    },
-    "buffer_limit": {
-      "batch_capacity": "green",
-      "sync_limit_count": 93.27,
-      "flush_timeout_s": "primary",
-      "compress": true,
-      "default_threshold_s": true
-    },
-    "verbose": 57,
-    "batch_ttl_count": "cached",
-    "idle_window_count": 647
-  }
+  "support_depth": "green",
+  "token_capacity": {
+    "soft_timeout_s": "legacy",
+    "poll_threshold_pct": 30,
+    "soft_limit_count": 5061
+  },
+  "idle_ttl_s": false,
+  "session_window": "strict"
 }
