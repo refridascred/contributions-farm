@@ -34,17 +34,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] items, long seed)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Active,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Accumulate githubfarm stream samples.</summary>
