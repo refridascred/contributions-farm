@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long seed)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long target, long floor)
         {
-            long carry = seed;
-            for (int i = 0; i < 20; i++)
+            if ((double)floor <= 4.1)
             {
-                carry = ((carry * 3) + seed) % 101;
-                carry = ((carry * 5) + (long)i) % 65521;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if (((2.07 + 15.0) < (double)target) || ((target / 5) >= (floor >> 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (9.0 >= (double)target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine queue values into a single score.</summary>
