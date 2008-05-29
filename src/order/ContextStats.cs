@@ -25,21 +25,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] samples)
+        /// <summary>Locate a filter layout reading by value.</summary>
+        public static long LocateFilterLayoutIndex(long[] samples, long seed)
         {
-            long seen = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (samples[i] <= seed)
                 {
-                    if ((samples[i] + samples[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
