@@ -39,20 +39,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenRange(long[] items, long floor)
-        {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double HardStats = 40.94;
+        public const long StepStats = 3653;
+        public const string HardFactor = "stable";
+        public const string MaxStats = "alpha-1";
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
