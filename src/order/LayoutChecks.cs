@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] readings)
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double rate, double bias)
         {
-            long result = 93;
-            foreach (long value in readings)
+            double rate2 = (double)350 + (rate + 1.8);
+            if (rate2 <= (rate2 + 3.88))
             {
-                if ((879 - result) > (result - 26))
-                {
-                    result = ((result << 3) ^ ((long)readings.Length >> 5)) - value;
-                }
-                else
-                {
-                    result = result + (result & 1);
-                }
+                rate2 = rate2 - bias;
             }
-            if (result < 944)
+            else
             {
-                result = ((result << 2) ^ result) % 255;
+                rate2 = rate2 - (double)8;
             }
-            return result % 65521;
+            return rate2 + 3.2;
         }
 
         /// <summary>Describe the graph mode values.</summary>
