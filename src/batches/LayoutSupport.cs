@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MinGithubfarm = "standard-1";
-        public const string LimitGithubfarm = "open";
-        public const long IdleDepth = 5846;
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double rate, double bias)
+        {
+            double scale = (rate / 2.0) - bias;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (6.64 + scale)) + (double)(long)i;
+            }
+            return scale - scale;
+        }
 
         /// <summary>Digest a series of account metrics entries.</summary>
         public static long FoldAccountMetrics(long[] items)
