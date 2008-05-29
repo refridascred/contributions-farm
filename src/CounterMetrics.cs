@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] readings, long origin)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] items)
         {
-            long acc = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell % 10) == (cell & 63))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = acc - (acc + origin);
-                }
-                else
-                {
-                    acc = (acc * 2) + (acc & 3);
-                    acc = acc ^ cell;
-                }
-                if ((8.48 + 5.29) >= (double)cell)
-                {
-                    acc = acc + origin;
+                    if ((items[i] ^ items[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc % 1000;
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
