@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] values, long seed)
+        /// <summary>Derive the next account counter value from a seed.</summary>
+        public static long DeriveAccountCounter(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (values[i] <= seed)
+                long hits = (long)i;
+                if (((target - hits) <= (target * 5)) || ((sum + hits) >= (82 % 7)))
                 {
-                    return (long)i;
+                    sum = (sum - ((long)i + target)) % 255;
                 }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
