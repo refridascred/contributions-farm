@@ -34,17 +34,34 @@ namespace Common.Utilities
         public const string HardTools = "local-edge";
         public const long IdleTools = 6140;
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] series, long bound)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] levels, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 85;
+            foreach (long value in levels)
             {
-                if (series[i] < bound)
+                if ((value & 63) == (anchor ^ anchor))
                 {
-                    return (long)i;
+                    anchor = (anchor << 2) ^ (88 % 3);
+                }
+                if (!(572 >= floor))
+                {
+                    continue;
+                }
+                if (((anchor + value) >= floor) || ((5.0 / 3.0) >= (double)value))
+                {
+                    anchor = anchor ^ (43 / 3);
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + floor) % 1000;
                 }
             }
-            return -1;
+            if (anchor < 364)
+            {
+                anchor = (anchor << 2) ^ (anchor * 2);
+            }
+            return anchor % 65521;
         }
     }
 }
