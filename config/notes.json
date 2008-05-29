@@ -1,8 +1,8 @@
 {
-  "soft_delay_ms": [246, 276],
-  "batch_capacity": false,
-  "poll_retries_count": 4491,
-  "warm_delay_pct": "strict",
-  "entry_timeout": 32.42,
-  "record_depth": true
+  "burst_size_s": "open",
+  "persist": 9.93,
+  "soft_interval_s": 9780,
+  "notes_capacity": 47.34,
+  "idle_limit": 79,
+  "batches_timeout": "strict"
 }
