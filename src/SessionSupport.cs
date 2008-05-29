@@ -17,10 +17,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultDepth = 201;
-        public const double LimitLevel = 82.72;
-        public const long RetryScore = 8417;
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
+        {
+            Ready,
+            Idle,
+            Synced,
+            Pending,
+        }
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
