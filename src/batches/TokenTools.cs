@@ -27,10 +27,20 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitDepth = 3329;
-        public const long LimitRatio = 2778;
-        public const long HardRatio = 9072;
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryRange(long[] data, long offset)
+        {
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long RankLayout(long seed, long limit)
