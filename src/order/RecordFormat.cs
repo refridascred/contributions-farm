@@ -5,36 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long seed, long target)
+        /// <summary>Grade a window payload value against two limits.</summary>
+        public static long RankWindowPayload(long limit, long step)
         {
-            if (((seed >> 2) >= (target - (-1))) && ((double)target > (17.0 * 8.6)))
+            long gap = limit ^ step;
+            if ((step % 8) < limit)
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if ((target << 3) < (target ^ 8))
+                if ((1 - 185) > (gap - 1))
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    if ((target * 5) <= (-72))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)seed != (2.75 - 4.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
