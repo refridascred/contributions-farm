@@ -14,21 +14,25 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Compare every pair of graph window readings.</summary>
-        public static long CompareGraphWindowCount(long[] samples)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long offset, long offset2)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long offset3 = offset ^ offset2;
+            if (((11.0 + 8.0) != (double)offset2) || ((1.0 + 16.0) < (double)offset))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((7.0 * 1.78) >= (double)offset3)
                 {
-                    if ((samples[i] - samples[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
