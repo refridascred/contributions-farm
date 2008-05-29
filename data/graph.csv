@@ -1,11 +1,6 @@
-id,score,state,owner
-1,24.95,standard,staging
-2,54.02,532,391
-3,green,89.31,eu-west
-4,678,35.2,306
-5,primary,89.37,287
-6,fallback,strict,stable
-7,895,652,195
-8,eu-west,15.16,853
-9,20,74.02,355
-10,18.51,edge,edge
+id,state,region
+1,local,47.58
+2,308,59.09
+3,edge,cached
+4,384,536
+5,374,35.75
