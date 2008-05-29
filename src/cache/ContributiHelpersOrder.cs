@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit cache layout readings against a rule.</summary>
-        public static long AuditCacheLayoutHits(long[] samples, long floor)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long bound)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long carry = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (floor < (floor - hits))
-                {
-                    hits = (hits + 2) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Blend two filter support measurements.</summary>
