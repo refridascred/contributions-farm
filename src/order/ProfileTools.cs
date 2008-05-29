@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Validate report notes readings against a bound.</summary>
+        public static bool CheckReportNotesLimits(long[] readings, long limit)
         {
-            public string Size { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Rank { get; set; }
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
