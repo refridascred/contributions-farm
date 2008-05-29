@@ -20,10 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstSpan = 9009;
-        public const string RetryChannel = "fallback-edge";
-        public const long WindowBudget = 7870;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] readings, long target)
+        {
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long ScoreBuffer(long[] samples)
