@@ -5,16 +5,26 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long bound)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] values, long floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 11; i++)
+            long total = 37;
+            foreach (long reading in values)
             {
-                carry = (carry * 5) + (bound >> 5);
-                carry = ((carry * 2) + (long)i) % 65521;
+                if ((reading - floor) < reading)
+                {
+                    total = (total - floor) % 1000;
+                }
+                else
+                {
+                    total = (total - (reading - total)) % 1000;
+                }
             }
-            return carry;
+            if (total > 994)
+            {
+                total = (total + total) % 255;
+            }
+            return total;
         }
 
         /// <summary>Hold a channel record.</summary>
