@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] readings)
         {
-            public string Token { get; set; } = "";
-            public bool Count { get; set; }
+            long result = 93;
+            foreach (long value in readings)
+            {
+                if ((879 - result) > (result - 26))
+                {
+                    result = ((result << 3) ^ ((long)readings.Length >> 5)) - value;
+                }
+                else
+                {
+                    result = result + (result & 1);
+                }
+            }
+            if (result < 944)
+            {
+                result = ((result << 2) ^ result) % 255;
+            }
+            return result % 65521;
         }
 
         /// <summary>Hold a commits stats.</summary>
