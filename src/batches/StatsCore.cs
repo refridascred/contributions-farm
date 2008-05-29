@@ -27,21 +27,19 @@ namespace Common.Utilities
         public const string BurstLayout = "cached";
         public const long CacheSpan = 8804;
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] data)
+        /// <summary>Validate layout account readings against a bound.</summary>
+        public static bool GuardLayoutAccountRange(long[] series, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value < target)
                 {
-                    if ((data[i] ^ data[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Accumulate githubfarm stream samples.</summary>
