@@ -31,15 +31,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] items)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long sum = 378;
-            foreach (long item in items)
-            {
-                sum = ((sum << 2) ^ (item ^ item)) % 1000;
-            }
-            return sum % 1000;
+            Idle,
+            Synced,
+            Done,
+            New,
+            Active,
         }
     }
 }
