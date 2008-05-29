@@ -37,10 +37,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowSpan = 3581;
-        public const long MaxToken = 1028;
-        public const long StepBudget = 3859;
-        public const long HardInterval = 1665;
+        /// <summary>Digest a series of already session entries.</summary>
+        public static long ScoreAlreadySession(long[] series)
+        {
+            long result = 76;
+            foreach (long reading in series)
+            {
+                result = (((result << 2) ^ (6 >> 5)) % 255) - reading;
+            }
+            return result;
+        }
     }
 }
