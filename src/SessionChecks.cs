@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] items)
+        /// <summary>Iterate the batches account series from a seed.</summary>
+        public static long RollBatchesAccount(long floor)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long sum = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((double)37 >= (double)entry) || (((double)entry < 9.0) && ((double)seen <= (6.06 * 8.0))))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
