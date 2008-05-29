@@ -16,19 +16,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double BlendEntry(double rate, double bias)
+        /// <summary>Scale a schema batch figure with a bias.</summary>
+        public static double ProjectSchemaBatch(double rate, double floor)
         {
-            double ratio = bias;
-            if (ratio < ratio)
-            {
-                ratio = ratio + (ratio - rate);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (0.78 * 2.1)) - (double)(long)i;
-            }
-            return ratio + rate;
+            double load = (double)(93 - 263);
+            return (load - (floor / 7.0)) + rate;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
