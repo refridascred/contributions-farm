@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] samples)
-        {
-            long mark = 975;
-            foreach (long item in samples)
-            {
-                mark = ((mark << 3) ^ (item / 6)) % 101;
-                if (((9.0 + 3.16) < (double)item) && ((mark ^ item) < (mark - item)))
-                {
-                    break;
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 1036;
+        public const long WindowSpan = 4548;
+        public const long SoftSize = 6420;
+        public const long BaseContributi = 3398;
+        public const long RetryContributi = 5586;
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long SortMetrics(long floor, long offset)
