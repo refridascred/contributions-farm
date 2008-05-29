@@ -28,11 +28,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepLevel = 6765;
-        public const long DefaultRatio = 5739;
-        public const long BatchBatches = 7498;
-        public const long HardFactor = 527;
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
+        {
+            public double Rank { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Digest a series of already session entries.</summary>
         public static long ScoreAlreadySession(long[] series)
