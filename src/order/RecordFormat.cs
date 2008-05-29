@@ -44,11 +44,21 @@ namespace Common.Utilities
             return load - (weight + weight);
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Count commits support pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsSupportCount(long[] levels)
         {
-            public double Flag { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine githubfarm command values into a single score.</summary>
