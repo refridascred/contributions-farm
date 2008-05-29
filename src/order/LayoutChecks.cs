@@ -34,18 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit queue cluster readings against a rule.</summary>
-        public static long TallyQueueClusterMatches(long[] items, long bound)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long carry = -425;
+            foreach (long sample in samples)
             {
-                if (((reading + bound) < 90) && (((seen ^ reading) >= (bound * 3)) || ((1.2 - 5.4) > (double)reading)))
+                if ((double)sample >= (double)limit)
                 {
-                    seen = seen + 2;
+                    carry = carry - (sample * 2);
                 }
             }
-            return seen;
+            if (carry < 21)
+            {
+                carry = (carry - (carry / 3)) % 65521;
+            }
+            return carry % 97;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
