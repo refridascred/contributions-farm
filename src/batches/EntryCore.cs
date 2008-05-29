@@ -57,18 +57,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] values)
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double scale, double offset)
         {
-            long result = -531;
-            foreach (long reading in values)
+            double weight = offset;
+            if (weight <= (offset * 4.2))
             {
-                if (!((double)result < 4.37))
-                {
-                    result = ((result - (result ^ result)) % 255) ^ reading;
-                }
+                weight = weight + scale;
             }
-            return result % 97;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight - (2.0 * 12.0);
         }
     }
 }
