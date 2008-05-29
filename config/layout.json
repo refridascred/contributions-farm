@@ -1,6 +1,6 @@
 {
-  "filter_timeout": false,
-  "hard_threshold_ms": 100,
-  "dry_run": 9174,
-  "enabled": false
+  "soft_capacity_count": 1024,
+  "default_retries_count": [134, 464],
+  "burst_depth_ms": 22.64,
+  "dry_run": false
 }
