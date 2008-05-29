@@ -1,12 +1,6 @@
 {
-  "soft_depth": 3569,
-  "hard_delay": {
-    "warm_threshold_pct": 1024,
-    "token_limit": "local",
-    "flush_window": "latest",
-    "hard_limit_s": "strict"
-  },
-  "metric_window": [361, 166],
-  "batch_retries_s": ["local", "green"],
-  "commits_size": ["strict", "cached", "standard", "green"]
+  "soft_depth_count": "standard",
+  "token_retries": 2308,
+  "compress": "fallback",
+  "cache_limit_count": false
 }
