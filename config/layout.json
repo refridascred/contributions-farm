@@ -1,12 +1,5 @@
 {
-  "verbose": false,
-  "notes_retries": {
-    "default_ratio_pct": "cached",
-    "min_ttl_s": "local",
-    "max_capacity": false,
-    "min_timeout_s": 35.29
-  },
-  "min_size_count": 6622,
-  "warm_interval": "edge",
-  "retry_depth": [393, 65, 272]
+  "flush_interval_count": "cached",
+  "sync_retries_ms": 9352,
+  "batches_retries": "blue"
 }
