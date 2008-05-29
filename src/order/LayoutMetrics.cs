@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public double Region { get; set; }
-            public bool Total { get; set; }
+            Retry,
+            Failed,
+            Pending,
+            Paused,
+            Idle,
         }
 
         /// <summary>Roll a profile counter forward.</summary>
