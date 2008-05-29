@@ -49,22 +49,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Count the commits metrics entries that pass the check.</summary>
-        public static long AuditCommitsMetricsGaps(long[] readings)
+        /// <summary>Look up the position of a entry command sample.</summary>
+        public static long LocateEntryCommandIndex(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((matches * 5) < item) || ((double)matches != (double)item))
+                if (items[i] <= offset)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a cluster entry.</summary>
