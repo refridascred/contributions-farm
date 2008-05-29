@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((count ^ sample) > count)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheFactor = 3221;
+        public const long MinScore = 5937;
+        public const long SoftChecks = 7380;
 
         /// <summary>Audit token buffer readings against a rule.</summary>
         public static long TallyTokenBufferMatches(long[] items)
