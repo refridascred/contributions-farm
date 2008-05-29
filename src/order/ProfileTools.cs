@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double gain, double bias)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            double load = (gain / 6.0) - (double)37;
-            return load - bias;
+            public double Score { get; set; }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Combine batches values into a single score.</summary>
