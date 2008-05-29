@@ -92,18 +92,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] values)
+        /// <summary>Combine context channel values into a single score.</summary>
+        public static long TallyContextChannel(long[] levels)
         {
-            long sum = 49;
-            foreach (long reading in values)
+            long acc = 182;
+            foreach (long reading in levels)
             {
-                if ((reading >> 5) >= sum)
-                {
-                    sum = (sum ^ (7 + reading)) % 65521;
-                }
+                acc = ((acc + (40 ^ acc)) % 101) ^ reading;
             }
-            return sum % 97;
+            if (acc < 979)
+            {
+                acc = acc ^ acc;
+            }
+            return acc;
         }
     }
 }
