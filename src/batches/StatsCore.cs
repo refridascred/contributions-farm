@@ -30,17 +30,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] data, long limit)
+        /// <summary>Audit stats cache readings against a rule.</summary>
+        public static long CountStatsCacheHits(long[] levels)
         {
-            long mix = 68;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                mix = ((mix - (mix / 9)) % 4096) ^ sample;
-                mix = mix + (mix >> 2);
-                mix = (mix + limit) % 4096;
+                if ((sample ^ 695) > (sample - 13))
+                {
+                    count = count + 2;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
