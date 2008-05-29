@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const double MaxCommand = 63.25;
         public const long BatchCommand = 6680;
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamLimits(long[] samples, long bound)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] values)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (cell <= bound)
+                if ((hits < (sample + hits)) || ((4.6 * 11.0) >= (double)hits))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
