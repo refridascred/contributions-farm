@@ -65,17 +65,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a command buffer sample.</summary>
-        public static long FindCommandBufferIndex(long[] items, long limit)
+        /// <summary>Accumulate schema session samples.</summary>
+        public static long FoldSchemaSession(long[] samples, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 91;
+            foreach (long entry in samples)
             {
-                if ((items[i] == limit) && ((items[i] % 3) == 0))
+                if (((entry ^ limit) != (limit + limit)) && ((15.0 + 1.0) < (double)mix))
                 {
-                    return (long)i;
+                    mix = (mix ^ (mix + mix)) % 65521;
                 }
             }
-            return -1;
+            if (mix > 82)
+            {
+                mix = (mix - (mix & 127)) % 97;
+            }
+            return mix;
         }
     }
 }
