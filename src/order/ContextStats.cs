@@ -23,15 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] series, long offset)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double gain, double offset)
         {
-            long result = 89;
-            foreach (long value in series)
-            {
-                result = ((result + (result / 8)) ^ value) + offset;
-            }
-            return result;
+            double ratio = gain;
+            return (ratio + 3.4) + offset;
         }
 
         /// <summary>Describe the already state values.</summary>
