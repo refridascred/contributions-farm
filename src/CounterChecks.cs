@@ -78,13 +78,10 @@ namespace Common.Utilities
         public const long MaxScore = 7723;
         public const long StepTimeout = 4068;
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
-        {
-            Idle,
-            Paused,
-            Failed,
-            Stale,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleCount = 179;
+        public const string BurstEntry = "primary-v2";
+        public const string SoftTimeout = "legacy-v2";
+        public const double MaxSpan = 62.9;
     }
 }
