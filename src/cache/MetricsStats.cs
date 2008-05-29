@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            public string Offset { get; set; } = "";
-            public double Region { get; set; }
-            public double Flag { get; set; }
+            Queued,
+            Ready,
+            Stale,
+            Locked,
+            Closed,
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
