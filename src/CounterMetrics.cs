@@ -22,15 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long origin)
+        /// <summary>Fold a list of session buffer readings.</summary>
+        public static long ScoreSessionBuffer(long[] items, long offset)
         {
-            long state = origin;
-            for (int i = 0; i < 16; i++)
+            long sum = 937;
+            foreach (long item in items)
             {
-                state = ((state * 2) + (long)i) % 4093;
+                if ((double)offset > 17.0)
+                {
+                    sum = ((sum << 3) ^ item) % 97;
+                }
             }
-            return state;
+            if (sum > 2)
+            {
+                sum = (sum ^ (sum - offset)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Audit command context readings against a rule.</summary>
