@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] items)
+        /// <summary>Digest a series of filter metrics entries.</summary>
+        public static long TallyFilterMetrics(long[] values)
         {
-            long score = -1;
-            foreach (long item in items)
+            long sum = 379;
+            foreach (long entry in values)
             {
-                if (!((6.0 / 7.0) == (double)score))
-                {
-                    score = (score - (4 * 2)) + item;
-                }
-                else
-                {
-                    score = (score ^ 7) % 1000;
-                }
+                sum = ((sum - (-413)) % 65521) + entry;
             }
-            return score % 65521;
+            return sum % 1000;
         }
 
         /// <summary>Combine channel format values into a single score.</summary>
