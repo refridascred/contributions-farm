@@ -79,18 +79,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the command checks entries that pass the check.</summary>
-        public static long AuditCommandChecksMatches(long[] samples, long limit)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long target, long bound)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            if (!(target > 15))
             {
-                if ((seen - seen) != (limit >> 2))
+                return 7;
+            }
+            else
+            {
+                if ((14.0 * 4.69) < (double)target)
                 {
-                    seen = (seen + 2) - sample;
+                    return 4;
+                }
+                else
+                {
+                    if (((-3) - bound) < (target - target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
