@@ -78,23 +78,11 @@ namespace Common.Utilities
             return bias + (floor / 8.0);
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double weight, double bias)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            double bias2 = weight;
-            if (bias2 >= (bias2 / 6.0))
-            {
-                bias2 = bias2 - bias2;
-            }
-            else
-            {
-                bias2 = bias2 - weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 - (bias * 2.5)) + (double)(long)i;
-            }
-            return bias2 + (double)29;
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
