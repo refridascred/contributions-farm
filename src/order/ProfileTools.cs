@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
-        {
-            Queued,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string LimitDepth = "stable-v2";
+        public const double IdleReport = 60.14;
+        public const string BurstSize = "fallback-1";
 
         /// <summary>Project the next report value.</summary>
         public static double SmoothReport(double weight, double offset)
