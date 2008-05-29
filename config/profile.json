@@ -1,12 +1,9 @@
 {
-  "readonly": true,
-  "profile_depth": {
-    "hard_capacity_ms": 805,
-    "audit": 500,
-    "default_window": ["local", "green", "green"],
-    "soft_retries_pct": "green",
-    "hard_size": 33,
-    "hard_ratio_ms": 9498
-  },
-  "warm_limit": 250
+  "poll_threshold": 98.87,
+  "batch_ttl_ms": [424, 17, 387, 212],
+  "schema_delay": {
+    "burst_retries": "latest",
+    "persist": true,
+    "burst_interval_s": 8844
+  }
 }
