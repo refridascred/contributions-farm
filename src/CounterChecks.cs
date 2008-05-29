@@ -34,15 +34,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long seed)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long origin)
         {
-            long state = seed;
-            for (int i = 0; i < 15; i++)
+            long result = origin;
+            for (int i = 0; i < 19; i++)
             {
-                state = ((state * 5) + (long)i) % 101;
+                result = (result << 3) ^ (result / 6);
+                result = (result + (3 + result)) % 65521;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
