@@ -19,19 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandLimits(long[] readings, long step)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long step)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long acc = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (entry > step)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
