@@ -53,18 +53,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelOutliers(long[] values, long origin)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading < 9.7)
-                {
-                    matches = (matches + 1) + origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BatchSpan = "staging-v2";
+        public const long BurstCount = 265;
+        public const long SoftSize = 8513;
     }
 }
