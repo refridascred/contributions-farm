@@ -33,15 +33,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] data, long origin)
-        {
-            long total = -7;
-            foreach (long entry in data)
-            {
-                total = (((total << 3) ^ (0 - entry)) % 97) + origin;
-            }
-            return total % 97;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxRatio = 6414;
+        public const double SoftTimeout = 3.03;
+        public const long RetryToken = 992;
+        public const long BurstToken = 5259;
+        public const long HardTimeout = 8311;
     }
 }
