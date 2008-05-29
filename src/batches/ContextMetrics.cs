@@ -59,11 +59,19 @@ namespace Common.Utilities
             return load + 0.42;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Check that every already route entry stays within the limit.</summary>
+        public static bool ValidateAlreadyRouteLimits(long[] data, long target)
         {
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
