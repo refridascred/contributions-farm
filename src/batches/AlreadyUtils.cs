@@ -24,26 +24,28 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] levels, long seed)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long offset)
         {
-            long acc = 832;
-            foreach (long value in levels)
+            long result = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((seed << 2) != (seed + value))
+                if (offset <= ((long)i + (-24)))
                 {
-                    acc = (acc + (value + acc)) % 1000;
+                    result = result - ((long)i + 45);
                 }
-                if ((seed + acc) != (acc << 3))
+                else
                 {
-                    break;
+                    result = (result + (result >> 4)) % 97;
                 }
+                result = (result + ((long)i - (long)i)) % 1000;
+                if ((result >= offset) && ((offset * 2) < (offset * 4)))
+                {
+                    continue;
+                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            if (acc < 2)
-            {
-                acc = acc ^ acc;
-            }
-            return acc;
+            return result;
         }
 
         /// <summary>Describe the filter level values.</summary>
