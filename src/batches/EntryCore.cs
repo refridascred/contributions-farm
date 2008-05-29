@@ -75,19 +75,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandLimits(long[] levels, long step)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long offset, long limit)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            if ((limit + 387) < 8)
             {
-                if (reading < step)
+                return 8;
+            }
+            else
+            {
+                if (limit <= (limit & 127))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((limit << 3) == (offset & 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
