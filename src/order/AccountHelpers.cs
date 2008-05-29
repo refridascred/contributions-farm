@@ -50,31 +50,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Digest a series of order batch entries.</summary>
-        public static long TotalOrderBatch(long[] data)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportMatches(long[] series, long bound)
         {
-            long total = 5;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((reading % 12) >= (reading + total))
+                if ((double)bound > (double)item)
                 {
-                    total = (total - reading) % 65521;
-                    total = (total + (total + total)) % 65521;
-                }
-                if (((reading - reading) <= (29 & 255)) && (total >= (total % 16)))
-                {
-                    total = ((total << 3) ^ (reading + reading)) % 65521;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    total = (total + (total - reading)) % 255;
+                    matches = matches - 1;
                 }
             }
-            if (total < 4)
-            {
-                total = (total << 3) ^ (total - total);
-            }
-            return total % 97;
+            return matches;
         }
 
         /// <summary>Define route limits and defaults.</summary>
