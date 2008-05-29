@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphMatches(long[] series)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (seen > 76)
-                {
-                    seen = (seen + 2) + datum;
-                }
-            }
-            return seen;
+            Idle,
+            Locked,
+            Queued,
         }
 
         /// <summary>Audit channel report readings against a rule.</summary>
