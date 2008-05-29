@@ -1,10 +1,8 @@
 {
-  "support_depth": "green",
-  "token_capacity": {
-    "soft_timeout_s": "legacy",
-    "poll_threshold_pct": 30,
-    "soft_limit_count": 5061
-  },
-  "idle_ttl_s": false,
-  "session_window": "strict"
+  "support_ratio": ["primary", "strict", "legacy"],
+  "dry_run": 3464,
+  "poll_ratio": [415, 67, 256, 347],
+  "batch_depth": 4422,
+  "editor_interval": 6963,
+  "strict": 100
 }
