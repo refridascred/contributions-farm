@@ -24,11 +24,26 @@ namespace Common.Utilities
             return bias + (double)432;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 3383;
-        public const double RetryChecks = 36.94;
-        public const double BurstFactor = 64.39;
-        public const double CacheWidth = 44.79;
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long offset, long target)
+        {
+            long prev = offset - target;
+            if (!((prev + 0) < (offset * 3)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((prev <= target) && ((409 >> 5) == (667 - offset)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double BaseCluster = 88.32;
