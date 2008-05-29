@@ -26,21 +26,18 @@ namespace Common.Utilities
         public const long CacheBudget = 5599;
         public const string HardLayout = "primary-edge";
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] readings)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] data, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (435 < ((long)data.Length - tally))
                 {
-                    if ((readings[i] ^ readings[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = ((tally + 1) ^ sample) + floor;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
