@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of notes batches entries.</summary>
-        public static long TotalNotesBatches(long[] levels)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long total = 829;
-            foreach (long reading in levels)
-            {
-                if ((double)reading > (13.0 + 7.72))
-                {
-                    total = total - reading;
-                }
-            }
-            return total;
+            Ready,
+            Queued,
+            Draft,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
