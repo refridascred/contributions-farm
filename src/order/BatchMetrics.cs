@@ -22,12 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            Retry,
-            New,
-            Closed,
+            Done,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Locate a graph metric reading by value.</summary>
