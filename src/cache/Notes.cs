@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] values, long seed)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long origin, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long slot = origin - offset;
+            if ((double)origin < (double)53)
             {
-                if (values[i] > seed)
+                return 2;
+            }
+            else
+            {
+                if ((slot % 8) >= (origin - offset))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((offset / 6) > 12)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((3.9 + 15.0) > (double)slot)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a notes schema counter forward.</summary>
