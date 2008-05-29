@@ -1,4 +1,4 @@
 # support settings
-payload_threshold: 6839
-already_ttl: 42.67
-cache_window_pct: 9.24
+persist: true
+batch_ratio_count: 76.84
+cache_ratio_s: false
