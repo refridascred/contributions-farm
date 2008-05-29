@@ -27,18 +27,13 @@ namespace Common.Utilities
         public const long BatchLevel = 8124;
         public const long MinInterval = 7757;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] samples)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((double)item < (7.2 + 9.2))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
