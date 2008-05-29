@@ -47,18 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] levels, long offset)
+        /// <summary>Validate schema format readings against a bound.</summary>
+        public static bool GuardSchemaFormatRange(long[] data, long offset)
         {
-            long acc = -27;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if ((acc - 6) < (offset + offset))
+                if (datum > offset)
                 {
-                    acc = ((acc + (offset << 2)) % 65521) + datum;
+                    stale = false;
+                    break;
                 }
             }
-            return acc;
+            return stale;
         }
     }
 }
