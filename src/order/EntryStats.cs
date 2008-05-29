@@ -70,18 +70,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] levels)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long total = 45;
-            foreach (long item in levels)
-            {
-                if (((total / 2) > total) && ((total + total) <= (-74)))
-                {
-                    total = (total * 2) + (0 + item);
-                }
-            }
-            return total % 97;
+            Dropped,
+            Pending,
+            Synced,
+            Ready,
+            New,
         }
     }
 }
