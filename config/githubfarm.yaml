@@ -1,16 +1,4 @@
 # githubfarm settings
-persist:
-  - latest
-  - edge
-  - primary
-warm_capacity:
-  burst_depth:
-    idle_window_s: 500
-    notes_limit: legacy
-    stream_threshold: 2915
-    retry_timeout: 30
-  base_ttl_count: stable
-  strict: 2.0
-warm_retries_pct:
-  - strict
-  - eu-west
+farm_ttl: 8328
+support_depth: false
+tools_depth: 2
