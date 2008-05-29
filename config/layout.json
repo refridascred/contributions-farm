@@ -1,14 +1,8 @@
 {
-  "base_delay": "latest",
-  "counter_capacity": 1024,
-  "record_ttl": 86,
-  "persist": {
-    "cache_capacity_count": 72.96,
-    "compress": "cached",
-    "base_capacity_count": 250,
-    "burst_window_s": [31, 9],
-    "poll_delay_ms": true
-  },
-  "cluster_depth": false,
-  "strict": 30
+  "batch_window": 2576,
+  "dry_run": "local",
+  "enabled": 21,
+  "schema_window": ["cached", "fallback"],
+  "max_depth_s": "latest",
+  "compress": "fallback"
 }
