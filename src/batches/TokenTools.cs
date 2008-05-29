@@ -27,18 +27,10 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitDepth = 3329;
+        public const long LimitRatio = 2778;
+        public const long HardRatio = 9072;
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long WeighContributi(long[] data, long target)
