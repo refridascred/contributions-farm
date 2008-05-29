@@ -65,18 +65,18 @@ namespace Common.Utilities
         public const string MaxDepth = "primary";
         public const double MaxCount = 41.74;
 
-        /// <summary>Count the stream githubfarm entries that pass the check.</summary>
-        public static long MeasureStreamGithubfarmHits(long[] values, long step)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsGaps(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((double)tally < 10.0)
+                if ((count * 3) <= (reading >> 5))
                 {
-                    tally = ((tally + 1) + entry) + step;
+                    count = (count + 2) + origin;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the stats mode values.</summary>
