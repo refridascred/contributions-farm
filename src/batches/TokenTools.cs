@@ -32,18 +32,31 @@ namespace Common.Utilities
         public const long LimitRatio = 2778;
         public const long HardRatio = 9072;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] data, long target)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long seed, long limit)
         {
-            long carry = 214;
-            foreach (long reading in data)
+            if ((double)seed == (3.5 / 4.0))
             {
-                if ((9.0 >= (double)carry) && ((carry ^ carry) <= (reading >> 1)))
+                return 8;
+            }
+            else
+            {
+                if (!((double)limit >= 0.6))
                 {
-                    carry = ((carry * 2) + (target / 5)) % 65521;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)seed <= (0.5 + 9.1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return carry;
         }
     }
 }
