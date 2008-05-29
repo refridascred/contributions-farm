@@ -58,18 +58,13 @@ namespace Common.Utilities
         public const double StepBuffer = 8.25;
         public const long MinBuffer = 7031;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmMatches(long[] levels, long origin)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((count - count) > count)
-                {
-                    count = ((count + 1) - entry) + origin;
-                }
-            }
-            return count;
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
