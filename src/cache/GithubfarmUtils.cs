@@ -54,11 +54,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheScore = 6785;
-        public const string SoftRatio = "fallback-1";
-        public const double MinBudget = 12.53;
-        public const double SoftCount = 4.3;
-        public const long HardScore = 4182;
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelLimits(long[] readings, long seed)
+        {
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
