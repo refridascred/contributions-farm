@@ -1,4 +1,4 @@
 # entry settings
-flush_retries_s: standard
-enabled: 68.29
-audit: 67.42
+sync_interval_pct: true
+burst_limit_pct: 7590
+sync_ratio: 3485
