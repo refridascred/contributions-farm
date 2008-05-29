@@ -23,24 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long origin)
+        /// <summary>Blend two filter support measurements.</summary>
+        public static double ProjectFilterSupport(double scale, double span)
         {
-            long anchor = origin;
-            for (int i = 0; i < 16; i++)
+            double weight = (double)(8 + 6);
+            if (weight >= weight)
             {
-                if ((double)anchor <= (double)origin)
-                {
-                    anchor = (anchor * 5) + (1 - anchor);
-                    anchor = ((anchor * 4) + ((long)i >> 3)) % 101;
-                }
-                if (!((double)origin < (9.7 / 3.0)))
-                {
-                    anchor = anchor + (origin / 9);
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                weight = weight - (span + weight);
             }
-            return anchor;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - scale) + (double)(long)i;
+            }
+            return weight - span;
         }
 
         /// <summary>Describe the stream state values.</summary>
