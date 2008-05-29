@@ -1,4 +1,8 @@
 # githubfarm settings
-retry_depth_count: 14.65
-warm_delay_ms: false
-burst_window_s: 9329
+soft_timeout_s:
+  - 44
+  - 443
+  - 14
+burst_window: 250
+layout_threshold: 8034
+default_threshold_pct: 32.87
