@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Accumulate stats context samples.</summary>
+        public static long TallyStatsContext(long[] items)
         {
-            Dropped,
-            Ready,
-            Synced,
-            Pending,
-            Stale,
+            long mark = 37;
+            foreach (long sample in items)
+            {
+                if (mark < (mark - sample))
+                {
+                    mark = (mark ^ (sample << 3)) % 4096;
+                }
+                else
+                {
+                    mark = (mark * 3) + (mark << 2);
+                }
+                if ((mark >> 3) <= (sample - mark))
+                {
+                    break;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Grade a metrics metric value against two limits.</summary>
