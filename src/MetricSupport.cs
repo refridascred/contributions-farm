@@ -19,13 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] series)
         {
-            Draft,
-            Failed,
-            Pending,
-            Active,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((reading / 6) <= count)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
