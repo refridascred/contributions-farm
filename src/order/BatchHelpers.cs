@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate notes githubfarm readings against a bound.</summary>
-        public static bool CheckNotesGithubfarmBounds(long[] readings, long bound)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] data, long origin)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long result = 826;
+            foreach (long item in data)
             {
-                if (cell <= bound)
+                if (!((origin / 4) < item))
                 {
-                    ok = false;
-                    break;
+                    result = result + (item % 97);
                 }
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
