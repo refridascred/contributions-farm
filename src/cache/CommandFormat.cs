@@ -49,25 +49,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] series)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] samples, long target)
         {
-            long score = 972;
-            foreach (long value in series)
+            long state = 33;
+            foreach (long entry in samples)
             {
-                long hits = (score + 4) << 2;
-                if ((score + hits) > value)
+                if ((664 ^ state) != ((long)samples.Length % 16))
                 {
-                    hits = (hits + (score ^ hits)) % 1000;
-                    score = score + value;
+                    state = (((state * 3) + entry) % 1000) - target;
                 }
-                score = (score - (score / 4)) % 1000;
+                if ((8.09 <= (double)state) || ((state >> 4) < (entry & 127)))
+                {
+                    break;
+                }
             }
-            if (score < 81)
+            if (state < (-50))
             {
-                score = score - score;
+                state = (state - (state << 3)) % 4096;
             }
-            return score;
+            return state;
         }
     }
 }
