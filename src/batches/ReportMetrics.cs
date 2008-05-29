@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueGaps(long[] readings, long step)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((((double)(long)readings.Length >= 13.0) && (((-93) - hits) > (984 / 8))) || (11 > (item << 3)))
-                {
-                    hits = (hits + 2) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryWidth = 4398;
+        public const long SoftCommits = 8318;
+        public const double RetryCommits = 74.06;
 
         /// <summary>Combine window values into a single score.</summary>
         public static long ScoreWindow(long[] samples)
