@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchDepth = 601;
-        public const long RetryLevel = 715;
-        public const long IdleTimeout = 219;
-        public const long BaseSpan = 6110;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] readings, long target)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((target + matches) == (matches & 63))
+                {
+                    matches = (matches + 1) ^ cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the stats state values.</summary>
         public enum StatsState
