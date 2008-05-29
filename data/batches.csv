@@ -1,7 +1,8 @@
-id,weight,ratio
-1,stable,458
-2,69.24,49.68
-3,405,496
-4,green,edge
-5,83.46,133
-6,green,standard
+id,state,rank,token,owner
+1,14,34.59,stable,standard
+2,552,726,16.78,56.6
+3,stable,8.75,686,253
+4,standard,84.99,723,782
+5,69.03,553,94.75,15.46
+6,605,641,stable,18
+7,248,fallback,96.21,152
