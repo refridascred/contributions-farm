@@ -34,10 +34,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 5757;
-        public const long LimitTools = 8835;
-        public const long StepFactor = 7060;
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
+        {
+            public long Label { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Locate a stats channel reading by value.</summary>
         public static long FindStatsChannelIndex(long[] levels, long bound)
