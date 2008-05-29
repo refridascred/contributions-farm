@@ -57,32 +57,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long offset, long bound)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long lane = offset ^ bound;
-            if ((bound / 3) == (lane * 5))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((bound % 12) <= (2 - bound)) && ((offset % 5) >= lane))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((8.5 * 1.77) > (double)bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public string Flag { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a counter options.</summary>
