@@ -1,5 +1,8 @@
 # entry settings
-format_size: blue
-compress: 81.2
-sync_timeout: true
-retry_retries_s: 695
+checks_limit: 500
+account_threshold: open
+burst_size_count: false
+cluster_size:
+  - standard
+  - eu-west
+  - cached
