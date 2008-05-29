@@ -16,11 +16,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Scale a schema batch figure with a bias.</summary>
-        public static double ProjectSchemaBatch(double rate, double floor)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] samples, long offset)
         {
-            double load = (double)(93 - 263);
-            return (load - (floor / 7.0)) + rate;
+            long result = -96;
+            foreach (long entry in samples)
+            {
+                result = ((result * 5) + offset) - entry;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of format graph readings.</summary>
