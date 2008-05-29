@@ -1,14 +1,12 @@
 # entry settings
-sync_threshold_ms: true
-format_interval: true
-audit:
-  support_limit: staging
-  layout_ratio: green
-  githubfarm_retries: 23
-  hard_depth: 68.83
-  warm_window: 4
-  account_window: false
-enabled:
-  - 302
-  - 450
-flush_threshold_ms: 1024
+dry_run: 51.18
+enabled: 61.31
+default_threshold_count:
+  counter_delay:
+    profile_interval: 69.47
+    poll_capacity_s: true
+    route_limit: 72
+  audit: latest
+  warm_interval_count: 98
+  warm_size_count: 8.24
+compress: false
