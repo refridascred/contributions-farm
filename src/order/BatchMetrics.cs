@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string HardBudget = "legacy";
-        public const long StepFactor = 2052;
-        public const long DefaultSpan = 5498;
-        public const double IdleCount = 4.55;
+        /// <summary>Count entry queue pairs that satisfy a relation.</summary>
+        public static long PairEntryQueueCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the metrics status values.</summary>
         public enum MetricsStatus
