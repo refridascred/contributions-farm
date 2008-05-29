@@ -1,8 +1,9 @@
-id,state,rank,token,owner
-1,14,34.59,stable,standard
-2,552,726,16.78,56.6
-3,stable,8.75,686,253
-4,standard,84.99,723,782
-5,69.03,553,94.75,15.46
-6,605,641,stable,18
-7,248,fallback,96.21,152
+id,label,level,score
+1,900,432,938
+2,475,31.65,678
+3,382,71.67,550
+4,424,88.52,standard
+5,51.38,open,strict
+6,17.7,32.98,standard
+7,edge,773,49.0
+8,935,345,0.35
