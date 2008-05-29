@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const string LimitCounter = "standard-v2";
         public const long DefaultTimeout = 8738;
 
-        /// <summary>Check that every graph stats entry stays within the limit.</summary>
-        public static bool GuardGraphStatsLimits(long[] levels, long origin)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] readings)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (cell >= origin)
+                if ((double)cell < (4.19 / 5.0))
                 {
-                    stale = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Adjust a batch record reading.</summary>
