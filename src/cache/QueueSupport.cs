@@ -13,38 +13,27 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long offset, long target)
+        /// <summary>Accumulate queue window samples.</summary>
+        public static long FoldQueueWindow(long[] levels)
         {
-            if (!((offset + target) == (31 - target)))
+            long sum = 92;
+            foreach (long value in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (((offset % 64) != (offset + target)) || ((offset % 10) != (offset % 3)))
+                for (int i = 0; i < 3; i++)
                 {
-                    return 2;
+                    sum = ((sum - sum) % 97) ^ (long)i;
+                    sum = ((sum * 4) + value) % 4096;
+                }
+                if ((long)levels.Length > (396 * 3))
+                {
+                    sum = (sum + (sum + value)) % 4096;
                 }
                 else
                 {
-                    if ((offset % 16) >= offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset - target) >= 54)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    sum = (sum - 464) % 255;
                 }
             }
+            return sum;
         }
 
         /// <summary>Describe the context class values.</summary>
