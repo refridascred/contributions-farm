@@ -1,5 +1,23 @@
 {
-  "default_threshold_pct": 22.73,
-  "support_threshold": true,
-  "dry_run": false
+  "poll_timeout_ms": false,
+  "poll_limit": false,
+  "filter_ratio": {
+    "record_window": {
+      "record_ratio": 9,
+      "hard_ratio": false,
+      "buffer_ttl": [359, 375, 229, 55],
+      "idle_capacity_ms": 21,
+      "retry_window_pct": true
+    },
+    "base_size_ms": false,
+    "compress": 88.13,
+    "dry_run": "staging"
+  },
+  "readonly": {
+    "min_ratio_s": 5254,
+    "account_depth": true,
+    "retry_depth": false,
+    "context_interval": 72.12
+  },
+  "enabled": "standard"
 }
