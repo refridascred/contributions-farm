@@ -1,12 +1,8 @@
 {
-  "dry_run": true,
-  "already_size": 7,
-  "token_ttl": false,
-  "checks_retries": {
-    "enabled": "open",
-    "command_depth": 12.11,
-    "cache_ttl_ms": 500
-  },
-  "filter_interval": "cached",
-  "verbose": "blue"
+  "hard_window": false,
+  "flush_limit_ms": "blue",
+  "hard_ttl": "latest",
+  "flush_capacity": true,
+  "warm_interval_pct": [271, 420, 164],
+  "default_capacity": 1024
 }
