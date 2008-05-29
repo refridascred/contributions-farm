@@ -43,28 +43,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a context editor counter forward.</summary>
-        public static long IterateContextEditor(long floor)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long mark = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((floor % 100) >= (long)i)
-                {
-                    continue;
-                }
-                else
-                {
-                    mark = (mark - floor) % 255;
-                }
-                if ((double)floor <= (2.0 * 2.1))
-                {
-                    mark = mark - (floor - 4);
-                    continue;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            public double Mode { get; set; }
+            public long Size { get; set; }
         }
     }
 }
