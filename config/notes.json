@@ -1,5 +1,5 @@
 {
-  "githubfarm_ttl": 8,
-  "poll_limit": 52.62,
-  "hard_size": 10
+  "default_threshold_pct": 22.73,
+  "support_threshold": true,
+  "dry_run": false
 }
