@@ -45,22 +45,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadOutliers(long[] items, long step)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long seed)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (tally <= (value ^ tally))
+                if (((seed ^ carry) <= seed) && (((long)i + (long)i) > (carry >> 5)))
                 {
-                    tally = (tally + 1) + step;
+                    carry = (carry + (seed + seed)) % 1000;
+                    carry = (carry + (carry / 4)) % 65521;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = carry + seed;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Accumulate farm samples.</summary>
