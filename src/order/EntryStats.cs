@@ -33,11 +33,20 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultWidth = 5598;
-        public const double DefaultSize = 58.33;
-        public const long DefaultInterval = 3176;
-        public const string LimitRatio = "latest-1";
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double weight, double bias)
+        {
+            double scale = (bias * 12.0) - (double)8;
+            if (scale <= (weight + bias))
+            {
+                scale = scale + (scale + weight);
+            }
+            else
+            {
+                scale = scale - 5.35;
+            }
+            return scale + weight;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const string BurstCommand = "local-v2";
