@@ -56,9 +56,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 8006;
-        public const long LimitRatio = 9546;
-        public const double WindowLayout = 40.94;
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
+        {
+            public string Limit { get; set; } = "";
+            public bool Owner { get; set; }
+            public bool Level { get; set; }
+            public double Weight { get; set; }
+        }
     }
 }
