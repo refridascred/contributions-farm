@@ -47,17 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] series, long step)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelOutliers(long[] levels, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (series[i] == step)
+                if ((floor + tally) != (floor / 8))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + value;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
