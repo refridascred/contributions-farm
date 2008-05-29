@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] series, long seed)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
