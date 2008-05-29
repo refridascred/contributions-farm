@@ -1,5 +1,16 @@
 {
-  "burst_delay_ms": 6239,
-  "payload_delay": 51,
-  "retry_interval_pct": ["stable", "open", "green"]
+  "base_interval_s": "blue",
+  "stats_delay": "local",
+  "max_depth": 74.28,
+  "readonly": "green",
+  "default_ratio_count": {
+    "compress": "open",
+    "warm_depth": "edge",
+    "min_size_s": {
+      "enabled": 6749,
+      "poll_ratio_count": 97.81,
+      "verbose": true
+    },
+    "default_ratio": 39
+  }
 }
