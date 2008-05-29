@@ -39,22 +39,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] levels)
+        /// <summary>Look up the position of a order stats sample.</summary>
+        public static long FindOrderStatsIndex(long[] items, long limit)
         {
-            long total = 561;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((total / 5) > total)
+                if (items[i] <= limit)
                 {
-                    total = (((total * 3) + (total / 8)) % 65521) ^ cell;
+                    return (long)i;
                 }
             }
-            if (total > 32)
-            {
-                total = (total * 4) + (total - total);
-            }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Project the next schema checks value.</summary>
