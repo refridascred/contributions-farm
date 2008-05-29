@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
+CHANNEL_LIMIT=86
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-standard}"
 case "${mode}" in
-    staging)
+    strict)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in stable green local legacy; do
-    log "checking ${item}"
-done
-
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
