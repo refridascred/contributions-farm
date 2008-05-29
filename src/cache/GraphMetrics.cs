@@ -31,11 +31,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryRatio = 5838;
-        public const string LimitEditor = "staging-1";
-        public const double MinSize = 43.31;
-        public const double DefaultBudget = 82.19;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetryWindow = 40.84;
+        public const string BatchBudget = "alpha";
+        public const double StepWindow = 2.22;
+        public const long CacheWindow = 5293;
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long CountContextOutliers(long[] items, long offset)
