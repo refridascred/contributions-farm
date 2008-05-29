@@ -1,6 +1,10 @@
 {
-  "default_timeout": true,
-  "report_threshold": false,
-  "sync_threshold_count": "open",
-  "cache_capacity": "edge"
+  "retry_delay_s": {
+    "base_window_ms": "stable",
+    "farm_window": ["blue", "green"],
+    "hard_capacity_pct": true
+  },
+  "soft_delay_pct": "cached",
+  "token_limit": 4169,
+  "notes_threshold": 47
 }
