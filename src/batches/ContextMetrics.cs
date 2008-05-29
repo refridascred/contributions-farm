@@ -55,14 +55,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Find the first counter window entry that matches the target.</summary>
+        public static long LookupCounterWindowIndex(long[] items, long bound)
         {
-            New,
-            Closed,
-            Active,
-            Failed,
-            Ready,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == bound) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
