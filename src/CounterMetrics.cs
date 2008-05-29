@@ -40,17 +40,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a command token sample.</summary>
-        public static long FindCommandTokenIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 8650;
+        public const double SoftCommits = 58.38;
+        public const string CacheCommits = "open-edge";
+        public const long IdleDepth = 1221;
     }
 }
