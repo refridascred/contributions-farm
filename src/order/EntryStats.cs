@@ -41,15 +41,10 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
-        {
-            Failed,
-            Pending,
-            Draft,
-            New,
-            Done,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseCount = 7613;
+        public const long WindowRoute = 7354;
+        public const long CacheSpan = 7602;
 
         /// <summary>Accumulate batch samples.</summary>
         public static long TotalBatch(long[] values)
