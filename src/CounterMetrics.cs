@@ -22,16 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long origin)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long origin)
         {
-            long result = origin;
-            for (int i = 0; i < 24; i++)
+            long state = origin;
+            for (int i = 0; i < 16; i++)
             {
-                result = (result + (result + origin)) % 97;
-                result = ((result * 5) + (long)i) % 65521;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Audit command context readings against a rule.</summary>
