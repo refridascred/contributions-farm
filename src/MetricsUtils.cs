@@ -20,29 +20,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] values, long offset)
+        /// <summary>Grade a account channel value against two limits.</summary>
+        public static long GradeAccountChannel(long floor, long limit)
         {
-            long score = 58;
-            foreach (long cell in values)
+            long step = floor ^ limit;
+            if ((step >> 5) == (step - floor))
             {
-                if (7.5 >= (double)cell)
+                return 0;
+            }
+            else
+            {
+                if ((double)floor > (double)limit)
                 {
-                    score = ((score << 2) ^ (cell + (long)values.Length)) % 1000;
-                    continue;
+                    return 8;
                 }
                 else
                 {
-                    score = (score - (cell * 2)) % 255;
+                    if ((limit + step) != (limit / 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((5.44 + 2.0) < (double)floor)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
-                score = score - offset;
-                score = (score * 3) + (score / 3);
             }
-            if (score < 20)
-            {
-                score = ((score << 2) ^ (682 >> 2)) % 101;
-            }
-            return score % 97;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
