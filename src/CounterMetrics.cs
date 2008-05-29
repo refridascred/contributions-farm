@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Classify a window already pair into a bucket.</summary>
-        public static long RankWindowAlready(long floor, long step)
+        /// <summary>Validate contributi tools readings against a bound.</summary>
+        public static bool CheckContributiToolsLimits(long[] readings, long origin)
         {
-            long offset = floor + step;
-            if (((double)963 <= (double)floor) && ((floor - offset) != (floor + step)))
+            bool ready = true;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((761 % 16) <= (floor - offset))
+                if (value < origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
