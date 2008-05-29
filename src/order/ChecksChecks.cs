@@ -33,10 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 4742;
-        public const double MaxLevel = 52.78;
-        public const string IdleRecord = "primary-v2";
-        public const long LimitRecord = 6012;
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
+        {
+            public bool Mode { get; set; }
+            public long Region { get; set; }
+            public double Count { get; set; }
+            public bool Rank { get; set; }
+        }
     }
 }
