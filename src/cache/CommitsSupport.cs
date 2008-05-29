@@ -31,16 +31,11 @@ namespace Common.Utilities
         public const long HardMetric = 125;
         public const long MaxMetric = 2639;
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] data, long limit)
-        {
-            long state = 93;
-            foreach (long datum in data)
-            {
-                state = ((state ^ (state % 7)) - datum) - limit;
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double RetryFilter = 62.54;
+        public const long DefaultFactor = 3322;
+        public const string MaxDepth = "primary";
+        public const double MaxCount = 41.74;
 
         /// <summary>Count the stream githubfarm entries that pass the check.</summary>
         public static long MeasureStreamGithubfarmHits(long[] values, long step)
