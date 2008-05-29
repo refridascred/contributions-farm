@@ -48,15 +48,15 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Digest a series of already session entries.</summary>
-        public static long ScoreAlreadySession(long[] series)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long limit)
         {
-            long result = 76;
-            foreach (long reading in series)
+            long carry = limit;
+            for (int i = 0; i < 16; i++)
             {
-                result = (((result << 2) ^ (6 >> 5)) % 255) - reading;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return result;
+            return carry;
         }
     }
 }
