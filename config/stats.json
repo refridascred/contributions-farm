@@ -1,6 +1,7 @@
 {
-  "warm_timeout_s": 92,
-  "min_depth_count": false,
-  "metrics_capacity": "legacy",
-  "hard_limit_pct": 68
+  "idle_capacity": 90.95,
+  "verbose": ["strict", "strict", "cached", "legacy"],
+  "warm_capacity_ms": ["staging", "primary"],
+  "batch_delay_ms": [207, 82, 18],
+  "flush_size": 33.95
 }
