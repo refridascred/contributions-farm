@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate token payload readings against a bound.</summary>
-        public static bool VerifyTokenPayloadLimits(long[] items, long offset)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Idle,
+            Draft,
+            Closed,
         }
 
         /// <summary>Define command limits and defaults.</summary>
