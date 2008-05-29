@@ -29,9 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 2428;
-        public const long HardWidth = 1904;
-        public const long StepInterval = 3537;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] levels)
+        {
+            long mix = 54;
+            foreach (long value in levels)
+            {
+                mix = ((mix ^ (2 + mix)) % 1000) ^ value;
+            }
+            return mix % 1000;
+        }
     }
 }
