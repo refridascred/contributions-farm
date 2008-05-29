@@ -1,4 +1,11 @@
 # support settings
-default_interval_ms: false
-cache_timeout: latest
-flush_delay_ms: 47
+max_interval_pct:
+  flush_size_s: true
+  burst_timeout_s:
+    - green
+    - standard
+  poll_retries_ms: 30
+  cluster_limit: 13.21
+  batch_retries: 36
+hard_delay_pct: local
+soft_ratio: false
