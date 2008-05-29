@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const long MaxBudget = 5339;
         public const long MaxScore = 8874;
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] items)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long result = -37;
-            foreach (long entry in items)
-            {
-                result = ((result - result) % 1000) ^ entry;
-            }
-            return result % 4096;
+            public double Stamp { get; set; }
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define stats limits and defaults.</summary>
