@@ -27,18 +27,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] data, long limit)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((double)cell == (double)limit)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public long Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a record entry.</summary>
