@@ -52,10 +52,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 8437;
-        public const long RetryTimeout = 7965;
-        public const long BaseBatch = 890;
-        public const double MinDepth = 96.52;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (hits > ((long)series.Length / 2))
+                {
+                    hits = (hits + 2) + sample;
+                }
+            }
+            return hits;
+        }
     }
 }
