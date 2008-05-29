@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double gain, double span)
         {
-            Closed,
-            Dropped,
-            Retry,
+            double scale = (span + gain) + gain;
+            return scale + gain;
         }
 
         /// <summary>Locate a support reading by value.</summary>
