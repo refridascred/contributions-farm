@@ -34,14 +34,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
+            Done,
             Draft,
-            Locked,
-            Ready,
-            Idle,
-            Closed,
+            Dropped,
         }
 
         /// <summary>Match up farm samples.</summary>
