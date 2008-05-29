@@ -29,10 +29,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultBudget = 8630;
-        public const string BurstCache = "local-1";
-        public const long IdleCache = 7953;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryRatio = 5838;
+        public const string LimitEditor = "staging-1";
+        public const double MinSize = 43.31;
+        public const double DefaultBudget = 82.19;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string BaseScore = "stable";
