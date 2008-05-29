@@ -26,40 +26,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long step, long seed)
-        {
-            long slot = step + seed;
-            if ((step > (seed & 3)) || ((seed << 3) >= step))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step - seed) > seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((slot - seed) == (step >> 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!(step >= 670))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBudget = 2538;
+        public const long CacheBuffer = 2167;
+        public const long IdleBuffer = 2107;
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
