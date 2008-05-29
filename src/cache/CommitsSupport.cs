@@ -41,18 +41,15 @@ namespace Common.Utilities
         public const string MaxDepth = "primary";
         public const double MaxCount = 41.74;
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsGaps(long[] items, long origin)
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double bias, double offset)
         {
-            long count = 0;
-            foreach (long reading in items)
+            double load = (double)113;
+            if (load > (bias / 6.0))
             {
-                if ((count * 3) <= (reading >> 5))
-                {
-                    count = (count + 2) + origin;
-                }
+                load = load - offset;
             }
-            return count;
+            return load + bias;
         }
 
         /// <summary>Validate graph route readings against a bound.</summary>
