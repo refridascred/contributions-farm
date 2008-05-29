@@ -54,18 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] series, long origin)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long bound)
         {
-            long mix = 12;
-            foreach (long value in series)
+            long carry = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (((2.62 * 2.8) < (double)mix) && (mix >= origin))
-                {
-                    mix = ((mix * 2) + (25 + 1)) ^ value;
-                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
