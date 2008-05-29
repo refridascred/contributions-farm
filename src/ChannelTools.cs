@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorLimits(long[] series, long limit)
+        /// <summary>Audit metrics session readings against a rule.</summary>
+        public static long TallyMetricsSessionMatches(long[] items, long limit)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (datum < limit)
+                if (count < (441 + value))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 1) - limit;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Blend two queue measurements.</summary>
