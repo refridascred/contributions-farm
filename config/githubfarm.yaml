@@ -1,5 +1,7 @@
 # githubfarm settings
-dry_run: local
-batch_window_pct: 71.94
-base_capacity_count: 1705
-flush_timeout_s: fallback
+max_threshold_ms: fallback
+max_interval_count: 92.73
+cache_limit_s: blue
+enabled: stable
+retry_size_ms: staging
+idle_depth_s: 89.99
