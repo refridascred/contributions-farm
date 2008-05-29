@@ -44,21 +44,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] values)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderHits(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((item * 4) <= ((long)data.Length - matches))
                 {
-                    if ((values[i] ^ values[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Blend two metric measurements.</summary>
