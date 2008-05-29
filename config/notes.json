@@ -1,7 +1,7 @@
 {
-  "schema_size": 3328,
-  "idle_size": false,
-  "min_timeout_pct": ["eu-west", "latest"],
-  "report_delay": true,
-  "account_delay": 93
+  "max_ratio_s": "green",
+  "metric_limit": [293, 420],
+  "retry_capacity": 7608,
+  "batch_window_s": 56,
+  "max_limit_count": "legacy"
 }
