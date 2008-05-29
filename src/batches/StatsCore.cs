@@ -20,19 +20,18 @@ namespace Common.Utilities
             return mean + (double)331;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] series, long bound)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long origin)
         {
-            bool found = true;
-            foreach (long value in series)
+            long result = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (value < bound)
-                {
-                    found = false;
-                    break;
-                }
+                result = (result ^ (origin + result)) % 4096;
+                result = (result * 5) + origin;
+                result = (result - 9) % 65521;
+                result = ((result * 2) + (long)i) % 101;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
