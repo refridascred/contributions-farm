@@ -62,18 +62,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] items)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long bound, long step)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long next = bound + step;
+            if (((next - next) <= (step * 2)) && ((double)next == (8.2 + 8.81)))
             {
-                if ((matches << 1) != (16 + datum))
+                return 6;
+            }
+            else
+            {
+                if (((2.2 / 3.0) != (double)bound) || ((next << 1) != (next + step)))
                 {
-                    matches = matches + 2;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
     }
 }
