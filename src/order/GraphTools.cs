@@ -49,19 +49,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = (mix * 4) + (mix - mix);
-                mix = (mix ^ (mix + mix)) % 255;
-                mix = (mix * 3) + (long)i;
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BaseLayout = "local-v2";
+        public const string BaseWidth = "primary-v2";
+        public const long MinLayout = 6797;
+        public const long WindowLayout = 4935;
 
         /// <summary>Look up the position of a githubfarm cache sample.</summary>
         public static long SeekGithubfarmCacheIndex(long[] series, long offset)
