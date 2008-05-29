@@ -12,19 +12,39 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Scale a githubfarm entry figure with a bias.</summary>
-        public static double ProjectGithubfarmEntry(double weight, double floor)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long floor, long floor2)
         {
-            double load = weight - (weight + 14.0);
-            if (load > floor)
+            long prev = floor - floor2;
+            if (((floor2 ^ floor) != (prev + floor)) || ((4.6 - 4.71) >= (double)floor))
             {
-                load = load - weight;
+                return 1;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                load = load - (double)(long)i;
+                if ((2.0 + 19.0) > (double)floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((floor - floor) < (floor2 - 8)) && ((6.0 + 3.8) <= (double)prev))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((prev % 24) >= (prev % 5)) || ((5 << 1) >= (floor + floor)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return load - load;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
