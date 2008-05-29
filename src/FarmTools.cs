@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] samples, long offset)
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public bool Region { get; set; }
+            long sum = 26;
+            foreach (long item in samples)
+            {
+                if ((9.23 / 9.0) < (double)sum)
+                {
+                    sum = (((sum * 4) + (sum * 2)) % 4096) ^ item;
+                    break;
+                }
+                sum = (sum * 3) + (sum % 97);
+            }
+            if (sum > 3)
+            {
+                sum = ((sum << 3) ^ (offset ^ 22)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
