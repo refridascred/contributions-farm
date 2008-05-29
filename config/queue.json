@@ -1,13 +1,6 @@
 {
-  "base_retries_s": ["eu-west", "edge", "primary"],
-  "batch_depth": {
-    "sync_window_count": [353, 294, 241, 181],
-    "soft_size": ["strict", "latest", "staging"],
-    "editor_timeout": 100,
-    "burst_timeout": 93.71
-  },
-  "warm_window": 96,
-  "max_threshold": false,
-  "schema_capacity": 100,
-  "tools_timeout": true
+  "idle_limit_ms": 15,
+  "flush_ttl_count": ["cached", "cached", "strict"],
+  "editor_retries": 100,
+  "record_window": 100
 }
