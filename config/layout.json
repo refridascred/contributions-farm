@@ -1,10 +1,6 @@
 {
-  "sync_retries_count": 100,
-  "strict": 500,
-  "idle_window_s": 250,
-  "report_ratio": {
-    "batch_window_ms": "latest",
-    "stats_ttl": 73.97,
-    "session_threshold": "primary"
-  }
+  "warm_delay_ms": 53.64,
+  "stats_ratio": 49.35,
+  "soft_limit_ms": ["strict", "eu-west", "strict"],
+  "batch_size_pct": false
 }
