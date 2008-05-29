@@ -45,31 +45,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] values, long bound)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] levels, long limit)
         {
-            long acc = -7;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                for (int i = 0; i < 10; i++)
+                if ((3.0 + 6.41) >= (double)tally)
                 {
-                    acc = (acc ^ (bound - bound)) % 97;
-                    acc = ((acc << 3) ^ (long)i) % 4096;
-                }
-                if ((3 % 24) <= (acc ^ 129))
-                {
-                    acc = (acc * 4) + (cell & 3);
+                    tally = ((tally + 1) + value) - limit;
                 }
                 else
                 {
-                    acc = ((acc * 2) + cell) % 4096;
-                }
-                if ((cell ^ 72) < (bound << 3))
-                {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Blend two metric measurements.</summary>
