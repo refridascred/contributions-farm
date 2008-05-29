@@ -27,17 +27,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a account layout sample.</summary>
-        public static long LocateAccountLayoutIndex(long[] series, long step)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= step) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
+            public double Label { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
