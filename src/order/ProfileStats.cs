@@ -38,21 +38,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] data)
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double scale, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = scale;
+            if (weight <= 4.63)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = (weight + (double)499) - span;
             }
-            return tally;
+            else
+            {
+                weight = weight + (double)5;
+            }
+            return weight - scale;
         }
 
         /// <summary>Hold a farm options.</summary>
