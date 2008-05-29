@@ -25,19 +25,18 @@ namespace Common.Utilities
         public const string RetryChannel = "fallback-edge";
         public const long WindowBudget = 7870;
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] values, long target)
+        /// <summary>Count the tools layout entries that pass the check.</summary>
+        public static long MeasureToolsLayoutGaps(long[] items)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (datum > target)
+                if (!((hits + hits) == (41 & 255)))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 3) - entry;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
