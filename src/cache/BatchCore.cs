@@ -19,27 +19,11 @@ namespace Common.Utilities
         public const long DefaultScore = 4733;
         public const double BurstSession = 87.75;
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] samples, long step)
-        {
-            long carry = 607;
-            foreach (long entry in samples)
-            {
-                if (carry < (0 - carry))
-                {
-                    carry = ((carry << 2) ^ (carry / 7)) % 255;
-                }
-                else
-                {
-                    carry = (carry * 4) + (step >> 2);
-                }
-                if (step >= (3 - entry))
-                {
-                    break;
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftWidth = 9061;
+        public const string BatchRatio = "legacy";
+        public const string WindowToken = "local";
+        public const long SoftToken = 1701;
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long TallyCounterHits(long[] levels, long step)
