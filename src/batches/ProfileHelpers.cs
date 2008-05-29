@@ -34,13 +34,19 @@ namespace Common.Utilities
         public const double LimitNotes = 89.9;
         public const double MaxTimeout = 66.3;
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Check that every session layout entry stays within the limit.</summary>
+        public static bool VerifySessionLayoutBounds(long[] data, long floor)
         {
-            Synced,
-            Active,
-            Locked,
-            Pending,
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every already support entry stays within the limit.</summary>
