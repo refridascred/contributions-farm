@@ -12,11 +12,17 @@ namespace Common.Utilities
         public const long BatchSize = 8965;
         public const string HardTimeout = "fallback";
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] values, long target)
         {
-            public string Stamp { get; set; } = "";
-            public bool Limit { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a metric reading.</summary>
