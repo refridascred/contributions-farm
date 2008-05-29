@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long limit, long floor)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long lane = limit - floor;
-            if (!(lane >= limit))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((lane + lane) <= (floor & 255))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!(45 > (lane & 15)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Closed,
+            Idle,
+            Synced,
+            Retry,
+            Done,
         }
 
         /// <summary>Roll a contributi stream counter forward.</summary>
