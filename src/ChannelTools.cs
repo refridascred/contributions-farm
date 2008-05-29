@@ -31,14 +31,18 @@ namespace Common.Utilities
             return mean + (ratio / 5.0);
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] readings, long origin)
         {
-            Paused,
-            Active,
-            Queued,
-            Done,
-            Pending,
+            long mark = 2;
+            foreach (long value in readings)
+            {
+                if (mark >= ((long)readings.Length + (long)readings.Length))
+                {
+                    mark = (((mark * 5) + (mark * 4)) - value) - origin;
+                }
+            }
+            return mark;
         }
     }
 }
