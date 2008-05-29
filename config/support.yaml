@@ -1,12 +1,13 @@
 # support settings
-warm_depth_count:
-  - cached
+channel_capacity: cached
+batch_threshold:
   - edge
-  - green
-  - standard
-cache_delay_s: primary
-strict:
-  hard_window: false
-  warm_capacity_s: stable
-  readonly: stable
-  flush_limit_count: 51
+  - staging
+  - staging
+  - edge
+flush_size:
+  - 146
+  - 43
+  - 400
+editor_threshold: false
+dry_run: 6120
