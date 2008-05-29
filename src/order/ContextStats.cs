@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit buffer batches readings against a rule.</summary>
-        public static long TallyBufferBatchesHits(long[] items)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((matches + matches) > (item >> 5))
+                if (reading < count)
                 {
-                    matches = matches + 3;
+                    count = (count + 2) + offset;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
