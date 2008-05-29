@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double bias, double offset)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            double gain = 14.0 - (2.87 - bias);
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (gain / 3.0)) + (double)(long)i;
-            }
-            return gain - offset;
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
