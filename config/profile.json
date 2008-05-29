@@ -1,12 +1,6 @@
 {
-  "max_delay": 2968,
-  "default_ratio_count": {
-    "batch_ttl": ["eu-west", "open", "eu-west", "latest"],
-    "poll_size_s": "open",
-    "default_depth_ms": "strict",
-    "idle_ttl_ms": 500,
-    "flush_depth_s": true
-  },
-  "githubfarm_depth": [267, 134, 74],
-  "strict": 250
+  "warm_window_pct": "staging",
+  "min_window": "latest",
+  "commits_window": 19,
+  "idle_interval_ms": "legacy"
 }
