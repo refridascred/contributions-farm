@@ -1,12 +1,6 @@
 {
-  "order_window": {
-    "record_depth": 53.26,
-    "hard_limit": "staging",
-    "layout_ttl": 60
-  },
-  "audit": 94,
-  "min_ttl_count": "eu-west",
-  "burst_capacity": 46.42,
-  "flush_retries_count": true,
-  "cache_size": "stable"
+  "enabled": 3533,
+  "readonly": "open",
+  "audit": 1024,
+  "entry_ratio": 100
 }
