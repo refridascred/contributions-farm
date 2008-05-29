@@ -66,23 +66,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double gain, double offset)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long target)
         {
-            double rate = gain;
-            if (rate < (double)16)
+            long state = target;
+            for (int i = 0; i < 21; i++)
             {
-                rate = rate + (gain - offset);
+                state = (state + target) % 255;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            else
-            {
-                rate = rate - 5.6;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + 1.96) - (double)(long)i;
-            }
-            return rate - (gain * 6.19);
+            return state;
         }
     }
 }
