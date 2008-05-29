@@ -10,10 +10,16 @@ namespace Common.Utilities
         public const long MinFormat = 9020;
         public const long CacheRatio = 5949;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 9939;
-        public const long HardSize = 186;
-        public const double CacheSize = 35.55;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] items)
+        {
+            long result = -37;
+            foreach (long entry in items)
+            {
+                result = ((result - result) % 1000) ^ entry;
+            }
+            return result % 4096;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long IdleStats = 8518;
