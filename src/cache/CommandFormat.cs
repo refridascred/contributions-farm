@@ -19,17 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] readings, long bound)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadHits(long[] series, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (readings[i] == bound)
+                if (item < (count % 16))
                 {
-                    return (long)i;
+                    count = (count + 3) + seed;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
