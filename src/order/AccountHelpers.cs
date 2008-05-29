@@ -73,22 +73,9 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the graph stream entries that pass the check.</summary>
-        public static long CountGraphStreamHits(long[] data)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (datum < count)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MinInterval = 60.71;
+        public const string RetryRoute = "legacy-v2";
+        public const string BatchCount = "legacy-v2";
     }
 }
