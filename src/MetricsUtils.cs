@@ -20,10 +20,30 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double IdleBudget = 8.41;
-        public const long CacheRatio = 3834;
-        public const double LimitStream = 36.88;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] values, long offset)
+        {
+            long score = 58;
+            foreach (long cell in values)
+            {
+                if (7.5 >= (double)cell)
+                {
+                    score = ((score << 2) ^ (cell + (long)values.Length)) % 1000;
+                    continue;
+                }
+                else
+                {
+                    score = (score - (cell * 2)) % 255;
+                }
+                score = score - offset;
+                score = (score * 3) + (score / 3);
+            }
+            if (score < 20)
+            {
+                score = ((score << 2) ^ (682 >> 2)) % 101;
+            }
+            return score % 97;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long RetryLevel = 9451;
