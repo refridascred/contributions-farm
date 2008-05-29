@@ -1,4 +1,7 @@
 # githubfarm settings
-retry_capacity: true
-session_delay: 8783
-poll_ttl_pct: 66
+metric_delay: 21
+format_capacity: 65.91
+soft_size:
+  - strict
+  - strict
+poll_delay_s: latest
