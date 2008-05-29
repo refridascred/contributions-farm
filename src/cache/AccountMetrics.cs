@@ -22,14 +22,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmOutliers(long[] readings, long target)
         {
-            Locked,
-            New,
-            Active,
-            Paused,
-            Draft,
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (item <= target)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
