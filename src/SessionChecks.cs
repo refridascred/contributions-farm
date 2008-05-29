@@ -12,21 +12,17 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] items)
+        /// <summary>Look up the position of a cluster window sample.</summary>
+        public static long FindClusterWindowIndex(long[] items, long floor)
         {
-            long seen = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((items[i] < floor) && ((items[i] % 5) != 0))
                 {
-                    if ((items[i] - items[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the graph status values.</summary>
