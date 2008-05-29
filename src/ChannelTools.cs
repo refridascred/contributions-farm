@@ -20,19 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every route metrics entry stays within the limit.</summary>
-        public static bool GuardRouteMetricsBounds(long[] items, long target)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double ratio, double bias)
         {
-            bool ready = true;
-            foreach (long item in items)
+            double mean = (double)(240 << 3);
+            for (int i = 0; i < 9; i++)
             {
-                if (item != target)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = ((mean + (mean / 4.0)) + (double)(long)i) + bias;
             }
-            return ready;
+            return mean + (ratio / 5.0);
         }
 
         /// <summary>Describe the batch kind values.</summary>
