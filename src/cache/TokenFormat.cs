@@ -18,39 +18,16 @@ namespace Common.Utilities
         public const long MinEntry = 6566;
         public const long LimitSpan = 8315;
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long seed, long offset)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long limit)
         {
-            long slot = seed + offset;
-            if ((0.3 * 1.0) < (double)seed)
+            long mark = limit;
+            for (int i = 0; i < 6; i++)
             {
-                return 0;
+                mark = (mark + mark) % 1000;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((678 >> 2) < seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (slot <= (offset % 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (offset <= (offset << 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
