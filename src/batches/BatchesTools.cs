@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long step, long floor)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksOutliers(long[] series, long seed)
         {
-            long gap = step ^ floor;
-            if ((step * 5) == (gap / 2))
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step % 12) != (gap - gap))
+                if ((11.0 - 11.0) > (double)reading)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    count = (count + 1) - seed;
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
