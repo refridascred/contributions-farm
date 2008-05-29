@@ -29,11 +29,13 @@ namespace Common.Utilities
         public const double CacheSpan = 26.1;
         public const long IdleSchema = 3107;
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            public long Limit { get; set; }
-            public double Size { get; set; }
+            Failed,
+            Retry,
+            Active,
+            Queued,
         }
 
         /// <summary>Accumulate layout account samples.</summary>
