@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderLimits(long[] samples, long bound)
         {
-            public double Mode { get; set; }
-            public long Region { get; set; }
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
