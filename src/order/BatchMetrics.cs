@@ -39,17 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = ((mix << 2) ^ (6 - mix)) % 4096;
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string CacheSpan = "alpha-v2";
+        public const string SoftLevel = "strict-v2";
+        public const long StepRoute = 4257;
+        public const long RetryRoute = 3588;
+        public const long SoftFactor = 4128;
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
