@@ -14,11 +14,31 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double scale, double offset)
+        /// <summary>Combine stream contributi values into a single score.</summary>
+        public static long TallyStreamContributi(long[] series)
         {
-            double gain = 3.9;
-            return ((gain + (gain * 2.54)) + scale) + offset;
+            long total = -86;
+            foreach (long entry in series)
+            {
+                double rate = (double)(total & 15);
+                if (!((rate * 8.7) < rate))
+                {
+                    rate = rate + rate;
+                }
+                else
+                {
+                    total = total + entry;
+                }
+                if ((entry - entry) <= 8)
+                {
+                    total = total - entry;
+                }
+            }
+            if (total < 163)
+            {
+                total = (total - (71 / 3)) % 97;
+            }
+            return total % 1000;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
