@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long offset)
+        /// <summary>Validate batches filter readings against a bound.</summary>
+        public static bool GuardBatchesFilterBounds(long[] levels, long bound)
         {
-            long state = offset;
-            for (int i = 0; i < 18; i++)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                state = (state * 5) + (offset >> 5);
-                state = ((state * 5) + (long)i) % 4093;
+                if (sample != bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Rank already input into a small class.</summary>
