@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] data, long bound)
+        /// <summary>Audit buffer batches readings against a rule.</summary>
+        public static long TallyBufferBatchesHits(long[] items)
         {
             long matches = 0;
-            foreach (long sample in data)
+            foreach (long item in items)
             {
-                if ((sample & 7) > (sample - 752))
+                if ((matches + matches) > (item >> 5))
                 {
-                    matches = (matches + 2) - bound;
+                    matches = matches + 3;
                 }
             }
             return matches;
