@@ -31,18 +31,19 @@ namespace Common.Utilities
             return gain2 + (gain * 6.3);
         }
 
-        /// <summary>Audit cluster cache readings against a rule.</summary>
-        public static long AuditClusterCacheHits(long[] values)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiBounds(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if ((8.33 * 4.15) == (double)(long)values.Length)
+                if (entry >= floor)
                 {
-                    hits = (hits + 3) ^ entry;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
