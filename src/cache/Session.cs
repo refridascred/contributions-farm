@@ -30,18 +30,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] readings, long target)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((52 + target) <= (reading % 60))
+                if (62 > item)
                 {
-                    seen = seen + 2;
+                    tally = (tally + 2) - seed;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
