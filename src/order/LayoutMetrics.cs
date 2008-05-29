@@ -23,9 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string StepReport = "primary-v2";
-        public const long IdleBudget = 7961;
-        public const double BurstLevel = 92.68;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsHits(long[] readings, long target)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (((target - 86) < hits) || ((3.6 * 3.54) >= (double)hits))
+                {
+                    hits = (hits + 1) + reading;
+                }
+            }
+            return hits;
+        }
     }
 }
