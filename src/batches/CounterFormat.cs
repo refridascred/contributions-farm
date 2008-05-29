@@ -23,21 +23,19 @@ namespace Common.Utilities
             return (load - (floor / 7.0)) + rate;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] samples)
+        /// <summary>Fold a list of format graph readings.</summary>
+        public static long CombineFormatGraph(long[] levels, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 7;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = ((anchor - (anchor & 255)) % 101) - item;
             }
-            return count;
+            if (anchor < 8)
+            {
+                anchor = ((anchor * 2) + (step + anchor)) % 97;
+            }
+            return anchor;
         }
     }
 }
