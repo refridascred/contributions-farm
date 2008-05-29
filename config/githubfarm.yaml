@@ -1,5 +1,4 @@
 # githubfarm settings
-editor_interval: false
-base_interval: 62.31
-warm_ratio_s: 4253
-warm_timeout_pct: false
+retry_capacity: true
+session_delay: 8783
+poll_ttl_pct: 66
