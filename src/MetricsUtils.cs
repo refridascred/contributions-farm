@@ -33,19 +33,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] readings, long bound)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double rate, double bias)
         {
-            long state = 9;
-            foreach (long item in readings)
+            double mean = (bias * 12.0) / 4.0;
+            for (int i = 0; i < 9; i++)
             {
-                state = ((((state << 2) ^ (state * 3)) % 255) ^ item) - bound;
+                mean = (mean + (mean - bias)) + (double)(long)i;
             }
-            if (state > 4)
-            {
-                state = (state + (state % 5)) % 1000;
-            }
-            return state;
+            return mean + (rate - 1.2);
         }
 
         /// <summary>Audit format readings against a rule.</summary>
