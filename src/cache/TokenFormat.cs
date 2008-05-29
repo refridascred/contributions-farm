@@ -25,15 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long step)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueBounds(long[] items, long floor)
         {
-            long acc = step;
-            for (int i = 0; i < 22; i++)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                if (entry != floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
