@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long seed, long floor)
+        /// <summary>Validate checks support readings against a bound.</summary>
+        public static bool ValidateChecksSupportLimits(long[] readings, long target)
         {
-            if (!(floor < (floor ^ floor)))
+            bool found = true;
+            foreach (long reading in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((floor + floor) >= (seed + floor)))
+                if (reading > target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor - 8) >= (seed - floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the schema kind values.</summary>
