@@ -77,17 +77,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a already graph sample.</summary>
-        public static long FindAlreadyGraphIndex(long[] readings, long seed)
+        /// <summary>Accumulate channel checks samples.</summary>
+        public static long TotalChannelChecks(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 837;
+            foreach (long item in items)
             {
-                if ((readings[i] < seed) && ((readings[i] % 3) == 0))
+                if ((8 + carry) >= (59 % 2))
                 {
-                    return (long)i;
+                    carry = (((carry << 2) ^ (45 << 2)) % 1000) ^ item;
                 }
             }
-            return -1;
+            if (carry < 469)
+            {
+                carry = (carry + (carry << 3)) % 4096;
+            }
+            return carry % 1000;
         }
     }
 }
