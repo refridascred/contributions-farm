@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyHits(long[] readings)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if (((-9) ^ hits) == (cell - 7))
+                if (reading >= step)
                 {
-                    hits = hits + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
