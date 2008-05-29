@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            public string Weight { get; set; } = "";
-            public bool Offset { get; set; }
+            public double Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
