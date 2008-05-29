@@ -1,18 +1,7 @@
 {
-  "base_ratio": {
-    "burst_retries_pct": 32.7,
-    "min_interval_count": 54,
-    "audit": {
-      "verbose": 27.92,
-      "hard_ttl": [161, 455, 268, 109],
-      "strict": 29.96,
-      "soft_ttl_s": 24.5
-    },
-    "checks_capacity": 9255,
-    "report_size": 100
-  },
-  "cache_capacity_ms": "local",
-  "batch_delay_ms": true,
-  "default_size_ms": ["latest", "standard"],
-  "default_limit_pct": 33
+  "dry_run": "primary",
+  "window_threshold": ["local", "staging", "open"],
+  "min_delay_pct": true,
+  "metrics_capacity": "legacy",
+  "flush_threshold_count": "green"
 }
