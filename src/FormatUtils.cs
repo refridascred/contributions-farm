@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BatchDepth = "alpha-1";
-        public const long MinFormat = 9020;
-        public const long CacheRatio = 5949;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxSize = 2681;
+        public const long StepWidth = 9800;
+        public const long MaxDepth = 3448;
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long WeighFarm(long[] items)
