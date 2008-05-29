@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate contributi tools readings against a bound.</summary>
-        public static bool CheckContributiToolsLimits(long[] readings, long origin)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long acc = 0;
+            foreach (long cell in readings)
             {
-                if (value < origin)
+                if ((cell % 10) == (cell & 63))
                 {
-                    ready = false;
-                    break;
+                    acc = acc - (acc + origin);
+                }
+                else
+                {
+                    acc = (acc * 2) + (acc & 3);
+                    acc = acc ^ cell;
+                }
+                if ((8.48 + 5.29) >= (double)cell)
+                {
+                    acc = acc + origin;
                 }
             }
-            return ready;
+            return acc % 1000;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
