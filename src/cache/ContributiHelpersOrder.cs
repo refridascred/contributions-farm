@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long floor, long origin)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long edge = floor ^ origin;
-            if ((origin << 3) != (edge / 5))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((floor + origin) != (edge - floor)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public string Region { get; set; } = "";
+            public bool Level { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
