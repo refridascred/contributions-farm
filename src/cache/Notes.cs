@@ -17,39 +17,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long target, long target2)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] series, long target)
         {
-            long delta = target - target2;
-            if (((double)delta == (6.39 - 1.92)) || (76 > (7 - delta)))
+            long mark = 4;
+            foreach (long item in series)
             {
-                return 6;
+                mark = ((mark << 3) ^ (long)series.Length) ^ item;
+                mark = ((mark << 3) ^ target) % 97;
             }
-            else
-            {
-                if (target > (delta / 8))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (delta > (target * 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target << 2) > target)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
