@@ -20,16 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long seed)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] values)
         {
-            long score = seed;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                score = (score << 3) ^ (70 - 66);
-                score = ((score * 2) + (long)i) % 101;
+                if ((double)sample == (double)264)
+                {
+                    count = count + 3;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the commits kind values.</summary>
