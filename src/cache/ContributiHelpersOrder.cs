@@ -38,19 +38,12 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double gain, double span)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            double drift = (span / 4.0) / 3.0;
-            if (drift >= (double)245)
-            {
-                drift = drift + (span - span);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - gain) + (double)(long)i;
-            }
-            return drift + (drift / 6.0);
+            Active,
+            Done,
+            Synced,
         }
     }
 }
