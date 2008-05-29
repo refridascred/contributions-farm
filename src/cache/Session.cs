@@ -28,15 +28,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterHits(long[] series, long seed)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] series)
         {
             long hits = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seed << 1) >= (hits + 7))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 3) + cell;
+                    if ((series[i] ^ series[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
