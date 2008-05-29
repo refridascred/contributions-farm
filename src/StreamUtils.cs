@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MaxEntry = 53.72;
-        public const long MinEntry = 5525;
-        public const long IdleDepth = 6300;
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
+        {
+            public double Offset { get; set; }
+            public long Owner { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long MeasureAccountOutliers(long[] levels)
