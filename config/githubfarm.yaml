@@ -1,14 +1,21 @@
 # githubfarm settings
-hard_threshold: 94.53
-poll_delay_count: 57.78
-max_delay:
-  min_retries:
-    - 149
-    - 9
-  burst_timeout_s: fallback
-  strict: false
-token_depth:
-  retry_timeout_count: false
-  payload_ttl: eu-west
-  strict: blue
-  sync_window_count: staging
+enabled:
+  compress: stable
+  dry_run: cached
+  layout_threshold:
+    - fallback
+    - blue
+    - staging
+    - standard
+  context_timeout:
+    - open
+    - latest
+    - open
+  min_depth:
+    - green
+    - strict
+    - edge
+    - blue
+hard_timeout_count: 67
+max_capacity: false
+soft_capacity_pct: 8.63
