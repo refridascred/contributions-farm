@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const string LimitGithubfarm = "open";
         public const long IdleDepth = 5846;
 
-        /// <summary>Measure how many commits context samples are out of range.</summary>
-        public static long MeasureCommitsContextMatches(long[] readings, long target)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double weight, double span)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            double scale = (weight + 6.0) / 2.0;
+            if (scale <= (double)670)
             {
-                if ((18.0 + 7.6) >= (double)count)
-                {
-                    count = ((count + 3) + cell) - target;
-                }
+                scale = scale + 3.4;
             }
-            return count;
+            else
+            {
+                scale = scale - span;
+            }
+            return scale - scale;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
