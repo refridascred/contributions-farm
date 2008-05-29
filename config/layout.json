@@ -1,13 +1,12 @@
 {
-  "strict": "fallback",
-  "default_delay": 4211,
-  "flush_interval": true,
-  "verbose": 95.92,
-  "cache_delay_s": {
-    "editor_ratio": "edge",
-    "enabled": ["cached", "latest"],
-    "cache_delay_s": 4397,
-    "idle_threshold_count": 10.28,
-    "format_ratio": 1024
-  }
+  "enabled": {
+    "route_limit": 28.05,
+    "compress": [162, 479, 325, 309],
+    "max_threshold": 87.27,
+    "support_capacity": 98,
+    "persist": 500,
+    "report_threshold": ["green", "fallback", "latest", "standard"]
+  },
+  "sync_capacity": "cached",
+  "poll_depth_s": "stable"
 }
