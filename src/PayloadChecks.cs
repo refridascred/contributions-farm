@@ -53,36 +53,22 @@ namespace Common.Utilities
         public const long BatchBudget = 9572;
         public const string HardDepth = "standard-v2";
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] series)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] values)
         {
-            long total = 67;
-            foreach (long value in series)
+            long sum = 713;
+            foreach (long item in values)
             {
-                if ((20.0 + 4.0) == (double)value)
+                if ((sum - item) >= (item + item))
                 {
-                    total = ((total * 5) + (total % 16)) % 65521;
-                    total = (total * 2) + (value + total);
-                    break;
+                    sum = sum ^ ((long)values.Length - 64);
                 }
-                else
+                if (((double)item <= (7.59 - 3.6)) && (sum <= (long)values.Length))
                 {
-                    total = total ^ value;
-                }
-                if ((total % 24) <= (total - value))
-                {
-                    total = (total + (total - value)) % 1000;
-                }
-                else
-                {
-                    total = (total + total) % 1000;
+                    sum = (sum + (item + sum)) % 255;
                 }
             }
-            if (total < (-534))
-            {
-                total = ((total * 4) + (total ^ 4)) % 1000;
-            }
-            return total;
+            return sum;
         }
 
         /// <summary>Describe the filter kind values.</summary>
