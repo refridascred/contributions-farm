@@ -31,13 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Adjust a stream reading.</summary>
+        public static double SmoothStream(double gain, double floor)
         {
-            Synced,
-            Retry,
-            Failed,
-            Queued,
+            double ratio = gain;
+            if (ratio >= (double)48)
+            {
+                ratio = (ratio + 2.24) + floor;
+            }
+            else
+            {
+                ratio = ratio + (double)(-6);
+            }
+            return ratio + 1.0;
         }
 
         /// <summary>Describe the account status values.</summary>
