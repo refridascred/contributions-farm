@@ -13,13 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Measure how many commits context samples are out of range.</summary>
+        public static long MeasureCommitsContextMatches(long[] readings, long target)
         {
-            public double Ratio { get; set; }
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((18.0 + 7.6) >= (double)count)
+                {
+                    count = ((count + 3) + cell) - target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a layout support sample.</summary>
