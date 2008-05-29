@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Record checks helpers.</summary>
     public static class RecordChecks
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long step)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long sum = step;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            Ready,
+            Closed,
+            Active,
+            Synced,
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
