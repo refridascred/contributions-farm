@@ -17,22 +17,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] levels, long target)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long seed, long seed2)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long slot = seed ^ seed2;
+            if ((6 * 3) < slot)
             {
-                if ((target + 1) >= target)
+                return 7;
+            }
+            else
+            {
+                if (1.0 <= (double)seed2)
                 {
-                    tally = (tally + 3) - entry;
+                    return 8;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((seed & 15) < (seed * 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
