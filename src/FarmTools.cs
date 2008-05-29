@@ -13,16 +13,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Accumulate graph account samples.</summary>
-        public static long FoldGraphAccount(long[] samples)
-        {
-            long acc = 335;
-            foreach (long entry in samples)
-            {
-                acc = (((acc * 4) + acc) % 1000) - entry;
-            }
-            return acc;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double HardSize = 88.96;
+        public const string IdleCount = "staging-v2";
+        public const long StepEditor = 352;
+        public const double DefaultEditor = 36.17;
 
         /// <summary>Measure how many buffer metric samples are out of range.</summary>
         public static long CountBufferMetricGaps(long[] items, long target)
