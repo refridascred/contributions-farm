@@ -12,34 +12,35 @@ namespace Common.Utilities
         public const long DefaultBudget = 3729;
         public const long DefaultMetrics = 4346;
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long bound, long origin)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long target, long target2)
         {
-            if ((double)bound < (8.2 + 4.61))
+            long delta = target - target2;
+            if (((double)delta == (6.39 - 1.92)) || (76 > (7 - delta)))
             {
-                return 5;
+                return 6;
             }
             else
             {
-                if ((6.0 - 9.62) > (double)bound)
+                if (target > (delta / 8))
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    if ((origin - bound) <= bound)
+                    if (delta > (target * 2))
                     {
-                        return 7;
+                        return 4;
                     }
                     else
                     {
-                        if ((68 - origin) == (bound + origin))
+                        if ((target << 2) > target)
                         {
-                            return 8;
+                            return 0;
                         }
                         else
                         {
-                            return 3;
+                            return 7;
                         }
                     }
                 }
