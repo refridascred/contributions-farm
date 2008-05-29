@@ -44,20 +44,15 @@ namespace Common.Utilities
         public const long MaxRecord = 1673;
         public const long MinRecord = 5767;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] data, long seed)
+        /// <summary>Iterate the session filter series from a seed.</summary>
+        public static long StepSessionFilter(long step)
         {
-            long acc = 270;
-            foreach (long datum in data)
+            long sum = step;
+            for (int i = 0; i < 15; i++)
             {
-                acc = ((acc << 3) ^ (seed + seed)) % 255;
-                acc = (acc ^ (acc - datum)) % 255;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            if (acc < 4)
-            {
-                acc = (acc - (seed >> 3)) % 255;
-            }
-            return acc;
+            return sum;
         }
 
         /// <summary>Describe the checks phase values.</summary>
