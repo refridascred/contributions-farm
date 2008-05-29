@@ -1,7 +1,10 @@
-id,state,weight
-1,latest,61.27
-2,672,latest
-3,78.33,809
-4,standard,456
-5,strict,blue
-6,394,816
+id,ratio,owner,score
+1,74.23,125,primary
+2,818,latest,fallback
+3,edge,33.66,255
+4,67.8,454,72.15
+5,latest,93.88,56.96
+6,primary,433,primary
+7,296,blue,772
+8,847,439,45
+9,971,985,68.08
