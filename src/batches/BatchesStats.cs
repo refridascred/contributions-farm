@@ -20,12 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a entry record reading by value.</summary>
-        public static long LocateEntryRecordIndex(long[] levels, long origin)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] levels, long bound)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] >= origin)
+                if (levels[i] <= bound)
                 {
                     return (long)i;
                 }
