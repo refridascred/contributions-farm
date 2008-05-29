@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] items)
         {
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            long acc = -8;
+            foreach (long value in items)
+            {
+                acc = ((acc << 2) ^ (acc << 2)) % 1000;
+                acc = ((acc * 5) + (0 - acc)) % 1000;
+                if ((9 % 10) < value)
+                {
+                    acc = (acc - acc) % 4096;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (value - acc);
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
