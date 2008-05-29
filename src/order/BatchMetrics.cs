@@ -24,12 +24,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            public long Score { get; set; }
-            public long Level { get; set; }
-            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Region { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the checks state values.</summary>
