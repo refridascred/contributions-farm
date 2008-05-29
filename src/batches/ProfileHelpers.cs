@@ -20,13 +20,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            public bool Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public double Size { get; set; }
-            public string Weight { get; set; } = "";
+            Ready,
+            Stale,
+            Queued,
+            New,
+            Draft,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
