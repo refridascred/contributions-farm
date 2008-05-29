@@ -52,16 +52,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long bound)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileGaps(long[] data)
         {
-            long acc = bound;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                acc = acc - (acc % 16);
-                acc = ((acc * 5) + (long)i) % 101;
+                if ((12 - 357) <= (value << 3))
+                {
+                    count = count + 1;
+                }
             }
-            return acc;
+            return count;
         }
     }
 }
