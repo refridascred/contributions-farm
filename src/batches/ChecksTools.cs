@@ -28,13 +28,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            New,
-            Closed,
-            Dropped,
+            Idle,
+            Ready,
+            Done,
             Queued,
+            Pending,
         }
 
         /// <summary>Digest a series of already session entries.</summary>
