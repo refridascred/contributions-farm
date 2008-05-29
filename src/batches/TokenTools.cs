@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const long BatchWidth = 6962;
         public const double MaxChecks = 91.48;
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            Failed,
-            Locked,
-            Stale,
-            Paused,
-            Synced,
+            public long Weight { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
