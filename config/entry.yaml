@@ -1,11 +1,8 @@
 # entry settings
-compress: local
-max_threshold: edge
-default_size_s: 18.67
-cache_timeout:
-  - eu-west
+persist:
   - edge
-base_ratio_pct:
-  - 76
-  - 467
-  - 231
+  - staging
+  - latest
+  - open
+burst_delay: eu-west
+base_depth_ms: true
