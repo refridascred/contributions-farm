@@ -37,21 +37,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] data)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutOutliers(long[] readings, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((6.9 * 1.0) <= (double)count)
                 {
-                    if ((data[i] + data[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = ((count + 2) ^ cell) + step;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
