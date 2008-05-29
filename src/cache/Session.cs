@@ -23,18 +23,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenOutliers(long[] readings)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (!((sample % 97) < (66 % 16)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Total { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
