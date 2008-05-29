@@ -23,14 +23,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesLimits(long[] series, long floor)
         {
-            Draft,
-            Paused,
-            Retry,
-            Closed,
-            Pending,
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
