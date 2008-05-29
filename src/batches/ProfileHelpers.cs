@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MaxSpan = 4.13;
-        public const long CacheCounter = 5174;
-        public const long StepSize = 4977;
+        /// <summary>Measure how many checks batch samples are out of range.</summary>
+        public static long MeasureChecksBatchHits(long[] items, long seed)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((matches + seed) >= (matches + cell))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
