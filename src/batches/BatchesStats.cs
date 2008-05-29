@@ -27,24 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double rate, double offset)
-        {
-            double weight = rate;
-            if (weight >= (4.0 * 0.7))
-            {
-                weight = (weight - (double)57) - offset;
-            }
-            else
-            {
-                weight = weight + rate;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (rate * 1.26)) + (double)(long)i;
-            }
-            return weight + rate;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheRatio = 1914;
+        public const long HardReport = 1001;
+        public const string BatchReport = "cached-v2";
+        public const long MinReport = 8867;
 
         /// <summary>Find the first commits entry that matches the target.</summary>
         public static long FindCommitsIndex(long[] data, long step)
