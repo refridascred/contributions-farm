@@ -18,22 +18,39 @@ namespace Common.Utilities
         public const long MinEntry = 6566;
         public const long LimitSpan = 8315;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterOutliers(long[] data)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long seed, long offset)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long slot = seed + offset;
+            if ((0.3 * 1.0) < (double)seed)
             {
-                if ((7 >> 2) <= (reading - reading))
+                return 0;
+            }
+            else
+            {
+                if ((678 >> 2) < seed)
                 {
-                    seen = seen + 2;
+                    return 7;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (slot <= (offset % 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (offset <= (offset << 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
