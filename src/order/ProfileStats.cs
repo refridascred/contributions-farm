@@ -51,18 +51,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesOutliers(long[] readings, long floor)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long limit)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long carry = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((-25) >= (long)readings.Length)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    seen = ((seen + 2) + entry) - floor;
+                    carry = ((carry - (limit + limit)) % 255) + (long)i2;
                 }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return seen;
+            return carry;
         }
     }
 }
