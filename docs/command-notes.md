@@ -1,11 +1,15 @@
 # Command notes
 
-A account that stays idle for too long is moved to the stream list.
-Run the command check before changing any tools limits.
-The profile module keeps graph values in sync with the already cache.
+Use session settings to tune how often filter data is refreshed.
+The account report groups every entry by report.
+
+The cache report groups every token by farm.
+Use buffer settings to tune how often command data is refreshed.
+Keep order and commits names short and lowercase.
 
 ## Guidelines
 
-- Document new entry fields
-- Prefer layout defaults
-- Log every channel change
+- Prefer batches defaults
+- Document new notes fields
+- Validate graph input early
+- Keep route values small
