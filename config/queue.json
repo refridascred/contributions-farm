@@ -1,5 +1,11 @@
 {
-  "batch_size": 60,
-  "entry_ttl": [493, 147, 325, 408],
-  "dry_run": [53, 339]
+  "audit": 783,
+  "retry_ratio_pct": {
+    "already_retries": "fallback",
+    "max_limit": 8288,
+    "record_interval": 60
+  },
+  "compress": 5100,
+  "batch_ttl": ["open", "stable", "blue"],
+  "cache_capacity_s": 79
 }
