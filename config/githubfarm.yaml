@@ -1,6 +1,6 @@
 # githubfarm settings
-enabled: 30
-min_size_pct: true
-persist: cached
-strict: 7596
-compress: 67
+warm_interval_s: 28
+min_limit_count: 1329
+default_depth_s: staging
+editor_retries: 93
+warm_ratio_count: 57
