@@ -36,18 +36,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit stats cache readings against a rule.</summary>
-        public static long CountStatsCacheHits(long[] levels)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] items)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample ^ 695) > (sample - 13))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 2;
+                    if ((items[i] ^ items[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
