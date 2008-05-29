@@ -23,14 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderHits(long[] values)
         {
-            Pending,
-            Done,
-            New,
-            Idle,
-            Paused,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (((double)cell == (17.0 + 7.0)) || !(count < (count * 2)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
