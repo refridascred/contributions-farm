@@ -16,20 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double ratio, double floor)
-        {
-            double bias = 4.07 / 6.0;
-            if (bias >= ratio)
-            {
-                bias = (bias - ratio) - floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + (3.19 * 17.0)) + (double)(long)i;
-            }
-            return bias - (16.0 * 1.14);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 2566;
+        public const double RetryCounter = 83.54;
+        public const long IdleCounter = 8526;
+        public const long MinCounter = 1100;
+        public const long WindowCounter = 4919;
 
         /// <summary>Hold a githubfarm entry.</summary>
         public sealed class GithubfarmEntry
