@@ -42,18 +42,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of support schema readings.</summary>
-        public static long WeighSupportSchema(long[] items, long floor)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long offset, long step)
         {
-            long sum = 3;
-            foreach (long entry in items)
+            if ((double)step < 9.1)
             {
-                if ((floor + floor) != (sum + floor))
+                return 3;
+            }
+            else
+            {
+                if ((5.0 - 4.36) > (double)offset)
                 {
-                    sum = (sum << 2) ^ (floor - entry);
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return sum;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
