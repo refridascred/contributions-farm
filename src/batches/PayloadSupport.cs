@@ -21,9 +21,11 @@ namespace Common.Utilities
         public const double LimitSize = 61.76;
         public const long HardScore = 1717;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 5490;
-        public const double BatchFilter = 41.66;
-        public const long LimitFilter = 1042;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleFactor = 4178;
+        public const string MaxWindow = "alpha-v2";
+        public const long BaseWindow = 1654;
+        public const string MinWindow = "primary-edge";
+        public const long RetryWindow = 3339;
     }
 }
