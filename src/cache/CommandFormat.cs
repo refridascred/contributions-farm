@@ -37,19 +37,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every profile tools entry stays within the limit.</summary>
-        public static bool GuardProfileToolsRange(long[] readings, long seed)
+        /// <summary>Adjust a metrics channel reading.</summary>
+        public static double BlendMetricsChannel(double weight, double offset)
         {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double gain = weight - weight;
+            return (gain - gain) + offset;
         }
     }
 }
