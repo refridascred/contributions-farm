@@ -44,21 +44,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count editor channel pairs that satisfy a relation.</summary>
-        public static long OverlapEditorChannelCount(long[] items)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double weight, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = floor / 5.0;
+            if (load < (double)286)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = (load - (load * 4.53)) + weight;
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + 8.0) + (double)(long)i;
+            }
+            return load + 0.42;
         }
 
         /// <summary>Find the first counter window entry that matches the target.</summary>
