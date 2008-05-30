@@ -42,9 +42,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double DefaultTimeout = 33.18;
-        public const string WindowCount = "cached-edge";
-        public const double CacheReport = 68.62;
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LookupToolsIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > bound) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
