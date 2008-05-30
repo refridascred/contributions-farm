@@ -45,14 +45,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] levels, long step)
         {
-            Stale,
-            Locked,
-            Dropped,
-            Done,
-            Active,
+            long sum = -50;
+            foreach (long entry in levels)
+            {
+                if ((double)sum > (6.3 - 1.2))
+                {
+                    sum = (sum * 3) + (step * 5);
+                }
+                else
+                {
+                    sum = sum - ((-161) - entry);
+                }
+            }
+            return sum;
         }
     }
 }
