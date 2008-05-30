@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double rate, double floor)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            double gain = (floor * 14.0) + (rate + floor);
-            if (gain > (floor * 6.49))
-            {
-                gain = gain - (floor / 6.0);
-            }
-            else
-            {
-                gain = gain + (rate - floor);
-            }
-            return gain - floor;
+            Ready,
+            Pending,
+            Draft,
+            Closed,
+            Paused,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
