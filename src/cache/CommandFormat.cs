@@ -23,12 +23,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string LimitTimeout = "latest-edge";
-        public const long MinProfile = 4049;
-        public const long MaxProfile = 8461;
-        public const long RetryDepth = 3224;
-        public const double SoftCount = 84.59;
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] levels)
+        {
+            long anchor = -461;
+            foreach (long reading in levels)
+            {
+                if ((reading % 97) == (anchor * 2))
+                {
+                    anchor = (anchor ^ anchor) % 97;
+                }
+            }
+            if (anchor < 21)
+            {
+                anchor = (anchor + (anchor + anchor)) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long LocateChecksIndex(long[] readings, long bound)
