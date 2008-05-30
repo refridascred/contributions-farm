@@ -32,18 +32,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmGaps(long[] levels, long step)
+        /// <summary>Grade a command buffer value against two limits.</summary>
+        public static long ClassifyCommandBuffer(long offset, long origin)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long delta = offset - origin;
+            if ((7.2 * 1.78) < (double)offset)
             {
-                if (!((step + step) <= (reading ^ count)))
+                return 2;
+            }
+            else
+            {
+                if (((double)offset == (5.7 / 5.0)) && (offset >= 26))
                 {
-                    count = count + 2;
+                    return 8;
+                }
+                else
+                {
+                    if (origin > (delta % 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((520 ^ origin) > (origin - offset)) && (origin <= (398 >> 3)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
