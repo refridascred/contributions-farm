@@ -23,18 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many support session samples are out of range.</summary>
-        public static long AuditSupportSessionOutliers(long[] series)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportMatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((value - hits) < (hits / 2))
+                if ((double)matches >= (11.0 - 2.3))
                 {
-                    hits = hits + 3;
+                    matches = (matches + 1) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
