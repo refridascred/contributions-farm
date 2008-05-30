@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] series, long floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] samples)
         {
-            bool found = true;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (item > floor)
+                if ((double)hits <= (9.6 + 8.47))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 1) + cell;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Adjust a filter reading.</summary>
