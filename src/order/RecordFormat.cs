@@ -75,13 +75,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double rate, double offset)
         {
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
-            public bool Label { get; set; }
+            double rate2 = offset;
+            if (rate2 > (double)400)
+            {
+                rate2 = rate2 - (4.5 + offset);
+            }
+            else
+            {
+                rate2 = rate2 - rate2;
+            }
+            return rate2 + (rate - offset);
         }
     }
 }
