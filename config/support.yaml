@@ -1,8 +1,26 @@
 # support settings
-already_ratio:
-  - 297
-  - 338
-  - 496
-  - 123
-persist: staging
-payload_limit: 500
+base_limit_ms: legacy
+batch_retries_pct: green
+tools_retries:
+  poll_ratio_s: stable
+  persist:
+    - 389
+    - 118
+    - 155
+    - 178
+  verbose:
+    default_size_s: 42
+    hard_interval_s: true
+    persist: false
+    format_limit: 100
+  readonly: latest
+  report_size: 82.49
+  base_threshold_pct:
+    batch_interval_ms:
+      - edge
+      - eu-west
+    batch_delay_count: edge
+    idle_threshold_pct: true
+hard_depth_count: false
+enabled: 12
+verbose: true
