@@ -26,10 +26,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double WindowCount = 66.04;
-        public const long CacheTimeout = 7096;
-        public const string MinTools = "legacy-1";
-        public const long IdleTimeout = 4039;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (!((double)tally == (double)entry))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
