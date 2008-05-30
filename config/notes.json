@@ -1,21 +1,12 @@
 {
-  "metrics_threshold": "open",
-  "compress": {
-    "enabled": "cached",
-    "soft_ttl_count": {
-      "entry_interval": "legacy",
-      "max_delay_s": 64,
-      "hard_depth_ms": true,
-      "order_interval": 6132
-    },
-    "cache_retries_ms": {
-      "max_capacity_pct": ["local", "local", "local"],
-      "persist": ["primary", "stable"],
-      "warm_delay": ["standard", "stable", "edge"],
-      "verbose": [439, 414, 442, 32],
-      "compress": "open"
-    }
+  "queue_delay": 80.85,
+  "already_ratio": "legacy",
+  "hard_depth_s": "stable",
+  "poll_ttl_ms": {
+    "dry_run": "local",
+    "retry_size_pct": "fallback",
+    "context_timeout": 79.56,
+    "flush_capacity": 93.07
   },
-  "editor_limit": "green",
-  "cache_threshold_s": true
+  "soft_capacity": "standard"
 }
