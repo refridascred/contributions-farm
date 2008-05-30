@@ -16,12 +16,17 @@ namespace Common.Utilities
         public const long RetryCommits = 5510;
         public const long LimitCommits = 830;
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] readings, long limit)
         {
-            public long Label { get; set; }
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < limit) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
