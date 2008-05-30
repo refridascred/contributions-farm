@@ -1,11 +1,12 @@
 {
-  "sync_threshold": 60,
-  "cache_timeout_s": {
-    "command_interval": 27.81,
-    "retry_ttl_pct": 18.12,
-    "flush_capacity_pct": "latest"
+  "sync_limit_pct": ["fallback", "fallback"],
+  "profile_capacity": [346, 207],
+  "entry_capacity": 2216,
+  "session_timeout": 869,
+  "soft_interval_s": {
+    "poll_interval_count": "primary",
+    "enabled": 22.29,
+    "min_delay_pct": "blue"
   },
-  "min_threshold": ["fallback", "legacy"],
-  "strict": "latest",
-  "retry_window_s": 1024
+  "batches_interval": "blue"
 }
