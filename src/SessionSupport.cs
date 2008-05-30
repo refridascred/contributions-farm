@@ -48,19 +48,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] items)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] samples, long origin)
         {
-            long score = 21;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                if (samples[i] == origin)
                 {
-                    score = ((((score << 3) ^ (score << 2)) % 97) + (long)i) + datum;
+                    return (long)i;
                 }
-                score = ((score << 2) ^ 6) % 97;
             }
-            return score;
+            return -1;
         }
     }
 }
