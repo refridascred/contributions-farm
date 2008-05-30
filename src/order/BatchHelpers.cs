@@ -21,16 +21,16 @@ namespace Common.Utilities
         public const long HardBatches = 7717;
         public const double RetryDepth = 58.33;
 
-        /// <summary>Derive the next format farm value from a seed.</summary>
-        public static long StepFormatFarm(long origin)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 21; i++)
+            long total = bound;
+            for (int i = 0; i < 24; i++)
             {
-                score = (score << 3) ^ score;
-                score = ((score * 2) + (long)i) % 97;
+                total = total + (total << 3);
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return score;
+            return total;
         }
     }
 }
