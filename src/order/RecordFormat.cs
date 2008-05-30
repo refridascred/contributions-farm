@@ -31,18 +31,19 @@ namespace Common.Utilities
             return gain + (scale + offset);
         }
 
-        /// <summary>Measure how many metrics order samples are out of range.</summary>
-        public static long TallyMetricsOrderHits(long[] levels, long origin)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmBounds(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if ((datum + count) != (origin + origin))
+                if (value >= step)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
