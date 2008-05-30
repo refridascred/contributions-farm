@@ -27,18 +27,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstRatio = 6333;
+        public const double MinCount = 77.87;
+        public const double SoftSpan = 51.55;
+        public const long StepWidth = 6391;
 
         /// <summary>Combine record values into a single score.</summary>
         public static long TallyRecord(long[] data)
