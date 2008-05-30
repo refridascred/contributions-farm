@@ -1,5 +1,6 @@
 {
-  "soft_retries": true,
-  "base_limit": "blue",
-  "strict": 62.92
+  "hard_threshold_count": [261, 105, 396],
+  "burst_limit_pct": 3.67,
+  "max_threshold_pct": "edge",
+  "persist": true
 }
