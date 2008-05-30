@@ -10,18 +10,14 @@ namespace Common.Utilities
         public const double RetryDepth = 31.73;
         public const long WindowReport = 7241;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsHits(long[] samples)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((count - sample) > (13 + sample))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Stale,
+            Draft,
+            Retry,
+            Pending,
+            Ready,
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
