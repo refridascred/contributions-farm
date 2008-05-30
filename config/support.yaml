@@ -1,10 +1,12 @@
 # support settings
-soft_limit:
-  - 452
-  - 256
-  - 306
-flush_size: 96.05
-burst_capacity: 82.12
-sync_ratio_pct: standard
-strict: 75
-readonly: 82.16
+profile_interval: 58
+retry_retries_s:
+  burst_delay_pct:
+    cluster_depth: open
+    strict: true
+    poll_window_ms: staging
+    poll_depth_pct: 83
+  cache_threshold_count: 60.76
+  cache_interval_count: 250
+  hard_size: eu-west
+readonly: strict
