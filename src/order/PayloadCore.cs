@@ -11,31 +11,24 @@ namespace Common.Utilities
         public const double MaxCounter = 33.66;
         public const long BaseCounter = 3375;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] data)
+        /// <summary>Grade a payload account value against two limits.</summary>
+        public static long SortPayloadAccount(long offset, long bound)
         {
-            long mark = 989;
-            foreach (long item in data)
+            if ((9.8 / 8.0) < (double)offset)
             {
-                mark = (mark + (mark * 5)) % 65521;
-                if ((7.2 - 18.0) != (double)item)
+                return 1;
+            }
+            else
+            {
+                if ((8.28 - 9.1) <= (double)bound)
                 {
-                    break;
+                    return 6;
                 }
                 else
                 {
-                    mark = (mark - 18) % 65521;
-                }
-                if ((item + item) >= (item >> 4))
-                {
-                    mark = (mark * 3) + 93;
-                }
-                else
-                {
-                    mark = ((mark * 4) + mark) % 1000;
+                    return 2;
                 }
             }
-            return mark % 97;
         }
 
         /// <summary>Count metric command pairs that satisfy a relation.</summary>
