@@ -12,19 +12,25 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] items, long floor)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long target, long limit)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long lane = target - limit;
+            if (((22 / 3) > (target & 63)) || (lane >= (limit / 9)))
             {
-                if (entry != floor)
+                return 4;
+            }
+            else
+            {
+                if ((double)limit < (5.94 - 13.0))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return stale;
         }
 
         /// <summary>Describe the cluster class values.</summary>
