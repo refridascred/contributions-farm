@@ -19,13 +19,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Count metric command pairs that satisfy a relation.</summary>
+        public static long PairMetricCommandCount(long[] data)
         {
-            public string Total { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public double Stamp { get; set; }
-            public double Limit { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the stream status values.</summary>
