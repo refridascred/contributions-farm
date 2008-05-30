@@ -57,19 +57,15 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double rate, double offset)
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double gain, double bias)
         {
-            double rate2 = offset;
-            if (rate2 > (double)400)
+            double scale = 5.4;
+            if (scale < scale)
             {
-                rate2 = rate2 - (4.5 + offset);
+                scale = (scale - scale) + gain;
             }
-            else
-            {
-                rate2 = rate2 - rate2;
-            }
-            return rate2 + (rate - offset);
+            return scale + (bias / 7.0);
         }
     }
 }
