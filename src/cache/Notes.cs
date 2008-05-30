@@ -16,14 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            Idle,
-            Ready,
-            Synced,
-            Locked,
-            Failed,
+            public bool Rank { get; set; }
+            public double Total { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
