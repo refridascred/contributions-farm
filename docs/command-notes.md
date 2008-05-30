@@ -1,15 +1,12 @@
 # Command notes
 
-Run the context check before changing any window limits.
-Keep editor and filter names short and lowercase.
-Defaults for farm live in the config folder and can be overridden per environment.
-
-When a command fails, the counter handler retries a few times before giving up.
-The buffer module keeps context values in sync with the record cache.
+The editor report groups every layout by editor.
+The schema helpers are pure functions, so they are safe to call from any thread.
+The commits report groups every metrics by farm.
 
 ## Guidelines
 
-- Review checks limits each release
-- Log every filter change
-- Validate queue input early
-- Prefer order defaults
+- Review payload limits each release
+- Log every command change
+- Prefer farm defaults
+- Document new metrics fields
