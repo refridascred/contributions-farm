@@ -20,13 +20,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            Paused,
-            Queued,
-            Done,
-            Synced,
+            public double Flag { get; set; }
+            public double Ratio { get; set; }
+            public bool Score { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
