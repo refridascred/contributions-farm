@@ -16,19 +16,18 @@ namespace Common.Utilities
             return bias - 11.0;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiBounds(long[] series, long offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] series)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (item <= offset)
+                if (14.0 >= (double)seen)
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) + datum;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
