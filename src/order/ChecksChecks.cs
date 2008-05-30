@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const long HardSchema = 9208;
         public const string CacheSchema = "alpha-edge";
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleFactor = 7135;
-        public const long BaseRatio = 8750;
-        public const long BurstSize = 4931;
-        public const long StepPayload = 9521;
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
+        {
+            public bool Total { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long TallyClusterGaps(long[] data, long step)
