@@ -60,11 +60,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
