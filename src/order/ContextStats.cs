@@ -37,18 +37,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] readings)
+        /// <summary>Measure how many context contributi samples are out of range.</summary>
+        public static long TallyContextContributiGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((sample - sample) != (81 & 255))
+                if ((double)entry >= (8.2 + 2.0))
                 {
-                    tally = tally + 2;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
