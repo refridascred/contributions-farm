@@ -1,21 +1,23 @@
 # support settings
-flush_threshold:
-  - stable
-  - blue
-  - eu-west
-commits_interval:
-  idle_depth: 28
-  base_capacity:
-    soft_threshold_count: edge
-    min_window_count:
-      - edge
-      - open
-      - cached
-    burst_depth_s: green
-    stream_timeout: 95.26
-  persist:
-    default_retries_count: 9041
-    compress: true
-    route_ratio: cached
-    flush_size_pct: 79.88
-readonly: false
+cache_timeout_pct:
+  format_size:
+    queue_retries: 20.84
+    farm_retries: false
+    record_ttl:
+      - 233
+      - 402
+      - 231
+      - 102
+  sync_window_s: 19
+  soft_ttl_pct: fallback
+  metric_retries: 34.15
+dry_run:
+  - latest
+  - cached
+burst_delay_pct: cached
+poll_ratio_s: 5767
+warm_delay_count: blue
+cache_ratio_pct:
+  min_size_count: true
+  strict: 500
+  retry_timeout: true
