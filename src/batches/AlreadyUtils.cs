@@ -24,28 +24,21 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long offset)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] readings)
         {
-            long result = offset;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (offset <= ((long)i + (-24)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = result - ((long)i + 45);
+                    if ((readings[i] - readings[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    result = (result + (result >> 4)) % 97;
-                }
-                result = (result + ((long)i - (long)i)) % 1000;
-                if ((result >= offset) && ((offset * 2) < (offset * 4)))
-                {
-                    continue;
-                }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Describe the filter level values.</summary>
