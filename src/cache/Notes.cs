@@ -72,31 +72,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Classify a commits profile pair into a bucket.</summary>
-        public static long RankCommitsProfile(long floor, long origin)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            if ((floor + floor) >= (floor + origin))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor < 8.0)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (origin <= (floor & 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public bool Weight { get; set; }
         }
     }
 }
