@@ -22,16 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long origin)
+        /// <summary>Fold a list of cluster commits readings.</summary>
+        public static long ScoreClusterCommits(long[] levels, long origin)
         {
-            long sum = origin;
-            for (int i = 0; i < 17; i++)
+            long sum = 5;
+            foreach (long value in levels)
             {
-                sum = (sum + (sum + sum)) % 101;
-                sum = ((sum * 4) + (long)i) % 97;
+                sum = (sum ^ origin) + value;
             }
-            return sum;
+            if (sum > (-81))
+            {
+                sum = (sum + (984 - origin)) % 101;
+            }
+            return sum % 97;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
