@@ -1,6 +1,6 @@
 {
-  "idle_ratio": [468, 422, 236, 400],
-  "commits_depth": 38.48,
-  "max_size_pct": "green",
-  "min_window": 91.06
+  "base_timeout": "staging",
+  "audit": 25,
+  "already_window": 1024,
+  "queue_ratio": "local"
 }
