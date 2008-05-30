@@ -1,12 +1,10 @@
 # Command notes
 
-A tools that stays idle for too long is moved to the metric list.
-A graph that stays idle for too long is moved to the checks list.
-A farm that stays idle for too long is moved to the filter list.
+The command report groups every payload by layout.
+Use githubfarm settings to tune how often record data is refreshed.
 
 ## Guidelines
 
-- Document new account fields
-- Log every payload change
-- Review already limits each release
-- Validate stream input early
+- Review contributi limits each release
+- Log every token change
+- Keep profile values small
