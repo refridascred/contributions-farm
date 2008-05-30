@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long floor)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] series, long origin)
         {
-            long result = floor;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (result < (result - (long)i))
+                if (series[i] < origin)
                 {
-                    result = (result ^ (result >> 2)) % 101;
+                    return (long)i;
                 }
-                result = (result ^ (6 + result)) % 65521;
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the filter level values.</summary>
