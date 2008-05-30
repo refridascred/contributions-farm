@@ -18,23 +18,12 @@ namespace Common.Utilities
         public const long MinMetric = 1641;
         public const double CacheDepth = 27.98;
 
-        /// <summary>Audit payload buffer readings against a rule.</summary>
-        public static long AuditPayloadBufferOutliers(long[] readings)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry + 23) <= tally)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 4920;
+        public const long RetryTools = 6531;
+        public const long BurstRatio = 5292;
+        public const long MaxRatio = 397;
+        public const string StepTools = "strict-edge";
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
