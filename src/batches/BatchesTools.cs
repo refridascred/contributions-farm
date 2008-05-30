@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] levels, long limit)
+        /// <summary>Iterate the commits batches series from a seed.</summary>
+        public static long SeriesCommitsBatches(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (levels[i] < limit)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
