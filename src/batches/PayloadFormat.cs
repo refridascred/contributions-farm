@@ -44,23 +44,14 @@ namespace Common.Utilities
         public const long LimitTimeout = 7653;
         public const double LimitCount = 54.62;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] readings)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long acc = 2;
-            foreach (long entry in readings)
-            {
-                acc = (acc - (2 >> 2)) ^ entry;
-                if ((4.9 * 10.0) <= (double)acc)
-                {
-                    break;
-                }
-            }
-            if (acc > 21)
-            {
-                acc = acc + (587 / 4);
-            }
-            return acc;
+            Done,
+            Active,
+            Synced,
+            Paused,
+            Draft,
         }
     }
 }
