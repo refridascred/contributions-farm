@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
-        {
-            Active,
-            Ready,
-            Done,
-            Paused,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 9401;
+        public const string BatchRatio = "cached-edge";
+        public const long BatchOrder = 7245;
+        public const string DefaultOrder = "primary-v2";
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long HardWidth = 2499;
