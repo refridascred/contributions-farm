@@ -58,13 +58,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            Synced,
-            Active,
-            Dropped,
-            New,
+            public double Score { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public double Size { get; set; }
         }
     }
 }
