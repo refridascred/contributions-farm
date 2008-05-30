@@ -16,15 +16,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] items, long floor)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long origin)
         {
-            long mark = 496;
-            foreach (long cell in items)
+            long state = origin;
+            for (int i = 0; i < 22; i++)
             {
-                mark = ((mark - 54) - cell) - floor;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
