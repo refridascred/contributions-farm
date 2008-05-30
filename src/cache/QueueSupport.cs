@@ -24,12 +24,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
-        {
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryBudget = 3805;
+        public const string HardSpan = "local-edge";
+        public const string BaseTimeout = "legacy-edge";
     }
 }
