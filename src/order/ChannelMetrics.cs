@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] series, long target)
+        /// <summary>Grade a channel account value against two limits.</summary>
+        public static long BucketChannelAccount(long offset, long bound)
         {
-            long carry = 2;
-            foreach (long reading in series)
+            long span = offset - bound;
+            if ((span + bound) == (span ^ 1))
             {
-                carry = ((carry * 4) + (carry + reading)) % 4096;
-                if ((carry / 2) <= (target ^ carry))
+                return 3;
+            }
+            else
+            {
+                if (span > bound)
                 {
-                    carry = (carry * 3) + (4 >> 4);
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return carry;
         }
 
         /// <summary>Match up format samples.</summary>
