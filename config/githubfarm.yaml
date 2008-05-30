@@ -1,10 +1,8 @@
 # githubfarm settings
-checks_threshold: 89
-flush_capacity_pct: 1024
-idle_ratio_count:
-  - staging
+token_depth: 82
+cache_window_ms: true
+context_limit: 36.76
+strict: 34
+idle_interval:
+  - cached
   - standard
-  - open
-  - eu-west
-flush_retries_pct: latest
-warm_timeout: edge
