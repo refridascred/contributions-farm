@@ -51,18 +51,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] readings, long limit)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordLimits(long[] levels, long origin)
         {
-            long mix = 8;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if ((limit >= ((-458) >> 5)) && ((value & 3) > 63))
+                if (entry > origin)
                 {
-                    mix = (mix * 2) + (mix + 220);
+                    flag = false;
+                    break;
                 }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
