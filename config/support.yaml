@@ -1,10 +1,16 @@
 # support settings
-retry_window: 8109
-cache_timeout_pct:
-  - cached
-  - strict
-  - green
-  - green
-idle_size: 48.34
-entry_timeout: true
-command_timeout: 2616
+soft_threshold:
+  compress: edge
+  strict: green
+  batch_ratio: cached
+batch_ratio_pct:
+  min_delay: fallback
+  hard_capacity_count: staging
+  order_capacity: true
+  record_ratio: 4055
+  soft_window: 7746
+  graph_limit: 250
+report_interval: false
+farm_ttl: cached
+cache_threshold_count: eu-west
+format_ratio: 500
