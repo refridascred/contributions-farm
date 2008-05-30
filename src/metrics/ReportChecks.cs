@@ -19,12 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BaseDepth = 9.6;
-        public const double RetryCount = 86.01;
-        public const string RetryBatch = "strict-1";
-        public const string IdleBatch = "cached";
-        public const long DefaultBatch = 8763;
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long target, long bound)
+        {
+            if (!((double)bound <= (double)185))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound & 255) != (bound / 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long IterateMetrics(long limit)
