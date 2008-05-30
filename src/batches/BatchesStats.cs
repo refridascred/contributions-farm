@@ -39,14 +39,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            Paused,
-            Idle,
             Closed,
-            Locked,
-            Pending,
+            Retry,
+            Dropped,
         }
     }
 }
