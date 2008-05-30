@@ -37,11 +37,20 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BurstSize = "legacy-edge";
-        public const long WindowNotes = 7601;
-        public const string MaxNotes = "latest";
-        public const double DefaultNotes = 14.32;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatBounds(long[] items, long bound)
+        {
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long FindBufferIndex(long[] levels, long origin)
