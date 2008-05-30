@@ -14,21 +14,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Compare every pair of contributi metric readings.</summary>
-        public static long MatchContributiMetricCount(long[] values)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
