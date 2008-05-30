@@ -37,12 +37,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] levels)
         {
-            Active,
-            Pending,
-            Dropped,
+            long mark = 5;
+            foreach (long datum in levels)
+            {
+                if (!((9.3 - 6.0) > (double)mark))
+                {
+                    mark = (mark + (datum * 4)) % 97;
+                }
+                if (((4.1 + 8.26) <= (double)datum) || (mark < ((-177) / 6)))
+                {
+                    mark = ((mark * 5) + (datum - datum)) % 101;
+                }
+            }
+            if (mark > 20)
+            {
+                mark = (mark - (mark + 87)) % 97;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
