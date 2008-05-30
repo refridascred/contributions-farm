@@ -1,5 +1,5 @@
 {
-  "audit": 250,
-  "flush_window": 500,
-  "compress": "latest"
+  "enabled": 4800,
+  "metrics_ratio": "primary",
+  "cache_size": 34.46
 }
