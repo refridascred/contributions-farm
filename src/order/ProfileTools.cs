@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 6315;
-        public const double RetryDepth = 31.73;
-        public const long WindowReport = 7241;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 3257;
+        public const long BurstProfile = 4622;
+        public const long WindowSize = 4958;
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long TotalStream(long[] levels, long limit)
