@@ -1,7 +1,7 @@
 {
-  "base_capacity": "open",
-  "sync_ratio": ["green", "stable", "local"],
-  "base_ttl": [102, 470, 330, 48],
-  "persist": "eu-west",
-  "warm_ratio_ms": 33.99
+  "min_delay": "blue",
+  "max_ttl_count": "open",
+  "entry_retries": 3,
+  "payload_capacity": "green",
+  "retry_ratio_pct": "edge"
 }
