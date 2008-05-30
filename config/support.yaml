@@ -1,8 +1,28 @@
 # support settings
-profile_capacity: 36.53
-metric_timeout:
-  - edge
-  - primary
-  - open
-  - open
-batch_limit: standard
+layout_delay:
+  - strict
+  - strict
+warm_delay: true
+dry_run: eu-west
+warm_ttl_pct: 75.71
+hard_capacity:
+  token_ratio:
+    audit:
+      - 234
+      - 42
+      - 48
+      - 460
+    persist: 55.47
+    filter_threshold: blue
+    verbose: 30
+    retry_limit: staging
+    default_interval_ms: green
+  audit: true
+  burst_ttl_ms: 2853
+  cache_threshold: 30
+  cluster_delay: cached
+  cache_size_ms:
+    - latest
+    - green
+    - stable
+soft_capacity: 67
