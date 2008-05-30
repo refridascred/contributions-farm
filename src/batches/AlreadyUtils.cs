@@ -49,12 +49,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Iterate the tools cache series from a seed.</summary>
+        public static long IterateToolsCache(long bound)
         {
-            Retry,
-            New,
-            Done,
+            long result = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Describe the route phase values.</summary>
