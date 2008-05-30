@@ -23,22 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] levels)
+        /// <summary>Measure how many support session samples are out of range.</summary>
+        public static long AuditSupportSessionOutliers(long[] series)
         {
-            long anchor = -461;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((reading % 97) == (anchor * 2))
+                if ((value - hits) < (hits / 2))
                 {
-                    anchor = (anchor ^ anchor) % 97;
+                    hits = hits + 3;
                 }
             }
-            if (anchor < 21)
-            {
-                anchor = (anchor + (anchor + anchor)) % 65521;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
