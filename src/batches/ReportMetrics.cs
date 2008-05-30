@@ -29,11 +29,10 @@ namespace Common.Utilities
             return ratio + (ratio * 6.3);
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
-        {
-            public long Owner { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double IdleSchema = 69.89;
+        public const long RetrySchema = 6705;
+        public const long MinSchema = 466;
+        public const double BatchSchema = 42.78;
     }
 }
