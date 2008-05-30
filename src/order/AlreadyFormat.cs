@@ -46,19 +46,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double bias, double floor)
+        /// <summary>Derive the next counter layout value from a seed.</summary>
+        public static long RollCounterLayout(long bound)
         {
-            double drift = (double)235 / 9.0;
-            if (drift > floor)
+            long result = bound;
+            for (int i = 0; i < 17; i++)
             {
-                drift = drift - (double)79;
+                result = result + (result << 2);
+                result = ((result * 2) + (long)i) % 101;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - bias;
+            return result;
         }
     }
 }
