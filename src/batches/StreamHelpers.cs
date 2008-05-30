@@ -69,12 +69,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheWidth = 2827;
-        public const long HardRatio = 2995;
-        public const double LimitTools = 32.03;
-        public const double BurstFactor = 40.01;
-        public const long SoftWidth = 4895;
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
+        {
+            public bool Weight { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long AuditAlreadyHits(long[] series)
