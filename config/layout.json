@@ -1,8 +1,5 @@
 {
-  "retry_interval_count": [48, 420, 340],
-  "audit": "blue",
-  "cache_delay_ms": "cached",
-  "batch_size_ms": "primary",
-  "graph_retries": 21.22,
-  "idle_interval": 74
+  "default_limit": 100,
+  "commits_window": 6588,
+  "min_capacity_ms": ["fallback", "staging", "standard", "standard"]
 }
