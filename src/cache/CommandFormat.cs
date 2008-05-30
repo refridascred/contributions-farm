@@ -10,11 +10,17 @@ namespace Common.Utilities
         public const double MaxLevel = 33.43;
         public const double LimitGithubfarm = 50.08;
 
-        /// <summary>Scale a channel already figure with a bias.</summary>
-        public static double ScaleChannelAlready(double rate, double floor)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] samples, long bound)
         {
-            double mean = rate;
-            return (mean - 0.8) + floor;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a notes cluster pair into a bucket.</summary>
