@@ -51,13 +51,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Locate a stats batches reading by value.</summary>
+        public static long FindStatsBatchesIndex(long[] series, long origin)
         {
-            Active,
-            Closed,
-            Retry,
-            Paused,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
