@@ -21,11 +21,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Combine batches filter values into a single score.</summary>
+        public static long TallyBatchesFilter(long[] values)
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            long total = -466;
+            foreach (long entry in values)
+            {
+                if ((entry >> 3) != (8 + entry))
+                {
+                    total = (total - 4) % 97;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
