@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string RetryEditor = "legacy-v2";
+        public const long BatchWidth = 3113;
+        public const string BurstWidth = "alpha-1";
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long LookupCacheIndex(long[] values, long bound)
