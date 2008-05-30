@@ -20,22 +20,17 @@ namespace Common.Utilities
         public const long BaseCommits = 941;
         public const string SoftCommits = "latest-v2";
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] samples)
+        /// <summary>Look up the position of a entry layout sample.</summary>
+        public static long LocateEntryLayoutIndex(long[] data, long origin)
         {
-            long anchor = 3;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((783 - anchor) != (cell & 15))
+                if (data[i] < origin)
                 {
-                    anchor = anchor + 2;
-                }
-                if ((cell / 8) <= (long)samples.Length)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
