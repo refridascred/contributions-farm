@@ -38,11 +38,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
-        {
-            public bool Owner { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultScore = 7431;
+        public const long DefaultNotes = 227;
+        public const long HardNotes = 4398;
+        public const double MaxBudget = 28.42;
+        public const string BaseSize = "local-1";
     }
 }
