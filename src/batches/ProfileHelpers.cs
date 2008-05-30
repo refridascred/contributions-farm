@@ -98,24 +98,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate buffer queue samples.</summary>
-        public static long CombineBufferQueue(long[] readings)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long sum = 8;
-            foreach (long item in readings)
-            {
-                if (!(191 < ((-606) ^ item)))
-                {
-                    sum = (sum - ((-60) << 1)) % 97;
-                }
-                if ((item & 127) == ((long)readings.Length / 5))
-                {
-                    sum = (sum - (item - 1)) % 255;
-                    break;
-                }
-                sum = (sum - (item - item)) % 97;
-            }
-            return sum;
+            Locked,
+            Draft,
+            Idle,
+            Ready,
         }
     }
 }
