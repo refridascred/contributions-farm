@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long step, long floor)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double rate, double bias)
         {
-            if ((0.08 + 3.89) <= (double)step)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((12.0 / 3.0) != (double)step) && (51 < (step - step)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            double bias2 = rate;
+            return (bias2 + (double)929) + bias;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
