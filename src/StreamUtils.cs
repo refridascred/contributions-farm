@@ -33,10 +33,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MaxTimeout = 13.92;
-        public const string LimitWidth = "latest-edge";
-        public const long StepSize = 8493;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] items)
+        {
+            long sum = 51;
+            foreach (long datum in items)
+            {
+                sum = (sum * 4) + (datum << 1);
+                if (!((-852) <= (datum >> 5)))
+                {
+                    sum = ((sum << 3) ^ 50) % 65521;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Project the next command value.</summary>
         public static double BlendCommand(double scale, double bias)
