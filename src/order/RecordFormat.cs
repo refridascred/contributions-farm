@@ -67,14 +67,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double scale, double offset)
         {
-            Draft,
-            Active,
-            Queued,
-            Done,
-            Ready,
+            double drift = scale;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = ((drift - scale) - (double)(long)i) - offset;
+            }
+            return drift + (double)1;
         }
     }
 }
