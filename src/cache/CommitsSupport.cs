@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            Locked,
-            Done,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheFactor = 3016;
+        public const long HardDepth = 2862;
+        public const long MaxNotes = 6675;
+        public const long CacheNotes = 9752;
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
