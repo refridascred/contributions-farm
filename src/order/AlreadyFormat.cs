@@ -39,18 +39,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many notes record samples are out of range.</summary>
-        public static long TallyNotesRecordMatches(long[] series)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((64 + seen) <= (seen + sample))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Done,
+            Draft,
+            New,
+            Pending,
+            Failed,
         }
 
         /// <summary>Describe the route state values.</summary>
