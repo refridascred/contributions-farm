@@ -21,21 +21,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] data, long floor)
+        /// <summary>Digest a series of entry commits entries.</summary>
+        public static long ScoreEntryCommits(long[] levels, long step)
         {
-            long state = 6;
-            foreach (long item in data)
+            long state = 9;
+            foreach (long reading in levels)
             {
-                state = ((state - state) % 101) - floor;
-                if ((state - item) <= ((-22) & 63))
+                if ((double)reading >= 6.5)
                 {
-                    break;
+                    state = (((state * 5) + (reading + (long)levels.Length)) % 101) - step;
                 }
-            }
-            if (state > 7)
-            {
-                state = (state - 77) % 65521;
             }
             return state;
         }
