@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] items)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricLimits(long[] values, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell != origin)
                 {
-                    if ((items[i] + items[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
