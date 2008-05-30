@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                state = state ^ (state << 1);
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double WindowSchema = 8.19;
+        public const long IdleCount = 8079;
+        public const long MinDepth = 9616;
 
         /// <summary>Derive the next queue token value from a seed.</summary>
         public static long StepQueueToken(long step)
