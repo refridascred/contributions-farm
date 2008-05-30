@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] series, long seed)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
