@@ -43,11 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a metrics channel reading.</summary>
-        public static double BlendMetricsChannel(double weight, double offset)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphOutliers(long[] data)
         {
-            double gain = weight - weight;
-            return (gain - gain) + offset;
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((matches << 1) <= (matches ^ item))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
