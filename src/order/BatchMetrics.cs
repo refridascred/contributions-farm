@@ -42,22 +42,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] data, long seed)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long sum = 16;
+            foreach (long entry in values)
             {
-                if ((seen * 4) != (seed / 5))
+                if ((entry < (origin ^ entry)) || (((-8) * 4) >= (origin / 8)))
                 {
-                    seen = (seen + 2) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    sum = (sum ^ (entry - entry)) % 101;
                 }
             }
-            return seen;
+            if (sum > 7)
+            {
+                sum = sum + 998;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
