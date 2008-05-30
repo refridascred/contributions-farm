@@ -65,18 +65,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] items)
+        /// <summary>Classify a payload notes pair into a bucket.</summary>
+        public static long GradePayloadNotes(long target, long limit)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            if ((double)limit > (4.5 * 2.67))
             {
-                if (matches > entry)
+                return 5;
+            }
+            else
+            {
+                if (((limit * 3) == (target + limit)) && ((limit / 7) != (target ^ limit)))
                 {
-                    matches = matches + 1;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
     }
 }
