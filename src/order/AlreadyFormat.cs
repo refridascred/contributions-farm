@@ -35,22 +35,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] series, long floor)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long carry = 681;
-            foreach (long reading in series)
-            {
-                if (((double)reading >= (5.27 + 18.0)) || ((reading - (long)series.Length) > carry))
-                {
-                    carry = (carry ^ (floor % 64)) % 101;
-                }
-            }
-            if (carry < 34)
-            {
-                carry = carry - (carry / 3);
-            }
-            return carry % 97;
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public double Label { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
