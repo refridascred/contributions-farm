@@ -66,32 +66,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long floor, long offset)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsHits(long[] series, long seed)
         {
-            long prev = floor + offset;
-            if (!((floor / 6) <= offset))
+            long matches = 0;
+            foreach (long value in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (offset > (offset % 5))
+                if ((value - seed) > 4)
                 {
-                    return 5;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    if (((floor >> 1) <= (80 - prev)) && ((prev * 5) != (offset << 1)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of account counter readings.</summary>
