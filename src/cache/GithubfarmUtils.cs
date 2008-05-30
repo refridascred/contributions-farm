@@ -33,11 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double rate, double span)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordMatches(long[] items, long seed)
         {
-            double weight = span;
-            return weight - (rate / 7.0);
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((3.08 / 4.0) <= (double)sample)
+                {
+                    count = (count + 2) - seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the report counter entries that pass the check.</summary>
