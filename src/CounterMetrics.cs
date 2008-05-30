@@ -39,39 +39,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long step, long step2)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] values, long bound)
         {
-            long diff = step ^ step2;
-            if (((diff & 15) > (step + diff)) || ((step2 * 2) >= (diff << 3)))
+            long acc = 244;
+            foreach (long sample in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((diff & 15) <= step)
+                if (((bound - bound) > (sample * 4)) || (4.27 <= (double)513))
                 {
-                    return 0;
+                    acc = (acc * 3) + ((-32) + sample);
                 }
-                else
+                if (((bound % 12) <= acc) || ((acc % 100) >= (acc & 63)))
                 {
-                    if (!(step2 < step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (4 < (step2 >> 1))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    break;
                 }
             }
+            return acc % 97;
         }
     }
 }
