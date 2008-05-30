@@ -62,38 +62,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long target, long limit)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            if (!((limit + limit) > (limit & 7)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target + limit) == ((-912) ^ target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit << 1) <= (limit - limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((limit >> 3) >= limit) || ((double)limit <= 16.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
