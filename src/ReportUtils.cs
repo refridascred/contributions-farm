@@ -47,19 +47,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate channel stats readings against a bound.</summary>
-        public static bool VerifyChannelStatsBounds(long[] readings, long origin)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] items)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum < origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] - items[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
