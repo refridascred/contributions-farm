@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorLimits(long[] levels, long origin)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Count { get; set; }
+            public long Size { get; set; }
+            public bool Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
