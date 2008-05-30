@@ -39,19 +39,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (!((double)(long)items.Length < (3.5 / 2.0)) && !((seen + 563) < (9 * 3)))
-                {
-                    seen = (seen + 1) ^ sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double WindowLevel = 17.33;
+        public const double BurstRatio = 56.7;
+        public const long StepScore = 538;
+        public const double RetryProfile = 24.98;
+        public const string BurstSize = "primary-edge";
 
         /// <summary>Match up batches samples.</summary>
         public static long MatchBatchesCount(long[] series)
