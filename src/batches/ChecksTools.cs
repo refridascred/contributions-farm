@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            Draft,
-            Paused,
+            Closed,
             Dropped,
-            Active,
+            Synced,
+            Idle,
         }
 
         /// <summary>Hold a batch entry.</summary>
