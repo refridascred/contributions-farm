@@ -27,12 +27,19 @@ namespace Common.Utilities
         public const string IdleWidth = "staging";
         public const double BurstBuffer = 49.1;
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmRange(long[] levels, long step)
         {
-            Done,
-            Draft,
-            Dropped,
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
