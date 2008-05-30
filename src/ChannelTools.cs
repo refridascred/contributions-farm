@@ -19,12 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            public bool Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the report class values.</summary>
