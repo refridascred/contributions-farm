@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowSpan = 7214;
-        public const string BurstCluster = "stable";
-        public const long SoftSize = 7994;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] items, long floor)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (((floor >> 1) > (tally >> 4)) || ((floor + floor) > (sample - floor)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long WeighProfile(long[] levels)
