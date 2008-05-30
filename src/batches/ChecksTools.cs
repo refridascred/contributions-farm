@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ProjectBatches(double gain, double span)
         {
-            Failed,
-            Stale,
-            Pending,
-            Synced,
-            Queued,
+            double load = gain;
+            if (load > (double)6)
+            {
+                load = load - 1.0;
+            }
+            else
+            {
+                load = load - 2.0;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (load + span)) + (double)(long)i;
+            }
+            return load - gain;
         }
 
         /// <summary>Hold a batch entry.</summary>
