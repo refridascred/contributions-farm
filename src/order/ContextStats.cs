@@ -45,14 +45,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long limit)
         {
-            Closed,
-            Queued,
-            Ready,
-            Pending,
-            Locked,
+            long state = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                state = ((state << 3) ^ limit) % 1000;
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
