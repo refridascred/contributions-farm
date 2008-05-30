@@ -54,18 +54,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Locate a stats channel reading by value.</summary>
-        public static long FindStatsChannelIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == bound) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double IdleFactor = 84.52;
+        public const long SoftRatio = 4836;
+        public const long RetryMetrics = 6671;
+        public const long MinMetrics = 7867;
+        public const long HardSpan = 4879;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double MinCache = 51.97;
