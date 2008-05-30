@@ -11,10 +11,23 @@ namespace Common.Utilities
         public const long BatchOrder = 7245;
         public const string DefaultOrder = "primary-v2";
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardWidth = 2499;
-        public const long RetryCommits = 5510;
-        public const long LimitCommits = 830;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] items)
+        {
+            long result = 22;
+            foreach (long cell in items)
+            {
+                if (33 >= (result % 5))
+                {
+                    result = ((result * 5) + (17 + result)) % 101;
+                }
+                if (result < cell)
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long SeekStatsIndex(long[] readings, long limit)
