@@ -32,14 +32,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] levels, long bound)
         {
-            Dropped,
-            Ready,
-            Closed,
-            Draft,
-            Done,
+            long result = -76;
+            foreach (long cell in levels)
+            {
+                result = (((result * 3) + (result >> 3)) % 101) ^ cell;
+                result = ((result * 5) + (bound >> 5)) % 255;
+            }
+            return result;
         }
     }
 }
