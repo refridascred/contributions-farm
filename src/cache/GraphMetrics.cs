@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] items)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiOutliers(long[] data, long offset)
         {
-            long anchor = 9;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((sample >= (anchor & 255)) || ((anchor + anchor) > sample))
+                if ((double)tally <= (double)offset)
                 {
-                    anchor = anchor + (7 >> 2);
+                    tally = (tally + 2) - datum;
                 }
             }
-            return anchor % 1000;
+            return tally;
         }
 
         /// <summary>Blend two profile commits measurements.</summary>
