@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] samples)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] data, long step)
         {
-            long result = 887;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if (result > (73 - result))
+                if (cell > step)
                 {
-                    result = (((result << 3) ^ 23) % 255) - datum;
-                }
-                else
-                {
-                    result = (result ^ result) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            if (result > 1)
-            {
-                result = (result - 6) % 65521;
-            }
-            return result;
+            return flag;
         }
 
         /// <summary>Hold a schema entry.</summary>
