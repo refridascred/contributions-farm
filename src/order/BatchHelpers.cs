@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long bound, long bound2)
         {
-            public bool Owner { get; set; }
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
+            if ((bound >> 4) >= (bound / 8))
+            {
+                return 6;
+            }
+            else
+            {
+                if (bound2 <= (bound >> 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
