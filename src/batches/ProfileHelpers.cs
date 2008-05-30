@@ -92,15 +92,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] items, long step)
+        /// <summary>Accumulate buffer queue samples.</summary>
+        public static long CombineBufferQueue(long[] readings)
         {
-            long mix = 53;
-            foreach (long datum in items)
+            long sum = 8;
+            foreach (long item in readings)
             {
-                mix = ((mix << 3) ^ (step ^ mix)) ^ datum;
+                if (!(191 < ((-606) ^ item)))
+                {
+                    sum = (sum - ((-60) << 1)) % 97;
+                }
+                if ((item & 127) == ((long)readings.Length / 5))
+                {
+                    sum = (sum - (item - 1)) % 255;
+                    break;
+                }
+                sum = (sum - (item - item)) % 97;
             }
-            return mix;
+            return sum;
         }
     }
 }
