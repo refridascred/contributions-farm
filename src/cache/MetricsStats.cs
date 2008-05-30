@@ -20,21 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] readings)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double rate, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double scale = 20.0;
+            return (scale + floor) + rate;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
