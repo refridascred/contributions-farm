@@ -1,6 +1,5 @@
 {
-  "idle_timeout": ["open", "local", "fallback"],
-  "soft_timeout_count": "open",
-  "session_ttl": "strict",
-  "compress": true
+  "poll_limit": 67,
+  "contributi_retries": 13.17,
+  "audit": 30
 }
