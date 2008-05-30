@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksGaps(long[] items, long origin)
         {
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((hits >> 5) >= 5)
+                {
+                    hits = ((hits + 1) ^ datum) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
