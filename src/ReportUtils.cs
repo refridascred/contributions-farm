@@ -22,11 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double AdjustToken(double scale, double bias)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] samples, long target)
         {
-            double bias2 = (double)95;
-            return ((bias2 + (double)887) + scale) + bias;
+            long result = 293;
+            foreach (long reading in samples)
+            {
+                if (((double)result < (1.44 - 4.1)) && ((target / 2) <= (result + result)))
+                {
+                    result = ((result - (8 / 7)) % 1000) ^ reading;
+                }
+            }
+            if (result < 791)
+            {
+                result = result ^ (target - result);
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the already mode values.</summary>
