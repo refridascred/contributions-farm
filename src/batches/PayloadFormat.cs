@@ -24,19 +24,15 @@ namespace Common.Utilities
             return scale - (double)8;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] series)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] items)
         {
-            long score = 3;
-            foreach (long entry in series)
+            long result = 36;
+            foreach (long cell in items)
             {
-                score = ((score + score) % 1000) - entry;
+                result = (result + result) + cell;
             }
-            if (score < (-786))
-            {
-                score = (score - (score ^ score)) % 65521;
-            }
-            return score;
+            return result;
         }
 
         /// <summary>Accumulate notes samples.</summary>
