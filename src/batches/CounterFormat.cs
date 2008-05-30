@@ -26,16 +26,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate batches order samples.</summary>
-        public static long CombineBatchesOrder(long[] values, long target)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] samples, long target)
         {
-            long sum = 611;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (((sum << 3) ^ (datum - sum)) % 101) + target;
-                sum = (sum - datum) % 65521;
+                if ((samples[i] >= target) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum % 97;
+            return -1;
         }
     }
 }
