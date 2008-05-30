@@ -31,9 +31,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BatchContext = "standard-v2";
-        public const long DefaultLevel = 590;
-        public const double SoftContext = 59.38;
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            Closed,
+            Active,
+            Locked,
+            Dropped,
+            New,
+        }
     }
 }
