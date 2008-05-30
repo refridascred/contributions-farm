@@ -36,13 +36,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordMatches(long[] series)
         {
-            Draft,
-            Paused,
-            Ready,
-            Active,
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((value + value) >= (value + matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
