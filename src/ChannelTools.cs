@@ -19,11 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Validate tools contributi readings against a bound.</summary>
+        public static bool GuardToolsContributiRange(long[] levels, long offset)
         {
-            public bool Label { get; set; }
-            public long Offset { get; set; }
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
