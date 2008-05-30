@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 3257;
-        public const long BurstProfile = 4622;
-        public const long WindowSize = 4958;
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of account readings.</summary>
         public static long WeighAccount(long[] series)
