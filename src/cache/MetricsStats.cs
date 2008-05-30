@@ -34,19 +34,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine report session values into a single score.</summary>
-        public static long CombineReportSession(long[] series)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long anchor = 5;
-            foreach (long value in series)
-            {
-                anchor = anchor + (value + value);
-                if ((anchor >= (value & 31)) || ((914 + 769) >= ((-834) + value)))
-                {
-                    anchor = anchor - (anchor ^ anchor);
-                }
-            }
-            return anchor % 1000;
+            public bool Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Blend two token command measurements.</summary>
