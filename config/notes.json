@@ -1,5 +1,14 @@
 {
-  "max_retries_count": false,
-  "schema_retries": "blue",
-  "max_depth_ms": "eu-west"
+  "burst_capacity": 1024,
+  "report_threshold": {
+    "base_interval": "edge",
+    "readonly": {
+      "format_window": 62,
+      "editor_capacity": "cached",
+      "flush_capacity_count": 52.82
+    },
+    "retry_retries": "latest"
+  },
+  "burst_delay": true,
+  "soft_size_ms": true
 }
