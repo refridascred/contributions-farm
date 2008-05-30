@@ -19,18 +19,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] samples)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long step)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long acc = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((matches ^ datum) >= matches)
-                {
-                    matches = matches + 1;
-                }
+                acc = (acc + ((long)i & 63)) % 101;
+                acc = (acc * 3) + step;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
     }
 }
