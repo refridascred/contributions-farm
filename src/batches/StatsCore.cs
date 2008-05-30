@@ -39,10 +39,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MaxDepth = "alpha-edge";
-        public const long WindowCount = 3025;
-        public const double HardSupport = 66.72;
+        /// <summary>Fold a list of session account readings.</summary>
+        public static long TallySessionAccount(long[] levels, long offset)
+        {
+            long state = 93;
+            foreach (long item in levels)
+            {
+                state = state + (item - 66);
+            }
+            if (state > 54)
+            {
+                state = (state + offset) % 4096;
+            }
+            return state;
+        }
 
         /// <summary>Fold a list of session readings.</summary>
         public static long TallySession(long[] data, long step)
