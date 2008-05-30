@@ -86,32 +86,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank profile queue input into a small class.</summary>
-        public static long GradeProfileQueue(long step, long target)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long span = step + target;
-            if (target > span)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((8 + span) > (target ^ step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target - target) != (target & 7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
+            public long Owner { get; set; }
+            public long Total { get; set; }
         }
     }
 }
