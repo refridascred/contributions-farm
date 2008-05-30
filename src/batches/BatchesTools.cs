@@ -26,21 +26,21 @@ namespace Common.Utilities
         public const long BatchTimeout = 7685;
         public const string BaseDepth = "stable-v2";
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] samples)
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) > 7)
+                    if ((levels[i] + levels[j]) != 7)
                     {
-                        hits = hits + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
