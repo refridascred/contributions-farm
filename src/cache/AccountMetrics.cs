@@ -63,21 +63,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] levels)
+        /// <summary>Fold a list of editor layout readings.</summary>
+        public static long FoldEditorLayout(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = -165;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (778 > (datum + datum))
                 {
-                    if ((levels[i] - levels[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state * 4) + ((long)items.Length << 3);
+                }
+                else
+                {
+                    state = ((state * 2) + (datum * 4)) % 101;
                 }
             }
-            return seen;
+            if (state < 1)
+            {
+                state = state - state;
+            }
+            return state;
         }
 
         /// <summary>Classify a buffer metric pair into a bucket.</summary>
