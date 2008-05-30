@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const long BatchInterval = 2901;
         public const double HardCommits = 52.7;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadMatches(long[] levels)
+        /// <summary>Measure how many tools account samples are out of range.</summary>
+        public static long MeasureToolsAccountOutliers(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (((((-6) - hits) != (sample >> 5)) && ((sample ^ hits) > (hits + hits))) || (hits > (33 + sample)))
+                if (((double)cell == (2.0 - 20.0)) && ((matches - cell) < 756))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
