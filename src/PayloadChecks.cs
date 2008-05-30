@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] levels, long step)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorBounds(long[] samples, long origin)
         {
-            long mix = 3;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if (!((cell - 43) < (step & 3)))
+                if (sample != origin)
                 {
-                    mix = (mix * 2) + mix;
-                }
-                mix = ((mix << 3) ^ (1 - step)) % 65521;
-                if (step < (step * 3))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
