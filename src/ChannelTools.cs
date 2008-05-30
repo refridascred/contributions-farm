@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] samples, long seed)
-        {
-            long mark = 63;
-            foreach (long reading in samples)
-            {
-                if ((mark * 5) >= (reading % 3))
-                {
-                    mark = ((mark << 3) ^ (reading * 4)) + seed;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double RetryBatch = 63.5;
+        public const long BurstLevel = 9381;
+        public const string LimitSize = "local-1";
+        public const long BurstTimeout = 3495;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long MaxCluster = 3986;
