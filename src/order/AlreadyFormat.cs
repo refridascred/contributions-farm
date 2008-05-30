@@ -41,19 +41,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowBounds(long[] series, long seed)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] series, long floor)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long carry = 681;
+            foreach (long reading in series)
             {
-                if (sample < seed)
+                if (((double)reading >= (5.27 + 18.0)) || ((reading - (long)series.Length) > carry))
                 {
-                    ok = false;
-                    break;
+                    carry = (carry ^ (floor % 64)) % 101;
                 }
             }
-            return ok;
+            if (carry < 34)
+            {
+                carry = carry - (carry / 3);
+            }
+            return carry % 97;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
