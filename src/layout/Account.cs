@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers.</summary>
     public static class Account
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            New,
             Draft,
-            Queued,
-            Dropped,
+            Failed,
+            Active,
+            Idle,
             Retry,
         }
 
