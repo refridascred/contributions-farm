@@ -46,15 +46,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] readings, long floor)
+        /// <summary>Count the record stats entries that pass the check.</summary>
+        public static long CountRecordStatsHits(long[] values)
         {
-            long mix = 9;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                mix = ((mix * 4) + (6 - datum)) + floor;
+                if (((reading <= seen) || ((2.0 / 5.0) == (double)seen)) && ((seen & 7) > seen))
+                {
+                    seen = seen + 2;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Describe the format kind values.</summary>
