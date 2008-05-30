@@ -59,19 +59,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] items, long offset)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Label { get; set; }
+            public double Ratio { get; set; }
+            public double Region { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
