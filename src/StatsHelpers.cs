@@ -33,20 +33,12 @@ namespace Common.Utilities
         public const long BaseCluster = 1293;
         public const long LimitDepth = 9971;
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksRange(long[] readings, long floor)
-        {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleScore = 2882;
+        public const long HardStream = 3482;
+        public const string WindowStream = "alpha-v2";
+        public const long LimitSize = 1844;
+        public const long DefaultSize = 9955;
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long PairPayloadCount(long[] values)
