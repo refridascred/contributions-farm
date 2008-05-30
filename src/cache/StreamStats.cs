@@ -26,19 +26,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] samples, long limit)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long bound, long step)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long cur = bound - step;
+            if ((bound - bound) > (cur * 4))
             {
-                if (sample >= limit)
+                return 7;
+            }
+            else
+            {
+                if ((2.8 / 8.0) != (double)step)
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)cur <= (8.53 - 3.14))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
