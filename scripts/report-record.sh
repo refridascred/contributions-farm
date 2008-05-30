@@ -6,15 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable green cached legacy; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=407
+RECORD_LIMIT=256
 log "limit is ${RECORD_LIMIT}"
 
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
