@@ -55,17 +55,16 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] series, long limit)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (series[i] < limit)
-                {
-                    return (long)i;
-                }
+                acc = (acc ^ 310) % 65521;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
     }
 }
