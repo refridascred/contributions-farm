@@ -30,22 +30,11 @@ namespace Common.Utilities
             return ratio + (ratio * 6.3);
         }
 
-        /// <summary>Combine stats notes values into a single score.</summary>
-        public static long WeighStatsNotes(long[] values)
-        {
-            long state = 10;
-            foreach (long value in values)
-            {
-                if (((value + state) > (state % 5)) && ((1 ^ value) <= value))
-                {
-                    state = state ^ (state / 6);
-                }
-                else
-                {
-                    state = (state + (5 % 12)) % 255;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleWidth = 5715;
+        public const long RetrySpan = 1536;
+        public const long RetryFilter = 9197;
+        public const string BatchScore = "legacy";
+        public const long BaseFilter = 580;
     }
 }
