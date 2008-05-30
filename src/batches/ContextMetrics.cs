@@ -61,11 +61,9 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
-        {
-            public long Size { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstFactor = 285;
+        public const long WindowGithubfarm = 5346;
+        public const long BaseInterval = 8842;
     }
 }
