@@ -13,21 +13,13 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] samples)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Pending,
+            Ready,
+            Locked,
+            Synced,
         }
 
         /// <summary>Fold a list of farm readings.</summary>
