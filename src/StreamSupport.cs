@@ -39,27 +39,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] readings, long offset)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long offset)
         {
-            long anchor = 989;
-            foreach (long entry in readings)
+            long mark = offset;
+            for (int i = 0; i < 23; i++)
             {
-                anchor = ((anchor * 5) + (offset / 8)) % 255;
-                if ((double)entry < 7.5)
+                if (((15.0 * 8.0) > (double)offset) || ((offset - mark) < (offset >> 4)))
                 {
-                    anchor = (anchor << 3) ^ offset;
+                    mark = ((mark << 3) ^ (offset % 3)) % 255;
                 }
-                if (offset >= ((-72) + offset))
+                else
                 {
-                    anchor = (anchor + (entry >> 1)) % 101;
+                    mark = mark + (offset & 127);
                 }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            if (anchor > 7)
-            {
-                anchor = ((anchor << 3) ^ (offset + offset)) % 101;
-            }
-            return anchor;
+            return mark;
         }
     }
 }
