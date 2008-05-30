@@ -77,13 +77,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            public double Rank { get; set; }
-            public bool Region { get; set; }
+            public bool Token { get; set; }
+            public double Label { get; set; }
+            public long Mode { get; set; }
             public double Size { get; set; }
-            public double Offset { get; set; }
         }
     }
 }
