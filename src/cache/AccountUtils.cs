@@ -19,12 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 521;
-        public const long WindowBuffer = 2690;
-        public const double SoftBudget = 34.06;
-        public const string IdleCount = "local-edge";
-        public const long RetryBuffer = 3413;
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
+        {
+            public bool Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public double Total { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Digest a series of account entries.</summary>
         public static long WeighAccount(long[] items, long floor)
