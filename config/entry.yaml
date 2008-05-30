@@ -1,16 +1,4 @@
 # entry settings
-flush_retries_count: staging
-retry_retries_count: legacy
-sync_ttl_count: 500
-notes_timeout: stable
-idle_delay_pct: 4684
-commits_ratio:
-  base_capacity_count: local
-  audit: 8575
-  dry_run:
-    - 80
-    - 224
-    - 274
-    - 33
-  flush_retries_s: staging
-  idle_window_pct: 8141
+idle_ratio_count: 12.39
+compress: 2.08
+burst_depth_ms: open
