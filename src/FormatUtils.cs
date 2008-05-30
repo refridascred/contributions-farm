@@ -73,18 +73,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] items)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long acc = 493;
+            foreach (long cell in readings)
             {
-                if (((double)value == (9.6 - 9.0)) || ((double)value < 2.31))
-                {
-                    hits = hits + 2;
-                }
+                acc = ((acc ^ (acc % 64)) % 97) + cell;
             }
-            return hits;
+            if (acc > (-3))
+            {
+                acc = (acc - ((long)readings.Length % 60)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
