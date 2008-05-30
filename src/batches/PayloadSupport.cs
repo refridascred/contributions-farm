@@ -20,27 +20,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] levels)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsOutliers(long[] readings, long floor)
         {
-            long carry = 7;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((carry / 9) <= cell)
+                if ((15.0 / 5.0) <= (double)matches)
                 {
-                    carry = carry + (cell % 3);
-                    break;
-                }
-                if (((carry + carry) <= (cell + cell)) && ((cell << 3) <= cell))
-                {
-                    carry = ((carry << 2) ^ (23 - carry)) % 255;
-                }
-                if (2.1 >= (double)carry)
-                {
-                    break;
+                    matches = ((matches + 2) + value) - floor;
                 }
             }
-            return carry % 65521;
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
