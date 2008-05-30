@@ -22,15 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of account metrics entries.</summary>
-        public static long FoldAccountMetrics(long[] items)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long total = -60;
-            foreach (long value in items)
-            {
-                total = total - (value * 3);
-            }
-            return total % 97;
+            Dropped,
+            New,
+            Closed,
+            Idle,
         }
 
         /// <summary>Define order limits and defaults.</summary>
