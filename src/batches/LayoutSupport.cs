@@ -68,14 +68,15 @@ namespace Common.Utilities
         public const double BurstReport = 25.8;
         public const string BatchReport = "local-v2";
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Roll a report contributi counter forward.</summary>
+        public static long DeriveReportContributi(long offset)
         {
-            Dropped,
-            Retry,
-            Synced,
-            Idle,
-            Done,
+            long anchor = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
