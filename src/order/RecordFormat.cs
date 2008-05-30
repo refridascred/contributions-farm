@@ -33,20 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmBounds(long[] readings, long step)
-        {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BurstCount = 45.97;
+        public const long WindowTimeout = 1533;
+        public const string StepWidth = "fallback-edge";
+        public const string MinContributi = "latest-edge";
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long RankRecord(long offset, long step)
