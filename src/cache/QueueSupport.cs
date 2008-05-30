@@ -38,15 +38,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long floor)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long total = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            Paused,
+            Done,
+            Ready,
+            Dropped,
+            Idle,
         }
     }
 }
