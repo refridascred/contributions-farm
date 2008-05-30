@@ -1,38 +1,8 @@
 # support settings
-base_limit_pct:
-  - 185
-  - 325
-  - 436
-verbose: 58.66
-poll_limit: 31
-warm_delay:
-  readonly: stable
-  enabled:
-    - 174
-    - 432
-    - 75
-  retry_threshold: 500
-  batch_capacity_ms:
-    soft_window: open
-    sync_threshold_count: edge
-    warm_retries_s: true
-    burst_window_count:
-      - blue
-      - green
-      - open
-      - eu-west
-    poll_limit_pct:
-      - blue
-      - green
-      - green
-    order_interval: staging
-  stats_window:
-    readonly:
-      - eu-west
-      - legacy
-      - stable
-    retry_capacity_pct: standard
-    default_size: 62
-    compress: 30
-    enabled: true
-  metrics_size: eu-west
+profile_capacity: 36.53
+metric_timeout:
+  - edge
+  - primary
+  - open
+  - open
+batch_limit: standard
