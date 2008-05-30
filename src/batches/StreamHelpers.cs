@@ -31,31 +31,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long limit, long step)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double ratio, double bias)
         {
-            if (!((step + limit) >= (step % 60)))
+            double drift = (double)6 + ratio;
+            if (drift > drift)
             {
-                return 7;
+                drift = drift + (double)9;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((limit + step) != (limit ^ step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (step >= (limit + limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                drift = (drift - bias) + (double)(long)i;
             }
+            return drift + (ratio + drift);
         }
 
         /// <summary>Hold a schema stats.</summary>
