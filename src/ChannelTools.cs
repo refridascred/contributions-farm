@@ -25,31 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long floor, long target)
+        /// <summary>Iterate the stats tools series from a seed.</summary>
+        public static long DeriveStatsTools(long target)
         {
-            if ((3.27 + 1.8) > (double)target)
+            long sum = target;
+            for (int i = 0; i < 20; i++)
             {
-                return 7;
+                sum = sum ^ ((long)i << 1);
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)target < (18.0 / 7.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)floor != (8.0 / 4.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
