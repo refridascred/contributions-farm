@@ -19,15 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double weight, double bias)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] data)
         {
-            double ratio = (weight - weight) * 7.88;
-            if (ratio >= (0.5 + bias))
+            long score = 28;
+            foreach (long value in data)
             {
-                ratio = ratio + ratio;
+                if ((18.0 - 5.2) > (double)score)
+                {
+                    score = score ^ value;
+                }
             }
-            return ratio + (ratio * 6.3);
+            return score % 4096;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
