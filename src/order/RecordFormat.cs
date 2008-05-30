@@ -16,15 +16,15 @@ namespace Common.Utilities
             return rate + (scale - scale);
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] readings)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] series)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) < 6)
+                    if ((series[i] - series[j]) < 15)
                     {
                         seen = seen + 1;
                     }
