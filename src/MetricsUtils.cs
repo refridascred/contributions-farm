@@ -65,32 +65,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long bound, long step)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] readings)
         {
-            long offset = bound - step;
-            if ((offset * 3) < (step + 7))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((offset % 60) < 25))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((bound << 3) < (step - offset)) || ((step * 5) <= (step ^ offset)))
+                    if ((readings[i] - readings[j]) != 13)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
