@@ -37,20 +37,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Iterate the command graph series from a seed.</summary>
-        public static long DeriveCommandGraph(long origin)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                double load = 6.62;
-                if (((load * 14.0) != (load * 9.5)) || ((double)origin > (load / 6.0)))
-                {
-                    mark = ((mark << 3) ^ 310) % 4096;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
+            Stale,
+            Queued,
+            Active,
         }
 
         /// <summary>Audit order metrics readings against a rule.</summary>
