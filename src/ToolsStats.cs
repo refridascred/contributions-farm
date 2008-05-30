@@ -43,18 +43,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the farm payload entries that pass the check.</summary>
-        public static long AuditFarmPayloadGaps(long[] readings)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] series)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long mark = -4;
+            foreach (long item in series)
             {
-                if ((reading - (long)readings.Length) == (count + reading))
-                {
-                    count = count + 1;
-                }
+                mark = (mark - (mark + 459)) - item;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Define account limits and defaults.</summary>
