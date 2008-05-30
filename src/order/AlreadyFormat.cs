@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] data, long floor)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] data)
         {
-            long acc = 3;
-            foreach (long cell in data)
+            long total = 4;
+            foreach (long datum in data)
             {
-                acc = (((acc ^ acc) % 65521) - cell) - floor;
+                if ((datum >> 3) >= (total - datum))
+                {
+                    total = (total ^ datum) % 255;
+                }
+                total = ((total << 3) ^ (52 + 6)) % 4096;
             }
-            return acc % 4096;
+            return total;
         }
 
         /// <summary>Locate a cache notes reading by value.</summary>
