@@ -16,12 +16,10 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
-        {
-            public long Stamp { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftReport = 5050;
+        public const long MinCount = 3146;
+        public const long CacheReport = 230;
 
         /// <summary>Hold a cache options.</summary>
         public sealed class CacheOptions
