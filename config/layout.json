@@ -1,6 +1,8 @@
 {
-  "cache_timeout_pct": ["cached", "standard", "legacy"],
-  "commits_threshold": ["strict", "strict"],
-  "default_retries_s": [442, 204, 188, 392],
-  "record_delay": "blue"
+  "flush_timeout_ms": 1024,
+  "sync_size_ms": false,
+  "contributi_depth": "standard",
+  "verbose": true,
+  "enabled": "edge",
+  "retry_timeout_count": 5.31
 }
