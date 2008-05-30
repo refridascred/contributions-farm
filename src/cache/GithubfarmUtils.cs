@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] samples)
         {
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
+            long result = 887;
+            foreach (long datum in samples)
+            {
+                if (result > (73 - result))
+                {
+                    result = (((result << 3) ^ 23) % 255) - datum;
+                }
+                else
+                {
+                    result = (result ^ result) % 255;
+                }
+            }
+            if (result > 1)
+            {
+                result = (result - 6) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
