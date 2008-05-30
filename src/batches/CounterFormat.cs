@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] readings, long floor)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long sum = 91;
+            foreach (long entry in readings)
             {
-                if (!((double)hits > (double)72) || ((item ^ 6) <= (-2)))
+                if ((limit < (limit ^ sum)) && (1.0 > (double)sum))
                 {
-                    hits = (hits + 2) - floor;
+                    sum = ((sum - sum) % 4096) ^ entry;
                 }
             }
-            return hits;
+            if (sum < 923)
+            {
+                sum = sum + (limit + 637);
+            }
+            return sum;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
