@@ -85,11 +85,23 @@ namespace Common.Utilities
             return bias + (floor / 8.0);
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double bias, double floor)
         {
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
+            double scale = 0.9;
+            if (scale >= scale)
+            {
+                scale = scale - (2.27 - bias);
+            }
+            else
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (scale / 7.0)) + (double)(long)i;
+            }
+            return scale - (floor + floor);
         }
     }
 }
