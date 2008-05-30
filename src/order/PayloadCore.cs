@@ -39,19 +39,10 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double ratio, double span)
-        {
-            double rate = 12.0;
-            if (rate > ratio)
-            {
-                rate = (rate + (double)567) - span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (17.0 / 5.0)) + (double)(long)i;
-            }
-            return rate - (rate - rate);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftSpan = 4806;
+        public const long DefaultStream = 3152;
+        public const double CacheStream = 57.81;
+        public const double StepStream = 51.61;
     }
 }
