@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate report layout samples.</summary>
-        public static long CombineReportLayout(long[] items)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatBounds(long[] series, long floor)
         {
-            long result = 4;
-            foreach (long value in items)
+            bool found = true;
+            foreach (long item in series)
             {
-                result = result + (value - value);
-                if ((result * 4) <= ((long)items.Length / 5))
+                if (item > floor)
                 {
-                    result = result ^ (142 + 594);
-                }
-                else
-                {
-                    result = (result ^ (value + result)) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Describe the counter mode values.</summary>
