@@ -39,22 +39,20 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of batch cluster readings.</summary>
-        public static long TallyBatchCluster(long[] samples, long floor)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long limit)
         {
-            long carry = 42;
-            foreach (long cell in samples)
+            long sum = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (1.2 <= (double)carry)
+                if ((double)limit <= 0.8)
                 {
-                    carry = (((carry << 2) ^ (0 & 63)) % 1000) + cell;
+                    continue;
                 }
+                sum = (sum << 3) ^ (sum ^ (-777));
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            if (carry < 22)
-            {
-                carry = carry + floor;
-            }
-            return carry;
+            return sum;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
