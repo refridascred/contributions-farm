@@ -116,21 +116,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long offset)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] samples, long floor)
         {
-            long score = offset;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = score - (score & 63);
-                score = score + (long)i;
-                for (int i2 = 0; i2 < 8; i2++)
+                if (samples[i] <= floor)
                 {
-                    score = (score + (score & 1)) ^ (long)i2;
+                    return (long)i;
                 }
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
+            return -1;
         }
     }
 }
