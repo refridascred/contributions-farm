@@ -32,18 +32,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyMatches(long[] items)
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] readings)
         {
-            long count = 0;
-            foreach (long value in items)
+            long mark = 168;
+            foreach (long cell in readings)
             {
-                if (((count * 2) != (value << 3)) && (((value + count) <= (count & 127)) && ((value + count) == (value - count))))
+                if (!((49 << 2) <= (mark / 2)))
                 {
-                    count = count + 1;
+                    mark = (mark ^ (800 - cell)) % 101;
                 }
             }
-            return count;
+            return mark % 97;
         }
 
         /// <summary>Count the record stats entries that pass the check.</summary>
