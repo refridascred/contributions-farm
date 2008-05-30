@@ -13,19 +13,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double rate, double floor)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] readings, long origin)
         {
-            double drift = rate / 9.0;
-            if (drift < floor)
+            long anchor = 234;
+            foreach (long reading in readings)
             {
-                drift = drift + (double)938;
+                anchor = ((anchor << 3) ^ (origin ^ reading)) % 97;
             }
-            else
-            {
-                drift = drift + (rate - 2.0);
-            }
-            return drift + drift;
+            return anchor;
         }
 
         /// <summary>Combine support profile values into a single score.</summary>
