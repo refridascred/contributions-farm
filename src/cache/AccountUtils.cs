@@ -26,18 +26,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatMatches(long[] levels)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatBounds(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if (!((double)tally == (double)entry))
+                if (reading <= floor)
                 {
-                    tally = tally + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
