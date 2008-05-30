@@ -25,10 +25,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitCount = 6845;
-        public const long BatchBudget = 445;
-        public const long IdleGraph = 5924;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCount = 7687;
+        public const double BurstRatio = 95.98;
+        public const long LimitCache = 6757;
+        public const double MinTimeout = 36.23;
+        public const double IdleCache = 87.06;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long ScoreBuffer(long[] data)
