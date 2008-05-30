@@ -27,14 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            Queued,
-            Pending,
-            Done,
-            Failed,
-            Synced,
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of metric entries.</summary>
