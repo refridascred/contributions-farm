@@ -54,12 +54,20 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double IdleFactor = 84.52;
-        public const long SoftRatio = 4836;
-        public const long RetryMetrics = 6671;
-        public const long MinMetrics = 7867;
-        public const long HardSpan = 4879;
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double scale, double bias)
+        {
+            double ratio = 6.3;
+            if (ratio > ratio)
+            {
+                ratio = ((ratio + (double)748) + scale) + bias;
+            }
+            else
+            {
+                ratio = ratio + 6.73;
+            }
+            return ratio + ratio;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double MinCache = 51.97;
