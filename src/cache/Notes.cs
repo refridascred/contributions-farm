@@ -65,11 +65,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            public long Offset { get; set; }
-            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Classify a commits profile pair into a bucket.</summary>
