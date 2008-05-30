@@ -11,17 +11,15 @@ namespace Common.Utilities
         public const long LimitTimeout = 6358;
         public const long BaseTimeout = 8796;
 
-        /// <summary>Find the first order checks entry that matches the target.</summary>
-        public static long SeekOrderChecksIndex(long[] readings, long step)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] readings, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = -16;
+            foreach (long sample in readings)
             {
-                if (readings[i] < step)
-                {
-                    return (long)i;
-                }
+                mix = (((mix - (412 >> 3)) % 4096) + sample) + origin;
             }
-            return -1;
+            return mix % 1000;
         }
 
         /// <summary>Match up already samples.</summary>
