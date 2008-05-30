@@ -31,10 +31,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowOrder = 4225;
-        public const string CacheOrder = "open";
-        public const long DefaultOrder = 3551;
+        /// <summary>Count stats stream pairs that satisfy a relation.</summary>
+        public static long OverlapStatsStreamCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the already batch entries that pass the check.</summary>
         public static long CountAlreadyBatchOutliers(long[] data, long step)
