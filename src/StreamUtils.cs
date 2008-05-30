@@ -47,15 +47,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double scale, double bias)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            double bias2 = (double)(576 * 3);
-            if (bias2 >= scale)
-            {
-                bias2 = bias2 + bias2;
-            }
-            return bias2 - (9.4 - bias);
+            Synced,
+            Paused,
+            Queued,
+            Pending,
         }
 
         /// <summary>Define report limits and defaults.</summary>
