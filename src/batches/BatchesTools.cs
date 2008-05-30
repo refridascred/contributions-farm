@@ -28,21 +28,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] samples)
+        /// <summary>Adjust a account window reading.</summary>
+        public static double ProjectAccountWindow(double gain, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = gain;
+            if (mean > (double)623)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean - (span - 1.0);
             }
-            return hits;
+            return mean + span;
         }
     }
 }
