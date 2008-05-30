@@ -57,12 +57,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BaseCluster = 88.32;
-        public const double IdleBudget = 14.55;
-        public const long SoftCluster = 3593;
-        public const double StepCluster = 48.2;
-        public const long IdleLevel = 9430;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesLimits(long[] series, long target)
+        {
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long SeriesChecks(long origin)
