@@ -29,18 +29,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadMatches(long[] series)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((4.1 / 7.0) >= (double)entry)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Ready,
+            Failed,
+            Retry,
         }
     }
 }
