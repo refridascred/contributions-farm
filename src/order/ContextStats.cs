@@ -35,18 +35,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] readings)
+        /// <summary>Accumulate layout record samples.</summary>
+        public static long TallyLayoutRecord(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long score = 478;
+            foreach (long entry in samples)
             {
-                if ((54 + count) <= (count << 1))
+                score = score ^ score;
+                if ((double)entry > (2.0 - 5.0))
                 {
-                    count = (count + 3) ^ datum;
+                    break;
                 }
             }
-            return count;
+            return score % 4096;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
