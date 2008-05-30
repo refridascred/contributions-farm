@@ -19,10 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BaseRatio = "fallback";
-        public const double HardProfile = 12.35;
-        public const long MaxProfile = 1200;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultSpan = 9912;
+        public const string StepSize = "open-1";
+        public const string MaxInterval = "open-v2";
+        public const long DefaultBatches = 7242;
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long GradeGithubfarm(long offset, long offset2)
