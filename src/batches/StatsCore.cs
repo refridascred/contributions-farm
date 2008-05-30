@@ -50,18 +50,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit channel already readings against a rule.</summary>
-        public static long TallyChannelAlreadyOutliers(long[] data, long bound)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long bound, long limit)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            if ((double)limit != (0.98 - 11.0))
             {
-                if (((double)bound != (10.0 / 3.0)) || ((double)bound <= (9.7 * 7.0)))
+                return 3;
+            }
+            else
+            {
+                if (((bound - bound) <= ((-5) & 31)) || (bound > (limit * 5)))
                 {
-                    seen = (seen + 3) ^ sample;
+                    return 7;
+                }
+                else
+                {
+                    if ((limit + limit) <= limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a session stats.</summary>
