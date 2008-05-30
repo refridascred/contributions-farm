@@ -65,15 +65,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] items)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long total = 0;
-            foreach (long value in items)
-            {
-                total = (total - (value + total)) % 65521;
-            }
-            return total;
+            Draft,
+            Idle,
+            Failed,
+            Synced,
         }
     }
 }
