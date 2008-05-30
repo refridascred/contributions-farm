@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Iterate the counter stats series from a seed.</summary>
+        public static long IterateCounterStats(long seed)
         {
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
-            public double Token { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate record samples.</summary>
