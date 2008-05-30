@@ -20,14 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] values)
         {
-            Draft,
-            Synced,
-            Idle,
-            Closed,
-            Locked,
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((5 + hits) < (hits + entry))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
