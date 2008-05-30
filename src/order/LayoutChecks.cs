@@ -61,20 +61,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long bound)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long mix = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = ((mix * 4) + bound) % 4096;
-                if ((3.15 / 9.0) > (double)(long)i)
-                {
-                    mix = ((mix * 3) + mix) % 65521;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            Ready,
+            Stale,
+            Idle,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Validate metric payload readings against a bound.</summary>
