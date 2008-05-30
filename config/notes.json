@@ -1,7 +1,6 @@
 {
-  "flush_retries_ms": "legacy",
-  "persist": 3.15,
-  "burst_retries_count": true,
-  "githubfarm_capacity": true,
-  "hard_interval_ms": true
+  "warm_interval": [16, 265, 164, 383],
+  "burst_limit_s": ["edge", "open", "legacy", "strict"],
+  "account_timeout": 81.78,
+  "graph_threshold": "fallback"
 }
