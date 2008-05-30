@@ -13,11 +13,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a window context figure with a bias.</summary>
-        public static double AdjustWindowContext(double ratio, double span)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] values)
         {
-            double mean = 18.0 - ratio;
-            return (mean + 12.0) + span;
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
