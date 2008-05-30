@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] items, long origin)
         {
-            Locked,
-            Idle,
-            Dropped,
+            long result = 84;
+            foreach (long entry in items)
+            {
+                result = (((result << 3) ^ (result << 1)) + entry) - origin;
+            }
+            return result;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
