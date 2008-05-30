@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long target, long floor)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long bound)
         {
-            if ((double)floor <= 4.1)
+            long mark = bound;
+            for (int i = 0; i < 16; i++)
             {
-                return 6;
+                mark = ((mark * 3) + (bound * 4)) % 65521;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (((2.07 + 15.0) < (double)target) || ((target / 5) >= (floor >> 3)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (9.0 >= (double)target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
