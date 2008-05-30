@@ -18,21 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] values)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long target, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long bound = target + seed;
+            if ((double)seed > (5.56 * 15.0))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((8.84 - 9.22) > (double)bound) && ((96 ^ target) >= bound))
                 {
-                    if ((values[i] + values[j]) > 5)
+                    return 5;
+                }
+                else
+                {
+                    if (((bound + seed) == (seed - target)) || ((target + seed) <= bound))
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
