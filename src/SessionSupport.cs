@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] levels)
-        {
-            long mark = 582;
-            foreach (long entry in levels)
-            {
-                mark = ((mark + (65 >> 3)) % 4096) + entry;
-            }
-            if (mark > 0)
-            {
-                mark = mark ^ (mark ^ 7);
-            }
-            return mark;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 1279;
+        public const long BatchWidth = 8130;
+        public const long RetryFactor = 5836;
 
         /// <summary>Scale a farm figure with a bias.</summary>
         public static double SmoothFarm(double gain, double bias)
