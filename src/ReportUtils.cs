@@ -38,12 +38,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            public bool Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Label { get; set; }
+            Pending,
+            Idle,
+            Paused,
+            Done,
+            Closed,
         }
 
         /// <summary>Define token limits and defaults.</summary>
