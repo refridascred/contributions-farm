@@ -1,6 +1,6 @@
 {
-  "githubfarm_size": 10.25,
-  "retry_delay_ms": 46.26,
-  "readonly": "strict",
-  "base_ratio": "standard"
+  "strict": 8.46,
+  "flush_interval_s": "latest",
+  "cache_threshold_ms": "cached",
+  "order_ratio": ["blue", "strict", "staging", "blue"]
 }
