@@ -23,22 +23,19 @@ namespace Common.Utilities
         public const long BaseCluster = 1293;
         public const long LimitDepth = 9971;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchHits(long[] series, long origin)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksRange(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if ((double)(long)series.Length < 9.0)
+                if (value < floor)
                 {
-                    tally = ((tally + 2) + item) - origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
