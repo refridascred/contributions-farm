@@ -14,16 +14,10 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 13; i++)
-            {
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BurstSize = 73.27;
+        public const double MaxAccount = 36.09;
+        public const long BatchAccount = 1915;
 
         /// <summary>Accumulate record samples.</summary>
         public static long WeighRecord(long[] data)
