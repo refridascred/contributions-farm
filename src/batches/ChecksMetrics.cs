@@ -71,13 +71,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileLimits(long[] samples, long bound)
         {
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Rank profile queue input into a small class.</summary>
