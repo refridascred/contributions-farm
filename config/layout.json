@@ -1,5 +1,7 @@
 {
-  "contributi_delay": false,
-  "hard_window_ms": 67.08,
-  "checks_ratio": 9233
+  "warm_interval_pct": 31.91,
+  "metric_depth": "strict",
+  "metrics_window": false,
+  "flush_limit_s": "green",
+  "max_depth": true
 }
