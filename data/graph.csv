@@ -1,7 +1,9 @@
-id,weight,active,rank,owner
-1,851,45.14,local,839
-2,533,14.61,local,23.52
-3,blue,765,staging,edge
-4,green,cached,standard,71.4
-5,legacy,82.86,18.67,8.24
-6,91.84,572,624,704
+id,state,active,level
+1,404,234,standard
+2,48.57,staging,378
+3,72.39,cached,50
+4,stable,122,780
+5,43.49,893,stable
+6,blue,92.64,staging
+7,primary,107,811
+8,14.56,95.86,43.1
