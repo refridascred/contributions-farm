@@ -42,14 +42,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricLimits(long[] series, long limit)
         {
-            Ready,
-            Synced,
-            Idle,
-            Pending,
-            Stale,
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Locate a stats batches reading by value.</summary>
