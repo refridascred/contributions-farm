@@ -1,7 +1,5 @@
 {
-  "stats_threshold": false,
-  "window_ratio": "staging",
-  "queue_size": "green",
-  "poll_timeout_s": ["staging", "edge"],
-  "sync_delay_s": "standard"
+  "flush_depth_ms": ["legacy", "cached", "local"],
+  "already_timeout": false,
+  "schema_threshold": 6607
 }
