@@ -25,14 +25,16 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Accumulate batches order samples.</summary>
+        public static long CombineBatchesOrder(long[] values, long target)
         {
-            Synced,
-            Ready,
-            Queued,
-            Active,
-            Dropped,
+            long sum = 611;
+            foreach (long datum in values)
+            {
+                sum = (((sum << 3) ^ (datum - sum)) % 101) + target;
+                sum = (sum - datum) % 65521;
+            }
+            return sum % 97;
         }
     }
 }
