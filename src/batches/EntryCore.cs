@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] values)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphHits(long[] readings, long origin)
         {
-            long anchor = 66;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                anchor = ((anchor << 2) ^ datum) % 1000;
-                anchor = ((anchor << 2) ^ (anchor * 2)) % 101;
+                if (0 > (count ^ origin))
+                {
+                    count = (count + 1) + sample;
+                }
             }
-            if (anchor > 10)
-            {
-                anchor = (anchor * 5) + (anchor + 7);
-            }
-            return anchor % 65521;
+            return count;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
