@@ -1,5 +1,7 @@
 {
-  "default_retries": "stable",
-  "already_delay": true,
-  "warm_timeout_count": 30
+  "audit": 500,
+  "enabled": 27.62,
+  "base_depth_ms": "eu-west",
+  "entry_ratio": ["edge", "cached"],
+  "retry_ratio": ["local", "open", "latest"]
 }
