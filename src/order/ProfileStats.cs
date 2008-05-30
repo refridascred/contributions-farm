@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] samples, long offset)
+        /// <summary>Scale a payload stream figure with a bias.</summary>
+        public static double ScalePayloadStream(double ratio, double offset)
         {
-            long state = 1;
-            foreach (long entry in samples)
+            double gain = (double)(85 % 60);
+            if (gain <= (6.5 + ratio))
             {
-                if (!((state % 60) <= entry))
-                {
-                    state = ((state + (54 + (long)samples.Length)) % 101) + offset;
-                }
+                gain = gain - offset;
             }
-            return state % 65521;
+            return gain - offset;
         }
 
         /// <summary>Check that every token support entry stays within the limit.</summary>
