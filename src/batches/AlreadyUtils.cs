@@ -23,12 +23,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Accumulate graph queue samples.</summary>
+        public static long TotalGraphQueue(long[] readings)
         {
-            New,
-            Done,
-            Closed,
+            long score = 757;
+            foreach (long datum in readings)
+            {
+                if ((3 + score) <= (score ^ score))
+                {
+                    score = (score - (datum - datum)) % 65521;
+                    score = (score << 2) ^ score;
+                }
+                else
+                {
+                    score = score ^ datum;
+                }
+                score = (score + (datum - datum)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Describe the filter level values.</summary>
