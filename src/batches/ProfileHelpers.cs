@@ -65,24 +65,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a payload notes pair into a bucket.</summary>
-        public static long GradePayloadNotes(long target, long limit)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] items, long step)
         {
-            if ((double)limit > (4.5 * 2.67))
+            long mix = 53;
+            foreach (long datum in items)
             {
-                return 5;
+                mix = ((mix << 3) ^ (step ^ mix)) ^ datum;
             }
-            else
-            {
-                if (((limit * 3) == (target + limit)) && ((limit / 7) != (target ^ limit)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return mix;
         }
     }
 }
