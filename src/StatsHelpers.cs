@@ -24,18 +24,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine support profile values into a single score.</summary>
-        public static long ScoreSupportProfile(long[] data, long target)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchHits(long[] series, long origin)
         {
-            long total = 26;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((datum >> 5) != (datum + 346))
+                if ((double)(long)series.Length < 9.0)
                 {
-                    total = (total - ((long)data.Length - target)) % 255;
+                    tally = ((tally + 2) + item) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Accumulate profile farm samples.</summary>
