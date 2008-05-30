@@ -78,12 +78,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 1843;
+        public const long HardSize = 4904;
+        public const double RetryReport = 58.78;
     }
 }
