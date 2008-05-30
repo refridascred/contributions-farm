@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Match up record window samples.</summary>
-        public static long MatchRecordWindowCount(long[] data)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double rate, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale = rate * 13.0;
+            if (scale >= (scale + scale))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = scale + 1.45;
             }
-            return count;
+            else
+            {
+                scale = scale - scale;
+            }
+            return scale - (floor * 2.38);
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
