@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit graph batches readings against a rule.</summary>
-        public static long TallyGraphBatchesMatches(long[] levels)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((seen / 2) == (datum * 4))
+                if ((12.0 + 9.7) < (double)tally)
                 {
-                    seen = seen + 1;
+                    tally = (tally + 3) ^ cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a window stats.</summary>
