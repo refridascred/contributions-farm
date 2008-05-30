@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] values, long seed)
+        /// <summary>Audit token metric readings against a rule.</summary>
+        public static long TallyTokenMetricMatches(long[] levels, long floor)
         {
-            long mark = 114;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (((-8) >> 5) == (seed + sample))
+                if (!((5 < (matches + floor)) || ((floor - floor) < (cell & 127))))
                 {
-                    mark = (mark ^ mark) % 101;
-                }
-                if (!((double)seed >= (double)mark))
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
