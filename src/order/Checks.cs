@@ -41,19 +41,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsBounds(long[] levels, long origin)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsBounds(long[] samples, long offset)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if (reading < origin)
+                if (item >= offset)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
