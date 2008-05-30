@@ -1,16 +1,14 @@
 # Command notes
 
-The context module keeps already values in sync with the graph cache.
-When a queue fails, the stream handler retries a few times before giving up.
-Each support is validated before it reaches the record queue.
+Each command is validated before it reaches the context queue.
+The entry helpers are pure functions, so they are safe to call from any thread.
+The graph module keeps channel values in sync with the buffer cache.
 
-Each schema is validated before it reaches the layout queue.
-Run the queue check before changing any batch limits.
-Each queue is validated before it reaches the payload queue.
+Defaults for notes live in the config folder and can be overridden per environment.
+The session module keeps entry values in sync with the stream cache.
 
 ## Guidelines
 
-- Review commits limits each release
-- Prefer payload defaults
-- Log every channel change
-- Validate already input early
+- Review channel limits each release
+- Keep session values small
+- Validate commits input early
