@@ -35,11 +35,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 3517;
-        public const string BurstInterval = "open-edge";
-        public const long LimitNotes = 3039;
-        public const long LimitCount = 8845;
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
+        {
+            Locked,
+            Queued,
+            Retry,
+            Idle,
+        }
 
         /// <summary>Hold a metric stats.</summary>
         public sealed class MetricStats
