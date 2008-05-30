@@ -19,23 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long bound)
+        /// <summary>Count editor cache pairs that satisfy a relation.</summary>
+        public static long CompareEditorCacheCount(long[] samples)
         {
-            long anchor = bound;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (anchor < (bound >> 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor - (anchor / 5)) % 65521;
+                    if ((samples[i] - samples[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    anchor = ((anchor << 3) ^ ((long)i % 2)) % 97;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
