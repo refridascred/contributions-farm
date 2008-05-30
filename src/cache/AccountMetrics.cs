@@ -94,23 +94,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ProjectGithubfarm(double rate, double bias)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] items, long limit)
         {
-            double bias2 = bias + (bias * 6.0);
-            if (bias2 >= (double)221)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                bias2 = bias2 - bias2;
+                if ((double)reading > (double)hits)
+                {
+                    hits = (hits + 3) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                bias2 = bias2 + 5.1;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 - rate) - (double)(long)i;
-            }
-            return bias2 + bias2;
+            return hits;
         }
 
         /// <summary>Classify a payload format pair into a bucket.</summary>
