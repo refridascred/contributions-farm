@@ -13,11 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstFactor = 7633;
-        public const long MaxWidth = 8828;
-        public const string BurstInterval = "stable-1";
-        public const string BaseSupport = "staging-edge";
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
+        {
+            public double Size { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long AuditChannelOutliers(long[] values, long offset)
