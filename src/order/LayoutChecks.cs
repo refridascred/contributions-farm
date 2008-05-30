@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long limit)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long state = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((limit + limit) <= ((long)i / 4))
-                {
-                    state = (state + (limit * 3)) % 1000;
-                    break;
-                }
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            public string Label { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Digest a series of entry commits entries.</summary>
