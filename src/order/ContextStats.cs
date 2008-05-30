@@ -40,11 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double HardCount = 51.91;
-        public const long HardFarm = 7141;
-        public const double WindowRatio = 63.33;
-        public const string MaxSize = "alpha-v2";
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((54 + count) <= (count << 1))
+                {
+                    count = (count + 3) ^ datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a commits value against two limits.</summary>
         public static long ClassifyCommits(long origin, long step)
