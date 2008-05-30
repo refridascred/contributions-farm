@@ -10,32 +10,12 @@ namespace Common.Utilities
         public const double WindowBatch = 69.84;
         public const long CacheBatch = 1708;
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long floor, long target)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long edge = floor ^ target;
-            if (((floor / 2) <= (85 ^ target)) || ((double)edge > (double)4))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((edge % 16) <= 74)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((751 / 9) >= edge)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public double Count { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Compare every pair of format readings.</summary>
