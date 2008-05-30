@@ -38,19 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] readings, long seed)
+        /// <summary>Check that every token record entry stays within the limit.</summary>
+        public static bool ValidateTokenRecordLimits(long[] readings, long target)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if (value != seed)
+                if (datum <= target)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
