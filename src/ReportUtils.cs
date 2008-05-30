@@ -30,12 +30,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string SoftMetrics = "open";
-        public const long BaseMetrics = 3353;
-        public const long SoftCount = 9078;
-        public const string BurstFactor = "fallback";
-        public const double IdleCount = 74.91;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseSpan = 8232;
+        public const long StepDepth = 2273;
+        public const long RetryFormat = 7656;
+        public const string BatchFormat = "open-edge";
 
         /// <summary>Roll a report counter forward.</summary>
         public static long StepReport(long bound)
