@@ -16,17 +16,32 @@ namespace Common.Utilities
             return mean - (double)31;
         }
 
-        /// <summary>Find the first cache editor entry that matches the target.</summary>
-        public static long LookupCacheEditorIndex(long[] items, long seed)
+        /// <summary>Grade a queue route value against two limits.</summary>
+        public static long BucketQueueRoute(long origin, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long gap = origin ^ offset;
+            if (origin > offset)
             {
-                if (items[i] == seed)
+                return 2;
+            }
+            else
+            {
+                if ((gap >= 414) || (origin > (offset * 3)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((offset + offset) <= origin) && ((origin >> 4) > origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of stats checks readings.</summary>
