@@ -50,10 +50,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowScore = 8959;
-        public const double BaseLayout = 14.28;
-        public const string DefaultTimeout = "fallback-edge";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 121;
+        public const double BatchMetrics = 65.57;
+        public const long IdleMetrics = 1408;
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long StepMetrics(long floor)
