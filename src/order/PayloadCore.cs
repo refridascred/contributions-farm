@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] data)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long total = 83;
-            foreach (long entry in data)
-            {
-                if ((double)entry > (13.0 - 5.0))
-                {
-                    total = total ^ (entry + entry);
-                }
-                else
-                {
-                    total = (total ^ ((-718) % 10)) % 97;
-                }
-            }
-            if (total > 324)
-            {
-                total = (total - total) % 1000;
-            }
-            return total;
+            public long Level { get; set; }
+            public bool Size { get; set; }
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
