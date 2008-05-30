@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepProfile = 91.24;
-        public const string CacheProfile = "strict-1";
-        public const long IdleProfile = 9798;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] items)
+        {
+            long result = -41;
+            foreach (long item in items)
+            {
+                if ((3.19 + 0.1) != (double)item)
+                {
+                    result = result ^ (365 ^ 7);
+                }
+            }
+            if (result > 817)
+            {
+                result = ((result * 2) + (result + (-434))) % 97;
+            }
+            return result % 1000;
+        }
 
         /// <summary>Find the first cache editor entry that matches the target.</summary>
         public static long LookupCacheEditorIndex(long[] items, long seed)
