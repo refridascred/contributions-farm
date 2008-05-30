@@ -67,12 +67,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            Dropped,
-            Locked,
-            Ready,
+            Idle,
+            Retry,
+            Paused,
         }
     }
 }
