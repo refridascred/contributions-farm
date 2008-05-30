@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double scale, double floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] items, long target)
         {
-            double weight = 6.1 + (double)855;
-            return (weight + (scale - weight)) + floor;
+            long acc = 60;
+            foreach (long entry in items)
+            {
+                acc = acc ^ (target % 100);
+                acc = (acc - 732) % 101;
+                acc = (acc - (entry / 5)) % 4096;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
