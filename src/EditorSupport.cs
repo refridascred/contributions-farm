@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 9401;
-        public const string BatchRatio = "cached-edge";
-        public const long BatchOrder = 7245;
-        public const string DefaultOrder = "primary-v2";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BaseSpan = "cached";
+        public const long RetryNotes = 3078;
+        public const long MinNotes = 6435;
+        public const long DefaultNotes = 3001;
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long ScoreProfile(long[] data, long step)
