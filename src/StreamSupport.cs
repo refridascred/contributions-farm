@@ -26,18 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of account support readings.</summary>
-        public static long MatchAccountSupportCount(long[] series)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmGaps(long[] values, long origin)
         {
             long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (origin > (77 + item))
                 {
-                    if ((series[i] ^ series[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
