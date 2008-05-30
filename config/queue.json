@@ -1,5 +1,21 @@
 {
-  "base_capacity": "edge",
-  "batch_retries": 10.26,
-  "hard_capacity": 59
+  "min_depth_pct": 7004,
+  "burst_ttl_s": {
+    "filter_capacity": "eu-west",
+    "route_retries": [121, 142, 323, 88],
+    "sync_window": "eu-west",
+    "poll_size": "primary",
+    "base_ratio": false
+  },
+  "batch_size": {
+    "burst_timeout_s": "stable",
+    "persist": {
+      "compress": "staging",
+      "sync_threshold_s": "stable",
+      "flush_interval_ms": 28,
+      "metric_interval": [469, 412],
+      "poll_ratio": false
+    },
+    "metrics_depth": 42
+  }
 }
