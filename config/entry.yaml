@@ -1,5 +1,30 @@
 # entry settings
-audit: legacy
-cache_limit: primary
-strict: 10
-verbose: true
+context_delay: 78
+audit: 57.2
+sync_delay_pct: 74.23
+command_ratio: 6.56
+soft_ratio_ms:
+  audit: 100
+  burst_timeout:
+    max_timeout_s:
+      - edge
+      - green
+      - eu-west
+      - standard
+    cache_threshold_ms: 500
+    payload_ttl: 1.35
+    warm_size_count: 2561
+    buffer_delay:
+      - 175
+      - 236
+      - 71
+    readonly: 96.32
+  idle_interval_count: 60
+  strict: 60
+  enabled:
+    - primary
+    - green
+    - strict
+    - stable
+  stream_ttl: false
+session_limit: local
