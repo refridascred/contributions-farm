@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long offset)
         {
-            public string Region { get; set; } = "";
-            public bool Label { get; set; }
-            public long Size { get; set; }
+            long state = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                state = state ^ (state << 1);
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Derive the next queue token value from a seed.</summary>
