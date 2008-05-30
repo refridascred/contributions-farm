@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((seen - cell) != (seen + seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BaseAlready = "alpha-v2";
+        public const long BurstTimeout = 3112;
+        public const long BatchAlready = 3843;
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long RollRoute(long floor)
