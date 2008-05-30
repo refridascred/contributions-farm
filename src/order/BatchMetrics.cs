@@ -63,12 +63,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
+            Draft,
+            Closed,
+            Pending,
+            Ready,
+            Idle,
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
