@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricHits(long[] levels)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowRange(long[] levels, long floor)
         {
-            long tally = 0;
+            bool stale = true;
             foreach (long value in levels)
             {
-                if ((9.6 * 4.4) >= (double)value)
+                if (value > floor)
                 {
-                    tally = tally + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Accumulate contributi context samples.</summary>
