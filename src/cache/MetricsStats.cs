@@ -20,24 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long floor, long limit)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] readings)
         {
-            if ((floor + 30) > (floor % 64))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((17.0 - 4.02) < (double)floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    if ((readings[i] + readings[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
