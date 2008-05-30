@@ -1,7 +1,7 @@
 {
-  "sync_depth": 4.94,
-  "warm_retries": 49.01,
-  "hard_window_pct": 51,
-  "context_interval": 29,
-  "verbose": ["stable", "cached", "eu-west", "local"]
+  "soft_size": ["open", "staging", "open"],
+  "cache_window_ms": 500,
+  "farm_retries": 30.44,
+  "cache_size": ["staging", "legacy", "local"],
+  "sync_timeout_pct": 4264
 }
