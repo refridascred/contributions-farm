@@ -27,11 +27,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double LimitGithubfarm = 73.64;
-        public const long MinGithubfarm = 6145;
-        public const long DefaultRatio = 718;
-        public const long StepCount = 3930;
-        public const double BatchGithubfarm = 7.71;
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
+        {
+            Draft,
+            New,
+            Idle,
+            Pending,
+        }
     }
 }
