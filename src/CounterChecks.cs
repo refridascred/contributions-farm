@@ -25,14 +25,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long limit)
         {
-            Stale,
-            Done,
-            Draft,
-            Dropped,
-            Locked,
+            long acc = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
