@@ -1,4 +1,11 @@
 # githubfarm settings
-soft_timeout_count: stable
-idle_limit_count: 62
-retry_delay_count: 24.15
+max_threshold_ms: false
+soft_interval_ms: 2466
+commits_window: 49.53
+readonly:
+  - primary
+  - legacy
+  - fallback
+  - cached
+enabled: 250
+hard_depth_pct: true
