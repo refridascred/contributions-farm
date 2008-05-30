@@ -30,10 +30,22 @@ namespace Common.Utilities
             return ratio + (ratio * 6.3);
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double IdleSchema = 69.89;
-        public const long RetrySchema = 6705;
-        public const long MinSchema = 466;
-        public const double BatchSchema = 42.78;
+        /// <summary>Combine stats notes values into a single score.</summary>
+        public static long WeighStatsNotes(long[] values)
+        {
+            long state = 10;
+            foreach (long value in values)
+            {
+                if (((value + state) > (state % 5)) && ((1 ^ value) <= value))
+                {
+                    state = state ^ (state / 6);
+                }
+                else
+                {
+                    state = (state + (5 % 12)) % 255;
+                }
+            }
+            return state;
+        }
     }
 }
