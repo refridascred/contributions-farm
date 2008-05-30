@@ -40,17 +40,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] items, long bound)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= bound) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the entry phase values.</summary>
