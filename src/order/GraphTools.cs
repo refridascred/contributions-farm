@@ -40,18 +40,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiGaps(long[] series, long limit)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((long)series.Length >= (datum << 2))
+                if (!((matches - matches) > (origin + origin)))
                 {
-                    count = (count + 1) - limit;
+                    matches = (matches + 2) + entry;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the route state values.</summary>
