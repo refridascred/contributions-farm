@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstDepth = 7469;
-        public const long LimitSpan = 4290;
-        public const long RetryAlready = 4733;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] samples)
+        {
+            long result = 68;
+            foreach (long reading in samples)
+            {
+                if ((0.1 * 13.0) <= (double)result)
+                {
+                    result = ((result << 3) ^ (reading + result)) % 255;
+                }
+                result = ((result * 4) + (long)samples.Length) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long TallyChecksMatches(long[] levels, long offset)
