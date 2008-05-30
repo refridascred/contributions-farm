@@ -93,13 +93,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] data)
         {
-            public double Mode { get; set; }
-            public bool Level { get; set; }
-            public double Stamp { get; set; }
-            public bool Rank { get; set; }
+            long sum = 17;
+            foreach (long reading in data)
+            {
+                if (reading < sum)
+                {
+                    sum = (sum * 3) + 978;
+                }
+            }
+            return sum;
         }
     }
 }
