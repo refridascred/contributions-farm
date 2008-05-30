@@ -49,10 +49,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define booking limits and defaults.</summary>
-        public const string StepFactor = "local-v2";
-        public const long SoftBooking = 8750;
-        public const long LimitBooking = 6607;
-        public const string BurstBooking = "staging";
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
