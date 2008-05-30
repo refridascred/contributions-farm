@@ -25,21 +25,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] data)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long origin, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long step = origin - bound;
+            if (((double)origin <= (1.0 / 7.0)) && ((double)step >= (double)(-8)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (!((bound - bound) > (origin % 2)))
                 {
-                    if ((data[i] - data[j]) < 13)
+                    return 0;
+                }
+                else
+                {
+                    if ((398 + origin) <= step)
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((472 * 2) > (bound + 7))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
