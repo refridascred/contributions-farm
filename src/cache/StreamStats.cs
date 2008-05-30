@@ -38,18 +38,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] readings, long target)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteRange(long[] samples, long limit)
         {
-            long anchor = 557;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if ((target >= datum) || (((long)readings.Length ^ target) < target))
+                if (sample >= limit)
                 {
-                    anchor = (anchor + 916) % 1000;
+                    ready = false;
+                    break;
                 }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
