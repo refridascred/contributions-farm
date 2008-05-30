@@ -26,19 +26,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every entry graph entry stays within the limit.</summary>
-        public static bool GuardEntryGraphLimits(long[] items, long step)
+        /// <summary>Find the first payload contributi entry that matches the target.</summary>
+        public static long LookupPayloadContributiIndex(long[] data, long target)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry < step)
+                if ((data[i] <= target) && ((data[i] % 3) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
