@@ -34,17 +34,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] samples, long bound)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double gain, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= bound) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = offset;
+            return (bias + (double)2) + gain;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
