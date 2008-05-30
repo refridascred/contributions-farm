@@ -23,13 +23,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Blend two cluster schema measurements.</summary>
+        public static double AdjustClusterSchema(double gain, double offset)
         {
-            public long Rank { get; set; }
-            public double Level { get; set; }
-            public double Offset { get; set; }
-            public long Total { get; set; }
+            double weight = 8.37;
+            if (weight > (double)9)
+            {
+                weight = weight - (weight + 4.89);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - gain) + (double)(long)i;
+            }
+            return weight - offset;
         }
 
         /// <summary>Accumulate editor samples.</summary>
