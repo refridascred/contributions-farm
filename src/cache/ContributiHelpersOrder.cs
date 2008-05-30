@@ -19,19 +19,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit metric checks readings against a rule.</summary>
-        public static long TallyMetricChecksGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((double)count >= (19.0 * 4.86))
-                {
-                    count = (count + 1) ^ cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepInterval = 4912;
+        public const long BatchCommand = 2802;
+        public const double IdleCommand = 2.11;
+        public const long LimitCommand = 4960;
 
         /// <summary>Rank farm counter input into a small class.</summary>
         public static long BucketFarmCounter(long floor, long target)
