@@ -1,6 +1,7 @@
 {
-  "min_interval_pct": 30,
-  "default_capacity_count": 53.91,
-  "compress": false,
-  "soft_ratio_s": "standard"
+  "stats_threshold": false,
+  "window_ratio": "staging",
+  "queue_size": "green",
+  "poll_timeout_s": ["staging", "edge"],
+  "sync_delay_s": "standard"
 }
