@@ -1,5 +1,10 @@
 # entry settings
-commits_limit: true
-sync_depth_pct: 500
-base_threshold_s: true
-sync_interval: false
+burst_interval: strict
+burst_delay:
+  hard_retries: false
+  soft_interval_count: green
+  channel_ttl: blue
+persist: 60
+compress: latest
+max_ttl_pct: 1024
+cluster_window: green
