@@ -58,32 +58,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long origin, long seed)
+        /// <summary>Locate a window buffer reading by value.</summary>
+        public static long FindWindowBufferIndex(long[] values, long bound)
         {
-            long lane = origin - seed;
-            if ((origin * 4) <= ((-5) + 4))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((origin & 31) > lane) || (seed < origin))
+                if (values[i] <= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)origin < (7.34 + 12.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a schema record.</summary>
