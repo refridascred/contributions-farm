@@ -39,17 +39,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next route filter value from a seed.</summary>
-        public static long DeriveRouteFilter(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 14; i++)
-            {
-                anchor = (anchor * 5) + (long)i;
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double WindowWidth = 44.83;
+        public const long MaxRecord = 3141;
+        public const string WindowRecord = "staging-edge";
+        public const long CacheRecord = 8334;
+        public const long BurstRecord = 4846;
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
