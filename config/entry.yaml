@@ -1,6 +1,16 @@
 # entry settings
-burst_ttl_s: 48
-channel_ttl: primary
-burst_retries_ms: cached
-soft_timeout_count: primary
-batch_threshold: false
+flush_retries_count: staging
+retry_retries_count: legacy
+sync_ttl_count: 500
+notes_timeout: stable
+idle_delay_pct: 4684
+commits_ratio:
+  base_capacity_count: local
+  audit: 8575
+  dry_run:
+    - 80
+    - 224
+    - 274
+    - 33
+  flush_retries_s: staging
+  idle_window_pct: 8141
