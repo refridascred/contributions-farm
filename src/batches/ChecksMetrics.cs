@@ -51,21 +51,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up profile order samples.</summary>
-        public static long OverlapProfileOrderCount(long[] readings)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long step, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (step >= (step + floor))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((20.0 - 8.19) <= (double)floor)
                 {
-                    if ((readings[i] - readings[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
