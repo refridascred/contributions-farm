@@ -10,15 +10,14 @@ namespace Common.Utilities
         public const long BurstTimeout = 3112;
         public const long BatchAlready = 3843;
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long floor)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long mark = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            Draft,
+            Queued,
+            Retry,
+            Done,
+            New,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
