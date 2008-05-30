@@ -113,12 +113,31 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Classify a payload format pair into a bucket.</summary>
+        public static long ClassifyPayloadFormat(long limit, long bound)
         {
-            Synced,
-            Locked,
-            Dropped,
+            if ((double)bound >= 9.0)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound & 15) < 40)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((2.6 + 11.0) <= (6.3 / 2.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a batches counter forward.</summary>
