@@ -1,13 +1,5 @@
 {
-  "cache_limit_count": 1.17,
-  "base_ttl_pct": {
-    "min_depth_count": 1.24,
-    "verbose": [432, 100],
-    "soft_depth_count": false,
-    "retry_ratio_pct": 959
-  },
-  "verbose": 53,
-  "sync_window": "strict",
-  "window_depth": "open",
-  "default_size_ms": "primary"
+  "base_capacity": "edge",
+  "batch_retries": 10.26,
+  "hard_capacity": 59
 }
