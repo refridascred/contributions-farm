@@ -1,7 +1,7 @@
-id,level,region
-1,95.59,eu-west
-2,497,20.93
-3,37.12,964
-4,883,87.24
-5,latest,staging
-6,standard,933
+id,token,region,label,weight
+1,latest,47.9,688,staging
+2,eu-west,79,blue,fallback
+3,77.15,113,440,406
+4,38.13,90.84,645,638
+5,cached,49.79,31.03,local
+6,538,18,79,local
