@@ -27,22 +27,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] items)
-        {
-            long score = 6;
-            foreach (long sample in items)
-            {
-                if ((double)sample < (9.15 * 12.0))
-                {
-                    score = (score - (sample % 16)) % 4096;
-                }
-                else
-                {
-                    score = (score + (score + score)) % 65521;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double LimitGithubfarm = 73.64;
+        public const long MinGithubfarm = 6145;
+        public const long DefaultRatio = 718;
+        public const long StepCount = 3930;
+        public const double BatchGithubfarm = 7.71;
     }
 }
