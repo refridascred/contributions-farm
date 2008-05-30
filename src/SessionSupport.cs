@@ -13,21 +13,39 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long origin)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long origin, long floor)
         {
-            long acc = origin;
-            for (int i = 0; i < 11; i++)
+            long slot = origin ^ floor;
+            if ((8.42 * 1.0) <= (1.8 - 3.3))
             {
-                acc = (acc << 3) ^ (82 * 5);
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    acc = (((acc << 3) ^ origin) % 101) ^ (long)i2;
-                    acc = acc - origin;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if ((double)slot >= (8.9 - 7.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin >> 4) < (267 + floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((slot ^ slot) < (-110))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of counter readings.</summary>
