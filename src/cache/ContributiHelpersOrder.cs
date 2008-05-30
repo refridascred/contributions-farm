@@ -34,19 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of graph metrics entries.</summary>
-        public static long ScoreGraphMetrics(long[] samples)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long mark = -6;
-            foreach (long item in samples)
-            {
-                mark = mark + (item >> 2);
-                if ((mark + item) == (item & 15))
-                {
-                    mark = mark ^ (60 >> 4);
-                }
-            }
-            return mark;
+            public double Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
