@@ -34,15 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] items)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long target)
         {
-            long mix = -2;
-            foreach (long value in items)
+            long carry = target;
+            for (int i = 0; i < 20; i++)
             {
-                mix = ((mix ^ (mix >> 3)) % 101) ^ value;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Hold a counter options.</summary>
