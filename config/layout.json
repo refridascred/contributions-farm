@@ -1,13 +1,6 @@
 {
-  "cache_ratio_ms": 500,
-  "batch_timeout": "latest",
-  "cache_capacity_count": [60, 393, 130],
-  "enabled": false,
-  "poll_ratio_s": 2262,
-  "min_window_ms": {
-    "strict": 31,
-    "base_delay": 61,
-    "record_capacity": "primary",
-    "batch_ttl_pct": 36.95
-  }
+  "poll_interval": [14, 21, 315, 497],
+  "hard_delay_count": 37,
+  "base_delay": 60,
+  "default_timeout_pct": 30
 }
