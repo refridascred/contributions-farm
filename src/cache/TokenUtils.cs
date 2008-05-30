@@ -13,37 +13,22 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long origin, long bound)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long step, long origin)
         {
-            long step = origin - bound;
-            if (((double)origin <= (1.0 / 7.0)) && ((double)step >= (double)(-8)))
+            if (((8.84 - 8.0) == (double)step) || ((double)step <= (2.7 + 6.9)))
             {
                 return 5;
             }
             else
             {
-                if (!((bound - bound) > (origin % 2)))
+                if (!(95 > (origin * 3)))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if ((398 + origin) <= step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((472 * 2) > (bound + 7))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
