@@ -16,11 +16,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MaxCount = 95.7;
-        public const double BatchFactor = 50.66;
-        public const long BaseTimeout = 9410;
-        public const long StepNotes = 4434;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleFactor = 8225;
+        public const long BaseInterval = 3710;
+        public const double DefaultSupport = 38.59;
+        public const string CacheLevel = "latest-1";
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long IterateEditor(long bound)
