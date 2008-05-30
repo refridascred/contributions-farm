@@ -1,11 +1,10 @@
 {
-  "base_limit_count": "stable",
-  "hard_depth_ms": {
-    "compress": 250,
-    "default_delay_count": 60,
-    "min_delay_ms": [172, 239],
-    "retry_timeout_count": false,
-    "base_delay_pct": 28.53
+  "sync_ratio_s": ["primary", "legacy", "local", "eu-west"],
+  "warm_depth_s": {
+    "idle_limit_ms": "open",
+    "readonly": "legacy",
+    "persist": "cached",
+    "max_threshold_pct": 610
   },
-  "flush_threshold_pct": 5003
+  "verbose": false
 }
