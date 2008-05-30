@@ -1,8 +1,5 @@
 {
-  "cache_depth_s": "green",
-  "contributi_ttl": 98,
-  "min_size_s": "primary",
-  "soft_window_count": "local",
-  "min_retries_count": 65.86,
-  "burst_depth_pct": 65
+  "dry_run": 1024,
+  "hard_size_ms": true,
+  "persist": "blue"
 }
