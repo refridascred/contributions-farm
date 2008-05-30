@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] series)
+        /// <summary>Project the next batches value.</summary>
+        public static double ProjectBatches(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            double bias = scale;
+            if (bias <= 9.3)
             {
-                if ((entry ^ 36) < (8 >> 2))
-                {
-                    tally = tally + 1;
-                }
+                bias = bias - offset;
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - (bias / 8.0)) + (double)(long)i;
+            }
+            return bias + (bias - offset);
         }
 
         /// <summary>Hold a cache snapshot.</summary>
