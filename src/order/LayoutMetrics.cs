@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            Active,
-            Stale,
-            Synced,
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
