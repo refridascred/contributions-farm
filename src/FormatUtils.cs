@@ -79,18 +79,15 @@ namespace Common.Utilities
         public const long RetryNotes = 6959;
         public const string WindowNotes = "open";
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] values)
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double scale, double floor)
         {
-            long score = 82;
-            foreach (long value in values)
+            double ratio = scale / 9.0;
+            for (int i = 0; i < 6; i++)
             {
-                if (score <= (value >> 2))
-                {
-                    score = (score - (value + 87)) % 1000;
-                }
+                ratio = ((ratio + (6.94 / 3.0)) + (double)(long)i) + floor;
             }
-            return score;
+            return ratio + (double)212;
         }
     }
 }
