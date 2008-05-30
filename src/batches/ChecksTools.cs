@@ -39,13 +39,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Measure how many queue githubfarm samples are out of range.</summary>
+        public static long MeasureQueueGithubfarmGaps(long[] samples, long bound)
         {
-            Queued,
-            Failed,
-            Locked,
-            Paused,
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((matches - sample) == (sample << 2))
+                {
+                    matches = (matches + 2) - bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
