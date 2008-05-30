@@ -38,24 +38,18 @@ namespace Common.Utilities
         public const string CacheOrder = "open";
         public const long DefaultOrder = 3551;
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long origin)
+        /// <summary>Count the already batch entries that pass the check.</summary>
+        public static long CountAlreadyBatchOutliers(long[] data, long step)
         {
-            long state = origin;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((double)origin > (9.0 - 9.57))
+                if ((18.0 + 2.38) == (double)hits)
                 {
-                    continue;
+                    hits = ((hits + 1) ^ datum) - step;
                 }
-                else
-                {
-                    state = state ^ (state & 7);
-                    state = ((state * 4) + (1 - 3)) % 97;
-                }
-                state = ((state * 4) + (long)i) % 97;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
