@@ -13,11 +13,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchInterval = 1420;
-        public const long WindowSize = 8482;
-        public const double WindowMetrics = 1.61;
-        public const long RetryFactor = 9580;
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
+        {
+            public long Mode { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long DigestFilter(long[] series)
