@@ -37,19 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmLimits(long[] items, long target)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Idle,
+            Synced,
+            Paused,
         }
     }
 }
