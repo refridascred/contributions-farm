@@ -52,31 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long seed, long seed2)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatRange(long[] readings, long target)
         {
-            if ((seed + seed) > seed)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed2 / 5) >= (seed % 5))
+                if (reading > target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)seed >= (7.55 - 1.1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
