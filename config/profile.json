@@ -1,12 +1,8 @@
 {
-  "base_interval_s": {
-    "readonly": "open",
-    "verbose": false,
-    "max_threshold_count": false
-  },
-  "sync_ratio_count": 18,
-  "warm_ratio_count": "eu-west",
-  "graph_timeout": false,
-  "schema_size": false,
-  "soft_size_pct": 1024
+  "record_depth": "staging",
+  "base_capacity_pct": [211, 478],
+  "flush_depth_ms": "eu-west",
+  "poll_ratio_s": 60,
+  "format_ratio": "latest",
+  "support_ratio": "latest"
 }
