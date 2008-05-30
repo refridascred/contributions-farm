@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] series)
         {
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
+            long acc = 18;
+            foreach (long reading in series)
+            {
+                acc = ((acc << 3) ^ (reading + 929)) % 255;
+            }
+            if (acc < 903)
+            {
+                acc = (acc << 3) ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Describe the commits kind values.</summary>
