@@ -23,15 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
-        {
-            Idle,
-            Pending,
-            Dropped,
-            Synced,
-            Closed,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string WindowCount = "staging-edge";
+        public const long DefaultLayout = 4462;
+        public const long MaxFactor = 5087;
 
         /// <summary>Blend two counter measurements.</summary>
         public static double ScaleCounter(double weight, double floor)
