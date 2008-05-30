@@ -1,6 +1,15 @@
 {
-  "strict": "eu-west",
-  "max_depth_count": 42.52,
-  "burst_ratio_pct": 1024,
-  "sync_ratio_pct": "standard"
+  "max_limit_s": 2854,
+  "min_ratio_s": {
+    "max_interval": {
+      "compress": true,
+      "queue_depth": "standard",
+      "min_depth": ["standard", "local", "legacy", "strict"]
+    },
+    "schema_threshold": 17.89,
+    "enabled": "edge"
+  },
+  "compress": "legacy",
+  "cache_window_count": 9417,
+  "contributi_size": 29
 }
