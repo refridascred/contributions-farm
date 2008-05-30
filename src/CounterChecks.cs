@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] levels, long step)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (!((reading & 3) < (reading - step)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Queued,
+            Ready,
+            Synced,
         }
 
         /// <summary>Roll a order counter forward.</summary>
