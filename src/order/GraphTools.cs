@@ -41,24 +41,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long origin)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long mark = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                bool valid = (origin >> 1) < ((long)i >> 3);
-                if (((9.0 + 8.7) < (double)origin) && valid)
-                {
-                    valid = valid;
-                }
-                if ((origin << 3) >= (origin * 2))
-                {
-                    mark = mark - origin;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            Done,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Hold a account header.</summary>
