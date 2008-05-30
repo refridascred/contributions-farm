@@ -25,19 +25,19 @@ namespace Common.Utilities
         public const long IdleCluster = 1056;
         public const long HardCluster = 1401;
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] items, long floor)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferBounds(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (item <= floor)
+                if (item >= limit)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
     }
 }
