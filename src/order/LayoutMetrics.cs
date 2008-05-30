@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            Dropped,
-            Closed,
-            Locked,
-            Pending,
+            Active,
+            Stale,
+            Synced,
         }
 
         /// <summary>Digest a series of metric contributi entries.</summary>
