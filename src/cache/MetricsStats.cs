@@ -37,19 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordRange(long[] readings, long seed)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Describe the editor level values.</summary>
