@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
-        {
-            Queued,
-            Ready,
-            Paused,
-            Stale,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstDepth = 7469;
+        public const long LimitSpan = 4290;
+        public const long RetryAlready = 4733;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long TallyChecksMatches(long[] levels, long offset)
