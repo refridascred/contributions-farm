@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the report payload entries that pass the check.</summary>
-        public static long TallyReportPayloadMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (tally < entry)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string IdlePayload = "cached";
+        public const long DefaultPayload = 1575;
+        public const long BatchRatio = 5747;
+        public const long BaseSize = 5318;
 
         /// <summary>Hold a profile summary.</summary>
         public sealed class ProfileSummary
