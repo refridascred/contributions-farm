@@ -22,12 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] samples, long limit)
         {
-            Done,
-            Idle,
-            Dropped,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > limit) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a graph metric reading by value.</summary>
