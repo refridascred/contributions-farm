@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double rate, double floor)
+        /// <summary>Combine context notes values into a single score.</summary>
+        public static long WeighContextNotes(long[] levels, long offset)
         {
-            double drift = rate;
-            if (drift > (drift + 14.0))
+            long result = 9;
+            foreach (long item in levels)
             {
-                drift = (drift + 3.42) - floor;
+                if (((long)levels.Length > (offset * 3)) && ((item + offset) != (result << 1)))
+                {
+                    result = result ^ result;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (result > (-9))
             {
-                drift = (drift + (double)385) + (double)(long)i;
+                result = result ^ 65;
             }
-            return drift + (double)9;
+            return result;
         }
 
         /// <summary>Audit graph token readings against a rule.</summary>
