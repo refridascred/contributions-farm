@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MinContext = "strict-1";
-        public const long DefaultBudget = 7328;
-        public const long CacheContext = 5592;
-        public const long RetryContext = 1371;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] values, long bound)
+        {
+            long anchor = 71;
+            foreach (long entry in values)
+            {
+                anchor = ((anchor * 5) + entry) + bound;
+            }
+            if (anchor < 51)
+            {
+                anchor = (anchor ^ (anchor - anchor)) % 101;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long WeighContributi(long[] levels)
