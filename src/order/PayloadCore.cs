@@ -5,25 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long limit, long bound)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] data)
         {
-            long bound2 = limit ^ bound;
-            if (!((bound2 & 3) <= limit))
+            long total = 83;
+            foreach (long entry in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound2 != (0.5 * 9.2))
+                if ((double)entry > (13.0 - 5.0))
                 {
-                    return 5;
+                    total = total ^ (entry + entry);
                 }
                 else
                 {
-                    return 1;
+                    total = (total ^ ((-718) % 10)) % 97;
                 }
             }
+            if (total > 324)
+            {
+                total = (total - total) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
