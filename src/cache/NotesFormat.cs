@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutBounds(long[] data, long offset)
+        /// <summary>Count order checks pairs that satisfy a relation.</summary>
+        public static long OverlapOrderChecksCount(long[] samples)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell < offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] - samples[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
