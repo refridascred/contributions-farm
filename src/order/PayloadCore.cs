@@ -39,19 +39,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] readings, long bound)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] samples)
         {
-            long result = 96;
-            foreach (long entry in readings)
+            long result = 3;
+            foreach (long cell in samples)
             {
-                result = (result ^ (entry + bound)) % 4096;
+                if (((result * 4) <= ((long)samples.Length ^ result)) && ((-52) >= cell))
+                {
+                    result = result - (cell - result);
+                }
             }
-            if (result > 225)
-            {
-                result = (result << 3) ^ (bound + (-63));
-            }
-            return result;
+            return result % 97;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
