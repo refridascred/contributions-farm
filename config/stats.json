@@ -1,6 +1,8 @@
 {
-  "base_timeout": "staging",
-  "audit": 25,
-  "already_window": 1024,
-  "queue_ratio": "local"
+  "verbose": [473, 418, 394],
+  "soft_ratio_count": ["strict", "strict", "open", "green"],
+  "max_ttl_count": [113, 79],
+  "farm_ttl": 20.33,
+  "cache_interval_s": 1,
+  "graph_ratio": true
 }
