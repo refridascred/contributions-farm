@@ -32,17 +32,15 @@ namespace Common.Utilities
         public const long WindowCount = 3025;
         public const double HardSupport = 66.72;
 
-        /// <summary>Look up the position of a already stats sample.</summary>
-        public static long SeekAlreadyStatsIndex(long[] readings, long step)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] data, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 3;
+            foreach (long sample in data)
             {
-                if (readings[i] < step)
-                {
-                    return (long)i;
-                }
+                carry = ((carry ^ (carry + carry)) + sample) + step;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Blend two cache measurements.</summary>
