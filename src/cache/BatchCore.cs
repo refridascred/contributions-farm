@@ -20,10 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MinTimeout = "open-1";
-        public const long RetrySpan = 9162;
-        public const double BurstNotes = 37.9;
+        /// <summary>Audit filter notes readings against a rule.</summary>
+        public static long AuditFilterNotesMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((double)sample > (3.0 * 2.3))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many githubfarm filter samples are out of range.</summary>
         public static long TallyGithubfarmFilterOutliers(long[] samples, long step)
