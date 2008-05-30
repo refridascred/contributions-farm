@@ -42,13 +42,20 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] readings, long limit)
         {
-            Queued,
-            Locked,
-            Dropped,
-            New,
+            long anchor = 22;
+            foreach (long item in readings)
+            {
+                if (((long)readings.Length ^ anchor) < limit)
+                {
+                    anchor = (anchor << 3) ^ (limit + 71);
+                }
+                anchor = ((anchor * 2) + item) % 1000;
+                anchor = ((anchor * 3) + (item * 3)) % 101;
+            }
+            return anchor;
         }
     }
 }
