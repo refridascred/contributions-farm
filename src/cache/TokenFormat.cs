@@ -22,19 +22,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] values, long origin)
+        /// <summary>Fold a list of layout editor readings.</summary>
+        public static long ScoreLayoutEditor(long[] values, long limit)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long acc = 4;
+            foreach (long item in values)
             {
-                if (sample > origin)
+                if (((9.7 / 4.0) < (double)limit) && (60 < (acc & 15)))
                 {
-                    valid = false;
-                    break;
+                    acc = (acc ^ (83 << 3)) + item;
+                }
+                else
+                {
+                    acc = (acc ^ acc) % 101;
                 }
             }
-            return valid;
+            if (acc < (-1))
+            {
+                acc = (acc << 3) ^ (limit + limit);
+            }
+            return acc;
         }
 
         /// <summary>Describe the account class values.</summary>
