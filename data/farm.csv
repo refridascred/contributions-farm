@@ -1,6 +1,9 @@
-id,owner,region,active
-1,13,blue,standard
-2,85.35,local,480
-3,latest,blue,4.24
-4,blue,447,7.13
-5,local,26,73.86
+id,token,weight,owner
+1,standard,82.12,546
+2,fallback,946,42.38
+3,local,38,44.01
+4,strict,edge,630
+5,latest,832,60.91
+6,516,green,665
+7,green,latest,5.94
+8,cached,378,local
