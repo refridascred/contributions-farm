@@ -19,17 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] values, long seed)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] values, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if ((values[i] < seed) && ((values[i] % 3) == 0))
+                if (cell <= step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
