@@ -38,19 +38,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every githubfarm route entry stays within the limit.</summary>
-        public static bool CheckGithubfarmRouteRange(long[] samples, long floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferHits(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (reading > floor)
+                if ((seen >> 1) < seen)
                 {
-                    ok = false;
-                    break;
+                    seen = ((seen + 2) - value) - origin;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
