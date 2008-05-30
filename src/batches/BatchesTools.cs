@@ -20,16 +20,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long seed)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] values, long bound)
         {
-            long result = seed;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = result + seed;
-                result = ((result * 5) + (long)i) % 97;
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
