@@ -49,12 +49,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BaseWidth = 6.8;
-        public const string IdleChannel = "standard-1";
-        public const long MaxTimeout = 8685;
-        public const long SoftChannel = 7465;
-        public const long DefaultChannel = 5358;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] samples)
+        {
+            long anchor = 3;
+            foreach (long cell in samples)
+            {
+                if ((783 - anchor) != (cell & 15))
+                {
+                    anchor = anchor + 2;
+                }
+                if ((cell / 8) <= (long)samples.Length)
+                {
+                    break;
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long CountBufferMatches(long[] levels)
