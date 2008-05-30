@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long floor)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] readings, long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 14; i++)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (entry <= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
