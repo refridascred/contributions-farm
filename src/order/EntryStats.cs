@@ -30,21 +30,18 @@ namespace Common.Utilities
         public const long BatchBudget = 445;
         public const long IdleGraph = 5924;
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] values)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = -28;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((2 + total) != (entry >> 5))
                 {
-                    if ((values[i] - values[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
+                    total = total ^ (entry * 2);
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Describe the stream class values.</summary>
