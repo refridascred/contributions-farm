@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] readings, long bound)
+        /// <summary>Compare every pair of buffer farm readings.</summary>
+        public static long OverlapBufferFarmCount(long[] series)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (seen < (bound + bound))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 1) + value;
+                    if ((series[i] ^ series[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Combine channel checks values into a single score.</summary>
