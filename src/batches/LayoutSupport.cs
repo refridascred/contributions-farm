@@ -61,14 +61,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
-        {
-            Paused,
-            Stale,
-            Active,
-            Synced,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseWidth = 3238;
+        public const long DefaultReport = 1908;
+        public const string StepWidth = "local-1";
+        public const double BurstReport = 25.8;
+        public const string BatchReport = "local-v2";
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long FindEditorIndex(long[] readings, long limit)
