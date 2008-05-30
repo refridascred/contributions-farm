@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] values, long offset)
+        /// <summary>Count commits notes pairs that satisfy a relation.</summary>
+        public static long PairCommitsNotesCount(long[] data)
         {
             long hits = 0;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (227 <= (item ^ offset))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((data[i] - data[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
