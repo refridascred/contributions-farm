@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long floor, long target)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] levels, long step)
         {
-            long edge = floor + target;
-            if (((8.1 + 13.0) > (double)target) || ((8 / 4) >= edge))
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((edge / 7) >= target)
+                if ((double)seen <= (15.0 / 3.0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    seen = ((seen + 1) + cell) + step;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
