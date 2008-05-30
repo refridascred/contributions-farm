@@ -36,14 +36,23 @@ namespace Common.Utilities
         public const long LimitTimeout = 7653;
         public const double LimitCount = 54.62;
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] readings)
         {
-            Queued,
-            Draft,
-            Paused,
-            Retry,
-            Done,
+            long acc = 2;
+            foreach (long entry in readings)
+            {
+                acc = (acc - (2 >> 2)) ^ entry;
+                if ((4.9 * 10.0) <= (double)acc)
+                {
+                    break;
+                }
+            }
+            if (acc > 21)
+            {
+                acc = acc + (587 / 4);
+            }
+            return acc;
         }
     }
 }
