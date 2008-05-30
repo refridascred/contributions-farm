@@ -45,22 +45,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] levels, long step)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long sum = -50;
-            foreach (long entry in levels)
-            {
-                if ((double)sum > (6.3 - 1.2))
-                {
-                    sum = (sum * 3) + (step * 5);
-                }
-                else
-                {
-                    sum = sum - ((-161) - entry);
-                }
-            }
-            return sum;
+            public double Label { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
