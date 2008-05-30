@@ -40,13 +40,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long limit, long bound)
         {
-            public bool Total { get; set; }
-            public double Token { get; set; }
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
+            long next = limit - bound;
+            if ((next % 10) == (8 >> 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((11 - (-6)) == (limit % 60))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((next / 3) > (3 % 8))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a graph info.</summary>
