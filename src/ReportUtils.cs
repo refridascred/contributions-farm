@@ -35,21 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up cluster checks samples.</summary>
-        public static long OverlapClusterChecksCount(long[] items)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 44;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((6.0 + 5.0) == (double)mix)
                 {
-                    if ((items[i] + items[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = ((mix ^ 787) % 65521) + sample;
+                }
+                else
+                {
+                    mix = ((mix * 3) + (mix >> 5)) % 255;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Hold a metric stats.</summary>
