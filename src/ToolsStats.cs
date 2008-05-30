@@ -97,11 +97,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
-        {
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 2869;
+        public const long LimitCache = 1557;
+        public const double BatchCache = 57.0;
+        public const long StepCache = 9121;
+        public const long HardDepth = 8217;
     }
 }
