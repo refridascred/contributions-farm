@@ -22,20 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cluster commits readings.</summary>
-        public static long ScoreClusterCommits(long[] levels, long origin)
-        {
-            long sum = 5;
-            foreach (long value in levels)
-            {
-                sum = (sum ^ origin) + value;
-            }
-            if (sum > (-81))
-            {
-                sum = (sum + (984 - origin)) % 101;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BaseEditor = 11.55;
+        public const long IdleEditor = 50;
+        public const long HardDepth = 9493;
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long PairWindowCount(long[] data)
