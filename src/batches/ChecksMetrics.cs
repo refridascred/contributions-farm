@@ -75,15 +75,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of account counter readings.</summary>
-        public static long DigestAccountCounter(long[] items, long target)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordRange(long[] readings, long bound)
         {
-            long mark = 4;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                mark = ((mark + ((long)items.Length - reading)) % 255) + target;
+                if (datum <= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark;
+            return ok;
         }
     }
 }
