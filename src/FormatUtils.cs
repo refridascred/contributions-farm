@@ -91,9 +91,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BatchSpan = 59.18;
-        public const string CacheToken = "strict-1";
-        public const double BaseBudget = 96.27;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 8993;
+        public const double SoftSession = 43.94;
+        public const double BurstSession = 95.26;
     }
 }
