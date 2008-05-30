@@ -27,23 +27,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] readings)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long floor)
         {
-            long mix = 7;
-            foreach (long sample in readings)
+            long mark = floor;
+            for (int i = 0; i < 23; i++)
             {
-                mix = mix - (5 + 9);
-                if (sample <= (mix / 7))
+                if (!((floor + floor) < (floor << 3)))
                 {
-                    mix = ((mix << 2) ^ (743 - sample)) % 4096;
+                    mark = (mark << 3) ^ mark;
                 }
-                else
-                {
-                    mix = mix + (-1);
-                }
+                mark = ((mark * 3) + (mark - floor)) % 97;
+                mark = ((mark << 3) ^ (floor ^ floor)) % 255;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mix;
+            return mark;
         }
     }
 }
