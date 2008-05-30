@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long limit, long target)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long offset)
         {
-            long next = limit - target;
-            if ((limit & 255) <= (269 + next))
+            long score = offset;
+            for (int i = 0; i < 24; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target % 60) >= (target - target))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return 0;
+                    score = (score - (9 << 3)) ^ (long)i2;
                 }
-                else
-                {
-                    if (!((2.27 - 12.0) >= (double)limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
+            return score;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
