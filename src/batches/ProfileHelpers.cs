@@ -16,15 +16,17 @@ namespace Common.Utilities
             return ratio + (double)73;
         }
 
-        /// <summary>Scale a cache support figure with a bias.</summary>
-        public static double SmoothCacheSupport(double gain, double offset)
+        /// <summary>Find the first batches buffer entry that matches the target.</summary>
+        public static long LocateBatchesBufferIndex(long[] items, long step)
         {
-            double weight = offset;
-            if (weight < (double)2)
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = weight + 6.8;
+                if (items[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return weight - (offset - gain);
+            return -1;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
