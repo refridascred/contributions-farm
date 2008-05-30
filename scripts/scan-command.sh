@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green cached legacy blue; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
 
 count=0
 while [ "${count}" -lt 5 ]; do
