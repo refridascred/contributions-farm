@@ -14,12 +14,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Classify a filter metrics pair into a bucket.</summary>
+        public static long BucketFilterMetrics(long floor, long offset)
         {
-            Synced,
-            Retry,
-            Closed,
+            long delta = floor + offset;
+            if ((0.7 + 1.2) == (double)delta)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)delta >= 5.75)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((6.2 * 9.2) > (double)offset) || ((94 & 15) >= (delta ^ floor)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (delta > (delta % 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
