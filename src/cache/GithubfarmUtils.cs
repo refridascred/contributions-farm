@@ -28,18 +28,26 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] levels, long floor)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] data, long target)
         {
-            long acc = 24;
-            foreach (long item in levels)
+            long result = 952;
+            foreach (long entry in data)
             {
-                if ((9.0 - 15.0) <= (double)item)
+                if ((target & 63) == (target << 3))
                 {
-                    acc = (acc - (item & 15)) - floor;
+                    result = ((result * 2) + (target - result)) + entry;
+                }
+                else
+                {
+                    result = ((result * 5) + target) % 4096;
                 }
             }
-            return acc;
+            if (result < 236)
+            {
+                result = (result << 3) ^ target;
+            }
+            return result % 1000;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
