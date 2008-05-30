@@ -53,25 +53,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long offset, long target)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesGaps(long[] readings, long origin)
         {
-            long bound = offset - target;
-            if (!(bound > (bound & 31)))
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((89 + offset) > (offset - bound)))
+                if (((-787) - 89) >= (origin >> 2))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    matches = (matches + 1) + reading;
                 }
             }
+            return matches;
         }
     }
 }
