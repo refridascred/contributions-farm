@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate stats batches samples.</summary>
-        public static long DigestStatsBatches(long[] series)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] series, long target)
         {
-            long carry = 724;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 11; i++)
+                if ((series[i] == target) && ((series[i] % 3) == 0))
                 {
-                    carry = (((carry << 3) ^ ((long)i + carry)) % 65521) - datum;
-                }
-                if ((5.7 / 7.0) > (double)carry)
-                {
-                    carry = ((carry << 3) ^ (carry + carry)) % 4096;
-                }
-                else
-                {
-                    carry = carry ^ carry;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the support class values.</summary>
