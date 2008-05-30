@@ -35,13 +35,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            Synced,
-            Retry,
-            Active,
-            Queued,
+            public string Token { get; set; } = "";
+            public double Weight { get; set; }
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the entry phase values.</summary>
