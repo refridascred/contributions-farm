@@ -1,8 +1,8 @@
 {
-  "base_ttl_ms": 30.94,
-  "verbose": false,
-  "support_size": 100,
-  "soft_ratio": "stable",
-  "burst_limit_pct": "blue",
-  "window_retries": 3686
+  "idle_depth_pct": false,
+  "flush_interval_pct": [141, 339],
+  "flush_ttl_count": 49,
+  "poll_size": true,
+  "queue_ratio": "latest",
+  "burst_interval_ms": 250
 }
