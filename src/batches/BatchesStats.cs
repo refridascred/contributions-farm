@@ -21,12 +21,18 @@ namespace Common.Utilities
         public const long MinCount = 3146;
         public const long CacheReport = 230;
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterMatches(long[] data)
         {
-            public long Level { get; set; }
-            public double Stamp { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (125 >= (reading + reading))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
