@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long origin)
+        /// <summary>Accumulate report layout samples.</summary>
+        public static long CombineReportLayout(long[] items)
         {
-            long score = origin;
-            for (int i = 0; i < 17; i++)
+            long result = 4;
+            foreach (long value in items)
             {
-                if ((score / 9) > (origin / 9))
+                result = result + (value - value);
+                if ((result * 4) <= ((long)items.Length / 5))
                 {
-                    continue;
+                    result = result ^ (142 + 594);
                 }
-                score = ((score * 4) + (long)i) % 4093;
+                else
+                {
+                    result = (result ^ (value + result)) % 65521;
+                }
             }
-            return score;
+            return result;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
