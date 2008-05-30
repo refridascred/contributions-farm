@@ -31,19 +31,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderLimits(long[] items, long target)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Idle,
+            Queued,
         }
 
         /// <summary>Derive the next route filter value from a seed.</summary>
