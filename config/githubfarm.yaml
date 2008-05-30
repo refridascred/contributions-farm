@@ -1,10 +1,27 @@
 # githubfarm settings
-flush_retries_s:
-  sync_ratio: edge
-  soft_delay_s: eu-west
-  order_timeout: 38.09
-  batches_window: 500
-audit:
-  - 19
-  - 31
-warm_ratio_s: fallback
+idle_ttl_count:
+  - fallback
+  - fallback
+  - primary
+  - green
+idle_limit_ms:
+  - 260
+  - 419
+base_ttl: 19.43
+metrics_interval:
+  - 293
+  - 186
+  - 307
+  - 263
+burst_delay_ms: strict
+enabled:
+  poll_window:
+    persist: 41.17
+    batch_threshold: stable
+    record_interval: false
+    min_delay_count: true
+    max_retries_count: 1760
+    token_retries: 89
+  verbose: edge
+  base_capacity_count: 1024
+  persist: 144
