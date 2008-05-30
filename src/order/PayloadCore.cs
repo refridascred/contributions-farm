@@ -26,18 +26,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] samples)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountMatches(long[] values)
         {
-            long result = 3;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (((result * 4) <= ((long)samples.Length ^ result)) && ((-52) >= cell))
+                if ((double)cell <= (11.0 + 20.0))
                 {
-                    result = result - (cell - result);
+                    count = count + 3;
                 }
             }
-            return result % 97;
+            return count;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
