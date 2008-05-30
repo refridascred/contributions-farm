@@ -1,5 +1,7 @@
 {
-  "poll_limit": 67,
-  "contributi_retries": 13.17,
-  "audit": 30
+  "enabled": ["eu-west", "open", "legacy"],
+  "cache_delay": [13, 129],
+  "warm_interval_ms": "open",
+  "stream_depth": 92,
+  "retry_ratio_pct": 48.63
 }
