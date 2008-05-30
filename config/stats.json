@@ -1,8 +1,12 @@
 {
-  "audit": "green",
-  "batches_ratio": "primary",
-  "persist": 1024,
-  "poll_threshold": "legacy",
-  "sync_capacity_count": "open",
-  "route_timeout": "strict"
+  "notes_depth": 15,
+  "verbose": ["primary", "staging", "blue", "standard"],
+  "base_delay": {
+    "strict": true,
+    "tools_limit": 53,
+    "hard_capacity": 75.72,
+    "batch_ttl": "primary"
+  },
+  "soft_interval_count": 500,
+  "compress": [52, 128]
 }
