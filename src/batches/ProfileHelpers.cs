@@ -64,18 +64,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine report profile values into a single score.</summary>
-        public static long FoldReportProfile(long[] levels, long bound)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] samples)
         {
-            long acc = 7;
-            foreach (long datum in levels)
+            long carry = 3;
+            foreach (long reading in samples)
             {
-                if ((double)datum <= 5.6)
-                {
-                    acc = ((acc - datum) % 4096) + bound;
-                }
+                carry = ((carry ^ (carry >> 4)) % 101) + reading;
             }
-            return acc % 1000;
+            return carry;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
