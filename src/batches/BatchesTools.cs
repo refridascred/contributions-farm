@@ -36,18 +36,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsHits(long[] data)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long floor)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long acc = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (((18.0 + 8.4) > (double)matches) || ((sample ^ matches) < sample))
-                {
-                    matches = matches + 1;
-                }
+                acc = (acc ^ (acc % 2)) % 1000;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
     }
 }
