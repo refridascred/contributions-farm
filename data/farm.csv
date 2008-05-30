@@ -1,10 +1,7 @@
-id,owner,ratio,weight,score
-1,37.99,181,edge,57.85
-2,79.03,blue,standard,59.9
-3,42,735,edge,812
-4,84.05,legacy,63.79,478
-5,cached,555,latest,900
-6,local,586,557,997
-7,standard,20.09,750,63.29
-8,82.31,201,358,blue
-9,strict,708,78.92,2.05
+id,weight,region,ratio,active
+1,298,78.6,96,674
+2,primary,cached,17.61,4.15
+3,staging,39.89,12.28,898
+4,273,942,85.37,48.8
+5,460,74.25,198,82.6
+6,standard,91,42.87,8.93
