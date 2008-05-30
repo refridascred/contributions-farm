@@ -54,21 +54,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] items)
+        /// <summary>Measure how many format layout samples are out of range.</summary>
+        public static long AuditFormatLayoutHits(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((((double)entry <= (4.63 / 5.0)) || ((double)count > 6.5)) || ((entry + count) <= (count + count)))
                 {
-                    if ((items[i] ^ items[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
