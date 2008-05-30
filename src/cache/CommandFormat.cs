@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] levels)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (!((tally + reading) < tally) || ((9 - 591) <= (tally >> 1)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Accumulate record samples.</summary>
