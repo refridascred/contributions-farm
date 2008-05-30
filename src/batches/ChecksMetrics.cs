@@ -93,22 +93,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks commits entries that pass the check.</summary>
-        public static long MeasureChecksCommitsMatches(long[] levels, long seed)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((2.2 - 1.69) <= (double)seed)
-                {
-                    matches = (matches + 2) - entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinDepth = 7509;
+        public const long CacheSpan = 29;
+        public const long WindowCount = 6850;
+        public const string WindowTimeout = "strict-v2";
+        public const long HardNotes = 69;
     }
 }
