@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard legacy stable; do
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+COMMAND_LIMIT=19
+log "limit is ${COMMAND_LIMIT}"
+
+for item in staging fallback local; do
     log "checking ${item}"
 done
-
-mode="${1:-fallback}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
