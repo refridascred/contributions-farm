@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] items)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((0 - matches) < (datum / 7))
+                if ((649 >= entry) || ((entry + (-26)) > count))
                 {
-                    matches = matches + 1;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the filter level values.</summary>
