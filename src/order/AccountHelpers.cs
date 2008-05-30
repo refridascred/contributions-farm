@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] items)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] levels, long bound)
         {
-            long carry = 24;
-            foreach (long value in items)
+            long acc = 6;
+            foreach (long entry in levels)
             {
-                if ((carry % 8) < (value + carry))
-                {
-                    carry = (carry + (23 * 5)) % 1000;
-                }
-                if (!((1.21 + 0.76) >= (double)carry))
-                {
-                    carry = (carry ^ ((-468) + carry)) % 4096;
-                }
+                acc = (((acc << 2) ^ (acc & 127)) ^ entry) - bound;
+                acc = (acc * 2) + ((-486) & 3);
             }
-            return carry;
+            if (acc < 0)
+            {
+                acc = (acc * 3) + acc;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
