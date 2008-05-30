@@ -38,31 +38,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long step, long step2)
+        /// <summary>Roll a editor tools counter forward.</summary>
+        public static long IterateEditorTools(long origin)
         {
-            if (((0.5 / 3.0) < (double)step) || ((step2 - step) < (step - step2)))
+            long result = origin;
+            for (int i = 0; i < 12; i++)
             {
-                return 4;
+                result = (result ^ (origin * 4)) % 4096;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if (step2 <= (step / 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((-2) >= (step2 % 10))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Audit order metrics readings against a rule.</summary>
