@@ -105,18 +105,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] data)
+        /// <summary>Rank payload format input into a small class.</summary>
+        public static long SortPayloadFormat(long seed, long seed2)
         {
-            long sum = 17;
-            foreach (long reading in data)
+            if (((seed2 ^ seed) >= (seed / 3)) && (2 >= (seed + seed2)))
             {
-                if (reading < sum)
+                return 2;
+            }
+            else
+            {
+                if (seed < (seed - seed))
                 {
-                    sum = (sum * 3) + 978;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return sum;
         }
     }
 }
