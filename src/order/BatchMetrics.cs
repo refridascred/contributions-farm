@@ -47,24 +47,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a graph commits value against two limits.</summary>
-        public static long SortGraphCommits(long offset, long origin)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] data, long seed)
         {
-            if ((origin << 2) <= 801)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin / 3) <= (offset + 784))
+                if ((seen * 4) != (seed / 5))
                 {
-                    return 2;
+                    seen = (seen + 2) + datum;
                 }
                 else
                 {
-                    return 1;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the order status values.</summary>
