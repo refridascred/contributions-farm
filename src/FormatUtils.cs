@@ -81,12 +81,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BaseScore = 83.07;
-        public const long DefaultNotes = 6459;
-        public const long BurstTimeout = 1008;
-        public const long RetryNotes = 6959;
-        public const string WindowNotes = "open";
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (((count + 313) == ((-49) - count)) || (((count - reading) > reading) && ((3 / 9) == (reading << 3))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
