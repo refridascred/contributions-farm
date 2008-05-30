@@ -27,17 +27,24 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long offset)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long bound, long bound2)
         {
-            long acc = offset;
-            for (int i = 0; i < 22; i++)
+            if ((1.68 - 8.0) >= (double)bound)
             {
-                acc = (acc ^ offset) % 101;
-                acc = ((acc << 2) ^ (acc + offset)) % 1000;
-                acc = ((acc * 5) + (long)i) % 97;
+                return 0;
             }
-            return acc;
+            else
+            {
+                if ((bound2 << 3) < (bound2 + bound2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
