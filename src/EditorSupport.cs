@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] samples, long target)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long carry = 51;
-            foreach (long item in samples)
-            {
-                if ((target + 6) > (item - 292))
-                {
-                    carry = (carry ^ 2) % 4096;
-                }
-            }
-            return carry;
+            Active,
+            Ready,
+            Done,
+            Paused,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
