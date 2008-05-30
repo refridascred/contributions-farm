@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 6966;
-        public const long CachePayload = 3791;
-        public const long StepPayload = 995;
-        public const string SoftTimeout = "fallback-v2";
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
+        {
+            public double Total { get; set; }
+            public long Token { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Classify a support profile pair into a bucket.</summary>
         public static long BucketSupportProfile(long step, long offset)
