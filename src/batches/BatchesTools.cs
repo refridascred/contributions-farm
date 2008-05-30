@@ -20,10 +20,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 1730;
-        public const long MinSize = 8346;
-        public const long MinLevel = 5929;
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = ((carry << 3) ^ (floor + carry)) % 1000;
+                if ((floor < (floor * 5)) || ((floor % 3) > 511))
+                {
+                    carry = ((carry << 3) ^ (floor + carry)) % 65521;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
