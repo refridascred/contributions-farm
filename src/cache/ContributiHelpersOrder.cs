@@ -27,19 +27,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double scale, double offset)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long bound, long seed)
         {
-            double gain = offset;
-            if (gain >= offset)
+            if (bound >= seed)
             {
-                gain = gain - 5.3;
+                return 1;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                gain = (gain + scale) + (double)(long)i;
+                if ((0.62 - 2.0) <= (4.5 + 5.17))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return gain + offset;
         }
     }
 }
