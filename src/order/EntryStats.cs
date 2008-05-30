@@ -14,32 +14,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] values)
-        {
-            long anchor = 7;
-            foreach (long value in values)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    anchor = (anchor << 3) ^ (54 - anchor);
-                    anchor = (anchor + (anchor + (long)i)) % 65521;
-                }
-                if (value <= ((long)values.Length - value))
-                {
-                    anchor = ((anchor * 5) + value) % 255;
-                }
-                if ((value >> 3) == (anchor + 888))
-                {
-                    break;
-                }
-            }
-            if (anchor > 6)
-            {
-                anchor = (anchor - (anchor % 24)) % 101;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinCount = 7773;
+        public const double DefaultContext = 13.92;
+        public const long WindowContext = 3345;
+        public const long SoftContext = 1104;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long LimitCount = 6845;
