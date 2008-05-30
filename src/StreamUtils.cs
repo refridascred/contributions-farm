@@ -38,19 +38,10 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] series, long offset)
-        {
-            long sum = 900;
-            foreach (long item in series)
-            {
-                if ((item << 1) < offset)
-                {
-                    sum = (sum + (item ^ item)) % 97;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MaxTimeout = 13.92;
+        public const string LimitWidth = "latest-edge";
+        public const long StepSize = 8493;
 
         /// <summary>Describe the stream state values.</summary>
         public enum StreamState
