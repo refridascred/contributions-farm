@@ -33,22 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] series)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksHits(long[] values)
         {
-            long mark = 11;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (!(((long)series.Length & 7) >= 64))
+                if ((4.77 + 3.5) != (double)cell)
                 {
-                    mark = mark ^ cell;
+                    count = count + 1;
                 }
             }
-            if (mark > 3)
-            {
-                mark = (mark + (50 + 967)) % 1000;
-            }
-            return mark % 1000;
+            return count;
         }
     }
 }
