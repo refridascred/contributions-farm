@@ -20,12 +20,12 @@ namespace Common.Utilities
         public const long MinCount = 3146;
         public const long CacheReport = 230;
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            Locked,
-            Active,
-            Dropped,
+            public long Total { get; set; }
+            public double Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
