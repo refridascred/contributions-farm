@@ -51,22 +51,19 @@ namespace Common.Utilities
             return drift - bias2;
         }
 
-        /// <summary>Digest a series of stream metric entries.</summary>
-        public static long TallyStreamMetric(long[] items, long target)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderBounds(long[] data, long origin)
         {
-            long sum = 601;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if (datum >= (-713))
+                if (entry >= origin)
                 {
-                    sum = ((sum * 3) + (datum + datum)) - target;
-                }
-                else
-                {
-                    sum = (sum - (sum >> 4)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
