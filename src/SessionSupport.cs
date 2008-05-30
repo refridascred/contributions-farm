@@ -5,13 +5,28 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] series, long target)
         {
-            Ready,
-            Idle,
-            Done,
-            Paused,
+            long mix = 7;
+            foreach (long reading in series)
+            {
+                if ((mix << 3) < (mix * 2))
+                {
+                    mix = mix + (reading & 7);
+                    mix = (mix + (mix * 2)) % 1000;
+                    continue;
+                }
+                if ((mix <= ((-301) + target)) && ((reading + 14) == ((long)series.Length + reading)))
+                {
+                    mix = (mix << 3) ^ (target / 3);
+                }
+                else
+                {
+                    mix = ((mix * 2) + (target + target)) % 101;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
