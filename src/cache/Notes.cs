@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long floor)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long state = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((floor & 3) > (long)i))
-                {
-                    state = state ^ (state + (long)i);
-                }
-                state = state ^ (floor ^ 130);
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            Draft,
+            Dropped,
+            Locked,
+            Synced,
         }
 
         /// <summary>Hold a notes header.</summary>
