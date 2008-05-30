@@ -1,9 +1,7 @@
-id,label,count
-1,fallback,711
-2,862,125
-3,113,standard
-4,green,863
-5,269,open
-6,293,979
-7,strict,16.28
-8,694,197
+id,level,region
+1,95.59,eu-west
+2,497,20.93
+3,37.12,964
+4,883,87.24
+5,latest,staging
+6,standard,933
