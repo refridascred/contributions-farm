@@ -53,14 +53,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] series)
         {
-            Done,
-            Active,
-            Synced,
-            Paused,
-            Draft,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
