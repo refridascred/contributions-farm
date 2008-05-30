@@ -19,18 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphGaps(long[] readings, long step)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample + step) < (step << 2))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Region { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
