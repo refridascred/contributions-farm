@@ -33,13 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            Failed,
-            Active,
-            Stale,
+            Paused,
+            Queued,
             Done,
+            Synced,
         }
     }
 }
