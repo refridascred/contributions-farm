@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamMatches(long[] readings)
         {
-            Queued,
-            Closed,
-            Locked,
-            Active,
-            Done,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((tally ^ tally) != (tally * 3))
+                {
+                    tally = (tally + 3) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
