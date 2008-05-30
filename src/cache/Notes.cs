@@ -16,39 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a farm metric value against two limits.</summary>
-        public static long ClassifyFarmMetric(long target, long step)
+        /// <summary>Validate profile order readings against a bound.</summary>
+        public static bool VerifyProfileOrderRange(long[] levels, long seed)
         {
-            long cur = target + step;
-            if ((target - cur) > 89)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((cur - target) <= (904 & 7))
+                if (cell < seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((8.2 + 17.0) > (double)cur))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step - target) >= (target - cur))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
