@@ -46,22 +46,38 @@ namespace Common.Utilities
         public const double WindowRatio = 63.33;
         public const string MaxSize = "alpha-v2";
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] series, long target)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long origin, long step)
         {
-            long count = 0;
-            foreach (long cell in series)
+            if ((origin + origin) < origin)
             {
-                if (!((double)count < (5.8 * 7.0)))
+                return 1;
+            }
+            else
+            {
+                if ((origin - origin) < origin)
                 {
-                    count = ((count + 3) - cell) - target;
+                    return 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (((63 + 17) != (step % 100)) && (origin > (origin + origin)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin >> 2) > (step << 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
