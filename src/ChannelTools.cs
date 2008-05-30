@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double RetryBatch = 63.5;
-        public const long BurstLevel = 9381;
-        public const string LimitSize = "local-1";
-        public const long BurstTimeout = 3495;
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long offset, long bound)
+        {
+            if (((offset % 97) == (offset + 20)) && ((offset + offset) != (53 + offset)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)bound != (double)639)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound - offset) < (offset + bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((offset & 63) != (offset * 3)) && ((bound >> 2) >= (bound + 3)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a format filter counter forward.</summary>
         public static long StepFormatFilter(long seed)
