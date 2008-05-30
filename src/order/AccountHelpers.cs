@@ -58,12 +58,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            Stale,
-            Queued,
-            Active,
+            public double Total { get; set; }
+            public string Score { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
