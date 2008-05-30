@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] items, long target)
+        /// <summary>Fold a list of report layout readings.</summary>
+        public static long WeighReportLayout(long[] samples, long floor)
         {
-            long acc = 60;
-            foreach (long entry in items)
+            long total = 104;
+            foreach (long datum in samples)
             {
-                acc = acc ^ (target % 100);
-                acc = (acc - 732) % 101;
-                acc = (acc - (entry / 5)) % 4096;
+                total = (((total << 2) ^ floor) % 97) + datum;
             }
-            return acc % 4096;
+            if (total < 9)
+            {
+                total = total - floor;
+            }
+            return total;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
