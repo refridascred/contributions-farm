@@ -51,19 +51,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] items, long seed)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LookupToolsIndex(long[] series, long floor)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample > seed)
+                if (series[i] >= floor)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Combine record values into a single score.</summary>
