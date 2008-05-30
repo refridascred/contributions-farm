@@ -65,17 +65,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a entry token sample.</summary>
-        public static long FindEntryTokenIndex(long[] data, long step)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= step) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public double Score { get; set; }
+            public long Count { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
