@@ -61,19 +61,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every session payload entry stays within the limit.</summary>
-        public static bool GuardSessionPayloadBounds(long[] samples, long bound)
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] data)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum != bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] ^ data[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
