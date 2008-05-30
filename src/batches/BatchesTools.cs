@@ -19,12 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string CacheLevel = "fallback-edge";
-        public const double SoftCount = 19.28;
-        public const long StepLevel = 911;
-        public const long BatchTimeout = 7685;
-        public const string BaseDepth = "stable-v2";
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsRange(long[] samples, long offset)
+        {
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Match up layout samples.</summary>
         public static long CompareLayoutCount(long[] levels)
