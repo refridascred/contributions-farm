@@ -13,21 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] values)
+        /// <summary>Validate notes githubfarm readings against a bound.</summary>
+        public static bool CheckNotesGithubfarmLimits(long[] values, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum < limit)
                 {
-                    if ((values[i] + values[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
