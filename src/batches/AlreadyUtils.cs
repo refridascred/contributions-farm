@@ -23,19 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a cluster payload counter forward.</summary>
-        public static long RollClusterPayload(long floor)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long anchor = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((5.95 - 16.0) == (double)floor)
-                {
-                    anchor = (anchor - (long)i) % 1000;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            public long Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the filter level values.</summary>
