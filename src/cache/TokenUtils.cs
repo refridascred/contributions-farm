@@ -26,10 +26,16 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinWidth = 1347;
-        public const string DefaultWindow = "stable-v2";
-        public const string RetryWindow = "fallback-v2";
-        public const long HardCount = 1241;
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                score = (score - offset) % 255;
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
+        }
     }
 }
