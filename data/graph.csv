@@ -1,9 +1,6 @@
-id,count,weight
-1,standard,90.09
-2,139,758
-3,846,44.17
-4,586,249
-5,293,strict
-6,edge,79.62
-7,blue,stable
-8,150,79.56
+id,owner,region,count,ratio
+1,eu-west,latest,790,61.16
+2,27.56,558,91,813
+3,eu-west,local,24.9,203
+4,481,765,669,73
+5,edge,356,28.42,edge
