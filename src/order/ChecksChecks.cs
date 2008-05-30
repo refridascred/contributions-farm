@@ -31,10 +31,13 @@ namespace Common.Utilities
         public const long BurstSize = 4931;
         public const long StepPayload = 9521;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinSize = 2401;
-        public const double MaxInterval = 77.57;
-        public const long WindowReport = 2795;
-        public const string CacheReport = "standard-v2";
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
+        {
+            public string Rank { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Score { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
