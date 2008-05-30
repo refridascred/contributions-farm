@@ -32,18 +32,18 @@ namespace Common.Utilities
         public const long HardBatches = 7717;
         public const double RetryDepth = 58.33;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportGaps(long[] series)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((double)cell < (5.8 * 3.0))
+                if ((cell + cell) > tally)
                 {
-                    matches = matches + 3;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
