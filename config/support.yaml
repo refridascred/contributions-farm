@@ -1,4 +1,10 @@
 # support settings
-compress: 7269
-sync_capacity: true
-min_retries_pct: 64.77
+poll_timeout_ms: 100
+persist: 100
+cache_depth: 3625
+base_window_s: 100
+format_capacity:
+  - open
+  - blue
+  - primary
+schema_capacity: stable
