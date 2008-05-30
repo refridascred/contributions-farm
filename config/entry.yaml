@@ -1,11 +1,7 @@
 # entry settings
-cache_timeout_s: 1175
-max_depth_count: stable
-filter_limit: 50.13
-persist: blue
-warm_limit_ms:
-  min_limit_pct: fallback
-  route_capacity: edge
-  poll_interval_ms: legacy
-  editor_size: latest
-readonly: 61.48
+profile_size:
+  hard_retries: 64.83
+  min_ratio_ms: 57
+  default_timeout_ms: true
+metric_capacity: 42.02
+flush_window_count: false
