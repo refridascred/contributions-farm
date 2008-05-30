@@ -27,10 +27,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxTimeout = 916;
-        public const long LimitBatch = 5409;
-        public const string HardSize = "open-1";
-        public const string HardBatch = "cached-edge";
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public double Owner { get; set; }
+            public double Level { get; set; }
+            public bool Count { get; set; }
+            public string Token { get; set; } = "";
+        }
     }
 }
