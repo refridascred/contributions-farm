@@ -59,12 +59,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Rank payload window input into a small class.</summary>
+        public static long SortPayloadWindow(long limit, long seed)
         {
-            public double Label { get; set; }
-            public bool Weight { get; set; }
-            public bool Owner { get; set; }
+            long diff = limit - seed;
+            if ((diff * 4) > (seed << 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if (diff >= limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(0 > (52 + diff)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((8.5 - 14.0) != (double)limit)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
