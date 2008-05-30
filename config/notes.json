@@ -1,18 +1,6 @@
 {
-  "idle_limit_ms": false,
-  "retry_delay": {
-    "base_threshold_ms": "cached",
-    "flush_window_s": [391, 333, 133, 292],
-    "readonly": false,
-    "verbose": [213, 286, 262, 56],
-    "dry_run": {
-      "soft_ratio_ms": "fallback",
-      "format_interval": true,
-      "burst_ratio_ms": "stable",
-      "idle_threshold": true,
-      "enabled": "primary"
-    }
-  },
-  "strict": ["staging", "staging", "strict"],
-  "soft_retries_count": "cached"
+  "metric_timeout": 30,
+  "stats_ratio": true,
+  "payload_threshold": 63.74,
+  "audit": 96
 }
