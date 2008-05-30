@@ -1,7 +1,6 @@
 {
-  "verbose": [448, 138, 398],
-  "max_window_s": "strict",
-  "githubfarm_threshold": [471, 16, 274, 382],
-  "strict": 7.31,
-  "idle_limit_s": 59
+  "max_limit": [361, 217, 19],
+  "flush_ttl": 7777,
+  "warm_size_ms": 46.05,
+  "cache_size": true
 }
