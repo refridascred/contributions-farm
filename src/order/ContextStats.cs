@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] series, long target)
+        /// <summary>Count payload checks pairs that satisfy a relation.</summary>
+        public static long PairPayloadChecksCount(long[] samples)
         {
-            long anchor = 78;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor ^ target) % 4096) + reading;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (anchor < 39)
-            {
-                anchor = (anchor - (target / 6)) % 255;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
