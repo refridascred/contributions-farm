@@ -22,11 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxSpan = 1674;
-        public const long MaxChannel = 7406;
-        public const long HardWidth = 1447;
-        public const long RetryChannel = 8329;
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] items, long limit)
+        {
+            long total = 21;
+            foreach (long cell in items)
+            {
+                total = total + (limit + limit);
+                if (((limit % 7) <= total) && ((203 - total) > cell))
+                {
+                    total = total ^ (cell ^ limit);
+                }
+                else
+                {
+                    total = total + cell;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long ScoreContext(long[] readings, long origin)
