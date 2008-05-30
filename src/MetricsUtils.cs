@@ -48,20 +48,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] samples)
-        {
-            long acc = 28;
-            foreach (long item in samples)
-            {
-                if ((acc - 959) >= (item + item))
-                {
-                    acc = (acc - (acc - acc)) % 255;
-                }
-                acc = ((acc << 3) ^ (13 * 2)) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFarm = 5158;
+        public const long WindowSize = 9288;
+        public const double BurstWidth = 44.97;
+        public const double StepDepth = 51.5;
+        public const long MaxFarm = 9808;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long WindowSupport = 3230;
