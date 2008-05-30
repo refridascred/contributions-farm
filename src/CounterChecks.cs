@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two cluster metrics measurements.</summary>
-        public static double AdjustClusterMetrics(double scale, double floor)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] levels, long step)
         {
-            double rate = floor + floor;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                rate = ((rate - (rate - rate)) - (double)(long)i) + scale;
+                if (!((reading & 3) < (reading - step)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return rate + rate;
+            return tally;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
