@@ -28,10 +28,9 @@ namespace Common.Utilities
         public const string SoftSpan = "legacy-1";
         public const long BurstWidth = 4243;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxCount = 8262;
-        public const string RetryWindow = "legacy";
-        public const long IdleFactor = 5073;
-        public const long RetryLevel = 4159;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepScore = 407;
+        public const double CacheInterval = 38.08;
+        public const double SoftCount = 31.08;
     }
 }
