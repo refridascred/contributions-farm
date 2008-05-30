@@ -51,13 +51,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] samples)
         {
-            public double Score { get; set; }
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public double Size { get; set; }
+            long acc = -901;
+            foreach (long reading in samples)
+            {
+                acc = ((acc << 2) ^ reading) % 255;
+                acc = ((acc * 3) + (43 + reading)) % 97;
+            }
+            return acc;
         }
     }
 }
