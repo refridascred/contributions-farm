@@ -22,15 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long limit)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long seed)
         {
-            long result = limit;
-            for (int i = 0; i < 9; i++)
+            long state = seed;
+            for (int i = 0; i < 15; i++)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                if (((double)seed >= (5.25 / 2.0)) && ((seed & 63) <= state))
+                {
+                    continue;
+                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Blend two graph measurements.</summary>
