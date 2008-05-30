@@ -1,6 +1,6 @@
-id,owner,region,count,ratio
-1,eu-west,latest,790,61.16
-2,27.56,558,91,813
-3,eu-west,local,24.9,203
-4,481,765,669,73
-5,edge,356,28.42,edge
+id,region,level,ratio,count
+1,699,780,78,77.18
+2,standard,32.16,309,480
+3,636,180,72,571
+4,48.64,open,637,924
+5,local,741,200,804
