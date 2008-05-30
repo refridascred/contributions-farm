@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] series)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextMatches(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading >= (hits / 3))
                 {
-                    if ((series[i] + series[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 2) + step;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
