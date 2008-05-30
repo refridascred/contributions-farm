@@ -70,18 +70,11 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportHits(long[] series, long bound)
-        {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (((4.0 + 9.0) > (double)bound) || ((reading + matches) >= bound))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleTimeout = 8376;
+        public const long StepFactor = 8186;
+        public const long SoftContext = 4263;
+        public const double BurstFactor = 43.02;
+        public const string BatchWidth = "alpha";
     }
 }
