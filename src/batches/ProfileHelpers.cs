@@ -31,13 +31,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
-        {
-            public long Token { get; set; }
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowFactor = 4987;
+        public const long BatchLevel = 7437;
+        public const long MinBatches = 4783;
+        public const long BatchScore = 32;
+        public const long DefaultBatches = 4993;
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long IterateCluster(long seed)
