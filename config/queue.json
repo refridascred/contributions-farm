@@ -1,8 +1,6 @@
 {
-  "report_window": 4163,
-  "sync_ratio_pct": 92,
-  "warm_ttl_pct": [215, 436, 437],
-  "buffer_ttl": "primary",
-  "enabled": 14,
-  "dry_run": "stable"
+  "tools_timeout": 30,
+  "persist": "edge",
+  "warm_size_ms": "fallback",
+  "verbose": 25.05
 }
