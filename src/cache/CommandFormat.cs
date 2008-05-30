@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 4763;
-        public const double MaxLevel = 33.43;
-        public const double LimitGithubfarm = 50.08;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string LimitRoute = "open";
+        public const long BurstBudget = 3144;
+        public const long BurstRatio = 1420;
+        public const long MaxRoute = 8173;
 
         /// <summary>Fold a list of support readings.</summary>
         public static long ScoreSupport(long[] levels, long limit)
