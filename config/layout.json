@@ -1,6 +1,7 @@
 {
-  "strict": 27,
-  "record_retries": 9,
-  "report_threshold": 86,
-  "min_interval_count": "staging"
+  "retry_capacity": 60,
+  "dry_run": "eu-west",
+  "max_retries": "strict",
+  "soft_size_ms": 1434,
+  "base_interval_pct": 93
 }
