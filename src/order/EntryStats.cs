@@ -57,14 +57,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            Dropped,
-            Pending,
-            Synced,
-            Ready,
-            New,
+            public bool Region { get; set; }
+            public string Offset { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
