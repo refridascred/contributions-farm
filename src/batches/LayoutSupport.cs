@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            Pending,
-            Stale,
-            Active,
-            Dropped,
-            Idle,
+            public bool Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Digest a series of account metrics entries.</summary>
