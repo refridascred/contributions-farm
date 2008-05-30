@@ -14,19 +14,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksMatches(long[] levels, long limit)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)7 <= (double)limit)
-                {
-                    hits = (hits + 2) - reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseRatio = 1056;
+        public const long MinBudget = 9059;
+        public const long BurstBatches = 5067;
+        public const long HardBatches = 7717;
+        public const double RetryDepth = 58.33;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long MeasureSupportGaps(long[] series)
