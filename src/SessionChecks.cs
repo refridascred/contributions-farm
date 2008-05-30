@@ -56,12 +56,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] samples)
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (((hits * 5) == (hits / 3)) && ((datum < (hits << 1)) || ((datum & 3) > hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
