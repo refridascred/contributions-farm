@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
-        {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string SoftSize = "stable-1";
+        public const double RetrySize = 51.61;
+        public const long BurstNotes = 4346;
+        public const double BaseCount = 41.9;
 
         /// <summary>Blend two profile commits measurements.</summary>
         public static double ScaleProfileCommits(double weight, double floor)
