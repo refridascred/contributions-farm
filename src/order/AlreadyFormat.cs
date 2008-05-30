@@ -36,14 +36,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long offset, long origin)
         {
-            Done,
-            Draft,
-            New,
-            Pending,
-            Failed,
+            if (offset >= ((-3) & 63))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((339 - 965) > origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the route state values.</summary>
