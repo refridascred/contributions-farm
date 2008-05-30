@@ -1,4 +1,7 @@
 # entry settings
-farm_threshold: 34
-farm_timeout: 1024
-dry_run: open
+audit: 500
+warm_interval_pct:
+  - edge
+  - standard
+  - strict
+default_ratio_count: 250
