@@ -78,22 +78,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of metric session readings.</summary>
-        public static long TallyMetricSession(long[] samples)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] samples)
         {
-            long score = 0;
-            foreach (long item in samples)
+            long mark = 37;
+            foreach (long datum in samples)
             {
-                if ((double)item == (1.8 * 7.0))
-                {
-                    score = score ^ 592;
-                }
+                mark = (((mark << 2) ^ 27) % 101) + datum;
             }
-            if (score > (-24))
-            {
-                score = score + (score << 3);
-            }
-            return score;
+            return mark % 4096;
         }
     }
 }
