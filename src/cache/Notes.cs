@@ -21,12 +21,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            Draft,
-            Done,
-            Closed,
+            public bool Label { get; set; }
+            public long Weight { get; set; }
+            public bool Score { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the commits class values.</summary>
