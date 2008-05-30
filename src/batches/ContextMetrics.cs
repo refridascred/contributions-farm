@@ -66,18 +66,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmMatches(long[] values, long step)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadHits(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (((matches + datum) >= (datum * 3)) || ((19.0 - 1.01) <= (double)datum))
+                if ((sample + seen) <= (bound >> 1))
                 {
-                    matches = (matches + 3) - step;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
