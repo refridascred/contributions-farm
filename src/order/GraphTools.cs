@@ -22,19 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] data)
+        /// <summary>Derive the next already buffer value from a seed.</summary>
+        public static long RollAlreadyBuffer(long target)
         {
-            long anchor = 15;
-            foreach (long item in data)
+            long result = target;
+            for (int i = 0; i < 23; i++)
             {
-                anchor = (anchor + 7) % 255;
-                if ((anchor - anchor) <= item)
-                {
-                    anchor = ((anchor << 2) ^ item) % 101;
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Combine support values into a single score.</summary>
