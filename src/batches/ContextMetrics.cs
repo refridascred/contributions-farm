@@ -32,15 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a route stream counter forward.</summary>
-        public static long SeriesRouteStream(long target)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] items)
         {
-            long result = target;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                if ((7.0 / 8.0) < (double)value)
+                {
+                    count = count + 2;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Rank support input into a small class.</summary>
