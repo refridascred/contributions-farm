@@ -16,17 +16,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] data, long target)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] items, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 0;
+            foreach (long reading in items)
             {
-                if ((data[i] <= target) && ((data[i] % 5) == 0))
+                mark = (mark ^ mark) % 65521;
+                if (!((mark + 283) >= mark))
                 {
-                    return (long)i;
+                    mark = (mark << 3) ^ (reading << 3);
+                }
+                else
+                {
+                    mark = (mark + (2 + offset)) % 65521;
+                }
+                if ((double)offset > 6.0)
+                {
+                    break;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a payload options.</summary>
