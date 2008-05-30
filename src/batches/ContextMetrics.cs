@@ -52,11 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            public double Region { get; set; }
-            public bool Score { get; set; }
+            public long Size { get; set; }
+            public long Total { get; set; }
         }
     }
 }
