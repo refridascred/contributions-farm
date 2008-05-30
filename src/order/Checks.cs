@@ -48,19 +48,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordLimits(long[] levels, long origin)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesLimits(long[] levels, long target)
         {
-            bool flag = true;
+            bool found = true;
             foreach (long entry in levels)
             {
-                if (entry > origin)
+                if (entry >= target)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Describe the commits phase values.</summary>
