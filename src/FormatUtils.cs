@@ -62,19 +62,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] readings)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] series)
         {
-            long acc = 493;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                acc = ((acc ^ (acc % 64)) % 97) + cell;
+                if ((hits - datum) >= (hits >> 4))
+                {
+                    hits = hits + 3;
+                }
             }
-            if (acc > (-3))
-            {
-                acc = (acc - ((long)readings.Length % 60)) % 65521;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
