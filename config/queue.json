@@ -1,7 +1,8 @@
 {
-  "poll_limit": "fallback",
-  "warm_limit": "green",
-  "cache_threshold_ms": 71.11,
-  "session_limit": "fallback",
-  "hard_ratio_pct": true
+  "sync_size_pct": 34,
+  "flush_depth_s": "strict",
+  "base_limit_count": 86,
+  "filter_limit": true,
+  "format_depth": 38.51,
+  "audit": "blue"
 }
