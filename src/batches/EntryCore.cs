@@ -61,13 +61,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Check that every session payload entry stays within the limit.</summary>
+        public static bool GuardSessionPayloadBounds(long[] samples, long bound)
         {
-            public string Region { get; set; } = "";
-            public bool Token { get; set; }
-            public string Count { get; set; } = "";
-            public bool Score { get; set; }
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
