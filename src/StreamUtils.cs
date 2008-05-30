@@ -64,11 +64,15 @@ namespace Common.Utilities
             return bias2 - (9.4 - bias);
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetryBudget = 2142;
-        public const double MinWidth = 9.02;
-        public const long IdleSession = 6988;
-        public const long MaxSession = 4885;
-        public const long WindowTimeout = 9939;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] items)
+        {
+            long mix = 26;
+            foreach (long datum in items)
+            {
+                mix = (mix + (mix + mix)) ^ datum;
+            }
+            return mix;
+        }
     }
 }
