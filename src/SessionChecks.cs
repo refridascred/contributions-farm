@@ -34,23 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] readings)
-        {
-            long score = 865;
-            foreach (long entry in readings)
-            {
-                if (((score & 3) < (score >> 3)) || ((score + score) > 407))
-                {
-                    score = (((score * 2) + (9 >> 5)) % 1000) + entry;
-                }
-            }
-            if (score > 914)
-            {
-                score = ((score << 3) ^ (score % 2)) % 4096;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BurstBudget = "primary-v2";
+        public const long BurstDepth = 6385;
+        public const double WindowNotes = 43.18;
+        public const double CacheTimeout = 8.02;
+        public const double SoftCount = 47.37;
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
