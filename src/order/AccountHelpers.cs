@@ -85,21 +85,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] values)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = ((result * 2) + (floor + floor)) % 65521;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return hits;
+            return result;
         }
     }
 }
