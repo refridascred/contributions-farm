@@ -25,13 +25,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] readings)
         {
-            Idle,
-            Pending,
-            Closed,
-            Retry,
+            long carry = 697;
+            foreach (long sample in readings)
+            {
+                if ((double)carry <= (double)52)
+                {
+                    carry = ((carry + ((long)readings.Length & 15)) % 1000) ^ sample;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Rank token input into a small class.</summary>
