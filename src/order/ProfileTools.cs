@@ -45,18 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] readings, long offset)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long anchor = 817;
-            foreach (long cell in readings)
-            {
-                if (((double)cell == (0.2 + 1.9)) || ((double)offset > (2.18 * 6.0)))
-                {
-                    anchor = (anchor - (offset % 5)) % 4096;
-                }
-            }
-            return anchor;
+            public long Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the format kind values.</summary>
