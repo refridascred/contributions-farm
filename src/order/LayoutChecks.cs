@@ -62,13 +62,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
             Active,
-            New,
-            Dropped,
-            Ready,
+            Closed,
+            Retry,
+            Paused,
         }
     }
 }
