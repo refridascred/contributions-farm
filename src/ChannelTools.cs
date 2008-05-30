@@ -26,14 +26,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] items, long bound)
         {
-            Idle,
-            New,
-            Active,
-            Paused,
-            Synced,
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((cell - tally) >= (cell / 8))
+                {
+                    tally = (tally + 3) + bound;
+                }
+            }
+            return tally;
         }
     }
 }
