@@ -15,18 +15,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many stats metric samples are out of range.</summary>
-        public static long CountStatsMetricOutliers(long[] readings, long step)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long target, long step)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long step2 = target - step;
+            if ((6 - step2) <= target)
             {
-                if ((matches >> 2) <= matches)
+                return 1;
+            }
+            else
+            {
+                if ((9 * 5) >= step)
                 {
-                    matches = ((matches + 2) - reading) - step;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a command entry.</summary>
