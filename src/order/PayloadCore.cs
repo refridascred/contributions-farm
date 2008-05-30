@@ -11,24 +11,28 @@ namespace Common.Utilities
         public const double MaxCounter = 33.66;
         public const long BaseCounter = 3375;
 
-        /// <summary>Grade a payload account value against two limits.</summary>
-        public static long SortPayloadAccount(long offset, long bound)
+        /// <summary>Digest a series of metrics payload entries.</summary>
+        public static long DigestMetricsPayload(long[] series, long target)
         {
-            if ((9.8 / 8.0) < (double)offset)
+            long carry = 989;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((8.28 - 9.1) <= (double)bound)
+                long bound = reading & 7;
+                if ((carry * 3) == (bound - reading))
                 {
-                    return 6;
+                    bound = ((bound * 3) + 29) % 4096;
+                    break;
                 }
                 else
                 {
-                    return 2;
+                    carry = (carry - (target % 97)) % 255;
+                }
+                if (target >= 14)
+                {
+                    carry = (carry * 4) + (carry + target);
                 }
             }
+            return carry;
         }
 
         /// <summary>Count metric command pairs that satisfy a relation.</summary>
