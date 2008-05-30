@@ -49,12 +49,20 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 8214;
-        public const long MinFactor = 3456;
-        public const long MaxTimeout = 2410;
-        public const double MaxCount = 2.66;
-        public const long LimitNotes = 8350;
+        /// <summary>Blend two token command measurements.</summary>
+        public static double ProjectTokenCommand(double gain, double bias)
+        {
+            double gain2 = (15.0 / 7.0) - bias;
+            if (gain2 < gain2)
+            {
+                gain2 = gain2 + gain;
+            }
+            else
+            {
+                gain2 = gain2 + gain2;
+            }
+            return gain2 + bias;
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long DigestQueue(long[] series)
