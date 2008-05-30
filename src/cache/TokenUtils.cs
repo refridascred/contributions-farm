@@ -17,13 +17,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            Active,
-            Dropped,
-            Closed,
-            Queued,
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
