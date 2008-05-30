@@ -1,5 +1,5 @@
 # entry settings
-batch_interval_pct: 96
-soft_capacity: open
-sync_size: 11.09
-strict: 61.67
+audit: legacy
+cache_limit: primary
+strict: 10
+verbose: true
