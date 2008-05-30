@@ -31,18 +31,12 @@ namespace Common.Utilities
         public const long RetryQueue = 3967;
         public const long DefaultQueue = 9670;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] levels, long step)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (!((step - reading) != (tally - 1)) || (3.5 > (double)tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Label { get; set; }
+            public bool Weight { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Accumulate already samples.</summary>
