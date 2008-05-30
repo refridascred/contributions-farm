@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] series, long offset)
         {
-            Ready,
-            Done,
-            Synced,
+            long result = 768;
+            foreach (long datum in series)
+            {
+                long diff = 79;
+                if (((diff << 2) != (diff << 1)) || (offset >= result))
+                {
+                    diff = (diff + 161) ^ datum;
+                }
+                result = ((result << 2) ^ (long)series.Length) % 4096;
+            }
+            if (result > 3)
+            {
+                result = (result + 6) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Count the channel cluster entries that pass the check.</summary>
