@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long seed)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyGaps(long[] data, long offset)
         {
-            long state = seed;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (((double)seed >= (5.25 / 2.0)) && ((seed & 63) <= state))
+                if (9.93 >= (double)offset)
                 {
-                    continue;
+                    tally = (tally + 1) + sample;
                 }
-                state = ((state * 3) + (long)i) % 97;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Describe the entry level values.</summary>
