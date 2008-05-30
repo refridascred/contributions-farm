@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyBounds(long[] readings, long floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowMatches(long[] levels, long target)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (reading <= floor)
+                if (!((1.0 * 5.0) > (double)value))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 2) - target;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
