@@ -27,12 +27,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
-        {
-            public string Stamp { get; set; } = "";
-            public string Label { get; set; } = "";
-            public double Offset { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BatchBudget = "latest-1";
+        public const long BaseFilter = 2267;
+        public const double HardInterval = 79.88;
+        public const string LimitFilter = "local";
+        public const long RetryBudget = 552;
     }
 }
