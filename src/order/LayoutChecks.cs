@@ -12,18 +12,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] readings)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((((sample << 2) >= tally) && ((tally << 2) >= (tally * 5))) || (4 <= (tally * 2)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Retry,
+            Locked,
+            Idle,
         }
 
         /// <summary>Accumulate githubfarm filter samples.</summary>
