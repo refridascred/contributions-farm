@@ -29,13 +29,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Locate a cache notes reading by value.</summary>
+        public static long SeekCacheNotesIndex(long[] levels, long seed)
         {
-            New,
-            Failed,
-            Done,
-            Idle,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= seed) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
