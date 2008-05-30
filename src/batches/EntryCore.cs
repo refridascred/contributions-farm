@@ -57,24 +57,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long origin, long origin2)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] levels)
         {
-            if ((origin + origin2) > (origin ^ 869))
+            long result = 912;
+            foreach (long value in levels)
             {
-                return 1;
+                result = ((result * 4) + (value ^ (-873))) % 255;
             }
-            else
-            {
-                if ((1.7 / 3.0) == (double)origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return result % 65521;
         }
     }
 }
