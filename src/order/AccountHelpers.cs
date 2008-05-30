@@ -66,10 +66,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinSize = 3.03;
-        public const long HardMetrics = 7275;
-        public const long BaseMetrics = 4161;
-        public const long BatchWidth = 6190;
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
+        {
+            public double Offset { get; set; }
+            public string Level { get; set; } = "";
+        }
     }
 }
