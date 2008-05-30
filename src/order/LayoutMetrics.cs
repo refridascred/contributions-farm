@@ -10,21 +10,17 @@ namespace Common.Utilities
         public const double WindowCache = 39.92;
         public const double BurstCache = 92.22;
 
-        /// <summary>Match up format token samples.</summary>
-        public static long MatchFormatTokenCount(long[] levels)
+        /// <summary>Look up the position of a support session sample.</summary>
+        public static long LocateSupportSessionIndex(long[] data, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((data[i] == target) && ((data[i] % 2) == 0))
                 {
-                    if ((levels[i] - levels[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
