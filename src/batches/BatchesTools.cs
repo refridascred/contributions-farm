@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the commits batches series from a seed.</summary>
-        public static long SeriesCommitsBatches(long origin)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long step)
         {
-            long carry = origin;
-            for (int i = 0; i < 20; i++)
+            long anchor = step;
+            for (int i = 0; i < 13; i++)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                if ((anchor <= (221 << 1)) || (((long)i ^ (long)i) > (anchor + anchor)))
+                {
+                    anchor = (anchor - ((long)i >> 1)) % 4096;
+                    anchor = (anchor + (anchor / 7)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor ^ (step + (long)i)) % 1000;
+                }
+                anchor = (anchor + (step - anchor)) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
