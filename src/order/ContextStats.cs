@@ -20,11 +20,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double gain, double offset)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            double ratio = gain;
-            return (ratio + 3.4) + offset;
+            public long Weight { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the already state values.</summary>
