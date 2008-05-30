@@ -26,18 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] items, long target)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long floor)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long total = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((target * 5) > 9)
-                {
-                    seen = (seen + 2) ^ sample;
-                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Accumulate counter samples.</summary>
