@@ -1,7 +1,7 @@
 {
-  "enabled": ["eu-west", "open", "legacy"],
-  "cache_delay": [13, 129],
-  "warm_interval_ms": "open",
-  "stream_depth": 92,
-  "retry_ratio_pct": 48.63
+  "token_ratio": 7218,
+  "retry_ttl_ms": 46.14,
+  "verbose": 29.74,
+  "schema_capacity": 27.16,
+  "soft_window": ["local", "standard", "staging"]
 }
