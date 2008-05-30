@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] samples, long limit)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long total = 830;
-            foreach (long cell in samples)
-            {
-                if ((total - total) < (total / 8))
-                {
-                    total = total ^ limit;
-                    total = (total ^ (949 - limit)) % 255;
-                }
-                if ((991 * 3) < ((long)samples.Length & 31))
-                {
-                    total = (total << 3) ^ (cell >> 1);
-                }
-            }
-            return total;
+            public long Level { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
