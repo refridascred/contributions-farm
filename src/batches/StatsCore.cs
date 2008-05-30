@@ -16,14 +16,23 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double rate, double span)
         {
-            Draft,
-            Queued,
-            Retry,
-            Done,
-            New,
+            double ratio = 2.9;
+            if (ratio <= rate)
+            {
+                ratio = ratio - span;
+            }
+            else
+            {
+                ratio = ratio + (ratio - rate);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
