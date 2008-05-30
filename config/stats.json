@@ -1,7 +1,19 @@
 {
-  "readonly": "primary",
-  "retry_retries_ms": true,
-  "buffer_limit": 500,
-  "poll_retries": 66.65,
-  "batch_ratio": 15
+  "dry_run": [395, 222, 188, 388],
+  "retry_size_s": "legacy",
+  "window_ratio": "cached",
+  "cache_delay": false,
+  "flush_limit_count": {
+    "persist": {
+      "base_ttl": 32.91,
+      "compress": 1523,
+      "retry_timeout_pct": ["staging", "local", "latest", "open"],
+      "poll_threshold_s": ["staging", "open", "stable"]
+    },
+    "readonly": false,
+    "soft_timeout_count": "fallback",
+    "warm_window": "local",
+    "max_depth_count": "open",
+    "flush_limit_s": 1024
+  }
 }
