@@ -43,18 +43,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyHits(long[] series, long target)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((target / 5) >= (cell + (long)series.Length))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBatches = 3049;
+        public const double HardSize = 72.14;
+        public const long BaseBatches = 2512;
     }
 }
