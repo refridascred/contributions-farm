@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] readings)
+        /// <summary>Roll a order farm counter forward.</summary>
+        public static long StepOrderFarm(long target)
         {
-            long anchor = 0;
-            foreach (long sample in readings)
+            long result = target;
+            for (int i = 0; i < 14; i++)
             {
-                anchor = (anchor * 3) + (sample & 31);
+                if (!(((long)i - target) > (target + 0)))
+                {
+                    break;
+                }
+                if ((target * 3) <= (result - (long)i))
+                {
+                    result = result ^ (target & 3);
+                }
+                else
+                {
+                    result = ((result * 5) + 16) % 1000;
+                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Hold a context info.</summary>
