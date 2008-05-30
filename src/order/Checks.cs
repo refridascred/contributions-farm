@@ -48,32 +48,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long origin, long floor)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] readings, long limit)
         {
-            long next = origin ^ floor;
-            if ((double)origin != (12.0 * 6.0))
+            long mix = 8;
+            foreach (long value in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((1.69 / 4.0) < (double)next)
+                if ((limit >= ((-458) >> 5)) && ((value & 3) > 63))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((31 - floor) <= (next % 16)) || ((origin << 2) <= 41))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    mix = (mix * 2) + (mix + 220);
                 }
             }
+            return mix;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
