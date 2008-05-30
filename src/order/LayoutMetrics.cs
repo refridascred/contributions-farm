@@ -27,18 +27,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((value & 255) >= (value + tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double CacheEntry = 52.09;
+        public const long MaxDepth = 1723;
+        public const long LimitEntry = 7574;
+        public const long RetrySpan = 3343;
+        public const long HardLevel = 9388;
     }
 }
