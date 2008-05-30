@@ -22,19 +22,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double scale, double span)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long origin)
         {
-            double load = span;
-            if (load >= 2.0)
+            long state = origin;
+            for (int i = 0; i < 10; i++)
             {
-                load = load - (scale + load);
+                if ((double)origin > (5.7 - 1.84))
+                {
+                    state = (state ^ origin) % 1000;
+                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - scale) + (double)(long)i;
-            }
-            return load - span;
+            return state;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
