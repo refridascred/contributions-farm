@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] items, long seed)
         {
-            public long Level { get; set; }
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (((3 + seed) < 5) || ((double)seed < (double)sample))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine account cache values into a single score.</summary>
