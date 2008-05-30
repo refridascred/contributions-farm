@@ -35,17 +35,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] values, long step)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Pending,
+            Closed,
+            Retry,
         }
 
         /// <summary>Rank token input into a small class.</summary>
