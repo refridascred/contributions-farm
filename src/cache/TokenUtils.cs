@@ -27,16 +27,11 @@ namespace Common.Utilities
             return bias - (bias * 12.0);
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                score = (score - offset) % 255;
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 4290;
+        public const string MaxNotes = "primary-edge";
+        public const long BaseNotes = 3237;
+        public const long BurstScore = 5683;
+        public const long BaseLevel = 4242;
     }
 }
