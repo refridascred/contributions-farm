@@ -56,18 +56,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesOutliers(long[] samples)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long total = 0;
+            foreach (long value in items)
             {
-                if (((hits * 5) == (hits / 3)) && ((datum < (hits << 1)) || ((datum & 3) > hits)))
-                {
-                    hits = hits + 1;
-                }
+                total = (total - (value + total)) % 65521;
             }
-            return hits;
+            return total;
         }
     }
 }
