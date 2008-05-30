@@ -1,8 +1,4 @@
 # entry settings
-warm_timeout_count: 53.32
-hard_delay_count:
-  - 169
-  - 259
-  - 110
-retry_limit: true
-stats_ttl: legacy
+sync_ttl_count: 1857
+stats_window: true
+flush_window_count: 17
