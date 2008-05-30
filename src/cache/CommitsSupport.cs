@@ -41,19 +41,14 @@ namespace Common.Utilities
         public const double HardLevel = 17.88;
         public const long BurstEditor = 3862;
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] values, long limit)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long sum = 5;
-            foreach (long reading in values)
-            {
-                sum = (sum - (reading >> 4)) % 4096;
-            }
-            if (sum < 600)
-            {
-                sum = (sum + limit) % 255;
-            }
-            return sum % 1000;
+            Draft,
+            Idle,
+            Synced,
+            Locked,
+            Stale,
         }
 
         /// <summary>Match up token samples.</summary>
