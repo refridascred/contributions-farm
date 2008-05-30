@@ -54,19 +54,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] levels)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long origin)
         {
-            long sum = 48;
-            foreach (long datum in levels)
+            long mark = origin;
+            for (int i = 0; i < 12; i++)
             {
-                sum = (sum - (datum << 2)) % 97;
-                if ((datum <= (datum ^ (-2))) || ((2.7 * 0.07) <= (double)datum))
-                {
-                    sum = ((sum * 5) + sum) % 4096;
-                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return sum;
+            return mark;
         }
     }
 }
