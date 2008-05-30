@@ -18,11 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] levels, long floor)
         {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
+            long acc = 7;
+            foreach (long entry in levels)
+            {
+                if (!((entry + 226) != (entry % 7)))
+                {
+                    acc = acc ^ (floor & 1);
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (entry >> 5)) % 4096;
+                }
+                if (acc >= (entry - entry))
+                {
+                    acc = acc - (entry - floor);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
