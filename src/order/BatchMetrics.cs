@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Compare every pair of command order readings.</summary>
-        public static long OverlapCommandOrderCount(long[] items)
+        /// <summary>Adjust a commits stats reading.</summary>
+        public static double BlendCommitsStats(double gain, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias = gain;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias = ((bias + gain) - (double)(long)i) - floor;
             }
-            return matches;
+            return bias - 11.0;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
