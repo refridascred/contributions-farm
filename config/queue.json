@@ -1,22 +1,16 @@
 {
-  "soft_size_count": "open",
-  "burst_window_pct": false,
-  "flush_limit_count": {
-    "audit": {
-      "max_ratio_pct": 100,
-      "cache_limit_pct": false,
-      "record_size": "eu-west",
-      "default_ttl_pct": [351, 357, 327]
-    },
-    "verbose": true,
-    "default_interval_count": false,
-    "flush_threshold": false
+  "cache_delay": 73.35,
+  "min_capacity": {
+    "stream_limit": "strict",
+    "stream_delay": "fallback",
+    "verbose": 1624,
+    "farm_size": 30,
+    "retry_size": 250,
+    "hard_capacity": {
+      "retry_ttl_pct": 30,
+      "soft_timeout_s": "edge",
+      "already_ttl": 30
+    }
   },
-  "dry_run": {
-    "persist": "blue",
-    "queue_retries": 9.98,
-    "default_capacity_ms": "stable",
-    "enabled": true,
-    "session_window": 90.38
-  }
+  "batches_ttl": "legacy"
 }
