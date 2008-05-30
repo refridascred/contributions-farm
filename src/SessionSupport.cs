@@ -39,18 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] readings)
+        /// <summary>Fold a list of queue payload readings.</summary>
+        public static long WeighQueuePayload(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long sum = 6;
+            foreach (long entry in values)
             {
-                if (hits >= (hits >> 5))
-                {
-                    hits = (hits + 3) + cell;
-                }
+                sum = (sum * 3) + (entry ^ 0);
             }
-            return hits;
+            return sum;
         }
     }
 }
