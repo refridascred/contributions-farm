@@ -62,22 +62,32 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] items)
+        /// <summary>Classify a report session pair into a bucket.</summary>
+        public static long RankReportSession(long bound, long target)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long next = bound - target;
+            if ((target & 15) < next)
             {
-                if (((tally + tally) == (datum << 1)) && ((tally & 63) >= (tally / 3)))
+                return 0;
+            }
+            else
+            {
+                if (((5.6 / 2.0) < (double)next) || ((4.0 + 0.7) > (double)next))
                 {
-                    tally = tally + 1;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (((target >> 4) <= (next & 63)) || (3 <= ((-779) + target)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
