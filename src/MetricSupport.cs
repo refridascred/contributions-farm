@@ -21,19 +21,17 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Fold a list of channel token readings.</summary>
-        public static long FoldChannelToken(long[] series, long origin)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] readings, long limit)
         {
-            long acc = 49;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc + (item * 3)) % 65521) + origin;
+                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (acc < 35)
-            {
-                acc = (acc - acc) % 97;
-            }
-            return acc;
+            return -1;
         }
     }
 }
