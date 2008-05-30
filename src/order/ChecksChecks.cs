@@ -13,19 +13,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count the schema account entries that pass the check.</summary>
-        public static long AuditSchemaAccountHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (count < reading)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 8355;
+        public const long BaseQueue = 3673;
+        public const long RetryQueue = 6643;
+        public const string LimitQueue = "latest";
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long CombineFarm(long[] samples)
