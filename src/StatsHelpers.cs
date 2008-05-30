@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            Active,
-            Synced,
-            Queued,
-            Done,
-            Draft,
+            public bool Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
