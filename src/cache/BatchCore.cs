@@ -33,16 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] samples)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long acc = -901;
-            foreach (long reading in samples)
-            {
-                acc = ((acc << 2) ^ reading) % 255;
-                acc = ((acc * 3) + (43 + reading)) % 97;
-            }
-            return acc;
+            public bool Stamp { get; set; }
+            public double Ratio { get; set; }
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
