@@ -1,8 +1,7 @@
 {
-  "cache_delay": "legacy",
-  "batch_interval_s": true,
-  "flush_depth_count": "open",
-  "flush_window": false,
-  "persist": "edge",
-  "min_interval_ms": false
+  "min_ratio": 11,
+  "retry_limit_count": 3214,
+  "warm_timeout_s": 2749,
+  "verbose": "legacy",
+  "entry_interval": [275, 83, 172, 101]
 }
