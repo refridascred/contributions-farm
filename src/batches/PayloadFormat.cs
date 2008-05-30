@@ -44,22 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] items, long seed)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] readings, long limit)
         {
-            long mark = 1;
-            foreach (long sample in items)
+            long acc = 30;
+            foreach (long datum in readings)
             {
-                if ((688 - 311) <= seed)
+                if ((acc & 31) == (limit - limit))
                 {
-                    mark = ((mark ^ (894 - seed)) % 4096) - sample;
+                    acc = (acc ^ (datum >> 1)) % 1000;
                 }
             }
-            if (mark < 51)
-            {
-                mark = mark + (mark + mark);
-            }
-            return mark % 1000;
+            return acc % 1000;
         }
 
         /// <summary>Measure how many already account samples are out of range.</summary>
