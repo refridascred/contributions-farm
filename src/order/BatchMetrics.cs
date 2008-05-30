@@ -75,15 +75,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] samples)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long offset, long target)
         {
-            long mark = 37;
-            foreach (long datum in samples)
+            if ((offset * 2) < (offset * 3))
             {
-                mark = (((mark << 2) ^ 27) % 101) + datum;
+                return 8;
             }
-            return mark % 4096;
+            else
+            {
+                if (offset < (target + offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
