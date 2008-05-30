@@ -83,17 +83,13 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Look up the position of a window command sample.</summary>
-        public static long SeekWindowCommandIndex(long[] items, long origin)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Stale,
+            Locked,
+            Done,
         }
     }
 }
