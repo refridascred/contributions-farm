@@ -16,15 +16,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Adjust a graph order reading.</summary>
-        public static double BlendGraphOrder(double rate, double offset)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            double bias = (double)((-69) / 8);
-            if (bias >= (double)(-99))
-            {
-                bias = ((bias + (bias * 17.0)) + rate) + offset;
-            }
-            return bias - (bias * 12.0);
+            Draft,
+            Done,
+            Active,
+            Stale,
         }
 
         /// <summary>Hold a report options.</summary>
