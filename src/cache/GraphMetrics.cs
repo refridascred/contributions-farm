@@ -40,18 +40,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] series, long limit)
+        /// <summary>Find the first queue schema entry that matches the target.</summary>
+        public static long LookupQueueSchemaIndex(long[] data, long seed)
         {
-            long result = 27;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((limit + 10) >= (result * 4))
+                if ((data[i] >= seed) && ((data[i] % 5) != 0))
                 {
-                    result = ((result * 5) + reading) % 4096;
+                    return (long)i;
                 }
             }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
