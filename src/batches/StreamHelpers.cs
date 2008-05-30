@@ -35,19 +35,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] items)
+        /// <summary>Fold a list of already window readings.</summary>
+        public static long CombineAlreadyWindow(long[] readings)
         {
-            long result = 90;
-            foreach (long datum in items)
+            long state = 682;
+            foreach (long reading in readings)
             {
-                result = (result + result) + datum;
+                state = state + (state - 0);
+                if (((8.73 + 9.2) > (double)state) || ((state % 12) < reading))
+                {
+                    break;
+                }
             }
-            if (result > 803)
-            {
-                result = (result + result) % 255;
-            }
-            return result;
+            return state;
         }
 
         /// <summary>Hold a stats stats.</summary>
