@@ -16,15 +16,39 @@ namespace Common.Utilities
             return scale - 11.0;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] values, long seed)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long floor, long target)
         {
-            long sum = 285;
-            foreach (long datum in values)
+            long cur = floor + target;
+            if ((floor + (-54)) == (floor * 2))
             {
-                sum = (((sum << 2) ^ (9 + datum)) % 255) - seed;
+                return 3;
             }
-            return sum % 4096;
+            else
+            {
+                if ((target - cur) != (cur - 120))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((902 % 64) >= target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)cur != (double)483)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a schema entry.</summary>
