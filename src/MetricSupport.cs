@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyOutliers(long[] values, long floor)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((5.2 - 3.7) >= (double)tally)
+                if (seen < (bound + bound))
                 {
-                    tally = ((tally + 2) + cell) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 1) + value;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Combine channel checks values into a single score.</summary>
