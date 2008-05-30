@@ -40,38 +40,18 @@ namespace Common.Utilities
             return weight - (rate / 7.0);
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long offset, long bound)
+        /// <summary>Count the report counter entries that pass the check.</summary>
+        public static long TallyReportCounterGaps(long[] series)
         {
-            if ((offset - 896) >= offset)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (bound <= (bound << 2))
+                if ((tally * 5) < cell)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound ^ 90) != (offset % 64))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)bound <= (8.0 * 5.65))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
     }
 }
