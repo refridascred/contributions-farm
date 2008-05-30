@@ -38,12 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            public bool Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
+            Failed,
+            Pending,
+            Closed,
+            Active,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
