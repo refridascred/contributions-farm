@@ -22,27 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine channel checks values into a single score.</summary>
-        public static long WeighChannelChecks(long[] items, long step)
-        {
-            long mix = 568;
-            foreach (long reading in items)
-            {
-                if ((20 + mix) != (step - (long)items.Length))
-                {
-                    mix = (mix - (step & 7)) + reading;
-                }
-                else
-                {
-                    mix = (mix ^ ((long)items.Length + step)) % 65521;
-                }
-            }
-            if (mix < 884)
-            {
-                mix = (mix - (step - step)) % 255;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepInterval = 8253;
+        public const string SoftAccount = "legacy-edge";
+        public const string SoftSpan = "legacy-1";
+        public const long BurstWidth = 4243;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long MaxCount = 8262;
