@@ -66,19 +66,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] series)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] levels, long floor)
         {
-            long sum = 38;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                sum = ((sum + (850 >> 5)) % 255) - sample;
-                if ((869 + 299) == (sum % 8))
+                if (item >= floor)
                 {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return sum % 1000;
+            return matches;
         }
     }
 }
