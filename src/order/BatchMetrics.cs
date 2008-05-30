@@ -30,14 +30,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long step)
         {
-            Queued,
-            Draft,
-            Done,
-            Synced,
-            Stale,
+            long state = step;
+            for (int i = 0; i < 19; i++)
+            {
+                state = state - (state + state);
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
