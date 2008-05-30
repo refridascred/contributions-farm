@@ -42,22 +42,39 @@ namespace Common.Utilities
         public const long HardScore = 6119;
         public const string BaseFilter = "stable";
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] data)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long step, long step2)
         {
-            long carry = 265;
-            foreach (long datum in data)
+            long diff = step ^ step2;
+            if (((diff & 15) > (step + diff)) || ((step2 * 2) >= (diff << 3)))
             {
-                if (((carry >> 1) <= carry) && ((9 & 1) > (carry - datum)))
+                return 7;
+            }
+            else
+            {
+                if ((diff & 15) <= step)
                 {
-                    carry = (carry * 2) + (datum - carry);
+                    return 0;
                 }
                 else
                 {
-                    carry = ((carry << 3) ^ datum) % 1000;
+                    if (!(step2 < step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (4 < (step2 >> 1))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return carry;
         }
     }
 }
