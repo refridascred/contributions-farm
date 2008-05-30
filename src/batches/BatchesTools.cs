@@ -36,15 +36,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a account window reading.</summary>
-        public static double ProjectAccountWindow(double gain, double span)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long offset, long origin)
         {
-            double mean = gain;
-            if (mean > (double)623)
+            if (((573 & 31) == (offset / 4)) || (origin >= (origin - offset)))
             {
-                mean = mean - (span - 1.0);
+                return 4;
             }
-            return mean + span;
+            else
+            {
+                if (((9.8 - 1.9) > (double)offset) || ((1.0 + 9.1) <= (double)origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (origin <= offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin / 6) <= (origin * 4))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
