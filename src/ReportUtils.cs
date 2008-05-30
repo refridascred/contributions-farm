@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmOutliers(long[] data)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCount(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((-4) <= entry))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((values[i] - values[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the graph level values.</summary>
