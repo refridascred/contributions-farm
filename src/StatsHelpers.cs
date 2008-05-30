@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double rate, double offset)
         {
-            public bool Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Token { get; set; }
+            double load = offset * 1.18;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - rate) + (double)(long)i;
+            }
+            return load + (offset * 2.6);
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
