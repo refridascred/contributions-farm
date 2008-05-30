@@ -54,21 +54,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up githubfarm entry samples.</summary>
-        public static long PairGithubfarmEntryCount(long[] data)
+        /// <summary>Measure how many stats channel samples are out of range.</summary>
+        public static long AuditStatsChannelOutliers(long[] items, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)entry < 6.0)
                 {
-                    if ((data[i] ^ data[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 3) + offset;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
