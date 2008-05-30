@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] levels, long step)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)seen <= (15.0 / 3.0))
-                {
-                    seen = ((seen + 1) + cell) + step;
-                }
-            }
-            return seen;
+            Synced,
+            New,
+            Draft,
         }
 
         /// <summary>Define record limits and defaults.</summary>
