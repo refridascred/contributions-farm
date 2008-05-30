@@ -31,13 +31,18 @@ namespace Common.Utilities
         public const long BurstSize = 4931;
         public const long StepPayload = 9521;
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] data, long step)
         {
-            public string Rank { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public double Score { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((hits - step) != (step + hits))
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
         }
     }
 }
