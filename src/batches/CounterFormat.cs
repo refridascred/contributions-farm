@@ -19,11 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
+            Locked,
+            New,
+            Retry,
+            Paused,
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
