@@ -55,13 +55,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Look up the position of a entry token sample.</summary>
+        public static long FindEntryTokenIndex(long[] data, long step)
         {
-            public double Owner { get; set; }
-            public long Flag { get; set; }
-            public bool Count { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= step) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
