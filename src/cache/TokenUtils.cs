@@ -16,13 +16,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterGaps(long[] samples)
         {
-            Dropped,
-            Queued,
-            Pending,
-            Closed,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (5.4 >= (double)entry)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a format options.</summary>
