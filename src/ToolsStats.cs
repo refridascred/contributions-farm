@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long offset)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long mix = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((offset << 1) < offset)
-                {
-                    mix = (mix - ((long)i + mix)) % 101;
-                    mix = mix ^ (offset - offset);
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            public string Offset { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
