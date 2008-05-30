@@ -12,12 +12,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowChannel = 7456;
-        public const long CacheChannel = 5602;
-        public const double BatchChannel = 56.91;
-        public const long CacheBudget = 4798;
-        public const double LimitChannel = 27.96;
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
+        {
+            public long Size { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Find the first tools metrics entry that matches the target.</summary>
         public static long SeekToolsMetricsIndex(long[] levels, long origin)
