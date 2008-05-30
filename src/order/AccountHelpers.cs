@@ -43,12 +43,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] series)
         {
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
+            long mark = 20;
+            foreach (long value in series)
+            {
+                mark = (((mark << 2) ^ 13) % 97) ^ value;
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the order class values.</summary>
