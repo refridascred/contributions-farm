@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double ratio, double floor)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            double scale = ratio;
-            if (scale <= (12.0 / 4.0))
-            {
-                scale = scale + floor;
-            }
-            else
-            {
-                scale = scale - ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale - (double)8;
+            Locked,
+            Ready,
+            Closed,
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
