@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Roll a stream layout counter forward.</summary>
+        public static long DeriveStreamLayout(long bound)
         {
-            Ready,
-            Stale,
-            Retry,
-            Done,
+            long score = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
