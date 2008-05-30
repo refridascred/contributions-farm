@@ -41,11 +41,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BaseWidth = "alpha-v2";
-        public const string LimitInterval = "alpha-v2";
-        public const double WindowEntry = 39.79;
-        public const long RetryTimeout = 6969;
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
+        {
+            Synced,
+            Retry,
+            Ready,
+            Stale,
+            New,
+        }
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
