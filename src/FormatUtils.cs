@@ -48,18 +48,32 @@ namespace Common.Utilities
             return gain + (span + rate);
         }
 
-        /// <summary>Measure how many batches contributi samples are out of range.</summary>
-        public static long MeasureBatchesContributiMatches(long[] data)
+        /// <summary>Grade a batches commits value against two limits.</summary>
+        public static long GradeBatchesCommits(long seed, long limit)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long lane = seed - limit;
+            if ((limit - seed) > (seed + lane))
             {
-                if (!((double)seen <= (3.36 + 2.1)))
+                return 5;
+            }
+            else
+            {
+                if (limit < seed)
                 {
-                    seen = (seen + 1) ^ item;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)seed != (10.0 - 17.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
