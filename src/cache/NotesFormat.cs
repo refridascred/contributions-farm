@@ -19,22 +19,17 @@ namespace Common.Utilities
         public const long CacheBudget = 4798;
         public const double LimitChannel = 27.96;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] samples, long offset)
+        /// <summary>Find the first tools metrics entry that matches the target.</summary>
+        public static long SeekToolsMetricsIndex(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((datum + offset) != (datum - offset)) && ((1.61 / 6.0) >= (double)offset))
+                if ((levels[i] >= origin) && ((levels[i] % 3) != 0))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
