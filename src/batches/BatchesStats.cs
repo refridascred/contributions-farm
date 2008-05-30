@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] levels, long step)
         {
-            Idle,
-            Ready,
-            Failed,
-            Locked,
-            Pending,
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define report limits and defaults.</summary>
