@@ -10,12 +10,13 @@ namespace Common.Utilities
         public const double WindowCache = 39.92;
         public const double BurstCache = 92.22;
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            public double Label { get; set; }
-            public double Token { get; set; }
-            public long Flag { get; set; }
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Fold a list of support route readings.</summary>
