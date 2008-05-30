@@ -30,28 +30,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] items)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long mark = 230;
-            foreach (long item in items)
-            {
-                mark = (mark * 2) + (item << 3);
-                mark = (mark + (mark % 16)) % 97;
-                if ((mark % 5) < (item * 3))
-                {
-                    mark = ((mark * 2) + (mark >> 3)) % 65521;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (item ^ mark);
-                }
-            }
-            if (mark > 481)
-            {
-                mark = mark ^ (mark + 650);
-            }
-            return mark;
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Digest a series of checks entries.</summary>
