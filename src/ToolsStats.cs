@@ -63,17 +63,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a route session sample.</summary>
-        public static long FindRouteSessionIndex(long[] levels, long target)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long seed, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((floor / 4) == (183 + seed)) && ((95 + 2) >= (floor / 5)))
             {
-                if (levels[i] < target)
+                return 7;
+            }
+            else
+            {
+                if ((3.0 * 5.76) < (double)seed)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (!((206 % 7) < floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)floor > (8.2 / 2.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
