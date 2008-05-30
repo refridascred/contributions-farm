@@ -10,14 +10,26 @@ namespace Common.Utilities
         public const double RetryDepth = 31.73;
         public const long WindowReport = 7241;
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] levels, long limit)
         {
-            Stale,
-            Draft,
-            Retry,
-            Pending,
-            Ready,
+            long mark = 292;
+            foreach (long item in levels)
+            {
+                if ((267 / 4) > (item - 9))
+                {
+                    mark = (((mark * 4) + (item >> 5)) % 255) + limit;
+                }
+                else
+                {
+                    mark = (mark - 799) % 97;
+                }
+                if (!((double)item != (1.7 * 5.66)))
+                {
+                    break;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
