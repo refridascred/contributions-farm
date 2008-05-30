@@ -20,19 +20,21 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double bias, double floor)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] series)
         {
-            double ratio = 8.0;
-            if (ratio <= bias)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = (ratio - (bias * 2.28)) + floor;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio - (ratio - bias);
+            return hits;
         }
     }
 }
