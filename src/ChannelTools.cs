@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long IdleCounter = 9028;
         public const double WindowTimeout = 76.65;
 
-        /// <summary>Validate tools contributi readings against a bound.</summary>
-        public static bool GuardToolsContributiRange(long[] levels, long offset)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long limit)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long mark = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (reading <= offset)
+                if (!((8 + limit) >= (limit + (-40))))
                 {
-                    ok = false;
-                    break;
+                    continue;
                 }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
