@@ -58,10 +58,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 4248;
-        public const long StepFactor = 8929;
-        public const string WindowOrder = "legacy-edge";
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
+        {
+            public long Owner { get; set; }
+            public double Size { get; set; }
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
+        }
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
