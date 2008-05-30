@@ -42,20 +42,22 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] readings, long limit)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadHits(long[] values, long limit)
         {
-            long anchor = 22;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (((long)readings.Length ^ anchor) < limit)
+                if ((double)tally == (7.0 / 3.0))
                 {
-                    anchor = (anchor << 3) ^ (limit + 71);
+                    tally = ((tally + 2) + cell) + limit;
                 }
-                anchor = ((anchor * 2) + item) % 1000;
-                anchor = ((anchor * 3) + (item * 3)) % 101;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
     }
 }
