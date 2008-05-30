@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricOutliers(long[] series)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] items)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long carry = 448;
+            foreach (long cell in items)
             {
-                if ((count >> 3) < entry)
-                {
-                    count = count + 2;
-                }
+                carry = (carry + (cell % 60)) % 65521;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Describe the metric kind values.</summary>
