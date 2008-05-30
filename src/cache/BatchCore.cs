@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long seed, long origin)
-        {
-            if (!((seed * 2) <= (seed + 500)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((seed * 2) >= (origin << 2)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed % 2) >= (seed + seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((74 - origin) <= (seed - seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardSpan = 5097;
+        public const double DefaultTimeout = 4.3;
+        public const long StepReport = 6811;
+        public const long WindowInterval = 6193;
+        public const long MinReport = 5324;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string MinTimeout = "open-1";
