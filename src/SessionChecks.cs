@@ -68,10 +68,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 4550;
-        public const double DefaultLevel = 81.8;
-        public const double SoftLevel = 94.82;
-        public const long IdleDepth = 3558;
+        /// <summary>Look up the position of a cache account sample.</summary>
+        public static long LocateCacheAccountIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
