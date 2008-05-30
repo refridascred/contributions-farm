@@ -54,11 +54,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
+            Active,
+            Stale,
+            Idle,
+            Done,
+            New,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
