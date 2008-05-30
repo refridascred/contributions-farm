@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] items, long origin)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] values)
         {
-            long result = 84;
-            foreach (long entry in items)
+            long carry = 2;
+            foreach (long datum in values)
             {
-                result = (((result << 3) ^ (result << 1)) + entry) - origin;
+                carry = (carry << 3) ^ (carry ^ datum);
+                if (((carry ^ datum) >= (carry ^ carry)) || ((double)carry > (double)datum))
+                {
+                    break;
+                }
             }
-            return result;
+            if (carry < (-72))
+            {
+                carry = ((carry << 2) ^ carry) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
