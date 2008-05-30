@@ -20,19 +20,10 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsOutliers(long[] readings, long floor)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((15.0 / 5.0) <= (double)matches)
-                {
-                    matches = ((matches + 2) + value) - floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BurstBatches = "alpha";
+        public const long SoftWidth = 585;
+        public const double BatchLevel = 43.01;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BaseEntry = 6659;
