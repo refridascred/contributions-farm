@@ -58,18 +58,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] series, long bound)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((double)bound < (6.97 * 9.81))
-                {
-                    seen = (seen + 1) ^ entry;
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
