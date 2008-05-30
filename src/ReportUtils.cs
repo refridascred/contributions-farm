@@ -47,19 +47,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] readings, long seed)
+        /// <summary>Scale a cache order figure with a bias.</summary>
+        public static double BlendCacheOrder(double ratio, double offset)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            double scale = offset + (double)0;
+            if (scale >= (scale + scale))
             {
-                if (entry < seed)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = scale - (double)73;
             }
-            return flag;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (ratio - scale)) - (double)(long)i;
+            }
+            return scale - offset;
         }
     }
 }
