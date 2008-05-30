@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double scale, double offset)
         {
-            public bool Label { get; set; }
-            public double Size { get; set; }
-            public string Offset { get; set; } = "";
+            double rate = offset;
+            if (rate > offset)
+            {
+                rate = (rate - (offset / 7.0)) - scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (offset + rate)) - (double)(long)i;
+            }
+            return rate + (offset / 6.0);
         }
 
         /// <summary>Combine route counter values into a single score.</summary>
