@@ -6,15 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback staging eu-west; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
-
-CHANNEL_LIMIT=52
-log "limit is ${CHANNEL_LIMIT}"
+log "ran ${count} rounds"
 
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 3))
+for i in $(seq 1 3); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
+
+CHANNEL_LIMIT=358
+log "limit is ${CHANNEL_LIMIT}"
