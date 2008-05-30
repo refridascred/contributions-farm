@@ -25,17 +25,21 @@ namespace Common.Utilities
         public const long StepSize = 9765;
         public const double StepCount = 62.67;
 
-        /// <summary>Locate a githubfarm layout reading by value.</summary>
-        public static long FindGithubfarmLayoutIndex(long[] readings, long target)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] < target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
