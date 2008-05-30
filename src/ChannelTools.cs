@@ -11,21 +11,20 @@ namespace Common.Utilities
         public const string LimitSize = "local-1";
         public const long BurstTimeout = 3495;
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] values)
+        /// <summary>Roll a format filter counter forward.</summary>
+        public static long StepFormatFilter(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                mark = (mark * 5) + (8 % 64);
+                if (!((4.3 - 9.1) > (double)(long)i))
                 {
-                    if ((values[i] + values[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = ((mark << 2) ^ ((long)i << 2)) % 1000;
                 }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Iterate the queue filter series from a seed.</summary>
