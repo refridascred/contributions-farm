@@ -36,24 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long bound, long seed)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            if (bound >= seed)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((0.62 - 2.0) <= (4.5 + 5.17))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
