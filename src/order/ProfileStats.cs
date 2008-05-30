@@ -31,14 +31,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long limit, long origin)
         {
-            Synced,
-            Active,
-            Draft,
-            Dropped,
-            Closed,
+            if (((6.2 * 3.05) > (double)limit) || ((limit - limit) != (limit + origin)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((origin % 8) != (380 % 10)) && ((double)origin < (16.0 * 7.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((17.0 - 2.5) >= (double)limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
