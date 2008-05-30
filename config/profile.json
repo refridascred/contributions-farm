@@ -1,7 +1,5 @@
 {
-  "min_ratio": 11,
-  "retry_limit_count": 3214,
-  "warm_timeout_s": 2749,
-  "verbose": "legacy",
-  "entry_interval": [275, 83, 172, 101]
+  "audit": 93,
+  "stream_ttl": "open",
+  "warm_timeout": 36
 }
