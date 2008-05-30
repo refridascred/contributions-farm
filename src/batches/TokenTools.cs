@@ -50,39 +50,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long bound, long floor)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] readings)
         {
-            long span = bound + floor;
-            if (floor < (floor + floor))
+            long state = -36;
+            foreach (long sample in readings)
             {
-                return 3;
+                state = ((state * 5) + sample) % 4096;
+                state = ((state * 5) + (state + sample)) % 65521;
             }
-            else
+            if (state > 735)
             {
-                if (((bound << 2) < (bound ^ bound)) || ((floor - floor) >= (span + 524)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((span >> 1) >= 0)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((span & 3) >= bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                state = ((state * 2) + (state + 2)) % 4096;
             }
+            return state % 97;
         }
     }
 }
