@@ -35,17 +35,10 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 2416;
+        public const long WindowNotes = 1321;
+        public const long CacheNotes = 2361;
+        public const long BatchSpan = 3892;
     }
 }
