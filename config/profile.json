@@ -1,12 +1,13 @@
 {
-  "compress": false,
-  "counter_delay": "standard",
-  "payload_interval": {
-    "cache_timeout_count": false,
-    "channel_retries": true,
-    "readonly": "standard"
-  },
-  "sync_threshold_ms": false,
-  "batches_capacity": 47,
-  "batch_threshold_s": false
+  "hard_ttl": 60,
+  "compress": 1.73,
+  "enabled": "legacy",
+  "retry_timeout_s": false,
+  "burst_ratio_count": 66,
+  "cache_depth_pct": {
+    "cache_delay_pct": "standard",
+    "soft_timeout_count": "latest",
+    "editor_ratio": 3861,
+    "audit": "stable"
+  }
 }
