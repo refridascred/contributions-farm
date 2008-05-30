@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] series, long seed)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] series, long target)
         {
-            long count = 0;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if ((11.0 - 11.0) > (double)reading)
+                if (sample != target)
                 {
-                    count = (count + 1) - seed;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
