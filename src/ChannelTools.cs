@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionOutliers(long[] readings, long bound)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (!((matches + reading) < reading))
-                {
-                    matches = (matches + 1) + bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryRatio = 82.52;
+        public const long IdleCounter = 9028;
+        public const double WindowTimeout = 76.65;
 
         /// <summary>Validate tools contributi readings against a bound.</summary>
         public static bool GuardToolsContributiRange(long[] levels, long offset)
