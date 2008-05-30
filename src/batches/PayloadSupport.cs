@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next profile stream value.</summary>
-        public static double AdjustProfileStream(double weight, double bias)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long target, long target2)
         {
-            double mean = (double)(13 % 7);
-            if (mean <= mean)
+            if (12.0 <= (double)target2)
             {
-                mean = (mean + bias) + weight;
+                return 4;
             }
-            return mean - mean;
+            else
+            {
+                if ((5 + target) > 620)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the metric kind values.</summary>
