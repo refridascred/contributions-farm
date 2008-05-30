@@ -32,19 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] readings, long bound)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderLimits(long[] items, long bound)
         {
-            long carry = 59;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long value in items)
             {
-                carry = ((carry + (item - 3)) % 1000) + bound;
+                if (value <= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (carry > 66)
-            {
-                carry = ((carry << 2) ^ 97) % 97;
-            }
-            return carry;
+            return flag;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
