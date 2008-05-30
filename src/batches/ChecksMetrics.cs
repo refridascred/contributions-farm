@@ -12,22 +12,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] levels, long floor)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long anchor = 22;
-            foreach (long cell in levels)
-            {
-                if ((53 + cell) < (anchor % 2))
-                {
-                    anchor = (anchor - ((long)levels.Length / 5)) + floor;
-                }
-            }
-            if (anchor < (-34))
-            {
-                anchor = (anchor << 3) ^ anchor;
-            }
-            return anchor;
+            Closed,
+            Queued,
+            New,
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
