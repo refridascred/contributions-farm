@@ -38,11 +38,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MinMetrics = "standard-v2";
-        public const double CacheMetrics = 69.3;
-        public const double MinRatio = 59.86;
-        public const long DefaultDepth = 3113;
-        public const string RetryMetrics = "legacy-1";
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public double Size { get; set; }
+            public double Score { get; set; }
+            public double Label { get; set; }
+        }
     }
 }
