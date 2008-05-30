@@ -1,12 +1,6 @@
 # support settings
-profile_interval: 58
-retry_retries_s:
-  burst_delay_pct:
-    cluster_depth: open
-    strict: true
-    poll_window_ms: staging
-    poll_depth_pct: 83
-  cache_threshold_count: 60.76
-  cache_interval_count: 250
-  hard_size: eu-west
-readonly: strict
+batches_delay: 25
+batches_window: 51
+sync_window_s:
+  - stable
+  - blue
