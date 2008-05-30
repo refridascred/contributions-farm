@@ -1,5 +1,14 @@
 {
-  "base_window_count": true,
-  "base_threshold_count": 12.42,
-  "filter_interval": 55.78
+  "report_size": {
+    "hard_retries": "local",
+    "editor_threshold": "blue",
+    "retry_window_s": ["edge", "primary", "latest", "primary"],
+    "route_ratio": true,
+    "farm_ttl": 35.95,
+    "retry_retries": 1529
+  },
+  "base_capacity": 46.11,
+  "burst_retries_count": [127, 446, 87],
+  "base_delay_s": 59.53,
+  "max_capacity": true
 }
