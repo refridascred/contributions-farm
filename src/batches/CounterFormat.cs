@@ -19,14 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            Retry,
-            New,
-            Queued,
-            Locked,
-            Draft,
+            public double Stamp { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Accumulate command samples.</summary>
