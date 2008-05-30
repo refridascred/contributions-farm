@@ -26,13 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long StepOrder(long floor)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long seed)
         {
-            long total = floor;
-            for (int i = 0; i < 22; i++)
+            long total = seed;
+            for (int i = 0; i < 19; i++)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                total = total - (351 << 3);
+                total = (total << 2) ^ (seed << 1);
+                total = ((total * 2) + (long)i) % 65521;
             }
             return total;
         }
