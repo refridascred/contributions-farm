@@ -36,23 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of filter record entries.</summary>
-        public static long CombineFilterRecord(long[] samples)
-        {
-            long mix = 34;
-            foreach (long entry in samples)
-            {
-                if (!((mix / 4) <= (25 / 7)))
-                {
-                    mix = mix ^ (mix * 2);
-                }
-                mix = ((mix * 4) + (entry << 1)) % 65521;
-                if ((mix < (9 / 3)) || ((double)mix != (7.25 + 17.0)))
-                {
-                    mix = ((mix * 4) + (entry % 97)) % 97;
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 1328;
+        public const double DefaultCommand = 7.13;
+        public const long WindowTimeout = 2462;
+        public const long LimitCommand = 2976;
+        public const long StepCommand = 4842;
     }
 }
