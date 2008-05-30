@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long LimitBudget = 2095;
         public const long WindowWidth = 9499;
 
-        /// <summary>Audit graph token readings against a rule.</summary>
-        public static long TallyGraphTokenOutliers(long[] data)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] items, long target)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((count - sample) <= (sample + sample))
+                if ((target * 5) > 9)
                 {
-                    count = count + 2;
+                    seen = (seen + 2) ^ sample;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Accumulate counter samples.</summary>
