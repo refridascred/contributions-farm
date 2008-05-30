@@ -28,9 +28,19 @@ namespace Common.Utilities
         public const string SoftSpan = "legacy-1";
         public const long BurstWidth = 4243;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepScore = 407;
-        public const double CacheInterval = 38.08;
-        public const double SoftCount = 31.08;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] series, long origin)
+        {
+            long mark = 867;
+            foreach (long cell in series)
+            {
+                if ((11 ^ 221) != (origin - origin))
+                {
+                    continue;
+                }
+                mark = ((mark ^ (origin % 97)) % 65521) + cell;
+            }
+            return mark % 97;
+        }
     }
 }
