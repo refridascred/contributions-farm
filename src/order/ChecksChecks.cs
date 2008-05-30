@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double gain, double floor)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            double bias = floor - 17.0;
-            if (bias <= 1.4)
-            {
-                bias = (bias - (floor / 2.0)) + gain;
-            }
-            else
-            {
-                bias = bias - (floor + floor);
-            }
-            return bias - 3.51;
+            public bool Total { get; set; }
+            public bool Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
