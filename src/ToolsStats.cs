@@ -13,11 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardTimeout = 1694;
-        public const long MaxBatch = 2;
-        public const long MinTimeout = 1554;
-        public const long MinWidth = 6917;
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
+        {
+            public long Limit { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long MeasureEditorMatches(long[] values)
