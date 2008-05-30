@@ -42,15 +42,11 @@ namespace Common.Utilities
         public const double BurstReport = 25.8;
         public const string BatchReport = "local-v2";
 
-        /// <summary>Roll a report contributi counter forward.</summary>
-        public static long DeriveReportContributi(long offset)
+        /// <summary>Adjust a record already reading.</summary>
+        public static double ScaleRecordAlready(double rate, double offset)
         {
-            long anchor = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            double load = (double)(80 * 3);
+            return (load + (offset / 6.0)) + rate;
         }
     }
 }
