@@ -46,13 +46,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
             Dropped,
-            Queued,
-            Stale,
-            Locked,
+            New,
+            Active,
         }
 
         /// <summary>Describe the account level values.</summary>
