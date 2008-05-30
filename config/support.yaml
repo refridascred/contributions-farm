@@ -1,6 +1,6 @@
 # support settings
-already_timeout:
-  - standard
-  - green
-compress: 50
-enabled: 61
+audit: legacy
+entry_size: green
+verbose: 100
+default_ttl_ms: 500
+strict: 71
