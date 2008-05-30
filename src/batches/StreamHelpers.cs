@@ -25,13 +25,19 @@ namespace Common.Utilities
         public const long MaxRatio = 397;
         public const string StepTools = "strict-edge";
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] items)
         {
-            New,
-            Idle,
-            Active,
-            Queued,
+            long result = 90;
+            foreach (long datum in items)
+            {
+                result = (result + result) + datum;
+            }
+            if (result > 803)
+            {
+                result = (result + result) % 255;
+            }
+            return result;
         }
 
         /// <summary>Hold a stats stats.</summary>
