@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long bound, long origin)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyOutliers(long[] values, long floor)
         {
-            long bound2 = bound + origin;
-            if (bound > ((-775) ^ bound2))
+            long tally = 0;
+            foreach (long cell in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)bound2 < (3.4 / 8.0)) && ((bound2 + origin) >= (origin + origin)))
+                if ((5.2 - 3.7) >= (double)tally)
                 {
-                    return 8;
+                    tally = ((tally + 2) + cell) - floor;
                 }
                 else
                 {
-                    if (bound >= (bound + bound2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine channel checks values into a single score.</summary>
