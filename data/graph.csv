@@ -1,10 +1,7 @@
-id,token,state,score,level
-1,851,staging,78.76,79.77
-2,legacy,85.75,8.29,73.53
-3,238,84,598,strict
-4,latest,50.51,edge,eu-west
-5,183,180,57.21,959
-6,87.11,46.0,blue,47
-7,19.12,381,390,178
-8,652,stable,blue,103
-9,814,340,15.72,41.57
+id,weight,active,rank,owner
+1,851,45.14,local,839
+2,533,14.61,local,23.52
+3,blue,765,staging,edge
+4,green,cached,standard,71.4
+5,legacy,82.86,18.67,8.24
+6,91.84,572,624,704
