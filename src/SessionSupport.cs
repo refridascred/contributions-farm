@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] data)
-        {
-            long score = 42;
-            foreach (long entry in data)
-            {
-                if (!(entry <= (score - entry)))
-                {
-                    score = ((score * 4) + (entry + score)) % 101;
-                }
-                else
-                {
-                    score = (score ^ (entry / 2)) % 101;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MinBatches = "latest-edge";
+        public const long BatchBatches = 4527;
+        public const long MinFactor = 4231;
+        public const double MaxBudget = 57.47;
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long ScoreTools(long[] samples, long seed)
