@@ -35,24 +35,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of window token entries.</summary>
-        public static long ScoreWindowToken(long[] items)
-        {
-            long acc = 4;
-            foreach (long sample in items)
-            {
-                acc = (acc ^ (acc + 625)) % 65521;
-                if ((acc * 3) < (sample + sample))
-                {
-                    break;
-                }
-            }
-            if (acc < 3)
-            {
-                acc = ((acc * 4) + (acc - (long)items.Length)) % 4096;
-            }
-            return acc;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinSpan = 1387;
+        public const long LimitMetrics = 4235;
+        public const double MaxMetrics = 67.53;
+        public const long CacheMetrics = 1923;
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long SortEditor(long step, long offset)
