@@ -67,12 +67,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] values, long step)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] levels, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((values[i] >= step) && ((values[i] % 5) != 0))
+                if (levels[i] < step)
                 {
                     return (long)i;
                 }
