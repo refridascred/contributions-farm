@@ -1,8 +1,22 @@
 {
-  "readonly": 56.69,
-  "min_ttl_pct": 3982,
-  "cache_depth_s": 250,
-  "base_interval": true,
-  "max_ttl_ms": 93.84,
-  "contributi_size": "open"
+  "soft_size_count": "open",
+  "burst_window_pct": false,
+  "flush_limit_count": {
+    "audit": {
+      "max_ratio_pct": 100,
+      "cache_limit_pct": false,
+      "record_size": "eu-west",
+      "default_ttl_pct": [351, 357, 327]
+    },
+    "verbose": true,
+    "default_interval_count": false,
+    "flush_threshold": false
+  },
+  "dry_run": {
+    "persist": "blue",
+    "queue_retries": 9.98,
+    "default_capacity_ms": "stable",
+    "enabled": true,
+    "session_window": 90.38
+  }
 }
