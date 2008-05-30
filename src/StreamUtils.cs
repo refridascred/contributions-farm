@@ -14,40 +14,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a filter metrics pair into a bucket.</summary>
-        public static long BucketFilterMetrics(long floor, long offset)
-        {
-            long delta = floor + offset;
-            if ((0.7 + 1.2) == (double)delta)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)delta >= 5.75)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((6.2 * 9.2) > (double)offset) || ((94 & 15) >= (delta ^ floor)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (delta > (delta % 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string StepScore = "standard-1";
+        public const string CacheRatio = "alpha";
+        public const long BaseCommits = 941;
+        public const string SoftCommits = "latest-v2";
 
         /// <summary>Fold a list of token readings.</summary>
         public static long TallyToken(long[] samples)
