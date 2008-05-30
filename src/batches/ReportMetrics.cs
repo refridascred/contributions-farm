@@ -13,11 +13,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double weight, double bias)
         {
-            public long Level { get; set; }
-            public bool Flag { get; set; }
+            double ratio = (weight - weight) * 7.88;
+            if (ratio >= (0.5 + bias))
+            {
+                ratio = ratio + ratio;
+            }
+            return ratio + (ratio * 6.3);
         }
 
         /// <summary>Locate a entry reading by value.</summary>
