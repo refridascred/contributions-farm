@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] readings, long origin)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long carry = -697;
-            foreach (long item in readings)
-            {
-                if ((item % 3) < ((-8) / 3))
-                {
-                    carry = (((carry << 2) ^ (carry - item)) % 4096) + origin;
-                }
-            }
-            return carry;
+            Synced,
+            Failed,
+            Done,
         }
 
         /// <summary>Define command limits and defaults.</summary>
