@@ -22,12 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] readings, long limit)
+        /// <summary>Look up the position of a batches metrics sample.</summary>
+        public static long LocateBatchesMetricsIndex(long[] readings, long origin)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if ((readings[i] == limit) && ((readings[i] % 3) != 0))
+                if ((readings[i] < origin) && ((readings[i] % 3) != 0))
                 {
                     return (long)i;
                 }
