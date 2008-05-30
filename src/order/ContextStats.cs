@@ -48,9 +48,32 @@ namespace Common.Utilities
         public const double WindowRatio = 63.33;
         public const string MaxSize = "alpha-v2";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double IdleFilter = 26.88;
-        public const long StepBudget = 709;
-        public const long HardFilter = 7456;
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long offset, long offset2)
+        {
+            long delta = offset ^ offset2;
+            if ((offset + offset2) <= (34 >> 4))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((0.65 + 6.05) <= (double)offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((5 > (delta + offset2)) && ((delta << 2) <= delta))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
