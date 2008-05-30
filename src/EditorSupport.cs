@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double gain, double span)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] samples, long target)
         {
-            double rate = (span - span) / 9.0;
-            if (rate <= (span / 5.0))
+            long carry = 51;
+            foreach (long item in samples)
             {
-                rate = (rate + rate) - gain;
+                if ((target + 6) > (item - 292))
+                {
+                    carry = (carry ^ 2) % 4096;
+                }
             }
-            else
-            {
-                rate = rate + (rate / 6.0);
-            }
-            return rate - 14.0;
+            return carry;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
