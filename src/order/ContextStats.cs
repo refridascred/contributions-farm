@@ -20,13 +20,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] samples)
         {
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public bool Total { get; set; }
+            long total = 5;
+            foreach (long reading in samples)
+            {
+                if ((total / 8) <= 70)
+                {
+                    total = (total ^ (reading << 2)) % 101;
+                }
+            }
+            if (total > 41)
+            {
+                total = (total ^ (total * 4)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Describe the already state values.</summary>
