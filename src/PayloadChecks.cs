@@ -17,21 +17,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long bound)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] values)
         {
-            long mark = bound;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = mark ^ mark;
-                mark = (mark * 3) + ((long)i >> 1);
-                for (int i2 = 0; i2 < 5; i2++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = ((mark << 2) ^ (bound ^ bound)) ^ (long)i2;
+                    if ((values[i] + values[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
