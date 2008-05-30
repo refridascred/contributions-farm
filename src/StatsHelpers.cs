@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long target)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] data, long seed)
         {
-            long sum = target;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                sum = (sum + (sum + 944)) % 97;
-                sum = ((sum * 2) + (long)i) % 97;
+                if (((hits & 127) >= (hits + seed)) || ((seed << 2) > 8))
+                {
+                    hits = (hits + 1) - value;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
