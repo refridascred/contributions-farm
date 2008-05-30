@@ -16,17 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] readings, long bound)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] readings, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 647;
+            foreach (long sample in readings)
             {
-                if (readings[i] == bound)
+                score = (score * 4) + (score ^ sample);
+                if (((score - sample) >= (offset - offset)) || ((698 >> 3) > (score - offset)))
                 {
-                    return (long)i;
+                    score = score ^ sample;
                 }
             }
-            return -1;
+            return score % 1000;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
