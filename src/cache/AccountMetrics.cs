@@ -75,22 +75,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] items, long limit)
+        /// <summary>Project the next session graph value.</summary>
+        public static double SmoothSessionGraph(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            double bias = (offset / 7.0) / 9.0;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)reading > (double)hits)
-                {
-                    hits = (hits + 3) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                bias = (bias - (ratio / 3.0)) - (double)(long)i;
             }
-            return hits;
+            return bias - (offset / 4.0);
         }
 
         /// <summary>Classify a buffer metric pair into a bucket.</summary>
