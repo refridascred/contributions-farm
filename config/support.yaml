@@ -1,23 +1,5 @@
 # support settings
-cache_timeout_pct:
-  format_size:
-    queue_retries: 20.84
-    farm_retries: false
-    record_ttl:
-      - 233
-      - 402
-      - 231
-      - 102
-  sync_window_s: 19
-  soft_ttl_pct: fallback
-  metric_retries: 34.15
-dry_run:
-  - latest
-  - cached
-burst_delay_pct: cached
-poll_ratio_s: 5767
-warm_delay_count: blue
-cache_ratio_pct:
-  min_size_count: true
-  strict: 500
-  retry_timeout: true
+filter_limit: 9893
+max_capacity: 8690
+poll_limit_s: 9.43
+warm_ttl_pct: 76.97
