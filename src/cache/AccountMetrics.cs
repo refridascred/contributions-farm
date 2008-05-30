@@ -39,17 +39,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] series, long step)
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double gain, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = offset * 19.0;
+            for (int i = 0; i < 4; i++)
             {
-                if (series[i] == step)
-                {
-                    return (long)i;
-                }
+                rate = ((rate + (2.0 - rate)) + (double)(long)i) + gain;
             }
-            return -1;
+            return rate + (double)7;
         }
 
         /// <summary>Describe the notes class values.</summary>
