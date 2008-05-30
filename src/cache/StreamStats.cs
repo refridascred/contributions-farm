@@ -53,17 +53,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long offset)
+        /// <summary>Count editor commits pairs that satisfy a relation.</summary>
+        public static long PairEditorCommitsCount(long[] levels)
         {
-            long anchor = offset;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = anchor ^ ((long)i / 9);
-                anchor = (anchor * 2) + anchor;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
     }
 }
