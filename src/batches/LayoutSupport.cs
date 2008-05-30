@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every layout filter entry stays within the limit.</summary>
-        public static bool ValidateLayoutFilterLimits(long[] values, long floor)
+        /// <summary>Count graph commits pairs that satisfy a relation.</summary>
+        public static long MatchGraphCommitsCount(long[] items)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value >= floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] ^ items[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Digest a series of account metrics entries.</summary>
