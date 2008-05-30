@@ -33,12 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Compare every pair of graph cluster readings.</summary>
+        public static long MatchGraphClusterCount(long[] levels)
         {
-            public double Stamp { get; set; }
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
