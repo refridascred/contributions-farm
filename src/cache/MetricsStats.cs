@@ -20,22 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long seed, long target)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long floor, long limit)
         {
-            if ((seed / 7) > (target >> 4))
+            if ((floor + 30) > (floor % 64))
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if (seed > (seed / 2))
+                if ((17.0 - 4.02) < (double)floor)
                 {
-                    return 6;
+                    return 2;
                 }
                 else
                 {
-                    return 8;
+                    return 4;
                 }
             }
         }
