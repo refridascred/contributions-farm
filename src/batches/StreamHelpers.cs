@@ -64,14 +64,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            Paused,
-            Retry,
-            Idle,
-            Ready,
-            Dropped,
+            public long Count { get; set; }
+            public double Token { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
