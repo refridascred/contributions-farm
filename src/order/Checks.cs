@@ -71,9 +71,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 4225;
-        public const long SoftRatio = 3849;
-        public const long MaxBuffer = 6008;
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            Queued,
+            Synced,
+            Locked,
+        }
     }
 }
