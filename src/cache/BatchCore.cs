@@ -34,13 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            public bool Stamp { get; set; }
-            public double Ratio { get; set; }
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
