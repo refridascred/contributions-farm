@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] items)
-        {
-            long acc = -8;
-            foreach (long value in items)
-            {
-                acc = ((acc << 2) ^ (acc << 2)) % 1000;
-                acc = ((acc * 5) + (0 - acc)) % 1000;
-                if ((9 % 10) < value)
-                {
-                    acc = (acc - acc) % 4096;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (value - acc);
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double StepRatio = 90.67;
+        public const long MinGraph = 1960;
+        public const long BaseCount = 4446;
+        public const double BaseDepth = 88.77;
+        public const long BatchWidth = 4832;
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long MatchRouteCount(long[] data)
