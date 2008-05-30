@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cache githubfarm readings.</summary>
-        public static long FoldCacheGithubfarm(long[] readings, long target)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] data, long floor)
         {
-            long total = 0;
-            foreach (long entry in readings)
+            long acc = 3;
+            foreach (long cell in data)
             {
-                if ((3.2 / 8.0) >= (double)target)
-                {
-                    total = total + (target - entry);
-                }
+                acc = (((acc ^ acc) % 65521) - cell) - floor;
             }
-            return total % 1000;
+            return acc % 4096;
         }
 
         /// <summary>Describe the counter kind values.</summary>
