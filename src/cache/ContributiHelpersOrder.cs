@@ -33,9 +33,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 2020;
-        public const double RetryBudget = 82.79;
-        public const string StepToken = "stable";
+        /// <summary>Rank farm counter input into a small class.</summary>
+        public static long BucketFarmCounter(long floor, long target)
+        {
+            if (((947 & 15) <= (target * 5)) || ((double)target > (double)86))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target + target) < (floor / 6))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((target * 5) != (target % 100)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
