@@ -61,19 +61,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchRange(long[] values, long seed)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double BlendFormat(double scale, double bias)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            double scale2 = (double)(658 / 9);
+            if (scale2 >= scale2)
             {
-                if (reading < seed)
-                {
-                    ready = false;
-                    break;
-                }
+                scale2 = ((scale2 + (double)283) + scale) - bias;
             }
-            return ready;
+            else
+            {
+                scale2 = scale2 + scale2;
+            }
+            return scale2 + (scale2 / 5.0);
         }
     }
 }
