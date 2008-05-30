@@ -27,17 +27,26 @@ namespace Common.Utilities
             return (scale + floor) + rate;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] items, long offset)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 20;
+            foreach (long sample in samples)
             {
-                if (items[i] == offset)
+                if (((double)sample == (18.0 + 6.6)) && ((sample / 2) >= ((long)samples.Length - total)))
                 {
-                    return (long)i;
+                    total = total + total;
+                }
+                else
+                {
+                    total = (total << 2) ^ (sample << 2);
                 }
             }
-            return -1;
+            if (total > 95)
+            {
+                total = total - (total + total);
+            }
+            return total % 65521;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
