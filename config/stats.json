@@ -1,16 +1,6 @@
 {
-  "soft_limit": 1024,
-  "audit": {
-    "idle_limit_ms": 44.75,
-    "batch_ttl_ms": {
-      "schema_size": 82,
-      "flush_delay_ms": [17, 24, 187, 73],
-      "buffer_window": "staging"
-    },
-    "window_ttl": "standard"
-  },
-  "soft_capacity_s": "staging",
-  "soft_threshold_count": "eu-west",
-  "cluster_timeout": true,
-  "max_depth": false
+  "command_limit": 5046,
+  "farm_capacity": true,
+  "counter_timeout": "primary",
+  "base_delay": [238, 254]
 }
