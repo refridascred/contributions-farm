@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] items, long offset)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Count { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Grade a context value against two limits.</summary>
