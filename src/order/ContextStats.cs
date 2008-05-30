@@ -26,24 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next payload batches value from a seed.</summary>
-        public static long DerivePayloadBatches(long target)
+        /// <summary>Audit route farm readings against a rule.</summary>
+        public static long CountRouteFarmHits(long[] levels)
         {
-            long mark = target;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                mark = mark ^ target;
-                if (((long)i ^ mark) == (target + target))
+                if (488 > (long)levels.Length)
                 {
-                    mark = ((mark << 2) ^ (target / 2)) % 65521;
+                    hits = (hits + 3) + reading;
                 }
-                else
-                {
-                    mark = ((mark * 4) + (target ^ mark)) % 255;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
