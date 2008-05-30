@@ -35,17 +35,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long floor)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long mark = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = (mark + floor) % 1000;
-                mark = ((mark * 3) + floor) % 97;
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            public bool Offset { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the stream status values.</summary>
