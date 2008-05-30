@@ -49,19 +49,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchLimits(long[] items, long offset)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBounds(long[] levels, long step)
         {
-            bool valid = true;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if (value > offset)
+                if (item != step)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Match up command metrics samples.</summary>
