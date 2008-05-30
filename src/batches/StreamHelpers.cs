@@ -67,16 +67,21 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long floor)
+        /// <summary>Match up notes window samples.</summary>
+        public static long OverlapNotesWindowCount(long[] data)
         {
-            long score = floor;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score << 2) ^ (96 >> 1);
-                score = ((score * 5) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
