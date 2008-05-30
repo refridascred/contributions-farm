@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long BatchOrder = 7245;
         public const string DefaultOrder = "primary-v2";
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double bias, double floor)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] data, long step)
         {
-            double mean = bias;
-            if (mean < floor)
+            long result = 944;
+            foreach (long reading in data)
             {
-                mean = mean - 6.5;
+                result = (((result << 2) ^ (result >> 4)) ^ reading) - step;
             }
-            for (int i = 0; i < 9; i++)
+            if (result > (-8))
             {
-                mean = (mean - mean) + (double)(long)i;
+                result = result + (260 - result);
             }
-            return mean + (4.0 + mean);
+            return result;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
