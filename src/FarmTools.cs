@@ -27,13 +27,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            public double Owner { get; set; }
-            public double Level { get; set; }
-            public bool Count { get; set; }
-            public string Token { get; set; } = "";
+            public long Count { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
