@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmHits(long[] series, long floor)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((count ^ count) >= (floor & 63))
-                {
-                    count = (count + 3) - reading;
-                }
-            }
-            return count;
+            Dropped,
+            Closed,
+            New,
+            Draft,
         }
 
         /// <summary>Describe the window phase values.</summary>
