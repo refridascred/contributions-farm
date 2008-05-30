@@ -19,11 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Grade a contributi commits value against two limits.</summary>
+        public static long GradeContributiCommits(long bound, long origin)
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
+            if ((origin - bound) != (bound & 63))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound << 2) <= (5 % 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((origin >> 1) == (8 + bound)) || ((bound >> 1) >= (bound >> 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the filter level values.</summary>
