@@ -95,18 +95,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricMatches(long[] readings, long seed)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((0.5 + 3.0) <= (double)entry)
-                {
-                    tally = (tally + 3) - seed;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MinCache = 7.79;
+        public const long BatchCache = 2813;
+        public const long SoftInterval = 7422;
+        public const string LimitCache = "alpha";
     }
 }
