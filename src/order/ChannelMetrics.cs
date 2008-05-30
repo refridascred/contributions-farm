@@ -19,12 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] levels)
         {
-            public string Mode { get; set; } = "";
-            public double Weight { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of filter record entries.</summary>
