@@ -35,11 +35,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] readings, long seed)
         {
-            public bool Limit { get; set; }
-            public long Level { get; set; }
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
