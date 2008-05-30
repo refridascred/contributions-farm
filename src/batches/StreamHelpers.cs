@@ -12,22 +12,11 @@ namespace Common.Utilities
         public const double BaseDepth = 88.77;
         public const long BatchWidth = 4832;
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 4078;
+        public const double MaxLevel = 14.38;
+        public const long MinMetric = 1641;
+        public const double CacheDepth = 27.98;
 
         /// <summary>Audit payload buffer readings against a rule.</summary>
         public static long AuditPayloadBufferOutliers(long[] readings)
