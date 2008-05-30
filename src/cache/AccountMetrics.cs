@@ -93,28 +93,35 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a payload format pair into a bucket.</summary>
-        public static long ClassifyPayloadFormat(long limit, long bound)
+        /// <summary>Classify a buffer metric pair into a bucket.</summary>
+        public static long BucketBufferMetric(long limit, long step)
         {
-            if ((double)bound >= 9.0)
+            if ((limit / 4) <= limit)
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if ((bound & 15) < 40)
+                if ((double)limit < (double)588)
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    if (!((2.6 + 11.0) <= (6.3 / 2.0)))
+                    if (((step + 411) <= (step + limit)) || ((double)limit <= (6.5 + 7.19)))
                     {
-                        return 0;
+                        return 3;
                     }
                     else
                     {
-                        return 7;
+                        if (979 < limit)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
