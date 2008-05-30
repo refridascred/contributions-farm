@@ -34,26 +34,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] samples, long floor)
+        /// <summary>Look up the position of a route cache sample.</summary>
+        public static long SeekRouteCacheIndex(long[] values, long target)
         {
-            long total = 6;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell * 3) == (cell - cell))
+                if (values[i] > target)
                 {
-                    total = (total - (cell % 64)) + floor;
-                }
-                else
-                {
-                    total = total + (cell ^ cell);
+                    return (long)i;
                 }
             }
-            if (total > (-11))
-            {
-                total = (total - (total >> 4)) % 101;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
