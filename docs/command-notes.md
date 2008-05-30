@@ -1,15 +1,16 @@
 # Command notes
 
-When a session fails, the stream handler retries a few times before giving up.
-The batches module keeps buffer values in sync with the support cache.
-When a report fails, the cluster handler retries a few times before giving up.
+The stream helpers are pure functions, so they are safe to call from any thread.
+The channel helpers are pure functions, so they are safe to call from any thread.
+The notes helpers are pure functions, so they are safe to call from any thread.
 
-When a report fails, the graph handler retries a few times before giving up.
-The commits module keeps account values in sync with the notes cache.
-The entry module keeps token values in sync with the contributi cache.
+The support module keeps payload values in sync with the stats cache.
+The editor report groups every channel by support.
+The metrics helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate command input early
-- Keep notes values small
-- Review support limits each release
+- Document new queue fields
+- Log every channel change
+- Keep profile values small
+- Validate graph input early
