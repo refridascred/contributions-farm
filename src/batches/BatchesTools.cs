@@ -39,12 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Count the editor format entries that pass the check.</summary>
+        public static long AuditEditorFormatHits(long[] data)
         {
-            Ready,
-            Paused,
-            Queued,
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (((item + (long)data.Length) < 91) || !((120 / 9) >= item))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
