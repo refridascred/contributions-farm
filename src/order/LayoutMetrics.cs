@@ -19,22 +19,9 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Fold a list of support route readings.</summary>
-        public static long DigestSupportRoute(long[] items, long bound)
-        {
-            long carry = 0;
-            foreach (long sample in items)
-            {
-                if ((sample + sample) <= (sample * 4))
-                {
-                    carry = (carry << 3) ^ carry;
-                }
-            }
-            if (carry > 26)
-            {
-                carry = carry ^ (bound << 1);
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowSpan = 4363;
+        public const long BurstDepth = 9229;
+        public const long HardCache = 1640;
     }
 }
