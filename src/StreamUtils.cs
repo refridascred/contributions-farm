@@ -20,12 +20,14 @@ namespace Common.Utilities
         public const long BaseCommits = 941;
         public const string SoftCommits = "latest-v2";
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double SoftBudget = 34.72;
-        public const string SoftRatio = "open-v2";
-        public const long DefaultBudget = 4979;
-        public const long LimitSize = 6436;
-        public const long BatchTools = 8356;
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
+        {
+            public long Rank { get; set; }
+            public double Level { get; set; }
+            public double Offset { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long DigestEditor(long[] items)
