@@ -43,24 +43,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a entry payload value against two limits.</summary>
-        public static long ClassifyEntryPayload(long origin, long target)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] samples, long bound)
         {
-            if ((double)origin <= (2.7 / 2.0))
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin + target) >= (25 * 5))
+                if (seen <= (seen - seen))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    seen = ((seen + 1) - datum) - bound;
                 }
             }
+            return seen;
         }
     }
 }
