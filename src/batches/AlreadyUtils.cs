@@ -46,19 +46,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate schema batches readings against a bound.</summary>
-        public static bool CheckSchemaBatchesBounds(long[] levels, long limit)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Queued,
+            Pending,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Match up buffer samples.</summary>
