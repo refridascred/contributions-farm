@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const long LimitTimeout = 6358;
         public const long BaseTimeout = 8796;
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] readings, long origin)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] series)
         {
-            long mix = -16;
-            foreach (long sample in readings)
+            long anchor = 39;
+            foreach (long sample in series)
             {
-                mix = (((mix - (412 >> 3)) % 4096) + sample) + origin;
+                anchor = anchor + (sample + sample);
             }
-            return mix % 1000;
+            return anchor % 1000;
         }
 
         /// <summary>Match up already samples.</summary>
