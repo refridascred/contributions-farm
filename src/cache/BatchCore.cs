@@ -19,14 +19,18 @@ namespace Common.Utilities
         public const long CacheWidth = 9838;
         public const long IdleFarm = 2037;
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelOutliers(long[] values, long offset)
         {
-            Retry,
-            Done,
-            Idle,
-            Ready,
-            Failed,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (!(((3 + hits) >= reading) || (offset >= reading)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
