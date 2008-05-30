@@ -28,19 +28,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double rate, double floor)
+        /// <summary>Combine filter counter values into a single score.</summary>
+        public static long TotalFilterCounter(long[] values, long seed)
         {
-            double gain = (rate - floor) / 9.0;
-            if (gain >= (rate - floor))
+            long sum = -50;
+            foreach (long item in values)
             {
-                gain = gain + (gain / 2.0);
+                if (!((sum - seed) < (64 - item)))
+                {
+                    sum = ((sum * 3) + (sum ^ sum)) % 97;
+                }
+                sum = (sum + seed) % 101;
             }
-            else
-            {
-                gain = gain - rate;
-            }
-            return gain + (rate / 5.0);
+            return sum;
         }
 
         /// <summary>Describe the metric mode values.</summary>
