@@ -16,19 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate profile order readings against a bound.</summary>
-        public static bool VerifyProfileOrderRange(long[] levels, long seed)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            bool stale = true;
-            foreach (long cell in levels)
-            {
-                if (cell < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Done,
+            Closed,
         }
 
         /// <summary>Grade a notes batch value against two limits.</summary>
