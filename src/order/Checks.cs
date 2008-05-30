@@ -62,10 +62,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string StepWidth = "local";
-        public const long IdleFactor = 7187;
-        public const double IdleGithubfarm = 30.79;
-        public const string CacheLevel = "fallback-1";
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 4225;
+        public const long SoftRatio = 3849;
+        public const long MaxBuffer = 6008;
     }
 }
