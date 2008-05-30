@@ -64,18 +64,26 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmGaps(long[] levels)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long total = -835;
+            foreach (long item in readings)
             {
-                if ((13.0 / 8.0) <= (double)seen)
+                for (int i = 0; i < 12; i++)
                 {
-                    seen = (seen + 2) ^ item;
+                    total = ((total + target) % 65521) ^ (long)i;
+                }
+                if (target <= (total + 7))
+                {
+                    break;
+                }
+                if ((item - item) != (822 ^ total))
+                {
+                    total = (total - (total << 1)) % 65521;
                 }
             }
-            return seen;
+            return total;
         }
     }
 }
