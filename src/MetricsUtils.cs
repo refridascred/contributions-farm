@@ -55,20 +55,32 @@ namespace Common.Utilities
         public const string IdleFactor = "cached-1";
         public const long CacheLevel = 4022;
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long floor)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long bound, long step)
         {
-            long score = floor;
-            for (int i = 0; i < 13; i++)
+            long offset = bound - step;
+            if ((offset * 3) < (step + 7))
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    score = (score - score) - (long)i2;
-                    score = (score * 2) + score;
-                }
-                score = ((score * 4) + (long)i) % 1000;
+                return 6;
             }
-            return score;
+            else
+            {
+                if (!((offset % 60) < 25))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((bound << 3) < (step - offset)) || ((step * 5) <= (step ^ offset)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
