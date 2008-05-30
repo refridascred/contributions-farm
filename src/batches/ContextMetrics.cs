@@ -54,18 +54,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many stats channel samples are out of range.</summary>
-        public static long AuditStatsChannelOutliers(long[] items, long offset)
+        /// <summary>Count the githubfarm counter entries that pass the check.</summary>
+        public static long TallyGithubfarmCounterHits(long[] series)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((double)entry < 6.0)
+                if ((sample ^ 87) >= (sample + sample))
                 {
-                    count = (count + 3) + offset;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
