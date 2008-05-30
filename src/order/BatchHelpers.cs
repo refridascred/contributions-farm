@@ -23,12 +23,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] readings, long origin)
         {
-            public long Rank { get; set; }
-            public double Level { get; set; }
-            public string Owner { get; set; } = "";
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
