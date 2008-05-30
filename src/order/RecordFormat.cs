@@ -33,11 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BurstCount = 45.97;
-        public const long WindowTimeout = 1533;
-        public const string StepWidth = "fallback-edge";
-        public const string MinContributi = "latest-edge";
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
+        {
+            public long Level { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long RankRecord(long offset, long step)
