@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            Failed,
-            New,
-            Pending,
-            Done,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 1342;
+        public const string SoftRatio = "fallback";
+        public const string HardContributi = "primary-v2";
+        public const long CacheContributi = 6503;
 
         /// <summary>Digest a series of account metrics entries.</summary>
         public static long FoldAccountMetrics(long[] items)
