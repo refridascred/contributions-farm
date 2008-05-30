@@ -53,17 +53,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a window graph sample.</summary>
-        public static long LocateWindowGraphIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 8395;
+        public const string WindowNotes = "latest";
+        public const string CacheNotes = "fallback-1";
+        public const long BurstDepth = 3211;
     }
 }
