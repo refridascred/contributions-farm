@@ -22,22 +22,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] values, long step)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double scale, double span)
         {
-            long result = 5;
-            foreach (long datum in values)
+            double load = span;
+            if (load >= 2.0)
             {
-                if (64 > (result + result))
-                {
-                    result = ((result * 3) + step) ^ datum;
-                }
-                else
-                {
-                    result = (result + step) % 65521;
-                }
+                load = load - (scale + load);
             }
-            return result % 1000;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - scale) + (double)(long)i;
+            }
+            return load - span;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
