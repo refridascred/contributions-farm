@@ -57,12 +57,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Project the next record buffer value.</summary>
+        public static double BlendRecordBuffer(double ratio, double offset)
         {
-            Failed,
-            Stale,
-            Idle,
+            double scale = (double)(8 * 3);
+            if (scale > ratio)
+            {
+                scale = (scale + (ratio / 8.0)) - offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - (6.16 * 4.56)) - (double)(long)i;
+            }
+            return scale - (2.5 - ratio);
         }
     }
 }
