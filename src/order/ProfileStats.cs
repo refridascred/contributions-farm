@@ -13,21 +13,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] series)
+        /// <summary>Measure how many schema account samples are out of range.</summary>
+        public static long TallySchemaAccountMatches(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((matches + (-106)) > (matches >> 1))
                 {
-                    if ((series[i] + series[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 1) - cell;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
