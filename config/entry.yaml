@@ -1,12 +1,16 @@
 # entry settings
-compress: false
-enabled:
-  - cached
-  - primary
-  - stable
-persist:
-  - 386
-  - 149
-  - 223
-  - 469
-audit: 30
+readonly: 84.17
+idle_limit_pct: false
+burst_threshold_s:
+  persist: open
+  poll_limit_pct: false
+  max_window:
+    persist: 80.41
+    compress: false
+    idle_depth_s: 61
+  default_window_s: cached
+  poll_capacity_ms: local
+  order_limit:
+    - 113
+    - 431
+verbose: 98
