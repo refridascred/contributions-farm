@@ -33,13 +33,25 @@ namespace Common.Utilities
         public const long BatchLevel = 8124;
         public const long MinInterval = 7757;
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long seed, long floor)
         {
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
+            long offset = seed - floor;
+            if ((offset ^ floor) >= (818 + offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed + floor) <= (seed % 100))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
