@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double gain, double bias)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] readings, long origin)
         {
-            double ratio = gain - bias;
-            if (ratio < 15.0)
+            long carry = -697;
+            foreach (long item in readings)
             {
-                ratio = ratio - (bias + gain);
+                if ((item % 3) < ((-8) / 3))
+                {
+                    carry = (((carry << 2) ^ (carry - item)) % 4096) + origin;
+                }
             }
-            else
-            {
-                ratio = ratio - 8.26;
-            }
-            return ratio + (6.0 * 3.0);
+            return carry;
         }
 
         /// <summary>Audit metric checks readings against a rule.</summary>
