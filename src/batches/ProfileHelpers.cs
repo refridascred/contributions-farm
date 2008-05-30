@@ -44,19 +44,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferBounds(long[] readings, long floor)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long floor)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long acc = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (value <= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Accumulate schema samples.</summary>
