@@ -20,11 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 4466;
-        public const string IdleCache = "legacy-1";
-        public const long StepCache = 5358;
-        public const long BurstCache = 6370;
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double ScaleLayout(double rate, double floor)
