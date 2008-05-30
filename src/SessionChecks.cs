@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the batches account series from a seed.</summary>
-        public static long RollBatchesAccount(long floor)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] values)
         {
-            long sum = floor;
-            for (int i = 0; i < 6; i++)
+            long mix = 7;
+            foreach (long reading in values)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                mix = mix + (reading ^ mix);
             }
-            return sum;
+            return mix % 65521;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
