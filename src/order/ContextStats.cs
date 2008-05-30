@@ -26,18 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterGaps(long[] levels, long floor)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (((count / 4) < count) || ((sample + sample) < (floor - 1)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Ready,
+            Active,
+            Paused,
+            Closed,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
