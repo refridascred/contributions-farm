@@ -20,20 +20,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsLimits(long[] readings, long origin)
-        {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 1730;
+        public const long MinSize = 8346;
+        public const long MinLevel = 5929;
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
