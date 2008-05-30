@@ -1,6 +1,5 @@
 {
-  "strict": 8.46,
-  "flush_interval_s": "latest",
-  "cache_threshold_ms": "cached",
-  "order_ratio": ["blue", "strict", "staging", "blue"]
+  "window_limit": 68.54,
+  "audit": "legacy",
+  "tools_capacity": [211, 26, 241]
 }
