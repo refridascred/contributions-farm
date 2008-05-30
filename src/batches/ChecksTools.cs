@@ -24,19 +24,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricRange(long[] levels, long step)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Failed,
+            Locked,
+            Paused,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
