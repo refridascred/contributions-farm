@@ -10,12 +10,22 @@ namespace Common.Utilities
         public const double MaxLevel = 33.43;
         public const double LimitGithubfarm = 50.08;
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] levels, long limit)
         {
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            long sum = 55;
+            foreach (long sample in levels)
+            {
+                if (53 <= limit)
+                {
+                    sum = (sum << 2) ^ sample;
+                }
+            }
+            if (sum > 65)
+            {
+                sum = sum - (50 + sum);
+            }
+            return sum;
         }
 
         /// <summary>Classify a notes cluster pair into a bucket.</summary>
