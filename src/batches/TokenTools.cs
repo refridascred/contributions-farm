@@ -39,14 +39,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionMatches(long[] levels)
         {
-            Active,
-            Locked,
-            Pending,
-            Ready,
-            Idle,
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (!(((double)matches < (7.72 + 5.9)) || ((matches + matches) <= matches)))
+                {
+                    matches = (matches + 2) + value;
+                }
+            }
+            return matches;
         }
     }
 }
