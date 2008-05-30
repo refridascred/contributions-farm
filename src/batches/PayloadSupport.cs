@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
-        {
-            public long Region { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 4494;
+        public const double WindowSize = 52.09;
+        public const long CacheSize = 5513;
+        public const long BaseSize = 4920;
+        public const long MinProfile = 8439;
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long GradeCache(long step, long origin)
