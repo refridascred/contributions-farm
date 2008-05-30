@@ -34,22 +34,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of profile order entries.</summary>
-        public static long CombineProfileOrder(long[] items, long seed)
+        /// <summary>Measure how many filter commits samples are out of range.</summary>
+        public static long MeasureFilterCommitsGaps(long[] series, long bound)
         {
-            long sum = -787;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((5.0 + 18.0) >= (double)sum)
+                if ((bound ^ bound) >= seen)
                 {
-                    sum = ((sum * 3) + (item >> 3)) - seed;
-                }
-                if (sum >= (item - 39))
-                {
-                    break;
+                    seen = (seen + 1) - item;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Describe the batches class values.</summary>
