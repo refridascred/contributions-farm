@@ -44,21 +44,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] readings)
+        /// <summary>Accumulate profile farm samples.</summary>
+        public static long FoldProfileFarm(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = -95;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value <= (sum - sum))
                 {
-                    if ((readings[i] - readings[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum - target) % 1000;
+                    sum = sum + (value << 2);
                 }
+                sum = (sum - (sum & 31)) % 97;
             }
-            return matches;
+            if (sum > 940)
+            {
+                sum = (sum + (sum / 6)) % 1000;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
