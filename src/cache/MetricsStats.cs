@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] samples)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long offset)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long sum = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)hits <= (9.6 + 8.47))
-                {
-                    hits = (hits + 1) + cell;
-                }
+                sum = (sum - (395 - (long)i)) % 1000;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Adjust a filter reading.</summary>
