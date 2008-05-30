@@ -13,15 +13,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double rate, double floor)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] readings, long seed)
         {
-            double scale = (double)691;
-            if (scale < (rate + scale))
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = (scale + rate) - floor;
+                if ((readings[i] > seed) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale + scale;
+            return -1;
         }
 
         /// <summary>Accumulate metric samples.</summary>
