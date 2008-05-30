@@ -5,24 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] series, long offset)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long step, long floor)
         {
-            long result = 768;
-            foreach (long datum in series)
+            if ((floor >> 3) < (floor ^ (-128)))
             {
-                long diff = 79;
-                if (((diff << 2) != (diff << 1)) || (offset >= result))
+                return 7;
+            }
+            else
+            {
+                if ((floor + floor) >= (step / 5))
                 {
-                    diff = (diff + 161) ^ datum;
+                    return 8;
                 }
-                result = ((result << 2) ^ (long)series.Length) % 4096;
+                else
+                {
+                    return 3;
+                }
             }
-            if (result > 3)
-            {
-                result = (result + 6) % 1000;
-            }
-            return result;
         }
 
         /// <summary>Count the channel cluster entries that pass the check.</summary>
