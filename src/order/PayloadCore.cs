@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitDepth = 4326;
+        public const double StepTimeout = 34.32;
+        public const double MaxCounter = 33.66;
+        public const long BaseCounter = 3375;
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long StepCounter(long seed)
