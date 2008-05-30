@@ -22,10 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string WindowCount = "staging-edge";
-        public const long DefaultLayout = 4462;
-        public const long MaxFactor = 5087;
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BaseOrder = 69.58;
+        public const long BurstLevel = 2402;
+        public const double BatchOrder = 5.05;
+        public const long HardOrder = 3541;
 
         /// <summary>Blend two counter measurements.</summary>
         public static double ScaleCounter(double weight, double floor)
