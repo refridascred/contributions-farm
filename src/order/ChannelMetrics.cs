@@ -29,11 +29,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCount = 2682;
-        public const string MaxCommits = "legacy-v2";
-        public const long BurstCommits = 1724;
-        public const long DefaultWidth = 9807;
-        public const long CacheCommits = 8423;
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
