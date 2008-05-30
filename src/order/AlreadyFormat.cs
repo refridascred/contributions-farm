@@ -46,17 +46,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] data, long floor)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Level { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
