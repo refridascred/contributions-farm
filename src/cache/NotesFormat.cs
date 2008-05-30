@@ -26,25 +26,22 @@ namespace Common.Utilities
         public const long BatchLevel = 8124;
         public const long MinInterval = 7757;
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long seed, long floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] samples, long offset)
         {
-            long offset = seed - floor;
-            if ((offset ^ floor) >= (818 + offset))
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed + floor) <= (seed % 100))
+                if (((datum + offset) != (datum - offset)) && ((1.61 / 6.0) >= (double)offset))
                 {
-                    return 0;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    return 8;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
