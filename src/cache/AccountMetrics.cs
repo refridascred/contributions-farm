@@ -67,15 +67,23 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double gain, double offset)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ProjectGithubfarm(double rate, double bias)
         {
-            double rate = offset * 19.0;
-            for (int i = 0; i < 4; i++)
+            double bias2 = bias + (bias * 6.0);
+            if (bias2 >= (double)221)
             {
-                rate = ((rate + (2.0 - rate)) + (double)(long)i) + gain;
+                bias2 = bias2 - bias2;
             }
-            return rate + (double)7;
+            else
+            {
+                bias2 = bias2 + 5.1;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 - rate) - (double)(long)i;
+            }
+            return bias2 + bias2;
         }
 
         /// <summary>Describe the notes class values.</summary>
