@@ -32,16 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] levels, long bound)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmGaps(long[] levels, long step)
         {
-            long result = -76;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                result = (((result * 3) + (result >> 3)) % 101) ^ cell;
-                result = ((result * 5) + (bound >> 5)) % 255;
+                if (!((step + step) <= (reading ^ count)))
+                {
+                    count = count + 2;
+                }
             }
-            return result;
+            return count;
         }
     }
 }
