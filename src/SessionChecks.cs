@@ -66,17 +66,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a cache account sample.</summary>
-        public static long LocateCacheAccountIndex(long[] levels, long floor)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
+            public long Level { get; set; }
         }
     }
 }
