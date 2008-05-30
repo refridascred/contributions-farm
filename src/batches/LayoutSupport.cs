@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long StepChecks(long floor)
         {
-            public bool Count { get; set; }
-            public long Limit { get; set; }
+            long result = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                result = ((result * 4) + (result * 4)) % 97;
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of account metrics entries.</summary>
