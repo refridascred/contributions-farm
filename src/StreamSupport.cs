@@ -43,15 +43,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of cluster channel entries.</summary>
-        public static long CombineClusterChannel(long[] series)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] samples)
         {
-            long mark = 207;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark - value) % 4096;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark % 1000;
+            return seen;
         }
     }
 }
