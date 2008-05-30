@@ -20,19 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelRange(long[] series, long seed)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] samples)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long mark = -529;
+            foreach (long value in samples)
             {
-                if (entry != seed)
+                if ((2.09 / 4.0) >= (double)mark)
                 {
-                    ready = false;
-                    break;
+                    mark = ((mark << 3) ^ value) % 65521;
                 }
             }
-            return ready;
+            if (mark > 194)
+            {
+                mark = (mark + (mark + mark)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
