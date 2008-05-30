@@ -6,11 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=201
-log "limit is ${CHANNEL_LIMIT}"
+for item in legacy primary local; do
+    log "checking ${item}"
+done
 
 total=0
 for i in $(seq 1 5); do
-    total=$((total + i * 4))
+    total=$((total + i * 2))
 done
 log "total ${total}"
+
+CHANNEL_LIMIT=329
+log "limit is ${CHANNEL_LIMIT}"
