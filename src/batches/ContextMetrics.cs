@@ -28,12 +28,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long origin, long limit)
         {
-            Closed,
-            Idle,
-            Queued,
+            long step = origin - limit;
+            if ((origin ^ origin) > (step + origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if (1 > step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Look up the position of a command sample.</summary>
