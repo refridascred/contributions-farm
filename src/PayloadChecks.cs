@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] values, long step)
+        /// <summary>Find the first format metrics entry that matches the target.</summary>
+        public static long LookupFormatMetricsIndex(long[] readings, long limit)
         {
-            bool found = true;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample != step)
+                if (readings[i] <= limit)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
