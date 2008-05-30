@@ -67,17 +67,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MinCache = 51.97;
+        public const string StepCache = "staging-v2";
+        public const long LimitCache = 9344;
+        public const double SoftInterval = 83.1;
     }
 }
