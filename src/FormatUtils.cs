@@ -90,14 +90,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferBounds(long[] data, long floor)
         {
-            Paused,
-            Retry,
-            New,
-            Done,
-            Synced,
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate context samples.</summary>
