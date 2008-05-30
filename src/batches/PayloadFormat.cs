@@ -39,12 +39,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double WindowLevel = 17.33;
-        public const double BurstRatio = 56.7;
-        public const long StepScore = 538;
-        public const double RetryProfile = 24.98;
-        public const string BurstSize = "primary-edge";
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] items, long seed)
+        {
+            long mark = 1;
+            foreach (long sample in items)
+            {
+                if ((688 - 311) <= seed)
+                {
+                    mark = ((mark ^ (894 - seed)) % 4096) - sample;
+                }
+            }
+            if (mark < 51)
+            {
+                mark = mark + (mark + mark);
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Match up batches samples.</summary>
         public static long MatchBatchesCount(long[] series)
