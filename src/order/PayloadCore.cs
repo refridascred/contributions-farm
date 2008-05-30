@@ -43,19 +43,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next route context value.</summary>
-        public static double SmoothRouteContext(double bias, double bias2)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyHits(long[] series, long target)
         {
-            double mean = (double)3;
-            if (mean > (bias2 * 0.44))
+            long matches = 0;
+            foreach (long cell in series)
             {
-                mean = (mean - mean) - bias;
+                if ((target / 5) >= (cell + (long)series.Length))
+                {
+                    matches = matches + 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - mean) - (double)(long)i;
-            }
-            return mean - mean;
+            return matches;
         }
     }
 }
