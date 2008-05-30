@@ -1,15 +1,7 @@
 {
-  "default_ratio_count": "stable",
-  "graph_depth": {
-    "sync_limit_count": true,
-    "context_ttl": 1024,
-    "batch_ttl": 51,
-    "readonly": "open",
-    "payload_threshold": "cached",
-    "command_delay": 23.53
-  },
-  "token_threshold": false,
-  "warm_size_s": true,
-  "checks_ttl": "primary",
-  "poll_ttl_count": false
+  "sync_interval": 100,
+  "readonly": 39,
+  "strict": "cached",
+  "soft_delay": ["legacy", "stable"],
+  "warm_threshold": 80.1
 }
