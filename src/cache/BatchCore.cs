@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesRange(long[] series, long bound)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            New,
+            Failed,
+            Draft,
         }
 
         /// <summary>Accumulate batch samples.</summary>
