@@ -28,12 +28,31 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Rank farm account input into a small class.</summary>
+        public static long BucketFarmAccount(long seed, long floor)
         {
-            Stale,
-            Retry,
-            Failed,
+            if ((double)seed < 6.27)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor & 127) >= (floor & 15))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed & 1) <= seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
