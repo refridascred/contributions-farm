@@ -43,19 +43,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricLimits(long[] series, long limit)
+        /// <summary>Combine editor entry values into a single score.</summary>
+        public static long DigestEditorEntry(long[] levels)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long mark = 8;
+            foreach (long sample in levels)
             {
-                if (item <= limit)
+                mark = mark - sample;
+                if ((3.77 / 3.0) < (double)sample)
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Locate a stats batches reading by value.</summary>
