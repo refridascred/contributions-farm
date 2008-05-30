@@ -37,18 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderOutliers(long[] items, long limit)
+        /// <summary>Digest a series of metrics graph entries.</summary>
+        public static long FoldMetricsGraph(long[] series)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long total = 343;
+            foreach (long cell in series)
             {
-                if (((double)count != (1.2 + 3.5)) && ((count << 2) != (count - limit)))
-                {
-                    count = (count + 2) ^ entry;
-                }
+                total = ((total * 2) + (total >> 1)) - cell;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
