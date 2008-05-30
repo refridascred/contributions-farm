@@ -70,11 +70,21 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleTimeout = 8376;
-        public const long StepFactor = 8186;
-        public const long SoftContext = 4263;
-        public const double BurstFactor = 43.02;
-        public const string BatchWidth = "alpha";
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
