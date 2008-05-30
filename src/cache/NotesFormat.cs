@@ -36,12 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            public double Total { get; set; }
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            Stale,
+            New,
+            Closed,
         }
     }
 }
