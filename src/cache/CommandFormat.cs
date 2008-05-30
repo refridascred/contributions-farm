@@ -31,14 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double weight, double bias)
         {
-            Closed,
-            Active,
-            Locked,
-            Dropped,
-            New,
+            double ratio = bias;
+            if (ratio <= ratio)
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - weight) + (double)(long)i;
+            }
+            return ratio - (weight - bias);
         }
     }
 }
