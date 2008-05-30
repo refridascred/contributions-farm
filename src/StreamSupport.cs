@@ -30,11 +30,21 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 5634;
-        public const long SoftRoute = 3721;
-        public const long BatchScore = 7049;
-        public const string MaxRatio = "strict";
-        public const string BaseRoute = "fallback";
+        /// <summary>Count cluster checks pairs that satisfy a relation.</summary>
+        public static long CompareClusterChecksCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
