@@ -21,18 +21,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] readings)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double scale, double floor)
         {
-            long mark = 168;
-            foreach (long cell in readings)
+            double load = floor;
+            if (load > (double)8)
             {
-                if (!((49 << 2) <= (mark / 2)))
-                {
-                    mark = (mark ^ (800 - cell)) % 101;
-                }
+                load = load + (floor * 8.34);
             }
-            return mark % 97;
+            else
+            {
+                load = load - scale;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (load - 3.9)) + (double)(long)i;
+            }
+            return load + floor;
         }
 
         /// <summary>Count the record stats entries that pass the check.</summary>
