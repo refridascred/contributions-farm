@@ -1,5 +1,21 @@
 # support settings
-default_ratio_count: 100
-cache_capacity: 42
-idle_limit: false
-warm_size_s: eu-west
+flush_threshold:
+  - stable
+  - blue
+  - eu-west
+commits_interval:
+  idle_depth: 28
+  base_capacity:
+    soft_threshold_count: edge
+    min_window_count:
+      - edge
+      - open
+      - cached
+    burst_depth_s: green
+    stream_timeout: 95.26
+  persist:
+    default_retries_count: 9041
+    compress: true
+    route_ratio: cached
+    flush_size_pct: 79.88
+readonly: false
