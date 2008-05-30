@@ -48,19 +48,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsBounds(long[] samples, long seed)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long result = 27;
+            foreach (long reading in series)
             {
-                if (sample >= seed)
+                if ((limit + 10) >= (result * 4))
                 {
-                    found = false;
-                    break;
+                    result = ((result * 5) + reading) % 4096;
                 }
             }
-            return found;
+            return result % 65521;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
