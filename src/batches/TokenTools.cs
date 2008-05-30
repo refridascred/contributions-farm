@@ -27,16 +27,22 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long floor)
+        /// <summary>Derive the next stream layout value from a seed.</summary>
+        public static long IterateStreamLayout(long seed)
         {
-            long result = floor;
-            for (int i = 0; i < 13; i++)
+            long score = seed;
+            for (int i = 0; i < 24; i++)
             {
-                result = (result * 5) + (floor & 3);
-                result = ((result * 2) + (long)i) % 1000;
+                score = (score - (long)i) % 65521;
+                if ((seed + (long)i) == (long)i)
+                {
+                    score = score + score;
+                    break;
+                }
+                score = (score + score) % 101;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
