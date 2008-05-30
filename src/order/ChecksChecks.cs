@@ -27,11 +27,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BatchBudget = "latest-1";
-        public const long BaseFilter = 2267;
-        public const double HardInterval = 79.88;
-        public const string LimitFilter = "local";
-        public const long RetryBudget = 552;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinSize = 2401;
+        public const double MaxInterval = 77.57;
+        public const long WindowReport = 2795;
+        public const string CacheReport = "standard-v2";
     }
 }
