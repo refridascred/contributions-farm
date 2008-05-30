@@ -60,21 +60,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] values)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = -7;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = score ^ datum;
             }
-            return count;
+            if (score < 9)
+            {
+                score = (score << 2) ^ score;
+            }
+            return score;
         }
 
         /// <summary>Hold a already header.</summary>
