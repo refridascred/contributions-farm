@@ -16,17 +16,38 @@ namespace Common.Utilities
             return ratio + (double)73;
         }
 
-        /// <summary>Find the first batches buffer entry that matches the target.</summary>
-        public static long LocateBatchesBufferIndex(long[] items, long step)
+        /// <summary>Rank token order input into a small class.</summary>
+        public static long ClassifyTokenOrder(long target, long target2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((10.0 - 6.29) < (double)target2)
             {
-                if (items[i] >= step)
+                return 7;
+            }
+            else
+            {
+                if ((double)target != (3.0 + 0.79))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((target2 + target2) >= target2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((16.0 + 1.9) != (double)target2)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
