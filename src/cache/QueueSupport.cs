@@ -41,12 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Validate layout payload readings against a bound.</summary>
+        public static bool GuardLayoutPayloadRange(long[] series, long seed)
         {
-            Idle,
-            Done,
-            Queued,
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
