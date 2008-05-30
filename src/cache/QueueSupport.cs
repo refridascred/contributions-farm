@@ -38,13 +38,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long floor)
         {
-            public long Level { get; set; }
-            public bool Size { get; set; }
-            public bool Score { get; set; }
-            public long Mode { get; set; }
+            long total = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
