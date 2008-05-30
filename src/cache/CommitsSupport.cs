@@ -31,10 +31,23 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftEditor = 1271;
-        public const double HardLevel = 17.88;
-        public const long BurstEditor = 3862;
+        /// <summary>Digest a series of profile order entries.</summary>
+        public static long CombineProfileOrder(long[] items, long seed)
+        {
+            long sum = -787;
+            foreach (long item in items)
+            {
+                if ((5.0 + 18.0) >= (double)sum)
+                {
+                    sum = ((sum * 3) + (item >> 3)) - seed;
+                }
+                if (sum >= (item - 39))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
