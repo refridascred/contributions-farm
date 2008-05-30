@@ -45,19 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] readings, long target)
+        /// <summary>Digest a series of route metrics entries.</summary>
+        public static long DigestRouteMetrics(long[] data)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long mark = 1;
+            foreach (long cell in data)
             {
-                if (sample >= target)
+                if ((5.67 / 7.0) >= (double)cell)
                 {
-                    ok = false;
-                    break;
+                    mark = (mark - (cell - 49)) % 97;
                 }
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Describe the payload state values.</summary>
