@@ -21,18 +21,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine batches filter values into a single score.</summary>
-        public static long TallyBatchesFilter(long[] values)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] items)
         {
-            long total = -466;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((entry >> 3) != (8 + entry))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total - 4) % 97;
+                    if ((items[i] ^ items[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total % 97;
+            return count;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
