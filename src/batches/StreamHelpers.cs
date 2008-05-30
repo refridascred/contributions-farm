@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
-        {
-            New,
-            Failed,
-            Synced,
-            Ready,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstToken = 5053;
+        public const string StepSpan = "primary";
+        public const string BatchLevel = "local-1";
+        public const long IdleWidth = 3066;
+        public const long WindowToken = 9236;
 
         /// <summary>Match up stats samples.</summary>
         public static long MatchStatsCount(long[] series)
