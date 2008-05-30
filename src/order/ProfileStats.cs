@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Find the first report cache entry that matches the target.</summary>
-        public static long LocateReportCacheIndex(long[] data, long bound)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= bound) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Score { get; set; } = "";
+            public long Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a order options.</summary>
