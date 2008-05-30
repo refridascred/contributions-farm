@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] samples)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] levels, long step)
         {
-            long mix = 293;
-            foreach (long datum in samples)
+            long sum = -837;
+            foreach (long entry in levels)
             {
-                mix = (mix ^ datum) % 97;
-                if ((4 + datum) >= (datum * 4))
+                if ((step / 4) < 848)
                 {
-                    mix = (mix - 0) % 255;
+                    sum = (sum - step) - entry;
                 }
             }
-            if (mix < 80)
+            if (sum < 3)
             {
-                mix = (mix << 3) ^ mix;
+                sum = (sum * 2) + sum;
             }
-            return mix % 1000;
+            return sum;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
