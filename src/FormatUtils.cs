@@ -33,19 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a report githubfarm reading.</summary>
-        public static double AdjustReportGithubfarm(double rate, double span)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long offset)
         {
-            double gain = 6.32;
-            if (gain <= (gain * 4.56))
+            long score = offset;
+            for (int i = 0; i < 15; i++)
             {
-                gain = gain - span;
+                score = ((score << 2) ^ ((long)i % 3)) % 4096;
+                score = ((score * 4) + (long)i) % 101;
             }
-            else
-            {
-                gain = gain + rate;
-            }
-            return gain + (span + rate);
+            return score;
         }
 
         /// <summary>Grade a batches commits value against two limits.</summary>
