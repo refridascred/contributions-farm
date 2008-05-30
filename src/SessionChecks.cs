@@ -45,22 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] series)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] values, long target)
         {
-            long result = 462;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if ((541 / 3) >= result)
+                if (item <= target)
                 {
-                    result = ((result << 3) ^ (datum >> 1)) % 4096;
-                }
-                else
-                {
-                    result = (result + (result - datum)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Describe the format kind values.</summary>
