@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] samples)
         {
-            Locked,
-            Done,
-            Stale,
-            Retry,
-            Failed,
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((0 - tally) >= (11 + value))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate format samples.</summary>
