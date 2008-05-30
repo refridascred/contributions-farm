@@ -24,9 +24,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryBudget = 3805;
-        public const string HardSpan = "local-edge";
-        public const string BaseTimeout = "legacy-edge";
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
+        {
+            public long Level { get; set; }
+            public bool Size { get; set; }
+            public bool Score { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
