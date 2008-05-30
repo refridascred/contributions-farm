@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] items, long target)
-        {
-            long acc = 359;
-            foreach (long value in items)
-            {
-                acc = ((acc - (269 + value)) % 1000) - target;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxSize = 1898;
+        public const long RetryWidth = 701;
+        public const long CacheLayout = 7319;
 
         /// <summary>Hold a command header.</summary>
         public sealed class CommandHeader
