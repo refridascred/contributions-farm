@@ -12,25 +12,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long target, long limit)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] values, long origin)
         {
-            long lane = target - limit;
-            if (((22 / 3) > (target & 63)) || (lane >= (limit / 9)))
+            bool valid = true;
+            foreach (long sample in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit < (5.94 - 13.0))
+                if (sample > origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the account class values.</summary>
