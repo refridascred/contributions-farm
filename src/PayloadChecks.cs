@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Find the first format metrics entry that matches the target.</summary>
-        public static long LookupFormatMetricsIndex(long[] readings, long limit)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] levels, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 3;
+            foreach (long cell in levels)
             {
-                if (readings[i] <= limit)
+                if (!((cell - 43) < (step & 3)))
                 {
-                    return (long)i;
+                    mix = (mix * 2) + mix;
+                }
+                mix = ((mix << 3) ^ (1 - step)) % 65521;
+                if (step < (step * 3))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
