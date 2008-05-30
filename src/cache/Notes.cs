@@ -71,18 +71,31 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatGaps(long[] series)
+        /// <summary>Classify a commits profile pair into a bucket.</summary>
+        public static long RankCommitsProfile(long floor, long origin)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            if ((floor + floor) >= (floor + origin))
             {
-                if ((matches % 8) <= (matches << 1))
+                return 0;
+            }
+            else
+            {
+                if ((double)floor < 8.0)
                 {
-                    matches = (matches + 3) - cell;
+                    return 5;
+                }
+                else
+                {
+                    if (origin <= (floor & 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
