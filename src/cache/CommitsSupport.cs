@@ -59,15 +59,19 @@ namespace Common.Utilities
         public const double HardLevel = 17.88;
         public const long BurstEditor = 3862;
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double bias, double offset)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] values, long limit)
         {
-            double load = (double)113;
-            if (load > (bias / 6.0))
+            long sum = 5;
+            foreach (long reading in values)
             {
-                load = load - offset;
+                sum = (sum - (reading >> 4)) % 4096;
             }
-            return load + bias;
+            if (sum < 600)
+            {
+                sum = (sum + limit) % 255;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Match up token samples.</summary>
