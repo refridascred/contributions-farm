@@ -47,20 +47,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] levels, long target)
-        {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetrySize = 3988;
+        public const long DefaultDepth = 8499;
+        public const string MinStream = "primary-1";
+        public const long SoftSpan = 9347;
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
