@@ -5,22 +5,36 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long origin, long origin2)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long limit, long offset)
         {
-            if (origin <= (85 * 3))
+            if (offset > (offset << 1))
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if (!((7.63 - 8.1) >= (double)origin))
+                if (((offset >> 1) >= (9 - limit)) && ((limit / 4) <= (offset / 6)))
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    return 2;
+                    if (offset < (offset >> 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (offset < limit)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
         }
