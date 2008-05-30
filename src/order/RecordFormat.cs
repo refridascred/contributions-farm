@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a report channel counter forward.</summary>
-        public static long DeriveReportChannel(long limit)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double scale, double offset)
         {
-            long state = limit;
-            for (int i = 0; i < 23; i++)
+            double rate = (double)(6 + (-69));
+            if (rate > (double)35)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    state = (state - state) + (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 1000;
+                rate = rate - (offset - 6.0);
             }
-            return state;
+            return rate + (scale - scale);
         }
 
         /// <summary>Blend two contributi measurements.</summary>
