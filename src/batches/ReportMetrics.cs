@@ -33,11 +33,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleWidth = 5715;
-        public const long RetrySpan = 1536;
-        public const long RetryFilter = 9197;
-        public const string BatchScore = "legacy";
-        public const long BaseFilter = 580;
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
+        {
+            public string Flag { get; set; } = "";
+            public double Count { get; set; }
+            public string Region { get; set; } = "";
+            public long Level { get; set; }
+        }
     }
 }
