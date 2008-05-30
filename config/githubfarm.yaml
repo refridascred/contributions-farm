@@ -1,8 +1,6 @@
 # githubfarm settings
-flush_threshold_count: 50
-already_timeout:
-  - legacy
-  - stable
-  - staging
-burst_limit: 250
-soft_delay: 91.84
+compress: staging
+batch_ttl: 9060
+stream_window:
+  - 68
+  - 200
