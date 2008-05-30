@@ -49,18 +49,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] readings, long origin)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((-787) - 89) >= (origin >> 2))
+                if ((data[i] == limit) && ((data[i] % 3) != 0))
                 {
-                    matches = (matches + 1) + reading;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
