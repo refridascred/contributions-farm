@@ -24,15 +24,24 @@ namespace Common.Utilities
             return scale - (double)8;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] items)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long bound, long limit)
         {
-            long result = 36;
-            foreach (long cell in items)
+            if (!(limit < (bound - limit)))
             {
-                result = (result + result) + cell;
+                return 8;
             }
-            return result;
+            else
+            {
+                if ((limit - limit) <= (limit & 63))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Accumulate notes samples.</summary>
