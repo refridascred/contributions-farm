@@ -18,23 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long offset)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorLimits(long[] levels, long seed)
         {
-            long mix = offset;
-            for (int i = 0; i < 22; i++)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                mix = (mix ^ (mix + (long)i)) % 255;
-                mix = ((mix << 2) ^ (long)i) % 4096;
-                if (((long)i + (long)i) != (mix >> 4))
+                if (entry > seed)
                 {
-                    mix = (mix ^ (49 / 5)) % 101;
-                    mix = (mix * 3) + (offset / 9);
-                    continue;
+                    ready = false;
+                    break;
                 }
-                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
