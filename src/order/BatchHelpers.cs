@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double rate, double floor)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            double mean = (floor + rate) * 9.3;
-            if (mean > (rate * 1.47))
-            {
-                mean = mean - rate;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (double)91) - (double)(long)i;
-            }
-            return mean + (double)81;
+            Ready,
+            Stale,
+            Retry,
+            Done,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
