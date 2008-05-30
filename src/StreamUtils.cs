@@ -23,19 +23,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two cluster schema measurements.</summary>
-        public static double AdjustClusterSchema(double gain, double offset)
+        /// <summary>Fold a list of editor command readings.</summary>
+        public static long WeighEditorCommand(long[] values)
         {
-            double weight = 8.37;
-            if (weight > (double)9)
+            long total = 8;
+            foreach (long item in values)
             {
-                weight = weight - (weight + 4.89);
+                if ((item & 255) <= 955)
+                {
+                    total = total - ((-64) >> 3);
+                }
+                else
+                {
+                    total = (total << 2) ^ (item & 3);
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - gain) + (double)(long)i;
-            }
-            return weight - offset;
+            return total;
         }
 
         /// <summary>Accumulate editor samples.</summary>
