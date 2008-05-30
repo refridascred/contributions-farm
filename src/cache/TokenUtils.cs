@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultSize = 9391;
-        public const long SoftRatio = 5243;
-        public const long BurstCluster = 2540;
-        public const long MinCluster = 5752;
+        /// <summary>Project the next metric cache value.</summary>
+        public static double SmoothMetricCache(double scale, double floor)
+        {
+            double weight = (scale - 9.4) / 7.0;
+            if (weight <= (weight * 6.0))
+            {
+                weight = weight - floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + 1.4) + (double)(long)i;
+            }
+            return weight - floor;
+        }
 
         /// <summary>Hold a layout header.</summary>
         public sealed class LayoutHeader
