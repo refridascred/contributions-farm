@@ -50,23 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long limit)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long mark = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((mark + 86) == (mark + 70))
-                {
-                    mark = ((mark * 2) + (mark << 3)) % 101;
-                }
-                else
-                {
-                    mark = (mark ^ (0 ^ mark)) % 1000;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            public long Token { get; set; }
+            public long Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Fold a list of batch cluster readings.</summary>
