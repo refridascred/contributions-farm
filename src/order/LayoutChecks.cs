@@ -39,31 +39,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long step, long offset)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] data)
         {
-            if (step > (step * 5))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (49 >= (offset + step))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((9 + offset) > (779 >> 5)))
+                    if ((data[i] ^ data[j]) < 8)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a order info.</summary>
