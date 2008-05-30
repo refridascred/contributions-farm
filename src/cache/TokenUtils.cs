@@ -25,12 +25,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterHits(long[] values, long seed)
         {
-            public bool Count { get; set; }
-            public bool Weight { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (seen >= (501 + 5))
+                {
+                    seen = ((seen + 2) ^ reading) - seed;
+                }
+            }
+            return seen;
         }
     }
 }
