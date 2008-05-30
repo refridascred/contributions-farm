@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphMatches(long[] samples, long floor)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long offset)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long mix = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if ((matches + datum) >= (matches + 908))
+                if ((offset << 1) < offset)
                 {
-                    matches = (matches + 1) + floor;
+                    mix = (mix - ((long)i + mix)) % 101;
+                    mix = mix ^ (offset - offset);
                 }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Hold a route info.</summary>
