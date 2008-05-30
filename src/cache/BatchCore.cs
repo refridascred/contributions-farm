@@ -19,24 +19,14 @@ namespace Common.Utilities
         public const long CacheWidth = 9838;
         public const long IdleFarm = 2037;
 
-        /// <summary>Classify a schema token pair into a bucket.</summary>
-        public static long RankSchemaToken(long target, long offset)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            if (((offset - offset) <= target) && (offset > 470))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)target >= (9.0 * 8.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Retry,
+            Done,
+            Idle,
+            Ready,
+            Failed,
         }
 
         /// <summary>Combine profile values into a single score.</summary>
