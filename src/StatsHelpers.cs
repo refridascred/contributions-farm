@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long floor)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double rate, double floor)
         {
-            long result = floor;
-            for (int i = 0; i < 9; i++)
+            double gain = (floor * 14.0) + (rate + floor);
+            if (gain > (floor * 6.49))
             {
-                if (((long)i ^ (long)i) != (floor - floor))
-                {
-                    result = result + (long)i;
-                    result = result ^ (long)i;
-                }
-                if ((result + (long)i) >= (floor + result))
-                {
-                    long offset = floor - ((long)i * 3);
-                    result = (result + (offset ^ floor)) % 101;
-                }
-                result = ((result * 5) + (long)i) % 97;
+                gain = gain - (floor / 6.0);
             }
-            return result;
+            else
+            {
+                gain = gain + (rate - floor);
+            }
+            return gain - floor;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
