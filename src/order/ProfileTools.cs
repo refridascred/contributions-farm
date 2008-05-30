@@ -37,12 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaMatches(long[] series)
         {
-            New,
-            Failed,
-            Draft,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((0.4 / 8.0) <= (double)matches)
+                {
+                    matches = (matches + 3) ^ datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the format kind values.</summary>
