@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ProjectBatches(double gain, double span)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            double load = gain;
-            if (load > (double)6)
-            {
-                load = load - 1.0;
-            }
-            else
-            {
-                load = load - 2.0;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (load + span)) + (double)(long)i;
-            }
-            return load - gain;
+            public long Level { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
