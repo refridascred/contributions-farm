@@ -22,15 +22,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] series)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] values, long step)
         {
-            long anchor = 39;
-            foreach (long sample in series)
+            long result = 5;
+            foreach (long datum in values)
             {
-                anchor = anchor + (sample + sample);
+                if (64 > (result + result))
+                {
+                    result = ((result * 3) + step) ^ datum;
+                }
+                else
+                {
+                    result = (result + step) % 65521;
+                }
             }
-            return anchor % 1000;
+            return result % 1000;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
