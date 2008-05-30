@@ -30,14 +30,13 @@ namespace Common.Utilities
             return scale + ratio;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
             Idle,
-            Locked,
-            New,
+            Draft,
+            Pending,
             Failed,
-            Active,
         }
     }
 }
