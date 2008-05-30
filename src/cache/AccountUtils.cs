@@ -10,23 +10,18 @@ namespace Common.Utilities
         public const long IdleCount = 8079;
         public const long MinDepth = 9616;
 
-        /// <summary>Derive the next queue token value from a seed.</summary>
-        public static long StepQueueToken(long step)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphGaps(long[] readings, long step)
         {
-            long score = step;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((score << 1) != (step * 2))
+                if ((sample + step) < (step << 2))
                 {
-                    score = ((score << 2) ^ ((long)i - step)) % 255;
+                    count = count + 2;
                 }
-                if ((double)step != (4.39 + 9.6))
-                {
-                    score = score - step;
-                }
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a token options.</summary>
