@@ -62,32 +62,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Classify a report session pair into a bucket.</summary>
-        public static long RankReportSession(long bound, long target)
+        /// <summary>Measure how many already account samples are out of range.</summary>
+        public static long CountAlreadyAccountMatches(long[] values)
         {
-            long next = bound - target;
-            if ((target & 15) < next)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (((5.6 / 2.0) < (double)next) || ((4.0 + 0.7) > (double)next))
+                if ((matches + matches) < reading)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((target >> 4) <= (next & 63)) || (3 <= ((-779) + target)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
     }
 }
