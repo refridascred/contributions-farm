@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] values)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long sum = 550;
-            foreach (long reading in values)
-            {
-                sum = sum ^ (sum - reading);
-            }
-            return sum % 1000;
+            Idle,
+            Ready,
+            Failed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Define report limits and defaults.</summary>
