@@ -28,18 +28,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferHits(long[] series, long origin)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((seen >> 1) < seen)
-                {
-                    seen = ((seen + 2) - value) - origin;
-                }
-            }
-            return seen;
+            Retry,
+            Closed,
+            Paused,
+            Draft,
+            Locked,
         }
     }
 }
