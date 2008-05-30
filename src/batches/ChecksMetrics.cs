@@ -60,13 +60,26 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] series, long bound)
         {
-            Ready,
-            Closed,
-            Idle,
-            Locked,
+            long sum = 19;
+            foreach (long entry in series)
+            {
+                if ((entry - bound) <= (bound >> 4))
+                {
+                    sum = (sum - entry) % 101;
+                }
+                if (!((bound - entry) == (sum - bound)))
+                {
+                    break;
+                }
+            }
+            if (sum > 161)
+            {
+                sum = (sum - (sum >> 5)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
