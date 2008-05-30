@@ -1,17 +1,15 @@
 {
-  "readonly": {
-    "audit": {
-      "dry_run": "legacy",
-      "burst_delay": 77,
-      "persist": "latest",
-      "enabled": 100
-    },
-    "enabled": 5290,
-    "verbose": 9107,
-    "retry_window_s": "staging",
-    "cache_ttl": 6154
+  "batch_window": 250,
+  "sync_timeout_ms": "green",
+  "flush_capacity": true,
+  "flush_depth_ms": ["open", "eu-west", "standard"],
+  "compress": {
+    "verbose": 92,
+    "editor_timeout": true,
+    "account_threshold": 6226,
+    "cache_limit": 96.72,
+    "burst_ttl_ms": [500, 102, 221, 266],
+    "strict": 1024
   },
-  "strict": 9.5,
-  "poll_size": "local",
-  "compress": "latest"
+  "soft_threshold_count": true
 }
