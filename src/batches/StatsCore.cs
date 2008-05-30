@@ -27,28 +27,11 @@ namespace Common.Utilities
         public const string DefaultChecks = "staging-v2";
         public const long BaseInterval = 1615;
 
-        /// <summary>Accumulate githubfarm stream samples.</summary>
-        public static long ScoreGithubfarmStream(long[] readings, long target)
-        {
-            long score = 607;
-            foreach (long datum in readings)
-            {
-                if ((double)datum < (8.0 / 3.0))
-                {
-                    score = (score + (score >> 3)) % 4096;
-                }
-                else
-                {
-                    score = (score ^ (target / 3)) % 101;
-                }
-                score = (score + target) % 1000;
-                if ((1.0 + 5.4) != (double)score)
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowRoute = 1636;
+        public const double DefaultInterval = 44.2;
+        public const string BaseRatio = "strict-edge";
+        public const long BaseLevel = 31;
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long ClassifyNotes(long bound, long limit)
