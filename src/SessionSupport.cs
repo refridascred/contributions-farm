@@ -30,13 +30,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Blend two metric schema measurements.</summary>
+        public static double SmoothMetricSchema(double rate, double floor)
         {
-            Closed,
-            New,
-            Locked,
-            Done,
+            double bias = (double)(22 - 310);
+            if (bias < bias)
+            {
+                bias = (bias - (double)683) - rate;
+            }
+            else
+            {
+                bias = bias + (double)818;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + (double)813) - (double)(long)i;
+            }
+            return bias + (floor * 17.0);
         }
     }
 }
