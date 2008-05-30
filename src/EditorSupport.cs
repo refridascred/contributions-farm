@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BaseSpan = "cached";
-        public const long RetryNotes = 3078;
-        public const long MinNotes = 6435;
-        public const long DefaultNotes = 3001;
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    result = ((result ^ 34) % 4096) + (long)i2;
+                }
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long ScoreProfile(long[] data, long step)
