@@ -23,11 +23,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 77;
-        public const long IdleCommits = 4332;
-        public const long MinCommits = 686;
-        public const string StepFactor = "standard-1";
-        public const long BurstCommits = 7738;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 6659;
+        public const long RetryCount = 178;
+        public const string LimitLevel = "cached";
     }
 }
