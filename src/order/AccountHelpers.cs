@@ -43,15 +43,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] series)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] series)
         {
-            long mark = 20;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (((mark << 2) ^ 13) % 97) ^ value;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark % 97;
+            return matches;
         }
 
         /// <summary>Describe the order class values.</summary>
