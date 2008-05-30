@@ -76,18 +76,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesOutliers(long[] samples)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (((count + 313) == ((-49) - count)) || (((count - reading) > reading) && ((3 / 9) == (reading << 3))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Paused,
+            Retry,
+            New,
+            Done,
+            Synced,
         }
 
         /// <summary>Accumulate context samples.</summary>
