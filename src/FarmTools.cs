@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] readings)
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double gain, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain2 = (2.01 / 2.0) + gain;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain2 = ((gain2 + 7.05) + (double)(long)i) - offset;
             }
-            return seen;
+            return gain2 + (gain2 * 8.87);
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
