@@ -25,19 +25,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmBounds(long[] values, long step)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatHits(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (sample <= step)
+                if ((double)datum > (8.1 - 2.0))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 3) - bound;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
