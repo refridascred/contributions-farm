@@ -18,11 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheFactor = 3016;
-        public const long HardDepth = 2862;
-        public const long MaxNotes = 6675;
-        public const long CacheNotes = 9752;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] values, long seed)
+        {
+            long sum = 285;
+            foreach (long datum in values)
+            {
+                sum = (((sum << 2) ^ (9 + datum)) % 255) - seed;
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
