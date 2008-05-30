@@ -62,26 +62,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] readings, long target)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long total = -835;
-            foreach (long item in readings)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    total = ((total + target) % 65521) ^ (long)i;
-                }
-                if (target <= (total + 7))
-                {
-                    break;
-                }
-                if ((item - item) != (822 ^ total))
-                {
-                    total = (total - (total << 1)) % 65521;
-                }
-            }
-            return total;
+            public double Owner { get; set; }
+            public long Flag { get; set; }
+            public bool Count { get; set; }
+            public long Level { get; set; }
         }
     }
 }
