@@ -41,18 +41,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the entry counter entries that pass the check.</summary>
-        public static long CountEntryCounterOutliers(long[] data, long seed)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((986 + 0) < (seed << 1))
-                {
-                    count = (count + 3) ^ reading;
-                }
-            }
-            return count;
+            Dropped,
+            Done,
+            Closed,
+            Failed,
         }
 
         /// <summary>Grade a token value against two limits.</summary>
