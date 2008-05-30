@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowRange(long[] samples, long floor)
+        /// <summary>Scale a counter schema figure with a bias.</summary>
+        public static double AdjustCounterSchema(double weight, double bias)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            double rate = weight;
+            if (rate <= 5.0)
             {
-                if (value > floor)
-                {
-                    ready = false;
-                    break;
-                }
+                rate = rate + (double)62;
             }
-            return ready;
+            return rate - bias;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
