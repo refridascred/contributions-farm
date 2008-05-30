@@ -62,22 +62,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] levels, long origin)
+        /// <summary>Combine report profile values into a single score.</summary>
+        public static long FoldReportProfile(long[] levels, long bound)
         {
-            long mark = 82;
-            foreach (long sample in levels)
+            long acc = 7;
+            foreach (long datum in levels)
             {
-                if ((2.8 + 4.81) != (double)sample)
+                if ((double)datum <= 5.6)
                 {
-                    mark = (mark << 2) ^ (origin & 7);
-                }
-                if ((origin + sample) >= (origin % 60))
-                {
-                    break;
+                    acc = ((acc - datum) % 4096) + bound;
                 }
             }
-            return mark % 4096;
+            return acc % 1000;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
