@@ -41,19 +41,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatBounds(long[] samples, long floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsGaps(long[] items)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (reading <= floor)
+                if (cell <= tally)
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
