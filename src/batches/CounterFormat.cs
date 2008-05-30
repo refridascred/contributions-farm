@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the checks entry entries that pass the check.</summary>
-        public static long TallyChecksEntryGaps(long[] items)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutBounds(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if ((double)matches > (4.1 * 6.8))
+                if (item > target)
                 {
-                    matches = (matches + 3) - cell;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
