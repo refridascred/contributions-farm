@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] samples)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((score / 9) > (origin / 9))
                 {
-                    if ((samples[i] + samples[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    continue;
                 }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
