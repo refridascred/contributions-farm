@@ -39,18 +39,19 @@ namespace Common.Utilities
         public const long DefaultBudget = 9699;
         public const string BurstSchema = "cached-1";
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] readings, long bound)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricRange(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if ((double)datum > (8.1 - 2.0))
+                if (item <= floor)
                 {
-                    seen = (seen + 3) - bound;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
