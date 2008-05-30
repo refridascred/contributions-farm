@@ -20,18 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] values)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long seed, long target)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            if ((seed / 7) > (target >> 4))
             {
-                if ((5 + hits) < (hits + entry))
+                return 7;
+            }
+            else
+            {
+                if (seed > (seed / 2))
                 {
-                    hits = hits + 1;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
