@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the layout editor series from a seed.</summary>
-        public static long RollLayoutEditor(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultBudget = 3141;
+        public const string DefaultSize = "alpha-v2";
+        public const long RetryGithubfarm = 131;
 
         /// <summary>Describe the batches phase values.</summary>
         public enum BatchesPhase
