@@ -60,12 +60,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            Retry,
-            Done,
-            New,
+            Failed,
+            Stale,
+            Idle,
         }
     }
 }
