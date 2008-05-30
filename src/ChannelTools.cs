@@ -25,18 +25,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] items, long bound)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmBounds(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if ((cell - tally) >= (cell / 8))
+                if (sample <= step)
                 {
-                    tally = (tally + 3) + bound;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
