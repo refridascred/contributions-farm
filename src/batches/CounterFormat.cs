@@ -22,16 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double ratio, double offset)
-        {
-            double scale = (double)43 * 5.43;
-            if (scale >= (scale - scale))
-            {
-                scale = (scale + (ratio * 3.8)) + offset;
-            }
-            return scale + ratio;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstContext = 6497;
+        public const long DefaultContext = 2877;
+        public const long IdleSize = 7346;
+        public const long SoftContext = 1015;
+        public const string DefaultTimeout = "staging";
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
