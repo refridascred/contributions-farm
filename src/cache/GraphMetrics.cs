@@ -30,25 +30,15 @@ namespace Common.Utilities
             return bias + (double)432;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long offset, long target)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] levels, long seed)
         {
-            long prev = offset - target;
-            if (!((prev + 0) < (offset * 3)))
+            long mix = 320;
+            foreach (long item in levels)
             {
-                return 3;
+                mix = (((mix * 2) + (item ^ item)) % 1000) + seed;
             }
-            else
-            {
-                if ((prev <= target) && ((409 >> 5) == (667 - offset)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
