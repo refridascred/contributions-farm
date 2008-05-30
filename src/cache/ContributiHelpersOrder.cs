@@ -34,19 +34,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every route channel entry stays within the limit.</summary>
-        public static bool VerifyRouteChannelBounds(long[] samples, long seed)
-        {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 2020;
+        public const double RetryBudget = 82.79;
+        public const string StepToken = "stable";
     }
 }
