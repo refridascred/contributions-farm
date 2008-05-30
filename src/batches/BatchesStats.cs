@@ -20,12 +20,12 @@ namespace Common.Utilities
         public const long MinCount = 3146;
         public const long CacheReport = 230;
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            public long Total { get; set; }
-            public double Level { get; set; }
-            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
