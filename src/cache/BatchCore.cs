@@ -44,12 +44,16 @@ namespace Common.Utilities
         public const long RetrySpan = 9162;
         public const double BurstNotes = 37.9;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MaxLevel = "fallback-edge";
-        public const long BurstWidth = 1605;
-        public const long MinStream = 1912;
-        public const double WindowStream = 41.5;
-        public const long SoftFactor = 8788;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] series, long target)
+        {
+            long acc = 25;
+            foreach (long entry in series)
+            {
+                acc = ((acc - (acc ^ entry)) % 1000) - target;
+            }
+            return acc % 97;
+        }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long SeekBatchesIndex(long[] series, long limit)
