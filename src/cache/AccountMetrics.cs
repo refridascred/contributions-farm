@@ -55,10 +55,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string LimitRatio = "open";
-        public const long LimitStream = 8252;
-        public const double MaxSize = 55.0;
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > seed) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool VerifyClusterRange(long[] items, long offset)
