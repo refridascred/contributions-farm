@@ -39,18 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MinTimeout = "open-1";
+        public const long RetrySpan = 9162;
+        public const double BurstNotes = 37.9;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string MaxLevel = "fallback-edge";
