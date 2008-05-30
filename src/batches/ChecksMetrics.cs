@@ -20,13 +20,30 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] samples, long offset)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] series, long limit)
         {
-            long anchor = 665;
-            foreach (long value in samples)
+            long anchor = 9;
+            foreach (long datum in series)
             {
-                anchor = ((anchor + 36) + value) + offset;
+                if (!(limit <= (limit - datum)))
+                {
+                    anchor = (anchor * 3) + (744 + datum);
+                    anchor = ((anchor << 2) ^ (limit >> 2)) % 101;
+                    continue;
+                }
+                else
+                {
+                    anchor = anchor ^ (limit + 2);
+                }
+                if ((772 * 3) != (limit & 7))
+                {
+                    anchor = anchor + (limit - anchor);
+                }
+                if ((((-61) >> 4) > (limit - anchor)) || (limit <= 7))
+                {
+                    break;
+                }
             }
             return anchor;
         }
