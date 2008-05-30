@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] samples)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long mark = 221;
+            foreach (long item in readings)
             {
-                if ((39 + 749) > reading)
+                mark = mark ^ (mark + mark);
+                if ((mark - item) <= ((long)readings.Length + 3))
                 {
-                    tally = tally + 1;
+                    mark = (mark << 2) ^ mark;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
