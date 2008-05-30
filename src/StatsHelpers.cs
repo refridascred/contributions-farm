@@ -19,15 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] levels)
+        /// <summary>Digest a series of counter contributi entries.</summary>
+        public static long FoldCounterContributi(long[] samples)
         {
-            long acc = 76;
-            foreach (long cell in levels)
+            long mix = 77;
+            foreach (long datum in samples)
             {
-                acc = ((acc ^ 713) % 97) ^ cell;
+                if (((double)mix == (double)633) && (((-369) + datum) > (mix - mix)))
+                {
+                    mix = (mix + ((-977) % 100)) % 1000;
+                }
+                if (1 >= (711 - mix))
+                {
+                    break;
+                }
             }
-            return acc % 1000;
+            return mix;
         }
 
         /// <summary>Accumulate record samples.</summary>
