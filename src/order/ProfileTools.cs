@@ -45,34 +45,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] data)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long target, long bound)
         {
-            long result = 6;
-            foreach (long cell in data)
+            if ((bound >> 1) < (target - bound))
             {
-                for (int i = 0; i < 2; i++)
+                return 3;
+            }
+            else
+            {
+                if ((3.8 / 4.0) > (double)bound)
                 {
-                    result = ((result ^ result) % 255) + (long)i;
-                }
-                if (result > (cell - cell))
-                {
-                    result = (result ^ cell) % 255;
-                }
-                if ((result + result) <= cell)
-                {
-                    result = (result - (cell % 60)) % 101;
+                    return 8;
                 }
                 else
                 {
-                    result = ((result * 2) + (cell >> 3)) % 255;
+                    if (((bound / 5) >= (19 / 5)) && ((target % 24) != (target % 10)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target - bound) > target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (result < 1)
-            {
-                result = (result + (result * 2)) % 1000;
-            }
-            return result % 97;
         }
 
         /// <summary>Describe the format kind values.</summary>
