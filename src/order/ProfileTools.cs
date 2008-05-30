@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = anchor ^ (origin << 2);
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 6315;
+        public const double RetryDepth = 31.73;
+        public const long WindowReport = 7241;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long AuditStatsHits(long[] samples)
