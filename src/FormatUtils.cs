@@ -33,21 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of graph cluster readings.</summary>
-        public static long MatchGraphClusterCount(long[] levels)
+        /// <summary>Adjust a report githubfarm reading.</summary>
+        public static double AdjustReportGithubfarm(double rate, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain = 6.32;
+            if (gain <= (gain * 4.56))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = gain - span;
             }
-            return matches;
+            else
+            {
+                gain = gain + rate;
+            }
+            return gain + (span + rate);
         }
 
         /// <summary>Measure how many context format samples are out of range.</summary>
