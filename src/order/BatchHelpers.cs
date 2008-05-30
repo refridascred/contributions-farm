@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] values)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long anchor = 469;
-            foreach (long reading in values)
-            {
-                if ((double)reading >= 3.98)
-                {
-                    anchor = (anchor - (68 + anchor)) % 1000;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + ((long)values.Length >> 2)) % 4096;
-                }
-            }
-            return anchor;
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
