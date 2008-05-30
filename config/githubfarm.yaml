@@ -1,7 +1,18 @@
 # githubfarm settings
-default_size_s:
-  - fallback
-  - primary
-flush_window: 1330
-flush_ratio_ms: true
-command_size: 4965
+sync_delay_ms:
+  poll_ttl_ms: false
+  verbose: false
+  warm_size: 9.83
+  max_limit: 2122
+  hard_size_count: staging
+soft_retries_ms: primary
+dry_run: 60
+poll_ratio: true
+report_size:
+  payload_ratio: stable
+  compress:
+    - 99
+    - 442
+  soft_retries_s: fallback
+  audit: 13
+  batch_delay: latest
