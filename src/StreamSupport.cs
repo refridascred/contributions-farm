@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long floor)
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double rate, double floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 8; i++)
+            double drift = rate;
+            if (drift > (drift + 14.0))
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    acc = (acc ^ ((long)i2 ^ (long)i2)) % 101;
-                    acc = (acc * 3) + (floor + 6);
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
+                drift = (drift + 3.42) - floor;
             }
-            return acc;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (double)385) + (double)(long)i;
+            }
+            return drift + (double)9;
         }
 
         /// <summary>Hold a context summary.</summary>
