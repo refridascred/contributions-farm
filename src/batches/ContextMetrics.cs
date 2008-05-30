@@ -51,14 +51,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            New,
-            Pending,
-            Active,
-            Ready,
-            Retry,
+            public double Region { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
