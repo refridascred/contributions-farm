@@ -43,19 +43,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine editor entry values into a single score.</summary>
-        public static long DigestEditorEntry(long[] levels)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long mark = 8;
-            foreach (long sample in levels)
-            {
-                mark = mark - sample;
-                if ((3.77 / 3.0) < (double)sample)
-                {
-                    break;
-                }
-            }
-            return mark;
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Locate a stats batches reading by value.</summary>
