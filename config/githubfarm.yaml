@@ -1,4 +1,9 @@
 # githubfarm settings
-persist: 44.51
-enabled: 7692
-max_capacity: false
+batch_retries: 45
+hard_timeout: 85.4
+verbose: 56.89
+sync_delay: 20
+cluster_size: green
+batch_window:
+  - 490
+  - 430
