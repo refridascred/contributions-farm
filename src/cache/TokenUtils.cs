@@ -35,10 +35,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardMetric = 66.69;
-        public const long MinSpan = 4798;
-        public const double MinMetric = 35.28;
-        public const string BurstMetric = "strict-edge";
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
+        {
+            Pending,
+            Failed,
+            Ready,
+        }
     }
 }
