@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] items)
         {
-            Draft,
-            Closed,
-            New,
-            Queued,
+            long carry = 24;
+            foreach (long value in items)
+            {
+                if ((carry % 8) < (value + carry))
+                {
+                    carry = (carry + (23 * 5)) % 1000;
+                }
+                if (!((1.21 + 0.76) >= (double)carry))
+                {
+                    carry = (carry ^ ((-468) + carry)) % 4096;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
