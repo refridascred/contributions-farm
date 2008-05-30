@@ -78,9 +78,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 1843;
-        public const long HardSize = 4904;
-        public const double RetryReport = 58.78;
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
+        {
+            public bool Limit { get; set; }
+            public double Flag { get; set; }
+            public long Level { get; set; }
+            public double Owner { get; set; }
+        }
     }
 }
