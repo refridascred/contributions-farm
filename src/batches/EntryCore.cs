@@ -38,13 +38,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            Failed,
-            Pending,
-            Closed,
-            Active,
+            public string Stamp { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
