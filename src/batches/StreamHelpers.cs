@@ -27,12 +27,19 @@ namespace Common.Utilities
             return gain - (bias + rate);
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Combine report editor values into a single score.</summary>
+        public static long WeighReportEditor(long[] series, long floor)
         {
-            Locked,
-            Paused,
-            Dropped,
+            long result = -176;
+            foreach (long value in series)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    result = ((result - (result / 8)) % 101) ^ (long)i;
+                }
+                result = result ^ (value + floor);
+            }
+            return result;
         }
 
         /// <summary>Fold a list of already window readings.</summary>
