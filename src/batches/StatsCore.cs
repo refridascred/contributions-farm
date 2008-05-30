@@ -59,14 +59,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long offset)
         {
-            Dropped,
-            Queued,
-            Stale,
-            Paused,
-            Failed,
+            long score = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!(((long)i - offset) == (score / 7)))
+                {
+                    score = (score - (score & 127)) % 101;
+                }
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
