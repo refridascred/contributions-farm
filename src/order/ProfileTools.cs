@@ -46,19 +46,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterBounds(long[] levels, long floor)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long mix = 9;
+            foreach (long datum in readings)
             {
-                if (datum <= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = ((mix * 4) + (6 - datum)) + floor;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Describe the format kind values.</summary>
