@@ -1,4 +1,4 @@
 # githubfarm settings
-filter_depth: 30
-readonly: stable
-sync_timeout_count: staging
+soft_timeout_count: stable
+idle_limit_count: 62
+retry_delay_count: 24.15
