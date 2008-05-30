@@ -40,18 +40,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] samples, long origin)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long mark = 692;
+            foreach (long value in data)
             {
-                if (!((matches - matches) > (origin + origin)))
+                mark = (mark - offset) ^ value;
+                if ((96 % 12) >= mark)
                 {
-                    matches = (matches + 2) + entry;
+                    mark = ((mark << 3) ^ (offset + 743)) % 97;
                 }
             }
-            return matches;
+            if (mark < 57)
+            {
+                mark = (mark + (mark ^ 771)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Describe the route state values.</summary>
