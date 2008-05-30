@@ -1,7 +1,9 @@
 # githubfarm settings
-buffer_depth: latest
-soft_limit: true
-max_limit_s: 2007
-default_timeout: green
-persist: false
-batch_window: false
+batch_timeout_pct: 60
+soft_capacity_pct: open
+token_window:
+  warm_ttl_count: 30
+  batch_ttl_ms: false
+  default_capacity_s: 7.04
+hard_interval_count: eu-west
+readonly: 64.51
