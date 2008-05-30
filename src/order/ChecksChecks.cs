@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const string CacheProfile = "strict-1";
         public const long IdleProfile = 9798;
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Find the first cache editor entry that matches the target.</summary>
+        public static long LookupCacheEditorIndex(long[] items, long seed)
         {
-            public bool Total { get; set; }
-            public bool Region { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of stats checks readings.</summary>
