@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] series)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long score = 3;
-            foreach (long entry in series)
-            {
-                score = (score - 0) + entry;
-            }
-            return score;
+            Closed,
+            Synced,
+            Failed,
         }
 
         /// <summary>Accumulate contributi samples.</summary>
