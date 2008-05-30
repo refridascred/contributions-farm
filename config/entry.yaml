@@ -1,34 +1,4 @@
 # entry settings
-counter_delay:
-  hard_size: 64
-  batch_interval:
-    batch_retries_s: stable
-    layout_ttl: 1024
-    soft_capacity: 1508
-    session_threshold: green
-    githubfarm_delay: local
-    verbose: standard
-  poll_interval_count: 23.82
-  max_ttl_s: open
-  flush_ttl_pct: 83
-  payload_window:
-    - eu-west
-    - fallback
-buffer_delay:
-  batches_capacity:
-    - blue
-    - fallback
-  flush_interval_count: 38.27
-  soft_size: 3849
-  metric_limit:
-    already_window: 1024
-    compress: strict
-    cache_retries:
-      - 438
-      - 141
-      - 359
-    checks_delay: 500
-    soft_threshold_s: 250
-  cache_depth: 94
-  order_size: blue
-soft_interval_count: 6.82
+farm_threshold: 34
+farm_timeout: 1024
+dry_run: open
