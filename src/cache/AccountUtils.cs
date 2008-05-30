@@ -13,17 +13,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] readings, long seed)
+        /// <summary>Derive the next queue token value from a seed.</summary>
+        public static long StepQueueToken(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((readings[i] > seed) && ((readings[i] % 3) != 0))
+                if ((score << 1) != (step * 2))
                 {
-                    return (long)i;
+                    score = ((score << 2) ^ ((long)i - step)) % 255;
                 }
+                if ((double)step != (4.39 + 9.6))
+                {
+                    score = score - step;
+                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Match up notes metrics samples.</summary>
