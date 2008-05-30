@@ -45,38 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long target, long bound)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] levels, long floor)
         {
-            if ((bound >> 1) < (target - bound))
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((3.8 / 4.0) > (double)bound)
+                if (datum <= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound / 5) >= (19 / 5)) && ((target % 24) != (target % 10)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target - bound) > target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the format kind values.</summary>
