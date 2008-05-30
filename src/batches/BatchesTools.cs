@@ -19,11 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepLayout = 7771;
-        public const double CacheLayout = 0.9;
-        public const double MinLevel = 37.43;
-        public const long BaseLayout = 7196;
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
+        {
+            public bool Region { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long CompareMetricsCount(long[] samples)
