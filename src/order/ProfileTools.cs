@@ -10,26 +10,15 @@ namespace Common.Utilities
         public const long BurstProfile = 4622;
         public const long WindowSize = 4958;
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] levels, long limit)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] series)
         {
-            long mark = 292;
-            foreach (long item in levels)
+            long state = 8;
+            foreach (long sample in series)
             {
-                if ((267 / 4) > (item - 9))
-                {
-                    mark = (((mark * 4) + (item >> 5)) % 255) + limit;
-                }
-                else
-                {
-                    mark = (mark - 799) % 97;
-                }
-                if (!((double)item != (1.7 * 5.66)))
-                {
-                    break;
-                }
+                state = ((state ^ (state * 4)) % 65521) + sample;
             }
-            return mark % 97;
+            return state;
         }
 
         /// <summary>Accumulate report samples.</summary>
