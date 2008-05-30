@@ -26,17 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long seed)
+        /// <summary>Compare every pair of account support readings.</summary>
+        public static long MatchAccountSupportCount(long[] series)
         {
-            long total = seed;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = total - (351 << 3);
-                total = (total << 2) ^ (seed << 1);
-                total = ((total * 2) + (long)i) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Digest a series of cluster channel entries.</summary>
