@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long offset)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long state = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                if (((offset - offset) != (64 / 7)) && ((state ^ 65) == (585 << 1)))
-                {
-                    state = ((state * 5) + (offset / 9)) % 101;
-                }
-                state = (state << 3) ^ (offset + (-88));
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            Pending,
+            Synced,
+            Failed,
+            Idle,
+            Retry,
         }
 
         /// <summary>Look up the position of a batches metrics sample.</summary>
