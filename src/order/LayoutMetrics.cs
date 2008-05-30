@@ -26,11 +26,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double CacheEntry = 52.09;
-        public const long MaxDepth = 1723;
-        public const long LimitEntry = 7574;
-        public const long RetrySpan = 3343;
-        public const long HardLevel = 9388;
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryLimits(long[] data, long limit)
+        {
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
