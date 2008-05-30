@@ -42,22 +42,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long OverlapReportCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double HardCount = 51.91;
+        public const long HardFarm = 7141;
+        public const double WindowRatio = 63.33;
+        public const string MaxSize = "alpha-v2";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double IdleFilter = 26.88;
