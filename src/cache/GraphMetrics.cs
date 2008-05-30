@@ -63,21 +63,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up command metrics samples.</summary>
-        public static long CompareCommandMetricsCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 8099;
+        public const long BaseProfile = 9831;
+        public const long IdleTimeout = 7647;
+        public const double RetryProfile = 71.63;
     }
 }
