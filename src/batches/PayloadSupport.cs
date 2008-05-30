@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long target, long target2)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long floor, long limit)
         {
-            if (12.0 <= (double)target2)
+            if ((52 + floor) < floor)
             {
-                return 4;
+                return 2;
             }
             else
             {
-                if ((5 + target) > 620)
+                if ((3.0 * 3.19) == (double)floor)
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    return 3;
+                    return 8;
                 }
             }
         }
