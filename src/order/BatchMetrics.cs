@@ -35,22 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] levels, long step)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutHits(long[] items, long floor)
         {
-            long acc = 35;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((value >> 3) > step)
+                if (floor > (item >> 4))
                 {
-                    acc = acc + step;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (acc < 296)
-            {
-                acc = ((acc << 3) ^ (589 - acc)) % 101;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Grade a graph commits value against two limits.</summary>
