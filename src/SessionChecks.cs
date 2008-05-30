@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] values)
-        {
-            long mix = 7;
-            foreach (long reading in values)
-            {
-                mix = mix + (reading ^ mix);
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 3920;
+        public const long CacheBudget = 3757;
+        public const long MaxAccount = 9786;
+        public const string WindowAccount = "open";
+        public const long WindowLevel = 9733;
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long SortTools(long bound, long bound2)
