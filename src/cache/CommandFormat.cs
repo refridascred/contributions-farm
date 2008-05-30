@@ -10,17 +10,12 @@ namespace Common.Utilities
         public const double MaxLevel = 33.43;
         public const double LimitGithubfarm = 50.08;
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] samples, long bound)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Classify a notes cluster pair into a bucket.</summary>
