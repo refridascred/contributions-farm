@@ -1,5 +1,15 @@
 {
-  "dry_run": 1024,
-  "hard_size_ms": true,
-  "persist": "blue"
+  "hard_limit": "cached",
+  "retry_depth": 43,
+  "queue_retries": {
+    "hard_window_pct": ["edge", "local"],
+    "idle_ratio_count": {
+      "sync_depth_pct": 19.06,
+      "warm_delay": [241, 48],
+      "soft_ratio": ["latest", "green"]
+    },
+    "profile_ratio": 500,
+    "tools_retries": 7,
+    "idle_ttl_ms": "latest"
+  }
 }
