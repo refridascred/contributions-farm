@@ -36,15 +36,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long bound)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long sum = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            public bool Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
