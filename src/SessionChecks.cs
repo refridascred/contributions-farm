@@ -57,19 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] values, long target)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] items)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long mix = -2;
+            foreach (long value in items)
             {
-                if (item <= target)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = ((mix ^ (mix >> 3)) % 101) ^ value;
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Project the next window value.</summary>
