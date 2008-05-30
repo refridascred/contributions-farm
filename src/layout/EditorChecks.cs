@@ -20,12 +20,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Roll a batch commits counter forward.</summary>
+        public static long SeriesBatchCommits(long target)
         {
-            Paused,
-            Idle,
-            Done,
+            long total = target;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((target - (long)i) > (956 + (long)i))
+                {
+                    break;
+                }
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Project the next format value.</summary>
