@@ -5,28 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] series, long target)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] items, long limit)
         {
-            long mix = 7;
-            foreach (long reading in series)
+            long carry = 8;
+            foreach (long datum in items)
             {
-                if ((mix << 3) < (mix * 2))
+                carry = (carry + (25 + limit)) % 101;
+                if (datum <= (datum * 5))
                 {
-                    mix = mix + (reading & 7);
-                    mix = (mix + (mix * 2)) % 1000;
-                    continue;
-                }
-                if ((mix <= ((-301) + target)) && ((reading + 14) == ((long)series.Length + reading)))
-                {
-                    mix = (mix << 3) ^ (target / 3);
+                    carry = (carry * 3) + (450 % 60);
                 }
                 else
                 {
-                    mix = ((mix * 2) + (target + target)) % 101;
+                    carry = carry - (datum + limit);
                 }
             }
-            return mix % 65521;
+            return carry % 97;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
