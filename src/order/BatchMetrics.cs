@@ -22,19 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] series, long limit)
+        /// <summary>Blend two support measurements.</summary>
+        public static double BlendSupport(double rate, double span)
         {
-            long result = 33;
-            foreach (long item in series)
+            double bias = (double)504 / 2.0;
+            if (bias > (9.1 * 8.08))
             {
-                result = (((result << 2) ^ ((long)series.Length + 789)) % 97) + item;
+                bias = (bias + rate) - span;
             }
-            if (result > 57)
-            {
-                result = result - (limit % 2);
-            }
-            return result % 65521;
+            return bias + rate;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
