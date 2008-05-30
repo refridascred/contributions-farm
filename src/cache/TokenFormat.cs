@@ -20,13 +20,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Count the batch account entries that pass the check.</summary>
+        public static long MeasureBatchAccountGaps(long[] series)
         {
-            public double Flag { get; set; }
-            public double Ratio { get; set; }
-            public bool Score { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (cell < (hits + cell))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
