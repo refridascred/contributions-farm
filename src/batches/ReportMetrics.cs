@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the batches entry series from a seed.</summary>
-        public static long DeriveBatchesEntry(long bound)
+        /// <summary>Match up command graph samples.</summary>
+        public static long CompareCommandGraphCount(long[] samples)
         {
-            long result = bound;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result * 4) + result) % 101;
-                result = ((result * 2) + (long)i) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
