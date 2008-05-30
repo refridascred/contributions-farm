@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const long BatchOrder = 7245;
         public const string DefaultOrder = "primary-v2";
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] items)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferBounds(long[] values, long origin)
         {
-            long result = 22;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if (33 >= (result % 5))
+                if (item <= origin)
                 {
-                    result = ((result * 5) + (17 + result)) % 101;
-                }
-                if (result < cell)
-                {
+                    flag = false;
                     break;
                 }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
