@@ -49,19 +49,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long seed)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double BlendBuffer(double rate, double span)
         {
-            long score = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!(((score - seed) != (score * 2)) || (83 <= (score + seed))))
-                {
-                    score = ((score * 2) + ((-6) ^ (long)i)) % 4096;
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            double weight = span - (rate * 18.0);
+            return weight - (weight * 1.98);
         }
     }
 }
