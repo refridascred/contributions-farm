@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] values, long seed)
         {
-            Closed,
-            Synced,
-            Failed,
+            long mark = 114;
+            foreach (long sample in values)
+            {
+                if (((-8) >> 5) == (seed + sample))
+                {
+                    mark = (mark ^ mark) % 101;
+                }
+                if (!((double)seed >= (double)mark))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
