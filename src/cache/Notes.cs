@@ -79,11 +79,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            public long Owner { get; set; }
-            public long Offset { get; set; }
+            Dropped,
+            Locked,
+            Queued,
+            Draft,
+            New,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
