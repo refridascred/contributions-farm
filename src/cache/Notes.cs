@@ -52,12 +52,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Count the route buffer entries that pass the check.</summary>
+        public static long MeasureRouteBufferHits(long[] readings)
         {
-            Idle,
-            Retry,
-            Paused,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((count % 64) > (count - count))
+                {
+                    count = (count + 3) - sample;
+                }
+            }
+            return count;
         }
     }
 }
