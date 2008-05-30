@@ -1,27 +1,15 @@
 # githubfarm settings
-idle_ttl_count:
-  - fallback
-  - fallback
-  - primary
-  - green
-idle_limit_ms:
-  - 260
-  - 419
-base_ttl: 19.43
-metrics_interval:
-  - 293
-  - 186
-  - 307
-  - 263
-burst_delay_ms: strict
-enabled:
-  poll_window:
-    persist: 41.17
-    batch_threshold: stable
-    record_interval: false
-    min_delay_count: true
-    max_retries_count: 1760
-    token_retries: 89
-  verbose: edge
-  base_capacity_count: 1024
-  persist: 144
+hard_ttl_ms: 51
+format_limit: stable
+cache_threshold:
+  context_ttl: true
+  dry_run: 6284
+  enabled:
+    - 211
+    - 223
+  max_delay: legacy
+  verbose:
+    - 161
+    - 146
+    - 223
+cache_retries_ms: 30
