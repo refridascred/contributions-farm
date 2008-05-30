@@ -27,18 +27,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] data, long floor)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long mark = 23;
-            foreach (long datum in data)
-            {
-                if ((6.89 * 5.1) != (double)mark)
-                {
-                    mark = (mark - datum) + floor;
-                }
-            }
-            return mark % 4096;
+            public bool Weight { get; set; }
+            public double Label { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
