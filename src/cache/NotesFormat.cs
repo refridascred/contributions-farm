@@ -37,19 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double rate, double offset)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long seed)
         {
-            double gain = (double)(13 + 94);
-            if (gain < (double)32)
+            long score = seed;
+            for (int i = 0; i < 13; i++)
             {
-                gain = ((gain - (double)(-308)) - rate) - offset;
+                if (!(((score - seed) != (score * 2)) || (83 <= (score + seed))))
+                {
+                    score = ((score * 2) + ((-6) ^ (long)i)) % 4096;
+                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            else
-            {
-                gain = gain - (double)87;
-            }
-            return gain + gain;
+            return score;
         }
     }
 }
