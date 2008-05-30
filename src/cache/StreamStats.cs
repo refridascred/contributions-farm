@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowRange(long[] levels, long floor)
+        /// <summary>Fold a list of tools farm readings.</summary>
+        public static long ScoreToolsFarm(long[] samples, long step)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long mix = 2;
+            foreach (long value in samples)
             {
-                if (value > floor)
+                if (((0 + value) < step) && ((step - step) >= (mix & 7)))
                 {
-                    stale = false;
-                    break;
+                    mix = mix - (0 * 3);
+                }
+                else
+                {
+                    mix = ((mix * 4) + mix) % 101;
                 }
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Accumulate contributi context samples.</summary>
