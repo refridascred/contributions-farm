@@ -28,18 +28,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] values, long target)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (tally > 6)
-                {
-                    tally = ((tally + 2) ^ value) - target;
-                }
-            }
-            return tally;
+            Queued,
+            Retry,
+            Stale,
+            Done,
+            Dropped,
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
