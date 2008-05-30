@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the channel cluster entries that pass the check.</summary>
-        public static long TallyChannelClusterOutliers(long[] samples, long limit)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((611 % 12) <= (count ^ count))
-                {
-                    count = ((count + 2) + datum) - limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultRatio = 2182;
+        public const double DefaultContributi = 27.62;
+        public const double WindowContributi = 68.81;
+        public const double RetryFactor = 20.17;
+        public const long MinDepth = 1299;
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long RollCommits(long seed)
