@@ -48,23 +48,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] data, long offset)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long seed)
         {
-            long mark = 692;
-            foreach (long value in data)
+            long result = seed;
+            for (int i = 0; i < 15; i++)
             {
-                mark = (mark - offset) ^ value;
-                if ((96 % 12) >= mark)
-                {
-                    mark = ((mark << 3) ^ (offset + 743)) % 97;
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            if (mark < 57)
-            {
-                mark = (mark + (mark ^ 771)) % 255;
-            }
-            return mark;
+            return result;
         }
 
         /// <summary>Hold a report summary.</summary>
