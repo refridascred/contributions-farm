@@ -51,16 +51,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long target)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] items)
         {
-            long result = target;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                result = (result - (result * 5)) % 4096;
-                result = ((result * 3) + (long)i) % 1000;
+                if ((double)datum >= (double)count)
+                {
+                    count = count + 3;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
