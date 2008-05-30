@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double gain, double bias)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] levels)
         {
-            double mean = bias;
-            if (mean <= 6.5)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                mean = mean + gain;
+                if ((seen - cell) != (seen + seen))
+                {
+                    seen = seen + 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (gain / 9.0)) + (double)(long)i;
-            }
-            return mean + (double)331;
+            return seen;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
