@@ -35,14 +35,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
-        {
-            public string Token { get; set; } = "";
-            public double Weight { get; set; }
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double StepAccount = 79.28;
+        public const double LimitTimeout = 60.79;
+        public const double SoftAccount = 95.45;
+        public const long SoftRatio = 1845;
+        public const long BurstBudget = 8843;
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
