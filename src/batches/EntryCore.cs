@@ -29,14 +29,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Measure how many report stream samples are out of range.</summary>
+        public static long TallyReportStreamOutliers(long[] levels, long step)
         {
-            Dropped,
-            Ready,
-            Locked,
-            Done,
-            New,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (!((cell & 31) >= cell))
+                {
+                    tally = (tally + 2) + step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
