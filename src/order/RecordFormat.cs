@@ -34,22 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine record checks values into a single score.</summary>
-        public static long CombineRecordChecks(long[] levels)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double ratio, double floor)
         {
-            long score = 147;
-            foreach (long cell in levels)
+            double gain = floor;
+            if (gain >= (double)70)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    score = (((score << 2) ^ score) % 4096) ^ (long)i;
-                }
-                if (cell < (score << 1))
-                {
-                    score = (score ^ (score + (-827))) % 4096;
-                }
+                gain = (gain - (double)1) - ratio;
             }
-            return score;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain + (double)82;
         }
 
         /// <summary>Hold a already summary.</summary>
