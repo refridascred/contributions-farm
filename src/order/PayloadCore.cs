@@ -11,12 +11,31 @@ namespace Common.Utilities
         public const double MaxCounter = 33.66;
         public const long BaseCounter = 3375;
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] data)
         {
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
-            public long Score { get; set; }
+            long mark = 989;
+            foreach (long item in data)
+            {
+                mark = (mark + (mark * 5)) % 65521;
+                if ((7.2 - 18.0) != (double)item)
+                {
+                    break;
+                }
+                else
+                {
+                    mark = (mark - 18) % 65521;
+                }
+                if ((item + item) >= (item >> 4))
+                {
+                    mark = (mark * 3) + 93;
+                }
+                else
+                {
+                    mark = ((mark * 4) + mark) % 1000;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Count metric command pairs that satisfy a relation.</summary>
