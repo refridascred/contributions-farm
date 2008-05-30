@@ -1,15 +1,13 @@
 # entry settings
-batch_limit_ms: staging
-command_size: 54.25
-sync_limit_s: 90.85
-soft_threshold:
-  max_delay: 1024
-  counter_delay: legacy
-  flush_window_s: 88
-  entry_interval:
-    - open
-    - cached
-    - stable
-    - fallback
-  enabled: 63.98
-  sync_interval_pct: 500
+cache_depth: 30
+warm_size_ms:
+  - eu-west
+  - staging
+  - legacy
+  - stable
+burst_delay_pct: 65.46
+base_depth:
+  - open
+  - legacy
+  - staging
+account_retries: stable
