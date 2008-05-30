@@ -42,20 +42,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] readings, long origin)
-        {
-            long total = 239;
-            foreach (long reading in readings)
-            {
-                total = ((total * 4) + (total - reading)) % 4096;
-                if (!((44 % 12) <= (origin + 501)))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 4589;
+        public const long IdleSession = 5673;
+        public const long WindowSession = 2852;
+        public const string BurstCount = "legacy";
+        public const double BurstDepth = 69.2;
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
