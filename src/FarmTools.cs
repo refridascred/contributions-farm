@@ -19,11 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultSpan = 9912;
-        public const string StepSize = "open-1";
-        public const string MaxInterval = "open-v2";
-        public const long DefaultBatches = 7242;
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
+        {
+            public double Owner { get; set; }
+            public bool Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
+        }
 
         /// <summary>Locate a githubfarm layout reading by value.</summary>
         public static long FindGithubfarmLayoutIndex(long[] readings, long target)
