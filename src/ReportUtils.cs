@@ -21,11 +21,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseSpan = 8232;
-        public const long StepDepth = 2273;
-        public const long RetryFormat = 7656;
-        public const string BatchFormat = "open-edge";
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamRange(long[] series, long seed)
+        {
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Roll a report counter forward.</summary>
         public static long StepReport(long bound)
