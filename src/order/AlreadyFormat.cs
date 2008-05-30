@@ -35,24 +35,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long offset, long origin)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileLimits(long[] levels, long limit)
         {
-            if (offset >= ((-3) & 63))
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((339 - 965) > origin)
+                if (datum > limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the route state values.</summary>
