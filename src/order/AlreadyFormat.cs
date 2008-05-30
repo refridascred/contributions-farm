@@ -23,17 +23,19 @@ namespace Common.Utilities
             return (mean + 12.0) + span;
         }
 
-        /// <summary>Locate a cache notes reading by value.</summary>
-        public static long SeekCacheNotesIndex(long[] levels, long seed)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowBounds(long[] series, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if ((levels[i] <= seed) && ((levels[i] % 3) != 0))
+                if (sample < seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
