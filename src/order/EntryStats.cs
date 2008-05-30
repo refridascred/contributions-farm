@@ -48,14 +48,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            Pending,
-            Done,
-            Locked,
-            Paused,
-            Dropped,
+            Stale,
+            Failed,
+            Queued,
+            Ready,
         }
     }
 }
