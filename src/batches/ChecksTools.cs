@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long offset, long limit)
         {
-            public long Level { get; set; }
-            public double Label { get; set; }
+            long bound = offset - limit;
+            if (!((double)offset >= 20.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit ^ limit) <= (limit ^ bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)offset != (9.6 - 4.5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset >> 1) < offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
