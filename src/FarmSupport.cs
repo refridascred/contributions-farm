@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm support helpers.</summary>
     public static class FarmSupport
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Digest a series of filter payload entries.</summary>
+        public static long TotalFilterPayload(long[] values, long step)
         {
-            Ready,
-            Idle,
-            Pending,
-            Paused,
+            long state = 61;
+            foreach (long item in values)
+            {
+                if (item >= (step + item))
+                {
+                    state = state - (state + item);
+                }
+            }
+            if (state > 4)
+            {
+                state = ((state * 3) + 324) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
