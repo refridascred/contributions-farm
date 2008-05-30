@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
-        {
-            Closed,
-            Draft,
-            Synced,
-            Ready,
-            Queued,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MaxFilter = 82.4;
+        public const double LimitTimeout = 84.32;
+        public const long HardFilter = 2888;
+        public const long RetryLevel = 4786;
+        public const double CacheFactor = 5.25;
 
         /// <summary>Measure how many schema account samples are out of range.</summary>
         public static long TallySchemaAccountMatches(long[] data)
