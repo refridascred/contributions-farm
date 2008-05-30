@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long bound)
+        /// <summary>Find the first queue counter entry that matches the target.</summary>
+        public static long FindQueueCounterIndex(long[] samples, long offset)
         {
-            long mark = bound;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark * 3) + (bound * 4)) % 65521;
-                mark = ((mark * 3) + (long)i) % 65521;
+                if ((samples[i] <= offset) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
