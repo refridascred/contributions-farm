@@ -27,13 +27,10 @@ namespace Common.Utilities
         public const string DefaultChecks = "staging-v2";
         public const long BaseInterval = 1615;
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
-        {
-            public double Limit { get; set; }
-            public long Owner { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MaxDepth = "alpha-edge";
+        public const long WindowCount = 3025;
+        public const double HardSupport = 66.72;
 
         /// <summary>Look up the position of a already stats sample.</summary>
         public static long SeekAlreadyStatsIndex(long[] readings, long step)
