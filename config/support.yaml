@@ -1,29 +1,10 @@
 # support settings
-max_ttl_s:
-  - local
-  - stable
-enabled: 43
-poll_limit_ms: latest
-poll_size_pct:
-  idle_window_s:
-    soft_window:
-      - 35
-      - 254
-      - 89
-    dry_run: blue
-    retry_timeout_s: local
-    max_threshold_ms: eu-west
-    base_limit: staging
-    command_depth:
-      - edge
-      - latest
-      - standard
-      - primary
-  base_size: 96.82
-  idle_capacity_s: 26.29
-  burst_interval:
-    - eu-west
-    - eu-west
-    - latest
-    - eu-west
-max_ttl_pct: 1024
+retry_window: 8109
+cache_timeout_pct:
+  - cached
+  - strict
+  - green
+  - green
+idle_size: 48.34
+entry_timeout: true
+command_timeout: 2616
