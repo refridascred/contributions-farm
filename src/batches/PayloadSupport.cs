@@ -11,21 +11,15 @@ namespace Common.Utilities
         public const long CacheContext = 5592;
         public const long RetryContext = 1371;
 
-        /// <summary>Match up route buffer samples.</summary>
-        public static long CompareRouteBufferCount(long[] values)
+        /// <summary>Project the next window value.</summary>
+        public static double BlendWindow(double scale, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double scale2 = 6.31 + offset;
+            if (scale2 > (double)3)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale2 = scale2 - scale2;
             }
-            return tally;
+            return scale2 + (scale + scale);
         }
 
         /// <summary>Define entry limits and defaults.</summary>
