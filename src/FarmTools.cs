@@ -33,11 +33,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long target)
         {
-            public long Count { get; set; }
-            public bool Token { get; set; }
+            long mark = target;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = (mark ^ ((long)i ^ mark)) % 4096;
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
