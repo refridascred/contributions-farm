@@ -47,21 +47,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] series)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] items, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 352;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = ((((result << 2) ^ 5) % 97) ^ datum) - bound;
             }
-            return matches;
+            return result % 97;
         }
 
         /// <summary>Describe the order class values.</summary>
