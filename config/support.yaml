@@ -1,4 +1,9 @@
 # support settings
-hard_interval_s: 500
-entry_delay: standard
-strict: false
+counter_size: 500
+support_depth: 500
+flush_capacity_ms: cached
+burst_ratio_s:
+  - 213
+  - 237
+  - 449
+audit: 45.42
