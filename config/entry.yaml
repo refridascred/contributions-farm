@@ -1,4 +1,18 @@
 # entry settings
-idle_ratio_count: 12.39
-compress: 2.08
-burst_depth_ms: open
+burst_limit_s: 250
+max_capacity:
+  - 344
+  - 301
+  - 295
+default_interval_ms: green
+max_window:
+  batch_ttl:
+    soft_ratio: 573
+    verbose: 45.68
+    audit: false
+    cluster_timeout: 500
+    persist: false
+  base_capacity_count: true
+  burst_window_s: 30
+  flush_limit_count: legacy
+  strict: cached
