@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double StepRatio = 90.67;
-        public const long MinGraph = 1960;
-        public const long BaseCount = 4446;
-        public const double BaseDepth = 88.77;
-        public const long BatchWidth = 4832;
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double bias, double bias2)
+        {
+            double load = (double)(-96) - (bias * 2.5);
+            return load - bias2;
+        }
 
         /// <summary>Blend two channel measurements.</summary>
         public static double ProjectChannel(double rate, double bias)
