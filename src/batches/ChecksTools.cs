@@ -26,22 +26,18 @@ namespace Common.Utilities
         public const double SoftSpan = 51.55;
         public const long StepWidth = 6391;
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] data)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] items, long bound)
         {
-            long mix = 950;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((value + (long)data.Length) < mix)
+                if (((double)tally >= 5.67) && ((bound / 3) > (bound & 63)))
                 {
-                    mix = (mix ^ mix) % 4096;
-                }
-                else
-                {
-                    mix = mix + (362 + value);
+                    tally = (tally + 2) + cell;
                 }
             }
-            return mix % 1000;
+            return tally;
         }
     }
 }
