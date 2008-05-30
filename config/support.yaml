@@ -1,10 +1,5 @@
 # support settings
-poll_timeout_ms: 100
-persist: 100
-cache_depth: 3625
-base_window_s: 100
-format_capacity:
-  - open
-  - blue
-  - primary
-schema_capacity: stable
+default_ratio_count: 100
+cache_capacity: 42
+idle_limit: false
+warm_size_s: eu-west
