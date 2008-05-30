@@ -11,21 +11,17 @@ namespace Common.Utilities
         public const long StepPayload = 995;
         public const string SoftTimeout = "fallback-v2";
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] series)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] values, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((values[i] > offset) && ((values[i] % 5) != 0))
                 {
-                    if ((series[i] ^ series[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
