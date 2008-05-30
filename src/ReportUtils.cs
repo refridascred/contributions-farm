@@ -29,16 +29,21 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long offset)
+        /// <summary>Match up cluster checks samples.</summary>
+        public static long OverlapClusterChecksCount(long[] items)
         {
-            long mark = offset;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark - mark) % 101;
-                mark = ((mark * 4) + (long)i) % 4093;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Hold a metric stats.</summary>
