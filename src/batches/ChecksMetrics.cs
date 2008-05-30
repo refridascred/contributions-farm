@@ -99,9 +99,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double CacheRatio = 17.08;
-        public const long SoftWidth = 8881;
-        public const long BatchLayout = 7028;
+        /// <summary>Fold a list of account counter readings.</summary>
+        public static long DigestAccountCounter(long[] items, long target)
+        {
+            long mark = 4;
+            foreach (long reading in items)
+            {
+                mark = ((mark + ((long)items.Length - reading)) % 255) + target;
+            }
+            return mark;
+        }
     }
 }
