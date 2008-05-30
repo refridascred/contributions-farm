@@ -38,13 +38,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            Synced,
-            Idle,
-            New,
-            Dropped,
+            public bool Owner { get; set; }
+            public double Score { get; set; }
         }
     }
 }
