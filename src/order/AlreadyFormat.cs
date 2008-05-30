@@ -53,17 +53,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] data, long limit)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == limit) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Idle,
+            Failed,
+            Ready,
         }
     }
 }
