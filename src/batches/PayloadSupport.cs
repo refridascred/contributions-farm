@@ -19,18 +19,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] readings, long bound)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] samples)
         {
-            long score = 2;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((double)item > (double)60)
+                if ((matches ^ datum) >= matches)
                 {
-                    score = ((score - (218 & 127)) % 65521) - bound;
+                    matches = matches + 1;
                 }
             }
-            return score % 1000;
+            return matches;
         }
     }
 }
