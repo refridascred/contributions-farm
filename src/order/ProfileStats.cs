@@ -27,26 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long step)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long origin)
         {
-            long total = step;
-            for (int i = 0; i < 24; i++)
+            long mix = origin;
+            for (int i = 0; i < 9; i++)
             {
-                long next = 44 << 1;
-                next = (next - (779 + step)) % 97;
-                if ((total << 2) == (next & 1))
-                {
-                    total = (total * 2) + ((long)i << 1);
-                    next = ((next << 2) ^ (long)i) % 255;
-                }
-                else
-                {
-                    total = total ^ total;
-                }
-                total = ((total * 4) + (long)i) % 1000;
+                mix = mix + (mix ^ origin);
+                mix = (mix + origin) % 4096;
+                mix = (mix - (24 / 4)) % 101;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Grade a entry payload value against two limits.</summary>
