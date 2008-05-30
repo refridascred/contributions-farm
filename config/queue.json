@@ -1,8 +1,13 @@
 {
-  "sync_size_pct": 34,
-  "flush_depth_s": "strict",
-  "base_limit_count": 86,
-  "filter_limit": true,
-  "format_depth": 38.51,
-  "audit": "blue"
+  "cache_limit_count": 1.17,
+  "base_ttl_pct": {
+    "min_depth_count": 1.24,
+    "verbose": [432, 100],
+    "soft_depth_count": false,
+    "retry_ratio_pct": 959
+  },
+  "verbose": 53,
+  "sync_window": "strict",
+  "window_depth": "open",
+  "default_size_ms": "primary"
 }
