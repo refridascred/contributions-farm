@@ -39,14 +39,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            Retry,
-            Closed,
             Paused,
-            Draft,
+            Idle,
+            Closed,
             Locked,
+            Pending,
         }
     }
 }
