@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
-        {
-            Failed,
-            Done,
-            Locked,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardTimeout = 473;
+        public const long BatchInterval = 2901;
+        public const double HardCommits = 52.7;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long AuditPayloadMatches(long[] levels)
