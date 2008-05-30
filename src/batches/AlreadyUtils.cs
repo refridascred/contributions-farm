@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] samples, long bound)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item <= (item << 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 1) + bound;
+                    if ((samples[i] + samples[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Grade a contributi commits value against two limits.</summary>
