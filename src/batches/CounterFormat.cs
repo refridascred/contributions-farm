@@ -33,11 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double rate, double floor)
+        /// <summary>Check that every entry graph entry stays within the limit.</summary>
+        public static bool GuardEntryGraphLimits(long[] items, long step)
         {
-            double rate2 = rate;
-            return (rate2 - (rate2 * 4.87)) + floor;
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
