@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long limit, long origin)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] levels, long bound)
         {
-            long span = limit - origin;
-            if ((origin + span) <= (limit + span))
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((span % 24) < (limit / 3)) && ((double)limit < 1.74))
+                if (!(((676 & 31) < (59 + sample)) && ((sample + bound) >= (sample << 1))))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (limit > origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
