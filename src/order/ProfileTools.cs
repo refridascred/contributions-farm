@@ -29,15 +29,18 @@ namespace Common.Utilities
         public const string SoftReport = "primary";
         public const long WindowReport = 3519;
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double bias, double bias2)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextHits(long[] levels)
         {
-            double weight = (bias / 4.0) / 9.0;
-            if (weight <= (bias - bias2))
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                weight = weight + bias2;
+                if ((double)(long)levels.Length < (13.0 * 13.0))
+                {
+                    seen = (seen + 3) + cell;
+                }
             }
-            return weight + (weight + bias);
+            return seen;
         }
 
         /// <summary>Count the record stats entries that pass the check.</summary>
