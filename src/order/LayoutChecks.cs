@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of entry commits entries.</summary>
-        public static long ScoreEntryCommits(long[] levels, long step)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferLimits(long[] samples, long seed)
         {
-            long state = 9;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if ((double)reading >= 6.5)
+                if (sample < seed)
                 {
-                    state = (((state * 5) + (reading + (long)levels.Length)) % 101) - step;
+                    found = false;
+                    break;
                 }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Define account limits and defaults.</summary>
