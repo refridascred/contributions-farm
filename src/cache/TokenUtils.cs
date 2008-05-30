@@ -17,38 +17,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long floor, long bound)
+        /// <summary>Adjust a graph order reading.</summary>
+        public static double BlendGraphOrder(double rate, double offset)
         {
-            if (!((884 ^ bound) <= (floor - bound)))
+            double bias = (double)((-69) / 8);
+            if (bias >= (double)(-99))
             {
-                return 4;
+                bias = ((bias + (bias * 17.0)) + rate) + offset;
             }
-            else
-            {
-                if (((floor + floor) != (floor << 2)) || ((bound & 7) < floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (bound < floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor + bound) > bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return bias - (bias * 12.0);
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
