@@ -64,14 +64,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            Dropped,
-            Locked,
-            Queued,
-            Draft,
-            New,
+            public long Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit format readings against a rule.</summary>
