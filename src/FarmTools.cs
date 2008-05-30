@@ -23,20 +23,12 @@ namespace Common.Utilities
         public const double HardProfile = 12.35;
         public const long MaxProfile = 1200;
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long target)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long total = target;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((double)total < (8.8 + 1.76))
-                {
-                    total = (total ^ (46 >> 4)) % 65521;
-                    continue;
-                }
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            New,
+            Draft,
+            Pending,
         }
     }
 }
