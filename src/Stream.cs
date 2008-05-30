@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream helpers.</summary>
     public static class Stream
     {
-        /// <summary>Count the route format entries that pass the check.</summary>
-        public static long CountRouteFormatHits(long[] levels, long offset)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long bound, long floor)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            if ((double)bound > 15.0)
             {
-                if ((double)offset < (18.0 * 0.71))
+                return 2;
+            }
+            else
+            {
+                if ((44 + bound) == (floor * 4))
                 {
-                    count = (count + 3) - sample;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound ^ floor) >= (84 << 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (bound > (floor / 6))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of order readings.</summary>
