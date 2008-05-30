@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiOutliers(long[] data, long offset)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long step, long offset)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long delta = step - offset;
+            if (((double)step > (9.5 * 5.4)) && ((delta * 4) < (step & 31)))
             {
-                if ((double)tally <= (double)offset)
+                return 5;
+            }
+            else
+            {
+                if ((step + 86) < (delta & 127))
                 {
-                    tally = (tally + 2) - datum;
+                    return 1;
+                }
+                else
+                {
+                    if (delta >= 589)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Blend two profile commits measurements.</summary>
