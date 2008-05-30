@@ -27,19 +27,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate support batch samples.</summary>
-        public static long WeighSupportBatch(long[] levels)
-        {
-            long acc = -3;
-            foreach (long value in levels)
-            {
-                acc = (acc + value) % 65521;
-            }
-            if (acc > 24)
-            {
-                acc = ((acc << 3) ^ (acc >> 2)) % 255;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCount = 2682;
+        public const string MaxCommits = "legacy-v2";
+        public const long BurstCommits = 1724;
+        public const long DefaultWidth = 9807;
+        public const long CacheCommits = 8423;
     }
 }
