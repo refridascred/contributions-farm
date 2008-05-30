@@ -37,12 +37,15 @@ namespace Common.Utilities
         public const string BurstFactor = "fallback";
         public const double IdleCount = 74.91;
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long bound)
         {
-            Failed,
-            Locked,
-            Idle,
+            long sum = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
