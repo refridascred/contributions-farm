@@ -38,11 +38,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double bias, double bias2)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            double ratio = bias * 3.28;
-            return ratio + bias2;
+            public bool Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
