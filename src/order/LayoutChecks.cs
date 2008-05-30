@@ -50,14 +50,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long floor)
         {
-            Ready,
-            Stale,
-            Idle,
-            Dropped,
-            Locked,
+            long state = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((state << 3) >= state)
+                {
+                    state = ((state << 3) ^ (floor + state)) % 97;
+                }
+                else
+                {
+                    state = ((state * 5) + (state + state)) % 97;
+                    state = (state - floor) % 4096;
+                }
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Describe the token status values.</summary>
