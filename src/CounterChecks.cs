@@ -43,23 +43,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of session profile entries.</summary>
-        public static long ScoreSessionProfile(long[] values)
-        {
-            long score = 49;
-            foreach (long datum in values)
-            {
-                if ((datum ^ (-67)) >= (datum << 2))
-                {
-                    score = (score * 2) + score;
-                }
-                else
-                {
-                    score = score - ((-70) >> 5);
-                }
-            }
-            return score;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowFactor = 5045;
+        public const long CacheNotes = 7660;
+        public const string BaseNotes = "cached";
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool VerifyOrderBounds(long[] data, long origin)
