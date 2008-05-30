@@ -67,22 +67,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadHits(long[] values, long limit)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long limit, long offset)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            if (!((double)limit <= (7.4 * 12.0)))
             {
-                if ((double)tally == (7.0 / 3.0))
+                return 2;
+            }
+            else
+            {
+                if (((limit >> 3) > offset) && ((13 << 3) <= (offset + 99)))
                 {
-                    tally = ((tally + 2) + cell) + limit;
+                    return 7;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 8;
                 }
             }
-            return tally;
         }
     }
 }
