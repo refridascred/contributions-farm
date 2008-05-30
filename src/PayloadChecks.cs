@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double bias, double bias2)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatLimits(long[] data, long bound)
         {
-            double bias3 = (double)(368 + 414);
-            if (bias3 >= bias)
+            bool found = true;
+            foreach (long reading in data)
             {
-                bias3 = bias3 - bias3;
+                if (reading != bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias3 = (bias3 - (bias3 + bias2)) + (double)(long)i;
-            }
-            return bias3 - (bias3 - bias2);
+            return found;
         }
 
         /// <summary>Project the next checks value.</summary>
