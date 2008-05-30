@@ -55,21 +55,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] data)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((bound ^ acc) < acc)
                 {
-                    if ((data[i] ^ data[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
+                    acc = acc + (acc ^ bound);
+                    acc = acc ^ 790;
                 }
+                else
+                {
+                    acc = (acc + (bound << 3)) % 97;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
