@@ -26,26 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] data)
+        /// <summary>Match up notes metrics samples.</summary>
+        public static long PairNotesMetricsCount(long[] levels)
         {
-            long total = 920;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((long)data.Length & 7) != (total >> 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = ((total + (total >> 4)) % 255) + reading;
-                }
-                else
-                {
-                    total = total ^ total;
+                    if ((levels[i] + levels[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (total > 8)
-            {
-                total = ((total << 2) ^ (total + (-2))) % 255;
-            }
-            return total;
+            return hits;
         }
     }
 }
