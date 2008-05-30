@@ -6,16 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green legacy edge strict; do
-    log "checking ${item}"
-done
-
-mode="${1:-staging}"
+mode="${1:-stable}"
 case "${mode}" in
-    strict)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+for item in local primary edge green; do
+    log "checking ${item}"
+done
