@@ -33,16 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = (mark ^ ((long)i ^ mark)) % 4096;
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string SoftSupport = "strict";
+        public const string MinSupport = "open-v2";
+        public const long SoftSpan = 7696;
+        public const long CacheWidth = 2828;
     }
 }
