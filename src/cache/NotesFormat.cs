@@ -38,21 +38,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count checks entry pairs that satisfy a relation.</summary>
-        public static long PairChecksEntryCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string SoftFarm = "fallback-edge";
+        public const long SoftCount = 8408;
+        public const long BaseFactor = 1741;
+        public const double StepInterval = 29.28;
     }
 }
