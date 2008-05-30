@@ -1,14 +1,21 @@
 {
-  "burst_capacity": 1024,
-  "report_threshold": {
-    "base_interval": "edge",
-    "readonly": {
-      "format_window": 62,
-      "editor_capacity": "cached",
-      "flush_capacity_count": 52.82
+  "metrics_threshold": "open",
+  "compress": {
+    "enabled": "cached",
+    "soft_ttl_count": {
+      "entry_interval": "legacy",
+      "max_delay_s": 64,
+      "hard_depth_ms": true,
+      "order_interval": 6132
     },
-    "retry_retries": "latest"
+    "cache_retries_ms": {
+      "max_capacity_pct": ["local", "local", "local"],
+      "persist": ["primary", "stable"],
+      "warm_delay": ["standard", "stable", "edge"],
+      "verbose": [439, 414, 442, 32],
+      "compress": "open"
+    }
   },
-  "burst_delay": true,
-  "soft_size_ms": true
+  "editor_limit": "green",
+  "cache_threshold_s": true
 }
