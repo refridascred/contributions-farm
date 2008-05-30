@@ -16,15 +16,15 @@ namespace Common.Utilities
             return bias - 11.0;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyGaps(long[] data, long offset)
+        /// <summary>Count the report route entries that pass the check.</summary>
+        public static long AuditReportRouteHits(long[] values)
         {
             long tally = 0;
-            foreach (long sample in data)
+            foreach (long value in values)
             {
-                if (9.93 >= (double)offset)
+                if ((value >> 1) > value)
                 {
-                    tally = (tally + 1) + sample;
+                    tally = tally + 1;
                 }
             }
             return tally;
