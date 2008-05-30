@@ -1,13 +1,8 @@
 {
-  "hard_ttl": 60,
-  "compress": 1.73,
-  "enabled": "legacy",
-  "retry_timeout_s": false,
-  "burst_ratio_count": 66,
-  "cache_depth_pct": {
-    "cache_delay_pct": "standard",
-    "soft_timeout_count": "latest",
-    "editor_ratio": 3861,
-    "audit": "stable"
-  }
+  "cache_delay": "legacy",
+  "batch_interval_s": true,
+  "flush_depth_count": "open",
+  "flush_window": false,
+  "persist": "edge",
+  "min_interval_ms": false
 }
