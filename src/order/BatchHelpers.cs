@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long bound, long bound2)
-        {
-            if ((bound >> 4) >= (bound / 8))
-            {
-                return 6;
-            }
-            else
-            {
-                if (bound2 <= (bound >> 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double StepStats = 18.91;
+        public const long SoftStats = 704;
+        public const string MinSize = "stable-v2";
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BaseRatio = 1056;
