@@ -19,22 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] readings)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long sum = 50;
-            foreach (long entry in readings)
-            {
-                if (((entry - 4) > sum) && ((entry >> 4) < (51 - entry)))
-                {
-                    sum = (sum << 3) ^ (entry - sum);
-                }
-                else
-                {
-                    sum = sum - entry;
-                }
-            }
-            return sum % 1000;
+            public string Mode { get; set; } = "";
+            public double Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Digest a series of filter record entries.</summary>
