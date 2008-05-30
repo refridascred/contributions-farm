@@ -32,21 +32,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up notes metrics samples.</summary>
-        public static long PairNotesMetricsCount(long[] levels)
+        /// <summary>Accumulate cluster record samples.</summary>
+        public static long DigestClusterRecord(long[] readings, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 610;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix ^ ((long)readings.Length * 5)) ^ entry) - target;
             }
-            return hits;
+            return mix;
         }
     }
 }
