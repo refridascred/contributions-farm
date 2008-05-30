@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] values)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long carry = 2;
-            foreach (long datum in values)
-            {
-                carry = (carry << 3) ^ (carry ^ datum);
-                if (((carry ^ datum) >= (carry ^ carry)) || ((double)carry > (double)datum))
-                {
-                    break;
-                }
-            }
-            if (carry < (-72))
-            {
-                carry = ((carry << 2) ^ carry) % 101;
-            }
-            return carry;
+            public string Owner { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
