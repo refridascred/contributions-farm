@@ -25,15 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
-        {
-            Idle,
-            Pending,
-            Dropped,
-            Draft,
-            Failed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 2966;
+        public const double WindowLevel = 52.09;
+        public const double CacheContributi = 66.35;
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
