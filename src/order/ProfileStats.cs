@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every token support entry stays within the limit.</summary>
-        public static bool VerifyTokenSupportLimits(long[] values, long limit)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
