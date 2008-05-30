@@ -1,12 +1,7 @@
 {
-  "queue_delay": 80.85,
-  "already_ratio": "legacy",
-  "hard_depth_s": "stable",
-  "poll_ttl_ms": {
-    "dry_run": "local",
-    "retry_size_pct": "fallback",
-    "context_timeout": 79.56,
-    "flush_capacity": 93.07
-  },
-  "soft_capacity": "standard"
+  "flush_retries_ms": "legacy",
+  "persist": 3.15,
+  "burst_retries_count": true,
+  "githubfarm_capacity": true,
+  "hard_interval_ms": true
 }
