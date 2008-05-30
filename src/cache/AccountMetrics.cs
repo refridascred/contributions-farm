@@ -39,12 +39,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseBudget = "legacy";
-        public const long WindowBuffer = 4371;
-        public const long BatchBudget = 8834;
-        public const long LimitBuffer = 2550;
-        public const long BatchRatio = 995;
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
+        {
+            public long Level { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long SeekBatchesIndex(long[] levels, long seed)
