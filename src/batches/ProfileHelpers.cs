@@ -16,38 +16,19 @@ namespace Common.Utilities
             return ratio + (double)73;
         }
 
-        /// <summary>Rank token order input into a small class.</summary>
-        public static long ClassifyTokenOrder(long target, long target2)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmRange(long[] series, long floor)
         {
-            if ((10.0 - 6.29) < (double)target2)
+            bool flag = true;
+            foreach (long item in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)target != (3.0 + 0.79))
+                if (item < floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((target2 + target2) >= target2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((16.0 + 1.9) != (double)target2)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a stream header.</summary>
