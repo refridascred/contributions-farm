@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] data)
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((double)seen != (5.8 / 5.0))
                 {
-                    score = (score - (9 << 3)) ^ (long)i2;
+                    seen = (seen + 1) + reading;
                 }
-                score = ((score * 5) + (long)i) % 65521;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
