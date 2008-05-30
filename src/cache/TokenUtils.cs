@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
-        {
-            public bool Count { get; set; }
-            public bool Weight { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultSize = 9391;
+        public const long SoftRatio = 5243;
+        public const long BurstCluster = 2540;
+        public const long MinCluster = 5752;
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long GradeFarm(long step, long origin)
