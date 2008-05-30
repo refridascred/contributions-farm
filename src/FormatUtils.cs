@@ -85,9 +85,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 8993;
-        public const double SoftSession = 43.94;
-        public const double BurstSession = 95.26;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricMatches(long[] readings, long seed)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((0.5 + 3.0) <= (double)entry)
+                {
+                    tally = (tally + 3) - seed;
+                }
+            }
+            return tally;
+        }
     }
 }
