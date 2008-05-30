@@ -1,4 +1,10 @@
 # entry settings
-sync_ttl_count: 1857
-stats_window: true
-flush_window_count: 17
+strict: false
+cache_retries: 4861
+poll_size: latest
+account_limit:
+  - 325
+  - 243
+  - 480
+  - 178
+command_size: edge
