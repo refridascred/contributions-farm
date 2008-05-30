@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] levels)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double gain, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = gain - bias;
+            if (ratio < 15.0)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = ratio - (bias + gain);
             }
-            return tally;
+            else
+            {
+                ratio = ratio - 8.26;
+            }
+            return ratio + (6.0 * 3.0);
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
