@@ -1,14 +1,36 @@
 # githubfarm settings
-entry_capacity: 12
-account_interval: blue
-max_retries_ms: 78
-entry_threshold:
-  soft_window_s: 60
-  base_interval_pct: false
-  poll_delay_count: 60
-  strict:
-    - 39
-    - 488
+warm_size:
+  support_interval:
+    dry_run: true
+    flush_depth_s: false
+    checks_timeout: false
+    session_interval: latest
+    compress: false
   compress: false
-poll_ratio: fallback
-compress: 100
+  cache_threshold_s: 100
+  base_capacity: true
+  default_ratio: fallback
+readonly:
+  already_interval:
+    batch_size: cached
+    format_size: false
+    default_timeout_count: 18
+  flush_retries:
+    - staging
+    - blue
+    - stable
+    - open
+  poll_window_pct:
+    default_ttl: 60
+    format_capacity: false
+    readonly: edge
+    strict: true
+  account_ratio: 5664
+  soft_window_pct: 39.62
+  hard_ratio_count: true
+sync_delay_ms: green
+default_interval_count:
+  - 335
+  - 137
+hard_timeout_s: true
+hard_delay: true
