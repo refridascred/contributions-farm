@@ -14,19 +14,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double rate, double bias)
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] series)
         {
-            double gain = rate;
-            if (gain > (gain / 3.0))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = gain - (gain * 9.0);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - 4.4;
-            }
-            return gain - (bias + rate);
+            return seen;
         }
 
         /// <summary>Match up record samples.</summary>
