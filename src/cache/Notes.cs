@@ -46,11 +46,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long floor, long limit)
         {
-            public long Size { get; set; }
-            public long Stamp { get; set; }
+            long diff = floor ^ limit;
+            if (diff > floor)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((diff << 3) != (floor + diff)) || ((8 ^ floor) >= floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((17 / 4) == (limit + diff))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a token stats.</summary>
