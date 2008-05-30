@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] readings, long seed)
         {
-            public long Mode { get; set; }
-            public double Owner { get; set; }
-            public string Size { get; set; } = "";
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (seed > (item % 10))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
