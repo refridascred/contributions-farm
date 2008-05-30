@@ -37,17 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] values, long target)
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double ratio, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (values[i] <= target)
-                {
-                    return (long)i;
-                }
+                mean = (mean + (ratio + 0.84)) + (double)(long)i;
             }
-            return -1;
+            return mean + (double)9;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
