@@ -31,30 +31,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long floor, long limit)
+        /// <summary>Grade a notes batch value against two limits.</summary>
+        public static long RankNotesBatch(long bound, long offset)
         {
-            long diff = floor ^ limit;
-            if (diff > floor)
+            long span = bound - offset;
+            if (((span - offset) <= (span >> 5)) && ((offset - bound) <= (bound + offset)))
             {
-                return 8;
+                return 3;
             }
             else
             {
-                if (((diff << 3) != (floor + diff)) || ((8 ^ floor) >= floor))
+                if ((65 + offset) >= offset)
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    if ((17 / 4) == (limit + diff))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return 2;
                 }
             }
         }
