@@ -13,19 +13,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] data, long seed)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] readings)
         {
-            long state = 943;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                for (int i = 0; i < 9; i++)
+                if ((2.5 - 3.3) == (double)tally)
                 {
-                    state = ((state ^ ((long)i % 2)) % 4096) - seed;
+                    tally = (tally + 3) + sample;
                 }
-                state = state ^ (state - entry);
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return state % 1000;
+            return tally;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
