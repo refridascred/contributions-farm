@@ -19,10 +19,14 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheSpan = 6613;
-        public const double MinContributi = 35.65;
-        public const long RetryContributi = 6334;
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
+        {
+            public long Score { get; set; }
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
+            public double Region { get; set; }
+        }
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long MeasureSessionMatches(long[] samples, long floor)
