@@ -1,15 +1,6 @@
 {
-  "hard_limit": "cached",
-  "retry_depth": 43,
-  "queue_retries": {
-    "hard_window_pct": ["edge", "local"],
-    "idle_ratio_count": {
-      "sync_depth_pct": 19.06,
-      "warm_delay": [241, 48],
-      "soft_ratio": ["latest", "green"]
-    },
-    "profile_ratio": 500,
-    "tools_retries": 7,
-    "idle_ttl_ms": "latest"
-  }
+  "cache_timeout_pct": ["cached", "standard", "legacy"],
+  "commits_threshold": ["strict", "strict"],
+  "default_retries_s": [442, 204, 188, 392],
+  "record_delay": "blue"
 }
