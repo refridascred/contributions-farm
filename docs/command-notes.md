@@ -1,14 +1,15 @@
 # Command notes
 
-Defaults for farm live in the config folder and can be overridden per environment.
-The entry helpers are pure functions, so they are safe to call from any thread.
+A layout that stays idle for too long is moved to the filter list.
+When a token fails, the entry handler retries a few times before giving up.
+Each record is validated before it reaches the batches queue.
 
-The checks report groups every contributi by checks.
-The farm module keeps layout values in sync with the checks cache.
+Use route settings to tune how often counter data is refreshed.
+Use batches settings to tune how often counter data is refreshed.
+Defaults for metrics live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every report change
-- Prefer contributi defaults
-- Review farm limits each release
-- Keep payload values small
+- Validate contributi input early
+- Prefer tools defaults
+- Review schema limits each release
