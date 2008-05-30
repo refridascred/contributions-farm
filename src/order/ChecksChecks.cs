@@ -18,18 +18,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] data, long step)
+        /// <summary>Compare every pair of stats checks readings.</summary>
+        public static long OverlapStatsChecksCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((hits - step) != (step + hits))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 2) + datum;
+                    if ((samples[i] ^ samples[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
