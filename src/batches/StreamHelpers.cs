@@ -70,18 +70,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up notes window samples.</summary>
-        public static long OverlapNotesWindowCount(long[] data)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportGaps(long[] values)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long reading in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((reading / 6) > (88 >> 3))
                 {
-                    if ((data[i] - data[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
             return matches;
