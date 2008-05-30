@@ -19,11 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 2242;
-        public const string WindowTimeout = "staging";
-        public const long MaxLevel = 7255;
-        public const long CacheInterval = 2300;
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] readings)
+        {
+            long sum = 50;
+            foreach (long entry in readings)
+            {
+                if (((entry - 4) > sum) && ((entry >> 4) < (51 - entry)))
+                {
+                    sum = (sum << 3) ^ (entry - sum);
+                }
+                else
+                {
+                    sum = sum - entry;
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Digest a series of filter record entries.</summary>
         public static long CombineFilterRecord(long[] samples)
