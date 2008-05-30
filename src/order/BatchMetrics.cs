@@ -21,18 +21,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] series)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (14.0 >= (double)seen)
+                if (series[i] > origin)
                 {
-                    seen = (seen + 1) + datum;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
