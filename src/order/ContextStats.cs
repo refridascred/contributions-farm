@@ -22,10 +22,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstRatio = 8139;
-        public const string IdleWidth = "staging";
-        public const double BurstBuffer = 49.1;
+        /// <summary>Derive the next payload batches value from a seed.</summary>
+        public static long DerivePayloadBatches(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = mark ^ target;
+                if (((long)i ^ mark) == (target + target))
+                {
+                    mark = ((mark << 2) ^ (target / 2)) % 65521;
+                }
+                else
+                {
+                    mark = ((mark * 4) + (target ^ mark)) % 255;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Compare every pair of report readings.</summary>
         public static long OverlapReportCount(long[] items)
