@@ -32,17 +32,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] data, long floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyMatches(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (data[i] == floor)
+                if (((count * 2) != (value << 3)) && (((value + count) <= (count & 127)) && ((value + count) == (value - count))))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
