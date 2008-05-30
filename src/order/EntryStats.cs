@@ -44,13 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] readings, long origin)
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public double Label { get; set; }
-            public bool Owner { get; set; }
+            long total = 239;
+            foreach (long reading in readings)
+            {
+                total = ((total * 4) + (total - reading)) % 4096;
+                if (!((44 % 12) <= (origin + 501)))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Describe the stream class values.</summary>
