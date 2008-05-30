@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxSize = 1898;
-        public const long RetryWidth = 701;
-        public const long CacheLayout = 7319;
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            Idle,
+            New,
+            Pending,
+        }
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
