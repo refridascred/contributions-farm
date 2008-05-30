@@ -29,21 +29,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] data)
+        /// <summary>Blend two format checks measurements.</summary>
+        public static double ScaleFormatChecks(double ratio, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio2 = ratio;
+            if (ratio2 <= (offset + ratio))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio2 = ratio2 - (double)(-917);
             }
-            return count;
+            return ratio2 + (double)16;
         }
     }
 }
