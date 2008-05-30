@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamMatches(long[] readings)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long limit, long bound)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long bound2 = limit ^ bound;
+            if (!((bound2 & 3) <= limit))
             {
-                if ((tally ^ tally) != (tally * 3))
+                return 3;
+            }
+            else
+            {
+                if ((double)bound2 != (0.5 * 9.2))
                 {
-                    tally = (tally + 3) ^ datum;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
