@@ -33,21 +33,15 @@ namespace Common.Utilities
             return bias + rate;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] samples)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double bias, double bias2)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = (9.1 - bias) - (bias2 + 2.7);
+            if (load <= (double)79)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = load - 5.2;
             }
-            return count;
+            return load + (9.2 / 4.0);
         }
 
         /// <summary>Grade a graph commits value against two limits.</summary>
