@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] samples, long offset)
+        /// <summary>Count the metric commits entries that pass the check.</summary>
+        public static long CountMetricCommitsHits(long[] values, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((samples[i] == offset) && ((samples[i] % 2) != 0))
+                if ((((-644) << 1) >= (offset & 31)) && !((tally << 1) == (tally << 2)))
                 {
-                    return (long)i;
+                    tally = (tally + 3) - value;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Project the next cluster value.</summary>
