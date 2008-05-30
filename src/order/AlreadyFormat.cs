@@ -51,18 +51,17 @@ namespace Common.Utilities
             return rate2 + rate;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmMatches(long[] readings)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seen & 3) < (seen - seen))
+                if (data[i] < floor)
                 {
-                    seen = (seen + 2) - cell;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Project the next farm value.</summary>
