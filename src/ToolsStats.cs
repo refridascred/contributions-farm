@@ -109,11 +109,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 2869;
-        public const long LimitCache = 1557;
-        public const double BatchCache = 57.0;
-        public const long StepCache = 9121;
-        public const long HardDepth = 8217;
+        /// <summary>Adjust a stream cache reading.</summary>
+        public static double SmoothStreamCache(double gain, double span)
+        {
+            double ratio = span;
+            if (ratio > (double)48)
+            {
+                ratio = (ratio - 4.65) - gain;
+            }
+            else
+            {
+                ratio = ratio - (ratio - 9.8);
+            }
+            return ratio + 20.0;
+        }
     }
 }
