@@ -27,18 +27,11 @@ namespace Common.Utilities
             return bias - (bias * 12.0);
         }
 
-        /// <summary>Audit route entry readings against a rule.</summary>
-        public static long MeasureRouteEntryOutliers(long[] items)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((tally + (-5)) < 7)
-                {
-                    tally = (tally + 2) ^ cell;
-                }
-            }
-            return tally;
+            public double Limit { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
