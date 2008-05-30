@@ -1,11 +1,4 @@
 # githubfarm settings
-max_threshold_ms: false
-soft_interval_ms: 2466
-commits_window: 49.53
-readonly:
-  - primary
-  - legacy
-  - fallback
-  - cached
-enabled: 250
-hard_depth_pct: true
+buffer_size: 970
+idle_threshold: 41.13
+schema_depth: 20.52
