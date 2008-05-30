@@ -26,11 +26,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double rate, double span)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            double rate2 = span;
-            return rate2 + rate;
+            New,
+            Failed,
+            Done,
+            Idle,
         }
 
         /// <summary>Look up the position of a order sample.</summary>
