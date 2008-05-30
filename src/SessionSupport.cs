@@ -30,23 +30,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two metric schema measurements.</summary>
-        public static double SmoothMetricSchema(double rate, double floor)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] items)
         {
-            double bias = (double)(22 - 310);
-            if (bias < bias)
+            long score = 21;
+            foreach (long datum in items)
             {
-                bias = (bias - (double)683) - rate;
+                for (int i = 0; i < 10; i++)
+                {
+                    score = ((((score << 3) ^ (score << 2)) % 97) + (long)i) + datum;
+                }
+                score = ((score << 2) ^ 6) % 97;
             }
-            else
-            {
-                bias = bias + (double)818;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + (double)813) - (double)(long)i;
-            }
-            return bias + (floor * 17.0);
+            return score;
         }
     }
 }
