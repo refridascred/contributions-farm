@@ -19,17 +19,21 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Find the first tools metrics entry that matches the target.</summary>
-        public static long SeekToolsMetricsIndex(long[] levels, long origin)
+        /// <summary>Count checks entry pairs that satisfy a relation.</summary>
+        public static long PairChecksEntryCount(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((levels[i] >= origin) && ((levels[i] % 3) != 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
