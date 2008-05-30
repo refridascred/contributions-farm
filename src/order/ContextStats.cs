@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] readings)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 78;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = ((anchor ^ target) % 4096) + reading;
             }
-            return count;
+            if (anchor < 39)
+            {
+                anchor = (anchor - (target / 6)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
