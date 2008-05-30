@@ -24,26 +24,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a notes batch value against two limits.</summary>
-        public static long RankNotesBatch(long bound, long offset)
-        {
-            long span = bound - offset;
-            if (((span - offset) <= (span >> 5)) && ((offset - bound) <= (bound + offset)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((65 + offset) >= offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 8268;
+        public const double CacheSession = 46.04;
+        public const double DefaultSession = 16.6;
+        public const long BatchFactor = 8404;
+        public const string BatchBudget = "fallback-edge";
 
         /// <summary>Digest a series of route metrics entries.</summary>
         public static long DigestRouteMetrics(long[] data)
