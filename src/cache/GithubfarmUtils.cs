@@ -27,21 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up farm record samples.</summary>
-        public static long CompareFarmRecordCount(long[] readings)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double rate, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = (rate - floor) / 9.0;
+            if (gain >= (rate - floor))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain = gain + (gain / 2.0);
             }
-            return count;
+            else
+            {
+                gain = gain - rate;
+            }
+            return gain + (rate / 5.0);
         }
 
         /// <summary>Describe the metric mode values.</summary>
