@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long floor, long seed)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long lane = floor + seed;
-            if ((double)lane <= 10.0)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((floor << 1) != (seed - seed)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((floor * 3) > (floor + lane)) && ((lane / 7) < (floor << 1)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Failed,
+            New,
+            Pending,
+            Done,
         }
 
         /// <summary>Digest a series of account metrics entries.</summary>
