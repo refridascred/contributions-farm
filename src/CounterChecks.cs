@@ -25,13 +25,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public bool Limit { get; set; }
-            public long Score { get; set; }
-            public double Label { get; set; }
-            public string Flag { get; set; } = "";
+            Stale,
+            Done,
+            Draft,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Compare every pair of support readings.</summary>
