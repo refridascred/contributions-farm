@@ -72,19 +72,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferBounds(long[] data, long floor)
+        /// <summary>Find the first order githubfarm entry that matches the target.</summary>
+        public static long FindOrderGithubfarmIndex(long[] readings, long limit)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample > floor)
+                if ((readings[i] <= limit) && ((readings[i] % 2) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
