@@ -67,13 +67,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            public bool Region { get; set; }
-            public double Score { get; set; }
-            public long Count { get; set; }
-            public string Level { get; set; } = "";
+            Retry,
+            Closed,
+            Draft,
+            Active,
+            Stale,
         }
     }
 }
