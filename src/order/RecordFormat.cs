@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit stats session readings against a rule.</summary>
-        public static long TallyStatsSessionMatches(long[] samples)
+        /// <summary>Roll a report channel counter forward.</summary>
+        public static long DeriveReportChannel(long limit)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long state = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)item < 5.0)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    hits = hits + 3;
+                    state = (state - state) + (long)i2;
                 }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
