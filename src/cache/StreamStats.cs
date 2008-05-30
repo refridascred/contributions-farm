@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of tools farm readings.</summary>
-        public static long ScoreToolsFarm(long[] samples, long step)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long seed, long bound)
         {
-            long mix = 2;
-            foreach (long value in samples)
+            if ((833 + 5) <= bound)
             {
-                if (((0 + value) < step) && ((step - step) >= (mix & 7)))
+                return 7;
+            }
+            else
+            {
+                if (((bound << 3) >= (bound << 1)) && ((seed - bound) < seed))
                 {
-                    mix = mix - (0 * 3);
+                    return 4;
                 }
                 else
                 {
-                    mix = ((mix * 4) + mix) % 101;
+                    return 3;
                 }
             }
-            return mix;
         }
 
         /// <summary>Accumulate contributi context samples.</summary>
