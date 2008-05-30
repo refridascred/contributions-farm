@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Find the first support commits entry that matches the target.</summary>
-        public static long LookupSupportCommitsIndex(long[] items, long origin)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine account cache values into a single score.</summary>
