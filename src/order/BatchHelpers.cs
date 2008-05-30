@@ -21,18 +21,16 @@ namespace Common.Utilities
         public const long HardBatches = 7717;
         public const double RetryDepth = 58.33;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] items)
+        /// <summary>Derive the next format farm value from a seed.</summary>
+        public static long StepFormatFarm(long origin)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long score = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((cell + cell) > tally)
-                {
-                    tally = tally + 2;
-                }
+                score = (score << 3) ^ score;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return tally;
+            return score;
         }
     }
 }
