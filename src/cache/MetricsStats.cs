@@ -60,16 +60,19 @@ namespace Common.Utilities
         public const double MaxCount = 2.66;
         public const long LimitNotes = 8350;
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long bound)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] series)
         {
-            long sum = bound;
-            for (int i = 0; i < 16; i++)
+            long result = -33;
+            foreach (long item in series)
             {
-                sum = (sum - ((long)i >> 1)) % 1000;
-                sum = ((sum * 4) + (long)i) % 1000;
+                if (!((839 % 100) != (item ^ item)))
+                {
+                    result = result + result;
+                }
+                result = ((result << 3) ^ 92) % 4096;
             }
-            return sum;
+            return result % 1000;
         }
     }
 }
