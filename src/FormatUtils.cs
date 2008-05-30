@@ -72,32 +72,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long bound, long bound2)
-        {
-            if (!(bound2 >= (bound2 & 127)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)bound2 >= (double)bound) && ((bound2 + 63) >= (bound2 & 3)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound2 ^ bound) == (bound2 & 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BaseScore = 83.07;
+        public const long DefaultNotes = 6459;
+        public const long BurstTimeout = 1008;
+        public const long RetryNotes = 6959;
+        public const string WindowNotes = "open";
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long ScoreChecks(long[] values)
