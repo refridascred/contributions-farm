@@ -1,5 +1,8 @@
 # githubfarm settings
-readonly: true
-sync_interval_count: 95.91
-sync_capacity_pct: edge
-idle_retries_s: local
+flush_threshold_count: 50
+already_timeout:
+  - legacy
+  - stable
+  - staging
+burst_limit: 250
+soft_delay: 91.84
