@@ -31,31 +31,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long limit, long origin)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long step)
         {
-            if (((6.2 * 3.05) > (double)limit) || ((limit - limit) != (limit + origin)))
+            long total = step;
+            for (int i = 0; i < 24; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((origin % 8) != (380 % 10)) && ((double)origin < (16.0 * 7.0)))
+                long next = 44 << 1;
+                next = (next - (779 + step)) % 97;
+                if ((total << 2) == (next & 1))
                 {
-                    return 5;
+                    total = (total * 2) + ((long)i << 1);
+                    next = ((next << 2) ^ (long)i) % 255;
                 }
                 else
                 {
-                    if ((17.0 - 2.5) >= (double)limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    total = total ^ total;
                 }
+                total = ((total * 4) + (long)i) % 1000;
             }
+            return total;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
