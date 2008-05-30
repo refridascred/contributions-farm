@@ -68,11 +68,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
-        {
-            public string Level { get; set; } = "";
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 8283;
+        public const double CacheLayout = 25.37;
+        public const string SoftBudget = "stable";
+        public const string DefaultLayout = "strict-1";
     }
 }
