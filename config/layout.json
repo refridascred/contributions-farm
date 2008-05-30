@@ -1,6 +1,18 @@
 {
-  "flush_threshold": false,
-  "max_depth": 50,
-  "persist": [489, 195, 405, 62],
-  "hard_limit_count": 1024
+  "burst_capacity_ms": 88.77,
+  "min_threshold_pct": 5581,
+  "persist": 2078,
+  "max_ratio": {
+    "sync_ttl_s": false,
+    "readonly": 359,
+    "idle_limit_s": 1024,
+    "idle_threshold": 40.75
+  },
+  "batch_interval_s": {
+    "min_ttl_s": 3069,
+    "queue_depth": 2639,
+    "token_delay": "edge",
+    "verbose": 84.96
+  },
+  "dry_run": "standard"
 }
