@@ -30,10 +30,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 1305;
-        public const double BatchContributi = 24.95;
-        public const long CacheSize = 8121;
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
+        {
+            public string Total { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Stamp { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Adjust a filter reading.</summary>
         public static double ProjectFilter(double ratio, double span)
