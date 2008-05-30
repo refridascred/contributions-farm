@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long floor, long limit)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            if ((52 + floor) < floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((3.0 * 3.19) == (double)floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Region { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
