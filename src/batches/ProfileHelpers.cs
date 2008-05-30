@@ -30,21 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] levels)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenMatches(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)entry < 6.26)
                 {
-                    if ((levels[i] - levels[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
