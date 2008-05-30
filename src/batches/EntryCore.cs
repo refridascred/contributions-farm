@@ -57,15 +57,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] levels)
-        {
-            long result = 912;
-            foreach (long value in levels)
-            {
-                result = ((result * 4) + (value ^ (-873))) % 255;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double DefaultScore = 45.06;
+        public const long IdleSpan = 7923;
+        public const long WindowScore = 703;
+        public const long StepGithubfarm = 7914;
+        public const string HardSize = "local-1";
     }
 }
