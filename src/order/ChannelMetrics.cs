@@ -35,11 +35,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 1328;
-        public const double DefaultCommand = 7.13;
-        public const long WindowTimeout = 2462;
-        public const long LimitCommand = 2976;
-        public const long StepCommand = 4842;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderMatches(long[] values, long target)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if (((long)values.Length >= tally) && ((5.0 - 5.6) > (double)sample))
+                {
+                    tally = (tally + 1) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
