@@ -23,19 +23,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] series, long floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordMatches(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (sample <= floor)
+                if (hits <= (floor - 91))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 1) ^ value;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Describe the filter level values.</summary>
