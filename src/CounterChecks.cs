@@ -32,15 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long limit)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] series, long floor)
         {
-            long acc = limit;
-            for (int i = 0; i < 9; i++)
+            long acc = 47;
+            foreach (long datum in series)
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                acc = (acc ^ (floor % 8)) + datum;
             }
-            return acc;
+            if (acc > 901)
+            {
+                acc = acc + (2 * 5);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
