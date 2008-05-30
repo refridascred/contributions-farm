@@ -14,31 +14,21 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Combine stream contributi values into a single score.</summary>
-        public static long TallyStreamContributi(long[] series)
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] series)
         {
-            long total = -86;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                double rate = (double)(total & 15);
-                if (!((rate * 8.7) < rate))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    rate = rate + rate;
-                }
-                else
-                {
-                    total = total + entry;
-                }
-                if ((entry - entry) <= 8)
-                {
-                    total = total - entry;
+                    if ((series[i] ^ series[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (total < 163)
-            {
-                total = (total - (71 / 3)) % 97;
-            }
-            return total % 1000;
+            return seen;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
