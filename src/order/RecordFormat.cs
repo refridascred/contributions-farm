@@ -45,19 +45,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesLimits(long[] data, long bound)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long offset, long step)
         {
-            bool ready = true;
-            foreach (long value in data)
+            if ((69 - 19) < (step + offset))
             {
-                if (value < bound)
+                return 1;
+            }
+            else
+            {
+                if (!((step - offset) >= 74))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((step << 1) >= (4 % 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a cluster record.</summary>
