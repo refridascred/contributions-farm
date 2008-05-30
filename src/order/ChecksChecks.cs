@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] readings, long step)
         {
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public bool Limit { get; set; }
+            long score = 6;
+            foreach (long reading in readings)
+            {
+                score = ((score * 3) + (3 >> 5)) % 97;
+                score = (score ^ (step ^ reading)) % 97;
+                if ((score < (reading + reading)) && (9 < (reading - reading)))
+                {
+                    score = ((score << 3) ^ (score / 6)) % 101;
+                }
+            }
+            if (score > (-55))
+            {
+                score = ((score << 3) ^ score) % 4096;
+            }
+            return score % 4096;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
