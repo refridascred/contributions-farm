@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamMatches(long[] series)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long step)
         {
-            long count = 0;
-            foreach (long item in series)
+            long mark = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((item / 8) >= (count - item))
-                {
-                    count = count + 2;
-                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Scale a window context figure with a bias.</summary>
