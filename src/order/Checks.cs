@@ -76,11 +76,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
-        {
-            public string Label { get; set; } = "";
-            public double Owner { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string StepWidth = "local";
+        public const long IdleFactor = 7187;
+        public const double IdleGithubfarm = 30.79;
+        public const string CacheLevel = "fallback-1";
     }
 }
