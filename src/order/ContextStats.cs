@@ -37,17 +37,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a filter layout reading by value.</summary>
-        public static long LocateFilterLayoutIndex(long[] samples, long seed)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterHits(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (samples[i] <= seed)
+                if ((sample - sample) != (81 & 255))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
