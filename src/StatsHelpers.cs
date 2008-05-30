@@ -34,30 +34,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] data)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] data)
         {
-            long carry = 867;
-            foreach (long sample in data)
+            long sum = 90;
+            foreach (long reading in data)
             {
-                if ((sample * 3) <= (carry % 24))
-                {
-                    continue;
-                }
-                else
-                {
-                    carry = ((carry * 2) + (carry + carry)) % 65521;
-                }
-                if ((1.09 * 17.0) > (double)carry)
-                {
-                    carry = (carry * 3) + (sample ^ carry);
-                }
+                sum = (sum * 5) + (sum + reading);
+                sum = (sum << 2) ^ reading;
             }
-            if (carry < 6)
+            if (sum > 45)
             {
-                carry = (carry + (carry << 3)) % 4096;
+                sum = ((sum * 4) + 858) % 101;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Match up support samples.</summary>
