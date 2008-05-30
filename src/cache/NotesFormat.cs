@@ -13,11 +13,27 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Combine route counter values into a single score.</summary>
+        public static long DigestRouteCounter(long[] items)
         {
-            public long Size { get; set; }
-            public double Owner { get; set; }
+            long mix = 47;
+            foreach (long datum in items)
+            {
+                if (mix >= (28 + 72))
+                {
+                    continue;
+                }
+                mix = (mix << 3) ^ mix;
+                if (((mix & 255) < (datum / 5)) || ((4.31 / 7.0) > (double)mix))
+                {
+                    mix = ((mix * 5) + datum) % 255;
+                }
+                else
+                {
+                    mix = ((mix * 5) + (36 << 3)) % 4096;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Count checks entry pairs that satisfy a relation.</summary>
