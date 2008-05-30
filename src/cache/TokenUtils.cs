@@ -33,11 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
+            public double Size { get; set; }
+            public bool Stamp { get; set; }
+            public bool Rank { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
