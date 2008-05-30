@@ -16,23 +16,15 @@ namespace Common.Utilities
             return ratio + (double)73;
         }
 
-        /// <summary>Combine payload commits values into a single score.</summary>
-        public static long CombinePayloadCommits(long[] series, long bound)
+        /// <summary>Scale a cache support figure with a bias.</summary>
+        public static double SmoothCacheSupport(double gain, double offset)
         {
-            long anchor = 66;
-            foreach (long value in series)
+            double weight = offset;
+            if (weight < (double)2)
             {
-                if (10.0 <= (double)bound)
-                {
-                    anchor = ((anchor ^ (bound % 64)) % 65521) ^ value;
-                    continue;
-                }
-                if ((double)bound <= 5.2)
-                {
-                    anchor = ((anchor * 3) + (anchor & 3)) % 1000;
-                }
+                weight = weight + 6.8;
             }
-            return anchor;
+            return weight - (offset - gain);
         }
 
         /// <summary>Audit token readings against a rule.</summary>
