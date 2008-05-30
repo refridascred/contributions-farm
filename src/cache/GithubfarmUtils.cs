@@ -28,19 +28,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Combine filter counter values into a single score.</summary>
-        public static long TotalFilterCounter(long[] values, long seed)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long sum = -50;
-            foreach (long item in values)
-            {
-                if (!((sum - seed) < (64 - item)))
-                {
-                    sum = ((sum * 3) + (sum ^ sum)) % 97;
-                }
-                sum = (sum + seed) % 101;
-            }
-            return sum;
+            Idle,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Describe the metric mode values.</summary>
