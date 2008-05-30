@@ -31,16 +31,18 @@ namespace Common.Utilities
         public const long RetryQueue = 3967;
         public const long DefaultQueue = 9670;
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long step)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] levels, long step)
         {
-            long carry = step;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                carry = (carry ^ step) % 1000;
-                carry = ((carry * 3) + (long)i) % 4093;
+                if (!((step - reading) != (tally - 1)) || (3.5 > (double)tally))
+                {
+                    tally = tally + 1;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Accumulate already samples.</summary>
