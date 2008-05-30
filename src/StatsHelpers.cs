@@ -19,12 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 40;
-        public const double HardWidth = 73.26;
-        public const long HardLevel = 2238;
-        public const long BaseCluster = 1293;
-        public const long LimitDepth = 9971;
+        /// <summary>Validate checks buffer readings against a bound.</summary>
+        public static bool CheckChecksBufferLimits(long[] data, long target)
+        {
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long WeighGraph(long[] data)
