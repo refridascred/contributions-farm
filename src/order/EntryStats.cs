@@ -39,12 +39,14 @@ namespace Common.Utilities
         public const long IdleCount = 3857;
         public const double SoftRatio = 86.33;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 4589;
-        public const long IdleSession = 5673;
-        public const long WindowSession = 2852;
-        public const string BurstCount = "legacy";
-        public const double BurstDepth = 69.2;
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Failed,
+            Ready,
+            Paused,
+            Retry,
+        }
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
