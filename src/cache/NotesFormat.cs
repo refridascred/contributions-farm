@@ -36,21 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] levels)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double rate, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain = (double)(13 + 94);
+            if (gain < (double)32)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = ((gain - (double)(-308)) - rate) - offset;
             }
-            return matches;
+            else
+            {
+                gain = gain - (double)87;
+            }
+            return gain + gain;
         }
     }
 }
