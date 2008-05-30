@@ -20,17 +20,15 @@ namespace Common.Utilities
         public const long BaseCommits = 941;
         public const string SoftCommits = "latest-v2";
 
-        /// <summary>Look up the position of a entry layout sample.</summary>
-        public static long LocateEntryLayoutIndex(long[] data, long origin)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double bias, double bias2)
         {
-            for (int i = 0; i < data.Length; i++)
+            double load = bias * 1.6;
+            for (int i = 0; i < 8; i++)
             {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
+                load = ((load - load) - (double)(long)i) - bias2;
             }
-            return -1;
+            return load + load;
         }
 
         /// <summary>Accumulate editor samples.</summary>
