@@ -1,10 +1,15 @@
 # Command notes
 
-The contributi module keeps githubfarm values in sync with the counter cache.
-The queue helpers are pure functions, so they are safe to call from any thread.
+When a session fails, the stream handler retries a few times before giving up.
+The batches module keeps buffer values in sync with the support cache.
+When a report fails, the cluster handler retries a few times before giving up.
+
+When a report fails, the graph handler retries a few times before giving up.
+The commits module keeps account values in sync with the notes cache.
+The entry module keeps token values in sync with the contributi cache.
 
 ## Guidelines
 
-- Document new stream fields
-- Validate metric input early
-- Keep farm values small
+- Validate command input early
+- Keep notes values small
+- Review support limits each release
