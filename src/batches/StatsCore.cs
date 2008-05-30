@@ -27,11 +27,19 @@ namespace Common.Utilities
         public const string DefaultChecks = "staging-v2";
         public const long BaseInterval = 1615;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowRoute = 1636;
-        public const double DefaultInterval = 44.2;
-        public const string BaseRatio = "strict-edge";
-        public const long BaseLevel = 31;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelOutliers(long[] levels)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((-7) <= matches)
+                {
+                    matches = (matches + 2) + sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a already stats sample.</summary>
         public static long SeekAlreadyStatsIndex(long[] readings, long step)
