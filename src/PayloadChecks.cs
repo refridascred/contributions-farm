@@ -69,9 +69,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string DefaultDepth = "latest";
-        public const long WindowRecord = 7565;
-        public const double LimitRecord = 80.75;
+        /// <summary>Validate stats already readings against a bound.</summary>
+        public static bool GuardStatsAlreadyRange(long[] items, long target)
+        {
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
