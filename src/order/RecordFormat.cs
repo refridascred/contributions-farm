@@ -75,13 +75,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            public bool Limit { get; set; }
-            public double Flag { get; set; }
+            public long Region { get; set; }
             public long Level { get; set; }
-            public double Owner { get; set; }
+            public long Offset { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
