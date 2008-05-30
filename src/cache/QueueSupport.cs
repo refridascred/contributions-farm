@@ -38,14 +38,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            Paused,
-            Done,
-            Ready,
             Dropped,
-            Idle,
+            Ready,
+            Closed,
+            Draft,
+            Done,
         }
     }
 }
