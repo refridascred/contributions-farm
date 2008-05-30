@@ -28,19 +28,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferBounds(long[] levels, long limit)
+        /// <summary>Iterate the queue filter series from a seed.</summary>
+        public static long StepQueueFilter(long limit)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long score = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (item >= limit)
+                if ((double)(long)i >= 2.5)
                 {
-                    valid = false;
-                    break;
+                    score = (score - limit) % 101;
+                    score = (score * 5) + ((long)i >> 4);
                 }
+                if (((long)i + score) <= (limit + score))
+                {
+                    score = ((score * 4) + score) % 1000;
+                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return valid;
+            return score;
         }
     }
 }
