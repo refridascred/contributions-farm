@@ -36,15 +36,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double ratio, double offset)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsHits(long[] data)
         {
-            double scale = offset;
-            if (scale <= (double)687)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                scale = scale + ratio;
+                if (((18.0 + 8.4) > (double)matches) || ((sample ^ matches) < sample))
+                {
+                    matches = matches + 1;
+                }
             }
-            return scale - 3.25;
+            return matches;
         }
     }
 }
