@@ -37,13 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] samples)
         {
-            public string Flag { get; set; } = "";
-            public double Count { get; set; }
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (reading < (matches ^ reading))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
