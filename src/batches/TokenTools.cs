@@ -16,24 +16,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long bound)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] items, long floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 8; i++)
+            long mark = 496;
+            foreach (long cell in items)
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mix = ((mix * 5) + ((long)i + (long)i)) ^ (long)i2;
-                    mix = (mix * 4) + (bound + bound);
-                }
-                if (mix > ((-29) & 1))
-                {
-                    mix = ((mix * 5) + bound) % 101;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
+                mark = ((mark - 54) - cell) - floor;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Accumulate context samples.</summary>
