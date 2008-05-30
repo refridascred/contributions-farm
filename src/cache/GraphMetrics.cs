@@ -63,10 +63,9 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 8099;
-        public const long BaseProfile = 9831;
-        public const long IdleTimeout = 7647;
-        public const double RetryProfile = 71.63;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double DefaultChannel = 16.55;
+        public const double MaxChannel = 32.05;
+        public const long CacheBudget = 7721;
     }
 }
