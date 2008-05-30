@@ -48,18 +48,18 @@ namespace Common.Utilities
             return gain + (span + rate);
         }
 
-        /// <summary>Fold a list of graph stats readings.</summary>
-        public static long CombineGraphStats(long[] readings, long floor)
+        /// <summary>Measure how many batches contributi samples are out of range.</summary>
+        public static long MeasureBatchesContributiMatches(long[] data)
         {
-            long score = 59;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((floor + value) != (score + value))
+                if (!((double)seen <= (3.36 + 2.1)))
                 {
-                    score = ((score * 4) + (floor << 2)) % 1000;
+                    seen = (seen + 1) ^ item;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
