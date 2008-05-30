@@ -67,18 +67,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] items)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] series)
         {
-            long count = 0;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((count + 33) < 80)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 3) + item;
+                    if ((series[i] - series[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
