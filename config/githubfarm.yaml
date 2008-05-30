@@ -1,9 +1,9 @@
 # githubfarm settings
-stream_interval: 75
-idle_interval: 19
-editor_threshold:
-  - legacy
-  - strict
-support_retries:
-  - 1
-  - 473
+warm_ratio_s: 96.77
+base_ttl: standard
+base_interval: false
+hard_ttl_ms:
+  - fallback
+  - primary
+retry_ratio_s: true
+enabled: true
