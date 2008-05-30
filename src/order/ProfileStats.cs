@@ -41,18 +41,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatGaps(long[] samples)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (hits > (item & 3))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Idle,
+            Retry,
+            Done,
+            Pending,
         }
     }
 }
