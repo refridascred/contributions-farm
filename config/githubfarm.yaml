@@ -1,19 +1,10 @@
 # githubfarm settings
-stats_interval:
-  - 147
-  - 184
-  - 474
-  - 205
-soft_capacity:
-  hard_retries_count:
-    commits_depth: open
-    flush_limit_ms: 17.43
-    context_ratio: true
-    soft_ttl_pct: local
-  hard_delay: green
-  farm_timeout:
-    - strict
-    - strict
-    - local
-idle_retries_s: green
-batch_retries_s: 8128
+flush_retries_s:
+  sync_ratio: edge
+  soft_delay_s: eu-west
+  order_timeout: 38.09
+  batches_window: 500
+audit:
+  - 19
+  - 31
+warm_ratio_s: fallback
