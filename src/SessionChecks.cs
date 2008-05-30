@@ -34,15 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long target)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long carry = target;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            public bool Count { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a counter options.</summary>
