@@ -34,11 +34,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
-        {
-            public long Stamp { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowTimeout = 9619;
+        public const double BatchDepth = 21.23;
+        public const string WindowRatio = "open-v2";
+        public const long BatchRoute = 5306;
     }
 }
