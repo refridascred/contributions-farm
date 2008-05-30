@@ -45,17 +45,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] readings, long bound)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long step, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (step > (step * 5))
             {
-                if ((readings[i] < bound) && ((readings[i] % 2) == 0))
+                return 8;
+            }
+            else
+            {
+                if (49 >= (offset + step))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (!((9 + offset) > (779 >> 5)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a order info.</summary>
