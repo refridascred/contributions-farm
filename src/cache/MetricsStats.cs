@@ -20,23 +20,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many token commits samples are out of range.</summary>
-        public static long TallyTokenCommitsGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((2 < (matches - matches)) && !((3.21 + 0.5) <= (double)matches))
-                {
-                    matches = (matches + 2) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheCount = 9065;
+        public const long SoftRatio = 5219;
+        public const double CacheSize = 35.33;
 
         /// <summary>Check that every token record entry stays within the limit.</summary>
         public static bool ValidateTokenRecordLimits(long[] readings, long target)
