@@ -46,23 +46,22 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double scale, double floor)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] items)
         {
-            double load = floor;
-            if (load <= 1.71)
+            long acc = 98;
+            foreach (long value in items)
             {
-                load = (load + (floor / 4.0)) - scale;
+                if ((double)value < (3.8 / 8.0))
+                {
+                    break;
+                }
+                if ((8.72 * 10.0) <= (double)value)
+                {
+                    acc = acc + (value - 135);
+                }
             }
-            else
-            {
-                load = load + (floor + load);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (5.65 + load)) + (double)(long)i;
-            }
-            return load + floor;
+            return acc;
         }
     }
 }
