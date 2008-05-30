@@ -1,12 +1,12 @@
 {
-  "command_size": {
-    "batch_ttl_ms": 60,
-    "dry_run": 250,
-    "already_limit": ["green", "standard", "eu-west"],
-    "poll_interval": true,
-    "command_limit": ["staging", "stable"],
-    "readonly": [148, 130, 306, 423]
-  },
-  "cache_delay_s": false,
-  "sync_interval_pct": 63
+  "base_delay_ms": 250,
+  "dry_run": 6,
+  "compress": 30,
+  "burst_window_pct": 3264,
+  "audit": {
+    "burst_interval_ms": 20.77,
+    "compress": 98.94,
+    "stream_interval": ["standard", "staging", "cached", "edge"],
+    "cache_ttl_pct": true
+  }
 }
