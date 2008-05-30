@@ -38,18 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many githubfarm filter samples are out of range.</summary>
-        public static long TallyGithubfarmFilterOutliers(long[] samples, long step)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsMatches(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (tally < (tally + tally))
+                if (((item / 6) <= 73) && !((count / 7) > (5 + 554)))
                 {
-                    tally = ((tally + 3) + sample) + step;
+                    count = (count + 2) - floor;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Match up commits samples.</summary>
