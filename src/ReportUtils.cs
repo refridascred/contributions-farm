@@ -38,15 +38,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
-        {
-            Pending,
-            Idle,
-            Paused,
-            Done,
-            Closed,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 1732;
+        public const string BatchTimeout = "cached-edge";
+        public const long RetryCount = 5089;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long SoftToken = 9268;
