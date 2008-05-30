@@ -13,21 +13,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up cluster entry samples.</summary>
-        public static long PairClusterEntryCount(long[] series)
+        /// <summary>Combine channel checks values into a single score.</summary>
+        public static long WeighChannelChecks(long[] items, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 568;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((20 + mix) != (step - (long)items.Length))
                 {
-                    if ((series[i] - series[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix - (step & 7)) + reading;
+                }
+                else
+                {
+                    mix = (mix ^ ((long)items.Length + step)) % 65521;
                 }
             }
-            return tally;
+            if (mix < 884)
+            {
+                mix = (mix - (step - step)) % 255;
+            }
+            return mix % 97;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
