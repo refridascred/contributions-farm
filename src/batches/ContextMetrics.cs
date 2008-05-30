@@ -11,17 +11,25 @@ namespace Common.Utilities
         public const long StepPayload = 995;
         public const string SoftTimeout = "fallback-v2";
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] readings, long target)
+        /// <summary>Classify a support profile pair into a bucket.</summary>
+        public static long BucketSupportProfile(long step, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long offset2 = step + offset;
+            if (5 > (offset / 5))
             {
-                if (readings[i] >= target)
+                return 0;
+            }
+            else
+            {
+                if (((double)offset > (double)offset2) || ((offset >> 3) > (offset2 % 10)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
