@@ -37,19 +37,26 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatBounds(long[] items, long bound)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] series)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long mark = 773;
+            foreach (long value in series)
             {
-                if (cell < bound)
+                if ((value - mark) > (mark + mark))
                 {
-                    valid = false;
-                    break;
+                    mark = mark ^ value;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (value - value);
                 }
             }
-            return valid;
+            if (mark > 2)
+            {
+                mark = (mark - mark) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
