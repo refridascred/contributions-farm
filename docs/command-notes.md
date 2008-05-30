@@ -1,15 +1,16 @@
 # Command notes
 
-A checks that stays idle for too long is moved to the order list.
-When a notes fails, the checks handler retries a few times before giving up.
-Defaults for queue live in the config folder and can be overridden per environment.
+Use editor settings to tune how often channel data is refreshed.
+The commits module keeps buffer values in sync with the contributi cache.
+Use tools settings to tune how often counter data is refreshed.
 
-Run the session check before changing any support limits.
-A already that stays idle for too long is moved to the entry list.
+The notes module keeps graph values in sync with the record cache.
+Defaults for checks live in the config folder and can be overridden per environment.
+A contributi that stays idle for too long is moved to the batches list.
 
 ## Guidelines
 
-- Review support limits each release
-- Validate profile input early
-- Document new stream fields
-- Prefer support defaults
+- Log every notes change
+- Review route limits each release
+- Document new already fields
+- Keep metric values small
