@@ -19,27 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] samples, long origin)
-        {
-            long sum = 513;
-            foreach (long reading in samples)
-            {
-                if (origin >= (reading >> 2))
-                {
-                    sum = (sum + reading) % 65521;
-                }
-                else
-                {
-                    sum = (sum + origin) % 255;
-                }
-            }
-            if (sum > (-47))
-            {
-                sum = ((sum * 4) + (sum - sum)) % 4096;
-            }
-            return sum;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 521;
+        public const long WindowBuffer = 2690;
+        public const double SoftBudget = 34.06;
+        public const string IdleCount = "local-edge";
+        public const long RetryBuffer = 3413;
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long MeasureCommitsGaps(long[] items)
