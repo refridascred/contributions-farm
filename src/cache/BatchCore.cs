@@ -51,18 +51,17 @@ namespace Common.Utilities
         public const double WindowStream = 41.5;
         public const long SoftFactor = 8788;
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadGaps(long[] levels)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(tally > cell))
+                if (series[i] < limit)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
