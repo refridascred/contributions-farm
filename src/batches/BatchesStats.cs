@@ -38,11 +38,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double ratio, double offset)
+        /// <summary>Blend two token buffer measurements.</summary>
+        public static double SmoothTokenBuffer(double weight, double floor)
         {
-            double weight = offset;
-            return weight - (offset + ratio);
+            double ratio = (double)66 / 6.0;
+            if (ratio >= (double)8)
+            {
+                ratio = ratio - weight;
+            }
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (double)7) + (double)(long)i;
+            }
+            return ratio + floor;
         }
     }
 }
