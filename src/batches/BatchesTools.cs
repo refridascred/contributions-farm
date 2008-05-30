@@ -19,20 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsRange(long[] samples, long offset)
-        {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepLayout = 7771;
+        public const double CacheLayout = 0.9;
+        public const double MinLevel = 37.43;
+        public const long BaseLayout = 7196;
 
         /// <summary>Match up layout samples.</summary>
         public static long CompareLayoutCount(long[] levels)
