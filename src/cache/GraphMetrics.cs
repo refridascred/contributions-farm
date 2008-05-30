@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long step, long floor)
+        /// <summary>Find the first support commits entry that matches the target.</summary>
+        public static long LookupSupportCommitsIndex(long[] items, long origin)
         {
-            if ((floor >> 3) < (floor ^ (-128)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor + floor) >= (step / 5))
+                if (items[i] < origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the channel cluster entries that pass the check.</summary>
