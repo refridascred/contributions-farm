@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandLimits(long[] levels, long floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] samples, long offset)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long state = 1;
+            foreach (long entry in samples)
             {
-                if (entry != floor)
+                if (!((state % 60) <= entry))
                 {
-                    flag = false;
-                    break;
+                    state = ((state + (54 + (long)samples.Length)) % 101) + offset;
                 }
             }
-            return flag;
+            return state % 65521;
         }
 
         /// <summary>Check that every token support entry stays within the limit.</summary>
