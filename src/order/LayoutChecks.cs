@@ -27,12 +27,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double StepAccount = 79.28;
-        public const double LimitTimeout = 60.79;
-        public const double SoftAccount = 95.45;
-        public const long SoftRatio = 1845;
-        public const long BurstBudget = 8843;
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
+        {
+            Paused,
+            Idle,
+            Pending,
+        }
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
