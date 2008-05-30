@@ -43,11 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 1533;
-        public const string WindowDepth = "cached-v2";
-        public const long RetryDepth = 2107;
-        public const string RetryOrder = "fallback";
+        /// <summary>Count the farm payload entries that pass the check.</summary>
+        public static long AuditFarmPayloadGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading - (long)readings.Length) == (count + reading))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long WindowTimeout = 4885;
