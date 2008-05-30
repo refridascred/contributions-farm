@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a counter schema figure with a bias.</summary>
-        public static double AdjustCounterSchema(double weight, double bias)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] levels)
         {
-            double rate = weight;
-            if (rate <= 5.0)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate + (double)62;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return rate - bias;
+            return hits;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
