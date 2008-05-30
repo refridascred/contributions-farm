@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate stream cluster samples.</summary>
-        public static long TotalStreamCluster(long[] readings, long limit)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] levels, long floor)
         {
-            long acc = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (acc - (limit * 4)) ^ item;
+                if ((levels[i] >= floor) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (acc > 5)
-            {
-                acc = acc ^ limit;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
