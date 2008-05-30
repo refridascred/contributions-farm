@@ -27,18 +27,39 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] values, long offset)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long target, long floor)
         {
-            long score = 5;
-            foreach (long entry in values)
+            long lane = target + floor;
+            if ((20.0 - 1.12) >= (double)floor)
             {
-                if (((8 * 2) < (9 + offset)) && ((802 * 5) > (score - entry)))
+                return 4;
+            }
+            else
+            {
+                if ((floor << 3) == (lane + floor))
                 {
-                    score = ((score * 2) + (offset + entry)) % 255;
+                    return 5;
+                }
+                else
+                {
+                    if ((948 + 123) <= (target << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((floor << 1) >= floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Accumulate tools samples.</summary>
