@@ -34,16 +34,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long offset)
+        /// <summary>Combine report session values into a single score.</summary>
+        public static long CombineReportSession(long[] series)
         {
-            long sum = offset;
-            for (int i = 0; i < 9; i++)
+            long anchor = 5;
+            foreach (long value in series)
             {
-                sum = sum + (offset * 2);
-                sum = ((sum * 3) + (long)i) % 101;
+                anchor = anchor + (value + value);
+                if ((anchor >= (value & 31)) || ((914 + 769) >= ((-834) + value)))
+                {
+                    anchor = anchor - (anchor ^ anchor);
+                }
             }
-            return sum;
+            return anchor % 1000;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
