@@ -25,19 +25,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double ratio, double floor)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            double weight = 7.0;
-            if (weight <= floor)
-            {
-                weight = weight - (weight + ratio);
-            }
-            else
-            {
-                weight = weight - (floor * 5.1);
-            }
-            return weight - (ratio * 16.0);
+            public double Weight { get; set; }
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Rank payload window input into a small class.</summary>
