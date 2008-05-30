@@ -1,14 +1,5 @@
 {
-  "cache_delay_pct": ["blue", "green"],
-  "poll_interval_count": 1795,
-  "retry_ratio_count": 49.35,
-  "retry_limit": 7,
-  "idle_timeout": {
-    "warm_interval": "legacy",
-    "token_ratio": "blue",
-    "retry_ratio_ms": ["legacy", "cached", "blue"],
-    "burst_depth_s": "primary",
-    "cache_retries": "fallback",
-    "tools_interval": 30
-  }
+  "persist": "stable",
+  "base_ttl_ms": 99,
+  "stats_depth": ["open", "blue", "latest"]
 }
