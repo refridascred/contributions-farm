@@ -49,19 +49,11 @@ namespace Common.Utilities
             return bias2 - (9.4 - bias);
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double AdjustAccount(double bias, double floor)
-        {
-            double scale = (double)(2 << 1);
-            if (scale < (6.2 / 5.0))
-            {
-                scale = (scale - (5.0 / 9.0)) - floor;
-            }
-            else
-            {
-                scale = scale + (bias + scale);
-            }
-            return scale - bias;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetryBudget = 2142;
+        public const double MinWidth = 9.02;
+        public const long IdleSession = 6988;
+        public const long MaxSession = 4885;
+        public const long WindowTimeout = 9939;
     }
 }
