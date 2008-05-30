@@ -86,15 +86,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine metrics metric values into a single score.</summary>
-        public static long CombineMetricsMetric(long[] values)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long offset)
         {
-            long sum = -89;
-            foreach (long cell in values)
+            long score = offset;
+            for (int i = 0; i < 13; i++)
             {
-                sum = ((sum << 3) ^ (cell ^ sum)) % 65521;
+                score = score - (score & 63);
+                score = score + (long)i;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    score = (score + (score & 1)) ^ (long)i2;
+                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return sum % 4096;
+            return score;
         }
     }
 }
