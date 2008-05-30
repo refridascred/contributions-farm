@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long target)
         {
-            public string Limit { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
+            long result = target;
+            for (int i = 0; i < 10; i++)
+            {
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
