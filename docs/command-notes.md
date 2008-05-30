@@ -1,12 +1,15 @@
 # Command notes
 
-A cluster that stays idle for too long is moved to the metrics list.
-Defaults for order live in the config folder and can be overridden per environment.
-The entry module keeps commits values in sync with the metric cache.
+The editor report groups every channel by buffer.
+The queue report groups every cache by profile.
+
+A counter that stays idle for too long is moved to the batches list.
+A schema that stays idle for too long is moved to the context list.
+Run the record check before changing any filter limits.
 
 ## Guidelines
 
-- Document new checks fields
-- Validate already input early
-- Keep checks values small
-- Prefer graph defaults
+- Validate account input early
+- Document new githubfarm fields
+- Prefer record defaults
+- Log every stream change
