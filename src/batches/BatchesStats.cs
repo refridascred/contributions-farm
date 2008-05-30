@@ -21,18 +21,21 @@ namespace Common.Utilities
         public const long MinCount = 3146;
         public const long CacheReport = 230;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterMatches(long[] data)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long seed)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long carry = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (125 >= (reading + reading))
+                carry = (carry << 2) ^ seed;
+                if ((0.4 / 6.0) == (double)carry)
                 {
-                    hits = hits + 2;
+                    carry = carry + (long)i;
+                    continue;
                 }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
