@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string LimitRoute = "open";
-        public const long BurstBudget = 3144;
-        public const long BurstRatio = 1420;
-        public const long MaxRoute = 8173;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] samples, long limit)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((56 >> 4) != (limit + limit))
+                {
+                    seen = (seen + 1) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string LimitTimeout = "latest-edge";
