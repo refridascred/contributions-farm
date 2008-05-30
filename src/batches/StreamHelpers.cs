@@ -55,11 +55,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] levels)
         {
-            public bool Weight { get; set; }
-            public bool Token { get; set; }
+            long result = 832;
+            foreach (long datum in levels)
+            {
+                result = ((result << 3) ^ 74) ^ datum;
+            }
+            if (result < 35)
+            {
+                result = (result << 3) ^ 3;
+            }
+            return result;
         }
 
         /// <summary>Match up notes window samples.</summary>
