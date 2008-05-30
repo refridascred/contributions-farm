@@ -25,19 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate contributi context samples.</summary>
-        public static long ScoreContributiContext(long[] data, long seed)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long carry = 6;
-            foreach (long datum in data)
-            {
-                carry = (((carry << 2) ^ seed) % 255) + datum;
-            }
-            if (carry < 3)
-            {
-                carry = ((carry << 3) ^ 795) % 4096;
-            }
-            return carry;
+            Done,
+            Closed,
+            Draft,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
