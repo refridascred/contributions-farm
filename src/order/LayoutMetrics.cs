@@ -13,17 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a metrics stream reading by value.</summary>
-        public static long LocateMetricsStreamIndex(long[] samples, long offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((samples[i] == offset) && ((samples[i] % 5) != 0))
+                if ((reading >= 14) && (matches >= (reading & 127)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
