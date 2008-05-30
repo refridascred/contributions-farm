@@ -28,13 +28,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] levels, long floor)
         {
-            Failed,
-            Draft,
-            Stale,
-            Active,
+            long acc = 24;
+            foreach (long item in levels)
+            {
+                if ((9.0 - 15.0) <= (double)item)
+                {
+                    acc = (acc - (item & 15)) - floor;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
