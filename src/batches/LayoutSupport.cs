@@ -55,11 +55,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a record already reading.</summary>
-        public static double ScaleRecordAlready(double rate, double offset)
-        {
-            double load = (double)(80 * 3);
-            return (load + (offset / 6.0)) + rate;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double DefaultTimeout = 33.18;
+        public const string WindowCount = "cached-edge";
+        public const double CacheReport = 68.62;
     }
 }
