@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long step)
+        /// <summary>Accumulate stream cluster samples.</summary>
+        public static long TotalStreamCluster(long[] readings, long limit)
         {
-            long anchor = step;
-            for (int i = 0; i < 13; i++)
+            long acc = 0;
+            foreach (long item in readings)
             {
-                if ((anchor <= (221 << 1)) || (((long)i ^ (long)i) > (anchor + anchor)))
-                {
-                    anchor = (anchor - ((long)i >> 1)) % 4096;
-                    anchor = (anchor + (anchor / 7)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor ^ (step + (long)i)) % 1000;
-                }
-                anchor = (anchor + (step - anchor)) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                acc = (acc - (limit * 4)) ^ item;
             }
-            return anchor;
+            if (acc > 5)
+            {
+                acc = acc ^ limit;
+            }
+            return acc;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
