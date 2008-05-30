@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] data)
+        /// <summary>Scale a window context figure with a bias.</summary>
+        public static double AdjustWindowContext(double ratio, double span)
         {
-            long total = 4;
-            foreach (long datum in data)
-            {
-                if ((datum >> 3) >= (total - datum))
-                {
-                    total = (total ^ datum) % 255;
-                }
-                total = ((total << 3) ^ (52 + 6)) % 4096;
-            }
-            return total;
+            double mean = 18.0 - ratio;
+            return (mean + 12.0) + span;
         }
 
         /// <summary>Locate a cache notes reading by value.</summary>
