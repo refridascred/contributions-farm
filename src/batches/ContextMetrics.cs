@@ -32,19 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderLimits(long[] items, long bound)
+        /// <summary>Roll a route stream counter forward.</summary>
+        public static long SeriesRouteStream(long target)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long result = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (value <= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Rank support input into a small class.</summary>
