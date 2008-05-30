@@ -47,21 +47,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] items)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] readings, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum <= floor)
                 {
-                    if ((items[i] - items[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
