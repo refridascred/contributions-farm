@@ -14,11 +14,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinCount = 7773;
-        public const double DefaultContext = 13.92;
-        public const long WindowContext = 3345;
-        public const long SoftContext = 1104;
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long LimitCount = 6845;
