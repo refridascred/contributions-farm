@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiMatches(long[] items, long offset)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((33 ^ 461) < (tally / 6))
-                {
-                    tally = ((tally + 3) ^ item) + offset;
-                }
-            }
-            return tally;
+            public string Region { get; set; } = "";
+            public bool Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Project the next commits value.</summary>
