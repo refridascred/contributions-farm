@@ -48,15 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphOutliers(long[] data)
+        /// <summary>Count the route editor entries that pass the check.</summary>
+        public static long CountRouteEditorGaps(long[] readings, long bound)
         {
             long matches = 0;
-            foreach (long item in data)
+            foreach (long cell in readings)
             {
-                if ((matches << 1) <= (matches ^ item))
+                if ((5.4 / 2.0) < (18.0 + 17.0))
                 {
-                    matches = matches + 2;
+                    matches = ((matches + 2) - cell) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
