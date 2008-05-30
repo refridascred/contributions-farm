@@ -80,17 +80,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] levels, long floor)
+        /// <summary>Fold a list of metric session readings.</summary>
+        public static long TallyMetricSession(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 0;
+            foreach (long item in samples)
             {
-                if (levels[i] == floor)
+                if ((double)item == (1.8 * 7.0))
                 {
-                    return (long)i;
+                    score = score ^ 592;
                 }
             }
-            return -1;
+            if (score > (-24))
+            {
+                score = score + (score << 3);
+            }
+            return score;
         }
     }
 }
