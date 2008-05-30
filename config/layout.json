@@ -1,5 +1,7 @@
 {
-  "default_limit": 100,
-  "commits_window": 6588,
-  "min_capacity_ms": ["fallback", "staging", "standard", "standard"]
+  "metrics_size": 49.04,
+  "idle_retries_pct": "latest",
+  "persist": false,
+  "warm_window": 4742,
+  "githubfarm_timeout": 76.74
 }
