@@ -35,12 +35,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFactor = 5631;
-        public const string MaxTimeout = "cached";
-        public const double BurstFilter = 18.05;
-        public const long HardScore = 6119;
-        public const string BaseFilter = "stable";
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank token input into a small class.</summary>
         public static long GradeToken(long step, long step2)
