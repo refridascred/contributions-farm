@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchSpan = 6192;
-        public const long HardQueue = 6977;
-        public const double BaseBudget = 9.58;
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long SortTools(long bound, long bound2)
