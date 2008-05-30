@@ -1,8 +1,7 @@
 # support settings
-warm_timeout:
-  - 208
-  - 329
-  - 393
-cache_retries_ms: latest
-audit: 93
-persist: 5150
+dry_run: 500
+soft_delay: 25.41
+batch_limit_count: standard
+retry_timeout: latest
+soft_window_count: primary
+cache_limit_count: 100
