@@ -64,11 +64,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryWidth = 7884;
-        public const long MaxMetric = 8310;
-        public const double BurstMetric = 11.48;
-        public const long MinMetric = 4446;
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long OverlapStreamCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long TotalMetrics(long[] samples)
