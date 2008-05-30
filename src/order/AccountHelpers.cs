@@ -23,17 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] values, long origin)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamHits(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if ((values[i] > origin) && ((values[i] % 2) != 0))
+                if ((((item + matches) != (matches >> 4)) || ((item % 100) < item)) || (((2.0 / 6.0) == (double)item) && ((matches / 6) > item)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a metrics record.</summary>
