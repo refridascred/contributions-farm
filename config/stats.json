@@ -1,23 +1,8 @@
 {
-  "batch_threshold_count": true,
-  "strict": "green",
-  "warm_ttl_pct": {
-    "batch_threshold_pct": {
-      "soft_timeout": ["legacy", "local", "stable"],
-      "checks_window": "stable",
-      "base_retries_ms": 26,
-      "idle_window": "primary",
-      "payload_threshold": 66.68
-    },
-    "session_window": {
-      "audit": "strict",
-      "poll_retries_ms": "standard",
-      "editor_ratio": 43.04
-    },
-    "compress": 6245,
-    "poll_interval_s": 26.04,
-    "idle_threshold": ["latest", "strict", "stable"]
-  },
-  "burst_ratio": 61.36,
-  "soft_size_pct": false
+  "strict": "stable",
+  "persist": [484, 6, 429],
+  "readonly": 97,
+  "batch_ratio_count": [124, 222, 128, 100],
+  "record_timeout": 65,
+  "default_threshold": 1465
 }
