@@ -19,21 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count schema order pairs that satisfy a relation.</summary>
-        public static long MatchSchemaOrderCount(long[] items)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 76;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = ((acc ^ 713) % 97) ^ cell;
             }
-            return seen;
+            return acc % 1000;
         }
 
         /// <summary>Accumulate record samples.</summary>
