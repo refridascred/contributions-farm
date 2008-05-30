@@ -1,14 +1,13 @@
 {
-  "idle_timeout_count": false,
-  "flush_size_pct": false,
-  "hard_threshold_ms": [469, 89],
-  "tools_size": {
-    "batch_threshold_pct": 87.05,
-    "dry_run": 30,
-    "min_delay": true,
-    "command_threshold": "blue",
-    "hard_depth_s": ["primary", "fallback", "eu-west"],
-    "already_interval": 52
+  "profile_window": 7606,
+  "flush_depth": false,
+  "soft_limit_ms": ["edge", "fallback", "strict"],
+  "compress": {
+    "flush_ttl": 65,
+    "poll_interval_count": 250,
+    "hard_size": ["green", "latest"],
+    "farm_window": "strict"
   },
-  "soft_delay_pct": "blue"
+  "strict": 3315,
+  "retry_depth": 28
 }
