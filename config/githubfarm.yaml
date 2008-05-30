@@ -1,21 +1,11 @@
 # githubfarm settings
-warm_depth_ms: 11.14
-retry_threshold_pct: 500
-commits_retries:
-  burst_capacity:
-    dry_run: 64
-    layout_capacity: stable
-    strict: 11
-    order_size: 1024
-  batch_window:
-    batches_ratio: 3858
-    max_ttl_count:
-      - 295
-      - 253
-      - 185
-    metric_interval: false
-  window_ttl: 1030
-  burst_window_count: 34.5
-  enabled: 11.42
-  verbose: 10
-default_capacity: cached
+contributi_depth:
+  filter_size:
+    - standard
+    - staging
+  warm_interval_pct: 70.96
+  sync_delay: 1701
+  stream_ratio: 5814
+  enabled: cached
+poll_size_pct: strict
+idle_ttl_s: 1580
