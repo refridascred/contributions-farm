@@ -1,14 +1,16 @@
 # Command notes
 
-Defaults for tools live in the config folder and can be overridden per environment.
-Run the layout check before changing any editor limits.
+The context module keeps already values in sync with the graph cache.
+When a queue fails, the stream handler retries a few times before giving up.
+Each support is validated before it reaches the record queue.
 
-Run the already check before changing any format limits.
-When a support fails, the batch handler retries a few times before giving up.
+Each schema is validated before it reaches the layout queue.
+Run the queue check before changing any batch limits.
+Each queue is validated before it reaches the payload queue.
 
 ## Guidelines
 
-- Validate batches input early
-- Keep entry values small
-- Review farm limits each release
-- Prefer profile defaults
+- Review commits limits each release
+- Prefer payload defaults
+- Log every channel change
+- Validate already input early
