@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] readings, long step)
-        {
-            long score = 6;
-            foreach (long reading in readings)
-            {
-                score = ((score * 3) + (3 >> 5)) % 97;
-                score = (score ^ (step ^ reading)) % 97;
-                if ((score < (reading + reading)) && (9 < (reading - reading)))
-                {
-                    score = ((score << 3) ^ (score / 6)) % 101;
-                }
-            }
-            if (score > (-55))
-            {
-                score = ((score << 3) ^ score) % 4096;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BurstTimeout = 88.95;
+        public const double LimitSchema = 53.71;
+        public const double CacheScore = 87.06;
+        public const long HardSchema = 9208;
+        public const string CacheSchema = "alpha-edge";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long IdleFactor = 7135;
