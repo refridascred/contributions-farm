@@ -30,15 +30,17 @@ namespace Common.Utilities
             return bias + (double)432;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] levels, long seed)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] series, long offset)
         {
-            long mix = 320;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (((mix * 2) + (item ^ item)) % 1000) + seed;
+                if ((series[i] > offset) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
