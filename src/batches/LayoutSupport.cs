@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] values)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
