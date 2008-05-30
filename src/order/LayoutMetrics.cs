@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ScaleQueue(double ratio, double floor)
-        {
-            double bias = floor * 0.9;
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias + ratio;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleFactor = 2659;
+        public const double WindowCache = 39.92;
+        public const double BurstCache = 92.22;
 
         /// <summary>Match up format token samples.</summary>
         public static long MatchFormatTokenCount(long[] levels)
