@@ -29,16 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long bound)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long total = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                total = total + (total << 3);
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            public double Token { get; set; }
+            public double Level { get; set; }
         }
     }
 }
