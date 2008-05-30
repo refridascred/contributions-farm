@@ -1,14 +1,16 @@
 # Command notes
 
-The session helpers are pure functions, so they are safe to call from any thread.
-Each payload is validated before it reaches the queue queue.
-Keep entry and editor names short and lowercase.
-
+A command that stays idle for too long is moved to the commits list.
 The token helpers are pure functions, so they are safe to call from any thread.
-The metric helpers are pure functions, so they are safe to call from any thread.
+A farm that stays idle for too long is moved to the command list.
+
+A report that stays idle for too long is moved to the support list.
+Keep command and context names short and lowercase.
+Defaults for counter live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep notes values small
-- Document new stats fields
-- Validate already input early
+- Prefer githubfarm defaults
+- Validate support input early
+- Keep buffer values small
+- Document new commits fields
