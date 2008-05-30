@@ -40,39 +40,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long limit, long origin)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] data, long offset)
         {
-            long prev = limit - origin;
-            if (origin <= (158 + prev))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin <= (6.0 * 0.43))
+                if (data[i] < offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin + prev) == (limit * 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((3 % 12) != (limit + limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
