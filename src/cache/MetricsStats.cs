@@ -20,19 +20,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] readings, long target)
+        /// <summary>Measure how many token commits samples are out of range.</summary>
+        public static long TallyTokenCommitsGaps(long[] readings)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (datum > target)
+                if ((2 < (matches - matches)) && !((3.21 + 0.5) <= (double)matches))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
