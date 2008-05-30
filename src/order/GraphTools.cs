@@ -47,19 +47,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] levels, long seed)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] samples, long bound)
         {
-            long anchor = 305;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor + (975 & 127)) % 255) ^ item;
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor < (-74))
-            {
-                anchor = (anchor - seed) % 255;
-            }
-            return anchor % 97;
+            return -1;
         }
     }
 }
