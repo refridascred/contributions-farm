@@ -29,17 +29,20 @@ namespace Common.Utilities
             return drift - (double)55;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] values, long step)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((values[i] < step) && ((values[i] % 3) != 0))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return (long)i;
+                    score = (score - (long)i2) % 1000;
+                    score = (score - (score + score)) % 1000;
                 }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
     }
 }
