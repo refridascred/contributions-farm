@@ -58,18 +58,32 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileOutliers(long[] samples, long step)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long target, long bound)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long offset = target + bound;
+            if ((target >> 3) >= (offset & 3))
             {
-                if ((268 << 3) >= (datum % 16))
+                return 5;
+            }
+            else
+            {
+                if ((bound < 700) || (target > (48 % 10)))
                 {
-                    hits = (hits + 3) + step;
+                    return 6;
+                }
+                else
+                {
+                    if (target <= (target - bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
