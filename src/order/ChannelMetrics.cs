@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            public long Flag { get; set; }
-            public double Mode { get; set; }
+            Retry,
+            Idle,
+            Draft,
+            Active,
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
