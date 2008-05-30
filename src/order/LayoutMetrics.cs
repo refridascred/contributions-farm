@@ -19,9 +19,14 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowSpan = 4363;
-        public const long BurstDepth = 9229;
-        public const long HardCache = 1640;
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
+        {
+            Active,
+            Paused,
+            Closed,
+            Retry,
+            Locked,
+        }
     }
 }
