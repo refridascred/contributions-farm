@@ -32,19 +32,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] series, long floor)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long offset)
         {
-            long acc = 47;
-            foreach (long datum in series)
+            long acc = offset;
+            for (int i = 0; i < 13; i++)
             {
-                acc = (acc ^ (floor % 8)) + datum;
+                acc = (acc ^ (long)i) % 255;
+                acc = (acc - (offset % 60)) % 65521;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            if (acc > 901)
-            {
-                acc = acc + (2 * 5);
-            }
-            return acc % 65521;
+            return acc;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
