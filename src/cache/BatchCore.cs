@@ -49,11 +49,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string WindowEntry = "fallback-v2";
-        public const long BurstDepth = 8469;
-        public const string BatchLevel = "latest-1";
-        public const string BurstLevel = "local-1";
-        public const double MaxEntry = 32.48;
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
+        {
+            Synced,
+            Active,
+            Dropped,
+            New,
+        }
     }
 }
