@@ -65,15 +65,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double rate, double offset)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long step, long origin)
         {
-            double drift = 2.5;
-            if (drift > (drift * 5.48))
+            long cur = step + origin;
+            if (!((9 * 3) != (origin - origin)))
             {
-                drift = drift + (rate * 16.0);
+                return 7;
             }
-            return drift + (offset * 6.9);
+            else
+            {
+                if ((double)step >= (2.0 + 5.9))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((cur >> 4) < origin) && ((cur & 7) <= cur))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
