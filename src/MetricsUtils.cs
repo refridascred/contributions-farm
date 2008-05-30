@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const string LimitSpan = "alpha-v2";
         public const string HardWidth = "primary";
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] values, long seed)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterOutliers(long[] readings)
         {
-            long anchor = 360;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                anchor = ((((anchor << 3) ^ (anchor << 1)) % 101) + reading) + seed;
+                if (!!((matches << 1) > (matches + matches)))
+                {
+                    matches = (matches + 3) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (anchor < (-578))
-            {
-                anchor = (anchor << 2) ^ (44 & 127);
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
