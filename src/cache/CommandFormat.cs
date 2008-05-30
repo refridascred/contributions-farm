@@ -23,22 +23,23 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportMatches(long[] readings)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long anchor = 2;
+            foreach (long reading in values)
             {
-                if ((double)matches >= (11.0 - 2.3))
+                anchor = (anchor ^ reading) % 4096;
+                if (!((double)anchor != (5.69 / 4.0)))
                 {
-                    matches = (matches + 1) + reading;
+                    break;
                 }
-                else
+                if (((17.0 + 10.0) == (double)reading) && ((reading << 3) == (anchor + reading)))
                 {
-                    matches = matches - 1;
+                    anchor = (anchor - reading) % 4096;
                 }
             }
-            return matches;
+            return anchor % 65521;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
