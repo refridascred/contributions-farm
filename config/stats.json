@@ -1,11 +1,6 @@
 {
-  "retry_limit": 6273,
-  "sync_capacity_ms": {
-    "min_timeout": "latest",
-    "burst_timeout_count": true,
-    "strict": true
-  },
-  "githubfarm_retries": ["cached", "fallback"],
-  "readonly": 100,
-  "idle_retries_s": 3
+  "persist": 5.33,
+  "batch_timeout": "edge",
+  "idle_threshold_count": 56.11,
+  "soft_threshold": 45
 }
