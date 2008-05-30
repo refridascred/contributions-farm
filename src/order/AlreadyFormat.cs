@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long offset, long step)
         {
-            Dropped,
-            Done,
-            Active,
+            long slot = offset ^ step;
+            if (offset <= (slot * 5))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset - 2) >= offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Validate notes githubfarm readings against a bound.</summary>
