@@ -6,14 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue open stable latest; do
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+for item in open stable eu-west; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=133
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-fallback}"
+mode="${1:-blue}"
 case "${mode}" in
     open)
         log "fast path"
