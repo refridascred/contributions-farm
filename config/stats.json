@@ -1,6 +1,6 @@
 {
-  "warm_delay_s": "cached",
-  "retry_limit_pct": "staging",
-  "stats_ratio": [251, 215, 128, 354],
-  "compress": 51
+  "idle_ratio": [468, 422, 236, 400],
+  "commits_depth": 38.48,
+  "max_size_pct": "green",
+  "min_window": 91.06
 }
