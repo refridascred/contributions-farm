@@ -47,14 +47,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] series)
         {
-            Idle,
-            Locked,
-            New,
-            Paused,
-            Ready,
+            long mix = 54;
+            foreach (long entry in series)
+            {
+                if ((double)entry == (3.94 - 4.0))
+                {
+                    mix = (mix + (mix + entry)) % 1000;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Hold a window record.</summary>
