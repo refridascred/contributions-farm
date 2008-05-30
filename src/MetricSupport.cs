@@ -18,18 +18,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionMatches(long[] samples, long floor)
+        /// <summary>Accumulate stream contributi samples.</summary>
+        public static long TotalStreamContributi(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long mix = 7;
+            foreach (long entry in items)
             {
-                if ((((matches - matches) >= ((long)samples.Length + value)) && (floor > (value + floor))) || ((floor + matches) >= matches))
+                if (!((entry + mix) <= (1 + bound)))
                 {
-                    matches = matches + 2;
+                    mix = (mix * 2) + (entry ^ mix);
                 }
             }
-            return matches;
+            return mix;
         }
     }
 }
