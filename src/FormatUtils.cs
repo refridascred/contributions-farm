@@ -103,24 +103,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank payload format input into a small class.</summary>
-        public static long SortPayloadFormat(long seed, long seed2)
-        {
-            if (((seed2 ^ seed) >= (seed / 3)) && (2 >= (seed + seed2)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (seed < (seed - seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BatchSpan = 59.18;
+        public const string CacheToken = "strict-1";
+        public const double BaseBudget = 96.27;
     }
 }
