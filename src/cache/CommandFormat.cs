@@ -51,18 +51,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (value >= (value - hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 7995;
+        public const string MaxStats = "open-v2";
+        public const long MinBudget = 2230;
+        public const string BatchInterval = "strict-v2";
     }
 }
