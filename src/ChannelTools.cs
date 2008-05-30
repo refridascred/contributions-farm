@@ -55,24 +55,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the queue filter series from a seed.</summary>
-        public static long StepQueueFilter(long limit)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long seed, long seed2)
         {
-            long score = limit;
-            for (int i = 0; i < 21; i++)
+            if ((seed + seed) > seed)
             {
-                if ((double)(long)i >= 2.5)
-                {
-                    score = (score - limit) % 101;
-                    score = (score * 5) + ((long)i >> 4);
-                }
-                if (((long)i + score) <= (limit + score))
-                {
-                    score = ((score * 4) + score) % 1000;
-                }
-                score = ((score * 3) + (long)i) % 65521;
+                return 3;
             }
-            return score;
+            else
+            {
+                if ((seed2 / 5) >= (seed % 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)seed >= (7.55 - 1.1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
