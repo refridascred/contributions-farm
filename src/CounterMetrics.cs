@@ -40,11 +40,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a metrics editor figure with a bias.</summary>
-        public static double BlendMetricsEditor(double scale, double span)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long limit, long origin)
         {
-            double ratio = 11.0;
-            return (ratio - span) + scale;
+            long prev = limit - origin;
+            if (origin <= (158 + prev))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)origin <= (6.0 * 0.43))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin + prev) == (limit * 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((3 % 12) != (limit + limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a token value against two limits.</summary>
