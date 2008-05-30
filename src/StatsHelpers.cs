@@ -60,19 +60,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] values)
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] levels)
         {
-            long score = -7;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = score ^ datum;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (score < 9)
-            {
-                score = (score << 2) ^ score;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Hold a already header.</summary>
