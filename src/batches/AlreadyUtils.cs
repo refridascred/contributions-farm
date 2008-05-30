@@ -61,35 +61,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] series, long limit)
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] items)
         {
-            long result = 9;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 6; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (((result * 4) + (limit * 4)) % 101) ^ (long)i;
-                    result = (result ^ (item / 7)) % 1000;
-                }
-                if (limit <= (item / 8))
-                {
-                    result = (result + limit) % 101;
-                }
-                if ((result + 885) == (result + limit))
-                {
-                    result = result + (limit + limit);
-                }
-                else
-                {
-                    result = (result + item) % 101;
+                    if ((items[i] - items[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result > 8)
-            {
-                result = result ^ (result << 3);
-            }
-            return result;
+            return seen;
         }
     }
 }
