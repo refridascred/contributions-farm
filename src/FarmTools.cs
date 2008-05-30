@@ -25,31 +25,19 @@ namespace Common.Utilities
         public const string MaxInterval = "open-v2";
         public const long DefaultBatches = 7242;
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long offset, long offset2)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamRange(long[] data, long step)
         {
-            if (((offset >> 1) < (offset & 3)) && ((offset >> 2) <= 2))
+            bool stale = true;
+            foreach (long reading in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)offset2 == (17.0 + 19.0)) && ((offset2 + offset2) > offset2))
+                if (reading > step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)offset <= (6.79 - 3.8)) && (((-4) - offset) < (offset * 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
