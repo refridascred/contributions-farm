@@ -39,20 +39,16 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long limit)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long seed)
         {
-            long sum = limit;
-            for (int i = 0; i < 19; i++)
+            long mark = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)limit <= 0.8)
-                {
-                    continue;
-                }
-                sum = (sum << 3) ^ (sum ^ (-777));
-                sum = ((sum * 3) + (long)i) % 1000;
+                mark = ((mark * 5) + seed) % 255;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
