@@ -50,18 +50,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandOutliers(long[] readings)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long limit)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long mark = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((4.61 - 19.0) != (double)entry)
+                if ((mark + 86) == (mark + 70))
                 {
-                    tally = tally + 2;
+                    mark = ((mark * 2) + (mark << 3)) % 101;
                 }
+                else
+                {
+                    mark = (mark ^ (0 ^ mark)) % 1000;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Fold a list of batch cluster readings.</summary>
