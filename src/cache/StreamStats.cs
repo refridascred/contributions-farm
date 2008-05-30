@@ -34,17 +34,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a route cache sample.</summary>
-        public static long SeekRouteCacheIndex(long[] values, long target)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] readings, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 557;
+            foreach (long datum in readings)
             {
-                if (values[i] > target)
+                if ((target >= datum) || (((long)readings.Length ^ target) < target))
                 {
-                    return (long)i;
+                    anchor = (anchor + 916) % 1000;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
