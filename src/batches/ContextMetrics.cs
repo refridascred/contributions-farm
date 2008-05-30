@@ -54,18 +54,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the githubfarm counter entries that pass the check.</summary>
-        public static long TallyGithubfarmCounterHits(long[] series)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long floor)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long mix = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((sample ^ 87) >= (sample + sample))
-                {
-                    matches = matches + 2;
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
     }
 }
