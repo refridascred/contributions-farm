@@ -27,21 +27,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long floor)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long bound, long floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 23; i++)
+            long span = bound + floor;
+            if (floor < (floor + floor))
             {
-                if (!((floor + floor) < (floor << 3)))
-                {
-                    mark = (mark << 3) ^ mark;
-                }
-                mark = ((mark * 3) + (mark - floor)) % 97;
-                mark = ((mark << 3) ^ (floor ^ floor)) % 255;
-                mark = ((mark * 2) + (long)i) % 97;
+                return 3;
             }
-            return mark;
+            else
+            {
+                if (((bound << 2) < (bound ^ bound)) || ((floor - floor) >= (span + 524)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((span >> 1) >= 0)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((span & 3) >= bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
