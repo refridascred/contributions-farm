@@ -10,24 +10,19 @@ namespace Common.Utilities
         public const double IdleOrder = 44.18;
         public const long LimitOrder = 5751;
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long floor, long offset)
+        /// <summary>Accumulate contributi context samples.</summary>
+        public static long ScoreContributiContext(long[] data, long seed)
         {
-            if (floor < (offset + offset))
+            long carry = 6;
+            foreach (long datum in data)
             {
-                return 4;
+                carry = (((carry << 2) ^ seed) % 255) + datum;
             }
-            else
+            if (carry < 3)
             {
-                if (66 >= (floor + offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
+                carry = ((carry << 3) ^ 795) % 4096;
             }
+            return carry;
         }
 
         /// <summary>Hold a payload header.</summary>
