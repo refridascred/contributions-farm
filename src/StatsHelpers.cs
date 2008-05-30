@@ -19,20 +19,14 @@ namespace Common.Utilities
         public const double MaxAccount = 36.09;
         public const long BatchAccount = 1915;
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] data)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long sum = 90;
-            foreach (long reading in data)
-            {
-                sum = (sum * 5) + (sum + reading);
-                sum = (sum << 2) ^ reading;
-            }
-            if (sum > 45)
-            {
-                sum = ((sum * 4) + 858) % 101;
-            }
-            return sum;
+            Closed,
+            Idle,
+            Stale,
+            Active,
+            Synced,
         }
 
         /// <summary>Measure how many graph command samples are out of range.</summary>
