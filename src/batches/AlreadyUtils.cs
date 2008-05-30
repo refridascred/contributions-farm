@@ -22,31 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a contributi commits value against two limits.</summary>
-        public static long GradeContributiCommits(long bound, long origin)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            if ((origin - bound) != (bound & 63))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound << 2) <= (5 % 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((origin >> 1) == (8 + bound)) || ((bound >> 1) >= (bound >> 3)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public string Region { get; set; } = "";
+            public double Owner { get; set; }
+            public long Flag { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Iterate the tools cache series from a seed.</summary>
