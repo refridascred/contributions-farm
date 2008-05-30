@@ -33,18 +33,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionMatches(long[] levels)
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((double)matches < (7.72 + 5.9)) || ((matches + matches) <= matches)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 2) + value;
+                    if ((readings[i] ^ readings[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
