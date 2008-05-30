@@ -33,31 +33,17 @@ namespace Common.Utilities
         public const string BaseRatio = "strict-edge";
         public const long BaseLevel = 31;
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long bound, long limit)
+        /// <summary>Look up the position of a already stats sample.</summary>
+        public static long SeekAlreadyStatsIndex(long[] readings, long step)
         {
-            if ((double)limit != (0.98 - 11.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((bound - bound) <= ((-5) & 31)) || (bound > (limit * 5)))
+                if (readings[i] < step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit + limit) <= limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a queue header.</summary>
