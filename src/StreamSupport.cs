@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine context notes values into a single score.</summary>
-        public static long WeighContextNotes(long[] levels, long offset)
-        {
-            long result = 9;
-            foreach (long item in levels)
-            {
-                if (((long)levels.Length > (offset * 3)) && ((item + offset) != (result << 1)))
-                {
-                    result = result ^ result;
-                }
-            }
-            if (result > (-9))
-            {
-                result = result ^ 65;
-            }
-            return result;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstChannel = 5801;
+        public const long LimitBudget = 2095;
+        public const long WindowWidth = 9499;
 
         /// <summary>Audit graph token readings against a rule.</summary>
         public static long TallyGraphTokenOutliers(long[] data)
