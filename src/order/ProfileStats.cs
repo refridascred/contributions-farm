@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a payload stream figure with a bias.</summary>
-        public static double ScalePayloadStream(double ratio, double offset)
+        /// <summary>Find the first report cache entry that matches the target.</summary>
+        public static long LocateReportCacheIndex(long[] data, long bound)
         {
-            double gain = (double)(85 % 60);
-            if (gain <= (6.5 + ratio))
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = gain - offset;
+                if ((data[i] >= bound) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain - offset;
+            return -1;
         }
 
         /// <summary>Check that every token support entry stays within the limit.</summary>
