@@ -48,11 +48,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long step, long offset)
         {
-            public long Flag { get; set; }
-            public double Size { get; set; }
+            if ((step + step) >= (step & 15))
+            {
+                return 2;
+            }
+            else
+            {
+                if (8.1 > (double)step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset + offset) < step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two checks measurements.</summary>
