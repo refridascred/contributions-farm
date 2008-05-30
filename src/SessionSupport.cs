@@ -25,23 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double gain, double bias)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long origin)
         {
-            double drift = gain;
-            if (drift > 5.06)
+            long acc = origin;
+            for (int i = 0; i < 11; i++)
             {
-                drift = drift - bias;
+                acc = (acc << 3) ^ (82 * 5);
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    acc = (((acc << 3) ^ origin) % 101) ^ (long)i2;
+                    acc = acc - origin;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            else
-            {
-                drift = drift + (6.94 * 5.8);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - (double)55;
+            return acc;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
