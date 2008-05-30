@@ -39,12 +39,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double WindowWidth = 44.83;
-        public const long MaxRecord = 3141;
-        public const string WindowRecord = "staging-edge";
-        public const long CacheRecord = 8334;
-        public const long BurstRecord = 4846;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BaseWidth = "alpha-v2";
+        public const string LimitInterval = "alpha-v2";
+        public const double WindowEntry = 39.79;
+        public const long RetryTimeout = 6969;
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
