@@ -21,19 +21,32 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double gain, double bias)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long floor, long target)
         {
-            double drift = (10.0 + 4.0) - gain;
-            if (drift < (double)923)
+            long edge = floor ^ target;
+            if (((floor / 2) <= (85 ^ target)) || ((double)edge > (double)4))
             {
-                drift = drift + (5.9 / 6.0);
+                return 0;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                drift = (drift - bias) + (double)(long)i;
+                if ((edge % 16) <= 74)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((751 / 9) >= edge)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return drift - gain;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
