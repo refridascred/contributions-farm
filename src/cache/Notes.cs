@@ -24,10 +24,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryLevel = 5621;
-        public const double HardSize = 30.66;
-        public const long MaxEditor = 6472;
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
+        {
+            Draft,
+            Synced,
+            Failed,
+            Idle,
+        }
 
         /// <summary>Digest a series of route metrics entries.</summary>
         public static long DigestRouteMetrics(long[] data)
