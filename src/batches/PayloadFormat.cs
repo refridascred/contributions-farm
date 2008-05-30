@@ -24,11 +24,15 @@ namespace Common.Utilities
             return scale - (double)8;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double weight, double span)
         {
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
+            double scale = (double)49 + (weight / 8.0);
+            if (scale <= span)
+            {
+                scale = scale + weight;
+            }
+            return scale + scale;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
