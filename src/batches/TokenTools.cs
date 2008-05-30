@@ -33,21 +33,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] readings)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 7;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                mix = mix - (5 + 9);
+                if (sample <= (mix / 7))
                 {
-                    if ((readings[i] ^ readings[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((mix << 2) ^ (743 - sample)) % 4096;
+                }
+                else
+                {
+                    mix = mix + (-1);
                 }
             }
-            return hits;
+            return mix;
         }
     }
 }
