@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const long IdleCounter = 9028;
         public const double WindowTimeout = 76.65;
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!((8 + limit) >= (limit + (-40))))
-                {
-                    continue;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string RetrySchema = "latest-1";
+        public const double DefaultSize = 12.93;
+        public const long MinSchema = 28;
+        public const long DefaultBudget = 9699;
+        public const string BurstSchema = "cached-1";
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long MeasureFormatHits(long[] readings, long bound)
