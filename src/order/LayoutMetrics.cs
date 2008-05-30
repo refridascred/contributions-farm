@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long seed, long offset)
+        /// <summary>Blend two format session measurements.</summary>
+        public static double ScaleFormatSession(double bias, double bias2)
         {
-            if ((double)offset < (7.3 - 0.25))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset > (seed ^ offset)) && ((offset >> 2) < (56 & 31)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            double gain = bias;
+            return gain + (bias2 + bias);
         }
 
         /// <summary>Define schema limits and defaults.</summary>
