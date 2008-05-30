@@ -1,13 +1,5 @@
 # support settings
-soft_delay_pct:
-  - blue
-  - standard
-dry_run: 3
-compress: 60
-support_retries:
-  - 461
-  - 316
-  - 185
-  - 251
-retry_ttl: false
-readonly: 1024
+min_delay_pct: 29.05
+dry_run: eu-west
+batch_ttl: 9
+warm_ratio: green
