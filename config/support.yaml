@@ -1,8 +1,13 @@
 # support settings
-poll_size: true
-base_ratio_ms: standard
-flush_limit:
-  - 109
-  - 194
-  - 92
-  - 373
+soft_delay_pct:
+  - blue
+  - standard
+dry_run: 3
+compress: 60
+support_retries:
+  - 461
+  - 316
+  - 185
+  - 251
+retry_ttl: false
+readonly: 1024
