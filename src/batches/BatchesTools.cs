@@ -36,13 +36,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double ratio, double offset)
         {
-            Draft,
-            Active,
-            Synced,
-            Locked,
+            double scale = offset;
+            if (scale <= (double)687)
+            {
+                scale = scale + ratio;
+            }
+            return scale - 3.25;
         }
     }
 }
