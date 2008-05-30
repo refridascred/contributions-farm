@@ -24,13 +24,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            Active,
-            Ready,
             Draft,
-            Paused,
+            Synced,
+            Idle,
+            Closed,
+            Locked,
         }
 
         /// <summary>Check that every token record entry stays within the limit.</summary>
