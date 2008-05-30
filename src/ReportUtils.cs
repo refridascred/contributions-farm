@@ -22,17 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a schema session reading by value.</summary>
-        public static long LocateSchemaSessionIndex(long[] items, long bound)
+        /// <summary>Adjust a token reading.</summary>
+        public static double AdjustToken(double scale, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < bound) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias2 = (double)95;
+            return ((bias2 + (double)887) + scale) + bias;
         }
 
         /// <summary>Describe the already mode values.</summary>
