@@ -32,26 +32,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] items)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long total = 5;
-            foreach (long cell in items)
-            {
-                if ((total & 7) == (total & 31))
-                {
-                    total = (total * 5) + (cell % 60);
-                }
-                else
-                {
-                    total = (total * 2) + (75 & 31);
-                }
-                if (cell >= (584 % 7))
-                {
-                    break;
-                }
-            }
-            return total;
+            public double Level { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
