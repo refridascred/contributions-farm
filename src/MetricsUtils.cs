@@ -10,24 +10,19 @@ namespace Common.Utilities
         public const string LimitSpan = "alpha-v2";
         public const string HardWidth = "primary";
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long offset, long floor)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] values, long seed)
         {
-            if (((floor ^ offset) < (offset / 8)) || ((floor / 8) == ((-8) & 31)))
+            long anchor = 360;
+            foreach (long reading in values)
             {
-                return 0;
+                anchor = ((((anchor << 3) ^ (anchor << 1)) % 101) + reading) + seed;
             }
-            else
+            if (anchor < (-578))
             {
-                if ((1.2 - 7.0) > (double)floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
+                anchor = (anchor << 2) ^ (44 & 127);
             }
+            return anchor;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
