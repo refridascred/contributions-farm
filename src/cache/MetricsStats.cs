@@ -34,11 +34,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long bound)
         {
-            public bool Count { get; set; }
-            public long Offset { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                if (!(((double)(long)i != (6.8 - 8.62)) && ((6.5 * 4.0) <= (double)(long)i)))
+                {
+                    mix = mix - bound;
+                }
+                mix = (mix + (long)i) % 65521;
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Blend two token command measurements.</summary>
