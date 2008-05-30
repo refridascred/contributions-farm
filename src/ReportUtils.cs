@@ -13,13 +13,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
-        {
-            Done,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchInterval = 1420;
+        public const long WindowSize = 8482;
+        public const double WindowMetrics = 1.61;
+        public const long RetryFactor = 9580;
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long DigestFilter(long[] series)
