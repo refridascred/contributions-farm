@@ -23,18 +23,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksHits(long[] values)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((4.77 + 3.5) != (double)cell)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Failed,
+            Retry,
+            Paused,
+            Closed,
+            Ready,
         }
     }
 }
