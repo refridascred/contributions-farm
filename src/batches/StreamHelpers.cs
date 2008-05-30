@@ -27,19 +27,21 @@ namespace Common.Utilities
             return gain - (bias + rate);
         }
 
-        /// <summary>Combine report editor values into a single score.</summary>
-        public static long WeighReportEditor(long[] series, long floor)
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] series)
         {
-            long result = -176;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = ((result - (result / 8)) % 101) ^ (long)i;
+                    if ((series[i] + series[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                result = result ^ (value + floor);
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Fold a list of already window readings.</summary>
