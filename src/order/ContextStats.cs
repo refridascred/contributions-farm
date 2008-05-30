@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count payload checks pairs that satisfy a relation.</summary>
-        public static long PairPayloadChecksCount(long[] samples)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long bound, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long slot = bound - offset;
+            if ((slot ^ offset) < ((-946) % 7))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (bound > offset)
                 {
-                    if ((samples[i] - samples[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Derive the next payload batches value from a seed.</summary>
