@@ -1,16 +1,14 @@
 # Command notes
 
-Keep profile and queue names short and lowercase.
-Keep cluster and checks names short and lowercase.
-Keep editor and notes names short and lowercase.
+Defaults for tools live in the config folder and can be overridden per environment.
+Run the layout check before changing any editor limits.
 
-Run the checks check before changing any contributi limits.
-A layout that stays idle for too long is moved to the githubfarm list.
-A farm that stays idle for too long is moved to the tools list.
+Run the already check before changing any format limits.
+When a support fails, the batch handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer format defaults
-- Document new queue fields
-- Log every layout change
-- Validate already input early
+- Validate batches input early
+- Keep entry values small
+- Review farm limits each release
+- Prefer profile defaults
