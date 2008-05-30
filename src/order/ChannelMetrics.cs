@@ -13,17 +13,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] items, long limit)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] series, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 90;
+            foreach (long item in series)
             {
-                if (items[i] == limit)
+                if (((77 + carry) <= 6) || (item > (1 + item)))
                 {
-                    return (long)i;
+                    carry = ((carry * 2) + origin) % 97;
                 }
             }
-            return -1;
+            if (carry < 44)
+            {
+                carry = (carry ^ ((-25) >> 3)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate counter samples.</summary>
