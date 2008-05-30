@@ -21,12 +21,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] data, long floor)
         {
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
+            long state = 6;
+            foreach (long item in data)
+            {
+                state = ((state - state) % 101) - floor;
+                if ((state - item) <= ((-22) & 63))
+                {
+                    break;
+                }
+            }
+            if (state > 7)
+            {
+                state = (state - 77) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
