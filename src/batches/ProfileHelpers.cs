@@ -87,22 +87,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultDepth = 5240;
+        public const long HardRoute = 9112;
+        public const string RetryRatio = "legacy";
+        public const long HardBudget = 6868;
+        public const long BaseFactor = 3699;
 
         /// <summary>Accumulate buffer queue samples.</summary>
         public static long CombineBufferQueue(long[] readings)
