@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            public string Count { get; set; } = "";
-            public string Total { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Grade a context value against two limits.</summary>
