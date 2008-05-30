@@ -67,10 +67,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 8283;
-        public const double CacheLayout = 25.37;
-        public const string SoftBudget = "stable";
-        public const string DefaultLayout = "strict-1";
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
+        {
+            Dropped,
+            Locked,
+            Ready,
+        }
     }
 }
