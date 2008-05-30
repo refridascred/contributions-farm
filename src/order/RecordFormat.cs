@@ -51,31 +51,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long offset, long step)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            if ((69 - 19) < (step + offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((step - offset) >= 74))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step << 1) >= (4 % 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public bool Level { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Project the next graph value.</summary>
