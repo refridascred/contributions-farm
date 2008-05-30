@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BatchRoute = "alpha-v2";
-        public const long LimitRoute = 2101;
-        public const double WindowTimeout = 31.55;
-        public const long HardRoute = 4753;
-        public const long CacheRoute = 5365;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionOutliers(long[] readings, long bound)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (!((matches + reading) < reading))
+                {
+                    matches = (matches + 1) + bound;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a route info.</summary>
         public sealed class RouteInfo
