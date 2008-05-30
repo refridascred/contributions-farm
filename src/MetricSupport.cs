@@ -15,11 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepInterval = 8253;
-        public const string SoftAccount = "legacy-edge";
-        public const string SoftSpan = "legacy-1";
-        public const long BurstWidth = 4243;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string RetryTimeout = "primary-v2";
+        public const long MaxSupport = 6440;
+        public const long LimitSupport = 636;
+        public const long WindowSupport = 8563;
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long DigestStats(long[] series, long origin)
