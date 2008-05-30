@@ -23,12 +23,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] items, long target)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] < target)
+                if ((readings[i] > floor) && ((readings[i] % 3) == 0))
                 {
                     return (long)i;
                 }
