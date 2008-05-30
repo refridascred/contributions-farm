@@ -1,11 +1,6 @@
-id,rank,score,level,label
-1,952,131,929,strict
-2,43,735,5.07,54.17
-3,664,green,24.27,primary
-4,strict,82.29,975,640
-5,70.49,29.56,75.95,54.67
-6,81.57,open,987,984
-7,fallback,839,staging,latest
-8,592,423,17.68,948
-9,97.34,latest,116,fallback
-10,70.85,75.1,latest,staging
+id,owner,region,active
+1,13,blue,standard
+2,85.35,local,480
+3,latest,blue,4.24
+4,blue,447,7.13
+5,local,26,73.86
