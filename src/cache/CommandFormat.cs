@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
-        {
-            Paused,
-            Done,
-            Ready,
-            New,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowSpan = 7214;
+        public const string BurstCluster = "stable";
+        public const long SoftSize = 7994;
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long WeighProfile(long[] levels)
