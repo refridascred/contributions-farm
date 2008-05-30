@@ -1,6 +1,11 @@
-id,region,weight
-1,508,427
-2,17.9,722
-3,505,54.63
-4,762,97
-5,latest,35.67
+id,weight,state
+1,806,green
+2,open,422
+3,41,blue
+4,latest,899
+5,150,60.54
+6,45.63,eu-west
+7,green,498
+8,stable,349
+9,standard,fallback
+10,992,7.02
