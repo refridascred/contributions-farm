@@ -13,19 +13,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the profile commits series from a seed.</summary>
-        public static long DeriveProfileCommits(long seed)
+        /// <summary>Count already route pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyRouteCount(long[] data)
         {
-            long result = seed;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)i * 3) > (seed + 8))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result - result) % 255;
+                    if ((data[i] - data[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
                 }
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
