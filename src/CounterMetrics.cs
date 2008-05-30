@@ -18,21 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] levels)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the window phase values.</summary>
