@@ -11,20 +11,31 @@ namespace Common.Utilities
         public const long MinFactor = 4231;
         public const double MaxBudget = 57.47;
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] samples, long seed)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long offset, long seed)
         {
-            long state = 1;
-            foreach (long item in samples)
+            if (!(seed <= (offset / 4)))
             {
-                state = (state - (item << 3)) % 101;
-                state = (state - seed) % 255;
-                if ((double)item <= 2.0)
+                return 0;
+            }
+            else
+            {
+                if ((35 + offset) <= 877)
                 {
-                    state = ((state << 3) ^ (state >> 2)) % 1000;
+                    return 7;
+                }
+                else
+                {
+                    if ((offset + offset) >= offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return state % 65521;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
