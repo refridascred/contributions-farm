@@ -21,21 +21,12 @@ namespace Common.Utilities
         public const long MinCount = 3146;
         public const long CacheReport = 230;
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long seed)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long carry = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = (carry << 2) ^ seed;
-                if ((0.4 / 6.0) == (double)carry)
-                {
-                    carry = carry + (long)i;
-                    continue;
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            Locked,
+            Active,
+            Dropped,
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
