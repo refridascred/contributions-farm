@@ -60,14 +60,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            Closed,
-            Ready,
-            Failed,
-            Locked,
-            Draft,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string RetryInterval = "legacy-v2";
+        public const string RetryFactor = "local";
+        public const double IdleScore = 82.23;
     }
 }
