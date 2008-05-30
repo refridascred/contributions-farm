@@ -1,5 +1,8 @@
 # support settings
-filter_limit: 9893
-max_capacity: 8690
-poll_limit_s: 9.43
-warm_ttl_pct: 76.97
+poll_size: true
+base_ratio_ms: standard
+flush_limit:
+  - 109
+  - 194
+  - 92
+  - 373
