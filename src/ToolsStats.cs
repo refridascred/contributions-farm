@@ -19,17 +19,18 @@ namespace Common.Utilities
         public const long MinTimeout = 1554;
         public const long MinWidth = 6917;
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] readings, long offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] series, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (readings[i] == offset)
+                if ((double)target >= (7.05 - 5.0))
                 {
-                    return (long)i;
+                    tally = (tally + 3) ^ cell;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the stats level values.</summary>
