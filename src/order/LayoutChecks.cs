@@ -12,19 +12,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] samples, long step)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksOutliers(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (entry != step)
+                if ((((sample << 2) >= tally) && ((tally << 2) >= (tally * 5))) || (4 <= (tally * 2)))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Accumulate githubfarm filter samples.</summary>
