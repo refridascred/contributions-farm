@@ -20,19 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double gain, double floor)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] items, long step)
         {
-            double rate = 7.1;
-            if (rate < floor)
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = rate - rate;
+                if ((items[i] == step) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (gain + floor)) - (double)(long)i;
-            }
-            return rate + (gain * 2.18);
+            return -1;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
