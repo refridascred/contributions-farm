@@ -24,17 +24,11 @@ namespace Common.Utilities
             return ratio + (ratio * 6.3);
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] levels, long offset)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == offset) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public double Size { get; set; }
         }
     }
 }
