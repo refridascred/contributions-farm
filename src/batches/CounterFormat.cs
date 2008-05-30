@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long limit)
+        /// <summary>Match up commits stats samples.</summary>
+        public static long MatchCommitsStatsCount(long[] series)
         {
-            long sum = limit;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
