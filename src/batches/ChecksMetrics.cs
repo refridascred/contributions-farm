@@ -72,11 +72,32 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCount = 4286;
-        public const long MaxFactor = 9582;
-        public const string DefaultCounter = "cached-1";
-        public const string SoftCounter = "staging-1";
-        public const long BurstCounter = 576;
+        /// <summary>Rank profile queue input into a small class.</summary>
+        public static long GradeProfileQueue(long step, long target)
+        {
+            long span = step + target;
+            if (target > span)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((8 + span) > (target ^ step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target - target) != (target & 7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
