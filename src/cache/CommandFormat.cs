@@ -28,24 +28,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a notes cluster pair into a bucket.</summary>
-        public static long GradeNotesCluster(long bound, long origin)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] readings, long bound)
         {
-            if ((origin * 2) > origin)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((origin >> 5) <= ((-951) * 3)) || (bound < (bound / 3)))
+                if ((readings[i] == bound) && ((readings[i] % 3) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
