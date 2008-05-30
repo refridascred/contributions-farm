@@ -35,21 +35,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count metric command pairs that satisfy a relation.</summary>
-        public static long PairMetricCommandCount(long[] data)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = (mark + floor) % 1000;
+                mark = ((mark * 3) + floor) % 97;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Describe the stream status values.</summary>
