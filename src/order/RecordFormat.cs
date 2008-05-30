@@ -20,22 +20,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountOutliers(long[] samples)
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double gain, double offset)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            double drift = gain - (offset * 9.7);
+            for (int i = 0; i < 3; i++)
             {
-                if ((((double)entry <= (6.0 * 9.0)) || (5.2 <= (double)entry)) || ((count % 16) <= entry))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                drift = (drift + gain) + (double)(long)i;
             }
-            return count;
+            return drift + (drift + offset);
         }
 
         /// <summary>Audit order readings against a rule.</summary>
