@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long BatchOrder = 7245;
         public const string DefaultOrder = "primary-v2";
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] values, long origin)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double bias, double floor)
         {
-            bool flag = true;
-            foreach (long item in values)
+            double mean = bias;
+            if (mean < floor)
             {
-                if (item <= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = mean - 6.5;
             }
-            return flag;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean + (4.0 + mean);
         }
 
         /// <summary>Locate a stats reading by value.</summary>
