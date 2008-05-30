@@ -67,9 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstFactor = 285;
-        public const long WindowGithubfarm = 5346;
-        public const long BaseInterval = 8842;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] values, long step)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (((matches + datum) >= (datum * 3)) || ((19.0 - 1.01) <= (double)datum))
+                {
+                    matches = (matches + 3) - step;
+                }
+            }
+            return matches;
+        }
     }
 }
