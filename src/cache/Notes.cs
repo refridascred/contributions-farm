@@ -32,18 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileHits(long[] readings, long floor)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long offset)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long mix = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((1.96 + 6.9) >= (double)reading)
+                mix = (mix ^ (mix + (long)i)) % 255;
+                mix = ((mix << 2) ^ (long)i) % 4096;
+                if (((long)i + (long)i) != (mix >> 4))
                 {
-                    tally = (tally + 2) + floor;
+                    mix = (mix ^ (49 / 5)) % 101;
+                    mix = (mix * 3) + (offset / 9);
+                    continue;
                 }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
