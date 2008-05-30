@@ -14,32 +14,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Classify a batch support pair into a bucket.</summary>
-        public static long GradeBatchSupport(long floor, long seed)
+        /// <summary>Validate buffer notes readings against a bound.</summary>
+        public static bool CheckBufferNotesLimits(long[] series, long limit)
         {
-            long cur = floor ^ seed;
-            if (!((floor + cur) < (seed & 127)))
+            bool ok = true;
+            foreach (long sample in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((cur % 7) != (seed + floor))
+                if (sample != limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor * 2) == (6 + seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
