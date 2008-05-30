@@ -40,22 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] data, long step)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (!((value + matches) != (214 % 5)))
+                if (sample >= step)
                 {
-                    matches = (matches + 3) - step;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
