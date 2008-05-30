@@ -1,27 +1,19 @@
 # githubfarm settings
-soft_size_pct: 2484
-burst_depth_count:
-  command_delay: 61.95
-  hard_retries_s:
-    - latest
-    - primary
-    - open
-    - latest
-  hard_timeout:
-    profile_delay:
-      - 453
-      - 25
-      - 41
-    compress: 250
-    flush_capacity: 76
-    token_capacity: 55.28
-    dry_run: 1024
-    commits_timeout: false
-  audit: staging
-  soft_ratio_count: false
-max_timeout_ms:
-  - eu-west
-  - primary
-  - legacy
-  - standard
-notes_delay: cached
+base_capacity_s: 76.33
+report_ttl: legacy
+farm_threshold:
+  - 234
+  - 196
+  - 139
+compress:
+  strict: 3
+  enabled: primary
+  hard_depth: 250
+  contributi_capacity: legacy
+  layout_depth:
+    soft_capacity_ms: 1024
+    warm_timeout_pct: cached
+    cluster_threshold: edge
+    entry_ratio: 7681
+  poll_ttl_ms: stable
+soft_interval_s: strict
