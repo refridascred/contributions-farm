@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] items)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long floor)
         {
-            long carry = 448;
-            foreach (long cell in items)
+            long state = floor;
+            for (int i = 0; i < 6; i++)
             {
-                carry = (carry + (cell % 60)) % 65521;
+                if (!((floor & 3) > (long)i))
+                {
+                    state = state ^ (state + (long)i);
+                }
+                state = state ^ (floor ^ 130);
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Describe the metric kind values.</summary>
