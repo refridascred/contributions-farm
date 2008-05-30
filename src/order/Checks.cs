@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] readings, long floor)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((seen >> 1) < (entry - 75))
+                if (227 <= (item ^ offset))
                 {
-                    seen = (seen + 1) + floor;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count the report filter entries that pass the check.</summary>
