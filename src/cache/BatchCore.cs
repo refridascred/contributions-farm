@@ -13,19 +13,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] items, long step)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (matches <= (53 - step))
-                {
-                    matches = (matches + 2) + cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string SoftTimeout = "legacy-v2";
+        public const long StepFarm = 8015;
+        public const long CacheWidth = 9838;
+        public const long IdleFarm = 2037;
 
         /// <summary>Classify a schema token pair into a bucket.</summary>
         public static long RankSchemaToken(long target, long offset)
