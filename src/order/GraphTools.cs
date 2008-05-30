@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count stream payload pairs that satisfy a relation.</summary>
-        public static long PairStreamPayloadCount(long[] data)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long bound, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long delta = bound + seed;
+            if ((bound > 11) || ((bound >> 3) < (bound & 31)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((double)delta == (double)793)
                 {
-                    if ((data[i] - data[j]) != 7)
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound < 0.18)
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound * 3) != (42 << 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next already buffer value from a seed.</summary>
