@@ -33,21 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] series)
+        /// <summary>Locate a record already reading by value.</summary>
+        public static long SeekRecordAlreadyIndex(long[] series, long floor)
         {
-            long hits = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (series[i] > floor)
                 {
-                    if ((series[i] ^ series[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the schema state values.</summary>
