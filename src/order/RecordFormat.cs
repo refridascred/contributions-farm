@@ -20,15 +20,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double gain, double offset)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] series)
         {
-            double drift = gain - (offset * 9.7);
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift + gain) + (double)(long)i;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return drift + (drift + offset);
+            return count;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
