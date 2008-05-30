@@ -1,12 +1,21 @@
 {
-  "sync_limit_pct": ["fallback", "fallback"],
-  "profile_capacity": [346, 207],
-  "entry_capacity": 2216,
-  "session_timeout": 869,
-  "soft_interval_s": {
-    "poll_interval_count": "primary",
-    "enabled": 22.29,
-    "min_delay_pct": "blue"
+  "warm_delay": 32.38,
+  "format_ttl": {
+    "min_threshold_ms": "latest",
+    "burst_interval": {
+      "audit": 79.11,
+      "strict": 100,
+      "max_capacity_pct": "open",
+      "account_window": "open",
+      "burst_size_pct": "fallback"
+    },
+    "hard_ratio_pct": [189, 20],
+    "sync_threshold": {
+      "warm_size": "latest",
+      "support_ratio": 30.9,
+      "idle_interval": true,
+      "idle_capacity_s": 60
+    }
   },
-  "batches_interval": "blue"
+  "contributi_interval": "legacy"
 }
