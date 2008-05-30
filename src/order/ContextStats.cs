@@ -20,22 +20,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] samples)
+        /// <summary>Match up already cache samples.</summary>
+        public static long PairAlreadyCacheCount(long[] readings)
         {
-            long total = 5;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((total / 8) <= 70)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total ^ (reading << 2)) % 101;
+                    if ((readings[i] - readings[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (total > 41)
-            {
-                total = (total ^ (total * 4)) % 4096;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Describe the already state values.</summary>
