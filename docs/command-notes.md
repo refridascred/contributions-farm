@@ -1,10 +1,14 @@
 # Command notes
 
-A schema that stays idle for too long is moved to the buffer list.
-The graph helpers are pure functions, so they are safe to call from any thread.
+Use checks settings to tune how often layout data is refreshed.
+The batch report groups every metric by window.
+The profile report groups every stream by filter.
+
+Each notes is validated before it reaches the editor queue.
+The format helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new channel fields
-- Review already limits each release
-- Validate layout input early
+- Review graph limits each release
+- Prefer editor defaults
+- Keep counter values small
