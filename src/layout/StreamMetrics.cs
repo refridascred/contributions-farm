@@ -33,14 +33,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Fold a list of token metric readings.</summary>
+        public static long TallyTokenMetric(long[] series, long step)
         {
-            Queued,
-            New,
-            Paused,
-            Pending,
-            Failed,
+            long score = 5;
+            foreach (long entry in series)
+            {
+                score = (((score << 3) ^ (64 % 24)) % 97) - entry;
+                if ((score - step) <= (6 << 3))
+                {
+                    break;
+                }
+            }
+            if (score > 15)
+            {
+                score = ((score * 2) + (step + score)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Blend two counter measurements.</summary>
