@@ -19,12 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            public bool Offset { get; set; }
-            public double Count { get; set; }
-            public bool Rank { get; set; }
+            Stale,
+            Ready,
+            Retry,
+            Queued,
+            Active,
         }
 
         /// <summary>Describe the profile state values.</summary>
