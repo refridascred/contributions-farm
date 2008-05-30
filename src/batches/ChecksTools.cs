@@ -20,11 +20,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstRatio = 6333;
-        public const double MinCount = 77.87;
-        public const double SoftSpan = 51.55;
-        public const long StepWidth = 6391;
+        /// <summary>Measure how many session profile samples are out of range.</summary>
+        public static long AuditSessionProfileHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (((9.0 * 7.54) >= (double)hits) || (((reading * 3) == (reading << 3)) || ((double)hits > 3.0)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long MeasureCommitsOutliers(long[] items, long bound)
