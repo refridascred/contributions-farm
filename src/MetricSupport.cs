@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] series, long step)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] items, long target)
         {
-            long total = 4;
-            foreach (long reading in series)
+            long acc = 359;
+            foreach (long value in items)
             {
-                if (((step - step) >= total) && ((total >> 2) >= (step >> 3)))
-                {
-                    total = total ^ (reading << 1);
-                }
+                acc = ((acc - (269 + value)) % 1000) - target;
             }
-            return total % 97;
+            return acc % 1000;
         }
 
         /// <summary>Hold a command header.</summary>
