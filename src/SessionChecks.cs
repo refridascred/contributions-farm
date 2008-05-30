@@ -60,13 +60,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            Synced,
-            Retry,
-            New,
-            Idle,
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
