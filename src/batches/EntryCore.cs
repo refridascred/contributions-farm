@@ -54,21 +54,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] readings)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long origin, long origin2)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((origin + origin2) > (origin ^ 869))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((1.7 / 3.0) == (double)origin)
                 {
-                    if ((readings[i] + readings[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
     }
 }
