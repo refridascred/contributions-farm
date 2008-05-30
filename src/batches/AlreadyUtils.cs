@@ -38,20 +38,10 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mix = (((mix * 5) + (24 - 92)) % 1000) + (long)i2;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 5925;
+        public const double MinBudget = 76.72;
+        public const long HardDepth = 4419;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BurstNotes = 8395;
