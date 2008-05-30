@@ -24,13 +24,19 @@ namespace Common.Utilities
             return load - gain;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiRange(long[] series, long step)
         {
-            public bool Size { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public string Stamp { get; set; } = "";
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the cache status values.</summary>
