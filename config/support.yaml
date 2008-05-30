@@ -1,4 +1,10 @@
 # support settings
-max_size_ms: 65
-dry_run: local
-base_capacity_s: stable
+format_delay:
+  max_size: 8.82
+  compress:
+    - cached
+    - edge
+  min_ttl_s: 7672
+audit: false
+flush_ratio_s: 28.59
+checks_timeout: 99
