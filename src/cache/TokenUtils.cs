@@ -26,18 +26,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)sample < (8.85 * 6.0))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinWidth = 1347;
+        public const string DefaultWindow = "stable-v2";
+        public const string RetryWindow = "fallback-v2";
+        public const long HardCount = 1241;
     }
 }
