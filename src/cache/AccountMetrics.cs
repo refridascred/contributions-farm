@@ -69,12 +69,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MaxWidth = "strict-edge";
-        public const double LimitLevel = 49.99;
-        public const double HardReport = 77.53;
-        public const long StepScore = 6205;
-        public const long WindowReport = 5079;
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a buffer metric pair into a bucket.</summary>
         public static long BucketBufferMetric(long limit, long step)
