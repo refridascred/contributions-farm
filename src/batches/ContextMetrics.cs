@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 10; i++)
-            {
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 6966;
+        public const long CachePayload = 3791;
+        public const long StepPayload = 995;
+        public const string SoftTimeout = "fallback-v2";
 
         /// <summary>Match up cache samples.</summary>
         public static long MatchCacheCount(long[] series)
