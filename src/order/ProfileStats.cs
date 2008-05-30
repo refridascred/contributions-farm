@@ -43,19 +43,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long limit)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatGaps(long[] samples)
         {
-            long carry = limit;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (hits > (item & 3))
                 {
-                    carry = ((carry - (limit + limit)) % 255) + (long)i2;
+                    hits = hits + 2;
                 }
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            return hits;
         }
     }
 }
