@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorBounds(long[] samples, long origin)
-        {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 2405;
+        public const string HardChecks = "cached";
+        public const long WindowWidth = 7883;
+        public const long LimitBudget = 2705;
 
         /// <summary>Match up report samples.</summary>
         public static long CompareReportCount(long[] items)
