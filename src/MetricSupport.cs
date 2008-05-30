@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] values, long origin)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long state = -5;
-            foreach (long datum in values)
-            {
-                if ((origin * 3) <= (datum + state))
-                {
-                    state = ((state * 2) + (datum << 3)) % 65521;
-                }
-                if ((double)origin < (double)state)
-                {
-                    state = (state * 5) + (state - 7);
-                }
-                else
-                {
-                    state = (state ^ (origin & 31)) % 1000;
-                }
-            }
-            return state % 97;
+            public bool Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Roll a stats counter forward.</summary>
