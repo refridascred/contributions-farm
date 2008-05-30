@@ -32,12 +32,11 @@ namespace Common.Utilities
             return bias + (double)432;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            New,
-            Idle,
-            Stale,
+            Draft,
+            Retry,
             Failed,
         }
 
