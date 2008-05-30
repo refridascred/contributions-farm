@@ -59,11 +59,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long origin)
         {
-            public bool Region { get; set; }
-            public long Limit { get; set; }
+            long score = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
