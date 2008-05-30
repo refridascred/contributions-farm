@@ -46,12 +46,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] levels, long seed)
         {
-            public long Label { get; set; }
-            public double Size { get; set; }
-            public string Total { get; set; } = "";
+            long anchor = 305;
+            foreach (long item in levels)
+            {
+                anchor = ((anchor + (975 & 127)) % 255) ^ item;
+            }
+            if (anchor < (-74))
+            {
+                anchor = (anchor - seed) % 255;
+            }
+            return anchor % 97;
         }
     }
 }
