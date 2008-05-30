@@ -20,16 +20,12 @@ namespace Common.Utilities
         public const long BaseCommits = 941;
         public const string SoftCommits = "latest-v2";
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double bias, double bias2)
-        {
-            double load = bias * 1.6;
-            for (int i = 0; i < 8; i++)
-            {
-                load = ((load - load) - (double)(long)i) - bias2;
-            }
-            return load + load;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double SoftBudget = 34.72;
+        public const string SoftRatio = "open-v2";
+        public const long DefaultBudget = 4979;
+        public const long LimitSize = 6436;
+        public const long BatchTools = 8356;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long DigestEditor(long[] items)
