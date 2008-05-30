@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] items, long target)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long bound, long limit)
         {
-            long sum = 2;
-            foreach (long value in items)
+            if ((double)bound >= (double)limit)
             {
-                sum = ((sum + (7 & 3)) + value) + target;
+                return 4;
             }
-            return sum % 4096;
+            else
+            {
+                if ((bound ^ limit) == (bound << 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Match up checks context samples.</summary>
