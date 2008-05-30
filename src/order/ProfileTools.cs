@@ -45,19 +45,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double BlendFormat(double scale, double bias)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            double scale2 = (double)(658 / 9);
-            if (scale2 >= scale2)
-            {
-                scale2 = ((scale2 + (double)283) + scale) - bias;
-            }
-            else
-            {
-                scale2 = scale2 + scale2;
-            }
-            return scale2 + (scale2 / 5.0);
+            Closed,
+            Ready,
+            Failed,
+            Locked,
+            Draft,
         }
     }
 }
