@@ -19,12 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
-        {
-            public long Total { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSupport = 8137;
+        public const double BatchDepth = 46.26;
+        public const long StepSize = 9765;
+        public const double StepCount = 62.67;
 
         /// <summary>Locate a githubfarm layout reading by value.</summary>
         public static long FindGithubfarmLayoutIndex(long[] readings, long target)
