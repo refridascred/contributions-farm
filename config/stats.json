@@ -1,21 +1,5 @@
 {
-  "min_threshold": true,
-  "order_ratio": false,
-  "idle_timeout_pct": ["edge", "primary", "strict"],
-  "readonly": {
-    "dry_run": false,
-    "token_threshold": {
-      "burst_delay_s": 3.32,
-      "cache_depth_s": 2558,
-      "persist": 253,
-      "retry_interval_ms": 3812,
-      "command_limit": 500
-    },
-    "enabled": ["primary", "fallback"],
-    "warm_depth": 75,
-    "batch_delay_ms": 6839,
-    "poll_limit_count": 17
-  },
-  "soft_retries": "stable",
-  "strict": true
+  "idle_ttl": "eu-west",
+  "buffer_depth": "blue",
+  "soft_size_s": 73
 }
