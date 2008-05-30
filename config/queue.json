@@ -1,12 +1,11 @@
 {
-  "base_delay_ms": 250,
-  "dry_run": 6,
-  "compress": 30,
-  "burst_window_pct": 3264,
-  "audit": {
-    "burst_interval_ms": 20.77,
-    "compress": 98.94,
-    "stream_interval": ["standard", "staging", "cached", "edge"],
-    "cache_ttl_pct": true
+  "readonly": "primary",
+  "cache_threshold": 500,
+  "sync_ratio": {
+    "dry_run": "latest",
+    "buffer_size": true,
+    "hard_threshold": 1.09,
+    "soft_depth_s": 19,
+    "graph_timeout": "standard"
   }
 }
