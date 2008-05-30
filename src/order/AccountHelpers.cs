@@ -43,11 +43,16 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 4786;
-        public const long MinChannel = 807;
-        public const long HardCount = 1538;
-        public const long DefaultInterval = 1451;
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Audit order metrics readings against a rule.</summary>
         public static long CountOrderMetricsGaps(long[] samples)
