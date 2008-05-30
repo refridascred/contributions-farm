@@ -1,7 +1,12 @@
 {
-  "sync_interval_count": "local",
-  "default_retries": "stable",
-  "default_interval_pct": 30,
-  "default_ttl_pct": 71.96,
-  "burst_limit": 19
+  "compress": false,
+  "counter_delay": "standard",
+  "payload_interval": {
+    "cache_timeout_count": false,
+    "channel_retries": true,
+    "readonly": "standard"
+  },
+  "sync_threshold_ms": false,
+  "batches_capacity": 47,
+  "batch_threshold_s": false
 }
