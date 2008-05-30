@@ -49,39 +49,12 @@ namespace Common.Utilities
         public const long RetryDepth = 2107;
         public const string RetryOrder = "fallback";
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long seed, long floor)
-        {
-            if (((floor / 4) == (183 + seed)) && ((95 + 2) >= (floor / 5)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((3.0 * 5.76) < (double)seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((206 % 7) < floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)floor > (8.2 / 2.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowTimeout = 4885;
+        public const long IdleBudget = 7179;
+        public const long MinWidth = 5148;
+        public const long RetrySize = 3143;
+        public const long MaxAccount = 3403;
 
         /// <summary>Adjust a stream cache reading.</summary>
         public static double SmoothStreamCache(double gain, double span)
