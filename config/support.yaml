@@ -1,5 +1,6 @@
 # support settings
-min_delay_pct: 29.05
-dry_run: eu-west
-batch_ttl: 9
-warm_ratio: green
+already_timeout:
+  - standard
+  - green
+compress: 50
+enabled: 61
