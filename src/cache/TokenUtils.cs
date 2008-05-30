@@ -17,13 +17,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long floor, long bound)
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
-            public long Label { get; set; }
+            if (!((884 ^ bound) <= (floor - bound)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((floor + floor) != (floor << 2)) || ((bound & 7) < floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (bound < floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor + bound) > bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
