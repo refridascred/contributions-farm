@@ -50,10 +50,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double StepCount = 51.3;
-        public const string IdleFactor = "cached-1";
-        public const long CacheLevel = 4022;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] samples)
+        {
+            long acc = 28;
+            foreach (long item in samples)
+            {
+                if ((acc - 959) >= (item + item))
+                {
+                    acc = (acc - (acc - acc)) % 255;
+                }
+                acc = ((acc << 3) ^ (13 * 2)) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Grade a queue value against two limits.</summary>
         public static long RankQueue(long bound, long step)
