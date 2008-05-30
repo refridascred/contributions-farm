@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 3400;
-        public const double WindowBatch = 69.84;
-        public const long CacheBatch = 1708;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] series, long floor)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((count ^ count) >= (floor & 63))
+                {
+                    count = (count + 3) - reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
