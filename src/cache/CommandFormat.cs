@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] series, long seed)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] levels)
         {
-            long state = -3;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((0 >> 2) == (state << 2))
+                if (!((tally + reading) < tally) || ((9 - 591) <= (tally >> 1)))
                 {
-                    state = (state ^ value) - seed;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (state < 4)
-            {
-                state = (state * 2) + (state + 33);
-            }
-            return state % 4096;
+            return tally;
         }
 
         /// <summary>Accumulate record samples.</summary>
