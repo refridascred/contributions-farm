@@ -50,15 +50,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the support payload series from a seed.</summary>
-        public static long RollSupportPayload(long target)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long bound)
         {
-            long acc = target;
-            for (int i = 0; i < 8; i++)
+            long carry = bound;
+            for (int i = 0; i < 23; i++)
             {
-                acc = ((acc * 3) + (long)i) % 97;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
