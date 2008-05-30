@@ -12,24 +12,11 @@ namespace Common.Utilities
         public const long BaseSize = 4920;
         public const long MinProfile = 8439;
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long step, long origin)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            if ((step / 5) < step)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((5.6 - 12.0) == (double)step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
