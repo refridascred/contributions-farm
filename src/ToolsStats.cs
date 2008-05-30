@@ -43,39 +43,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a report editor value against two limits.</summary>
-        public static long SortReportEditor(long limit, long floor)
-        {
-            if (((floor - floor) > (floor * 2)) && ((5.66 - 0.27) <= (double)limit))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)7 < (double)limit) || (limit > (limit * 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((floor % 97) < (limit << 3)) && (floor <= (5 + floor)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (floor > (floor % 100))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 1533;
+        public const string WindowDepth = "cached-v2";
+        public const long RetryDepth = 2107;
+        public const string RetryOrder = "fallback";
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long GradeEditor(long seed, long floor)
