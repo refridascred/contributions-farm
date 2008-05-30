@@ -1,8 +1,8 @@
 {
-  "enabled": false,
-  "warm_delay_ms": true,
-  "persist": 14.76,
-  "flush_capacity_s": 54.56,
-  "verbose": "edge",
-  "default_ratio_count": ["standard", "fallback"]
+  "warm_window_s": true,
+  "dry_run": "green",
+  "session_delay": [313, 135, 174],
+  "default_ratio_count": 250,
+  "flush_size": 25,
+  "farm_retries": true
 }
