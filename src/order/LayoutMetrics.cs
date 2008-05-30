@@ -10,17 +10,12 @@ namespace Common.Utilities
         public const double WindowCache = 39.92;
         public const double BurstCache = 92.22;
 
-        /// <summary>Look up the position of a support session sample.</summary>
-        public static long LocateSupportSessionIndex(long[] data, long target)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == target) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Label { get; set; }
+            public double Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the payload phase values.</summary>
