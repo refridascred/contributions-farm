@@ -20,21 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] samples)
+        /// <summary>Check that every token support entry stays within the limit.</summary>
+        public static bool VerifyTokenSupportLimits(long[] values, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading != limit)
                 {
-                    if ((samples[i] - samples[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Hold a commits summary.</summary>
