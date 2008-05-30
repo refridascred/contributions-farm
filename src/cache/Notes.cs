@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] values)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricOutliers(long[] series)
         {
-            long state = 18;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long entry in series)
             {
-                state = (state << 2) ^ value;
+                if ((count >> 3) < entry)
+                {
+                    count = count + 2;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Describe the metric kind values.</summary>
