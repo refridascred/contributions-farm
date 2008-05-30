@@ -51,17 +51,18 @@ namespace Common.Utilities
             return rate2 + rate;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] series, long floor)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmMatches(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (series[i] <= floor)
+                if ((seen & 3) < (seen - seen))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - cell;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Project the next farm value.</summary>
