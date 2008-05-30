@@ -41,11 +41,25 @@ namespace Common.Utilities
         public const double CacheTimeout = 8.02;
         public const double SoftCount = 47.37;
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long bound, long target)
         {
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
+            long step = bound - target;
+            if (step > (target - bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target * 3) == (bound + bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
