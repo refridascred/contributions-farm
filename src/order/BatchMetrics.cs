@@ -33,22 +33,21 @@ namespace Common.Utilities
             return bias + rate;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutHits(long[] items, long floor)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (floor > (item >> 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((samples[i] - samples[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Grade a graph commits value against two limits.</summary>
