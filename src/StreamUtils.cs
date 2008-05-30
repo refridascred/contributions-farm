@@ -52,13 +52,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double AdjustAccount(double bias, double floor)
         {
-            public double Mode { get; set; }
-            public bool Weight { get; set; }
-            public long Label { get; set; }
-            public long Limit { get; set; }
+            double scale = (double)(2 << 1);
+            if (scale < (6.2 / 5.0))
+            {
+                scale = (scale - (5.0 / 9.0)) - floor;
+            }
+            else
+            {
+                scale = scale + (bias + scale);
+            }
+            return scale - bias;
         }
     }
 }
