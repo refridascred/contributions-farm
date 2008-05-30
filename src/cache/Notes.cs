@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Find the first queue counter entry that matches the target.</summary>
-        public static long FindQueueCounterIndex(long[] samples, long offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 18;
+            foreach (long value in values)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                state = (state << 2) ^ value;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
