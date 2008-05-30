@@ -23,22 +23,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] values)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long state = 932;
-            foreach (long cell in values)
-            {
-                if (5 <= (state + state))
-                {
-                    state = ((state << 3) ^ (state + cell)) % 101;
-                }
-                else
-                {
-                    state = state + (state * 2);
-                }
-            }
-            return state % 4096;
+            Idle,
+            Pending,
+            Dropped,
+            Synced,
+            Closed,
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
