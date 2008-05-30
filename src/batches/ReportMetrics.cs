@@ -20,21 +20,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] samples)
+        /// <summary>Iterate the entry route series from a seed.</summary>
+        public static long IterateEntryRoute(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                long slot = ((long)i + bound) + (mix >> 5);
+                if (((slot ^ bound) <= bound) && ((7.7 * 3.8) < (double)bound))
                 {
-                    if ((samples[i] + samples[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix - bound) % 101;
                 }
+                mix = ((mix << 2) ^ bound) % 101;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
