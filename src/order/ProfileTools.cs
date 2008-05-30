@@ -51,19 +51,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next record buffer value.</summary>
-        public static double BlendRecordBuffer(double ratio, double offset)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double rate, double span)
         {
-            double scale = (double)(8 * 3);
-            if (scale > ratio)
+            double load = rate;
+            for (int i = 0; i < 4; i++)
             {
-                scale = (scale + (ratio / 8.0)) - offset;
+                load = (load - (double)925) + (double)(long)i;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - (6.16 * 4.56)) - (double)(long)i;
-            }
-            return scale - (2.5 - ratio);
+            return load + (load - span);
         }
     }
 }
