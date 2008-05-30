@@ -19,22 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many route profile samples are out of range.</summary>
-        public static long AuditRouteProfileGaps(long[] readings)
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            double scale = (double)691;
+            if (scale < (rate + scale))
             {
-                if ((hits + hits) > 0)
-                {
-                    hits = (hits + 2) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                scale = (scale + rate) - floor;
             }
-            return hits;
+            return scale + scale;
         }
 
         /// <summary>Accumulate metric samples.</summary>
