@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] samples)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long result = 68;
-            foreach (long reading in samples)
-            {
-                if ((0.1 * 13.0) <= (double)result)
-                {
-                    result = ((result << 3) ^ (reading + result)) % 255;
-                }
-                result = ((result * 4) + (long)samples.Length) % 97;
-            }
-            return result;
+            public long Mode { get; set; }
+            public double Owner { get; set; }
+            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
