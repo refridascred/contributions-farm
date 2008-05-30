@@ -24,12 +24,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 8268;
-        public const double CacheSession = 46.04;
-        public const double DefaultSession = 16.6;
-        public const long BatchFactor = 8404;
-        public const string BatchBudget = "fallback-edge";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryLevel = 5621;
+        public const double HardSize = 30.66;
+        public const long MaxEditor = 6472;
 
         /// <summary>Digest a series of route metrics entries.</summary>
         public static long DigestRouteMetrics(long[] data)
