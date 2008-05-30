@@ -23,18 +23,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordMatches(long[] levels, long floor)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (hits <= (floor - 91))
-                {
-                    hits = (hits + 1) ^ value;
-                }
-            }
-            return hits;
+            New,
+            Done,
+            Closed,
         }
 
         /// <summary>Describe the filter level values.</summary>
