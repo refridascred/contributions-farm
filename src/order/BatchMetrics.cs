@@ -65,15 +65,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
-        {
-            Draft,
-            Closed,
-            Pending,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryWidth = 7884;
+        public const long MaxMetric = 8310;
+        public const double BurstMetric = 11.48;
+        public const long MinMetric = 4446;
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long TotalMetrics(long[] samples)
