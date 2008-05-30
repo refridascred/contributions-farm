@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MinBatches = "latest-edge";
-        public const long BatchBatches = 4527;
-        public const long MinFactor = 4231;
-        public const double MaxBudget = 57.47;
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long GradeContext(long offset, long seed)
