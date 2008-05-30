@@ -40,19 +40,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] values, long step)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Region { get; set; } = "";
+            public bool Token { get; set; }
+            public string Count { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
