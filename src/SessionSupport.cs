@@ -42,18 +42,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] series, long limit)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long sum = 993;
-            foreach (long sample in series)
-            {
-                if ((sum <= (91 << 1)) && ((6.7 - 7.4) < (8.75 - 15.0)))
-                {
-                    sum = ((sum - (sum / 4)) ^ sample) - limit;
-                }
-            }
-            return sum % 1000;
+            Closed,
+            New,
+            Locked,
+            Done,
         }
     }
 }
