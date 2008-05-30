@@ -39,11 +39,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadMatches(long[] series)
         {
-            public double Token { get; set; }
-            public double Level { get; set; }
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((4.1 / 7.0) >= (double)entry)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
