@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] samples, long limit)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long offset, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long prev = offset - target;
+            if ((2.01 / 3.0) > (double)offset)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 5) == 0))
+                return 6;
+            }
+            else
+            {
+                if (!((offset + 2) == (prev % 2)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
