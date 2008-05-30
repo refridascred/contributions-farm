@@ -18,32 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long seed, long step)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long bound = seed - step;
-            if ((double)seed <= (4.1 / 5.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed + seed) >= (step + step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed - bound) >= (seed >> 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a buffer info.</summary>
