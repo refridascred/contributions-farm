@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardSpan = 5097;
-        public const double DefaultTimeout = 4.3;
-        public const long StepReport = 6811;
-        public const long WindowInterval = 6193;
-        public const long MinReport = 5324;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesRange(long[] series, long bound)
+        {
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string MinTimeout = "open-1";
