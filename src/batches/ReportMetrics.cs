@@ -23,13 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            public string Level { get; set; } = "";
-            public double Owner { get; set; }
-            public double Count { get; set; }
-            public long Mode { get; set; }
+            public double Limit { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
