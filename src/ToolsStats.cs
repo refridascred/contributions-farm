@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchSpan = 4738;
-        public const long WindowInterval = 8876;
-        public const long IdleSpan = 2754;
-        public const long DefaultCluster = 9292;
-        public const string CacheCluster = "primary-v2";
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long seed, long limit)
+        {
+            if ((seed / 4) < limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if (66 <= seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit & 3) == (seed << 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool GuardMetricsBounds(long[] samples, long target)
