@@ -13,19 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every entry notes entry stays within the limit.</summary>
-        public static bool VerifyEntryNotesBounds(long[] levels, long offset)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Size { get; set; }
+            public double Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
