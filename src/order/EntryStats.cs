@@ -48,12 +48,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            public bool Region { get; set; }
-            public string Offset { get; set; } = "";
-            public long Stamp { get; set; }
+            Pending,
+            Done,
+            Locked,
+            Paused,
+            Dropped,
         }
     }
 }
