@@ -1,13 +1,19 @@
 {
-  "profile_window": 7606,
-  "flush_depth": false,
-  "soft_limit_ms": ["edge", "fallback", "strict"],
-  "compress": {
-    "flush_ttl": 65,
-    "poll_interval_count": 250,
-    "hard_size": ["green", "latest"],
-    "farm_window": "strict"
+  "soft_delay_count": true,
+  "min_capacity_s": {
+    "burst_threshold": {
+      "farm_window": true,
+      "metric_ttl": 8141,
+      "window_depth": [416, 479, 10, 305],
+      "stats_size": "standard",
+      "min_depth_pct": 21
+    },
+    "entry_depth": true,
+    "contributi_window": ["staging", "green", "blue", "cached"],
+    "cache_threshold": "local",
+    "stream_capacity": "eu-west",
+    "compress": "blue"
   },
-  "strict": 3315,
-  "retry_depth": 28
+  "soft_depth_pct": ["strict", "eu-west"],
+  "max_size": [463, 406, 132]
 }
