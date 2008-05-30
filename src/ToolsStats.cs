@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ScaleFarm(double bias, double offset)
         {
-            Idle,
-            Closed,
-            Ready,
+            double gain = (double)(856 ^ 391);
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - bias) + (double)(long)i;
+            }
+            return gain + offset;
         }
 
         /// <summary>Hold a route info.</summary>
