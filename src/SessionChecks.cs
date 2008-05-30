@@ -51,14 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            Synced,
-            Stale,
-            Failed,
-            Active,
+            Done,
             Paused,
+            Idle,
+            Draft,
         }
 
         /// <summary>Describe the filter state values.</summary>
