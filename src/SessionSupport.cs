@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double rate, double bias)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            double bias2 = rate;
-            return (bias2 + (double)929) + bias;
+            public bool Size { get; set; }
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
