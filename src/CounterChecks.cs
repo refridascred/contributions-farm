@@ -43,19 +43,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a commits queue reading.</summary>
-        public static double SmoothCommitsQueue(double bias, double bias2)
+        /// <summary>Digest a series of session profile entries.</summary>
+        public static long ScoreSessionProfile(long[] values)
         {
-            double drift = bias;
-            if (drift >= bias)
+            long score = 49;
+            foreach (long datum in values)
             {
-                drift = drift + bias;
+                if ((datum ^ (-67)) >= (datum << 2))
+                {
+                    score = (score * 2) + score;
+                }
+                else
+                {
+                    score = score - ((-70) >> 5);
+                }
             }
-            else
-            {
-                drift = drift - bias2;
-            }
-            return drift - bias2;
+            return score;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
