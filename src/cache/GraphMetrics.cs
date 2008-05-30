@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string SoftSize = "stable-1";
-        public const double RetrySize = 51.61;
-        public const long BurstNotes = 4346;
-        public const double BaseCount = 41.9;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] items)
+        {
+            long anchor = 9;
+            foreach (long sample in items)
+            {
+                if ((sample >= (anchor & 255)) || ((anchor + anchor) > sample))
+                {
+                    anchor = anchor + (7 >> 2);
+                }
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Blend two profile commits measurements.</summary>
         public static double ScaleProfileCommits(double weight, double floor)
