@@ -51,18 +51,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] items)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if ((double)datum >= (double)count)
+                if (sample > seed)
                 {
-                    count = count + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
