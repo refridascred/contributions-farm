@@ -21,18 +21,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamHits(long[] data)
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long item in data)
+            double ratio = (double)(4 << 3);
+            if (ratio >= ratio)
             {
-                if ((((item + matches) != (matches >> 4)) || ((item % 100) < item)) || (((2.0 / 6.0) == (double)item) && ((matches / 6) > item)))
-                {
-                    matches = matches + 3;
-                }
+                ratio = (ratio - (double)(-8)) + rate;
             }
-            return matches;
+            else
+            {
+                ratio = ratio + (double)42;
+            }
+            return ratio + floor;
         }
 
         /// <summary>Hold a metrics record.</summary>
