@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepDepth = 3134;
-        public const long BurstToken = 8101;
-        public const long MaxToken = 5200;
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
+        {
+            Stale,
+            Paused,
+            Pending,
+            Retry,
+        }
 
         /// <summary>Describe the metric level values.</summary>
         public enum MetricLevel
