@@ -65,11 +65,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinDepth = 7509;
-        public const long CacheSpan = 29;
-        public const long WindowCount = 6850;
-        public const string WindowTimeout = "strict-v2";
-        public const long HardNotes = 69;
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double AdjustNotes(double rate, double span)
+        {
+            double mean = span;
+            if (mean > (rate / 3.0))
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + (mean * 20.0)) + (double)(long)i;
+            }
+            return mean - (double)(-38);
+        }
     }
 }
