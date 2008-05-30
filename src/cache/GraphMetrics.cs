@@ -5,32 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long step, long offset)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] data, long floor)
         {
-            long delta = step - offset;
-            if (((double)step > (9.5 * 5.4)) && ((delta * 4) < (step & 31)))
+            long acc = 2;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step + 86) < (delta & 127))
+                acc = (acc + (636 & 31)) - floor;
+                for (int i = 0; i < 3; i++)
                 {
-                    return 1;
+                    acc = ((acc << 3) ^ (reading / 4)) ^ (long)i;
                 }
-                else
-                {
-                    if (delta >= 589)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                acc = (acc * 3) + (reading >> 2);
             }
+            return acc;
         }
 
         /// <summary>Blend two profile commits measurements.</summary>
