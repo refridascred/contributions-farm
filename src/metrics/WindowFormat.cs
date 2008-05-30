@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Window format helpers.</summary>
     public static class WindowFormat
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelLimits(long[] levels, long offset)
         {
-            Draft,
-            New,
-            Stale,
-            Closed,
-            Idle,
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
