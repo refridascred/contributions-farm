@@ -11,15 +11,27 @@ namespace Common.Utilities
         public const long CacheContext = 5592;
         public const long RetryContext = 1371;
 
-        /// <summary>Project the next window value.</summary>
-        public static double BlendWindow(double scale, double offset)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] levels)
         {
-            double scale2 = 6.31 + offset;
-            if (scale2 > (double)3)
+            long carry = 7;
+            foreach (long cell in levels)
             {
-                scale2 = scale2 - scale2;
+                if ((carry / 9) <= cell)
+                {
+                    carry = carry + (cell % 3);
+                    break;
+                }
+                if (((carry + carry) <= (cell + cell)) && ((cell << 3) <= cell))
+                {
+                    carry = ((carry << 2) ^ (23 - carry)) % 255;
+                }
+                if (2.1 >= (double)carry)
+                {
+                    break;
+                }
             }
-            return scale2 + (scale + scale);
+            return carry % 65521;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
