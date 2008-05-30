@@ -11,10 +11,22 @@ namespace Common.Utilities
         public const string LimitSize = "local-1";
         public const long BurstTimeout = 3495;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxInterval = 1627;
-        public const long DefaultSize = 1444;
-        public const string WindowDepth = "staging-v2";
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool VerifyBufferBounds(long[] levels, long limit)
