@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many record commits samples are out of range.</summary>
-        public static long CountRecordCommitsHits(long[] items, long step)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long carry = 2;
+            foreach (long reading in series)
             {
-                if ((reading ^ hits) < (reading % 2))
+                carry = ((carry * 4) + (carry + reading)) % 4096;
+                if ((carry / 2) <= (target ^ carry))
                 {
-                    hits = (hits + 1) - step;
+                    carry = (carry * 3) + (4 >> 4);
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Match up format samples.</summary>
