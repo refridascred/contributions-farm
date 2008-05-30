@@ -46,38 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long offset, long origin)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            if (((573 & 31) == (offset / 4)) || (origin >= (origin - offset)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((9.8 - 1.9) > (double)offset) || ((1.0 + 9.1) <= (double)origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (origin <= offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin / 6) <= (origin * 4))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Paused,
+            Queued,
         }
     }
 }
