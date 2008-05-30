@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string IdlePayload = "cached";
-        public const long DefaultPayload = 1575;
-        public const long BatchRatio = 5747;
-        public const long BaseSize = 5318;
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a profile summary.</summary>
         public sealed class ProfileSummary
