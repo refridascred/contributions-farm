@@ -40,12 +40,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long floor)
         {
-            Dropped,
-            Paused,
-            Locked,
+            long mix = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    mix = (((mix * 5) + (24 - 92)) % 1000) + (long)i2;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a window graph sample.</summary>
