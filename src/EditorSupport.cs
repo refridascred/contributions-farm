@@ -24,11 +24,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesBounds(long[] data, long target)
         {
-            public long Label { get; set; }
-            public bool Offset { get; set; }
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Locate a stats channel reading by value.</summary>
