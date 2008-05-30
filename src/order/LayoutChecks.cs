@@ -40,12 +40,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
-            public double Level { get; set; }
+            Stale,
+            Idle,
+            Active,
+            Retry,
         }
 
         /// <summary>Describe the entry phase values.</summary>
