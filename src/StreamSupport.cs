@@ -30,11 +30,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
-        {
-            public bool Token { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 5634;
+        public const long SoftRoute = 3721;
+        public const long BatchScore = 7049;
+        public const string MaxRatio = "strict";
+        public const string BaseRoute = "fallback";
     }
 }
