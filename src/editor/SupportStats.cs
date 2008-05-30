@@ -12,10 +12,14 @@ namespace Common.Utilities
         public const double BatchCount = 13.47;
         public const long BaseToken = 5025;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BurstCommits = "primary-1";
-        public const long LimitCommits = 1750;
-        public const long CacheCommits = 6283;
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Idle,
+            Synced,
+            Active,
+            Done,
+        }
 
         /// <summary>Scale a report figure with a bias.</summary>
         public static double SmoothReport(double scale, double offset)
