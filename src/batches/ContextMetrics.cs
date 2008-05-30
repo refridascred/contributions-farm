@@ -41,12 +41,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxCount = 2311;
-        public const double IdleSize = 11.06;
-        public const long IdleInterval = 1043;
-        public const long CacheLevel = 9752;
-        public const long LimitPayload = 9643;
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == step) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a metrics snapshot.</summary>
         public sealed class MetricsSnapshot
