@@ -19,39 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long floor, long origin)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long cur = floor ^ origin;
-            if ((double)0 >= 13.0)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)cur == (double)origin) || ((973 % 16) >= (cur - floor)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor ^ origin) < cur)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)origin > 2.0) || ((floor % 60) < (cur + cur)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a stats options.</summary>
