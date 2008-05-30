@@ -32,17 +32,13 @@ namespace Common.Utilities
             return bias + (double)432;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] series, long offset)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > offset) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Idle,
+            Stale,
+            Failed,
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
