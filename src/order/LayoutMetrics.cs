@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const double WindowCache = 39.92;
         public const double BurstCache = 92.22;
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Digest a series of metric contributi entries.</summary>
+        public static long DigestMetricContributi(long[] series)
         {
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Score { get; set; }
+            long result = 14;
+            foreach (long entry in series)
+            {
+                result = ((result + 8) % 4096) ^ entry;
+            }
+            if (result > 91)
+            {
+                result = ((result << 3) ^ (result >> 1)) % 65521;
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the support kind values.</summary>
