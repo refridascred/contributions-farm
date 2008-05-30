@@ -42,20 +42,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long origin)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] series, long limit)
         {
-            long score = origin;
-            for (int i = 0; i < 11; i++)
+            long sum = 993;
+            foreach (long sample in series)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((sum <= (91 << 1)) && ((6.7 - 7.4) < (8.75 - 15.0)))
                 {
-                    score = (score - (long)i2) % 1000;
-                    score = (score - (score + score)) % 1000;
+                    sum = ((sum - (sum / 4)) ^ sample) - limit;
                 }
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return sum % 1000;
         }
     }
 }
