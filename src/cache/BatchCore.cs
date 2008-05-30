@@ -38,18 +38,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsMatches(long[] samples, long floor)
+        /// <summary>Classify a schema token pair into a bucket.</summary>
+        public static long RankSchemaToken(long target, long offset)
         {
-            long count = 0;
-            foreach (long item in samples)
+            if (((offset - offset) <= target) && (offset > 470))
             {
-                if (((item / 6) <= 73) && !((count / 7) > (5 + 554)))
+                return 4;
+            }
+            else
+            {
+                if ((double)target >= (9.0 * 8.0))
                 {
-                    count = (count + 2) - floor;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
