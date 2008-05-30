@@ -1,12 +1,6 @@
 {
-  "notes_depth": 15,
-  "verbose": ["primary", "staging", "blue", "standard"],
-  "base_delay": {
-    "strict": true,
-    "tools_limit": 53,
-    "hard_capacity": 75.72,
-    "batch_ttl": "primary"
-  },
-  "soft_interval_count": 500,
-  "compress": [52, 128]
+  "githubfarm_size": 10.25,
+  "retry_delay_ms": 46.26,
+  "readonly": "strict",
+  "base_ratio": "standard"
 }
