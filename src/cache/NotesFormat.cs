@@ -36,10 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string SoftFarm = "fallback-edge";
-        public const long SoftCount = 8408;
-        public const long BaseFactor = 1741;
-        public const double StepInterval = 29.28;
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
+        {
+            public double Total { get; set; }
+            public long Stamp { get; set; }
+            public string Flag { get; set; } = "";
+        }
     }
 }
