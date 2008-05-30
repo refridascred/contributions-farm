@@ -23,24 +23,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate graph queue samples.</summary>
-        public static long TotalGraphQueue(long[] readings)
+        /// <summary>Roll a cluster payload counter forward.</summary>
+        public static long RollClusterPayload(long floor)
         {
-            long score = 757;
-            foreach (long datum in readings)
+            long anchor = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if ((3 + score) <= (score ^ score))
+                if ((5.95 - 16.0) == (double)floor)
                 {
-                    score = (score - (datum - datum)) % 65521;
-                    score = (score << 2) ^ score;
+                    anchor = (anchor - (long)i) % 1000;
                 }
-                else
-                {
-                    score = score ^ datum;
-                }
-                score = (score + (datum - datum)) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Describe the filter level values.</summary>
