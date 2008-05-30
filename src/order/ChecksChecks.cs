@@ -13,11 +13,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 8355;
-        public const long BaseQueue = 3673;
-        public const long RetryQueue = 6643;
-        public const string LimitQueue = "latest";
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long CombineFarm(long[] samples)
