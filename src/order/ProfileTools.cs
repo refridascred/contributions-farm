@@ -43,18 +43,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the record stats entries that pass the check.</summary>
-        public static long CountRecordStatsHits(long[] values)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (((reading <= seen) || ((2.0 / 5.0) == (double)seen)) && ((seen & 7) > seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            New,
+            Paused,
+            Closed,
+            Pending,
         }
 
         /// <summary>Project the next record buffer value.</summary>
