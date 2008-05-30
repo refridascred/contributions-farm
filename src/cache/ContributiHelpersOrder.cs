@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ratio + (6.0 * 3.0);
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Audit metric checks readings against a rule.</summary>
+        public static long TallyMetricChecksGaps(long[] values)
         {
-            Paused,
-            Failed,
-            Retry,
-            Ready,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((double)count >= (19.0 * 4.86))
+                {
+                    count = (count + 1) ^ cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of graph metrics entries.</summary>
