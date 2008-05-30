@@ -32,18 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] items)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((7.0 / 8.0) < (double)value)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Level { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Rank support input into a small class.</summary>
