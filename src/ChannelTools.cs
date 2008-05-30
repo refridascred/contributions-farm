@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryRatio = 82.52;
-        public const long IdleCounter = 9028;
-        public const double WindowTimeout = 76.65;
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
+        {
+            Pending,
+            Failed,
+            Dropped,
+            New,
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string RetrySchema = "latest-1";
