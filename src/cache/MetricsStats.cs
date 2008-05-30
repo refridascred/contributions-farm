@@ -65,39 +65,18 @@ namespace Common.Utilities
             return gain2 + bias;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long limit, long origin)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] samples, long step)
         {
-            long edge = limit + origin;
-            if ((5.0 / 5.0) != (double)limit)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (482 <= (6 - edge))
+                if (value > 666)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((6.21 / 8.0) > (double)origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((8 + edge) > 80)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = (matches + 1) - step;
                 }
             }
+            return matches;
         }
     }
 }
