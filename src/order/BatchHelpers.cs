@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double StepStats = 18.91;
-        public const long SoftStats = 704;
-        public const string MinSize = "stable-v2";
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double rate, double floor)
+        {
+            double mean = (floor + rate) * 9.3;
+            if (mean > (rate * 1.47))
+            {
+                mean = mean - rate;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (double)91) - (double)(long)i;
+            }
+            return mean + (double)81;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BaseRatio = 1056;
