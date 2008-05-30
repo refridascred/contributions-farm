@@ -1,18 +1,5 @@
 # entry settings
-dry_run:
-  - strict
-  - cached
-token_depth:
-  dry_run: eu-west
-  profile_retries: false
-  flush_timeout_s:
-    cache_timeout_pct: false
-    cluster_delay: 1.42
-    idle_window: true
-  warm_depth_count: 30
-persist: 3225
-base_capacity: 97.1
-audit:
-  - 325
-  - 432
-window_ttl: local
+commits_limit: true
+sync_depth_pct: 500
+base_threshold_s: true
+sync_interval: false
