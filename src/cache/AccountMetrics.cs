@@ -25,11 +25,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinBudget = 1317;
-        public const long MinSize = 4184;
-        public const long RetryQueue = 3967;
-        public const long DefaultQueue = 9670;
+        /// <summary>Rank checks tools input into a small class.</summary>
+        public static long SortChecksTools(long seed, long bound)
+        {
+            if (((7.31 * 1.16) != (double)seed) && ((347 % 24) >= (seed + seed)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((bound + bound) != (bound % 60)) && ((8.0 - 9.4) >= (double)bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (228 >= (seed - seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)bound <= (11.0 + 3.7)) && ((seed / 4) > (seed + seed)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a cache options.</summary>
         public sealed class CacheOptions
