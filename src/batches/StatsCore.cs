@@ -47,15 +47,16 @@ namespace Common.Utilities
         public const long BaseGithubfarm = 1526;
         public const string CacheGithubfarm = "staging";
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] data, long step)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long target)
         {
-            long carry = 3;
-            foreach (long sample in data)
+            long score = target;
+            for (int i = 0; i < 24; i++)
             {
-                carry = ((carry ^ (carry + carry)) + sample) + step;
+                score = (score - (37 % 100)) % 4096;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Describe the notes state values.</summary>
