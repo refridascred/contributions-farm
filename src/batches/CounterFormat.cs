@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] samples, long target)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] readings, long floor)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (item > target)
+                if (!((double)hits > (double)72) || ((item ^ 6) <= (-2)))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 2) - floor;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
