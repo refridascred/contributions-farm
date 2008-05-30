@@ -27,18 +27,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the report filter entries that pass the check.</summary>
-        public static long AuditReportFilterMatches(long[] readings)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long state = 932;
+            foreach (long cell in values)
             {
-                if ((sample / 2) == (sample + hits))
+                if (5 <= (state + state))
                 {
-                    hits = hits + 3;
+                    state = ((state << 3) ^ (state + cell)) % 101;
+                }
+                else
+                {
+                    state = state + (state * 2);
                 }
             }
-            return hits;
+            return state % 4096;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
