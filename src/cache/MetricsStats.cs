@@ -40,19 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two token command measurements.</summary>
-        public static double ProjectTokenCommand(double gain, double bias)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordRange(long[] readings, long seed)
         {
-            double gain2 = (15.0 / 7.0) - bias;
-            if (gain2 < gain2)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                gain2 = gain2 + gain;
+                if (cell < seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                gain2 = gain2 + gain2;
-            }
-            return gain2 + bias;
+            return stale;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
