@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            public double Flag { get; set; }
-            public string Total { get; set; } = "";
+            Draft,
+            Closed,
+            New,
+            Queued,
         }
 
         /// <summary>Count the cache queue entries that pass the check.</summary>
