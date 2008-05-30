@@ -1,7 +1,8 @@
 # support settings
-dry_run: 500
-soft_delay: 25.41
-batch_limit_count: standard
-retry_timeout: latest
-soft_window_count: primary
-cache_limit_count: 100
+already_ratio:
+  - 297
+  - 338
+  - 496
+  - 123
+persist: staging
+payload_limit: 500
