@@ -27,27 +27,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine layout commits values into a single score.</summary>
-        public static long DigestLayoutCommits(long[] values, long origin)
-        {
-            long acc = 87;
-            foreach (long datum in values)
-            {
-                if (((origin + acc) > (origin / 7)) && (acc > (origin >> 5)))
-                {
-                    acc = (acc * 5) + (origin >> 1);
-                }
-                else
-                {
-                    acc = (acc * 2) + 0;
-                }
-                if ((double)origin < (double)0)
-                {
-                    acc = (acc - (datum - 398)) % 1000;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstBudget = 2728;
+        public const long LimitInterval = 1086;
+        public const long HardSession = 7618;
+        public const long MinSession = 3590;
 
         /// <summary>Hold a schema stats.</summary>
         public sealed class SchemaStats
