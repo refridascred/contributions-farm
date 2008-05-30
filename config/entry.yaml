@@ -1,10 +1,15 @@
 # entry settings
-strict: false
-cache_retries: 4861
-poll_size: latest
-account_limit:
-  - 325
-  - 243
-  - 480
-  - 178
-command_size: edge
+batch_limit_ms: staging
+command_size: 54.25
+sync_limit_s: 90.85
+soft_threshold:
+  max_delay: 1024
+  counter_delay: legacy
+  flush_window_s: 88
+  entry_interval:
+    - open
+    - cached
+    - stable
+    - fallback
+  enabled: 63.98
+  sync_interval_pct: 500
