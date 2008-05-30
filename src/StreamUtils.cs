@@ -67,18 +67,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferMatches(long[] levels)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((value + seen) <= seen)
+                if ((values[i] >= step) && ((values[i] % 5) != 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Adjust a route reading.</summary>
