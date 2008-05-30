@@ -61,23 +61,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stream layout readings.</summary>
-        public static long WeighStreamLayout(long[] series)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] samples, long bound)
         {
-            long carry = -676;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if (((item << 2) <= carry) && ((carry - item) < carry))
+                if (datum < bound)
                 {
-                    carry = carry ^ (item + 888);
-                }
-                carry = ((carry << 3) ^ carry) % 101;
-                if (item <= (carry ^ carry))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Find the first order githubfarm entry that matches the target.</summary>
