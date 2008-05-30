@@ -1,10 +1,13 @@
 # support settings
-format_delay:
-  max_size: 8.82
-  compress:
-    - cached
-    - edge
-  min_ttl_s: 7672
-audit: false
-flush_ratio_s: 28.59
-checks_timeout: 99
+profile_ratio: 30
+route_window:
+  - 87
+  - 438
+  - 256
+  - 22
+min_ttl: eu-west
+default_capacity_pct:
+  - 230
+  - 453
+  - 233
+hard_threshold_s: fallback
