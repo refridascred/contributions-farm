@@ -16,15 +16,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long seed)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long mark = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            New,
+            Queued,
+            Idle,
+            Pending,
+            Stale,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
