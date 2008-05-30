@@ -16,19 +16,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorLimits(long[] levels, long seed)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Idle,
+            Ready,
+            Synced,
+            Locked,
+            Failed,
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
