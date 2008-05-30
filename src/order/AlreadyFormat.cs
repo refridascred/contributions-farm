@@ -51,16 +51,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next counter layout value from a seed.</summary>
-        public static long RollCounterLayout(long bound)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long offset, long target)
         {
-            long result = bound;
-            for (int i = 0; i < 17; i++)
+            long bound = offset - target;
+            if (!(bound > (bound & 31)))
             {
-                result = result + (result << 2);
-                result = ((result * 2) + (long)i) % 101;
+                return 7;
             }
-            return result;
+            else
+            {
+                if (!((89 + offset) > (offset - bound)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
