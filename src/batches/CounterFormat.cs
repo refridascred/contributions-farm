@@ -27,15 +27,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Scale a metric schema figure with a bias.</summary>
-        public static double ProjectMetricSchema(double ratio, double span)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterOutliers(long[] levels)
         {
-            double drift = (double)(744 + 7);
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                drift = (((drift + 5.0) - (double)(long)i) - ratio) + span;
+                if ((seen % 10) >= (sample - seen))
+                {
+                    seen = seen + 3;
+                }
             }
-            return drift - drift;
+            return seen;
         }
     }
 }
