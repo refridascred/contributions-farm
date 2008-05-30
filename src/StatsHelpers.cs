@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double rate, double offset)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long floor)
         {
-            double load = offset * 1.18;
+            long result = floor;
             for (int i = 0; i < 9; i++)
             {
-                load = (load - rate) + (double)(long)i;
+                if (((long)i ^ (long)i) != (floor - floor))
+                {
+                    result = result + (long)i;
+                    result = result ^ (long)i;
+                }
+                if ((result + (long)i) >= (floor + result))
+                {
+                    long offset = floor - ((long)i * 3);
+                    result = (result + (offset ^ floor)) % 101;
+                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return load + (offset * 2.6);
+            return result;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
