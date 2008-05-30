@@ -48,14 +48,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            Closed,
-            Ready,
-            Dropped,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BatchContext = "standard-v2";
+        public const long DefaultLevel = 590;
+        public const double SoftContext = 59.38;
     }
 }
