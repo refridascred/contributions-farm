@@ -31,10 +31,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 5925;
-        public const double MinBudget = 76.72;
-        public const long HardDepth = 4419;
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BurstNotes = 8395;
