@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long origin, long floor)
+        /// <summary>Iterate the batches entry series from a seed.</summary>
+        public static long DeriveBatchesEntry(long bound)
         {
-            if ((origin << 3) <= (origin - origin))
+            long result = bound;
+            for (int i = 0; i < 16; i++)
             {
-                return 1;
+                result = ((result * 4) + result) % 101;
+                result = ((result * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (((floor & 127) < (origin % 2)) || ((6.49 * 6.0) == (double)origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return result;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
