@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long offset, long step)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] samples, long floor)
         {
-            long slot = offset ^ step;
-            if (offset <= (slot * 5))
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset - 2) >= offset)
+                if (datum != floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Validate notes githubfarm readings against a bound.</summary>
