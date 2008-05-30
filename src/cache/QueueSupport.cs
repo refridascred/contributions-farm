@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            public double Count { get; set; }
-            public long Size { get; set; }
-            public bool Total { get; set; }
-            public long Flag { get; set; }
+            Queued,
+            Ready,
+            Paused,
+            Stale,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
