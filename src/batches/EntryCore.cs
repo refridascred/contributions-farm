@@ -47,18 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionOutliers(long[] items)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((seen - entry) <= (seen ^ 70)) || (6.7 <= (4.33 / 6.0)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((data[i] ^ data[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Match up stats samples.</summary>
