@@ -78,10 +78,17 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MinCache = 51.97;
-        public const string StepCache = "staging-v2";
-        public const long LimitCache = 9344;
-        public const double SoftInterval = 83.1;
+        /// <summary>Look up the position of a window command sample.</summary>
+        public static long SeekWindowCommandIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
