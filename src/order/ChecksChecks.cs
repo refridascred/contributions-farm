@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double bias, double floor)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            double mean = bias - (double)(-913);
-            if (mean <= (floor / 9.0))
-            {
-                mean = mean + (floor + floor);
-            }
-            return mean - (double)31;
+            Ready,
+            Dropped,
+            Active,
         }
 
         /// <summary>Grade a queue route value against two limits.</summary>
