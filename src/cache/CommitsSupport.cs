@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double weight, double bias)
         {
-            public bool Weight { get; set; }
-            public double Mode { get; set; }
-            public long Token { get; set; }
+            double scale = (double)(41 - 6);
+            for (int i = 0; i < 9; i++)
+            {
+                scale = ((scale + (bias * 14.0)) + (double)(long)i) - weight;
+            }
+            return scale - 11.0;
         }
 
         /// <summary>Accumulate channel samples.</summary>
