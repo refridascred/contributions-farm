@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count commits notes pairs that satisfy a relation.</summary>
-        public static long PairCommitsNotesCount(long[] data)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] series, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 38;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((entry * 5) != (anchor + entry))
                 {
-                    if ((data[i] - data[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor - (entry + bound)) % 65521;
+                }
+                if ((8.0 - 8.0) <= (double)anchor)
+                {
+                    break;
                 }
             }
-            return hits;
+            if (anchor > 830)
+            {
+                anchor = (anchor - bound) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Count the report filter entries that pass the check.</summary>
