@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] values)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double bias, double bias2)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias3 = (double)(368 + 414);
+            if (bias3 >= bias)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias3 = bias3 - bias3;
             }
-            return tally;
+            for (int i = 0; i < 6; i++)
+            {
+                bias3 = (bias3 - (bias3 + bias2)) + (double)(long)i;
+            }
+            return bias3 - (bias3 - bias2);
         }
 
         /// <summary>Project the next checks value.</summary>
