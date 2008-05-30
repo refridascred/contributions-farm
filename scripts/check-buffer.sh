@@ -12,5 +12,12 @@ for i in $(seq 1 3); do
 done
 log "total ${total}"
 
-BUFFER_LIMIT=388
-log "limit is ${BUFFER_LIMIT}"
+mode="${1:-cached}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
