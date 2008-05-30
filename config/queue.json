@@ -1,5 +1,17 @@
 {
-  "report_window": "eu-west",
-  "audit": "latest",
-  "dry_run": 8929
+  "soft_timeout_ms": false,
+  "poll_timeout_pct": true,
+  "hard_delay_ms": {
+    "base_capacity_s": "fallback",
+    "editor_threshold": "local",
+    "record_retries": 19,
+    "retry_capacity_s": {
+      "min_capacity_s": "green",
+      "base_threshold_ms": 92.93,
+      "soft_delay": "latest"
+    },
+    "idle_window_ms": 100,
+    "metric_depth": 25.5
+  },
+  "default_interval_s": [320, 121, 86, 179]
 }
