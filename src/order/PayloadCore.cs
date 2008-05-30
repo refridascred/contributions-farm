@@ -29,15 +29,19 @@ namespace Common.Utilities
         public const double BatchContributi = 24.95;
         public const long CacheSize = 8121;
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long origin)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double ratio, double span)
         {
-            long mark = origin;
-            for (int i = 0; i < 12; i++)
+            double rate = 12.0;
+            if (rate > ratio)
             {
-                mark = ((mark * 5) + (long)i) % 65521;
+                rate = (rate + (double)567) - span;
             }
-            return mark;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (17.0 / 5.0)) + (double)(long)i;
+            }
+            return rate - (rate - rate);
         }
     }
 }
