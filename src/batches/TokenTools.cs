@@ -16,12 +16,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long bound)
         {
-            Locked,
-            New,
-            Pending,
+            long mix = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mix = ((mix * 5) + ((long)i + (long)i)) ^ (long)i2;
+                    mix = (mix * 4) + (bound + bound);
+                }
+                if (mix > ((-29) & 1))
+                {
+                    mix = ((mix * 5) + bound) % 101;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate context samples.</summary>
