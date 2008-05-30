@@ -11,11 +11,10 @@ namespace Common.Utilities
         public const string LimitSize = "local-1";
         public const long BurstTimeout = 3495;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCluster = 3986;
-        public const long BatchWidth = 7341;
-        public const long IdleCluster = 1056;
-        public const long HardCluster = 1401;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxInterval = 1627;
+        public const long DefaultSize = 1444;
+        public const string WindowDepth = "staging-v2";
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool VerifyBufferBounds(long[] levels, long limit)
