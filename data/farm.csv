@@ -1,10 +1,6 @@
-id,rank,active,owner
-1,72.5,69.08,589
-2,9.89,fallback,strict
-3,legacy,265,944
-4,81.82,97.18,legacy
-5,503,703,primary
-6,open,13.64,711
-7,90,349,strict
-8,fallback,76.29,green
-9,565,blue,911
+id,token,count,weight,rank
+1,461,9.76,17.31,79.5
+2,310,18.7,strict,363
+3,fallback,12.59,378,655
+4,latest,open,staging,287
+5,117,blue,fallback,60.89
