@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] items, long floor)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long state = -3;
+            foreach (long value in series)
             {
-                if (((floor >> 1) > (tally >> 4)) || ((floor + floor) > (sample - floor)))
+                if ((0 >> 2) == (state << 2))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    state = (state ^ value) - seed;
                 }
             }
-            return tally;
+            if (state < 4)
+            {
+                state = (state * 2) + (state + 33);
+            }
+            return state % 4096;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
