@@ -2,10 +2,12 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     level INTEGER,
+    owner TEXT NOT NULL,
+    label TEXT,
     count INTEGER NOT NULL DEFAULT 0,
     token TEXT
 );
 
 CREATE INDEX IF NOT EXISTS idx_commits_records_count ON commits_records (count);
 
-INSERT INTO commits_records (level, count, token) VALUES (48, 49, 'primary');
+INSERT INTO commits_records (level, owner, label, count, token) VALUES (39, 'strict', 'latest', 15, 'primary');
