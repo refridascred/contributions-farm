@@ -87,12 +87,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultDepth = 5240;
-        public const long HardRoute = 9112;
-        public const string RetryRatio = "legacy";
-        public const long HardBudget = 6868;
-        public const long BaseFactor = 3699;
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Accumulate buffer queue samples.</summary>
         public static long CombineBufferQueue(long[] readings)
