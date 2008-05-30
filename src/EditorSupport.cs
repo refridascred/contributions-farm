@@ -35,17 +35,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] readings, long limit)
+        /// <summary>Digest a series of window token entries.</summary>
+        public static long ScoreWindowToken(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 4;
+            foreach (long sample in items)
             {
-                if ((readings[i] < limit) && ((readings[i] % 5) == 0))
+                acc = (acc ^ (acc + 625)) % 65521;
+                if ((acc * 3) < (sample + sample))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (acc < 3)
+            {
+                acc = ((acc * 4) + (acc - (long)items.Length)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
