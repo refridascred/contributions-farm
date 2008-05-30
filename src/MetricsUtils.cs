@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long limit)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyBounds(long[] readings, long floor)
         {
-            long total = limit;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                long offset = (83 << 1) - (202 + (long)i);
-                offset = offset - (limit + 537);
-                if (!((offset + (long)i) == (offset >> 2)))
+                if (reading <= floor)
                 {
-                    offset = offset + limit;
+                    ok = false;
+                    break;
                 }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
