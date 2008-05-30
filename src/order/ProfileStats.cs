@@ -35,12 +35,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            public string Region { get; set; } = "";
-            public double Label { get; set; }
-            public string Mode { get; set; } = "";
+            Synced,
+            Active,
+            Draft,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
