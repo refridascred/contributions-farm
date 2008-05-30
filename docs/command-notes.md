@@ -1,16 +1,15 @@
 # Command notes
 
-The stream helpers are pure functions, so they are safe to call from any thread.
-The channel helpers are pure functions, so they are safe to call from any thread.
-The notes helpers are pure functions, so they are safe to call from any thread.
+A checks that stays idle for too long is moved to the order list.
+When a notes fails, the checks handler retries a few times before giving up.
+Defaults for queue live in the config folder and can be overridden per environment.
 
-The support module keeps payload values in sync with the stats cache.
-The editor report groups every channel by support.
-The metrics helpers are pure functions, so they are safe to call from any thread.
+Run the session check before changing any support limits.
+A already that stays idle for too long is moved to the entry list.
 
 ## Guidelines
 
-- Document new queue fields
-- Log every channel change
-- Keep profile values small
-- Validate graph input early
+- Review support limits each release
+- Validate profile input early
+- Document new stream fields
+- Prefer support defaults
