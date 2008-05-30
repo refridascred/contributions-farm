@@ -29,17 +29,15 @@ namespace Common.Utilities
         public const string SoftReport = "primary";
         public const long WindowReport = 3519;
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] values, long origin)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 750;
+            foreach (long datum in data)
             {
-                if (values[i] == origin)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 3) + (anchor - datum)) % 4096;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the metrics level values.</summary>
