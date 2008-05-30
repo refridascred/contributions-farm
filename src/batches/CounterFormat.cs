@@ -25,18 +25,14 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterOutliers(long[] levels)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((seen % 10) >= (sample - seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Synced,
+            Ready,
+            Queued,
+            Active,
+            Dropped,
         }
     }
 }
