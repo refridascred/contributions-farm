@@ -26,16 +26,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] series)
-        {
-            long carry = 8;
-            foreach (long datum in series)
-            {
-                carry = ((carry + (carry + carry)) % 101) ^ datum;
-            }
-            return carry;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardLevel = 4585;
+        public const long IdleCount = 3857;
+        public const double SoftRatio = 86.33;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long RetrySession = 4589;
