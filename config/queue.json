@@ -1,15 +1,5 @@
 {
-  "account_interval": 91,
-  "base_size": {
-    "burst_interval": "blue",
-    "min_ratio_count": "eu-west",
-    "tools_interval": 9.31,
-    "poll_interval_count": 100,
-    "channel_timeout": 93.12,
-    "persist": ["stable", "fallback", "staging"]
-  },
-  "batch_delay_s": "fallback",
-  "notes_depth": 250,
-  "cluster_retries": "latest",
-  "layout_ratio": [428, 63, 77, 75]
+  "max_retries": 36,
+  "audit": 6609,
+  "compress": 76
 }
