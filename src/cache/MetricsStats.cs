@@ -64,18 +64,39 @@ namespace Common.Utilities
             return gain2 + bias;
         }
 
-        /// <summary>Measure how many tools report samples are out of range.</summary>
-        public static long TallyToolsReportOutliers(long[] samples, long target)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long limit, long origin)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long edge = limit + origin;
+            if ((5.0 / 5.0) != (double)limit)
             {
-                if ((item + target) != (matches + item))
+                return 6;
+            }
+            else
+            {
+                if (482 <= (6 - edge))
                 {
-                    matches = matches + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((6.21 / 8.0) > (double)origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((8 + edge) > 80)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
