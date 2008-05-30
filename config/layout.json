@@ -1,19 +1,8 @@
 {
-  "order_size": "staging",
-  "retry_depth_pct": {
-    "soft_depth_ms": 65.06,
-    "cache_limit_ms": 1826,
-    "entry_depth": 87.31,
-    "max_limit_count": 71.62,
-    "soft_limit": false
-  },
-  "audit": ["strict", "edge", "edge", "open"],
-  "batch_delay": {
-    "max_threshold_count": ["local", "green", "legacy"],
-    "default_ratio_count": "fallback",
-    "sync_retries_pct": 58.2,
-    "retry_capacity_ms": 34.38,
-    "hard_ttl_pct": true,
-    "soft_capacity": "staging"
-  }
+  "cache_depth_s": "green",
+  "contributi_ttl": 98,
+  "min_size_s": "primary",
+  "soft_window_count": "local",
+  "min_retries_count": 65.86,
+  "burst_depth_pct": 65
 }
