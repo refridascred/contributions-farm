@@ -40,22 +40,13 @@ namespace Common.Utilities
             return (ratio - span) + scale;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] values, long bound)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long acc = 244;
-            foreach (long sample in values)
-            {
-                if (((bound - bound) > (sample * 4)) || (4.27 <= (double)513))
-                {
-                    acc = (acc * 3) + ((-32) + sample);
-                }
-                if (((bound % 12) <= acc) || ((acc % 100) >= (acc & 63)))
-                {
-                    break;
-                }
-            }
-            return acc % 97;
+            public long Ratio { get; set; }
+            public double Size { get; set; }
+            public double Offset { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
