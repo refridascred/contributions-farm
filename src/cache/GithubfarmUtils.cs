@@ -33,21 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] series)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double rate, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double weight = span;
+            return weight - (rate / 7.0);
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
