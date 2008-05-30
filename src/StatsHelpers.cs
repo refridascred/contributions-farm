@@ -41,25 +41,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate profile farm samples.</summary>
-        public static long FoldProfileFarm(long[] values, long target)
-        {
-            long sum = -95;
-            foreach (long value in values)
-            {
-                if (value <= (sum - sum))
-                {
-                    sum = (sum - target) % 1000;
-                    sum = sum + (value << 2);
-                }
-                sum = (sum - (sum & 31)) % 97;
-            }
-            if (sum > 940)
-            {
-                sum = (sum + (sum / 6)) % 1000;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string StepCache = "alpha";
+        public const string CacheScore = "local-edge";
+        public const long SoftCache = 3819;
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
