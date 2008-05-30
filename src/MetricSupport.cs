@@ -13,12 +13,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Match up cluster entry samples.</summary>
+        public static long PairClusterEntryCount(long[] series)
         {
-            public string Ratio { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public bool Mode { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
