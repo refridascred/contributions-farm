@@ -21,12 +21,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Combine cluster editor values into a single score.</summary>
+        public static long WeighClusterEditor(long[] levels, long floor)
         {
-            public long Score { get; set; }
-            public double Label { get; set; }
-            public double Region { get; set; }
+            long sum = 50;
+            foreach (long item in levels)
+            {
+                if (((8.7 - 5.4) != (double)sum) && ((11.0 / 7.0) < (double)floor))
+                {
+                    sum = (sum - (sum - 2)) % 101;
+                }
+                else
+                {
+                    sum = (sum - (item ^ item)) % 97;
+                }
+            }
+            if (sum > 342)
+            {
+                sum = (sum << 2) ^ (sum + sum);
+            }
+            return sum;
         }
 
         /// <summary>Hold a metrics record.</summary>
