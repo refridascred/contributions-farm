@@ -19,13 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            Locked,
-            New,
             Retry,
-            Paused,
+            New,
+            Queued,
+            Locked,
+            Draft,
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
