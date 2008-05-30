@@ -32,11 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileHits(long[] readings, long floor)
         {
-            public string Token { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((1.96 + 6.9) >= (double)reading)
+                {
+                    tally = (tally + 2) + floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a route summary.</summary>
