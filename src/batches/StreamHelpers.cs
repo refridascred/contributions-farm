@@ -65,12 +65,16 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long floor)
         {
-            public long Count { get; set; }
-            public double Token { get; set; }
-            public long Owner { get; set; }
+            long score = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                score = (score << 2) ^ (96 >> 1);
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
