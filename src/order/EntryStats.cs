@@ -14,15 +14,17 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long floor)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] readings, long limit)
         {
-            long state = floor;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state * 2) + (long)i) % 4093;
+                if ((readings[i] == limit) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
