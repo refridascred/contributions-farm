@@ -5,27 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a order farm counter forward.</summary>
-        public static long StepOrderFarm(long target)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double ratio, double floor)
         {
-            long result = target;
-            for (int i = 0; i < 14; i++)
+            double scale = ratio;
+            if (scale <= (12.0 / 4.0))
             {
-                if (!(((long)i - target) > (target + 0)))
-                {
-                    break;
-                }
-                if ((target * 3) <= (result - (long)i))
-                {
-                    result = result ^ (target & 3);
-                }
-                else
-                {
-                    result = ((result * 5) + 16) % 1000;
-                }
-                result = ((result * 3) + (long)i) % 97;
+                scale = scale + floor;
             }
-            return result;
+            else
+            {
+                scale = scale - ratio;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale - (double)8;
         }
 
         /// <summary>Hold a context info.</summary>
