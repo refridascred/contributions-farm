@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long offset)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyBounds(long[] values, long step)
         {
-            long mark = offset;
-            for (int i = 0; i < 19; i++)
+            bool found = true;
+            foreach (long sample in values)
             {
-                mark = (mark ^ (mark / 3)) % 1000;
-                mark = ((mark * 3) + (long)i) % 97;
+                if (sample != step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
