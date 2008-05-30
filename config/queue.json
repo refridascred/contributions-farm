@@ -1,7 +1,8 @@
 {
-  "strict": false,
-  "compress": "standard",
-  "base_size": false,
-  "enabled": [415, 274, 149],
-  "retry_ttl_pct": "primary"
+  "sync_capacity": "strict",
+  "layout_capacity": 500,
+  "stream_depth": 46.92,
+  "report_interval": true,
+  "persist": 64,
+  "min_timeout_s": 3681
 }
