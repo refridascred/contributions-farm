@@ -19,12 +19,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string RetrySchema = "latest-1";
-        public const double DefaultSize = 12.93;
-        public const long MinSchema = 28;
-        public const long DefaultBudget = 9699;
-        public const string BurstSchema = "cached-1";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCluster = 3986;
+        public const long BatchWidth = 7341;
+        public const long IdleCluster = 1056;
+        public const long HardCluster = 1401;
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool GuardMetricRange(long[] items, long floor)
