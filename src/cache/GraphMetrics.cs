@@ -36,16 +36,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long seed)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] readings, long seed)
         {
-            long total = seed;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total + (total + (long)i)) % 4096;
-                total = ((total * 5) + (long)i) % 65521;
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Accumulate support samples.</summary>
