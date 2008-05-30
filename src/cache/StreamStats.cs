@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MaxLevel = 79.25;
-        public const double IdleOrder = 44.18;
-        public const long LimitOrder = 5751;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((9.6 * 4.4) >= (double)value)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate contributi context samples.</summary>
         public static long ScoreContributiContext(long[] data, long seed)
