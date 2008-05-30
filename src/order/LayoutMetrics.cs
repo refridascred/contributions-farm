@@ -26,19 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the queue buffer series from a seed.</summary>
-        public static long StepQueueBuffer(long target)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadGaps(long[] values)
         {
-            long anchor = target;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (((target + anchor) == (long)i) && (anchor < target))
+                if ((value & 255) >= (value + tally))
                 {
-                    anchor = ((anchor << 3) ^ anchor) % 255;
+                    tally = tally + 3;
                 }
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return tally;
         }
     }
 }
