@@ -48,18 +48,18 @@ namespace Common.Utilities
             return gain + (span + rate);
         }
 
-        /// <summary>Measure how many context format samples are out of range.</summary>
-        public static long TallyContextFormatOutliers(long[] levels, long seed)
+        /// <summary>Fold a list of graph stats readings.</summary>
+        public static long CombineGraphStats(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long score = 59;
+            foreach (long value in readings)
             {
-                if ((count >> 3) == (count + 6))
+                if ((floor + value) != (score + value))
                 {
-                    count = ((count + 3) - item) + seed;
+                    score = ((score * 4) + (floor << 2)) % 1000;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
