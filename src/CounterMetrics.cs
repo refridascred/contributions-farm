@@ -47,13 +47,32 @@ namespace Common.Utilities
             return (ratio - span) + scale;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long limit, long bound)
         {
-            public long Ratio { get; set; }
-            public double Size { get; set; }
-            public double Offset { get; set; }
-            public string Label { get; set; } = "";
+            long prev = limit ^ bound;
+            if ((8 >> 3) >= limit)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((prev / 6) > 9) || ((double)limit >= (3.1 * 13.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)bound != (1.04 / 9.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
