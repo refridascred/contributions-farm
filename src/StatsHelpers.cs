@@ -35,12 +35,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Measure how many graph command samples are out of range.</summary>
+        public static long TallyGraphCommandHits(long[] items, long target)
         {
-            Dropped,
-            New,
-            Active,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((double)matches > (double)75)
+                {
+                    matches = ((matches + 2) + cell) + target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the account level values.</summary>
