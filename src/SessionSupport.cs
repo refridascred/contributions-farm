@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] data)
         {
-            public bool Size { get; set; }
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            long score = 42;
+            foreach (long entry in data)
+            {
+                if (!(entry <= (score - entry)))
+                {
+                    score = ((score * 4) + (entry + score)) % 101;
+                }
+                else
+                {
+                    score = (score ^ (entry / 2)) % 101;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
