@@ -38,16 +38,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a editor tools counter forward.</summary>
-        public static long IterateEditorTools(long origin)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] items)
         {
-            long result = origin;
-            for (int i = 0; i < 12; i++)
+            long anchor = 2;
+            foreach (long entry in items)
             {
-                result = (result ^ (origin * 4)) % 4096;
-                result = ((result * 2) + (long)i) % 1000;
+                if (!((anchor + entry) >= anchor))
+                {
+                    anchor = (anchor * 5) + (anchor & 15);
+                }
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Audit order metrics readings against a rule.</summary>
