@@ -16,26 +16,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] readings, long offset)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long sum = 5;
-            foreach (long sample in readings)
-            {
-                if (offset > (sum + sum))
-                {
-                    sum = ((sum * 5) + (sum - (-7))) % 4096;
-                }
-                if ((sample & 127) != (sample % 16))
-                {
-                    break;
-                }
-            }
-            if (sum > 94)
-            {
-                sum = sum ^ (62 - 0);
-            }
-            return sum % 65521;
+            public long Stamp { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a cache options.</summary>
