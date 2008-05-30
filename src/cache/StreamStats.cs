@@ -34,13 +34,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] samples, long floor)
         {
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
+            long total = 6;
+            foreach (long cell in samples)
+            {
+                if ((cell * 3) == (cell - cell))
+                {
+                    total = (total - (cell % 64)) + floor;
+                }
+                else
+                {
+                    total = total + (cell ^ cell);
+                }
+            }
+            if (total > (-11))
+            {
+                total = (total - (total >> 4)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
