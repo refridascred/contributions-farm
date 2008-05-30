@@ -22,12 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] samples, long limit)
+        /// <summary>Locate a batch stream reading by value.</summary>
+        public static long LocateBatchStreamIndex(long[] items, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((samples[i] > limit) && ((samples[i] % 3) != 0))
+                if (items[i] <= target)
                 {
                     return (long)i;
                 }
