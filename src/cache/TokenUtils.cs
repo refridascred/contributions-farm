@@ -25,18 +25,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterHits(long[] values, long seed)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (seen >= (501 + 5))
-                {
-                    seen = ((seen + 2) ^ reading) - seed;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public long Count { get; set; }
         }
     }
 }
