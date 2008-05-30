@@ -20,11 +20,13 @@ namespace Common.Utilities
             return ratio + (6.0 * 3.0);
         }
 
-        /// <summary>Project the next cluster buffer value.</summary>
-        public static double AdjustClusterBuffer(double gain, double span)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            double weight = (gain / 5.0) * 17.0;
-            return (weight + (weight * 4.0)) + span;
+            Paused,
+            Failed,
+            Retry,
+            Ready,
         }
 
         /// <summary>Digest a series of graph metrics entries.</summary>
