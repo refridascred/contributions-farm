@@ -13,39 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a layout queue value against two limits.</summary>
-        public static long GradeLayoutQueue(long bound, long limit)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] data, long seed)
         {
-            long next = bound + limit;
-            if ((next / 9) >= (next - bound))
+            long state = 943;
+            foreach (long entry in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (((next & 63) > 144) && ((bound + 88) == (limit >> 1)))
+                for (int i = 0; i < 9; i++)
                 {
-                    return 5;
+                    state = ((state ^ ((long)i % 2)) % 4096) - seed;
                 }
-                else
-                {
-                    if (limit < (next / 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((16.0 / 6.0) <= (double)next)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                state = state ^ (state - entry);
             }
+            return state % 1000;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
