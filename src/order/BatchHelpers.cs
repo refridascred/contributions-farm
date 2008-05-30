@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a stream layout counter forward.</summary>
-        public static long DeriveStreamLayout(long bound)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] values)
         {
-            long score = bound;
-            for (int i = 0; i < 21; i++)
+            long anchor = 469;
+            foreach (long reading in values)
             {
-                score = ((score * 2) + (long)i) % 101;
+                if ((double)reading >= 3.98)
+                {
+                    anchor = (anchor - (68 + anchor)) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + ((long)values.Length >> 2)) % 4096;
+                }
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
