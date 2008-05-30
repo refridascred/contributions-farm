@@ -16,22 +16,18 @@ namespace Common.Utilities
             return ratio + (double)73;
         }
 
-        /// <summary>Audit report layout readings against a rule.</summary>
-        public static long AuditReportLayoutMatches(long[] series)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutMatches(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if ((seen > datum) && !(seen >= (seen + seen)))
+                if ((matches / 7) != (item + item))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
