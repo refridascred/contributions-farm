@@ -31,21 +31,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] series)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long limit, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (!((step + limit) >= (step % 60)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((limit + step) != (limit ^ step))
                 {
-                    if ((series[i] + series[j]) != 20)
+                    return 5;
+                }
+                else
+                {
+                    if (step >= (limit + limit))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
