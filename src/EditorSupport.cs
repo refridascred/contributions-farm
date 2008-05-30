@@ -68,19 +68,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double scale, double bias)
+        /// <summary>Match up schema batch samples.</summary>
+        public static long MatchSchemaBatchCount(long[] readings)
         {
-            double ratio = 6.3;
-            if (ratio > ratio)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = ((ratio + (double)748) + scale) + bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio + 6.73;
-            }
-            return ratio + ratio;
+            return matches;
         }
 
         /// <summary>Describe the route class values.</summary>
