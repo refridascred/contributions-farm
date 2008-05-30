@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long StepChecks(long floor)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] values)
         {
-            long result = floor;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result * 4) + (result * 4)) % 97;
-                result = ((result * 3) + (long)i) % 4093;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Digest a series of account metrics entries.</summary>
