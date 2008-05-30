@@ -26,21 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] readings)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 8;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = ((carry + (carry + carry)) % 101) ^ datum;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Define session limits and defaults.</summary>
