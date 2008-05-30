@@ -25,19 +25,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] readings, long seed)
-        {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((tally - 3) >= seed)
-                {
-                    tally = (tally + 1) + reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleFactor = 7135;
+        public const long BaseRatio = 8750;
+        public const long BurstSize = 4931;
+        public const long StepPayload = 9521;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long MinSize = 2401;
