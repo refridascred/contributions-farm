@@ -47,32 +47,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long limit, long bound)
+        /// <summary>Compare every pair of metrics stream readings.</summary>
+        public static long CompareMetricsStreamCount(long[] items)
         {
-            long prev = limit ^ bound;
-            if ((8 >> 3) >= limit)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((prev / 6) > 9) || ((double)limit >= (3.1 * 13.0)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)bound != (1.04 / 9.0)))
+                    if ((items[i] - items[j]) == 18)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
