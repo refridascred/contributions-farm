@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsMatches(long[] values, long floor)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long limit)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long sum = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((hits * 3) >= (hits - hits))
-                {
-                    hits = ((hits + 1) + datum) + floor;
-                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
