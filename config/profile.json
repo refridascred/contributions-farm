@@ -1,8 +1,8 @@
 {
-  "idle_depth_pct": false,
-  "flush_interval_pct": [141, 339],
-  "flush_ttl_count": 49,
-  "poll_size": true,
-  "queue_ratio": "latest",
-  "burst_interval_ms": 250
+  "enabled": false,
+  "warm_delay_ms": true,
+  "persist": 14.76,
+  "flush_capacity_s": 54.56,
+  "verbose": "edge",
+  "default_ratio_count": ["standard", "fallback"]
 }
