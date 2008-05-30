@@ -16,18 +16,21 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterGaps(long[] samples)
+        /// <summary>Match up checks context samples.</summary>
+        public static long MatchChecksContextCount(long[] items)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (5.4 >= (double)entry)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 2;
+                    if ((items[i] + items[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a format options.</summary>
