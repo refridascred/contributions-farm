@@ -16,12 +16,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Grade a farm metric value against two limits.</summary>
+        public static long ClassifyFarmMetric(long target, long step)
         {
-            public bool Rank { get; set; }
-            public double Total { get; set; }
-            public bool Level { get; set; }
+            long cur = target + step;
+            if ((target - cur) > 89)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((cur - target) <= (904 & 7))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((8.2 + 17.0) > (double)cur))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step - target) >= (target - cur))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
