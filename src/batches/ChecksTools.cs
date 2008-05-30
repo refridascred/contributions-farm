@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long offset, long limit)
+        /// <summary>Iterate the layout editor series from a seed.</summary>
+        public static long RollLayoutEditor(long seed)
         {
-            long bound = offset - limit;
-            if (!((double)offset >= 20.0))
+            long mark = seed;
+            for (int i = 0; i < 19; i++)
             {
-                return 7;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((limit ^ limit) <= (limit ^ bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)offset != (9.6 - 4.5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset >> 1) < offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Roll a window counter forward.</summary>
