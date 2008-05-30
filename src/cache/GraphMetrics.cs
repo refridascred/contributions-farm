@@ -14,22 +14,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Combine account cache values into a single score.</summary>
-        public static long ScoreAccountCache(long[] items, long seed)
+        /// <summary>Count the queue graph entries that pass the check.</summary>
+        public static long CountQueueGraphMatches(long[] items)
         {
-            long state = -700;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (((double)state <= (6.8 + 2.44)) && ((datum % 10) == ((-784) ^ 242)))
+                if (entry >= matches)
                 {
-                    state = ((state - state) % 65521) - seed;
-                }
-                else
-                {
-                    state = (state + datum) % 255;
+                    matches = matches + 2;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the filter mode values.</summary>
