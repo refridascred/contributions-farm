@@ -60,15 +60,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double scale, double offset)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            double drift = scale;
-            for (int i = 0; i < 3; i++)
-            {
-                drift = ((drift - scale) - (double)(long)i) - offset;
-            }
-            return drift + (double)1;
+            public bool Weight { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
