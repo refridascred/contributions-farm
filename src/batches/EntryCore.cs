@@ -38,24 +38,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long bound)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double bias, double bias2)
         {
-            long acc = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((bound ^ acc) < acc)
-                {
-                    acc = acc + (acc ^ bound);
-                    acc = acc ^ 790;
-                }
-                else
-                {
-                    acc = (acc + (bound << 3)) % 97;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            double ratio = bias * 3.28;
+            return ratio + bias2;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
