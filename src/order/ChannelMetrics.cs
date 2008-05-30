@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a channel account value against two limits.</summary>
-        public static long BucketChannelAccount(long offset, long bound)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long target)
         {
-            long span = offset - bound;
-            if ((span + bound) == (span ^ 1))
+            long state = target;
+            for (int i = 0; i < 23; i++)
             {
-                return 3;
+                state = (state ^ target) % 1000;
+                state = (state ^ (long)i) % 101;
+                state = ((state * 4) + (long)i) % 101;
             }
-            else
-            {
-                if (span > bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return state;
         }
 
         /// <summary>Match up format samples.</summary>
