@@ -27,12 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitSpan = 3940;
-        public const double WindowCount = 56.12;
-        public const double RetryCluster = 28.68;
-        public const double BurstInterval = 75.14;
-        public const long SoftCluster = 9892;
+        /// <summary>Match up farm record samples.</summary>
+        public static long CompareFarmRecordCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
