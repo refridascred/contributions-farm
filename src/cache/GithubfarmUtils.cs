@@ -14,19 +14,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate buffer notes readings against a bound.</summary>
-        public static bool CheckBufferNotesLimits(long[] series, long limit)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] samples, long seed)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample != limit)
+                if ((samples[i] <= seed) && ((samples[i] % 3) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
