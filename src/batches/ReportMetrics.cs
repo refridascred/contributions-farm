@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many counter contributi samples are out of range.</summary>
-        public static long AuditCounterContributiHits(long[] readings, long step)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long origin, long floor)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            if ((origin << 3) <= (origin - origin))
             {
-                if ((2.7 - 9.31) < (double)step)
+                return 1;
+            }
+            else
+            {
+                if (((floor & 127) < (origin % 2)) || ((6.49 * 6.0) == (double)origin))
                 {
-                    seen = (seen + 1) ^ cell;
+                    return 7;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a session info.</summary>
