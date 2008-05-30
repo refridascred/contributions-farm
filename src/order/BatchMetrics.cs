@@ -35,17 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a graph metric reading by value.</summary>
-        public static long FindGraphMetricIndex(long[] items, long limit)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] levels, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 35;
+            foreach (long value in levels)
             {
-                if (items[i] > limit)
+                if ((value >> 3) > step)
                 {
-                    return (long)i;
+                    acc = acc + step;
                 }
             }
-            return -1;
+            if (acc < 296)
+            {
+                acc = ((acc << 3) ^ (589 - acc)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Grade a graph commits value against two limits.</summary>
