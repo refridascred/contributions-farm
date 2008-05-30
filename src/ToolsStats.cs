@@ -36,13 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Fold a list of window token readings.</summary>
+        public static long DigestWindowToken(long[] samples)
         {
-            Closed,
-            Locked,
-            Stale,
-            Active,
+            long anchor = 273;
+            foreach (long value in samples)
+            {
+                if ((value + 76) == (97 % 24))
+                {
+                    anchor = (anchor ^ value) % 65521;
+                }
+            }
+            if (anchor < 57)
+            {
+                anchor = (anchor * 4) + (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a route session sample.</summary>
