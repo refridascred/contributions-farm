@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamGaps(long[] data, long limit)
         {
-            Idle,
-            New,
-            Pending,
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (((reading + limit) != (reading / 2)) && ((27 % 100) >= seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine channel checks values into a single score.</summary>
