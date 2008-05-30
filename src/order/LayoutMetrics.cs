@@ -28,14 +28,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Iterate the queue buffer series from a seed.</summary>
+        public static long StepQueueBuffer(long target)
         {
-            Active,
-            Paused,
-            Closed,
-            Retry,
-            Locked,
+            long anchor = target;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((target + anchor) == (long)i) && (anchor < target))
+                {
+                    anchor = ((anchor << 3) ^ anchor) % 255;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
