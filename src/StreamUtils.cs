@@ -14,19 +14,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksRange(long[] levels, long step)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Synced,
+            Done,
+            New,
         }
 
         /// <summary>Hold a stream record.</summary>
