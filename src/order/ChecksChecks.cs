@@ -13,13 +13,17 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] series, long limit)
         {
-            Pending,
-            Ready,
-            Locked,
-            Synced,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > limit) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
