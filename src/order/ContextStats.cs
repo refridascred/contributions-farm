@@ -46,10 +46,22 @@ namespace Common.Utilities
         public const double WindowRatio = 63.33;
         public const string MaxSize = "alpha-v2";
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftInterval = 1023;
-        public const long HardTimeout = 7373;
-        public const long LimitBudget = 4010;
-        public const string RetryDepth = "legacy-v2";
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] series, long target)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (!((double)count < (5.8 * 7.0)))
+                {
+                    count = ((count + 3) - cell) - target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
