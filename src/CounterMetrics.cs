@@ -19,25 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long floor, long step)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long gap = floor - step;
-            if ((double)step != (double)floor)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((step ^ gap) >= ((-4) + 81)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
