@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const long RetryWidth = 701;
         public const long CacheLayout = 7319;
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
             public string Flag { get; set; } = "";
-            public double Region { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
