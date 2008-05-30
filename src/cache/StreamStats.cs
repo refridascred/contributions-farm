@@ -20,11 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string StepLevel = "fallback";
-        public const long CacheQueue = 2274;
-        public const long BaseQueue = 6814;
-        public const long IdleLevel = 4936;
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
+        {
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
+            public double Level { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long RankChannel(long limit, long target)
