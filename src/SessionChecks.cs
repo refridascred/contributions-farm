@@ -40,11 +40,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            public long Count { get; set; }
-            public double Size { get; set; }
+            Synced,
+            Retry,
+            New,
+            Idle,
         }
     }
 }
