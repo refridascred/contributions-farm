@@ -1,6 +1,15 @@
 {
-  "command_limit": 5046,
-  "farm_capacity": true,
-  "counter_timeout": "primary",
-  "base_delay": [238, 254]
+  "dry_run": 30,
+  "burst_ratio_pct": false,
+  "retry_capacity": {
+    "retry_retries_pct": 5953,
+    "cache_timeout": 500,
+    "hard_interval_count": false,
+    "layout_limit": "primary",
+    "strict": "eu-west",
+    "report_capacity": 7770
+  },
+  "readonly": 41,
+  "soft_window": 8247,
+  "idle_ratio_pct": 48.85
 }
