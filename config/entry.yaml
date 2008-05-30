@@ -1,15 +1,12 @@
 # entry settings
-retry_threshold_ms: stable
-cache_ttl: open
-persist:
-  - 417
-  - 36
-  - 319
-  - 162
-enabled: 6183
-contributi_threshold:
-  - standard
+compress: false
+enabled:
   - cached
-  - local
-  - legacy
-dry_run: 500
+  - primary
+  - stable
+persist:
+  - 386
+  - 149
+  - 223
+  - 469
+audit: 30
