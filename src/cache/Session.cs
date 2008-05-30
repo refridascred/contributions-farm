@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double rate, double floor)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            double scale = rate * 13.0;
-            if (scale >= (scale + scale))
-            {
-                scale = scale + 1.45;
-            }
-            else
-            {
-                scale = scale - scale;
-            }
-            return scale - (floor * 2.38);
+            Synced,
+            Pending,
+            Ready,
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
