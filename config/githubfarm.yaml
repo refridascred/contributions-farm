@@ -1,8 +1,5 @@
 # githubfarm settings
-token_depth: 82
-cache_window_ms: true
-context_limit: 36.76
-strict: 34
-idle_interval:
-  - cached
-  - standard
+already_ratio: 250
+batch_delay: cached
+audit: open
+sync_window_pct: 30
