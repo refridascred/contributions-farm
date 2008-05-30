@@ -42,14 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
-        {
-            Active,
-            Queued,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitSpan = 3940;
+        public const double WindowCount = 56.12;
+        public const double RetryCluster = 28.68;
+        public const double BurstInterval = 75.14;
+        public const long SoftCluster = 9892;
 
         /// <summary>Blend two support tools measurements.</summary>
         public static double AdjustSupportTools(double bias, double bias2)
