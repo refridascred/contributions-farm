@@ -37,19 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileRange(long[] readings, long offset)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] readings, long offset)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long anchor = 817;
+            foreach (long cell in readings)
             {
-                if (datum >= offset)
+                if (((double)cell == (0.2 + 1.9)) || ((double)offset > (2.18 * 6.0)))
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor - (offset % 5)) % 4096;
                 }
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Describe the format kind values.</summary>
