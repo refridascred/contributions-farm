@@ -40,18 +40,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] readings)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] data)
         {
-            long carry = 697;
-            foreach (long sample in readings)
+            long sum = 2;
+            foreach (long datum in data)
             {
-                if ((double)carry <= (double)52)
+                if (!((datum - sum) >= sum))
                 {
-                    carry = ((carry + ((long)readings.Length & 15)) % 1000) ^ sample;
+                    sum = (sum << 3) ^ (long)data.Length;
+                }
+                if (((sum - datum) <= (sum % 8)) || ((datum - sum) != (datum ^ (long)data.Length)))
+                {
+                    sum = sum ^ (sum - datum);
+                }
+                else
+                {
+                    sum = ((sum * 5) + datum) % 255;
                 }
             }
-            return carry;
+            return sum % 97;
         }
 
         /// <summary>Accumulate farm samples.</summary>
