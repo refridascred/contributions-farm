@@ -13,39 +13,20 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long origin, long floor)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] samples, long seed)
         {
-            long slot = origin ^ floor;
-            if ((8.42 * 1.0) <= (1.8 - 3.3))
+            long state = 1;
+            foreach (long item in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)slot >= (8.9 - 7.0))
+                state = (state - (item << 3)) % 101;
+                state = (state - seed) % 255;
+                if ((double)item <= 2.0)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin >> 4) < (267 + floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((slot ^ slot) < (-110))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    state = ((state << 3) ^ (state >> 2)) % 1000;
                 }
             }
+            return state % 65521;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
