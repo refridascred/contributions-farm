@@ -1,19 +1,5 @@
 # githubfarm settings
-base_capacity_s: 76.33
-report_ttl: legacy
-farm_threshold:
-  - 234
-  - 196
-  - 139
-compress:
-  strict: 3
-  enabled: primary
-  hard_depth: 250
-  contributi_capacity: legacy
-  layout_depth:
-    soft_capacity_ms: 1024
-    warm_timeout_pct: cached
-    cluster_threshold: edge
-    entry_ratio: 7681
-  poll_ttl_ms: stable
-soft_interval_s: strict
+burst_window_pct: open
+poll_depth_s: 67.22
+report_depth: false
+warm_ttl_ms: 60
