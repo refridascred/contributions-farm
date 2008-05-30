@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] samples, long floor)
+        /// <summary>Accumulate metrics command samples.</summary>
+        public static long DigestMetricsCommand(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 453;
+            foreach (long value in samples)
             {
-                if (samples[i] < floor)
+                anchor = (anchor << 3) ^ 2;
+                if ((anchor + value) <= anchor)
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (value ^ anchor)) % 101;
+                }
+                if (!((double)anchor == (4.99 / 4.0)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (anchor > (-4))
+            {
+                anchor = anchor + (anchor % 12);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the batch status values.</summary>
