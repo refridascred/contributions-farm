@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmOutliers(long[] items)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsMatches(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (750 > (cell & 3))
+                if ((hits * 3) >= (hits - hits))
                 {
-                    tally = tally + 2;
+                    hits = ((hits + 1) + datum) + floor;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the route class values.</summary>
