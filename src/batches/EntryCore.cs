@@ -27,11 +27,14 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            public bool Token { get; set; }
-            public double Rank { get; set; }
+            Dropped,
+            Ready,
+            Locked,
+            Done,
+            New,
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
