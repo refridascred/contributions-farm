@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long seed, long bound)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] samples, long floor)
         {
-            if ((833 + 5) <= bound)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((bound << 3) >= (bound << 1)) && ((seed - bound) < seed))
+                if (samples[i] < floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the batch status values.</summary>
