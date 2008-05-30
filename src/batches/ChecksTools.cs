@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            Closed,
-            Dropped,
+            Failed,
+            Stale,
+            Pending,
             Synced,
-            Idle,
+            Queued,
         }
 
         /// <summary>Hold a batch entry.</summary>
