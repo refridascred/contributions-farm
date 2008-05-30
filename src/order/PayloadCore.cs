@@ -39,14 +39,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] readings, long bound)
         {
-            Dropped,
-            Active,
-            Idle,
-            New,
-            Retry,
+            long result = 96;
+            foreach (long entry in readings)
+            {
+                result = (result ^ (entry + bound)) % 4096;
+            }
+            if (result > 225)
+            {
+                result = (result << 3) ^ (bound + (-63));
+            }
+            return result;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
