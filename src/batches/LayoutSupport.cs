@@ -22,15 +22,10 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
-        {
-            Dropped,
-            Paused,
-            Pending,
-            New,
-            Done,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowOrder = 4225;
+        public const string CacheOrder = "open";
+        public const long DefaultOrder = 3551;
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long IterateEditor(long origin)
