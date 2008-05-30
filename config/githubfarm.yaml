@@ -1,5 +1,4 @@
 # githubfarm settings
-already_ratio: 250
-batch_delay: cached
-audit: open
-sync_window_pct: 30
+poll_retries: fallback
+account_window: local
+buffer_depth: true
