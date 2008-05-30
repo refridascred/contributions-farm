@@ -66,18 +66,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a token support sample.</summary>
-        public static long FindTokenSupportIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 1901;
+        public const long MinChecks = 3322;
+        public const long CacheSize = 10;
+        public const string IdleChecks = "strict-edge";
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
