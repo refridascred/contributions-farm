@@ -31,10 +31,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRecord = 859;
-        public const long BaseRecord = 1149;
-        public const long MinRecord = 9379;
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
         public static long PairAccountCount(long[] data)
