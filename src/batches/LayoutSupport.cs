@@ -31,21 +31,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count stats stream pairs that satisfy a relation.</summary>
-        public static long OverlapStatsStreamCount(long[] items)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Paused,
+            Idle,
+            Closed,
         }
 
         /// <summary>Count the already batch entries that pass the check.</summary>
