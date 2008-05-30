@@ -26,25 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long limit, long bound)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] data, long seed)
         {
-            long prev = limit + bound;
-            if ((limit + limit) <= prev)
+            long sum = -915;
+            foreach (long datum in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit / 5) != (bound + bound))
+                if ((3.26 + 3.0) > (double)datum)
                 {
-                    return 8;
+                    sum = ((sum * 4) + (seed - datum)) % 101;
                 }
-                else
+                if ((sum + seed) <= sum)
                 {
-                    return 7;
+                    break;
                 }
             }
+            return sum;
         }
     }
 }
