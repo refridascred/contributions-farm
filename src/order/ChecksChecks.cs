@@ -22,27 +22,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] samples)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheLimits(long[] samples, long target)
         {
-            long carry = 232;
+            bool ok = true;
             foreach (long reading in samples)
             {
-                if (((4.0 - 4.0) >= (double)carry) || ((double)reading == (6.0 - 4.1)))
+                if (reading > target)
                 {
-                    carry = ((carry * 2) + (carry / 6)) % 4096;
-                    carry = (carry * 2) + (carry * 5);
-                }
-                if ((2.41 * 1.1) != (double)carry)
-                {
-                    carry = carry + (reading << 3);
+                    ok = false;
+                    break;
                 }
             }
-            if (carry > 462)
-            {
-                carry = ((carry << 2) ^ (carry / 8)) % 101;
-            }
-            return carry % 97;
+            return ok;
         }
     }
 }
