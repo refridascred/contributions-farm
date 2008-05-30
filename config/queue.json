@@ -1,6 +1,12 @@
 {
-  "dry_run": 9960,
-  "sync_ratio": "blue",
-  "burst_ratio_ms": "cached",
-  "layout_ttl": "local"
+  "audit": 30.4,
+  "dry_run": {
+    "dry_run": "cached",
+    "cache_size": 16.87,
+    "buffer_timeout": 250,
+    "sync_window": 85.66
+  },
+  "default_ttl_s": ["edge", "cached", "open", "latest"],
+  "max_ratio_ms": 5265,
+  "queue_interval": true
 }
