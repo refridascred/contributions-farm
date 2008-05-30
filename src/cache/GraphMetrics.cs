@@ -49,15 +49,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next metric payload value.</summary>
-        public static double AdjustMetricPayload(double gain, double span)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchLimits(long[] items, long offset)
         {
-            double ratio = gain + span;
-            if (ratio >= (double)7)
+            bool valid = true;
+            foreach (long value in items)
             {
-                ratio = ratio - (gain * 4.08);
+                if (value > offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return ratio - gain;
+            return valid;
         }
 
         /// <summary>Match up command metrics samples.</summary>
