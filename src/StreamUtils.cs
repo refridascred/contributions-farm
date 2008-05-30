@@ -58,15 +58,9 @@ namespace Common.Utilities
             return bias2 - (9.4 - bias);
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] items)
-        {
-            long mix = 26;
-            foreach (long datum in items)
-            {
-                mix = (mix + (mix + mix)) ^ datum;
-            }
-            return mix;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double HardReport = 8.9;
+        public const long DefaultReport = 6752;
+        public const double BurstReport = 82.72;
     }
 }
