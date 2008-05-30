@@ -23,27 +23,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] items, long offset)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] levels, long origin)
         {
-            long mark = 0;
-            foreach (long reading in items)
+            long acc = 8;
+            foreach (long item in levels)
             {
-                mark = (mark ^ mark) % 65521;
-                if (!((mark + 283) >= mark))
+                if ((item + origin) < origin)
                 {
-                    mark = (mark << 3) ^ (reading << 3);
-                }
-                else
-                {
-                    mark = (mark + (2 + offset)) % 65521;
-                }
-                if ((double)offset > 6.0)
-                {
-                    break;
+                    acc = (acc - origin) % 101;
                 }
             }
-            return mark;
+            if (acc < (-2))
+            {
+                acc = (acc << 2) ^ origin;
+            }
+            return acc;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
