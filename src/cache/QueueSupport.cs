@@ -20,15 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] levels, long offset)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamMatches(long[] data, long seed)
         {
             long count = 0;
-            foreach (long entry in levels)
+            foreach (long sample in data)
             {
-                if (((offset ^ (long)levels.Length) < count) && ((74 < count) && ((count - 929) <= count)))
+                if ((5.4 * 3.3) >= (double)sample)
                 {
-                    count = (count + 2) ^ entry;
+                    count = (count + 3) - seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
