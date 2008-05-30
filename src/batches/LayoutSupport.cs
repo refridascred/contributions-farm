@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long floor)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] items)
         {
-            long state = floor;
-            for (int i = 0; i < 21; i++)
+            long sum = 604;
+            foreach (long cell in items)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                if (sum >= 101)
+                {
+                    sum = ((sum * 5) + cell) % 97;
+                }
             }
-            return state;
+            return sum % 4096;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
