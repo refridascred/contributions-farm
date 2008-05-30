@@ -33,19 +33,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsBounds(long[] samples, long offset)
+        /// <summary>Count the commits support entries that pass the check.</summary>
+        public static long CountCommitsSupportOutliers(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (item >= offset)
+                if ((matches - limit) >= matches)
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 3) + value;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
