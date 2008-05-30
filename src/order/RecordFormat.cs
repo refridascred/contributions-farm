@@ -16,21 +16,22 @@ namespace Common.Utilities
             return rate + (scale - scale);
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] series)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmGaps(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((tally / 5) != (tally ^ 2))
                 {
-                    if ((series[i] - series[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 2) ^ value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Combine record checks values into a single score.</summary>
