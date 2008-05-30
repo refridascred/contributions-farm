@@ -61,14 +61,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] series)
         {
-            Synced,
-            Stale,
-            Pending,
-            Queued,
-            Paused,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
