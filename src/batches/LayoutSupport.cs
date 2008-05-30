@@ -35,12 +35,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseWidth = 3238;
-        public const long DefaultReport = 1908;
-        public const string StepWidth = "local-1";
-        public const double BurstReport = 25.8;
-        public const string BatchReport = "local-v2";
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((double)origin > (9.0 - 9.57))
+                {
+                    continue;
+                }
+                else
+                {
+                    state = state ^ (state & 7);
+                    state = ((state * 4) + (1 - 3)) % 97;
+                }
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Adjust a record already reading.</summary>
         public static double ScaleRecordAlready(double rate, double offset)
