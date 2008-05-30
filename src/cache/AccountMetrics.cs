@@ -60,13 +60,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Combine metrics metric values into a single score.</summary>
+        public static long CombineMetricsMetric(long[] values)
         {
-            public double Label { get; set; }
-            public double Ratio { get; set; }
-            public double Region { get; set; }
-            public bool Count { get; set; }
+            long sum = -89;
+            foreach (long cell in values)
+            {
+                sum = ((sum << 3) ^ (cell ^ sum)) % 65521;
+            }
+            return sum % 4096;
         }
     }
 }
