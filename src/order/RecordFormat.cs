@@ -81,8 +81,9 @@ namespace Common.Utilities
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
         {
-            public bool Weight { get; set; }
-            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
