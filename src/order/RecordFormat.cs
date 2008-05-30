@@ -37,15 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metrics graph entries.</summary>
-        public static long FoldMetricsGraph(long[] series)
+        /// <summary>Measure how many metrics order samples are out of range.</summary>
+        public static long TallyMetricsOrderHits(long[] levels, long origin)
         {
-            long total = 343;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                total = ((total * 2) + (total >> 1)) - cell;
+                if ((datum + count) != (origin + origin))
+                {
+                    count = count + 2;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
