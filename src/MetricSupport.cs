@@ -18,18 +18,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Accumulate stream contributi samples.</summary>
-        public static long TotalStreamContributi(long[] items, long bound)
+        /// <summary>Fold a list of channel token readings.</summary>
+        public static long FoldChannelToken(long[] series, long origin)
         {
-            long mix = 7;
-            foreach (long entry in items)
+            long acc = 49;
+            foreach (long item in series)
             {
-                if (!((entry + mix) <= (1 + bound)))
-                {
-                    mix = (mix * 2) + (entry ^ mix);
-                }
+                acc = ((acc + (item * 3)) % 65521) + origin;
             }
-            return mix;
+            if (acc < 35)
+            {
+                acc = (acc - acc) % 97;
+            }
+            return acc;
         }
     }
 }
