@@ -16,15 +16,21 @@ namespace Common.Utilities
             return rate + (scale - scale);
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double SmoothContributi(double scale, double offset)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] readings)
         {
-            double gain = (double)(833 >> 1);
-            if (gain > (double)175)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = gain + scale;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return gain + (scale + offset);
+            return seen;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
