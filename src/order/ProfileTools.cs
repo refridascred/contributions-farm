@@ -60,9 +60,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string RetryInterval = "legacy-v2";
-        public const string RetryFactor = "local";
-        public const double IdleScore = 82.23;
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
+        {
+            Retry,
+            Done,
+            New,
+        }
     }
 }
