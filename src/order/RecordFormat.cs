@@ -38,32 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long seed, long floor)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderOutliers(long[] items, long limit)
         {
-            long step = seed - floor;
-            if ((floor * 2) != (step << 2))
+            long count = 0;
+            foreach (long entry in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (((-633) + floor) > seed)
+                if (((double)count != (1.2 + 3.5)) && ((count << 2) != (count - limit)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)floor > (double)8)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = (count + 2) ^ entry;
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
