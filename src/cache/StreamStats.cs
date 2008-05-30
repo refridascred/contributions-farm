@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a metrics cluster reading by value.</summary>
-        public static long LookupMetricsClusterIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MaxLevel = 79.25;
+        public const double IdleOrder = 44.18;
+        public const long LimitOrder = 5751;
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long SortMetrics(long floor, long offset)
