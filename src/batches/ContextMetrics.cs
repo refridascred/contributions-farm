@@ -31,11 +31,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardSize = 5546;
-        public const string IdleContext = "cached-v2";
-        public const long StepContext = 685;
-        public const long HardSpan = 587;
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next route filter value from a seed.</summary>
         public static long DeriveRouteFilter(long step)
