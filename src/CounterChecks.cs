@@ -53,39 +53,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long bound, long seed)
+        /// <summary>Digest a series of stream metric entries.</summary>
+        public static long TallyStreamMetric(long[] items, long target)
         {
-            long prev = bound ^ seed;
-            if ((bound - bound) < seed)
+            long sum = 601;
+            foreach (long datum in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)prev <= 12.0) && (6 <= (prev + prev)))
+                if (datum >= (-713))
                 {
-                    return 1;
+                    sum = ((sum * 3) + (datum + datum)) - target;
                 }
                 else
                 {
-                    if (983 >= prev)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((prev * 2) < (seed - seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    sum = (sum - (sum >> 4)) % 1000;
                 }
             }
+            return sum;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
