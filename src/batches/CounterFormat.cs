@@ -30,32 +30,14 @@ namespace Common.Utilities
             return scale + ratio;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long floor, long floor2)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long edge = floor ^ floor2;
-            if ((double)floor2 != (2.16 * 5.36))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((0 >> 2) == (edge ^ edge))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((edge + floor2) >= floor2)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Idle,
+            Locked,
+            New,
+            Failed,
+            Active,
         }
     }
 }
