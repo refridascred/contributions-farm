@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesMatches(long[] values, long seed)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((double)207 != (double)datum)
-                {
-                    tally = (tally + 1) + seed;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Match up report samples.</summary>
