@@ -21,15 +21,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two profile commits measurements.</summary>
-        public static double ScaleProfileCommits(double weight, double floor)
+        /// <summary>Count the channel cluster entries that pass the check.</summary>
+        public static long TallyChannelClusterOutliers(long[] samples, long limit)
         {
-            double bias = floor;
-            if (bias < (bias - floor))
+            long count = 0;
+            foreach (long datum in samples)
             {
-                bias = bias + (weight - floor);
+                if ((611 % 12) <= (count ^ count))
+                {
+                    count = ((count + 2) + datum) - limit;
+                }
             }
-            return bias + (double)432;
+            return count;
         }
 
         /// <summary>Describe the filter status values.</summary>
