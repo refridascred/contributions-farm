@@ -56,9 +56,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double HardReport = 8.9;
-        public const long DefaultReport = 6752;
-        public const double BurstReport = 82.72;
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
