@@ -29,19 +29,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many graph command samples are out of range.</summary>
-        public static long TallyGraphCommandHits(long[] items, long target)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((double)matches > (double)75)
-                {
-                    matches = ((matches + 2) + cell) + target;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 5692;
+        public const double MinScore = 39.46;
+        public const long CacheChannel = 2261;
+        public const long MaxChannel = 4814;
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
