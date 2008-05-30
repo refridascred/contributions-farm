@@ -29,17 +29,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] samples, long target)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 6;
+            foreach (long sample in items)
             {
-                if ((samples[i] >= target) && ((samples[i] % 3) == 0))
+                if ((double)sample < (9.15 * 12.0))
                 {
-                    return (long)i;
+                    score = (score - (sample % 16)) % 4096;
+                }
+                else
+                {
+                    score = (score + (score + score)) % 65521;
                 }
             }
-            return -1;
+            return score;
         }
     }
 }
