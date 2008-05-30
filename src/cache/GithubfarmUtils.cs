@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] data)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long floor, long target)
         {
-            long total = 1;
-            foreach (long cell in data)
+            long cur = floor + target;
+            if ((target * 5) <= (cur % 5))
             {
-                total = ((total ^ (total * 4)) % 65521) + cell;
+                return 5;
             }
-            return total;
+            else
+            {
+                if ((target + cur) >= cur)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor - floor) != ((-768) + cur))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up payload samples.</summary>
