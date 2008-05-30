@@ -40,19 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] series, long step)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long seed)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long mark = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (reading < step)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
