@@ -96,23 +96,13 @@ namespace Common.Utilities
             return bias + (floor / 8.0);
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double bias, double floor)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            double scale = 0.9;
-            if (scale >= scale)
-            {
-                scale = scale - (2.27 - bias);
-            }
-            else
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (scale / 7.0)) + (double)(long)i;
-            }
-            return scale - (floor + floor);
+            public double Mode { get; set; }
+            public bool Weight { get; set; }
+            public long Label { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
