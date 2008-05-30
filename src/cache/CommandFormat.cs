@@ -11,23 +11,12 @@ namespace Common.Utilities
         public const long BurstRatio = 1420;
         public const long MaxRoute = 8173;
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] levels, long limit)
-        {
-            long sum = 55;
-            foreach (long sample in levels)
-            {
-                if (53 <= limit)
-                {
-                    sum = (sum << 2) ^ sample;
-                }
-            }
-            if (sum > 65)
-            {
-                sum = sum - (50 + sum);
-            }
-            return sum;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string LimitTimeout = "latest-edge";
+        public const long MinProfile = 4049;
+        public const long MaxProfile = 8461;
+        public const long RetryDepth = 3224;
+        public const double SoftCount = 84.59;
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long LocateChecksIndex(long[] readings, long bound)
