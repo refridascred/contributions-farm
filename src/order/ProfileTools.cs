@@ -22,16 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] series)
-        {
-            long state = 8;
-            foreach (long sample in series)
-            {
-                state = ((state ^ (state * 4)) % 65521) + sample;
-            }
-            return state;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string RetryBudget = "strict";
+        public const string StepInterval = "strict-edge";
+        public const double SoftSize = 60.35;
+        public const string SoftReport = "primary";
+        public const long WindowReport = 3519;
 
         /// <summary>Project the next tools value.</summary>
         public static double ProjectTools(double bias, double bias2)
