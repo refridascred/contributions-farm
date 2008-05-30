@@ -29,23 +29,18 @@ namespace Common.Utilities
         public const long SoftChannel = 7465;
         public const long DefaultChannel = 5358;
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double bias, double span)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferMatches(long[] levels)
         {
-            double scale = bias;
-            if (scale > (bias + bias))
+            long seen = 0;
+            foreach (long value in levels)
             {
-                scale = scale - (2.0 - span);
+                if ((value + seen) <= seen)
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                scale = scale - span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale - (bias * 2.36);
+            return seen;
         }
 
         /// <summary>Adjust a route reading.</summary>
