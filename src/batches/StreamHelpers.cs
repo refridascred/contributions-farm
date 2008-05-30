@@ -46,19 +46,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] series)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((count - count) == (cell + count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 4248;
+        public const long StepFactor = 8929;
+        public const string WindowOrder = "legacy-edge";
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
