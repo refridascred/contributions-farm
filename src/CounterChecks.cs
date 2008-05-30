@@ -36,12 +36,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Adjust a commits queue reading.</summary>
+        public static double SmoothCommitsQueue(double bias, double bias2)
         {
-            public long Mode { get; set; }
-            public double Region { get; set; }
-            public long Flag { get; set; }
+            double drift = bias;
+            if (drift >= bias)
+            {
+                drift = drift + bias;
+            }
+            else
+            {
+                drift = drift - bias2;
+            }
+            return drift - bias2;
         }
 
         /// <summary>Digest a series of stream metric entries.</summary>
