@@ -1,8 +1,6 @@
 {
-  "cache_window_pct": true,
-  "retry_ratio_count": 27,
-  "audit": 6541,
-  "metrics_interval": 1024,
-  "payload_threshold": true,
-  "queue_threshold": 87
+  "strict": 27,
+  "record_retries": 9,
+  "report_threshold": 86,
+  "min_interval_count": "staging"
 }
