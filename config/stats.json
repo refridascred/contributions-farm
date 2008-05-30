@@ -1,6 +1,6 @@
 {
-  "persist": 5.33,
-  "batch_timeout": "edge",
-  "idle_threshold_count": 56.11,
-  "soft_threshold": 45
+  "warm_delay_s": "cached",
+  "retry_limit_pct": "staging",
+  "stats_ratio": [251, 215, 128, 354],
+  "compress": 51
 }
