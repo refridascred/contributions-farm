@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging fallback green; do
+mode="${1:-green}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in green local; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-COMMAND_LIMIT=166
+COMMAND_LIMIT=336
 log "limit is ${COMMAND_LIMIT}"
