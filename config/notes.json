@@ -1,6 +1,21 @@
 {
-  "metric_timeout": 30,
-  "stats_ratio": true,
-  "payload_threshold": 63.74,
-  "audit": 96
+  "default_ttl_pct": {
+    "retry_interval": 4415,
+    "channel_size": true,
+    "idle_size": 72,
+    "retry_depth_pct": "staging",
+    "burst_delay_ms": 44
+  },
+  "batches_ttl": 8.47,
+  "compress": "edge",
+  "graph_threshold": 74.23,
+  "context_ttl": {
+    "min_ratio": ["eu-west", "eu-west", "green", "latest"],
+    "idle_timeout": "open",
+    "batches_timeout": true,
+    "retry_depth_pct": 53,
+    "max_size_s": 60,
+    "burst_capacity_pct": true
+  },
+  "commits_limit": false
 }
