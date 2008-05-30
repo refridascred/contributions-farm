@@ -16,18 +16,19 @@ namespace Common.Utilities
             return bias - 11.0;
         }
 
-        /// <summary>Count the report route entries that pass the check.</summary>
-        public static long AuditReportRouteHits(long[] values)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiBounds(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if ((value >> 1) > value)
+                if (item <= offset)
                 {
-                    tally = tally + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
