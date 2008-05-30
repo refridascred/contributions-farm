@@ -29,19 +29,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesBounds(long[] data, long target)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] values, long step)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample > target)
+                if ((values[i] == step) && ((values[i] % 5) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Locate a stats channel reading by value.</summary>
