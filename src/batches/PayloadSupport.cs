@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const long MinQueue = 899;
         public const string CacheWidth = "standard-edge";
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterLimits(long[] levels, long seed)
         {
-            public long Rank { get; set; }
-            public long Score { get; set; }
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
