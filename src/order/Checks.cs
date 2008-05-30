@@ -33,18 +33,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the commits support entries that pass the check.</summary>
-        public static long CountCommitsSupportOutliers(long[] series, long limit)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ScaleCounter(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long value in series)
+            double drift = (double)(521 >> 4);
+            if (drift > (floor - drift))
             {
-                if ((matches - limit) >= matches)
-                {
-                    matches = (matches + 3) + value;
-                }
+                drift = drift - 1.2;
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - weight) + (double)(long)i;
+            }
+            return drift - (double)52;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
