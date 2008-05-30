@@ -26,15 +26,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long seed)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double rate, double bias)
         {
-            long result = seed;
-            for (int i = 0; i < 15; i++)
+            double scale = bias * 14.0;
+            if (scale > (rate * 8.53))
             {
-                result = ((result * 2) + (long)i) % 4093;
+                scale = scale - bias;
             }
-            return result;
+            return scale - scale;
         }
 
         /// <summary>Hold a report summary.</summary>
