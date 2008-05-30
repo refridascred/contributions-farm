@@ -38,13 +38,15 @@ namespace Common.Utilities
         public const string LimitWidth = "latest-edge";
         public const long StepSize = 8493;
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double scale, double bias)
         {
-            New,
-            Queued,
-            Locked,
-            Synced,
+            double bias2 = (double)(576 * 3);
+            if (bias2 >= scale)
+            {
+                bias2 = bias2 + bias2;
+            }
+            return bias2 - (9.4 - bias);
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
