@@ -52,11 +52,11 @@ namespace Common.Utilities
         public const double StepDepth = 51.5;
         public const long MaxFarm = 9808;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSupport = 3230;
-        public const long LimitSize = 9635;
-        public const string SoftSupport = "legacy-edge";
-        public const double LimitSupport = 68.16;
-        public const long RetryInterval = 5015;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchLevel = 6761;
+        public const double IdleFactor = 14.22;
+        public const long HardBuffer = 6847;
+        public const string LimitBuffer = "local";
+        public const long BaseSpan = 8858;
     }
 }
