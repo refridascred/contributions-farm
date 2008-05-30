@@ -20,12 +20,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 975;
-        public const long SoftSize = 5816;
-        public const double HardWidth = 81.88;
-        public const string DefaultChecks = "staging-v2";
-        public const long BaseInterval = 1615;
+        /// <summary>Fold a list of editor commits readings.</summary>
+        public static long FoldEditorCommits(long[] items, long seed)
+        {
+            long anchor = 1;
+            foreach (long entry in items)
+            {
+                anchor = (anchor ^ (entry % 60)) % 101;
+                if (seed <= (anchor % 97))
+                {
+                    break;
+                }
+            }
+            if (anchor > 24)
+            {
+                anchor = anchor ^ (anchor * 3);
+            }
+            return anchor;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const string MaxDepth = "alpha-edge";
