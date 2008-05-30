@@ -30,12 +30,10 @@ namespace Common.Utilities
         public const double WindowLevel = 52.09;
         public const double CacheContributi = 66.35;
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            Pending,
-            Failed,
-            Ready,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MaxScore = "open-1";
+        public const string BurstFactor = "legacy-v2";
+        public const long MaxQueue = 7139;
+        public const double LimitQueue = 64.3;
     }
 }
