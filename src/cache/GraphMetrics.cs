@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Match up record graph samples.</summary>
-        public static long MatchRecordGraphCount(long[] series)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((series[i] - series[j]) != 13)
+                    if ((data[i] - data[j]) == 15)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count the channel cluster entries that pass the check.</summary>
