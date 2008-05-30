@@ -24,11 +24,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricRange(long[] levels, long step)
         {
-            public double Rank { get; set; }
-            public double Weight { get; set; }
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
