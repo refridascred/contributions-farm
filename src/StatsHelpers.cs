@@ -19,22 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of counter contributi entries.</summary>
-        public static long FoldCounterContributi(long[] samples)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long step)
         {
-            long mix = 77;
-            foreach (long datum in samples)
+            long total = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (((double)mix == (double)633) && (((-369) + datum) > (mix - mix)))
-                {
-                    mix = (mix + ((-977) % 100)) % 1000;
-                }
-                if (1 >= (711 - mix))
-                {
-                    break;
-                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Accumulate record samples.</summary>
