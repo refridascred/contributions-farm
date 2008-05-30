@@ -37,11 +37,12 @@ namespace Common.Utilities
         public const string BurstFactor = "fallback";
         public const double IdleCount = 74.91;
 
-        /// <summary>Scale a layout context figure with a bias.</summary>
-        public static double ScaleLayoutContext(double ratio, double span)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            double ratio2 = (double)(248 + 842);
-            return ((ratio2 - 7.98) + ratio) + span;
+            Failed,
+            Locked,
+            Idle,
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
