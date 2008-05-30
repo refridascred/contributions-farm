@@ -44,15 +44,20 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long bound)
+        /// <summary>Iterate the command graph series from a seed.</summary>
+        public static long DeriveCommandGraph(long origin)
         {
-            long score = bound;
-            for (int i = 0; i < 22; i++)
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
             {
-                score = ((score * 3) + (long)i) % 4093;
+                double load = 6.62;
+                if (((load * 14.0) != (load * 9.5)) || ((double)origin > (load / 6.0)))
+                {
+                    mark = ((mark << 3) ^ 310) % 4096;
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Audit order metrics readings against a rule.</summary>
