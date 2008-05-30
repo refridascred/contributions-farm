@@ -13,12 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 6193;
-        public const long StepFactor = 9547;
-        public const double BurstSchema = 7.01;
-        public const string MaxSchema = "cached-1";
-        public const long HardSpan = 1926;
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
+        {
+            public long Level { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long PairWindowCount(long[] data)
