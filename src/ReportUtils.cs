@@ -22,11 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Locate a schema session reading by value.</summary>
+        public static long LocateSchemaSessionIndex(long[] items, long bound)
         {
-            public long Mode { get; set; }
-            public double Rank { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < bound) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up cluster checks samples.</summary>
