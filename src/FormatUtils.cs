@@ -45,32 +45,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a batches commits value against two limits.</summary>
-        public static long GradeBatchesCommits(long seed, long limit)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] data)
         {
-            long lane = seed - limit;
-            if ((limit - seed) > (seed + lane))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (limit < seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)seed != (10.0 - 17.0))
+                    if ((data[i] - data[j]) == 17)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
