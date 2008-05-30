@@ -33,15 +33,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two format checks measurements.</summary>
-        public static double ScaleFormatChecks(double ratio, double offset)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long limit, long bound)
         {
-            double ratio2 = ratio;
-            if (ratio2 <= (offset + ratio))
+            long prev = limit + bound;
+            if ((limit + limit) <= prev)
             {
-                ratio2 = ratio2 - (double)(-917);
+                return 3;
             }
-            return ratio2 + (double)16;
+            else
+            {
+                if ((limit / 5) != (bound + bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
