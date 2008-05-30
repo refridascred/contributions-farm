@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] levels)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long offset, long seed)
         {
-            long score = 7;
-            foreach (long sample in levels)
+            if (offset >= 33)
             {
-                score = ((score - (score * 4)) % 101) ^ sample;
+                return 8;
             }
-            return score;
+            else
+            {
+                if (seed <= (offset + offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((241 + offset) != (offset / 9))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset + 703) >= seed)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a schema counter forward.</summary>
