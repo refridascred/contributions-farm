@@ -27,39 +27,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long bound, long limit)
+        /// <summary>Accumulate githubfarm filter samples.</summary>
+        public static long DigestGithubfarmFilter(long[] readings, long step)
         {
-            long prev = bound - limit;
-            if ((3.04 + 13.0) == (double)bound)
+            long mix = 85;
+            foreach (long reading in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound - prev) != (bound + limit))
+                mix = (mix << 3) ^ (82 + mix);
+                if (step > reading)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((limit / 6) < (bound + bound)) || ((limit & 127) > bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(((-1) * 5) < prev))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    break;
                 }
             }
+            if (mix < 561)
+            {
+                mix = (mix + mix) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
