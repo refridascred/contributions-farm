@@ -25,14 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long step, long origin)
         {
-            Paused,
-            Idle,
-            Dropped,
-            New,
-            Closed,
+            if ((step / 5) < step)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((5.6 - 12.0) == (double)step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
