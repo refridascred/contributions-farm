@@ -40,15 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next already buffer value from a seed.</summary>
-        public static long RollAlreadyBuffer(long target)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long result = target;
-            for (int i = 0; i < 23; i++)
-            {
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Combine support values into a single score.</summary>
