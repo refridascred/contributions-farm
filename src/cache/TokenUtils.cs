@@ -17,13 +17,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            public string Size { get; set; } = "";
-            public bool Level { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
+            Active,
+            Dropped,
+            Closed,
+            Queued,
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
