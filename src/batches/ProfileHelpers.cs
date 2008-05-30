@@ -64,15 +64,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long floor)
+        /// <summary>Fold a list of batch cluster readings.</summary>
+        public static long TallyBatchCluster(long[] samples, long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 22; i++)
+            long carry = 42;
+            foreach (long cell in samples)
             {
-                acc = ((acc * 3) + (long)i) % 97;
+                if (1.2 <= (double)carry)
+                {
+                    carry = (((carry << 2) ^ (0 & 63)) % 1000) + cell;
+                }
             }
-            return acc;
+            if (carry < 22)
+            {
+                carry = carry + floor;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
