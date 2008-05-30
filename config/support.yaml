@@ -1,16 +1,10 @@
 # support settings
-soft_threshold:
-  compress: edge
-  strict: green
-  batch_ratio: cached
-batch_ratio_pct:
-  min_delay: fallback
-  hard_capacity_count: staging
-  order_capacity: true
-  record_ratio: 4055
-  soft_window: 7746
-  graph_limit: 250
-report_interval: false
-farm_ttl: cached
-cache_threshold_count: eu-west
-format_ratio: 500
+soft_limit:
+  - 452
+  - 256
+  - 306
+flush_size: 96.05
+burst_capacity: 82.12
+sync_ratio_pct: standard
+strict: 75
+readonly: 82.16
