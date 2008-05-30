@@ -14,10 +14,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BurstSize = 73.27;
-        public const double MaxAccount = 36.09;
-        public const long BatchAccount = 1915;
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
+        {
+            Locked,
+            Draft,
+            Active,
+        }
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
