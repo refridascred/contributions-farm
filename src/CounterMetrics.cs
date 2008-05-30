@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] data, long step)
+        /// <summary>Find the first account batches entry that matches the target.</summary>
+        public static long FindAccountBatchesIndex(long[] series, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((data[i] < step) && ((data[i] % 5) != 0))
+                if (series[i] <= offset)
                 {
                     return (long)i;
                 }
