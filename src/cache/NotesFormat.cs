@@ -20,27 +20,23 @@ namespace Common.Utilities
             return rate + (offset / 6.0);
         }
 
-        /// <summary>Combine route counter values into a single score.</summary>
-        public static long DigestRouteCounter(long[] items)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long bound)
         {
-            long mix = 47;
-            foreach (long datum in items)
+            long anchor = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (mix >= (28 + 72))
+                if (anchor < (bound >> 2))
                 {
-                    continue;
-                }
-                mix = (mix << 3) ^ mix;
-                if (((mix & 255) < (datum / 5)) || ((4.31 / 7.0) > (double)mix))
-                {
-                    mix = ((mix * 5) + datum) % 255;
+                    anchor = (anchor - (anchor / 5)) % 65521;
                 }
                 else
                 {
-                    mix = ((mix * 5) + (36 << 3)) % 4096;
+                    anchor = ((anchor << 3) ^ ((long)i % 2)) % 97;
                 }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return mix % 4096;
+            return anchor;
         }
 
         /// <summary>Count checks entry pairs that satisfy a relation.</summary>
