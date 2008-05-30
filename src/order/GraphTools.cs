@@ -59,12 +59,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            Done,
-            Ready,
-            Dropped,
+            public long Region { get; set; }
+            public double Offset { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a account header.</summary>
