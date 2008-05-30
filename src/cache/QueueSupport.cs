@@ -41,39 +41,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a command buffer value against two limits.</summary>
-        public static long ClassifyCommandBuffer(long offset, long origin)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long delta = offset - origin;
-            if ((7.2 * 1.78) < (double)offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)offset == (5.7 / 5.0)) && (offset >= 26))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (origin > (delta % 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((520 ^ origin) > (origin - offset)) && (origin <= (398 >> 3)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Done,
+            Queued,
         }
     }
 }
