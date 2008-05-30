@@ -41,18 +41,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the editor format entries that pass the check.</summary>
-        public static long AuditEditorFormatHits(long[] data)
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (((item + (long)data.Length) < 91) || !((120 / 9) >= item))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            double load = (floor * 10.0) / 3.0;
+            return load + rate;
         }
     }
 }
