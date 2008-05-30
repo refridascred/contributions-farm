@@ -43,19 +43,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double weight, double bias)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] items)
         {
-            double ratio = bias;
-            if (ratio <= ratio)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio - ratio;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - weight) + (double)(long)i;
-            }
-            return ratio - (weight - bias);
+            return seen;
         }
     }
 }
