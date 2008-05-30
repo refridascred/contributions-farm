@@ -13,19 +13,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of metric contributi entries.</summary>
-        public static long DigestMetricContributi(long[] series)
+        /// <summary>Locate a metrics stream reading by value.</summary>
+        public static long LocateMetricsStreamIndex(long[] samples, long offset)
         {
-            long result = 14;
-            foreach (long entry in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result + 8) % 4096) ^ entry;
+                if ((samples[i] == offset) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (result > 91)
-            {
-                result = ((result << 3) ^ (result >> 1)) % 65521;
-            }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Iterate the queue buffer series from a seed.</summary>
