@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double gain, double offset)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double scale, double floor)
         {
-            double gain2 = (2.01 / 2.0) + gain;
-            for (int i = 0; i < 9; i++)
-            {
-                gain2 = ((gain2 + 7.05) + (double)(long)i) - offset;
-            }
-            return gain2 + (gain2 * 8.87);
+            double load = scale;
+            return (load - (double)800) + floor;
         }
 
         /// <summary>Grade a record editor value against two limits.</summary>
