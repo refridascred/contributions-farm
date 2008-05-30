@@ -27,12 +27,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long bound, long limit)
         {
-            Paused,
-            Idle,
-            Pending,
+            long prev = bound - limit;
+            if ((3.04 + 13.0) == (double)bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound - prev) != (bound + limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((limit / 6) < (bound + bound)) || ((limit & 127) > bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(((-1) * 5) < prev))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
