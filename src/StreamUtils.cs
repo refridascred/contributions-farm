@@ -67,17 +67,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] levels, long step)
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] series, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 900;
+            foreach (long item in series)
             {
-                if (levels[i] < step)
+                if ((item << 1) < offset)
                 {
-                    return (long)i;
+                    sum = (sum + (item ^ item)) % 97;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Adjust a route reading.</summary>
