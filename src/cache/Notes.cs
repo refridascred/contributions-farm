@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Combine profile queue values into a single score.</summary>
+        public static long WeighProfileQueue(long[] items)
         {
-            Draft,
-            Dropped,
-            Locked,
-            Synced,
+            long mark = 31;
+            foreach (long datum in items)
+            {
+                if (!(datum < (datum + 1)))
+                {
+                    mark = ((mark << 3) ^ (-7)) % 97;
+                    mark = (mark * 2) + datum;
+                }
+                if ((datum > (mark + mark)) || ((mark << 2) <= (61 * 5)))
+                {
+                    mark = (mark ^ datum) % 1000;
+                    continue;
+                }
+                if ((datum >= (datum >> 5)) && ((mark - mark) == (966 & 255)))
+                {
+                    mark = ((mark << 3) ^ (-693)) % 65521;
+                }
+                else
+                {
+                    mark = ((mark * 3) + (datum / 8)) % 1000;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a notes header.</summary>
