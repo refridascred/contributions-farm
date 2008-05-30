@@ -84,19 +84,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double AdjustNotes(double rate, double span)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] series)
         {
-            double mean = span;
-            if (mean > (rate / 3.0))
+            long seen = 0;
+            foreach (long reading in series)
             {
-                mean = mean + mean;
+                if (!(((8.0 + 0.6) != (double)seen) || ((seen % 24) >= (952 - seen))))
+                {
+                    seen = (seen + 2) + reading;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + (mean * 20.0)) + (double)(long)i;
-            }
-            return mean - (double)(-38);
+            return seen;
         }
     }
 }
