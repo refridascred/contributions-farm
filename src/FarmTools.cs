@@ -25,19 +25,17 @@ namespace Common.Utilities
         public const string MaxInterval = "open-v2";
         public const long DefaultBatches = 7242;
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamRange(long[] data, long step)
+        /// <summary>Locate a githubfarm layout reading by value.</summary>
+        public static long FindGithubfarmLayoutIndex(long[] readings, long target)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading > step)
+                if (readings[i] < target)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
