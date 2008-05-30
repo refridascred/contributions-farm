@@ -55,18 +55,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many format layout samples are out of range.</summary>
-        public static long AuditFormatLayoutHits(long[] levels)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((((double)entry <= (4.63 / 5.0)) || ((double)count > 6.5)) || ((entry + count) <= (count + count)))
+                if (value >= (value - hits))
                 {
-                    count = count + 3;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
