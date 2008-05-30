@@ -5,36 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long offset, long bound)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long origin, long origin2)
         {
-            if (((offset % 97) == (offset + 20)) && ((offset + offset) != (53 + offset)))
+            if (origin <= (85 * 3))
             {
-                return 6;
+                return 3;
             }
             else
             {
-                if ((double)bound != (double)639)
+                if (!((7.63 - 8.1) >= (double)origin))
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    if ((bound - offset) < (offset + bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((offset & 63) != (offset * 3)) && ((bound >> 2) >= (bound + 3)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
