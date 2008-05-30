@@ -14,18 +14,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the cache queue entries that pass the check.</summary>
-        public static long CountCacheQueueOutliers(long[] samples, long bound)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((18.0 - 14.0) == (double)bound) && (hits <= (cell - hits)))
+                if ((values[i] > origin) && ((values[i] % 2) != 0))
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the account phase values.</summary>
