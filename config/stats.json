@@ -1,5 +1,5 @@
 {
-  "enabled": 4800,
-  "metrics_ratio": "primary",
-  "cache_size": 34.46
+  "soft_window_ms": 30.72,
+  "max_ttl": 52,
+  "dry_run": 52.74
 }
