@@ -44,11 +44,14 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            public double Flag { get; set; }
-            public double Score { get; set; }
+            Dropped,
+            Paused,
+            Pending,
+            New,
+            Done,
         }
 
         /// <summary>Define report limits and defaults.</summary>
