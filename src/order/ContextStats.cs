@@ -26,18 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit route farm readings against a rule.</summary>
-        public static long CountRouteFarmHits(long[] levels)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            double weight = ratio;
+            if (weight >= (double)91)
             {
-                if (488 > (long)levels.Length)
-                {
-                    hits = (hits + 3) + reading;
-                }
+                weight = weight - (double)1;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight + (floor + 6.9);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
