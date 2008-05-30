@@ -16,19 +16,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] readings, long offset)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] series)
         {
-            long score = 647;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score * 4) + (score ^ sample);
-                if (((score - sample) >= (offset - offset)) || ((698 >> 3) > (score - offset)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = score ^ sample;
+                    if ((series[i] ^ series[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score % 1000;
+            return count;
         }
 
         /// <summary>Describe the cache phase values.</summary>
