@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 2405;
-        public const string HardChecks = "cached";
-        public const long WindowWidth = 7883;
-        public const long LimitBudget = 2705;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesMatches(long[] values, long seed)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((double)207 != (double)datum)
+                {
+                    tally = (tally + 1) + seed;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up report samples.</summary>
         public static long CompareReportCount(long[] items)
