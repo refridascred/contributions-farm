@@ -39,24 +39,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long limit, long seed)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            if ((double)limit == (double)seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)limit <= (0.07 - 6.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Score { get; set; }
+            public long Total { get; set; }
+            public double Weight { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
