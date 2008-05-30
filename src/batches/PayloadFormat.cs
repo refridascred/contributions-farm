@@ -24,15 +24,19 @@ namespace Common.Utilities
             return scale - (double)8;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double weight, double span)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] series)
         {
-            double scale = (double)49 + (weight / 8.0);
-            if (scale <= span)
+            long score = 3;
+            foreach (long entry in series)
             {
-                scale = scale + weight;
+                score = ((score + score) % 1000) - entry;
             }
-            return scale + scale;
+            if (score < (-786))
+            {
+                score = (score - (score ^ score)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
