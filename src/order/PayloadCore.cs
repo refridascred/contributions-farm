@@ -28,10 +28,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftSpan = 4806;
-        public const long DefaultStream = 3152;
-        public const double CacheStream = 57.81;
-        public const double StepStream = 51.61;
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
