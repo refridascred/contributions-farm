@@ -39,14 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Measure how many notes record samples are out of range.</summary>
+        public static long TallyNotesRecordMatches(long[] series)
         {
-            New,
-            Locked,
-            Paused,
-            Dropped,
-            Idle,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((64 + seen) <= (seen + sample))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
