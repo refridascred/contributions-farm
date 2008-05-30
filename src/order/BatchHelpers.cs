@@ -14,12 +14,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseRatio = 1056;
-        public const long MinBudget = 9059;
-        public const long BurstBatches = 5067;
-        public const long HardBatches = 7717;
-        public const double RetryDepth = 58.33;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MaxCount = 95.7;
+        public const double BatchFactor = 50.66;
+        public const long BaseTimeout = 9410;
+        public const long StepNotes = 4434;
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long IterateEditor(long bound)
