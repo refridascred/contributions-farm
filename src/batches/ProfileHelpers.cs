@@ -75,15 +75,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] samples)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] values)
         {
-            long carry = 3;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry ^ (carry >> 4)) % 101) + reading;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
