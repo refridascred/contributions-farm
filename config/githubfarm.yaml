@@ -1,4 +1,6 @@
 # githubfarm settings
-poll_retries: fallback
-account_window: local
-buffer_depth: true
+editor_interval: 50
+session_ratio: open
+compress: primary
+max_capacity_ms: legacy
+batch_delay_s: 42
