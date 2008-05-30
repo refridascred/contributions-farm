@@ -43,13 +43,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Grade a entry payload value against two limits.</summary>
+        public static long ClassifyEntryPayload(long origin, long target)
         {
-            Idle,
-            Retry,
-            Done,
-            Pending,
+            if ((double)origin <= (2.7 / 2.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin + target) >= (25 * 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
