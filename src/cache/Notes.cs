@@ -60,9 +60,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetrySize = 9723;
-        public const long BaseFarm = 256;
-        public const double BatchFarm = 4.8;
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
+        }
     }
 }
