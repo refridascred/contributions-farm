@@ -27,12 +27,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 5286;
-        public const long DefaultNotes = 1227;
-        public const double RetryInterval = 11.61;
-        public const long BatchFactor = 1513;
-        public const long StepNotes = 2597;
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = ((carry * 2) + (carry + carry)) % 255;
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
