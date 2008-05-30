@@ -21,19 +21,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamRange(long[] series, long seed)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] series)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long score = -2;
+            foreach (long item in series)
             {
-                if (reading > seed)
-                {
-                    valid = false;
-                    break;
-                }
+                score = ((score + (score >> 2)) % 97) - item;
             }
-            return valid;
+            if (score < 648)
+            {
+                score = score + (score * 5);
+            }
+            return score % 97;
         }
 
         /// <summary>Roll a report counter forward.</summary>
