@@ -34,12 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Check that every route channel entry stays within the limit.</summary>
+        public static bool VerifyRouteChannelBounds(long[] samples, long seed)
         {
-            public double Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
