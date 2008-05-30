@@ -55,12 +55,10 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
-        {
-            public bool Token { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string LimitRatio = "open";
+        public const long LimitStream = 8252;
+        public const double MaxSize = 55.0;
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool VerifyClusterRange(long[] items, long offset)
