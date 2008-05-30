@@ -16,18 +16,23 @@ namespace Common.Utilities
             return ratio + (double)73;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutMatches(long[] data)
+        /// <summary>Combine payload commits values into a single score.</summary>
+        public static long CombinePayloadCommits(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long anchor = 66;
+            foreach (long value in series)
             {
-                if ((matches / 7) != (item + item))
+                if (10.0 <= (double)bound)
                 {
-                    matches = matches + 1;
+                    anchor = ((anchor ^ (bound % 64)) % 65521) ^ value;
+                    continue;
+                }
+                if ((double)bound <= 5.2)
+                {
+                    anchor = ((anchor * 3) + (anchor & 3)) % 1000;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
