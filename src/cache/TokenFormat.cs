@@ -28,18 +28,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the batch account entries that pass the check.</summary>
-        public static long MeasureBatchAccountGaps(long[] series)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (cell < (hits + cell))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Synced,
+            Idle,
+            New,
+            Dropped,
         }
     }
 }
