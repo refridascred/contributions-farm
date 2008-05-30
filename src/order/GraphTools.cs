@@ -47,17 +47,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] samples, long bound)
+        /// <summary>Accumulate queue stream samples.</summary>
+        public static long ScoreQueueStream(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 8;
+            foreach (long cell in items)
             {
-                if (samples[i] >= bound)
+                if ((double)sum <= (double)sum)
                 {
-                    return (long)i;
+                    sum = sum ^ (78 - sum);
+                }
+                if (cell > (sum / 5))
+                {
+                    sum = sum + (cell + sum);
                 }
             }
-            return -1;
+            return sum % 4096;
         }
     }
 }
