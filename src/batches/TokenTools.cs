@@ -27,39 +27,16 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long target, long floor)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long floor)
         {
-            long lane = target + floor;
-            if ((20.0 - 1.12) >= (double)floor)
+            long result = floor;
+            for (int i = 0; i < 13; i++)
             {
-                return 4;
+                result = (result * 5) + (floor & 3);
+                result = ((result * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((floor << 3) == (lane + floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((948 + 123) <= (target << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((floor << 1) >= floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Accumulate tools samples.</summary>
