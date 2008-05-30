@@ -1,21 +1,17 @@
 {
-  "min_depth_pct": 7004,
-  "burst_ttl_s": {
-    "filter_capacity": "eu-west",
-    "route_retries": [121, 142, 323, 88],
-    "sync_window": "eu-west",
-    "poll_size": "primary",
-    "base_ratio": false
-  },
-  "batch_size": {
-    "burst_timeout_s": "stable",
-    "persist": {
-      "compress": "staging",
-      "sync_threshold_s": "stable",
-      "flush_interval_ms": 28,
-      "metric_interval": [469, 412],
-      "poll_ratio": false
+  "readonly": {
+    "audit": {
+      "dry_run": "legacy",
+      "burst_delay": 77,
+      "persist": "latest",
+      "enabled": 100
     },
-    "metrics_depth": 42
-  }
+    "enabled": 5290,
+    "verbose": 9107,
+    "retry_window_s": "staging",
+    "cache_ttl": 6154
+  },
+  "strict": 9.5,
+  "poll_size": "local",
+  "compress": "latest"
 }
