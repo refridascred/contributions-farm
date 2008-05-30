@@ -31,15 +31,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Iterate the tools cache series from a seed.</summary>
-        public static long IterateToolsCache(long bound)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long result = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            public long Ratio { get; set; }
+            public double Token { get; set; }
+            public double Offset { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the metrics level values.</summary>
