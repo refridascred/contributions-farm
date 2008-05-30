@@ -1,15 +1,15 @@
 {
-  "batch_window": 250,
-  "sync_timeout_ms": "green",
-  "flush_capacity": true,
-  "flush_depth_ms": ["open", "eu-west", "standard"],
-  "compress": {
-    "verbose": 92,
-    "editor_timeout": true,
-    "account_threshold": 6226,
-    "cache_limit": 96.72,
-    "burst_ttl_ms": [500, 102, 221, 266],
-    "strict": 1024
+  "account_interval": 91,
+  "base_size": {
+    "burst_interval": "blue",
+    "min_ratio_count": "eu-west",
+    "tools_interval": 9.31,
+    "poll_interval_count": 100,
+    "channel_timeout": 93.12,
+    "persist": ["stable", "fallback", "staging"]
   },
-  "soft_threshold_count": true
+  "batch_delay_s": "fallback",
+  "notes_depth": 250,
+  "cluster_retries": "latest",
+  "layout_ratio": [428, 63, 77, 75]
 }
