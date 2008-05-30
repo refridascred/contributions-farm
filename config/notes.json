@@ -1,7 +1,5 @@
 {
-  "sync_interval": 100,
-  "readonly": 39,
-  "strict": "cached",
-  "soft_delay": ["legacy", "stable"],
-  "warm_threshold": 80.1
+  "max_retries_count": false,
+  "schema_retries": "blue",
+  "max_depth_ms": "eu-west"
 }
