@@ -69,12 +69,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
-        {
-            Idle,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCount = 4286;
+        public const long MaxFactor = 9582;
+        public const string DefaultCounter = "cached-1";
+        public const string SoftCounter = "staging-1";
+        public const long BurstCounter = 576;
     }
 }
