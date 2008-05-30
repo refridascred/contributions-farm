@@ -1,14 +1,7 @@
 {
-  "report_size": {
-    "hard_retries": "local",
-    "editor_threshold": "blue",
-    "retry_window_s": ["edge", "primary", "latest", "primary"],
-    "route_ratio": true,
-    "farm_ttl": 35.95,
-    "retry_retries": 1529
-  },
-  "base_capacity": 46.11,
-  "burst_retries_count": [127, 446, 87],
-  "base_delay_s": 59.53,
-  "max_capacity": true
+  "compress": 917,
+  "hard_ratio_pct": 1024,
+  "max_depth_count": "legacy",
+  "default_retries": false,
+  "strict": 16.51
 }
