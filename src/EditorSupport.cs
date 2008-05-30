@@ -48,19 +48,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] samples)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long state = 8;
-            foreach (long cell in samples)
-            {
-                state = ((state << 2) ^ (cell / 7)) % 101;
-            }
-            if (state > 545)
-            {
-                state = state + 3;
-            }
-            return state % 1000;
+            public long Flag { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Blend two checks measurements.</summary>
