@@ -1,22 +1,38 @@
 # support settings
-default_limit:
-  - stable
-  - green
-hard_capacity_s: 16
-burst_depth: false
-githubfarm_timeout:
-  format_limit: stable
-  hard_timeout_s: primary
-  retry_interval_s:
-    compress: open
-    profile_retries: 3117
-    idle_limit: 100
-    soft_threshold_pct:
-      - standard
-      - latest
-      - strict
-      - cached
-    retry_window_pct: 500
-    default_ttl_count: 29.68
-max_ratio: staging
-persist: 1024
+base_limit_pct:
+  - 185
+  - 325
+  - 436
+verbose: 58.66
+poll_limit: 31
+warm_delay:
+  readonly: stable
+  enabled:
+    - 174
+    - 432
+    - 75
+  retry_threshold: 500
+  batch_capacity_ms:
+    soft_window: open
+    sync_threshold_count: edge
+    warm_retries_s: true
+    burst_window_count:
+      - blue
+      - green
+      - open
+      - eu-west
+    poll_limit_pct:
+      - blue
+      - green
+      - green
+    order_interval: staging
+  stats_window:
+    readonly:
+      - eu-west
+      - legacy
+      - stable
+    retry_capacity_pct: standard
+    default_size: 62
+    compress: 30
+    enabled: true
+  metrics_size: eu-west
