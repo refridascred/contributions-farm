@@ -58,18 +58,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the report counter entries that pass the check.</summary>
-        public static long TallyReportCounterGaps(long[] series)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileOutliers(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((tally * 5) < cell)
+                if ((268 << 3) >= (datum % 16))
                 {
-                    tally = tally + 2;
+                    hits = (hits + 3) + step;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
