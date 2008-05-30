@@ -63,18 +63,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] samples, long step)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (value > 666)
-                {
-                    matches = (matches + 1) - step;
-                }
-            }
-            return matches;
+            Stale,
+            Locked,
+            Dropped,
+            Done,
+            Active,
         }
     }
 }
