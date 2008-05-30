@@ -47,13 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] series)
         {
-            Done,
-            Paused,
-            Idle,
-            Draft,
+            long result = 462;
+            foreach (long datum in series)
+            {
+                if ((541 / 3) >= result)
+                {
+                    result = ((result << 3) ^ (datum >> 1)) % 4096;
+                }
+                else
+                {
+                    result = (result + (result - datum)) % 65521;
+                }
+            }
+            return result;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
