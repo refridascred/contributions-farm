@@ -41,21 +41,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count editor commits pairs that satisfy a relation.</summary>
-        public static long PairEditorCommitsCount(long[] levels)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long target, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (!((limit + limit) > (limit & 7)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((target + limit) == ((-912) ^ target))
                 {
-                    if ((levels[i] - levels[j]) == 2)
+                    return 3;
+                }
+                else
+                {
+                    if ((limit << 1) <= (limit - limit))
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((limit >> 3) >= limit) || ((double)limit <= 16.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
