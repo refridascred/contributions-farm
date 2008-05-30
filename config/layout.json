@@ -1,6 +1,6 @@
 {
-  "poll_interval": [14, 21, 315, 497],
-  "hard_delay_count": 37,
-  "base_delay": 60,
-  "default_timeout_pct": 30
+  "flush_threshold": false,
+  "max_depth": 50,
+  "persist": [489, 195, 405, 62],
+  "hard_limit_count": 1024
 }
