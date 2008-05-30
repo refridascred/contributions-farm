@@ -69,12 +69,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] data)
         {
-            public string Rank { get; set; } = "";
-            public double Size { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
