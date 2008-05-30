@@ -50,20 +50,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] readings)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] data)
         {
-            long state = -36;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state * 5) + sample) % 4096;
-                state = ((state * 5) + (state + sample)) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (state > 735)
-            {
-                state = ((state * 2) + (state + 2)) % 4096;
-            }
-            return state % 97;
+            return tally;
         }
     }
 }
