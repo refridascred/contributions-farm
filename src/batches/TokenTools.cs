@@ -39,22 +39,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] items)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long result = 57;
-            foreach (long sample in items)
-            {
-                if ((double)result < (4.1 - 9.0))
-                {
-                    result = (result << 3) ^ result;
-                }
-                if ((sample >> 1) != (sample << 1))
-                {
-                    break;
-                }
-            }
-            return result % 65521;
+            Active,
+            Locked,
+            Pending,
+            Ready,
+            Idle,
         }
     }
 }
