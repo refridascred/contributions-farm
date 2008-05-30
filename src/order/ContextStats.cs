@@ -27,19 +27,21 @@ namespace Common.Utilities
         public const string IdleWidth = "staging";
         public const double BurstBuffer = 49.1;
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmRange(long[] levels, long step)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] items)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry > step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] ^ items[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
