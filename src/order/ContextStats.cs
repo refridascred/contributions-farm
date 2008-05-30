@@ -26,19 +26,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double ratio, double floor)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] items)
         {
-            double weight = ratio;
-            if (weight >= (double)91)
+            long mark = 59;
+            foreach (long value in items)
             {
-                weight = weight - (double)1;
+                if (7 > value)
+                {
+                    mark = (mark ^ (value << 1)) % 101;
+                    continue;
+                }
+                else
+                {
+                    mark = (mark * 2) + (value + value);
+                }
+                if ((value % 100) < mark)
+                {
+                    mark = (mark + (value << 2)) % 1000;
+                }
+                if ((mark + value) < value)
+                {
+                    mark = (mark + 4) % 101;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight + (floor + 6.9);
+            return mark;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
