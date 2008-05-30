@@ -55,19 +55,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] readings, long bound)
-        {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 8030;
+        public const long BatchScore = 9205;
+        public const double LimitBatch = 78.28;
     }
 }
