@@ -1,12 +1,7 @@
 {
-  "base_delay_ms": ["cached", "local"],
-  "hard_interval_count": 92,
-  "burst_ttl_ms": 5,
-  "batch_capacity_ms": "strict",
-  "audit": {
-    "verbose": 31.07,
-    "persist": 500,
-    "queue_depth": true,
-    "readonly": ["open", "cached", "strict", "standard"]
-  }
+  "verbose": [448, 138, 398],
+  "max_window_s": "strict",
+  "githubfarm_threshold": [471, 16, 274, 382],
+  "strict": 7.31,
+  "idle_limit_s": 59
 }
