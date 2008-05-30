@@ -16,24 +16,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long bound, long bound2)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long MatchSupportCount(long[] values)
         {
-            if ((1.68 - 8.0) >= (double)bound)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound2 << 3) < (bound2 + bound2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    if ((values[i] - values[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
