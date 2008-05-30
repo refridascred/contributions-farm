@@ -12,19 +12,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferLimits(long[] samples, long seed)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutBounds(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (sample < seed)
+                if (entry != step)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Describe the format phase values.</summary>
