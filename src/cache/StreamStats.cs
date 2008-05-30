@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate metrics command samples.</summary>
-        public static long DigestMetricsCommand(long[] samples)
+        /// <summary>Check that every queue support entry stays within the limit.</summary>
+        public static bool CheckQueueSupportBounds(long[] values, long offset)
         {
-            long anchor = 453;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                anchor = (anchor << 3) ^ 2;
-                if ((anchor + value) <= anchor)
+                if (reading < offset)
                 {
-                    anchor = (anchor ^ (value ^ anchor)) % 101;
-                }
-                if (!((double)anchor == (4.99 / 4.0)))
-                {
+                    stale = false;
                     break;
                 }
             }
-            if (anchor > (-4))
-            {
-                anchor = anchor + (anchor % 12);
-            }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Describe the batch status values.</summary>
