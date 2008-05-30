@@ -25,38 +25,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank checks tools input into a small class.</summary>
-        public static long SortChecksTools(long seed, long bound)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double ratio, double floor)
         {
-            if (((7.31 * 1.16) != (double)seed) && ((347 % 24) >= (seed + seed)))
+            double weight = 7.0;
+            if (weight <= floor)
             {
-                return 8;
+                weight = weight - (weight + ratio);
             }
             else
             {
-                if (((bound + bound) != (bound % 60)) && ((8.0 - 9.4) >= (double)bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (228 >= (seed - seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)bound <= (11.0 + 3.7)) && ((seed / 4) > (seed + seed)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                weight = weight - (floor * 5.1);
             }
+            return weight - (ratio * 16.0);
         }
 
         /// <summary>Rank payload window input into a small class.</summary>
