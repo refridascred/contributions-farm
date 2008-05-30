@@ -52,14 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] readings, long target)
         {
-            Active,
-            Stale,
-            Idle,
-            Done,
-            New,
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
