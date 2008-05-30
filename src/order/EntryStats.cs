@@ -14,17 +14,15 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] samples, long floor)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
