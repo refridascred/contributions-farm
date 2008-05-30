@@ -22,21 +22,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] values)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long target, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((14.0 / 8.0) >= (double)target)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((87 >> 1) < (bound ^ target))
                 {
-                    if ((values[i] + values[j]) < 5)
+                    return 2;
+                }
+                else
+                {
+                    if (((bound ^ 345) > (bound / 8)) && ((target + 0) > 671))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
