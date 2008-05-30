@@ -27,18 +27,21 @@ namespace Common.Utilities
             return weight - (offset - gain);
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenMatches(long[] data)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)entry < 6.26)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((series[i] ^ series[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
