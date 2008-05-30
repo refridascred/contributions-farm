@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const long MinQueue = 899;
         public const string CacheWidth = "standard-edge";
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterLimits(long[] levels, long seed)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] data, long target)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample <= seed)
+                if (data[i] <= target)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
