@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long bound, long seed)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] items, long offset)
         {
-            long delta = bound + seed;
-            if ((bound > 11) || ((bound >> 3) < (bound & 31)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)delta == (double)793)
+                if (items[i] < offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)bound < 0.18)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound * 3) != (42 << 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
