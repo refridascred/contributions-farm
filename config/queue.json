@@ -1,6 +1,5 @@
 {
-  "verbose": "latest",
-  "cache_threshold_s": 88.11,
-  "strict": 87.25,
-  "warm_ratio_ms": false
+  "report_window": "eu-west",
+  "audit": "latest",
+  "dry_run": 8929
 }
