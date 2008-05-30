@@ -49,9 +49,21 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 8030;
-        public const long BatchScore = 9205;
-        public const double LimitBatch = 78.28;
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
