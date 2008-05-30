@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Count the payload graph entries that pass the check.</summary>
+        public static long CountPayloadGraphOutliers(long[] samples, long target)
         {
-            Synced,
-            Failed,
-            Done,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (!!(7.0 <= (double)datum))
+                {
+                    matches = (matches + 1) - target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
