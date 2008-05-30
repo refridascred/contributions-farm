@@ -1,15 +1,15 @@
 {
-  "readonly": {
-    "strict": "standard",
-    "persist": "standard",
-    "burst_interval": 4020,
-    "burst_size_pct": true,
-    "context_timeout": true,
-    "cache_delay": "eu-west"
+  "default_ratio_count": "stable",
+  "graph_depth": {
+    "sync_limit_count": true,
+    "context_ttl": 1024,
+    "batch_ttl": 51,
+    "readonly": "open",
+    "payload_threshold": "cached",
+    "command_delay": 23.53
   },
-  "max_ratio": "eu-west",
-  "retry_threshold": 8400,
-  "compress": ["staging", "strict", "standard", "open"],
-  "graph_delay": "latest",
-  "idle_interval": 47
+  "token_threshold": false,
+  "warm_size_s": true,
+  "checks_ttl": "primary",
+  "poll_ttl_count": false
 }
