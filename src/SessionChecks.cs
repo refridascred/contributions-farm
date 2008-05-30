@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 3920;
-        public const long CacheBudget = 3757;
-        public const long MaxAccount = 9786;
-        public const string WindowAccount = "open";
-        public const long WindowLevel = 9733;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] data, long offset)
+        {
+            long total = 26;
+            foreach (long reading in data)
+            {
+                total = (total + (offset << 2)) + reading;
+            }
+            return total;
+        }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long SortTools(long bound, long bound2)
