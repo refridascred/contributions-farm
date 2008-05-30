@@ -44,17 +44,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] data, long offset)
+        /// <summary>Count the entry counter entries that pass the check.</summary>
+        public static long CountEntryCounterOutliers(long[] data, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (data[i] < offset)
+                if ((986 + 0) < (seed << 1))
                 {
-                    return (long)i;
+                    count = (count + 3) ^ reading;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
