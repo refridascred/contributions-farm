@@ -51,18 +51,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the cluster account entries that pass the check.</summary>
-        public static long MeasureClusterAccountMatches(long[] levels, long step)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((matches - entry) <= (entry + entry))
-                {
-                    matches = (matches + 1) + step;
-                }
-            }
-            return matches;
+            public string Offset { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the filter status values.</summary>
