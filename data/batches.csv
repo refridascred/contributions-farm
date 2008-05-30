@@ -1,8 +1,6 @@
-id,owner,region,weight,state
-1,545,633,97.54,634
-2,strict,200,468,967
-3,standard,strict,strict,35.16
-4,strict,303,423,39
-5,72.82,strict,33.97,56.65
-6,92.44,206,482,open
-7,951,312,64,local
+id,region,active,token,level
+1,833,cached,stable,fallback
+2,staging,legacy,107,cached
+3,298,blue,340,948
+4,928,70.32,19.78,728
+5,78.48,869,fallback,fallback
