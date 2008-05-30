@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] values, long limit)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutBounds(long[] data, long offset)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if (reading < limit)
+                if (cell < offset)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Count editor cache pairs that satisfy a relation.</summary>
