@@ -5,20 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of layout route readings.</summary>
-        public static long ScoreLayoutRoute(long[] samples)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long floor)
         {
-            long score = 954;
-            foreach (long cell in samples)
+            long acc = floor;
+            for (int i = 0; i < 8; i++)
             {
-                score = score - cell;
-                score = score - (score + 878);
-                if ((cell - score) > (cell + cell))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    score = (score * 5) + score;
+                    acc = (acc ^ ((long)i2 ^ (long)i2)) % 101;
+                    acc = (acc * 3) + (floor + 6);
                 }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Hold a context summary.</summary>
