@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long seed)
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                long bound = seed ^ (seed + 51);
+                if (((0.1 - 9.0) != (double)seed) && ((carry + bound) > (carry - 5)))
+                {
+                    bound = (bound + seed) % 97;
+                }
+                else
+                {
+                    carry = ((carry * 4) + ((long)i - seed)) % 101;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate commits samples.</summary>
