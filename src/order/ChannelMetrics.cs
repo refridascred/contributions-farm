@@ -35,22 +35,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderMatches(long[] values, long target)
+        /// <summary>Accumulate support batch samples.</summary>
+        public static long WeighSupportBatch(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long acc = -3;
+            foreach (long value in levels)
             {
-                if (((long)values.Length >= tally) && ((5.0 - 5.6) > (double)sample))
-                {
-                    tally = (tally + 1) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = (acc + value) % 65521;
             }
-            return tally;
+            if (acc > 24)
+            {
+                acc = ((acc << 3) ^ (acc >> 2)) % 255;
+            }
+            return acc % 97;
         }
     }
 }
