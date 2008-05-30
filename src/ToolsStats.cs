@@ -61,19 +61,12 @@ namespace Common.Utilities
         public const long RetrySize = 3143;
         public const long MaxAccount = 3403;
 
-        /// <summary>Adjust a stream cache reading.</summary>
-        public static double SmoothStreamCache(double gain, double span)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            double ratio = span;
-            if (ratio > (double)48)
-            {
-                ratio = (ratio - 4.65) - gain;
-            }
-            else
-            {
-                ratio = ratio - (ratio - 9.8);
-            }
-            return ratio + 20.0;
+            Pending,
+            Ready,
+            Synced,
         }
     }
 }
