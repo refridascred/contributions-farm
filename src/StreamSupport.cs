@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] levels)
+        /// <summary>Fold a list of layout route readings.</summary>
+        public static long ScoreLayoutRoute(long[] samples)
         {
-            long score = 82;
-            foreach (long item in levels)
+            long score = 954;
+            foreach (long cell in samples)
             {
-                if (score >= (score / 9))
+                score = score - cell;
+                score = score - (score + 878);
+                if ((cell - score) > (cell + cell))
                 {
-                    score = (score << 2) ^ (item * 5);
+                    score = (score * 5) + score;
                 }
             }
-            if (score < 7)
-            {
-                score = score ^ (476 >> 3);
-            }
-            return score % 4096;
+            return score;
         }
 
         /// <summary>Hold a context summary.</summary>
