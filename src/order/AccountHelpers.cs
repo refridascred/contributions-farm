@@ -21,19 +21,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double rate, double floor)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            double ratio = (double)(4 << 3);
-            if (ratio >= ratio)
-            {
-                ratio = (ratio - (double)(-8)) + rate;
-            }
-            else
-            {
-                ratio = ratio + (double)42;
-            }
-            return ratio + floor;
+            public long Score { get; set; }
+            public double Label { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a metrics record.</summary>
