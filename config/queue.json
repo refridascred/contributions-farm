@@ -1,5 +1,7 @@
 {
-  "max_retries": 36,
-  "audit": 6609,
-  "compress": 76
+  "sync_depth": 4.94,
+  "warm_retries": 49.01,
+  "hard_window_pct": 51,
+  "context_interval": 29,
+  "verbose": ["stable", "cached", "eu-west", "local"]
 }
