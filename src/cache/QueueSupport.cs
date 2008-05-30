@@ -13,22 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] readings)
+        /// <summary>Iterate the profile commits series from a seed.</summary>
+        public static long DeriveProfileCommits(long seed)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long result = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((2.5 - 3.3) == (double)tally)
+                if (((long)i * 3) > (seed + 8))
                 {
-                    tally = (tally + 3) + sample;
+                    result = (result - result) % 255;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
