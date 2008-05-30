@@ -1,5 +1,5 @@
 {
-  "idle_ttl": "eu-west",
-  "buffer_depth": "blue",
-  "soft_size_s": 73
+  "verbose": 76.97,
+  "batch_window_pct": ["strict", "edge", "green", "fallback"],
+  "batch_ttl_s": "edge"
 }
