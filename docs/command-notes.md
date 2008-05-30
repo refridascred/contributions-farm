@@ -1,11 +1,15 @@
 # Command notes
 
-When a payload fails, the record handler retries a few times before giving up.
-Use githubfarm settings to tune how often entry data is refreshed.
+Keep channel and githubfarm names short and lowercase.
+Use metric settings to tune how often githubfarm data is refreshed.
+
+When a window fails, the channel handler retries a few times before giving up.
+When a cache fails, the already handler retries a few times before giving up.
+The graph helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep layout values small
-- Review notes limits each release
-- Document new profile fields
-- Log every githubfarm change
+- Review report limits each release
+- Log every window change
+- Prefer editor defaults
+- Keep cache values small
