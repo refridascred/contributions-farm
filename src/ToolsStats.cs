@@ -41,14 +41,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Grade a report editor value against two limits.</summary>
+        public static long SortReportEditor(long limit, long floor)
         {
-            Ready,
-            Locked,
-            Pending,
-            Active,
-            Draft,
+            if (((floor - floor) > (floor * 2)) && ((5.66 - 0.27) <= (double)limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)7 < (double)limit) || (limit > (limit * 2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((floor % 97) < (limit << 3)) && (floor <= (5 + floor)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (floor > (floor % 100))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
