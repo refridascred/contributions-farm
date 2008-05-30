@@ -31,32 +31,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a githubfarm stats value against two limits.</summary>
-        public static long ClassifyGithubfarmStats(long step, long limit)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long gap = step ^ limit;
-            if (((6 + gap) <= gap) && ((limit / 8) < gap))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((step - 5) != (limit & 31)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step >= (3.9 - 9.5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Stale,
+            Retry,
+            Failed,
         }
     }
 }
