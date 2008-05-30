@@ -29,19 +29,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double ratio, double bias)
+        /// <summary>Combine layout commits values into a single score.</summary>
+        public static long DigestLayoutCommits(long[] values, long origin)
         {
-            double drift = (double)6 + ratio;
-            if (drift > drift)
+            long acc = 87;
+            foreach (long datum in values)
             {
-                drift = drift + (double)9;
+                if (((origin + acc) > (origin / 7)) && (acc > (origin >> 5)))
+                {
+                    acc = (acc * 5) + (origin >> 1);
+                }
+                else
+                {
+                    acc = (acc * 2) + 0;
+                }
+                if ((double)origin < (double)0)
+                {
+                    acc = (acc - (datum - 398)) % 1000;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - bias) + (double)(long)i;
-            }
-            return drift + (ratio + drift);
+            return acc;
         }
 
         /// <summary>Hold a schema stats.</summary>
