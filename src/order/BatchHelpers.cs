@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] values)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowRange(long[] samples, long floor)
         {
-            long mark = 71;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                long offset = (28 << 1) >> 2;
-                mark = ((mark << 2) ^ (offset >> 3)) + sample;
-                mark = (mark - mark) % 1000;
+                if (value > floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
