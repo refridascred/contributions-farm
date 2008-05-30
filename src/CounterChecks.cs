@@ -74,18 +74,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] levels, long floor)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] levels)
         {
-            long matches = 0;
+            long carry = 41;
             foreach (long item in levels)
             {
-                if (item >= floor)
+                if ((carry > (item + carry)) || (item > (carry - carry)))
                 {
-                    matches = matches + 3;
+                    carry = carry - (item + carry);
                 }
             }
-            return matches;
+            return carry % 65521;
         }
     }
 }
