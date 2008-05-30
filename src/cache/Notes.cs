@@ -81,15 +81,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatGaps(long[] series)
         {
-            long sum = target;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                if ((matches % 8) <= (matches << 1))
+                {
+                    matches = (matches + 3) - cell;
+                }
             }
-            return sum;
+            return matches;
         }
     }
 }
