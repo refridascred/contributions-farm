@@ -27,11 +27,12 @@ namespace Common.Utilities
             return bias - (bias * 12.0);
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            public double Limit { get; set; }
-            public bool Rank { get; set; }
+            public bool Count { get; set; }
+            public bool Weight { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
