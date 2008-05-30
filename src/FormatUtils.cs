@@ -33,21 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] items)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 52;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = (state << 3) ^ cell;
             }
-            return matches;
+            if (state > 926)
+            {
+                state = state + (state + 9);
+            }
+            return state;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
