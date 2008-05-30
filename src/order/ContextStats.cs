@@ -46,18 +46,10 @@ namespace Common.Utilities
         public const double WindowRatio = 63.33;
         public const string MaxSize = "alpha-v2";
 
-        /// <summary>Audit metrics token readings against a rule.</summary>
-        public static long MeasureMetricsTokenHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((seen >> 1) == (entry - 31))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftInterval = 1023;
+        public const long HardTimeout = 7373;
+        public const long LimitBudget = 4010;
+        public const string RetryDepth = "legacy-v2";
     }
 }
