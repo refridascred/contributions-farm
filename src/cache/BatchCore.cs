@@ -20,22 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit filter notes readings against a rule.</summary>
-        public static long AuditFilterNotesMatches(long[] series)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelRange(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if ((double)sample > (3.0 * 2.3))
+                if (entry != seed)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
