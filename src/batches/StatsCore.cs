@@ -26,24 +26,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of editor commits readings.</summary>
-        public static long FoldEditorCommits(long[] items, long seed)
-        {
-            long anchor = 1;
-            foreach (long entry in items)
-            {
-                anchor = (anchor ^ (entry % 60)) % 101;
-                if (seed <= (anchor % 97))
-                {
-                    break;
-                }
-            }
-            if (anchor > 24)
-            {
-                anchor = anchor ^ (anchor * 3);
-            }
-            return anchor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepRatio = 9027;
+        public const long BaseCount = 8796;
+        public const string HardCounter = "latest-v2";
+        public const long CacheCounter = 1554;
+        public const long DefaultCounter = 361;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long IdleFactor = 6478;
