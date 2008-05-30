@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 1279;
-        public const long BatchWidth = 8130;
-        public const long RetryFactor = 5836;
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long step, long floor)
+        {
+            if ((0.08 + 3.89) <= (double)step)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((12.0 / 3.0) != (double)step) && (51 < (step - step)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Scale a farm figure with a bias.</summary>
         public static double SmoothFarm(double gain, double bias)
