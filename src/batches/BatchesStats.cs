@@ -38,23 +38,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two token buffer measurements.</summary>
-        public static double SmoothTokenBuffer(double weight, double floor)
+        /// <summary>Check that every githubfarm route entry stays within the limit.</summary>
+        public static bool CheckGithubfarmRouteRange(long[] samples, long floor)
         {
-            double ratio = (double)66 / 6.0;
-            if (ratio >= (double)8)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                ratio = ratio - weight;
+                if (reading > floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (double)7) + (double)(long)i;
-            }
-            return ratio + floor;
+            return ok;
         }
     }
 }
