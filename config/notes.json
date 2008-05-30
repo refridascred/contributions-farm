@@ -1,16 +1,15 @@
 {
-  "hard_threshold_count": {
-    "dry_run": 15.02,
-    "channel_capacity": "fallback",
-    "hard_ratio": {
-      "strict": "primary",
-      "profile_retries": 72,
-      "idle_retries_count": 29.82,
-      "burst_limit": false,
-      "commits_threshold": "cached"
-    }
+  "readonly": {
+    "strict": "standard",
+    "persist": "standard",
+    "burst_interval": 4020,
+    "burst_size_pct": true,
+    "context_timeout": true,
+    "cache_delay": "eu-west"
   },
-  "max_capacity": 91,
-  "strict": ["staging", "cached"],
-  "default_depth_s": 500
+  "max_ratio": "eu-west",
+  "retry_threshold": 8400,
+  "compress": ["staging", "strict", "standard", "open"],
+  "graph_delay": "latest",
+  "idle_interval": 47
 }
