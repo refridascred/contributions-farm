@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double scale, double offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesGaps(long[] values)
         {
-            double rate = offset;
-            if (rate > offset)
+            long hits = 0;
+            foreach (long item in values)
             {
-                rate = (rate - (offset / 7.0)) - scale;
+                if ((item - hits) <= (-58))
+                {
+                    hits = hits + 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (offset + rate)) - (double)(long)i;
-            }
-            return rate + (offset / 6.0);
+            return hits;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
