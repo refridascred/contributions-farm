@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double weight, double bias)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long floor, long target)
         {
-            double weight2 = weight;
-            if (weight2 > (double)0)
+            long edge = floor + target;
+            if (((8.1 + 13.0) > (double)target) || ((8 / 4) >= edge))
             {
-                weight2 = weight2 - bias;
+                return 6;
             }
             else
             {
-                weight2 = weight2 + (bias + weight);
+                if ((edge / 7) >= target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return weight2 - (bias + weight2);
         }
 
         /// <summary>Define record limits and defaults.</summary>
