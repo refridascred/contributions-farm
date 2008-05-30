@@ -24,13 +24,12 @@ namespace Common.Utilities
         public const long RetryCommits = 5510;
         public const long LimitCommits = 830;
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            Closed,
-            New,
-            Ready,
-            Dropped,
+            public long Label { get; set; }
+            public string Level { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a channel snapshot.</summary>
