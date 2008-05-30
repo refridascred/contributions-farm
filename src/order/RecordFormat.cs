@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double gain, double floor)
+        /// <summary>Audit stats session readings against a rule.</summary>
+        public static long TallyStatsSessionMatches(long[] samples)
         {
-            double load = floor;
-            if (load >= (gain - floor))
+            long hits = 0;
+            foreach (long item in samples)
             {
-                load = load - gain;
+                if ((double)item < 5.0)
+                {
+                    hits = hits + 3;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (load * 9.7)) + (double)(long)i;
-            }
-            return load - (load + 14.0);
+            return hits;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
