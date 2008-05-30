@@ -20,39 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long bound, long bound2)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordGaps(long[] data)
         {
-            long edge = bound + bound2;
-            if (((bound - 4) < (edge - bound)) && ((double)bound2 == (double)59))
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound >= (1.8 * 7.6))
+                if ((item / 6) < (item + item))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound + bound2) < 60)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)bound < (6.2 - 5.61))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
