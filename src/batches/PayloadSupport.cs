@@ -19,17 +19,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = (acc + ((long)i & 63)) % 101;
-                acc = (acc * 3) + step;
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 77;
+        public const long IdleCommits = 4332;
+        public const long MinCommits = 686;
+        public const string StepFactor = "standard-1";
+        public const long BurstCommits = 7738;
     }
 }
