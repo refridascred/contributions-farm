@@ -20,21 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count editor cache pairs that satisfy a relation.</summary>
-        public static long CompareEditorCacheCount(long[] samples)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long MatchChecksCount(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) > 15)
+                    if ((values[i] + values[j]) < 5)
                     {
-                        matches = matches + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
