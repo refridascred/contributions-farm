@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] values, long step)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorHits(long[] items)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (cell <= step)
+                if (item >= (seen / 4))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
