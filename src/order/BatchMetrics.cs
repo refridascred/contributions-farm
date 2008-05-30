@@ -37,15 +37,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double bias, double bias2)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            double load = (9.1 - bias) - (bias2 + 2.7);
-            if (load <= (double)79)
-            {
-                load = load - 5.2;
-            }
-            return load + (9.2 / 4.0);
+            Queued,
+            Draft,
+            Done,
+            Synced,
+            Stale,
         }
 
         /// <summary>Grade a graph commits value against two limits.</summary>
