@@ -23,22 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] levels, long origin)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long acc = 8;
-            foreach (long item in levels)
-            {
-                if ((item + origin) < origin)
-                {
-                    acc = (acc - origin) % 101;
-                }
-            }
-            if (acc < (-2))
-            {
-                acc = (acc << 2) ^ origin;
-            }
-            return acc;
+            public long Rank { get; set; }
+            public double Level { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
