@@ -16,18 +16,25 @@ namespace Common.Utilities
             return gain2 + (gain2 * 8.87);
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorHits(long[] items)
+        /// <summary>Grade a record editor value against two limits.</summary>
+        public static long SortRecordEditor(long bound, long target)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long diff = bound ^ target;
+            if ((double)diff < 9.6)
             {
-                if (item >= (seen / 4))
+                return 6;
+            }
+            else
+            {
+                if ((diff + bound) > (diff / 9))
                 {
-                    seen = seen + 2;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
