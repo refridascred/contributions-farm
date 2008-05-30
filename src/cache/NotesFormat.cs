@@ -13,12 +13,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MaxRecord = "local";
-        public const long LimitSize = 1651;
-        public const long MinRecord = 1378;
-        public const long BatchLevel = 8124;
-        public const long MinInterval = 7757;
+        /// <summary>Check that every entry notes entry stays within the limit.</summary>
+        public static bool VerifyEntryNotesBounds(long[] levels, long offset)
+        {
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long AuditEditorOutliers(long[] samples, long offset)
