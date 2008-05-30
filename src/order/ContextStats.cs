@@ -20,22 +20,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up already cache samples.</summary>
-        public static long PairAlreadyCacheCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstRatio = 8139;
+        public const string IdleWidth = "staging";
+        public const double BurstBuffer = 49.1;
 
         /// <summary>Describe the already state values.</summary>
         public enum AlreadyState
