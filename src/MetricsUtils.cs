@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepLevel = 5948;
-        public const double MaxWidth = 47.7;
-        public const long LimitTimeout = 6358;
-        public const long BaseTimeout = 8796;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                long offset = (83 << 1) - (202 + (long)i);
+                offset = offset - (limit + 537);
+                if (!((offset + (long)i) == (offset >> 2)))
+                {
+                    offset = offset + limit;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long DigestChecks(long[] series)
