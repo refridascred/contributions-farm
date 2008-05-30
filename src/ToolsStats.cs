@@ -19,12 +19,17 @@ namespace Common.Utilities
         public const long MinTimeout = 1554;
         public const long MinWidth = 6917;
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] readings, long offset)
         {
-            public long Label { get; set; }
-            public string Level { get; set; } = "";
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the stats level values.</summary>
