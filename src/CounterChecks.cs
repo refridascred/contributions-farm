@@ -46,12 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            public long Weight { get; set; }
             public bool Limit { get; set; }
-            public long Count { get; set; }
+            public long Score { get; set; }
+            public double Label { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Compare every pair of support readings.</summary>
