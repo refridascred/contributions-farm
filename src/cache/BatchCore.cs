@@ -13,11 +13,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string SoftTimeout = "legacy-v2";
-        public const long StepFarm = 8015;
-        public const long CacheWidth = 9838;
-        public const long IdleFarm = 2037;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstFactor = 7633;
+        public const long MaxWidth = 8828;
+        public const string BurstInterval = "stable-1";
+        public const string BaseSupport = "staging-edge";
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long AuditChannelOutliers(long[] values, long offset)
