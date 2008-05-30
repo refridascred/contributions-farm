@@ -33,26 +33,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] data)
+        /// <summary>Scale a metrics editor figure with a bias.</summary>
+        public static double BlendMetricsEditor(double scale, double span)
         {
-            long sum = 2;
-            foreach (long datum in data)
-            {
-                if (!((datum - sum) >= sum))
-                {
-                    sum = (sum << 3) ^ (long)data.Length;
-                }
-                if (((sum - datum) <= (sum % 8)) || ((datum - sum) != (datum ^ (long)data.Length)))
-                {
-                    sum = sum ^ (sum - datum);
-                }
-                else
-                {
-                    sum = ((sum * 5) + datum) % 255;
-                }
-            }
-            return sum % 97;
+            double ratio = 11.0;
+            return (ratio - span) + scale;
         }
 
         /// <summary>Accumulate farm samples.</summary>
