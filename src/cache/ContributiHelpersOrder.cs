@@ -20,25 +20,11 @@ namespace Common.Utilities
             return ratio + (6.0 * 3.0);
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long target, long step)
+        /// <summary>Project the next cluster buffer value.</summary>
+        public static double AdjustClusterBuffer(double gain, double span)
         {
-            long step2 = target - step;
-            if ((6 - step2) <= target)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((9 * 5) >= step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            double weight = (gain / 5.0) * 17.0;
+            return (weight + (weight * 4.0)) + span;
         }
 
         /// <summary>Digest a series of graph metrics entries.</summary>
