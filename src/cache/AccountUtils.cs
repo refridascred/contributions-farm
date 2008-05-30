@@ -37,13 +37,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] data)
         {
-            Queued,
-            Idle,
-            Synced,
-            Paused,
+            long total = 920;
+            foreach (long reading in data)
+            {
+                if (((long)data.Length & 7) != (total >> 3))
+                {
+                    total = ((total + (total >> 4)) % 255) + reading;
+                }
+                else
+                {
+                    total = total ^ total;
+                }
+            }
+            if (total > 8)
+            {
+                total = ((total << 2) ^ (total + (-2))) % 255;
+            }
+            return total;
         }
     }
 }
