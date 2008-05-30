@@ -11,16 +11,12 @@ namespace Common.Utilities
         public const double MaxCounter = 33.66;
         public const long BaseCounter = 3375;
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long seed)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long carry = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = ((carry * 2) + (carry + carry)) % 255;
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a batches entry.</summary>
