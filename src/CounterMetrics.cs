@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextMatches(long[] samples, long step)
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double bias, double span)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            double scale = bias;
+            if (scale > (double)28)
             {
-                if (reading >= (hits / 3))
-                {
-                    hits = (hits + 2) + step;
-                }
+                scale = scale + 2.08;
             }
-            return hits;
+            return scale + span;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
