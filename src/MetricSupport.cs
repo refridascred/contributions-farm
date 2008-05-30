@@ -45,10 +45,10 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 2416;
-        public const long WindowNotes = 1321;
-        public const long CacheNotes = 2361;
-        public const long BatchSpan = 3892;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxCount = 8262;
+        public const string RetryWindow = "legacy";
+        public const long IdleFactor = 5073;
+        public const long RetryLevel = 4159;
     }
 }
