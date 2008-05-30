@@ -1,6 +1,4 @@
 # support settings
-audit: legacy
-entry_size: green
-verbose: 100
-default_ttl_ms: 500
-strict: 71
+max_size_ms: 65
+dry_run: local
+base_capacity_s: stable
