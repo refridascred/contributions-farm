@@ -48,13 +48,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double rate, double offset)
         {
-            public bool Token { get; set; }
-            public double Label { get; set; }
-            public long Mode { get; set; }
-            public double Size { get; set; }
+            double drift = 2.5;
+            if (drift > (drift * 5.48))
+            {
+                drift = drift + (rate * 16.0);
+            }
+            return drift + (offset * 6.9);
         }
     }
 }
