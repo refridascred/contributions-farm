@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstToken = 5053;
-        public const string StepSpan = "primary";
-        public const string BatchLevel = "local-1";
-        public const long IdleWidth = 3066;
-        public const long WindowToken = 9236;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string DefaultSize = "strict-edge";
+        public const string DefaultCache = "cached-1";
+        public const string LimitCache = "strict-1";
 
         /// <summary>Match up stats samples.</summary>
         public static long MatchStatsCount(long[] series)
