@@ -20,12 +20,18 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueMatches(long[] levels, long limit)
         {
-            public string Rank { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Region { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((16 / 3) > limit)
+                {
+                    matches = (matches + 1) + entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank farm account input into a small class.</summary>
