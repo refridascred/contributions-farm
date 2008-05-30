@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate report notes readings against a bound.</summary>
-        public static bool CheckReportNotesLimits(long[] readings, long limit)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long origin)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long anchor = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (value > limit)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = anchor ^ (origin << 2);
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
