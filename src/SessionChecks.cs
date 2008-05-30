@@ -34,11 +34,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] readings)
         {
-            public bool Count { get; set; }
-            public bool Size { get; set; }
+            long score = 865;
+            foreach (long entry in readings)
+            {
+                if (((score & 3) < (score >> 3)) || ((score + score) > 407))
+                {
+                    score = (((score * 2) + (9 >> 5)) % 1000) + entry;
+                }
+            }
+            if (score > 914)
+            {
+                score = ((score << 3) ^ (score % 2)) % 4096;
+            }
+            return score % 1000;
         }
 
         /// <summary>Hold a counter options.</summary>
