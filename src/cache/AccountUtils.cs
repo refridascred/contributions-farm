@@ -26,22 +26,23 @@ namespace Common.Utilities
         public const string IdleCount = "local-edge";
         public const long RetryBuffer = 3413;
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsGaps(long[] items)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long score = 247;
+            foreach (long reading in items)
             {
-                if (cell <= tally)
+                score = score + floor;
+                if (((reading ^ reading) > (floor * 3)) || ((score ^ 127) < floor))
                 {
-                    tally = tally + 3;
+                    score = ((score << 2) ^ (80 % 8)) % 65521;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    score = ((score * 5) + (8 << 1)) % 101;
                 }
             }
-            return tally;
+            return score % 65521;
         }
     }
 }
