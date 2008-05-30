@@ -1,6 +1,7 @@
 {
-  "hard_threshold_count": [261, 105, 396],
-  "burst_limit_pct": 3.67,
-  "max_threshold_pct": "edge",
-  "persist": true
+  "base_capacity": "open",
+  "sync_ratio": ["green", "stable", "local"],
+  "base_ttl": [102, 470, 330, 48],
+  "persist": "eu-west",
+  "warm_ratio_ms": 33.99
 }
