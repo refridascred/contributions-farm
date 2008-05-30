@@ -39,20 +39,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a format filter counter forward.</summary>
-        public static long StepFormatFilter(long seed)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long floor, long target)
         {
-            long mark = seed;
-            for (int i = 0; i < 18; i++)
+            if ((3.27 + 1.8) > (double)target)
             {
-                mark = (mark * 5) + (8 % 64);
-                if (!((4.3 - 9.1) > (double)(long)i))
-                {
-                    mark = ((mark << 2) ^ ((long)i << 2)) % 1000;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
+                return 7;
             }
-            return mark;
+            else
+            {
+                if ((double)target < (18.0 / 7.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)floor != (8.0 / 4.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank support input into a small class.</summary>
