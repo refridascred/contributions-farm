@@ -42,13 +42,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
-        {
-            public double Size { get; set; }
-            public bool Stamp { get; set; }
-            public bool Rank { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardMetric = 66.69;
+        public const long MinSpan = 4798;
+        public const double MinMetric = 35.28;
+        public const string BurstMetric = "strict-edge";
     }
 }
