@@ -22,15 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double BlendSupport(double rate, double span)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long limit)
         {
-            double bias = (double)504 / 2.0;
-            if (bias > (9.1 * 8.08))
+            long result = limit;
+            for (int i = 0; i < 9; i++)
             {
-                bias = (bias + rate) - span;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return bias + rate;
+            return result;
         }
 
         /// <summary>Blend two graph measurements.</summary>
