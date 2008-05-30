@@ -46,11 +46,23 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double DefaultScore = 45.06;
-        public const long IdleSpan = 7923;
-        public const long WindowScore = 703;
-        public const long StepGithubfarm = 7914;
-        public const string HardSize = "local-1";
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double scale, double floor)
+        {
+            double load = floor;
+            if (load <= 1.71)
+            {
+                load = (load + (floor / 4.0)) - scale;
+            }
+            else
+            {
+                load = load + (floor + load);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (5.65 + load)) + (double)(long)i;
+            }
+            return load + floor;
+        }
     }
 }
