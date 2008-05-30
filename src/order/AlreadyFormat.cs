@@ -46,11 +46,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            public double Level { get; set; }
-            public double Rank { get; set; }
+            New,
+            Locked,
+            Paused,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
