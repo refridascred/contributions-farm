@@ -41,15 +41,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Synced,
-            Retry,
-            Ready,
-            Stale,
-            New,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxCount = 2311;
+        public const double IdleSize = 11.06;
+        public const long IdleInterval = 1043;
+        public const long CacheLevel = 9752;
+        public const long LimitPayload = 9643;
 
         /// <summary>Hold a metrics snapshot.</summary>
         public sealed class MetricsSnapshot
