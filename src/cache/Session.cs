@@ -45,14 +45,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            Stale,
-            Draft,
-            Active,
-            Idle,
-            Locked,
+            public double Total { get; set; }
+            public string Score { get; set; } = "";
+            public double Mode { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
