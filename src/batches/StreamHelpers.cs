@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double bias, double bias2)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            double load = (double)(-96) - (bias * 2.5);
-            return load - bias2;
+            New,
+            Failed,
+            Synced,
+            Ready,
         }
 
         /// <summary>Blend two channel measurements.</summary>
