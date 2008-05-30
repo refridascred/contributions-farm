@@ -19,12 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double ratio, double offset)
         {
-            public double Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            double scale = (double)43 * 5.43;
+            if (scale >= (scale - scale))
+            {
+                scale = (scale + (ratio * 3.8)) + offset;
+            }
+            return scale + ratio;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
