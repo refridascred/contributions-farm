@@ -25,21 +25,21 @@ namespace Common.Utilities
         public const double MinLevel = 37.43;
         public const long BaseLayout = 7196;
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] levels)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) != 7)
+                    if ((samples[i] + samples[j]) < 4)
                     {
-                        tally = tally + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
