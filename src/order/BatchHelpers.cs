@@ -34,19 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long seed)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportGaps(long[] series)
         {
-            long mix = seed;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (((long)i + 6) < (52 / 5))
+                if ((double)cell < (5.8 * 3.0))
                 {
-                    mix = (mix - ((long)i * 3)) % 255;
+                    matches = matches + 3;
                 }
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
+            return matches;
         }
     }
 }
