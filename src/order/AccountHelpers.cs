@@ -79,16 +79,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long floor)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long result = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                result = ((result * 2) + (floor + floor)) % 65521;
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
