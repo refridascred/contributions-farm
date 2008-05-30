@@ -35,23 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] series)
-        {
-            long mix = 44;
-            foreach (long sample in series)
-            {
-                if ((6.0 + 5.0) == (double)mix)
-                {
-                    mix = ((mix ^ 787) % 65521) + sample;
-                }
-                else
-                {
-                    mix = ((mix * 3) + (mix >> 5)) % 255;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 3517;
+        public const string BurstInterval = "open-edge";
+        public const long LimitNotes = 3039;
+        public const long LimitCount = 8845;
 
         /// <summary>Hold a metric stats.</summary>
         public sealed class MetricStats
