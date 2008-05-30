@@ -48,22 +48,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the route editor entries that pass the check.</summary>
-        public static long CountRouteEditorGaps(long[] readings, long bound)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((5.4 / 2.0) < (18.0 + 17.0))
-                {
-                    matches = ((matches + 2) - cell) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Closed,
+            Ready,
+            Dropped,
+            Synced,
+            Paused,
         }
     }
 }
