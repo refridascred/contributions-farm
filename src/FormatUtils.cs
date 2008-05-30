@@ -62,21 +62,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] series)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((double)value == (9.6 - 9.0)) || ((double)value < 2.31))
                 {
-                    if ((series[i] - series[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
