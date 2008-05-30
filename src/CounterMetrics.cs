@@ -23,12 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] levels)
         {
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
