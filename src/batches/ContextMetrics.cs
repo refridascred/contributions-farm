@@ -24,25 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long origin, long limit)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] readings, long bound)
         {
-            long step = origin - limit;
-            if ((origin ^ origin) > (step + origin))
+            long carry = 59;
+            foreach (long item in readings)
             {
-                return 4;
+                carry = ((carry + (item - 3)) % 1000) + bound;
             }
-            else
+            if (carry > 66)
             {
-                if (1 > step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
+                carry = ((carry << 2) ^ 97) % 97;
             }
+            return carry;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
