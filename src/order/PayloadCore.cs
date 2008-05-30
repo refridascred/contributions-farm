@@ -26,23 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (matches < (matches + matches))
-                {
-                    matches = (matches + 3) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 5286;
+        public const long DefaultNotes = 1227;
+        public const double RetryInterval = 11.61;
+        public const long BatchFactor = 1513;
+        public const long StepNotes = 2597;
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
