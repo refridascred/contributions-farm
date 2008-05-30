@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphHits(long[] readings, long origin)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (0 > (count ^ origin))
-                {
-                    count = (count + 1) + sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 3400;
+        public const double WindowBatch = 69.84;
+        public const long CacheBatch = 1708;
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long ClassifyRecord(long floor, long target)
