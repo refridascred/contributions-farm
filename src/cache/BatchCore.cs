@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] levels)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long seed, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (!((seed * 2) <= (seed + 500)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!((seed * 2) >= (origin << 2)))
                 {
-                    if ((levels[i] ^ levels[j]) == 19)
+                    return 4;
+                }
+                else
+                {
+                    if ((seed % 2) >= (seed + seed))
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((74 - origin) <= (seed - seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
