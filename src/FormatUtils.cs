@@ -33,16 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long offset)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] items)
         {
-            long score = offset;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score << 2) ^ ((long)i % 3)) % 4096;
-                score = ((score * 4) + (long)i) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
