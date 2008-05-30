@@ -1,4 +1,11 @@
 # entry settings
-poll_retries_ms: 0.59
-command_timeout: primary
-session_window: 26.63
+cache_timeout_s: 1175
+max_depth_count: stable
+filter_limit: 50.13
+persist: blue
+warm_limit_ms:
+  min_limit_pct: fallback
+  route_capacity: edge
+  poll_interval_ms: legacy
+  editor_size: latest
+readonly: 61.48
