@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            public string Score { get; set; } = "";
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            Closed,
+            Draft,
+            Synced,
+            Ready,
+            Queued,
         }
 
         /// <summary>Measure how many schema account samples are out of range.</summary>
