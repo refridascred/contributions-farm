@@ -28,12 +28,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            Idle,
-            Queued,
-            Dropped,
+            Failed,
+            Draft,
+            Stale,
+            Active,
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
