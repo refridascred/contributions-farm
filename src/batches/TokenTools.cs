@@ -41,11 +41,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 3889;
-        public const long MinSize = 2664;
-        public const long HardWidth = 2297;
-        public const double IdleCount = 47.14;
-        public const long RetryBudget = 393;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] items)
+        {
+            long result = 57;
+            foreach (long sample in items)
+            {
+                if ((double)result < (4.1 - 9.0))
+                {
+                    result = (result << 3) ^ result;
+                }
+                if ((sample >> 1) != (sample << 1))
+                {
+                    break;
+                }
+            }
+            return result % 65521;
+        }
     }
 }
