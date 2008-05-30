@@ -1,8 +1,14 @@
 {
-  "flush_timeout_ms": 1024,
-  "sync_size_ms": false,
-  "contributi_depth": "standard",
-  "verbose": true,
-  "enabled": "edge",
-  "retry_timeout_count": 5.31
+  "idle_timeout_count": false,
+  "flush_size_pct": false,
+  "hard_threshold_ms": [469, 89],
+  "tools_size": {
+    "batch_threshold_pct": 87.05,
+    "dry_run": 30,
+    "min_delay": true,
+    "command_threshold": "blue",
+    "hard_depth_s": ["primary", "fallback", "eu-west"],
+    "already_interval": 52
+  },
+  "soft_delay_pct": "blue"
 }
