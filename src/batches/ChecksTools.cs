@@ -66,24 +66,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long limit, long offset)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] data)
         {
-            if (!((double)limit <= (7.4 * 12.0)))
+            long mix = 950;
+            foreach (long value in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((limit >> 3) > offset) && ((13 << 3) <= (offset + 99)))
+                if ((value + (long)data.Length) < mix)
                 {
-                    return 7;
+                    mix = (mix ^ mix) % 4096;
                 }
                 else
                 {
-                    return 8;
+                    mix = mix + (362 + value);
                 }
             }
+            return mix % 1000;
         }
     }
 }
