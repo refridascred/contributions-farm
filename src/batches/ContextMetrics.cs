@@ -14,15 +14,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long target)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] readings, long bound)
         {
-            long acc = target;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc * 5) + (long)i) % 1000;
+                if (readings[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
