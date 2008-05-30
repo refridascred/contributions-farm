@@ -1,7 +1,14 @@
 {
-  "warm_interval_pct": 31.91,
-  "metric_depth": "strict",
-  "metrics_window": false,
-  "flush_limit_s": "green",
-  "max_depth": true
+  "batch_retries_s": 500,
+  "report_size": [114, 486, 343, 116],
+  "flush_size_ms": ["edge", "open"],
+  "soft_delay": {
+    "retry_threshold_count": 8623,
+    "strict": 24,
+    "burst_retries_count": 6.69,
+    "readonly": 23.47,
+    "idle_limit_count": "open",
+    "retry_retries": 250
+  },
+  "audit": 500
 }
