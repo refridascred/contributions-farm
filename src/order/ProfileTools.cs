@@ -37,18 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaMatches(long[] series)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if ((0.4 / 8.0) <= (double)matches)
+                if (datum >= offset)
                 {
-                    matches = (matches + 3) ^ datum;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Describe the format kind values.</summary>
