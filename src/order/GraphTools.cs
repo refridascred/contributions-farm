@@ -19,12 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long seed, long bound)
         {
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
+            long diff = seed - bound;
+            if ((diff ^ 616) <= (7 ^ 4))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((6 ^ (-86)) <= seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed + bound) >= bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two commits measurements.</summary>
