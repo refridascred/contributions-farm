@@ -47,18 +47,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] series)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long limit, long seed)
         {
-            long mix = 54;
-            foreach (long entry in series)
+            if ((double)limit == (double)seed)
             {
-                if ((double)entry == (3.94 - 4.0))
+                return 5;
+            }
+            else
+            {
+                if ((double)limit <= (0.07 - 6.0))
                 {
-                    mix = (mix + (mix + entry)) % 1000;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return mix % 4096;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
