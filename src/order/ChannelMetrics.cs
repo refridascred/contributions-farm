@@ -20,13 +20,17 @@ namespace Common.Utilities
             return bias + (bias - offset);
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] data, long bound)
         {
-            public string Region { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= bound) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two format checks measurements.</summary>
