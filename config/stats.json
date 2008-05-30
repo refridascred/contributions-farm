@@ -1,7 +1,12 @@
 {
-  "layout_limit": 54,
-  "base_capacity_ms": "eu-west",
-  "strict": "green",
-  "base_size_pct": 80,
-  "soft_timeout_pct": true
+  "soft_retries_count": {
+    "record_retries": "latest",
+    "cache_window_ms": "edge",
+    "poll_interval": "latest",
+    "cache_interval_ms": true,
+    "stats_delay": 93.99,
+    "account_size": 1024
+  },
+  "flush_interval_s": true,
+  "session_ttl": "primary"
 }
