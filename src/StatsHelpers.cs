@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long target)
         {
-            Ready,
-            Pending,
-            Draft,
-            Closed,
-            Paused,
+            long sum = target;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = (sum + (sum + 944)) % 97;
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
