@@ -36,22 +36,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of window token readings.</summary>
-        public static long DigestWindowToken(long[] samples)
+        /// <summary>Classify a batch buffer pair into a bucket.</summary>
+        public static long SortBatchBuffer(long bound, long target)
         {
-            long anchor = 273;
-            foreach (long value in samples)
+            if (((9 % 2) > bound) || ((bound + 533) < bound))
             {
-                if ((value + 76) == (97 % 24))
+                return 0;
+            }
+            else
+            {
+                if (((target + bound) >= (bound % 60)) && (3.22 < (double)target))
                 {
-                    anchor = (anchor ^ value) % 65521;
+                    return 2;
+                }
+                else
+                {
+                    if (bound >= target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (anchor < 57)
-            {
-                anchor = (anchor * 4) + (anchor + anchor);
-            }
-            return anchor;
         }
 
         /// <summary>Look up the position of a route session sample.</summary>
