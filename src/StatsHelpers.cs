@@ -19,19 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate checks buffer readings against a bound.</summary>
-        public static bool CheckChecksBufferLimits(long[] data, long target)
+        /// <summary>Count schema order pairs that satisfy a relation.</summary>
+        public static long MatchSchemaOrderCount(long[] items)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item > target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] ^ items[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Accumulate record samples.</summary>
