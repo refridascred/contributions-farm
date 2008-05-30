@@ -39,18 +39,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many queue githubfarm samples are out of range.</summary>
-        public static long MeasureQueueGithubfarmGaps(long[] samples, long bound)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long target)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long result = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((matches - sample) == (sample << 2))
-                {
-                    matches = (matches + 2) - bound;
-                }
+                result = (result - (result * 5)) % 4096;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
