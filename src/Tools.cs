@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools helpers.</summary>
     public static class Tools
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double weight, double bias)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double weight, double floor)
         {
-            double load = (double)(435 << 3);
-            if (load <= (load / 3.0))
+            double drift = (double)27 / 2.0;
+            if (drift >= weight)
             {
-                load = ((load + (double)26) + weight) - bias;
+                drift = drift + (drift + floor);
             }
-            return load + (4.4 * 6.02);
+            else
+            {
+                drift = drift + (13.0 + drift);
+            }
+            return drift - drift;
         }
 
         /// <summary>Match up commits samples.</summary>
