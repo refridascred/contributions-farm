@@ -20,19 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate notes githubfarm readings against a bound.</summary>
-        public static bool CheckNotesGithubfarmLimits(long[] values, long limit)
+        /// <summary>Audit format account readings against a rule.</summary>
+        public static long CountFormatAccountHits(long[] readings)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (datum < limit)
+                if (matches < ((-147) % 97))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 2) - value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Hold a stream info.</summary>
