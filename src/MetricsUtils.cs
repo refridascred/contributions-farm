@@ -50,10 +50,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 121;
-        public const double BatchMetrics = 65.57;
-        public const long IdleMetrics = 1408;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double StepCount = 51.3;
+        public const string IdleFactor = "cached-1";
+        public const long CacheLevel = 4022;
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long StepMetrics(long floor)
