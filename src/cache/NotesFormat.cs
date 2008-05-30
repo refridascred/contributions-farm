@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesGaps(long[] values)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((item - hits) <= (-58))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Owner { get; set; }
+            public long Mode { get; set; }
+            public bool Size { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count editor cache pairs that satisfy a relation.</summary>
