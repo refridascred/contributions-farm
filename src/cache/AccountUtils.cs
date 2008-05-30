@@ -19,11 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] samples, long origin)
         {
-            public bool Region { get; set; }
-            public bool Owner { get; set; }
+            long sum = 513;
+            foreach (long reading in samples)
+            {
+                if (origin >= (reading >> 2))
+                {
+                    sum = (sum + reading) % 65521;
+                }
+                else
+                {
+                    sum = (sum + origin) % 255;
+                }
+            }
+            if (sum > (-47))
+            {
+                sum = ((sum * 4) + (sum - sum)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
