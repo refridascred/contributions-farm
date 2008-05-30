@@ -51,24 +51,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long step, long floor)
+        /// <summary>Count the cluster account entries that pass the check.</summary>
+        public static long MeasureClusterAccountMatches(long[] levels, long step)
         {
-            if (step >= (step + floor))
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((20.0 - 8.19) <= (double)floor)
+                if ((matches - entry) <= (entry + entry))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    matches = (matches + 1) + step;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the filter status values.</summary>
