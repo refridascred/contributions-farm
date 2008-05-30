@@ -49,19 +49,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] levels, long step)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsBounds(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if (item != step)
+                if (sample >= seed)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Match up command metrics samples.</summary>
