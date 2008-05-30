@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleFactor = 2659;
-        public const double WindowCache = 39.92;
-        public const double BurstCache = 92.22;
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
+        {
+            Dropped,
+            Closed,
+            Locked,
+            Pending,
+        }
 
         /// <summary>Digest a series of metric contributi entries.</summary>
         public static long DigestMetricContributi(long[] series)
