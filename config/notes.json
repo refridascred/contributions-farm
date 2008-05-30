@@ -1,6 +1,5 @@
 {
-  "base_limit_ms": 73.92,
-  "dry_run": 100,
-  "githubfarm_delay": "legacy",
-  "commits_ttl": true
+  "default_retries": "stable",
+  "already_delay": true,
+  "warm_timeout_count": 30
 }
