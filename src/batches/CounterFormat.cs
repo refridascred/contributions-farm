@@ -27,13 +27,13 @@ namespace Common.Utilities
             return scale + ratio;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            Idle,
-            Draft,
-            Pending,
-            Failed,
+            public double Weight { get; set; }
+            public double Owner { get; set; }
+            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
