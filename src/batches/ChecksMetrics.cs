@@ -41,26 +41,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] series)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long origin, long seed)
         {
-            long mark = 773;
-            foreach (long value in series)
+            long lane = origin - seed;
+            if ((origin * 4) <= ((-5) + 4))
             {
-                if ((value - mark) > (mark + mark))
+                return 0;
+            }
+            else
+            {
+                if (((origin & 31) > lane) || (seed < origin))
                 {
-                    mark = mark ^ value;
+                    return 2;
                 }
                 else
                 {
-                    mark = (mark << 2) ^ (value - value);
+                    if ((double)origin < (7.34 + 12.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (mark > 2)
-            {
-                mark = (mark - mark) % 97;
-            }
-            return mark;
         }
 
         /// <summary>Hold a schema record.</summary>
