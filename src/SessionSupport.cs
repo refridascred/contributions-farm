@@ -39,17 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] samples, long origin)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (samples[i] == origin)
+                if (hits >= (hits >> 5))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + cell;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
