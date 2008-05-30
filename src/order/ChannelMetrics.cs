@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] series)
         {
-            long state = target;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                state = (state ^ target) % 1000;
-                state = (state ^ (long)i) % 101;
-                state = ((state * 4) + (long)i) % 101;
+                if ((entry ^ 36) < (8 >> 2))
+                {
+                    tally = tally + 1;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
