@@ -22,11 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Blend two cluster metrics measurements.</summary>
+        public static double AdjustClusterMetrics(double scale, double floor)
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
+            double rate = floor + floor;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = ((rate - (rate - rate)) - (double)(long)i) + scale;
+            }
+            return rate + rate;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
