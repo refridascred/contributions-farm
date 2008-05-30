@@ -47,16 +47,11 @@ namespace Common.Utilities
             return mean + (double)9;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string SoftLevel = "local-edge";
+        public const long MinFarm = 3041;
+        public const long IdleFarm = 5181;
+        public const long RetryFarm = 7459;
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
