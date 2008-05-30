@@ -50,18 +50,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] levels)
+        /// <summary>Measure how many context format samples are out of range.</summary>
+        public static long TallyContextFormatOutliers(long[] levels, long seed)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((count >> 3) == (count + 6))
                 {
-                    if ((levels[i] + levels[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
+                    count = ((count + 3) - item) + seed;
                 }
             }
             return count;
