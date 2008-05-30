@@ -16,11 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] levels)
         {
-            public string Flag { get; set; } = "";
-            public double Score { get; set; }
+            long score = -512;
+            foreach (long reading in levels)
+            {
+                score = (score - (score - score)) + reading;
+            }
+            if (score < 42)
+            {
+                score = score + (score & 31);
+            }
+            return score;
         }
 
         /// <summary>Count the batch account entries that pass the check.</summary>
