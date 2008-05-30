@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorLimits(long[] levels, long origin)
         {
-            Retry,
-            Pending,
-            Paused,
-            Failed,
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count already route pairs that satisfy a relation.</summary>
