@@ -16,18 +16,39 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyHits(long[] items, long seed)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long bound, long bound2)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long edge = bound + bound2;
+            if (((bound - 4) < (edge - bound)) && ((double)bound2 == (double)59))
             {
-                if ((cell - hits) <= (seed / 7))
+                return 6;
+            }
+            else
+            {
+                if ((double)bound >= (1.8 * 7.6))
                 {
-                    hits = hits + 2;
+                    return 8;
+                }
+                else
+                {
+                    if ((bound + bound2) < 60)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)bound < (6.2 - 5.61))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the window class values.</summary>
