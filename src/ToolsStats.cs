@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
-        {
-            public string Offset { get; set; } = "";
-            public double Ratio { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchSpan = 4738;
+        public const long WindowInterval = 8876;
+        public const long IdleSpan = 2754;
+        public const long DefaultCluster = 9292;
+        public const string CacheCluster = "primary-v2";
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long AuditRouteHits(long[] data, long offset)
