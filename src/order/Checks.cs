@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] samples)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] series)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((0 - tally) >= (11 + value))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((series[i] - series[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
