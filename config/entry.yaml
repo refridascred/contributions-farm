@@ -1,5 +1,8 @@
 # entry settings
-cache_size_ms: strict
-default_ttl_pct: edge
-hard_delay_pct: true
-layout_size: green
+warm_timeout_count: 53.32
+hard_delay_count:
+  - 169
+  - 259
+  - 110
+retry_limit: true
+stats_ttl: legacy
