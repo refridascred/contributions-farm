@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of report layout readings.</summary>
-        public static long WeighReportLayout(long[] samples, long floor)
-        {
-            long total = 104;
-            foreach (long datum in samples)
-            {
-                total = (((total << 2) ^ floor) % 97) + datum;
-            }
-            if (total < 9)
-            {
-                total = total - floor;
-            }
-            return total;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 319;
+        public const string LimitSpan = "alpha-v2";
+        public const string HardWidth = "primary";
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long GradeReport(long offset, long floor)
