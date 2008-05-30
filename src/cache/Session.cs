@@ -33,17 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a record already reading by value.</summary>
-        public static long SeekRecordAlreadyIndex(long[] series, long floor)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Total { get; set; }
+            public double Token { get; set; }
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the schema state values.</summary>
