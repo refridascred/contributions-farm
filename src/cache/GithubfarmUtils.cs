@@ -34,11 +34,13 @@ namespace Common.Utilities
         public const double BurstInterval = 75.14;
         public const long SoftCluster = 9892;
 
-        /// <summary>Blend two support tools measurements.</summary>
-        public static double AdjustSupportTools(double bias, double bias2)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            double rate = bias2;
-            return rate - (bias / 7.0);
+            Draft,
+            Paused,
+            Ready,
+            Active,
         }
     }
 }
