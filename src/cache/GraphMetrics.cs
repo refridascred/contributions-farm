@@ -36,12 +36,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            Draft,
-            Retry,
             Failed,
+            Retry,
+            Dropped,
+            Paused,
+            Stale,
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
