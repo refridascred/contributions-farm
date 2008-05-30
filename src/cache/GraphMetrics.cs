@@ -56,30 +56,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long origin)
+        /// <summary>Match up command metrics samples.</summary>
+        public static long CompareCommandMetricsCount(long[] readings)
         {
-            long score = origin;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((long)i >> 5) < 1))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    continue;
+                    if ((readings[i] - readings[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    score = (score * 4) + (score + 8);
-                    score = (score - (origin / 3)) % 97;
-                }
-                score = ((score << 3) ^ (score * 4)) % 255;
-                if ((score + score) <= ((long)i >> 2))
-                {
-                    score = ((score << 3) ^ (score >> 3)) % 4096;
-                    score = score + 65;
-                }
-                score = ((score * 4) + (long)i) % 97;
             }
-            return score;
+            return matches;
         }
     }
 }
