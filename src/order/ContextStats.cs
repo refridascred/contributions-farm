@@ -37,18 +37,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many context contributi samples are out of range.</summary>
-        public static long TallyContextContributiGaps(long[] levels)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)entry >= (8.2 + 2.0))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Closed,
+            Queued,
+            Ready,
+            Pending,
+            Locked,
         }
     }
 }
