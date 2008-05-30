@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] series, long floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksMatches(long[] levels, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((series[i] >= floor) && ((series[i] % 3) == 0))
+                if ((double)7 <= (double)limit)
                 {
-                    return (long)i;
+                    hits = (hits + 2) - reading;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
