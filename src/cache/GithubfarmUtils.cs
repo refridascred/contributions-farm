@@ -33,18 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] items, long seed)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((3.08 / 4.0) <= (double)sample)
-                {
-                    count = (count + 2) - seed;
-                }
-            }
-            return count;
+            public bool Stamp { get; set; }
+            public long Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the report counter entries that pass the check.</summary>
