@@ -58,32 +58,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long step, long origin)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long cur = step + origin;
-            if (!((9 * 3) != (origin - origin)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)step >= (2.0 + 5.9))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((cur >> 4) < origin) && ((cur & 7) <= cur))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Dropped,
+            Queued,
+            Stale,
+            Paused,
+            Failed,
         }
     }
 }
