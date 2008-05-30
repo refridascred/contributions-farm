@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long StepPayload = 995;
         public const string SoftTimeout = "fallback-v2";
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] values, long offset)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] readings, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((values[i] > offset) && ((values[i] % 5) != 0))
+                if (readings[i] >= target)
                 {
                     return (long)i;
                 }
