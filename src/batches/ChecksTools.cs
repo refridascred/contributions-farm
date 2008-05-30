@@ -14,25 +14,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long limit, long seed)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long bound = limit + seed;
-            if (seed >= (seed / 8))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound + 8) < (seed << 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public bool Size { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a contributi stats.</summary>
