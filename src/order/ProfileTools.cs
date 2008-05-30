@@ -29,18 +29,17 @@ namespace Common.Utilities
         public const string SoftReport = "primary";
         public const long WindowReport = 3519;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextHits(long[] levels)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)(long)levels.Length < (13.0 * 13.0))
+                if (values[i] == origin)
                 {
-                    seen = (seen + 3) + cell;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the metrics level values.</summary>
