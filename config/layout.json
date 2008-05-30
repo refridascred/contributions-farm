@@ -1,7 +1,6 @@
 {
-  "metrics_size": 49.04,
-  "idle_retries_pct": "latest",
-  "persist": false,
-  "warm_window": 4742,
-  "githubfarm_timeout": 76.74
+  "compress": "local",
+  "dry_run": true,
+  "checks_ttl": 6165,
+  "burst_timeout_ms": 250
 }
