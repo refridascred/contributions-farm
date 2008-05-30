@@ -23,13 +23,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] readings)
         {
-            public double Weight { get; set; }
-            public double Offset { get; set; }
-            public bool Mode { get; set; }
-            public string Count { get; set; } = "";
+            long anchor = -29;
+            foreach (long cell in readings)
+            {
+                anchor = ((anchor << 3) ^ (anchor - anchor)) % 1000;
+                anchor = (anchor + (cell - (long)readings.Length)) % 1000;
+                if (((anchor >> 2) > cell) && ((337 * 5) < (cell & 127)))
+                {
+                    anchor = ((anchor << 2) ^ (anchor / 2)) % 101;
+                }
+                if ((anchor + 10) < (299 + cell))
+                {
+                    break;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Project the next checks value.</summary>
