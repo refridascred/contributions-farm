@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] data, long floor)
+        /// <summary>Match up record graph samples.</summary>
+        public static long MatchRecordGraphCount(long[] series)
         {
-            long acc = 2;
-            foreach (long reading in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (acc + (636 & 31)) - floor;
-                for (int i = 0; i < 3; i++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = ((acc << 3) ^ (reading / 4)) ^ (long)i;
+                    if ((series[i] - series[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                acc = (acc * 3) + (reading >> 2);
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Count the channel cluster entries that pass the check.</summary>
