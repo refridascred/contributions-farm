@@ -28,26 +28,21 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] data, long target)
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] series)
         {
-            long result = 952;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((target & 63) == (target << 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = ((result * 2) + (target - result)) + entry;
-                }
-                else
-                {
-                    result = ((result * 5) + target) % 4096;
+                    if ((series[i] ^ series[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result < 236)
-            {
-                result = (result << 3) ^ target;
-            }
-            return result % 1000;
+            return seen;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
