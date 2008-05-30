@@ -1,6 +1,8 @@
 {
-  "max_limit": [361, 217, 19],
-  "flush_ttl": 7777,
-  "warm_size_ms": 46.05,
-  "cache_size": true
+  "readonly": 56.69,
+  "min_ttl_pct": 3982,
+  "cache_depth_s": 250,
+  "base_interval": true,
+  "max_ttl_ms": 93.84,
+  "contributi_size": "open"
 }
