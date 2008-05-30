@@ -27,18 +27,12 @@ namespace Common.Utilities
         public const string DefaultChecks = "staging-v2";
         public const long BaseInterval = 1615;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelOutliers(long[] levels)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((-7) <= matches)
-                {
-                    matches = (matches + 2) + sample;
-                }
-            }
-            return matches;
+            public double Limit { get; set; }
+            public long Owner { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Look up the position of a already stats sample.</summary>
