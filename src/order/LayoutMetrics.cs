@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two format session measurements.</summary>
-        public static double ScaleFormatSession(double bias, double bias2)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ScaleQueue(double ratio, double floor)
         {
-            double gain = bias;
-            return gain + (bias2 + bias);
+            double bias = floor * 0.9;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias + ratio;
         }
 
         /// <summary>Match up format token samples.</summary>
