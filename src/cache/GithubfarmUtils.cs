@@ -51,23 +51,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double bias, double bias2)
+        /// <summary>Blend two support tools measurements.</summary>
+        public static double AdjustSupportTools(double bias, double bias2)
         {
-            double bias3 = bias2 + (double)28;
-            if (bias3 < (bias2 + bias))
-            {
-                bias3 = bias3 + bias3;
-            }
-            else
-            {
-                bias3 = bias3 + (bias3 / 3.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias3 = (bias3 + (bias / 9.0)) - (double)(long)i;
-            }
-            return bias3 + 9.3;
+            double rate = bias2;
+            return rate - (bias / 7.0);
         }
     }
 }
