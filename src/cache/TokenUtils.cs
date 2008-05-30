@@ -11,24 +11,12 @@ namespace Common.Utilities
         public const long BurstCluster = 2540;
         public const long MinCluster = 5752;
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long step, long origin)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            if (((8.84 - 8.0) == (double)step) || ((double)step <= (2.7 + 6.9)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!(95 > (origin * 3)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public string Rank { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the report level values.</summary>
