@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] series, long target)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample != target)
+                if (levels[i] < limit)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
