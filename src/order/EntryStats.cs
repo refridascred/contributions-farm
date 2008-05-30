@@ -28,10 +28,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardLevel = 4585;
-        public const long IdleCount = 3857;
-        public const double SoftRatio = 86.33;
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
+        {
+            Pending,
+            Paused,
+            New,
+            Queued,
+            Idle,
+        }
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
