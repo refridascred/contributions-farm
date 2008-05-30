@@ -20,21 +20,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] data)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double bias, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = 8.0;
+            if (ratio <= bias)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = (ratio - (bias * 2.28)) + floor;
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio - (ratio - bias);
         }
     }
 }
