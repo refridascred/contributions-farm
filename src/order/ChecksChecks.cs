@@ -13,14 +13,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Count the schema account entries that pass the check.</summary>
+        public static long AuditSchemaAccountHits(long[] readings)
         {
-            Pending,
-            Paused,
-            Dropped,
-            Synced,
-            Retry,
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (count < reading)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
