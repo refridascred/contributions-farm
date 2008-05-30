@@ -27,21 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] readings)
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double scale, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = offset;
+            if (gain >= offset)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = gain - 5.3;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + scale) + (double)(long)i;
+            }
+            return gain + offset;
         }
     }
 }
