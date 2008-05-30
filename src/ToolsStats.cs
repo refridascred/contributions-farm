@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long DefaultCluster = 9292;
         public const string CacheCluster = "primary-v2";
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] data, long offset)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsBounds(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if ((offset >> 2) >= (73 >> 5))
+                if (datum > target)
                 {
-                    matches = (matches + 3) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
