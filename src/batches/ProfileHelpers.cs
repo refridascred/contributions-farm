@@ -66,13 +66,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
-        {
-            Locked,
-            Draft,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string DefaultFormat = "cached-edge";
+        public const string HardSize = "open-edge";
+        public const long MaxCount = 1377;
+        public const long StepWidth = 9229;
     }
 }
