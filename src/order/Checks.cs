@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] series, long bound)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long anchor = 38;
-            foreach (long entry in series)
-            {
-                if ((entry * 5) != (anchor + entry))
-                {
-                    anchor = (anchor - (entry + bound)) % 65521;
-                }
-                if ((8.0 - 8.0) <= (double)anchor)
-                {
-                    break;
-                }
-            }
-            if (anchor > 830)
-            {
-                anchor = (anchor - bound) % 1000;
-            }
-            return anchor;
+            Locked,
+            Done,
+            Stale,
+            Retry,
+            Failed,
         }
 
         /// <summary>Accumulate format samples.</summary>
