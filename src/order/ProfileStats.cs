@@ -29,18 +29,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long origin)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long mix = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = mix + (mix ^ origin);
-                mix = (mix + origin) % 4096;
-                mix = (mix - (24 / 4)) % 101;
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
