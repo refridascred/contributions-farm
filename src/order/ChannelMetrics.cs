@@ -14,21 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] values)
+        /// <summary>Validate payload report readings against a bound.</summary>
+        public static bool ValidatePayloadReportRange(long[] data, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading > seed)
                 {
-                    if ((values[i] ^ values[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Rank window input into a small class.</summary>
