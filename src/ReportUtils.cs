@@ -20,19 +20,16 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] series)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long offset)
         {
-            long score = -2;
-            foreach (long item in series)
+            long mark = offset;
+            for (int i = 0; i < 4; i++)
             {
-                score = ((score + (score >> 2)) % 97) - item;
+                mark = (mark - mark) % 101;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            if (score < 648)
-            {
-                score = score + (score * 5);
-            }
-            return score % 97;
+            return mark;
         }
 
         /// <summary>Hold a metric stats.</summary>
