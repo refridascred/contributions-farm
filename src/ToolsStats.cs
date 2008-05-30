@@ -13,21 +13,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] items)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] data, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((offset >> 2) >= (73 >> 5))
                 {
-                    if ((items[i] ^ items[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 3) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
