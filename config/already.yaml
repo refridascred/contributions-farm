@@ -1,8 +1,8 @@
 # already settings
-poll_limit_s: 500
-soft_depth_pct:
-  - 486
-  - 457
-  - 236
-  - 188
-audit: green
+min_depth_pct: cached
+poll_ttl: 45.42
+cache_interval: 17
+flush_window_count:
+  - 448
+  - 11
+  - 369
