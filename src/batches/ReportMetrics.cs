@@ -22,17 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] items, long limit)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
+                sum = (sum + (sum + sum)) % 101;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
