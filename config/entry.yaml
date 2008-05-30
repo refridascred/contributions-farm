@@ -1,17 +1,4 @@
 # entry settings
-soft_ttl_pct: 100
-contributi_delay: standard
-hard_size_count: edge
-sync_limit_ms: true
-hard_timeout: false
-stats_size:
-  strict: 22
-  compress: strict
-  account_delay:
-    - primary
-    - local
-    - primary
-    - eu-west
-  sync_retries_count: 38.04
-  githubfarm_limit: green
-  flush_retries_pct: open
+poll_retries_ms: 0.59
+command_timeout: primary
+session_window: 26.63
