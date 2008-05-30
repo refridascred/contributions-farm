@@ -37,21 +37,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count cluster checks pairs that satisfy a relation.</summary>
-        public static long CompareClusterChecksCount(long[] values)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] readings, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 989;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                anchor = ((anchor * 5) + (offset / 8)) % 255;
+                if ((double)entry < 7.5)
                 {
-                    if ((values[i] ^ values[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor << 3) ^ offset;
+                }
+                if (offset >= ((-72) + offset))
+                {
+                    anchor = (anchor + (entry >> 1)) % 101;
                 }
             }
-            return matches;
+            if (anchor > 7)
+            {
+                anchor = ((anchor << 3) ^ (offset + offset)) % 101;
+            }
+            return anchor;
         }
     }
 }
