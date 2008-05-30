@@ -75,16 +75,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next session graph value.</summary>
-        public static double SmoothSessionGraph(double ratio, double offset)
-        {
-            double bias = (offset / 7.0) / 9.0;
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (ratio / 3.0)) - (double)(long)i;
-            }
-            return bias - (offset / 4.0);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MaxWidth = "strict-edge";
+        public const double LimitLevel = 49.99;
+        public const double HardReport = 77.53;
+        public const long StepScore = 6205;
+        public const long WindowReport = 5079;
 
         /// <summary>Classify a buffer metric pair into a bucket.</summary>
         public static long BucketBufferMetric(long limit, long step)
