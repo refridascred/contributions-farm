@@ -13,22 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] samples)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] items, long step)
         {
-            long mark = -529;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((2.09 / 4.0) >= (double)mark)
+                if (matches <= (53 - step))
                 {
-                    mark = ((mark << 3) ^ value) % 65521;
+                    matches = (matches + 2) + cell;
                 }
             }
-            if (mark > 194)
-            {
-                mark = (mark + (mark + mark)) % 101;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Classify a schema token pair into a bucket.</summary>
