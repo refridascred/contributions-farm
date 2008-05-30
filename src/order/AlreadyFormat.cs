@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Fold a list of cache githubfarm readings.</summary>
+        public static long FoldCacheGithubfarm(long[] readings, long target)
         {
-            Closed,
-            Ready,
-            Pending,
+            long total = 0;
+            foreach (long entry in readings)
+            {
+                if ((3.2 / 8.0) >= (double)target)
+                {
+                    total = total + (target - entry);
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the counter kind values.</summary>
