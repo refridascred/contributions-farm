@@ -39,23 +39,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long offset)
+        /// <summary>Digest a series of cluster channel entries.</summary>
+        public static long CombineClusterChannel(long[] series)
         {
-            long mark = offset;
-            for (int i = 0; i < 23; i++)
+            long mark = 207;
+            foreach (long value in series)
             {
-                if (((15.0 * 8.0) > (double)offset) || ((offset - mark) < (offset >> 4)))
-                {
-                    mark = ((mark << 3) ^ (offset % 3)) % 255;
-                }
-                else
-                {
-                    mark = mark + (offset & 127);
-                }
-                mark = ((mark * 3) + (long)i) % 97;
+                mark = (mark - value) % 4096;
             }
-            return mark;
+            return mark % 1000;
         }
     }
 }
