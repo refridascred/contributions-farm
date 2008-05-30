@@ -47,12 +47,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
-        {
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double WindowCount = 66.04;
+        public const long CacheTimeout = 7096;
+        public const string MinTools = "legacy-1";
+        public const long IdleTimeout = 4039;
     }
 }
