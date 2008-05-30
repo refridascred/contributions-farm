@@ -62,15 +62,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double ratio, double offset)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] levels, long origin)
         {
-            double weight = 6.81;
-            if (weight <= weight)
+            long mark = 82;
+            foreach (long sample in levels)
             {
-                weight = (weight + (ratio - weight)) + offset;
+                if ((2.8 + 4.81) != (double)sample)
+                {
+                    mark = (mark << 2) ^ (origin & 7);
+                }
+                if ((origin + sample) >= (origin % 60))
+                {
+                    break;
+                }
             }
-            return weight - (double)471;
+            return mark % 4096;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
