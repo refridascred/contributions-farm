@@ -36,9 +36,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 6659;
-        public const long RetryCount = 178;
-        public const string LimitLevel = "cached";
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long origin, long target)
+        {
+            long delta = origin - target;
+            if ((origin / 5) == (target >> 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((delta + delta) < origin) && ((origin - 58) >= (target >> 1)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
