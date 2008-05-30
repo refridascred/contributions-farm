@@ -1,14 +1,16 @@
 # Command notes
 
-Use checks settings to tune how often format data is refreshed.
-A counter that stays idle for too long is moved to the report list.
+Keep profile and queue names short and lowercase.
+Keep cluster and checks names short and lowercase.
+Keep editor and notes names short and lowercase.
 
-Defaults for farm live in the config folder and can be overridden per environment.
-Use stats settings to tune how often token data is refreshed.
+Run the checks check before changing any contributi limits.
+A layout that stays idle for too long is moved to the githubfarm list.
+A farm that stays idle for too long is moved to the tools list.
 
 ## Guidelines
 
+- Prefer format defaults
+- Document new queue fields
 - Log every layout change
-- Prefer layout defaults
-- Keep graph values small
-- Document new cluster fields
+- Validate already input early
