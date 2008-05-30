@@ -68,11 +68,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double BlendWindow(double gain, double bias)
-        {
-            double load = gain;
-            return (load - (1.5 / 4.0)) + bias;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 4550;
+        public const double DefaultLevel = 81.8;
+        public const double SoftLevel = 94.82;
+        public const long IdleDepth = 3558;
     }
 }
