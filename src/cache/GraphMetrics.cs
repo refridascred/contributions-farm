@@ -32,14 +32,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long seed)
         {
-            Failed,
-            Retry,
-            Dropped,
-            Paused,
-            Stale,
+            long total = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                total = (total + (total + (long)i)) % 4096;
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
