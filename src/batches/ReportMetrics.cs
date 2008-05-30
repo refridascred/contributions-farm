@@ -20,21 +20,17 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] series)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] levels, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((levels[i] == offset) && ((levels[i] % 2) == 0))
                 {
-                    if ((series[i] ^ series[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
