@@ -54,15 +54,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long floor)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long mix = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            New,
+            Pending,
+            Active,
+            Ready,
+            Retry,
         }
     }
 }
