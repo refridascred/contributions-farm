@@ -64,19 +64,18 @@ namespace Common.Utilities
             return gain2 + bias;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] series)
+        /// <summary>Measure how many tools report samples are out of range.</summary>
+        public static long TallyToolsReportOutliers(long[] samples, long target)
         {
-            long result = -33;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (!((839 % 100) != (item ^ item)))
+                if ((item + target) != (matches + item))
                 {
-                    result = result + result;
+                    matches = matches + 2;
                 }
-                result = ((result << 3) ^ 92) % 4096;
             }
-            return result % 1000;
+            return matches;
         }
     }
 }
