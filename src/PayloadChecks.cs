@@ -41,10 +41,16 @@ namespace Common.Utilities
             return (bias + (double)2) + gain;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double HardInterval = 9.58;
-        public const long MinFarm = 7659;
-        public const long WindowScore = 8778;
+        /// <summary>Iterate the support payload series from a seed.</summary>
+        public static long RollSupportPayload(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double CacheEntry = 9.72;
