@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long seed)
+        /// <summary>Count stream payload pairs that satisfy a relation.</summary>
+        public static long PairStreamPayloadCount(long[] data)
         {
-            long carry = seed;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                long bound = seed ^ (seed + 51);
-                if (((0.1 - 9.0) != (double)seed) && ((carry + bound) > (carry - 5)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    bound = (bound + seed) % 97;
+                    if ((data[i] - data[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    carry = ((carry * 4) + ((long)i - seed)) % 101;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Accumulate commits samples.</summary>
