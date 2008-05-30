@@ -1,6 +1,11 @@
 {
-  "burst_ratio": [246, 96],
-  "warm_interval_ms": false,
-  "flush_delay_pct": "edge",
-  "cache_depth_ms": 65
+  "sync_threshold": 60,
+  "cache_timeout_s": {
+    "command_interval": 27.81,
+    "retry_ttl_pct": 18.12,
+    "flush_capacity_pct": "latest"
+  },
+  "min_threshold": ["fallback", "legacy"],
+  "strict": "latest",
+  "retry_window_s": 1024
 }
