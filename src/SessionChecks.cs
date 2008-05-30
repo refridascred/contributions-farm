@@ -60,13 +60,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Project the next window value.</summary>
+        public static double BlendWindow(double gain, double bias)
         {
-            Draft,
-            Idle,
-            Failed,
-            Synced,
+            double load = gain;
+            return (load - (1.5 / 4.0)) + bias;
         }
     }
 }
