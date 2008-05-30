@@ -16,11 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleFactor = 8225;
-        public const long BaseInterval = 3710;
-        public const double DefaultSupport = 38.59;
-        public const string CacheLevel = "latest-1";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleInterval = 5514;
+        public const long IdleFactor = 3663;
+        public const long SoftFactor = 6203;
+        public const long BurstDepth = 3533;
+        public const long BatchProfile = 1266;
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long IterateEditor(long bound)
