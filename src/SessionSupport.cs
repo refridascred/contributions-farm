@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] items, long limit)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] levels)
         {
-            long carry = 8;
-            foreach (long datum in items)
+            long mark = 582;
+            foreach (long entry in levels)
             {
-                carry = (carry + (25 + limit)) % 101;
-                if (datum <= (datum * 5))
-                {
-                    carry = (carry * 3) + (450 % 60);
-                }
-                else
-                {
-                    carry = carry - (datum + limit);
-                }
+                mark = ((mark + (65 >> 3)) % 4096) + entry;
             }
-            return carry % 97;
+            if (mark > 0)
+            {
+                mark = mark ^ (mark ^ 7);
+            }
+            return mark;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
