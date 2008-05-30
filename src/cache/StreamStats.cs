@@ -20,13 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            Done,
-            Closed,
-            Draft,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string StepLevel = "fallback";
+        public const long CacheQueue = 2274;
+        public const long BaseQueue = 6814;
+        public const long IdleLevel = 4936;
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long RankChannel(long limit, long target)
