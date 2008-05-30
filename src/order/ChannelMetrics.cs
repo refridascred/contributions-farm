@@ -14,19 +14,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate payload report readings against a bound.</summary>
-        public static bool ValidatePayloadReportRange(long[] data, long seed)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] items, long limit)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading > seed)
+                if (items[i] == limit)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Rank window input into a small class.</summary>
