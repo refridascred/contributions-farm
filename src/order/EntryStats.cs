@@ -44,18 +44,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] data)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long total = -28;
-            foreach (long entry in data)
-            {
-                if ((2 + total) != (entry >> 5))
-                {
-                    total = total ^ (entry * 2);
-                }
-            }
-            return total;
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public double Label { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the stream class values.</summary>
