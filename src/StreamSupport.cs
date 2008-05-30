@@ -20,13 +20,18 @@ namespace Common.Utilities
             return drift + (double)9;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Audit graph token readings against a rule.</summary>
+        public static long TallyGraphTokenOutliers(long[] data)
         {
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
-            public double Total { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((count - sample) <= (sample + sample))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count cluster checks pairs that satisfy a relation.</summary>
