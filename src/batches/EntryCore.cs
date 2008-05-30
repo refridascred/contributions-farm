@@ -21,10 +21,20 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 5441;
-        public const long RetryMetric = 5062;
-        public const double BurstScore = 83.83;
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double gain, double bias)
+        {
+            double drift = (10.0 + 4.0) - gain;
+            if (drift < (double)923)
+            {
+                drift = drift + (5.9 / 6.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift - gain;
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long TallySessionOutliers(long[] items)
