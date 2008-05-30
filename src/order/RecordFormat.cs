@@ -20,21 +20,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] series)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double SmoothContributi(double scale, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = (double)(833 >> 1);
+            if (gain > (double)175)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain = gain + scale;
             }
-            return count;
+            return gain + (scale + offset);
         }
 
         /// <summary>Measure how many metrics order samples are out of range.</summary>
