@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            Done,
-            Queued,
-            Draft,
+            Retry,
+            Pending,
+            Paused,
+            Failed,
         }
 
         /// <summary>Count already route pairs that satisfy a relation.</summary>
