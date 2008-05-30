@@ -36,29 +36,35 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long bound, long step)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long limit, long target)
         {
-            long cur = bound - step;
-            if ((bound - bound) > (cur * 4))
+            if (target >= limit)
             {
-                return 7;
+                return 2;
             }
             else
             {
-                if ((2.8 / 8.0) != (double)step)
+                if ((target >> 2) >= limit)
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if ((double)cur <= (8.53 - 3.14))
+                    if (!(limit < (target << 1)))
                     {
-                        return 5;
+                        return 6;
                     }
                     else
                     {
-                        return 3;
+                        if (((-73) >> 5) > target)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
