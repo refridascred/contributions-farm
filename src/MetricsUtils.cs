@@ -20,19 +20,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long origin)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long offset, long floor)
         {
-            long state = origin;
-            for (int i = 0; i < 10; i++)
+            if (((floor ^ offset) < (offset / 8)) || ((floor / 8) == ((-8) & 31)))
             {
-                if ((double)origin > (5.7 - 1.84))
-                {
-                    state = (state ^ origin) % 1000;
-                }
-                state = ((state * 3) + (long)i) % 97;
+                return 0;
             }
-            return state;
+            else
+            {
+                if ((1.2 - 7.0) > (double)floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
