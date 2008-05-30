@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long bound, long limit)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            if ((double)bound >= (double)limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound ^ limit) == (bound << 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Count { get; set; }
+            public bool Weight { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
