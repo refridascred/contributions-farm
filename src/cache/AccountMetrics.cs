@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] items)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterGaps(long[] levels)
         {
-            long acc = -420;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (!((double)sample <= (7.2 * 1.03)))
+                if ((5 + matches) > item)
                 {
-                    acc = (acc - (sample - sample)) % 255;
+                    matches = matches + 2;
                 }
             }
-            return acc % 65521;
+            return matches;
         }
 
         /// <summary>Hold a context header.</summary>
