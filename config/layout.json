@@ -1,7 +1,5 @@
 {
-  "retry_capacity": 60,
-  "dry_run": "eu-west",
-  "max_retries": "strict",
-  "soft_size_ms": 1434,
-  "base_interval_pct": 93
+  "base_window_count": true,
+  "base_threshold_count": 12.42,
+  "filter_interval": 55.78
 }
