@@ -29,17 +29,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] data, long step)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] readings, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 20;
+            foreach (long value in readings)
             {
-                if ((data[i] == step) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((((mark << 3) ^ 74) % 65521) ^ value) - step;
             }
-            return -1;
+            return mark;
         }
     }
 }
