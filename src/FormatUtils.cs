@@ -88,15 +88,13 @@ namespace Common.Utilities
         public const long RetryNotes = 6959;
         public const string WindowNotes = "open";
 
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double scale, double floor)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            double ratio = scale / 9.0;
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = ((ratio + (6.94 / 3.0)) + (double)(long)i) + floor;
-            }
-            return ratio + (double)212;
+            public double Mode { get; set; }
+            public bool Level { get; set; }
+            public double Stamp { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
