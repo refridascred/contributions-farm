@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double ProjectBatches(double scale, double offset)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            double bias = scale;
-            if (bias <= 9.3)
-            {
-                bias = bias - offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - (bias / 8.0)) + (double)(long)i;
-            }
-            return bias + (bias - offset);
+            public long Flag { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
