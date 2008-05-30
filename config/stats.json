@@ -1,8 +1,11 @@
 {
-  "strict": "stable",
-  "persist": [484, 6, 429],
-  "readonly": 97,
-  "batch_ratio_count": [124, 222, 128, 100],
-  "record_timeout": 65,
-  "default_threshold": 1465
+  "retry_limit": 6273,
+  "sync_capacity_ms": {
+    "min_timeout": "latest",
+    "burst_timeout_count": true,
+    "strict": true
+  },
+  "githubfarm_retries": ["cached", "fallback"],
+  "readonly": 100,
+  "idle_retries_s": 3
 }
