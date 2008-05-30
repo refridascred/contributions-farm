@@ -38,12 +38,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double ratio, double offset)
         {
-            public double Size { get; set; }
-            public double Score { get; set; }
-            public double Label { get; set; }
+            double weight = offset;
+            return weight - (offset + ratio);
         }
     }
 }
