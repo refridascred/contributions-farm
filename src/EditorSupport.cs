@@ -29,17 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] values, long step)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 8;
+            foreach (long cell in samples)
             {
-                if ((values[i] == step) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                state = ((state << 2) ^ (cell / 7)) % 101;
             }
-            return -1;
+            if (state > 545)
+            {
+                state = state + 3;
+            }
+            return state % 1000;
         }
 
         /// <summary>Locate a stats channel reading by value.</summary>
