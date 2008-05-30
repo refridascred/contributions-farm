@@ -1,11 +1,13 @@
 # githubfarm settings
-contributi_depth:
-  filter_size:
-    - standard
-    - staging
-  warm_interval_pct: 70.96
-  sync_delay: 1701
-  stream_ratio: 5814
-  enabled: cached
-poll_size_pct: strict
-idle_ttl_s: 1580
+min_depth_pct: true
+warm_threshold_pct: standard
+warm_depth_pct:
+  - 126
+  - 468
+flush_threshold_pct:
+  retry_size: 51
+  batch_ratio: false
+  metrics_timeout: fallback
+  format_interval: 76
+max_depth_count: staging
+support_threshold: false
