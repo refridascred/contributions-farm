@@ -47,17 +47,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] samples, long step)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == step) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Locked,
+            New,
+            Paused,
+            Ready,
         }
 
         /// <summary>Hold a window record.</summary>
