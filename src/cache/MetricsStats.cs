@@ -20,10 +20,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheCount = 9065;
-        public const long SoftRatio = 5219;
-        public const double CacheSize = 35.33;
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
+        {
+            Active,
+            Ready,
+            Draft,
+            Paused,
+        }
 
         /// <summary>Check that every token record entry stays within the limit.</summary>
         public static bool ValidateTokenRecordLimits(long[] readings, long target)
