@@ -12,11 +12,20 @@ namespace Common.Utilities
         public const double BaseDepth = 88.77;
         public const long BatchWidth = 4832;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 4078;
-        public const double MaxLevel = 14.38;
-        public const long MinMetric = 1641;
-        public const double CacheDepth = 27.98;
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double rate, double bias)
+        {
+            double gain = rate;
+            if (gain > (gain / 3.0))
+            {
+                gain = gain - (gain * 9.0);
+            }
+            else
+            {
+                gain = gain - 4.4;
+            }
+            return gain - (bias + rate);
+        }
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
