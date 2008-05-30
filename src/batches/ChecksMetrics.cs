@@ -20,12 +20,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] samples, long offset)
         {
-            Closed,
-            Queued,
-            New,
+            long anchor = 665;
+            foreach (long value in samples)
+            {
+                anchor = ((anchor + 36) + value) + offset;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the payload status values.</summary>
