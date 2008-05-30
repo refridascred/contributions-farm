@@ -1,5 +1,22 @@
 {
-  "window_limit": 68.54,
-  "audit": "legacy",
-  "tools_capacity": [211, 26, 241]
+  "min_timeout_s": {
+    "warm_capacity_s": 30,
+    "min_window": "eu-west",
+    "command_delay": 61,
+    "retry_timeout": 41.6,
+    "max_depth_pct": [477, 455],
+    "enabled": {
+      "cluster_window": 5469,
+      "enabled": 24.84,
+      "batch_retries_count": ["staging", "blue", "latest", "standard"],
+      "cache_ratio": 25.63,
+      "payload_delay": [417, 113, 176],
+      "checks_timeout": true
+    }
+  },
+  "dry_run": ["local", "stable", "standard", "standard"],
+  "default_limit": 67.25,
+  "graph_interval": [220, 109, 225],
+  "support_threshold": ["local", "stable", "blue", "staging"],
+  "token_retries": 1024
 }
