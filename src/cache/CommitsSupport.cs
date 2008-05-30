@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] data)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long floor)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long result = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((649 >= entry) || ((entry + (-26)) > count))
+                if (result < (result - (long)i))
                 {
-                    count = count + 3;
+                    result = (result ^ (result >> 2)) % 101;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                result = (result ^ (6 + result)) % 65521;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Describe the filter level values.</summary>
