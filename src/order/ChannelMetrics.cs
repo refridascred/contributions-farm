@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            Retry,
-            Idle,
-            Draft,
-            Active,
+            public long Total { get; set; }
+            public double Mode { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
