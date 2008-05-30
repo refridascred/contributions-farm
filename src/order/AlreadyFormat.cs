@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long step)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long mark = step;
-            for (int i = 0; i < 24; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            Dropped,
+            Done,
+            Active,
         }
 
         /// <summary>Scale a window context figure with a bias.</summary>
