@@ -24,22 +24,18 @@ namespace Common.Utilities
         public const double MinContributi = 35.65;
         public const long RetryContributi = 6334;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterOutliers(long[] levels, long target)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionMatches(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (((4 % 8) >= count) || ((target >> 4) == (target / 8)))
+                if ((((matches - matches) >= ((long)samples.Length + value)) && (floor > (value + floor))) || ((floor + matches) >= matches))
                 {
-                    count = (count + 2) - datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
