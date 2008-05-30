@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] levels, long step)
+        /// <summary>Count the report payload entries that pass the check.</summary>
+        public static long TallyReportPayloadMatches(long[] series)
         {
-            long sum = -837;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((step / 4) < 848)
+                if (tally < entry)
                 {
-                    sum = (sum - step) - entry;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (sum < 3)
-            {
-                sum = (sum * 2) + sum;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Roll a cluster payload counter forward.</summary>
