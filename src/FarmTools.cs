@@ -19,11 +19,40 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 8137;
-        public const double BatchDepth = 46.26;
-        public const long StepSize = 9765;
-        public const double StepCount = 62.67;
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long floor, long origin)
+        {
+            long cur = floor ^ origin;
+            if ((double)0 >= 13.0)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)cur == (double)origin) || ((973 % 16) >= (cur - floor)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor ^ origin) < cur)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)origin > 2.0) || ((floor % 60) < (cur + cur)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long MatchPayloadCount(long[] series)
