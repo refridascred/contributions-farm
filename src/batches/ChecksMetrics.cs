@@ -71,17 +71,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] levels, long origin)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long floor, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long prev = floor + offset;
+            if (!((floor / 6) <= offset))
             {
-                if (levels[i] < origin)
+                return 0;
+            }
+            else
+            {
+                if (offset > (offset % 5))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((floor >> 1) <= (80 - prev)) && ((prev * 5) != (offset << 1)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
