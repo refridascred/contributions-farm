@@ -1,19 +1,8 @@
 {
-  "soft_delay_count": true,
-  "min_capacity_s": {
-    "burst_threshold": {
-      "farm_window": true,
-      "metric_ttl": 8141,
-      "window_depth": [416, 479, 10, 305],
-      "stats_size": "standard",
-      "min_depth_pct": 21
-    },
-    "entry_depth": true,
-    "contributi_window": ["staging", "green", "blue", "cached"],
-    "cache_threshold": "local",
-    "stream_capacity": "eu-west",
-    "compress": "blue"
-  },
-  "soft_depth_pct": ["strict", "eu-west"],
-  "max_size": [463, 406, 132]
+  "cache_window_pct": true,
+  "retry_ratio_count": 27,
+  "audit": 6541,
+  "metrics_interval": 1024,
+  "payload_threshold": true,
+  "queue_threshold": 87
 }
