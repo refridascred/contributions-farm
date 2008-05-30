@@ -1,10 +1,14 @@
 # Command notes
 
-The command report groups every payload by layout.
-Use githubfarm settings to tune how often record data is refreshed.
+Defaults for farm live in the config folder and can be overridden per environment.
+The entry helpers are pure functions, so they are safe to call from any thread.
+
+The checks report groups every contributi by checks.
+The farm module keeps layout values in sync with the checks cache.
 
 ## Guidelines
 
-- Review contributi limits each release
-- Log every token change
-- Keep profile values small
+- Log every report change
+- Prefer contributi defaults
+- Review farm limits each release
+- Keep payload values small
