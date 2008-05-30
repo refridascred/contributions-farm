@@ -60,14 +60,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            Failed,
-            Queued,
-            Pending,
-            Retry,
             Dropped,
+            Paused,
+            Locked,
         }
 
         /// <summary>Look up the position of a window graph sample.</summary>
