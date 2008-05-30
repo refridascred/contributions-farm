@@ -1,21 +1,7 @@
 # githubfarm settings
-report_ttl:
-  readonly:
-    githubfarm_retries: latest
-    batch_size: green
-    context_limit: 8468
-  flush_ratio_s: 1024
-  token_threshold:
-    persist: 30
-    verbose: 37.78
-    poll_limit: false
-    poll_interval_ms: false
-    flush_ratio: 12.93
-  burst_interval: 500
-  audit: fallback
-  poll_capacity: false
-cache_threshold_ms: true
-idle_retries_s: cached
-burst_threshold_s: false
-support_window: strict
-flush_ratio_s: blue
+default_size_s:
+  - fallback
+  - primary
+flush_window: 1330
+flush_ratio_ms: true
+command_size: 4965
