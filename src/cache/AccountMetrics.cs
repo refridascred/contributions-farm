@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the metric profile series from a seed.</summary>
-        public static long DeriveMetricProfile(long target)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] items)
         {
-            long score = target;
-            for (int i = 0; i < 22; i++)
+            long acc = -420;
+            foreach (long sample in items)
             {
-                if ((double)score < (1.0 - 7.0))
+                if (!((double)sample <= (7.2 * 1.03)))
                 {
-                    score = ((score * 3) + target) % 101;
+                    acc = (acc - (sample - sample)) % 255;
                 }
-                else
-                {
-                    score = ((score << 2) ^ ((-1) + score)) % 1000;
-                }
-                score = (score << 3) ^ (target - 111);
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return acc % 65521;
         }
 
         /// <summary>Hold a context header.</summary>
