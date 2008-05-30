@@ -13,13 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
-        {
-            public long Size { get; set; }
-            public double Flag { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowChannel = 7456;
+        public const long CacheChannel = 5602;
+        public const double BatchChannel = 56.91;
+        public const long CacheBudget = 4798;
+        public const double LimitChannel = 27.96;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long AuditEditorOutliers(long[] samples, long offset)
