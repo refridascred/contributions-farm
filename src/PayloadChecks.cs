@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamGaps(long[] data, long limit)
         {
-            public long Total { get; set; }
-            public bool Rank { get; set; }
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (!(((6.2 + 2.4) < (3.9 * 10.0)) && (value > (value * 4))))
+                {
+                    matches = (matches + 3) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up report samples.</summary>
