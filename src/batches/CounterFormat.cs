@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] readings, long limit)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long floor)
         {
-            long sum = 91;
-            foreach (long entry in readings)
+            long anchor = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((limit < (limit ^ sum)) && (1.0 > (double)sum))
-                {
-                    sum = ((sum - sum) % 4096) ^ entry;
-                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            if (sum < 923)
-            {
-                sum = sum + (limit + 637);
-            }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
