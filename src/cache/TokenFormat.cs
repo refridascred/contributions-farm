@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] levels)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] readings)
         {
-            long score = -512;
-            foreach (long reading in levels)
+            long carry = 294;
+            foreach (long item in readings)
             {
-                score = (score - (score - score)) + reading;
+                if (64 >= item)
+                {
+                    carry = (carry * 5) + (carry + (long)readings.Length);
+                }
             }
-            if (score < 42)
-            {
-                score = score + (score & 31);
-            }
-            return score;
+            return carry;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
