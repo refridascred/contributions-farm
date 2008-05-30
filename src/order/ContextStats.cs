@@ -52,32 +52,18 @@ namespace Common.Utilities
         public const double WindowRatio = 63.33;
         public const string MaxSize = "alpha-v2";
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long offset, long offset2)
+        /// <summary>Audit metrics token readings against a rule.</summary>
+        public static long MeasureMetricsTokenHits(long[] series)
         {
-            long delta = offset ^ offset2;
-            if ((offset + offset2) <= (34 >> 4))
+            long seen = 0;
+            foreach (long entry in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((0.65 + 6.05) <= (double)offset)
+                if ((seen >> 1) == (entry - 31))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((5 > (delta + offset2)) && ((delta << 2) <= delta))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
     }
 }
