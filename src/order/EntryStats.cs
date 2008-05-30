@@ -46,28 +46,21 @@ namespace Common.Utilities
         public const long BatchBudget = 445;
         public const long IdleGraph = 5924;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] values)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] values)
         {
-            long sum = 3;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum + (sum / 3)) % 97;
-                if ((9.7 - 15.0) != (double)entry)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = sum ^ entry;
-                    sum = (sum ^ (537 & 127)) % 4096;
-                }
-                else
-                {
-                    sum = (sum - entry) % 4096;
-                }
-                if (!(8.8 > (double)entry))
-                {
-                    sum = (sum + entry) % 1000;
+                    if ((values[i] - values[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the stream class values.</summary>
