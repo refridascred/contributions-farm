@@ -45,16 +45,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                state = ((state << 3) ^ limit) % 1000;
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double IdleFilter = 26.88;
+        public const long StepBudget = 709;
+        public const long HardFilter = 7456;
     }
 }
