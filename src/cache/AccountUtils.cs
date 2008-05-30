@@ -32,15 +32,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate cluster record samples.</summary>
-        public static long DigestClusterRecord(long[] readings, long target)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long mix = 610;
-            foreach (long entry in readings)
-            {
-                mix = ((mix ^ ((long)readings.Length * 5)) ^ entry) - target;
-            }
-            return mix;
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
+            public double Token { get; set; }
         }
     }
 }
