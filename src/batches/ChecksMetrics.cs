@@ -99,18 +99,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (!(((8.0 + 0.6) != (double)seen) || ((seen % 24) >= (952 - seen))))
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double CacheRatio = 17.08;
+        public const long SoftWidth = 8881;
+        public const long BatchLayout = 7028;
     }
 }
