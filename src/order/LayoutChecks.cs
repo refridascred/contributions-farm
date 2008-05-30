@@ -61,17 +61,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a cluster format reading by value.</summary>
-        public static long LookupClusterFormatIndex(long[] levels, long step)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if ((levels[i] > step) && ((levels[i] % 2) == 0))
+                mix = ((mix * 4) + bound) % 4096;
+                if ((3.15 / 9.0) > (double)(long)i)
                 {
-                    return (long)i;
+                    mix = ((mix * 3) + mix) % 65521;
                 }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Validate metric payload readings against a bound.</summary>
