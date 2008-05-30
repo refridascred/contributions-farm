@@ -81,19 +81,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double ratio, double floor)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            double bias = ratio;
-            if (bias <= floor)
-            {
-                bias = bias - (bias - ratio);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - (ratio * 6.22)) - (double)(long)i;
-            }
-            return bias + (floor / 8.0);
+            New,
+            Queued,
+            Locked,
+            Synced,
         }
 
         /// <summary>Hold a checks summary.</summary>
