@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the counter stats series from a seed.</summary>
-        public static long IterateCounterStats(long seed)
+        /// <summary>Audit farm command readings against a rule.</summary>
+        public static long TallyFarmCommandHits(long[] series, long step)
         {
-            long anchor = seed;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                if ((step ^ step) == (datum >> 3))
+                {
+                    count = count + 2;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Accumulate record samples.</summary>
