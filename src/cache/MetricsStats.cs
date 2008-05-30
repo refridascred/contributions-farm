@@ -34,20 +34,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long bound)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] items, long offset)
         {
-            long mix = bound;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(((double)(long)i != (6.8 - 8.62)) && ((6.5 * 4.0) <= (double)(long)i)))
+                if (items[i] == offset)
                 {
-                    mix = mix - bound;
+                    return (long)i;
                 }
-                mix = (mix + (long)i) % 65521;
-                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Blend two token command measurements.</summary>
