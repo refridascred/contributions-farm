@@ -52,18 +52,14 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyHits(long[] series)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((404 % 97) < seen)
-                {
-                    seen = (seen + 1) + value;
-                }
-            }
-            return seen;
+            Paused,
+            Retry,
+            Idle,
+            Ready,
+            Dropped,
         }
     }
 }
