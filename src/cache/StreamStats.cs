@@ -53,23 +53,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] readings, long step)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long offset)
         {
-            long mix = 60;
-            foreach (long cell in readings)
+            long anchor = offset;
+            for (int i = 0; i < 21; i++)
             {
-                mix = ((mix << 2) ^ (cell * 3)) % 97;
-                if (((6.0 / 9.0) > (double)step) || ((step >> 3) != (step + step)))
-                {
-                    mix = ((mix * 4) + (mix ^ mix)) % 1000;
-                }
-                if ((cell + step) > (5 * 2))
-                {
-                    break;
-                }
+                anchor = anchor ^ ((long)i / 9);
+                anchor = (anchor * 2) + anchor;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return mix % 1000;
+            return anchor;
         }
     }
 }
