@@ -16,12 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleInterval = 5514;
-        public const long IdleFactor = 3663;
-        public const long SoftFactor = 6203;
-        public const long BurstDepth = 3533;
-        public const long BatchProfile = 1266;
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= target) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long IterateEditor(long bound)
