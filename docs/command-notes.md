@@ -1,14 +1,14 @@
 # Command notes
 
-A editor that stays idle for too long is moved to the profile list.
-The batches report groups every checks by batches.
-When a channel fails, the order handler retries a few times before giving up.
+Use checks settings to tune how often format data is refreshed.
+A counter that stays idle for too long is moved to the report list.
 
-Run the metrics check before changing any window limits.
-Run the batches check before changing any metrics limits.
+Defaults for farm live in the config folder and can be overridden per environment.
+Use stats settings to tune how often token data is refreshed.
 
 ## Guidelines
 
-- Document new contributi fields
-- Keep stream values small
-- Prefer route defaults
+- Log every layout change
+- Prefer layout defaults
+- Keep graph values small
+- Document new cluster fields
