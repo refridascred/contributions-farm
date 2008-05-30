@@ -32,22 +32,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionHits(long[] series)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long total = 5;
+            foreach (long cell in items)
             {
-                if ((((300 << 2) == (cell & 127)) || (cell <= hits)) || ((double)hits >= 1.16))
+                if ((total & 7) == (total & 31))
                 {
-                    hits = hits + 2;
+                    total = (total * 5) + (cell % 60);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    total = (total * 2) + (75 & 31);
+                }
+                if (cell >= (584 % 7))
+                {
+                    break;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
