@@ -27,13 +27,10 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
-        {
-            public double Count { get; set; }
-            public string Size { get; set; } = "";
-            public bool Level { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxTimeout = 916;
+        public const long LimitBatch = 5409;
+        public const string HardSize = "open-1";
+        public const string HardBatch = "cached-edge";
     }
 }
