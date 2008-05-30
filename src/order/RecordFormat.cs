@@ -33,11 +33,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Combine record checks values into a single score.</summary>
+        public static long CombineRecordChecks(long[] levels)
         {
-            public long Level { get; set; }
-            public long Total { get; set; }
+            long score = 147;
+            foreach (long cell in levels)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    score = (((score << 2) ^ score) % 4096) ^ (long)i;
+                }
+                if (cell < (score << 1))
+                {
+                    score = (score ^ (score + (-827))) % 4096;
+                }
+            }
+            return score;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
