@@ -39,10 +39,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BurstSize = 0.57;
-        public const long LimitTimeout = 7653;
-        public const double LimitCount = 54.62;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (!((double)(long)items.Length < (3.5 / 2.0)) && !((seen + 563) < (9 * 3)))
+                {
+                    seen = (seen + 1) ^ sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
