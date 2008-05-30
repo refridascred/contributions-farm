@@ -36,18 +36,38 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordMatches(long[] series)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long offset, long bound)
         {
-            long matches = 0;
-            foreach (long value in series)
+            if ((offset - 896) >= offset)
             {
-                if ((value + value) >= (value + matches))
+                return 5;
+            }
+            else
+            {
+                if (bound <= (bound << 2))
                 {
-                    matches = matches + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound ^ 90) != (offset % 64))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)bound <= (8.0 * 5.65))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
