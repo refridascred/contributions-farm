@@ -38,19 +38,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a cache order figure with a bias.</summary>
-        public static double BlendCacheOrder(double ratio, double offset)
+        /// <summary>Validate channel stats readings against a bound.</summary>
+        public static bool VerifyChannelStatsBounds(long[] readings, long origin)
         {
-            double scale = offset + (double)0;
-            if (scale >= (scale + scale))
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                scale = scale - (double)73;
+                if (datum < origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (ratio - scale)) - (double)(long)i;
-            }
-            return scale - offset;
+            return ok;
         }
     }
 }
