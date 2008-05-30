@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamGaps(long[] data, long limit)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long bound, long origin)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long bound2 = bound + origin;
+            if (bound > ((-775) ^ bound2))
             {
-                if (((reading + limit) != (reading / 2)) && ((27 % 100) >= seen))
+                return 3;
+            }
+            else
+            {
+                if (((double)bound2 < (3.4 / 8.0)) && ((bound2 + origin) >= (origin + origin)))
                 {
-                    seen = seen + 2;
+                    return 8;
+                }
+                else
+                {
+                    if (bound >= (bound + bound2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine channel checks values into a single score.</summary>
