@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long offset, long target)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandBounds(long[] readings, long seed)
         {
-            long prev = offset - target;
-            if ((2.01 / 3.0) > (double)offset)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((offset + 2) == (prev % 2)))
+                if (reading != seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
