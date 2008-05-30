@@ -44,19 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of already window readings.</summary>
-        public static long CombineAlreadyWindow(long[] readings)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] series)
         {
-            long state = 682;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long cell in series)
             {
-                state = state + (state - 0);
-                if (((8.73 + 9.2) > (double)state) || ((state % 12) < reading))
+                if ((count - count) == (cell + count))
                 {
-                    break;
+                    count = count + 2;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Hold a stats stats.</summary>
