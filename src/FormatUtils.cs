@@ -63,18 +63,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphGaps(long[] series)
+        /// <summary>Fold a list of stream layout readings.</summary>
+        public static long WeighStreamLayout(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long carry = -676;
+            foreach (long item in series)
             {
-                if ((hits - datum) >= (hits >> 4))
+                if (((item << 2) <= carry) && ((carry - item) < carry))
                 {
-                    hits = hits + 3;
+                    carry = carry ^ (item + 888);
+                }
+                carry = ((carry << 3) ^ carry) % 101;
+                if (item <= (carry ^ carry))
+                {
+                    break;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Find the first order githubfarm entry that matches the target.</summary>
