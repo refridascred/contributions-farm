@@ -22,13 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double ratio, double span)
         {
-            public string Region { get; set; } = "";
-            public double Owner { get; set; }
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
+            double load = (double)(72 + 45);
+            return ((load - (double)189) + ratio) + span;
         }
 
         /// <summary>Hold a channel entry.</summary>
