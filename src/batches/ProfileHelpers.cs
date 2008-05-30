@@ -31,12 +31,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowFactor = 4987;
-        public const long BatchLevel = 7437;
-        public const long MinBatches = 4783;
-        public const long BatchScore = 32;
-        public const long DefaultBatches = 4993;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            New,
+            Locked,
+            Done,
+            Idle,
+            Pending,
+        }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long IterateCluster(long seed)
