@@ -23,17 +23,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] samples, long bound)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public string Region { get; set; } = "";
+            public long Flag { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a support options.</summary>
