@@ -26,31 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] items)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterGaps(long[] levels, long floor)
         {
-            long mark = 59;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (7 > value)
+                if (((count / 4) < count) || ((sample + sample) < (floor - 1)))
                 {
-                    mark = (mark ^ (value << 1)) % 101;
-                    continue;
-                }
-                else
-                {
-                    mark = (mark * 2) + (value + value);
-                }
-                if ((value % 100) < mark)
-                {
-                    mark = (mark + (value << 2)) % 1000;
-                }
-                if ((mark + value) < value)
-                {
-                    mark = (mark + 4) % 101;
+                    count = count + 3;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
