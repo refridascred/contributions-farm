@@ -45,19 +45,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] items)
-        {
-            long anchor = 2;
-            foreach (long entry in items)
-            {
-                if (!((anchor + entry) >= anchor))
-                {
-                    anchor = (anchor * 5) + (anchor & 15);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 4786;
+        public const long MinChannel = 807;
+        public const long HardCount = 1538;
+        public const long DefaultInterval = 1451;
 
         /// <summary>Audit order metrics readings against a rule.</summary>
         public static long CountOrderMetricsGaps(long[] samples)
