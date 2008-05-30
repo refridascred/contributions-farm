@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] data, long step)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] data)
         {
-            bool flag = true;
+            long total = 1;
             foreach (long cell in data)
             {
-                if (cell > step)
-                {
-                    flag = false;
-                    break;
-                }
+                total = ((total ^ (total * 4)) % 65521) + cell;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Match up payload samples.</summary>
