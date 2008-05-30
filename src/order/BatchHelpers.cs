@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double CacheFormat = 45.79;
-        public const long BaseCount = 7945;
-        public const long WindowFormat = 1645;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepBudget = 2767;
+        public const long BaseLevel = 9888;
+        public const string BaseCounter = "staging-edge";
+        public const string MinBudget = "standard";
 
         /// <summary>Look up the position of a format sample.</summary>
         public static long FindFormatIndex(long[] series, long floor)
