@@ -54,9 +54,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BatchSpan = "staging-v2";
-        public const long BurstCount = 265;
-        public const long SoftSize = 8513;
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
