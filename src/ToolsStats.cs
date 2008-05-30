@@ -19,15 +19,15 @@ namespace Common.Utilities
         public const long MinTimeout = 1554;
         public const long MinWidth = 6917;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] series, long target)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorMatches(long[] values)
         {
             long tally = 0;
-            foreach (long cell in series)
+            foreach (long datum in values)
             {
-                if ((double)target >= (7.05 - 5.0))
+                if (37 <= datum)
                 {
-                    tally = (tally + 3) ^ cell;
+                    tally = tally + 3;
                 }
             }
             return tally;
