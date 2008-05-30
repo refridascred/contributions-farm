@@ -68,18 +68,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit order metrics readings against a rule.</summary>
-        public static long CountOrderMetricsGaps(long[] samples)
+        /// <summary>Look up the position of a token support sample.</summary>
+        public static long FindTokenSupportIndex(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((matches - matches) > (datum + 3))
+                if (readings[i] >= limit)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
