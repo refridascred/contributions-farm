@@ -34,19 +34,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every token record entry stays within the limit.</summary>
-        public static bool ValidateTokenRecordLimits(long[] readings, long target)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long offset)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long sum = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (datum <= target)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = sum + (offset * 2);
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
