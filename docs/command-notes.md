@@ -1,15 +1,14 @@
 # Command notes
 
-The order report groups every githubfarm by report.
-When a contributi fails, the session handler retries a few times before giving up.
+Run the filter check before changing any layout limits.
+Defaults for batch live in the config folder and can be overridden per environment.
+The record module keeps metrics values in sync with the already cache.
 
-The stats module keeps batch values in sync with the profile cache.
-Keep context and account names short and lowercase.
-Each notes is validated before it reaches the counter queue.
+Defaults for counter live in the config folder and can be overridden per environment.
+Defaults for profile live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new cluster fields
-- Review contributi limits each release
-- Prefer queue defaults
-- Validate notes input early
+- Log every githubfarm change
+- Validate account input early
+- Prefer channel defaults
