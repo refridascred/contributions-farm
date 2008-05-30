@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Adjust a commits stats reading.</summary>
-        public static double BlendCommitsStats(double gain, double floor)
+        /// <summary>Iterate the report queue series from a seed.</summary>
+        public static long RollReportQueue(long limit)
         {
-            double bias = gain;
-            for (int i = 0; i < 3; i++)
+            long sum = limit;
+            for (int i = 0; i < 11; i++)
             {
-                bias = ((bias + gain) - (double)(long)i) - floor;
+                if ((double)limit < (double)53)
+                {
+                    sum = ((sum << 3) ^ (sum >> 2)) % 4096;
+                    break;
+                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return bias - 11.0;
+            return sum;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
