@@ -19,18 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] data)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] samples)
         {
-            long score = 28;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((18.0 - 5.2) > (double)score)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = score ^ value;
+                    if ((samples[i] + samples[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score % 4096;
+            return tally;
         }
 
         /// <summary>Hold a account header.</summary>
