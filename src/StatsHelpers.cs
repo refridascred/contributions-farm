@@ -13,16 +13,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] readings, long origin)
-        {
-            long anchor = 234;
-            foreach (long reading in readings)
-            {
-                anchor = ((anchor << 3) ^ (origin ^ reading)) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 40;
+        public const double HardWidth = 73.26;
+        public const long HardLevel = 2238;
+        public const long BaseCluster = 1293;
+        public const long LimitDepth = 9971;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long MeasureBatchHits(long[] series, long origin)
