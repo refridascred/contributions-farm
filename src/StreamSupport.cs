@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstChannel = 5801;
-        public const long LimitBudget = 2095;
-        public const long WindowWidth = 9499;
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long origin, long step)
+        {
+            long next = origin + step;
+            if ((origin + step) > (next ^ 94))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin & 3) == (next / 6))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long CountEntryGaps(long[] items, long target)
