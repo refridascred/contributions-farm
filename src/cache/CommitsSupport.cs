@@ -34,18 +34,22 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Measure how many filter commits samples are out of range.</summary>
-        public static long MeasureFilterCommitsGaps(long[] series, long bound)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((bound ^ bound) >= seen)
+                if ((double)limit < (9.0 - 7.82))
                 {
-                    seen = (seen + 1) - item;
+                    count = (count + 2) + reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the batches class values.</summary>
