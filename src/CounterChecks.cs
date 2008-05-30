@@ -69,22 +69,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] readings)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] series)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long sum = 38;
+            foreach (long sample in series)
             {
-                if ((double)cell <= 9.26)
+                sum = ((sum + (850 >> 5)) % 255) - sample;
+                if ((869 + 299) == (sum % 8))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            return sum % 1000;
         }
     }
 }
