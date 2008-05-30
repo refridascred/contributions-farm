@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] items, long seed)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (((3 + seed) < 5) || ((double)seed < (double)sample))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public string Owner { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Combine account cache values into a single score.</summary>
