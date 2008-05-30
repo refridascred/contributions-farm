@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepBudget = 2767;
-        public const long BaseLevel = 9888;
-        public const string BaseCounter = "staging-edge";
-        public const string MinBudget = "standard";
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] values)
+        {
+            long mark = 71;
+            foreach (long sample in values)
+            {
+                long offset = (28 << 1) >> 2;
+                mark = ((mark << 2) ^ (offset >> 3)) + sample;
+                mark = (mark - mark) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Look up the position of a format sample.</summary>
         public static long FindFormatIndex(long[] series, long floor)
