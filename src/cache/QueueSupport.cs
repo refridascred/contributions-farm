@@ -20,18 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count already route pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyRouteCount(long[] data)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] levels, long offset)
         {
             long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((offset ^ (long)levels.Length) < count) && ((74 < count) && ((count - 929) <= count)))
                 {
-                    if ((data[i] - data[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 2) ^ entry;
                 }
             }
             return count;
