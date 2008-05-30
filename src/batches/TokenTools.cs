@@ -27,22 +27,17 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Derive the next stream layout value from a seed.</summary>
-        public static long IterateStreamLayout(long seed)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long offset)
         {
-            long score = seed;
-            for (int i = 0; i < 24; i++)
+            long acc = offset;
+            for (int i = 0; i < 22; i++)
             {
-                score = (score - (long)i) % 65521;
-                if ((seed + (long)i) == (long)i)
-                {
-                    score = score + score;
-                    break;
-                }
-                score = (score + score) % 101;
-                score = ((score * 5) + (long)i) % 65521;
+                acc = (acc ^ offset) % 101;
+                acc = ((acc << 2) ^ (acc + offset)) % 1000;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
