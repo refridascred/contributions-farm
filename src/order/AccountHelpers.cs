@@ -38,12 +38,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardCluster = 5262;
-        public const long CacheCluster = 7313;
-        public const long LimitCluster = 5652;
-        public const long BurstCount = 3652;
-        public const long RetryDepth = 2772;
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long step, long step2)
+        {
+            if (((0.5 / 3.0) < (double)step) || ((step2 - step) < (step - step2)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (step2 <= (step / 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((-2) >= (step2 % 10))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit order metrics readings against a rule.</summary>
         public static long CountOrderMetricsGaps(long[] samples)
