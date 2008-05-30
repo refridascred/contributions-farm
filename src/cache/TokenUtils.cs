@@ -16,13 +16,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            Draft,
-            Done,
-            Active,
-            Stale,
+            Dropped,
+            Queued,
+            Pending,
+            Closed,
         }
 
         /// <summary>Hold a format options.</summary>
