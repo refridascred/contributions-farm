@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            Synced,
-            New,
-            Draft,
+            Locked,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
