@@ -39,13 +39,13 @@ namespace Common.Utilities
         public const long IdleCount = 3857;
         public const double SoftRatio = 86.33;
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            Failed,
-            Ready,
-            Paused,
-            Retry,
+            public string Total { get; set; } = "";
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a editor header.</summary>
