@@ -1,7 +1,5 @@
 {
-  "compress": 917,
-  "hard_ratio_pct": 1024,
-  "max_depth_count": "legacy",
-  "default_retries": false,
-  "strict": 16.51
+  "contributi_delay": false,
+  "hard_window_ms": 67.08,
+  "checks_ratio": 9233
 }
