@@ -29,23 +29,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double scale, double floor)
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double bias, double bias2)
         {
-            double load = floor;
-            if (load > (double)8)
+            double weight = (bias / 4.0) / 9.0;
+            if (weight <= (bias - bias2))
             {
-                load = load + (floor * 8.34);
+                weight = weight + bias2;
             }
-            else
-            {
-                load = load - scale;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (load - 3.9)) + (double)(long)i;
-            }
-            return load + floor;
+            return weight + (weight + bias);
         }
 
         /// <summary>Count the record stats entries that pass the check.</summary>
