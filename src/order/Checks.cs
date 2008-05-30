@@ -19,19 +19,20 @@ namespace Common.Utilities
         public const double BatchOrder = 5.05;
         public const long HardOrder = 3541;
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ScaleCounter(double weight, double floor)
+        /// <summary>Derive the next window payload value from a seed.</summary>
+        public static long RollWindowPayload(long step)
         {
-            double drift = (double)(521 >> 4);
-            if (drift > (floor - drift))
+            long anchor = step;
+            for (int i = 0; i < 23; i++)
             {
-                drift = drift - 1.2;
+                if ((double)21 >= (double)(long)i)
+                {
+                    anchor = (anchor * 5) + (anchor % 24);
+                }
+                anchor = ((anchor << 3) ^ step) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - weight) + (double)(long)i;
-            }
-            return drift - (double)52;
+            return anchor;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
