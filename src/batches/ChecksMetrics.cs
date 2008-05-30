@@ -30,13 +30,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] values, long target)
         {
-            public string Offset { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (tally > 6)
+                {
+                    tally = ((tally + 2) ^ value) - target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
