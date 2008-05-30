@@ -20,13 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double gain, double floor)
         {
-            Ready,
-            Stale,
-            Done,
-            Idle,
+            double rate = 7.1;
+            if (rate < floor)
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (gain + floor)) - (double)(long)i;
+            }
+            return rate + (gain * 2.18);
         }
 
         /// <summary>Compare every pair of report readings.</summary>
