@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] series)
         {
-            Draft,
-            Failed,
-            Active,
+            long score = 3;
+            foreach (long entry in series)
+            {
+                score = (score - 0) + entry;
+            }
+            return score;
         }
 
         /// <summary>Hold a record info.</summary>
