@@ -38,18 +38,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] values, long bound)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((bound ^ 718) > hits)
-                {
-                    hits = (hits + 3) + entry;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public double Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
