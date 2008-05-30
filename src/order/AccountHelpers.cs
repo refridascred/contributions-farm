@@ -65,11 +65,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            public double Offset { get; set; }
-            public string Level { get; set; } = "";
+            Paused,
+            Stale,
+            Done,
         }
     }
 }
