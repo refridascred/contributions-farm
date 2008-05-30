@@ -27,11 +27,18 @@ namespace Common.Utilities
             return bias - (bias * 12.0);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 4290;
-        public const string MaxNotes = "primary-edge";
-        public const long BaseNotes = 3237;
-        public const long BurstScore = 5683;
-        public const long BaseLevel = 4242;
+        /// <summary>Audit route entry readings against a rule.</summary>
+        public static long MeasureRouteEntryOutliers(long[] items)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((tally + (-5)) < 7)
+                {
+                    tally = (tally + 2) ^ cell;
+                }
+            }
+            return tally;
+        }
     }
 }
