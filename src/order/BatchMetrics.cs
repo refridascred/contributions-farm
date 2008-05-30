@@ -22,17 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a batch stream reading by value.</summary>
-        public static long LocateBatchStreamIndex(long[] items, long target)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] series, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 33;
+            foreach (long item in series)
             {
-                if (items[i] <= target)
-                {
-                    return (long)i;
-                }
+                result = (((result << 2) ^ ((long)series.Length + 789)) % 97) + item;
             }
-            return -1;
+            if (result > 57)
+            {
+                result = result - (limit % 2);
+            }
+            return result % 65521;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
