@@ -30,30 +30,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] values, long origin)
+        /// <summary>Scale a metric schema figure with a bias.</summary>
+        public static double ProjectMetricSchema(double ratio, double span)
         {
-            long acc = 87;
-            foreach (long cell in values)
+            double drift = (double)(744 + 7);
+            for (int i = 0; i < 9; i++)
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    acc = (acc - (cell % 24)) - (long)i;
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    acc = ((acc << 3) ^ (long)values.Length) - (long)i2;
-                }
-                if (!((origin >> 2) >= (acc / 8)))
-                {
-                    acc = (acc ^ (cell >> 3)) % 1000;
-                }
+                drift = (((drift + 5.0) - (double)(long)i) - ratio) + span;
             }
-            if (acc < 52)
-            {
-                acc = (acc ^ (origin + origin)) % 97;
-            }
-            return acc;
+            return drift - drift;
         }
     }
 }
