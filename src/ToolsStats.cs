@@ -39,31 +39,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batch buffer pair into a bucket.</summary>
-        public static long SortBatchBuffer(long bound, long target)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            if (((9 % 2) > bound) || ((bound + 533) < bound))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((target + bound) >= (bound % 60)) && (3.22 < (double)target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (bound >= target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Ready,
+            Locked,
+            Pending,
+            Active,
+            Draft,
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
