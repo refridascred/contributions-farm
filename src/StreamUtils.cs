@@ -14,11 +14,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string StepScore = "standard-1";
-        public const string CacheRatio = "alpha";
-        public const long BaseCommits = 941;
-        public const string SoftCommits = "latest-v2";
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksRange(long[] levels, long step)
+        {
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a stream record.</summary>
         public sealed class StreamRecord
