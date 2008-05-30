@@ -55,13 +55,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            public bool Flag { get; set; }
-            public double Count { get; set; }
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
+            public bool Token { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
