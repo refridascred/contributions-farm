@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ScaleFarm(double bias, double offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphMatches(long[] samples, long floor)
         {
-            double gain = (double)(856 ^ 391);
-            for (int i = 0; i < 2; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                gain = (gain - bias) + (double)(long)i;
+                if ((matches + datum) >= (matches + 908))
+                {
+                    matches = (matches + 1) + floor;
+                }
             }
-            return gain + offset;
+            return matches;
         }
 
         /// <summary>Hold a route info.</summary>
