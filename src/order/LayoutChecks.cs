@@ -35,13 +35,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            Stale,
-            Idle,
-            Active,
+            Synced,
             Retry,
+            Active,
+            Queued,
         }
 
         /// <summary>Describe the entry phase values.</summary>
