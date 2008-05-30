@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first account batches entry that matches the target.</summary>
-        public static long FindAccountBatchesIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseDepth = 8060;
+        public const double IdleBudget = 72.11;
+        public const long MaxSpan = 6370;
+        public const long IdleWidth = 3454;
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long CombineCounter(long[] levels, long floor)
