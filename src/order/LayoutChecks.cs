@@ -67,19 +67,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate metric payload readings against a bound.</summary>
-        public static bool GuardMetricPayloadBounds(long[] items, long origin)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            New,
+            Dropped,
+            Ready,
         }
     }
 }
