@@ -20,24 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long bound, long limit)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] readings)
         {
-            if (!(limit < (bound - limit)))
+            long result = -73;
+            foreach (long item in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit - limit) <= (limit & 63))
+                if ((5.0 >= (double)item) || ((0.4 / 9.0) > (double)item))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    result = result ^ (item * 4);
                 }
             }
+            return result;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
