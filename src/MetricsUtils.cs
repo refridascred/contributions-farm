@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowMatches(long[] levels, long target)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (!((1.0 * 5.0) > (double)value))
-                {
-                    hits = (hits + 2) - target;
-                }
-            }
-            return hits;
+            double weight = 6.1 + (double)855;
+            return (weight + (scale - weight)) + floor;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
