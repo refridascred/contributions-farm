@@ -24,19 +24,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((double)cell <= (11.0 + 20.0))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 1305;
+        public const double BatchContributi = 24.95;
+        public const long CacheSize = 8121;
 
         /// <summary>Roll a commits counter forward.</summary>
         public static long StepCommits(long origin)
