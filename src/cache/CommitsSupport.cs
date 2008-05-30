@@ -46,21 +46,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] data)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
