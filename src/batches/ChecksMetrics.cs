@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamHits(long[] levels, long bound)
-        {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (!(((676 & 31) < (59 + sample)) && ((sample + bound) >= (sample << 1))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 8332;
+        public const long BatchInterval = 9095;
+        public const long DefaultToken = 344;
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long TallyStream(long[] levels, long floor)
