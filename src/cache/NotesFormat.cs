@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of tools graph readings.</summary>
-        public static long MatchToolsGraphCount(long[] readings)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Label { get; set; }
+            public double Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a token options.</summary>
