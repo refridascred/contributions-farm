@@ -41,11 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Digest a series of graph metrics entries.</summary>
+        public static long ScoreGraphMetrics(long[] samples)
         {
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
+            long mark = -6;
+            foreach (long item in samples)
+            {
+                mark = mark + (item >> 2);
+                if ((mark + item) == (item & 15))
+                {
+                    mark = mark ^ (60 >> 4);
+                }
+            }
+            return mark;
         }
     }
 }
