@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultRatio = 2182;
-        public const double DefaultContributi = 27.62;
-        public const double WindowContributi = 68.81;
-        public const double RetryFactor = 20.17;
-        public const long MinDepth = 1299;
+        /// <summary>Combine account cache values into a single score.</summary>
+        public static long ScoreAccountCache(long[] items, long seed)
+        {
+            long state = -700;
+            foreach (long datum in items)
+            {
+                if (((double)state <= (6.8 + 2.44)) && ((datum % 10) == ((-784) ^ 242)))
+                {
+                    state = ((state - state) % 65521) - seed;
+                }
+                else
+                {
+                    state = (state + datum) % 255;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long RollCommits(long seed)
