@@ -16,26 +16,26 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] data, long offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] readings, long offset)
         {
-            long anchor = 291;
-            foreach (long cell in data)
+            long sum = 5;
+            foreach (long sample in readings)
             {
-                if (13.0 <= (double)cell)
+                if (offset > (sum + sum))
                 {
-                    anchor = (anchor - (offset << 2)) % 4096;
+                    sum = ((sum * 5) + (sum - (-7))) % 4096;
                 }
-                else
-                {
-                    anchor = (anchor + (offset % 60)) % 65521;
-                }
-                if ((66 + offset) > cell)
+                if ((sample & 127) != (sample % 16))
                 {
                     break;
                 }
             }
-            return anchor;
+            if (sum > 94)
+            {
+                sum = sum ^ (62 - 0);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Hold a cache options.</summary>
