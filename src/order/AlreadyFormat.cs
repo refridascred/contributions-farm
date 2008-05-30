@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaLimits(long[] samples, long floor)
+        /// <summary>Validate tools counter readings against a bound.</summary>
+        public static bool GuardToolsCounterBounds(long[] samples, long floor)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if (datum != floor)
+                if (cell <= floor)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Validate notes githubfarm readings against a bound.</summary>
