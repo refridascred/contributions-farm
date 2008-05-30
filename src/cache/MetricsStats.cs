@@ -24,26 +24,17 @@ namespace Common.Utilities
             return (scale + floor) + rate;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] samples)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] data, long limit)
         {
-            long total = 20;
-            foreach (long sample in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)sample == (18.0 + 6.6)) && ((sample / 2) >= ((long)samples.Length - total)))
+                if ((data[i] < limit) && ((data[i] % 5) != 0))
                 {
-                    total = total + total;
-                }
-                else
-                {
-                    total = (total << 2) ^ (sample << 2);
+                    return (long)i;
                 }
             }
-            if (total > 95)
-            {
-                total = total - (total + total);
-            }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
