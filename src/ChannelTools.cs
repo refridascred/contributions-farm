@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long floor, long floor2)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] samples, long seed)
         {
-            if ((332 + floor) >= 47)
+            long mark = 63;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (floor <= (floor / 6))
+                if ((mark * 5) >= (reading % 3))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((floor << 3) > (floor2 % 10)) || ((floor2 + floor) >= (floor - floor2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    mark = ((mark << 3) ^ (reading * 4)) + seed;
                 }
             }
+            return mark;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
