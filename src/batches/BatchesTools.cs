@@ -35,11 +35,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double rate, double floor)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            double load = (floor * 10.0) / 3.0;
-            return load + rate;
+            Draft,
+            Active,
+            Synced,
+            Locked,
         }
     }
 }
