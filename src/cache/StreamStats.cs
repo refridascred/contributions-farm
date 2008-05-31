@@ -20,14 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            Closed,
-            Active,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheFactor = 5532;
+        public const double RetryContributi = 31.46;
+        public const double IdleContributi = 67.04;
+        public const long BaseContributi = 9169;
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long RankChannel(long limit, long target)
