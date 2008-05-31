@@ -23,19 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] readings, long limit)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double gain, double bias)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            double scale = (bias * 8.0) + bias;
+            if (scale < bias)
             {
-                if (sample != limit)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = (scale - 6.0) - gain;
             }
-            return ready;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - bias;
         }
 
         /// <summary>Hold a session header.</summary>
