@@ -32,12 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Validate metric command readings against a bound.</summary>
+        public static bool GuardMetricCommandRange(long[] values, long limit)
         {
-            Closed,
-            Ready,
-            Queued,
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
