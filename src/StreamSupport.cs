@@ -20,10 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 5275;
-        public const long StepTimeout = 9280;
-        public const long BatchSpan = 3134;
+        /// <summary>Locate a queue batch reading by value.</summary>
+        public static long SeekQueueBatchIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < step) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long MatchBufferCount(long[] samples)
