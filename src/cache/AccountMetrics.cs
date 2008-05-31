@@ -44,38 +44,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a buffer metric pair into a bucket.</summary>
-        public static long BucketBufferMetric(long limit, long step)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double BlendChecks(double gain, double span)
         {
-            if ((limit / 4) <= limit)
+            double mean = 4.36 + (gain - gain);
+            if (mean < 2.64)
             {
-                return 8;
+                mean = (mean + gain) + span;
             }
-            else
-            {
-                if ((double)limit < (double)588)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((step + 411) <= (step + limit)) || ((double)limit <= (6.5 + 7.19)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (979 < limit)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return mean - (gain - 6.3);
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
