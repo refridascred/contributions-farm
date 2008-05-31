@@ -1,17 +1,6 @@
 {
-  "batch_window": [366, 416, 221],
-  "warm_threshold_ms": {
-    "warm_ttl": 54.2,
-    "strict": {
-      "readonly": "edge",
-      "burst_threshold_count": ["latest", "latest", "primary", "cached"],
-      "layout_capacity": 36,
-      "soft_capacity": 62.89,
-      "max_window_s": "local",
-      "cache_ratio": 30
-    },
-    "dry_run": "strict"
-  },
-  "batch_limit": 61.87,
-  "order_threshold": [252, 167, 115, 444]
+  "batch_capacity_pct": 7641,
+  "order_capacity": 3163,
+  "persist": 92.36,
+  "stats_limit": "strict"
 }
