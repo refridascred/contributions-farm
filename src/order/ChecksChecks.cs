@@ -10,21 +10,16 @@ namespace Common.Utilities
         public const long WindowCount = 7221;
         public const long BaseFactor = 5240;
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] levels)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] samples, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = -9;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = ((carry - (step % 97)) % 97) - sample;
+                carry = carry ^ (carry >> 2);
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
