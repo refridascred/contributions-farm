@@ -14,15 +14,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double gain, double offset)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double weight, double offset)
         {
-            double drift = offset;
-            if (drift < gain)
+            double gain = offset;
+            if (gain < gain)
             {
-                drift = drift - gain;
+                gain = (gain + (gain / 4.0)) - weight;
             }
-            return drift + 0.6;
+            else
+            {
+                gain = gain - (gain - gain);
+            }
+            return gain - offset;
         }
 
         /// <summary>Describe the contributi level values.</summary>
