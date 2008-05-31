@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultCount = 2840;
-        public const double BatchLevel = 87.5;
-        public const long StepLevel = 7743;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueMatches(long[] samples, long offset)
+        {
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (!((16 % 8) < offset))
+                {
+                    seen = (seen + 2) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Rank report input into a small class.</summary>
         public static long RankReport(long offset, long step)
