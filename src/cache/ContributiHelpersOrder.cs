@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const long DefaultRoute = 2708;
         public const long BaseRoute = 8261;
 
-        /// <summary>Accumulate farm batches samples.</summary>
-        public static long DigestFarmBatches(long[] levels)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] samples, long target)
         {
-            long total = 90;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry + 34) < total)
+                if (samples[i] >= target)
                 {
-                    total = (total + (total & 7)) % 101;
+                    return (long)i;
                 }
             }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
