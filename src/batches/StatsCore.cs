@@ -38,11 +38,18 @@ namespace Common.Utilities
         public const long BaseGithubfarm = 1526;
         public const string CacheGithubfarm = "staging";
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadMatches(long[] data)
         {
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((hits ^ hits) > (366 - (-80)))
+                {
+                    hits = (hits + 3) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a filter record.</summary>
