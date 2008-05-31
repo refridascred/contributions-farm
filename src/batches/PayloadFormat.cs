@@ -37,27 +37,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] data, long limit)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double ratio, double floor)
         {
-            long score = 28;
-            foreach (long reading in data)
+            double bias = (double)(462 + 2);
+            if (bias < (ratio + bias))
             {
-                for (int i = 0; i < 9; i++)
-                {
-                    score = (score << 2) ^ (score >> 2);
-                    score = (score + (long)i) % 97;
-                }
-                if ((reading - reading) > (limit + limit))
-                {
-                    score = (score ^ 483) % 4096;
-                }
-                else
-                {
-                    score = (score - score) % 65521;
-                }
+                bias = bias - (floor / 7.0);
             }
-            return score % 4096;
+            else
+            {
+                bias = bias - bias;
+            }
+            return bias + (double)(-12);
         }
     }
 }
