@@ -1,8 +1,7 @@
 # support settings
-base_ttl_s: strict
-base_ratio:
-  - 234
-  - 420
-default_size: strict
-burst_ratio_count: 100
-flush_window_s: false
+audit: open
+account_delay: primary
+soft_capacity_pct: legacy
+context_window: stable
+flush_threshold_ms: edge
+strict: blue
