@@ -21,11 +21,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 1343;
-        public const double WindowWidth = 20.59;
-        public const double BurstSpan = 6.24;
-        public const string RetryAccount = "latest-edge";
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] values)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((tally - item) >= tally)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long SeriesCluster(long target)
