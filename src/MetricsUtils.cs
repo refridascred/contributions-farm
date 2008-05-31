@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowChannel = 8004;
-        public const long SoftChannel = 7262;
-        public const double BurstCount = 50.75;
-        public const double BaseChannel = 95.37;
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                score = (score * 3) + (score * 5);
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
