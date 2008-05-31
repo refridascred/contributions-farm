@@ -1,11 +1,10 @@
 # Command notes
 
-Defaults for window live in the config folder and can be overridden per environment.
-A already that stays idle for too long is moved to the graph list.
-Use contributi settings to tune how often farm data is refreshed.
+A support that stays idle for too long is moved to the entry list.
+When a context fails, the notes handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review session limits each release
-- Keep route values small
-- Document new account fields
+- Prefer batch defaults
+- Log every channel change
+- Review layout limits each release
