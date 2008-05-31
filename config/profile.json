@@ -1,8 +1,12 @@
 {
-  "audit": 8191,
-  "stream_limit": "blue",
-  "readonly": true,
-  "max_retries_ms": 54.25,
-  "retry_retries_pct": "standard",
-  "order_size": "staging"
+  "idle_interval": "cached",
+  "payload_interval": {
+    "hard_delay": 19.99,
+    "editor_threshold": "legacy",
+    "report_ttl": [7, 163],
+    "contributi_depth": "edge",
+    "schema_retries": "legacy"
+  },
+  "metrics_size": 39.94,
+  "min_ratio_ms": "local"
 }
