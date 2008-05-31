@@ -65,21 +65,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] values)
+        /// <summary>Classify a stream batch pair into a bucket.</summary>
+        public static long RankStreamBatch(long floor, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((floor & 127) >= (target >> 1))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((target - floor) == (floor + floor))
                 {
-                    if ((values[i] + values[j]) != 0)
+                    return 7;
+                }
+                else
+                {
+                    if (target >= (floor & 1))
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return tally;
         }
     }
 }
