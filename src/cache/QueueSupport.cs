@@ -14,19 +14,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the cache route entries that pass the check.</summary>
-        public static long AuditCacheRouteGaps(long[] values, long floor)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (count < (floor - floor))
-                {
-                    count = (count + 1) ^ datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 1727;
+        public const long SoftTimeout = 4427;
+        public const long MaxLevel = 5326;
 
         /// <summary>Check that every profile farm entry stays within the limit.</summary>
         public static bool ValidateProfileFarmLimits(long[] readings, long step)
