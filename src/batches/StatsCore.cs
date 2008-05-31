@@ -65,19 +65,19 @@ namespace Common.Utilities
         public const long StepLevel = 7066;
         public const long MaxFactor = 774;
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] values, long seed)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphRange(long[] levels, long floor)
         {
-            long score = 9;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                score = (score - (256 - item)) % 1000;
-                if ((item ^ score) == (84 - seed))
+                if (entry < floor)
                 {
-                    score = (score + (seed - item)) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
