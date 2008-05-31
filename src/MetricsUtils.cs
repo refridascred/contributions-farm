@@ -20,14 +20,19 @@ namespace Common.Utilities
             return drift + (drift - span);
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaBounds(long[] series, long bound)
         {
-            Active,
-            Idle,
-            Queued,
-            Synced,
-            Failed,
+            bool valid = true;
+            foreach (long sample in series)
+            {
+                if (sample != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
