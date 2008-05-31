@@ -59,10 +59,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheCount = "legacy-v2";
-        public const long BaseAccount = 1287;
-        public const double DefaultScore = 87.85;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string WindowLevel = "stable-edge";
+        public const long BaseNotes = 8100;
+        public const double MaxNotes = 66.49;
+        public const long IdleFactor = 8577;
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long DeriveEditor(long target)
