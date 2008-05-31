@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the checks account series from a seed.</summary>
-        public static long IterateChecksAccount(long step)
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] values)
         {
-            long mix = step;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix * 2) + (mix - mix);
-                mix = ((mix * 3) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a token info.</summary>
