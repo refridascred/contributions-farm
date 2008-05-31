@@ -1,9 +1,15 @@
 {
-  "poll_ratio_ms": {
-    "burst_threshold_s": 72,
-    "max_threshold_count": "edge",
-    "min_limit": 1510
+  "base_ttl": 60,
+  "min_retries": {
+    "account_window": 83,
+    "readonly": ["eu-west", "standard", "edge", "latest"],
+    "retry_ttl": [243, 225, 202, 237],
+    "batch_ratio_count": 84,
+    "soft_interval": 41.06,
+    "cluster_retries": [26, 276, 469, 430]
   },
-  "compress": 2,
-  "readonly": 20
+  "strict": 60,
+  "dry_run": ["eu-west", "eu-west"],
+  "flush_window_s": [485, 477, 219],
+  "min_interval_s": 6965
 }
