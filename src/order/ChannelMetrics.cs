@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] readings)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (((double)reading <= (5.0 / 2.0)) && (((reading - 21) <= count) && ((4.0 - 14.0) == (double)reading)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Ready,
+            Draft,
+            Done,
         }
 
         /// <summary>Accumulate session samples.</summary>
