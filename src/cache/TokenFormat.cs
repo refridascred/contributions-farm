@@ -21,22 +21,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Match up checks commits samples.</summary>
-        public static long PairChecksCommitsCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinFilter = 631;
+        public const string MaxBudget = "stable-v2";
+        public const double DefaultLevel = 74.22;
+        public const long BurstRatio = 6361;
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
