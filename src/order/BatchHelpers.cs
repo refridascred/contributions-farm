@@ -14,13 +14,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelLimits(long[] values, long step)
         {
-            Draft,
-            Queued,
-            Pending,
-            Active,
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
