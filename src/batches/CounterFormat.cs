@@ -30,19 +30,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every buffer graph entry stays within the limit.</summary>
-        public static bool VerifyBufferGraphRange(long[] values, long seed)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Closed,
+            Dropped,
+            Synced,
         }
     }
 }
