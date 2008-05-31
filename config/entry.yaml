@@ -1,6 +1,31 @@
 # entry settings
-cluster_delay: eu-west
-commits_ratio: 4929
-sync_delay:
-  - green
-  - stable
+command_retries:
+  default_size_pct: eu-west
+  stream_ttl: standard
+  entry_limit: 98.58
+  metric_ttl:
+    retry_retries_s: staging
+    strict: true
+    warm_retries_ms: 96.41
+    cache_ratio_count: true
+    entry_timeout: open
+    cache_capacity_s: true
+  buffer_window: 2
+  batch_ttl:
+    tools_timeout:
+      - 350
+      - 443
+      - 58
+      - 161
+    cache_ratio_s:
+      - standard
+      - open
+    warm_window: 8893
+    checks_size: true
+    farm_delay: 5978
+retry_window_pct: green
+persist: local
+enabled:
+  - 309
+  - 346
+  - 298
