@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long seed, long bound)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            if ((53 & 255) > seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed & 15) < (5 & 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound - 7) == (6 ^ 170))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed >= (seed ^ bound)) && ((2.79 / 9.0) == (double)seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Idle,
+            Active,
         }
 
         /// <summary>Roll a checks counter forward.</summary>
