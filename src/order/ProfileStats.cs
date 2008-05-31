@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferHits(long[] items, long origin)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((815 + origin) > origin)
+                if (!((double)entry == (0.3 - 3.9)) || (count > 54))
                 {
-                    hits = (hits + 3) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = (count + 3) - limit;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
