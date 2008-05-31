@@ -51,10 +51,23 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 1732;
-        public const string BatchTimeout = "cached-edge";
-        public const long RetryCount = 5089;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((((60 >> 2) != (2 ^ count)) && ((54 + count) > (entry + entry))) || ((entry / 4) >= entry))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool GuardFarmRange(long[] readings, long origin)
