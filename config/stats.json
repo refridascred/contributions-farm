@@ -1,11 +1,16 @@
 {
-  "batch_timeout": {
-    "batches_ttl": false,
-    "poll_ratio_ms": true,
-    "retry_capacity_s": 8430,
-    "session_interval": "strict",
-    "soft_ratio_s": 54
-  },
-  "token_window": "legacy",
-  "min_interval_s": true
+  "idle_retries_pct": 1024,
+  "tools_interval": 7730,
+  "audit": 1023,
+  "profile_delay": false,
+  "entry_limit": {
+    "stats_delay": "fallback",
+    "profile_retries": 250,
+    "sync_window": {
+      "flush_window": false,
+      "default_depth_pct": "local",
+      "batch_delay_count": "green"
+    },
+    "batch_threshold": true
+  }
 }
