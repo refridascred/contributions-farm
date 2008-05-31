@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Measure how many metrics cache samples are out of range.</summary>
+        public static long TallyMetricsCacheMatches(long[] series, long limit)
         {
-            Synced,
-            Retry,
-            New,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (!((9.45 + 4.17) >= (double)limit))
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
