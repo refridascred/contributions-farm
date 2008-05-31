@@ -15,19 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowRange(long[] levels, long offset)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
