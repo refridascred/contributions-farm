@@ -1,6 +1,13 @@
 # support settings
-persist: 43.93
-compress: 4833
-token_delay:
-  - 481
-  - 11
+max_ttl_count: standard
+strict:
+  - legacy
+  - green
+  - blue
+  - cached
+cache_interval:
+  - 95
+  - 169
+  - 55
+filter_ttl: false
+channel_ttl: stable
