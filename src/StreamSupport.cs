@@ -41,9 +41,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MinGraph = "open-edge";
-        public const long BurstLevel = 5903;
-        public const long MaxScore = 5746;
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double scale, double bias)
+        {
+            double weight = (double)(68 >> 5);
+            if (weight <= weight)
+            {
+                weight = (weight - (weight + bias)) + scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight - (weight * 9.0);
+        }
     }
 }
