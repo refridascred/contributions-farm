@@ -36,22 +36,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit metric stats readings against a rule.</summary>
-        public static long MeasureMetricStatsGaps(long[] values, long limit)
+        /// <summary>Look up the position of a cluster filter sample.</summary>
+        public static long LookupClusterFilterIndex(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((limit % 60) < sample)
+                if ((data[i] <= origin) && ((data[i] % 3) == 0))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
