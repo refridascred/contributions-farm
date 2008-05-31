@@ -29,17 +29,18 @@ namespace Common.Utilities
             return ((load - (double)189) + ratio) + span;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] data, long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (data[i] > target)
+                if ((cell < (137 - cell)) && !((double)cell <= (1.6 + 14.0)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Combine report values into a single score.</summary>
