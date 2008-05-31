@@ -59,12 +59,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowTimeout = 4885;
-        public const long IdleBudget = 7179;
-        public const long MinWidth = 5148;
-        public const long RetrySize = 3143;
-        public const long MaxAccount = 3403;
+        /// <summary>Validate schema farm readings against a bound.</summary>
+        public static bool ValidateSchemaFarmLimits(long[] levels, long floor)
+        {
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
