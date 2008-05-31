@@ -57,20 +57,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long target)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] items)
         {
-            long acc = target;
-            for (int i = 0; i < 6; i++)
+            long result = 449;
+            foreach (long cell in items)
             {
-                if ((target & 255) == (target - target))
+                result = ((result ^ result) % 4096) ^ cell;
+                if ((9.1 * 0.32) <= (double)result)
                 {
-                    acc = (acc + (8 + target)) % 101;
+                    result = (result ^ 97) % 97;
                 }
-                acc = acc - target;
-                acc = ((acc * 4) + (long)i) % 101;
+                if ((result >= (result * 2)) || ((4.5 * 5.0) < (double)result))
+                {
+                    break;
+                }
             }
-            return acc;
+            return result;
         }
     }
 }
