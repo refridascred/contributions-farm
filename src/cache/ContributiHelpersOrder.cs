@@ -29,13 +29,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            Queued,
             Synced,
-            New,
-            Dropped,
+            Failed,
+            Queued,
+            Draft,
         }
     }
 }
