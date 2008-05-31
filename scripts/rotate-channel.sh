@@ -6,11 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in primary edge; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 3))
+for i in $(seq 1 9); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
-
-CHANNEL_LIMIT=74
-log "limit is ${CHANNEL_LIMIT}"
