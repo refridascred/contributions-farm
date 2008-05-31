@@ -40,24 +40,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] items, long step)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] items)
         {
-            long mix = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((double)step != (7.0 - 18.0))
+                if (((sample ^ sample) >= sample) && ((sample - 961) < (seen << 3)))
                 {
-                    mix = mix - step;
-                    mix = (mix ^ (entry << 3)) % 65521;
+                    seen = seen + 1;
                 }
-                mix = (mix * 2) + ((long)items.Length - mix);
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (mix < (-88))
-            {
-                mix = (mix - (mix * 2)) % 65521;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
