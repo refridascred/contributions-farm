@@ -37,26 +37,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] levels)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long step)
         {
-            long mark = 5;
-            foreach (long datum in levels)
+            long state = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((9.3 - 6.0) > (double)mark))
-                {
-                    mark = (mark + (datum * 4)) % 97;
-                }
-                if (((4.1 + 8.26) <= (double)datum) || (mark < ((-177) / 6)))
-                {
-                    mark = ((mark * 5) + (datum - datum)) % 101;
-                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            if (mark > 20)
-            {
-                mark = (mark - (mark + 87)) % 97;
-            }
-            return mark % 4096;
+            return state;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
