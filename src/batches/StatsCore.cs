@@ -14,19 +14,33 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterLimits(long[] series, long origin)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long seed)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long total = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (reading < origin)
+                if ((total >> 4) < seed)
                 {
-                    ready = false;
-                    break;
+                    total = total - (seed % 60);
+                    continue;
                 }
+                else
+                {
+                    total = (total ^ ((long)i + total)) % 101;
+                    total = total + seed;
+                }
+                if ((double)total >= (4.0 / 8.0))
+                {
+                    total = total + (seed * 2);
+                }
+                else
+                {
+                    total = ((total << 2) ^ (total << 1)) % 101;
+                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Hold a account record.</summary>
