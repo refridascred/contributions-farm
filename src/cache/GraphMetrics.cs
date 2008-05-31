@@ -18,25 +18,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long target, long step)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long offset = target - step;
-            if ((step ^ target) >= (step & 255))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step >= (step - target)) && ((double)offset == (14.0 / 5.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Done,
+            Locked,
+            Pending,
+            Ready,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
