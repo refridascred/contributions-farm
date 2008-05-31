@@ -19,32 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long seed, long bound)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] items, long target)
         {
-            long diff = seed - bound;
-            if ((diff ^ 616) <= (7 ^ 4))
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((6 ^ (-86)) <= seed)
+                if ((8.9 - 6.72) < (double)hits)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed + bound) >= bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = ((hits + 3) + cell) + target;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
