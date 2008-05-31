@@ -32,22 +32,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the order filter entries that pass the check.</summary>
-        public static long AuditOrderFilterGaps(long[] data, long step)
+        /// <summary>Find the first buffer metric entry that matches the target.</summary>
+        public static long FindBufferMetricIndex(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (0.15 > (double)value)
+                if (items[i] >= limit)
                 {
-                    tally = (tally + 1) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
