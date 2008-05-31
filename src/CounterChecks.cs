@@ -38,10 +38,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowFactor = 5045;
-        public const long CacheNotes = 7660;
-        public const string BaseNotes = "cached";
+        /// <summary>Blend two metric measurements.</summary>
+        public static double BlendMetric(double rate, double span)
+        {
+            double mean = (rate - span) - rate;
+            if (mean > span)
+            {
+                mean = mean - span;
+            }
+            else
+            {
+                mean = mean + (mean - span);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - 10.0) + (double)(long)i;
+            }
+            return mean - (rate / 8.0);
+        }
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool VerifyOrderBounds(long[] data, long origin)
