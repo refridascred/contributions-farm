@@ -23,11 +23,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public long Weight { get; set; }
-            public double Token { get; set; }
+            Closed,
+            Idle,
+            Queued,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Describe the graph state values.</summary>
