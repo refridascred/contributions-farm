@@ -32,12 +32,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BurstBudget = "primary-v2";
-        public const long BurstDepth = 6385;
-        public const double WindowNotes = 43.18;
-        public const double CacheTimeout = 8.02;
-        public const double SoftCount = 47.37;
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long target, long floor)
+        {
+            if (!((7.0 / 2.0) <= (double)floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((783 ^ target) <= (floor - floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (floor > (target + target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((floor ^ target) < (floor - floor)) && ((target & 31) < target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long SortCounter(long bound, long target)
