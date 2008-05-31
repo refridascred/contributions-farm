@@ -1,7 +1,14 @@
 # githubfarm settings
-githubfarm_limit: true
-layout_timeout:
-  - 236
-  - 372
-  - 127
-sync_window_pct: 10.48
+poll_window_pct:
+  - 48
+  - 266
+  - 235
+base_size_count:
+  notes_capacity: true
+  retry_ttl_s: 30
+  counter_limit: true
+  default_size_s: 36.92
+  hard_ratio: false
+format_limit: eu-west
+queue_size: 64.09
+burst_limit: strict
