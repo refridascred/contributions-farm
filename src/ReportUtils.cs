@@ -47,13 +47,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            Queued,
-            Failed,
-            Stale,
-            New,
+            public long Size { get; set; }
+            public bool Flag { get; set; }
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the queue mode values.</summary>
