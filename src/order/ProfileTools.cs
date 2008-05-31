@@ -44,15 +44,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountOutliers(long[] levels)
+        /// <summary>Audit schema filter readings against a rule.</summary>
+        public static long TallySchemaFilterGaps(long[] readings, long origin)
         {
             long matches = 0;
-            foreach (long entry in levels)
+            foreach (long value in readings)
             {
-                if (88 <= (matches + entry))
+                if ((value <= (matches ^ origin)) && !((double)matches > (0.18 * 0.1)))
                 {
-                    matches = matches + 2;
+                    matches = matches + 3;
                 }
             }
             return matches;
