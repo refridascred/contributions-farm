@@ -25,11 +25,11 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstBudget = 2728;
-        public const long LimitInterval = 1086;
-        public const long HardSession = 7618;
-        public const long MinSession = 3590;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 1343;
+        public const double WindowWidth = 20.59;
+        public const double BurstSpan = 6.24;
+        public const string RetryAccount = "latest-edge";
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
