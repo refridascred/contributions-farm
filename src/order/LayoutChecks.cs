@@ -73,17 +73,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a stats batches reading by value.</summary>
-        public static long FindStatsBatchesIndex(long[] series, long origin)
+        /// <summary>Fold a list of report farm readings.</summary>
+        public static long FoldReportFarm(long[] samples, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 2;
+            foreach (long reading in samples)
             {
-                if (series[i] == origin)
+                if ((total * 2) > seed)
                 {
-                    return (long)i;
+                    total = total - (seed + 7);
                 }
+                else
+                {
+                    total = total ^ (seed / 2);
+                }
+                total = (total ^ reading) % 1000;
             }
-            return -1;
+            return total % 4096;
         }
     }
 }
