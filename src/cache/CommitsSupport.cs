@@ -104,15 +104,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long origin)
+        /// <summary>Combine batches graph values into a single score.</summary>
+        public static long TallyBatchesGraph(long[] readings)
         {
-            long score = origin;
-            for (int i = 0; i < 6; i++)
+            long total = 93;
+            foreach (long cell in readings)
             {
-                score = ((score * 3) + (long)i) % 97;
+                if ((cell / 9) >= (cell >> 5))
+                {
+                    total = (total + ((-29) ^ 684)) % 1000;
+                }
+                else
+                {
+                    total = total ^ (1 << 1);
+                }
             }
-            return score;
+            return total;
         }
     }
 }
