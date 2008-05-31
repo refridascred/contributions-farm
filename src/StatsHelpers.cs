@@ -30,11 +30,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] samples, long offset)
         {
-            public bool Owner { get; set; }
-            public bool Flag { get; set; }
+            long sum = 6;
+            foreach (long reading in samples)
+            {
+                if ((double)offset != (6.33 - 6.5))
+                {
+                    sum = (sum - ((-4) << 1)) ^ reading;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the account level values.</summary>
