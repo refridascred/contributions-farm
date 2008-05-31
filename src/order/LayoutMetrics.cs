@@ -24,12 +24,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            Queued,
-            Pending,
-            Closed,
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
