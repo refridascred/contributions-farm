@@ -22,10 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double HardDepth = 67.4;
-        public const long BaseLevel = 498;
-        public const long MaxInterval = 6652;
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= limit) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long MinTools = 1147;
