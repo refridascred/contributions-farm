@@ -25,25 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long SortNotes(long bound, long seed)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] levels)
         {
-            long cur = bound - seed;
-            if (seed <= (cur + cur))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((360 > (cur % 16)) || ((double)seed == (5.99 * 6.0)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    if ((levels[i] + levels[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
