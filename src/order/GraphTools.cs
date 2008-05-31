@@ -67,22 +67,21 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Accumulate queue stream samples.</summary>
-        public static long ScoreQueueStream(long[] items)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] samples)
         {
-            long sum = 8;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)sum <= (double)sum)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = sum ^ (78 - sum);
-                }
-                if (cell > (sum / 5))
-                {
-                    sum = sum + (cell + sum);
+                    if ((samples[i] ^ samples[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum % 4096;
+            return matches;
         }
     }
 }
