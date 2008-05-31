@@ -38,17 +38,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] readings, long target)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsRange(long[] values, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if (readings[i] >= target)
+                if (datum <= target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
