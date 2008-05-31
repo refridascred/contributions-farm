@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the report queue series from a seed.</summary>
-        public static long RollReportQueue(long limit)
+        /// <summary>Digest a series of commits payload entries.</summary>
+        public static long DigestCommitsPayload(long[] data, long limit)
         {
-            long sum = limit;
-            for (int i = 0; i < 11; i++)
+            long score = -247;
+            foreach (long datum in data)
             {
-                if ((double)limit < (double)53)
-                {
-                    sum = ((sum << 3) ^ (sum >> 2)) % 4096;
-                    break;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
+                score = (score - datum) - limit;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Fold a list of route filter readings.</summary>
