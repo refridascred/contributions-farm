@@ -1,11 +1,12 @@
 {
-  "audit": "cached",
-  "compress": {
-    "poll_ttl_count": true,
-    "enabled": ["green", "primary"],
-    "soft_interval_ms": "open",
-    "warm_ratio_count": ["local", "fallback", "legacy"],
-    "graph_interval": [473, 455, 420]
+  "soft_timeout_pct": ["stable", "blue", "strict"],
+  "base_ttl_pct": {
+    "burst_timeout": 3243,
+    "batch_ratio_s": 60,
+    "warm_ttl_ms": ["blue", "open", "cached"],
+    "cache_retries_s": 4940,
+    "min_ratio_ms": 40,
+    "commits_interval": false
   },
-  "default_size_count": 9
+  "batch_limit_count": "standard"
 }
