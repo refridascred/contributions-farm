@@ -1,4 +1,28 @@
 # entry settings
-warm_capacity_ms: 9652
-warm_limit: 40.4
-route_threshold: primary
+burst_interval:
+  sync_retries_ms:
+    batch_capacity: cached
+    persist: true
+    cache_capacity_ms: open
+    enabled: local
+  persist: primary
+  flush_ttl:
+    idle_depth_s:
+      - fallback
+      - eu-west
+    compress: eu-west
+    cache_timeout: legacy
+  verbose: 6555
+  entry_capacity:
+    - blue
+    - cached
+    - primary
+    - cached
+  graph_delay: false
+cache_depth_ms: 1024
+batch_ratio: edge
+batch_capacity_count:
+  - strict
+  - blue
+  - cached
+  - strict
