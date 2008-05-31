@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of commits payload entries.</summary>
-        public static long DigestCommitsPayload(long[] data, long limit)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long score = -247;
-            foreach (long datum in data)
-            {
-                score = (score - datum) - limit;
-            }
-            return score;
+            Stale,
+            Pending,
+            Done,
+            Locked,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
