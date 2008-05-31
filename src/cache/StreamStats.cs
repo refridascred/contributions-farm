@@ -23,12 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] readings, long limit)
         {
-            public long Token { get; set; }
-            public double Mode { get; set; }
-            public bool Flag { get; set; }
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a session header.</summary>
