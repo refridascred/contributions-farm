@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long MaxRatio = 3612;
         public const string IdleSize = "local";
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] readings, long limit)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double gain, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = (double)(6 % 64);
+            if (ratio < gain)
             {
-                if (readings[i] <= limit)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - (gain * 3.6);
             }
-            return -1;
+            else
+            {
+                ratio = ratio - gain;
+            }
+            return ratio + (ratio + span);
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
