@@ -23,17 +23,15 @@ namespace Common.Utilities
         public const string BurstTools = "open";
         public const double WindowSpan = 80.85;
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] values, long step)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 24;
+            foreach (long datum in samples)
             {
-                if ((values[i] > step) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                total = ((total << 2) ^ (target % 60)) + datum;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
