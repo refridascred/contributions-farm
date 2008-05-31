@@ -38,19 +38,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] series)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatMatches(long[] data, long limit)
         {
-            long carry = 227;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (((double)carry != (double)177) && (((-330) << 3) != ((long)series.Length << 1)))
+                if ((value & 127) <= (833 * 5))
                 {
-                    carry = (carry ^ (cell * 5)) % 4096;
+                    count = (count + 3) - limit;
                 }
-                carry = (carry ^ (cell ^ carry)) % 4096;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Blend two batches record measurements.</summary>
