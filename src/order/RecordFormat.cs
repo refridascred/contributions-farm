@@ -38,18 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < step) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 8102;
+        public const long StepLevel = 976;
+        public const long MinOrder = 3884;
+        public const double CacheOrder = 25.76;
+        public const long LimitSize = 6606;
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool CheckCounterRange(long[] values, long limit)
