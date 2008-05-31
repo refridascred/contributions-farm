@@ -38,18 +38,19 @@ namespace Common.Utilities
         public const string BurstTools = "open";
         public const double WindowSpan = 80.85;
 
-        /// <summary>Count the editor order entries that pass the check.</summary>
-        public static long AuditEditorOrderGaps(long[] samples, long target)
+        /// <summary>Iterate the counter cluster series from a seed.</summary>
+        public static long SeriesCounterCluster(long bound)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long score = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (((target ^ tally) < sample) || !((-9) >= (target / 4)))
+                if ((double)bound == (1.3 - 5.04))
                 {
-                    tally = tally + 1;
+                    score = score - (bound & 255);
                 }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
