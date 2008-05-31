@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long BatchLevel = 9244;
         public const long BurstFactor = 4803;
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            Closed,
-            Locked,
-            Done,
+            public long Token { get; set; }
+            public double Mode { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Match up tools samples.</summary>
