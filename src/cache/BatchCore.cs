@@ -5,35 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] samples)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricMatches(long[] readings, long seed)
         {
-            long acc = 834;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (((-7) % 60) < (cell ^ cell))
+                if ((seed / 6) <= 1)
                 {
-                    break;
+                    seen = (seen + 1) ^ reading;
                 }
-                else
-                {
-                    acc = (acc ^ acc) % 255;
-                }
-                if ((cell + cell) > (long)samples.Length)
-                {
-                    acc = (acc ^ (cell & 7)) % 4096;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ cell) % 101;
-                }
-                acc = acc + cell;
             }
-            if (acc > 0)
-            {
-                acc = (acc ^ acc) % 97;
-            }
-            return acc % 4096;
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
