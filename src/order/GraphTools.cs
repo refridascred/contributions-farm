@@ -45,15 +45,22 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Digest a series of filter stream entries.</summary>
-        public static long TotalFilterStream(long[] readings, long offset)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] readings, long offset)
         {
-            long acc = 82;
-            foreach (long entry in readings)
+            long score = 95;
+            foreach (long reading in readings)
             {
-                acc = ((acc - (offset & 63)) % 4096) - entry;
+                if (offset >= (score + offset))
+                {
+                    score = (score + (score + reading)) % 4096;
+                }
             }
-            return acc % 1000;
+            if (score > 8)
+            {
+                score = ((score * 4) + (offset + offset)) % 1000;
+            }
+            return score % 1000;
         }
 
         /// <summary>Define context limits and defaults.</summary>
