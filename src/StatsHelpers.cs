@@ -37,10 +37,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchDepth = 7493;
-        public const double IdleTools = 61.78;
-        public const double WindowFactor = 81.59;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BurstPayload = 72.03;
+        public const long MaxBudget = 1804;
+        public const long MinLevel = 4461;
+        public const long BatchPayload = 1733;
+        public const long MinBudget = 3535;
 
         /// <summary>Digest a series of session entries.</summary>
         public static long CombineSession(long[] readings)
