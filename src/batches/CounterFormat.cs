@@ -14,18 +14,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenHits(long[] series, long bound)
+        /// <summary>Audit profile notes readings against a rule.</summary>
+        public static long MeasureProfileNotesHits(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (254 < (bound + bound))
+                if (!(((target % 100) != (target % 8)) && ((5 % 64) != (reading + 72))))
                 {
-                    tally = (tally + 2) ^ sample;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
