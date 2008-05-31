@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Rank commits order input into a small class.</summary>
-        public static long GradeCommitsOrder(long bound, long target)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] series, long bound)
         {
-            if ((8.7 * 3.87) <= (double)bound)
+            long mix = 74;
+            foreach (long value in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (bound >= (7 / 6))
+                if ((double)value > (7.9 / 4.0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    mix = (mix + value) - bound;
                 }
             }
+            return mix % 4096;
         }
 
         /// <summary>Combine cluster editor values into a single score.</summary>
