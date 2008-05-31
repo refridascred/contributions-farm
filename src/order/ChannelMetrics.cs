@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine buffer tools values into a single score.</summary>
-        public static long DigestBufferTools(long[] series)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long acc = 550;
-            foreach (long reading in series)
-            {
-                acc = acc - (reading + 37);
-            }
-            return acc;
+            Locked,
+            Ready,
+            Queued,
+            Closed,
+            Pending,
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
