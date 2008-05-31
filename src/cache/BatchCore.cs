@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many contributi notes samples are out of range.</summary>
-        public static long CountContributiNotesGaps(long[] series, long origin)
+        /// <summary>Check that every already schema entry stays within the limit.</summary>
+        public static bool ValidateAlreadySchemaBounds(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if ((origin - 546) > entry)
+                if (reading < seed)
                 {
-                    tally = tally + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
