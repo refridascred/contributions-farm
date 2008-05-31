@@ -1,14 +1,17 @@
 # githubfarm settings
-poll_window_pct:
-  - 48
-  - 266
-  - 235
-base_size_count:
-  notes_capacity: true
-  retry_ttl_s: 30
-  counter_limit: true
-  default_size_s: 36.92
-  hard_ratio: false
-format_limit: eu-west
-queue_size: 64.09
-burst_limit: strict
+flush_depth_pct:
+  min_size_ms: stable
+  order_interval: 17.96
+  audit: 66.06
+  hard_threshold: 1024
+  sync_interval_s: 250
+  stream_ttl: strict
+support_ratio:
+  - 245
+  - 134
+  - 276
+  - 58
+default_depth_ms: 21
+already_delay: 7189
+max_retries_ms: 100
+soft_timeout: 56.71
