@@ -17,18 +17,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many session cluster samples are out of range.</summary>
-        public static long TallySessionClusterGaps(long[] values)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (!((hits - entry) >= (hits * 5)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Locked,
+            Active,
+            Retry,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Measure how many batches queue samples are out of range.</summary>
