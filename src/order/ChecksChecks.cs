@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleCount = 3810;
-        public const string RetryTimeout = "alpha-1";
-        public const string BaseContext = "standard-1";
-        public const double BurstContext = 71.75;
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == offset) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate metrics support samples.</summary>
         public static long TotalMetricsSupport(long[] readings)
