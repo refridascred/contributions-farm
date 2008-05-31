@@ -22,12 +22,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long step, long offset)
         {
-            Active,
-            Retry,
-            Synced,
+            long slot = step - offset;
+            if ((double)offset > (9.86 / 4.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((slot + 26) == (offset * 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((slot ^ slot) > (step - offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
