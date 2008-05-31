@@ -19,22 +19,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleSpan = 4831;
+        public const string RetryFormat = "latest-edge";
+        public const long BurstFormat = 7428;
+        public const long DefaultWidth = 4645;
 
         /// <summary>Classify a stream batch pair into a bucket.</summary>
         public static long RankStreamBatch(long floor, long target)
