@@ -36,24 +36,12 @@ namespace Common.Utilities
         public const long MaxFactor = 7011;
         public const long RetryNotes = 8078;
 
-        /// <summary>Grade a format profile value against two limits.</summary>
-        public static long GradeFormatProfile(long step, long offset)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            if (((step - offset) > (offset & 3)) && ((double)step == (double)offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((2.2 + 5.9) >= (double)offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Ready,
+            Idle,
+            Pending,
         }
     }
 }
