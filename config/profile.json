@@ -1,7 +1,13 @@
 {
-  "warm_retries": 4935,
-  "batches_window": 87.69,
-  "already_ratio": 7647,
-  "batch_limit": [179, 185, 236],
-  "batch_depth_count": 250
+  "account_interval": "blue",
+  "idle_threshold_ms": false,
+  "default_ratio_pct": "standard",
+  "audit": false,
+  "sync_timeout_ms": {
+    "max_interval_s": 87,
+    "window_capacity": "open",
+    "max_retries_count": "primary",
+    "audit": true,
+    "cache_capacity_ms": "fallback"
+  }
 }
