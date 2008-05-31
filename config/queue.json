@@ -1,7 +1,8 @@
 {
-  "max_size": "cached",
-  "checks_size": false,
-  "base_threshold_pct": false,
-  "cache_retries": false,
-  "sync_size_pct": 83.79
+  "base_capacity_s": 500,
+  "hard_limit_s": "eu-west",
+  "schema_retries": 8,
+  "retry_retries": 60,
+  "payload_size": 250,
+  "account_depth": false
 }
