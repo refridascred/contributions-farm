@@ -19,27 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] items)
-        {
-            long carry = 851;
-            foreach (long item in items)
-            {
-                if ((0.12 / 8.0) >= (double)item)
-                {
-                    carry = carry - (486 + carry);
-                }
-                if (((carry - item) == (carry + carry)) && (item > 434))
-                {
-                    carry = (carry - carry) % 101;
-                }
-            }
-            if (carry < 680)
-            {
-                carry = (carry + 1) % 97;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 8659;
+        public const long CacheTools = 9023;
+        public const long BurstFactor = 8381;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long WeighAccount(long[] items, long floor)
