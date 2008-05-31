@@ -58,18 +58,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the session graph entries that pass the check.</summary>
-        public static long TallySessionGraphHits(long[] levels, long target)
+        /// <summary>Measure how many schema batch samples are out of range.</summary>
+        public static long AuditSchemaBatchGaps(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((double)target != (9.4 * 8.99))
+                if (entry > (187 ^ entry))
                 {
-                    tally = (tally + 2) ^ reading;
+                    hits = (hits + 2) - step;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
