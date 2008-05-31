@@ -1,5 +1,5 @@
 {
-  "readonly": 30,
-  "max_delay_s": true,
-  "default_size_count": "edge"
+  "poll_delay_s": "cached",
+  "poll_window_pct": 60,
+  "min_ttl": 250
 }
