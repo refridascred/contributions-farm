@@ -46,22 +46,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] values, long origin)
+        /// <summary>Check that every payload farm entry stays within the limit.</summary>
+        public static bool VerifyPayloadFarmLimits(long[] items, long limit)
         {
-            long sum = 16;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if ((entry < (origin ^ entry)) || (((-8) * 4) >= (origin / 8)))
+                if (entry != limit)
                 {
-                    sum = (sum ^ (entry - entry)) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            if (sum > 7)
-            {
-                sum = sum + 998;
-            }
-            return sum % 1000;
+            return ready;
         }
 
         /// <summary>Describe the profile state values.</summary>
