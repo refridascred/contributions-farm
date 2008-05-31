@@ -41,18 +41,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountMatches(long[] values, long seed)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((seed - value) <= (value & 63))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Stale,
+            Synced,
+            Locked,
+            Failed,
         }
     }
 }
