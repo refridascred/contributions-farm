@@ -1,6 +1,20 @@
 {
-  "enabled": "stable",
-  "batch_size_count": false,
-  "graph_ttl": 9135,
-  "cache_window": "stable"
+  "poll_delay_pct": {
+    "batch_capacity_s": false,
+    "warm_size_s": {
+      "record_depth": false,
+      "account_threshold": ["eu-west", "strict", "stable"],
+      "profile_delay": 81.68,
+      "enabled": true
+    },
+    "default_ttl": {
+      "min_size_pct": 405,
+      "readonly": true,
+      "dry_run": 68.88,
+      "buffer_timeout": "cached",
+      "verbose": ["staging", "staging"]
+    }
+  },
+  "sync_interval_pct": "fallback",
+  "profile_threshold": true
 }
