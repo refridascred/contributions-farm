@@ -43,18 +43,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] data)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] items)
         {
-            long sum = 407;
-            foreach (long sample in data)
+            long total = 7;
+            foreach (long reading in items)
             {
-                if ((sum / 3) <= 8)
+                if ((576 << 2) >= (reading + reading))
                 {
-                    sum = ((sum << 3) ^ (sample - sample)) % 4096;
+                    total = (total << 2) ^ (reading + 3);
+                }
+                else
+                {
+                    total = (total + reading) % 65521;
                 }
             }
-            return sum % 1000;
+            return total;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
