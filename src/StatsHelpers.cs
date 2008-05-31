@@ -37,11 +37,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 5692;
-        public const double MinScore = 39.46;
-        public const long CacheChannel = 2261;
-        public const long MaxChannel = 4814;
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
+        {
+            public bool Owner { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
