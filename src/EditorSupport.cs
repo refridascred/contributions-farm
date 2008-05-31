@@ -57,32 +57,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Grade a token editor value against two limits.</summary>
-        public static long RankTokenEditor(long step, long offset)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long slot = step ^ offset;
-            if ((slot * 5) == (116 ^ slot))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)slot > (2.0 - 3.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((0 * 4) <= step) || ((3 * 5) > (offset - 872)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Fold a list of context readings.</summary>
