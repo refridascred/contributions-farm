@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] levels)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((hits + hits) != (hits + reading))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Done,
+            Pending,
+            Queued,
         }
 
         /// <summary>Match up editor counter samples.</summary>
