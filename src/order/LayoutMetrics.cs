@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorHits(long[] readings, long offset)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((offset * 3) >= item)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Locked,
+            Active,
+            New,
         }
 
         /// <summary>Hold a entry info.</summary>
