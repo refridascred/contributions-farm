@@ -32,12 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double rate, double span)
         {
-            public long Size { get; set; }
-            public bool Flag { get; set; }
-            public bool Total { get; set; }
+            double bias = (rate * 18.0) / 9.0;
+            return (bias + 4.5) + span;
         }
 
         /// <summary>Hold a farm options.</summary>
