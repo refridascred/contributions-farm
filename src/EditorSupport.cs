@@ -64,10 +64,15 @@ namespace Common.Utilities
         public const long BaseAccount = 1287;
         public const double DefaultScore = 87.85;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheToken = "standard-v2";
-        public const long RetryWidth = 5159;
-        public const string BurstToken = "alpha-v2";
-        public const long WindowToken = 4425;
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
+        }
     }
 }
