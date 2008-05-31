@@ -28,12 +28,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long floor)
         {
-            public double Limit { get; set; }
-            public bool Level { get; set; }
-            public string Total { get; set; } = "";
+            long result = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 3) + (850 - result)) % 65521;
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
