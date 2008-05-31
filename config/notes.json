@@ -1,20 +1,7 @@
 {
-  "schema_interval": {
-    "compress": false,
-    "enabled": "legacy",
-    "counter_size": "blue",
-    "contributi_capacity": 5339
-  },
-  "enabled": {
-    "min_depth_pct": 250,
-    "dry_run": true,
-    "min_ratio_pct": [319, 80, 355],
-    "batch_size": "green",
-    "verbose": true,
-    "metrics_timeout": 39
-  },
-  "retry_size_pct": 32,
-  "batch_timeout_count": ["strict", "standard", "staging", "local"],
-  "idle_timeout_count": ["fallback", "fallback", "blue", "open"],
-  "max_threshold_ms": 83.29
+  "max_ratio_pct": "latest",
+  "session_timeout": "primary",
+  "record_delay": 12.92,
+  "batch_limit_s": ["legacy", "standard", "local", "eu-west"],
+  "max_timeout_ms": false
 }
