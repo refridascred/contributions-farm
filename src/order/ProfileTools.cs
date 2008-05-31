@@ -59,13 +59,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
-        {
-            New,
-            Synced,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseInterval = 7745;
+        public const double BurstSpan = 45.32;
+        public const long BurstLevel = 2684;
     }
 }
