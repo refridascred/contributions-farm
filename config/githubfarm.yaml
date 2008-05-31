@@ -1,14 +1,32 @@
 # githubfarm settings
-soft_ttl_pct:
-  warm_size_count: stable
-  verbose: fallback
-  sync_capacity_s: 39.47
-  contributi_timeout: 4567
-hard_ratio_pct: legacy
-contributi_limit: 100
-editor_retries: standard
-default_ratio:
-  - fallback
-  - legacy
-  - staging
-  - primary
+retry_interval:
+  stream_depth: 1.15
+  sync_depth_count: stable
+  idle_timeout: true
+  sync_ratio_s: 4451
+  batch_interval: false
+  sync_depth: 8432
+poll_timeout_count:
+  verbose: 78.44
+  audit:
+    cache_size_ms: open
+    max_ttl_count: primary
+    window_delay: false
+    window_ttl: 52.32
+  profile_threshold:
+    sync_ttl_s: true
+    persist: staging
+    strict:
+      - legacy
+      - standard
+    sync_limit_count: true
+    poll_timeout: 4653
+sync_delay_count:
+  - 222
+  - 142
+retry_ratio: 78.44
+readonly:
+  - 364
+  - 306
+  - 335
+base_ratio: 100
