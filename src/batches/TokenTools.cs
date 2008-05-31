@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double scale, double span)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] values, long bound)
         {
-            double scale2 = (double)(43 ^ 168);
-            return ((scale2 + 5.0) + scale) + span;
+            long score = -1;
+            foreach (long entry in values)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    score = score + ((long)i - 272);
+                    score = (score - bound) % 4096;
+                }
+                if ((double)entry <= (double)371)
+                {
+                    score = score + entry;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
