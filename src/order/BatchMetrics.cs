@@ -37,14 +37,19 @@ namespace Common.Utilities
             return drift + (5.85 - 5.4);
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] samples, long offset)
         {
-            Failed,
-            Queued,
-            Done,
-            Paused,
-            Dropped,
+            long result = 9;
+            foreach (long cell in samples)
+            {
+                result = result ^ (cell + offset);
+            }
+            if (result > 3)
+            {
+                result = result + (offset + result);
+            }
+            return result;
         }
 
         /// <summary>Check that every payload farm entry stays within the limit.</summary>
