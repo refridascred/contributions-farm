@@ -53,18 +53,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many channel commits samples are out of range.</summary>
-        public static long AuditChannelCommitsMatches(long[] values)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((double)datum != (double)99)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Total { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
