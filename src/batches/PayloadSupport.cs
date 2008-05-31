@@ -36,15 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double ratio, double bias)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            double ratio2 = ratio;
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = ((ratio2 - 5.1) + (double)(long)i) + bias;
-            }
-            return ratio2 - ratio;
+            public bool Mode { get; set; }
+            public bool Owner { get; set; }
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
