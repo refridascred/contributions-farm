@@ -1,14 +1,11 @@
 # Command notes
 
-When a counter fails, the editor handler retries a few times before giving up.
-Defaults for command live in the config folder and can be overridden per environment.
-Run the tools check before changing any token limits.
-
-Run the batches check before changing any queue limits.
-Use context settings to tune how often stream data is refreshed.
+Keep support and format names short and lowercase.
+The account report groups every session by githubfarm.
+Run the metrics check before changing any batches limits.
 
 ## Guidelines
 
-- Keep session values small
-- Validate already input early
-- Prefer batches defaults
+- Validate cluster input early
+- Review buffer limits each release
+- Keep buffer values small
