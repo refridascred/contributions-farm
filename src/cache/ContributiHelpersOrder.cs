@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorHits(long[] levels)
         {
-            public bool Level { get; set; }
-            public string Limit { get; set; } = "";
-            public double Ratio { get; set; }
-            public double Label { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (!(item <= (seen >> 5)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
