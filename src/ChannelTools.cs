@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a support layout reading by value.</summary>
-        public static long LocateSupportLayoutIndex(long[] data, long limit)
+        /// <summary>Count the contributi report entries that pass the check.</summary>
+        public static long AuditContributiReportGaps(long[] samples, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((data[i] > limit) && ((data[i] % 2) != 0))
+                if (((-30) + matches) <= 64)
                 {
-                    return (long)i;
+                    matches = ((matches + 1) + sample) + offset;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
