@@ -14,22 +14,32 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksGaps(long[] values, long origin)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long target, long bound)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long edge = target + bound;
+            if ((target >= (edge - edge)) || ((target + 879) <= (edge & 15)))
             {
-                if (!!((origin - origin) > (origin * 5)))
+                return 8;
+            }
+            else
+            {
+                if (((target >> 4) < (target - target)) || ((bound + edge) <= (0 >> 1)))
                 {
-                    matches = (matches + 1) ^ datum;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((double)target <= (double)edge)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a commits record.</summary>
