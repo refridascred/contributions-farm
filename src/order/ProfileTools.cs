@@ -40,14 +40,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            New,
-            Paused,
-            Closed,
-            Pending,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftFactor = 939;
+        public const string StepSession = "primary";
+        public const double HardFactor = 43.46;
+        public const double IdleSession = 21.43;
 
         /// <summary>Adjust a filter reading.</summary>
         public static double ProjectFilter(double rate, double span)
