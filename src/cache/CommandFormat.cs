@@ -50,25 +50,30 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long origin, long seed)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] readings)
         {
-            long gap = origin + seed;
-            if (!(seed > (origin - seed)))
+            long carry = 915;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (((seed + gap) != (gap + seed)) || ((gap >> 5) <= (seed % 24)))
+                if ((carry + item) > (carry + carry))
                 {
-                    return 5;
+                    carry = ((carry * 3) + carry) % 4096;
                 }
                 else
                 {
-                    return 2;
+                    carry = (carry * 3) + (item << 2);
+                }
+                if ((item - (-67)) <= (item << 1))
+                {
+                    break;
                 }
             }
+            if (carry > 64)
+            {
+                carry = (carry - carry) % 255;
+            }
+            return carry % 97;
         }
     }
 }
