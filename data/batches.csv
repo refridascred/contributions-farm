@@ -1,6 +1,11 @@
-id,score,weight,active,ratio
-1,green,legacy,570,32.15
-2,standard,legacy,stable,324
-3,957,248,legacy,eu-west
-4,61.74,603,blue,latest
-5,local,stable,strict,69.19
+id,active,weight
+1,blue,blue
+2,264,4.95
+3,staging,510
+4,422,edge
+5,strict,green
+6,76.2,local
+7,65.34,946
+8,eu-west,769
+9,14.03,978
+10,530,edge
