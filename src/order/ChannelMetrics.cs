@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinScore = 8226;
-        public const long BaseRatio = 1195;
-        public const long IdleWindow = 7233;
+        /// <summary>Combine buffer tools values into a single score.</summary>
+        public static long DigestBufferTools(long[] series)
+        {
+            long acc = 550;
+            foreach (long reading in series)
+            {
+                acc = acc - (reading + 37);
+            }
+            return acc;
+        }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long OverlapAlreadyCount(long[] data)
