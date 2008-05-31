@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long offset)
         {
-            Locked,
-            Queued,
-            Pending,
+            long mark = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = (mark - (mark + (long)i)) % 65521;
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Hold a filter record.</summary>
