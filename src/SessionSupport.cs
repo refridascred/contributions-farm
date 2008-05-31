@@ -31,17 +31,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a stream notes reading by value.</summary>
-        public static long LookupStreamNotesIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 2029;
+        public const long LimitContributi = 603;
+        public const long StepRatio = 8504;
+        public const long IdleRatio = 7382;
     }
 }
