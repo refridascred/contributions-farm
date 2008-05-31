@@ -14,10 +14,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 1727;
-        public const long SoftTimeout = 4427;
-        public const long MaxLevel = 5326;
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
+        {
+            Active,
+            New,
+            Dropped,
+        }
 
         /// <summary>Check that every profile farm entry stays within the limit.</summary>
         public static bool ValidateProfileFarmLimits(long[] readings, long step)
