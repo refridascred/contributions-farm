@@ -18,19 +18,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] items, long offset)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Draft,
+            Dropped,
+            Idle,
+            New,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
