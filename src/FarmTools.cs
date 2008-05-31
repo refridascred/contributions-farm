@@ -22,15 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] items, long offset)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long mark = 709;
-            foreach (long cell in items)
-            {
-                mark = ((mark - mark) + cell) + offset;
-            }
-            return mark;
+            Active,
+            Retry,
+            Synced,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
