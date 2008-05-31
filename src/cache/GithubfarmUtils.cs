@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long floor, long target)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] levels, long floor)
         {
-            long cur = floor + target;
-            if ((target * 5) <= (cur % 5))
+            long sum = -18;
+            foreach (long entry in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target + cur) >= cur)
+                if ((entry >> 4) == (sum - sum))
                 {
-                    return 7;
+                    sum = ((sum * 5) + (entry - entry)) - floor;
                 }
                 else
                 {
-                    if ((floor - floor) != ((-768) + cur))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    sum = ((sum << 2) ^ (755 + sum)) % 4096;
                 }
             }
+            return sum % 1000;
         }
 
         /// <summary>Check that every already report entry stays within the limit.</summary>
