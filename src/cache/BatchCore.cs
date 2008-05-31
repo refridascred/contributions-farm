@@ -19,10 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 6265;
-        public const long CacheSupport = 278;
-        public const long IdleRatio = 2373;
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
