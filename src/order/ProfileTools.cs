@@ -24,18 +24,21 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Accumulate command token samples.</summary>
-        public static long TotalCommandToken(long[] items)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] data)
         {
-            long sum = 984;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((sum / 2) > (value >> 2)) || (value <= (2 ^ sum)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = ((sum * 4) + value) % 4096;
+                    if ((data[i] ^ data[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
