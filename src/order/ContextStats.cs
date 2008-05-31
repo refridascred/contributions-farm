@@ -53,12 +53,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] data)
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public double Rank { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
