@@ -23,13 +23,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
-        {
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardCluster = 4102;
+        public const double IdleCluster = 37.44;
+        public const long RetryFactor = 4014;
+        public const string WindowCluster = "stable-v2";
+        public const double SoftCluster = 70.82;
 
         /// <summary>Grade a githubfarm schema value against two limits.</summary>
         public static long ClassifyGithubfarmSchema(long limit, long offset)
