@@ -33,10 +33,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 7758;
-        public const long DefaultInterval = 9071;
-        public const long MinCommand = 9518;
-        public const long SoftCommand = 4552;
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long offset, long origin)
+        {
+            long gap = offset + origin;
+            if (!(offset > (gap ^ gap)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((gap * 5) != (gap >> 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset <= (1.0 - 9.44))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
