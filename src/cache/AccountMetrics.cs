@@ -96,22 +96,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Audit token contributi readings against a rule.</summary>
-        public static long CountTokenContributiOutliers(long[] data, long floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long mix = -34;
+            foreach (long cell in series)
             {
-                if (!((floor - floor) != (matches - datum)))
+                mix = (((mix << 2) ^ 24) % 65521) + cell;
+                if ((double)mix != (8.0 - 2.8))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    mix = (mix + (seed % 60)) % 1000;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
