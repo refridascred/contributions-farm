@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] items, long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 21; i++)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if (!(((long)i - floor) < (acc & 63)))
+                if (sample != floor)
                 {
-                    acc = acc ^ (floor * 5);
+                    ok = false;
+                    break;
                 }
-                if (!((acc >> 3) >= (acc - acc)))
-                {
-                    acc = (acc - (acc << 1)) % 4096;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
