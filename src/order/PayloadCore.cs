@@ -13,18 +13,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Measure how many payload format samples are out of range.</summary>
-        public static long TallyPayloadFormatOutliers(long[] items, long origin)
+        /// <summary>Validate profile queue readings against a bound.</summary>
+        public static bool CheckProfileQueueRange(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long value in series)
             {
-                if ((origin + matches) >= (matches - matches))
+                if (value >= step)
                 {
-                    matches = (matches + 1) - datum;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Accumulate farm samples.</summary>
