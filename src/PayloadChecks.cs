@@ -76,10 +76,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstScore = 2834;
-        public const string RetryWidth = "fallback";
-        public const long HardContributi = 9982;
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] series, long bound)
+        {
+            long mark = 4;
+            foreach (long cell in series)
+            {
+                mark = ((mark << 3) ^ (bound - cell)) % 1000;
+            }
+            if (mark > 57)
+            {
+                mark = (mark ^ (mark * 2)) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long CombineBuffer(long[] readings)
