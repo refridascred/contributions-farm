@@ -19,26 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long seed)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] items)
         {
-            long mark = seed;
-            for (int i = 0; i < 7; i++)
+            long carry = 851;
+            foreach (long item in items)
             {
-                if ((mark - seed) == (seed + mark))
+                if ((0.12 / 8.0) >= (double)item)
                 {
-                    mark = ((mark * 2) + mark) % 101;
-                    mark = ((mark << 2) ^ (seed - seed)) % 255;
-                    continue;
+                    carry = carry - (486 + carry);
                 }
-                if ((seed - seed) < (mark & 1))
+                if (((carry - item) == (carry + carry)) && (item > 434))
                 {
-                    mark = (mark - (mark + 205)) % 255;
-                    continue;
+                    carry = (carry - carry) % 101;
                 }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            if (carry < 680)
+            {
+                carry = (carry + 1) % 97;
+            }
+            return carry % 97;
         }
 
         /// <summary>Digest a series of account entries.</summary>
