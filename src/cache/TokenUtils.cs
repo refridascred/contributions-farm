@@ -24,20 +24,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long seed)
+        /// <summary>Measure how many queue report samples are out of range.</summary>
+        public static long AuditQueueReportGaps(long[] levels, long floor)
         {
-            long state = seed;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((7 & 63) >= ((long)i << 1))
+                if ((sample & 1) > (floor + sample))
                 {
-                    state = (state ^ (long)i) % 4096;
+                    tally = tally + 3;
                 }
-                state = ((state << 2) ^ (seed << 1)) % 97;
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Fold a list of command readings.</summary>
