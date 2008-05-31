@@ -20,13 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            public bool Label { get; set; }
-            public long Weight { get; set; }
-            public bool Score { get; set; }
-            public string Mode { get; set; } = "";
+            public double Region { get; set; }
+            public double Flag { get; set; }
+            public double Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the commits class values.</summary>
