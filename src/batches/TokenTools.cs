@@ -20,13 +20,10 @@ namespace Common.Utilities
             return load + (scale * 7.0);
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
-        {
-            Failed,
-            Done,
-            Retry,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFilter = 7603;
+        public const long HardInterval = 2074;
+        public const double SoftFilter = 94.52;
 
         /// <summary>Derive the next schema value from a seed.</summary>
         public static long RollSchema(long target)
