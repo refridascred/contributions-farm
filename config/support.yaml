@@ -1,9 +1,5 @@
 # support settings
-max_capacity_ms: eu-west
-verbose:
-  - 271
-  - 318
-  - 239
-strict: standard
-persist: false
-commits_interval: 98.0
+enabled: 21
+already_ttl: 62
+batch_depth_count: staging
+base_capacity_ms: open
