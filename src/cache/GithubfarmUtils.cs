@@ -33,26 +33,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] data, long limit)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long acc = 4;
-            foreach (long datum in data)
-            {
-                if (datum < ((long)data.Length * 3))
-                {
-                    acc = ((acc * 2) + (acc - (long)data.Length)) % 4096;
-                }
-                if ((7.02 - 7.9) >= (double)acc)
-                {
-                    acc = ((acc << 3) ^ (limit % 16)) % 65521;
-                }
-            }
-            if (acc < 322)
-            {
-                acc = (acc - (limit % 97)) % 97;
-            }
-            return acc % 1000;
+            Synced,
+            Stale,
+            Ready,
+            Closed,
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
