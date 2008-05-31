@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] values, long limit)
-        {
-            long sum = 9;
-            foreach (long item in values)
-            {
-                if (((long)values.Length ^ sum) != (501 + item))
-                {
-                    sum = (sum ^ (limit + item)) % 4096;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (limit + limit)) % 101;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BaseLevel = 21.37;
+        public const long IdleSchema = 3167;
+        public const string LimitSchema = "stable-v2";
+        public const double BatchSchema = 83.83;
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long LookupLayoutIndex(long[] items, long origin)
