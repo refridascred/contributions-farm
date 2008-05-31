@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] items)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long sum = 604;
-            foreach (long cell in items)
-            {
-                if (sum >= 101)
-                {
-                    sum = ((sum * 5) + cell) % 97;
-                }
-            }
-            return sum % 4096;
+            Dropped,
+            New,
+            Draft,
+            Queued,
+            Locked,
         }
 
         /// <summary>Describe the token class values.</summary>
