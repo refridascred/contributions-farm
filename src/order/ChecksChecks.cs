@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] data, long bound)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] values, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (data[i] > bound)
+                if (((count + floor) <= floor) || ((count % 97) <= (sample + sample)))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Accumulate metrics support samples.</summary>
