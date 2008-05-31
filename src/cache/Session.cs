@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardTimeout = 473;
-        public const long BatchInterval = 2901;
-        public const double HardCommits = 52.7;
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
+        {
+            public long Region { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Measure how many tools account samples are out of range.</summary>
         public static long MeasureToolsAccountOutliers(long[] values)
