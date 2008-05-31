@@ -27,11 +27,15 @@ namespace Common.Utilities
         public const double BurstSpan = 6.24;
         public const string RetryAccount = "latest-edge";
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long target)
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
+            long sum = target;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
