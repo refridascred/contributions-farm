@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultAlready = 212;
-        public const double MaxAlready = 95.99;
-        public const long LimitAlready = 939;
+        /// <summary>Count the batch support entries that pass the check.</summary>
+        public static long MeasureBatchSupportHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((seen % 16) >= seen)
+                {
+                    seen = (seen + 3) ^ sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long TotalGraph(long[] data, long step)
