@@ -32,12 +32,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] samples)
         {
-            public long Level { get; set; }
-            public bool Offset { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (seen <= (73 - datum))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
