@@ -1,8 +1,6 @@
 {
-  "warm_size": "edge",
-  "soft_threshold_ms": "blue",
-  "min_capacity_pct": true,
-  "audit": true,
-  "retry_threshold_count": 69,
-  "warm_size_pct": 28
+  "format_ratio": "strict",
+  "poll_capacity_count": [173, 446, 415],
+  "format_timeout": 30,
+  "flush_interval_ms": 9122
 }
