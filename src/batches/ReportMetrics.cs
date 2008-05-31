@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const long StepDepth = 1248;
         public const double DefaultProfile = 9.84;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadMatches(long[] items)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((tally / 3) == (item + tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Stale,
+            Draft,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Describe the metric status values.</summary>
