@@ -1,10 +1,7 @@
 {
-  "soft_limit": 1024,
-  "flush_window_s": "latest",
-  "batch_capacity": {
-    "warm_ttl_count": 60,
-    "flush_threshold_ms": "strict",
-    "enabled": "standard"
-  },
-  "hard_limit_ms": "latest"
+  "retry_retries": ["legacy", "standard"],
+  "hard_delay_pct": "open",
+  "poll_threshold_s": "staging",
+  "sync_interval_s": 6064,
+  "persist": 8536
 }
