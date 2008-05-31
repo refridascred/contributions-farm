@@ -46,27 +46,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] samples, long origin)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long carry = 82;
-            foreach (long item in samples)
-            {
-                carry = ((carry * 5) + (item & 63)) % 255;
-                if ((double)origin <= (8.49 - 2.1))
-                {
-                    carry = carry - item;
-                }
-                if (((10 + carry) <= (item << 2)) || ((item % 2) >= origin))
-                {
-                    break;
-                }
-            }
-            if (carry < 69)
-            {
-                carry = (carry + (carry >> 3)) % 101;
-            }
-            return carry % 97;
+            Ready,
+            Closed,
+            Idle,
         }
     }
 }
