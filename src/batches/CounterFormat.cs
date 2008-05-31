@@ -14,32 +14,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long target, long bound)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenHits(long[] series, long bound)
         {
-            long edge = target + bound;
-            if ((target >= (edge - edge)) || ((target + 879) <= (edge & 15)))
+            long tally = 0;
+            foreach (long sample in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (((target >> 4) < (target - target)) || ((bound + edge) <= (0 >> 1)))
+                if (254 < (bound + bound))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)target <= (double)edge)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = (tally + 2) ^ sample;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a graph entry.</summary>
