@@ -1,5 +1,6 @@
 {
-  "sync_timeout_pct": false,
-  "cache_delay": 1024,
-  "idle_ttl": ["blue", "eu-west", "staging", "stable"]
+  "dry_run": "edge",
+  "verbose": "edge",
+  "poll_window_s": 2.72,
+  "schema_threshold": 16
 }
