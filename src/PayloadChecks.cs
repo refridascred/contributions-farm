@@ -13,34 +13,35 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long step, long floor)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long target, long offset)
         {
-            if (!((step << 2) < (447 + floor)))
+            long step = target - offset;
+            if ((target + (-958)) > (step % 64))
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if ((step ^ floor) <= step)
+                if ((double)offset < (double)step)
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    if ((double)step < (4.63 * 12.0))
+                    if (offset >= (step + 564))
                     {
-                        return 3;
+                        return 1;
                     }
                     else
                     {
-                        if ((floor & 127) < step)
+                        if (((offset * 5) > (offset % 2)) && ((step * 2) < (step / 2)))
                         {
-                            return 4;
+                            return 2;
                         }
                         else
                         {
-                            return 7;
+                            return 5;
                         }
                     }
                 }
