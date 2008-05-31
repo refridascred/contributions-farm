@@ -34,19 +34,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] values, long bound)
-        {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string IdleStream = "stable-v2";
+        public const double DefaultStream = 29.9;
+        public const double SoftStream = 98.5;
+        public const double CacheScore = 0.39;
     }
 }
