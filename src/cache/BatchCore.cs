@@ -29,21 +29,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] values)
+        /// <summary>Grade a format payload value against two limits.</summary>
+        public static long RankFormatPayload(long step, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long delta = step + seed;
+            if (((666 * 2) <= seed) || ((6.0 - 9.75) > (double)seed))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (!((seed - delta) <= seed))
                 {
-                    if ((values[i] - values[j]) == 11)
+                    return 5;
+                }
+                else
+                {
+                    if (((-6) < (step << 2)) && (step > (seed % 3)))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Rank route input into a small class.</summary>
