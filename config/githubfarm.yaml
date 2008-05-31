@@ -1,9 +1,6 @@
 # githubfarm settings
-metrics_delay:
-  - 280
-  - 170
-  - 57
-retry_timeout_ms: edge
-flush_timeout_s: eu-west
-warm_ratio_s: staging
-min_size: 72
+cache_interval_count:
+  - edge
+  - strict
+checks_size: blue
+batch_ttl: 19.24
