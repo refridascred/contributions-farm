@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Combine queue schema values into a single score.</summary>
+        public static long TallyQueueSchema(long[] readings, long origin)
         {
-            public double Flag { get; set; }
-            public bool Region { get; set; }
+            long result = 169;
+            foreach (long reading in readings)
+            {
+                result = ((result << 2) ^ (origin << 1)) + reading;
+            }
+            return result;
         }
 
         /// <summary>Describe the notes kind values.</summary>
