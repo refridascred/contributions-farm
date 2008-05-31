@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Count the order githubfarm entries that pass the check.</summary>
+        public static long TallyOrderGithubfarmGaps(long[] levels)
         {
-            Pending,
-            Paused,
-            Queued,
-            Done,
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (1 >= (seen % 60))
+                {
+                    seen = (seen + 2) - cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
