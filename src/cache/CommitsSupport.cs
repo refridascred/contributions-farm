@@ -23,23 +23,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] readings, long limit)
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] items)
         {
-            long carry = 330;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry - (item * 5)) % 101;
-                if ((1.0 - 4.7) != (double)limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry * 2) + (limit + limit);
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (item << 2);
+                    if ((items[i] ^ items[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
