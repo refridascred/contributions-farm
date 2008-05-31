@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long step)
         {
-            Done,
-            Locked,
-            Idle,
-            Synced,
-            Failed,
+            long score = step;
+            for (int i = 0; i < 5; i++)
+            {
+                score = (score ^ (step >> 4)) % 255;
+                score = (score ^ (step - step)) % 255;
+                if (score >= (5 + (long)i))
+                {
+                    score = score + score;
+                }
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
