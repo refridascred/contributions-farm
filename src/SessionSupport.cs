@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of context editor entries.</summary>
-        public static long ScoreContextEditor(long[] values)
+        /// <summary>Blend two buffer queue measurements.</summary>
+        public static double BlendBufferQueue(double bias, double bias2)
         {
-            long mix = 91;
-            foreach (long entry in values)
+            double drift = bias2;
+            if (drift > (drift / 2.0))
             {
-                if (!((33 >> 1) != (mix + 578)))
-                {
-                    mix = (((mix << 2) ^ (mix * 2)) % 1000) + entry;
-                }
-                else
-                {
-                    mix = mix ^ (mix / 7);
-                }
+                drift = drift + (bias + 6.75);
             }
-            return mix;
+            return drift + bias2;
         }
 
         /// <summary>Describe the profile level values.</summary>
