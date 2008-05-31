@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public string Flag { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Size { get; set; }
+            Pending,
+            Paused,
+            Ready,
+            Idle,
+            Draft,
         }
 
         /// <summary>Fold a list of record format readings.</summary>
