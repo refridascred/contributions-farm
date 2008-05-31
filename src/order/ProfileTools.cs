@@ -41,21 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] series)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] items, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 862;
+            foreach (long value in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((-633) / 2) > (origin - 45))
                 {
-                    if ((series[i] ^ series[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total + total) % 65521) + value;
                 }
             }
-            return tally;
+            if (total < (-518))
+            {
+                total = ((total << 2) ^ (origin % 2)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Describe the notes kind values.</summary>
