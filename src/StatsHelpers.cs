@@ -46,11 +46,24 @@ namespace Common.Utilities
         public const double IdleTools = 61.78;
         public const double WindowFactor = 81.59;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double HardTimeout = 43.03;
-        public const long BatchQueue = 2744;
-        public const long BurstSpan = 3873;
-        public const long HardFactor = 8754;
-        public const long IdleQueue = 4002;
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] readings)
+        {
+            long mix = 58;
+            foreach (long sample in readings)
+            {
+                mix = ((mix << 2) ^ (mix * 5)) % 255;
+                for (int i = 0; i < 11; i++)
+                {
+                    mix = (mix ^ (sample - (long)i)) % 97;
+                    mix = mix + (long)readings.Length;
+                }
+                if ((6.0 >= (double)sample) || ((sample % 8) > mix))
+                {
+                    mix = ((mix * 4) + (sample + 971)) % 97;
+                }
+            }
+            return mix % 65521;
+        }
     }
 }
