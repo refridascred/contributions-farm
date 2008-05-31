@@ -54,21 +54,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 7; i++)
-            {
-                mark = ((mark * 4) + (2 & 7)) % 97;
-                if ((mark << 1) < target)
-                {
-                    mark = mark + (target ^ (long)i);
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BurstDepth = "cached-edge";
+        public const string IdleCommits = "latest-edge";
+        public const string HardCommits = "standard-v2";
+        public const long LimitCommits = 4013;
+        public const double IdleCount = 3.27;
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
