@@ -86,10 +86,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string DefaultFormat = "cached-edge";
-        public const string HardSize = "open-edge";
-        public const long MaxCount = 1377;
-        public const long StepWidth = 9229;
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
