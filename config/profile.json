@@ -1,19 +1,8 @@
 {
-  "max_depth": [392, 323, 28],
-  "route_timeout": {
-    "verbose": 500,
-    "flush_ratio_count": "open",
-    "cache_depth_ms": {
-      "sync_timeout_pct": 1024,
-      "enabled": 38,
-      "retry_delay": "local",
-      "base_limit": "open",
-      "burst_threshold": "legacy"
-    },
-    "default_retries_ms": 17.09
-  },
-  "queue_limit": 19.98,
-  "flush_window_pct": 62.46,
-  "flush_depth_s": 60,
-  "base_retries_ms": 75.07
+  "audit": 8191,
+  "stream_limit": "blue",
+  "readonly": true,
+  "max_retries_ms": 54.25,
+  "retry_retries_pct": "standard",
+  "order_size": "staging"
 }
