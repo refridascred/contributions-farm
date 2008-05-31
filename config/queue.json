@@ -1,17 +1,17 @@
 {
-  "soft_timeout_ms": false,
-  "poll_timeout_pct": true,
-  "hard_delay_ms": {
-    "base_capacity_s": "fallback",
-    "editor_threshold": "local",
-    "record_retries": 19,
-    "retry_capacity_s": {
-      "min_capacity_s": "green",
-      "base_threshold_ms": 92.93,
-      "soft_delay": "latest"
+  "cache_size_count": ["staging", "local", "legacy"],
+  "graph_delay": {
+    "cluster_interval": ["fallback", "edge"],
+    "soft_depth": true,
+    "sync_threshold_pct": {
+      "soft_retries_count": true,
+      "compress": 5343,
+      "base_window_count": 60,
+      "sync_size": 31,
+      "default_ttl_count": 9569
     },
-    "idle_window_ms": 100,
-    "metric_depth": 25.5
+    "checks_ttl": 51.92,
+    "retry_window_s": "eu-west"
   },
-  "default_interval_s": [320, 121, 86, 179]
+  "max_timeout_s": true
 }
