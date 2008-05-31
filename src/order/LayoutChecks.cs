@@ -12,16 +12,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Blend two token batch measurements.</summary>
-        public static double ProjectTokenBatch(double bias, double bias2)
-        {
-            double scale = bias2;
-            if (scale > (9.25 - 9.39))
-            {
-                scale = (scale + (bias2 * 14.0)) + bias;
-            }
-            return scale + scale;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string StepDepth = "alpha-v2";
+        public const long BatchWindow = 4331;
+        public const string BurstWindow = "staging";
+        public const long BurstWidth = 2219;
+        public const string BaseWindow = "standard-v2";
 
         /// <summary>Accumulate githubfarm filter samples.</summary>
         public static long DigestGithubfarmFilter(long[] readings, long step)
