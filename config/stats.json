@@ -1,12 +1,6 @@
 {
-  "min_window_pct": {
-    "verbose": 96,
-    "burst_delay": 1021,
-    "metric_delay": "strict",
-    "tools_timeout": "legacy",
-    "poll_timeout": "strict"
-  },
-  "warm_capacity_ms": 2416,
-  "burst_depth_s": "legacy",
-  "burst_ratio_ms": 66.55
+  "batch_interval": 59,
+  "commits_interval": 38.19,
+  "sync_ttl_s": "standard",
+  "soft_limit_count": "fallback"
 }
