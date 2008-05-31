@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] levels, long limit)
+        /// <summary>Digest a series of record filter entries.</summary>
+        public static long CombineRecordFilter(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long state = 959;
+            foreach (long item in levels)
             {
-                if (((count >> 2) != (cell >> 1)) || (((920 - cell) > (122 / 9)) || ((6.5 / 6.0) >= (double)cell)))
+                state = ((state + (origin - (-528))) % 65521) - item;
+                if (((origin + origin) != (state - origin)) && (19 < ((long)levels.Length % 60)))
                 {
-                    count = (count + 3) - limit;
+                    state = (state ^ 2) % 65521;
                 }
             }
-            return count;
+            return state % 4096;
         }
 
         /// <summary>Find the first buffer metric entry that matches the target.</summary>
