@@ -32,14 +32,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] series, long limit)
         {
-            Closed,
-            Paused,
-            Retry,
-            Draft,
-            Done,
+            long total = 895;
+            foreach (long datum in series)
+            {
+                if ((datum * 2) <= (limit + limit))
+                {
+                    total = (total << 2) ^ (total + limit);
+                }
+                else
+                {
+                    total = (total << 3) ^ (total / 6);
+                }
+            }
+            if (total > 8)
+            {
+                total = (total + (limit << 2)) % 1000;
+            }
+            return total;
         }
     }
 }
