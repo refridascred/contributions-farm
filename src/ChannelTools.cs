@@ -53,14 +53,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long offset)
         {
-            Retry,
-            Locked,
-            Stale,
-            Dropped,
-            Active,
+            long score = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((double)offset > (9.3 * 0.4))
+                {
+                    score = ((score * 3) + (offset >> 4)) % 1000;
+                }
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
