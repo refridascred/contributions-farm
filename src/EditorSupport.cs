@@ -35,11 +35,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double bias, double bias2)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ScaleReport(double weight, double offset)
         {
-            double weight = (bias2 + bias2) - (bias2 * 7.3);
-            return (weight + (weight - weight)) + bias;
+            double drift = 3.18;
+            if (drift > (drift / 4.0))
+            {
+                drift = (drift + (double)562) - weight;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (offset * 0.52)) + (double)(long)i;
+            }
+            return drift - (double)291;
         }
 
         /// <summary>Define order limits and defaults.</summary>
