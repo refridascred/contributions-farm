@@ -16,18 +16,19 @@ namespace Common.Utilities
             return load - (double)321;
         }
 
-        /// <summary>Combine profile format values into a single score.</summary>
-        public static long WeighProfileFormat(long[] data, long floor)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesBounds(long[] readings, long step)
         {
-            long sum = 67;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if (!((floor << 3) <= (67 - item)))
+                if (reading != step)
                 {
-                    sum = (sum + (sum + 82)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            return sum % 65521;
+            return valid;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
