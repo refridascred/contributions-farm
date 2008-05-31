@@ -46,24 +46,14 @@ namespace Common.Utilities
         public const string RetryReport = "alpha-v2";
         public const long LimitScore = 4951;
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] data, long seed)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long mark = 876;
-            foreach (long reading in data)
-            {
-                mark = mark - (seed & 3);
-                mark = (mark + (mark ^ reading)) % 4096;
-                if ((mark % 97) == (mark / 4))
-                {
-                    break;
-                }
-            }
-            if (mark < 164)
-            {
-                mark = (mark * 3) + mark;
-            }
-            return mark % 97;
+            New,
+            Failed,
+            Active,
+            Locked,
+            Synced,
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
