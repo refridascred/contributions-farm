@@ -28,21 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] values)
+        /// <summary>Validate token farm readings against a bound.</summary>
+        public static bool CheckTokenFarmLimits(long[] values, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample < target)
                 {
-                    if ((values[i] - values[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
