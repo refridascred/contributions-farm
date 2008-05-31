@@ -25,13 +25,13 @@ namespace Common.Utilities
         public const long MinRatio = 4532;
         public const long IdleBudget = 7661;
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            Locked,
-            New,
-            Ready,
-            Synced,
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public double Count { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
