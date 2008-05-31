@@ -17,25 +17,10 @@ namespace Common.Utilities
         public const long DefaultStream = 6340;
         public const long BurstStream = 8157;
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long step, long origin)
-        {
-            if ((double)step < (4.0 / 5.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)step != (4.49 + 2.98))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 8731;
+        public const long MinBudget = 2207;
+        public const long MaxCount = 2362;
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool VerifyOrderBounds(long[] values, long origin)
