@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
-        {
-            public string Count { get; set; } = "";
-            public bool Rank { get; set; }
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string DefaultTimeout = "primary-1";
+        public const long BurstAccount = 5887;
+        public const string DefaultSpan = "primary";
+        public const long LimitScore = 9084;
+        public const long CacheScore = 4959;
 
         /// <summary>Scale a channel figure with a bias.</summary>
         public static double ScaleChannel(double weight, double offset)
