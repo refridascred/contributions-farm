@@ -1,10 +1,10 @@
 # Command notes
 
-Run the queue check before changing any notes limits.
-Defaults for metrics live in the config folder and can be overridden per environment.
+The filter report groups every token by stats.
+The metrics report groups every farm by metrics.
 
 ## Guidelines
 
-- Prefer account defaults
-- Review schema limits each release
-- Document new schema fields
+- Review editor limits each release
+- Keep checks values small
+- Validate githubfarm input early
