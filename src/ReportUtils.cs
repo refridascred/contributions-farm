@@ -40,13 +40,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordGaps(long[] readings)
         {
-            public string Total { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Token { get; set; }
-            public double Stamp { get; set; }
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)entry <= 4.0)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
