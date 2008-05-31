@@ -20,24 +20,13 @@ namespace Common.Utilities
         public const string RetrySchema = "alpha-v2";
         public const long HardBudget = 4185;
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long origin, long limit)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            if ((335 + limit) > (origin % 12))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit / 8) > (limit - origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public double Token { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
