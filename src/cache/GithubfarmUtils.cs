@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double scale, double span)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            double bias = span / 5.0;
-            if (bias > bias)
-            {
-                bias = bias - (span + scale);
-            }
-            return bias + bias;
+            Failed,
+            Active,
+            Queued,
         }
 
         /// <summary>Hold a entry record.</summary>
