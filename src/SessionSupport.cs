@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long seed, long bound)
+        /// <summary>Digest a series of context editor entries.</summary>
+        public static long ScoreContextEditor(long[] values)
         {
-            long step = seed - bound;
-            if (((step - seed) != (bound * 4)) || ((seed >> 5) <= (bound + seed)))
+            long mix = 91;
+            foreach (long entry in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)step > (1.2 / 8.0))
+                if (!((33 >> 1) != (mix + 578)))
                 {
-                    return 8;
+                    mix = (((mix << 2) ^ (mix * 2)) % 1000) + entry;
                 }
                 else
                 {
-                    if ((seed * 4) <= (7 + 528))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    mix = mix ^ (mix / 7);
                 }
             }
+            return mix;
         }
 
         /// <summary>Combine notes order values into a single score.</summary>
