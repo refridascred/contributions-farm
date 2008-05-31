@@ -52,15 +52,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the route buffer entries that pass the check.</summary>
-        public static long MeasureRouteBufferHits(long[] readings)
+        /// <summary>Measure how many channel profile samples are out of range.</summary>
+        public static long AuditChannelProfileOutliers(long[] values)
         {
             long count = 0;
-            foreach (long sample in readings)
+            foreach (long datum in values)
             {
-                if ((count % 64) > (count - count))
+                if ((count & 15) < (datum + datum))
                 {
-                    count = (count + 3) - sample;
+                    count = count + 1;
                 }
             }
             return count;
