@@ -23,23 +23,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double bias, double floor)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] items, long target)
         {
-            double scale = (double)(-15) - bias;
-            if (scale <= floor)
+            long anchor = 3;
+            foreach (long reading in items)
             {
-                scale = scale + (double)131;
+                anchor = ((anchor * 3) + (anchor / 2)) ^ reading;
+                if (((double)anchor <= (double)0) || ((6.21 + 17.0) < (4.24 * 4.54)))
+                {
+                    anchor = ((anchor << 2) ^ target) % 101;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (anchor % 7)) % 97;
+                }
             }
-            else
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - (bias / 9.0)) - (double)(long)i;
-            }
-            return scale - (bias - bias);
+            return anchor;
         }
 
         /// <summary>Define already limits and defaults.</summary>
