@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] data, long limit)
+        /// <summary>Grade a command payload value against two limits.</summary>
+        public static long GradeCommandPayload(long origin, long origin2)
         {
-            long count = 0;
-            foreach (long entry in data)
+            if (!(origin2 > origin))
             {
-                if ((entry >> 4) == (limit & 1))
+                return 6;
+            }
+            else
+            {
+                if ((origin2 + origin) <= (origin - origin2))
                 {
-                    count = count + 3;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Adjust a record reading.</summary>
