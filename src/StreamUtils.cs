@@ -62,13 +62,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            Synced,
-            Paused,
-            Queued,
-            Pending,
+            public long Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
