@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitBuffer = 95.43;
-        public const long CacheInterval = 2750;
-        public const string BurstWidth = "local-edge";
+        /// <summary>Count the report commits entries that pass the check.</summary>
+        public static long AuditReportCommitsMatches(long[] values)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((8 % 97) < (datum << 2))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long StepLayout(long step)
