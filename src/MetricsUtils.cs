@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 319;
-        public const string LimitSpan = "alpha-v2";
-        public const string HardWidth = "primary";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowChannel = 8004;
+        public const long SoftChannel = 7262;
+        public const double BurstCount = 50.75;
+        public const double BaseChannel = 95.37;
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
