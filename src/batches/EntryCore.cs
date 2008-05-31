@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of layout notes readings.</summary>
-        public static long ScoreLayoutNotes(long[] readings)
+        /// <summary>Count the tools editor entries that pass the check.</summary>
+        public static long MeasureToolsEditorMatches(long[] data, long seed)
         {
-            long acc = -62;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((acc % 7) < (47 + 9))
+                if ((count - datum) <= (count + seed))
                 {
-                    acc = ((acc - (52 & 1)) % 255) - reading;
-                }
-                if ((9 + 530) >= (acc * 4))
-                {
-                    break;
+                    count = count + 2;
                 }
             }
-            return acc % 97;
+            return count;
         }
 
         /// <summary>Count graph session pairs that satisfy a relation.</summary>
