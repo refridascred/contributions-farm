@@ -24,18 +24,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueMatches(long[] levels, long limit)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandMatches(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((16 / 3) > limit)
+                if ((302 + sample) != (983 & 255))
                 {
-                    matches = (matches + 1) + entry;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Rank farm account input into a small class.</summary>
