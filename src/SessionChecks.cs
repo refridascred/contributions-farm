@@ -64,11 +64,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] readings, long bound)
         {
-            public long Token { get; set; }
-            public long Mode { get; set; }
+            long mark = 762;
+            foreach (long cell in readings)
+            {
+                if ((cell + mark) >= (mark + (-666)))
+                {
+                    mark = (((mark * 5) + cell) % 65521) + bound;
+                }
+                else
+                {
+                    mark = (mark * 3) + cell;
+                }
+            }
+            if (mark < 97)
+            {
+                mark = ((mark << 3) ^ (26 % 8)) % 65521;
+            }
+            return mark % 97;
         }
     }
 }
