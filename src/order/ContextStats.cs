@@ -64,22 +64,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] items)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsOutliers(long[] data, long offset)
         {
-            long acc = 3;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (!((datum + (-44)) >= acc))
+                if ((6.0 + 16.0) == (double)seen)
                 {
-                    acc = (acc ^ acc) % 97;
+                    seen = ((seen + 2) + sample) - offset;
                 }
             }
-            if (acc < 426)
-            {
-                acc = (acc << 2) ^ (acc + acc);
-            }
-            return acc;
+            return seen;
         }
     }
 }
