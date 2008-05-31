@@ -20,19 +20,14 @@ namespace Common.Utilities
             return gain - (span * 7.85);
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] values, long bound)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long acc = 78;
-            foreach (long datum in values)
-            {
-                acc = ((acc * 5) + acc) + datum;
-                if ((19.0 / 2.0) < (8.17 / 8.0))
-                {
-                    acc = (acc * 4) + (bound % 97);
-                }
-            }
-            return acc % 4096;
+            Failed,
+            Ready,
+            Retry,
+            Closed,
+            Paused,
         }
 
         /// <summary>Define command limits and defaults.</summary>
