@@ -24,12 +24,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Validate contributi entry readings against a bound.</summary>
+        public static bool VerifyContributiEntryBounds(long[] data, long target)
         {
-            public long Owner { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
