@@ -26,38 +26,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long limit, long target)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] readings, long target)
         {
-            if (target >= limit)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target >> 2) >= limit)
+                if ((readings[i] > target) && ((readings[i] % 3) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!(limit < (target << 1)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((-73) >> 5) > target)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
