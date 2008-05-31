@@ -39,21 +39,19 @@ namespace Common.Utilities
             return weight + (double)28;
         }
 
-        /// <summary>Match up order graph samples.</summary>
-        public static long OverlapOrderGraphCount(long[] data)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry >= target)
                 {
-                    if ((data[i] - data[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
