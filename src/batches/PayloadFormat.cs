@@ -23,12 +23,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            public bool Ratio { get; set; }
-            public double Score { get; set; }
-            public string Owner { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Grade a githubfarm schema value against two limits.</summary>
