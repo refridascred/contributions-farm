@@ -33,19 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate tools checks readings against a bound.</summary>
-        public static bool CheckToolsChecksLimits(long[] values, long target)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Region { get; set; }
+            public string Score { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
