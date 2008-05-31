@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Digest a series of buffer context entries.</summary>
+        public static long ScoreBufferContext(long[] levels)
         {
-            New,
-            Paused,
-            Synced,
-            Draft,
-            Dropped,
+            long result = 1;
+            foreach (long datum in levels)
+            {
+                if (((17.0 + 7.8) < (double)datum) && ((5 / 9) == (result ^ 5)))
+                {
+                    result = ((result * 3) + (datum - 69)) % 1000;
+                }
+                result = (result - (result + datum)) % 4096;
+                result = (result ^ (result >> 3)) % 97;
+            }
+            return result % 65521;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
