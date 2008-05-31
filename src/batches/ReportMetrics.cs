@@ -15,21 +15,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] readings)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long target, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (2 < (target & 31))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)step >= (2.0 + 3.2))
                 {
-                    if ((readings[i] ^ readings[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Scale a tools counter figure with a bias.</summary>
