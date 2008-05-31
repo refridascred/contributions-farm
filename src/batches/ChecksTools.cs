@@ -39,19 +39,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] series, long origin)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextLimits(long[] readings, long offset)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                if (reading >= origin)
+                if (entry < offset)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
     }
 }
