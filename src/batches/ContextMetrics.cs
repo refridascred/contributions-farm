@@ -47,12 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchStats = 7517;
-        public const double WindowTimeout = 14.67;
-        public const double MinStats = 80.86;
-        public const long BaseStats = 9150;
-        public const string RetryScore = "stable-1";
+        /// <summary>Measure how many stream editor samples are out of range.</summary>
+        public static long MeasureStreamEditorMatches(long[] values, long floor)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((double)4 <= (double)datum)
+                {
+                    count = (count + 1) + floor;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two batches record measurements.</summary>
         public static double ProjectBatchesRecord(double rate, double bias)
