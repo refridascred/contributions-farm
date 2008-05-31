@@ -33,22 +33,22 @@ namespace Common.Utilities
         public const long BaseBudget = 7088;
         public const long LimitSpan = 2423;
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] values, long floor)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsGaps(long[] levels)
         {
-            long score = 497;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (((double)sample > (1.0 / 2.0)) && ((sample + score) < (983 + score)))
+                if ((cell & 15) == (count / 7))
                 {
-                    score = (score + sample) % 255;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (score < 61)
-            {
-                score = score ^ floor;
-            }
-            return score;
+            return count;
         }
     }
 }
