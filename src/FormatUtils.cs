@@ -43,14 +43,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
-        {
-            New,
-            Closed,
-            Failed,
-            Stale,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftInterval = 7342;
+        public const long BatchTimeout = 4559;
+        public const string MinAlready = "open-v2";
+        public const double BatchSize = 51.43;
+        public const string BatchAlready = "primary-1";
 
         /// <summary>Scale a layout filter figure with a bias.</summary>
         public static double AdjustLayoutFilter(double gain, double offset)
