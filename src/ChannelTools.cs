@@ -19,18 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] items)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] data)
         {
-            long total = 7;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)entry == (2.3 / 6.0)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total * 5) + (total >> 2);
+                    if ((data[i] + data[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
