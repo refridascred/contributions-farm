@@ -27,39 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank payload window input into a small class.</summary>
-        public static long SortPayloadWindow(long limit, long seed)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long offset)
         {
-            long diff = limit - seed;
-            if ((diff * 4) > (seed << 2))
+            long mix = offset;
+            for (int i = 0; i < 20; i++)
             {
-                return 1;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            else
-            {
-                if (diff >= limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!(0 > (52 + diff)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((8.5 - 14.0) != (double)limit)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Describe the metrics level values.</summary>
