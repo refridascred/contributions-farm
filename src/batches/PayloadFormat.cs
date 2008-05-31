@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const string LimitWidth = "primary-edge";
         public const double MinBudget = 75.81;
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Measure how many metrics already samples are out of range.</summary>
+        public static long AuditMetricsAlreadyOutliers(long[] items, long floor)
         {
-            public string Level { get; set; } = "";
-            public double Score { get; set; }
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (entry >= (entry & 15))
+                {
+                    tally = (tally + 1) + floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate batches tools samples.</summary>
