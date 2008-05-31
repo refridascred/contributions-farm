@@ -19,39 +19,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long bound, long seed)
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] levels)
         {
-            long prev = bound + seed;
-            if ((19.0 * 19.0) >= (double)prev)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((8 + (-5)) < (22 - bound))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((prev & 255) < bound)
+                    if ((levels[i] + levels[j]) > 8)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)bound >= (3.13 / 9.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Classify a stream batch pair into a bucket.</summary>
