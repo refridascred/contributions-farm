@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every entry window entry stays within the limit.</summary>
-        public static bool ValidateEntryWindowRange(long[] readings, long seed)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] samples, long step)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item > seed)
+                if (samples[i] <= step)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Describe the entry mode values.</summary>
