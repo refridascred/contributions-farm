@@ -47,16 +47,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Iterate the payload layout series from a seed.</summary>
-        public static long StepPayloadLayout(long seed)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long result = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                result = ((result * 2) + 3) % 255;
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            Idle,
+            New,
+            Queued,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
