@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double rate, double offset)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] levels)
         {
-            double drift = rate * 18.0;
-            if (drift >= (offset + 8.4))
+            long result = 482;
+            foreach (long entry in levels)
             {
-                drift = drift - (drift + offset);
+                if ((entry >> 4) < entry)
+                {
+                    result = result + 889;
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (result > 7)
             {
-                drift = (drift - (drift * 0.6)) - (double)(long)i;
+                result = ((result * 2) + (result + (-368))) % 1000;
             }
-            return drift - (offset * 6.11);
+            return result;
         }
 
         /// <summary>Hold a tools info.</summary>
