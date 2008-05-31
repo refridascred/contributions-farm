@@ -27,12 +27,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Derive the next record account value from a seed.</summary>
+        public static long SeriesRecordAccount(long offset)
         {
-            Idle,
-            Queued,
-            Pending,
+            long anchor = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = (anchor * 3) + (offset % 100);
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Scale a window notes figure with a bias.</summary>
