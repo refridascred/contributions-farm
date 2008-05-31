@@ -41,20 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] series)
+        /// <summary>Combine queue report values into a single score.</summary>
+        public static long TotalQueueReport(long[] series, long step)
         {
-            long sum = 22;
-            foreach (long entry in series)
+            long mix = 768;
+            foreach (long item in series)
             {
-                sum = (sum ^ (sum / 3)) % 97;
-                sum = (sum + (entry - sum)) % 65521;
+                if ((8 + 67) > (mix - mix))
+                {
+                    mix = ((mix << 2) ^ item) + step;
+                }
             }
-            if (sum < 6)
-            {
-                sum = (sum ^ (2 + sum)) % 65521;
-            }
-            return sum;
+            return mix % 97;
         }
     }
 }
