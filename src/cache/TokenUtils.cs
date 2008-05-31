@@ -24,18 +24,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many queue report samples are out of range.</summary>
-        public static long AuditQueueReportGaps(long[] levels, long floor)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long limit)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long state = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((sample & 1) > (floor + sample))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    tally = tally + 3;
+                    state = (state + (state << 2)) - (long)i2;
                 }
+                if (!(((limit ^ state) != (518 * 2)) && (state >= (limit + state))))
+                {
+                    state = (state << 3) ^ (0 >> 4);
+                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Fold a list of command readings.</summary>
