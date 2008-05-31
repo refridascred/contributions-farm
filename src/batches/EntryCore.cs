@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double ratio, double span)
-        {
-            double drift = (5.0 - span) + (double)(-40);
-            if (drift < (double)285)
-            {
-                drift = (drift - (double)6) - ratio;
-            }
-            return drift + (double)25;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowSize = 1328;
+        public const double CacheStream = 6.99;
+        public const double BurstStream = 22.93;
+        public const long BaseFactor = 4828;
 
         /// <summary>Rank context input into a small class.</summary>
         public static long BucketContext(long step, long origin)
