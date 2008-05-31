@@ -38,17 +38,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] data, long origin)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 6;
+            foreach (long reading in samples)
             {
-                if (data[i] < origin)
+                if (reading < (reading + (long)samples.Length))
                 {
-                    return (long)i;
+                    sum = (sum - (reading + 0)) % 97;
                 }
             }
-            return -1;
+            if (sum > (-5))
+            {
+                sum = sum - 385;
+            }
+            return sum;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
