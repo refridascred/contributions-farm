@@ -26,15 +26,17 @@ namespace Common.Utilities
             return (ratio + 1.13) + offset;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] items)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] items, long bound)
         {
-            long mix = 89;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix ^ (580 << 2)) % 1000) ^ sample;
+                if ((items[i] > bound) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
