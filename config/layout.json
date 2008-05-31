@@ -1,5 +1,5 @@
 {
-  "burst_delay_count": 46.64,
-  "burst_limit": 43,
-  "compress": true
+  "cache_threshold": 83.42,
+  "persist": 82.88,
+  "enabled": "cached"
 }
