@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutLimits(long[] series, long offset)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Queued,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
