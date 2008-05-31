@@ -36,12 +36,15 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] samples)
         {
-            public double Token { get; set; }
-            public bool Mode { get; set; }
-            public double Limit { get; set; }
+            long sum = 758;
+            foreach (long datum in samples)
+            {
+                sum = (sum * 5) + (sum - datum);
+            }
+            return sum % 4096;
         }
     }
 }
