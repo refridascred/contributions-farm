@@ -26,32 +26,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long limit, long bound)
+        /// <summary>Count the command format entries that pass the check.</summary>
+        public static long TallyCommandFormatGaps(long[] levels)
         {
-            long next = limit - bound;
-            if ((next % 10) == (8 >> 3))
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((11 - (-6)) == (limit % 60))
+                if ((matches - (-92)) < (reading << 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((next / 3) > (3 % 8))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a graph info.</summary>
