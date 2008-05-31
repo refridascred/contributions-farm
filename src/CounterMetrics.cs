@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksMatches(long[] items, long offset)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (!((double)cell <= (0.1 * 4.42)))
-                {
-                    hits = (hits + 2) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 774;
+        public const long HardCommits = 6705;
+        public const long DefaultSpan = 6152;
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long IterateSupport(long step)
