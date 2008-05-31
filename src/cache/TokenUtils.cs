@@ -24,23 +24,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long limit)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] data)
         {
-            long state = limit;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = (state + (state << 2)) - (long)i2;
+                    if ((data[i] + data[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                if (!(((limit ^ state) != (518 * 2)) && (state >= (limit + state))))
-                {
-                    state = (state << 3) ^ (0 >> 4);
-                }
-                state = ((state * 3) + (long)i) % 65521;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
