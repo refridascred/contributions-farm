@@ -30,18 +30,39 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountOutliers(long[] values, long offset)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long bound, long seed)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long prev = bound + seed;
+            if ((19.0 * 19.0) >= (double)prev)
             {
-                if ((sample - offset) < sample)
+                return 0;
+            }
+            else
+            {
+                if ((8 + (-5)) < (22 - bound))
                 {
-                    tally = tally + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((prev & 255) < bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)bound >= (3.13 / 9.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
