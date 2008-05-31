@@ -1,13 +1,6 @@
 {
-  "soft_timeout_s": {
-    "batch_timeout": 69.48,
-    "default_retries": "green",
-    "context_ttl": "strict",
-    "base_interval_count": 16.52,
-    "batches_retries": "fallback"
-  },
-  "flush_depth_pct": 6652,
-  "idle_capacity": [342, 46, 161],
-  "report_threshold": true,
-  "metrics_limit": 4.73
+  "filter_depth": 0.91,
+  "format_timeout": 30,
+  "retry_window_pct": 60,
+  "enabled": "primary"
 }
