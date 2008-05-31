@@ -51,17 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] levels, long floor)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterMatches(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (levels[i] <= floor)
+                if ((matches / 9) >= (matches >> 2))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - item;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Find the first queue schema entry that matches the target.</summary>
