@@ -15,19 +15,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of farm channel readings.</summary>
-        public static long TallyFarmChannel(long[] data, long target)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long acc = 0;
-            foreach (long cell in data)
-            {
-                acc = (acc << 3) ^ cell;
-            }
-            if (acc < 6)
-            {
-                acc = ((acc * 2) + (target % 97)) % 65521;
-            }
-            return acc;
+            public string Total { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Accumulate command token samples.</summary>
