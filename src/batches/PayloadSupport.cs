@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] series, long bound)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteLimits(long[] levels, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if ((series[i] <= bound) && ((series[i] % 3) != 0))
+                if (item != seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Describe the entry mode values.</summary>
