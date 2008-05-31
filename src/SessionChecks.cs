@@ -66,25 +66,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long bound, long target)
-        {
-            long step = bound - target;
-            if (step > (target - bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target * 3) == (bound + bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowFactor = 6763;
+        public const double HardSpan = 67.65;
+        public const string StepScore = "latest-edge";
     }
 }
