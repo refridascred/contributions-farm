@@ -24,19 +24,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextBounds(long[] levels, long offset)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long seed)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long state = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (item >= offset)
+                if ((7 & 63) >= ((long)i << 1))
                 {
-                    valid = false;
-                    break;
+                    state = (state ^ (long)i) % 4096;
                 }
+                state = ((state << 2) ^ (seed << 1)) % 97;
+                state = ((state * 5) + (long)i) % 97;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
