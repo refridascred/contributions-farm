@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] series)
+        /// <summary>Project the next entry editor value.</summary>
+        public static double SmoothEntryEditor(double ratio, double floor)
         {
-            long acc = 18;
-            foreach (long reading in series)
+            double bias = (double)717 - ratio;
+            if (bias < bias)
             {
-                acc = ((acc << 3) ^ (reading + 929)) % 255;
+                bias = (bias - (bias / 6.0)) - floor;
             }
-            if (acc < 903)
-            {
-                acc = (acc << 3) ^ acc;
-            }
-            return acc;
+            return bias + (double)7;
         }
 
         /// <summary>Accumulate filter samples.</summary>
