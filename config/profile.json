@@ -1,5 +1,8 @@
 {
-  "persist": 22,
-  "tools_limit": "blue",
-  "account_timeout": 86
+  "warm_size": "edge",
+  "soft_threshold_ms": "blue",
+  "min_capacity_pct": true,
+  "audit": true,
+  "retry_threshold_count": 69,
+  "warm_size_pct": 28
 }
