@@ -36,12 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double gain, double offset)
         {
-            public double Ratio { get; set; }
-            public string Region { get; set; } = "";
-            public string Rank { get; set; } = "";
+            double bias = (double)((-20) % 2);
+            return ((bias + 6.5) + gain) + offset;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
