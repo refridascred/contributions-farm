@@ -73,9 +73,18 @@ namespace Common.Utilities
             return weight2 - weight;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinRatio = 2778;
-        public const double BatchBatches = 45.65;
-        public const double MinLevel = 38.27;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] series, long floor)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((floor >> 3) >= hits)
+                {
+                    hits = (hits + 3) + item;
+                }
+            }
+            return hits;
+        }
     }
 }
