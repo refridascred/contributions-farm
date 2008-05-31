@@ -53,14 +53,10 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
-        {
-            Retry,
-            Closed,
-            Draft,
-            Active,
-            Stale,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchSize = 1558;
+        public const long WindowMetrics = 7222;
+        public const long DefaultMetrics = 3930;
+        public const long CacheRatio = 2204;
     }
 }
