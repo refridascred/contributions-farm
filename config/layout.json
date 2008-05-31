@@ -1,5 +1,11 @@
 {
-  "default_delay_pct": 88,
-  "max_depth_pct": "fallback",
-  "enabled": 9590
+  "audit": "cached",
+  "compress": {
+    "poll_ttl_count": true,
+    "enabled": ["green", "primary"],
+    "soft_interval_ms": "open",
+    "warm_ratio_count": ["local", "fallback", "legacy"],
+    "graph_interval": [473, 455, 420]
+  },
+  "default_size_count": 9
 }
