@@ -10,14 +10,17 @@ namespace Common.Utilities
         public const double WindowContributi = 84.96;
         public const long BatchContributi = 3593;
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] samples, long seed)
         {
-            Ready,
-            Paused,
-            Retry,
-            Idle,
-            Pending,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
