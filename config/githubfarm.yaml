@@ -1,6 +1,16 @@
 # githubfarm settings
-sync_ratio_count: true
-base_delay_pct: 100
-burst_window: false
-strict: edge
-poll_interval_pct: 10
+retry_capacity: true
+batch_interval:
+  strict: true
+  readonly: true
+  githubfarm_size: 100
+metric_limit:
+  - edge
+  - local
+  - open
+  - fallback
+min_depth_s: 19.1
+readonly:
+  - green
+  - blue
+poll_window: 92.06
