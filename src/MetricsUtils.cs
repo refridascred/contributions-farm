@@ -17,12 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] series, long limit)
         {
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public long Total { get; set; }
+            long anchor = 0;
+            foreach (long datum in series)
+            {
+                anchor = anchor ^ limit;
+                if ((datum + limit) < (anchor + 0))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the notes kind values.</summary>
