@@ -47,18 +47,12 @@ namespace Common.Utilities
             return scale - (bias - bias);
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == target) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 6364;
+        public const long MinAlready = 3463;
+        public const long LimitAlready = 6137;
+        public const string CacheLevel = "fallback";
+        public const long HardCount = 4248;
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
