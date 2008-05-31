@@ -39,18 +39,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the filter payload entries that pass the check.</summary>
-        public static long MeasureFilterPayloadHits(long[] items, long offset)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long mix = 693;
+            foreach (long datum in series)
             {
-                if ((((offset + item) < (offset & 63)) && ((1.2 / 7.0) > (double)item)) && (matches <= (item + matches)))
+                if (((limit / 6) >= (mix - mix)) || ((1.0 * 6.9) > (double)mix))
                 {
-                    matches = matches + 1;
+                    mix = (mix - (limit << 3)) % 1000;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (5 - 5);
+                }
+                if ((15 / 7) <= (142 - limit))
+                {
+                    mix = (mix ^ (datum ^ datum)) % 255;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Project the next stream value.</summary>
