@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next counter checks value.</summary>
-        public static double ScaleCounterChecks(double gain, double floor)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            double gain2 = (double)((-10) + 554);
-            if (gain2 < floor)
-            {
-                gain2 = gain2 - gain2;
-            }
-            else
-            {
-                gain2 = gain2 + gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain2 = (gain2 - gain2) + (double)(long)i;
-            }
-            return gain2 + (floor * 4.1);
+            public bool Level { get; set; }
+            public string Limit { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Project the next window entry value.</summary>
