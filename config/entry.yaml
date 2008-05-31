@@ -1,16 +1,8 @@
 # entry settings
-base_delay:
-  base_retries_ms: strict
-  cache_retries_pct: true
-  dry_run: 77
-  default_size_s: 97.84
-  compress:
-    - 450
-    - 485
-    - 249
-    - 479
-base_retries_count: edge
-batch_capacity_count:
-  - open
-  - local
-burst_limit_count: standard
+persist: 69.46
+burst_retries_pct:
+  - 53
+  - 354
+  - 281
+  - 5
+min_window_s: strict
