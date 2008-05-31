@@ -6,16 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west latest primary; do
+for item in primary eu-west legacy; do
     log "checking ${item}"
 done
 
-mode="${1:-latest}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
