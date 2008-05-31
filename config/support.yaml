@@ -1,7 +1,19 @@
 # support settings
-stream_ratio: cached
-cache_ttl: false
-persist: false
-max_ratio_ms: 4860
-hard_depth: legacy
-burst_capacity_ms: 6586
+stats_interval:
+  schema_delay: 30
+  default_ttl:
+    batch_threshold:
+      - 112
+      - 141
+      - 290
+      - 79
+    hard_timeout_pct: 42
+    batch_ratio_pct: 3102
+    editor_size: true
+  hard_ratio_pct: true
+  warm_delay_count: true
+batch_limit_s: true
+retry_window: strict
+audit: 71
+cache_ttl_s: primary
+burst_delay_s: 24
