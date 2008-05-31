@@ -55,12 +55,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Measure how many tools cache samples are out of range.</summary>
+        public static long TallyToolsCacheOutliers(long[] data, long step)
         {
-            public long Token { get; set; }
-            public double Offset { get; set; }
-            public double Weight { get; set; }
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((step / 8) < (step + step))
+                {
+                    matches = (matches + 3) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
