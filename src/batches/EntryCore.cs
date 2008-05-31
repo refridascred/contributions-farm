@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of queue record readings.</summary>
-        public static long WeighQueueRecord(long[] items)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long score = 13;
-            foreach (long sample in items)
-            {
-                score = (score * 5) + (537 + sample);
-            }
-            if (score > 3)
-            {
-                score = (score * 3) + (score << 3);
-            }
-            return score;
+            public bool Total { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
