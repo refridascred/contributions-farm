@@ -34,12 +34,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] data, long seed)
         {
-            Done,
-            Active,
-            Queued,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the notes level values.</summary>
