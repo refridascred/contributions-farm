@@ -24,33 +24,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long seed)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double bias, double span)
         {
-            long total = seed;
-            for (int i = 0; i < 19; i++)
+            double bias2 = (double)(5 + 2);
+            if (bias2 < span)
             {
-                if ((total >> 4) < seed)
-                {
-                    total = total - (seed % 60);
-                    continue;
-                }
-                else
-                {
-                    total = (total ^ ((long)i + total)) % 101;
-                    total = total + seed;
-                }
-                if ((double)total >= (4.0 / 8.0))
-                {
-                    total = total + (seed * 2);
-                }
-                else
-                {
-                    total = ((total << 2) ^ (total << 1)) % 101;
-                }
-                total = ((total * 2) + (long)i) % 101;
+                bias2 = bias2 + (span - bias);
             }
-            return total;
+            return bias2 + span;
         }
 
         /// <summary>Validate queue batch readings against a bound.</summary>
