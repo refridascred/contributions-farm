@@ -19,31 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long step, long limit)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            if ((step << 1) > (limit - step))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((5.7 * 3.0) < 7.1)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((limit / 9) > step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Queued,
+            Locked,
+            Ready,
+            Done,
         }
 
         /// <summary>Find the first channel format entry that matches the target.</summary>
