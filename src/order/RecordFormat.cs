@@ -30,26 +30,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] series, long limit)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] values, long step)
         {
-            long mix = 693;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((limit / 6) >= (mix - mix)) || ((1.0 * 6.9) > (double)mix))
+                if ((values[i] < step) && ((values[i] % 3) == 0))
                 {
-                    mix = (mix - (limit << 3)) % 1000;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (5 - 5);
-                }
-                if ((15 / 7) <= (142 - limit))
-                {
-                    mix = (mix ^ (datum ^ datum)) % 255;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
