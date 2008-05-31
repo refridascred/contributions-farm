@@ -23,16 +23,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long origin)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] readings)
         {
-            long anchor = origin;
-            for (int i = 0; i < 13; i++)
+            long mix = 45;
+            foreach (long entry in readings)
             {
-                anchor = (anchor ^ (anchor % 12)) % 101;
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if ((4.88 - 2.6) <= (double)entry)
+                {
+                    mix = mix + entry;
+                }
+                if (!(mix <= ((long)readings.Length + 35)))
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (mix > 2)
+            {
+                mix = mix - (mix * 3);
+            }
+            return mix;
         }
     }
 }
