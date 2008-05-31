@@ -30,19 +30,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double ratio, double floor)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesMatches(long[] values)
         {
-            double gain = floor;
-            if (gain >= (double)70)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                gain = (gain - (double)1) - ratio;
+                if ((entry + entry) >= (tally ^ tally))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain + (double)82;
+            return tally;
         }
 
         /// <summary>Hold a already summary.</summary>
