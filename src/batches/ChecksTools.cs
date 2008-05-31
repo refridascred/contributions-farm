@@ -20,17 +20,13 @@ namespace Common.Utilities
             return drift - (offset * 6.11);
         }
 
-        /// <summary>Find the first checks route entry that matches the target.</summary>
-        public static long FindChecksRouteIndex(long[] data, long origin)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public bool Level { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the stats class values.</summary>
