@@ -15,13 +15,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] levels, long offset)
         {
-            Queued,
-            Draft,
-            Pending,
-            Done,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
