@@ -1,8 +1,7 @@
 {
-  "session_delay": "fallback",
-  "strict": "green",
-  "cache_window_s": 7823,
-  "route_threshold": "staging",
-  "persist": "blue",
-  "warm_depth_s": "open"
+  "audit": "standard",
+  "hard_size_pct": "blue",
+  "warm_depth_ms": "eu-west",
+  "batch_timeout": "local",
+  "route_capacity": false
 }
