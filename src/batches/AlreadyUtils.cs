@@ -29,13 +29,17 @@ namespace Common.Utilities
             return ((load - (double)189) + ratio) + span;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] data, long target)
         {
-            public long Ratio { get; set; }
-            public double Token { get; set; }
-            public double Offset { get; set; }
-            public string Score { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine report values into a single score.</summary>
