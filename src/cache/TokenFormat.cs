@@ -21,15 +21,21 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ProjectOrder(double rate, double span)
+        /// <summary>Match up checks commits samples.</summary>
+        public static long PairChecksCommitsCount(long[] series)
         {
-            double load = rate;
-            if (load <= (double)89)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = (load - load) - span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return load + (17.0 - rate);
+            return tally;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
