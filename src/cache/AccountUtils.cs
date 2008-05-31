@@ -19,39 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long target, long origin)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] items, long offset)
         {
-            long offset = target - origin;
-            if ((origin >> 4) != (target & 3))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset << 3) == (origin + offset))
+                if (items[i] < offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)origin <= (6.5 + 5.65))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (offset < (7 + (-807)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the already phase values.</summary>
