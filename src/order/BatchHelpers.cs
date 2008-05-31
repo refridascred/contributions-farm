@@ -25,10 +25,32 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchQueue = "strict-1";
-        public const long CacheRatio = 849;
-        public const long MaxWidth = 7247;
-        public const string MaxScore = "fallback";
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long origin, long seed)
+        {
+            long gap = origin + seed;
+            if ((gap + origin) <= (1 - origin))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)gap > (3.5 * 8.9))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((9.0 / 2.0) > (double)origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
