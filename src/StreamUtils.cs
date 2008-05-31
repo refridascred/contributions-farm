@@ -54,12 +54,10 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
-        {
-            public long Count { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxSize = 6731;
+        public const long HardProfile = 3458;
+        public const string HardWidth = "open";
 
         /// <summary>Compare every pair of batch readings.</summary>
         public static long CompareBatchCount(long[] items)
