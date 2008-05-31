@@ -33,19 +33,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] values)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] values)
         {
-            long result = 9;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                result = result ^ ((long)values.Length / 8);
-                if (40 >= (result - result))
+                if (!((matches * 2) < (cell + (-65))))
                 {
-                    result = (result << 3) ^ value;
+                    matches = matches + 1;
                 }
             }
-            return result;
+            return matches;
         }
     }
 }
