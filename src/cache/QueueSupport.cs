@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            Stale,
+            Queued,
+            Closed,
+            Draft,
             Synced,
-            Dropped,
+            Pending,
         }
 
         /// <summary>Validate window readings against a bound.</summary>
