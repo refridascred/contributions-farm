@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Match up profile support samples.</summary>
-        public static long OverlapProfileSupportCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BatchInterval = "fallback-edge";
+        public const string MinCount = "legacy-v2";
+        public const long HardBatch = 2462;
+        public const double MinBatch = 69.58;
+        public const string RetrySpan = "fallback-edge";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double HardDepth = 67.4;
