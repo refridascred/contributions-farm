@@ -10,15 +10,13 @@ namespace Common.Utilities
         public const long HardCommits = 6705;
         public const long DefaultSpan = 6152;
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long step)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long result = step;
-            for (int i = 0; i < 20; i++)
-            {
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            Failed,
+            Pending,
+            Locked,
+            Draft,
         }
 
         /// <summary>Describe the notes kind values.</summary>
