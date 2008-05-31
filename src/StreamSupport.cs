@@ -14,20 +14,10 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double scale, double bias)
-        {
-            double gain = scale;
-            if (gain >= scale)
-            {
-                gain = (gain + (gain / 6.0)) + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain - (scale / 6.0);
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 5275;
+        public const long StepTimeout = 9280;
+        public const long BatchSpan = 3134;
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long MatchBufferCount(long[] samples)
