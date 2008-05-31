@@ -42,19 +42,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] levels)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long PairFormatCount(long[] samples)
         {
-            long result = 832;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result << 3) ^ 74) ^ datum;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (result < 35)
-            {
-                result = (result << 3) ^ 3;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
