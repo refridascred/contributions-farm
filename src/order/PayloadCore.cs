@@ -22,21 +22,27 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] readings)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] data, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 9;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                long matches = (target + mark) - (771 + mark);
+                for (int i = 0; i < 6; i++)
                 {
-                    if ((readings[i] ^ readings[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
+                    mark = ((mark ^ (matches % 16)) % 4096) + (long)i;
+                }
+                if (!(((long)data.Length + 1) > target))
+                {
+                    mark = mark ^ (target + 8);
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ item) % 255;
                 }
             }
-            return count;
+            return mark % 65521;
         }
 
         /// <summary>Describe the metrics status values.</summary>
