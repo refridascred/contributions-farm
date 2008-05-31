@@ -18,23 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] readings)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] items)
         {
-            long mix = 92;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix ^ (7 % 8)) % 4096;
-                if ((mix - sample) != (mix << 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = mix - (mix + 56);
+                    if ((items[i] + items[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mix > 8)
-            {
-                mix = mix - (mix * 5);
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Validate queue batch readings against a bound.</summary>
