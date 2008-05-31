@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderBounds(long[] series, long offset)
-        {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 1633;
+        public const long BatchFactor = 2017;
+        public const long LimitInterval = 4252;
+        public const long IdleAlready = 8154;
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long FindChecksIndex(long[] samples, long offset)
