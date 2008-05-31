@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftWidth = 1230;
-        public const string LimitCount = "local-1";
-        public const double MinAccount = 88.33;
-        public const long LimitFactor = 9094;
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long bound, long limit)
+        {
+            if (((5.78 * 8.21) == (double)bound) || (bound > (bound / 8)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((4.0 * 3.2) == (double)limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((7 & 127) >= bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of token readings.</summary>
         public static long WeighToken(long[] samples)
