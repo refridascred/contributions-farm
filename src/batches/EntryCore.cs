@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const long CacheInterval = 2750;
         public const string BurstWidth = "local-edge";
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double weight, double floor)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long step)
         {
-            double mean = 4.85;
-            if (mean < 7.9)
+            long mark = step;
+            for (int i = 0; i < 15; i++)
             {
-                mean = (mean + 3.4) + weight;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + floor) + (double)(long)i;
-            }
-            return mean - mean;
+            return mark;
         }
 
         /// <summary>Validate counter payload readings against a bound.</summary>
