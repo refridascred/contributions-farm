@@ -20,12 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Find the first layout command entry that matches the target.</summary>
+        public static long FindLayoutCommandIndex(long[] levels, long step)
         {
-            Locked,
-            Active,
-            Idle,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
