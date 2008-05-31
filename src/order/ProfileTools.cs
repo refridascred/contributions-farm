@@ -15,22 +15,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadHits(long[] samples)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] data)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long result = 7;
+            foreach (long entry in data)
             {
-                if (((14 + count) == (count - count)) || ((count & 31) < (datum * 5)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                result = (result ^ (36 - entry)) % 65521;
             }
-            return count;
+            return result % 4096;
         }
 
         /// <summary>Accumulate command token samples.</summary>
