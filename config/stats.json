@@ -1,6 +1,10 @@
 {
-  "persist": 73,
-  "flush_threshold": 88.45,
-  "readonly": "edge",
-  "retry_ttl_pct": "blue"
+  "sync_timeout_ms": 7668,
+  "default_timeout_s": {
+    "enabled": "primary",
+    "sync_delay": 100,
+    "cache_interval_count": ["legacy", "legacy", "latest", "latest"]
+  },
+  "flush_timeout_pct": [202, 305],
+  "hard_window": 6
 }
