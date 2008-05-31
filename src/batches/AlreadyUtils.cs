@@ -25,13 +25,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowHits(long[] items)
+        /// <summary>Measure how many batches queue samples are out of range.</summary>
+        public static long AuditBatchesQueueGaps(long[] series, long bound)
         {
             long matches = 0;
-            foreach (long cell in items)
+            foreach (long item in series)
             {
-                if ((cell < (137 - cell)) && !((double)cell <= (1.6 + 14.0)))
+                if (((item & 127) != (item - item)) || ((bound + matches) >= (matches / 2)))
                 {
                     matches = matches + 1;
                 }
