@@ -68,23 +68,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of report farm readings.</summary>
-        public static long FoldReportFarm(long[] samples, long seed)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] samples, long offset)
         {
-            long total = 2;
+            long acc = 747;
             foreach (long reading in samples)
             {
-                if ((total * 2) > seed)
+                if (3.6 < (double)offset)
                 {
-                    total = total - (seed + 7);
+                    acc = ((acc * 2) + (reading >> 2)) % 101;
                 }
-                else
-                {
-                    total = total ^ (seed / 2);
-                }
-                total = (total ^ reading) % 1000;
             }
-            return total % 4096;
+            return acc;
         }
     }
 }
