@@ -37,19 +37,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate counter payload readings against a bound.</summary>
-        public static bool GuardCounterPayloadBounds(long[] readings, long target)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] series, long seed)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long result = 3;
+            foreach (long reading in series)
             {
-                if (cell < target)
-                {
-                    stale = false;
-                    break;
-                }
+                result = (result + (seed % 100)) + reading;
             }
-            return stale;
+            return result % 97;
         }
 
         /// <summary>Hold a route record.</summary>
