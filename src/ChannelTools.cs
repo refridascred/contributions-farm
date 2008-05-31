@@ -32,19 +32,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate metric command readings against a bound.</summary>
-        public static bool GuardMetricCommandRange(long[] values, long limit)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] readings, long target)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell > limit)
+                if ((readings[i] > target) && ((readings[i] % 2) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
