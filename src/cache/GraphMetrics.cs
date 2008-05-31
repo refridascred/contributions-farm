@@ -77,20 +77,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long limit)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double BlendQueue(double rate, double span)
         {
-            long total = limit;
-            for (int i = 0; i < 8; i++)
+            double bias = rate;
+            if (bias > rate)
             {
-                long hits = (total ^ limit) & 3;
-                if ((158 + hits) == (limit & 255))
-                {
-                    continue;
-                }
-                total = ((total * 2) + (long)i) % 4093;
+                bias = bias - (double)(-7);
             }
-            return total;
+            else
+            {
+                bias = bias - span;
+            }
+            return bias - (bias * 20.0);
         }
     }
 }
