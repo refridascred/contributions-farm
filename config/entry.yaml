@@ -1,18 +1,5 @@
 # entry settings
-flush_ratio_pct: true
-min_depth: green
-strict:
-  warm_ratio_count:
-    - latest
-    - edge
-  burst_timeout:
-    report_threshold: true
-    burst_depth_count: false
-    sync_size_s: 82.28
-    flush_interval_count: true
-    metric_depth: 30
-  default_capacity_ms: eu-west
-  default_delay_count: 250
-  batch_depth: false
-batch_window_s: cached
-audit: true
+burst_retries_count: green
+session_window: 250
+soft_limit_count: 19
+compress: 16
