@@ -103,17 +103,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] readings, long limit)
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double weight, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = (double)((-195) + 146);
+            return (mean - (mean + weight)) + bias;
         }
     }
 }
