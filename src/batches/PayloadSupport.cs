@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many token batches samples are out of range.</summary>
-        public static long MeasureTokenBatchesOutliers(long[] series, long floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksMatches(long[] series, long bound)
         {
             long seen = 0;
-            foreach (long sample in series)
+            foreach (long cell in series)
             {
-                if (8.41 > (double)floor)
+                if ((double)bound >= (8.8 * 5.0))
                 {
-                    seen = (seen + 1) + sample;
+                    seen = (seen + 1) - cell;
                 }
                 else
                 {
