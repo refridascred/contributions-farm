@@ -23,10 +23,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double RetryContext = 11.92;
-        public const long WindowContext = 9932;
-        public const long MinBudget = 5177;
+        /// <summary>Audit batches checks readings against a rule.</summary>
+        public static long AuditBatchesChecksHits(long[] samples)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (((item > seen) || (item < (seen - 7))) && ((19.0 / 5.0) > (double)item))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a checks payload sample.</summary>
         public static long LookupChecksPayloadIndex(long[] data, long limit)
