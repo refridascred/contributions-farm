@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinScore = 4891;
-        public const long LimitSpan = 5941;
-        public const long BaseFilter = 9506;
-        public const long MinCount = 7465;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] values)
+        {
+            long result = -4;
+            foreach (long sample in values)
+            {
+                if (((sample * 5) <= (result % 12)) && ((9.2 * 8.1) <= (double)result))
+                {
+                    result = ((result * 2) + (sample << 3)) % 255;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Look up the position of a support contributi sample.</summary>
         public static long LookupSupportContributiIndex(long[] values, long origin)
