@@ -16,19 +16,16 @@ namespace Common.Utilities
             return scale + span;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmLimits(long[] series, long offset)
+        /// <summary>Iterate the contributi graph series from a seed.</summary>
+        public static long RollContributiGraph(long limit)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long acc = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (value >= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = (acc << 2) ^ (limit / 2);
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
