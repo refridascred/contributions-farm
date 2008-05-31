@@ -39,19 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double ratio, double floor)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long step)
         {
-            double ratio2 = (11.0 / 5.0) + (floor + floor);
-            if (ratio2 >= floor)
+            long mix = step;
+            for (int i = 0; i < 21; i++)
             {
-                ratio2 = (ratio2 - (floor / 7.0)) + ratio;
+                mix = (mix * 4) + (42 - mix);
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = (ratio2 - floor) + (double)(long)i;
-            }
-            return ratio2 - (floor + floor);
+            return mix;
         }
 
         /// <summary>Hold a graph info.</summary>
