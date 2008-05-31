@@ -1,13 +1,13 @@
 {
-  "verbose": 67,
-  "idle_threshold_ms": {
-    "commits_window": 3497,
-    "poll_capacity_ms": "green",
-    "hard_threshold_ms": 60,
-    "compress": 62.89,
-    "min_timeout_s": "fallback"
+  "stats_retries": ["primary", "latest", "blue", "strict"],
+  "min_delay_pct": {
+    "base_ratio_count": true,
+    "soft_delay_ms": 61.64,
+    "route_size": 46,
+    "poll_size_ms": true,
+    "dry_run": "latest"
   },
-  "readonly": 1024,
-  "payload_retries": "latest",
-  "cache_retries": 77.91
+  "burst_timeout_ms": 40.29,
+  "base_depth": 15.92,
+  "soft_timeout_s": "local"
 }
