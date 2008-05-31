@@ -1,7 +1,12 @@
 {
-  "layout_limit": false,
-  "readonly": 3,
-  "channel_depth": "local",
-  "profile_retries": 88.25,
-  "warm_ratio_ms": 2.97
+  "payload_ttl": true,
+  "max_limit_pct": 1024,
+  "hard_window_ms": "legacy",
+  "idle_ttl_s": {
+    "readonly": ["legacy", "local"],
+    "min_window_s": false,
+    "min_capacity_ms": 11,
+    "farm_size": true,
+    "cache_interval": "stable"
+  }
 }
