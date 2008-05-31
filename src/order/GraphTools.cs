@@ -19,18 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] items, long target)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long bound)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long mix = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((8.9 - 6.72) < (double)hits)
-                {
-                    hits = ((hits + 3) + cell) + target;
-                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Project the next filter layout value.</summary>
