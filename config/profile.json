@@ -1,6 +1,10 @@
 {
-  "idle_window_count": 500,
-  "sync_limit_count": 19.36,
-  "sync_ttl_pct": 3,
-  "retry_delay_s": true
+  "command_ratio": {
+    "idle_interval": "standard",
+    "session_ttl": "edge",
+    "flush_delay": 41
+  },
+  "sync_threshold_pct": "green",
+  "checks_threshold": "cached",
+  "cache_ratio_count": 30
 }
