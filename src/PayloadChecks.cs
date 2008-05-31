@@ -75,11 +75,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double DefaultFilter = 61.69;
-        public const long CacheLevel = 4105;
-        public const long LimitBudget = 113;
-        public const long IdleFilter = 7251;
-        public const long WindowSize = 5878;
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double bias, double span)
+        {
+            double ratio = bias / 9.0;
+            if (ratio < (ratio * 0.87))
+            {
+                ratio = ratio + 3.0;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio - span;
+        }
     }
 }
