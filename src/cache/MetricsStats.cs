@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long offset)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long sum = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = (sum - (395 - (long)i)) % 1000;
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Adjust a filter reading.</summary>
