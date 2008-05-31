@@ -1,5 +1,6 @@
 {
-  "sync_timeout_ms": ["primary", "standard", "edge", "edge"],
-  "checks_depth": "edge",
-  "commits_ratio": 500
+  "idle_window_count": 500,
+  "sync_limit_count": 19.36,
+  "sync_ttl_pct": 3,
+  "retry_delay_s": true
 }
