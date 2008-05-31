@@ -30,11 +30,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchScore = 5214;
-        public const double HardCommand = 41.2;
-        public const string MinTimeout = "stable-edge";
-        public const long StepCommand = 8814;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((matches >= (-423)) && (((long)series.Length ^ reading) >= matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long SeriesCluster(long target)
