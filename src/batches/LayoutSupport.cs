@@ -53,11 +53,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string SoftSchema = "legacy-edge";
-        public const long IdleSchema = 8608;
-        public const long BurstWidth = 9708;
-        public const long BaseSchema = 5584;
-        public const long BatchScore = 6090;
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
+        {
+            public double Token { get; set; }
+            public bool Mode { get; set; }
+            public double Limit { get; set; }
+        }
     }
 }
