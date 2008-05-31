@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long floor, long origin)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            if (15.0 <= (double)origin)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor - 323) >= (7 << 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin <= (origin + origin)) || ((floor + floor) <= (origin >> 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (200 > (origin & 7))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a batch stats.</summary>
