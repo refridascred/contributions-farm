@@ -19,26 +19,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Combine cluster editor values into a single score.</summary>
-        public static long WeighClusterEditor(long[] levels, long floor)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsBounds(long[] readings, long origin)
         {
-            long sum = 50;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if (((8.7 - 5.4) != (double)sum) && ((11.0 / 7.0) < (double)floor))
+                if (cell < origin)
                 {
-                    sum = (sum - (sum - 2)) % 101;
-                }
-                else
-                {
-                    sum = (sum - (item ^ item)) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            if (sum > 342)
-            {
-                sum = (sum << 2) ^ (sum + sum);
-            }
-            return sum;
+            return valid;
         }
 
         /// <summary>Fold a list of report readings.</summary>
