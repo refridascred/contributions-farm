@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const string LimitSchema = "stable-v2";
         public const double BatchSchema = 83.83;
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= origin) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 8168;
+        public const long WindowCount = 8328;
+        public const long MinGithubfarm = 2322;
+        public const string BatchTimeout = "primary-edge";
 
         /// <summary>Match up graph samples.</summary>
         public static long CompareGraphCount(long[] values)
