@@ -53,19 +53,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorBounds(long[] levels, long bound)
+        /// <summary>Validate stream profile readings against a bound.</summary>
+        public static bool GuardStreamProfileLimits(long[] data, long step)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if (item >= bound)
+                if (value > step)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Define format limits and defaults.</summary>
