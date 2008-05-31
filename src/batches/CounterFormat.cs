@@ -28,16 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] levels)
         {
-            long result = floor;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                result = ((result * 3) + (850 - result)) % 65521;
-                result = ((result * 2) + (long)i) % 65521;
+                if (5.7 > (double)reading)
+                {
+                    seen = seen + 3;
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
