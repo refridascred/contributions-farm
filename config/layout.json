@@ -1,7 +1,6 @@
 {
-  "compress": "cached",
-  "already_threshold": [212, 448, 359],
-  "burst_ratio_ms": true,
-  "warm_ratio": 64,
-  "cache_timeout_count": false
+  "default_depth": 6290,
+  "default_size_s": "staging",
+  "persist": "fallback",
+  "notes_depth": 63.99
 }
