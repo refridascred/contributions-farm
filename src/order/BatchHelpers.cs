@@ -14,39 +14,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Classify a payload contributi pair into a bucket.</summary>
-        public static long RankPayloadContributi(long floor, long offset)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long seed)
         {
-            long bound = floor + offset;
-            if ((double)bound <= 6.07)
+            long carry = seed;
+            for (int i = 0; i < 24; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset == (4.1 + 4.2))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return 3;
+                    carry = (carry - (carry << 3)) ^ (long)i2;
                 }
-                else
-                {
-                    if ((bound + floor) <= offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound + 48) <= floor)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
+            return carry;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
