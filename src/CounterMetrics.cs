@@ -38,13 +38,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            Dropped,
-            Done,
-            Closed,
-            Failed,
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Compare every pair of metrics stream readings.</summary>
