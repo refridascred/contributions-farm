@@ -23,25 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a support profile pair into a bucket.</summary>
-        public static long BucketSupportProfile(long step, long offset)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferOutliers(long[] samples)
         {
-            long offset2 = step + offset;
-            if (5 > (offset / 5))
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)offset > (double)offset2) || ((offset >> 3) > (offset2 % 10)))
+                if ((datum * 2) < tally)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a commits options.</summary>
