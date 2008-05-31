@@ -30,11 +30,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftInterval = 1385;
-        public const double MaxSpan = 33.23;
-        public const long MaxFactor = 7011;
-        public const long RetryNotes = 8078;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MinSize = "strict-1";
+        public const long HardChannel = 5163;
+        public const double SoftBudget = 18.1;
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
