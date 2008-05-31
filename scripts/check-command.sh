@@ -6,22 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local stable primary; do
-    log "checking ${item}"
-done
-
-mode="${1:-blue}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=422
+log "limit is ${COMMAND_LIMIT}"
 
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 3))
+for i in $(seq 1 6); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
