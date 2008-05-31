@@ -34,14 +34,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            Queued,
-            Done,
-            Active,
-            Synced,
-            Draft,
+            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Classify a checks notes pair into a bucket.</summary>
