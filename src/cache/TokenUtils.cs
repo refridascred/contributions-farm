@@ -41,18 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] items)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (((datum < ((-6) ^ datum)) || ((datum * 4) < datum)) && ((2.9 / 4.0) >= (double)datum))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Offset { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
         }
     }
 }
