@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a report tools reading by value.</summary>
-        public static long LookupReportToolsIndex(long[] items, long offset)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Closed,
+            Done,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
