@@ -11,25 +11,22 @@ namespace Common.Utilities
         public const double BurstStream = 22.93;
         public const long BaseFactor = 4828;
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long step, long origin)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamGaps(long[] data)
         {
-            long offset = step + origin;
-            if (((origin * 5) >= (offset ^ offset)) && ((double)origin <= (8.6 + 3.0)))
+            long hits = 0;
+            foreach (long sample in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((318 - offset) > (step / 4))
+                if (((sample + hits) >= (hits * 2)) && ((double)hits == (7.9 / 9.0)))
                 {
-                    return 8;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    return 2;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
