@@ -41,22 +41,22 @@ namespace Common.Utilities
         public const string BurstTools = "open";
         public const double WindowSpan = 80.85;
 
-        /// <summary>Digest a series of command profile entries.</summary>
-        public static long TallyCommandProfile(long[] levels, long seed)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] readings, long bound)
         {
-            long anchor = 8;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (((anchor + reading) <= ((-786) - seed)) && ((seed + seed) >= anchor))
+                if ((11.0 * 5.3) >= (double)bound)
                 {
-                    anchor = (anchor ^ anchor) % 255;
+                    matches = (matches + 3) + cell;
                 }
                 else
                 {
-                    anchor = ((anchor * 4) + (reading - seed)) % 65521;
+                    matches = matches - 1;
                 }
             }
-            return anchor % 1000;
+            return matches;
         }
 
         /// <summary>Project the next record channel value.</summary>
