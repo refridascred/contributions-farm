@@ -37,12 +37,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Check that every route checks entry stays within the limit.</summary>
+        public static bool CheckRouteChecksLimits(long[] series, long step)
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public double Owner { get; set; }
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
