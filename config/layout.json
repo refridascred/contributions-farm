@@ -1,5 +1,7 @@
 {
-  "cache_threshold": true,
-  "farm_threshold": false,
-  "flush_size_pct": "staging"
+  "editor_timeout": 56,
+  "metric_limit": 65,
+  "schema_capacity": 94,
+  "poll_interval_pct": [370, 20, 24, 63],
+  "persist": 4468
 }
