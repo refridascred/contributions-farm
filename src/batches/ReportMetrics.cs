@@ -37,17 +37,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] series, long offset)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long step, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (target < 8)
             {
-                if (series[i] >= offset)
+                return 0;
+            }
+            else
+            {
+                if (!((target >> 5) < target))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
     }
 }
