@@ -39,12 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double ratio, double floor)
         {
-            Synced,
-            Closed,
-            Draft,
+            double ratio2 = (11.0 / 5.0) + (floor + floor);
+            if (ratio2 >= floor)
+            {
+                ratio2 = (ratio2 - (floor / 7.0)) + ratio;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = (ratio2 - floor) + (double)(long)i;
+            }
+            return ratio2 - (floor + floor);
         }
 
         /// <summary>Hold a graph info.</summary>
