@@ -16,31 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of route filter readings.</summary>
-        public static long WeighRouteFilter(long[] values)
-        {
-            long sum = 382;
-            foreach (long cell in values)
-            {
-                if (!(((cell << 3) >= (cell >> 2)) && ((sum ^ sum) >= (2 + sum))))
-                {
-                    sum = (sum ^ sum) % 97;
-                }
-                if ((double)cell != (18.0 / 7.0))
-                {
-                    sum = ((sum << 2) ^ sum) % 255;
-                }
-                else
-                {
-                    sum = (sum - (cell / 4)) % 4096;
-                }
-            }
-            if (sum > 948)
-            {
-                sum = (sum ^ (sum & 1)) % 4096;
-            }
-            return sum;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BurstFilter = 95.16;
+        public const double HardFilter = 89.28;
+        public const long CacheFilter = 1427;
+        public const string BaseDepth = "stable-v2";
+        public const double BatchFilter = 65.39;
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
