@@ -12,18 +12,23 @@ namespace Common.Utilities
         public const long HardToken = 9162;
         public const long MinToken = 8295;
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueOutliers(long[] values)
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double gain, double span)
         {
-            long tally = 0;
-            foreach (long value in values)
+            double scale = gain + (gain + span);
+            if (scale > (scale * 5.91))
             {
-                if ((6 * 5) > (value << 2))
-                {
-                    tally = tally + 1;
-                }
+                scale = scale + span;
             }
-            return tally;
+            else
+            {
+                scale = scale - (double)488;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (gain * 4.45)) + (double)(long)i;
+            }
+            return scale - gain;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
