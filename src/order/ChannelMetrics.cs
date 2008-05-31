@@ -16,21 +16,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] data)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                double drift = 17.0;
+                if (((double)limit <= drift) || (((long)i - limit) < ((long)i % 24)))
                 {
-                    if ((data[i] ^ data[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
+                    drift = drift - (double)limit;
                 }
+                if ((double)limit >= (drift - drift))
+                {
+                    break;
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Rank payload order input into a small class.</summary>
