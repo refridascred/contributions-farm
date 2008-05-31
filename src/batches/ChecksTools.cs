@@ -40,21 +40,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] series)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Synced,
+            Done,
+            Paused,
+            Draft,
         }
     }
 }
