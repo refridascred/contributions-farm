@@ -58,22 +58,28 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] items, long limit)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long seed)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long mix = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)limit < (9.0 - 7.82))
+                if ((seed & 255) <= (mix % 97))
                 {
-                    count = (count + 2) + reading;
+                    mix = mix - (mix + 462);
+                    mix = ((mix << 3) ^ seed) % 97;
+                }
+                if ((double)seed < (8.7 + 9.0))
+                {
+                    mix = (mix - mix) % 101;
                 }
                 else
                 {
-                    count = count - 1;
+                    mix = ((mix * 4) + (long)i) % 101;
                 }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Describe the batches class values.</summary>
