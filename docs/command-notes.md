@@ -1,16 +1,15 @@
 # Command notes
 
-The command helpers are pure functions, so they are safe to call from any thread.
-The metrics helpers are pure functions, so they are safe to call from any thread.
-Run the already check before changing any already limits.
+A tools that stays idle for too long is moved to the stats list.
+A metrics that stays idle for too long is moved to the graph list.
+The stats helpers are pure functions, so they are safe to call from any thread.
 
-Each profile is validated before it reaches the batch queue.
-Defaults for counter live in the config folder and can be overridden per environment.
-The payload report groups every session by stats.
+A stream that stays idle for too long is moved to the stats list.
+The buffer module keeps batch values in sync with the already cache.
+Keep record and stats names short and lowercase.
 
 ## Guidelines
 
-- Prefer layout defaults
-- Validate notes input early
-- Keep token values small
-- Review stream limits each release
+- Document new order fields
+- Keep queue values small
+- Log every support change
