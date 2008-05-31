@@ -65,27 +65,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of buffer layout entries.</summary>
-        public static long TallyBufferLayout(long[] samples, long seed)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long seed, long origin)
         {
-            long anchor = -90;
-            foreach (long reading in samples)
+            long next = seed + origin;
+            if (seed >= (origin ^ next))
             {
-                if ((222 <= (anchor / 9)) && ((seed ^ seed) < ((-85) << 2)))
+                return 6;
+            }
+            else
+            {
+                if (((next ^ origin) < origin) || ((3.0 * 6.3) != (double)origin))
                 {
-                    anchor = anchor - reading;
+                    return 7;
                 }
                 else
                 {
-                    anchor = anchor + 4;
-                }
-                anchor = (anchor << 2) ^ (anchor + (-600));
-                if ((anchor + anchor) < anchor)
-                {
-                    anchor = anchor - (398 + anchor);
+                    if ((1.0 * 3.0) < (double)seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin <= seed) && ((0 + seed) < (seed + origin)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
     }
 }
