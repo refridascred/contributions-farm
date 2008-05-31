@@ -21,12 +21,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            public bool Mode { get; set; }
-            public double Offset { get; set; }
-            public bool Level { get; set; }
+            Locked,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Measure how many tools counter samples are out of range.</summary>
