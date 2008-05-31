@@ -62,9 +62,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseInterval = 7745;
-        public const double BurstSpan = 45.32;
-        public const long BurstLevel = 2684;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordOutliers(long[] samples, long target)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (!((double)entry >= (5.8 - 9.55)) && (((20 & 1) >= seen) && (seen <= (entry >> 5))))
+                {
+                    seen = (seen + 2) - target;
+                }
+            }
+            return seen;
+        }
     }
 }
