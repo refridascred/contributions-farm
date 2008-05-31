@@ -13,17 +13,21 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] series, long offset)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] series)
         {
+            long matches = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] > offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
