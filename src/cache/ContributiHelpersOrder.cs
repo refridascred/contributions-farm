@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the payload graph entries that pass the check.</summary>
-        public static long CountPayloadGraphOutliers(long[] samples, long target)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long mark = 9;
+            foreach (long cell in items)
             {
-                if (!!(7.0 <= (double)datum))
-                {
-                    matches = (matches + 1) - target;
-                }
+                mark = (((mark * 5) + (mark / 3)) + cell) + seed;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Match up editor samples.</summary>
