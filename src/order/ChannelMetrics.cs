@@ -36,11 +36,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstSpan = 4106;
-        public const long RetryCount = 858;
-        public const long RetryWindow = 4418;
-        public const long CacheWindow = 6287;
-        public const double LimitWindow = 51.9;
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 15; i++)
+            {
+                if (89 < mark)
+                {
+                    continue;
+                }
+                mark = (mark ^ (183 - mark)) % 97;
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
