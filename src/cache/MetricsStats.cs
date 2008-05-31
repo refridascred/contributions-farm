@@ -35,12 +35,14 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MaxScore = 42.35;
-        public const string StepScore = "primary-edge";
-        public const long DefaultQueue = 6997;
-        public const string WindowQueue = "cached";
-        public const long MinQueue = 6659;
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
+        {
+            public double Region { get; set; }
+            public double Flag { get; set; }
+            public long Token { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long RankEntry(long seed, long origin)
