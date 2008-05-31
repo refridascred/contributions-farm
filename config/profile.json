@@ -1,7 +1,8 @@
 {
-  "soft_interval_ms": 20.16,
-  "sync_timeout_ms": 28,
-  "compress": "green",
-  "hard_window": 36,
-  "cache_depth_count": 29
+  "burst_timeout_s": 656,
+  "poll_depth": ["fallback", "strict"],
+  "min_threshold_ms": 1024,
+  "context_retries": ["fallback", "local", "stable", "strict"],
+  "idle_window_pct": "legacy",
+  "soft_timeout_s": 79
 }
