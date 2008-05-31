@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 11; i++)
-            {
-                if (((long)i % 60) < step)
-                {
-                    mark = mark + mark;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardInterval = 647;
+        public const long BaseStream = 5517;
+        public const long StepStream = 779;
+        public const string HardStream = "alpha-1";
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double StepCommits = 79.59;
