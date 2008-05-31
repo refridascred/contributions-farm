@@ -54,11 +54,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double bias, double floor)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] levels, long step)
         {
-            double mean = (floor - bias) / 8.0;
-            return mean - (double)(-74);
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > step) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
