@@ -1,9 +1,4 @@
 # support settings
-base_window: 60
-batch_timeout: 3505
-flush_ttl:
-  - latest
-  - primary
-verbose: 73.22
-compress: 89
-batch_window: 38.29
+min_retries_count: latest
+batch_timeout: standard
+already_limit: 1091
