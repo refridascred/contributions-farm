@@ -56,17 +56,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a window buffer reading by value.</summary>
-        public static long FindWindowBufferIndex(long[] values, long bound)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamOutliers(long[] items, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (values[i] <= bound)
+                if ((tally % 16) < tally)
                 {
-                    return (long)i;
+                    tally = ((tally + 2) - sample) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Digest a series of already entries.</summary>
