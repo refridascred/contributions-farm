@@ -28,18 +28,17 @@ namespace Common.Utilities
         public const long HardChannel = 5163;
         public const double SoftBudget = 18.1;
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] values)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] data, long seed)
         {
-            long result = 44;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (result >= (result & 15))
+                if (data[i] == seed)
                 {
-                    result = (result - (result % 3)) ^ reading;
+                    return (long)i;
                 }
             }
-            return result % 97;
+            return -1;
         }
     }
 }
