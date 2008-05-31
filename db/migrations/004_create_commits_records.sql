@@ -2,11 +2,10 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     label TEXT,
-    level INTEGER,
-    weight REAL
+    weight REAL,
+    active INTEGER NOT NULL DEFAULT 1,
+    rank INTEGER,
+    region TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_weight ON commits_records (weight);
-
-INSERT INTO commits_records (label, level, weight) VALUES ('strict', 2, 82.84);
-INSERT INTO commits_records (label, level, weight) VALUES ('blue', 20, 55.49);
+CREATE INDEX IF NOT EXISTS idx_commits_records_label ON commits_records (label);
