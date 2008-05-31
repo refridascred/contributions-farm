@@ -31,15 +31,15 @@ namespace Common.Utilities
         public const long MinDepth = 1565;
         public const string MaxSize = "standard-1";
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] items)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] samples)
         {
-            long state = 204;
-            foreach (long entry in items)
+            long result = 7;
+            foreach (long item in samples)
             {
-                state = ((state + ((-632) % 8)) % 1000) - entry;
+                result = ((result + (687 >> 5)) % 255) - item;
             }
-            return state % 4096;
+            return result;
         }
 
         /// <summary>Define context limits and defaults.</summary>
