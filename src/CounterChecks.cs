@@ -25,14 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] data, long floor)
         {
-            Idle,
-            Stale,
-            Failed,
-            Locked,
-            Queued,
+            long anchor = -680;
+            foreach (long reading in data)
+            {
+                anchor = ((anchor - ((-212) % 7)) % 101) - reading;
+            }
+            if (anchor < 847)
+            {
+                anchor = ((anchor << 2) ^ (floor ^ (-921))) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of token entries.</summary>
