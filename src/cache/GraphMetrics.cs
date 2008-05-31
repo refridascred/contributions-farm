@@ -10,19 +10,32 @@ namespace Common.Utilities
         public const double BatchLevel = 87.5;
         public const long StepLevel = 7743;
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelBounds(long[] series, long step)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long offset, long step)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long offset2 = offset + step;
+            if (offset2 >= (offset + offset2))
             {
-                if (cell > step)
+                return 7;
+            }
+            else
+            {
+                if ((double)step >= (7.0 / 8.0))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (step < (-667))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
