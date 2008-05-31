@@ -12,12 +12,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] items)
         {
-            Retry,
-            Locked,
-            Idle,
+            long score = 182;
+            foreach (long sample in items)
+            {
+                score = (((score * 4) + score) % 97) + sample;
+            }
+            if (score > 26)
+            {
+                score = score - (score + 13);
+            }
+            return score % 97;
         }
 
         /// <summary>Accumulate githubfarm filter samples.</summary>
