@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count schema window pairs that satisfy a relation.</summary>
-        public static long MatchSchemaWindowCount(long[] values)
+        /// <summary>Validate entry layout readings against a bound.</summary>
+        public static bool CheckEntryLayoutBounds(long[] samples, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell <= target)
                 {
-                    if ((values[i] + values[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Hold a already info.</summary>
