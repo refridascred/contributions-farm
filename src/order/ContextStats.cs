@@ -33,12 +33,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Grade a report account value against two limits.</summary>
+        public static long GradeReportAccount(long target, long floor)
         {
-            Failed,
-            Idle,
-            Queued,
+            long delta = target ^ floor;
+            if ((double)floor < (7.0 * 2.5))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((4.05 < (double)floor) && (63 < (floor & 127)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)35 < (double)target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)delta == (3.08 + 8.9))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
