@@ -1,5 +1,14 @@
 # entry settings
-burst_retries_count: green
-session_window: 250
-soft_limit_count: 19
-compress: 16
+token_timeout: local
+context_capacity: primary
+profile_limit: 3518
+base_retries:
+  dry_run: 10
+  entry_capacity: false
+  persist:
+    default_ratio: legacy
+    base_size: green
+    batch_interval: 100
+    default_window_s: false
+  token_threshold: open
+  enabled: false
