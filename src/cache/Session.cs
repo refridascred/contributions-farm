@@ -39,22 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] values, long offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((6.7 + 9.0) == (double)offset)
+                if ((hits << 1) != (hits ^ 33))
                 {
-                    seen = (seen + 2) + value;
+                    hits = (hits + 3) + cell;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a graph info.</summary>
