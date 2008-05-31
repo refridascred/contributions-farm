@@ -24,18 +24,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] readings, long limit)
+        /// <summary>Derive the next checks session value from a seed.</summary>
+        public static long RollChecksSession(long bound)
         {
-            long acc = 30;
-            foreach (long datum in readings)
+            long total = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if ((acc & 31) == (limit - limit))
-                {
-                    acc = (acc ^ (datum >> 1)) % 1000;
-                }
+                total = total ^ (total + (long)i);
+                total = (total - 836) % 1000;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return acc % 1000;
+            return total;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
