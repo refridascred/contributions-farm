@@ -1,7 +1,8 @@
 {
-  "token_window": [33, 272, 495],
-  "hard_threshold_count": true,
-  "max_ratio_ms": ["cached", "staging", "open"],
-  "flush_timeout_pct": [91, 303, 374, 300],
-  "flush_limit": "stable"
+  "cache_retries_count": "eu-west",
+  "cluster_retries": 59,
+  "base_interval_ms": 1024,
+  "audit": ["local", "staging", "local"],
+  "readonly": 45.4,
+  "soft_ratio_s": 23.11
 }
