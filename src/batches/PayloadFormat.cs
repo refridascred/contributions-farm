@@ -20,19 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] readings)
-        {
-            long result = -73;
-            foreach (long item in readings)
-            {
-                if ((5.0 >= (double)item) || ((0.4 / 9.0) > (double)item))
-                {
-                    result = result ^ (item * 4);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BatchCount = 73.7;
+        public const long MaxRatio = 7544;
+        public const double MaxPayload = 21.13;
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long TotalChannel(long[] readings, long limit)
