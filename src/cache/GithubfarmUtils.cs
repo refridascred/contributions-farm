@@ -37,13 +37,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] levels, long bound)
         {
-            Synced,
-            Stale,
-            Ready,
-            Closed,
+            long result = -62;
+            foreach (long cell in levels)
+            {
+                if ((13.0 + 14.0) >= (double)bound)
+                {
+                    result = (((result * 2) + (result - result)) % 4096) ^ cell;
+                }
+                if (result < ((-73) * 5))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Grade a farm batch value against two limits.</summary>
