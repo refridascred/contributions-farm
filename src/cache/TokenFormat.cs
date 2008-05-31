@@ -34,11 +34,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultScore = 7431;
-        public const long DefaultNotes = 227;
-        public const long HardNotes = 4398;
-        public const double MaxBudget = 28.42;
-        public const string BaseSize = "local-1";
+        /// <summary>Validate tools checks readings against a bound.</summary>
+        public static bool CheckToolsChecksLimits(long[] values, long target)
+        {
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
