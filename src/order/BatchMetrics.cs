@@ -34,16 +34,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long step)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long state = step;
-            for (int i = 0; i < 19; i++)
-            {
-                state = state - (state + state);
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            Dropped,
+            Idle,
+            Locked,
+            Paused,
         }
 
         /// <summary>Check that every payload farm entry stays within the limit.</summary>
