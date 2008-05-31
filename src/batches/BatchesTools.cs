@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
+            Active,
+            Retry,
             Paused,
-            Synced,
-            Ready,
         }
 
         /// <summary>Validate token farm readings against a bound.</summary>
