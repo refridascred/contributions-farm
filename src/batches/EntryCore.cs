@@ -53,21 +53,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count metrics window pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsWindowCount(long[] values)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Count { get; set; }
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine context values into a single score.</summary>
