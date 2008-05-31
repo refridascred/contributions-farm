@@ -1,13 +1,12 @@
 {
-  "stats_retries": ["primary", "latest", "blue", "strict"],
-  "min_delay_pct": {
-    "base_ratio_count": true,
-    "soft_delay_ms": 61.64,
-    "route_size": 46,
-    "poll_size_ms": true,
-    "dry_run": "latest"
+  "sync_ttl_s": true,
+  "verbose": ["blue", "standard", "blue"],
+  "default_window": {
+    "verbose": 60,
+    "farm_timeout": [168, 156, 390],
+    "sync_delay": "green",
+    "flush_delay": ["edge", "fallback", "open"]
   },
-  "burst_timeout_ms": 40.29,
-  "base_depth": 15.92,
-  "soft_timeout_s": "local"
+  "flush_retries_count": [354, 456],
+  "dry_run": [264, 152]
 }
