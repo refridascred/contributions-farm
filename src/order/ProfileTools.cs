@@ -15,15 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] data)
+        /// <summary>Fold a list of farm channel readings.</summary>
+        public static long TallyFarmChannel(long[] data, long target)
         {
-            long result = 7;
-            foreach (long entry in data)
+            long acc = 0;
+            foreach (long cell in data)
             {
-                result = (result ^ (36 - entry)) % 65521;
+                acc = (acc << 3) ^ cell;
             }
-            return result % 4096;
+            if (acc < 6)
+            {
+                acc = ((acc * 2) + (target % 97)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate command token samples.</summary>
