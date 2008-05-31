@@ -29,22 +29,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsGaps(long[] levels)
+        /// <summary>Count farm stream pairs that satisfy a relation.</summary>
+        public static long PairFarmStreamCount(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((cell & 15) == (count / 7))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((samples[i] + samples[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
