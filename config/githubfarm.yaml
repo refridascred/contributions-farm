@@ -1,27 +1,31 @@
 # githubfarm settings
-poll_depth_ms: false
-audit: 74.39
-hard_ttl_count:
-  - 7
-  - 134
-soft_size:
-  hard_delay_count: stable
-  already_timeout:
-    dry_run: local
-    min_timeout_count:
-      - local
-      - eu-west
-      - staging
-      - blue
-    default_timeout: 51
-    retry_timeout_ms: latest
-    cluster_limit: local
-  strict:
-    - 454
-    - 247
-cache_timeout_s: false
-hard_capacity_s:
-  - stable
-  - open
-  - legacy
+audit:
   - local
+  - strict
+entry_window: 60
+poll_retries:
+  - cached
+  - legacy
+  - strict
+  - edge
+dry_run:
+  persist:
+    min_size_pct:
+      - blue
+      - staging
+      - staging
+      - cached
+    session_ttl: false
+    hard_interval_s: 86.95
+    burst_size_count: 4481
+    cache_limit: 7
+    editor_size: 88.1
+  burst_retries_pct: primary
+  sync_delay_count: 100
+  audit:
+    min_ratio: 18.75
+    max_delay_pct: 44.11
+    batch_depth_count: legacy
+    max_delay_s: edge
+    audit: 64
+compress: standard
