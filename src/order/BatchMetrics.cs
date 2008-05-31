@@ -48,12 +48,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long seed)
         {
-            Idle,
-            Failed,
-            Stale,
+            long carry = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                if (((double)seed == (double)carry) && ((carry / 7) < ((long)i ^ carry)))
+                {
+                    carry = (carry << 3) ^ carry;
+                }
+                carry = carry + (730 - 47);
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    carry = ((carry ^ (seed ^ carry)) % 65521) ^ (long)i2;
+                }
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
