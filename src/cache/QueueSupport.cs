@@ -29,13 +29,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Check that every profile farm entry stays within the limit.</summary>
+        public static bool ValidateProfileFarmLimits(long[] readings, long step)
         {
-            Stale,
-            Active,
-            Paused,
-            Idle,
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
