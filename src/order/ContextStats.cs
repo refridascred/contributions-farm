@@ -32,19 +32,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileRange(long[] data, long floor)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long target)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long sum = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (entry < floor)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = ((sum * 4) + ((long)i & 7)) % 4096;
+                sum = (sum + (sum % 3)) % 101;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
