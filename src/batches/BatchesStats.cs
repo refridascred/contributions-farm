@@ -23,11 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricLimits(long[] samples, long target)
         {
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
