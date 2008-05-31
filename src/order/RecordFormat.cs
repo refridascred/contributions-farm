@@ -57,15 +57,17 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double gain, double bias)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] data, long bound)
         {
-            double scale = 5.4;
-            if (scale < scale)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = (scale - scale) + gain;
+                if (data[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return scale + (bias / 7.0);
+            return -1;
         }
     }
 }
