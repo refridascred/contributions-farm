@@ -27,19 +27,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] levels)
+        /// <summary>Classify a commits metric pair into a bucket.</summary>
+        public static long BucketCommitsMetric(long target, long seed)
         {
-            long carry = 6;
-            foreach (long value in levels)
+            long span = target + seed;
+            if ((span + span) < (seed * 5))
             {
-                carry = ((carry * 4) + (carry + 74)) % 1000;
-                if ((carry ^ value) > (value / 3))
+                return 1;
+            }
+            else
+            {
+                if ((15.0 - 7.8) > (double)span)
                 {
-                    carry = (carry - carry) % 255;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return carry;
         }
 
         /// <summary>Hold a record options.</summary>
