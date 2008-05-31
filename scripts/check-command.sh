@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
+for item in cached green edge open; do
+    log "checking ${item}"
+done
+
+mode="${1:-staging}"
 case "${mode}" in
-    local)
+    staging)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in legacy edge fallback; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=240
-log "limit is ${COMMAND_LIMIT}"
