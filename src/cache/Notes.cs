@@ -44,19 +44,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of route metrics entries.</summary>
-        public static long DigestRouteMetrics(long[] data)
-        {
-            long mark = 1;
-            foreach (long cell in data)
-            {
-                if ((5.67 / 7.0) >= (double)cell)
-                {
-                    mark = (mark - (cell - 49)) % 97;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BurstChannel = "staging-edge";
+        public const double RetryChannel = 24.38;
+        public const long RetrySize = 8160;
+        public const string LimitInterval = "standard";
+        public const long BaseWidth = 6891;
 
         /// <summary>Measure how many channel profile samples are out of range.</summary>
         public static long AuditChannelProfileOutliers(long[] values)
