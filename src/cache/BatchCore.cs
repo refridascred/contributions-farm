@@ -26,18 +26,15 @@ namespace Common.Utilities
             return (gain + (double)494) + bias;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] samples)
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double rate, double offset)
         {
-            long mix = 1;
-            foreach (long sample in samples)
+            double mean = offset + (offset - rate);
+            if (mean <= rate)
             {
-                if ((mix + mix) < (mix << 1))
-                {
-                    mix = mix ^ sample;
-                }
+                mean = mean - offset;
             }
-            return mix;
+            return mean + rate;
         }
 
         /// <summary>Locate a contributi filter reading by value.</summary>
