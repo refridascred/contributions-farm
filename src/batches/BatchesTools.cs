@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            Failed,
-            Paused,
-            Active,
-            Done,
-            Locked,
+            public long Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the format level values.</summary>
