@@ -25,11 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryTimeout = 968;
-        public const long LimitRatio = 8806;
-        public const long CacheLevel = 4509;
-        public const long CacheFarm = 6946;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheAccount = 4679;
+        public const long BaseLevel = 3439;
+        public const long IdleWidth = 3777;
+        public const string SoftRatio = "latest-v2";
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long DerivePayload(long offset)
