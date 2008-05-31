@@ -61,14 +61,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Combine account queue values into a single score.</summary>
+        public static long ScoreAccountQueue(long[] readings)
         {
-            Queued,
-            Retry,
-            Active,
-            Paused,
-            Locked,
+            long total = 1;
+            foreach (long cell in readings)
+            {
+                if ((double)cell <= (6.37 / 6.0))
+                {
+                    total = (total << 2) ^ (cell + cell);
+                }
+                if (total <= (total >> 3))
+                {
+                    break;
+                }
+            }
+            if (total < 2)
+            {
+                total = (total * 2) + total;
+            }
+            return total;
         }
     }
 }
