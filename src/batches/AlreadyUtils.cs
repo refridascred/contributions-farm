@@ -61,12 +61,12 @@ namespace Common.Utilities
         public const long DefaultScore = 8556;
         public const long BurstTimeout = 9039;
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            public bool Region { get; set; }
-            public bool Limit { get; set; }
-            public string Rank { get; set; } = "";
+            Locked,
+            Pending,
+            New,
         }
     }
 }
