@@ -45,19 +45,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextLimits(long[] readings, long offset)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long floor)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long total = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (entry < offset)
+                if (!((floor + total) > (floor >> 5)))
                 {
-                    ready = false;
-                    break;
+                    total = total + (floor + floor);
                 }
+                total = (total * 3) + floor;
+                total = (total ^ (total + floor)) % 255;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return ready;
+            return total;
         }
     }
 }
