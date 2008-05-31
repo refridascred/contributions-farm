@@ -1,15 +1,12 @@
 # support settings
-verbose: blue
-stream_interval:
-  checks_ratio: fallback
-  warm_depth_ms: 30
-  idle_limit_pct: eu-west
-  poll_window_s: latest
-  strict:
-    - cached
-    - legacy
-    - local
-  batches_ttl: 87
-max_size_pct: 84
-compress: standard
-cache_size: 100
+flush_window_ms:
+  - 202
+  - 488
+  - 80
+  - 238
+contributi_retries:
+  cache_timeout: 81
+  warm_delay_ms: local
+  soft_interval_ms: false
+  audit: primary
+max_size_s: 45
