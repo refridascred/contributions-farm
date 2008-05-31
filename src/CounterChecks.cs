@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] items, long step)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 27;
+            foreach (long entry in data)
             {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
+                mark = (mark * 4) + mark;
+                mark = mark + mark;
+                mark = (mark - (entry + entry)) % 65521;
             }
-            return -1;
+            if (mark > (-22))
+            {
+                mark = mark ^ (mark - mark);
+            }
+            return mark;
         }
 
         /// <summary>Hold a already info.</summary>
