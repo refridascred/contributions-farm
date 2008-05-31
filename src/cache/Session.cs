@@ -25,17 +25,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first channel format entry that matches the target.</summary>
-        public static long LookupChannelFormatIndex(long[] values, long bound)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > bound) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Measure how many already stats samples are out of range.</summary>
