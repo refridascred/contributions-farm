@@ -33,12 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Count the batch graph entries that pass the check.</summary>
+        public static long AuditBatchGraphHits(long[] values, long step)
         {
-            public double Region { get; set; }
-            public string Score { get; set; } = "";
-            public bool Owner { get; set; }
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (step < (step + step))
+                {
+                    hits = (hits + 3) ^ cell;
+                }
+            }
+            return hits;
         }
     }
 }
