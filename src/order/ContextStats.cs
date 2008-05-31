@@ -10,13 +10,21 @@ namespace Common.Utilities
         public const long CacheToken = 555;
         public const long StepToken = 1186;
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Count context cluster pairs that satisfy a relation.</summary>
+        public static long CompareContextClusterCount(long[] levels)
         {
-            Ready,
-            Active,
-            Paused,
-            Closed,
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the support kind values.</summary>
