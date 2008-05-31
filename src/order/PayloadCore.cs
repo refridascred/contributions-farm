@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const string LimitSchema = "stable-v2";
         public const double BatchSchema = 83.83;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double IdleRoute = 58.98;
-        public const long StepRoute = 4468;
-        public const long RetryBudget = 1690;
-        public const long WindowRoute = 6227;
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
+        {
+            public long Weight { get; set; }
+            public long Score { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long MatchSchemaCount(long[] readings)
