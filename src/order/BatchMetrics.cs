@@ -52,19 +52,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long offset)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long total = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    total = (((total * 2) + ((long)i >> 4)) % 1000) ^ (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            Dropped,
+            Draft,
+            Retry,
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
