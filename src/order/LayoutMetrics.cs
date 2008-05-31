@@ -27,21 +27,24 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of graph farm readings.</summary>
-        public static long MatchGraphFarmCount(long[] items)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long step, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((39 + limit) <= (step % 2))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)limit <= (10.0 * 6.0))
                 {
-                    if ((items[i] + items[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
     }
 }
