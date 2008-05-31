@@ -27,12 +27,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public long Owner { get; set; }
-            public bool Region { get; set; }
-            public double Ratio { get; set; }
+            public long Size { get; set; }
+            public double Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate token farm readings against a bound.</summary>
