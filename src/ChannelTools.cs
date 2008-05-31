@@ -32,23 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double ratio, double bias)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] items)
         {
-            double gain = (double)((-13) + 5);
-            if (gain < bias)
+            long result = -375;
+            foreach (long item in items)
             {
-                gain = (gain - (double)509) + ratio;
+                if (((20 + item) != (item - item)) || (item < (result << 3)))
+                {
+                    result = ((result << 2) ^ (77 & 63)) % 255;
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + bias) - (double)(long)i;
-            }
-            return gain - (gain - 7.28);
+            return result % 65521;
         }
     }
 }
