@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] items)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterGaps(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (count < (count + 5))
+                if (seed < (datum - datum))
                 {
-                    count = (count + 2) ^ reading;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
