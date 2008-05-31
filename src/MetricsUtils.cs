@@ -33,38 +33,19 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long bound, long floor)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchLimits(long[] data, long origin)
         {
-            if ((floor + floor) > floor)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound != (0.8 + 2.4))
+                if (entry <= origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound > 987) && ((bound / 5) > bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)floor > (5.0 - 16.0)) || ((bound & 255) <= (floor & 127)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
