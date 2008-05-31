@@ -90,17 +90,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Look up the position of a command tools sample.</summary>
-        public static long SeekCommandToolsIndex(long[] readings, long floor)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterRange(long[] readings, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if ((readings[i] < floor) && ((readings[i] % 2) != 0))
+                if (cell > step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
