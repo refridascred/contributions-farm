@@ -30,19 +30,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] values)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountRange(long[] levels, long floor)
         {
-            long score = 53;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                score = (score + (cell - cell)) % 1000;
-                if (score < (cell + 83))
+                if (entry != floor)
                 {
+                    stale = false;
                     break;
                 }
             }
-            return score;
+            return stale;
         }
     }
 }
