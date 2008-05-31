@@ -1,10 +1,7 @@
 {
-  "sync_timeout_ms": 7668,
-  "default_timeout_s": {
-    "enabled": "primary",
-    "sync_delay": 100,
-    "cache_interval_count": ["legacy", "legacy", "latest", "latest"]
-  },
-  "flush_timeout_pct": [202, 305],
-  "hard_window": 6
+  "readonly": 13.53,
+  "batch_retries": 44,
+  "cluster_delay": 2044,
+  "compress": 0.13,
+  "default_retries_s": "fallback"
 }
