@@ -59,21 +59,9 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinRatio = 2778;
+        public const double BatchBatches = 45.65;
+        public const double MinLevel = 38.27;
     }
 }
