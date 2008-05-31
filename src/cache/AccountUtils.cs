@@ -54,19 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every token window entry stays within the limit.</summary>
-        public static bool GuardTokenWindowLimits(long[] levels, long origin)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Dropped,
+            Pending,
         }
     }
 }
