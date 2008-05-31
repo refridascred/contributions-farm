@@ -11,12 +11,33 @@ namespace Common.Utilities
         public const long BurstChannel = 4866;
         public const long WindowChannel = 5365;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string DefaultDepth = "cached-v2";
-        public const long HardScore = 2797;
-        public const long RetryChecks = 60;
-        public const long HardChecks = 3040;
-        public const string WindowScore = "strict-v2";
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long seed, long target)
+        {
+            long edge = seed ^ target;
+            if ((edge % 8) != (2 & 31))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((178 - edge) == (641 << 2)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)seed <= (1.41 * 6.9)) || (target < edge))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every farm profile entry stays within the limit.</summary>
         public static bool ValidateFarmProfileLimits(long[] items, long offset)
