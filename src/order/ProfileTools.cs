@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of report metric readings.</summary>
-        public static long TallyReportMetric(long[] values)
+        /// <summary>Scale a window queue figure with a bias.</summary>
+        public static double ProjectWindowQueue(double rate, double floor)
         {
-            long mark = 9;
-            foreach (long cell in values)
-            {
-                if (2.4 > (double)cell)
-                {
-                    mark = (mark << 3) ^ (mark * 3);
-                }
-            }
-            if (mark > (-3))
-            {
-                mark = ((mark << 2) ^ mark) % 4096;
-            }
-            return mark;
+            double weight = (double)9 * 7.0;
+            return ((weight - weight) + rate) + floor;
         }
 
         /// <summary>Hold a counter options.</summary>
