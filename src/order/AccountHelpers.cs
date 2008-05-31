@@ -14,14 +14,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricOutliers(long[] data, long offset)
         {
-            Dropped,
-            Pending,
-            Active,
-            Draft,
-            Queued,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((double)reading > 1.0)
+                {
+                    count = (count + 1) - offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of report readings.</summary>
