@@ -21,21 +21,30 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] values)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 187;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((sample % 60) <= (sample * 2)))
                 {
-                    if ((values[i] + values[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix ^ (mix - sample)) % 97;
+                }
+                else
+                {
+                    mix = (mix ^ (sample << 1)) % 101;
+                }
+                if (!((mix >> 4) <= (sample + 3)))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (mix < 7)
+            {
+                mix = (mix * 4) + (mix & 1);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
