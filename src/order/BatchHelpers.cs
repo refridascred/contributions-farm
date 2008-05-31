@@ -14,19 +14,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long seed)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long carry = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    carry = (carry - (carry << 3)) ^ (long)i2;
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            Draft,
+            Queued,
+            Pending,
+            Active,
         }
 
         /// <summary>Describe the metrics mode values.</summary>
