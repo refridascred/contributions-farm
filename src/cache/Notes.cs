@@ -45,12 +45,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Count the report command entries that pass the check.</summary>
+        public static long MeasureReportCommandMatches(long[] items, long floor)
         {
-            Closed,
-            Paused,
-            Idle,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (((floor * 4) == (cell >> 3)) && (seen <= (floor ^ cell)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many channel profile samples are out of range.</summary>
