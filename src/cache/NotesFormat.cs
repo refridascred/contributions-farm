@@ -33,18 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] samples)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterLimits(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if (seen <= (73 - datum))
+                if (item >= offset)
                 {
-                    seen = seen + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
