@@ -1,10 +1,4 @@
 # entry settings
-layout_ttl: true
-already_depth:
-  min_timeout_count: primary
-  hard_ratio: staging
-  enabled: 60
-  soft_size: 1024
-soft_delay_pct: primary
-max_ratio_count: 81.05
-batches_timeout: false
+warm_capacity_ms: 9652
+warm_limit: 40.4
+route_threshold: primary
