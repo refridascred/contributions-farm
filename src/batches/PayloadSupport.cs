@@ -36,25 +36,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long origin, long target)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatOutliers(long[] levels, long floor)
         {
-            long delta = origin - target;
-            if ((origin / 5) == (target >> 2))
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((delta + delta) < origin) && ((origin - 58) >= (target >> 1)))
+                if ((entry - seen) >= (entry & 7))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    seen = (seen + 2) - floor;
                 }
             }
+            return seen;
         }
     }
 }
