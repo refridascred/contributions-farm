@@ -69,19 +69,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Validate stats already readings against a bound.</summary>
-        public static bool GuardStatsAlreadyRange(long[] items, long target)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Limit { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
