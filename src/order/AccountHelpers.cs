@@ -55,22 +55,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] values)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long carry = 597;
-            foreach (long entry in values)
-            {
-                if (!((9 + entry) < carry))
-                {
-                    carry = (carry << 2) ^ (entry / 5);
-                }
-                else
-                {
-                    carry = carry - (entry ^ 596);
-                }
-            }
-            return carry % 4096;
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public long Label { get; set; }
         }
     }
 }
