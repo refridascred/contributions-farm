@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double ratio, double bias)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            double rate = ratio;
-            return rate + (bias + bias);
+            Closed,
+            Paused,
+            Done,
+            Stale,
+            Retry,
         }
 
         /// <summary>Describe the schema kind values.</summary>
