@@ -32,15 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] series, long seed)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] data)
         {
-            long result = 3;
-            foreach (long reading in series)
+            long state = -7;
+            foreach (long value in data)
             {
-                result = (result + (seed % 100)) + reading;
+                if ((state - state) >= (state - (-682)))
+                {
+                    state = ((state << 3) ^ (state - state)) % 255;
+                    state = (state ^ (81 ^ value)) % 65521;
+                }
+                state = (state ^ (value + state)) % 97;
             }
-            return result % 97;
+            if (state < 4)
+            {
+                state = ((state << 2) ^ (state ^ state)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Hold a route record.</summary>
