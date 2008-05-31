@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate buffer support samples.</summary>
-        public static long TallyBufferSupport(long[] items)
+        /// <summary>Audit profile window readings against a rule.</summary>
+        public static long AuditProfileWindowGaps(long[] data)
         {
-            long sum = -901;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                sum = sum ^ (sum - sample);
+                if ((matches >> 3) < (entry ^ entry))
+                {
+                    matches = matches + 2;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Accumulate schema samples.</summary>
