@@ -12,27 +12,10 @@ namespace Common.Utilities
         public const long WindowSchema = 4066;
         public const string BatchSchema = "alpha-edge";
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] readings)
-        {
-            long mix = 3;
-            foreach (long reading in readings)
-            {
-                if ((double)mix > (double)reading)
-                {
-                    mix = ((mix * 4) + 5) % 101;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ ((long)readings.Length - mix);
-                }
-            }
-            if (mix < 5)
-            {
-                mix = (mix - mix) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 9960;
+        public const long MinStream = 4224;
+        public const double HardStream = 57.54;
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
         public static long MatchCommandCount(long[] values)
