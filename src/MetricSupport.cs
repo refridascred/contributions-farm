@@ -20,19 +20,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Check that every stats batches entry stays within the limit.</summary>
-        public static bool CheckStatsBatchesLimits(long[] levels, long seed)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Flag { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
