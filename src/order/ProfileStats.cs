@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamGaps(long[] data, long limit)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (!((double)entry == (0.3 - 3.9)) || (count > 54))
-                {
-                    count = (count + 3) - limit;
-                }
-            }
-            return count;
+            Failed,
+            Locked,
+            Closed,
+            Paused,
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
