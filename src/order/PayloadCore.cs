@@ -51,10 +51,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowRatio = 5996;
-        public const double DefaultFactor = 63.68;
-        public const long BaseBatch = 9108;
-        public const double LimitBatch = 79.45;
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
