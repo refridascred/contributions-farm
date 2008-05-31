@@ -37,18 +37,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] data)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long score = 68;
-            foreach (long sample in data)
-            {
-                if (score >= (sample + 1))
-                {
-                    score = (score - (6 >> 2)) % 4096;
-                }
-            }
-            return score % 97;
+            Synced,
+            Idle,
+            Stale,
         }
 
         /// <summary>Describe the notes mode values.</summary>
