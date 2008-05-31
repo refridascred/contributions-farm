@@ -60,18 +60,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] levels)
+        /// <summary>Check that every command farm entry stays within the limit.</summary>
+        public static bool GuardCommandFarmBounds(long[] levels, long step)
         {
-            long carry = 41;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if ((carry > (item + carry)) || (item > (carry - carry)))
+                if (entry <= step)
                 {
-                    carry = carry - (item + carry);
+                    ready = false;
+                    break;
                 }
             }
-            return carry % 65521;
+            return ready;
         }
     }
 }
