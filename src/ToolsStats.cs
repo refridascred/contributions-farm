@@ -45,15 +45,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] series)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] series, long target)
         {
-            long mark = -4;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark - (mark + 459)) - item;
+                if ((series[i] == target) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the format state values.</summary>
