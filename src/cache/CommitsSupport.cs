@@ -23,15 +23,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long target)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long sum = target;
-            for (int i = 0; i < 24; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            public double Size { get; set; }
+            public string Offset { get; set; } = "";
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
