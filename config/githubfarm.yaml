@@ -1,4 +1,7 @@
 # githubfarm settings
-dry_run: 500
-order_capacity: 500
-idle_timeout: 8969
+githubfarm_limit: true
+layout_timeout:
+  - 236
+  - 372
+  - 127
+sync_window_pct: 10.48
