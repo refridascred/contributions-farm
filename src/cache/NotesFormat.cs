@@ -25,19 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] values, long offset)
-        {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftSize = 237;
+        public const string BurstTimeout = "staging-edge";
+        public const long BurstGithubfarm = 2197;
+        public const string DefaultLevel = "legacy-1";
     }
 }
