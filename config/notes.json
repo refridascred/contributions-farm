@@ -1,9 +1,5 @@
 {
-  "cluster_threshold": {
-    "batch_depth_count": "open",
-    "soft_depth_pct": 85,
-    "compress": 60
-  },
-  "strict": [216, 177, 299, 153],
-  "min_ttl": "primary"
+  "idle_capacity_ms": ["strict", "green", "staging", "primary"],
+  "burst_size": 250,
+  "sync_limit_count": 8015
 }
