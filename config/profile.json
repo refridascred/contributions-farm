@@ -1,6 +1,25 @@
 {
-  "report_ratio": ["open", "legacy"],
-  "burst_ttl_ms": 56.12,
-  "soft_timeout_count": 100,
-  "cluster_size": "stable"
+  "stream_ttl": 44,
+  "metric_capacity": {
+    "default_delay": 6444,
+    "base_retries_ms": 44.61,
+    "entry_threshold": 9593
+  },
+  "max_window_ms": {
+    "verbose": 88,
+    "sync_depth": 5094,
+    "compress": {
+      "idle_timeout_s": "legacy",
+      "warm_capacity_s": true,
+      "max_limit_pct": ["staging", "cached", "blue"]
+    },
+    "window_depth": [442, 39, 310],
+    "support_limit": {
+      "idle_window_s": [116, 466, 498],
+      "retry_capacity_pct": "primary",
+      "soft_ratio": "local",
+      "flush_timeout_s": 30,
+      "flush_retries": "cached"
+    }
+  }
 }
