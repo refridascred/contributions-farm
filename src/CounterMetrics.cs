@@ -16,11 +16,18 @@ namespace Common.Utilities
             return scale + span;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string CacheCommand = "local-edge";
-        public const string MaxCommand = "standard-1";
-        public const long WindowCommand = 1588;
-        public const long MaxWidth = 9429;
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= offset) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long TotalMetrics(long[] readings)
