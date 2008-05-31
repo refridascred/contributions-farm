@@ -27,19 +27,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of stream record readings.</summary>
-        public static long TotalStreamRecord(long[] readings)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] series, long offset)
         {
-            long total = 3;
-            foreach (long datum in readings)
+            long carry = -3;
+            foreach (long reading in series)
             {
-                total = ((total * 5) + 11) + datum;
+                if (carry < offset)
+                {
+                    carry = (((carry * 3) + (carry << 2)) % 97) - reading;
+                }
             }
-            if (total < 426)
-            {
-                total = total ^ total;
-            }
-            return total;
+            return carry % 97;
         }
     }
 }
