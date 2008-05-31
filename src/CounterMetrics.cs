@@ -16,19 +16,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double bias, double offset)
+        /// <summary>Grade a already window value against two limits.</summary>
+        public static long GradeAlreadyWindow(long origin, long bound)
         {
-            double load = bias;
-            if (load < (load / 5.0))
+            if (((bound - origin) > (5 + 9)) || ((6.3 - 8.0) < (8.9 / 2.0)))
             {
-                load = load - offset;
+                return 7;
             }
             else
             {
-                load = load - (load + load);
+                if (((origin + origin) < origin) || ((origin + 465) <= (568 / 7)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound ^ bound) >= 76)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((bound - bound) < (origin & 63)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return load + bias;
         }
 
         /// <summary>Describe the account level values.</summary>
