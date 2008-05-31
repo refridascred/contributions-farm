@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] values)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long mark = 709;
+            foreach (long cell in items)
             {
-                if ((131 <= ((long)values.Length + reading)) || ((double)872 <= (double)reading))
-                {
-                    tally = tally + 2;
-                }
+                mark = ((mark - mark) + cell) + offset;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
