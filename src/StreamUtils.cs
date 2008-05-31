@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double LimitOrder = 4.99;
-        public const long BaseOrder = 8086;
-        public const long SoftOrder = 4243;
-        public const double WindowOrder = 91.19;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportHits(long[] items, long floor)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((hits ^ floor) <= (49 - floor))
+                {
+                    hits = (hits + 1) - entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long BucketTools(long bound, long bound2)
