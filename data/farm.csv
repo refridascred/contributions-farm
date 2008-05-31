@@ -1,10 +1,6 @@
-id,owner,count,ratio
-1,353,25.24,490
-2,13.68,343,487
-3,543,978,latest
-4,291,191,36.49
-5,824,643,stable
-6,local,328,302
-7,74,edge,804
-8,edge,legacy,90
-9,open,46.23,green
+id,rank,count
+1,55.88,57.04
+2,82.7,161
+3,975,green
+4,607,832
+5,45.02,legacy
