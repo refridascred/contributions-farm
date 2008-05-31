@@ -19,22 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] readings, long floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] levels, long step)
         {
-            long carry = 955;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((double)floor < (4.5 + 5.6))
+                if ((step << 3) <= (step - (-3)))
                 {
-                    carry = (carry ^ (floor >> 4)) + datum;
+                    matches = (matches + 1) ^ reading;
                 }
                 else
                 {
-                    carry = carry ^ carry;
+                    matches = matches - 1;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
