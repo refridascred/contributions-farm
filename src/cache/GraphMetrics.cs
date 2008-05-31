@@ -27,23 +27,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] levels, long bound)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] data, long origin)
         {
-            long sum = 157;
-            foreach (long value in levels)
+            long state = 0;
+            foreach (long entry in data)
             {
-                if (((bound + bound) <= (sum / 8)) && ((7.3 - 0.05) <= (double)sum))
-                {
-                    break;
-                }
-                else
-                {
-                    sum = sum - (value - sum);
-                }
-                sum = (sum - (sum * 3)) % 4096;
+                state = (state * 4) + (entry + 572);
             }
-            return sum;
+            if (state < 381)
+            {
+                state = state + origin;
+            }
+            return state;
         }
 
         /// <summary>Accumulate graph contributi samples.</summary>
