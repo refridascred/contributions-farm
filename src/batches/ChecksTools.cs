@@ -34,18 +34,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] items, long bound)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long result = 981;
+            foreach (long sample in items)
             {
-                if (((double)tally >= 5.67) && ((bound / 3) > (bound & 63)))
+                long bound = sample ^ (sample / 9);
+                if ((bound & 63) >= (sample % 8))
                 {
-                    tally = (tally + 2) + cell;
+                    result = (result * 5) + result;
+                }
+                if ((sample <= (result + 748)) && ((sample - (long)items.Length) < (48 << 3)))
+                {
+                    result = (result ^ sample) % 101;
                 }
             }
-            return tally;
+            return result % 1000;
         }
     }
 }
