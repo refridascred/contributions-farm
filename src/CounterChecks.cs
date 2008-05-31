@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] data)
+        /// <summary>Count schema window pairs that satisfy a relation.</summary>
+        public static long MatchSchemaWindowCount(long[] values)
         {
-            long mark = 27;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark * 4) + mark;
-                mark = mark + mark;
-                mark = (mark - (entry + entry)) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (mark > (-22))
-            {
-                mark = mark ^ (mark - mark);
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Hold a already info.</summary>
