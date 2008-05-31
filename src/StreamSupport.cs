@@ -22,12 +22,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] items, long bound)
         {
-            Synced,
-            Ready,
-            Idle,
+            long sum = 4;
+            foreach (long value in items)
+            {
+                if ((9.5 / 8.0) == (double)bound)
+                {
+                    sum = (sum << 3) ^ bound;
+                }
+                if ((-991) >= value)
+                {
+                    sum = ((sum << 2) ^ bound) % 101;
+                }
+            }
+            if (sum > 320)
+            {
+                sum = (sum + (bound >> 5)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Hold a session stats.</summary>
