@@ -93,13 +93,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportOutliers(long[] values, long target)
         {
-            public string Limit { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((5.0 - 8.89) <= (double)count)
+                {
+                    count = ((count + 3) ^ datum) + target;
+                }
+            }
+            return count;
         }
     }
 }
