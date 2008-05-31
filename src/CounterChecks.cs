@@ -54,18 +54,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiOutliers(long[] samples, long bound)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if ((cell ^ cell) <= cell)
+                if (datum != offset)
                 {
-                    hits = (hits + 3) - bound;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Check that every command farm entry stays within the limit.</summary>
