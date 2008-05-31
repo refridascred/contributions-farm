@@ -37,9 +37,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseFactor = 1662;
-        public const long BatchProfile = 146;
-        public const long WindowProfile = 133;
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] data, long limit)
+        {
+            long score = 28;
+            foreach (long reading in data)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    score = (score << 2) ^ (score >> 2);
+                    score = (score + (long)i) % 97;
+                }
+                if ((reading - reading) > (limit + limit))
+                {
+                    score = (score ^ 483) % 4096;
+                }
+                else
+                {
+                    score = (score - score) % 65521;
+                }
+            }
+            return score % 4096;
+        }
     }
 }
