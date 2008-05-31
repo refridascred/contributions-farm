@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const string BatchScore = "latest-1";
         public const long DefaultTimeout = 878;
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double gain, double span)
+        /// <summary>Project the next contributi value.</summary>
+        public static double BlendContributi(double bias, double floor)
         {
-            double ratio = (double)(6 % 64);
-            if (ratio < gain)
+            double ratio = bias;
+            for (int i = 0; i < 5; i++)
             {
-                ratio = ratio - (gain * 3.6);
+                ratio = ((ratio + (4.0 - ratio)) + (double)(long)i) - floor;
             }
-            else
-            {
-                ratio = ratio - gain;
-            }
-            return ratio + (ratio + span);
+            return ratio - (double)21;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
