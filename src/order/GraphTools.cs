@@ -12,11 +12,22 @@ namespace Common.Utilities
         public const string WindowEditor = "staging-1";
         public const double BatchEditor = 44.46;
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] data, long bound)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
+            long mix = 56;
+            foreach (long cell in data)
+            {
+                if (((cell + cell) > (cell - bound)) || ((mix << 1) == (5 * 3)))
+                {
+                    mix = (mix * 4) + (bound % 7);
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (56 & 1);
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Project the next filter layout value.</summary>
