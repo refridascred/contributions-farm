@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string StepDepth = "alpha-v2";
-        public const long BatchWindow = 4331;
-        public const string BurstWindow = "staging";
-        public const long BurstWidth = 2219;
-        public const string BaseWindow = "standard-v2";
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long StepMetrics(long bound)
