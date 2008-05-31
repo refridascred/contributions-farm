@@ -57,22 +57,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutMatches(long[] data, long seed)
+        /// <summary>Scale a layout filter figure with a bias.</summary>
+        public static double AdjustLayoutFilter(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            double ratio = (offset / 5.0) + (gain * 2.3);
+            if (ratio > offset)
             {
-                if (((cell + cell) < seed) || (((seed * 5) > (cell % 97)) || ((matches - seed) < (seed - seed))))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                ratio = ratio - gain;
             }
-            return matches;
+            return ratio + (gain + offset);
         }
 
         /// <summary>Hold a notes snapshot.</summary>
