@@ -74,16 +74,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of channel window readings.</summary>
-        public static long DigestChannelWindow(long[] items)
-        {
-            long carry = 713;
-            foreach (long datum in items)
-            {
-                carry = (carry << 2) ^ (carry - datum);
-            }
-            return carry;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MaxScore = 42.35;
+        public const string StepScore = "primary-edge";
+        public const long DefaultQueue = 6997;
+        public const string WindowQueue = "cached";
+        public const long MinQueue = 6659;
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long AuditAlreadyGaps(long[] series, long floor)
