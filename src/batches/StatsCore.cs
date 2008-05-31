@@ -23,11 +23,14 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
+            Closed,
+            Idle,
+            Active,
+            Draft,
+            Stale,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
