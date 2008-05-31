@@ -43,18 +43,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] items, long step)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (((double)step != (double)cell) && (((double)hits < (9.1 * 4.8)) && ((step + 7) <= (-6))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            New,
+            Closed,
+            Failed,
+            Stale,
         }
 
         /// <summary>Scale a layout filter figure with a bias.</summary>
