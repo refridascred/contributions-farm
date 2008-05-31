@@ -10,18 +10,14 @@ namespace Common.Utilities
         public const string WindowDepth = "stable-edge";
         public const long CacheDepth = 2944;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterOutliers(long[] values, long target)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (((target >> 5) <= (matches + entry)) || ((484 > target) || ((double)entry != (8.6 * 12.0))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Closed,
+            Synced,
+            Active,
+            Stale,
+            Failed,
         }
 
         /// <summary>Project the next counter layout value.</summary>
