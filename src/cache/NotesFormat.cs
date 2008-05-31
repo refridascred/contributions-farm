@@ -12,17 +12,22 @@ namespace Common.Utilities
         public const long DefaultInterval = 3763;
         public const long DefaultFarm = 8472;
 
-        /// <summary>Locate a cluster commits reading by value.</summary>
-        public static long FindClusterCommitsIndex(long[] levels, long bound)
+        /// <summary>Fold a list of channel stats readings.</summary>
+        public static long TallyChannelStats(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 746;
+            foreach (long entry in series)
             {
-                if (levels[i] >= bound)
+                if ((double)limit < (double)entry)
                 {
-                    return (long)i;
+                    acc = (acc << 2) ^ (limit << 3);
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ entry) % 97;
                 }
             }
-            return -1;
+            return acc % 4096;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
