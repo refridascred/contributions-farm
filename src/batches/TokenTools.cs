@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] values, long bound)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long score = -1;
-            foreach (long entry in values)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    score = score + ((long)i - 272);
-                    score = (score - bound) % 4096;
-                }
-                if ((double)entry <= (double)371)
-                {
-                    score = score + entry;
-                }
-            }
-            return score % 97;
+            public string Token { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
