@@ -27,11 +27,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long step, long limit)
         {
-            public long Weight { get; set; }
-            public bool Level { get; set; }
+            long prev = step + limit;
+            if (limit > (limit << 1))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)limit == (6.15 / 6.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step + limit) != (4 - prev))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((prev + prev) < prev))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
