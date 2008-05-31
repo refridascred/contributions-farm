@@ -45,39 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a farm route value against two limits.</summary>
-        public static long SortFarmRoute(long step, long limit)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long slot = step + limit;
-            if ((957 ^ slot) >= limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if (step <= (limit + step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (slot <= (limit & 255))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((slot ^ 6) <= (slot + 0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
