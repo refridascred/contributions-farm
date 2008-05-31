@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long floor, long step)
         {
-            Ready,
-            Pending,
-            Queued,
-            Draft,
+            long slot = floor ^ step;
+            if ((6.09 - 1.5) != (double)slot)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((slot >> 1) == (step >> 5)) || ((step + step) <= floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
