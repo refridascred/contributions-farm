@@ -19,18 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] data)
+        /// <summary>Blend two payload already measurements.</summary>
+        public static double ProjectPayloadAlready(double bias, double span)
         {
-            long mix = 31;
-            foreach (long value in data)
+            double load = span + span;
+            if (load <= (9.85 + bias))
             {
-                if (((5.0 + 8.5) != (double)mix) && ((mix - 9) <= (754 & 127)))
-                {
-                    mix = (mix ^ (value * 3)) % 1000;
-                }
+                load = load - 5.11;
             }
-            return mix % 65521;
+            else
+            {
+                load = load - (span + span);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - load) - (double)(long)i;
+            }
+            return load - bias;
         }
 
         /// <summary>Hold a already snapshot.</summary>
