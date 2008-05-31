@@ -42,17 +42,10 @@ namespace Common.Utilities
         public const long BaseGithubfarm = 1526;
         public const string CacheGithubfarm = "staging";
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 24; i++)
-            {
-                score = (score - (37 % 100)) % 4096;
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BatchReport = "standard-1";
+        public const long HardReport = 1623;
+        public const long DefaultInterval = 6424;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long CombineFilter(long[] samples)
