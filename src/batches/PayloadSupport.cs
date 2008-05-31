@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksHits(long[] values, long target)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (!(((count << 3) <= (cell - count)) && ((double)count < (double)cell)))
-                {
-                    count = (count + 2) - target;
-                }
-            }
-            return count;
+            Locked,
+            Active,
+            Idle,
         }
 
         /// <summary>Rank farm input into a small class.</summary>
