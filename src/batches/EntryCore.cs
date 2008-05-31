@@ -57,11 +57,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Count metrics window pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsWindowCount(long[] values)
         {
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine context values into a single score.</summary>
