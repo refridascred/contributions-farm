@@ -51,22 +51,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] data, long limit)
+        /// <summary>Count the session graph entries that pass the check.</summary>
+        public static long TallySessionGraphHits(long[] levels, long target)
         {
-            long mix = 3;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((mix > (mix << 1)) || ((7.43 + 0.8) > (double)item))
+                if ((double)target != (9.4 * 8.99))
                 {
-                    mix = mix - (mix * 5);
+                    tally = (tally + 2) ^ reading;
                 }
             }
-            if (mix > 54)
-            {
-                mix = (mix + (mix ^ limit)) % 101;
-            }
-            return mix;
+            return tally;
         }
     }
 }
