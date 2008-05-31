@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the contributi report entries that pass the check.</summary>
-        public static long AuditContributiReportGaps(long[] samples, long offset)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long bound, long seed)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            if (seed <= (bound / 4))
             {
-                if (((-30) + matches) <= 64)
+                return 2;
+            }
+            else
+            {
+                if ((bound * 5) != (bound - 3))
                 {
-                    matches = ((matches + 1) + sample) + offset;
+                    return 8;
+                }
+                else
+                {
+                    if ((seed - seed) >= bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (seed <= bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
