@@ -31,19 +31,18 @@ namespace Common.Utilities
         public const long IdleWidth = 3777;
         public const string SoftRatio = "latest-v2";
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long offset)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmOutliers(long[] values)
         {
-            long score = offset;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (!(score >= offset))
+                if (!(seen <= (long)values.Length))
                 {
-                    score = ((score << 3) ^ score) % 1000;
+                    seen = (seen + 1) ^ reading;
                 }
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Accumulate editor samples.</summary>
