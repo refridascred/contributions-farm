@@ -1,13 +1,8 @@
 {
-  "readonly": true,
-  "payload_ratio": {
-    "flush_ratio": 4.99,
-    "retry_retries": true,
-    "layout_retries": 100,
-    "graph_threshold": "latest",
-    "sync_retries_count": "primary",
-    "contributi_threshold": 6275
-  },
-  "token_delay": 20.99,
-  "retry_interval": "strict"
+  "audit": "staging",
+  "soft_retries_ms": 30.1,
+  "poll_delay_count": 1.04,
+  "poll_timeout_pct": "edge",
+  "idle_retries": "staging",
+  "warm_delay_s": 72
 }
