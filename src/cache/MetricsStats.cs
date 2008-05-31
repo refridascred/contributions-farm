@@ -44,12 +44,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksGaps(long[] data, long target)
         {
-            public long Owner { get; set; }
-            public double Count { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (((-6) - target) > (count & 1))
+                {
+                    count = (count + 2) - reading;
+                }
+            }
+            return count;
         }
     }
 }
