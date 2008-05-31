@@ -41,13 +41,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
-        {
-            Done,
-            New,
-            Failed,
-            Idle,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string IdleCommits = "fallback-edge";
+        public const long HardBudget = 1317;
+        public const long CacheCommits = 4516;
     }
 }
