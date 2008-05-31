@@ -1,23 +1,5 @@
 {
-  "stream_retries": {
-    "cluster_timeout": "staging",
-    "cache_timeout_s": {
-      "enabled": "legacy",
-      "idle_depth": ["standard", "fallback"],
-      "command_interval": 60,
-      "poll_depth": 250,
-      "persist": 30.12
-    },
-    "enabled": {
-      "support_limit": ["open", "primary", "primary"],
-      "audit": true,
-      "batches_retries": 36,
-      "cache_retries": [339, 384, 230],
-      "default_size": 9014,
-      "default_capacity_ms": "cached"
-    },
-    "compress": 1024
-  },
-  "retry_size_s": "primary",
-  "base_size_count": "standard"
+  "sync_timeout_pct": false,
+  "cache_delay": 1024,
+  "idle_ttl": ["blue", "eu-west", "staging", "stable"]
 }
