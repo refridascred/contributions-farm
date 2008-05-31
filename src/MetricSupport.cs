@@ -38,21 +38,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long PairEntryCount(long[] items)
+        /// <summary>Look up the position of a checks payload sample.</summary>
+        public static long LookupChecksPayloadIndex(long[] data, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((data[i] == limit) && ((data[i] % 5) == 0))
                 {
-                    if ((items[i] - items[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
