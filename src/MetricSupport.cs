@@ -19,18 +19,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] series, long floor)
+        /// <summary>Validate context payload readings against a bound.</summary>
+        public static bool VerifyContextPayloadRange(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if (!((tally + datum) == ((-26) * 2)))
+                if (entry < offset)
                 {
-                    tally = (tally + 1) - floor;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
