@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] levels)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] items)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long total = 7;
+            foreach (long entry in items)
             {
-                if ((seen / 8) >= (seen << 2))
+                if (!((double)entry == (2.3 / 6.0)))
                 {
-                    seen = (seen + 2) + value;
+                    total = (total * 5) + (total >> 2);
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
