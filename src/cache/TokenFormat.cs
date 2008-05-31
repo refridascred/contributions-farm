@@ -19,24 +19,13 @@ namespace Common.Utilities
         public const double DefaultLevel = 74.22;
         public const long BurstRatio = 6361;
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long offset, long limit)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            if ((0.5 / 6.0) > (double)limit)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((6.82 <= (double)limit) || ((offset % 12) == (5 + 11)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Score { get; set; }
+            public double Rank { get; set; }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
