@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 17; i++)
-            {
-                state = ((state << 2) ^ 49) % 1000;
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BatchFilter = 43.82;
+        public const long DefaultFilter = 8122;
+        public const double RetryFilter = 91.17;
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
