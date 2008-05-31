@@ -46,38 +46,17 @@ namespace Common.Utilities
         public const long RetryEntry = 4611;
         public const long RetryLevel = 5909;
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long target, long floor)
+        /// <summary>Look up the position of a counter stats sample.</summary>
+        public static long LookupCounterStatsIndex(long[] levels, long seed)
         {
-            if (!((7.0 / 2.0) <= (double)floor))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((783 ^ target) <= (floor - floor))
+                if (levels[i] > seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (floor > (target + target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((floor ^ target) < (floor - floor)) && ((target & 31) < target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
