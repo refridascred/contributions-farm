@@ -37,22 +37,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] samples)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading < (matches ^ reading))
+                if (series[i] >= offset)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
