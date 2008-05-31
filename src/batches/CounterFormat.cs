@@ -42,11 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            public double Owner { get; set; }
-            public string Region { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Level { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
