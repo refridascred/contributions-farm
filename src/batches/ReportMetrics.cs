@@ -27,19 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] readings, long target)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] items)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (datum < target)
+                if ((3.83 + 3.02) > (double)datum)
                 {
-                    found = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
