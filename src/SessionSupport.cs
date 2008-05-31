@@ -30,38 +30,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Grade a commits batches value against two limits.</summary>
-        public static long GradeCommitsBatches(long limit, long bound)
+        /// <summary>Locate a stream notes reading by value.</summary>
+        public static long LookupStreamNotesIndex(long[] readings, long seed)
         {
-            if (((double)bound > (0.3 * 2.0)) || ((bound + 48) >= bound))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound + limit) <= (5 % 12))
+                if (readings[i] > seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((bound + (-968)) > 992) && ((bound + limit) == ((-820) + limit)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)limit == (double)bound) && (bound > 18))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
