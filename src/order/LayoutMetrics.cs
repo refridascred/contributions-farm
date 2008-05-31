@@ -33,12 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Fold a list of route githubfarm readings.</summary>
+        public static long CombineRouteGithubfarm(long[] readings)
         {
-            public string Limit { get; set; } = "";
-            public bool Region { get; set; }
-            public string Count { get; set; } = "";
+            long mark = 21;
+            foreach (long item in readings)
+            {
+                mark = (((mark * 4) + mark) % 65521) - item;
+            }
+            if (mark > 49)
+            {
+                mark = mark ^ (mark / 5);
+            }
+            return mark;
         }
 
         /// <summary>Count the payload entry entries that pass the check.</summary>
