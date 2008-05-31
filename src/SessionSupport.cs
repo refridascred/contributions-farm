@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterGaps(long[] levels, long seed)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long seed, long bound)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long step = seed - bound;
+            if (((step - seed) != (bound * 4)) || ((seed >> 5) <= (bound + seed)))
             {
-                if (seed < (datum - datum))
+                return 1;
+            }
+            else
+            {
+                if ((double)step > (1.2 / 8.0))
                 {
-                    matches = matches + 2;
+                    return 8;
+                }
+                else
+                {
+                    if ((seed * 4) <= (7 + 528))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a cluster stats.</summary>
