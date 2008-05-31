@@ -46,21 +46,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] series)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public double Offset { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Fold a list of commits readings.</summary>
