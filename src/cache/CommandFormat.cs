@@ -19,12 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] readings, long floor)
         {
-            Closed,
-            Done,
-            Locked,
+            long carry = 955;
+            foreach (long datum in readings)
+            {
+                if ((double)floor < (4.5 + 5.6))
+                {
+                    carry = (carry ^ (floor >> 4)) + datum;
+                }
+                else
+                {
+                    carry = carry ^ carry;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
