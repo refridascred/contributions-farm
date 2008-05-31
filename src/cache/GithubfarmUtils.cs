@@ -45,32 +45,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long target, long bound)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long offset = target + bound;
-            if ((target >> 3) >= (offset & 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound < 700) || (target > (48 % 10)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (target <= (target - bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Active,
+            Retry,
+            Idle,
         }
     }
 }
