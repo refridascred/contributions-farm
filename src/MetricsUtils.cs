@@ -43,19 +43,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] readings)
+        /// <summary>Grade a metrics filter value against two limits.</summary>
+        public static long GradeMetricsFilter(long seed, long limit)
         {
-            long anchor = 7;
-            foreach (long cell in readings)
+            long prev = seed ^ limit;
+            if ((limit + limit) < (prev + 5))
             {
-                anchor = ((anchor - ((long)readings.Length * 4)) % 65521) - cell;
+                return 2;
             }
-            if (anchor < 507)
+            else
             {
-                anchor = ((anchor * 5) + (anchor ^ anchor)) % 1000;
+                if ((double)prev == (6.0 - 5.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return anchor % 4096;
         }
 
         /// <summary>Define route limits and defaults.</summary>
