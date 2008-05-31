@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsGaps(long[] items)
+        /// <summary>Check that every farm profile entry stays within the limit.</summary>
+        public static bool ValidateFarmProfileLimits(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long value in items)
             {
-                if ((item > seen) || (2 > (item - item)))
+                if (value > target)
                 {
-                    seen = seen + 2;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Describe the batch level values.</summary>
