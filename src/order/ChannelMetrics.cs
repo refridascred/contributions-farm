@@ -36,31 +36,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank payload order input into a small class.</summary>
-        public static long RankPayloadOrder(long offset, long seed)
-        {
-            if ((8.66 - 5.45) < (double)offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed ^ seed) > (655 + offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset - seed) == (seed ^ offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstSpan = 4106;
+        public const long RetryCount = 858;
+        public const long RetryWindow = 4418;
+        public const long CacheWindow = 6287;
+        public const double LimitWindow = 51.9;
     }
 }
