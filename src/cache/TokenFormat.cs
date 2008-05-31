@@ -21,13 +21,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double rate, double span)
         {
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-            public double Level { get; set; }
+            double load = rate;
+            if (load <= (double)89)
+            {
+                load = (load - load) - span;
+            }
+            return load + (17.0 - rate);
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
