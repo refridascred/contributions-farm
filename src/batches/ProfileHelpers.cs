@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long step)
         {
-            New,
-            Pending,
-            Synced,
-            Retry,
-            Idle,
+            long carry = step;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    long step2 = (long)i >> 3;
+                    carry = ((carry - (step2 >> 1)) % 101) ^ (long)i2;
+                }
+                if (!((carry + 68) > (carry + step)))
+                {
+                    carry = (carry + 7) % 101;
+                }
+                carry = ((carry * 3) + (176 >> 3)) % 101;
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
