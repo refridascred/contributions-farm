@@ -77,14 +77,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] series, long bound)
         {
-            Draft,
-            Idle,
-            Synced,
-            Locked,
-            Stale,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
