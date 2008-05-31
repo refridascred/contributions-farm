@@ -1,5 +1,7 @@
 {
-  "cache_threshold": 83.42,
-  "persist": 82.88,
-  "enabled": "cached"
+  "compress": "cached",
+  "already_threshold": [212, 448, 359],
+  "burst_ratio_ms": true,
+  "warm_ratio": 64,
+  "cache_timeout_count": false
 }
