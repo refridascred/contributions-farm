@@ -18,23 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] data)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] levels)
         {
-            long anchor = 9;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor ^ (anchor + anchor)) ^ cell;
-                if ((anchor / 6) <= anchor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] - levels[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (anchor > 525)
-            {
-                anchor = (anchor + (anchor / 7)) % 4096;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
