@@ -39,13 +39,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Measure how many command notes samples are out of range.</summary>
+        public static long AuditCommandNotesOutliers(long[] levels)
         {
-            public string Score { get; set; } = "";
-            public bool Level { get; set; }
-            public long Label { get; set; }
-            public double Token { get; set; }
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((seen / 3) >= (seen + 162))
+                {
+                    seen = (seen + 3) + value;
+                }
+            }
+            return seen;
         }
     }
 }
