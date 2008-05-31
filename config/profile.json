@@ -1,6 +1,7 @@
 {
-  "format_ratio": "strict",
-  "poll_capacity_count": [173, 446, 415],
-  "format_timeout": 30,
-  "flush_interval_ms": 9122
+  "hard_window": ["open", "latest"],
+  "order_capacity": "local",
+  "burst_ratio_pct": 15,
+  "sync_threshold_pct": 66,
+  "strict": "fallback"
 }
