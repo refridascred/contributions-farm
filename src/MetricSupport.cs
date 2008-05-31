@@ -31,17 +31,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] series, long step)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((series[i] <= step) && ((series[i] % 2) != 0))
+                if ((13.0 - 5.5) <= (double)step)
                 {
-                    return (long)i;
+                    score = (score - (step << 3)) % 65521;
+                    score = score - 8;
                 }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
     }
 }
