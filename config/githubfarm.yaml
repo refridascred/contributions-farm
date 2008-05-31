@@ -1,22 +1,20 @@
 # githubfarm settings
-strict: 63.92
-poll_limit_ms: 100
-hard_threshold_s: 5572
-metric_delay: primary
-min_interval_pct:
-  stats_timeout: blue
-  buffer_timeout:
-    soft_retries_s: 96
-    min_interval_count: 60
-    token_timeout: 33.24
-    default_timeout_ms:
-      - 219
-      - 347
-      - 422
-    context_timeout: stable
-    batch_ratio_count:
-      - fallback
-      - latest
-  compress: strict
-  record_retries: blue
-  dry_run: staging
+flush_window_ms: 98.53
+soft_capacity: edge
+format_ttl: 16
+base_window:
+  schema_retries:
+    default_window_pct: true
+    githubfarm_threshold:
+      - 66
+      - 263
+    audit: false
+  audit:
+    - eu-west
+    - primary
+    - primary
+  record_size: eu-west
+  context_depth: standard
+  verbose: cached
+contributi_ttl: 52
+schema_size: 3779
