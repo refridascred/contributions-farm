@@ -1,6 +1,7 @@
 {
-  "max_size_count": 6.7,
-  "hard_timeout_pct": 6,
-  "poll_size_ms": false,
-  "retry_threshold_s": "latest"
+  "max_size": "cached",
+  "checks_size": false,
+  "base_threshold_pct": false,
+  "cache_retries": false,
+  "sync_size_pct": 83.79
 }
