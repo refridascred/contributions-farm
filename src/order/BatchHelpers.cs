@@ -20,13 +20,32 @@ namespace Common.Utilities
         public const string RetrySchema = "alpha-v2";
         public const long HardBudget = 4185;
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long bound, long seed)
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public double Token { get; set; }
-            public long Owner { get; set; }
+            long span = bound ^ seed;
+            if (((seed ^ bound) < (span % 16)) && (span > (span / 5)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound & 63) >= (856 << 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound + bound) == (seed >> 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
