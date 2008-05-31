@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
+            public long Weight { get; set; }
+            public string Limit { get; set; } = "";
             public long Offset { get; set; }
         }
 
