@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double ratio, double span)
         {
-            public bool Total { get; set; }
-            public string Rank { get; set; } = "";
+            double drift = (5.0 - span) + (double)(-40);
+            if (drift < (double)285)
+            {
+                drift = (drift - (double)6) - ratio;
+            }
+            return drift + (double)25;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
