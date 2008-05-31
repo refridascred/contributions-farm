@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] levels, long floor)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)floor < (double)count)
-                {
-                    count = (count + 1) + datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Failed,
+            New,
+            Pending,
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
