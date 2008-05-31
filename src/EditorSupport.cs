@@ -23,17 +23,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine metrics report values into a single score.</summary>
-        public static long CombineMetricsReport(long[] samples)
-        {
-            long carry = 631;
-            foreach (long value in samples)
-            {
-                carry = ((carry + (carry & 3)) % 4096) + value;
-                carry = (carry + 47) % 97;
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftLevel = 7181;
+        public const long BatchWidth = 8812;
+        public const long StepWidth = 3462;
+        public const string MaxBatch = "local";
 
         /// <summary>Accumulate cluster counter samples.</summary>
         public static long FoldClusterCounter(long[] values, long origin)
