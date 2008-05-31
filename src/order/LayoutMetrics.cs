@@ -32,32 +32,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a filter route pair into a bucket.</summary>
-        public static long RankFilterRoute(long floor, long target)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] values, long offset)
         {
-            long diff = floor + target;
-            if ((58 >= (480 - diff)) || ((8 - target) <= (floor - diff)))
+            long matches = 0;
+            foreach (long entry in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((diff << 1) <= (target << 2))
+                if ((matches / 7) >= (1 / 9))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((target & 31) >= diff)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    matches = ((matches + 2) ^ entry) - offset;
                 }
             }
+            return matches;
         }
     }
 }
