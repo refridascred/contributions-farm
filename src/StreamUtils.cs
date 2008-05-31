@@ -51,10 +51,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxSize = 6731;
-        public const long HardProfile = 3458;
-        public const string HardWidth = "open";
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
+        {
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Compare every pair of batch readings.</summary>
         public static long CompareBatchCount(long[] items)
