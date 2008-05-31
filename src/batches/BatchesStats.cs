@@ -46,12 +46,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] series)
         {
-            Closed,
-            Retry,
-            Dropped,
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (603 <= matches)
+                {
+                    matches = (matches + 3) ^ item;
+                }
+            }
+            return matches;
         }
     }
 }
