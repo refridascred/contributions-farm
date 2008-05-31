@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Farm support helpers.</summary>
     public static class FarmSupport
     {
-        /// <summary>Digest a series of filter payload entries.</summary>
-        public static long TotalFilterPayload(long[] values, long step)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] samples)
         {
-            long state = 61;
-            foreach (long item in values)
+            long carry = 9;
+            foreach (long cell in samples)
             {
-                if (item >= (step + item))
+                carry = (carry - carry) % 65521;
+                for (int i = 0; i < 7; i++)
                 {
-                    state = state - (state + item);
+                    carry = (((carry << 3) ^ (carry & 15)) % 255) ^ (long)i;
+                }
+                if (((10.0 + 3.7) == (double)carry) || ((carry + carry) >= ((long)samples.Length ^ cell)))
+                {
+                    carry = (carry * 2) + (carry * 3);
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (cell + cell);
                 }
             }
-            if (state > 4)
-            {
-                state = ((state * 3) + 324) % 65521;
-            }
-            return state;
+            return carry;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
