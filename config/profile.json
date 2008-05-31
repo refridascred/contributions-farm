@@ -1,12 +1,6 @@
 {
-  "idle_interval": "cached",
-  "payload_interval": {
-    "hard_delay": 19.99,
-    "editor_threshold": "legacy",
-    "report_ttl": [7, 163],
-    "contributi_depth": "edge",
-    "schema_retries": "legacy"
-  },
-  "metrics_size": 39.94,
-  "min_ratio_ms": "local"
+  "report_ratio": ["open", "legacy"],
+  "burst_ttl_ms": 56.12,
+  "soft_timeout_count": 100,
+  "cluster_size": "stable"
 }
