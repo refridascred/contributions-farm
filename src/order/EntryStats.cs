@@ -45,25 +45,21 @@ namespace Common.Utilities
         public const string WindowCount = "staging";
         public const long IdleCommits = 8417;
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long bound, long floor)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] data)
         {
-            long lane = bound ^ floor;
-            if (!((floor - bound) > (lane >> 1)))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((lane + floor) >= lane)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    if ((data[i] ^ data[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a token snapshot.</summary>
