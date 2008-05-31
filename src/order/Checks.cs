@@ -69,14 +69,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Fold a list of schema metric readings.</summary>
+        public static long DigestSchemaMetric(long[] levels, long offset)
         {
-            Retry,
-            Dropped,
-            Ready,
-            Done,
-            Stale,
+            long mix = 5;
+            foreach (long sample in levels)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    mix = ((mix + (mix / 5)) % 1000) + (long)i;
+                }
+                mix = (mix ^ (offset & 15)) % 4096;
+                if ((mix ^ 566) > (offset ^ sample))
+                {
+                    mix = (mix << 3) ^ (87 * 2);
+                }
+            }
+            return mix % 97;
         }
     }
 }
