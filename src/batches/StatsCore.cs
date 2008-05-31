@@ -15,21 +15,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up farm counter samples.</summary>
-        public static long MatchFarmCounterCount(long[] values)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Ratio { get; set; }
+            public long Weight { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a session summary.</summary>
