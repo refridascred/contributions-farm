@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            Stale,
-            Retry,
-            Paused,
+            New,
+            Ready,
+            Synced,
         }
 
         /// <summary>Audit batches checks readings against a rule.</summary>
