@@ -42,14 +42,9 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            Paused,
-            Draft,
-            Active,
-            Done,
-            Locked,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstCounter = "strict-edge";
+        public const string StepBudget = "legacy-1";
+        public const long HardCounter = 4754;
     }
 }
