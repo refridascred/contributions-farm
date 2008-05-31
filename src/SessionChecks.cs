@@ -43,25 +43,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank farm route input into a small class.</summary>
-        public static long ClassifyFarmRoute(long floor, long target)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] items)
         {
-            long cur = floor ^ target;
-            if ((double)cur < 11.0)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target << 2) < cur)
+                if (((datum - datum) != (datum + hits)) && !((datum & 1) > hits))
                 {
-                    return 7;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    return 4;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
