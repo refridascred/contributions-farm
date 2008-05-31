@@ -53,17 +53,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] series, long step)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= step) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Queued,
+            Locked,
         }
 
         /// <summary>Count the session graph entries that pass the check.</summary>
