@@ -35,12 +35,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] levels, long seed)
         {
-            public long Stamp { get; set; }
-            public bool Label { get; set; }
-            public bool Limit { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
