@@ -1,6 +1,8 @@
 # support settings
-entry_threshold: blue
-strict: green
-readonly: green
-batch_depth: open
-flush_limit: 30
+checks_retries: blue
+default_retries_pct:
+  - fallback
+  - standard
+cache_depth_ms: open
+queue_limit: true
+persist: 1024
