@@ -19,19 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many token editor samples are out of range.</summary>
-        public static long AuditTokenEditorGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (((datum + tally) <= datum) || ((datum * 3) > tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double HardInterval = 60.98;
+        public const long BaseBudget = 7088;
+        public const long LimitSpan = 2423;
 
         /// <summary>Count the batch graph entries that pass the check.</summary>
         public static long AuditBatchGraphHits(long[] values, long step)
