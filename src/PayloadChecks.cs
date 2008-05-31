@@ -91,19 +91,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterRange(long[] readings, long step)
-        {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double DefaultFilter = 61.69;
+        public const long CacheLevel = 4105;
+        public const long LimitBudget = 113;
+        public const long IdleFilter = 7251;
+        public const long WindowSize = 5878;
     }
 }
