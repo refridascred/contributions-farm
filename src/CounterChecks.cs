@@ -46,39 +46,23 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Classify a route metric pair into a bucket.</summary>
-        public static long GradeRouteMetric(long floor, long target)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] items, long bound)
         {
-            long bound = floor - target;
-            if ((bound - target) > ((-3) ^ 3))
+            long score = 29;
+            foreach (long reading in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (floor <= (bound << 3))
+                for (int i = 0; i < 5; i++)
                 {
-                    return 4;
+                    score = (((score * 2) + (183 - score)) % 1000) ^ (long)i;
+                    score = ((score * 3) + reading) % 1000;
                 }
-                else
+                if ((reading >> 5) >= bound)
                 {
-                    if ((target + bound) >= (floor + bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound >> 2) <= 0)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    score = (score << 2) ^ (score + score);
                 }
             }
+            return score;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
