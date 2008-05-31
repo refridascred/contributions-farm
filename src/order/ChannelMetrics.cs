@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsOutliers(long[] values)
         {
-            Stale,
-            Retry,
-            Locked,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (((hits >= (datum << 1)) && (92 > (hits + 1))) || ((25 < (hits % 7)) && ((double)hits <= (20.0 + 9.07))))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate session samples.</summary>
