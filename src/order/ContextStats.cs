@@ -19,18 +19,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = ((sum * 4) + ((long)i & 7)) % 4096;
-                sum = (sum + (sum % 3)) % 101;
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MaxBatch = 92.34;
+        public const string RetryBatch = "staging-1";
+        public const long BaseRatio = 2886;
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
