@@ -22,21 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] series)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Measure how many command notes samples are out of range.</summary>
