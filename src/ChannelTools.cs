@@ -37,13 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Measure how many payload entry samples are out of range.</summary>
+        public static long CountPayloadEntryGaps(long[] series, long step)
         {
-            Closed,
-            Failed,
-            New,
-            Done,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (((count >= (5 + entry)) || ((37 % 8) <= (count - count))) || (((91 ^ count) > (entry / 4)) || ((double)(-9) < (double)count)))
+                {
+                    count = (count + 1) + step;
+                }
+            }
+            return count;
         }
     }
 }
