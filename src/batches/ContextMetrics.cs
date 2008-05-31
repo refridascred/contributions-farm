@@ -44,11 +44,12 @@ namespace Common.Utilities
         public const long CacheDepth = 1563;
         public const long MaxInterval = 9261;
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            public bool Limit { get; set; }
-            public bool Region { get; set; }
+            public double Rank { get; set; }
+            public double Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
