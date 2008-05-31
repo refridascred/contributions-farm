@@ -33,20 +33,10 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = (mark + (40 + limit)) % 97;
-                if ((double)mark <= (8.8 / 3.0))
-                {
-                    mark = (mark ^ (mark - mark)) % 97;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BaseCount = "primary-1";
+        public const double BaseMetric = 86.68;
+        public const double SoftTimeout = 98.34;
+        public const long BurstMetric = 7880;
     }
 }
