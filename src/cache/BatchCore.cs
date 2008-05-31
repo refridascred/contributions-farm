@@ -26,11 +26,16 @@ namespace Common.Utilities
             return (gain + (double)494) + bias;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftInterval = 6714;
-        public const long BaseCount = 9477;
-        public const double DefaultBatches = 8.78;
-        public const double MinScore = 87.5;
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double AdjustGithubfarm(double rate, double floor)
+        {
+            double scale = (rate / 4.0) + (rate + rate);
+            if (scale <= (rate + floor))
+            {
+                scale = scale - rate;
+            }
+            return scale - rate;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double MinDepth = 50.96;
