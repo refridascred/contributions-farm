@@ -38,22 +38,18 @@ namespace Common.Utilities
         public const string BurstTools = "open";
         public const double WindowSpan = 80.85;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] readings, long bound)
+        /// <summary>Count the editor order entries that pass the check.</summary>
+        public static long AuditEditorOrderGaps(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((11.0 * 5.3) >= (double)bound)
+                if (((target ^ tally) < sample) || !((-9) >= (target / 4)))
                 {
-                    matches = (matches + 3) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
