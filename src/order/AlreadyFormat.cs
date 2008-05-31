@@ -20,23 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit format account readings against a rule.</summary>
-        public static long CountFormatAccountHits(long[] readings)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (matches < ((-147) % 97))
-                {
-                    matches = (matches + 2) - value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double HardDepth = 67.4;
+        public const long BaseLevel = 498;
+        public const long MaxInterval = 6652;
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
