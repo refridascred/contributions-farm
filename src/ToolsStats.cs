@@ -28,17 +28,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] readings, long floor)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double bias, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale = (double)(-15) - bias;
+            if (scale <= floor)
             {
-                if ((readings[i] > floor) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale + (double)131;
             }
-            return -1;
+            else
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (bias / 9.0)) - (double)(long)i;
+            }
+            return scale - (bias - bias);
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
