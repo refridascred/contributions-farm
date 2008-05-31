@@ -58,22 +58,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double DefaultFormat = 68.42;
+        public const long StepRatio = 2006;
+        public const double SoftFormat = 51.27;
+        public const long StepLevel = 7066;
+        public const long MaxFactor = 774;
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long ScoreBatches(long[] values, long seed)
