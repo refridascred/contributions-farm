@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((datum + matches) <= (22 - 275))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double LimitOrder = 4.99;
+        public const long BaseOrder = 8086;
+        public const long SoftOrder = 4243;
+        public const double WindowOrder = 91.19;
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long BucketTools(long bound, long bound2)
