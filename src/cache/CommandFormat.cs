@@ -29,22 +29,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] data)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long sum = 22;
+            foreach (long entry in series)
             {
-                if (((tally ^ tally) >= ((long)data.Length + tally)) && ((double)datum <= (1.02 / 3.0)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = (sum ^ (sum / 3)) % 97;
+                sum = (sum + (entry - sum)) % 65521;
             }
-            return tally;
+            if (sum < 6)
+            {
+                sum = (sum ^ (2 + sum)) % 65521;
+            }
+            return sum;
         }
     }
 }
