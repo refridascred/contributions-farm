@@ -55,11 +55,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxSpan = 9260;
-        public const long MinOrder = 1074;
-        public const long BaseFactor = 3765;
-        public const double MinTimeout = 21.24;
-        public const long IdleOrder = 7011;
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
+        {
+            public bool Flag { get; set; }
+            public double Offset { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
