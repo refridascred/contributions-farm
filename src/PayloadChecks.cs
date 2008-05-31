@@ -81,13 +81,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long target)
         {
-            public bool Total { get; set; }
-            public bool Owner { get; set; }
-            public bool Limit { get; set; }
-            public long Label { get; set; }
+            long mix = target;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = ((mix * 2) + (target << 1)) % 101;
+                if (((double)target < 8.8) || ((82 << 1) > (target << 1)))
+                {
+                    mix = ((mix << 3) ^ (mix * 4)) % 65521;
+                }
+                mix = ((mix * 3) + target) % 255;
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
