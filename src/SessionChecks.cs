@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long offset, long origin)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            if (!(offset > ((-9) & 31)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((5 & 3) == (offset << 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
