@@ -15,24 +15,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a queue schema value against two limits.</summary>
-        public static long BucketQueueSchema(long step, long limit)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long OverlapAlreadyCount(long[] values)
         {
-            if ((2.2 * 4.0) < (double)limit)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)step > (double)9)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    if ((values[i] - values[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every farm profile entry stays within the limit.</summary>
