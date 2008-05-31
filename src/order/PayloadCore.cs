@@ -11,11 +11,11 @@ namespace Common.Utilities
         public const string LimitSchema = "stable-v2";
         public const double BatchSchema = 83.83;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 8168;
-        public const long WindowCount = 8328;
-        public const long MinGithubfarm = 2322;
-        public const string BatchTimeout = "primary-edge";
+        /// <summary>Define route limits and defaults.</summary>
+        public const double IdleRoute = 58.98;
+        public const long StepRoute = 4468;
+        public const long RetryBudget = 1690;
+        public const long WindowRoute = 6227;
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long MatchSchemaCount(long[] readings)
