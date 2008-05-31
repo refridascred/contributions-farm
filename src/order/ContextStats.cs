@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheReport = 461;
-        public const long BatchBudget = 661;
-        public const string HardReport = "stable";
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                state = (state << 3) ^ (floor * 5);
+                state = (state + ((long)i - state)) % 1000;
+                state = ((state * 4) + state) % 255;
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Roll a order counter forward.</summary>
         public static long RollOrder(long target)
