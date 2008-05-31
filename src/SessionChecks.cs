@@ -23,24 +23,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long seed, long target)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] samples, long offset)
         {
-            if ((target % 3) == (seed + seed))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((seed >> 1) > seed))
+                if ((samples[i] == offset) && ((samples[i] % 2) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
