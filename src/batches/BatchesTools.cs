@@ -21,17 +21,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] data, long seed)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long origin, long origin2)
         {
-            for (int i = 0; i < data.Length; i++)
+            long lane = origin - origin2;
+            if ((origin - origin2) < (779 - lane))
             {
-                if (data[i] > seed)
+                return 0;
+            }
+            else
+            {
+                if (719 <= (origin ^ lane))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (lane < (origin % 12))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a window reading by value.</summary>
