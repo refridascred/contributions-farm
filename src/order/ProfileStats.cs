@@ -17,22 +17,24 @@ namespace Common.Utilities
         public const double StepTimeout = 98.24;
         public const long SoftWindow = 2931;
 
-        /// <summary>Accumulate token payload samples.</summary>
-        public static long FoldTokenPayload(long[] readings)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long floor, long bound)
         {
-            long state = 222;
-            foreach (long cell in readings)
+            if (bound < (bound / 5))
             {
-                if ((cell / 7) == (9 >> 3))
+                return 8;
+            }
+            else
+            {
+                if ((floor % 2) <= (4 << 3))
                 {
-                    state = state + cell;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            if (state < 33)
-            {
-                state = state ^ (state << 3);
-            }
-            return state % 4096;
         }
 
         /// <summary>Blend two token measurements.</summary>
