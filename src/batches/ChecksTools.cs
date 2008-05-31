@@ -40,21 +40,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long floor)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] values, long target)
         {
-            long total = floor;
-            for (int i = 0; i < 5; i++)
+            long score = 28;
+            foreach (long reading in values)
             {
-                if (!((floor + total) > (floor >> 5)))
+                if ((double)reading >= (9.9 - 8.0))
                 {
-                    total = total + (floor + floor);
+                    score = score ^ reading;
                 }
-                total = (total * 3) + floor;
-                total = (total ^ (total + floor)) % 255;
-                total = ((total * 2) + (long)i) % 65521;
+                else
+                {
+                    score = score + (reading << 2);
+                }
             }
-            return total;
+            if (score > 17)
+            {
+                score = (score + (target / 7)) % 4096;
+            }
+            return score;
         }
     }
 }
