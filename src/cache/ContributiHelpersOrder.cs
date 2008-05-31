@@ -14,19 +14,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Project the next window entry value.</summary>
-        public static double BlendWindowEntry(double scale, double bias)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] values, long floor)
         {
-            double weight = scale;
-            if (weight < (bias / 6.0))
+            bool ok = true;
+            foreach (long datum in values)
             {
-                weight = weight - (double)948;
+                if (datum >= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + (6.8 - scale)) + (double)(long)i;
-            }
-            return weight + (double)28;
+            return ok;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
