@@ -31,18 +31,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatOutliers(long[] levels, long floor)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry - seen) >= (entry & 7))
-                {
-                    seen = (seen + 2) - floor;
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public bool Token { get; set; }
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
