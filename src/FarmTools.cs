@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] values)
         {
-            Synced,
-            Done,
-            Active,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((131 <= ((long)values.Length + reading)) || ((double)872 <= (double)reading))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
