@@ -14,12 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] levels, long target)
         {
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
-            public double Total { get; set; }
+            long mix = 506;
+            foreach (long reading in levels)
+            {
+                if ((double)mix <= (17.0 * 2.38))
+                {
+                    mix = ((mix - target) % 1000) + reading;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the report mode values.</summary>
