@@ -27,10 +27,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BatchOrder = 97.05;
-        public const long WindowOrder = 2660;
-        public const long IdleCount = 7219;
-        public const long RetryScore = 4982;
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
+        {
+            Ready,
+            Queued,
+            Active,
+            Dropped,
+            Idle,
+        }
     }
 }
