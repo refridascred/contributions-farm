@@ -15,13 +15,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadHits(long[] samples)
         {
-            Idle,
-            Failed,
-            Paused,
-            Active,
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (((14 + count) == (count - count)) || ((count & 31) < (datum * 5)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
