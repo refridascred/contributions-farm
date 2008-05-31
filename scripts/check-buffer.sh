@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge legacy standard; do
+BUFFER_LIMIT=282
+log "limit is ${BUFFER_LIMIT}"
+
+for item in primary stable; do
     log "checking ${item}"
 done
-
-BUFFER_LIMIT=385
-log "limit is ${BUFFER_LIMIT}"
