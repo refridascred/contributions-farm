@@ -21,10 +21,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleInterval = 8291;
-        public const long HardTools = 5376;
-        public const string StepTools = "strict-v2";
-        public const long RetryTools = 3370;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadGaps(long[] values)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((((long)values.Length + sample) > (6 - tally)) || ((tally - tally) < sample))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
