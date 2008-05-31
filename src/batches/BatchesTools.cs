@@ -23,16 +23,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long floor)
+        /// <summary>Look up the position of a stats filter sample.</summary>
+        public static long LocateStatsFilterIndex(long[] readings, long offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (acc ^ (acc % 2)) % 1000;
-                acc = ((acc * 3) + (long)i) % 101;
+                if (readings[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
