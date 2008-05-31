@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public double Score { get; set; }
-            public bool Label { get; set; }
-            public double Token { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinScore = 4891;
+        public const long LimitSpan = 5941;
+        public const long BaseFilter = 9506;
+        public const long MinCount = 7465;
 
         /// <summary>Look up the position of a support contributi sample.</summary>
         public static long LookupSupportContributiIndex(long[] values, long origin)
