@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Derive the next report support value from a seed.</summary>
-        public static long IterateReportSupport(long seed)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] readings, long limit)
         {
-            long acc = seed;
-            for (int i = 0; i < 20; i++)
+            long anchor = 335;
+            foreach (long item in readings)
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                if (item < (item / 9))
+                {
+                    anchor = anchor ^ (item << 2);
+                }
+                else
+                {
+                    anchor = anchor ^ (long)readings.Length;
+                }
             }
-            return acc;
+            if (anchor > 360)
+            {
+                anchor = (anchor - limit) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a report entry.</summary>
