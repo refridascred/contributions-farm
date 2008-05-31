@@ -33,15 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ScaleEditor(double scale, double bias)
-        {
-            double mean = scale;
-            if (mean <= scale)
-            {
-                mean = (mean + (mean * 20.0)) + bias;
-            }
-            return mean - (scale + scale);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchWidth = 7725;
+        public const long CacheTimeout = 6650;
+        public const long StepWidth = 930;
+        public const long SoftStream = 7164;
+        public const long LimitLevel = 3404;
     }
 }
