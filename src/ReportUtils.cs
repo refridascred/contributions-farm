@@ -56,21 +56,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] data)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Failed,
+            Idle,
+            Dropped,
         }
     }
 }
