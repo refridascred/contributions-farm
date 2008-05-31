@@ -1,7 +1,20 @@
 {
-  "audit": "standard",
-  "hard_size_pct": "blue",
-  "warm_depth_ms": "eu-west",
-  "batch_timeout": "local",
-  "route_capacity": false
+  "layout_window": {
+    "warm_delay_ms": 43.7,
+    "poll_window": 500,
+    "warm_size_count": {
+      "burst_retries": "legacy",
+      "warm_size": 2867,
+      "burst_ttl_s": true,
+      "githubfarm_limit": 100
+    },
+    "cluster_ttl": "staging"
+  },
+  "flush_interval_s": "blue",
+  "base_retries": 9189,
+  "warm_ratio_count": {
+    "dry_run": "primary",
+    "warm_capacity_ms": true,
+    "schema_ratio": 30
+  }
 }
