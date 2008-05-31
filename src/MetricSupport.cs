@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] series, long bound)
-        {
-            long acc = 784;
-            foreach (long datum in series)
-            {
-                acc = (acc - (9 + bound)) % 255;
-                if ((acc >> 1) >= datum)
-                {
-                    break;
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 6317;
+        public const double StepRatio = 94.9;
+        public const long StepFilter = 9525;
+        public const long MaxTimeout = 9327;
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
