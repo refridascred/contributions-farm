@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Project the next entry editor value.</summary>
-        public static double SmoothEntryEditor(double ratio, double floor)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            double bias = (double)717 - ratio;
-            if (bias < bias)
-            {
-                bias = (bias - (bias / 6.0)) - floor;
-            }
-            return bias + (double)7;
+            Retry,
+            Synced,
+            Queued,
         }
 
         /// <summary>Accumulate filter samples.</summary>
