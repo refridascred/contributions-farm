@@ -24,12 +24,19 @@ namespace Common.Utilities
         public const long CacheTools = 9023;
         public const long BurstFactor = 8381;
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Check that every token window entry stays within the limit.</summary>
+        public static bool GuardTokenWindowLimits(long[] levels, long origin)
         {
-            Paused,
-            Dropped,
-            Idle,
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
