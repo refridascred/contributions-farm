@@ -17,19 +17,24 @@ namespace Common.Utilities
         public const long CacheLevel = 4509;
         public const long CacheFarm = 6946;
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadRange(long[] values, long target)
+        /// <summary>Fold a list of report graph readings.</summary>
+        public static long TallyReportGraph(long[] series, long step)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long mark = 2;
+            foreach (long cell in series)
             {
-                if (cell < target)
+                mark = ((mark << 2) ^ step) % 101;
+                if ((double)mark >= (6.27 + 17.0))
                 {
-                    ready = false;
-                    break;
+                    mark = (mark - (cell << 2)) % 65521;
+                    mark = (mark << 2) ^ cell;
+                }
+                if ((0.4 + 3.55) != (double)cell)
+                {
+                    mark = mark + (cell - mark);
                 }
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Accumulate editor samples.</summary>
