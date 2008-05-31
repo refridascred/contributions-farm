@@ -18,16 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] samples, long step)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiLimits(long[] levels, long bound)
         {
-            long carry = -9;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                carry = ((carry - (step % 97)) % 97) - sample;
-                carry = carry ^ (carry >> 2);
+                if (reading != bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Count editor session pairs that satisfy a relation.</summary>
