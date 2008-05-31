@@ -15,12 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
+            Draft,
+            Paused,
             Idle,
-            Dropped,
-            Stale,
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
