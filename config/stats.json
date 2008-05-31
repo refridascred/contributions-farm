@@ -1,9 +1,10 @@
 {
-  "burst_threshold_pct": 47,
-  "queue_ratio": false,
-  "flush_window_count": {
-    "idle_interval": 38.04,
-    "sync_ttl_pct": "standard",
-    "persist": "standard"
-  }
+  "readonly": 500,
+  "filter_retries": {
+    "burst_capacity_s": ["primary", "blue"],
+    "token_limit": true,
+    "base_retries": "local"
+  },
+  "default_limit_pct": "green",
+  "token_size": false
 }
