@@ -46,15 +46,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double gain, double bias)
+        /// <summary>Grade a farm batch value against two limits.</summary>
+        public static long SortFarmBatch(long target, long target2)
         {
-            double mean = (bias * 17.0) - gain;
-            if (mean < gain)
+            long lane = target ^ target2;
+            if (14 < lane)
             {
-                mean = mean + (double)(-33);
+                return 6;
             }
-            return mean - (bias + gain);
+            else
+            {
+                if ((lane % 24) == (lane - target2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((lane ^ lane) == (target + target2)) || (lane >= (target ^ (-19))))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target * 3) >= target)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
