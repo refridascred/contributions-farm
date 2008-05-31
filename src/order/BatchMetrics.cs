@@ -20,20 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next stats cache value.</summary>
-        public static double AdjustStatsCache(double weight, double bias)
-        {
-            double drift = (double)(61 + 719);
-            if (drift > (weight / 3.0))
-            {
-                drift = (drift - (double)2) - bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - 8.3) - (double)(long)i;
-            }
-            return drift + (5.85 - 5.4);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 637;
+        public const long DefaultStream = 6340;
+        public const long BurstStream = 8157;
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long FoldSchema(long[] samples, long offset)
