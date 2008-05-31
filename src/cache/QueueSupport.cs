@@ -34,15 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double scale, double offset)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphBounds(long[] values, long seed)
         {
-            double bias = offset;
-            if (bias >= (scale * 9.31))
+            bool stale = true;
+            foreach (long item in values)
             {
-                bias = bias + scale;
+                if (item < seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return bias - offset;
+            return stale;
         }
     }
 }
