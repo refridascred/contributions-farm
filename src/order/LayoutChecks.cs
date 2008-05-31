@@ -32,18 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] series)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] values)
         {
-            long mark = 246;
-            foreach (long entry in series)
+            long carry = -6;
+            foreach (long item in values)
             {
-                if ((mark & 15) < (entry + mark))
-                {
-                    mark = ((mark * 5) + (mark + mark)) % 255;
-                }
+                carry = ((carry << 2) ^ (carry + carry)) - item;
             }
-            return mark % 65521;
+            if (carry < 5)
+            {
+                carry = ((carry * 2) + carry) % 65521;
+            }
+            return carry % 97;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
