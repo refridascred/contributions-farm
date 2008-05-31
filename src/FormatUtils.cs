@@ -28,12 +28,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            public long Level { get; set; }
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
+            Draft,
+            Ready,
+            New,
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
