@@ -35,12 +35,12 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepRatio = 9027;
-        public const long BaseCount = 8796;
-        public const string HardCounter = "latest-v2";
-        public const long CacheCounter = 1554;
-        public const long DefaultCounter = 361;
+        /// <summary>Define session limits and defaults.</summary>
+        public const double WindowDepth = 50.54;
+        public const long RetrySession = 8661;
+        public const long CacheDepth = 5967;
+        public const long MaxWidth = 1979;
+        public const long BurstTimeout = 1322;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long IdleFactor = 6478;
