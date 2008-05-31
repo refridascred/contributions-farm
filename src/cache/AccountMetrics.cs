@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterGaps(long[] levels)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((5 + matches) > item)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Stale,
+            Dropped,
+            Failed,
+            Retry,
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
