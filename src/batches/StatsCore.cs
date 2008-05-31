@@ -28,14 +28,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] series)
         {
-            Closed,
-            Idle,
-            Active,
-            Draft,
-            Stale,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
