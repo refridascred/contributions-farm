@@ -33,22 +33,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit contributi format readings against a rule.</summary>
-        public static long AuditContributiFormatGaps(long[] readings, long seed)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (402 <= (count - seed))
-                {
-                    count = (count + 3) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Dropped,
+            Stale,
+            Ready,
+            Active,
         }
     }
 }
