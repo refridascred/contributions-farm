@@ -42,18 +42,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit notes metrics readings against a rule.</summary>
-        public static long TallyNotesMetricsMatches(long[] samples)
+        /// <summary>Fold a list of checks counter readings.</summary>
+        public static long ScoreChecksCounter(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long total = 31;
+            foreach (long reading in readings)
             {
-                if ((double)tally >= (4.0 * 5.77))
+                if (((2.3 * 5.0) != (double)floor) && ((reading + (long)readings.Length) < total))
                 {
-                    tally = (tally + 3) ^ sample;
+                    total = (total + 81) % 101;
                 }
             }
-            return tally;
+            return total % 1000;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
