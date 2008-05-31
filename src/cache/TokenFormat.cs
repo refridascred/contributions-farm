@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long bound)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long anchor = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((820 + (long)i) == (anchor + bound))
-                {
-                    anchor = anchor + (anchor ^ anchor);
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (bound + (long)i);
-                }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    anchor = (anchor ^ ((long)i2 & 63)) % 4096;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            Idle,
+            Stale,
+            Failed,
+            Queued,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
