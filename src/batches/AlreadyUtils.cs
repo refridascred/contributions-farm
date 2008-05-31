@@ -57,23 +57,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] items)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] series)
         {
-            long result = 449;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long value in series)
             {
-                result = ((result ^ result) % 4096) ^ cell;
-                if ((9.1 * 0.32) <= (double)result)
+                if ((((1.8 / 8.0) != (double)(long)series.Length) && ((count - count) > 367)) || ((double)count > (double)value))
                 {
-                    result = (result ^ 97) % 97;
-                }
-                if ((result >= (result * 2)) || ((4.5 * 5.0) < (double)result))
-                {
-                    break;
+                    count = count + 3;
                 }
             }
-            return result;
+            return count;
         }
     }
 }
