@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double weight, double offset)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] data, long bound)
         {
-            double ratio = weight;
-            if (ratio <= offset)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio - 8.2;
+                if (data[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + 9.44;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - (weight + ratio)) - (double)(long)i;
-            }
-            return ratio + weight;
+            return -1;
         }
 
         /// <summary>Describe the entry mode values.</summary>
