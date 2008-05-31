@@ -1,8 +1,20 @@
 {
-  "persist": "standard",
-  "readonly": "cached",
-  "default_ttl_pct": "local",
-  "cache_limit": "strict",
-  "session_depth": [113, 276, 180, 260],
-  "support_threshold": 500
+  "audit": 19.46,
+  "channel_depth": 250,
+  "soft_retries_count": {
+    "editor_ttl": 100,
+    "burst_timeout": "primary",
+    "burst_delay": "fallback",
+    "retry_window": 7643,
+    "retry_delay": {
+      "readonly": 1.92,
+      "dry_run": [284, 419],
+      "poll_capacity_ms": false,
+      "enabled": 500,
+      "audit": "green"
+    }
+  },
+  "cache_interval": 42.91,
+  "burst_retries": 2225,
+  "compress": 250
 }
