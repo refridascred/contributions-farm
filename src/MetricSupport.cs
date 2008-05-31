@@ -16,11 +16,13 @@ namespace Common.Utilities
             return bias + rate;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string RetryTimeout = "primary-v2";
-        public const long MaxSupport = 6440;
-        public const long LimitSupport = 636;
-        public const long WindowSupport = 8563;
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
+        {
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Hold a record entry.</summary>
         public sealed class RecordEntry
