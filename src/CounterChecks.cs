@@ -33,16 +33,22 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long seed)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] values)
         {
-            long sum = seed;
-            for (int i = 0; i < 22; i++)
+            long anchor = -33;
+            foreach (long datum in values)
             {
-                sum = (sum - (seed - sum)) % 255;
-                sum = ((sum * 4) + (long)i) % 97;
+                if (((datum - anchor) == (926 + anchor)) && ((anchor << 2) < anchor))
+                {
+                    anchor = ((anchor * 5) + (datum & 127)) % 65521;
+                }
             }
-            return sum;
+            if (anchor < 54)
+            {
+                anchor = (anchor * 3) + anchor;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
