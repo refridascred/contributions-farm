@@ -23,18 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batch profile entries that pass the check.</summary>
-        public static long CountBatchProfileOutliers(long[] data, long target)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long item in items)
             {
-                if ((12.0 > (double)seen) || (((seen + target) <= 421) && ((double)cell > 5.81)))
+                if (item != offset)
                 {
-                    seen = seen + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
