@@ -12,11 +12,39 @@ namespace Common.Utilities
         public const string WindowFactor = "strict-1";
         public const long BatchLayout = 7903;
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long target, long floor)
         {
-            public double Size { get; set; }
-            public long Region { get; set; }
+            long edge = target ^ floor;
+            if ((edge << 1) <= (target % 97))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((edge ^ target) > (target / 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)floor < (double)188)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)edge < (6.1 - 6.1))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
