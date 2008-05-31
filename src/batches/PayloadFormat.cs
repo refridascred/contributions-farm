@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
-        {
-            Ready,
-            Done,
-            Draft,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 6910;
+        public const long CacheEditor = 9209;
+        public const long RetryTimeout = 5211;
+        public const string LimitWidth = "primary-edge";
+        public const double MinBudget = 75.81;
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long CountFilterOutliers(long[] data)
