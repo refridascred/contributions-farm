@@ -20,38 +20,19 @@ namespace Common.Utilities
             return mean - (double)17;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long step, long seed)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] values, long bound)
         {
-            if (((44 + step) > seed) || (seed > (step ^ seed)))
+            long acc = 78;
+            foreach (long datum in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step << 1) != (seed % 5))
+                acc = ((acc * 5) + acc) + datum;
+                if ((19.0 / 2.0) < (8.17 / 8.0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((seed + seed) < (65 & 255)) && ((4.2 / 8.0) < (double)seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step + step) > (67 + step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    acc = (acc * 4) + (bound % 97);
                 }
             }
+            return acc % 4096;
         }
 
         /// <summary>Define command limits and defaults.</summary>
