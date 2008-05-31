@@ -43,18 +43,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batches queue samples are out of range.</summary>
-        public static long AuditBatchesQueueGaps(long[] series, long bound)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiOutliers(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (((item & 127) != (item - item)) || ((bound + matches) >= (matches / 2)))
+                if ((double)bound <= (1.0 * 9.06))
                 {
-                    matches = matches + 1;
+                    tally = (tally + 1) ^ cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Accumulate record samples.</summary>
