@@ -19,15 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double ratio, double floor)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] data)
         {
-            double ratio2 = ratio;
-            if (ratio2 >= (double)25)
+            long mix = 31;
+            foreach (long value in data)
             {
-                ratio2 = (ratio2 - (ratio * 2.5)) - floor;
+                if (((5.0 + 8.5) != (double)mix) && ((mix - 9) <= (754 & 127)))
+                {
+                    mix = (mix ^ (value * 3)) % 1000;
+                }
             }
-            return ratio2 + ratio;
+            return mix % 65521;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
