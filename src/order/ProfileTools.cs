@@ -12,13 +12,31 @@ namespace Common.Utilities
             return ((weight - weight) + rate) + floor;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long step, long bound)
         {
-            public string Total { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
+            if ((double)bound > (5.6 + 9.18))
+            {
+                return 5;
+            }
+            else
+            {
+                if (20.0 >= (double)bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (bound <= (bound + bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
