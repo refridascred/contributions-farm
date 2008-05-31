@@ -37,11 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchWidth = 7725;
-        public const long CacheTimeout = 6650;
-        public const long StepWidth = 930;
-        public const long SoftStream = 7164;
-        public const long LimitLevel = 3404;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutMatches(long[] series, long limit)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((limit >> 5) > (entry + matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
