@@ -32,31 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank farm counter input into a small class.</summary>
-        public static long BucketFarmCounter(long floor, long target)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] items, long bound)
         {
-            if (((947 & 15) <= (target * 5)) || ((double)target > (double)86))
+            bool flag = true;
+            foreach (long item in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target + target) < (floor / 6))
+                if (item > bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((target * 5) != (target % 100)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
