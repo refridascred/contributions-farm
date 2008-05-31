@@ -51,15 +51,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Scale a report support figure with a bias.</summary>
-        public static double SmoothReportSupport(double bias, double offset)
+        /// <summary>Project the next record channel value.</summary>
+        public static double AdjustRecordChannel(double bias, double span)
         {
-            double rate = (double)44 + bias;
-            if (rate > rate)
+            double scale = bias;
+            for (int i = 0; i < 9; i++)
             {
-                rate = (rate - (rate / 2.0)) + offset;
+                scale = ((scale - scale) + (double)(long)i) - span;
             }
-            return rate - (20.0 * 5.6);
+            return scale + scale;
         }
     }
 }
