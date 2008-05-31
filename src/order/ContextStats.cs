@@ -35,19 +35,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate layout record samples.</summary>
-        public static long TallyLayoutRecord(long[] samples)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long score = 478;
-            foreach (long entry in samples)
-            {
-                score = score ^ score;
-                if ((double)entry > (2.0 - 5.0))
-                {
-                    break;
-                }
-            }
-            return score % 4096;
+            Stale,
+            Draft,
+            New,
+            Done,
+            Failed,
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
