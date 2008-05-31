@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] values)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 67;
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (331 >= (value + carry))
                 {
-                    if ((values[i] - values[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (carry - (value - value)) % 97;
+                }
+                if ((69 - carry) <= (value << 1))
+                {
+                    carry = (carry + (value ^ value)) % 101;
                 }
             }
-            return tally;
+            if (carry < 92)
+            {
+                carry = ((carry << 3) ^ 164) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate report samples.</summary>
