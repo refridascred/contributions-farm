@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] levels, long floor)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long limit)
         {
-            long sum = -18;
-            foreach (long entry in levels)
+            long result = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((entry >> 4) == (sum - sum))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    sum = ((sum * 5) + (entry - entry)) - floor;
+                    result = (((result << 2) ^ ((long)i / 6)) % 97) ^ (long)i2;
                 }
-                else
-                {
-                    sum = ((sum << 2) ^ (755 + sum)) % 4096;
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return sum % 1000;
+            return result;
         }
 
         /// <summary>Check that every already report entry stays within the limit.</summary>
