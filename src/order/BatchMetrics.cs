@@ -25,19 +25,17 @@ namespace Common.Utilities
         public const long MinBudget = 2207;
         public const long MaxCount = 2362;
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] values, long origin)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long limit)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long score = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (entry >= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                score = ((score << 3) ^ (limit - score)) % 97;
+                score = (score + score) % 4096;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Describe the support kind values.</summary>
