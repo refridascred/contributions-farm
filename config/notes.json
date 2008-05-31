@@ -1,8 +1,5 @@
 {
-  "window_threshold": false,
-  "sync_depth": true,
-  "default_size_ms": 75.29,
-  "default_limit_count": 60,
-  "max_depth_ms": false,
-  "window_depth": "eu-west"
+  "audit": "open",
+  "batch_interval_count": "eu-west",
+  "cache_timeout_count": "local"
 }
