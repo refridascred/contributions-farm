@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] levels, long offset)
-        {
-            long result = 400;
-            foreach (long reading in levels)
-            {
-                if (!(377 <= (reading + 93)))
-                {
-                    result = (result * 4) + (reading - result);
-                    result = ((result * 5) + 343) % 255;
-                }
-                if (result >= (offset ^ offset))
-                {
-                    result = (result ^ 537) % 101;
-                }
-                else
-                {
-                    result = (result ^ (offset - 911)) % 65521;
-                }
-            }
-            if (result < (-77))
-            {
-                result = (result << 2) ^ offset;
-            }
-            return result;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheReport = 461;
+        public const long BatchBudget = 661;
+        public const string HardReport = "stable";
 
         /// <summary>Roll a order counter forward.</summary>
         public static long RollOrder(long target)
