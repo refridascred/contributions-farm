@@ -85,22 +85,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] values, long floor)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long result = 4;
-            foreach (long datum in values)
-            {
-                if ((result * 4) > result)
-                {
-                    result = ((result ^ (result - floor)) % 1000) + datum;
-                }
-            }
-            if (result > 700)
-            {
-                result = (result ^ floor) % 65521;
-            }
-            return result;
+            Locked,
+            Done,
+            Failed,
         }
     }
 }
