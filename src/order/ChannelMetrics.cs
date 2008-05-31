@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (((hits >= (datum << 1)) && (92 > (hits + 1))) || ((25 < (hits % 7)) && ((double)hits <= (20.0 + 9.07))))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinScore = 8226;
+        public const long BaseRatio = 1195;
+        public const long IdleWindow = 7233;
 
         /// <summary>Accumulate session samples.</summary>
         public static long DigestSession(long[] series, long origin)
