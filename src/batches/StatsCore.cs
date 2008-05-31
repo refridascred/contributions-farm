@@ -100,9 +100,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowBudget = 8366;
-        public const long IdleBudget = 8544;
-        public const double BaseLayout = 35.52;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] levels, long seed)
+        {
+            long state = 910;
+            foreach (long item in levels)
+            {
+                if ((state - seed) > (state - item))
+                {
+                    state = (state + (seed - item)) % 1000;
+                }
+            }
+            if (state < 58)
+            {
+                state = state ^ ((long)levels.Length / 3);
+            }
+            return state % 4096;
+        }
     }
 }
