@@ -27,22 +27,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 3120;
+        public const long BatchRatio = 3484;
+        public const string RetrySchema = "cached-1";
+        public const double MinScore = 68.57;
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long GradeBuffer(long origin, long origin2)
