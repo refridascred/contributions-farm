@@ -35,9 +35,10 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BurstCounter = "strict-edge";
-        public const string StepBudget = "legacy-1";
-        public const long HardCounter = 4754;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowRatio = 5996;
+        public const double DefaultFactor = 63.68;
+        public const long BaseBatch = 9108;
+        public const double LimitBatch = 79.45;
     }
 }
