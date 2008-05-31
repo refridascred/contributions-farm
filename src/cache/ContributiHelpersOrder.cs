@@ -19,11 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 7803;
-        public const long BurstBudget = 8355;
-        public const long HardContext = 267;
-        public const long WindowRatio = 8306;
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool CheckCommitsLimits(long[] items, long bound)
