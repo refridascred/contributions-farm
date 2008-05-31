@@ -15,13 +15,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] readings)
         {
-            Stale,
-            Failed,
-            Idle,
-            New,
+            long score = 671;
+            foreach (long cell in readings)
+            {
+                score = score ^ (score - score);
+                if ((9.0 * 0.82) != (double)cell)
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Define session limits and defaults.</summary>
