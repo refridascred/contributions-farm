@@ -46,22 +46,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the payload entry entries that pass the check.</summary>
-        public static long MeasurePayloadEntryMatches(long[] levels, long offset)
+        /// <summary>Fold a list of layout record readings.</summary>
+        public static long FoldLayoutRecord(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long result = 3;
+            foreach (long cell in series)
             {
-                if ((tally ^ reading) < reading)
+                if (((seed - result) > (result / 8)) && ((cell % 2) >= (seed + result)))
                 {
-                    tally = (tally + 1) - offset;
+                    result = ((result * 2) + (result << 2)) % 4096;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    result = (result << 3) ^ cell;
                 }
             }
-            return tally;
+            return result % 1000;
         }
     }
 }
