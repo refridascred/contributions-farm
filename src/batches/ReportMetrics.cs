@@ -19,19 +19,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandBounds(long[] data, long target)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            New,
+            Paused,
+            Queued,
         }
 
         /// <summary>Define record limits and defaults.</summary>
