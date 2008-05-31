@@ -33,22 +33,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] values)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long anchor = -33;
-            foreach (long datum in values)
-            {
-                if (((datum - anchor) == (926 + anchor)) && ((anchor << 2) < anchor))
-                {
-                    anchor = ((anchor * 5) + (datum & 127)) % 65521;
-                }
-            }
-            if (anchor < 54)
-            {
-                anchor = (anchor * 3) + anchor;
-            }
-            return anchor % 4096;
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a githubfarm record.</summary>
