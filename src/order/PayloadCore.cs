@@ -45,12 +45,9 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
-        {
-            Ready,
-            Pending,
-            Closed,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxScore = 699;
+        public const string WindowScore = "alpha-v2";
+        public const string DefaultNotes = "local";
     }
 }
