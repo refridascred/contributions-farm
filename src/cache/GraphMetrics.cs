@@ -59,26 +59,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine account queue values into a single score.</summary>
-        public static long ScoreAccountQueue(long[] readings)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] samples)
         {
-            long total = 1;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((double)cell <= (6.37 / 6.0))
+                if ((double)tally < (7.8 - 14.0))
                 {
-                    total = (total << 2) ^ (cell + cell);
+                    tally = (tally + 3) + cell;
                 }
-                if (total <= (total >> 3))
+                else
                 {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            if (total < 2)
-            {
-                total = (total * 2) + total;
-            }
-            return total;
+            return tally;
         }
     }
 }
