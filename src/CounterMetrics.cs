@@ -48,15 +48,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a tools filter counter forward.</summary>
-        public static long SeriesToolsFilter(long seed)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long carry = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            New,
+            Ready,
+            Queued,
+            Active,
+            Stale,
         }
 
         /// <summary>Count the session graph entries that pass the check.</summary>
