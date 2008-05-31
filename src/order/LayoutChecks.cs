@@ -69,12 +69,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Digest a series of buffer layout entries.</summary>
+        public static long TallyBufferLayout(long[] samples, long seed)
         {
-            Synced,
-            Idle,
-            Ready,
+            long anchor = -90;
+            foreach (long reading in samples)
+            {
+                if ((222 <= (anchor / 9)) && ((seed ^ seed) < ((-85) << 2)))
+                {
+                    anchor = anchor - reading;
+                }
+                else
+                {
+                    anchor = anchor + 4;
+                }
+                anchor = (anchor << 2) ^ (anchor + (-600));
+                if ((anchor + anchor) < anchor)
+                {
+                    anchor = anchor - (398 + anchor);
+                }
+            }
+            return anchor;
         }
     }
 }
