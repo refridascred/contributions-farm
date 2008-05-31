@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] values)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Done,
+            New,
+            Draft,
+            Active,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
