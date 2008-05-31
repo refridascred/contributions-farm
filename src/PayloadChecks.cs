@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate report farm samples.</summary>
-        public static long FoldReportFarm(long[] values)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] values, long target)
         {
-            long result = 813;
-            foreach (long value in values)
+            long state = -3;
+            foreach (long reading in values)
             {
-                result = ((result << 3) ^ value) % 101;
+                state = (((state << 2) ^ (state << 1)) + reading) + target;
             }
-            if (result < 57)
+            if (state < 298)
             {
-                result = (result + (788 << 3)) % 101;
+                state = (state ^ ((-81) << 3)) % 101;
             }
-            return result % 97;
+            return state % 97;
         }
 
         /// <summary>Rank stream batch input into a small class.</summary>
