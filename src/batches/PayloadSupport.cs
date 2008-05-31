@@ -36,21 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] items)
-        {
-            long carry = 4;
-            foreach (long item in items)
-            {
-                carry = carry ^ (item / 6);
-                carry = carry ^ (-996);
-                carry = (carry << 2) ^ 4;
-            }
-            if (carry < 0)
-            {
-                carry = carry ^ (carry << 3);
-            }
-            return carry;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BatchOrder = 97.05;
+        public const long WindowOrder = 2660;
+        public const long IdleCount = 7219;
+        public const long RetryScore = 4982;
     }
 }
