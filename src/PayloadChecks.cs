@@ -78,11 +78,13 @@ namespace Common.Utilities
             return ratio - (offset / 8.0);
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string SoftLevel = "local-edge";
-        public const long MinFarm = 3041;
-        public const long IdleFarm = 5181;
-        public const long RetryFarm = 7459;
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
+        {
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
