@@ -29,32 +29,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a format payload value against two limits.</summary>
-        public static long RankFormatPayload(long step, long seed)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] readings, long step)
         {
-            long delta = step + seed;
-            if (((666 * 2) <= seed) || ((6.0 - 9.75) > (double)seed))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((seed - delta) <= seed))
+                if ((readings[i] <= step) && ((readings[i] % 3) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((-6) < (step << 2)) && (step > (seed % 3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank route input into a small class.</summary>
