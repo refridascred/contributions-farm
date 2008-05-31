@@ -23,17 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] samples, long offset)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
