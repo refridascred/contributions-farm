@@ -33,13 +33,9 @@ namespace Common.Utilities
         public const long StepTimeout = 8236;
         public const long BaseDepth = 4504;
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Dropped,
-            Stale,
-            Ready,
-            Active,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSchema = 4728;
+        public const long StepFactor = 1572;
+        public const long MinSchema = 7363;
     }
 }
