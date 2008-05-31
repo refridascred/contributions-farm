@@ -13,19 +13,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsBounds(long[] samples, long target)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long offset)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long sum = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (datum > target)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Adjust a notes reading.</summary>
