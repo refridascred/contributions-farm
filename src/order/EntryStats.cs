@@ -12,11 +12,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Project the next buffer window value.</summary>
-        public static double BlendBufferWindow(double bias, double span)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] data, long bound)
         {
-            double load = (double)(732 - 333);
-            return (load - (span - load)) + bias;
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((3 + bound) != (863 >> 3))
+                {
+                    seen = (seen + 2) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
