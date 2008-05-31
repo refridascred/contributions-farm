@@ -26,17 +26,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long offset)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long seed)
         {
-            long acc = offset;
-            for (int i = 0; i < 13; i++)
+            long sum = seed;
+            for (int i = 0; i < 22; i++)
             {
-                acc = (acc ^ (long)i) % 255;
-                acc = (acc - (offset % 60)) % 65521;
-                acc = ((acc * 2) + (long)i) % 1000;
+                sum = (sum - (seed - sum)) % 255;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
