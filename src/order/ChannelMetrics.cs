@@ -36,20 +36,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 15; i++)
-            {
-                if (89 < mark)
-                {
-                    continue;
-                }
-                mark = (mark ^ (183 - mark)) % 97;
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string IdleBatches = "latest-1";
+        public const double RetryBatches = 88.98;
+        public const long SoftBatches = 7402;
+        public const string WindowBatches = "cached-1";
+        public const double DefaultWidth = 67.99;
     }
 }
