@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
-        {
-            Ready,
-            Dropped,
-            Active,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 758;
+        public const string BaseSize = "local-1";
+        public const long HardTimeout = 8618;
+        public const long MaxRatio = 3612;
+        public const string IdleSize = "local";
 
         /// <summary>Grade a queue route value against two limits.</summary>
         public static long BucketQueueRoute(long origin, long offset)
