@@ -114,11 +114,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double weight, double bias)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] data, long offset)
         {
-            double mean = (double)((-195) + 146);
-            return (mean - (mean + weight)) + bias;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= offset) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
