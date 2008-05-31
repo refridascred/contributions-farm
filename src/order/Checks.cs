@@ -34,21 +34,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] items)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Queued,
+            Done,
+            Active,
+            Synced,
+            Draft,
         }
 
         /// <summary>Look up the position of a already report sample.</summary>
