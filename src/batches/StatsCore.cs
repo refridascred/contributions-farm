@@ -15,19 +15,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] readings)
+        /// <summary>Match up farm counter samples.</summary>
+        public static long MatchFarmCounterCount(long[] values)
         {
-            long score = 671;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = score ^ (score - score);
-                if ((9.0 * 0.82) != (double)cell)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] - values[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a session summary.</summary>
