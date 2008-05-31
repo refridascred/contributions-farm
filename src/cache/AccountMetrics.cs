@@ -16,18 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= bound) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string SoftSpan = "primary-edge";
+        public const double BurstQueue = 82.57;
+        public const long BaseSpan = 1122;
+        public const string LimitWidth = "alpha-edge";
+        public const double MinRatio = 29.66;
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long StepReport(long offset)
