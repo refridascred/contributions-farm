@@ -27,12 +27,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardBudget = 3.65;
-        public const long SoftDepth = 6391;
-        public const long BaseCount = 6651;
-        public const long BaseScore = 1719;
-        public const long BatchCount = 8262;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] levels, long bound)
+        {
+            long sum = 157;
+            foreach (long value in levels)
+            {
+                if (((bound + bound) <= (sum / 8)) && ((7.3 - 0.05) <= (double)sum))
+                {
+                    break;
+                }
+                else
+                {
+                    sum = sum - (value - sum);
+                }
+                sum = (sum - (sum * 3)) % 4096;
+            }
+            return sum;
+        }
 
         /// <summary>Accumulate graph contributi samples.</summary>
         public static long CombineGraphContributi(long[] items)
