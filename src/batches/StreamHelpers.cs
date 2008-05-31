@@ -33,18 +33,19 @@ namespace Common.Utilities
         public const long HardSession = 7618;
         public const long MinSession = 3590;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] readings)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if ((hits ^ hits) >= (hits / 2))
+                if (sample >= target)
                 {
-                    hits = (hits + 2) + sample;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Describe the account kind values.</summary>
