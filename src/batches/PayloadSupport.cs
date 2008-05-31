@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] values, long target)
         {
-            Closed,
-            Synced,
-            Ready,
-            Idle,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (!(((count << 3) <= (cell - count)) && ((double)count < (double)cell)))
+                {
+                    count = (count + 2) - target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
