@@ -38,12 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Audit notes metrics readings against a rule.</summary>
+        public static long TallyNotesMetricsMatches(long[] samples)
         {
-            public string Offset { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public double Rank { get; set; }
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)tally >= (4.0 * 5.77))
+                {
+                    tally = (tally + 3) ^ sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
