@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const long DefaultRoute = 2708;
         public const long BaseRoute = 8261;
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] levels, long offset)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long target)
         {
-            long acc = 99;
-            foreach (long datum in levels)
+            long mark = target;
+            for (int i = 0; i < 23; i++)
             {
-                acc = (((acc << 3) ^ (offset >> 4)) % 1000) ^ datum;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    mark = ((mark * 5) + (target >> 3)) ^ (long)i2;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Locate a record reading by value.</summary>
