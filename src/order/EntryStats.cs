@@ -45,18 +45,19 @@ namespace Common.Utilities
         public const string WindowCount = "staging";
         public const long IdleCommits = 8417;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterHits(long[] items)
+        /// <summary>Fold a list of notes report readings.</summary>
+        public static long FoldNotesReport(long[] series)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long acc = 0;
+            foreach (long entry in series)
             {
-                if ((tally >= (tally & 15)) && (((long)items.Length % 5) >= (32 - item)))
+                for (int i = 0; i < 12; i++)
                 {
-                    tally = tally + 1;
+                    acc = ((acc + (entry + acc)) % 255) - (long)i;
                 }
+                acc = acc + (entry - entry);
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Hold a token snapshot.</summary>
