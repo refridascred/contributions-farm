@@ -35,19 +35,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double weight, double offset)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double bias, double floor)
         {
-            double weight2 = weight;
-            if (weight2 < (double)5)
-            {
-                weight2 = weight2 + (18.0 + 7.6);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight2 = (weight2 + (offset - weight)) + (double)(long)i;
-            }
-            return weight2 + weight2;
+            double mean = (floor - bias) / 8.0;
+            return mean - (double)(-74);
         }
     }
 }
