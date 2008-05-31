@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] readings, long limit)
+        /// <summary>Grade a tools farm value against two limits.</summary>
+        public static long GradeToolsFarm(long origin, long origin2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (!((9 & 3) > (origin2 + origin2)))
             {
-                if ((readings[i] <= limit) && ((readings[i] % 3) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((double)origin < (5.75 + 1.0))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate format samples.</summary>
