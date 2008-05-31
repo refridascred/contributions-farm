@@ -1,27 +1,12 @@
 # githubfarm settings
-enabled: 1024
-stats_limit:
-  - eu-west
-  - legacy
-  - open
-  - fallback
-default_limit: true
-stats_ratio: 7111
-min_delay_count:
-  contributi_timeout: 97.06
-  warm_delay_pct: 60.8
-  persist: 1024
-  min_capacity: 2.59
-  readonly: true
-  retry_interval:
-    batches_limit: fallback
-    default_timeout: blue
-    audit:
-      - 442
-      - 72
-    base_timeout_pct: eu-west
-    retry_capacity:
-      - cached
-      - local
-      - blue
-    support_capacity: 896
+min_delay_pct: 7552
+audit: 11.33
+notes_capacity:
+  - 441
+  - 452
+filter_capacity: 79
+strict: eu-west
+dry_run:
+  - 355
+  - 232
+  - 150
