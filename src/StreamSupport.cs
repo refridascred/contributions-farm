@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long origin, long step)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] values)
         {
-            long next = origin + step;
-            if ((origin + step) > (next ^ 94))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin & 3) == (next / 6))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    if ((values[i] ^ values[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
