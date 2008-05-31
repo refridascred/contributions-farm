@@ -55,13 +55,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public long Label { get; set; }
+            public long Score { get; set; }
+            public bool Weight { get; set; }
+            public long Offset { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
