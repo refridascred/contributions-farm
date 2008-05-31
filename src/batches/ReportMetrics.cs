@@ -19,24 +19,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long target, long step)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandBounds(long[] data, long target)
         {
-            if (2 < (target & 31))
+            bool flag = true;
+            foreach (long entry in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)step >= (2.0 + 3.2))
+                if (entry != target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Scale a tools counter figure with a bias.</summary>
