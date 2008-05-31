@@ -46,19 +46,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaRange(long[] data, long target)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] data, long bound)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (entry > target)
+                if ((((tally ^ (-407)) <= (long)data.Length) || ((reading - 712) <= ((long)data.Length >> 5))) || ((reading > (tally << 2)) || ((double)tally >= (double)(-8))))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 3) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
