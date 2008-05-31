@@ -49,12 +49,24 @@ namespace Common.Utilities
             return drift - (double)291;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MaxCount = "staging";
-        public const long CacheWidth = 6822;
-        public const double MinOrder = 49.44;
-        public const double IdleInterval = 60.98;
-        public const long SoftOrder = 9871;
+        /// <summary>Accumulate cluster counter samples.</summary>
+        public static long FoldClusterCounter(long[] values, long origin)
+        {
+            long sum = -832;
+            foreach (long datum in values)
+            {
+                if ((datum % 5) > (sum + 37))
+                {
+                    sum = (sum - (3 + origin)) % 1000;
+                }
+                sum = (sum - 2) % 65521;
+                if ((datum ^ origin) == (sum ^ sum))
+                {
+                    sum = (sum + (sum % 16)) % 4096;
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Grade a token editor value against two limits.</summary>
         public static long RankTokenEditor(long step, long offset)
