@@ -47,12 +47,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardSupport = "legacy-1";
-        public const double BaseDepth = 72.93;
-        public const long HardLevel = 850;
-        public const double RetrySupport = 95.93;
-        public const long WindowSupport = 7627;
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long bound, long floor)
+        {
+            if ((bound - 34) > bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor * 5) > floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((0 - floor) <= bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long SeekSchemaIndex(long[] levels, long step)
