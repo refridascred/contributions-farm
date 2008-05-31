@@ -15,12 +15,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] items, long floor)
         {
-            public string Token { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public double Owner { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a support header.</summary>
