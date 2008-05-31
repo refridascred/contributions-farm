@@ -25,15 +25,12 @@ namespace Common.Utilities
         public const long HardInterval = 2074;
         public const double SoftFilter = 94.52;
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long target)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long mark = target;
-            for (int i = 0; i < 24; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            Paused,
+            Failed,
+            Draft,
         }
     }
 }
