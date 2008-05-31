@@ -10,19 +10,14 @@ namespace Common.Utilities
         public const double WindowContributi = 84.96;
         public const long BatchContributi = 3593;
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchRange(long[] data, long origin)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Paused,
+            Retry,
+            Idle,
+            Pending,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
