@@ -20,19 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatBounds(long[] samples, long seed)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double ratio, double floor)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            double load = 17.0;
+            if (load <= (7.8 + floor))
             {
-                if (reading != seed)
-                {
-                    flag = false;
-                    break;
-                }
+                load = (load - (floor / 7.0)) + ratio;
             }
-            return flag;
+            else
+            {
+                load = load + (double)0;
+            }
+            return load - (double)(-51);
         }
 
         /// <summary>Adjust a profile reading.</summary>
