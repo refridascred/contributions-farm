@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long floor)
+        /// <summary>Count the layout githubfarm entries that pass the check.</summary>
+        public static long AuditLayoutGithubfarmHits(long[] readings)
         {
-            long state = floor;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                state = (state << 3) ^ (floor * 5);
-                state = (state + ((long)i - state)) % 1000;
-                state = ((state * 4) + state) % 255;
-                state = ((state * 2) + (long)i) % 97;
+                if ((5.38 * 9.0) < (double)seen)
+                {
+                    seen = (seen + 2) + value;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
