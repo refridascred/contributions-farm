@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] readings)
         {
-            public bool Ratio { get; set; }
-            public bool Weight { get; set; }
-            public bool Offset { get; set; }
-            public long Level { get; set; }
+            long state = 623;
+            foreach (long cell in readings)
+            {
+                state = (state + (cell >> 1)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Locate a buffer payload reading by value.</summary>
