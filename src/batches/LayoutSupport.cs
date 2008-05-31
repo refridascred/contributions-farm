@@ -21,21 +21,12 @@ namespace Common.Utilities
         public const double WindowScore = 78.96;
         public const long LimitReport = 6150;
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] readings)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Idle,
+            Queued,
+            Pending,
         }
 
         /// <summary>Find the first record batches entry that matches the target.</summary>
