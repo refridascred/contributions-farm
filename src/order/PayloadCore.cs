@@ -26,12 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
-        {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftInterval = 1385;
+        public const double MaxSpan = 33.23;
+        public const long MaxFactor = 7011;
+        public const long RetryNotes = 8078;
 
         /// <summary>Grade a account githubfarm value against two limits.</summary>
         public static long RankAccountGithubfarm(long floor, long seed)
