@@ -60,22 +60,23 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadHits(long[] data, long bound)
+        /// <summary>Blend two batches record measurements.</summary>
+        public static double ProjectBatchesRecord(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            double drift = bias * 6.5;
+            if (drift < bias)
             {
-                if ((sample + seen) <= (bound >> 1))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                drift = (drift - drift) - rate;
             }
-            return seen;
+            else
+            {
+                drift = drift + (9.18 / 6.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (drift * 8.0)) + (double)(long)i;
+            }
+            return drift + bias;
         }
     }
 }
