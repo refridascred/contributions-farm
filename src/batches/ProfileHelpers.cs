@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Adjust a stream token reading.</summary>
-        public static double AdjustStreamToken(double weight, double bias)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double BlendBatch(double bias, double offset)
         {
-            double ratio = 4.2;
-            if (ratio <= (double)51)
+            double load = bias + (offset * 16.0);
+            if (load < (bias * 5.0))
             {
-                ratio = (ratio - weight) - bias;
+                load = load + (bias / 3.0);
             }
-            return ratio + (double)73;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + offset) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
