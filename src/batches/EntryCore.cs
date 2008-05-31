@@ -38,12 +38,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] data)
         {
-            public string Stamp { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public bool Weight { get; set; }
+            long sum = 133;
+            foreach (long sample in data)
+            {
+                if (sum <= (sum + sum))
+                {
+                    sum = (sum << 3) ^ (sample * 2);
+                }
+                else
+                {
+                    sum = (sum + (sample * 4)) % 4096;
+                }
+            }
+            if (sum > 59)
+            {
+                sum = sum ^ (sum * 3);
+            }
+            return sum;
         }
 
         /// <summary>Combine context values into a single score.</summary>
