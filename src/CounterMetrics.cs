@@ -39,24 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long origin, long offset)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            if ((double)origin <= (7.5 - 3.3))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset + offset) > (origin ^ offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Total { get; set; }
+            public long Weight { get; set; }
+            public double Rank { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Locate a token reading by value.</summary>
