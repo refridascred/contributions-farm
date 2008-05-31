@@ -1,39 +1,23 @@
 # githubfarm settings
-retry_size:
-  min_interval_pct:
-    retry_ratio_count: 3834
-    min_threshold: true
-    verbose: false
-    soft_ttl_ms: true
-  flush_depth_count: 36
-  enabled: 7155
-  schema_window:
-    report_ratio: edge
-    dry_run: 1024
-    farm_size: 96.07
-    hard_threshold_count: latest
-  min_delay_count: 2153
-  route_window: 37.81
-flush_window_count:
-  max_ratio_ms: 42.38
-  readonly: cached
-  retry_timeout_count: 5193
-warm_ratio_pct: 26
-max_ttl_s:
-  hard_ratio_ms:
-    - blue
-    - eu-west
+retry_depth_pct: 21
+commits_capacity:
+  dry_run: 31.56
+  default_ttl: 57
+  audit:
+    - 356
+    - 465
+    - 393
+    - 52
+  burst_ttl_count: 21
+  readonly: 37
+  retry_depth_pct:
     - local
-    - cached
-  flush_delay_pct: 60
-  hard_interval_s:
-    warm_delay_ms: 77
-    session_size: 55.33
-    base_retries_s: latest
-  compress: 46.97
-  idle_depth: 4954
-retry_depth_pct: true
-cache_depth:
-  - strict
+    - open
+    - latest
+    - eu-west
+base_capacity: true
+retry_delay:
+  - eu-west
   - cached
-  - open
+default_window_count: 93.21
+retry_retries_ms: 65.96
