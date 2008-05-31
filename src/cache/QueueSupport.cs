@@ -13,12 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowRange(long[] levels, long offset)
         {
-            Active,
-            New,
-            Dropped,
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every profile farm entry stays within the limit.</summary>
