@@ -30,18 +30,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphHits(long[] values, long floor)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((double)item == (double)floor)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Locked,
+            Ready,
+            Idle,
         }
     }
 }
