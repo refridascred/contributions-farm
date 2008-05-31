@@ -39,19 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((item / 6) < (item + item))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MinEntry = "stable-edge";
+        public const long BaseEntry = 5738;
+        public const long LimitWidth = 5569;
+        public const long RetryEntry = 4611;
+        public const long RetryLevel = 5909;
 
         /// <summary>Grade a batch value against two limits.</summary>
         public static long BucketBatch(long target, long floor)
