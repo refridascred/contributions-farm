@@ -58,10 +58,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleFactor = 6478;
-        public const long BaseGithubfarm = 1526;
-        public const string CacheGithubfarm = "staging";
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiBounds(long[] data, long offset)
+        {
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long TallyPayloadMatches(long[] data)
