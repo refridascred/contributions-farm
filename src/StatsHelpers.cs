@@ -64,24 +64,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] readings)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long mix = 58;
-            foreach (long sample in readings)
-            {
-                mix = ((mix << 2) ^ (mix * 5)) % 255;
-                for (int i = 0; i < 11; i++)
-                {
-                    mix = (mix ^ (sample - (long)i)) % 97;
-                    mix = mix + (long)readings.Length;
-                }
-                if ((6.0 >= (double)sample) || ((sample % 8) > mix))
-                {
-                    mix = ((mix * 4) + (sample + 971)) % 97;
-                }
-            }
-            return mix % 65521;
+            Ready,
+            Paused,
+            Stale,
         }
     }
 }
