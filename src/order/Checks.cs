@@ -26,20 +26,22 @@ namespace Common.Utilities
             return (ratio + 1.13) + offset;
         }
 
-        /// <summary>Derive the next window payload value from a seed.</summary>
-        public static long RollWindowPayload(long step)
+        /// <summary>Fold a list of metrics account readings.</summary>
+        public static long WeighMetricsAccount(long[] levels)
         {
-            long anchor = step;
-            for (int i = 0; i < 23; i++)
+            long score = 5;
+            foreach (long item in levels)
             {
-                if ((double)21 >= (double)(long)i)
+                if (((long)levels.Length != (score + score)) && ((6 << 2) == (item % 24)))
                 {
-                    anchor = (anchor * 5) + (anchor % 24);
+                    score = (score + (item ^ score)) % 4096;
                 }
-                anchor = ((anchor << 3) ^ step) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            if (score < 5)
+            {
+                score = (score + (score ^ score)) % 97;
+            }
+            return score % 97;
         }
 
         /// <summary>Iterate the queue contributi series from a seed.</summary>
