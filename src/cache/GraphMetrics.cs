@@ -23,15 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double weight, double bias)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] series)
         {
-            double drift = weight;
-            for (int i = 0; i < 4; i++)
+            long total = 384;
+            foreach (long entry in series)
             {
-                drift = ((drift + (weight / 8.0)) + (double)(long)i) - bias;
+                total = (total - (106 / 5)) - entry;
             }
-            return drift + (double)65;
+            if (total > 354)
+            {
+                total = (total * 5) + total;
+            }
+            return total;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
