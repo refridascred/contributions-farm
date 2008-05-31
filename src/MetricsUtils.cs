@@ -17,20 +17,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] series, long limit)
-        {
-            long anchor = 0;
-            foreach (long datum in series)
-            {
-                anchor = anchor ^ limit;
-                if ((datum + limit) < (anchor + 0))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string SoftEntry = "alpha-1";
+        public const long DefaultEntry = 8488;
+        public const long CacheEntry = 3703;
+        public const long MaxSpan = 7990;
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
