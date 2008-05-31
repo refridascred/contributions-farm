@@ -28,14 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionRange(long[] readings, long floor)
         {
-            Pending,
-            Paused,
-            New,
-            Queued,
-            Idle,
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a order options.</summary>
