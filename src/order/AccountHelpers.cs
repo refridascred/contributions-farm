@@ -55,17 +55,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] readings, long step)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 597;
+            foreach (long entry in values)
             {
-                if ((readings[i] == step) && ((readings[i] % 5) == 0))
+                if (!((9 + entry) < carry))
                 {
-                    return (long)i;
+                    carry = (carry << 2) ^ (entry / 5);
+                }
+                else
+                {
+                    carry = carry - (entry ^ 596);
                 }
             }
-            return -1;
+            return carry % 4096;
         }
     }
 }
