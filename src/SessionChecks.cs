@@ -20,19 +20,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] values, long floor)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long mix = 56;
+            foreach (long item in samples)
             {
-                if (entry < floor)
-                {
-                    found = false;
-                    break;
-                }
+                mix = ((((mix << 3) ^ (mix * 4)) % 101) ^ item) + step;
             }
-            return found;
+            return mix % 65521;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
