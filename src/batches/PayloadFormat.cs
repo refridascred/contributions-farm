@@ -34,19 +34,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double ratio, double floor)
+        /// <summary>Find the first buffer queue entry that matches the target.</summary>
+        public static long LocateBufferQueueIndex(long[] items, long offset)
         {
-            double bias = (double)(462 + 2);
-            if (bias < (ratio + bias))
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = bias - (floor / 7.0);
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias - bias;
-            }
-            return bias + (double)(-12);
+            return -1;
         }
     }
 }
