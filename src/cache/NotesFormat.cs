@@ -37,10 +37,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftSize = 237;
-        public const string BurstTimeout = "staging-edge";
-        public const long BurstGithubfarm = 2197;
-        public const string DefaultLevel = "legacy-1";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 7275;
+        public const string WindowCount = "staging-v2";
+        public const long RetrySize = 6786;
+        public const string HardLevel = "fallback-edge";
+        public const long WindowChecks = 4378;
     }
 }
