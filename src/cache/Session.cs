@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double HardCache = 38.87;
-        public const long RetryRatio = 347;
-        public const long BatchCache = 2691;
-        public const long WindowCache = 1520;
-        public const long SoftCache = 2689;
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
+        {
+            Stale,
+            Done,
+            Active,
+        }
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
