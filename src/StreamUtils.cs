@@ -19,33 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long bound, long bound2)
-        {
-            long step = bound ^ bound2;
-            if (((4.33 - 7.6) < (double)bound2) && ((bound - bound2) <= bound2))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)bound2 <= (7.93 * 2.3)) && ((step % 5) == (bound2 - bound2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((13 ^ bound) != (bound & 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BatchTools = 97.04;
+        public const long HardTools = 4204;
+        public const long RetryTools = 8489;
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
