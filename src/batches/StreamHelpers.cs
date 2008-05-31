@@ -61,22 +61,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphOutliers(long[] values)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesMatches(long[] data)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((108 ^ entry) == (count + entry))
+                if (!((-965) >= (entry * 4)) || (tally >= (tally & 127)))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Fold a list of session readings.</summary>
