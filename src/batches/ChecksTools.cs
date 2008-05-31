@@ -40,23 +40,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] items)
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] series)
         {
-            long result = 981;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                long bound = sample ^ (sample / 9);
-                if ((bound & 63) >= (sample % 8))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = (result * 5) + result;
-                }
-                if ((sample <= (result + 748)) && ((sample - (long)items.Length) < (48 << 3)))
-                {
-                    result = (result ^ sample) % 101;
+                    if ((series[i] - series[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result % 1000;
+            return count;
         }
     }
 }
