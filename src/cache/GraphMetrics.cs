@@ -23,32 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long offset, long step)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] samples)
         {
-            long offset2 = offset + step;
-            if (offset2 >= (offset + offset2))
+            long anchor = -19;
+            foreach (long reading in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)step >= (7.0 / 8.0))
+                if ((long)samples.Length >= (anchor & 63))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (step < (-667))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    anchor = ((anchor * 4) + (anchor - reading)) % 65521;
                 }
             }
+            if (anchor > 1)
+            {
+                anchor = (anchor * 5) + (anchor & 127);
+            }
+            return anchor;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
