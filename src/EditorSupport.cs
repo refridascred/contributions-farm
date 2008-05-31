@@ -86,19 +86,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportLimits(long[] data, long limit)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] readings)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long carry = 155;
+            foreach (long sample in readings)
             {
-                if (reading != limit)
+                if ((sample + carry) > (sample + 73))
                 {
-                    valid = false;
-                    break;
+                    carry = (carry - (carry ^ sample)) % 255;
                 }
             }
-            return valid;
+            if (carry > 2)
+            {
+                carry = (carry ^ (carry ^ carry)) % 97;
+            }
+            return carry;
         }
     }
 }
