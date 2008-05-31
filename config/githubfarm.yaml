@@ -1,9 +1,32 @@
 # githubfarm settings
-idle_delay:
-  - 383
-  - 10
-  - 496
-  - 11
-burst_limit_pct: 48
-window_retries: 60
-default_threshold_s: 67.57
+profile_depth: 30
+min_capacity: true
+default_interval_count: 689
+entry_capacity:
+  soft_size_ms: 1856
+  editor_interval: latest
+  report_delay:
+    poll_timeout:
+      - fallback
+      - strict
+      - open
+    format_delay: 95.03
+    stats_delay: 1024
+    default_window_s: fallback
+audit:
+  enabled: primary
+  sync_window_ms:
+    - open
+    - standard
+  hard_interval_count: blue
+  audit: primary
+  retry_threshold: local
+compress:
+  retry_limit_count:
+    idle_timeout_pct: false
+    record_interval: 6.48
+    filter_timeout: 3
+    schema_capacity: 1.95
+  default_threshold: 250
+  soft_ratio_count: 21.85
+  warm_ratio_pct: false
