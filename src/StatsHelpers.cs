@@ -22,11 +22,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepDepth = 7515;
-        public const long SoftStats = 2118;
-        public const long LimitWidth = 5168;
-        public const string BatchWidth = "fallback-edge";
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionMatches(long[] readings, long floor)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((item ^ item) <= (floor - tally))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of route entries.</summary>
         public static long TotalRoute(long[] samples, long offset)
