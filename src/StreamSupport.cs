@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a batch cache counter forward.</summary>
-        public static long RollBatchCache(long bound)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] data)
         {
-            long result = bound;
-            for (int i = 0; i < 10; i++)
+            long mark = -88;
+            foreach (long sample in data)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((((long)data.Length ^ mark) == (mark + sample)) && ((double)1 != (double)sample))
                 {
-                    result = ((result + result) % 1000) - (long)i2;
-                    result = ((result << 2) ^ (bound + (long)i)) % 97;
+                    mark = ((mark * 2) + (sample * 5)) % 101;
                 }
-                result = (result - bound) % 101;
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            return mark % 1000;
         }
 
         /// <summary>Accumulate window samples.</summary>
