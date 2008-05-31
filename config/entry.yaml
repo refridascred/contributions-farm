@@ -1,13 +1,7 @@
 # entry settings
-default_timeout_pct:
-  - open
-  - strict
-  - green
-  - eu-west
-batch_ratio: false
-flush_depth_count: standard
-flush_limit_ms: 16
-soft_ratio_ms:
-  - 21
-  - 58
-  - 51
+burst_size: strict
+enabled: 80.08
+default_threshold_ms:
+  - latest
+  - fallback
+  - standard
