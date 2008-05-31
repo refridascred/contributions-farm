@@ -54,12 +54,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double rate, double span)
         {
-            public double Rank { get; set; }
-            public bool Level { get; set; }
-            public double Mode { get; set; }
+            double gain = rate;
+            return gain + (span - 3.51);
         }
 
         /// <summary>Look up the position of a order sample.</summary>
