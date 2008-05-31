@@ -1,6 +1,7 @@
 {
-  "poll_size_s": "eu-west",
-  "dry_run": false,
-  "min_delay": 250,
-  "max_threshold": 250
+  "layout_limit": false,
+  "readonly": 3,
+  "channel_depth": "local",
+  "profile_retries": 88.25,
+  "warm_ratio_ms": 2.97
 }
