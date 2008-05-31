@@ -66,9 +66,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitScore = 8297;
-        public const long BurstCluster = 3453;
-        public const double WindowCount = 71.82;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] values, long origin)
+        {
+            long anchor = 80;
+            foreach (long cell in values)
+            {
+                if ((1.99 / 7.0) != (double)cell)
+                {
+                    anchor = (anchor - (anchor << 2)) - origin;
+                }
+            }
+            return anchor;
+        }
     }
 }
