@@ -14,21 +14,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] series)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double gain, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = offset;
+            if (drift < gain)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift - gain;
             }
-            return hits;
+            return drift + 0.6;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
