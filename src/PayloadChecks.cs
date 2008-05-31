@@ -67,19 +67,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((double)hits <= (double)item)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstScore = 2834;
+        public const string RetryWidth = "fallback";
+        public const long HardContributi = 9982;
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
