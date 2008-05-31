@@ -48,14 +48,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesMatches(long[] samples, long floor)
         {
-            Queued,
-            Retry,
-            Stale,
-            Done,
-            Dropped,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((81 + (long)samples.Length) == (entry % 3))
+                {
+                    seen = (seen + 2) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a window buffer reading by value.</summary>
