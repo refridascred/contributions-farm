@@ -15,11 +15,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 8747;
-        public const long CacheProfile = 8626;
-        public const double SoftProfile = 20.93;
-        public const long DefaultProfile = 8397;
+        /// <summary>Grade a queue schema value against two limits.</summary>
+        public static long BucketQueueSchema(long step, long limit)
+        {
+            if ((2.2 * 4.0) < (double)limit)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)step > (double)9)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Check that every farm profile entry stays within the limit.</summary>
         public static bool ValidateFarmProfileLimits(long[] items, long offset)
