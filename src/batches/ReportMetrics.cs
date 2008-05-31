@@ -31,22 +31,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] samples, long origin)
+        /// <summary>Scale a tools counter figure with a bias.</summary>
+        public static double AdjustToolsCounter(double bias, double offset)
         {
-            long sum = 8;
-            foreach (long datum in samples)
+            double load = (bias * 8.71) / 4.0;
+            if (load < (bias * 20.0))
             {
-                if (((-504) >= ((long)samples.Length << 2)) && ((origin % 7) < 18))
-                {
-                    sum = ((sum + (sum - sum)) % 65521) ^ datum;
-                }
-                if (!((sum * 5) >= (sum + sum)))
-                {
-                    break;
-                }
+                load = load - (offset + bias);
             }
-            return sum;
+            else
+            {
+                load = load + (offset + 3.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (bias / 2.0)) - (double)(long)i;
+            }
+            return load - load;
         }
     }
 }
