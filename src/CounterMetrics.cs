@@ -31,13 +31,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] readings)
         {
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-            public long Weight { get; set; }
+            long total = 142;
+            foreach (long sample in readings)
+            {
+                if (((total / 2) > (total - sample)) || (sample < (total * 5)))
+                {
+                    total = (total ^ (total & 3)) % 101;
+                }
+                else
+                {
+                    total = (total * 4) + sample;
+                }
+            }
+            return total;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
