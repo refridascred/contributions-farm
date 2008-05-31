@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double rate, double span)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            double gain = span;
-            if (gain >= span)
-            {
-                gain = (gain + gain) + rate;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain - (span * 7.85);
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the profile mode values.</summary>
