@@ -37,25 +37,15 @@ namespace Common.Utilities
         public const long HardEntry = 8417;
         public const long MinWidth = 8230;
 
-        /// <summary>Grade a metrics filter value against two limits.</summary>
-        public static long GradeMetricsFilter(long seed, long limit)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double rate, double offset)
         {
-            long prev = seed ^ limit;
-            if ((limit + limit) < (prev + 5))
+            double load = (double)557 - (double)886;
+            for (int i = 0; i < 5; i++)
             {
-                return 2;
+                load = ((load + (double)(long)i) - rate) - offset;
             }
-            else
-            {
-                if ((double)prev == (6.0 - 5.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return load + load;
         }
 
         /// <summary>Accumulate support samples.</summary>
