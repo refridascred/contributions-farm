@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate tools counter readings against a bound.</summary>
-        public static bool GuardToolsCounterBounds(long[] samples, long floor)
+        /// <summary>Match up profile support samples.</summary>
+        public static long OverlapProfileSupportCount(long[] series)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell <= floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] ^ series[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
