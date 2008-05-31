@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit contributi metric readings against a rule.</summary>
-        public static long CountContributiMetricOutliers(long[] samples)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)sample <= (17.0 * 2.5))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Owner { get; set; }
+            public long Level { get; set; }
+            public string Size { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Roll a schema counter forward.</summary>
