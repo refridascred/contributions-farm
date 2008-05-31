@@ -33,24 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long floor, long limit)
+        /// <summary>Accumulate command token samples.</summary>
+        public static long TotalCommandToken(long[] items)
         {
-            if ((floor >> 3) <= (limit - limit))
+            long sum = 984;
+            foreach (long value in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit >> 4) != (floor * 4))
+                if (((sum / 2) > (value >> 2)) || (value <= (2 ^ sum)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    sum = ((sum * 4) + value) % 4096;
                 }
             }
+            return sum;
         }
 
         /// <summary>Fold a list of order readings.</summary>
