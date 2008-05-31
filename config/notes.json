@@ -1,11 +1,6 @@
 {
-  "token_interval": {
-    "warm_limit_pct": ["green", "eu-west"],
-    "min_ratio_pct": "strict",
-    "farm_capacity": 55.22,
-    "compress": true,
-    "audit": 100
-  },
-  "contributi_size": "stable",
-  "tools_window": 51.19
+  "poll_limit_s": "primary",
+  "batch_window_pct": ["blue", "cached", "eu-west", "staging"],
+  "retry_ratio": "local",
+  "base_depth_count": false
 }
