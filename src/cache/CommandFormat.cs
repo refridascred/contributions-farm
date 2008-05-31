@@ -34,19 +34,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] data, long target)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Flag { get; set; }
+            public bool Stamp { get; set; }
+            public double Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
