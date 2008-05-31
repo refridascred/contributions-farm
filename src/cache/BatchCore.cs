@@ -26,13 +26,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long seed)
         {
-            New,
-            Dropped,
-            Done,
-            Paused,
+            long sum = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!(sum <= (seed & 31)))
+                {
+                    sum = ((sum * 3) + sum) % 101;
+                    sum = (sum ^ (seed + (long)i)) % 255;
+                }
+                if (1 >= ((long)i ^ (long)i))
+                {
+                    sum = ((sum << 3) ^ (seed << 3)) % 1000;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the session state values.</summary>
