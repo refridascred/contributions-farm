@@ -31,12 +31,19 @@ namespace Common.Utilities
         public const long CacheLevel = 4509;
         public const long CacheFarm = 6946;
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long offset)
         {
-            public bool Size { get; set; }
-            public long Limit { get; set; }
-            public double Count { get; set; }
+            long score = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!(score >= offset))
+                {
+                    score = ((score << 3) ^ score) % 1000;
+                }
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Accumulate editor samples.</summary>
