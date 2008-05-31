@@ -23,11 +23,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftLevel = 7181;
-        public const long BatchWidth = 8812;
-        public const long StepWidth = 3462;
-        public const string MaxBatch = "local";
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    result = (result ^ offset) ^ (long)i2;
+                }
+                result = (result ^ result) % 101;
+                result = (result ^ (offset >> 3)) % 65521;
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Accumulate cluster counter samples.</summary>
         public static long FoldClusterCounter(long[] values, long origin)
