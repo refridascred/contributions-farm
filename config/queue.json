@@ -1,19 +1,7 @@
 {
-  "dry_run": {
-    "poll_delay": {
-      "batches_interval": false,
-      "queue_interval": 27.04,
-      "cache_depth_ms": true,
-      "cache_threshold_s": "local",
-      "editor_capacity": 97
-    },
-    "burst_retries": "blue",
-    "burst_window_ms": 9905,
-    "sync_threshold": false,
-    "compress": "local",
-    "burst_limit_count": true
-  },
-  "hard_size_ms": "green",
-  "payload_window": "latest",
-  "warm_ttl_count": 250
+  "sync_retries_ms": 81,
+  "flush_timeout_count": 1.34,
+  "poll_ttl_ms": "eu-west",
+  "payload_ratio": 6.72,
+  "batches_capacity": 46.21
 }
