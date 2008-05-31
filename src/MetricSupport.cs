@@ -23,18 +23,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < limit) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BurstBudget = "stable";
+        public const long DefaultPayload = 6801;
+        public const long RetryLevel = 8036;
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long SeriesProfile(long step)
