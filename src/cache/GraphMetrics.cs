@@ -50,9 +50,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double DefaultChannel = 16.55;
-        public const double MaxChannel = 32.05;
-        public const long CacheBudget = 7721;
+        /// <summary>Grade a farm route value against two limits.</summary>
+        public static long SortFarmRoute(long step, long limit)
+        {
+            long slot = step + limit;
+            if ((957 ^ slot) >= limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if (step <= (limit + step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (slot <= (limit & 255))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((slot ^ 6) <= (slot + 0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
