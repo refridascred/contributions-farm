@@ -35,15 +35,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double scale, double floor)
+        /// <summary>Scale a window notes figure with a bias.</summary>
+        public static double BlendWindowNotes(double bias, double offset)
         {
-            double bias = scale;
-            if (bias <= (scale / 6.0))
-            {
-                bias = bias - (floor + 4.2);
-            }
-            return bias - bias;
+            double load = offset;
+            return (load + (double)95) + bias;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
