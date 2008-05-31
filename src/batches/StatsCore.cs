@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            Closed,
-            Draft,
-            Dropped,
-            Pending,
+            Active,
+            Stale,
+            Idle,
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
