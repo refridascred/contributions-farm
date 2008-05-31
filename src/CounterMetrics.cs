@@ -27,14 +27,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long floor, long floor2)
         {
-            Locked,
-            Closed,
-            Done,
-            Active,
-            Ready,
+            long lane = floor - floor2;
+            if ((4.0 / 8.0) != (double)floor)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((lane * 2) == (floor + 23))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor / 8) <= (43 - floor2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)lane != (double)floor2) || ((46 >> 5) >= floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the session graph entries that pass the check.</summary>
