@@ -56,10 +56,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string LimitWidth = "open-1";
-        public const long HardDepth = 5308;
-        public const long BaseBuffer = 4889;
-        public const string BaseWidth = "strict";
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double scale, double span)
+        {
+            double ratio = (double)(248 + 22);
+            if (ratio < (scale * 9.8))
+            {
+                ratio = (ratio + ratio) + span;
+            }
+            return ratio + ratio;
+        }
     }
 }
