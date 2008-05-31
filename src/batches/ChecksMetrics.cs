@@ -79,19 +79,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileLimits(long[] samples, long bound)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long mark = 876;
+            foreach (long reading in data)
             {
-                if (item >= bound)
+                mark = mark - (seed & 3);
+                mark = (mark + (mark ^ reading)) % 4096;
+                if ((mark % 97) == (mark / 4))
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            if (mark < 164)
+            {
+                mark = (mark * 3) + mark;
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a schema record.</summary>
