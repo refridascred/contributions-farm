@@ -61,22 +61,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] items)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long total = 7;
-            foreach (long reading in items)
-            {
-                if ((576 << 2) >= (reading + reading))
-                {
-                    total = (total << 2) ^ (reading + 3);
-                }
-                else
-                {
-                    total = (total + reading) % 65521;
-                }
-            }
-            return total;
+            Closed,
+            Failed,
+            Ready,
         }
 
         /// <summary>Match up farm commits samples.</summary>
