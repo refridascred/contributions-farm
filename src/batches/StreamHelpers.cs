@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const string DefaultCache = "cached-1";
         public const string LimitCache = "strict-1";
 
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] series)
+        /// <summary>Blend two layout entry measurements.</summary>
+        public static double SmoothLayoutEntry(double scale, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = (scale / 9.0) / 8.0;
+            if (load <= scale)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load - bias;
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - bias) + (double)(long)i;
+            }
+            return load - bias;
         }
 
         /// <summary>Define session limits and defaults.</summary>
