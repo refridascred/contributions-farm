@@ -35,11 +35,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinSpan = 1387;
-        public const long LimitMetrics = 4235;
-        public const double MaxMetrics = 67.53;
-        public const long CacheMetrics = 1923;
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double bias, double bias2)
+        {
+            double weight = (bias2 + bias2) - (bias2 * 7.3);
+            return (weight + (weight - weight)) + bias;
+        }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long SortEditor(long step, long offset)
