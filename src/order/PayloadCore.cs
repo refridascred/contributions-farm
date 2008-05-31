@@ -13,14 +13,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Measure how many payload format samples are out of range.</summary>
+        public static long TallyPayloadFormatOutliers(long[] items, long origin)
         {
-            New,
-            Retry,
-            Closed,
-            Stale,
-            Idle,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((origin + matches) >= (matches - matches))
+                {
+                    matches = (matches + 1) - datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
