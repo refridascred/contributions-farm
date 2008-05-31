@@ -29,14 +29,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long bound, long floor)
         {
-            Failed,
-            Draft,
-            Dropped,
-            Idle,
-            New,
+            if ((floor + floor) > floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)bound != (0.8 + 2.4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound > 987) && ((bound / 5) > bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)floor > (5.0 - 16.0)) || ((bound & 255) <= (floor & 127)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
