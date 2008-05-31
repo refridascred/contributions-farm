@@ -1,8 +1,8 @@
 {
-  "burst_window": "fallback",
-  "already_limit": 100,
-  "tools_ttl": ["strict", "primary"],
-  "sync_depth_ms": 2.09,
-  "entry_timeout": "primary",
-  "poll_threshold_ms": false
+  "enabled": 4172,
+  "metrics_retries": false,
+  "buffer_timeout": true,
+  "batch_ratio": false,
+  "hard_ratio_ms": 52.11,
+  "persist": "stable"
 }
