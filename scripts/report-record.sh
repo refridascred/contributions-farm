@@ -6,18 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=350
-log "limit is ${RECORD_LIMIT}"
-
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 3))
+for item in green legacy blue staging; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-mode="${1:-legacy}"
+mode="${1:-stable}"
 case "${mode}" in
-    strict)
+    stable)
         log "fast path"
         ;;
     *)
