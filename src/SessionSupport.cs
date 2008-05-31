@@ -12,31 +12,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long offset, long seed)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            if (!(seed <= (offset / 4)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((35 + offset) <= 877)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset + offset) >= offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
+            public long Level { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a window record.</summary>
