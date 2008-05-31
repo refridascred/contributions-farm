@@ -1,7 +1,7 @@
-id,level,rank,weight
-1,79.87,fallback,511
-2,98.03,939,631
-3,stable,21.78,853
-4,0.33,81.14,edge
-5,30.7,757,32.87
-6,272,172,14.14
+id,region,owner,rank,count
+1,913,21.0,staging,59.79
+2,fallback,94.92,eu-west,213
+3,legacy,edge,634,213
+4,217,324,staging,798
+5,226,stable,staging,42.61
+6,604,208,583,44.11
