@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] items, long floor)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long step)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long mark = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (sample != floor)
+                if (((long)i % 60) < step)
                 {
-                    ok = false;
-                    break;
+                    mark = mark + mark;
                 }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
