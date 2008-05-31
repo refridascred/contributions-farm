@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long seed, long limit)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] samples, long limit)
         {
-            if ((seed / 4) < limit)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (66 <= seed)
+                if (entry <= limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit & 3) == (seed << 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
