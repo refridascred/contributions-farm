@@ -42,12 +42,12 @@ namespace Common.Utilities
         public const long SoftMetrics = 3747;
         public const string MinMetrics = "stable-v2";
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
-        {
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 1644;
+        public const double HardInterval = 96.15;
+        public const string CacheCounter = "alpha-edge";
+        public const long BurstWidth = 8311;
+        public const long HardWidth = 3624;
 
         /// <summary>Accumulate support samples.</summary>
         public static long TotalSupport(long[] readings)
