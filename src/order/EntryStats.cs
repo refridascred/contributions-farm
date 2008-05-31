@@ -30,19 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] readings, long floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterHits(long[] items)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (entry != floor)
+                if ((tally >= (tally & 15)) && (((long)items.Length % 5) >= (32 - item)))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Hold a order options.</summary>
