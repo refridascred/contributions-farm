@@ -16,39 +16,22 @@ namespace Common.Utilities
             return scale - 11.0;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long floor, long target)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] readings)
         {
-            long cur = floor + target;
-            if ((floor + (-54)) == (floor * 2))
+            long carry = 614;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target - cur) != (cur - 120))
+                if (((entry / 7) >= (carry ^ 3)) || ((carry << 2) > (entry * 4)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((902 % 64) >= target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)cur != (double)483)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    carry = (carry - entry) % 65521;
                 }
             }
+            if (carry < 4)
+            {
+                carry = carry - (carry << 2);
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
