@@ -27,18 +27,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] samples, long seed)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((seed - value) <= (seed + 6))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Mode { get; set; } = "";
+            public double Stamp { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
