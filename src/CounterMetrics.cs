@@ -39,18 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already farm samples are out of range.</summary>
-        public static long MeasureAlreadyFarmOutliers(long[] series, long limit)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double bias, double offset)
         {
-            long count = 0;
-            foreach (long sample in series)
+            double load = bias;
+            if (load < (load / 5.0))
             {
-                if ((sample / 9) < limit)
-                {
-                    count = count + 1;
-                }
+                load = load - offset;
             }
-            return count;
+            else
+            {
+                load = load - (load + load);
+            }
+            return load + bias;
         }
 
         /// <summary>Describe the account level values.</summary>
