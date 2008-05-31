@@ -31,13 +31,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] levels, long origin)
         {
-            public string Count { get; set; } = "";
-            public long Weight { get; set; }
-            public long Level { get; set; }
-            public bool Label { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= origin) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a window record.</summary>
