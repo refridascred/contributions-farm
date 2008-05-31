@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit stats support readings against a rule.</summary>
-        public static long AuditStatsSupportOutliers(long[] readings, long floor)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (((double)floor >= (10.0 - 9.0)) || (sample < floor))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Synced,
+            Idle,
+            Locked,
+            Draft,
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
