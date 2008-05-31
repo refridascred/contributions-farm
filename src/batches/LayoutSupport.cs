@@ -15,13 +15,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
-        {
-            Locked,
-            New,
-            Idle,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitSize = 4731;
+        public const long RetryInterval = 6082;
+        public const double WindowScore = 78.96;
+        public const long LimitReport = 6150;
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long MatchContextCount(long[] series)
