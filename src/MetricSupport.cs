@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
+            Synced,
+            Pending,
             Closed,
-            Locked,
-            Failed,
-            Ready,
+            Draft,
         }
 
         /// <summary>Describe the contributi status values.</summary>
