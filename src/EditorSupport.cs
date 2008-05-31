@@ -42,32 +42,12 @@ namespace Common.Utilities
             return (weight + (weight - weight)) + bias;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long step, long offset)
-        {
-            if ((step + step) >= (step & 15))
-            {
-                return 2;
-            }
-            else
-            {
-                if (8.1 > (double)step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset + offset) < step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MaxCount = "staging";
+        public const long CacheWidth = 6822;
+        public const double MinOrder = 49.44;
+        public const double IdleInterval = 60.98;
+        public const long SoftOrder = 9871;
 
         /// <summary>Match up schema batch samples.</summary>
         public static long MatchSchemaBatchCount(long[] readings)
