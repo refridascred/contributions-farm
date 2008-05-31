@@ -48,12 +48,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Grade a order value against two limits.</summary>
