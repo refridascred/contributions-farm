@@ -19,22 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many payload support samples are out of range.</summary>
-        public static long CountPayloadSupportHits(long[] data)
+        /// <summary>Locate a token metric reading by value.</summary>
+        public static long LookupTokenMetricIndex(long[] series, long target)
         {
-            long count = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)count <= 3.9)
+                if ((series[i] < target) && ((series[i] % 5) != 0))
                 {
-                    count = (count + 2) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
