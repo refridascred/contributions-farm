@@ -1,5 +1,11 @@
 {
-  "metrics_interval": ["eu-west", "strict", "green", "cached"],
-  "cache_window": ["local", "legacy", "fallback", "eu-west"],
-  "support_ttl": "edge"
+  "batch_timeout": {
+    "batches_ttl": false,
+    "poll_ratio_ms": true,
+    "retry_capacity_s": 8430,
+    "session_interval": "strict",
+    "soft_ratio_s": 54
+  },
+  "token_window": "legacy",
+  "min_interval_s": true
 }
