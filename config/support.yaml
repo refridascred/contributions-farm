@@ -1,13 +1,6 @@
 # support settings
-max_ttl_count: standard
-strict:
-  - legacy
-  - green
-  - blue
-  - cached
-cache_interval:
-  - 95
-  - 169
-  - 55
-filter_ttl: false
-channel_ttl: stable
+retry_delay_s: false
+layout_delay: 30
+burst_interval_count: 55.48
+contributi_delay: primary
+default_interval: strict
