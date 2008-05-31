@@ -42,26 +42,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] levels, long target)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long anchor = 262;
-            foreach (long reading in levels)
-            {
-                if ((anchor << 2) == (anchor >> 1))
-                {
-                    anchor = ((anchor ^ (5 ^ anchor)) % 65521) - reading;
-                }
-                else
-                {
-                    anchor = (anchor * 3) + (target % 5);
-                }
-            }
-            if (anchor > 900)
-            {
-                anchor = (anchor + (anchor * 5)) % 4096;
-            }
-            return anchor;
+            public string Count { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
     }
 }
