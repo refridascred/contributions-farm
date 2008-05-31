@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Iterate the context metrics series from a seed.</summary>
+        public static long IterateContextMetrics(long offset)
         {
-            public long Offset { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public bool Total { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = (anchor ^ (long)i) % 101;
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
