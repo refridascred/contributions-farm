@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
-        {
-            public long Rank { get; set; }
-            public bool Token { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 5408;
+        public const long BatchGithubfarm = 7183;
+        public const string RetryRatio = "cached-edge";
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long HardContributi = 411;
