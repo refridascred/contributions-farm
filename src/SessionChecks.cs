@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 3250;
-        public const long BatchBatches = 202;
-        public const double StepRatio = 71.02;
-        public const long BurstSize = 7429;
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long offset, long origin)
+        {
+            if (!(offset > ((-9) & 31)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((5 & 3) == (offset << 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long RetryTimeout = 968;
