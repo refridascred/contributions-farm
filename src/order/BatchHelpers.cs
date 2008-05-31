@@ -25,14 +25,10 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
-        {
-            Idle,
-            Synced,
-            Stale,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BatchQueue = "strict-1";
+        public const long CacheRatio = 849;
+        public const long MaxWidth = 7247;
+        public const string MaxScore = "fallback";
     }
 }
