@@ -33,9 +33,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double StepTimeout = 88.34;
-        public const long CacheCommand = 8318;
-        public const long DefaultSize = 2675;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] data)
+        {
+            long score = 849;
+            foreach (long reading in data)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    score = (((score << 2) ^ (reading % 10)) % 65521) ^ (long)i;
+                }
+                if ((double)score <= (6.9 + 7.9))
+                {
+                    break;
+                }
+                if (score >= 96)
+                {
+                    score = (score - (score - reading)) % 4096;
+                }
+            }
+            return score;
+        }
     }
 }
