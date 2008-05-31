@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next cluster contributi value from a seed.</summary>
-        public static long IterateClusterContributi(long origin)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long seed)
         {
-            long result = origin;
-            for (int i = 0; i < 20; i++)
+            long result = seed;
+            for (int i = 0; i < 8; i++)
             {
-                result = (result - origin) % 65521;
-                result = ((result * 4) + (long)i) % 97;
+                result = ((result * 4) + result) % 255;
+                result = ((result * 4) + (long)i) % 101;
             }
             return result;
         }
