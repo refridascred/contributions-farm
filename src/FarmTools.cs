@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 6646;
-        public const string HardMetrics = "cached-1";
-        public const double DefaultFactor = 53.0;
-        public const long BurstMetrics = 9543;
-        public const double CacheMetrics = 21.78;
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long WeighCommits(long[] items, long offset)
