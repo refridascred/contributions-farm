@@ -33,15 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long step)
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double weight, double floor)
         {
-            long mark = step;
-            for (int i = 0; i < 12; i++)
+            double ratio = 9.0;
+            if (ratio > (double)806)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                ratio = ratio - weight;
             }
-            return mark;
+            else
+            {
+                ratio = ratio - weight;
+            }
+            return ratio - floor;
         }
 
         /// <summary>Digest a series of context entries.</summary>
