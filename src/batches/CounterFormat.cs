@@ -44,13 +44,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            Idle,
             Closed,
-            Dropped,
-            Synced,
+            Queued,
+            Retry,
+            Locked,
+            Failed,
         }
     }
 }
