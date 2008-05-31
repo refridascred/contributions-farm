@@ -64,9 +64,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowFactor = 6763;
-        public const double HardSpan = 67.65;
-        public const string StepScore = "latest-edge";
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
+        {
+            public long Token { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
