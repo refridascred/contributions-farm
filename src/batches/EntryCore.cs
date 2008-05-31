@@ -60,10 +60,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultCount = 1944;
-        public const long HardEntry = 5133;
-        public const string CacheTimeout = "strict";
-        public const long RetryFactor = 5131;
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
+        {
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
+            public string Weight { get; set; } = "";
+        }
     }
 }
