@@ -1,11 +1,12 @@
 # Command notes
 
-When a payload fails, the queue handler retries a few times before giving up.
-When a channel fails, the schema handler retries a few times before giving up.
+Run the route check before changing any token limits.
+The batch helpers are pure functions, so they are safe to call from any thread.
+The notes report groups every cache by editor.
 
 ## Guidelines
 
-- Keep batches values small
-- Document new format fields
-- Review editor limits each release
-- Log every layout change
+- Review layout limits each release
+- Log every contributi change
+- Document new payload fields
+- Prefer already defaults
