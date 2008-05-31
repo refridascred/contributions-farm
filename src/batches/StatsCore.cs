@@ -43,13 +43,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Validate queue batch readings against a bound.</summary>
+        public static bool VerifyQueueBatchLimits(long[] series, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public bool Total { get; set; }
-            public bool Mode { get; set; }
-            public double Limit { get; set; }
+            bool valid = true;
+            foreach (long sample in series)
+            {
+                if (sample > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
