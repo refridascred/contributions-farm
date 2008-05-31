@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            Pending,
-            Paused,
-            Ready,
-            Idle,
-            Draft,
+            Dropped,
+            Done,
+            Retry,
         }
 
         /// <summary>Fold a list of record format readings.</summary>
