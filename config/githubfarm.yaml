@@ -1,7 +1,7 @@
 # githubfarm settings
-strict: blue
-githubfarm_retries: strict
-min_ttl_pct: 8866
-poll_interval: cached
-idle_limit_ms: local
-soft_threshold: strict
+idle_timeout_s: latest
+idle_ttl_pct:
+  default_retries: true
+  profile_retries: 500
+  cluster_limit: 30
+cache_ratio_s: true
