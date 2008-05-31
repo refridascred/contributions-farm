@@ -59,12 +59,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Measure how many already stats samples are out of range.</summary>
+        public static long CountAlreadyStatsMatches(long[] data, long floor)
         {
-            Closed,
-            Idle,
-            Pending,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((count - count) == (count - floor))
+                {
+                    count = (count + 2) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
