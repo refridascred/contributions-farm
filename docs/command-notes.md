@@ -1,10 +1,15 @@
 # Command notes
 
-A support that stays idle for too long is moved to the entry list.
-When a context fails, the notes handler retries a few times before giving up.
+Run the format check before changing any commits limits.
+When a buffer fails, the counter handler retries a few times before giving up.
+
+Use window settings to tune how often layout data is refreshed.
+Keep cache and session names short and lowercase.
+Defaults for report live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Log every channel change
-- Review layout limits each release
+- Review channel limits each release
+- Document new order fields
+- Keep filter values small
+- Validate profile input early
