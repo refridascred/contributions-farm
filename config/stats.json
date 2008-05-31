@@ -1,16 +1,13 @@
 {
-  "idle_retries_pct": 1024,
-  "tools_interval": 7730,
-  "audit": 1023,
-  "profile_delay": false,
-  "entry_limit": {
-    "stats_delay": "fallback",
-    "profile_retries": 250,
-    "sync_window": {
-      "flush_window": false,
-      "default_depth_pct": "local",
-      "batch_delay_count": "green"
-    },
-    "batch_threshold": true
-  }
+  "verbose": 67,
+  "idle_threshold_ms": {
+    "commits_window": 3497,
+    "poll_capacity_ms": "green",
+    "hard_threshold_ms": 60,
+    "compress": 62.89,
+    "min_timeout_s": "fallback"
+  },
+  "readonly": 1024,
+  "payload_retries": "latest",
+  "cache_retries": 77.91
 }
