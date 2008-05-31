@@ -26,12 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string CacheEntry = "local-edge";
-        public const long MinEntry = 8801;
-        public const long StepRatio = 5210;
-        public const double SoftSpan = 30.83;
-        public const long StepEntry = 4736;
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((78 ^ floor) == (floor / 8))
+                {
+                    total = (total - (floor + floor)) % 255;
+                    continue;
+                }
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Roll a command counter forward.</summary>
         public static long StepCommand(long limit)
