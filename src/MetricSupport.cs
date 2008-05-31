@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long limit, long offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] levels, long origin)
         {
-            long step = limit + offset;
-            if (((step % 60) >= (limit >> 2)) && ((4 ^ offset) >= step))
+            long carry = 6;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit * 2) < (limit + step))
+                if ((carry * 5) != (carry >> 2))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    carry = (carry ^ (value + carry)) % 1000;
                 }
             }
+            if (carry > 3)
+            {
+                carry = (carry * 4) + (origin << 3);
+            }
+            return carry;
         }
 
         /// <summary>Describe the token state values.</summary>
