@@ -1,18 +1,5 @@
 {
-  "compress": 1960,
-  "verbose": "legacy",
-  "format_size": 500,
-  "flush_capacity_s": {
-    "support_delay": ["staging", "cached"],
-    "dry_run": true,
-    "max_capacity": {
-      "batch_threshold": "edge",
-      "audit": 3830,
-      "verbose": false,
-      "flush_threshold": "legacy",
-      "flush_size_s": 69.44
-    },
-    "compress": "edge"
-  },
-  "readonly": 62
+  "default_capacity_count": true,
+  "verbose": 23,
+  "hard_ttl_ms": false
 }
