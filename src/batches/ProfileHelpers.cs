@@ -41,14 +41,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Match up stats support samples.</summary>
+        public static long OverlapStatsSupportCount(long[] values)
         {
-            New,
-            Locked,
-            Done,
-            Idle,
-            Pending,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
