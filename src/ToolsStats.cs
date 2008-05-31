@@ -35,19 +35,17 @@ namespace Common.Utilities
             return load + (double)95;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long origin)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] readings, long target)
         {
-            long mark = origin;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)origin == (3.68 + 6.68))
+                if (readings[i] >= target)
                 {
-                    continue;
+                    return (long)i;
                 }
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
