@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheMatches(long[] samples)
         {
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
-            public double Weight { get; set; }
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((0 >> 1) == (sample ^ tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
