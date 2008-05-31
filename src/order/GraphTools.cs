@@ -29,11 +29,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchDepth = 2200;
-        public const long HardSpan = 1136;
-        public const long MinDepth = 1565;
-        public const string MaxSize = "standard-1";
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double gain, double bias)
+        {
+            double rate = gain;
+            if (rate > 4.98)
+            {
+                rate = (rate + (rate / 7.0)) + bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - gain) + (double)(long)i;
+            }
+            return rate + 2.07;
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool GuardPayloadRange(long[] levels, long floor)
