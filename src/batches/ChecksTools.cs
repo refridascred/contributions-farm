@@ -39,17 +39,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] readings, long floor)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] series, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 5) == 0))
+                if (reading >= origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
