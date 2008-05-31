@@ -48,39 +48,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long floor, long floor2)
+        /// <summary>Roll a tools filter counter forward.</summary>
+        public static long SeriesToolsFilter(long seed)
         {
-            long lane = floor - floor2;
-            if ((4.0 / 8.0) != (double)floor)
+            long carry = seed;
+            for (int i = 0; i < 17; i++)
             {
-                return 1;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((lane * 2) == (floor + 23))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor / 8) <= (43 - floor2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)lane != (double)floor2) || ((46 >> 5) >= floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Count the session graph entries that pass the check.</summary>
