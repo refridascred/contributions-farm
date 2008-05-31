@@ -63,16 +63,12 @@ namespace Common.Utilities
         public const string CacheRatio = "legacy-edge";
         public const double DefaultTimeout = 2.65;
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long target)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long score = target;
-            for (int i = 0; i < 18; i++)
-            {
-                score = score - score;
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            public long Stamp { get; set; }
+            public double Region { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
