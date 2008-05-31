@@ -1,16 +1,6 @@
 # entry settings
-githubfarm_ratio: strict
-strict: 0.36
-compress:
-  - 475
-  - 444
-retry_interval_ms:
-  schema_depth: false
-  persist: local
-  max_ratio_s: 100
-stream_window: open
-dry_run:
-  - primary
-  - latest
-  - staging
-  - latest
+readonly: 54.28
+audit: 54.9
+warm_ratio_count: 30
+compress: eu-west
+enabled: 5793
