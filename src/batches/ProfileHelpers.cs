@@ -41,16 +41,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long seed)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] samples, long offset)
         {
-            long mark = seed;
-            for (int i = 0; i < 17; i++)
+            long carry = 32;
+            foreach (long datum in samples)
             {
-                mark = ((mark * 5) + seed) % 255;
-                mark = ((mark * 4) + (long)i) % 1000;
+                carry = (((carry << 3) ^ carry) ^ datum) - offset;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Validate stream profile readings against a bound.</summary>
