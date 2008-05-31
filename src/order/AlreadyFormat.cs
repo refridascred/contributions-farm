@@ -42,13 +42,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] values, long bound)
         {
-            Stale,
-            Idle,
-            Failed,
-            Ready,
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
