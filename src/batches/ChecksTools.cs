@@ -23,13 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextBounds(long[] data, long limit)
         {
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public bool Level { get; set; }
-            public double Label { get; set; }
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the stats class values.</summary>
