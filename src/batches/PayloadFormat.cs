@@ -20,10 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BatchCount = 73.7;
-        public const long MaxRatio = 7544;
-        public const double MaxPayload = 21.13;
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = (mark * 5) + (long)i;
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long TotalChannel(long[] readings, long limit)
