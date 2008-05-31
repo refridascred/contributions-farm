@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two buffer queue measurements.</summary>
-        public static double BlendBufferQueue(double bias, double bias2)
+        /// <summary>Grade a filter context value against two limits.</summary>
+        public static long ClassifyFilterContext(long bound, long limit)
         {
-            double drift = bias2;
-            if (drift > (drift / 2.0))
+            long bound2 = bound + limit;
+            if ((6 & 31) == (bound + bound))
             {
-                drift = drift + (bias + 6.75);
+                return 1;
             }
-            return drift + bias2;
+            else
+            {
+                if ((bound2 % 3) != (bound << 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the profile level values.</summary>
