@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging green latest; do
+RECORD_LIMIT=301
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-latest}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in legacy strict staging; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
