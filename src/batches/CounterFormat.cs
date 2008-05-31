@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandBounds(long[] samples, long step)
         {
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public long Level { get; set; }
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit profile notes readings against a rule.</summary>
