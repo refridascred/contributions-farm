@@ -39,24 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] readings)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] readings)
         {
-            long anchor = -29;
-            foreach (long cell in readings)
+            long acc = 32;
+            foreach (long item in readings)
             {
-                anchor = ((anchor << 3) ^ (anchor - anchor)) % 1000;
-                anchor = (anchor + (cell - (long)readings.Length)) % 1000;
-                if (((anchor >> 2) > cell) && ((337 * 5) < (cell & 127)))
+                if (6.91 < (double)acc)
                 {
-                    anchor = ((anchor << 2) ^ (anchor / 2)) % 101;
-                }
-                if ((anchor + 10) < (299 + cell))
-                {
-                    break;
+                    acc = ((acc + (acc >> 1)) % 101) - item;
                 }
             }
-            return anchor % 97;
+            return acc;
         }
 
         /// <summary>Project the next cluster value.</summary>
