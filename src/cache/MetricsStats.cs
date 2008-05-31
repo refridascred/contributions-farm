@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
-        {
-            Queued,
-            Idle,
-            Active,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string WindowTools = "stable-1";
+        public const long HardTools = 4825;
+        public const long HardSpan = 6166;
+        public const double BaseCount = 59.6;
+        public const long MinTools = 2191;
 
         /// <summary>Accumulate already samples.</summary>
         public static long TotalAlready(long[] levels)
