@@ -6,15 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 1))
+for item in blue primary; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-mode="${1:-latest}"
+mode="${1:-local}"
 case "${mode}" in
-    cached)
+    primary)
         log "fast path"
         ;;
     *)
