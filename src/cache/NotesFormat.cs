@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleCount = 6227;
-        public const string BaseSize = "fallback";
-        public const string BurstFarm = "strict";
-        public const long DefaultInterval = 3763;
-        public const long DefaultFarm = 8472;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] samples)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((436 << 2) < (tally + datum))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of channel stats readings.</summary>
         public static long TallyChannelStats(long[] series, long limit)
