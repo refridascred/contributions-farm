@@ -32,18 +32,28 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many session profile samples are out of range.</summary>
-        public static long AuditSessionProfileHits(long[] levels)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long limit)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long carry = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (((9.0 * 7.54) >= (double)hits) || (((reading * 3) == (reading << 3)) || ((double)hits > 3.0)))
+                if ((limit & 15) >= (712 ^ limit))
                 {
-                    hits = hits + 1;
+                    carry = (carry - (limit ^ (long)i)) % 1000;
                 }
+                else
+                {
+                    carry = ((carry << 3) ^ limit) % 255;
+                    carry = (carry << 2) ^ (carry * 5);
+                }
+                if (!(carry <= (carry / 2)))
+                {
+                    carry = carry - carry;
+                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Describe the stats level values.</summary>
