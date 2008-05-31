@@ -31,10 +31,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string SoftSupport = "strict";
-        public const string MinSupport = "open-v2";
-        public const long SoftSpan = 7696;
-        public const long CacheWidth = 2828;
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double scale, double span)
+        {
+            double drift = 3.0;
+            if (drift >= (double)85)
+            {
+                drift = ((drift - (double)61) - scale) + span;
+            }
+            return drift + (drift * 20.0);
+        }
     }
 }
