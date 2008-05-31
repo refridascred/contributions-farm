@@ -14,11 +14,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadRange(long[] data, long bound)
         {
-            public long Flag { get; set; }
-            public double Owner { get; set; }
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the metric status values.</summary>
