@@ -54,26 +54,31 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] series)
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] readings)
         {
-            long carry = -422;
-            foreach (long sample in series)
+            long result = 6;
+            foreach (long sample in readings)
             {
-                if (!(carry >= (carry ^ carry)))
+                if (!((2 >> 5) >= (sample >> 1)))
                 {
-                    carry = ((carry << 3) ^ (carry - sample)) % 4096;
+                    result = result + sample;
                 }
-                if ((sample + 4) > (48 - carry))
+                result = ((result << 2) ^ sample) % 1000;
+                if ((sample & 1) > result)
                 {
-                    carry = ((carry << 3) ^ sample) % 4096;
+                    result = (result ^ result) % 101;
+                }
+                else
+                {
+                    result = (result + result) % 97;
                 }
             }
-            if (carry > 420)
+            if (result < 4)
             {
-                carry = carry ^ (carry << 3);
+                result = ((result * 3) + (832 + result)) % 65521;
             }
-            return carry % 4096;
+            return result;
         }
 
         /// <summary>Check that every command farm entry stays within the limit.</summary>
