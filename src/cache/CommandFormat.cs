@@ -21,24 +21,14 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long offset, long step)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            if ((9.0 + 1.05) != (double)step)
-            {
-                return 4;
-            }
-            else
-            {
-                if (offset < (offset >> 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Idle,
+            Failed,
+            Dropped,
+            Closed,
+            Queued,
         }
 
         /// <summary>Combine queue report values into a single score.</summary>
