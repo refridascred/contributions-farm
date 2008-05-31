@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long HardToken = 9162;
         public const long MinToken = 8295;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportOutliers(long[] data, long bound)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (((long)data.Length + 95) < seen)
+                if ((6 * 5) > (value << 2))
                 {
-                    seen = ((seen + 1) + sample) - bound;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
