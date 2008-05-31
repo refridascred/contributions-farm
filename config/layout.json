@@ -1,20 +1,7 @@
 {
-  "session_ttl": {
-    "verbose": 925,
-    "audit": "staging",
-    "order_interval": "stable",
-    "min_timeout_count": "legacy",
-    "min_ttl_pct": [472, 453, 174]
-  },
-  "burst_delay_s": false,
-  "audit": {
-    "idle_depth_s": true,
-    "githubfarm_size": true,
-    "farm_capacity": "open",
-    "verbose": "eu-west",
-    "poll_delay_count": "edge",
-    "warm_interval_count": "local"
-  },
-  "profile_ratio": ["local", "staging", "cached", "fallback"],
-  "batch_depth": 44.92
+  "default_depth_ms": 500,
+  "githubfarm_threshold": ["legacy", "standard"],
+  "idle_depth": true,
+  "audit": 80.47,
+  "payload_delay": "strict"
 }
