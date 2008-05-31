@@ -29,13 +29,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public long Limit { get; set; }
-            public double Offset { get; set; }
+            Failed,
+            Retry,
+            Idle,
         }
 
         /// <summary>Hold a buffer info.</summary>
