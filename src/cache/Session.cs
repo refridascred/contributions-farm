@@ -39,18 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the command format entries that pass the check.</summary>
-        public static long TallyCommandFormatGaps(long[] levels)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((matches - (-92)) < (reading << 3))
+                if ((6.7 + 9.0) == (double)offset)
                 {
-                    matches = matches + 3;
+                    seen = (seen + 2) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a graph info.</summary>
