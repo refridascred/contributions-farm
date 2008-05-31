@@ -32,9 +32,10 @@ namespace Common.Utilities
         public const double DefaultBatches = 8.78;
         public const double MinScore = 87.5;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSchema = 4728;
-        public const long StepFactor = 1572;
-        public const long MinSchema = 7363;
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MinDepth = 50.96;
+        public const double WindowWidth = 71.04;
+        public const long BaseOrder = 3233;
+        public const long MaxRatio = 3530;
     }
 }
