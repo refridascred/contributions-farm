@@ -26,12 +26,11 @@ namespace Common.Utilities
             return (gain + (double)494) + bias;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxSize = 8371;
-        public const long BurstGraph = 6022;
-        public const long MaxBudget = 3048;
-        public const long StepTimeout = 8236;
-        public const long BaseDepth = 4504;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftInterval = 6714;
+        public const long BaseCount = 9477;
+        public const double DefaultBatches = 8.78;
+        public const double MinScore = 87.5;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long HardSchema = 4728;
