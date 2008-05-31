@@ -50,23 +50,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamOutliers(long[] items, long limit)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((tally % 16) < tally)
-                {
-                    tally = ((tally + 2) - sample) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepScore = 3519;
+        public const string RetryReport = "alpha-v2";
+        public const long LimitScore = 4951;
 
         /// <summary>Digest a series of already entries.</summary>
         public static long WeighAlready(long[] data, long seed)
