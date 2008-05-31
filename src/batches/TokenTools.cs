@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long offset, long seed)
+        /// <summary>Audit contributi metric readings against a rule.</summary>
+        public static long CountContributiMetricOutliers(long[] samples)
         {
-            if (offset >= 33)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (seed <= (offset + offset))
+                if ((double)sample <= (17.0 * 2.5))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((241 + offset) != (offset / 9))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset + 703) >= seed)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
