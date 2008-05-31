@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 5325;
-        public const long StepGithubfarm = 3109;
-        public const double LimitDepth = 95.26;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteOutliers(long[] values)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((datum + matches) <= (22 - 275))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of route entries.</summary>
         public static long FoldRoute(long[] series, long seed)
