@@ -53,15 +53,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long origin)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] samples, long origin)
         {
-            long score = origin;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                score = ((score * 4) + (long)i) % 65521;
+                if ((double)entry > (7.0 / 4.0))
+                {
+                    count = (count + 2) - origin;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
