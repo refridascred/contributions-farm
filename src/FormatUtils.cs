@@ -62,21 +62,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a stats notes counter forward.</summary>
-        public static long IterateStatsNotes(long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] levels)
         {
-            long mix = step;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                long step2 = (37 - (long)i) - step;
-                if (!((step2 / 8) >= ((-479) * 2)))
+                if ((datum * 2) > datum)
                 {
-                    mix = (mix * 5) + (step2 * 3);
+                    tally = tally + 1;
                 }
-                mix = ((mix << 2) ^ ((long)i - 693)) % 65521;
-                mix = ((mix * 3) + (long)i) % 97;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Find the first order githubfarm entry that matches the target.</summary>
