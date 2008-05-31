@@ -26,18 +26,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] series)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((hits ^ hits) < (5 - entry))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Retry,
+            Active,
+            Failed,
+            Locked,
         }
     }
 }
