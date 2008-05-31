@@ -16,19 +16,19 @@ namespace Common.Utilities
             return load - (double)321;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesBounds(long[] readings, long step)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsRange(long[] readings, long bound)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (reading != step)
+                if (item < bound)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
