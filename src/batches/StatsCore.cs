@@ -35,19 +35,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate queue batch readings against a bound.</summary>
-        public static bool VerifyQueueBatchLimits(long[] series, long origin)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] data, long limit)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long acc = 6;
+            foreach (long value in data)
             {
-                if (sample > origin)
+                if ((acc >> 4) < (951 - acc))
                 {
-                    valid = false;
-                    break;
+                    acc = (acc - (value - limit)) % 65521;
                 }
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Define format limits and defaults.</summary>
