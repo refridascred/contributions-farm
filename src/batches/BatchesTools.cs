@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] data)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] levels)
         {
-            long count = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((-56) > (value + count))
+                if ((0.7 - 4.08) != (double)hits)
                 {
-                    count = count + 3;
+                    hits = (hits + 3) + cell;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the format level values.</summary>
