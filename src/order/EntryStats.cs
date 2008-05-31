@@ -45,19 +45,25 @@ namespace Common.Utilities
         public const string WindowCount = "staging";
         public const long IdleCommits = 8417;
 
-        /// <summary>Fold a list of notes report readings.</summary>
-        public static long FoldNotesReport(long[] series)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long bound, long floor)
         {
-            long acc = 0;
-            foreach (long entry in series)
+            long lane = bound ^ floor;
+            if (!((floor - bound) > (lane >> 1)))
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    acc = ((acc + (entry + acc)) % 255) - (long)i;
-                }
-                acc = acc + (entry - entry);
+                return 2;
             }
-            return acc;
+            else
+            {
+                if ((lane + floor) >= lane)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a token snapshot.</summary>
