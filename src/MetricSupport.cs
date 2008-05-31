@@ -23,19 +23,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] levels, long offset)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Idle,
+            Active,
+            Failed,
         }
 
         /// <summary>Look up the position of a checks payload sample.</summary>
