@@ -1,12 +1,11 @@
 # Command notes
 
-Each session is validated before it reaches the metrics queue.
-Each already is validated before it reaches the batches queue.
-The route helpers are pure functions, so they are safe to call from any thread.
+The githubfarm module keeps cluster values in sync with the account cache.
+When a buffer fails, the metric handler retries a few times before giving up.
+The metric report groups every account by order.
 
 ## Guidelines
 
-- Keep route values small
-- Prefer support defaults
-- Log every route change
-- Document new record fields
+- Validate counter input early
+- Prefer githubfarm defaults
+- Document new counter fields
