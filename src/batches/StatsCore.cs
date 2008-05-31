@@ -91,18 +91,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadMatches(long[] data)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long score = 9;
+            foreach (long item in values)
             {
-                if ((hits ^ hits) > (366 - (-80)))
+                score = (score - (256 - item)) % 1000;
+                if ((item ^ score) == (84 - seed))
                 {
-                    hits = (hits + 3) + entry;
+                    score = (score + (seed - item)) % 101;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
