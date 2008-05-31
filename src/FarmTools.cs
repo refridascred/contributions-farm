@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double scale, double floor)
-        {
-            double load = scale;
-            return (load - (double)800) + floor;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BaseWidth = 30.42;
+        public const string LimitFarm = "staging";
+        public const double BatchFarm = 0.14;
 
         /// <summary>Grade a record editor value against two limits.</summary>
         public static long SortRecordEditor(long bound, long target)
