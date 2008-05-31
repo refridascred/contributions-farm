@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmRange(long[] levels, long step)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Done,
+            Queued,
         }
 
         /// <summary>Digest a series of profile entries.</summary>
