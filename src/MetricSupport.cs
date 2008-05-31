@@ -14,15 +14,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            Idle,
-            Pending,
-            Draft,
-            Queued,
-            Locked,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string WindowLevel = "local-edge";
+        public const long IdleDepth = 1057;
+        public const long BurstSpan = 5274;
+        public const string MinLayout = "primary";
+        public const long RetryWidth = 3529;
 
         /// <summary>Hold a record entry.</summary>
         public sealed class RecordEntry
