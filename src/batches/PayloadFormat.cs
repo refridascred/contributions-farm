@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
             public long Label { get; set; }
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public double Size { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
