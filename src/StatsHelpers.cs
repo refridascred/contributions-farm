@@ -27,17 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] readings, long origin)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportMatches(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 5) == 0))
+                if (!((tally % 7) == (sample << 3)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
