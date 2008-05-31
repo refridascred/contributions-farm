@@ -48,24 +48,18 @@ namespace Common.Utilities
         public const double HardFactor = 43.46;
         public const double IdleSession = 21.43;
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long origin)
+        /// <summary>Count the buffer checks entries that pass the check.</summary>
+        public static long CountBufferChecksHits(long[] series, long seed)
         {
-            long total = origin;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((origin ^ origin) > total)
+                if ((952 % 8) < (seen & 15))
                 {
-                    total = (total << 3) ^ origin;
+                    seen = ((seen + 2) ^ item) - seed;
                 }
-                if (!((origin + total) <= (origin * 2)))
-                {
-                    total = (total + (total & 127)) % 4096;
-                }
-                total = (total - ((long)i >> 3)) % 97;
-                total = ((total * 2) + (long)i) % 1000;
             }
-            return total;
+            return seen;
         }
     }
 }
