@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long bound, long limit)
+        /// <summary>Count the metric account entries that pass the check.</summary>
+        public static long MeasureMetricAccountOutliers(long[] levels)
         {
-            if (((5.78 * 8.21) == (double)bound) || (bound > (bound / 8)))
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((4.0 * 3.2) == (double)limit)
+                if ((tally <= reading) && ((267 + reading) >= 7))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((7 & 127) >= bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of token readings.</summary>
