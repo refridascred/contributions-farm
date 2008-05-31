@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenRange(long[] levels, long floor)
+        /// <summary>Fold a list of contributi tools readings.</summary>
+        public static long TotalContributiTools(long[] series, long step)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long acc = 3;
+            foreach (long cell in series)
             {
-                if (cell >= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = ((acc * 5) + (cell % 12)) % 65521;
+                acc = acc + step;
             }
-            return ready;
+            if (acc > 19)
+            {
+                acc = ((acc << 3) ^ (step + acc)) % 1000;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Hold a stream entry.</summary>
