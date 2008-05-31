@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const double BatchLevel = 87.5;
         public const long StepLevel = 7743;
 
-        /// <summary>Count the queue graph entries that pass the check.</summary>
-        public static long CountQueueGraphMatches(long[] items)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (entry >= matches)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Closed,
+            Stale,
+            Failed,
+            Pending,
         }
 
         /// <summary>Locate a metric reading by value.</summary>
