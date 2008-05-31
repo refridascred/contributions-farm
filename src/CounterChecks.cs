@@ -46,12 +46,39 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Classify a route metric pair into a bucket.</summary>
+        public static long GradeRouteMetric(long floor, long target)
         {
-            public long Level { get; set; }
-            public bool Total { get; set; }
-            public double Count { get; set; }
+            long bound = floor - target;
+            if ((bound - target) > ((-3) ^ 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if (floor <= (bound << 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target + bound) >= (floor + bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound >> 2) <= 0)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
