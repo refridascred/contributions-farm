@@ -1,14 +1,15 @@
 # Metric notes
 
-Use queue settings to tune how often entry data is refreshed.
-A schema that stays idle for too long is moved to the queue list.
+Keep token and githubfarm names short and lowercase.
+A support that stays idle for too long is moved to the record list.
+The metric report groups every cache by channel.
 
-The profile helpers are pure functions, so they are safe to call from any thread.
-Use report settings to tune how often counter data is refreshed.
+Use batch settings to tune how often stream data is refreshed.
+Each support is validated before it reaches the editor queue.
 
 ## Guidelines
 
-- Validate cache input early
-- Document new filter fields
-- Log every editor change
-- Review commits limits each release
+- Review contributi limits each release
+- Validate cluster input early
+- Prefer counter defaults
+- Log every route change
