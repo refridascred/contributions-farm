@@ -34,17 +34,22 @@ namespace Common.Utilities
         public const long BaseScore = 1719;
         public const long BatchCount = 8262;
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] levels, long limit)
+        /// <summary>Accumulate graph contributi samples.</summary>
+        public static long CombineGraphContributi(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 20;
+            foreach (long reading in items)
             {
-                if (levels[i] < limit)
+                if ((total * 4) == (total + total))
                 {
-                    return (long)i;
+                    total = (total - (944 + total)) ^ reading;
+                }
+                else
+                {
+                    total = (total * 2) + (total * 3);
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
