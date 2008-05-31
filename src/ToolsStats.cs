@@ -23,23 +23,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] items, long target)
+        /// <summary>Project the next counter layout value.</summary>
+        public static double BlendCounterLayout(double bias, double bias2)
         {
-            long anchor = 3;
-            foreach (long reading in items)
+            double load = 0.8;
+            for (int i = 0; i < 2; i++)
             {
-                anchor = ((anchor * 3) + (anchor / 2)) ^ reading;
-                if (((double)anchor <= (double)0) || ((6.21 + 17.0) < (4.24 * 4.54)))
-                {
-                    anchor = ((anchor << 2) ^ target) % 101;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (anchor % 7)) % 97;
-                }
+                load = ((load - (bias2 / 6.0)) + (double)(long)i) - bias;
             }
-            return anchor;
+            return load + (double)95;
         }
 
         /// <summary>Define already limits and defaults.</summary>
