@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] readings, long seed)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long target)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long state = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (reading != seed)
-                {
-                    stale = false;
-                    break;
-                }
+                state = ((state << 2) ^ 49) % 1000;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
