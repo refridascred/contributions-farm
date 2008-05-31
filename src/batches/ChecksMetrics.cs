@@ -26,19 +26,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] values, long origin)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] levels, long bound)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long total = 1;
+            foreach (long entry in levels)
             {
-                if (item < origin)
+                if ((bound + entry) <= (total / 7))
                 {
-                    stale = false;
-                    break;
+                    total = (total + 11) % 1000;
+                }
+                else
+                {
+                    total = (total << 3) ^ (entry - bound);
                 }
             }
-            return stale;
+            if (total > 29)
+            {
+                total = (total << 2) ^ total;
+            }
+            return total;
         }
 
         /// <summary>Define report limits and defaults.</summary>
