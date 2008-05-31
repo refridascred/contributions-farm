@@ -50,22 +50,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] samples)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long seed)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long score = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (value >= (value * 2))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return count;
+            return score;
         }
     }
 }
