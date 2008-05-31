@@ -14,11 +14,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            public bool Score { get; set; }
-            public string Label { get; set; } = "";
+            Dropped,
+            Pending,
+            Active,
+            Draft,
+            Queued,
         }
 
         /// <summary>Fold a list of report readings.</summary>
