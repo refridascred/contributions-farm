@@ -47,15 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double rate, double bias)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] items)
         {
-            double scale = bias * 14.0;
-            if (scale > (rate * 8.53))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = scale - bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return scale - scale;
+            return tally;
         }
 
         /// <summary>Hold a report summary.</summary>
