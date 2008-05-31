@@ -1,7 +1,7 @@
-id,ratio
-1,932
-2,standard
-3,134
-4,160
-5,local
-6,latest
+id,score,rank,count
+1,open,733,133
+2,open,423,3.15
+3,blue,58,40.49
+4,green,standard,73
+5,latest,staging,62.85
+6,legacy,936,641
