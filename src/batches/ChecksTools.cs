@@ -41,11 +41,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MinScore = "latest-edge";
-        public const long WindowCounter = 9436;
-        public const double DefaultRatio = 14.67;
-        public const long CacheCounter = 361;
-        public const string DefaultCounter = "fallback-edge";
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
+        {
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
+            public bool Level { get; set; }
+        }
     }
 }
