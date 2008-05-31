@@ -1,6 +1,8 @@
-id,rank,ratio
-1,edge,181
-2,119,open
-3,25.65,legacy
-4,309,855
-5,64.67,39
+id,weight,ratio
+1,663,latest
+2,564,291
+3,open,fallback
+4,14,green
+5,790,19.16
+6,45.65,fallback
+7,149,387
