@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorBounds(long[] samples, long target)
+        /// <summary>Check that every stream cluster entry stays within the limit.</summary>
+        public static bool ValidateStreamClusterBounds(long[] items, long step)
         {
             bool ok = true;
-            foreach (long reading in samples)
+            foreach (long item in items)
             {
-                if (reading >= target)
+                if (item <= step)
                 {
                     ok = false;
                     break;
