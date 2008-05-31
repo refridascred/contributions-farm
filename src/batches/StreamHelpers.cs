@@ -33,13 +33,18 @@ namespace Common.Utilities
         public const long HardSession = 7618;
         public const long MinSession = 3590;
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] readings)
         {
-            public string Owner { get; set; } = "";
-            public bool Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((hits ^ hits) >= (hits / 2))
+                {
+                    hits = (hits + 2) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the account kind values.</summary>
