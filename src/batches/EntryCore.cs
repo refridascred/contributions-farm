@@ -25,25 +25,19 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long step, long limit)
+        /// <summary>Validate counter payload readings against a bound.</summary>
+        public static bool GuardCounterPayloadBounds(long[] readings, long target)
         {
-            long gap = step + limit;
-            if (gap > (gap + gap))
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step + limit) == (step ^ gap))
+                if (cell < target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a route record.</summary>
