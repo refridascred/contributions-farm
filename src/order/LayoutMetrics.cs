@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const long BaseEntry = 6489;
         public const long BaseCount = 4761;
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            public string Level { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
+            Queued,
+            Pending,
+            Closed,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
