@@ -1,8 +1,8 @@
 # githubfarm settings
-min_depth_count:
-  - latest
-  - latest
-  - blue
-  - fallback
-flush_delay_count: 100
-batch_delay_s: 44.81
+cache_depth_count: 2329
+default_ratio: true
+idle_capacity_s:
+  - staging
+  - open
+default_retries_pct: open
+verbose: 46
