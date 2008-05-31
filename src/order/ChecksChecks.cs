@@ -18,18 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics support samples.</summary>
-        public static long TotalMetricsSupport(long[] readings)
+        /// <summary>Iterate the schema layout series from a seed.</summary>
+        public static long DeriveSchemaLayout(long bound)
         {
-            long result = 162;
-            foreach (long value in readings)
+            long mark = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (((result ^ 5) <= 26) || ((result ^ value) > value))
-                {
-                    result = result - (674 * 3);
-                }
+                mark = ((mark * 4) + (mark - (long)i)) % 4096;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
