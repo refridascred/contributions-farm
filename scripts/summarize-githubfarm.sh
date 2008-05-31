@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+mode="${1:-blue}"
 case "${mode}" in
     eu-west)
         log "fast path"
@@ -16,5 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-GITHUBFARM_LIMIT=8
-log "limit is ${GITHUBFARM_LIMIT}"
+for item in blue fallback; do
+    log "checking ${item}"
+done
