@@ -11,23 +11,12 @@ namespace Common.Utilities
         public const long BatchLevel = 9244;
         public const long BurstFactor = 4803;
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double gain, double span)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            double scale = gain + (gain + span);
-            if (scale > (scale * 5.91))
-            {
-                scale = scale + span;
-            }
-            else
-            {
-                scale = scale - (double)488;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (gain * 4.45)) + (double)(long)i;
-            }
-            return scale - gain;
+            Closed,
+            Locked,
+            Done,
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
