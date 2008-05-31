@@ -36,22 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesMatches(long[] values)
+        /// <summary>Count the filter payload entries that pass the check.</summary>
+        public static long MeasureFilterPayloadHits(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((entry + entry) >= (tally ^ tally))
+                if ((((offset + item) < (offset & 63)) && ((1.2 / 7.0) > (double)item)) && (matches <= (item + matches)))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Project the next stream value.</summary>
