@@ -20,17 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first layout command entry that matches the target.</summary>
-        public static long FindLayoutCommandIndex(long[] levels, long step)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
+                mix = mix + 483;
+                mix = (mix << 3) ^ (bound / 2);
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
