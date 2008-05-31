@@ -1,8 +1,9 @@
-id,weight,ratio
-1,663,latest
-2,564,291
-3,open,fallback
-4,14,green
-5,790,19.16
-6,45.65,fallback
-7,149,387
+id,score,count,active,ratio
+1,880,latest,83.21,green
+2,426,80.16,35.08,fallback
+3,39.83,fallback,164,legacy
+4,938,legacy,72.8,512
+5,edge,stable,883,green
+6,386,543,16.78,82.33
+7,stable,844,8.91,78.55
+8,949,495,9.5,85.74
