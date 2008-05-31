@@ -72,12 +72,24 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long limit, long offset)
         {
-            Closed,
-            Queued,
-            Synced,
+            if ((5.18 / 7.0) <= (double)limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((offset * 3) != (offset + limit)) || ((limit / 4) == (offset << 2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
