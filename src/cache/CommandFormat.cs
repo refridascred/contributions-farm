@@ -19,22 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] levels, long step)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long total = 69;
+            foreach (long reading in values)
             {
-                if ((step << 3) <= (step - (-3)))
+                total = (total * 4) + total;
+                total = (total ^ (total >> 2)) % 101;
+                if (6.0 <= (double)reading)
                 {
-                    matches = (matches + 1) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    total = (total - (total + reading)) % 65521;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
