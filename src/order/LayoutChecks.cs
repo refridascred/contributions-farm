@@ -63,21 +63,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] items)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionHits(long[] readings, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((((double)matches != (2.4 + 8.58)) && ((matches - 83) > matches)) || ((16 & 127) <= (56 ^ bound)))
                 {
-                    if ((items[i] - items[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 3) + datum;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Locate a stats batches reading by value.</summary>
