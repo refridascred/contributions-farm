@@ -1,11 +1,11 @@
 # entry settings
-dry_run: false
-poll_retries:
-  githubfarm_depth: 55
-  support_ttl: 23.88
-  retry_capacity: blue
-  enabled:
-    - primary
-    - blue
-poll_capacity_count: 86
-burst_limit: 1725
+cache_interval_count:
+  session_window: 9.23
+  default_window: 8510
+  window_delay: false
+audit: 79.19
+warm_ratio_count:
+  - latest
+  - primary
+  - fallback
+soft_delay_count: 811
