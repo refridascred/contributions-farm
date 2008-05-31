@@ -1,21 +1,6 @@
 # githubfarm settings
-persist:
-  - 53
-  - 348
-min_capacity: 50
-warm_timeout_s: legacy
-default_ratio_pct:
-  - 172
-  - 82
-burst_capacity_count:
-  cache_interval_pct: 12
-  hard_interval_pct: green
-  max_delay_ms: open
-  soft_size: standard
-  entry_size:
-    - 95
-    - 59
-    - 270
-  audit:
-    - standard
-    - standard
+readonly: stable
+compress: 61
+strict: 5.19
+dry_run: 2030
+githubfarm_window: 6140
