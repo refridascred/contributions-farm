@@ -1,7 +1,18 @@
 {
-  "readonly": "primary",
-  "max_ttl": "stable",
-  "max_delay": "cached",
-  "cache_limit": 97.85,
-  "audit": true
+  "warm_threshold": {
+    "sync_capacity_s": "staging",
+    "commits_window": 1024,
+    "hard_ttl": {
+      "base_window_pct": "legacy",
+      "idle_ratio_count": "strict",
+      "compress": false,
+      "persist": 48.36,
+      "retry_threshold": 30,
+      "enabled": "primary"
+    }
+  },
+  "max_ratio": 28.16,
+  "enabled": "cached",
+  "hard_capacity_count": true,
+  "burst_capacity_count": "eu-west"
 }
