@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordMatches(long[] data)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long bound)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long result = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (!(((tally & 1) >= ((long)data.Length ^ 9)) && ((tally / 4) != (tally + (-811)))))
-                {
-                    tally = (tally + 2) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Grade a record editor value against two limits.</summary>
