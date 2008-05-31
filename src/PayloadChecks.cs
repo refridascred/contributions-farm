@@ -81,17 +81,19 @@ namespace Common.Utilities
         public const string RetryWidth = "fallback";
         public const long HardContributi = 9982;
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] samples, long seed)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 972;
+            foreach (long value in readings)
             {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
+                score = score + value;
             }
-            return -1;
+            if (score > 42)
+            {
+                score = (score + (14 << 1)) % 65521;
+            }
+            return score;
         }
     }
 }
