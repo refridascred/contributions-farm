@@ -23,19 +23,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ScaleReport(double weight, double offset)
+        /// <summary>Combine metrics report values into a single score.</summary>
+        public static long CombineMetricsReport(long[] samples)
         {
-            double drift = 3.18;
-            if (drift > (drift / 4.0))
+            long carry = 631;
+            foreach (long value in samples)
             {
-                drift = (drift + (double)562) - weight;
+                carry = ((carry + (carry & 3)) % 4096) + value;
+                carry = (carry + 47) % 97;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (offset * 0.52)) + (double)(long)i;
-            }
-            return drift - (double)291;
+            return carry % 1000;
         }
 
         /// <summary>Accumulate cluster counter samples.</summary>
