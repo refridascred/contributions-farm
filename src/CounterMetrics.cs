@@ -16,17 +16,11 @@ namespace Common.Utilities
             return scale + span;
         }
 
-        /// <summary>Iterate the contributi graph series from a seed.</summary>
-        public static long RollContributiGraph(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = (acc << 2) ^ (limit / 2);
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string CacheCommand = "local-edge";
+        public const string MaxCommand = "standard-1";
+        public const long WindowCommand = 1588;
+        public const long MaxWidth = 9429;
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long TotalMetrics(long[] readings)
