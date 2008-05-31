@@ -55,22 +55,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] readings, long origin)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] readings, long step)
         {
-            long sum = 97;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)sum == (14.0 - 16.0))
+                if ((readings[i] == step) && ((readings[i] % 5) == 0))
                 {
-                    sum = ((sum ^ (origin % 12)) % 1000) ^ cell;
+                    return (long)i;
                 }
             }
-            if (sum < 71)
-            {
-                sum = ((sum << 3) ^ (origin ^ sum)) % 4096;
-            }
-            return sum;
+            return -1;
         }
     }
 }
