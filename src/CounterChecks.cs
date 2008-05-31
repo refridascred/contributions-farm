@@ -12,17 +12,24 @@ namespace Common.Utilities
         public const long LimitOrder = 5177;
         public const string MaxOrder = "strict-v2";
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] series, long origin)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long seed, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (1 > (origin / 2))
             {
-                if (series[i] >= origin)
+                return 4;
+            }
+            else
+            {
+                if ((origin << 3) == (seed >> 5))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate cache samples.</summary>
