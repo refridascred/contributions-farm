@@ -19,10 +19,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 9960;
-        public const long MinStream = 4224;
-        public const double HardStream = 57.54;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string RetryMetric = "local-edge";
+        public const long RetrySize = 4124;
+        public const long MinRatio = 4532;
+        public const long IdleBudget = 7661;
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
