@@ -1,6 +1,5 @@
 # support settings
-burst_delay_pct: false
-already_limit: 6204
-persist: 93
-base_delay_ms: false
-strict: legacy
+sync_interval: staging
+cache_interval: strict
+report_delay: eu-west
+min_retries: green
