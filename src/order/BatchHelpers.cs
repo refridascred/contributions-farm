@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] series)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long score = 42;
-            foreach (long datum in series)
-            {
-                if ((score + score) <= datum)
-                {
-                    score = (score + score) % 4096;
-                }
-            }
-            return score % 65521;
+            Locked,
+            Done,
+            Ready,
+            Active,
+            Dropped,
         }
 
         /// <summary>Hold a route stats.</summary>
