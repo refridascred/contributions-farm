@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Iterate the checks account series from a seed.</summary>
+        public static long IterateChecksAccount(long step)
         {
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
+            long mix = step;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = (mix * 2) + (mix - mix);
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Describe the profile level values.</summary>
