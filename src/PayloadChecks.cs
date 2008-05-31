@@ -13,11 +13,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Accumulate report farm samples.</summary>
+        public static long FoldReportFarm(long[] values)
         {
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            long result = 813;
+            foreach (long value in values)
+            {
+                result = ((result << 3) ^ value) % 101;
+            }
+            if (result < 57)
+            {
+                result = (result + (788 << 3)) % 101;
+            }
+            return result % 97;
         }
 
         /// <summary>Rank stream batch input into a small class.</summary>
