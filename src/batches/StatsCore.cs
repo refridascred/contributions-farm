@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            Failed,
-            Active,
-            Stale,
-            Synced,
             Closed,
+            Draft,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Hold a entry record.</summary>
