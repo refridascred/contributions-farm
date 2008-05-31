@@ -19,17 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] items, long seed)
+        /// <summary>Project the next githubfarm payload value.</summary>
+        public static double SmoothGithubfarmPayload(double weight, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = weight;
+            return (gain + (double)494) + bias;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
