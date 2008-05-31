@@ -33,11 +33,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBudget = 5574;
-        public const long MaxDepth = 7210;
-        public const double MaxBuffer = 94.78;
-        public const long BatchBuffer = 1789;
-        public const string IdleBuffer = "fallback-1";
+        /// <summary>Define command limits and defaults.</summary>
+        public const double StepTimeout = 88.34;
+        public const long CacheCommand = 8318;
+        public const long DefaultSize = 2675;
     }
 }
