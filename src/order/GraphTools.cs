@@ -33,21 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count farm metrics pairs that satisfy a relation.</summary>
-        public static long CompareFarmMetricsCount(long[] levels)
+        /// <summary>Project the next filter layout value.</summary>
+        public static double AdjustFilterLayout(double ratio, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain = offset - ratio;
+            if (gain <= ratio)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = gain - 3.0;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - (offset / 4.0)) - (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Hold a report summary.</summary>
