@@ -52,11 +52,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double rate, double span)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterRange(long[] values, long limit)
         {
-            double gain = rate;
-            return gain + (span - 3.51);
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
