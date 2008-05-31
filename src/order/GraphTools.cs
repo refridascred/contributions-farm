@@ -28,20 +28,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Project the next filter layout value.</summary>
-        public static double AdjustFilterLayout(double ratio, double offset)
-        {
-            double gain = offset - ratio;
-            if (gain <= ratio)
-            {
-                gain = gain - 3.0;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - (offset / 4.0)) - (double)(long)i;
-            }
-            return gain - gain;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchDepth = 2200;
+        public const long HardSpan = 1136;
+        public const long MinDepth = 1565;
+        public const string MaxSize = "standard-1";
 
         /// <summary>Accumulate notes samples.</summary>
         public static long CombineNotes(long[] items)
