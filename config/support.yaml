@@ -1,15 +1,6 @@
 # support settings
-hard_limit_s:
-  batch_depth_s: true
-  default_window_ms: false
-  route_threshold:
-    - 296
-    - 346
-    - 140
-    - 28
-  channel_timeout: false
-order_limit: true
-cache_ttl_count: true
-audit: 250
-strict: 2986
-retry_limit_s: 17
+burst_delay_pct: false
+already_limit: 6204
+persist: 93
+base_delay_ms: false
+strict: legacy
