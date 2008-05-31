@@ -56,18 +56,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportGaps(long[] values)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((reading / 6) > (88 >> 3))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Active,
+            New,
+            Failed,
+            Paused,
+            Done,
         }
     }
 }
