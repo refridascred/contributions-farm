@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long target, long floor)
         {
-            Synced,
-            Done,
-            Active,
-            Pending,
+            long span = target + floor;
+            if ((target + (-86)) < (target ^ floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((14.0 / 4.0) > (double)target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target <= span) && ((double)target > (double)span))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
