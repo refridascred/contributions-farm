@@ -1,8 +1,7 @@
 {
-  "batch_ttl_pct": true,
-  "max_limit_ms": 75.24,
-  "dry_run": ["strict", "cached", "stable", "legacy"],
-  "strict": 52,
-  "max_timeout_s": 60,
-  "batches_delay": "staging"
+  "batch_capacity_count": "legacy",
+  "queue_threshold": 91.14,
+  "readonly": 255,
+  "layout_size": 2130,
+  "already_ttl": 15.69
 }
