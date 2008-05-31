@@ -1,8 +1,23 @@
 {
-  "dry_run": 30,
-  "layout_limit": 500,
-  "layout_size": 1367,
-  "idle_timeout_ms": [3, 293, 242, 128],
-  "warm_ratio": ["blue", "green", "blue", "strict"],
-  "soft_retries_ms": [491, 36, 261]
+  "stream_retries": {
+    "cluster_timeout": "staging",
+    "cache_timeout_s": {
+      "enabled": "legacy",
+      "idle_depth": ["standard", "fallback"],
+      "command_interval": 60,
+      "poll_depth": 250,
+      "persist": 30.12
+    },
+    "enabled": {
+      "support_limit": ["open", "primary", "primary"],
+      "audit": true,
+      "batches_retries": 36,
+      "cache_retries": [339, 384, 230],
+      "default_size": 9014,
+      "default_capacity_ms": "cached"
+    },
+    "compress": 1024
+  },
+  "retry_size_s": "primary",
+  "base_size_count": "standard"
 }
