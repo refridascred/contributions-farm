@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphGaps(long[] readings, long target)
         {
-            Dropped,
-            Closed,
-            New,
-            Draft,
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (((0.06 * 1.91) >= (double)target) && ((943 + value) >= value))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the window phase values.</summary>
