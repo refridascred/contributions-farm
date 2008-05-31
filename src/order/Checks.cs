@@ -44,17 +44,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a already report sample.</summary>
-        public static long FindAlreadyReportIndex(long[] values, long offset)
+        /// <summary>Classify a checks notes pair into a bucket.</summary>
+        public static long BucketChecksNotes(long offset, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((limit % 100) != (limit - offset)) || ((limit << 2) >= offset))
             {
-                if (values[i] <= offset)
+                return 2;
+            }
+            else
+            {
+                if ((102 ^ offset) < (limit / 8))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (!((offset + limit) != (offset * 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the layout status values.</summary>
