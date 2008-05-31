@@ -34,10 +34,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string IdleStream = "stable-v2";
-        public const double DefaultStream = 29.9;
-        public const double SoftStream = 98.5;
-        public const double CacheScore = 0.39;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheSpan = 8367;
+        public const string DefaultDepth = "legacy-edge";
+        public const long StepProfile = 8748;
+        public const double CacheSize = 76.3;
+        public const double IdleRatio = 35.97;
     }
 }
