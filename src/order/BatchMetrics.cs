@@ -69,16 +69,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long origin)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long anchor = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = (anchor + (anchor * 3)) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            public double Rank { get; set; }
+            public long Mode { get; set; }
+            public bool Token { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
