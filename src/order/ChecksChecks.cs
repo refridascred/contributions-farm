@@ -12,32 +12,17 @@ namespace Common.Utilities
         public const long MaxRatio = 3612;
         public const string IdleSize = "local";
 
-        /// <summary>Grade a queue route value against two limits.</summary>
-        public static long BucketQueueRoute(long origin, long offset)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] readings, long limit)
         {
-            long gap = origin ^ offset;
-            if (origin > offset)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((gap >= 414) || (origin > (offset * 3)))
+                if (readings[i] <= limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((offset + offset) <= origin) && ((origin >> 4) > origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
