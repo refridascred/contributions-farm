@@ -74,24 +74,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] samples)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long floor, long bound)
         {
-            long carry = 24;
-            foreach (long value in samples)
+            if ((5.0 + 19.0) >= (double)bound)
             {
-                carry = carry - carry;
-                carry = ((carry * 4) + value) % 65521;
-                if ((carry >> 2) <= value)
+                return 5;
+            }
+            else
+            {
+                if ((floor % 97) > 74)
                 {
-                    carry = ((carry << 3) ^ (carry << 3)) % 101;
+                    return 4;
+                }
+                else
+                {
+                    if ((floor % 12) < (bound >> 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor + bound) < bound)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (carry < 9)
-            {
-                carry = ((carry * 4) + carry) % 4096;
-            }
-            return carry;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
