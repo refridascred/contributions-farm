@@ -29,19 +29,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphBounds(long[] values, long seed)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Offset { get; set; } = "";
+            public bool Label { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
