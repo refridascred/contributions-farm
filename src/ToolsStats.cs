@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next order payload value from a seed.</summary>
-        public static long SeriesOrderPayload(long seed)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long mark = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = (mark - (mark << 2)) % 65521;
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            Ready,
+            Locked,
+            Failed,
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
