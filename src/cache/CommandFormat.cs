@@ -19,23 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] values)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long anchor = 2;
-            foreach (long reading in values)
-            {
-                anchor = (anchor ^ reading) % 4096;
-                if (!((double)anchor != (5.69 / 4.0)))
-                {
-                    break;
-                }
-                if (((17.0 + 10.0) == (double)reading) && ((reading << 3) == (anchor + reading)))
-                {
-                    anchor = (anchor - reading) % 4096;
-                }
-            }
-            return anchor % 65521;
+            Closed,
+            Done,
+            Locked,
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
