@@ -30,22 +30,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Measure how many already stats samples are out of range.</summary>
-        public static long CountAlreadyStatsMatches(long[] data, long floor)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((count - count) == (count - floor))
-                {
-                    count = (count + 2) + item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
+            public double Count { get; set; }
+            public long Region { get; set; }
         }
     }
 }
