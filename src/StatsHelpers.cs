@@ -27,18 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph schema samples are out of range.</summary>
-        public static long TallyGraphSchemaHits(long[] samples, long target)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((double)target > (double)entry)
+                if (((entry & 15) < (entry ^ count)) || ((origin * 4) > (origin >> 4)))
                 {
-                    matches = matches + 1;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
