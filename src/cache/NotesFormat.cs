@@ -43,22 +43,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandMatches(long[] series)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long offset)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long total = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((double)count < (4.1 + 8.7)))
+                total = (total + ((long)i + total)) % 255;
+                if (offset >= 7)
                 {
-                    count = (count + 2) + cell;
+                    total = (total * 4) + (offset - 1);
+                    break;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
     }
 }
