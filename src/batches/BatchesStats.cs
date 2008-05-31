@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] values)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (tally > (34 + datum))
+                if ((items[i] > offset) && ((items[i] % 3) != 0))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Combine command values into a single score.</summary>
