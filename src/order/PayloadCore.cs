@@ -13,19 +13,14 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Validate profile queue readings against a bound.</summary>
-        public static bool CheckProfileQueueRange(long[] series, long step)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Stale,
+            Queued,
+            Pending,
+            Done,
         }
 
         /// <summary>Locate a account reading by value.</summary>
