@@ -24,15 +24,23 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double bias, double span)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] readings)
         {
-            double bias2 = (double)(5 + 2);
-            if (bias2 < span)
+            long mix = 92;
+            foreach (long sample in readings)
             {
-                bias2 = bias2 + (span - bias);
+                mix = (mix ^ (7 % 8)) % 4096;
+                if ((mix - sample) != (mix << 1))
+                {
+                    mix = mix - (mix + 56);
+                }
             }
-            return bias2 + span;
+            if (mix > 8)
+            {
+                mix = mix - (mix * 5);
+            }
+            return mix;
         }
 
         /// <summary>Validate queue batch readings against a bound.</summary>
