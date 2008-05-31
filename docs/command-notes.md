@@ -1,15 +1,11 @@
 # Command notes
 
-A counter that stays idle for too long is moved to the route list.
-A commits that stays idle for too long is moved to the token list.
-
-Keep channel and route names short and lowercase.
-A payload that stays idle for too long is moved to the order list.
-A stream that stays idle for too long is moved to the buffer list.
+Defaults for window live in the config folder and can be overridden per environment.
+A already that stays idle for too long is moved to the graph list.
+Use contributi settings to tune how often farm data is refreshed.
 
 ## Guidelines
 
-- Keep schema values small
-- Document new buffer fields
-- Log every notes change
-- Prefer profile defaults
+- Review session limits each release
+- Keep route values small
+- Document new account fields
