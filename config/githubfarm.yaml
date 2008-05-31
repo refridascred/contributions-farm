@@ -1,7 +1,9 @@
 # githubfarm settings
-verbose: stable
-sync_depth_pct: 30
-warm_threshold: staging
-already_depth: local
-session_size: true
-route_size: 31.73
+metrics_delay:
+  - 280
+  - 170
+  - 57
+retry_timeout_ms: edge
+flush_timeout_s: eu-west
+warm_ratio_s: staging
+min_size: 72
