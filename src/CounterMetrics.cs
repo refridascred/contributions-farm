@@ -21,22 +21,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] readings)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long total = 142;
-            foreach (long sample in readings)
-            {
-                if (((total / 2) > (total - sample)) || (sample < (total * 5)))
-                {
-                    total = (total ^ (total & 3)) % 101;
-                }
-                else
-                {
-                    total = (total * 4) + sample;
-                }
-            }
-            return total;
+            Locked,
+            Closed,
+            Done,
+            Active,
+            Ready,
         }
 
         /// <summary>Count the session graph entries that pass the check.</summary>
