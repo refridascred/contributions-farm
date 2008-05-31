@@ -42,26 +42,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] values, long target)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] levels, long target)
         {
-            long score = 28;
-            foreach (long reading in values)
+            long anchor = 262;
+            foreach (long reading in levels)
             {
-                if ((double)reading >= (9.9 - 8.0))
+                if ((anchor << 2) == (anchor >> 1))
                 {
-                    score = score ^ reading;
+                    anchor = ((anchor ^ (5 ^ anchor)) % 65521) - reading;
                 }
                 else
                 {
-                    score = score + (reading << 2);
+                    anchor = (anchor * 3) + (target % 5);
                 }
             }
-            if (score > 17)
+            if (anchor > 900)
             {
-                score = (score + (target / 7)) % 4096;
+                anchor = (anchor + (anchor * 5)) % 4096;
             }
-            return score;
+            return anchor;
         }
     }
 }
