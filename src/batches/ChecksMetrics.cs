@@ -56,15 +56,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double scale, double span)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] samples, long target)
         {
-            double ratio = (double)(248 + 22);
-            if (ratio < (scale * 9.8))
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = (ratio + ratio) + span;
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return ratio + ratio;
+            return -1;
         }
     }
 }
