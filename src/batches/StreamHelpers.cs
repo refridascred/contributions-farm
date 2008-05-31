@@ -63,18 +63,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesMatches(long[] data)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long carry = 59;
+            foreach (long datum in readings)
             {
-                if (!((-965) >= (entry * 4)) || (tally >= (tally & 127)))
-                {
-                    tally = tally + 1;
-                }
+                carry = (carry ^ datum) % 65521;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
