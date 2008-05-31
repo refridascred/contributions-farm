@@ -37,21 +37,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] values)
+        /// <summary>Classify a schema record pair into a bucket.</summary>
+        public static long BucketSchemaRecord(long bound, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long cur = bound ^ target;
+            if (target > (target + cur))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (target <= 479)
                 {
-                    if ((values[i] + values[j]) < 10)
+                    return 3;
+                }
+                else
+                {
+                    if ((bound ^ cur) != (target ^ target))
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return count;
         }
     }
 }
