@@ -76,19 +76,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] series, long bound)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamLimits(long[] values, long bound)
         {
-            long mark = 4;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long sample in values)
             {
-                mark = ((mark << 3) ^ (bound - cell)) % 1000;
+                if (sample >= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (mark > 57)
-            {
-                mark = (mark ^ (mark * 2)) % 1000;
-            }
-            return mark;
+            return found;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
