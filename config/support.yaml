@@ -1,4 +1,7 @@
 # support settings
-idle_delay_count: 19.48
-dry_run: 9741
-idle_depth_s: 98.01
+strict: eu-west
+enabled:
+  - open
+  - green
+entry_window: 100
+retry_limit_pct: 100
