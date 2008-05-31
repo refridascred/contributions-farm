@@ -1,4 +1,17 @@
 # entry settings
-warm_ttl: edge
-idle_depth_ms: strict
-poll_delay_pct: 81
+min_capacity_count:
+  batches_ttl: false
+  already_ratio: 500
+  cache_ttl: 58.24
+filter_threshold:
+  - 145
+  - 226
+  - 234
+batch_retries_ms:
+  - 136
+  - 321
+  - 321
+idle_size_s: 11.22
+cache_limit_s:
+  - legacy
+  - strict
