@@ -52,12 +52,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            public double Total { get; set; }
-            public string Score { get; set; } = "";
-            public bool Count { get; set; }
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Roll a layout counter forward.</summary>
