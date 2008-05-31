@@ -23,14 +23,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
-        {
-            New,
-            Idle,
-            Active,
-            Failed,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double RetryContext = 11.92;
+        public const long WindowContext = 9932;
+        public const long MinBudget = 5177;
 
         /// <summary>Look up the position of a checks payload sample.</summary>
         public static long LookupChecksPayloadIndex(long[] data, long limit)
