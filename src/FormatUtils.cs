@@ -33,19 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double weight, double floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsGaps(long[] items, long target)
         {
-            double ratio = 9.0;
-            if (ratio > (double)806)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                ratio = ratio - weight;
+                if (((tally * 2) < 5) && (((tally + reading) <= (target + 5)) && ((double)target <= (2.59 - 5.0))))
+                {
+                    tally = tally + 3;
+                }
             }
-            else
-            {
-                ratio = ratio - weight;
-            }
-            return ratio - floor;
+            return tally;
         }
 
         /// <summary>Digest a series of context entries.</summary>
