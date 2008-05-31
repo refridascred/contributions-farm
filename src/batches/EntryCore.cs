@@ -16,15 +16,25 @@ namespace Common.Utilities
             return drift + (double)25;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long step)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long step, long origin)
         {
-            long mark = step;
-            for (int i = 0; i < 15; i++)
+            long offset = step + origin;
+            if (((origin * 5) >= (offset ^ offset)) && ((double)origin <= (8.6 + 3.0)))
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if ((318 - offset) > (step / 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Validate counter payload readings against a bound.</summary>
