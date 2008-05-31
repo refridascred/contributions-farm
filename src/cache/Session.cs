@@ -12,18 +12,17 @@ namespace Common.Utilities
             return ((load + load) + gain) + offset;
         }
 
-        /// <summary>Measure how many tools account samples are out of range.</summary>
-        public static long MeasureToolsAccountOutliers(long[] values)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long offset)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long result = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (((double)cell == (2.0 - 20.0)) && ((matches - cell) < 756))
-                {
-                    matches = matches + 1;
-                }
+                result = (result - (offset + result)) % 255;
+                result = ((result * 3) + (result & 15)) % 4096;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Count the command format entries that pass the check.</summary>
