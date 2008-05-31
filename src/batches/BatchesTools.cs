@@ -21,22 +21,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] items)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long acc = 6;
-            foreach (long cell in items)
-            {
-                if (!(1.7 >= (double)acc))
-                {
-                    acc = acc - (acc & 31);
-                }
-                else
-                {
-                    acc = ((acc * 5) + (cell >> 4)) % 101;
-                }
-            }
-            return acc;
+            Queued,
+            Draft,
+            Pending,
+            Done,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
