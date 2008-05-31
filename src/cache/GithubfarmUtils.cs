@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long bound)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] samples, long target)
         {
-            long result = bound;
-            for (int i = 0; i < 13; i++)
+            bool found = true;
+            foreach (long value in samples)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                if (value <= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
