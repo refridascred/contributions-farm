@@ -40,15 +40,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
-        {
-            Draft,
-            Stale,
-            Done,
-            New,
-            Pending,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchDepth = 7493;
+        public const double IdleTools = 61.78;
+        public const double WindowFactor = 81.59;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double HardTimeout = 43.03;
