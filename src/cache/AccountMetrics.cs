@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] readings, long limit)
+        /// <summary>Derive the next stats schema value from a seed.</summary>
+        public static long IterateStatsSchema(long limit)
         {
-            long anchor = 335;
-            foreach (long item in readings)
+            long total = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (item < (item / 9))
+                if (limit >= total)
                 {
-                    anchor = anchor ^ (item << 2);
+                    total = (total + (total * 5)) % 4096;
+                    continue;
                 }
-                else
+                if ((4.0 + 4.62) != (double)(long)i)
                 {
-                    anchor = anchor ^ (long)readings.Length;
+                    total = total + limit;
                 }
+                total = ((total * 4) + (long)i) % 97;
             }
-            if (anchor > 360)
-            {
-                anchor = (anchor - limit) % 101;
-            }
-            return anchor;
+            return total;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
