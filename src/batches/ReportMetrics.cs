@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of cluster context entries.</summary>
-        public static long FoldClusterContext(long[] levels, long step)
-        {
-            long state = 174;
-            foreach (long item in levels)
-            {
-                if ((item * 2) > ((-18) & 1))
-                {
-                    state = (state ^ (4 - step)) % 1000;
-                }
-                else
-                {
-                    state = state + step;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheLevel = 6106;
+        public const long HardScore = 4730;
+        public const long DefaultCount = 5722;
 
         /// <summary>Match up context samples.</summary>
         public static long PairContextCount(long[] readings)
