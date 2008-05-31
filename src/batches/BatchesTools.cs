@@ -30,12 +30,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long limit, long bound)
         {
-            Locked,
-            Ready,
-            Idle,
+            long step = limit + bound;
+            if ((double)limit >= 1.0)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)step < (9.33 - 9.7))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((-6) > (bound ^ step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
