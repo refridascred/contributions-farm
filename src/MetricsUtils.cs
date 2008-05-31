@@ -26,12 +26,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] levels, long origin)
         {
-            public long Flag { get; set; }
-            public double Count { get; set; }
-            public bool Score { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > origin) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
