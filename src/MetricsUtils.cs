@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            public long Rank { get; set; }
-            public double Size { get; set; }
-            public bool Total { get; set; }
+            public double Flag { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the notes kind values.</summary>
