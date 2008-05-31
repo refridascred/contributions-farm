@@ -72,19 +72,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stream profile readings against a bound.</summary>
-        public static bool GuardStreamProfileLimits(long[] data, long step)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamRange(long[] values, long target)
         {
-            bool stale = true;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if (value > step)
+                if (cell != target)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Define format limits and defaults.</summary>
