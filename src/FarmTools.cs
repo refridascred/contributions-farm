@@ -39,11 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstDepth = 7106;
-        public const string BaseDepth = "staging-edge";
-        public const double RetryRatio = 55.19;
-        public const string BatchEditor = "cached-edge";
-        public const double MinDepth = 8.71;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (!((double)count < (5.1 * 8.0)))
+                {
+                    count = (count + 1) ^ value;
+                }
+            }
+            return count;
+        }
     }
 }
