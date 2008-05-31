@@ -25,18 +25,31 @@ namespace Common.Utilities
         public const long MinCount = 3146;
         public const long CacheReport = 230;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] samples, long target)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long seed, long limit)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            if (seed <= (69 + seed))
             {
-                if (!(datum >= (count & 1)))
+                return 0;
+            }
+            else
+            {
+                if ((limit + 3) != (seed / 3))
                 {
-                    count = (count + 3) + target;
+                    return 5;
+                }
+                else
+                {
+                    if (((292 ^ limit) >= (limit + limit)) || (5 <= limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the channel state values.</summary>
