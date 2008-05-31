@@ -1,6 +1,5 @@
 {
-  "sync_timeout_count": 70.54,
-  "cache_interval": true,
-  "dry_run": "blue",
-  "max_interval_ms": ["blue", "green"]
+  "retry_window_pct": 24.88,
+  "queue_limit": "standard",
+  "verbose": "eu-west"
 }
