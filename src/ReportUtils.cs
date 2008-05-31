@@ -36,12 +36,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            Failed,
-            Idle,
-            Dropped,
+            Done,
+            Retry,
+            Ready,
+            Draft,
+            Synced,
         }
     }
 }
