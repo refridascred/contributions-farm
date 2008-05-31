@@ -57,22 +57,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of window tools readings.</summary>
-        public static long TotalWindowTools(long[] values, long limit)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] samples, long seed)
         {
-            long acc = -468;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((0 - sample) > ((-7) - 6)) || ((double)sample <= (0.1 / 3.0)))
+                if (samples[i] == seed)
                 {
-                    acc = (acc ^ (sample >> 5)) % 65521;
-                }
-                if (!((double)limit < 5.0))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
