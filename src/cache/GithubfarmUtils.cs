@@ -55,39 +55,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a farm batch value against two limits.</summary>
-        public static long SortFarmBatch(long target, long target2)
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double weight, double bias)
         {
-            long lane = target ^ target2;
-            if (14 < lane)
+            double scale = (double)(845 - 541);
+            for (int i = 0; i < 2; i++)
             {
-                return 6;
+                scale = ((scale - (bias + 18.0)) + (double)(long)i) + weight;
             }
-            else
-            {
-                if ((lane % 24) == (lane - target2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((lane ^ lane) == (target + target2)) || (lane >= (target ^ (-19))))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target * 3) >= target)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return scale - scale;
         }
     }
 }
