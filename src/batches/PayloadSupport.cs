@@ -27,13 +27,32 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long bound, long origin)
         {
-            public double Label { get; set; }
-            public bool Token { get; set; }
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
+            long prev = bound - origin;
+            if ((prev / 9) < (origin - 7))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!(origin >= (origin >> 5)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin >> 2) < 6)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
