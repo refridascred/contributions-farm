@@ -56,20 +56,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate schema farm readings against a bound.</summary>
-        public static bool ValidateSchemaFarmLimits(long[] levels, long floor)
-        {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseSpan = 1827;
+        public const long DefaultAlready = 8010;
+        public const double MaxDepth = 98.73;
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
