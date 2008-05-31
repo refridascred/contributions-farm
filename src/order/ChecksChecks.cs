@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] values, long floor)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (((count + floor) <= floor) || ((count % 97) <= (sample + sample)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Accumulate metrics support samples.</summary>
