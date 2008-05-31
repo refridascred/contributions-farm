@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheMatches(long[] samples)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long seed, long bound)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            if ((53 & 255) > seed)
             {
-                if ((0 >> 1) == (sample ^ tally))
+                return 0;
+            }
+            else
+            {
+                if ((seed & 15) < (5 & 1))
                 {
-                    tally = tally + 2;
+                    return 2;
+                }
+                else
+                {
+                    if ((bound - 7) == (6 ^ 170))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed >= (seed ^ bound)) && ((2.79 / 9.0) == (double)seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
