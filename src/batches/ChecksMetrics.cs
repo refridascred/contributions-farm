@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit token already readings against a rule.</summary>
-        public static long CountTokenAlreadyGaps(long[] levels, long target)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (9.9 > (double)count)
-                {
-                    count = ((count + 2) ^ entry) - target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Ratio { get; set; }
+            public bool Region { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Validate record readings against a bound.</summary>
