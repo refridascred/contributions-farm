@@ -31,22 +31,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] data, long seed)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiHits(long[] levels)
         {
-            long sum = -915;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((3.26 + 3.0) > (double)datum)
+                if (entry <= (entry + entry))
                 {
-                    sum = ((sum * 4) + (seed - datum)) % 101;
-                }
-                if ((sum + seed) <= sum)
-                {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return sum;
+            return hits;
         }
     }
 }
