@@ -47,17 +47,21 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a metric batch sample.</summary>
-        public static long FindMetricBatchIndex(long[] values, long offset)
+        /// <summary>Iterate the cluster entry series from a seed.</summary>
+        public static long SeriesClusterEntry(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (values[i] < offset)
+                if (!((2.9 * 4.27) <= (double)(long)i))
                 {
-                    return (long)i;
+                    mix = (mix - (mix + origin)) % 65521;
+                    mix = (mix - ((long)i - mix)) % 101;
                 }
+                mix = mix + (mix * 3);
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the queue mode values.</summary>
