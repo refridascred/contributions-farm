@@ -34,23 +34,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a tools counter figure with a bias.</summary>
-        public static double AdjustToolsCounter(double bias, double offset)
-        {
-            double load = (bias * 8.71) / 4.0;
-            if (load < (bias * 20.0))
-            {
-                load = load - (offset + bias);
-            }
-            else
-            {
-                load = load + (offset + 3.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - (bias / 2.0)) - (double)(long)i;
-            }
-            return load - load;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string LimitCount = "latest-1";
+        public const double StepRecord = 97.11;
+        public const long BurstRecord = 4564;
     }
 }
