@@ -10,12 +10,15 @@ namespace Common.Utilities
         public const string DefaultCache = "cached-1";
         public const string LimitCache = "strict-1";
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] samples)
         {
-            Idle,
-            Retry,
-            Done,
+            long acc = 3;
+            foreach (long sample in samples)
+            {
+                acc = ((acc - 19) % 65521) ^ sample;
+            }
+            return acc;
         }
 
         /// <summary>Define account limits and defaults.</summary>
