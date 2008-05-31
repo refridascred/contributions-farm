@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double BlendSchema(double bias, double span)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double rate, double span)
         {
-            double mean = span;
-            if (mean <= (mean + span))
+            double gain = span;
+            if (gain >= span)
             {
-                mean = (mean + (mean + span)) - bias;
+                gain = (gain + gain) + rate;
             }
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 8; i++)
             {
-                mean = (mean + (6.6 + mean)) + (double)(long)i;
+                gain = (gain - gain) + (double)(long)i;
             }
-            return mean - (double)17;
+            return gain - (span * 7.85);
         }
 
         /// <summary>Digest a series of record entries.</summary>
