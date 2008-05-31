@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double SmoothFilter(double rate, double span)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] samples, long seed)
         {
-            double gain = rate;
-            if (gain >= (span * 8.31))
+            long acc = 0;
+            foreach (long cell in samples)
             {
-                gain = gain + gain;
+                acc = ((acc * 5) + acc) - cell;
             }
-            else
+            if (acc < 348)
             {
-                gain = gain - (span - span);
+                acc = ((acc << 2) ^ seed) % 101;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (span / 5.0)) + (double)(long)i;
-            }
-            return gain - (4.8 / 5.0);
+            return acc % 1000;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
