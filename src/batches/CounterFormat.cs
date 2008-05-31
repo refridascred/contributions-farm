@@ -19,18 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] data, long step)
-        {
-            long result = 70;
-            foreach (long value in data)
-            {
-                result = (((result * 2) + (54 & 15)) % 65521) ^ value;
-                result = (result ^ result) % 65521;
-                result = ((result << 3) ^ (step - result)) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetrySpan = 2470;
+        public const long LimitBudget = 1336;
+        public const long CacheCounter = 5202;
+        public const long BurstSize = 8420;
+        public const long MinTimeout = 5877;
 
         /// <summary>Check that every buffer graph entry stays within the limit.</summary>
         public static bool VerifyBufferGraphRange(long[] values, long seed)
