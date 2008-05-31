@@ -20,21 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] series)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
