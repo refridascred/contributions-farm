@@ -39,22 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesOutliers(long[] levels)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long result = 555;
+            foreach (long value in data)
             {
-                if ((hits << 1) != (hits ^ 33))
+                if (((-651) << 3) < result)
                 {
-                    hits = (hits + 3) + cell;
+                    result = (((result << 3) ^ (result / 6)) % 1000) - value;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    result = (result ^ (result + 3)) % 255;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Hold a graph info.</summary>
