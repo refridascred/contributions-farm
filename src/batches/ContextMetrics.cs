@@ -44,18 +44,11 @@ namespace Common.Utilities
         public const long CacheDepth = 1563;
         public const long MaxInterval = 9261;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatMatches(long[] data, long limit)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((value & 127) <= (833 * 5))
-                {
-                    count = (count + 3) - limit;
-                }
-            }
-            return count;
+            public bool Limit { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
