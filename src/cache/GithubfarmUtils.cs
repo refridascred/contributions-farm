@@ -48,13 +48,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Match up record order samples.</summary>
+        public static long MatchRecordOrderCount(long[] values)
         {
-            public string Limit { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
