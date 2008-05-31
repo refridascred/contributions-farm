@@ -14,32 +14,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long bound, long seed)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long edge = bound ^ seed;
-            if ((seed >= (bound + 4)) || (seed >= (edge % 2)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (bound <= (edge - edge))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed + bound) <= (seed & 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Idle,
+            Draft,
+            Closed,
+            Pending,
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
