@@ -58,18 +58,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit schema filter readings against a rule.</summary>
-        public static long TallySchemaFilterGaps(long[] readings, long origin)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((value <= (matches ^ origin)) && !((double)matches > (0.18 * 0.1)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            New,
+            Synced,
+            Failed,
+            Queued,
         }
     }
 }
