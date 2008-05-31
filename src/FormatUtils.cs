@@ -62,22 +62,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] levels)
+        /// <summary>Match up buffer token samples.</summary>
+        public static long OverlapBufferTokenCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((datum * 2) > datum)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] ^ levels[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Find the first order githubfarm entry that matches the target.</summary>
