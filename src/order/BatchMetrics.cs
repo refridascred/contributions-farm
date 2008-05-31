@@ -59,24 +59,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long seed)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 18; i++)
+            long total = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (((double)seed == (double)carry) && ((carry / 7) < ((long)i ^ carry)))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    carry = (carry << 3) ^ carry;
+                    total = (((total * 2) + ((long)i >> 4)) % 1000) ^ (long)i2;
                 }
-                carry = carry + (730 - 47);
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    carry = ((carry ^ (seed ^ carry)) % 65521) ^ (long)i2;
-                }
-                carry = ((carry * 5) + (long)i) % 101;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
