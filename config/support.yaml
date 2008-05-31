@@ -1,18 +1,21 @@
 # support settings
-soft_ratio: 64
-editor_threshold:
-  - open
-  - legacy
-  - local
-  - open
-min_depth: 99
-poll_size_pct: true
-dry_run:
-  default_ratio: 3296
-  support_ratio: false
-  warm_capacity_pct: true
-  layout_ratio: 33.63
-profile_size:
-  - strict
-  - blue
-  - cached
+cache_threshold_pct: 60
+default_ratio_count:
+  - standard
+  - green
+cache_ratio_count:
+  strict: false
+  idle_capacity:
+    githubfarm_retries:
+      - legacy
+      - staging
+      - staging
+      - staging
+    default_retries_ms: latest
+    batch_ratio: latest
+    batch_retries_s:
+      - blue
+      - fallback
+    schema_window: 86
+  idle_ttl_s: 1916
+  command_delay: true
