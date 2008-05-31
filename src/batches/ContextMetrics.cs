@@ -66,23 +66,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two batches record measurements.</summary>
-        public static double ProjectBatchesRecord(double rate, double bias)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] levels)
         {
-            double drift = bias * 6.5;
-            if (drift < bias)
+            long sum = 937;
+            foreach (long datum in levels)
             {
-                drift = (drift - drift) - rate;
+                sum = (sum + (83 - (-92))) - datum;
             }
-            else
-            {
-                drift = drift + (9.18 / 6.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (drift * 8.0)) + (double)(long)i;
-            }
-            return drift + bias;
+            return sum;
         }
     }
 }
