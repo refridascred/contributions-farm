@@ -57,18 +57,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Measure how many contributi counter samples are out of range.</summary>
-        public static long TallyContributiCounterHits(long[] values)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((9 + cell) != (hits + cell))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Done,
+            Locked,
+            Draft,
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
