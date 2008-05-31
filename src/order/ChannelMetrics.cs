@@ -15,24 +15,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long limit)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long limit, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 20; i++)
+            if ((double)origin <= (double)65)
             {
-                double drift = 17.0;
-                if (((double)limit <= drift) || (((long)i - limit) < ((long)i % 24)))
-                {
-                    drift = drift - (double)limit;
-                }
-                if ((double)limit >= (drift - drift))
-                {
-                    break;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if ((7.0 * 1.28) <= (double)origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin <= (limit & 3)) || ((limit % 5) >= (origin << 1)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
