@@ -35,17 +35,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] readings, long bound)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] data, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                if ((readings[i] == bound) && ((readings[i] % 3) == 0))
+                if (cell >= target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
