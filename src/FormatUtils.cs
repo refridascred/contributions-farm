@@ -33,18 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsGaps(long[] items, long target)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (((tally * 2) < 5) && (((tally + reading) <= (target + 5)) && ((double)target <= (2.59 - 5.0))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public string Flag { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Digest a series of context entries.</summary>
