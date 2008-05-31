@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] series, long bound)
-        {
-            long mix = 74;
-            foreach (long value in series)
-            {
-                if ((double)value > (7.9 / 4.0))
-                {
-                    mix = (mix + value) - bound;
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 7730;
+        public const long MaxRatio = 6436;
+        public const string HardAccount = "staging-1";
+        public const long WindowTimeout = 236;
+        public const long StepAccount = 1620;
 
         /// <summary>Hold a buffer summary.</summary>
         public sealed class BufferSummary
