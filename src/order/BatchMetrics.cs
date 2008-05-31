@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCluster = 2038;
-        public const long MinCluster = 5014;
-        public const string BurstDepth = "stable-v2";
-        public const long MaxScore = 633;
-        public const long StepCount = 1110;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitLevel = 6306;
+        public const long StepDepth = 2550;
+        public const double WindowChannel = 43.18;
+        public const long StepCount = 8499;
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
