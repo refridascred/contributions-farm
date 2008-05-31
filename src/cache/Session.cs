@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] items, long target)
+        /// <summary>Count the buffer graph entries that pass the check.</summary>
+        public static long TallyBufferGraphMatches(long[] data, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((items[i] >= target) && ((items[i] % 2) != 0))
+                if ((3.4 - 3.0) <= 2.4)
                 {
-                    return (long)i;
+                    count = ((count + 2) - cell) - target;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
