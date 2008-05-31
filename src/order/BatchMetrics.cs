@@ -25,19 +25,24 @@ namespace Common.Utilities
         public const long DefaultStream = 6340;
         public const long BurstStream = 8157;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] samples, long offset)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long step, long origin)
         {
-            long result = 9;
-            foreach (long cell in samples)
+            if ((double)step < (4.0 / 5.0))
             {
-                result = result ^ (cell + offset);
+                return 3;
             }
-            if (result > 3)
+            else
             {
-                result = result + (offset + result);
+                if ((double)step != (4.49 + 2.98))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return result;
         }
 
         /// <summary>Check that every payload farm entry stays within the limit.</summary>
