@@ -62,13 +62,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            public double Total { get; set; }
-            public string Score { get; set; } = "";
-            public double Mode { get; set; }
-            public double Weight { get; set; }
+            Closed,
+            Idle,
+            Pending,
         }
     }
 }
