@@ -27,14 +27,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
-        {
-            Ready,
-            Queued,
-            Active,
-            Dropped,
-            Idle,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 8994;
+        public const long IdleBatches = 1875;
+        public const long CacheBatches = 3116;
     }
 }
