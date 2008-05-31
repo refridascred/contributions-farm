@@ -43,22 +43,17 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordOutliers(long[] samples)
+        /// <summary>Look up the position of a metric batch sample.</summary>
+        public static long FindMetricBatchIndex(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((60 >> 2) != (2 ^ count)) && ((54 + count) > (entry + entry))) || ((entry / 4) >= entry))
+                if (values[i] < offset)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
