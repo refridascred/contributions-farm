@@ -1,32 +1,6 @@
 # githubfarm settings
-retry_interval:
-  stream_depth: 1.15
-  sync_depth_count: stable
-  idle_timeout: true
-  sync_ratio_s: 4451
-  batch_interval: false
-  sync_depth: 8432
-poll_timeout_count:
-  verbose: 78.44
-  audit:
-    cache_size_ms: open
-    max_ttl_count: primary
-    window_delay: false
-    window_ttl: 52.32
-  profile_threshold:
-    sync_ttl_s: true
-    persist: staging
-    strict:
-      - legacy
-      - standard
-    sync_limit_count: true
-    poll_timeout: 4653
-sync_delay_count:
-  - 222
-  - 142
-retry_ratio: 78.44
-readonly:
-  - 364
-  - 306
-  - 335
-base_ratio: 100
+sync_ratio_count: true
+base_delay_pct: 100
+burst_window: false
+strict: edge
+poll_interval_pct: 10
