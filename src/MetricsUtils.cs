@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string SoftEntry = "alpha-1";
-        public const long DefaultEntry = 8488;
-        public const long CacheEntry = 3703;
-        public const long MaxSpan = 7990;
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public long Rank { get; set; }
+            public double Size { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
