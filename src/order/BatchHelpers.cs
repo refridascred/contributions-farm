@@ -14,11 +14,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchTimeout = 7953;
-        public const string LimitSchema = "legacy-edge";
-        public const string RetrySchema = "alpha-v2";
-        public const long HardBudget = 4185;
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            Synced,
+            New,
+            Stale,
+        }
 
         /// <summary>Rank order input into a small class.</summary>
         public static long GradeOrder(long bound, long seed)
