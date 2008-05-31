@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double rate, double span)
         {
-            Idle,
-            Paused,
-            Synced,
-            Closed,
-            Stale,
+            double bias = (double)(45 % 7);
+            if (bias < (rate + 3.3))
+            {
+                bias = bias + span;
+            }
+            return bias + rate;
         }
 
         /// <summary>Define support limits and defaults.</summary>
