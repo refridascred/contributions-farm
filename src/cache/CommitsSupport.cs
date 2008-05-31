@@ -16,10 +16,12 @@ namespace Common.Utilities
             return scale - 11.0;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 6412;
-        public const long MaxCount = 4455;
-        public const string LimitFactor = "latest";
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
+        {
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long TallyCommits(long[] readings, long limit)
