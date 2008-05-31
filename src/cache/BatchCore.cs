@@ -26,13 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
+            New,
+            Dropped,
             Done,
-            Ready,
-            Active,
-            Locked,
+            Paused,
         }
 
         /// <summary>Describe the session state values.</summary>
