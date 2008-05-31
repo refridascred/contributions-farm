@@ -1,7 +1,13 @@
 {
-  "graph_timeout": 81.88,
-  "strict": false,
-  "cluster_depth": 4243,
-  "idle_timeout": "staging",
-  "record_ratio": 250
+  "cache_limit_ms": false,
+  "base_window": ["legacy", "open", "local"],
+  "max_threshold_ms": 14.69,
+  "retry_size_ms": {
+    "compress": 5211,
+    "format_depth": ["blue", "edge", "staging"],
+    "metrics_timeout": 63,
+    "flush_limit": "cached"
+  },
+  "retry_window": 32,
+  "verbose": false
 }
