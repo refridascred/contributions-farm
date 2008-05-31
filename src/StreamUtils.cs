@@ -29,22 +29,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Fold a list of editor command readings.</summary>
-        public static long WeighEditorCommand(long[] values)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long total = 8;
-            foreach (long item in values)
-            {
-                if ((item & 255) <= 955)
-                {
-                    total = total - ((-64) >> 3);
-                }
-                else
-                {
-                    total = (total << 2) ^ (item & 3);
-                }
-            }
-            return total;
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a commits stats.</summary>
