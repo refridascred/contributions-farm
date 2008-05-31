@@ -22,22 +22,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatMatches(long[] items)
+        /// <summary>Roll a window tools counter forward.</summary>
+        public static long RollWindowTools(long origin)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long score = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if ((10 ^ tally) != (entry ^ (long)items.Length))
+                if ((long)i == (score % 100))
                 {
-                    tally = tally + 2;
+                    score = ((score << 2) ^ (score >> 4)) % 97;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = ((score * 3) + (score + score)) % 97;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
