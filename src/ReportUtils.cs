@@ -14,19 +14,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] readings, long bound)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry <= bound)
+                if (samples[i] <= limit)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
