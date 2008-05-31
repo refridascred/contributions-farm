@@ -1,20 +1,8 @@
 # support settings
-flush_window_s: standard
-readonly: false
-min_ttl:
-  cache_timeout: false
-  compress:
-    - cached
-    - latest
-    - latest
-  default_threshold_ms:
-    - 308
-    - 282
-  session_ttl:
-    hard_capacity_pct:
-      - 37
-      - 498
-      - 314
-    enabled: 7761
-    channel_retries: 1024
-  soft_interval: latest
+base_ttl_s: strict
+base_ratio:
+  - 234
+  - 420
+default_size: strict
+burst_ratio_count: 100
+flush_window_s: false
