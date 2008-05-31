@@ -6,13 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy fallback edge eu-west; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
 
-mode="${1:-edge}"
+mode="${1:-fallback}"
 case "${mode}" in
-    fallback)
+    local)
         log "fast path"
         ;;
     *)
@@ -20,5 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=402
-log "limit is ${CHANNEL_LIMIT}"
+for item in legacy stable open; do
+    log "checking ${item}"
+done
