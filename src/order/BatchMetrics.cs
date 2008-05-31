@@ -37,21 +37,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] samples)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Retry,
+            Stale,
+            Pending,
         }
 
         /// <summary>Hold a metrics summary.</summary>
