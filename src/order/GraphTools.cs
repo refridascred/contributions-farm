@@ -57,21 +57,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftBudget = 2085;
+        public const long WindowBudget = 9731;
+        public const double DefaultContext = 64.43;
+        public const double RetryFactor = 81.9;
+        public const long RetryContext = 2319;
     }
 }
