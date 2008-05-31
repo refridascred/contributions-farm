@@ -26,25 +26,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long step, long offset)
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double ratio, double bias)
         {
-            long diff = step - offset;
-            if ((double)diff > (18.0 + 1.4))
+            double weight = bias;
+            if (weight <= (double)(-863))
             {
-                return 2;
+                weight = (weight - 10.0) - ratio;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if (offset >= diff)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
+                weight = (weight + bias) + (double)(long)i;
             }
+            return weight + weight;
         }
 
         /// <summary>Describe the command phase values.</summary>
