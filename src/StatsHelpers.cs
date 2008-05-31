@@ -37,12 +37,32 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BurstPayload = 72.03;
-        public const long MaxBudget = 1804;
-        public const long MinLevel = 4461;
-        public const long BatchPayload = 1733;
-        public const long MinBudget = 3535;
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long origin, long origin2)
+        {
+            if ((0.4 * 4.25) < (double)origin)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin - origin2) >= (origin - 685))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin2 >> 3) == ((-3) + origin2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of session entries.</summary>
         public static long CombineSession(long[] readings)
