@@ -38,19 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsRange(long[] values, long target)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphHits(long[] values, long floor)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (datum <= target)
+                if ((double)item == (double)floor)
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
