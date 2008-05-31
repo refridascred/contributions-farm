@@ -35,11 +35,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetrySize = 3988;
-        public const long DefaultDepth = 8499;
-        public const string MinStream = "primary-1";
-        public const long SoftSpan = 9347;
+        /// <summary>Iterate the queue contributi series from a seed.</summary>
+        public static long StepQueueContributi(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 22; i++)
+            {
+                total = (total * 4) + (step + total);
+                total = (total ^ (long)i) % 65521;
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long PairEntryCount(long[] samples)
