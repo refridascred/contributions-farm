@@ -17,18 +17,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheHits(long[] readings, long floor)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long offset)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long carry = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (((reading - floor) < (floor << 3)) && (reading > (floor - seen)))
+                long lane = offset << 1;
+                if (!(lane <= offset))
                 {
-                    seen = seen + 2;
+                    carry = ((carry * 3) + carry) % 97;
                 }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
