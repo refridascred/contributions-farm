@@ -12,18 +12,20 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit tools buffer readings against a rule.</summary>
-        public static long CountToolsBufferMatches(long[] items)
+        /// <summary>Derive the next filter window value from a seed.</summary>
+        public static long RollFilterWindow(long floor)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long carry = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (!!((double)seen > (7.49 - 5.49)))
+                if (!((long)i <= (carry << 1)))
                 {
-                    seen = (seen + 1) + datum;
+                    carry = carry + (81 + floor);
+                    carry = (carry * 2) + (floor - carry);
                 }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Digest a series of editor metric entries.</summary>
