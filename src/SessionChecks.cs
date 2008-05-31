@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long step, long step2)
         {
-            Draft,
-            Closed,
-            Done,
+            if ((0.76 / 2.0) <= (double)step)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step2 / 5) <= step2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((step2 ^ step) < 6) && ((step2 << 1) <= (step2 & 63)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)step != (8.8 * 13.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
