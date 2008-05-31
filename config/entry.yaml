@@ -1,6 +1,5 @@
 # entry settings
-readonly: 54.28
-audit: 54.9
-warm_ratio_count: 30
-compress: eu-west
-enabled: 5793
+stats_size: false
+sync_ttl_pct: green
+hard_timeout_s: 35.35
+burst_interval: 30
