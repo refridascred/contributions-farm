@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long StepDepth = 1248;
         public const double DefaultProfile = 9.84;
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Audit route checks readings against a rule.</summary>
+        public static long CountRouteChecksOutliers(long[] items, long target)
         {
-            Stale,
-            Draft,
-            Retry,
-            Dropped,
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((count + 8) >= target)
+                {
+                    count = (count + 3) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the metric status values.</summary>
