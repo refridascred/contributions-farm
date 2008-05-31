@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit profile window readings against a rule.</summary>
-        public static long AuditProfileWindowGaps(long[] data)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((matches >> 3) < (entry ^ entry))
+                if (tally > (34 + datum))
                 {
-                    matches = matches + 2;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a cache header.</summary>
