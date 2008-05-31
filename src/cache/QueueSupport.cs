@@ -28,19 +28,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every profile farm entry stays within the limit.</summary>
-        public static bool ValidateProfileFarmLimits(long[] readings, long step)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] items)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (cell <= step)
+                if ((seen & 3) < sample)
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
