@@ -49,38 +49,10 @@ namespace Common.Utilities
         public const double StepDepth = 51.5;
         public const long MaxFarm = 9808;
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long origin, long target)
-        {
-            if (!((target ^ (-401)) >= 180))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target << 1) >= (target - origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)target != (double)origin) || (origin >= (target << 1)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin % 60) >= target)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftRatio = 3753;
+        public const long BatchWidth = 376;
+        public const long BatchRoute = 7700;
+        public const long BaseRoute = 4778;
     }
 }
