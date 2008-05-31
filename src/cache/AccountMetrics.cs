@@ -23,14 +23,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] values)
         {
-            Retry,
-            Dropped,
-            Draft,
-            Done,
-            Queued,
+            long acc = 9;
+            foreach (long cell in values)
+            {
+                acc = (acc ^ acc) - cell;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
