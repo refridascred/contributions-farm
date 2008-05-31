@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const double WindowContributi = 84.96;
         public const long BatchContributi = 3593;
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double scale, double span)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheBounds(long[] series, long offset)
         {
-            double weight = (double)(67 * 3);
-            if (weight < (double)546)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                weight = weight - scale;
+                if (entry >= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + span) + (double)(long)i;
-            }
-            return weight - weight;
+            return ok;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
