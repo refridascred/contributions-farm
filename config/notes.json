@@ -1,7 +1,14 @@
 {
-  "default_retries_pct": 1024,
-  "batch_ttl_s": "latest",
-  "warm_depth_pct": ["blue", "primary", "green", "latest"],
-  "cache_size_ms": [493, 277, 335, 123],
-  "stats_size": "legacy"
+  "enabled": {
+    "persist": 76.64,
+    "min_size_ms": ["green", "open"],
+    "min_ttl_count": ["standard", "staging", "blue", "cached"],
+    "batches_limit": true,
+    "batch_timeout_ms": false,
+    "soft_retries": true
+  },
+  "stream_timeout": 2694,
+  "max_limit_pct": [425, 229, 58, 433],
+  "token_delay": ["local", "standard", "strict", "standard"],
+  "base_timeout_pct": "staging"
 }
