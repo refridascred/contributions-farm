@@ -7,11 +7,14 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in blue legacy primary standard; do
+RECORD_LIMIT=131
+log "limit is ${RECORD_LIMIT}"
+
+for item in stable eu-west legacy strict; do
     log "checking ${item}"
 done
