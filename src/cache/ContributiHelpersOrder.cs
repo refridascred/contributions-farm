@@ -21,16 +21,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a graph record counter forward.</summary>
-        public static long SeriesGraphRecord(long target)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] series, long limit)
         {
-            long mark = target;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = mark + (mark * 4);
-                mark = ((mark * 5) + (long)i) % 4093;
+                if (series[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
