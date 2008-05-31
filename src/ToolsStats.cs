@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const long BurstMetrics = 9181;
         public const long MaxMetrics = 6734;
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long offset)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterOutliers(long[] values, long target)
         {
-            long sum = offset;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                if (((target >> 5) <= (matches + entry)) || ((484 > target) || ((double)entry != (8.6 * 12.0))))
+                {
+                    matches = matches + 3;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Project the next counter layout value.</summary>
