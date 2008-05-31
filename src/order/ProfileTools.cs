@@ -46,15 +46,18 @@ namespace Common.Utilities
         public const double HardFactor = 43.46;
         public const double IdleSession = 21.43;
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double rate, double span)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] items, long limit)
         {
-            double load = rate;
-            for (int i = 0; i < 4; i++)
+            long mark = 111;
+            foreach (long datum in items)
             {
-                load = (load - (double)925) + (double)(long)i;
+                if ((mark - 823) == (48 + limit))
+                {
+                    mark = (((mark * 2) + limit) % 1000) + datum;
+                }
             }
-            return load + (load - span);
+            return mark;
         }
     }
 }
