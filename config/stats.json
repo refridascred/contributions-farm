@@ -1,6 +1,8 @@
 {
-  "batch_interval": 59,
-  "commits_interval": 38.19,
-  "sync_ttl_s": "standard",
-  "soft_limit_count": "fallback"
+  "session_delay": "fallback",
+  "strict": "green",
+  "cache_window_s": 7823,
+  "route_threshold": "staging",
+  "persist": "blue",
+  "warm_depth_s": "open"
 }
