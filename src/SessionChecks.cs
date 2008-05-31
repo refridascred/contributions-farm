@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const double StepRatio = 71.02;
         public const long BurstSize = 7429;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MinEntry = "stable-edge";
-        public const long BaseEntry = 5738;
-        public const long LimitWidth = 5569;
-        public const long RetryEntry = 4611;
-        public const long RetryLevel = 5909;
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
+        {
+            New,
+            Idle,
+            Done,
+            Retry,
+            Ready,
+        }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool VerifyPayloadRange(long[] values, long target)
