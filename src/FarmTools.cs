@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Fold a list of githubfarm metric readings.</summary>
+        public static long WeighGithubfarmMetric(long[] items, long bound)
         {
-            public bool Weight { get; set; }
-            public bool Level { get; set; }
+            long sum = 865;
+            foreach (long datum in items)
+            {
+                if (((bound - datum) <= (sum + bound)) && ((bound & 63) <= sum))
+                {
+                    sum = (sum * 3) + (datum - (-764));
+                }
+            }
+            return sum;
         }
 
         /// <summary>Grade a record editor value against two limits.</summary>
