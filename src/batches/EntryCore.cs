@@ -48,22 +48,32 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] items)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long limit, long origin)
         {
-            long acc = 98;
-            foreach (long value in items)
+            long offset = limit - origin;
+            if ((3.0 / 6.0) <= (double)origin)
             {
-                if ((double)value < (3.8 / 8.0))
+                return 5;
+            }
+            else
+            {
+                if (((origin >> 3) < (7 << 2)) || ((double)limit < 7.2))
                 {
-                    break;
+                    return 4;
                 }
-                if ((8.72 * 10.0) <= (double)value)
+                else
                 {
-                    acc = acc + (value - 135);
+                    if ((offset & 63) < (origin % 10))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return acc;
         }
     }
 }
