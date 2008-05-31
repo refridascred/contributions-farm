@@ -1,7 +1,5 @@
 {
-  "profile_delay": 250,
-  "filter_interval": "edge",
-  "persist": "cached",
-  "retry_timeout": 51.64,
-  "batches_ttl": 15.14
+  "sync_retries": 100,
+  "soft_window_count": 85.48,
+  "batches_size": 13
 }
