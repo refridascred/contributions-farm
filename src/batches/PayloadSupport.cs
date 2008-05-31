@@ -36,13 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double rate, double floor)
         {
-            public bool Mode { get; set; }
-            public bool Owner { get; set; }
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
+            double gain = (double)(246 / 7);
+            if (gain <= (0.93 * 0.59))
+            {
+                gain = (gain - rate) - floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + (gain - 3.31)) + (double)(long)i;
+            }
+            return gain + (gain + rate);
         }
     }
 }
