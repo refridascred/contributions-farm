@@ -1,14 +1,13 @@
 {
-  "enabled": {
-    "persist": 76.64,
-    "min_size_ms": ["green", "open"],
-    "min_ttl_count": ["standard", "staging", "blue", "cached"],
-    "batches_limit": true,
-    "batch_timeout_ms": false,
-    "soft_retries": true
+  "soft_timeout_s": {
+    "batch_timeout": 69.48,
+    "default_retries": "green",
+    "context_ttl": "strict",
+    "base_interval_count": 16.52,
+    "batches_retries": "fallback"
   },
-  "stream_timeout": 2694,
-  "max_limit_pct": [425, 229, 58, 433],
-  "token_delay": ["local", "standard", "strict", "standard"],
-  "base_timeout_pct": "staging"
+  "flush_depth_pct": 6652,
+  "idle_capacity": [342, 46, 161],
+  "report_threshold": true,
+  "metrics_limit": 4.73
 }
