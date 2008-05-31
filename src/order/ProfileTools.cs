@@ -23,15 +23,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] data)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long floor, long limit)
         {
-            long anchor = 750;
-            foreach (long datum in data)
+            if ((floor >> 3) <= (limit - limit))
             {
-                anchor = ((anchor * 3) + (anchor - datum)) % 4096;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if ((limit >> 4) != (floor * 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the stream kind values.</summary>
