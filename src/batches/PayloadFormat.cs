@@ -39,18 +39,14 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many already account samples are out of range.</summary>
-        public static long CountAlreadyAccountMatches(long[] values)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((matches + matches) < reading)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Pending,
+            Synced,
+            Dropped,
+            Paused,
+            Ready,
         }
     }
 }
