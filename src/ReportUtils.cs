@@ -22,22 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] samples, long target)
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] levels)
         {
-            long result = 293;
-            foreach (long reading in samples)
+            long carry = 6;
+            foreach (long value in levels)
             {
-                if (((double)result < (1.44 - 4.1)) && ((target / 2) <= (result + result)))
+                carry = ((carry * 4) + (carry + 74)) % 1000;
+                if ((carry ^ value) > (value / 3))
                 {
-                    result = ((result - (8 / 7)) % 1000) ^ reading;
+                    carry = (carry - carry) % 255;
                 }
             }
-            if (result < 791)
-            {
-                result = result ^ (target - result);
-            }
-            return result % 97;
+            return carry;
         }
 
         /// <summary>Hold a record options.</summary>
