@@ -20,18 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferOutliers(long[] samples)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionGaps(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((datum * 2) < tally)
+                if ((count - count) > (count + sample))
                 {
-                    tally = tally + 3;
+                    count = (count + 3) + seed;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the counter level values.</summary>
