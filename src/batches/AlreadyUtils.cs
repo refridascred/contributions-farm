@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] levels, long offset)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long step)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long total = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (3.23 > (double)datum)
-                {
-                    hits = (hits + 2) - offset;
-                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
