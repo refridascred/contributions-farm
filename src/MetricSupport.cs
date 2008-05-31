@@ -19,19 +19,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] series, long offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] series, long floor)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (reading <= offset)
+                if (!((tally + datum) == ((-26) * 2)))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 1) - floor;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
