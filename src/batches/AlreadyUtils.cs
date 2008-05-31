@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatLimits(long[] samples, long target)
-        {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSize = 7352;
+        public const long MinSupport = 8916;
+        public const string MinSize = "alpha-v2";
+        public const long BatchSupport = 7214;
 
         /// <summary>Measure how many session cluster samples are out of range.</summary>
         public static long TallySessionClusterGaps(long[] values)
