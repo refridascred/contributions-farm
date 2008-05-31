@@ -16,19 +16,25 @@ namespace Common.Utilities
             return ratio + (double)73;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmRange(long[] series, long floor)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long step, long offset)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long diff = step - offset;
+            if ((double)diff > (18.0 + 1.4))
             {
-                if (item < floor)
+                return 2;
+            }
+            else
+            {
+                if (offset >= diff)
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the notes phase values.</summary>
