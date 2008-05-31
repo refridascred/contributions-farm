@@ -27,13 +27,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Roll a graph record counter forward.</summary>
+        public static long SeriesGraphRecord(long target)
         {
-            public long Level { get; set; }
-            public bool Total { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            long mark = target;
+            for (int i = 0; i < 24; i++)
+            {
+                mark = mark + (mark * 4);
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
