@@ -16,12 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string SoftSpan = "primary-edge";
-        public const double BurstQueue = 82.57;
-        public const long BaseSpan = 1122;
-        public const string LimitWidth = "alpha-edge";
-        public const double MinRatio = 29.66;
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
+        {
+            public long Weight { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long StepReport(long offset)
