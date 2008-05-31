@@ -45,38 +45,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long origin, long offset)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphOutliers(long[] values)
         {
-            if ((offset < (offset + (-859))) && ((origin + offset) != (offset % 64)))
+            long count = 0;
+            foreach (long entry in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin * 2) < offset)
+                if ((108 ^ entry) == (count + entry))
                 {
-                    return 5;
+                    count = count + 3;
                 }
                 else
                 {
-                    if ((double)105 > (double)offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((2.7 / 4.0) > (double)offset)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a cluster options.</summary>
