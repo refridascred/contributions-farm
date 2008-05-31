@@ -39,11 +39,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 4343;
-        public const long DefaultSpan = 3063;
-        public const long IdleChecks = 5933;
-        public const double BaseChecks = 8.55;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                double weight = (double)(-14) / 6.0;
+                if (((seed + seed) >= (sum / 5)) && (852 < (seed >> 2)))
+                {
+                    weight = weight - weight;
+                }
+                if ((weight / 8.0) >= (weight * 7.0))
+                {
+                    sum = sum ^ (sum % 7);
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string BurstDepth = "cached-edge";
