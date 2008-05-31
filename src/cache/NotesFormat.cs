@@ -37,11 +37,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 7275;
-        public const string WindowCount = "staging-v2";
-        public const long RetrySize = 6786;
-        public const string HardLevel = "fallback-edge";
-        public const long WindowChecks = 4378;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((hits ^ hits) < (5 - entry))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
