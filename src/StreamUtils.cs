@@ -25,11 +25,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
+            public long Size { get; set; }
+            public bool Flag { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
