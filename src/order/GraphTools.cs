@@ -50,11 +50,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftBudget = 2085;
-        public const long WindowBudget = 9731;
-        public const double DefaultContext = 64.43;
-        public const double RetryFactor = 81.9;
-        public const long RetryContext = 2319;
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
+        {
+            public double Count { get; set; }
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
+        }
     }
 }
