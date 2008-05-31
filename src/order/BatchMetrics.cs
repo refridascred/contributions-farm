@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadLimits(long[] data, long limit)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long offset)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long mark = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (item >= limit)
+                if ((double)(long)i > 12.0)
                 {
-                    valid = false;
-                    break;
+                    mark = (mark * 3) + 68;
                 }
+                if (((long)i + mark) == (offset + offset))
+                {
+                    mark = ((mark << 2) ^ (offset ^ mark)) % 101;
+                }
+                mark = mark ^ mark;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
