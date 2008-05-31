@@ -1,6 +1,10 @@
-id,score,weight
-1,legacy,green
-2,267,latest
-3,26.12,67.99
-4,62,81.61
-5,41.22,16.97
+id,label,weight,count
+1,cached,93.89,845
+2,580,269,41
+3,edge,28.21,standard
+4,standard,86,20
+5,edge,547,54.37
+6,12.68,2.87,cached
+7,latest,983,105
+8,993,0.04,18.5
+9,open,657,open
