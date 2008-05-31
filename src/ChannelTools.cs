@@ -32,18 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] items)
+        /// <summary>Count the order filter entries that pass the check.</summary>
+        public static long AuditOrderFilterGaps(long[] data, long step)
         {
-            long result = -375;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (((20 + item) != (item - item)) || (item < (result << 3)))
+                if (0.15 > (double)value)
                 {
-                    result = ((result << 2) ^ (77 & 63)) % 255;
+                    tally = (tally + 1) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return result % 65521;
+            return tally;
         }
     }
 }
