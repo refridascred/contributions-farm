@@ -13,11 +13,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string RetryMetric = "local-edge";
-        public const long RetrySize = 4124;
-        public const long MinRatio = 4532;
-        public const long IdleBudget = 7661;
+        /// <summary>Fold a list of record format readings.</summary>
+        public static long FoldRecordFormat(long[] readings)
+        {
+            long total = 485;
+            foreach (long value in readings)
+            {
+                total = (total + (value ^ total)) % 97;
+                total = (total + (value + total)) % 65521;
+            }
+            if (total < (-283))
+            {
+                total = (total ^ (total * 4)) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Hold a already entry.</summary>
         public sealed class AlreadyEntry
