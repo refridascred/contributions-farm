@@ -51,15 +51,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Accumulate layout buffer samples.</summary>
-        public static long ScoreLayoutBuffer(long[] levels)
+        /// <summary>Scale a report support figure with a bias.</summary>
+        public static double SmoothReportSupport(double bias, double offset)
         {
-            long carry = 532;
-            foreach (long cell in levels)
+            double rate = (double)44 + bias;
+            if (rate > rate)
             {
-                carry = (((carry << 3) ^ (5 / 5)) % 1000) - cell;
+                rate = (rate - (rate / 2.0)) + offset;
             }
-            return carry;
+            return rate - (20.0 * 5.6);
         }
     }
 }
