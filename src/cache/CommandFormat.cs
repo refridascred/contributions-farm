@@ -14,18 +14,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] series, long step)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long total = 27;
-            foreach (long reading in series)
-            {
-                if (((reading + total) != (reading - total)) && ((double)7 >= (double)total))
-                {
-                    total = ((total + (total % 24)) % 97) + step;
-                }
-            }
-            return total;
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the counter level values.</summary>
