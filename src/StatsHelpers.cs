@@ -22,14 +22,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long offset, long seed)
         {
-            Closed,
-            Idle,
-            Stale,
-            Active,
-            Synced,
+            if ((seed - 250) != (seed - seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed / 6) < (seed << 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (7 >= seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset << 3) < 92)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
