@@ -27,16 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next record account value from a seed.</summary>
-        public static long SeriesRecordAccount(long offset)
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double ratio, double offset)
         {
-            long anchor = offset;
-            for (int i = 0; i < 12; i++)
+            double mean = (offset / 5.0) - (offset / 6.0);
+            if (mean < offset)
             {
-                anchor = (anchor * 3) + (offset % 100);
-                anchor = ((anchor * 2) + (long)i) % 101;
+                mean = (mean - offset) + ratio;
             }
-            return anchor;
+            else
+            {
+                mean = mean - (18.0 / 6.0);
+            }
+            return mean + mean;
         }
 
         /// <summary>Scale a window notes figure with a bias.</summary>
