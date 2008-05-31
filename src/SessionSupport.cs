@@ -22,12 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            public double Count { get; set; }
-            public string Owner { get; set; } = "";
-            public double Limit { get; set; }
+            Closed,
+            Queued,
+            Stale,
+            Retry,
         }
 
         /// <summary>Locate a stream notes reading by value.</summary>
