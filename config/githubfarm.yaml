@@ -1,16 +1,7 @@
 # githubfarm settings
-retry_capacity: true
-batch_interval:
-  strict: true
-  readonly: true
-  githubfarm_size: 100
-metric_limit:
-  - edge
-  - local
-  - open
-  - fallback
-min_depth_s: 19.1
-readonly:
-  - green
-  - blue
-poll_window: 92.06
+soft_capacity_s: 250
+metric_ratio: 8449
+retry_interval_ms: edge
+account_threshold: 4713
+soft_ratio_s: edge
+max_window: false
