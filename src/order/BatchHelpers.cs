@@ -28,32 +28,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long bound, long seed)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long step)
         {
-            long span = bound ^ seed;
-            if (((seed ^ bound) < (span % 16)) && (span > (span / 5)))
+            long anchor = step;
+            for (int i = 0; i < 10; i++)
             {
-                return 8;
+                anchor = anchor + (anchor & 63);
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((bound & 63) >= (856 << 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound + bound) == (seed >> 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
