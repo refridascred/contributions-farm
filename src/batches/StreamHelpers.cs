@@ -33,19 +33,19 @@ namespace Common.Utilities
         public const long HardSession = 7618;
         public const long MinSession = 3590;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryBounds(long[] data, long target)
+        /// <summary>Project the next report value.</summary>
+        public static double ScaleReport(double bias, double floor)
         {
-            bool found = true;
-            foreach (long sample in data)
+            double scale = bias;
+            if (scale < (double)(-610))
             {
-                if (sample >= target)
-                {
-                    found = false;
-                    break;
-                }
+                scale = scale - (double)50;
             }
-            return found;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (floor / 9.0)) + (double)(long)i;
+            }
+            return scale + floor;
         }
 
         /// <summary>Describe the account kind values.</summary>
