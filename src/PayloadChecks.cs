@@ -74,21 +74,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long target)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadMatches(long[] levels)
         {
-            long mix = target;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                mix = ((mix * 2) + (target << 1)) % 101;
-                if (((double)target < 8.8) || ((82 << 1) > (target << 1)))
+                if ((double)hits <= (double)item)
                 {
-                    mix = ((mix << 3) ^ (mix * 4)) % 65521;
+                    hits = hits + 3;
                 }
-                mix = ((mix * 3) + target) % 255;
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
