@@ -37,11 +37,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double BlendBuffer(double rate, double span)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            double weight = span - (rate * 18.0);
-            return weight - (weight * 1.98);
+            public long Level { get; set; }
+            public bool Offset { get; set; }
+            public long Label { get; set; }
         }
     }
 }
