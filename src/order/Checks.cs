@@ -69,17 +69,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] data, long limit)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if ((data[i] < limit) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                acc = (acc - (acc ^ (long)i)) % 97;
+                acc = acc + (long)i;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
     }
 }
