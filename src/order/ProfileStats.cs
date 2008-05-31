@@ -61,15 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] data)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long mark = 154;
-            foreach (long datum in data)
-            {
-                mark = (((mark * 2) + (158 + 9)) % 97) - datum;
-            }
-            return mark;
+            public long Owner { get; set; }
+            public double Label { get; set; }
         }
     }
 }
