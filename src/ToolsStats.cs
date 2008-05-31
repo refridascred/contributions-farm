@@ -42,14 +42,22 @@ namespace Common.Utilities
         public const string CacheLevel = "fallback";
         public const long HardCount = 4248;
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferGaps(long[] samples, long step)
         {
-            New,
-            Locked,
-            Synced,
-            Dropped,
-            Done,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (((double)seen >= (3.0 + 4.6)) && (((7 + step) > (7 - seen)) && ((step - seen) == (seen ^ datum))))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
