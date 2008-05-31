@@ -12,17 +12,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a batches metrics sample.</summary>
-        public static long LocateBatchesMetricsIndex(long[] readings, long origin)
+        /// <summary>Project the next buffer window value.</summary>
+        public static double BlendBufferWindow(double bias, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < origin) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = (double)(732 - 333);
+            return (load - (span - load)) + bias;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
