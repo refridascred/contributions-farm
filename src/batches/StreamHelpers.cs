@@ -37,23 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] items, long offset)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long carry = 759;
-            foreach (long sample in items)
-            {
-                carry = carry ^ offset;
-                if (offset < sample)
-                {
-                    carry = (carry + (1 / 6)) % 4096;
-                }
-            }
-            if (carry > 57)
-            {
-                carry = carry + (offset >> 3);
-            }
-            return carry % 65521;
+            public long Total { get; set; }
+            public long Rank { get; set; }
+            public bool Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Digest a series of session entries.</summary>
