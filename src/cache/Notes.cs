@@ -15,20 +15,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadLimits(long[] levels, long limit)
-        {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 8747;
+        public const long CacheProfile = 8626;
+        public const double SoftProfile = 20.93;
+        public const long DefaultProfile = 8397;
 
         /// <summary>Check that every farm profile entry stays within the limit.</summary>
         public static bool ValidateFarmProfileLimits(long[] items, long offset)
