@@ -30,22 +30,23 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueOutliers(long[] series, long origin)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long carry = 68;
+            foreach (long sample in samples)
             {
-                if ((origin << 2) >= (tally + tally))
+                carry = carry + offset;
+                if ((carry + offset) >= (carry & 255))
                 {
-                    tally = (tally + 3) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    carry = (carry ^ (sample + offset)) % 101;
                 }
             }
-            return tally;
+            if (carry > (-262))
+            {
+                carry = (carry ^ (offset / 4)) % 65521;
+            }
+            return carry % 4096;
         }
     }
 }
