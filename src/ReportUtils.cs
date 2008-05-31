@@ -14,12 +14,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            public double Level { get; set; }
-            public double Token { get; set; }
-            public long Stamp { get; set; }
+            Idle,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Define window limits and defaults.</summary>
