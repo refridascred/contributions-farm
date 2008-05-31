@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 9333;
-        public const double WindowContributi = 84.96;
-        public const long BatchContributi = 3593;
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
+        {
+            Synced,
+            Done,
+            Active,
+            Pending,
+        }
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool CheckCacheBounds(long[] series, long offset)
