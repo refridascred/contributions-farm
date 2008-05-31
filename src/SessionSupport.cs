@@ -31,10 +31,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 2029;
-        public const long LimitContributi = 603;
-        public const long StepRatio = 8504;
-        public const long IdleRatio = 7382;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] series, long floor)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((entry * 3) < tally)
+                {
+                    tally = (tally + 1) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
