@@ -40,19 +40,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many report stream samples are out of range.</summary>
-        public static long TallyReportStreamOutliers(long[] levels, long step)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (!((cell & 31) >= cell))
-                {
-                    tally = (tally + 2) + step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 87;
+        public const long LimitFactor = 5027;
+        public const double BatchSchema = 28.48;
+        public const long SoftInterval = 8326;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long TotalRecord(long[] data)
