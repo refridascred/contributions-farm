@@ -1,7 +1,22 @@
 {
-  "token_window": 64,
-  "enabled": true,
-  "soft_limit": false,
-  "max_threshold": false,
-  "verbose": false
+  "sync_capacity_pct": "cached",
+  "retry_limit_s": {
+    "flush_ttl": {
+      "session_interval": true,
+      "min_window": [156, 441],
+      "retry_ratio": false,
+      "contributi_threshold": "blue",
+      "buffer_timeout": "eu-west",
+      "dry_run": [285, 495]
+    },
+    "verbose": "stable",
+    "flush_limit": 60,
+    "hard_ttl_pct": {
+      "base_ttl_pct": 11,
+      "retry_window": ["fallback", "edge", "eu-west", "primary"],
+      "cache_ttl_ms": "strict"
+    }
+  },
+  "min_retries_s": "standard",
+  "metrics_depth": 32
 }
