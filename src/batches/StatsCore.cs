@@ -58,19 +58,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiBounds(long[] data, long offset)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long origin, long origin2)
         {
-            bool stale = true;
-            foreach (long value in data)
+            if (529 > origin)
             {
-                if (value != offset)
+                return 7;
+            }
+            else
+            {
+                if ((origin2 + 105) < (origin2 + origin))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((306 / 2) >= ((-68) - origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin2 <= (342 ^ origin2)) && ((origin2 + origin) <= (origin2 - origin2)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
