@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamGaps(long[] data, long limit)
+        /// <summary>Fold a list of commits batch readings.</summary>
+        public static long FoldCommitsBatch(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long result = 850;
+            foreach (long datum in readings)
             {
-                if (!(((6.2 + 2.4) < (3.9 * 10.0)) && (value > (value * 4))))
-                {
-                    matches = (matches + 3) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = (result ^ (datum * 3)) % 101;
             }
-            return matches;
+            if (result > 546)
+            {
+                result = (result - limit) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
