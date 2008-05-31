@@ -44,12 +44,25 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long target, long offset)
         {
-            Draft,
-            Stale,
-            Pending,
+            long gap = target + offset;
+            if (((target + target) > (gap / 4)) || ((double)gap < (double)849))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((gap & 7) != (offset - target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Measure how many channel profile samples are out of range.</summary>
