@@ -39,18 +39,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmOutliers(long[] values)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long seed, long target)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            if ((target % 3) == (seed + seed))
             {
-                if (!(seen <= (long)values.Length))
+                return 2;
+            }
+            else
+            {
+                if (!((seed >> 1) > seed))
                 {
-                    seen = (seen + 1) ^ reading;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate window notes samples.</summary>
