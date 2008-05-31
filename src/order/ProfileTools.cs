@@ -46,12 +46,22 @@ namespace Common.Utilities
         public const double HardFactor = 43.46;
         public const double IdleSession = 21.43;
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] values)
         {
-            public long Score { get; set; }
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
+            long score = 6;
+            foreach (long reading in values)
+            {
+                if (((double)reading < (1.7 / 4.0)) && ((6.3 * 6.0) > (double)reading))
+                {
+                    score = ((score * 5) + (357 % 24)) % 65521;
+                }
+                else
+                {
+                    score = (score ^ (50 + score)) % 4096;
+                }
+            }
+            return score % 65521;
         }
     }
 }
