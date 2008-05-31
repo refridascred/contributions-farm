@@ -28,18 +28,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] readings, long offset)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long seed)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long acc = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((matches + value) != (value % 3))
-                {
-                    matches = (matches + 1) - offset;
-                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
