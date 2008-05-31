@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Accumulate buffer metrics samples.</summary>
+        public static long DigestBufferMetrics(long[] items)
         {
-            Active,
-            Stale,
-            Idle,
+            long carry = 3;
+            foreach (long datum in items)
+            {
+                if ((double)datum != (4.0 + 0.8))
+                {
+                    carry = (carry ^ 9) % 4096;
+                }
+                for (int i = 0; i < 6; i++)
+                {
+                    carry = ((carry << 3) ^ (8 >> 1)) ^ (long)i;
+                }
+                carry = ((carry * 5) + (datum << 1)) % 65521;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
