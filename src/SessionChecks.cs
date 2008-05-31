@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricLimits(long[] values, long origin)
+        /// <summary>Locate a report tools reading by value.</summary>
+        public static long LookupReportToolsIndex(long[] items, long offset)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell != origin)
+                if (items[i] > offset)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
