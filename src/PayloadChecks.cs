@@ -81,12 +81,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            Done,
+            Closed,
+            Pending,
+            Ready,
         }
     }
 }
