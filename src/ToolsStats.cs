@@ -20,21 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] items)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Region { get; set; } = "";
+            public double Size { get; set; }
+            public long Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
