@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of contributi tools readings.</summary>
-        public static long TotalContributiTools(long[] series, long step)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] items)
         {
-            long acc = 3;
-            foreach (long cell in series)
+            long carry = 6;
+            foreach (long cell in items)
             {
-                acc = ((acc * 5) + (cell % 12)) % 65521;
-                acc = acc + step;
+                if ((cell << 3) != (320 - carry))
+                {
+                    carry = ((carry << 3) ^ (carry + carry)) % 1000;
+                }
             }
-            if (acc > 19)
+            if (carry > 9)
             {
-                acc = ((acc << 3) ^ (step + acc)) % 1000;
+                carry = carry + (carry - 804);
             }
-            return acc % 1000;
+            return carry;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
