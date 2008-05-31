@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up editor report samples.</summary>
-        public static long PairEditorReportCount(long[] levels)
+        /// <summary>Count the tools queue entries that pass the check.</summary>
+        public static long CountToolsQueueOutliers(long[] readings, long limit)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((tally % 64) == (tally >> 1))
                 {
-                    if ((levels[i] + levels[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = ((tally + 1) ^ datum) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
