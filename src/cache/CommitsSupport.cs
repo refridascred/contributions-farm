@@ -53,28 +53,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long seed)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterHits(long[] levels)
         {
-            long mix = seed;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((seed & 255) <= (mix % 97))
+                if ((hits / 2) < (value % 100))
                 {
-                    mix = mix - (mix + 462);
-                    mix = ((mix << 3) ^ seed) % 97;
+                    hits = hits + 3;
                 }
-                if ((double)seed < (8.7 + 9.0))
-                {
-                    mix = (mix - mix) % 101;
-                }
-                else
-                {
-                    mix = ((mix * 4) + (long)i) % 101;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Locate a support reading by value.</summary>
