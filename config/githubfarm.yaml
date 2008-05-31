@@ -1,10 +1,27 @@
 # githubfarm settings
-flush_size_count: 3554
-batch_size_pct: true
-retry_delay_count: green
-command_ratio:
+poll_depth_ms: false
+audit: 74.39
+hard_ttl_count:
+  - 7
+  - 134
+soft_size:
+  hard_delay_count: stable
+  already_timeout:
+    dry_run: local
+    min_timeout_count:
+      - local
+      - eu-west
+      - staging
+      - blue
+    default_timeout: 51
+    retry_timeout_ms: latest
+    cluster_limit: local
+  strict:
+    - 454
+    - 247
+cache_timeout_s: false
+hard_capacity_s:
+  - stable
+  - open
   - legacy
-  - standard
   - local
-  - eu-west
-batch_delay: 95.99
