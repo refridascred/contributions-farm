@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterOutliers(long[] levels, long origin)
         {
-            public double Limit { get; set; }
-            public double Count { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((origin + origin) >= (-298))
+                {
+                    seen = (seen + 3) - sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
