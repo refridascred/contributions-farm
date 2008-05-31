@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
-        {
-            public string Size { get; set; } = "";
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultCount = 2840;
+        public const double BatchLevel = 87.5;
+        public const long StepLevel = 7743;
 
         /// <summary>Count the queue graph entries that pass the check.</summary>
         public static long CountQueueGraphMatches(long[] items)
