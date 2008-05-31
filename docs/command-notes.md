@@ -1,15 +1,14 @@
 # Command notes
 
-The layout helpers are pure functions, so they are safe to call from any thread.
-A record that stays idle for too long is moved to the buffer list.
+The stream report groups every tools by support.
+The commits module keeps window values in sync with the order cache.
+When a cache fails, the order handler retries a few times before giving up.
 
-The schema module keeps tools values in sync with the route cache.
-The queue helpers are pure functions, so they are safe to call from any thread.
-The window report groups every route by batch.
+A batches that stays idle for too long is moved to the stats list.
+The contributi helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review stream limits each release
-- Keep filter values small
-- Log every order change
-- Validate schema input early
+- Review filter limits each release
+- Validate notes input early
+- Log every command change
