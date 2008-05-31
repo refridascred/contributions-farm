@@ -13,21 +13,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] readings)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Token { get; set; }
+            public long Mode { get; set; }
+            public double Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
