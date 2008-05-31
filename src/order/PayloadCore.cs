@@ -26,11 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double gain, double offset)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            double bias = (double)((-20) % 2);
-            return ((bias + 6.5) + gain) + offset;
+            public long Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Grade a account githubfarm value against two limits.</summary>
