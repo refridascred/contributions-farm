@@ -19,11 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepInterval = 4912;
-        public const long BatchCommand = 2802;
-        public const double IdleCommand = 2.11;
-        public const long LimitCommand = 4960;
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank farm counter input into a small class.</summary>
         public static long BucketFarmCounter(long floor, long target)
