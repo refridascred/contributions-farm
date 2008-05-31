@@ -44,17 +44,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Iterate the queue contributi series from a seed.</summary>
-        public static long StepQueueContributi(long step)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterHits(long[] values, long bound)
         {
-            long total = step;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                total = (total * 4) + (step + total);
-                total = (total ^ (long)i) % 65521;
-                total = ((total * 4) + (long)i) % 97;
+                if (datum > (hits ^ datum))
+                {
+                    hits = (hits + 1) + bound;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Describe the layout status values.</summary>
