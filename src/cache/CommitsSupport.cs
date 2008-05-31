@@ -40,22 +40,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] items)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (((sample ^ sample) >= sample) && ((sample - 961) < (seen << 3)))
+                if (tally <= (46 >> 4))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 2) ^ cell;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
