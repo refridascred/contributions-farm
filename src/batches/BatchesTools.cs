@@ -21,21 +21,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] levels)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 6;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(1.7 >= (double)acc))
                 {
-                    if ((levels[i] + levels[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    acc = acc - (acc & 31);
+                }
+                else
+                {
+                    acc = ((acc * 5) + (cell >> 4)) % 101;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
