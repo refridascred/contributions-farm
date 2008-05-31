@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 4222;
-        public const long DefaultToken = 2041;
-        public const long BatchToken = 3266;
-        public const long HardToken = 9162;
-        public const long MinToken = 8295;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BatchNotes = 1.03;
+        public const long HardNotes = 792;
+        public const long BatchLevel = 9244;
+        public const long BurstFactor = 4803;
 
         /// <summary>Project the next already value.</summary>
         public static double ScaleAlready(double gain, double span)
