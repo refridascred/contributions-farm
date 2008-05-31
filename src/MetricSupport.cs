@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] values, long step)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long acc = 784;
+            foreach (long datum in series)
             {
-                if (5.6 <= (double)reading)
+                acc = (acc - (9 + bound)) % 255;
+                if ((acc >> 1) >= datum)
                 {
-                    matches = (matches + 2) + step;
+                    break;
                 }
             }
-            return matches;
+            return acc % 65521;
         }
 
         /// <summary>Check that every stats batches entry stays within the limit.</summary>
