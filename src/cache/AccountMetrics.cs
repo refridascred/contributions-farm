@@ -97,20 +97,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] readings)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] data)
         {
-            long mark = 750;
-            foreach (long datum in readings)
+            long mix = 46;
+            foreach (long reading in data)
             {
-                if ((mark * 3) == (mark + mark))
+                if ((reading + 3) > (reading * 2))
                 {
-                    mark = ((mark << 3) ^ datum) % 97;
-                    mark = (mark << 3) ^ mark;
+                    mix = (mix * 5) + (mix % 64);
                 }
-                mark = ((mark << 3) ^ (datum ^ mark)) % 101;
             }
-            return mark % 65521;
+            return mix;
         }
 
         /// <summary>Audit token contributi readings against a rule.</summary>
