@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 5408;
-        public const long BatchGithubfarm = 7183;
-        public const string RetryRatio = "cached-edge";
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftOrder = 2454;
+        public const long WindowSize = 8393;
+        public const long WindowOrder = 1973;
+        public const long LimitOrder = 5177;
+        public const string MaxOrder = "strict-v2";
 
         /// <summary>Locate a record reading by value.</summary>
         public static long FindRecordIndex(long[] series, long origin)
