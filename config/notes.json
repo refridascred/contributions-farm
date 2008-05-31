@@ -1,5 +1,19 @@
 {
-  "idle_depth_pct": "staging",
-  "batch_interval_pct": "local",
-  "entry_limit": 100
+  "batch_size_ms": "green",
+  "max_delay_ms": [216, 88, 82, 294],
+  "batch_delay": {
+    "hard_limit_s": ["edge", "blue"],
+    "default_timeout": 11,
+    "retry_ratio_ms": 1024
+  },
+  "enabled": {
+    "dry_run": {
+      "batch_size_pct": "staging",
+      "soft_interval_pct": 1.23,
+      "hard_limit_count": 2052
+    },
+    "hard_depth_ms": 6371,
+    "already_limit": "green"
+  },
+  "hard_ttl": 37.61
 }
