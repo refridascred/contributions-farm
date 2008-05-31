@@ -44,11 +44,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 2206;
-        public const double DefaultScore = 63.51;
-        public const long RetryFilter = 5955;
-        public const string BatchWidth = "strict";
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] series, long bound)
+        {
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Measure how many already cache samples are out of range.</summary>
         public static long TallyAlreadyCacheOutliers(long[] data)
