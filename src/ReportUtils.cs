@@ -40,13 +40,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            Locked,
-            Queued,
-            Retry,
-            Idle,
+            public string Total { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Token { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
