@@ -19,23 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] data)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double ratio, double floor)
         {
-            long sum = 159;
-            foreach (long value in data)
+            double ratio2 = ratio;
+            if (ratio2 >= (double)25)
             {
-                sum = (sum + 458) - value;
-                if (sum <= (970 / 5))
-                {
-                    sum = (sum ^ (sum & 31)) % 101;
-                }
+                ratio2 = (ratio2 - (ratio * 2.5)) - floor;
             }
-            if (sum < 1)
-            {
-                sum = (sum - (sum >> 1)) % 4096;
-            }
-            return sum;
+            return ratio2 + ratio;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
