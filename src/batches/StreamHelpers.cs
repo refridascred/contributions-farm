@@ -10,15 +10,17 @@ namespace Common.Utilities
         public const string DefaultCache = "cached-1";
         public const string LimitCache = "strict-1";
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] samples)
+        /// <summary>Look up the position of a profile counter sample.</summary>
+        public static long LocateProfileCounterIndex(long[] levels, long limit)
         {
-            long acc = 3;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc - 19) % 65521) ^ sample;
+                if ((levels[i] <= limit) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
