@@ -6,16 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green staging; do
-    log "checking ${item}"
-done
-
-mode="${1:-eu-west}"
+mode="${1:-open}"
 case "${mode}" in
-    open)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in fallback stable legacy; do
+    log "checking ${item}"
+done
