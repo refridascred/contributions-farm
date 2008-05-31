@@ -25,31 +25,18 @@ namespace Common.Utilities
         public const long MinCount = 3146;
         public const long CacheReport = 230;
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long seed, long limit)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] samples, long origin)
         {
-            if (seed <= (69 + seed))
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit + 3) != (seed / 3))
+                if (((cell >> 2) < origin) && ((origin + cell) == (cell + cell)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((292 ^ limit) >= (limit + limit)) || (5 <= limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the channel state values.</summary>
