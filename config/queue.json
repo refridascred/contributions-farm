@@ -1,8 +1,7 @@
 {
-  "poll_limit": true,
-  "default_depth_count": "edge",
-  "audit": 6.21,
-  "flush_retries": "stable",
-  "compress": 6928,
-  "metric_ttl": "blue"
+  "audit": "standard",
+  "context_timeout": 76.2,
+  "stats_timeout": 73.95,
+  "warm_size_count": 10.52,
+  "flush_size_count": 89
 }
