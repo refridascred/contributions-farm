@@ -14,20 +14,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelLimits(long[] values, long step)
-        {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxAlready = 8963;
+        public const long HardAlready = 2491;
+        public const double BaseAlready = 84.71;
+        public const long CacheAlready = 1241;
+        public const string LimitSize = "standard-edge";
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long TallyMetricsOutliers(long[] values, long step)
