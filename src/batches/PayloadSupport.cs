@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] samples, long step)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] series, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] <= step)
+                if ((series[i] <= bound) && ((series[i] % 3) != 0))
                 {
                     return (long)i;
                 }
