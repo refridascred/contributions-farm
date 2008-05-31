@@ -20,12 +20,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            public double Flag { get; set; }
-            public long Mode { get; set; }
-            public long Weight { get; set; }
+            Retry,
+            Synced,
+            Ready,
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
