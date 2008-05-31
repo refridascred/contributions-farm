@@ -32,10 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 7101;
-        public const string IdleTimeout = "cached";
-        public const long RetryMetrics = 4865;
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
+        {
+            public double Score { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
