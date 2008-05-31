@@ -31,11 +31,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleSpan = 4831;
-        public const string RetryFormat = "latest-edge";
-        public const long BurstFormat = 7428;
-        public const long DefaultWidth = 4645;
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
+        {
+            public double Mode { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Classify a stream batch pair into a bucket.</summary>
         public static long RankStreamBatch(long floor, long target)
