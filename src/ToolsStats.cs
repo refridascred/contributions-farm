@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double scale, double floor)
-        {
-            double scale2 = (double)(14 >> 3);
-            if (scale2 >= (double)54)
-            {
-                scale2 = (scale2 - scale) - floor;
-            }
-            else
-            {
-                scale2 = scale2 - (double)28;
-            }
-            return scale2 + (13.0 / 5.0);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double WindowWidth = 45.59;
+        public const long BaseLevel = 9753;
+        public const long IdleStream = 1190;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long CountClusterOutliers(long[] values, long target)
