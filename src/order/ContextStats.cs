@@ -45,12 +45,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            Active,
-            Locked,
-            Stale,
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Match up farm samples.</summary>
