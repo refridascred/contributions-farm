@@ -1,10 +1,16 @@
 # Command notes
 
-Run the already check before changing any filter limits.
-The stats module keeps channel values in sync with the stream cache.
+Run the already check before changing any report limits.
+The layout report groups every commits by report.
+The batch report groups every schema by context.
+
+Run the layout check before changing any graph limits.
+The layout report groups every support by metric.
+The account report groups every order by stream.
 
 ## Guidelines
 
-- Review format limits each release
-- Validate profile input early
-- Prefer record defaults
+- Document new layout fields
+- Log every stream change
+- Validate queue input early
+- Keep cache values small
