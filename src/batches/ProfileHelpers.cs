@@ -77,21 +77,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] series)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = target;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = score - score;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
     }
 }
