@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the buffer graph entries that pass the check.</summary>
-        public static long TallyBufferGraphMatches(long[] data, long target)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((3.4 - 3.0) <= 2.4)
+                if (levels[i] == offset)
                 {
-                    count = ((count + 2) - cell) - target;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the farm class values.</summary>
