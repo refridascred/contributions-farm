@@ -42,23 +42,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double BlendMetric(double rate, double span)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            double mean = (rate - span) - rate;
-            if (mean > span)
-            {
-                mean = mean - span;
-            }
-            else
-            {
-                mean = mean + (mean - span);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - 10.0) + (double)(long)i;
-            }
-            return mean - (rate / 8.0);
+            public long Level { get; set; }
+            public bool Total { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Validate order readings against a bound.</summary>
