@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            Dropped,
-            New,
-            Draft,
-            Queued,
-            Locked,
+            public double Score { get; set; }
+            public bool Label { get; set; }
+            public double Token { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define report limits and defaults.</summary>
