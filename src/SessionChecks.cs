@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double rate, double span)
         {
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            double gain = rate;
+            if (gain >= (span * 8.31))
+            {
+                gain = gain + gain;
+            }
+            else
+            {
+                gain = gain - (span - span);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (span / 5.0)) + (double)(long)i;
+            }
+            return gain - (4.8 / 5.0);
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
