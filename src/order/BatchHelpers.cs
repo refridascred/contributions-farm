@@ -14,12 +14,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxAlready = 8963;
-        public const long HardAlready = 2491;
-        public const double BaseAlready = 84.71;
-        public const long CacheAlready = 1241;
-        public const string LimitSize = "standard-edge";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchTimeout = 7953;
+        public const string LimitSchema = "legacy-edge";
+        public const string RetrySchema = "alpha-v2";
+        public const long HardBudget = 4185;
 
         /// <summary>Roll a batches githubfarm counter forward.</summary>
         public static long SeriesBatchesGithubfarm(long seed)
