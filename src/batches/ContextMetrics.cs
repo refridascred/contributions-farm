@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Measure how many buffer cache samples are out of range.</summary>
+        public static long MeasureBufferCacheHits(long[] levels)
         {
-            Paused,
-            Active,
-            Stale,
-            Draft,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (((item + item) < item) && ((double)matches >= (18.0 / 8.0)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a support profile pair into a bucket.</summary>
