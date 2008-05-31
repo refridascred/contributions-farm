@@ -30,21 +30,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] values)
+        /// <summary>Count editor session pairs that satisfy a relation.</summary>
+        public static long CompareEditorSessionCount(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) > 1)
+                    if ((readings[i] + readings[j]) != 16)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
