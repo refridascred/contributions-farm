@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetrySpan = 1142;
-        public const string IdleBudget = "primary-edge";
-        public const string BaseEditor = "local-edge";
-        public const string WindowEditor = "staging-1";
-        public const double BatchEditor = 44.46;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 9333;
+        public const double WindowContributi = 84.96;
+        public const long BatchContributi = 3593;
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long TotalEntry(long[] data, long bound)
