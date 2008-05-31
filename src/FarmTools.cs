@@ -37,17 +37,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstDepth = 7106;
+        public const string BaseDepth = "staging-edge";
+        public const double RetryRatio = 55.19;
+        public const string BatchEditor = "cached-edge";
+        public const double MinDepth = 8.71;
     }
 }
