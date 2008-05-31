@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long limit, long offset)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long offset)
         {
-            if (offset > (offset << 1))
+            long sum = offset;
+            for (int i = 0; i < 16; i++)
             {
-                return 8;
+                sum = sum - ((long)i * 4);
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (((offset >> 1) >= (9 - limit)) && ((limit / 4) <= (offset / 6)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (offset < (offset >> 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (offset < limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
