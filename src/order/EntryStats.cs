@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            Pending,
-            Synced,
-            Failed,
-            Idle,
-            Retry,
+            public double Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Look up the position of a batches metrics sample.</summary>
