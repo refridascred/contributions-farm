@@ -48,13 +48,15 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double weight, double offset)
         {
-            public bool Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public string Level { get; set; } = "";
+            double scale = weight - (3.65 * 4.1);
+            if (scale > (double)99)
+            {
+                scale = (scale - (9.26 * 3.7)) + offset;
+            }
+            return scale + (double)81;
         }
 
         /// <summary>Define context limits and defaults.</summary>
