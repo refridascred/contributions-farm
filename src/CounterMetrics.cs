@@ -16,26 +16,19 @@ namespace Common.Utilities
             return scale + span;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] levels, long floor)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] series, long offset)
         {
-            long acc = 7;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long value in series)
             {
-                if (!((entry + 226) != (entry % 7)))
+                if (value >= offset)
                 {
-                    acc = acc ^ (floor & 1);
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (entry >> 5)) % 4096;
-                }
-                if (acc >= (entry - entry))
-                {
-                    acc = acc - (entry - floor);
+                    ok = false;
+                    break;
                 }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Hold a token info.</summary>
