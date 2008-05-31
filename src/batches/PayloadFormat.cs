@@ -39,13 +39,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            Pending,
-            Synced,
-            Dropped,
-            Paused,
+            Retry,
+            Stale,
+            Closed,
             Ready,
         }
     }
