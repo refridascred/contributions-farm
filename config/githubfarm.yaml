@@ -1,6 +1,39 @@
 # githubfarm settings
-notes_size: 500
-audit: 60
-base_timeout: 1024
-max_capacity: 97
-base_ttl: 7.67
+retry_size:
+  min_interval_pct:
+    retry_ratio_count: 3834
+    min_threshold: true
+    verbose: false
+    soft_ttl_ms: true
+  flush_depth_count: 36
+  enabled: 7155
+  schema_window:
+    report_ratio: edge
+    dry_run: 1024
+    farm_size: 96.07
+    hard_threshold_count: latest
+  min_delay_count: 2153
+  route_window: 37.81
+flush_window_count:
+  max_ratio_ms: 42.38
+  readonly: cached
+  retry_timeout_count: 5193
+warm_ratio_pct: 26
+max_ttl_s:
+  hard_ratio_ms:
+    - blue
+    - eu-west
+    - local
+    - cached
+  flush_delay_pct: 60
+  hard_interval_s:
+    warm_delay_ms: 77
+    session_size: 55.33
+    base_retries_s: latest
+  compress: 46.97
+  idle_depth: 4954
+retry_depth_pct: true
+cache_depth:
+  - strict
+  - cached
+  - open
