@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamRange(long[] readings, long origin)
+        /// <summary>Accumulate metric format samples.</summary>
+        public static long WeighMetricFormat(long[] levels)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long score = 845;
+            foreach (long entry in levels)
             {
-                if (sample != origin)
+                if ((entry < (358 << 2)) || (entry <= score))
                 {
-                    stale = false;
-                    break;
+                    score = (score * 5) + (entry * 4);
                 }
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
