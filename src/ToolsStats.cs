@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double RetryBudget = 26.8;
-        public const long BatchCount = 7713;
-        public const long StepCount = 7680;
-        public const long BurstMetrics = 9181;
-        public const long MaxMetrics = 6734;
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double scale, double floor)
+        {
+            double scale2 = (double)(14 >> 3);
+            if (scale2 >= (double)54)
+            {
+                scale2 = (scale2 - scale) - floor;
+            }
+            else
+            {
+                scale2 = scale2 - (double)28;
+            }
+            return scale2 + (13.0 / 5.0);
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long CountClusterOutliers(long[] values, long target)
