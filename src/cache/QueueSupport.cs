@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            Queued,
-            New,
-            Done,
-            Idle,
+            public long Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the stream class values.</summary>
