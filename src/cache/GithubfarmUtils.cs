@@ -61,19 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterLimits(long[] data, long bound)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmRange(long[] samples, long limit)
         {
-            bool ok = true;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if (item >= bound)
+                if (datum != limit)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
     }
 }
