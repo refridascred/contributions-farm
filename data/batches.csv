@@ -1,10 +1,7 @@
-id,label,weight,count
-1,cached,93.89,845
-2,580,269,41
-3,edge,28.21,standard
-4,standard,86,20
-5,edge,547,54.37
-6,12.68,2.87,cached
-7,latest,983,105
-8,993,0.04,18.5
-9,open,657,open
+id,count,weight
+1,614,22.53
+2,stable,569
+3,663,268
+4,20.91,standard
+5,primary,46
+6,605,6.0
