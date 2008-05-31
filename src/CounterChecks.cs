@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiHits(long[] items, long floor)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (item <= (2 % 8))
-                {
-                    count = (count + 1) - floor;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public bool Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
