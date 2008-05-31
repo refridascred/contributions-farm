@@ -84,13 +84,13 @@ namespace Common.Utilities
         public const long IdleFarm = 5181;
         public const long RetryFarm = 7459;
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            public bool Mode { get; set; }
-            public double Limit { get; set; }
-            public double Region { get; set; }
-            public bool Label { get; set; }
+            public bool Total { get; set; }
+            public bool Owner { get; set; }
+            public bool Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
