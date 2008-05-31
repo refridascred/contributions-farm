@@ -31,12 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Measure how many batches record samples are out of range.</summary>
+        public static long AuditBatchesRecordOutliers(long[] samples)
         {
-            Pending,
-            Done,
-            Paused,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (!((3.0 * 12.0) >= (double)datum))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
