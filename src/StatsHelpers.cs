@@ -12,19 +12,32 @@ namespace Common.Utilities
         public const long LimitScore = 9084;
         public const long CacheScore = 4959;
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsBounds(long[] levels, long seed)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long limit, long bound)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long prev = limit - bound;
+            if (((bound + prev) <= (bound ^ bound)) || ((limit ^ bound) <= prev))
             {
-                if (entry <= seed)
+                return 0;
+            }
+            else
+            {
+                if ((limit + 0) > (8 + prev))
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((69 / 9) >= (0 + limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
