@@ -21,13 +21,19 @@ namespace Common.Utilities
         public const string MinLayout = "primary";
         public const long RetryWidth = 3529;
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] series, long offset)
         {
-            public double Total { get; set; }
-            public double Owner { get; set; }
-            public double Limit { get; set; }
-            public bool Offset { get; set; }
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
