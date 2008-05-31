@@ -41,26 +41,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] readings, long bound)
+        /// <summary>Accumulate window notes samples.</summary>
+        public static long CombineWindowNotes(long[] levels, long target)
         {
-            long mark = 762;
-            foreach (long cell in readings)
+            long mark = 0;
+            foreach (long entry in levels)
             {
-                if ((cell + mark) >= (mark + (-666)))
+                long offset = (mark ^ mark) ^ (entry >> 3);
+                if (!((entry + target) >= (entry + offset)))
                 {
-                    mark = (((mark * 5) + cell) % 65521) + bound;
+                    mark = (mark + entry) % 97;
                 }
-                else
+                if ((target % 97) >= (mark + entry))
                 {
-                    mark = (mark * 3) + cell;
+                    mark = (mark << 2) ^ mark;
+                }
+                if ((mark & 15) > (target + mark))
+                {
+                    break;
                 }
             }
-            if (mark < 97)
-            {
-                mark = ((mark << 3) ^ (26 % 8)) % 65521;
-            }
-            return mark % 97;
+            return mark;
         }
     }
 }
