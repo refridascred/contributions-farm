@@ -44,16 +44,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long step)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long result = step;
-            for (int i = 0; i < 4; i++)
-            {
-                result = ((result * 4) + ((long)i >> 3)) % 1000;
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            public double Total { get; set; }
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
