@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            public double Token { get; set; }
-            public bool Weight { get; set; }
-            public string Count { get; set; } = "";
-            public string Size { get; set; } = "";
+            Closed,
+            Stale,
+            Failed,
+            Queued,
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
