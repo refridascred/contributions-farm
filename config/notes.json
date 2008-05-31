@@ -1,7 +1,8 @@
 {
-  "min_delay": "blue",
-  "max_ttl_count": "open",
-  "entry_retries": 3,
-  "payload_capacity": "green",
-  "retry_ratio_pct": "edge"
+  "window_threshold": false,
+  "sync_depth": true,
+  "default_size_ms": 75.29,
+  "default_limit_count": 60,
+  "max_depth_ms": false,
+  "window_depth": "eu-west"
 }
