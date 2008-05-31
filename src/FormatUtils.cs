@@ -28,12 +28,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmBounds(long[] data, long bound)
         {
-            Draft,
-            Ready,
-            New,
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
