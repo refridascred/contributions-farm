@@ -50,17 +50,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] levels, long bound)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsMatches(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 3) == 0))
+                if ((11.0 + 3.45) < (double)tally)
                 {
-                    return (long)i;
+                    tally = (tally + 3) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
