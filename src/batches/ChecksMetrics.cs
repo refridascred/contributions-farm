@@ -83,12 +83,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long bound)
         {
-            New,
-            Stale,
-            Paused,
+            long mix = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((bound * 4) >= mix)
+                {
+                    continue;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
     }
 }
