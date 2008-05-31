@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit buffer already readings against a rule.</summary>
-        public static long MeasureBufferAlreadyMatches(long[] items, long offset)
+        /// <summary>Measure how many cluster checks samples are out of range.</summary>
+        public static long TallyClusterChecksGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((double)(long)items.Length >= (4.7 - 6.9))
+                if ((double)value <= (11.0 - 6.6))
                 {
-                    seen = ((seen + 3) - sample) - offset;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
