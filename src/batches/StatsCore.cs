@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] series, long bound)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long score = 382;
-            foreach (long cell in series)
-            {
-                score = (((score ^ 6) % 65521) + cell) + bound;
-            }
-            return score % 97;
+            Failed,
+            Active,
+            Stale,
+            Synced,
+            Closed,
         }
 
         /// <summary>Describe the support mode values.</summary>
