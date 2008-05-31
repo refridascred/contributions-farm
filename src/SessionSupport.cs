@@ -23,26 +23,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] readings)
+        /// <summary>Fold a list of stream record readings.</summary>
+        public static long TotalStreamRecord(long[] readings)
         {
-            long mix = 45;
-            foreach (long entry in readings)
+            long total = 3;
+            foreach (long datum in readings)
             {
-                if ((4.88 - 2.6) <= (double)entry)
-                {
-                    mix = mix + entry;
-                }
-                if (!(mix <= ((long)readings.Length + 35)))
-                {
-                    break;
-                }
+                total = ((total * 5) + 11) + datum;
             }
-            if (mix > 2)
+            if (total < 426)
             {
-                mix = mix - (mix * 3);
+                total = total ^ total;
             }
-            return mix;
+            return total;
         }
     }
 }
