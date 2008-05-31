@@ -65,26 +65,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] levels)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] values)
         {
-            long total = 610;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((cell / 9) == (cell - cell)) || ((cell / 7) <= total))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    continue;
-                }
-                if (858 >= cell)
-                {
-                    total = total - (total + cell);
+                    if ((values[i] + values[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (total < 265)
-            {
-                total = (total + total) % 4096;
-            }
-            return total;
+            return tally;
         }
     }
 }
