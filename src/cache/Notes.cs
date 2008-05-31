@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricLimits(long[] readings, long step)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Synced,
+            Retry,
+            Active,
+            Done,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
