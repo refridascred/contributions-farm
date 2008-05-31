@@ -33,19 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of route githubfarm readings.</summary>
-        public static long CombineRouteGithubfarm(long[] readings)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] levels, long bound)
         {
-            long mark = 21;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (((mark * 4) + mark) % 65521) - item;
+                if ((levels[i] < bound) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mark > 49)
-            {
-                mark = mark ^ (mark / 5);
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Count the payload entry entries that pass the check.</summary>
