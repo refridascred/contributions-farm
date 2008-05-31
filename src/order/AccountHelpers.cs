@@ -53,19 +53,16 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long step)
+        /// <summary>Iterate the payload layout series from a seed.</summary>
+        public static long StepPayloadLayout(long seed)
         {
-            long carry = step;
-            for (int i = 0; i < 4; i++)
+            long result = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((carry + carry) <= (step + step))
-                {
-                    carry = carry - carry;
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
+                result = ((result * 2) + 3) % 255;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Hold a order options.</summary>
