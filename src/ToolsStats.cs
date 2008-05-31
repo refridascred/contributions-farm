@@ -35,12 +35,20 @@ namespace Common.Utilities
             return load + (double)95;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 6364;
-        public const long MinAlready = 3463;
-        public const long LimitAlready = 6137;
-        public const string CacheLevel = "fallback";
-        public const long HardCount = 4248;
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((double)origin == (3.68 + 6.68))
+                {
+                    continue;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long CountBufferGaps(long[] samples, long step)
