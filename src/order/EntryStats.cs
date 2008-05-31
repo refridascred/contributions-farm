@@ -32,13 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Digest a series of order schema entries.</summary>
+        public static long TallyOrderSchema(long[] data, long floor)
         {
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            long result = 8;
+            foreach (long value in data)
+            {
+                if ((floor + floor) <= (result + 245))
+                {
+                    result = (result - value) % 97;
+                }
+                result = result - value;
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
