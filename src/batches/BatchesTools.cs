@@ -30,32 +30,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long limit, long bound)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] values)
         {
-            long step = limit + bound;
-            if ((double)limit >= 1.0)
+            long score = 53;
+            foreach (long cell in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)step < (9.33 - 9.7))
+                score = (score + (cell - cell)) % 1000;
+                if (score < (cell + 83))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((-6) > (bound ^ step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    break;
                 }
             }
+            return score;
         }
     }
 }
