@@ -32,28 +32,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long limit)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long carry = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((limit & 15) >= (712 ^ limit))
-                {
-                    carry = (carry - (limit ^ (long)i)) % 1000;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ limit) % 255;
-                    carry = (carry << 2) ^ (carry * 5);
-                }
-                if (!(carry <= (carry / 2)))
-                {
-                    carry = carry - carry;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            Pending,
+            Done,
+            Paused,
         }
 
         /// <summary>Describe the stats level values.</summary>
