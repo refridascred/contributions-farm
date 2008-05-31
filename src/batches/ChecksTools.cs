@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long offset)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long sum = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            Idle,
+            Synced,
+            Active,
+            Ready,
+            Locked,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
