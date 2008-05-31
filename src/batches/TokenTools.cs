@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Project the next batches value.</summary>
+        public static double ProjectBatches(double scale, double floor)
         {
-            public double Owner { get; set; }
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            double load = scale / 8.0;
+            if (load > (load + 16.0))
+            {
+                load = (load + (double)660) - floor;
+            }
+            else
+            {
+                load = load + (double)6;
+            }
+            return load + (scale * 7.0);
         }
 
         /// <summary>Roll a schema counter forward.</summary>
