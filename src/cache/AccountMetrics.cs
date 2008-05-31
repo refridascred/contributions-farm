@@ -97,18 +97,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] data)
+        /// <summary>Fold a list of window tools readings.</summary>
+        public static long TotalWindowTools(long[] values, long limit)
         {
-            long mix = 46;
-            foreach (long reading in data)
+            long acc = -468;
+            foreach (long sample in values)
             {
-                if ((reading + 3) > (reading * 2))
+                if (((0 - sample) > ((-7) - 6)) || ((double)sample <= (0.1 / 3.0)))
                 {
-                    mix = (mix * 5) + (mix % 64);
+                    acc = (acc ^ (sample >> 5)) % 65521;
+                }
+                if (!((double)limit < 5.0))
+                {
+                    break;
                 }
             }
-            return mix;
+            return acc % 1000;
         }
 
         /// <summary>Audit token contributi readings against a rule.</summary>
