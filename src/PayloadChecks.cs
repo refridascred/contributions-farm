@@ -39,18 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] readings)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long acc = 32;
-            foreach (long item in readings)
-            {
-                if (6.91 < (double)acc)
-                {
-                    acc = ((acc + (acc >> 1)) % 101) - item;
-                }
-            }
-            return acc;
+            public long Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Rank stream batch input into a small class.</summary>
