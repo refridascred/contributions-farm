@@ -14,12 +14,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportBounds(long[] items, long bound)
         {
-            Synced,
-            New,
-            Stale,
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Rank order input into a small class.</summary>
