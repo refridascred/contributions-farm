@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitDepth = 4326;
-        public const double StepTimeout = 34.32;
-        public const double MaxCounter = 33.66;
-        public const long BaseCounter = 3375;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((hits + hits) != (hits + reading))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of payload readings.</summary>
         public static long PairPayloadCount(long[] items)
