@@ -36,15 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double ratio, double span)
+        /// <summary>Match up graph samples.</summary>
+        public static long CompareGraphCount(long[] values)
         {
-            double bias = span / 7.0;
-            if (bias <= span)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = bias + (bias - bias);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return bias + ratio;
+            return seen;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
