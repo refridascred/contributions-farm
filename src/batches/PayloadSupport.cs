@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] readings)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long floor)
         {
-            long state = 623;
-            foreach (long cell in readings)
+            long acc = floor;
+            for (int i = 0; i < 12; i++)
             {
-                state = (state + (cell >> 1)) % 65521;
+                acc = (acc << 3) ^ (long)i;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Locate a buffer payload reading by value.</summary>
