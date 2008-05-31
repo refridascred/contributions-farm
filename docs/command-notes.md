@@ -1,16 +1,15 @@
 # Command notes
 
-Run the queue check before changing any cache limits.
-Use queue settings to tune how often stats data is refreshed.
-Use account settings to tune how often payload data is refreshed.
+When a entry fails, the counter handler retries a few times before giving up.
+Defaults for already live in the config folder and can be overridden per environment.
+Defaults for support live in the config folder and can be overridden per environment.
 
-A cache that stays idle for too long is moved to the account list.
-The checks module keeps counter values in sync with the batch cache.
-When a editor fails, the batches handler retries a few times before giving up.
+Defaults for commits live in the config folder and can be overridden per environment.
+Keep contributi and entry names short and lowercase.
+The payload report groups every route by queue.
 
 ## Guidelines
 
-- Log every profile change
-- Keep buffer values small
-- Validate command input early
-- Document new layout fields
+- Validate entry input early
+- Keep route values small
+- Review counter limits each release
