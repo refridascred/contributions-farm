@@ -30,13 +30,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public long Level { get; set; }
             public double Owner { get; set; }
-            public string Level { get; set; } = "";
-            public bool Ratio { get; set; }
         }
     }
 }
