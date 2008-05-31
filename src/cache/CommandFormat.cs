@@ -34,14 +34,17 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] values, long seed)
         {
-            Idle,
-            Failed,
-            Dropped,
-            Closed,
-            Queued,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a checks header.</summary>
