@@ -1,19 +1,13 @@
 # entry settings
-flush_threshold:
-  - 402
-  - 469
-  - 327
-  - 293
-enabled: 100
-base_size: false
-metric_threshold:
-  batch_timeout_pct: local
-  burst_capacity:
-    max_delay: staging
-    compress: false
-    hard_retries_count: 4.31
-    farm_threshold: 90.09
-    readonly: 87.31
-    editor_size: 1208
-  cache_capacity_pct: 8537
-  queue_window: false
+default_timeout_pct:
+  - open
+  - strict
+  - green
+  - eu-west
+batch_ratio: false
+flush_depth_count: standard
+flush_limit_ms: 16
+soft_ratio_ms:
+  - 21
+  - 58
+  - 51
