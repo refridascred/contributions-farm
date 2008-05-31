@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesRange(long[] readings, long step)
-        {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 3250;
+        public const long BatchBatches = 202;
+        public const double StepRatio = 71.02;
+        public const long BurstSize = 7429;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string MinEntry = "stable-edge";
