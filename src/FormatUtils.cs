@@ -33,19 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] levels)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long step)
         {
-            long state = 52;
-            foreach (long cell in levels)
+            long mark = step;
+            for (int i = 0; i < 12; i++)
             {
-                state = (state << 3) ^ cell;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            if (state > 926)
-            {
-                state = state + (state + 9);
-            }
-            return state;
+            return mark;
         }
 
         /// <summary>Digest a series of context entries.</summary>
