@@ -36,11 +36,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiBounds(long[] levels, long bound)
         {
-            public double Ratio { get; set; }
-            public bool Count { get; set; }
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
