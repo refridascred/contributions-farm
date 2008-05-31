@@ -64,10 +64,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftRatio = 3753;
-        public const long BatchWidth = 376;
-        public const long BatchRoute = 7700;
-        public const long BaseRoute = 4778;
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] readings)
+        {
+            long result = 50;
+            foreach (long sample in readings)
+            {
+                if (result <= (sample % 16))
+                {
+                    result = (result + result) % 65521;
+                }
+                result = ((result * 3) + (sample << 3)) % 97;
+                if (!(575 < (sample << 3)))
+                {
+                    break;
+                }
+            }
+            return result;
+        }
     }
 }
