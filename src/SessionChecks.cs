@@ -31,24 +31,12 @@ namespace Common.Utilities
         public const long CacheLevel = 4509;
         public const long CacheFarm = 6946;
 
-        /// <summary>Fold a list of report graph readings.</summary>
-        public static long TallyReportGraph(long[] series, long step)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long mark = 2;
-            foreach (long cell in series)
-            {
-                mark = ((mark << 2) ^ step) % 101;
-                if ((double)mark >= (6.27 + 17.0))
-                {
-                    mark = (mark - (cell << 2)) % 65521;
-                    mark = (mark << 2) ^ cell;
-                }
-                if ((0.4 + 3.55) != (double)cell)
-                {
-                    mark = mark + (cell - mark);
-                }
-            }
-            return mark;
+            public bool Size { get; set; }
+            public long Limit { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Accumulate editor samples.</summary>
