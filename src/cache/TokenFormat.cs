@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit token metric readings against a rule.</summary>
-        public static long TallyTokenMetricMatches(long[] levels, long floor)
+        /// <summary>Derive the next report route value from a seed.</summary>
+        public static long SeriesReportRoute(long limit)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long sum = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((5 < (matches + floor)) || ((floor - floor) < (cell & 127))))
-                {
-                    matches = matches + 1;
-                }
+                sum = (sum ^ (limit + sum)) % 1000;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
