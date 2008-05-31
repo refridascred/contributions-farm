@@ -42,21 +42,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] series)
-        {
-            long carry = -2;
-            foreach (long entry in series)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    carry = (((carry << 3) ^ 0) % 255) ^ (long)i;
-                }
-                carry = (carry << 3) ^ carry;
-                carry = (carry << 2) ^ (6 - entry);
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardWidth = 2254;
+        public const double IdleDepth = 33.14;
+        public const long MinFactor = 5350;
+        public const long CacheCount = 2895;
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
