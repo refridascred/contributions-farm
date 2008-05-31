@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorHits(long[] levels)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (!(item <= (seen >> 5)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
