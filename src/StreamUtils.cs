@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
-        {
-            Stale,
-            Paused,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 5325;
+        public const long StepGithubfarm = 3109;
+        public const double LimitDepth = 95.26;
 
         /// <summary>Digest a series of route entries.</summary>
         public static long FoldRoute(long[] series, long seed)
