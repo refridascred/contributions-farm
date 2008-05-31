@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long limit)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double scale, double span)
         {
-            long result = limit;
-            for (int i = 0; i < 10; i++)
+            double bias = span / 5.0;
+            if (bias > bias)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    result = (((result << 2) ^ ((long)i / 6)) % 97) ^ (long)i2;
-                }
-                result = ((result * 2) + (long)i) % 4093;
+                bias = bias - (span + scale);
             }
-            return result;
+            return bias + bias;
         }
 
         /// <summary>Hold a entry record.</summary>
