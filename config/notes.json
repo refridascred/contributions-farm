@@ -1,8 +1,12 @@
 {
-  "report_capacity": 558,
-  "readonly": "open",
-  "burst_interval_pct": "eu-west",
-  "base_delay_count": "strict",
-  "already_delay": false,
-  "hard_interval_ms": 11.32
+  "cache_size": 35,
+  "default_delay_count": {
+    "poll_size": 30,
+    "idle_threshold": 97,
+    "readonly": 94,
+    "batch_size_s": [497, 257, 144],
+    "default_window_pct": 10.8,
+    "hard_size": true
+  },
+  "hard_delay": 12
 }
