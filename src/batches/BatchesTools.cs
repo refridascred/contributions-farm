@@ -29,18 +29,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many tools counter samples are out of range.</summary>
-        public static long AuditToolsCounterMatches(long[] series)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)hits >= (double)value) && ((double)hits < 3.1))
+                if (readings[i] >= target)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
