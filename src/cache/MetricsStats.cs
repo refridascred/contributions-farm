@@ -24,17 +24,25 @@ namespace Common.Utilities
             return (scale + floor) + rate;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] data, long limit)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long seed, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long offset = seed - origin;
+            if (((offset / 6) >= (358 + seed)) || ((68 ^ 4) == (origin >> 5)))
             {
-                if ((data[i] < limit) && ((data[i] % 5) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((origin >> 3) < (offset / 5))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
