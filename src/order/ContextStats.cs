@@ -32,10 +32,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinContext = 2370;
-        public const string StepLevel = "fallback-v2";
-        public const long IdleContext = 3604;
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
