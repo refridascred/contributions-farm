@@ -34,11 +34,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheSpan = 8367;
-        public const string DefaultDepth = "legacy-edge";
-        public const long StepProfile = 8748;
-        public const double CacheSize = 76.3;
-        public const double IdleRatio = 35.97;
+        /// <summary>Derive the next schema contributi value from a seed.</summary>
+        public static long SeriesSchemaContributi(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = (mix - (limit + mix)) % 255;
+                if (!((20 - mix) <= mix))
+                {
+                    mix = mix + ((long)i & 63);
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
+        }
     }
 }
