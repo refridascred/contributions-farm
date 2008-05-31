@@ -1,21 +1,6 @@
 {
-  "default_timeout_count": {
-    "graph_depth": "local",
-    "metric_limit": "stable",
-    "dry_run": 83,
-    "poll_size_count": ["legacy", "green"],
-    "report_size": 1115,
-    "poll_retries_s": 1024
-  },
-  "idle_interval_pct": 9346,
-  "cache_retries_pct": 43,
-  "stream_retries": 67.13,
-  "compress": "green",
-  "readonly": {
-    "sync_interval_s": 32,
-    "readonly": "standard",
-    "flush_size_pct": "staging",
-    "min_depth_pct": true,
-    "retry_limit": false
-  }
+  "enabled": "stable",
+  "batch_size_count": false,
+  "graph_ttl": 9135,
+  "cache_window": "stable"
 }
