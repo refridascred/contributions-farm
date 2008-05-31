@@ -1,12 +1,16 @@
 # githubfarm settings
-min_delay_pct: 7552
-audit: 11.33
-notes_capacity:
-  - 441
-  - 452
-filter_capacity: 79
-strict: eu-west
-dry_run:
-  - 355
-  - 232
-  - 150
+retry_threshold: 1024
+soft_size_pct: fallback
+window_timeout: 30
+strict: 62.87
+tools_ratio:
+  max_threshold: 100
+  cache_delay_pct: 250
+  idle_capacity_s: 16.26
+  idle_depth_ms:
+    - 382
+    - 314
+  persist: 95.68
+  max_depth_s:
+    - blue
+    - cached
