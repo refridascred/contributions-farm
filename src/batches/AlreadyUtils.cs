@@ -22,11 +22,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double ratio, double span)
+        /// <summary>Measure how many session cluster samples are out of range.</summary>
+        public static long TallySessionClusterGaps(long[] values)
         {
-            double load = (double)(72 + 45);
-            return ((load - (double)189) + ratio) + span;
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (!((hits - entry) >= (hits * 5)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
