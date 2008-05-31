@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] items)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long carry = 6;
-            foreach (long cell in items)
-            {
-                if ((cell << 3) != (320 - carry))
-                {
-                    carry = ((carry << 3) ^ (carry + carry)) % 1000;
-                }
-            }
-            if (carry > 9)
-            {
-                carry = carry + (carry - 804);
-            }
-            return carry;
+            Closed,
+            Failed,
+            Synced,
+            Queued,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
