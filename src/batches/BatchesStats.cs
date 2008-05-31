@@ -30,24 +30,11 @@ namespace Common.Utilities
             return ratio2 + ratio;
         }
 
-        /// <summary>Fold a list of route record readings.</summary>
-        public static long DigestRouteRecord(long[] series, long step)
-        {
-            long mark = 2;
-            foreach (long value in series)
-            {
-                mark = (mark - (mark + mark)) - step;
-                if (!((mark + mark) >= (value << 3)))
-                {
-                    break;
-                }
-            }
-            if (mark > 675)
-            {
-                mark = (mark ^ (794 << 1)) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double IdleCount = 75.04;
+        public const long LimitQueue = 5694;
+        public const double MaxInterval = 25.0;
+        public const string StepQueue = "cached-v2";
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
