@@ -36,22 +36,22 @@ namespace Common.Utilities
         public const long MaxFactor = 7011;
         public const long RetryNotes = 8078;
 
-        /// <summary>Grade a account githubfarm value against two limits.</summary>
-        public static long RankAccountGithubfarm(long floor, long seed)
+        /// <summary>Grade a format profile value against two limits.</summary>
+        public static long GradeFormatProfile(long step, long offset)
         {
-            if (seed >= 2)
+            if (((step - offset) > (offset & 3)) && ((double)step == (double)offset))
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if ((double)floor > (3.0 - 5.62))
+                if ((2.2 + 5.9) >= (double)offset)
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    return 2;
+                    return 3;
                 }
             }
         }
