@@ -57,20 +57,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamRange(long[] values, long target)
-        {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepRatio = 3399;
+        public const long MaxEntry = 477;
+        public const string CacheRatio = "legacy-edge";
+        public const double DefaultTimeout = 2.65;
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long RollCommand(long target)
