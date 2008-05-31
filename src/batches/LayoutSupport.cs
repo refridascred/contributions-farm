@@ -29,17 +29,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first record batches entry that matches the target.</summary>
-        public static long LocateRecordBatchesIndex(long[] items, long origin)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a entry header.</summary>
