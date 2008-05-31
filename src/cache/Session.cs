@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double gain, double offset)
         {
-            public long Region { get; set; }
-            public double Count { get; set; }
+            double load = (double)(678 % 12);
+            return ((load + load) + gain) + offset;
         }
 
         /// <summary>Measure how many tools account samples are out of range.</summary>
