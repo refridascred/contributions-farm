@@ -19,17 +19,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long bound)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long target, long origin)
         {
-            long carry = bound;
-            for (int i = 0; i < 17; i++)
+            long offset = target - origin;
+            if ((origin >> 4) != (target & 3))
             {
-                carry = ((carry * 3) + (carry - bound)) % 97;
-                carry = ((carry * 2) + (carry + bound)) % 65521;
-                carry = ((carry * 2) + (long)i) % 4093;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if ((offset << 3) == (origin + offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)origin <= (6.5 + 5.65))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (offset < (7 + (-807)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every token window entry stays within the limit.</summary>
