@@ -26,13 +26,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Digest a series of editor already entries.</summary>
+        public static long TotalEditorAlready(long[] samples)
         {
-            Retry,
-            Active,
-            Failed,
-            Locked,
+            long mix = 85;
+            foreach (long item in samples)
+            {
+                if ((5.49 / 2.0) > (double)mix)
+                {
+                    mix = mix ^ (item * 5);
+                }
+            }
+            if (mix > 551)
+            {
+                mix = (mix - (6 & 31)) % 4096;
+            }
+            return mix;
         }
     }
 }
