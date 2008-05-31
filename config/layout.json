@@ -1,13 +1,18 @@
 {
-  "account_depth": ["fallback", "open", "legacy", "stable"],
-  "persist": 100,
-  "dry_run": [81, 489],
-  "context_retries": [340, 376],
-  "strict": {
-    "base_depth": "legacy",
-    "readonly": "open",
-    "verbose": 500,
-    "hard_timeout_count": 81.69
+  "compress": 1960,
+  "verbose": "legacy",
+  "format_size": 500,
+  "flush_capacity_s": {
+    "support_delay": ["staging", "cached"],
+    "dry_run": true,
+    "max_capacity": {
+      "batch_threshold": "edge",
+      "audit": 3830,
+      "verbose": false,
+      "flush_threshold": "legacy",
+      "flush_size_s": 69.44
+    },
+    "compress": "edge"
   },
-  "githubfarm_capacity": "green"
+  "readonly": 62
 }
