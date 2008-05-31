@@ -17,17 +17,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a buffer payload reading by value.</summary>
-        public static long SeekBufferPayloadIndex(long[] readings, long limit)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsMatches(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (readings[i] < limit)
+                if ((tally >> 1) <= (68 % 16))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + entry;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the session status values.</summary>
