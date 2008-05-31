@@ -33,26 +33,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] data)
+        /// <summary>Rank payload order input into a small class.</summary>
+        public static long RankPayloadOrder(long offset, long seed)
         {
-            long score = 849;
-            foreach (long reading in data)
+            if ((8.66 - 5.45) < (double)offset)
             {
-                for (int i = 0; i < 3; i++)
+                return 0;
+            }
+            else
+            {
+                if ((seed ^ seed) > (655 + offset))
                 {
-                    score = (((score << 2) ^ (reading % 10)) % 65521) ^ (long)i;
+                    return 7;
                 }
-                if ((double)score <= (6.9 + 7.9))
+                else
                 {
-                    break;
-                }
-                if (score >= 96)
-                {
-                    score = (score - (score - reading)) % 4096;
+                    if ((offset - seed) == (seed ^ offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return score;
         }
     }
 }
