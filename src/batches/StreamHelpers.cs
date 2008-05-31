@@ -31,19 +31,11 @@ namespace Common.Utilities
         public const long HardSession = 7618;
         public const long MinSession = 3590;
 
-        /// <summary>Project the next report value.</summary>
-        public static double ScaleReport(double bias, double floor)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            double scale = bias;
-            if (scale < (double)(-610))
-            {
-                scale = scale - (double)50;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (floor / 9.0)) + (double)(long)i;
-            }
-            return scale + floor;
+            public long Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the account kind values.</summary>
