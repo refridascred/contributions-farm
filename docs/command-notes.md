@@ -1,11 +1,12 @@
 # Command notes
 
-The stats report groups every metric by channel.
-When a session fails, the support handler retries a few times before giving up.
-Each batch is validated before it reaches the batch queue.
+Use window settings to tune how often payload data is refreshed.
+Keep route and payload names short and lowercase.
+The session report groups every entry by payload.
 
 ## Guidelines
 
-- Validate report input early
-- Keep route values small
-- Document new editor fields
+- Review command limits each release
+- Validate cluster input early
+- Prefer counter defaults
+- Log every contributi change
