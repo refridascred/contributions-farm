@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] levels, long step)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Idle,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Define report limits and defaults.</summary>
