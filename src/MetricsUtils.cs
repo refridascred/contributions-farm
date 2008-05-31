@@ -43,23 +43,19 @@ namespace Common.Utilities
         public const long BurstWidth = 8311;
         public const long HardWidth = 3624;
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] readings)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double scale, double offset)
         {
-            long result = 50;
-            foreach (long sample in readings)
+            double scale2 = scale;
+            if (scale2 < 1.0)
             {
-                if (result <= (sample % 16))
-                {
-                    result = (result + result) % 65521;
-                }
-                result = ((result * 3) + (sample << 3)) % 97;
-                if (!(575 < (sample << 3)))
-                {
-                    break;
-                }
+                scale2 = scale2 + offset;
             }
-            return result;
+            else
+            {
+                scale2 = scale2 - 2.9;
+            }
+            return scale2 - (scale - offset);
         }
     }
 }
