@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] values)
+        /// <summary>Combine already support values into a single score.</summary>
+        public static long DigestAlreadySupport(long[] series)
         {
-            long result = -4;
-            foreach (long sample in values)
+            long acc = 8;
+            foreach (long datum in series)
             {
-                if (((sample * 5) <= (result % 12)) && ((9.2 * 8.1) <= (double)result))
+                if (datum > (acc ^ 77))
                 {
-                    result = ((result * 2) + (sample << 3)) % 255;
+                    acc = ((acc << 2) ^ (datum + acc)) % 255;
                 }
+                else
+                {
+                    acc = acc - (datum >> 3);
+                }
+                acc = acc - (datum ^ datum);
+                acc = (acc + (datum & 31)) % 101;
             }
-            return result;
+            if (acc > 940)
+            {
+                acc = acc ^ (acc * 5);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Look up the position of a support contributi sample.</summary>
