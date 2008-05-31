@@ -1,12 +1,15 @@
 # Command notes
 
-Run the route check before changing any token limits.
-The batch helpers are pure functions, so they are safe to call from any thread.
-The notes report groups every cache by editor.
+A counter that stays idle for too long is moved to the route list.
+A commits that stays idle for too long is moved to the token list.
+
+Keep channel and route names short and lowercase.
+A payload that stays idle for too long is moved to the order list.
+A stream that stays idle for too long is moved to the buffer list.
 
 ## Guidelines
 
-- Review layout limits each release
-- Log every contributi change
-- Document new payload fields
-- Prefer already defaults
+- Keep schema values small
+- Document new buffer fields
+- Log every notes change
+- Prefer profile defaults
