@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long bound, long offset)
-        {
-            long slot = bound - offset;
-            if ((slot ^ offset) < ((-946) % 7))
-            {
-                return 0;
-            }
-            else
-            {
-                if (bound > offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheSpan = 9221;
+        public const long CacheToken = 555;
+        public const long StepToken = 1186;
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
