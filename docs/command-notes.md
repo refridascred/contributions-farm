@@ -1,11 +1,10 @@
 # Command notes
 
-The githubfarm module keeps cluster values in sync with the account cache.
-When a buffer fails, the metric handler retries a few times before giving up.
-The metric report groups every account by order.
+Keep tools and report names short and lowercase.
+Defaults for context live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate counter input early
-- Prefer githubfarm defaults
-- Document new counter fields
+- Keep stream values small
+- Log every cluster change
+- Document new order fields
