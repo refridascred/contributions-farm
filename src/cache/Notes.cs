@@ -15,22 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string DefaultDepth = "cached-v2";
+        public const long HardScore = 2797;
+        public const long RetryChecks = 60;
+        public const long HardChecks = 3040;
+        public const string WindowScore = "strict-v2";
 
         /// <summary>Check that every farm profile entry stays within the limit.</summary>
         public static bool ValidateFarmProfileLimits(long[] items, long offset)
