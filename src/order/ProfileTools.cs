@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Scale a window queue figure with a bias.</summary>
-        public static double ProjectWindowQueue(double rate, double floor)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            double weight = (double)9 * 7.0;
-            return ((weight - weight) + rate) + floor;
+            public string Level { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Grade a account value against two limits.</summary>
