@@ -21,24 +21,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long step, long limit)
+        /// <summary>Count the payload entry entries that pass the check.</summary>
+        public static long MeasurePayloadEntryMatches(long[] levels, long offset)
         {
-            if ((39 + limit) <= (step % 2))
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit <= (10.0 * 6.0))
+                if ((tally ^ reading) < reading)
                 {
-                    return 4;
+                    tally = (tally + 1) - offset;
                 }
                 else
                 {
-                    return 3;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
