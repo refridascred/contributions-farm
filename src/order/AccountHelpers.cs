@@ -12,23 +12,18 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long seed)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] readings, long offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 15; i++)
+            long acc = 267;
+            foreach (long item in readings)
             {
-                if ((seed ^ seed) <= (carry * 3))
+                if ((9 + acc) == (acc ^ acc))
                 {
-                    carry = (carry - (seed + seed)) % 255;
+                    acc = (((acc * 2) + item) % 1000) + offset;
                 }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    carry = (((carry << 2) ^ carry) % 1000) ^ (long)i2;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Fold a list of report readings.</summary>
