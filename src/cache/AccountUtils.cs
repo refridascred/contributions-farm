@@ -16,19 +16,23 @@ namespace Common.Utilities
             return load - (double)321;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsRange(long[] readings, long bound)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] series)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long mark = 82;
+            foreach (long entry in series)
             {
-                if (item < bound)
+                mark = mark ^ mark;
+                for (int i = 0; i < 11; i++)
                 {
-                    stale = false;
-                    break;
+                    mark = (mark * 4) + (mark - (long)i);
+                }
+                if ((3.15 * 5.3) != (double)entry)
+                {
+                    mark = (mark - (mark >> 4)) % 97;
                 }
             }
-            return stale;
+            return mark % 97;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
