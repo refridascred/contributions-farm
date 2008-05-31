@@ -23,22 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaOutliers(long[] readings)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((tally - value) > (tally % 10))
+                if (reading > (limit & 7))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
