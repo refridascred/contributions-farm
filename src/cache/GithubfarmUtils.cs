@@ -38,12 +38,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] levels, long origin)
         {
-            Active,
-            Retry,
-            Idle,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > origin) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
