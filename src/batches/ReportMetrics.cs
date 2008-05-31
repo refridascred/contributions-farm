@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
+            Queued,
+            Dropped,
+            Active,
+            Retry,
+            Pending,
         }
 
         /// <summary>Derive the next filter window value from a seed.</summary>
