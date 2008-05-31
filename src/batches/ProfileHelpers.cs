@@ -74,12 +74,11 @@ namespace Common.Utilities
         public const string CacheRatio = "legacy-edge";
         public const double DefaultTimeout = 2.65;
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
-        {
-            public long Stamp { get; set; }
-            public double Region { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 1866;
+        public const long BaseCounter = 4310;
+        public const long WindowCounter = 3894;
+        public const long SoftScore = 1921;
+        public const long DefaultCounter = 6219;
     }
 }
