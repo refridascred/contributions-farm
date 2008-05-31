@@ -23,17 +23,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next checks session value from a seed.</summary>
-        public static long RollChecksSession(long bound)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long total = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                total = total ^ (total + (long)i);
-                total = (total - 836) % 1000;
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            public bool Ratio { get; set; }
+            public double Score { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Grade a githubfarm schema value against two limits.</summary>
