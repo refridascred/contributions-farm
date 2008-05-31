@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmLimits(long[] levels, long seed)
-        {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftWidth = 1230;
+        public const string LimitCount = "local-1";
+        public const double MinAccount = 88.33;
+        public const long LimitFactor = 9094;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long AuditSessionGaps(long[] samples, long seed)
