@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamGaps(long[] series)
+        /// <summary>Measure how many contributi notes samples are out of range.</summary>
+        public static long CountContributiNotesGaps(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((38 - reading) <= (count / 5))
+                if ((origin - 546) > entry)
                 {
-                    count = count + 1;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
