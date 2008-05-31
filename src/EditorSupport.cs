@@ -62,22 +62,18 @@ namespace Common.Utilities
         public const long BaseAccount = 1287;
         public const double DefaultScore = 87.85;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] readings)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] levels)
         {
-            long carry = 155;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((sample + carry) > (sample + 73))
+                if (count > reading)
                 {
-                    carry = (carry - (carry ^ sample)) % 255;
+                    count = count + 2;
                 }
             }
-            if (carry > 2)
-            {
-                carry = (carry ^ (carry ^ carry)) % 97;
-            }
-            return carry;
+            return count;
         }
     }
 }
