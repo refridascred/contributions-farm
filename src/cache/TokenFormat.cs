@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] values, long seed)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long acc = -294;
-            foreach (long value in values)
-            {
-                if ((seed ^ acc) <= (seed - seed))
-                {
-                    acc = (acc + (seed + value)) % 4096;
-                }
-            }
-            if (acc > 476)
-            {
-                acc = acc + (acc - 1);
-            }
-            return acc;
+            Paused,
+            Pending,
+            Idle,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
