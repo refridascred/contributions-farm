@@ -1,7 +1,6 @@
 {
-  "graph_capacity": [124, 365],
-  "flush_timeout_ms": 17.0,
-  "dry_run": "latest",
-  "warm_timeout_pct": 51,
-  "cache_ttl": true
+  "idle_timeout_ms": 100,
+  "persist": 60,
+  "enabled": 3178,
+  "default_ratio_s": [138, 367, 405, 418]
 }
