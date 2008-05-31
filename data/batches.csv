@@ -1,10 +1,7 @@
-id,label,score,state
-1,open,75.89,72.03
-2,82.51,45,6.23
-3,local,0.05,54.31
-4,78.51,72.16,26
-5,local,50.18,87.32
-6,strict,679,open
-7,520,standard,66.38
-8,382,local,70.55
-9,326,open,stable
+id,active,owner,token,count
+1,standard,latest,legacy,691
+2,216,eu-west,63.04,primary
+3,59.4,349,829,latest
+4,84.09,legacy,stable,65.12
+5,staging,local,652,3.99
+6,94,legacy,62.36,62.01
