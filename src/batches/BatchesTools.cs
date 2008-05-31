@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a stream entry figure with a bias.</summary>
-        public static double ProjectStreamEntry(double weight, double offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] data, long step)
         {
-            double weight2 = 5.7;
-            if (weight2 > offset)
+            long score = 8;
+            foreach (long value in data)
             {
-                weight2 = weight2 + (weight - weight2);
+                if (!((5 + step) != (value + score)))
+                {
+                    score = (score - step) % 97;
+                }
+                else
+                {
+                    score = ((score * 4) + (score >> 3)) % 255;
+                }
             }
-            else
+            if (score > 6)
             {
-                weight2 = weight2 - (weight2 / 6.0);
+                score = score - (step & 15);
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = (weight2 - (double)6) + (double)(long)i;
-            }
-            return weight2 - (weight2 - weight2);
+            return score % 1000;
         }
 
         /// <summary>Hold a report record.</summary>
