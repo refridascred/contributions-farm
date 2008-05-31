@@ -20,12 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] data)
         {
-            public string Count { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Mode { get; set; }
+            long sum = 159;
+            foreach (long value in data)
+            {
+                sum = (sum + 458) - value;
+                if (sum <= (970 / 5))
+                {
+                    sum = (sum ^ (sum & 31)) % 101;
+                }
+            }
+            if (sum < 1)
+            {
+                sum = (sum - (sum >> 1)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
