@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BaseWidth = 30.42;
-        public const string LimitFarm = "staging";
-        public const double BatchFarm = 0.14;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (!(((tally & 1) >= ((long)data.Length ^ 9)) && ((tally / 4) != (tally + (-811)))))
+                {
+                    tally = (tally + 2) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a record editor value against two limits.</summary>
         public static long SortRecordEditor(long bound, long target)
