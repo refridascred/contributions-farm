@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] series, long offset)
+        /// <summary>Match up editor report samples.</summary>
+        public static long PairEditorReportCount(long[] levels)
         {
-            long mark = -83;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((73 * 3) == (88 - mark))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    continue;
+                    if ((levels[i] + levels[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mark = ((mark * 5) + value) - offset;
             }
-            return mark % 4096;
+            return tally;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
