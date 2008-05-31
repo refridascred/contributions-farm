@@ -14,12 +14,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
-            public bool Score { get; set; }
+            Idle,
+            Pending,
+            Draft,
+            Queued,
+            Locked,
         }
 
         /// <summary>Hold a record entry.</summary>
