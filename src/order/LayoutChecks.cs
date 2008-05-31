@@ -12,19 +12,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] items)
+        /// <summary>Blend two token batch measurements.</summary>
+        public static double ProjectTokenBatch(double bias, double bias2)
         {
-            long score = 182;
-            foreach (long sample in items)
+            double scale = bias2;
+            if (scale > (9.25 - 9.39))
             {
-                score = (((score * 4) + score) % 97) + sample;
+                scale = (scale + (bias2 * 14.0)) + bias;
             }
-            if (score > 26)
-            {
-                score = score - (score + 13);
-            }
-            return score % 97;
+            return scale + scale;
         }
 
         /// <summary>Accumulate githubfarm filter samples.</summary>
