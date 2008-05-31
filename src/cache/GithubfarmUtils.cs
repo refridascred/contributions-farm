@@ -52,19 +52,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double bias, double floor)
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double scale, double offset)
         {
-            double load = 5.6;
-            if (load <= (double)2)
+            double weight = offset;
+            if (weight >= (offset / 7.0))
             {
-                load = ((load - (load / 9.0)) - bias) - floor;
+                weight = (weight - offset) + scale;
             }
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 9; i++)
             {
-                load = (load + (load * 1.8)) + (double)(long)i;
+                weight = (weight + weight) + (double)(long)i;
             }
-            return load + load;
+            return weight - (offset - 8.6);
         }
     }
 }
