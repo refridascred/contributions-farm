@@ -40,15 +40,23 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double ratio, double floor)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double weight, double offset)
         {
-            double mean = floor;
-            for (int i = 0; i < 8; i++)
+            double ratio = (double)(84 % 100);
+            if (ratio < (double)802)
             {
-                mean = (mean + (ratio + 0.84)) + (double)(long)i;
+                ratio = (ratio + (double)(-700)) - weight;
             }
-            return mean + (double)9;
+            else
+            {
+                ratio = ratio + offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + 8.8) + (double)(long)i;
+            }
+            return ratio - (offset / 8.0);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
