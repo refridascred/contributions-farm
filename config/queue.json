@@ -1,17 +1,7 @@
 {
-  "cache_size_count": ["staging", "local", "legacy"],
-  "graph_delay": {
-    "cluster_interval": ["fallback", "edge"],
-    "soft_depth": true,
-    "sync_threshold_pct": {
-      "soft_retries_count": true,
-      "compress": 5343,
-      "base_window_count": 60,
-      "sync_size": 31,
-      "default_ttl_count": 9569
-    },
-    "checks_ttl": 51.92,
-    "retry_window_s": "eu-west"
-  },
-  "max_timeout_s": true
+  "retry_retries_pct": 9.16,
+  "verbose": 0.37,
+  "base_interval_s": 88.57,
+  "order_ratio": 7982,
+  "readonly": ["edge", "strict"]
 }
