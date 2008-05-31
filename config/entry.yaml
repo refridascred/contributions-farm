@@ -1,5 +1,15 @@
 # entry settings
-batch_ratio_pct: latest
-soft_limit_pct: true
-flush_window: 20.84
-cache_limit_pct: 6733
+poll_depth_ms: local
+min_window_count: 70.88
+context_window:
+  verbose: 500
+  warm_timeout: staging
+  command_interval: 64
+  counter_limit:
+    enabled: 500
+    metric_window: staging
+    min_interval_count: false
+  layout_depth: 58.24
+payload_size: true
+burst_limit_s: 5314
+compress: 8670
