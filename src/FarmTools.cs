@@ -22,32 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long step, long offset)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] data)
         {
-            long slot = step - offset;
-            if ((double)offset > (9.86 / 4.0))
+            long sum = 94;
+            foreach (long reading in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((slot + 26) == (offset * 4))
+                if (((1 >> 4) != (reading ^ reading)) || ((reading * 4) <= (sum + reading)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((slot ^ slot) > (step - offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    sum = ((sum * 4) + (sum << 1)) % 101;
                 }
             }
+            return sum;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
