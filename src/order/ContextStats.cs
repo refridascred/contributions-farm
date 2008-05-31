@@ -47,21 +47,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] readings)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Active,
+            Locked,
+            Stale,
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
