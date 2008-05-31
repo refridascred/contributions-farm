@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string DefaultSize = "strict-edge";
-        public const string DefaultCache = "cached-1";
-        public const string LimitCache = "strict-1";
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double BlendSchema(double bias, double span)
+        {
+            double mean = span;
+            if (mean <= (mean + span))
+            {
+                mean = (mean + (mean + span)) - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (6.6 + mean)) + (double)(long)i;
+            }
+            return mean - (double)17;
+        }
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long GradeContext(long step, long seed)
