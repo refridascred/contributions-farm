@@ -20,21 +20,32 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Match up record order samples.</summary>
-        public static long MatchRecordOrderCount(long[] values)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long origin, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long diff = origin - limit;
+            if ((limit + (-424)) <= limit)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (!((diff / 6) < (origin + 1)))
                 {
-                    if ((values[i] - values[j]) > 2)
+                    return 0;
+                }
+                else
+                {
+                    if (diff <= (origin % 100))
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Locate a already reading by value.</summary>
