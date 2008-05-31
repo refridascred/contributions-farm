@@ -33,23 +33,32 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] items, long bound)
+        /// <summary>Rank payload notes input into a small class.</summary>
+        public static long RankPayloadNotes(long origin, long origin2)
         {
-            long score = 29;
-            foreach (long reading in items)
+            long step = origin + origin2;
+            if ((11.0 + 7.5) > (double)origin)
             {
-                for (int i = 0; i < 5; i++)
+                return 8;
+            }
+            else
+            {
+                if ((step << 3) <= 79)
                 {
-                    score = (((score * 2) + (183 - score)) % 1000) ^ (long)i;
-                    score = ((score * 3) + reading) % 1000;
+                    return 0;
                 }
-                if ((reading >> 5) >= bound)
+                else
                 {
-                    score = (score << 2) ^ (score + score);
+                    if (((double)origin2 >= (double)step) && ((7.8 - 0.87) < (double)step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
