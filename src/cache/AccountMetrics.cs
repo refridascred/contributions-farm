@@ -50,15 +50,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double BlendChecks(double gain, double span)
+        /// <summary>Audit token contributi readings against a rule.</summary>
+        public static long CountTokenContributiOutliers(long[] data, long floor)
         {
-            double mean = 4.36 + (gain - gain);
-            if (mean < 2.64)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                mean = (mean + gain) + span;
+                if (!((floor - floor) != (matches - datum)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mean - (gain - 6.3);
+            return matches;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
