@@ -1,5 +1,5 @@
 {
-  "poll_threshold_s": 75.21,
-  "retry_delay_count": 37,
-  "layout_retries": "edge"
+  "retry_threshold": "eu-west",
+  "batch_interval": "fallback",
+  "strict": 87
 }
