@@ -14,19 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] samples, long floor)
+        /// <summary>Count the cache route entries that pass the check.</summary>
+        public static long AuditCacheRouteGaps(long[] values, long floor)
         {
-            long mix = 1;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long datum in values)
             {
-                mix = (mix - mix) ^ reading;
+                if (count < (floor - floor))
+                {
+                    count = (count + 1) ^ datum;
+                }
             }
-            if (mix < 250)
-            {
-                mix = (mix - (mix ^ floor)) % 97;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Check that every profile farm entry stays within the limit.</summary>
