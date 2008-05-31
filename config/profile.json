@@ -1,13 +1,11 @@
 {
-  "readonly": true,
-  "enabled": 95.92,
-  "sync_capacity": ["cached", "edge", "strict", "stable"],
-  "entry_interval": 1024,
-  "cache_ttl_s": 5252,
-  "hard_threshold_count": {
-    "base_delay": false,
-    "order_timeout": ["green", "standard", "open"],
-    "hard_limit_s": "stable",
-    "audit": "local"
-  }
+  "idle_window_s": [120, 363],
+  "idle_limit_pct": ["primary", "edge", "latest"],
+  "min_threshold_count": {
+    "warm_limit_count": "fallback",
+    "strict": "fallback",
+    "idle_threshold": 7337,
+    "base_window_s": 35.93
+  },
+  "readonly": true
 }
