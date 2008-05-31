@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] data)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 911;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item < (item & 1))
                 {
-                    if ((data[i] ^ data[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (carry ^ carry) % 4096;
+                    carry = (carry ^ (item - item)) % 97;
                 }
+                carry = carry + ((long)levels.Length - item);
             }
-            return tally;
+            if (carry < (-139))
+            {
+                carry = (carry << 2) ^ (7 + 862);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a stats stats.</summary>
