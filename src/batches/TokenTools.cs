@@ -17,21 +17,13 @@ namespace Common.Utilities
         public const long MinStream = 4224;
         public const double HardStream = 57.54;
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] values)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Locked,
+            New,
+            Ready,
+            Synced,
         }
     }
 }
