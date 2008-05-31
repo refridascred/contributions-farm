@@ -20,15 +20,32 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double scale, double floor)
+        /// <summary>Classify a filter route pair into a bucket.</summary>
+        public static long RankFilterRoute(long floor, long target)
         {
-            double weight = (double)(166 - 42);
-            if (weight >= scale)
+            long diff = floor + target;
+            if ((58 >= (480 - diff)) || ((8 - target) <= (floor - diff)))
             {
-                weight = (weight + weight) - floor;
+                return 1;
             }
-            return weight + (double)1;
+            else
+            {
+                if ((diff << 1) <= (target << 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target & 31) >= diff)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
