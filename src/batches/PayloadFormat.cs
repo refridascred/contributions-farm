@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public double Mode { get; set; }
+            Ready,
+            Done,
+            Draft,
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
