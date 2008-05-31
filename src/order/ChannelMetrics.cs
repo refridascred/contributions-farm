@@ -36,11 +36,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string IdleBatches = "latest-1";
-        public const double RetryBatches = 88.98;
-        public const long SoftBatches = 7402;
-        public const string WindowBatches = "cached-1";
-        public const double DefaultWidth = 67.99;
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
+        {
+            public long Stamp { get; set; }
+            public bool Label { get; set; }
+            public bool Limit { get; set; }
+        }
     }
 }
