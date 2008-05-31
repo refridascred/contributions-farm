@@ -17,20 +17,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long offset)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long carry = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                long lane = offset << 1;
-                if (!(lane <= offset))
-                {
-                    carry = ((carry * 3) + carry) % 97;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
