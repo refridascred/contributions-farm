@@ -32,17 +32,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first buffer metric entry that matches the target.</summary>
-        public static long FindBufferMetricIndex(long[] items, long limit)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Ready,
+            Queued,
         }
     }
 }
