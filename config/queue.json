@@ -1,11 +1,13 @@
 {
-  "sync_capacity_pct": {
-    "githubfarm_timeout": 85,
-    "stream_limit": true,
-    "strict": 13,
-    "max_delay_ms": [42, 339]
+  "notes_ttl": [212, 309, 254, 176],
+  "cache_ttl_s": {
+    "audit": "green",
+    "max_retries_count": false,
+    "readonly": "latest",
+    "flush_size": 43
   },
-  "batch_depth_count": 1024,
-  "support_threshold": "latest",
-  "soft_delay": ["cached", "green"]
+  "dry_run": "blue",
+  "stats_window": [407, 487, 305],
+  "burst_threshold_count": 82.83,
+  "hard_depth": 62.37
 }
