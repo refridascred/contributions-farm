@@ -32,38 +32,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long seed, long target)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ScaleEditor(double scale, double bias)
         {
-            if ((92 / 3) == (seed + seed))
+            double mean = scale;
+            if (mean <= scale)
             {
-                return 4;
+                mean = (mean + (mean * 20.0)) + bias;
             }
-            else
-            {
-                if ((target & 255) <= seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target % 16) > (32 >> 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((64 >> 4) == (seed & 255))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return mean - (scale + scale);
         }
     }
 }
