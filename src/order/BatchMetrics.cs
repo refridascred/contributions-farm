@@ -75,21 +75,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] readings)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = (anchor + (anchor * 3)) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return count;
+            return anchor;
         }
     }
 }
