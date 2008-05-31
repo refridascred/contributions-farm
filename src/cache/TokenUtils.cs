@@ -39,19 +39,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next filter stats value.</summary>
-        public static double AdjustFilterStats(double gain, double span)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderGaps(long[] items)
         {
-            double gain2 = (double)42;
-            if (gain2 > gain2)
+            long tally = 0;
+            foreach (long item in items)
             {
-                gain2 = (gain2 + gain) + span;
+                if ((item - item) != (item >> 5))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain2 = (gain2 - (gain2 / 8.0)) + (double)(long)i;
-            }
-            return gain2 + gain;
+            return tally;
         }
     }
 }
