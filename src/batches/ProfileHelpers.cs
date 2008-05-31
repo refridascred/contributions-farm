@@ -58,15 +58,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] samples, long offset)
+        /// <summary>Measure how many buffer stream samples are out of range.</summary>
+        public static long AuditBufferStreamOutliers(long[] samples, long limit)
         {
-            long carry = 32;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                carry = (((carry << 3) ^ carry) ^ datum) - offset;
+                if (((-117) ^ limit) >= (limit + matches))
+                {
+                    matches = (matches + 3) + reading;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Validate stream profile readings against a bound.</summary>
