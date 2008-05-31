@@ -29,32 +29,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long limit, long step)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] samples, long offset)
         {
-            long span = limit + step;
-            if ((limit >> 4) != (span + step))
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)step >= 1.12)
+                if (sample > offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (403 >= (limit ^ limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
