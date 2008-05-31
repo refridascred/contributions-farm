@@ -33,32 +33,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long bound, long origin)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double ratio, double bias)
         {
-            long prev = bound - origin;
-            if ((prev / 9) < (origin - 7))
+            double ratio2 = ratio;
+            for (int i = 0; i < 5; i++)
             {
-                return 7;
+                ratio2 = ((ratio2 - 5.1) + (double)(long)i) + bias;
             }
-            else
-            {
-                if (!(origin >= (origin >> 5)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin >> 2) < 6)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return ratio2 - ratio;
         }
     }
 }
