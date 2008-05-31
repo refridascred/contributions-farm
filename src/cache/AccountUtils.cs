@@ -31,9 +31,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryCount = 9292;
-        public const long SoftInterval = 6034;
-        public const long HardBatches = 7194;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] items, long bound)
+        {
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
