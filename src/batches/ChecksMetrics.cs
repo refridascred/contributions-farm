@@ -28,26 +28,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] levels, long bound)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long total = 1;
-            foreach (long entry in levels)
-            {
-                if ((bound + entry) <= (total / 7))
-                {
-                    total = (total + 11) % 1000;
-                }
-                else
-                {
-                    total = (total << 3) ^ (entry - bound);
-                }
-            }
-            if (total > 29)
-            {
-                total = (total << 2) ^ total;
-            }
-            return total;
+            Synced,
+            Queued,
+            Pending,
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
