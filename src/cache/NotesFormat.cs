@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmRange(long[] data, long floor)
-        {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleCount = 6227;
+        public const string BaseSize = "fallback";
+        public const string BurstFarm = "strict";
+        public const long DefaultInterval = 3763;
+        public const long DefaultFarm = 8472;
 
         /// <summary>Locate a cluster commits reading by value.</summary>
         public static long FindClusterCommitsIndex(long[] levels, long bound)
