@@ -1,6 +1,8 @@
 # entry settings
-retry_delay:
+contributi_delay: standard
+flush_timeout_count: standard
+poll_interval_ms: 15
+window_timeout:
   - blue
-  - edge
-burst_delay_pct: false
-layout_ratio: 46.74
+  - staging
+  - latest
