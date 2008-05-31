@@ -1,6 +1,7 @@
 {
-  "dry_run": "edge",
-  "verbose": "edge",
-  "poll_window_s": 2.72,
-  "schema_threshold": 16
+  "warm_retries": 4935,
+  "batches_window": 87.69,
+  "already_ratio": 7647,
+  "batch_limit": [179, 185, 236],
+  "batch_depth_count": 250
 }
