@@ -1,4 +1,6 @@
 # support settings
-min_retries_count: latest
-batch_timeout: standard
-already_limit: 1091
+entry_threshold: blue
+strict: green
+readonly: green
+batch_depth: open
+flush_limit: 30
