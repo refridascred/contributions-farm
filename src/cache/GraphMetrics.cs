@@ -68,19 +68,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double BlendQueue(double rate, double span)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            double bias = rate;
-            if (bias > rate)
-            {
-                bias = bias - (double)(-7);
-            }
-            else
-            {
-                bias = bias - span;
-            }
-            return bias - (bias * 20.0);
+            Queued,
+            Retry,
+            Active,
+            Paused,
+            Locked,
         }
     }
 }
