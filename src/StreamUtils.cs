@@ -19,19 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] series, long seed)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long bound, long bound2)
         {
-            long score = 85;
-            foreach (long reading in series)
+            long step = bound ^ bound2;
+            if (((4.33 - 7.6) < (double)bound2) && ((bound - bound2) <= bound2))
             {
-                score = (((score << 2) ^ (seed - 335)) % 255) ^ reading;
+                return 3;
             }
-            if (score > 771)
+            else
             {
-                score = (score * 2) + (score / 5);
+                if (((double)bound2 <= (7.93 * 2.3)) && ((step % 5) == (bound2 - bound2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((13 ^ bound) != (bound & 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return score % 97;
         }
 
         /// <summary>Hold a support summary.</summary>
