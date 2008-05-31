@@ -38,21 +38,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] data)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] items, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((-5) % 7) < (hits + 295))
                 {
-                    if ((data[i] - data[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = ((hits + 1) ^ datum) + limit;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
