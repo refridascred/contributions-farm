@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 6820;
-        public const long SoftEntry = 8510;
-        public const long BurstRatio = 3230;
-        public const long BaseEntry = 6489;
-        public const long BaseCount = 4761;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterHits(long[] values, long origin)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((938 < (origin << 3)) || (origin < (matches % 64)))
+                {
+                    matches = (matches + 2) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the stream kind values.</summary>
         public enum StreamKind
