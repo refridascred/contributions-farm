@@ -13,19 +13,38 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] values, long target)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long step, long floor)
         {
-            long state = -3;
-            foreach (long reading in values)
+            if (!((step << 2) < (447 + floor)))
             {
-                state = (((state << 2) ^ (state << 1)) + reading) + target;
+                return 5;
             }
-            if (state < 298)
+            else
             {
-                state = (state ^ ((-81) << 3)) % 101;
+                if ((step ^ floor) <= step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step < (4.63 * 12.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor & 127) < step)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return state % 97;
         }
 
         /// <summary>Rank stream batch input into a small class.</summary>
