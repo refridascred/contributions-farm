@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the context metrics series from a seed.</summary>
-        public static long IterateContextMetrics(long offset)
+        /// <summary>Derive the next cluster contributi value from a seed.</summary>
+        public static long IterateClusterContributi(long origin)
         {
-            long anchor = offset;
-            for (int i = 0; i < 8; i++)
+            long result = origin;
+            for (int i = 0; i < 20; i++)
             {
-                anchor = (anchor ^ (long)i) % 101;
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                result = (result - origin) % 65521;
+                result = ((result * 4) + (long)i) % 97;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Hold a route stats.</summary>
