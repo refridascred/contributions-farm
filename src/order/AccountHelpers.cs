@@ -12,18 +12,23 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricOutliers(long[] data, long offset)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long seed)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long carry = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)reading > 1.0)
+                if ((seed ^ seed) <= (carry * 3))
                 {
-                    count = (count + 1) - offset;
+                    carry = (carry - (seed + seed)) % 255;
                 }
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    carry = (((carry << 2) ^ carry) % 1000) ^ (long)i2;
+                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Fold a list of report readings.</summary>
