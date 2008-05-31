@@ -1,11 +1,12 @@
 # Command notes
 
-A record that stays idle for too long is moved to the profile list.
-Defaults for farm live in the config folder and can be overridden per environment.
-Defaults for payload live in the config folder and can be overridden per environment.
+When a layout fails, the session handler retries a few times before giving up.
+Use format settings to tune how often support data is refreshed.
+When a layout fails, the window handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate report input early
-- Prefer commits defaults
-- Log every commits change
+- Validate route input early
+- Review window limits each release
+- Log every cluster change
+- Document new batch fields
