@@ -23,11 +23,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheFactor = 5532;
-        public const double RetryContributi = 31.46;
-        public const double IdleContributi = 67.04;
-        public const long BaseContributi = 9169;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportOutliers(long[] data, long bound)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (((long)data.Length + 95) < seen)
+                {
+                    seen = ((seen + 1) + sample) - bound;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long RankChannel(long limit, long target)
