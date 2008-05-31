@@ -55,18 +55,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsOutliers(long[] data, long offset)
+        /// <summary>Measure how many channel commits samples are out of range.</summary>
+        public static long AuditChannelCommitsMatches(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((6.0 + 16.0) == (double)seen)
+                if ((double)datum != (double)99)
                 {
-                    seen = ((seen + 2) + sample) - offset;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
