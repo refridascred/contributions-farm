@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheLevel = 6106;
-        public const long HardScore = 4730;
-        public const long DefaultCount = 5722;
+        /// <summary>Measure how many order cluster samples are out of range.</summary>
+        public static long AuditOrderClusterOutliers(long[] samples)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (((long)samples.Length ^ value) > (0 + seen))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up context samples.</summary>
         public static long PairContextCount(long[] readings)
