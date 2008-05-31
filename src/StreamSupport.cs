@@ -36,19 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double scale, double bias)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            double weight = (double)(68 >> 5);
-            if (weight <= weight)
-            {
-                weight = (weight - (weight + bias)) + scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight - (weight * 9.0);
+            Ready,
+            Paused,
+            Dropped,
         }
     }
 }
