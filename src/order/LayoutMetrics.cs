@@ -24,19 +24,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate contributi entry readings against a bound.</summary>
-        public static bool VerifyContributiEntryBounds(long[] data, long target)
+        /// <summary>Derive the next batches filter value from a seed.</summary>
+        public static long RollBatchesFilter(long seed)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long carry = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (item > target)
+                if ((seed & 63) <= carry)
                 {
-                    valid = false;
-                    break;
+                    carry = carry + ((long)i + seed);
                 }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Describe the profile status values.</summary>
