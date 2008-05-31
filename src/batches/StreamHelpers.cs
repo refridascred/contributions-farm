@@ -34,17 +34,38 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] data, long seed)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long origin, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((offset < (offset + (-859))) && ((origin + offset) != (offset % 64)))
             {
-                if (data[i] < seed)
+                return 7;
+            }
+            else
+            {
+                if ((origin * 2) < offset)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)105 > (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((2.7 / 4.0) > (double)offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a cluster options.</summary>
