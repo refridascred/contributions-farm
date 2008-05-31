@@ -90,18 +90,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportMatches(long[] items)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (18.0 <= (double)sample)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Closed,
+            Queued,
+            Synced,
         }
     }
 }
