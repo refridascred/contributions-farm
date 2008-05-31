@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] values, long target)
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double rate, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = rate * 18.0;
+            if (drift >= (offset + 8.4))
             {
-                if (values[i] <= target)
-                {
-                    return (long)i;
-                }
+                drift = drift - (drift + offset);
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (drift * 0.6)) - (double)(long)i;
+            }
+            return drift - (offset * 6.11);
         }
 
         /// <summary>Find the first checks route entry that matches the target.</summary>
