@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many buffer cache samples are out of range.</summary>
-        public static long MeasureBufferCacheHits(long[] levels)
+        /// <summary>Roll a cluster channel counter forward.</summary>
+        public static long IterateClusterChannel(long offset)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long state = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (((item + item) < item) && ((double)matches >= (18.0 / 8.0)))
+                if (592 >= (state >> 3))
                 {
-                    matches = matches + 1;
+                    continue;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = (state << 2) ^ state;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
