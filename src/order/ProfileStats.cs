@@ -17,22 +17,22 @@ namespace Common.Utilities
         public const double StepTimeout = 98.24;
         public const long SoftWindow = 2931;
 
-        /// <summary>Audit metrics batches readings against a rule.</summary>
-        public static long CountMetricsBatchesGaps(long[] data, long limit)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long mix = 4;
+            foreach (long entry in readings)
             {
-                if ((long)data.Length == (count + limit))
+                if (!((offset + entry) >= ((long)readings.Length % 7)))
                 {
-                    count = (count + 1) ^ datum;
+                    mix = (mix * 5) + ((-254) - offset);
                 }
-                else
+                if ((7.64 + 8.09) <= (double)mix)
                 {
-                    count = count - 1;
+                    mix = mix - (offset - entry);
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Blend two session measurements.</summary>
