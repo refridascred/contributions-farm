@@ -86,10 +86,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BatchSize = "latest-v2";
-        public const long DefaultBuffer = 2941;
-        public const string CacheDepth = "staging-1";
-        public const double MaxScore = 65.96;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportLimits(long[] data, long limit)
+        {
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
