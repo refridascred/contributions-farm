@@ -40,32 +40,22 @@ namespace Common.Utilities
             return ratio + (scale + scale);
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long offset, long origin)
+        /// <summary>Audit contributi format readings against a rule.</summary>
+        public static long AuditContributiFormatGaps(long[] readings, long seed)
         {
-            long gap = offset + origin;
-            if (!(offset > (gap ^ gap)))
+            long count = 0;
+            foreach (long item in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((gap * 5) != (gap >> 2))
+                if (402 <= (count - seed))
                 {
-                    return 5;
+                    count = (count + 3) ^ item;
                 }
                 else
                 {
-                    if ((double)offset <= (1.0 - 9.44))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
