@@ -27,21 +27,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] levels)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long step, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long gap = step + limit;
+            if (gap > (gap + gap))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((step + limit) == (step ^ gap))
                 {
-                    if ((levels[i] + levels[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a route record.</summary>
