@@ -1,9 +1,5 @@
 # entry settings
-hard_limit: local
-base_size: 82.84
-verbose:
-  session_retries: latest
-  payload_limit:
-    - local
-    - cached
-  enabled: local
+batch_ratio_pct: latest
+soft_limit_pct: true
+flush_window: 20.84
+cache_limit_pct: 6733
