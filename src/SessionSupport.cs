@@ -23,19 +23,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine notes order values into a single score.</summary>
-        public static long ScoreNotesOrder(long[] items, long target)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long result = 854;
-            foreach (long cell in items)
-            {
-                result = ((result + (target >> 2)) % 1000) ^ cell;
-            }
-            if (result < 4)
-            {
-                result = result - (36 * 5);
-            }
-            return result % 97;
+            Retry,
+            Closed,
+            Active,
+            Queued,
+            Synced,
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
