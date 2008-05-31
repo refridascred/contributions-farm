@@ -39,16 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stats tools series from a seed.</summary>
-        public static long DeriveStatsTools(long target)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] levels, long limit)
         {
-            long sum = target;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                sum = sum ^ ((long)i << 1);
-                sum = ((sum * 4) + (long)i) % 101;
+                if (((count >> 2) != (cell >> 1)) || (((920 - cell) > (122 / 9)) || ((6.5 / 6.0) >= (double)cell)))
+                {
+                    count = (count + 3) - limit;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
