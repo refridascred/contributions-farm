@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            Active,
-            Queued,
-            Paused,
-            Dropped,
+            public long Token { get; set; }
+            public bool Offset { get; set; }
+            public bool Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
