@@ -58,13 +58,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] values, long floor)
         {
-            public double Ratio { get; set; }
-            public long Region { get; set; }
-            public double Mode { get; set; }
-            public long Total { get; set; }
+            long result = 4;
+            foreach (long datum in values)
+            {
+                if ((result * 4) > result)
+                {
+                    result = ((result ^ (result - floor)) % 1000) + datum;
+                }
+            }
+            if (result > 700)
+            {
+                result = (result ^ floor) % 65521;
+            }
+            return result;
         }
     }
 }
