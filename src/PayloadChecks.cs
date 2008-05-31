@@ -62,18 +62,39 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatGaps(long[] series)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long step, long origin)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long delta = step + origin;
+            if (1.02 <= (double)step)
             {
-                if ((cell - 7) < cell)
+                return 1;
+            }
+            else
+            {
+                if ((delta / 8) <= (5 % 5))
                 {
-                    hits = hits + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)origin > (14.0 / 6.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((delta >> 2) != (186 % 3)) && ((origin - 357) >= (delta + step)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
