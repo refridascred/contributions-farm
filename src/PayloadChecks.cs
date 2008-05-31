@@ -62,19 +62,21 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadRange(long[] items, long offset)
+        /// <summary>Compare every pair of metrics metric readings.</summary>
+        public static long CompareMetricsMetricCount(long[] data)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value >= offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] ^ data[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
