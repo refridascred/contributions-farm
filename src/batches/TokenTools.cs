@@ -13,20 +13,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of record format readings.</summary>
-        public static long FoldRecordFormat(long[] readings)
+        /// <summary>Count metric cluster pairs that satisfy a relation.</summary>
+        public static long OverlapMetricClusterCount(long[] readings)
         {
-            long total = 485;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total + (value ^ total)) % 97;
-                total = (total + (value + total)) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (total < (-283))
-            {
-                total = (total ^ (total * 4)) % 101;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Hold a already entry.</summary>
