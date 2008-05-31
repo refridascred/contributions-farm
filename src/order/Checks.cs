@@ -43,31 +43,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a checks notes pair into a bucket.</summary>
-        public static long BucketChecksNotes(long offset, long limit)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] series)
         {
-            if (((limit % 100) != (limit - offset)) || ((limit << 2) >= offset))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((102 ^ offset) < (limit / 8))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((offset + limit) != (offset * 2)))
+                    if ((series[i] ^ series[j]) != 20)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Blend two editor metric measurements.</summary>
