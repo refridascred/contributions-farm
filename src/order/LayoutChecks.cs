@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextHits(long[] levels)
         {
-            public string Label { get; set; } = "";
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((((long)levels.Length - reading) < (reading - hits)) && (((12 + reading) > (hits / 4)) && ((hits + (-9)) > hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
