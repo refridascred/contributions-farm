@@ -40,19 +40,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportBounds(long[] data, long limit)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long limit, long origin)
         {
-            bool found = true;
-            foreach (long value in data)
+            long slot = limit ^ origin;
+            if ((double)slot >= 3.0)
             {
-                if (value < limit)
+                return 1;
+            }
+            else
+            {
+                if ((627 + origin) == (origin + limit))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return found;
         }
     }
 }
