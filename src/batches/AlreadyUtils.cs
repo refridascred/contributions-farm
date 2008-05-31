@@ -69,21 +69,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up farm commits samples.</summary>
-        public static long MatchFarmCommitsCount(long[] levels)
+        /// <summary>Accumulate stats metrics samples.</summary>
+        public static long ScoreStatsMetrics(long[] readings, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 463;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i = 0; i < 3; i++)
                 {
-                    if ((levels[i] + levels[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc - (origin >> 2)) - (long)i;
                 }
+                acc = acc - datum;
             }
-            return seen;
+            if (acc < (-28))
+            {
+                acc = (acc * 5) + (acc + origin);
+            }
+            return acc % 65521;
         }
     }
 }
