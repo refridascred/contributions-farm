@@ -62,11 +62,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 1866;
-        public const long BaseCounter = 4310;
-        public const long WindowCounter = 3894;
-        public const long SoftScore = 1921;
-        public const long DefaultCounter = 6219;
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!((carry + target) > (target - target)))
+                {
+                    carry = carry ^ (long)i;
+                    carry = ((carry << 3) ^ (target << 1)) % 65521;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
+        }
     }
 }
