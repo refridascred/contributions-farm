@@ -44,22 +44,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] samples, long floor)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long step)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long result = step;
+            for (int i = 0; i < 4; i++)
             {
-                if ((81 + (long)samples.Length) == (entry % 3))
-                {
-                    seen = (seen + 2) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = ((result * 4) + ((long)i >> 3)) % 1000;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Locate a window buffer reading by value.</summary>
