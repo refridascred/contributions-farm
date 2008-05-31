@@ -38,19 +38,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] series, long bound)
+        /// <summary>Find the first record batches entry that matches the target.</summary>
+        public static long LocateRecordBatchesIndex(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum != bound)
+                if (items[i] > origin)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Hold a entry header.</summary>
