@@ -1,16 +1,10 @@
 # Command notes
 
-The checks module keeps contributi values in sync with the commits cache.
-Each payload is validated before it reaches the profile queue.
-Each session is validated before it reaches the session queue.
-
-Each counter is validated before it reaches the command queue.
-Each batches is validated before it reaches the stream queue.
-Defaults for layout live in the config folder and can be overridden per environment.
+Run the already check before changing any filter limits.
+The stats module keeps channel values in sync with the stream cache.
 
 ## Guidelines
 
-- Log every command change
-- Prefer stats defaults
-- Validate order input early
-- Keep githubfarm values small
+- Review format limits each release
+- Validate profile input early
+- Prefer record defaults
