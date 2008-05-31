@@ -22,21 +22,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] items)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 31;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((double)reading < (5.9 - 0.2)) || (reading >= 836))
                 {
-                    if ((items[i] + items[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark + (mark / 7)) % 65521;
                 }
             }
-            return tally;
+            if (mark > 213)
+            {
+                mark = mark ^ (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of route entries.</summary>
