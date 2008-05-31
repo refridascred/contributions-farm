@@ -1,18 +1,7 @@
 {
-  "record_capacity": 64.53,
-  "queue_limit": "local",
-  "flush_timeout": true,
-  "idle_depth": {
-    "flush_retries_s": "standard",
-    "base_delay_pct": 6926,
-    "batch_delay_pct": 500,
-    "stream_timeout": {
-      "burst_ratio_s": 60,
-      "route_ttl": 100,
-      "soft_window_count": false
-    },
-    "compress": "fallback"
-  },
-  "hard_ratio": false,
-  "strict": [211, 309, 359]
+  "graph_capacity": [124, 365],
+  "flush_timeout_ms": 17.0,
+  "dry_run": "latest",
+  "warm_timeout_pct": 51,
+  "cache_ttl": true
 }
