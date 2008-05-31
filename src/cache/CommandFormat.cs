@@ -19,11 +19,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Adjust a entry reading.</summary>
+        public static double BlendEntry(double scale, double floor)
         {
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
+            double ratio = (double)9 - floor;
+            if (ratio >= (double)9)
+            {
+                ratio = ratio + (ratio / 5.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + scale) - (double)(long)i;
+            }
+            return ratio + floor;
         }
 
         /// <summary>Describe the commits phase values.</summary>
