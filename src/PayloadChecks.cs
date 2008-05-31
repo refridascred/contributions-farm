@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
+            Retry,
+            Ready,
+            New,
         }
 
         /// <summary>Rank layout input into a small class.</summary>
