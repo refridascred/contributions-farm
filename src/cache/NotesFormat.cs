@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count order checks pairs that satisfy a relation.</summary>
-        public static long OverlapOrderChecksCount(long[] samples)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = (anchor ^ (anchor * 4)) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Fold a list of buffer layout readings.</summary>
