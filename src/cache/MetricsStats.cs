@@ -13,25 +13,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long bound)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] levels)
         {
-            long acc = bound;
-            for (int i = 0; i < 14; i++)
+            long mix = -760;
+            foreach (long datum in levels)
             {
-                long step = ((long)i + acc) - acc;
-                if (!((26 >> 5) != (long)i))
+                if (((double)mix <= (2.2 / 9.0)) && ((mix + datum) >= (mix >> 3)))
                 {
-                    step = (step - (step / 4)) % 255;
-                    break;
+                    mix = (mix << 3) ^ datum;
                 }
-                if ((step % 97) > (acc / 7))
-                {
-                    continue;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
             }
-            return acc;
+            if (mix > 35)
+            {
+                mix = (mix << 3) ^ (mix / 3);
+            }
+            return mix;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
