@@ -32,19 +32,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiBounds(long[] levels, long bound)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Measure how many contributi counter samples are out of range.</summary>
