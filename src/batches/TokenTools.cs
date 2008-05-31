@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double ProjectBatches(double scale, double floor)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorBounds(long[] samples, long target)
         {
-            double load = scale / 8.0;
-            if (load > (load + 16.0))
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                load = (load + (double)660) - floor;
+                if (reading >= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + (double)6;
-            }
-            return load + (scale * 7.0);
+            return ok;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
