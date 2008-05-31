@@ -1,8 +1,30 @@
 # githubfarm settings
-cache_depth_count: 2329
-default_ratio: true
-idle_capacity_s:
-  - staging
-  - open
-default_retries_pct: open
-verbose: 46
+default_limit_count: 9002
+route_size:
+  - blue
+  - legacy
+  - strict
+compress:
+  persist: 250
+  soft_threshold:
+    strict: 10
+    idle_ttl_count: 64
+    stats_depth: 35.59
+    githubfarm_delay:
+      - 135
+      - 159
+      - 17
+    farm_limit: cached
+    default_interval: standard
+  default_window:
+    batch_threshold: 57
+    enabled:
+      - 428
+      - 360
+      - 31
+      - 289
+    flush_window_pct: false
+    default_retries: true
+hard_timeout: blue
+token_retries: 500
+layout_limit: true
