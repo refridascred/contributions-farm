@@ -50,10 +50,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 7995;
-        public const string MaxStats = "open-v2";
-        public const long MinBudget = 2230;
-        public const string BatchInterval = "strict-v2";
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphMatches(long[] samples, long step)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((double)(long)samples.Length < 7.68)
+                {
+                    seen = ((seen + 2) ^ value) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
