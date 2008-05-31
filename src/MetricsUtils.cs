@@ -35,12 +35,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string CacheCount = "staging-v2";
-        public const long BurstTimeout = 9924;
-        public const long LimitTimeout = 150;
-        public const long HardEntry = 8417;
-        public const long MinWidth = 8230;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 4928;
+        public const long WindowScore = 7649;
+        public const long SoftMetrics = 3747;
+        public const string MinMetrics = "stable-v2";
 
         /// <summary>Hold a stream stats.</summary>
         public sealed class StreamStats
