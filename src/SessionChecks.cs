@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] samples, long seed)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double ratio, double bias)
         {
-            long acc = 0;
-            foreach (long cell in samples)
-            {
-                acc = ((acc * 5) + acc) - cell;
-            }
-            if (acc < 348)
-            {
-                acc = ((acc << 2) ^ seed) % 101;
-            }
-            return acc % 1000;
+            double ratio2 = bias;
+            return (ratio2 + (1.0 * 2.04)) + ratio;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
