@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] levels, long origin)
+        /// <summary>Blend two layout order measurements.</summary>
+        public static double AdjustLayoutOrder(double gain, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double drift = gain;
+            if (drift > gain)
             {
-                if (levels[i] >= origin)
-                {
-                    return (long)i;
-                }
+                drift = drift + (double)625;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (5.42 - gain)) + (double)(long)i;
+            }
+            return drift + (drift - span);
         }
 
         /// <summary>Describe the editor state values.</summary>
