@@ -19,13 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long seed)
         {
-            public bool Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public double Total { get; set; }
-            public long Count { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((mark - seed) == (seed + mark))
+                {
+                    mark = ((mark * 2) + mark) % 101;
+                    mark = ((mark << 2) ^ (seed - seed)) % 255;
+                    continue;
+                }
+                if ((seed - seed) < (mark & 1))
+                {
+                    mark = (mark - (mark + 205)) % 255;
+                    continue;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of account entries.</summary>
