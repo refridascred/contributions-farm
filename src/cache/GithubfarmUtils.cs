@@ -33,12 +33,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitRatio = 2869;
-        public const double SoftSpan = 12.5;
-        public const long CacheLayout = 9983;
-        public const double MinLayout = 95.9;
-        public const long MaxSpan = 4345;
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] data, long limit)
+        {
+            long acc = 4;
+            foreach (long datum in data)
+            {
+                if (datum < ((long)data.Length * 3))
+                {
+                    acc = ((acc * 2) + (acc - (long)data.Length)) % 4096;
+                }
+                if ((7.02 - 7.9) >= (double)acc)
+                {
+                    acc = ((acc << 3) ^ (limit % 16)) % 65521;
+                }
+            }
+            if (acc < 322)
+            {
+                acc = (acc - (limit % 97)) % 97;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long RollContributi(long origin)
