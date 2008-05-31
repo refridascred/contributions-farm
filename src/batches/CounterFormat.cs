@@ -35,19 +35,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit profile notes readings against a rule.</summary>
-        public static long MeasureProfileNotesHits(long[] series, long target)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (!(((target % 100) != (target % 8)) && ((5 % 64) != (reading + 72))))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MaxSupport = "cached-1";
+        public const string CacheSpan = "legacy-v2";
+        public const double WindowSupport = 75.84;
+        public const long BaseSize = 5567;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long MeasureRouteOutliers(long[] levels)
