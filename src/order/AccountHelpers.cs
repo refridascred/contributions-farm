@@ -19,19 +19,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsBounds(long[] readings, long origin)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Score { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Fold a list of report readings.</summary>
