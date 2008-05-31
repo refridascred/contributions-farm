@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long step)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] items)
         {
-            long score = step;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (((double)step == (9.3 / 4.0)) || (score <= (score + (long)i)))
+                if (count < (count + 5))
                 {
-                    long matches = score;
-                    score = ((score << 2) ^ (matches + 491)) % 65521;
-                    break;
+                    count = (count + 2) ^ reading;
                 }
-                else
-                {
-                    score = score + (score - step);
-                }
-                if (((score / 4) > step) && ((step & 255) <= (2 - step)))
-                {
-                    score = (score ^ (score ^ score)) % 65521;
-                    break;
-                }
-                score = ((score * 3) + (long)i) % 4093;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
