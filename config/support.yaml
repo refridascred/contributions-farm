@@ -1,8 +1,6 @@
 # support settings
-checks_retries: blue
-default_retries_pct:
-  - fallback
-  - standard
-cache_depth_ms: open
-queue_limit: true
-persist: 1024
+persist: 43.93
+compress: 4833
+token_delay:
+  - 481
+  - 11
