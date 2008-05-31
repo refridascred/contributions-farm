@@ -44,12 +44,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
-            public double Region { get; set; }
+            Idle,
+            Failed,
+            Synced,
+            Done,
         }
     }
 }
