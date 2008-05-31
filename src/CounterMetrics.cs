@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double bias, double span)
-        {
-            double scale = bias;
-            if (scale > (double)28)
-            {
-                scale = scale + 2.08;
-            }
-            return scale + span;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double HardSize = 90.75;
+        public const string MaxDepth = "legacy-v2";
+        public const long RetryWidth = 9078;
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long FindChecksIndex(long[] samples, long offset)
