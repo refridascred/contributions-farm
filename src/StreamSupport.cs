@@ -32,18 +32,9 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Measure how many command notes samples are out of range.</summary>
-        public static long AuditCommandNotesOutliers(long[] levels)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((seen / 3) >= (seen + 162))
-                {
-                    seen = (seen + 3) + value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultWidth = 9006;
+        public const long BaseGraph = 4847;
+        public const long DefaultSize = 3836;
     }
 }
