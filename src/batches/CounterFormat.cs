@@ -19,12 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetrySpan = 2470;
-        public const long LimitBudget = 1336;
-        public const long CacheCounter = 5202;
-        public const long BurstSize = 8420;
-        public const long MinTimeout = 5877;
+        /// <summary>Roll a farm tools counter forward.</summary>
+        public static long StepFarmTools(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Check that every buffer graph entry stays within the limit.</summary>
         public static bool VerifyBufferGraphRange(long[] values, long seed)
