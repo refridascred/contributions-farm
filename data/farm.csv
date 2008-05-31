@@ -1,8 +1,7 @@
-id,count,owner,region
-1,72.62,primary,cached
-2,42,cached,560
-3,83.19,391,167
-4,eu-west,strict,primary
-5,200,975,989
-6,edge,444,23.46
-7,15.9,staging,58.16
+id,ratio
+1,932
+2,standard
+3,134
+4,160
+5,local
+6,latest
