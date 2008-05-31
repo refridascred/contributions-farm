@@ -21,18 +21,16 @@ namespace Common.Utilities
         public const long CacheAlready = 1241;
         public const string LimitSize = "standard-edge";
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsOutliers(long[] values, long step)
+        /// <summary>Roll a batches githubfarm counter forward.</summary>
+        public static long SeriesBatchesGithubfarm(long seed)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long total = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((step / 4) <= (0 >> 2))
-                {
-                    hits = (hits + 2) + value;
-                }
+                total = ((total << 3) ^ (789 + (long)i)) % 255;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return hits;
+            return total;
         }
     }
 }
