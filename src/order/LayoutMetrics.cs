@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterHits(long[] values, long origin)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((938 < (origin << 3)) || (origin < (matches % 64)))
-                {
-                    matches = (matches + 2) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchSize = 7087;
+        public const string MaxFormat = "cached-v2";
+        public const long RetryFormat = 4710;
+        public const string MaxFactor = "cached-1";
+        public const string BatchFormat = "legacy-1";
 
         /// <summary>Describe the stream kind values.</summary>
         public enum StreamKind
