@@ -21,19 +21,13 @@ namespace Common.Utilities
         public const long LimitSupport = 636;
         public const long WindowSupport = 8563;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] series, long origin)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long mark = 867;
-            foreach (long cell in series)
-            {
-                if ((11 ^ 221) != (origin - origin))
-                {
-                    continue;
-                }
-                mark = ((mark ^ (origin % 97)) % 65521) + cell;
-            }
-            return mark % 97;
+            Synced,
+            Retry,
+            Stale,
+            Draft,
         }
     }
 }
