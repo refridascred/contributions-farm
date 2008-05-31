@@ -46,18 +46,12 @@ namespace Common.Utilities
         public const double HardFactor = 43.46;
         public const double IdleSession = 21.43;
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] items, long limit)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long mark = 111;
-            foreach (long datum in items)
-            {
-                if ((mark - 823) == (48 + limit))
-                {
-                    mark = (((mark * 2) + limit) % 1000) + datum;
-                }
-            }
-            return mark;
+            public long Score { get; set; }
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
