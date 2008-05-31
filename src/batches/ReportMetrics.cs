@@ -15,13 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksRange(long[] data, long floor)
         {
-            Idle,
-            New,
-            Active,
-            Closed,
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Scale a tools counter figure with a bias.</summary>
