@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const double WindowContributi = 84.96;
         public const long BatchContributi = 3593;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] data, long bound)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] data, long origin)
         {
-            long mix = 56;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if (((cell + cell) > (cell - bound)) || ((mix << 1) == (5 * 3)))
+                if (datum <= origin)
                 {
-                    mix = (mix * 4) + (bound % 7);
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (56 & 1);
+                    ok = false;
+                    break;
                 }
             }
-            return mix % 4096;
+            return ok;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
