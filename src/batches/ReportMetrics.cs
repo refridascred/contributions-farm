@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] readings)
+        /// <summary>Digest a series of cluster context entries.</summary>
+        public static long FoldClusterContext(long[] levels, long step)
         {
-            long mark = 221;
-            foreach (long item in readings)
+            long state = 174;
+            foreach (long item in levels)
             {
-                mark = mark ^ (mark + mark);
-                if ((mark - item) <= ((long)readings.Length + 3))
+                if ((item * 2) > ((-18) & 1))
                 {
-                    mark = (mark << 2) ^ mark;
+                    state = (state ^ (4 - step)) % 1000;
+                }
+                else
+                {
+                    state = state + step;
                 }
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Match up context samples.</summary>
