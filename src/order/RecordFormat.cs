@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] levels, long bound)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long bound)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long state = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (cell != bound)
+                if ((bound & 127) != (bound ^ state))
                 {
-                    stale = false;
-                    break;
+                    continue;
                 }
+                state = ((state << 2) ^ (long)i) % 97;
+                state = ((state * 3) + (long)i) % 101;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
