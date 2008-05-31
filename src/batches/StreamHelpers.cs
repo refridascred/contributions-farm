@@ -66,12 +66,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
-        {
-            Locked,
-            Done,
-            Failed,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BurstWidth = "local-1";
+        public const string WindowRatio = "stable-edge";
+        public const string LimitBatches = "cached-1";
+        public const double MaxBudget = 57.75;
     }
 }
