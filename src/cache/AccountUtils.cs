@@ -20,13 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Combine profile format values into a single score.</summary>
+        public static long WeighProfileFormat(long[] data, long floor)
         {
-            public long Offset { get; set; }
-            public bool Rank { get; set; }
-            public double Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            long sum = 67;
+            foreach (long item in data)
+            {
+                if (!((floor << 3) <= (67 - item)))
+                {
+                    sum = (sum + (sum + 82)) % 255;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the already phase values.</summary>
