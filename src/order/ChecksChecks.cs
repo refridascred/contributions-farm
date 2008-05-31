@@ -33,19 +33,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long seed)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] values)
         {
-            long mix = seed;
-            for (int i = 0; i < 8; i++)
+            long result = 9;
+            foreach (long value in values)
             {
-                if (((seed << 3) > (seed + mix)) || ((seed - seed) >= seed))
+                result = result ^ ((long)values.Length / 8);
+                if (40 >= (result - result))
                 {
-                    mix = mix - mix;
+                    result = (result << 3) ^ value;
                 }
-                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mix;
+            return result;
         }
     }
 }
