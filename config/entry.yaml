@@ -1,14 +1,17 @@
 # entry settings
-idle_delay:
-  base_timeout_pct: open
-  default_capacity: open
-  readonly:
-    - 87
-    - 313
-burst_capacity_ms: 2108
-strict:
-  - eu-west
-  - strict
-  - latest
-  - strict
-hard_delay_pct: 5184
+base_limit_ms: 86.1
+batch_retries_s: 1969
+buffer_delay:
+  hard_delay_s: 53
+  base_interval:
+    - strict
+    - latest
+    - standard
+    - blue
+  verbose: true
+max_size_pct:
+  readonly: false
+  batch_capacity_count: blue
+  strict:
+    - 94
+    - 79
