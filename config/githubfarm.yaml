@@ -1,18 +1,15 @@
 # githubfarm settings
-burst_capacity: 4956
-enabled:
-  enabled: 96.29
-  report_ratio:
-    enabled: true
-    cache_ratio: 500
-    soft_retries_count: 98.62
-    poll_depth: true
-    idle_ratio: 93.77
-    flush_ratio: eu-west
-  warm_limit_count:
-    - stable
-    - legacy
-  cache_retries_count: 57.17
-  entry_window: true
-batch_retries: primary
-retry_threshold: 83
+burst_timeout_count: 65
+enabled: 52.01
+dry_run:
+  sync_capacity_s: 500
+  batch_retries_count:
+    - 180
+    - 377
+  idle_window:
+    - edge
+    - open
+  cache_ttl: true
+cache_ttl_pct: 42.27
+base_ttl: fallback
+readonly: 4924
