@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate buffer metrics samples.</summary>
-        public static long DigestBufferMetrics(long[] items)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] values, long limit)
         {
-            long carry = 3;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)datum != (4.0 + 0.8))
+                if (values[i] > limit)
                 {
-                    carry = (carry ^ 9) % 4096;
+                    return (long)i;
                 }
-                for (int i = 0; i < 6; i++)
-                {
-                    carry = ((carry << 3) ^ (8 >> 1)) ^ (long)i;
-                }
-                carry = ((carry * 5) + (datum << 1)) % 65521;
             }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Fold a list of token readings.</summary>
