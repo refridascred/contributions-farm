@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] items, long seed)
-        {
-            long mark = 9;
-            foreach (long cell in items)
-            {
-                mark = (((mark * 5) + (mark / 3)) + cell) + seed;
-            }
-            return mark;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRatio = 9795;
+        public const long DefaultRoute = 2708;
+        public const long BaseRoute = 8261;
 
         /// <summary>Match up editor samples.</summary>
         public static long PairEditorCount(long[] values)
