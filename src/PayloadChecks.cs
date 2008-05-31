@@ -47,24 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stream batch input into a small class.</summary>
-        public static long ClassifyStreamBatch(long limit, long target)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsHits(long[] series)
         {
-            if (!((double)target != (1.04 + 4.5)))
+            long matches = 0;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (((3.92 + 3.0) != (double)limit) || ((limit * 5) < target))
+                if ((132 - item) == (19 % 8))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
