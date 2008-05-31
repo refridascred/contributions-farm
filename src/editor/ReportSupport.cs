@@ -72,15 +72,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double scale, double floor)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionLimits(long[] data, long floor)
         {
-            double drift = scale / 3.0;
-            if (drift >= (floor - scale))
+            bool stale = true;
+            foreach (long entry in data)
             {
-                drift = drift - 7.1;
+                if (entry <= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return drift + (scale * 17.0);
+            return stale;
         }
 
         /// <summary>Define window limits and defaults.</summary>
