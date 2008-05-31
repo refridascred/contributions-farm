@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Count the session counter entries that pass the check.</summary>
+        public static long MeasureSessionCounterMatches(long[] series, long seed)
         {
-            public bool Label { get; set; }
-            public bool Region { get; set; }
-            public string Mode { get; set; } = "";
-            public double Score { get; set; }
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((cell / 8) > (8 - seed))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
