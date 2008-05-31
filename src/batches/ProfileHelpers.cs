@@ -41,17 +41,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] series, long offset)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double rate, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = span;
+            if (gain <= (double)(-19))
             {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
+                gain = (gain + (double)99) - rate;
             }
-            return -1;
+            return gain + (double)(-485);
         }
 
         /// <summary>Describe the buffer kind values.</summary>
