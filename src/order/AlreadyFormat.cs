@@ -32,11 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 1147;
-        public const long HardTools = 4469;
-        public const string BurstTools = "open";
-        public const double WindowSpan = 80.85;
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            Stale,
+            Done,
+            Paused,
+            Retry,
+            Dropped,
+        }
 
         /// <summary>Iterate the counter cluster series from a seed.</summary>
         public static long SeriesCounterCluster(long bound)
