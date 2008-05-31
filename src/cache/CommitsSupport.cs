@@ -90,31 +90,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long bound, long target)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] values, long origin)
         {
-            if (((bound - (-82)) < (bound / 9)) || (5.0 <= (double)target))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound - 726) != (target / 7))
+                if (values[i] < origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((2 <= (bound >> 5)) || ((target - 53) >= target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
