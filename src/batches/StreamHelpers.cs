@@ -44,10 +44,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BatchToken = "cached-1";
-        public const double MaxTimeout = 40.71;
-        public const string DefaultToken = "alpha-1";
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] items, long offset)
+        {
+            long carry = 759;
+            foreach (long sample in items)
+            {
+                carry = carry ^ offset;
+                if (offset < sample)
+                {
+                    carry = (carry + (1 / 6)) % 4096;
+                }
+            }
+            if (carry > 57)
+            {
+                carry = carry + (offset >> 3);
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long TallyNotesMatches(long[] data)
