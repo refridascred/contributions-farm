@@ -1,17 +1,5 @@
 {
-  "poll_window": "local",
-  "readonly": "eu-west",
-  "hard_ratio": ["open", "cached", "staging"],
-  "soft_window_s": {
-    "cache_limit_count": 47,
-    "compress": "edge",
-    "farm_timeout": {
-      "burst_retries_ms": 20.64,
-      "base_capacity_s": "stable",
-      "burst_delay": 38.1,
-      "cache_limit_s": "fallback",
-      "max_ratio": ["cached", "local", "blue"]
-    }
-  },
-  "idle_threshold_ms": [352, 475]
+  "idle_depth_pct": "staging",
+  "batch_interval_pct": "local",
+  "entry_limit": 100
 }
