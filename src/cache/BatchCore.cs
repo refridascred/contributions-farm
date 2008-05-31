@@ -26,15 +26,18 @@ namespace Common.Utilities
             return (gain + (double)494) + bias;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double AdjustGithubfarm(double rate, double floor)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] samples)
         {
-            double scale = (rate / 4.0) + (rate + rate);
-            if (scale <= (rate + floor))
+            long mix = 1;
+            foreach (long sample in samples)
             {
-                scale = scale - rate;
+                if ((mix + mix) < (mix << 1))
+                {
+                    mix = mix ^ sample;
+                }
             }
-            return scale - rate;
+            return mix;
         }
 
         /// <summary>Define order limits and defaults.</summary>
