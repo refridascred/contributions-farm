@@ -44,22 +44,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] items, long origin)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricBounds(long[] levels, long origin)
         {
-            long total = 862;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if (((-633) / 2) > (origin - 45))
+                if (entry <= origin)
                 {
-                    total = ((total + total) % 65521) + value;
+                    ok = false;
+                    break;
                 }
             }
-            if (total < (-518))
-            {
-                total = ((total << 2) ^ (origin % 2)) % 1000;
-            }
-            return total;
+            return ok;
         }
 
         /// <summary>Hold a account info.</summary>
