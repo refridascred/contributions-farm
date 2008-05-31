@@ -57,10 +57,20 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 8395;
-        public const string WindowNotes = "latest";
-        public const string CacheNotes = "fallback-1";
-        public const long BurstDepth = 3211;
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((target & 255) == (target - target))
+                {
+                    acc = (acc + (8 + target)) % 101;
+                }
+                acc = acc - target;
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
+        }
     }
 }
