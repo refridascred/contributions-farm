@@ -35,13 +35,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Check that every farm profile entry stays within the limit.</summary>
+        public static bool ValidateFarmProfileLimits(long[] items, long offset)
         {
-            Draft,
-            Synced,
-            Failed,
-            Idle,
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Rank record input into a small class.</summary>
