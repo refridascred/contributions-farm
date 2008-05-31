@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesHits(long[] data)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long limit, long offset)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long cur = limit ^ offset;
+            if ((cur ^ cur) <= limit)
             {
-                if ((double)seen != (5.8 / 5.0))
+                return 0;
+            }
+            else
+            {
+                if ((4.39 * 2.89) != (double)offset)
                 {
-                    seen = (seen + 1) + reading;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit >= (double)cur)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!(limit <= (offset + cur)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
