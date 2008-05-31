@@ -6,9 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
+for item in legacy fallback edge eu-west; do
+    log "checking ${item}"
+done
+
+mode="${1:-edge}"
 case "${mode}" in
-    eu-west)
+    fallback)
         log "fast path"
         ;;
     *)
@@ -16,12 +20,5 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in primary cached; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=402
+log "limit is ${CHANNEL_LIMIT}"
