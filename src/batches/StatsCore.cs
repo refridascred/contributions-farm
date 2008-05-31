@@ -51,40 +51,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] samples)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long sum = 0;
-            foreach (long value in samples)
-            {
-                if (!((value - 649) != (sum + value)))
-                {
-                    sum = sum + ((long)samples.Length ^ (-200));
-                    sum = (sum - sum) % 255;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (3 * 2)) % 4096;
-                    sum = (sum + (sum << 1)) % 4096;
-                }
-                if (sum >= 5)
-                {
-                    break;
-                }
-                if (((sum - sum) >= (48 & 1)) && ((value + value) == (value - value)))
-                {
-                    sum = sum ^ (sum >> 4);
-                }
-                else
-                {
-                    sum = (sum ^ sum) % 1000;
-                }
-            }
-            if (sum > 5)
-            {
-                sum = sum - (410 << 1);
-            }
-            return sum % 1000;
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
         }
     }
 }
