@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] levels)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (0 > (count % 16))
-                {
-                    count = (count + 2) + sample;
-                }
-            }
-            return count;
+            Locked,
+            Queued,
+            Pending,
         }
 
         /// <summary>Match up tools samples.</summary>
