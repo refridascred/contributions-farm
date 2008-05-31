@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a route metrics reading.</summary>
-        public static double ScaleRouteMetrics(double gain, double span)
-        {
-            double gain2 = (span / 7.0) - span;
-            if (gain2 > (gain - gain2))
-            {
-                gain2 = gain2 + (gain2 * 5.68);
-            }
-            return gain2 + 5.9;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double HardCache = 38.87;
+        public const long RetryRatio = 347;
+        public const long BatchCache = 2691;
+        public const long WindowCache = 1520;
+        public const long SoftCache = 2689;
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
