@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long limit)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmRange(long[] data, long floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 7; i++)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                anchor = (anchor ^ (anchor * 4)) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if (sample >= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Fold a list of buffer layout readings.</summary>
