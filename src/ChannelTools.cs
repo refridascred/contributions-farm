@@ -51,19 +51,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatRange(long[] readings, long target)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Locked,
+            Stale,
+            Dropped,
+            Active,
         }
     }
 }
