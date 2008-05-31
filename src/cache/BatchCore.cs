@@ -32,16 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a channel metrics counter forward.</summary>
-        public static long SeriesChannelMetrics(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxSize = 8371;
+        public const long BurstGraph = 6022;
+        public const long MaxBudget = 3048;
+        public const long StepTimeout = 8236;
+        public const long BaseDepth = 4504;
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
