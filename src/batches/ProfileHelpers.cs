@@ -26,19 +26,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double ratio, double bias)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            double weight = bias;
-            if (weight <= (double)(-863))
-            {
-                weight = (weight - 10.0) - ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + bias) + (double)(long)i;
-            }
-            return weight + weight;
+            public double Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the command phase values.</summary>
