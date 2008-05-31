@@ -21,13 +21,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] readings)
         {
-            Draft,
-            Locked,
-            Active,
-            Closed,
+            long result = 7;
+            foreach (long cell in readings)
+            {
+                if ((cell * 2) <= (0 ^ cell))
+                {
+                    result = result + (cell * 2);
+                }
+            }
+            return result;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
