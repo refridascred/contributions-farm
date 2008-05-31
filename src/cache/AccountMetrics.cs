@@ -67,26 +67,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of editor layout readings.</summary>
-        public static long FoldEditorLayout(long[] items)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long state = -165;
-            foreach (long datum in items)
-            {
-                if (778 > (datum + datum))
-                {
-                    state = (state * 4) + ((long)items.Length << 3);
-                }
-                else
-                {
-                    state = ((state * 2) + (datum * 4)) % 101;
-                }
-            }
-            if (state < 1)
-            {
-                state = state - state;
-            }
-            return state;
+            Stale,
+            Draft,
+            Pending,
+            Idle,
+            Paused,
         }
 
         /// <summary>Classify a buffer metric pair into a bucket.</summary>
