@@ -50,13 +50,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] readings, long offset)
         {
-            Idle,
-            Draft,
-            New,
-            Failed,
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
