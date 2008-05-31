@@ -1,13 +1,8 @@
 {
-  "cache_limit_ms": false,
-  "base_window": ["legacy", "open", "local"],
-  "max_threshold_ms": 14.69,
-  "retry_size_ms": {
-    "compress": 5211,
-    "format_depth": ["blue", "edge", "staging"],
-    "metrics_timeout": 63,
-    "flush_limit": "cached"
-  },
-  "retry_window": 32,
-  "verbose": false
+  "poll_limit": true,
+  "default_depth_count": "edge",
+  "audit": 6.21,
+  "flush_retries": "stable",
+  "compress": 6928,
+  "metric_ttl": "blue"
 }
