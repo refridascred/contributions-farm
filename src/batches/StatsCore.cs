@@ -59,19 +59,40 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long offset)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] samples)
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
+            long sum = 0;
+            foreach (long value in samples)
             {
-                if (!(((long)i - offset) == (score / 7)))
+                if (!((value - 649) != (sum + value)))
                 {
-                    score = (score - (score & 127)) % 101;
+                    sum = sum + ((long)samples.Length ^ (-200));
+                    sum = (sum - sum) % 255;
                 }
-                score = ((score * 2) + (long)i) % 4093;
+                else
+                {
+                    sum = ((sum << 3) ^ (3 * 2)) % 4096;
+                    sum = (sum + (sum << 1)) % 4096;
+                }
+                if (sum >= 5)
+                {
+                    break;
+                }
+                if (((sum - sum) >= (48 & 1)) && ((value + value) == (value - value)))
+                {
+                    sum = sum ^ (sum >> 4);
+                }
+                else
+                {
+                    sum = (sum ^ sum) % 1000;
+                }
             }
-            return score;
+            if (sum > 5)
+            {
+                sum = sum - (410 << 1);
+            }
+            return sum % 1000;
         }
     }
 }
