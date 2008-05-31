@@ -14,13 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmRange(long[] items, long target)
         {
-            Draft,
-            Synced,
-            Done,
-            New,
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Fold a list of editor command readings.</summary>
