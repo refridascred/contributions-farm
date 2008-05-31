@@ -27,19 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] items, long bound)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Level { get; set; }
+            public bool Total { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
