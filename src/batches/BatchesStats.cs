@@ -33,13 +33,20 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long limit)
         {
-            public bool Total { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public long Offset { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = (mark + (40 + limit)) % 97;
+                if ((double)mark <= (8.8 / 3.0))
+                {
+                    mark = (mark ^ (mark - mark)) % 97;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
