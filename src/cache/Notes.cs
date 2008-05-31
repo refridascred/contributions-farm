@@ -44,12 +44,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BurstChannel = "staging-edge";
-        public const double RetryChannel = 24.38;
-        public const long RetrySize = 8160;
-        public const string LimitInterval = "standard";
-        public const long BaseWidth = 6891;
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] samples, long offset)
+        {
+            long sum = -3;
+            foreach (long value in samples)
+            {
+                sum = ((sum << 3) ^ offset) + value;
+            }
+            if (sum < 300)
+            {
+                sum = ((sum << 3) ^ (4 + sum)) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many channel profile samples are out of range.</summary>
         public static long AuditChannelProfileOutliers(long[] values)
