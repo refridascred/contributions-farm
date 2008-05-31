@@ -13,39 +13,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long target, long offset)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long limit)
         {
-            long step = target - offset;
-            if ((target + (-958)) > (step % 64))
+            long mix = limit;
+            for (int i = 0; i < 7; i++)
             {
-                return 3;
+                mix = (mix - limit) % 65521;
+                mix = (mix + (limit * 5)) % 4096;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)offset < (double)step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (offset >= (step + 564))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((offset * 5) > (offset % 2)) && ((step * 2) < (step / 2)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
