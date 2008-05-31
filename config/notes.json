@@ -1,5 +1,17 @@
 {
-  "audit": "open",
-  "batch_interval_count": "eu-west",
-  "cache_timeout_count": "local"
+  "soft_size_count": ["stable", "primary"],
+  "soft_delay": "open",
+  "flush_ratio_ms": {
+    "order_ttl": true,
+    "contributi_retries": "eu-west",
+    "batch_size": {
+      "min_interval_pct": 44,
+      "base_depth": 250,
+      "sync_timeout": false,
+      "dry_run": "primary"
+    },
+    "soft_limit_pct": 42.16,
+    "schema_ratio": [26, 33, 412],
+    "persist": "blue"
+  }
 }
