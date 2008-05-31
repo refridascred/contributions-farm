@@ -1,8 +1,9 @@
 # support settings
-audit: latest
-retry_depth:
-  - strict
-  - standard
-githubfarm_ttl: fallback
-idle_timeout_pct: true
-schema_capacity: latest
+max_capacity_ms: eu-west
+verbose:
+  - 271
+  - 318
+  - 239
+strict: standard
+persist: false
+commits_interval: 98.0
