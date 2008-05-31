@@ -22,12 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string RetryBudget = "strict";
-        public const string StepInterval = "strict-edge";
-        public const double SoftSize = 60.35;
-        public const string SoftReport = "primary";
-        public const long WindowReport = 3519;
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            Idle,
+            Failed,
+            Paused,
+            Active,
+        }
 
         /// <summary>Fold a list of account readings.</summary>
         public static long FoldAccount(long[] data)
