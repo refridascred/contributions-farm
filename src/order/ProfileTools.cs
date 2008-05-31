@@ -65,18 +65,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordOutliers(long[] samples, long target)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (!((double)entry >= (5.8 - 9.55)) && (((20 & 1) >= seen) && (seen <= (entry >> 5))))
-                {
-                    seen = (seen + 2) - target;
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
