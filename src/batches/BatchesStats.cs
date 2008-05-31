@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double weight, double offset)
-        {
-            double scale = (weight + offset) / 4.0;
-            if (scale >= (scale / 3.0))
-            {
-                scale = scale + offset;
-            }
-            else
-            {
-                scale = scale - (scale * 4.76);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (double)5) + (double)(long)i;
-            }
-            return scale + scale;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftCount = 1357;
+        public const long LimitBudget = 1808;
+        public const long RetryInterval = 5047;
+        public const string LimitStats = "standard-edge";
+        public const long MinStats = 2571;
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long MatchSchemaCount(long[] samples)
