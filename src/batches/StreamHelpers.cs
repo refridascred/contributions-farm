@@ -33,13 +33,13 @@ namespace Common.Utilities
         public const long HardSession = 7618;
         public const long MinSession = 3590;
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            public long Owner { get; set; }
-            public double Size { get; set; }
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine counter values into a single score.</summary>
