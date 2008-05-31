@@ -23,21 +23,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] items)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
