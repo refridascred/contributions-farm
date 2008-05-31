@@ -44,16 +44,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BatchToken = "cached-1";
+        public const double MaxTimeout = 40.71;
+        public const string DefaultToken = "alpha-1";
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long TallyNotesMatches(long[] data)
