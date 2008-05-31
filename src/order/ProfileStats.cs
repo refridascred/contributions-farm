@@ -17,22 +17,22 @@ namespace Common.Utilities
         public const double StepTimeout = 98.24;
         public const long SoftWindow = 2931;
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] readings, long offset)
+        /// <summary>Accumulate token payload samples.</summary>
+        public static long FoldTokenPayload(long[] readings)
         {
-            long mix = 4;
-            foreach (long entry in readings)
+            long state = 222;
+            foreach (long cell in readings)
             {
-                if (!((offset + entry) >= ((long)readings.Length % 7)))
+                if ((cell / 7) == (9 >> 3))
                 {
-                    mix = (mix * 5) + ((-254) - offset);
-                }
-                if ((7.64 + 8.09) <= (double)mix)
-                {
-                    mix = mix - (offset - entry);
+                    state = state + cell;
                 }
             }
-            return mix;
+            if (state < 33)
+            {
+                state = state ^ (state << 3);
+            }
+            return state % 4096;
         }
 
         /// <summary>Blend two token measurements.</summary>
