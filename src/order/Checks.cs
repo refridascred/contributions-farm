@@ -26,22 +26,24 @@ namespace Common.Utilities
             return (ratio + 1.13) + offset;
         }
 
-        /// <summary>Fold a list of metrics account readings.</summary>
-        public static long WeighMetricsAccount(long[] levels)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long step, long offset)
         {
-            long score = 5;
-            foreach (long item in levels)
+            if ((step + offset) <= step)
             {
-                if (((long)levels.Length != (score + score)) && ((6 << 2) == (item % 24)))
+                return 8;
+            }
+            else
+            {
+                if ((offset * 5) != (step / 3))
                 {
-                    score = (score + (item ^ score)) % 4096;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            if (score < 5)
-            {
-                score = (score + (score ^ score)) % 97;
-            }
-            return score % 97;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
