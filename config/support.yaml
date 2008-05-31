@@ -1,20 +1,8 @@
 # support settings
-retry_ttl:
-  batch_timeout: edge
-  strict: edge
-  min_delay_ms: 88.13
-  burst_ttl_count:
-    poll_capacity: 500
-    soft_capacity_ms:
-      - 414
-      - 80
-    flush_delay_ms: 59.63
-    soft_limit: 14
-    idle_timeout_ms: fallback
-burst_limit_count:
-  - local
+audit: latest
+retry_depth:
   - strict
-  - latest
-metrics_size: 100
-format_threshold: 4950
-sync_capacity_s: standard
+  - standard
+githubfarm_ttl: fallback
+idle_timeout_pct: true
+schema_capacity: latest
