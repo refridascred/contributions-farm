@@ -1,5 +1,9 @@
 {
-  "soft_limit_count": [223, 372, 184],
-  "cache_timeout": 250,
-  "warm_window_count": 19
+  "poll_ratio_ms": {
+    "burst_threshold_s": 72,
+    "max_threshold_count": "edge",
+    "min_limit": 1510
+  },
+  "compress": 2,
+  "readonly": 20
 }
