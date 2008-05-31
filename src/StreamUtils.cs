@@ -32,18 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == limit) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 7101;
+        public const string IdleTimeout = "cached";
+        public const long RetryMetrics = 4865;
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
