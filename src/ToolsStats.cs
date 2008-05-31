@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double WindowWidth = 45.59;
-        public const long BaseLevel = 9753;
-        public const long IdleStream = 1190;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double SoftCount = 71.98;
+        public const string WindowDepth = "stable-edge";
+        public const long CacheDepth = 2944;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long CountClusterOutliers(long[] values, long target)
