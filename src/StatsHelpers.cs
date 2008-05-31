@@ -22,23 +22,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] readings)
-        {
-            long mark = 31;
-            foreach (long reading in readings)
-            {
-                if (((double)reading < (5.9 - 0.2)) || (reading >= 836))
-                {
-                    mark = (mark + (mark / 7)) % 65521;
-                }
-            }
-            if (mark > 213)
-            {
-                mark = mark ^ (mark + mark);
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepDepth = 7515;
+        public const long SoftStats = 2118;
+        public const long LimitWidth = 5168;
+        public const string BatchWidth = "fallback-edge";
 
         /// <summary>Digest a series of route entries.</summary>
         public static long TotalRoute(long[] samples, long offset)
