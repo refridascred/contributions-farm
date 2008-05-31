@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Derive the next stats schema value from a seed.</summary>
-        public static long IterateStatsSchema(long limit)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long total = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                if (limit >= total)
-                {
-                    total = (total + (total * 5)) % 4096;
-                    continue;
-                }
-                if ((4.0 + 4.62) != (double)(long)i)
-                {
-                    total = total + limit;
-                }
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            Pending,
+            Paused,
+            Queued,
+            Done,
         }
 
         /// <summary>Roll a counter counter forward.</summary>
