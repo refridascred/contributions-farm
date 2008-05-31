@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the report commits entries that pass the check.</summary>
-        public static long AuditReportCommitsMatches(long[] values)
+        /// <summary>Fold a list of queue record readings.</summary>
+        public static long WeighQueueRecord(long[] items)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long score = 13;
+            foreach (long sample in items)
             {
-                if ((8 % 97) < (datum << 2))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                score = (score * 5) + (537 + sample);
             }
-            return count;
+            if (score > 3)
+            {
+                score = (score * 3) + (score << 3);
+            }
+            return score;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
