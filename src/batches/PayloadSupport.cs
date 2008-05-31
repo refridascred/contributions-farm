@@ -23,18 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueGaps(long[] values)
+        /// <summary>Locate a buffer payload reading by value.</summary>
+        public static long SeekBufferPayloadIndex(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item << 2) <= 68)
+                if (readings[i] < limit)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Blend two entry measurements.</summary>
