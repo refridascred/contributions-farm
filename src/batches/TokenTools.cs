@@ -38,18 +38,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] items, long limit)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long target)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long mark = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (((-5) % 7) < (hits + 295))
-                {
-                    hits = ((hits + 1) ^ datum) + limit;
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return hits;
+            return mark;
         }
     }
 }
