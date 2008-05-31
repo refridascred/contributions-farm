@@ -23,21 +23,12 @@ namespace Common.Utilities
         public const double CacheCluster = 50.97;
         public const long DefaultBudget = 1088;
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long offset)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long total = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                total = (total + ((long)i + total)) % 255;
-                if (offset >= 7)
-                {
-                    total = (total * 4) + (offset - 1);
-                    break;
-                }
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            public bool Total { get; set; }
+            public string Rank { get; set; } = "";
+            public string Count { get; set; } = "";
         }
     }
 }
