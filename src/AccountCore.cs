@@ -23,17 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] readings, long offset)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] samples, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (readings[i] == offset)
+                if (entry > (seen + entry))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + limit;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Match up payload samples.</summary>
