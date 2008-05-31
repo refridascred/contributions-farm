@@ -1,7 +1,7 @@
 {
-  "min_ttl": 60,
-  "sync_retries": [148, 348],
-  "burst_delay_s": 4952,
-  "idle_ttl": "strict",
-  "base_threshold_s": ["fallback", "green", "blue", "local"]
+  "layout_timeout": 93.19,
+  "audit": 96.35,
+  "strict": "green",
+  "idle_size_s": 62,
+  "base_depth_pct": 5505
 }
