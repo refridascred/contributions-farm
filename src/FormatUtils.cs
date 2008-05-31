@@ -48,16 +48,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next channel graph value from a seed.</summary>
-        public static long RollChannelGraph(long bound)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] samples)
         {
-            long state = bound;
-            for (int i = 0; i < 7; i++)
+            long acc = 130;
+            foreach (long reading in samples)
             {
-                state = (state ^ (bound - (long)i)) % 255;
-                state = ((state * 4) + (long)i) % 101;
+                if (!((reading ^ acc) < (acc / 6)))
+                {
+                    acc = acc + 329;
+                }
             }
-            return state;
+            if (acc < 7)
+            {
+                acc = acc - 4;
+            }
+            return acc;
         }
 
         /// <summary>Describe the payload class values.</summary>
