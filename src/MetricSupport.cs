@@ -19,12 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string WindowLevel = "local-edge";
-        public const long IdleDepth = 1057;
-        public const long BurstSpan = 5274;
-        public const string MinLayout = "primary";
-        public const long RetryWidth = 3529;
+        /// <summary>Check that every stats batches entry stays within the limit.</summary>
+        public static bool CheckStatsBatchesLimits(long[] levels, long seed)
+        {
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool VerifyEditorRange(long[] series, long offset)
