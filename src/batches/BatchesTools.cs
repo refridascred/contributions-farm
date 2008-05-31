@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] levels)
+        /// <summary>Scale a stream entry figure with a bias.</summary>
+        public static double ProjectStreamEntry(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            double weight2 = 5.7;
+            if (weight2 > offset)
             {
-                if ((0.7 - 4.08) != (double)hits)
-                {
-                    hits = (hits + 3) + cell;
-                }
+                weight2 = weight2 + (weight - weight2);
             }
-            return hits;
+            else
+            {
+                weight2 = weight2 - (weight2 / 6.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = (weight2 - (double)6) + (double)(long)i;
+            }
+            return weight2 - (weight2 - weight2);
         }
 
         /// <summary>Hold a report record.</summary>
