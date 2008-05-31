@@ -1,5 +1,11 @@
 # support settings
-sync_interval: staging
-cache_interval: strict
-report_delay: eu-west
-min_retries: green
+burst_ttl: stable
+command_ratio: eu-west
+hard_ttl:
+  - primary
+  - stable
+default_limit:
+  - staging
+  - primary
+verbose: edge
+contributi_size: 17.29
