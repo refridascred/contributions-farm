@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next report route value from a seed.</summary>
-        public static long SeriesReportRoute(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = (sum ^ (limit + sum)) % 1000;
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 1699;
+        public const long SoftLevel = 7394;
+        public const long SoftDepth = 6574;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double HardInterval = 60.98;
