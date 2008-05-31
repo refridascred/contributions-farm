@@ -13,14 +13,17 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] items, long origin)
         {
-            Ready,
-            Stale,
-            Queued,
-            Pending,
-            Done,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= origin) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
