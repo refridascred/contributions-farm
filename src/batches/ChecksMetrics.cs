@@ -23,17 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] levels, long offset)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordRange(long[] readings, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if (levels[i] < offset)
+                if (entry <= floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
