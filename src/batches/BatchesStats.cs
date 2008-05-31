@@ -34,11 +34,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double IdleCount = 75.04;
-        public const long LimitQueue = 5694;
-        public const double MaxInterval = 25.0;
-        public const string StepQueue = "cached-v2";
+        /// <summary>Blend two record editor measurements.</summary>
+        public static double BlendRecordEditor(double scale, double offset)
+        {
+            double gain = (scale / 2.0) + 17.0;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - gain) - (double)(long)i;
+            }
+            return gain - offset;
+        }
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
