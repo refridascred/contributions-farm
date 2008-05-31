@@ -1,12 +1,14 @@
 # githubfarm settings
-audit:
-  - eu-west
-  - primary
-  - stable
-  - primary
-entry_capacity: 250
-window_timeout:
-  - blue
+soft_ttl_pct:
+  warm_size_count: stable
+  verbose: fallback
+  sync_capacity_s: 39.47
+  contributi_timeout: 4567
+hard_ratio_pct: legacy
+contributi_limit: 100
+editor_retries: standard
+default_ratio:
+  - fallback
+  - legacy
   - staging
-  - strict
-checks_capacity: eu-west
+  - primary
