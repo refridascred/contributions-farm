@@ -23,19 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricLimits(long[] samples, long target)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] samples, long origin)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long sum = 0;
+            foreach (long item in samples)
             {
-                if (sample >= target)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = (((sum - (sum << 2)) % 65521) ^ item) + origin;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
