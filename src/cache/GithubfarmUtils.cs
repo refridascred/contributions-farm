@@ -37,22 +37,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] levels, long bound)
+        /// <summary>Check that every contributi context entry stays within the limit.</summary>
+        public static bool ValidateContributiContextBounds(long[] values, long limit)
         {
-            long result = -62;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if ((13.0 + 14.0) >= (double)bound)
+                if (sample != limit)
                 {
-                    result = (((result * 2) + (result - result)) % 4096) ^ cell;
-                }
-                if (result < ((-73) * 5))
-                {
+                    found = false;
                     break;
                 }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Project the next buffer value.</summary>
