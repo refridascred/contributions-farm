@@ -57,13 +57,10 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
-        {
-            public bool Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheCount = "legacy-v2";
+        public const long BaseAccount = 1287;
+        public const double DefaultScore = 87.85;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long ScoreContext(long[] readings)
