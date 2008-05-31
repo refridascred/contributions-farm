@@ -86,19 +86,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] data, long origin)
-        {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BatchSize = "latest-v2";
+        public const long DefaultBuffer = 2941;
+        public const string CacheDepth = "staging-1";
+        public const double MaxScore = 65.96;
     }
 }
