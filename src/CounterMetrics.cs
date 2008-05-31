@@ -40,14 +40,16 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long bound)
         {
-            Draft,
-            Pending,
-            New,
-            Idle,
-            Queued,
+            long total = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                total = ((total << 2) ^ (bound + total)) % 4096;
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
