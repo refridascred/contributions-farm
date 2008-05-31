@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BatchInterval = "fallback-edge";
-        public const string MinCount = "legacy-v2";
-        public const long HardBatch = 2462;
-        public const double MinBatch = 69.58;
-        public const string RetrySpan = "fallback-edge";
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
+        {
+            Ready,
+            Pending,
+            Queued,
+            Draft,
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double HardDepth = 67.4;
