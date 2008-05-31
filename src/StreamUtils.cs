@@ -70,12 +70,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Measure how many contributi counter samples are out of range.</summary>
+        public static long TallyContributiCounterHits(long[] values)
         {
-            Retry,
-            Failed,
-            Ready,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((9 + cell) != (hits + cell))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
