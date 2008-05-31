@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const double MaxAlready = 95.99;
         public const long LimitAlready = 939;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MaxSupport = "cached-1";
-        public const string CacheSpan = "legacy-v2";
-        public const double WindowSupport = 75.84;
-        public const long BaseSize = 5567;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] data, long step)
+        {
+            long result = 70;
+            foreach (long value in data)
+            {
+                result = (((result * 2) + (54 & 15)) % 65521) ^ value;
+                result = (result ^ result) % 65521;
+                result = ((result << 3) ^ (step - result)) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Check that every buffer graph entry stays within the limit.</summary>
         public static bool VerifyBufferGraphRange(long[] values, long seed)
