@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterOutliers(long[] levels, long origin)
+        /// <summary>Audit buffer already readings against a rule.</summary>
+        public static long MeasureBufferAlreadyMatches(long[] items, long offset)
         {
             long seen = 0;
-            foreach (long sample in levels)
+            foreach (long sample in items)
             {
-                if ((origin + origin) >= (-298))
+                if ((double)(long)items.Length >= (4.7 - 6.9))
                 {
-                    seen = (seen + 3) - sample;
+                    seen = ((seen + 3) - sample) - offset;
                 }
             }
             return seen;
