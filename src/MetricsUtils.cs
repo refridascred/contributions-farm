@@ -37,15 +37,11 @@ namespace Common.Utilities
         public const long HardEntry = 8417;
         public const long MinWidth = 8230;
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double rate, double offset)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            double load = (double)557 - (double)886;
-            for (int i = 0; i < 5; i++)
-            {
-                load = ((load + (double)(long)i) - rate) - offset;
-            }
-            return load + load;
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Accumulate support samples.</summary>
