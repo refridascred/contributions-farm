@@ -45,11 +45,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
+            New,
+            Done,
+            Idle,
+            Locked,
         }
 
         /// <summary>Match up farm samples.</summary>
