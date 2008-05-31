@@ -1,17 +1,18 @@
 # githubfarm settings
-flush_depth_pct:
-  min_size_ms: stable
-  order_interval: 17.96
-  audit: 66.06
-  hard_threshold: 1024
-  sync_interval_s: 250
-  stream_ttl: strict
-support_ratio:
-  - 245
-  - 134
-  - 276
-  - 58
-default_depth_ms: 21
-already_delay: 7189
-max_retries_ms: 100
-soft_timeout: 56.71
+burst_capacity: 4956
+enabled:
+  enabled: 96.29
+  report_ratio:
+    enabled: true
+    cache_ratio: 500
+    soft_retries_count: 98.62
+    poll_depth: true
+    idle_ratio: 93.77
+    flush_ratio: eu-west
+  warm_limit_count:
+    - stable
+    - legacy
+  cache_retries_count: 57.17
+  entry_window: true
+batch_retries: primary
+retry_threshold: 83
