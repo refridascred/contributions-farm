@@ -89,13 +89,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public long Total { get; set; }
+            New,
+            Stale,
+            Paused,
         }
     }
 }
