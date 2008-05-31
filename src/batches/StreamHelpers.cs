@@ -21,18 +21,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a metric support sample.</summary>
-        public static long LookupMetricSupportIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchScore = 5214;
+        public const double HardCommand = 41.2;
+        public const string MinTimeout = "stable-edge";
+        public const long StepCommand = 8814;
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long SeriesCluster(long target)
