@@ -77,12 +77,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
-        {
-            public double Ratio { get; set; }
-            public string Region { get; set; } = "";
-            public long Total { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 3024;
+        public const double DefaultEntry = 36.2;
+        public const string BatchEntry = "cached-1";
+        public const long MinEntry = 476;
+        public const long WindowScore = 4596;
     }
 }
