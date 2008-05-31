@@ -41,17 +41,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a checks payload sample.</summary>
-        public static long LookupChecksPayloadIndex(long[] data, long limit)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == limit) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Closed,
+            Synced,
+            Dropped,
         }
     }
 }
