@@ -35,23 +35,29 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long limit, long origin)
+        /// <summary>Grade a githubfarm schema value against two limits.</summary>
+        public static long ClassifyGithubfarmSchema(long limit, long offset)
         {
-            long slot = limit ^ origin;
-            if ((double)slot >= 3.0)
+            if ((2 / 2) == (limit >> 4))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if ((627 + origin) == (origin + limit))
+                if (!((double)limit == (1.9 + 2.1)))
                 {
-                    return 4;
+                    return 0;
                 }
                 else
                 {
-                    return 6;
+                    if ((limit % 8) <= limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
