@@ -53,13 +53,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] data, long bound)
         {
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (!(((entry * 5) <= tally) || (tally > ((long)data.Length + tally))))
+                {
+                    tally = (tally + 3) + bound;
+                }
+            }
+            return tally;
         }
     }
 }
