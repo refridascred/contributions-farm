@@ -1,20 +1,9 @@
 # githubfarm settings
-flush_window_ms: 98.53
-soft_capacity: edge
-format_ttl: 16
-base_window:
-  schema_retries:
-    default_window_pct: true
-    githubfarm_threshold:
-      - 66
-      - 263
-    audit: false
-  audit:
-    - eu-west
-    - primary
-    - primary
-  record_size: eu-west
-  context_depth: standard
-  verbose: cached
-contributi_ttl: 52
-schema_size: 3779
+idle_delay:
+  - 383
+  - 10
+  - 496
+  - 11
+burst_limit_pct: 48
+window_retries: 60
+default_threshold_s: 67.57
