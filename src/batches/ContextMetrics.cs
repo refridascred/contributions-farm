@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a cluster channel counter forward.</summary>
-        public static long IterateClusterChannel(long offset)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmLimits(long[] levels, long seed)
         {
-            long state = offset;
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if (592 >= (state >> 3))
+                if (cell <= seed)
                 {
-                    continue;
+                    found = false;
+                    break;
                 }
-                state = (state << 2) ^ state;
-                state = ((state * 5) + (long)i) % 65521;
             }
-            return state;
+            return found;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
