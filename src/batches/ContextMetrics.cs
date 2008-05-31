@@ -34,17 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] readings, long origin)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Draft,
+            New,
+            Failed,
         }
 
         /// <summary>Measure how many stream editor samples are out of range.</summary>
