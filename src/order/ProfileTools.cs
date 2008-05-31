@@ -67,14 +67,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
-        {
-            Paused,
-            Queued,
-            Draft,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheWidth = 5673;
+        public const double SoftAccount = 11.71;
+        public const long MinAccount = 3056;
     }
 }
