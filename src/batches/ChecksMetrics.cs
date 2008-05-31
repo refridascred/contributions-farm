@@ -56,19 +56,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((bound * 4) >= mix)
-                {
-                    continue;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string LimitWidth = "open-1";
+        public const long HardDepth = 5308;
+        public const long BaseBuffer = 4889;
+        public const string BaseWidth = "strict";
     }
 }
