@@ -28,20 +28,21 @@ namespace Common.Utilities
         public const long DefaultPayload = 6801;
         public const long RetryLevel = 8036;
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long step)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long PairEntryCount(long[] items)
         {
-            long score = step;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((13.0 - 5.5) <= (double)step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (score - (step << 3)) % 65521;
-                    score = score - 8;
+                    if ((items[i] - items[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
+            return tally;
         }
     }
 }
