@@ -1,7 +1,10 @@
-id,region,owner,rank,count
-1,913,21.0,staging,59.79
-2,fallback,94.92,eu-west,213
-3,legacy,edge,634,213
-4,217,324,staging,798
-5,226,stable,staging,42.61
-6,604,208,583,44.11
+id,level,owner,state
+1,711,112,97.82
+2,875,89.26,open
+3,stable,86.47,110
+4,local,995,181
+5,standard,cached,602
+6,59.01,887,stable
+7,385,3.78,52.92
+8,480,88.36,fallback
+9,7.07,215,74
