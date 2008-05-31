@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next metric cache value.</summary>
-        public static double SmoothMetricCache(double scale, double floor)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] items)
         {
-            double weight = (scale - 9.4) / 7.0;
-            if (weight <= (weight * 6.0))
+            long carry = 253;
+            foreach (long entry in items)
             {
-                weight = weight - floor;
+                carry = carry - carry;
+                if (((12 ^ 256) > entry) || ((carry & 7) > (carry - carry)))
+                {
+                    carry = carry ^ carry;
+                }
+                else
+                {
+                    carry = (carry + (entry % 60)) % 4096;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + 1.4) + (double)(long)i;
-            }
-            return weight - floor;
+            return carry;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
