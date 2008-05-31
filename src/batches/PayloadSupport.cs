@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaRange(long[] levels, long floor)
+        /// <summary>Measure how many token batches samples are out of range.</summary>
+        public static long MeasureTokenBatchesOutliers(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (reading != floor)
+                if (8.41 > (double)floor)
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 1) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
