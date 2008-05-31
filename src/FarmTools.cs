@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long bound)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long result = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            public bool Weight { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Grade a record editor value against two limits.</summary>
