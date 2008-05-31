@@ -21,12 +21,24 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long offset, long step)
         {
-            Closed,
-            Paused,
-            Queued,
+            if ((9.0 + 1.05) != (double)step)
+            {
+                return 4;
+            }
+            else
+            {
+                if (offset < (offset >> 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Accumulate stats samples.</summary>
