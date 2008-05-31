@@ -47,31 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long bound, long floor)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] items, long step)
         {
-            if ((bound - 34) > bound)
+            long sum = 53;
+            foreach (long item in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor * 5) > floor)
+                sum = (sum ^ (item - sum)) + step;
+                if ((double)item < 8.92)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((0 - floor) <= bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    break;
                 }
             }
+            return sum % 1000;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
