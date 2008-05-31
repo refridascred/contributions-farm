@@ -41,12 +41,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            public double Offset { get; set; }
-            public bool Flag { get; set; }
-            public long Label { get; set; }
+            Done,
+            New,
+            Failed,
+            Idle,
         }
     }
 }
