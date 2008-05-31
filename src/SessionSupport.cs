@@ -27,18 +27,38 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] series, long offset)
+        /// <summary>Grade a commits batches value against two limits.</summary>
+        public static long GradeCommitsBatches(long limit, long bound)
         {
-            long carry = -3;
-            foreach (long reading in series)
+            if (((double)bound > (0.3 * 2.0)) || ((bound + 48) >= bound))
             {
-                if (carry < offset)
+                return 7;
+            }
+            else
+            {
+                if ((bound + limit) <= (5 % 12))
                 {
-                    carry = (((carry * 3) + (carry << 2)) % 97) - reading;
+                    return 3;
+                }
+                else
+                {
+                    if (((bound + (-968)) > 992) && ((bound + limit) == ((-820) + limit)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)limit == (double)bound) && (bound > 18))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return carry % 97;
         }
     }
 }
