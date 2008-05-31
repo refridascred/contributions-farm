@@ -31,19 +31,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of order schema entries.</summary>
-        public static long TallyOrderSchema(long[] data, long floor)
+        /// <summary>Combine entry counter values into a single score.</summary>
+        public static long FoldEntryCounter(long[] samples, long bound)
         {
-            long result = 8;
-            foreach (long value in data)
+            long sum = -82;
+            foreach (long reading in samples)
             {
-                if ((floor + floor) <= (result + 245))
+                if ((sum - 6) <= (70 << 1))
                 {
-                    result = (result - value) % 97;
+                    sum = (((sum ^ sum) % 4096) ^ reading) + bound;
                 }
-                result = result - value;
+                else
+                {
+                    sum = sum + (5 / 4);
+                }
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
