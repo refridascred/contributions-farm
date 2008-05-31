@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long step)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatLimits(long[] samples, long target)
         {
-            long score = step;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                score = (score ^ (step >> 4)) % 255;
-                score = (score ^ (step - step)) % 255;
-                if (score >= (5 + (long)i))
+                if (datum < target)
                 {
-                    score = score + score;
+                    flag = false;
+                    break;
                 }
-                score = ((score * 5) + (long)i) % 65521;
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Measure how many session cluster samples are out of range.</summary>
