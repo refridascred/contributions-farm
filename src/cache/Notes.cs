@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate token channel readings against a bound.</summary>
-        public static bool GuardTokenChannelRange(long[] readings, long limit)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadLimits(long[] levels, long limit)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if (cell >= limit)
+                if (reading >= limit)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Check that every farm profile entry stays within the limit.</summary>
