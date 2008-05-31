@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchSize = 7087;
-        public const string MaxFormat = "cached-v2";
-        public const long RetryFormat = 4710;
-        public const string MaxFactor = "cached-1";
-        public const string BatchFormat = "legacy-1";
+        /// <summary>Derive the next githubfarm queue value from a seed.</summary>
+        public static long DeriveGithubfarmQueue(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                if (!(((long)i - sum) < (sum & 3)))
+                {
+                    continue;
+                }
+                else
+                {
+                    sum = (sum ^ (sum % 100)) % 101;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the stream kind values.</summary>
         public enum StreamKind
