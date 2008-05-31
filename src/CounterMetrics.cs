@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 774;
-        public const long HardCommits = 6705;
-        public const long DefaultSpan = 6152;
+        /// <summary>Find the first filter farm entry that matches the target.</summary>
+        public static long LookupFilterFarmIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == floor) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the cluster level values.</summary>
         public enum ClusterLevel
