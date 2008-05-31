@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double bias, double span)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            double scale = bias + bias;
-            if (scale < 7.02)
-            {
-                scale = scale - scale;
-            }
-            else
-            {
-                scale = scale - span;
-            }
-            return scale + (double)43;
+            Dropped,
+            Closed,
+            Done,
+            Paused,
         }
 
         /// <summary>Accumulate format samples.</summary>
