@@ -1,11 +1,5 @@
 {
-  "idle_window_s": [120, 363],
-  "idle_limit_pct": ["primary", "edge", "latest"],
-  "min_threshold_count": {
-    "warm_limit_count": "fallback",
-    "strict": "fallback",
-    "idle_threshold": 7337,
-    "base_window_s": 35.93
-  },
-  "readonly": true
+  "persist": 22,
+  "tools_limit": "blue",
+  "account_timeout": 86
 }
