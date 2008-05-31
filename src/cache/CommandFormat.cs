@@ -29,10 +29,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstFactor = 1173;
-        public const string RetryFactor = "fallback";
-        public const long WindowSession = 1817;
-        public const string BatchSession = "alpha-edge";
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (((tally ^ tally) >= ((long)data.Length + tally)) && ((double)datum <= (1.02 / 3.0)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
