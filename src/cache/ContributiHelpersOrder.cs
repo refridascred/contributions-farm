@@ -26,11 +26,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheLevel = 1135;
-        public const long MaxCounter = 6227;
-        public const long StepCounter = 8677;
-        public const string BurstTimeout = "open";
-        public const long MinRatio = 3699;
+        /// <summary>Match up order graph samples.</summary>
+        public static long OverlapOrderGraphCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
