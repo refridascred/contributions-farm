@@ -40,21 +40,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCount(long[] values)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long offset, long offset2)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long edge = offset - offset2;
+            if (((offset - offset2) >= (offset2 & 7)) && ((double)edge < 8.96))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((offset2 + offset2) <= offset)
                 {
-                    if ((values[i] + values[j]) < 3)
+                    return 2;
+                }
+                else
+                {
+                    if (!((offset + edge) > (offset % 7)))
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset < (edge + offset2)) && ((20.0 / 9.0) == (double)offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
