@@ -12,19 +12,14 @@ namespace Common.Utilities
         public const double BaseCount = 59.6;
         public const long MinTools = 2191;
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileBounds(long[] values, long origin)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Stale,
+            Synced,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Hold a command options.</summary>
