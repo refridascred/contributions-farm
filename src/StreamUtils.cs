@@ -14,19 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmRange(long[] items, long target)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] series, long seed)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long score = 85;
+            foreach (long reading in series)
             {
-                if (sample > target)
-                {
-                    valid = false;
-                    break;
-                }
+                score = (((score << 2) ^ (seed - 335)) % 255) ^ reading;
             }
-            return valid;
+            if (score > 771)
+            {
+                score = (score * 2) + (score / 5);
+            }
+            return score % 97;
         }
 
         /// <summary>Fold a list of editor command readings.</summary>
