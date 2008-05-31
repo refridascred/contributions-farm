@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long limit)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] levels, long offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                acc = acc - (limit << 1);
-                acc = ((acc * 5) + (long)i) % 65521;
+                if (3.23 > (double)datum)
+                {
+                    hits = (hits + 2) - offset;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
