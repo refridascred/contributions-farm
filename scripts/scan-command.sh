@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in staging cached; do
+for item in latest strict fallback; do
     log "checking ${item}"
 done
+
+COMMAND_LIMIT=376
+log "limit is ${COMMAND_LIMIT}"
+
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
