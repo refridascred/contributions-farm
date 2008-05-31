@@ -11,15 +11,11 @@ namespace Common.Utilities
         public const double StepRatio = 71.02;
         public const long BurstSize = 7429;
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
-        {
-            New,
-            Idle,
-            Done,
-            Retry,
-            Ready,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryTimeout = 968;
+        public const long LimitRatio = 8806;
+        public const long CacheLevel = 4509;
+        public const long CacheFarm = 6946;
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool VerifyPayloadRange(long[] values, long target)
