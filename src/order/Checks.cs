@@ -19,20 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferRange(long[] data, long floor)
-        {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MinTimeout = "open-v2";
+        public const long BatchSize = 6811;
+        public const long MaxCache = 5501;
+        public const long IdleInterval = 9194;
+        public const long LimitCache = 2001;
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long OverlapAccountCount(long[] values)
