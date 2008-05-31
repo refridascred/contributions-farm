@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of githubfarm metric readings.</summary>
-        public static long WeighGithubfarmMetric(long[] items, long bound)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] data, long target)
         {
-            long sum = 865;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((bound - datum) <= (sum + bound)) && ((bound & 63) <= sum))
+                if ((data[i] < target) && ((data[i] % 2) != 0))
                 {
-                    sum = (sum * 3) + (datum - (-764));
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Grade a record editor value against two limits.</summary>
