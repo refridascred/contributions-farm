@@ -41,17 +41,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MinScore = "latest-edge";
+        public const long WindowCounter = 9436;
+        public const double DefaultRatio = 14.67;
+        public const long CacheCounter = 361;
+        public const string DefaultCounter = "fallback-edge";
     }
 }
