@@ -46,12 +46,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
-        {
-            Ready,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 4955;
+        public const long IdleLevel = 5470;
+        public const string DefaultCluster = "stable";
+        public const double SoftCluster = 45.03;
+        public const string HardCluster = "latest-edge";
     }
 }
