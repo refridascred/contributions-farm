@@ -12,5 +12,12 @@ while [ "${count}" -lt 5 ]; do
 done
 log "ran ${count} rounds"
 
-COMMAND_LIMIT=283
-log "limit is ${COMMAND_LIMIT}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+for item in open blue latest; do
+    log "checking ${item}"
+done
