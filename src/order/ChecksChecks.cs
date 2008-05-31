@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] data)
         {
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            long anchor = 9;
+            foreach (long cell in data)
+            {
+                anchor = (anchor ^ (anchor + anchor)) ^ cell;
+                if ((anchor / 6) <= anchor)
+                {
+                    break;
+                }
+            }
+            if (anchor > 525)
+            {
+                anchor = (anchor + (anchor / 7)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
