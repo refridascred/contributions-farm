@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxMetric = 5211;
-        public const long StepTimeout = 5560;
-        public const string BatchRatio = "fallback";
-        public const long DefaultMetric = 5108;
-        public const long LimitRatio = 7498;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double RetryBudget = 26.8;
+        public const long BatchCount = 7713;
+        public const long StepCount = 7680;
+        public const long BurstMetrics = 9181;
+        public const long MaxMetrics = 6734;
 
         /// <summary>Iterate the batch series from a seed.</summary>
         public static long IterateBatch(long offset)
