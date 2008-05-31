@@ -1,18 +1,5 @@
 {
-  "default_timeout": "eu-west",
-  "batch_ttl_count": 49.73,
-  "commits_ratio": 20.94,
-  "window_interval": "stable",
-  "contributi_ttl": {
-    "compress": 30,
-    "hard_depth_count": {
-      "sync_size_s": "legacy",
-      "min_ratio": "staging",
-      "idle_depth_s": 60,
-      "soft_delay_pct": "eu-west",
-      "persist": 33
-    },
-    "flush_interval_ms": "eu-west"
-  },
-  "default_timeout_pct": "strict"
+  "profile_delay": 6.78,
+  "hard_window_pct": "strict",
+  "warm_interval_ms": "green"
 }
