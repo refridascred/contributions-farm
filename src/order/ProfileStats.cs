@@ -57,17 +57,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] levels, long step)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > step) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Draft,
+            Active,
+            Ready,
+            Dropped,
         }
     }
 }
