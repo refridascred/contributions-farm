@@ -10,22 +10,13 @@ namespace Common.Utilities
         public const long BaseRatio = 1195;
         public const long IdleWindow = 7233;
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] series, long origin)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long carry = 90;
-            foreach (long item in series)
-            {
-                if (((77 + carry) <= 6) || (item > (1 + item)))
-                {
-                    carry = ((carry * 2) + origin) % 97;
-                }
-            }
-            if (carry < 44)
-            {
-                carry = (carry ^ ((-25) >> 3)) % 255;
-            }
-            return carry;
+            Locked,
+            Failed,
+            Draft,
+            New,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
