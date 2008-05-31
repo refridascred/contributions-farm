@@ -41,17 +41,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first buffer queue entry that matches the target.</summary>
-        public static long LocateBufferQueueIndex(long[] items, long offset)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] data, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long value in data)
             {
-                if (items[i] < offset)
+                if (value < limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
