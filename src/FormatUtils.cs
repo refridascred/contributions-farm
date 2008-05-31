@@ -41,22 +41,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] samples)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] items, long step)
         {
-            long acc = 130;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (!((reading ^ acc) < (acc / 6)))
+                if (((double)step != (double)cell) && (((double)hits < (9.1 * 4.8)) && ((step + 7) <= (-6))))
                 {
-                    acc = acc + 329;
+                    hits = hits + 3;
                 }
             }
-            if (acc < 7)
-            {
-                acc = acc - 4;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Match up buffer token samples.</summary>
