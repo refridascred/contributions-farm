@@ -29,21 +29,19 @@ namespace Common.Utilities
         public const long SoftContext = 1015;
         public const string DefaultTimeout = "staging";
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] series)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] values, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample != bound)
                 {
-                    if ((series[i] + series[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
