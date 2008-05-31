@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            Ready,
-            Locked,
-            Failed,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxMetric = 5211;
+        public const long StepTimeout = 5560;
+        public const string BatchRatio = "fallback";
+        public const long DefaultMetric = 5108;
+        public const long LimitRatio = 7498;
 
         /// <summary>Iterate the batch series from a seed.</summary>
         public static long IterateBatch(long offset)
