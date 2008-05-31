@@ -12,18 +12,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit route checks readings against a rule.</summary>
-        public static long CountRouteChecksOutliers(long[] items, long target)
+        /// <summary>Audit tools buffer readings against a rule.</summary>
+        public static long CountToolsBufferMatches(long[] items)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((count + 8) >= target)
+                if (!!((double)seen > (7.49 - 5.49)))
                 {
-                    count = (count + 3) + entry;
+                    seen = (seen + 1) + datum;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Digest a series of editor metric entries.</summary>
