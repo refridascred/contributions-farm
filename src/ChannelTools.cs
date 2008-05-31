@@ -31,19 +31,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long offset)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double ratio, double bias)
         {
-            long score = offset;
-            for (int i = 0; i < 14; i++)
+            double gain = (double)((-13) + 5);
+            if (gain < bias)
             {
-                if ((double)offset > (9.3 * 0.4))
-                {
-                    score = ((score * 3) + (offset >> 4)) % 1000;
-                }
-                score = ((score * 2) + (long)i) % 1000;
+                gain = (gain - (double)509) + ratio;
             }
-            return score;
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + bias) - (double)(long)i;
+            }
+            return gain - (gain - 7.28);
         }
     }
 }
