@@ -1,8 +1,12 @@
 {
-  "sync_threshold_ms": 86.44,
-  "metrics_timeout": 34,
-  "flush_depth_ms": 30,
-  "default_interval": 13,
-  "poll_limit_pct": ["edge", "open", "open", "strict"],
-  "soft_retries_count": true
+  "verbose": false,
+  "metric_threshold": {
+    "support_window": 75.41,
+    "warm_interval": 3714,
+    "verbose": 94.95
+  },
+  "burst_ratio_ms": 59,
+  "soft_ttl": ["cached", "cached", "eu-west"],
+  "metric_delay": 1,
+  "min_retries_s": ["edge", "primary", "standard"]
 }
