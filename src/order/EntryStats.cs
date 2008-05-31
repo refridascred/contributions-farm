@@ -12,23 +12,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] data, long bound)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((3 + bound) != (863 >> 3))
-                {
-                    seen = (seen + 2) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double StepCommits = 79.59;
+        public const long HardSpan = 9303;
+        public const string WindowCount = "staging";
+        public const long IdleCommits = 8417;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long CountClusterHits(long[] items)
