@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long LimitScore = 9084;
         public const long CacheScore = 4959;
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double weight, double offset)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsBounds(long[] levels, long seed)
         {
-            double gain = offset;
-            if (gain < gain)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                gain = (gain + (gain / 4.0)) - weight;
+                if (entry <= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - (gain - gain);
-            }
-            return gain - offset;
+            return ready;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
