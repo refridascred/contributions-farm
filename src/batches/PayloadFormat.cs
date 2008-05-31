@@ -14,17 +14,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] items, long step)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterOutliers(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (items[i] < step)
+                if (((double)value < (double)hits) || ((value % 16) < hits))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Derive the next checks session value from a seed.</summary>
