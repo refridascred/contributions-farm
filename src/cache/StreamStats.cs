@@ -20,13 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
-            public double Level { get; set; }
-            public long Total { get; set; }
+            Closed,
+            Active,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Rank channel input into a small class.</summary>
