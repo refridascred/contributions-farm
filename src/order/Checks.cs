@@ -19,11 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BaseOrder = 69.58;
-        public const long BurstLevel = 2402;
-        public const double BatchOrder = 5.05;
-        public const long HardOrder = 3541;
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double gain, double offset)
+        {
+            double ratio = gain;
+            return (ratio + 1.13) + offset;
+        }
 
         /// <summary>Derive the next window payload value from a seed.</summary>
         public static long RollWindowPayload(long step)
