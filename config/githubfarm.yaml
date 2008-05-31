@@ -1,23 +1,6 @@
 # githubfarm settings
-retry_depth_pct: 21
-commits_capacity:
-  dry_run: 31.56
-  default_ttl: 57
-  audit:
-    - 356
-    - 465
-    - 393
-    - 52
-  burst_ttl_count: 21
-  readonly: 37
-  retry_depth_pct:
-    - local
-    - open
-    - latest
-    - eu-west
-base_capacity: true
-retry_delay:
-  - eu-west
-  - cached
-default_window_count: 93.21
-retry_retries_ms: 65.96
+readonly: 93.51
+default_size: stable
+poll_ttl_s:
+  - fallback
+  - open
