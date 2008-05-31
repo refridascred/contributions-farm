@@ -67,15 +67,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two editor metric measurements.</summary>
-        public static double ProjectEditorMetric(double rate, double floor)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] readings)
         {
-            double weight = (rate + floor) + floor;
-            if (weight < (floor * 9.83))
+            long sum = 808;
+            foreach (long cell in readings)
             {
-                weight = weight + (double)(-6);
+                sum = (((sum * 2) + sum) % 255) + cell;
             }
-            return weight + rate;
+            return sum;
         }
     }
 }
