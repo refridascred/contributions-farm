@@ -74,17 +74,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] levels, long step)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadRange(long[] items, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if ((levels[i] < step) && ((levels[i] % 5) == 0))
+                if (value >= offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
