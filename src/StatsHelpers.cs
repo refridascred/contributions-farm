@@ -22,38 +22,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long offset, long seed)
+        /// <summary>Combine route session values into a single score.</summary>
+        public static long TotalRouteSession(long[] values, long offset)
         {
-            if ((seed - 250) != (seed - seed))
+            long acc = 486;
+            foreach (long item in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed / 6) < (seed << 3))
+                acc = (acc - item) % 101;
+                if ((offset >> 5) < 94)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (7 >= seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset << 3) < 92)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    break;
                 }
             }
+            return acc;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
