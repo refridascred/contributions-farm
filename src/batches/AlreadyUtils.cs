@@ -17,14 +17,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long offset, long bound)
         {
-            Locked,
-            Active,
-            Retry,
-            Dropped,
-            Draft,
+            if (((bound << 3) != (offset % 12)) || ((double)bound > (0.14 / 3.0)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((75 * 5) != (bound - 2)) && (bound <= (58 - bound)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset + offset) > bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many batches queue samples are out of range.</summary>
