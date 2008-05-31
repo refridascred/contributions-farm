@@ -42,22 +42,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of layout record readings.</summary>
-        public static long FoldLayoutRecord(long[] series, long seed)
-        {
-            long result = 3;
-            foreach (long cell in series)
-            {
-                if (((seed - result) > (result / 8)) && ((cell % 2) >= (seed + result)))
-                {
-                    result = ((result * 2) + (result << 2)) % 4096;
-                }
-                else
-                {
-                    result = (result << 3) ^ cell;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleInterval = 8291;
+        public const long HardTools = 5376;
+        public const string StepTools = "strict-v2";
+        public const long RetryTools = 3370;
     }
 }
