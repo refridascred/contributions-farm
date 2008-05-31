@@ -26,39 +26,19 @@ namespace Common.Utilities
             return ratio + (ratio + span);
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long offset, long offset2)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long seed)
         {
-            long edge = offset - offset2;
-            if (((offset - offset2) >= (offset2 & 7)) && ((double)edge < 8.96))
+            long mix = seed;
+            for (int i = 0; i < 8; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset2 + offset2) <= offset)
+                if (((seed << 3) > (seed + mix)) || ((seed - seed) >= seed))
                 {
-                    return 2;
+                    mix = mix - mix;
                 }
-                else
-                {
-                    if (!((offset + edge) > (offset % 7)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset < (edge + offset2)) && ((20.0 / 9.0) == (double)offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
+            return mix;
         }
     }
 }
