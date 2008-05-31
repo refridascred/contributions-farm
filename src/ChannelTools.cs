@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of record filter entries.</summary>
-        public static long CombineRecordFilter(long[] levels, long origin)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] levels)
         {
-            long state = 959;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                state = ((state + (origin - (-528))) % 65521) - item;
-                if (((origin + origin) != (state - origin)) && (19 < ((long)levels.Length % 60)))
+                if ((seen / 8) >= (seen << 2))
                 {
-                    state = (state ^ 2) % 65521;
+                    seen = (seen + 2) + value;
                 }
             }
-            return state % 4096;
+            return seen;
         }
 
         /// <summary>Find the first buffer metric entry that matches the target.</summary>
