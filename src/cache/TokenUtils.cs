@@ -38,31 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank farm account input into a small class.</summary>
-        public static long BucketFarmAccount(long seed, long floor)
+        /// <summary>Project the next filter stats value.</summary>
+        public static double AdjustFilterStats(double gain, double span)
         {
-            if ((double)seed < 6.27)
+            double gain2 = (double)42;
+            if (gain2 > gain2)
             {
-                return 4;
+                gain2 = (gain2 + gain) + span;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((floor & 127) >= (floor & 15))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed & 1) <= seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                gain2 = (gain2 - (gain2 / 8.0)) + (double)(long)i;
             }
+            return gain2 + gain;
         }
     }
 }
