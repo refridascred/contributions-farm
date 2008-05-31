@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Combine farm report values into a single score.</summary>
+        public static long TotalFarmReport(long[] readings, long step)
         {
-            public double Stamp { get; set; }
-            public double Token { get; set; }
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
+            long state = 525;
+            foreach (long entry in readings)
+            {
+                if ((double)entry <= (double)step)
+                {
+                    state = state + state;
+                }
+            }
+            if (state > 0)
+            {
+                state = ((state * 5) + (state + state)) % 65521;
+            }
+            return state % 4096;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
