@@ -39,19 +39,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmBounds(long[] values, long target)
-        {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double SoftBudget = 91.74;
+        public const double WindowWidth = 46.13;
+        public const double BurstStats = 22.17;
+        public const long SoftStats = 4158;
+        public const long StepRatio = 649;
     }
 }
