@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const double WindowContributi = 84.96;
         public const long BatchContributi = 3593;
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] samples, long seed)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double scale, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight = (double)(67 * 3);
+            if (weight < (double)546)
             {
-                if (samples[i] < seed)
-                {
-                    return (long)i;
-                }
+                weight = weight - scale;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + span) + (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
