@@ -19,10 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 8659;
-        public const long CacheTools = 9023;
-        public const long BurstFactor = 8381;
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = ((carry * 3) + (carry - bound)) % 97;
+                carry = ((carry * 2) + (carry + bound)) % 65521;
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Check that every token window entry stays within the limit.</summary>
         public static bool GuardTokenWindowLimits(long[] levels, long origin)
