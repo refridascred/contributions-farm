@@ -17,32 +17,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long origin, long bound)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long edge = origin + bound;
-            if (2 <= (edge + bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if (84 >= (bound % 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((9.72 / 8.0) <= (double)bound) || ((edge & 7) >= origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Count { get; set; }
+            public string Owner { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Grade a commits batches value against two limits.</summary>
