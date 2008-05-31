@@ -43,39 +43,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long offset, long floor)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long step = offset - floor;
-            if ((double)step > (6.0 / 3.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((step << 3) <= (step ^ floor)) || ((step ^ (-378)) > step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((0 & 15) <= offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)offset < (20.0 - 3.2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Retry,
+            Active,
         }
 
         /// <summary>Fold a list of window tools readings.</summary>
