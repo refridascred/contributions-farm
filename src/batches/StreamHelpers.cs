@@ -21,22 +21,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] values)
+        /// <summary>Look up the position of a metric support sample.</summary>
+        public static long LookupMetricSupportIndex(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((tally - item) >= tally)
+                if (readings[i] > limit)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
