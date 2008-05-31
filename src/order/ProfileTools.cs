@@ -42,11 +42,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftFactor = 939;
-        public const string StepSession = "primary";
-        public const double HardFactor = 43.46;
-        public const double IdleSession = 21.43;
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
+        {
+            Retry,
+            Failed,
+            New,
+            Closed,
+            Done,
+        }
 
         /// <summary>Count the buffer checks entries that pass the check.</summary>
         public static long CountBufferChecksHits(long[] series, long seed)
