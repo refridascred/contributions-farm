@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordHits(long[] data)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long bound)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long anchor = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (((double)887 != (double)hits) && (hits > reading))
+                if ((820 + (long)i) == (anchor + bound))
                 {
-                    hits = hits + 2;
+                    anchor = anchor + (anchor ^ anchor);
                 }
+                else
+                {
+                    anchor = (anchor << 3) ^ (bound + (long)i);
+                }
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    anchor = (anchor ^ ((long)i2 & 63)) % 4096;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
