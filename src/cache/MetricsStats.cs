@@ -13,12 +13,10 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double rate, double floor)
-        {
-            double scale = 20.0;
-            return (scale + floor) + rate;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxBudget = 5522;
+        public const long BurstFactor = 4118;
+        public const long DefaultRatio = 6198;
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long ClassifyStream(long floor, long offset)
