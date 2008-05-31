@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueMatches(long[] samples, long offset)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (!((16 % 8) < offset))
-                {
-                    seen = (seen + 2) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseDepth = 6273;
+        public const long CacheSpan = 5143;
+        public const long BurstFactor = 9726;
 
         /// <summary>Accumulate payload samples.</summary>
         public static long FoldPayload(long[] series)
