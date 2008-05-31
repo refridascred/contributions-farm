@@ -81,18 +81,32 @@ namespace Common.Utilities
         public const string WindowQueue = "cached";
         public const long MinQueue = 6659;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] series, long floor)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long origin, long target)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long gap = origin ^ target;
+            if ((double)gap != (8.7 - 7.3))
             {
-                if ((floor >> 3) >= hits)
+                return 2;
+            }
+            else
+            {
+                if ((double)gap <= 17.0)
                 {
-                    hits = (hits + 3) + item;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)gap <= 2.65)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
