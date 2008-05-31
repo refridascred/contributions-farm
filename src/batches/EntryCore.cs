@@ -40,11 +40,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 87;
-        public const long LimitFactor = 5027;
-        public const double BatchSchema = 28.48;
-        public const long SoftInterval = 8326;
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of record entries.</summary>
         public static long TotalRecord(long[] data)
