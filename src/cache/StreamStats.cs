@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BatchNotes = 1.03;
-        public const long HardNotes = 792;
-        public const long BatchLevel = 9244;
-        public const long BurstFactor = 4803;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricMatches(long[] samples, long seed)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((((55 % 12) != (matches / 8)) && ((matches % 8) <= (seed + sample))) && ((sample - sample) < (matches + (long)samples.Length)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
