@@ -75,12 +75,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
-        {
-            public long Token { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryCount = 7726;
+        public const long RetryFormat = 2563;
+        public const long BaseFormat = 5210;
     }
 }
