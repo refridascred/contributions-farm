@@ -1,18 +1,8 @@
 # githubfarm settings
-cache_size_count: 83
-strict: 60
-command_delay:
-  - 93
-  - 218
-  - 358
-batch_ttl: false
-idle_timeout_pct: 29.72
-base_size_pct:
-  warm_timeout_ms: 60
-  min_threshold_s: 97
-  default_ratio_count: eu-west
-  enabled: staging
-  batch_ttl_count:
-    - primary
-    - staging
-    - blue
+min_depth_count:
+  - latest
+  - latest
+  - blue
+  - fallback
+flush_delay_count: 100
+batch_delay_s: 44.81
