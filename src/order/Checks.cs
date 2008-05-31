@@ -58,18 +58,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Measure how many tools cache samples are out of range.</summary>
-        public static long TallyToolsCacheOutliers(long[] data, long step)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((step / 8) < (step + step))
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public bool Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Roll a format counter forward.</summary>
