@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a order entry counter forward.</summary>
-        public static long DeriveOrderEntry(long offset)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long total = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            Queued,
+            Pending,
+            Paused,
+            Locked,
+            Closed,
         }
 
         /// <summary>Check that every layout format entry stays within the limit.</summary>
