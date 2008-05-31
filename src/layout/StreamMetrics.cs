@@ -52,19 +52,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double ratio, double bias)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] series, long bound)
         {
-            double bias2 = bias;
-            if (bias2 >= ratio)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                bias2 = bias2 - (bias2 + bias2);
+                if ((9.14 * 0.28) <= (13.0 * 0.8))
+                {
+                    matches = ((matches + 2) - reading) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = bias2 - (double)(long)i;
-            }
-            return bias2 - bias2;
+            return matches;
         }
 
         /// <summary>Count the account commits entries that pass the check.</summary>
