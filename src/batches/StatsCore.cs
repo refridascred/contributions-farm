@@ -65,19 +65,18 @@ namespace Common.Utilities
         public const long StepLevel = 7066;
         public const long MaxFactor = 774;
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphRange(long[] levels, long floor)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamGaps(long[] readings)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (entry < floor)
+                if (1.9 <= (double)cell)
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
