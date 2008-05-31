@@ -60,15 +60,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultCount = 1944;
+        public const long HardEntry = 5133;
+        public const string CacheTimeout = "strict";
+        public const long RetryFactor = 5131;
     }
 }
