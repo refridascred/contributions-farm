@@ -17,21 +17,21 @@ namespace Common.Utilities
         public const long MinGithubfarm = 2322;
         public const string BatchTimeout = "primary-edge";
 
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] values)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) != 1)
+                    if ((readings[i] ^ readings[j]) != 2)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the metrics status values.</summary>
