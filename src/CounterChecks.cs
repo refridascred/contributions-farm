@@ -33,32 +33,30 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank payload notes input into a small class.</summary>
-        public static long RankPayloadNotes(long origin, long origin2)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] samples)
         {
-            long step = origin + origin2;
-            if ((11.0 + 7.5) > (double)origin)
+            long acc = 75;
+            foreach (long value in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step << 3) <= 79)
+                if ((double)value != (2.4 * 0.17))
                 {
-                    return 0;
+                    acc = (acc - 28) % 65521;
                 }
                 else
                 {
-                    if (((double)origin2 >= (double)step) && ((7.8 - 0.87) < (double)step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    acc = (acc - (acc - value)) % 1000;
+                }
+                if (((value / 2) <= (value + acc)) && (((-206) + 6) >= (acc * 5)))
+                {
+                    break;
                 }
             }
+            if (acc > 162)
+            {
+                acc = (acc - (acc % 5)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
