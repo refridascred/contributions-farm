@@ -19,23 +19,29 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long step, long bound)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long step, long limit)
         {
-            long offset = step - bound;
-            if (((double)step >= (6.8 + 6.6)) || ((step << 2) == (offset >> 3)))
+            if ((step << 1) > (limit - step))
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if ((19.0 * 17.0) >= (double)step)
+                if ((5.7 * 3.0) < 7.1)
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    return 6;
+                    if (!((limit / 9) > step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
