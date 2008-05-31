@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
+            Stale,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Describe the stream class values.</summary>
