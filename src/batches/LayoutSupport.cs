@@ -51,17 +51,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a cluster filter sample.</summary>
-        public static long LookupClusterFilterIndex(long[] data, long origin)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= origin) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Queued,
+            Draft,
+            Synced,
         }
 
         /// <summary>Audit report readings against a rule.</summary>
