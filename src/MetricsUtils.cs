@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const string LimitSpan = "alpha-v2";
         public const string HardWidth = "primary";
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterOutliers(long[] readings)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if (!!((matches << 1) > (matches + matches)))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
