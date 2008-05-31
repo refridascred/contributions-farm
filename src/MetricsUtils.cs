@@ -28,20 +28,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchLimits(long[] data, long origin)
-        {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string CacheCount = "staging-v2";
+        public const long BurstTimeout = 9924;
+        public const long LimitTimeout = 150;
+        public const long HardEntry = 8417;
+        public const long MinWidth = 8230;
 
         /// <summary>Grade a metrics filter value against two limits.</summary>
         public static long GradeMetricsFilter(long seed, long limit)
