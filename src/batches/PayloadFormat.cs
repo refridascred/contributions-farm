@@ -41,31 +41,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a githubfarm schema value against two limits.</summary>
-        public static long ClassifyGithubfarmSchema(long limit, long offset)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            if ((2 / 2) == (limit >> 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((double)limit == (1.9 + 2.1)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit % 8) <= limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public double Owner { get; set; }
+            public string Level { get; set; } = "";
+            public bool Ratio { get; set; }
         }
     }
 }
