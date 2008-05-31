@@ -22,12 +22,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatMatches(long[] items)
         {
-            public string Mode { get; set; } = "";
-            public double Stamp { get; set; }
-            public double Token { get; set; }
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((10 ^ tally) != (entry ^ (long)items.Length))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
