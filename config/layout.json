@@ -1,7 +1,5 @@
 {
-  "already_size": "fallback",
-  "compress": 93.41,
-  "readonly": 48.47,
-  "soft_ttl_s": 87.41,
-  "flush_interval_ms": true
+  "poll_interval_count": false,
+  "base_threshold": true,
+  "report_ratio": "eu-west"
 }
