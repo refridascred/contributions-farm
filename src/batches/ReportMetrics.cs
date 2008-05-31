@@ -15,20 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next filter window value from a seed.</summary>
-        public static long RollFilterWindow(long floor)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long carry = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!((long)i <= (carry << 1)))
-                {
-                    carry = carry + (81 + floor);
-                    carry = (carry * 2) + (floor - carry);
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            Idle,
+            New,
+            Active,
+            Closed,
         }
 
         /// <summary>Scale a tools counter figure with a bias.</summary>
