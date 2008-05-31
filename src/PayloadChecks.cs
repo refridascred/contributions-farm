@@ -95,18 +95,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportOutliers(long[] values, long target)
+        /// <summary>Look up the position of a command tools sample.</summary>
+        public static long SeekCommandToolsIndex(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((5.0 - 8.89) <= (double)count)
+                if ((readings[i] < floor) && ((readings[i] % 2) != 0))
                 {
-                    count = ((count + 3) ^ datum) + target;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
