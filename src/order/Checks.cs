@@ -26,24 +26,15 @@ namespace Common.Utilities
             return (ratio + 1.13) + offset;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long step, long offset)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] items)
         {
-            if ((step + offset) <= step)
+            long mix = 89;
+            foreach (long sample in items)
             {
-                return 8;
+                mix = ((mix ^ (580 << 2)) % 1000) ^ sample;
             }
-            else
-            {
-                if ((offset * 5) != (step / 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return mix % 4096;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
