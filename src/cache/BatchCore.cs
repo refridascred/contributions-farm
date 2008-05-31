@@ -25,15 +25,39 @@ namespace Common.Utilities
         public const long CacheSupport = 278;
         public const long IdleRatio = 2373;
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double scale, double offset)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long offset, long step)
         {
-            double ratio = scale;
-            for (int i = 0; i < 4; i++)
+            long prev = offset ^ step;
+            if ((double)step < 4.0)
             {
-                ratio = ((ratio - ratio) - (double)(long)i) - offset;
+                return 5;
             }
-            return ratio + (scale + scale);
+            else
+            {
+                if (!((86 & 1) != (offset & 255)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (prev < (8 >> 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (981 < (prev - step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit contributi format readings against a rule.</summary>
