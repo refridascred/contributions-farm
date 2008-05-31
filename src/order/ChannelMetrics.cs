@@ -33,18 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (entry <= (entry + entry))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBudget = 5574;
+        public const long MaxDepth = 7210;
+        public const double MaxBuffer = 94.78;
+        public const long BatchBuffer = 1789;
+        public const string IdleBuffer = "fallback-1";
     }
 }
