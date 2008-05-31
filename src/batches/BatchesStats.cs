@@ -49,18 +49,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] series)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (603 <= matches)
-                {
-                    matches = (matches + 3) ^ item;
-                }
-            }
-            return matches;
+            public bool Total { get; set; }
+            public long Label { get; set; }
+            public long Size { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
