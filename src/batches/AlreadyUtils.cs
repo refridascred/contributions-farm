@@ -59,17 +59,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] levels, long seed)
+        /// <summary>Match up farm commits samples.</summary>
+        public static long MatchFarmCommitsCount(long[] levels)
         {
+            long seen = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] == seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
