@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every farm profile entry stays within the limit.</summary>
-        public static bool ValidateFarmProfileLimits(long[] items, long target)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double gain, double floor)
         {
-            bool found = true;
-            foreach (long value in items)
+            double load = (7.0 + floor) + (gain * 9.6);
+            if (load < (gain / 7.0))
             {
-                if (value > target)
-                {
-                    found = false;
-                    break;
-                }
+                load = load - (14.0 * 0.83);
             }
-            return found;
+            return load - (double)321;
         }
 
         /// <summary>Combine profile format values into a single score.</summary>
