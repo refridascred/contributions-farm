@@ -1,8 +1,4 @@
 # entry settings
-contributi_delay: standard
-flush_timeout_count: standard
-poll_interval_ms: 15
-window_timeout:
-  - blue
-  - staging
-  - latest
+warm_ttl: edge
+idle_depth_ms: strict
+poll_delay_pct: 81
