@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] samples)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long bound, long bound2)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((bound2 - 347) <= bound2)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((bound ^ bound2) <= bound2)
                 {
-                    if ((samples[i] ^ samples[j]) != 5)
+                    return 6;
+                }
+                else
+                {
+                    if ((bound2 >> 2) < (bound2 - bound))
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)21 == (double)bound2)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a entry info.</summary>
