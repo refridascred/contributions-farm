@@ -25,14 +25,13 @@ namespace Common.Utilities
         public const long CacheSupport = 278;
         public const long IdleRatio = 2373;
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            Queued,
-            Retry,
-            Paused,
-            Stale,
-            New,
+            Done,
+            Ready,
+            Active,
+            Locked,
         }
 
         /// <summary>Audit contributi format readings against a rule.</summary>
