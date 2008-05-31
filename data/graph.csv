@@ -1,9 +1,7 @@
-id,label,ratio,rank,active
-1,737,623,legacy,971
-2,latest,809,17.29,50.3
-3,787,blue,staging,701
-4,open,105,65.5,64.38
-5,green,cached,84.54,62.47
-6,97,767,open,84.16
-7,27.07,39.08,857,cached
-8,primary,54.09,84.49,56.86
+id,region,ratio
+1,520,273
+2,58.95,382
+3,latest,98.82
+4,34.68,primary
+5,75.7,10.71
+6,264,fallback
