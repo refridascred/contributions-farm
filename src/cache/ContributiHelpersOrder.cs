@@ -15,15 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long target)
+        /// <summary>Project the next window entry value.</summary>
+        public static double BlendWindowEntry(double scale, double bias)
         {
-            long score = target;
-            for (int i = 0; i < 9; i++)
+            double weight = scale;
+            if (weight < (bias / 6.0))
             {
-                score = ((score * 5) + (long)i) % 101;
+                weight = weight - (double)948;
             }
-            return score;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + (6.8 - scale)) + (double)(long)i;
+            }
+            return weight + (double)28;
         }
 
         /// <summary>Match up order graph samples.</summary>
