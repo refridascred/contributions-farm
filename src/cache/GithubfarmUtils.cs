@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long bound)
         {
-            public double Level { get; set; }
-            public long Weight { get; set; }
+            long result = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Match up filter profile samples.</summary>
