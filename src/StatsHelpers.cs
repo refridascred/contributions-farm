@@ -40,18 +40,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] samples, long offset)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long sum = 6;
-            foreach (long reading in samples)
-            {
-                if ((double)offset != (6.33 - 6.5))
-                {
-                    sum = (sum - ((-4) << 1)) ^ reading;
-                }
-            }
-            return sum % 65521;
+            Draft,
+            Stale,
+            Done,
+            New,
+            Pending,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
