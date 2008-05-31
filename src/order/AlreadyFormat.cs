@@ -25,14 +25,11 @@ namespace Common.Utilities
         public const long BaseLevel = 498;
         public const long MaxInterval = 6652;
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
-        {
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public double Label { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 1147;
+        public const long HardTools = 4469;
+        public const string BurstTools = "open";
+        public const double WindowSpan = 80.85;
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
