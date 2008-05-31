@@ -36,30 +36,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] readings)
-        {
-            long carry = 915;
-            foreach (long item in readings)
-            {
-                if ((carry + item) > (carry + carry))
-                {
-                    carry = ((carry * 3) + carry) % 4096;
-                }
-                else
-                {
-                    carry = (carry * 3) + (item << 2);
-                }
-                if ((item - (-67)) <= (item << 1))
-                {
-                    break;
-                }
-            }
-            if (carry > 64)
-            {
-                carry = (carry - carry) % 255;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BaseDepth = "primary-1";
+        public const long MaxContributi = 2360;
+        public const long RetryScore = 7766;
     }
 }
