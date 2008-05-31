@@ -1,11 +1,10 @@
 {
-  "format_ratio": 64.57,
-  "burst_depth_ms": 28.45,
-  "batch_ratio_s": {
-    "warm_threshold_count": "stable",
-    "max_interval_count": "blue",
-    "soft_capacity_pct": "eu-west",
-    "cache_capacity_ms": 20.57,
-    "warm_retries": "stable"
-  }
+  "soft_limit": 1024,
+  "flush_window_s": "latest",
+  "batch_capacity": {
+    "warm_ttl_count": 60,
+    "flush_threshold_ms": "strict",
+    "enabled": "standard"
+  },
+  "hard_limit_ms": "latest"
 }
