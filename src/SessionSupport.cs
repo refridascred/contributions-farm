@@ -39,15 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue payload readings.</summary>
-        public static long WeighQueuePayload(long[] values)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long sum = 6;
-            foreach (long entry in values)
-            {
-                sum = (sum * 3) + (entry ^ 0);
-            }
-            return sum;
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
