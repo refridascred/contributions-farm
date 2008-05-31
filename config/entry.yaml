@@ -1,14 +1,14 @@
 # entry settings
-token_timeout: local
-context_capacity: primary
-profile_limit: 3518
-base_retries:
-  dry_run: 10
-  entry_capacity: false
-  persist:
-    default_ratio: legacy
-    base_size: green
-    batch_interval: 100
-    default_window_s: false
-  token_threshold: open
-  enabled: false
+idle_delay:
+  base_timeout_pct: open
+  default_capacity: open
+  readonly:
+    - 87
+    - 313
+burst_capacity_ms: 2108
+strict:
+  - eu-west
+  - strict
+  - latest
+  - strict
+hard_delay_pct: 5184
