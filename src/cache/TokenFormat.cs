@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchLimits(long[] data, long floor)
+        /// <summary>Measure how many token editor samples are out of range.</summary>
+        public static long AuditTokenEditorGaps(long[] items)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (sample >= floor)
+                if (((datum + tally) <= datum) || ((datum * 3) > tally))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Validate tools checks readings against a bound.</summary>
