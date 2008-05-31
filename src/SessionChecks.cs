@@ -43,27 +43,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate window notes samples.</summary>
-        public static long CombineWindowNotes(long[] levels, long target)
+        /// <summary>Rank farm route input into a small class.</summary>
+        public static long ClassifyFarmRoute(long floor, long target)
         {
-            long mark = 0;
-            foreach (long entry in levels)
+            long cur = floor ^ target;
+            if ((double)cur < 11.0)
             {
-                long offset = (mark ^ mark) ^ (entry >> 3);
-                if (!((entry + target) >= (entry + offset)))
+                return 2;
+            }
+            else
+            {
+                if ((target << 2) < cur)
                 {
-                    mark = (mark + entry) % 97;
+                    return 7;
                 }
-                if ((target % 97) >= (mark + entry))
+                else
                 {
-                    mark = (mark << 2) ^ mark;
-                }
-                if ((mark & 15) > (target + mark))
-                {
-                    break;
+                    return 4;
                 }
             }
-            return mark;
         }
     }
 }
