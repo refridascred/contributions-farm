@@ -20,16 +20,24 @@ namespace Common.Utilities
         public const string RetrySchema = "alpha-v2";
         public const long HardBudget = 4185;
 
-        /// <summary>Roll a batches githubfarm counter forward.</summary>
-        public static long SeriesBatchesGithubfarm(long seed)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long origin, long limit)
         {
-            long total = seed;
-            for (int i = 0; i < 19; i++)
+            if ((335 + limit) > (origin % 12))
             {
-                total = ((total << 3) ^ (789 + (long)i)) % 255;
-                total = ((total * 5) + (long)i) % 4093;
+                return 7;
             }
-            return total;
+            else
+            {
+                if ((limit / 8) > (limit - origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
