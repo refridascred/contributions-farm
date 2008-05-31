@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const string DefaultCache = "cached-1";
         public const string LimitCache = "strict-1";
 
-        /// <summary>Blend two layout entry measurements.</summary>
-        public static double SmoothLayoutEntry(double scale, double bias)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            double load = (scale / 9.0) / 8.0;
-            if (load <= scale)
-            {
-                load = load - bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - bias) + (double)(long)i;
-            }
-            return load - bias;
+            Idle,
+            Retry,
+            Done,
         }
 
         /// <summary>Define account limits and defaults.</summary>
