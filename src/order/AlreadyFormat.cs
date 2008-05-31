@@ -56,15 +56,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next record channel value.</summary>
-        public static double AdjustRecordChannel(double bias, double span)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelOutliers(long[] data, long target)
         {
-            double scale = bias;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                scale = ((scale - scale) + (double)(long)i) - span;
+                if ((target - (long)data.Length) < 7)
+                {
+                    matches = (matches + 2) + cell;
+                }
             }
-            return scale + scale;
+            return matches;
         }
     }
 }
