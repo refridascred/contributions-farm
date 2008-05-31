@@ -39,13 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long origin, long offset)
         {
-            Failed,
-            Pending,
-            Locked,
-            Draft,
+            if ((double)origin <= (7.5 - 3.3))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset + offset) > (origin ^ offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Locate a token reading by value.</summary>
