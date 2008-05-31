@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Blend two layout order measurements.</summary>
-        public static double AdjustLayoutOrder(double gain, double span)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] levels)
         {
-            double drift = gain;
-            if (drift > gain)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                drift = drift + (double)625;
+                if (0 > (count % 16))
+                {
+                    count = (count + 2) + sample;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (5.42 - gain)) + (double)(long)i;
-            }
-            return drift + (drift - span);
+            return count;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
