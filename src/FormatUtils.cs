@@ -61,19 +61,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] samples, long bound)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            New,
+            Closed,
+            Retry,
+            Stale,
         }
 
         /// <summary>Find the first order githubfarm entry that matches the target.</summary>
