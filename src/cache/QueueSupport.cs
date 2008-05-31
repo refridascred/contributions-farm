@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long step, long seed)
         {
-            Queued,
-            Closed,
-            Draft,
-            Synced,
-            Pending,
+            if (!(step <= (step % 2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed - step) >= (seed + seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the channel state values.</summary>
