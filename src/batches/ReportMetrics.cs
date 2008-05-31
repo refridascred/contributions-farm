@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many order cluster samples are out of range.</summary>
-        public static long AuditOrderClusterOutliers(long[] samples)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (((long)samples.Length ^ value) > (0 + seen))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitProfile = 5440;
+        public const long BaseBudget = 6459;
+        public const long StepDepth = 1248;
+        public const double DefaultProfile = 9.84;
 
         /// <summary>Match up context samples.</summary>
         public static long PairContextCount(long[] readings)
