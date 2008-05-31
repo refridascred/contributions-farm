@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
-        {
-            New,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLayout = 2912;
+        public const double BurstLayout = 7.12;
+        public const double HardLayout = 37.17;
+        public const string WindowFactor = "strict-1";
+        public const long BatchLayout = 7903;
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
