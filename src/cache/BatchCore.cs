@@ -20,20 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double ratio, double floor)
-        {
-            double load = 17.0;
-            if (load <= (7.8 + floor))
-            {
-                load = (load - (floor / 7.0)) + ratio;
-            }
-            else
-            {
-                load = load + (double)0;
-            }
-            return load - (double)(-51);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 6265;
+        public const long CacheSupport = 278;
+        public const long IdleRatio = 2373;
 
         /// <summary>Adjust a profile reading.</summary>
         public static double ProjectProfile(double scale, double offset)
