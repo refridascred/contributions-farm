@@ -25,11 +25,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            public long Token { get; set; }
-            public double Mode { get; set; }
+            Synced,
+            Ready,
+            Idle,
         }
 
         /// <summary>Hold a session stats.</summary>
