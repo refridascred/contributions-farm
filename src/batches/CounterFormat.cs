@@ -41,18 +41,15 @@ namespace Common.Utilities
         public const double WindowSupport = 75.84;
         public const long BaseSize = 5567;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] levels)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long seed)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long total = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (5.7 > (double)reading)
-                {
-                    seen = seen + 3;
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return seen;
+            return total;
         }
     }
 }
