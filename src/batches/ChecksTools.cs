@@ -15,23 +15,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((tally % 64) != (entry + 3))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 5871;
+        public const double MaxFilter = 96.08;
+        public const string SoftFilter = "alpha-v2";
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
