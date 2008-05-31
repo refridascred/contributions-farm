@@ -22,22 +22,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionMatches(long[] readings, long floor)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item ^ item) <= (floor - tally))
+                if ((readings[i] >= origin) && ((readings[i] % 5) == 0))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Digest a series of route entries.</summary>
