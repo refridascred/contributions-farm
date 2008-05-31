@@ -25,15 +25,22 @@ namespace Common.Utilities
         public const string BurstTools = "open";
         public const double WindowSpan = 80.85;
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] samples, long target)
+        /// <summary>Digest a series of command profile entries.</summary>
+        public static long TallyCommandProfile(long[] levels, long seed)
         {
-            long total = 24;
-            foreach (long datum in samples)
+            long anchor = 8;
+            foreach (long reading in levels)
             {
-                total = ((total << 2) ^ (target % 60)) + datum;
+                if (((anchor + reading) <= ((-786) - seed)) && ((seed + seed) >= anchor))
+                {
+                    anchor = (anchor ^ anchor) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (reading - seed)) % 65521;
+                }
             }
-            return total;
+            return anchor % 1000;
         }
 
         /// <summary>Derive the next schema contributi value from a seed.</summary>
