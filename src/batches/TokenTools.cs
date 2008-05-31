@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
-        {
-            public string Token { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSchema = 7883;
+        public const long CacheSchema = 5210;
+        public const string RetrySchema = "strict-1";
+        public const long WindowSchema = 4066;
+        public const string BatchSchema = "alpha-edge";
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool GuardFormatBounds(long[] samples, long origin)
