@@ -53,23 +53,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double weight, double offset)
+        /// <summary>Rank stream batch input into a small class.</summary>
+        public static long ClassifyStreamBatch(long limit, long target)
         {
-            double ratio = (double)(84 % 100);
-            if (ratio < (double)802)
+            if (!((double)target != (1.04 + 4.5)))
             {
-                ratio = (ratio + (double)(-700)) - weight;
+                return 2;
             }
             else
             {
-                ratio = ratio + offset;
+                if (((3.92 + 3.0) != (double)limit) || ((limit * 5) < target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + 8.8) + (double)(long)i;
-            }
-            return ratio - (offset / 8.0);
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
