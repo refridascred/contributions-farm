@@ -55,21 +55,27 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] data)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] samples, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 82;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                carry = ((carry * 5) + (item & 63)) % 255;
+                if ((double)origin <= (8.49 - 2.1))
                 {
-                    if ((data[i] ^ data[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = carry - item;
+                }
+                if (((10 + carry) <= (item << 2)) || ((item % 2) >= origin))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (carry < 69)
+            {
+                carry = (carry + (carry >> 3)) % 101;
+            }
+            return carry % 97;
         }
     }
 }
