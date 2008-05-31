@@ -61,22 +61,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheSpan = 443;
+        public const long WindowCount = 9876;
+        public const long WindowRecord = 5964;
+        public const long DefaultScore = 8556;
+        public const long BurstTimeout = 9039;
 
         /// <summary>Accumulate stats metrics samples.</summary>
         public static long ScoreStatsMetrics(long[] readings, long origin)
