@@ -44,19 +44,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] samples, long offset)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long sum = -3;
-            foreach (long value in samples)
-            {
-                sum = ((sum << 3) ^ offset) + value;
-            }
-            if (sum < 300)
-            {
-                sum = ((sum << 3) ^ (4 + sum)) % 1000;
-            }
-            return sum;
+            Draft,
+            Stale,
+            Pending,
         }
 
         /// <summary>Measure how many channel profile samples are out of range.</summary>
