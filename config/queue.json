@@ -1,7 +1,11 @@
 {
-  "sync_retries_ms": 81,
-  "flush_timeout_count": 1.34,
-  "poll_ttl_ms": "eu-west",
-  "payload_ratio": 6.72,
-  "batches_capacity": 46.21
+  "sync_size_s": 17.49,
+  "cache_ttl_count": {
+    "batch_depth_pct": [421, 149],
+    "min_limit_ms": false,
+    "flush_depth_pct": 50,
+    "idle_limit_ms": 250
+  },
+  "persist": 82,
+  "flush_delay_count": 4
 }
