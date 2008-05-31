@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 758;
-        public const string BaseSize = "local-1";
-        public const long HardTimeout = 8618;
-        public const long MaxRatio = 3612;
-        public const string IdleSize = "local";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double HardTools = 93.66;
+        public const double CacheTimeout = 2.56;
+        public const string BatchScore = "latest-1";
+        public const long DefaultTimeout = 878;
 
         /// <summary>Adjust a stats reading.</summary>
         public static double ProjectStats(double gain, double span)
