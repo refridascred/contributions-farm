@@ -1,9 +1,8 @@
-id,label,score
-1,fallback,554
-2,44.32,635
-3,fallback,fallback
-4,119,457
-5,blue,92.21
-6,cached,667
-7,79.83,936
-8,legacy,blue
+id,ratio,score
+1,86.83,39
+2,primary,fallback
+3,89.22,279
+4,95,52.3
+5,eu-west,874
+6,392,56.24
+7,48.59,75.21
