@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] values)
         {
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
-            public string Region { get; set; } = "";
-            public double Limit { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the entry mode values.</summary>
