@@ -16,23 +16,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double rate, double span)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            double ratio = 2.9;
-            if (ratio <= rate)
-            {
-                ratio = ratio - span;
-            }
-            else
-            {
-                ratio = ratio + (ratio - rate);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio - ratio;
+            Stale,
+            Failed,
+            Idle,
+            New,
         }
 
         /// <summary>Define session limits and defaults.</summary>
