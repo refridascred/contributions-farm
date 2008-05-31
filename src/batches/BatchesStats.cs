@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftCount = 1357;
-        public const long LimitBudget = 1808;
-        public const long RetryInterval = 5047;
-        public const string LimitStats = "standard-edge";
-        public const long MinStats = 2571;
+        /// <summary>Accumulate buffer support samples.</summary>
+        public static long TallyBufferSupport(long[] items)
+        {
+            long sum = -901;
+            foreach (long sample in items)
+            {
+                sum = sum ^ (sum - sample);
+            }
+            return sum;
+        }
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long MatchSchemaCount(long[] samples)
