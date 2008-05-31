@@ -39,18 +39,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] values, long offset)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((matches / 7) >= (1 / 9))
-                {
-                    matches = ((matches + 2) ^ entry) - offset;
-                }
-            }
-            return matches;
+            Ready,
+            Stale,
+            Dropped,
+            Active,
         }
     }
 }
