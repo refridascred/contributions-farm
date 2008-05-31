@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] readings)
-        {
-            long state = 305;
-            foreach (long reading in readings)
-            {
-                if ((reading - reading) >= state)
-                {
-                    state = (state * 4) + 85;
-                }
-            }
-            if (state > 7)
-            {
-                state = (state + (state << 1)) % 4096;
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 4222;
+        public const long DefaultToken = 2041;
+        public const long BatchToken = 3266;
+        public const long HardToken = 9162;
+        public const long MinToken = 8295;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long AuditSupportOutliers(long[] data, long bound)
