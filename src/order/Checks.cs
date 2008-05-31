@@ -48,12 +48,22 @@ namespace Common.Utilities
         public const long MinFactor = 5350;
         public const long CacheCount = 2895;
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatHits(long[] readings, long seed)
         {
-            public long Mode { get; set; }
-            public bool Level { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((double)item == (6.0 * 4.0))
+                {
+                    seen = (seen + 3) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a format counter forward.</summary>
