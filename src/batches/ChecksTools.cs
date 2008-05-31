@@ -42,11 +42,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] levels, long seed)
         {
-            public string Count { get; set; } = "";
-            public string Flag { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
