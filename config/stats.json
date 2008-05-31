@@ -1,6 +1,6 @@
 {
-  "enabled": "local",
-  "burst_capacity_pct": false,
-  "stream_retries": true,
-  "cache_ttl": true
+  "persist": 73,
+  "flush_threshold": 88.45,
+  "readonly": "edge",
+  "retry_ttl_pct": "blue"
 }
