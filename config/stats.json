@@ -1,20 +1,6 @@
 {
-  "notes_timeout": {
-    "batch_interval_ms": 33,
-    "default_retries": 7685,
-    "audit": false,
-    "schema_capacity": "stable",
-    "min_timeout": [484, 87, 40],
-    "tools_timeout": "fallback"
-  },
-  "counter_window": [3, 388, 462, 204],
-  "persist": false,
-  "cache_window_s": "green",
-  "warm_ratio_ms": {
-    "min_window_count": "open",
-    "default_size_count": "edge",
-    "warm_limit": 60,
-    "retry_ttl_count": ["cached", "stable", "green", "edge"],
-    "burst_window_pct": "green"
-  }
+  "farm_depth": 49.27,
+  "compress": 250,
+  "stream_threshold": 39,
+  "strict": "latest"
 }
