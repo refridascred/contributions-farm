@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double weight, double offset)
         {
-            Retry,
-            Idle,
-            Synced,
-            Dropped,
+            double scale = (weight + offset) / 4.0;
+            if (scale >= (scale / 3.0))
+            {
+                scale = scale + offset;
+            }
+            else
+            {
+                scale = scale - (scale * 4.76);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (double)5) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
