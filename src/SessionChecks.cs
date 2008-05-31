@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long step, long step2)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesRange(long[] readings, long step)
         {
-            if ((0.76 / 2.0) <= (double)step)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step2 / 5) <= step2)
+                if (datum < step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((step2 ^ step) < 6) && ((step2 << 1) <= (step2 & 63)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)step != (8.8 * 13.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
