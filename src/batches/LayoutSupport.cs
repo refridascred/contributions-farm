@@ -46,11 +46,11 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitSpan = 1482;
-        public const long WindowWidth = 4537;
-        public const long IdleDepth = 8078;
-        public const long RetryMetric = 2156;
-        public const long StepMetric = 8361;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepRatio = 84;
+        public const long DefaultFilter = 2800;
+        public const long RetryFilter = 880;
+        public const string StepScore = "standard-1";
+        public const long MinWidth = 2037;
     }
 }
