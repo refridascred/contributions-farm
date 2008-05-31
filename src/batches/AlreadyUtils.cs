@@ -38,21 +38,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] values)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 407;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((sum / 3) <= 8)
                 {
-                    if ((values[i] - values[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = ((sum << 3) ^ (sample - sample)) % 4096;
                 }
             }
-            return matches;
+            return sum % 1000;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
