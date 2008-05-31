@@ -47,14 +47,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            Active,
-            New,
-            Failed,
-            Paused,
-            Done,
+            public double Ratio { get; set; }
+            public long Region { get; set; }
+            public double Mode { get; set; }
+            public long Total { get; set; }
         }
     }
 }
