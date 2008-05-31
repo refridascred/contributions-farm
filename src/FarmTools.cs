@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < target) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 6646;
+        public const string HardMetrics = "cached-1";
+        public const double DefaultFactor = 53.0;
+        public const long BurstMetrics = 9543;
+        public const double CacheMetrics = 21.78;
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long WeighCommits(long[] items, long offset)
