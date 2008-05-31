@@ -17,14 +17,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] data, long seed)
         {
-            Retry,
-            Closed,
-            Active,
-            Queued,
-            Synced,
+            long anchor = 26;
+            foreach (long entry in data)
+            {
+                anchor = (anchor - (3 * 3)) ^ entry;
+                if (seed <= (seed & 63))
+                {
+                    anchor = anchor ^ (seed & 7);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Grade a commits batches value against two limits.</summary>
