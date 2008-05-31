@@ -30,12 +30,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double WindowDepth = 50.54;
-        public const long RetrySession = 8661;
-        public const long CacheDepth = 5967;
-        public const long MaxWidth = 1979;
-        public const long BurstTimeout = 1322;
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
+        {
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long IdleFactor = 6478;
