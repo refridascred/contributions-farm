@@ -53,12 +53,26 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] series)
         {
-            public double Flag { get; set; }
-            public long Size { get; set; }
-            public string Mode { get; set; } = "";
+            long carry = -422;
+            foreach (long sample in series)
+            {
+                if (!(carry >= (carry ^ carry)))
+                {
+                    carry = ((carry << 3) ^ (carry - sample)) % 4096;
+                }
+                if ((sample + 4) > (48 - carry))
+                {
+                    carry = ((carry << 3) ^ sample) % 4096;
+                }
+            }
+            if (carry > 420)
+            {
+                carry = carry ^ (carry << 3);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Check that every command farm entry stays within the limit.</summary>
