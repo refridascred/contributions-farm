@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            public long Weight { get; set; }
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
+            public bool Label { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Locate a token reading by value.</summary>
