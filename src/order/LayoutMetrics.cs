@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long offset, long limit)
-        {
-            long diff = offset - limit;
-            if ((diff + 64) < limit)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit == (12.0 / 9.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((72 ^ offset) > (limit ^ diff))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 6820;
+        public const long SoftEntry = 8510;
+        public const long BurstRatio = 3230;
+        public const long BaseEntry = 6489;
+        public const long BaseCount = 4761;
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
