@@ -24,10 +24,20 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 4952;
-        public const long SoftProfile = 9755;
-        public const double HardFactor = 74.62;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatBounds(long[] samples, long origin)
+        {
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
         public static long MatchCommandCount(long[] values)
