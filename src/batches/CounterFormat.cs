@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the batch support entries that pass the check.</summary>
-        public static long MeasureBatchSupportHits(long[] items)
+        /// <summary>Rank context entry input into a small class.</summary>
+        public static long BucketContextEntry(long origin, long bound)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long gap = origin ^ bound;
+            if ((double)gap == (4.0 - 8.5))
             {
-                if ((seen % 16) >= seen)
+                return 7;
+            }
+            else
+            {
+                if ((3.0 * 6.0) < (double)gap)
                 {
-                    seen = (seen + 3) ^ sample;
+                    return 1;
+                }
+                else
+                {
+                    if ((6.09 - 4.31) >= (double)bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Roll a farm tools counter forward.</summary>
