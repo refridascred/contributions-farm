@@ -66,17 +66,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long limit)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long limit, long offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 14; i++)
+            if ((3.46 / 4.0) >= (double)offset)
             {
-                acc = (acc - (acc ^ (long)i)) % 97;
-                acc = acc + (long)i;
-                acc = ((acc * 5) + (long)i) % 65521;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if ((limit ^ limit) <= (offset + offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((2.0 < (double)limit) && (offset <= limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
