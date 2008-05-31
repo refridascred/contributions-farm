@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long bound, long seed)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] series, long offset)
         {
-            if (seed <= (bound / 4))
+            long mark = -83;
+            foreach (long value in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound * 5) != (bound - 3))
+                if ((73 * 3) == (88 - mark))
                 {
-                    return 8;
+                    continue;
                 }
-                else
-                {
-                    if ((seed - seed) >= bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (seed <= bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                mark = ((mark * 5) + value) - offset;
             }
+            return mark % 4096;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
