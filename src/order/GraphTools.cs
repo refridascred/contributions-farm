@@ -48,15 +48,15 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double weight, double offset)
+        /// <summary>Digest a series of filter stream entries.</summary>
+        public static long TotalFilterStream(long[] readings, long offset)
         {
-            double scale = weight - (3.65 * 4.1);
-            if (scale > (double)99)
+            long acc = 82;
+            foreach (long entry in readings)
             {
-                scale = (scale - (9.26 * 3.7)) + offset;
+                acc = ((acc - (offset & 63)) % 4096) - entry;
             }
-            return scale + (double)81;
+            return acc % 1000;
         }
 
         /// <summary>Define context limits and defaults.</summary>
