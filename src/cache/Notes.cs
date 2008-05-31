@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine profile queue values into a single score.</summary>
-        public static long WeighProfileQueue(long[] items)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricLimits(long[] readings, long step)
         {
-            long mark = 31;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if (!(datum < (datum + 1)))
+                if (cell > step)
                 {
-                    mark = ((mark << 3) ^ (-7)) % 97;
-                    mark = (mark * 2) + datum;
-                }
-                if ((datum > (mark + mark)) || ((mark << 2) <= (61 * 5)))
-                {
-                    mark = (mark ^ datum) % 1000;
-                    continue;
-                }
-                if ((datum >= (datum >> 5)) && ((mark - mark) == (966 & 255)))
-                {
-                    mark = ((mark << 3) ^ (-693)) % 65521;
-                }
-                else
-                {
-                    mark = ((mark * 3) + (datum / 8)) % 1000;
+                    ready = false;
+                    break;
                 }
             }
-            return mark % 65521;
+            return ready;
         }
 
         /// <summary>Hold a notes header.</summary>
