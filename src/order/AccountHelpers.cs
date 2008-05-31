@@ -12,18 +12,19 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] readings, long offset)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] data, long seed)
         {
-            long acc = 267;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if ((9 + acc) == (acc ^ acc))
+                if (sample < seed)
                 {
-                    acc = (((acc * 2) + item) % 1000) + offset;
+                    flag = false;
+                    break;
                 }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Fold a list of report readings.</summary>
