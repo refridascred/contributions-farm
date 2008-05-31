@@ -34,11 +34,22 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorMatches(long[] readings)
         {
-            public double Mode { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((4.9 - 6.0) <= (double)sample)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
