@@ -16,21 +16,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up filter profile samples.</summary>
-        public static long OverlapFilterProfileCount(long[] series)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                acc = (acc ^ (acc * 3)) % 1000;
+                if ((1.9 / 2.0) > (double)345)
                 {
-                    if ((series[i] - series[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc + origin) % 1000;
+                    continue;
                 }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
