@@ -18,10 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 5871;
-        public const double MaxFilter = 96.08;
-        public const string SoftFilter = "alpha-v2";
+        /// <summary>Find the first checks route entry that matches the target.</summary>
+        public static long FindChecksRouteIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
