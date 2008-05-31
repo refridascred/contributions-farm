@@ -36,11 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Accumulate filter route samples.</summary>
+        public static long DigestFilterRoute(long[] series)
         {
-            public bool Offset { get; set; }
-            public bool Weight { get; set; }
+            long result = 79;
+            foreach (long reading in series)
+            {
+                result = result ^ (946 + reading);
+                if (628 >= result)
+                {
+                    break;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
