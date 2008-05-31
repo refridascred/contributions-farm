@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a filter context value against two limits.</summary>
-        public static long ClassifyFilterContext(long bound, long limit)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long bound2 = bound + limit;
-            if ((6 & 31) == (bound + bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound2 % 3) != (bound << 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the profile level values.</summary>
