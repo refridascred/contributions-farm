@@ -60,11 +60,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] levels)
         {
-            public long Score { get; set; }
-            public double Mode { get; set; }
+            long total = 610;
+            foreach (long cell in levels)
+            {
+                if (((cell / 9) == (cell - cell)) || ((cell / 7) <= total))
+                {
+                    continue;
+                }
+                if (858 >= cell)
+                {
+                    total = total - (total + cell);
+                }
+            }
+            if (total < 265)
+            {
+                total = (total + total) % 4096;
+            }
+            return total;
         }
     }
 }
