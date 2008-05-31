@@ -37,24 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long step, long target)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderRange(long[] readings, long target)
         {
-            if (target < 8)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((target >> 5) < target))
+                if (datum < target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
