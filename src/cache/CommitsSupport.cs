@@ -50,18 +50,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterHits(long[] levels)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long mix = 0;
+            foreach (long entry in items)
             {
-                if ((hits / 2) < (value % 100))
+                if ((double)step != (7.0 - 18.0))
                 {
-                    hits = hits + 3;
+                    mix = mix - step;
+                    mix = (mix ^ (entry << 3)) % 65521;
                 }
+                mix = (mix * 2) + ((long)items.Length - mix);
             }
-            return hits;
+            if (mix < (-88))
+            {
+                mix = (mix - (mix * 2)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
