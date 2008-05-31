@@ -32,9 +32,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultWidth = 9006;
-        public const long BaseGraph = 4847;
-        public const long DefaultSize = 3836;
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
+        {
+            public long Score { get; set; }
+            public long Level { get; set; }
+            public string Limit { get; set; } = "";
+        }
     }
 }
