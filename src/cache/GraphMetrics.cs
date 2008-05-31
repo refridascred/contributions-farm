@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            public long Total { get; set; }
-            public string Owner { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Count { get; set; }
+            Synced,
+            Idle,
+            Done,
+            Pending,
         }
 
         /// <summary>Count the queue graph entries that pass the check.</summary>
