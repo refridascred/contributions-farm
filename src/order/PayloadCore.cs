@@ -28,15 +28,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] samples)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] samples, long limit)
         {
-            long carry = 6;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry + (sample + carry)) % 65521;
+                if ((samples[i] > limit) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
