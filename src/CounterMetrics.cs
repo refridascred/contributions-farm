@@ -48,14 +48,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] series, long step)
         {
-            New,
-            Ready,
-            Queued,
-            Active,
-            Stale,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= step) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the session graph entries that pass the check.</summary>
