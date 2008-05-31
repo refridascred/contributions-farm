@@ -62,11 +62,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepRatio = 3399;
-        public const long MaxEntry = 477;
-        public const string CacheRatio = "legacy-edge";
-        public const double DefaultTimeout = 2.65;
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
+        {
+            Dropped,
+            Stale,
+            Closed,
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long StepCounter = 1866;
