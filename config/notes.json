@@ -1,20 +1,13 @@
 {
-  "poll_delay_pct": {
-    "batch_capacity_s": false,
-    "warm_size_s": {
-      "record_depth": false,
-      "account_threshold": ["eu-west", "strict", "stable"],
-      "profile_delay": 81.68,
-      "enabled": true
-    },
-    "default_ttl": {
-      "min_size_pct": 405,
-      "readonly": true,
-      "dry_run": 68.88,
-      "buffer_timeout": "cached",
-      "verbose": ["staging", "staging"]
-    }
+  "readonly": true,
+  "payload_ratio": {
+    "flush_ratio": 4.99,
+    "retry_retries": true,
+    "layout_retries": 100,
+    "graph_threshold": "latest",
+    "sync_retries_count": "primary",
+    "contributi_threshold": 6275
   },
-  "sync_interval_pct": "fallback",
-  "profile_threshold": true
+  "token_delay": 20.99,
+  "retry_interval": "strict"
 }
