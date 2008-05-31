@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Classify a payload contributi pair into a bucket.</summary>
