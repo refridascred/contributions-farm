@@ -1,7 +1,18 @@
 {
-  "default_depth_ms": 500,
-  "githubfarm_threshold": ["legacy", "standard"],
-  "idle_depth": true,
-  "audit": 80.47,
-  "payload_delay": "strict"
+  "record_capacity": 64.53,
+  "queue_limit": "local",
+  "flush_timeout": true,
+  "idle_depth": {
+    "flush_retries_s": "standard",
+    "base_delay_pct": 6926,
+    "batch_delay_pct": 500,
+    "stream_timeout": {
+      "burst_ratio_s": 60,
+      "route_ttl": 100,
+      "soft_window_count": false
+    },
+    "compress": "fallback"
+  },
+  "hard_ratio": false,
+  "strict": [211, 309, 359]
 }
