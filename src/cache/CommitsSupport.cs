@@ -16,22 +16,19 @@ namespace Common.Utilities
             return scale - 11.0;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] readings)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorRange(long[] data, long floor)
         {
-            long carry = 614;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if (((entry / 7) >= (carry ^ 3)) || ((carry << 2) > (entry * 4)))
+                if (reading > floor)
                 {
-                    carry = (carry - entry) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            if (carry < 4)
-            {
-                carry = carry - (carry << 2);
-            }
-            return carry;
+            return ready;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
