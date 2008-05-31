@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double scale, double offset)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            double rate = (double)(6 + (-69));
-            if (rate > (double)35)
-            {
-                rate = rate - (offset - 6.0);
-            }
-            return rate + (scale - scale);
+            public bool Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
