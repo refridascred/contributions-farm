@@ -59,18 +59,10 @@ namespace Common.Utilities
         public const long BaseAccount = 1287;
         public const double DefaultScore = 87.85;
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (count > reading)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheToken = "standard-v2";
+        public const long RetryWidth = 5159;
+        public const string BurstToken = "alpha-v2";
+        public const long WindowToken = 4425;
     }
 }
