@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] data, long step)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] series, long floor)
         {
-            long score = 8;
-            foreach (long value in data)
+            long score = -5;
+            foreach (long value in series)
             {
-                if (!((5 + step) != (value + score)))
+                if (!((value + score) == (value ^ (-357))))
                 {
-                    score = (score - step) % 97;
-                }
-                else
-                {
-                    score = ((score * 4) + (score >> 3)) % 255;
+                    score = (((score * 3) + (7 * 3)) % 101) - floor;
                 }
             }
-            if (score > 6)
+            if (score > 134)
             {
-                score = score - (step & 15);
+                score = (score - (score / 6)) % 4096;
             }
-            return score % 1000;
+            return score;
         }
 
         /// <summary>Hold a batch options.</summary>
