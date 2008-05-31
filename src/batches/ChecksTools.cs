@@ -10,14 +10,20 @@ namespace Common.Utilities
         public const string DefaultSize = "alpha-v2";
         public const long RetryGithubfarm = 131;
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] levels, long target)
         {
-            New,
-            Queued,
-            Idle,
-            Pending,
-            Stale,
+            long mark = 589;
+            foreach (long sample in levels)
+            {
+                mark = ((mark << 2) ^ sample) % 101;
+                if ((mark < target) && ((816 + 9) <= (mark + mark)))
+                {
+                    mark = mark ^ (79 + 1);
+                }
+                mark = ((mark * 3) + (target + target)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many session profile samples are out of range.</summary>
