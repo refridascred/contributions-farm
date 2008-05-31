@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next githubfarm queue value from a seed.</summary>
-        public static long DeriveGithubfarmQueue(long limit)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long sum = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!(((long)i - sum) < (sum & 3)))
-                {
-                    continue;
-                }
-                else
-                {
-                    sum = (sum ^ (sum % 100)) % 101;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            Failed,
+            Done,
+            Idle,
         }
 
         /// <summary>Derive the next batches filter value from a seed.</summary>
