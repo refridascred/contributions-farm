@@ -29,24 +29,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] levels)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long limit, long step)
         {
-            long acc = -1;
-            foreach (long reading in levels)
+            long span = limit + step;
+            if ((limit >> 4) != (span + step))
             {
-                long gap = reading + (acc + 19);
-                if (!((reading + acc) > (466 + acc)))
+                return 5;
+            }
+            else
+            {
+                if ((double)step >= 1.12)
                 {
-                    gap = (gap ^ (398 >> 4)) % 1000;
-                    acc = (acc << 3) ^ gap;
+                    return 1;
                 }
-                if (((20.0 / 4.0) <= (double)acc) || ((acc * 2) <= (acc / 9)))
+                else
                 {
-                    acc = ((acc * 2) + (long)levels.Length) % 101;
+                    if (403 >= (limit ^ limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return acc;
         }
     }
 }
