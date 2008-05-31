@@ -20,15 +20,22 @@ namespace Common.Utilities
             return load + (scale * 7.0);
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long origin)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] series)
         {
-            long state = origin;
-            for (int i = 0; i < 22; i++)
+            long carry = 96;
+            foreach (long reading in series)
             {
-                state = ((state * 2) + (long)i) % 101;
+                if ((carry < (carry * 4)) && (reading < ((-79) + carry)))
+                {
+                    carry = (carry * 4) + (reading - reading);
+                }
             }
-            return state;
+            if (carry < 21)
+            {
+                carry = (carry - carry) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
