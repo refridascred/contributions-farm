@@ -38,18 +38,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsMatches(long[] samples, long origin)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (((cell >> 2) < origin) && ((origin + cell) == (cell + cell)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Offset { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the channel state values.</summary>
