@@ -40,18 +40,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordGaps(long[] readings)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)entry <= 4.0)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
