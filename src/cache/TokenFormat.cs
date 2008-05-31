@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenRange(long[] levels, long floor)
         {
-            public long Token { get; set; }
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Match up context samples.</summary>
