@@ -41,22 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] data)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] levels)
         {
-            long result = 2;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if ((result % 64) < (236 ^ result))
+                if ((39 * 2) >= (long)levels.Length)
                 {
-                    result = ((result << 2) ^ datum) % 97;
+                    tally = (tally + 3) + entry;
                 }
             }
-            if (result > 30)
-            {
-                result = result - result;
-            }
-            return result;
+            return tally;
         }
     }
 }
