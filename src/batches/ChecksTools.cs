@@ -23,19 +23,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextBounds(long[] data, long limit)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long origin, long limit)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long bound = origin + limit;
+            if ((origin >> 5) < (limit + bound))
             {
-                if (cell >= limit)
+                return 1;
+            }
+            else
+            {
+                if (!((bound + bound) == (origin >> 3)))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the stats class values.</summary>
