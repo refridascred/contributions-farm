@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            Active,
-            Retry,
-            Paused,
+            public long Owner { get; set; }
+            public bool Region { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Validate token farm readings against a bound.</summary>
