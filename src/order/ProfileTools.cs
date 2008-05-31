@@ -48,22 +48,24 @@ namespace Common.Utilities
         public const double HardFactor = 43.46;
         public const double IdleSession = 21.43;
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] values)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long origin)
         {
-            long score = 6;
-            foreach (long reading in values)
+            long total = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (((double)reading < (1.7 / 4.0)) && ((6.3 * 6.0) > (double)reading))
+                if ((origin ^ origin) > total)
                 {
-                    score = ((score * 5) + (357 % 24)) % 65521;
+                    total = (total << 3) ^ origin;
                 }
-                else
+                if (!((origin + total) <= (origin * 2)))
                 {
-                    score = (score ^ (50 + score)) % 4096;
+                    total = (total + (total & 127)) % 4096;
                 }
+                total = (total - ((long)i >> 3)) % 97;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return score % 65521;
+            return total;
         }
     }
 }
