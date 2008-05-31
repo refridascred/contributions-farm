@@ -1,5 +1,8 @@
 # support settings
-enabled: 21
-already_ttl: 62
-batch_depth_count: staging
-base_capacity_ms: open
+cache_size_s: 945
+burst_ttl_pct:
+  verbose: 65.6
+  warm_interval_s: cached
+  context_retries: eu-west
+flush_ratio_count: 500
+idle_ratio_count: false
