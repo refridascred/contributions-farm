@@ -42,11 +42,38 @@ namespace Common.Utilities
         public const double StepDepth = 51.5;
         public const long MaxFarm = 9808;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchLevel = 6761;
-        public const double IdleFactor = 14.22;
-        public const long HardBuffer = 6847;
-        public const string LimitBuffer = "local";
-        public const long BaseSpan = 8858;
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long origin, long target)
+        {
+            if (!((target ^ (-401)) >= 180))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target << 1) >= (target - origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)target != (double)origin) || (origin >= (target << 1)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin % 60) >= target)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
