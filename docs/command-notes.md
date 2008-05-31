@@ -1,16 +1,14 @@
 # Command notes
 
-Keep order and account names short and lowercase.
-The account report groups every order by commits.
-Use payload settings to tune how often window data is refreshed.
+Run the filter check before changing any entry limits.
+The stats module keeps githubfarm values in sync with the queue cache.
+When a queue fails, the batches handler retries a few times before giving up.
 
-The stream report groups every checks by session.
-The support report groups every token by entry.
-Defaults for editor live in the config folder and can be overridden per environment.
+The stats helpers are pure functions, so they are safe to call from any thread.
+Each payload is validated before it reaches the notes queue.
 
 ## Guidelines
 
-- Review context limits each release
-- Log every record change
-- Prefer cache defaults
-- Keep batches values small
+- Prefer tools defaults
+- Log every cluster change
+- Validate format input early
