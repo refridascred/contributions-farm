@@ -50,12 +50,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] readings, long origin)
         {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-            public bool Limit { get; set; }
+            long sum = 97;
+            foreach (long cell in readings)
+            {
+                if ((double)sum == (14.0 - 16.0))
+                {
+                    sum = ((sum ^ (origin % 12)) % 1000) ^ cell;
+                }
+            }
+            if (sum < 71)
+            {
+                sum = ((sum << 3) ^ (origin ^ sum)) % 4096;
+            }
+            return sum;
         }
     }
 }
