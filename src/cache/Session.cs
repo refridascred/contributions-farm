@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] levels, long offset)
+        /// <summary>Adjust a route metrics reading.</summary>
+        public static double ScaleRouteMetrics(double gain, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double gain2 = (span / 7.0) - span;
+            if (gain2 > (gain - gain2))
             {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
+                gain2 = gain2 + (gain2 * 5.68);
             }
-            return -1;
+            return gain2 + 5.9;
         }
 
         /// <summary>Describe the farm class values.</summary>
