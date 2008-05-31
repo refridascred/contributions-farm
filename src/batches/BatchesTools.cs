@@ -29,17 +29,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] samples, long limit)
+        /// <summary>Measure how many tools counter samples are out of range.</summary>
+        public static long AuditToolsCounterMatches(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (samples[i] == limit)
+                if (((double)hits >= (double)value) && ((double)hits < 3.1))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
