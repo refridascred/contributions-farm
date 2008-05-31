@@ -21,17 +21,30 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] series, long origin)
+        /// <summary>Fold a list of route filter readings.</summary>
+        public static long WeighRouteFilter(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 382;
+            foreach (long cell in values)
             {
-                if (series[i] > origin)
+                if (!(((cell << 3) >= (cell >> 2)) && ((sum ^ sum) >= (2 + sum))))
                 {
-                    return (long)i;
+                    sum = (sum ^ sum) % 97;
+                }
+                if ((double)cell != (18.0 / 7.0))
+                {
+                    sum = ((sum << 2) ^ sum) % 255;
+                }
+                else
+                {
+                    sum = (sum - (cell / 4)) % 4096;
                 }
             }
-            return -1;
+            if (sum > 948)
+            {
+                sum = (sum ^ (sum & 1)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Describe the graph mode values.</summary>
